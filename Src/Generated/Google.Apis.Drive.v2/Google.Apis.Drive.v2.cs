@@ -2795,13 +2795,13 @@ namespace Google.Apis.Drive.v2
             }
         }
 
-        /// <summary>Permanently deletes all of the user's trashed files.</summary>
+        /// <summary>Permanently deletes all trashed files of a user or shared drive.</summary>
         public virtual EmptyTrashRequest EmptyTrash()
         {
             return new EmptyTrashRequest(service);
         }
 
-        /// <summary>Permanently deletes all of the user's trashed files.</summary>
+        /// <summary>Permanently deletes all trashed files of a user or shared drive.</summary>
         public class EmptyTrashRequest : DriveBaseServiceRequest<string>
         {
             /// <summary>Constructs a new EmptyTrash request.</summary>
@@ -5330,10 +5330,7 @@ namespace Google.Apis.Drive.v2
             }
         }
 
-        /// <summary>
-        /// Subscribes to changes to a file. While you can establish a channel for changes to a file on a shared drive,
-        /// a change to a shared drive file won't create a notification.
-        /// </summary>
+        /// <summary>Subscribe to changes on a file.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID for the file in question.</param>
         public virtual WatchRequest Watch(Google.Apis.Drive.v2.Data.Channel body, string fileId)
@@ -5341,10 +5338,7 @@ namespace Google.Apis.Drive.v2
             return new WatchRequest(service, body, fileId);
         }
 
-        /// <summary>
-        /// Subscribes to changes to a file. While you can establish a channel for changes to a file on a shared drive,
-        /// a change to a shared drive file won't create a notification.
-        /// </summary>
+        /// <summary>Subscribe to changes on a file.</summary>
         public class WatchRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.Channel>
         {
             /// <summary>Constructs a new Watch request.</summary>

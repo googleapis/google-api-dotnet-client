@@ -5090,16 +5090,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     }
 
     /// <summary>
-    /// Conveys information about a Kubernetes access review (e.g. kubectl auth can-i ...) that was involved in a
-    /// finding.
+    /// Conveys information about a Kubernetes access review (such as one returned by a [`kubectl auth
+    /// can-i`](https://kubernetes.io/docs/reference/access-authn-authz/authorization/#checking-api-access) command)
+    /// that was involved in a finding.
     /// </summary>
     public class AccessReview : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Group is the API Group of the Resource. "*" means all.</summary>
+        /// <summary>The API group of the resource. "*" means all.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
         public virtual string Group { get; set; }
 
-        /// <summary>Name is the name of the resource being requested. Empty means all.</summary>
+        /// <summary>The name of the resource being requested. Empty means all.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -5110,22 +5111,21 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ns")]
         public virtual string Ns { get; set; }
 
-        /// <summary>Resource is the optional resource type requested. "*" means all.</summary>
+        /// <summary>The optional resource type requested. "*" means all.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }
 
-        /// <summary>Subresource is the optional subresource type.</summary>
+        /// <summary>The optional subresource type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subresource")]
         public virtual string Subresource { get; set; }
 
         /// <summary>
-        /// Verb is a Kubernetes resource API verb, like: get, list, watch, create, update, delete, proxy. "*" means
-        /// all.
+        /// A Kubernetes resource API verb, like get, list, watch, create, update, delete, proxy. "*" means all.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
 
-        /// <summary>Version is the API Version of the Resource. "*" means all.</summary>
+        /// <summary>The API version of the resource. "*" means all.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 
@@ -5159,8 +5159,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual System.Nullable<bool> FullScan { get; set; }
 
         /// <summary>
-        /// The [type of information](https://cloud.google.com/dlp/docs/infotypes-reference) found, for example,
-        /// `EMAIL_ADDRESS` or `STREET_ADDRESS`.
+        /// The type of information (or *[infoType](https://cloud.google.com/dlp/docs/infotypes-reference)*) found, for
+        /// example, `EMAIL_ADDRESS` or `STREET_ADDRESS`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
         public virtual string InfoType { get; set; }
@@ -5182,15 +5182,15 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     /// <summary>Contains compliance information about a security standard indicating unmet recommendations.</summary>
     public class Compliance : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Policies within the standard/benchmark e.g. A.12.4.1</summary>
+        /// <summary>Policies within the standard or benchmark, for example, A.12.4.1</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ids")]
         public virtual System.Collections.Generic.IList<string> Ids { get; set; }
 
-        /// <summary>Refers to industry wide standards or benchmarks e.g. "cis", "pci", "owasp", etc.</summary>
+        /// <summary>Industry-wide compliance standards or benchmarks, such as CIS, PCI, and OWASP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("standard")]
         public virtual string Standard { get; set; }
 
-        /// <summary>Version of the standard/benchmark e.g. 1.1</summary>
+        /// <summary>Version of the standard or benchmark, for example, 1.1</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
 
@@ -5253,7 +5253,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The details pertaining to specific contacts</summary>
+    /// <summary>Details about specific contacts</summary>
     public class ContactDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of contacts</summary>
@@ -5268,7 +5268,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     public class Container : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional container image id, when provided by the container runtime. Uniquely identifies the container image
+        /// Optional container image ID, if provided by the container runtime. Uniquely identifies the container image
         /// launched using a container image digest.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageId")]
@@ -5278,13 +5278,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IList<Label> Labels { get; set; }
 
-        /// <summary>Container name.</summary>
+        /// <summary>Name of the container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Container image URI provided when configuring a pod/container. May identify a container image version using
-        /// mutable tags.
+        /// Container image URI provided when configuring a pod or container. This string can identify a container image
+        /// version using mutable tags.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
@@ -5428,34 +5428,40 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
     /// <summary>
     /// Represents database access information, such as queries. A database may be a sub-resource of an instance (as in
-    /// the case of CloudSQL instances or Cloud Spanner instances), or the database instance itself. Some database
-    /// resources may not have the full resource name populated because these resource types are not yet supported by
-    /// Cloud Asset Inventory (e.g. CloudSQL databases). In these cases only the display name will be provided.
+    /// the case of Cloud SQL instances or Cloud Spanner instances), or the database instance itself. Some database
+    /// resources might not have the [full resource name](https://google.aip.dev/122#full-resource-names) populated
+    /// because these resource types, such as Cloud SQL databases, are not yet supported by Cloud Asset Inventory. In
+    /// these cases only the display name is provided. Some database resources may not have the [full resource
+    /// name](https://google.aip.dev/122#full-resource-names) populated because these resource types are not yet
+    /// supported by Cloud Asset Inventory (e.g. Cloud SQL databases). In these cases only the display name will be
+    /// provided.
     /// </summary>
     public class Database : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The human readable name of the database the user connected to.</summary>
+        /// <summary>The human-readable name of the database that the user connected to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>The target usernames/roles/groups of a SQL privilege grant (not an IAM policy change).</summary>
+        /// <summary>
+        /// The target usernames, roles, or groups of an SQL privilege grant, which is not an IAM policy change.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("grantees")]
         public virtual System.Collections.Generic.IList<string> Grantees { get; set; }
 
         /// <summary>
-        /// The full resource name of the database the user connected to, if it is supported by CAI.
-        /// (https://google.aip.dev/122#full-resource-names)
+        /// The [full resource name](https://google.aip.dev/122#full-resource-names) of the database that the user
+        /// connected to, if it is supported by Cloud Asset Inventory.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The SQL statement associated with the relevant access.</summary>
+        /// <summary>The SQL statement that is associated with the database access.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
 
         /// <summary>
-        /// The username used to connect to the DB. This may not necessarily be an IAM principal, and has no required
-        /// format.
+        /// The username used to connect to the database. The username might not be an IAM principal and does not have a
+        /// set format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userName")]
         public virtual string UserName { get; set; }
@@ -5498,7 +5504,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>EnvironmentVariable is a name-value pair to store environment variables for Process.</summary>
+    /// <summary>A name-value pair representing an environment variable used in an operating system process.</summary>
     public class EnvironmentVariable : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Environment variable name as a JSON encoded string.</summary>
@@ -5546,18 +5552,20 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Resource that has been exfiltrated or exfiltrated_to.</summary>
+    /// <summary>Resource where data was exfiltrated from or exfiltrated to.</summary>
     public class ExfilResource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Subcomponents of the asset that is exfiltrated - these could be URIs used during exfiltration, table names,
-        /// databases, filenames, etc. For example, multiple tables may be exfiltrated from the same CloudSQL instance,
-        /// or multiple files from the same Cloud Storage bucket.
+        /// Subcomponents of the asset that was exfiltrated, like URIs used during exfiltration, table names, databases,
+        /// and filenames. For example, multiple tables might have been exfiltrated from the same Cloud SQL instance, or
+        /// multiple files might have been exfiltrated from the same Cloud Storage bucket.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("components")]
         public virtual System.Collections.Generic.IList<string> Components { get; set; }
 
-        /// <summary>Resource's URI (https://google.aip.dev/122#full-resource-names)</summary>
+        /// <summary>
+        /// The resource's [full resource name](https://cloud.google.com/apis/design/resource_names#full_resource_name).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -5566,8 +5574,9 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     }
 
     /// <summary>
-    /// Exfiltration represents a data exfiltration attempt of one or more sources to one or more targets. Sources
-    /// represent the source of data that is exfiltrated, and Targets represents the destination the data was copied to.
+    /// Exfiltration represents a data exfiltration attempt from one or more sources to one or more targets. The
+    /// `sources` attribute lists the sources of the exfiltrated data. The `targets` attribute lists the destinations
+    /// the data was copied to.
     /// </summary>
     public class Exfiltration : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5638,10 +5647,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     /// </summary>
     public class File : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Prefix of the file contents as a JSON encoded string. (Currently only populated for Malicious Script
-        /// Executed findings.)
-        /// </summary>
+        /// <summary>Prefix of the file contents as a JSON-encoded string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contents")]
         public virtual string Contents { get; set; }
 
@@ -6020,11 +6026,11 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     /// <summary>Represents a Kubernetes RoleBinding or ClusterRoleBinding.</summary>
     public class GoogleCloudSecuritycenterV1Binding : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Name for binding.</summary>
+        /// <summary>Name for the binding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Namespace for binding.</summary>
+        /// <summary>Namespace for the binding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ns")]
         public virtual string Ns { get; set; }
 
@@ -6658,7 +6664,9 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; }
 
-        /// <summary>A single identity requesting access for a Cloud Platform resource, e.g. "foo@google.com".</summary>
+        /// <summary>
+        /// A single identity requesting access for a Cloud Platform resource, for example, "foo@google.com".
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("member")]
         public virtual string Member { get; set; }
 
@@ -6705,53 +6713,53 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     /// <summary>Kernel mode rootkit signatures.</summary>
     public class KernelRootkit : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Rootkit name when available.</summary>
+        /// <summary>Rootkit name, when available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>True when unexpected modifications of kernel code memory are present.</summary>
+        /// <summary>True if unexpected modifications of kernel code memory are present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedCodeModification")]
         public virtual System.Nullable<bool> UnexpectedCodeModification { get; set; }
 
         /// <summary>
-        /// True when `ftrace` points are present with callbacks pointing to regions that are not in the expected kernel
+        /// True if `ftrace` points are present with callbacks pointing to regions that are not in the expected kernel
         /// or module code range.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedFtraceHandler")]
         public virtual System.Nullable<bool> UnexpectedFtraceHandler { get; set; }
 
         /// <summary>
-        /// True when interrupt handlers that are are not in the expected kernel or module code regions are present.
+        /// True if interrupt handlers that are are not in the expected kernel or module code regions are present.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedInterruptHandler")]
         public virtual System.Nullable<bool> UnexpectedInterruptHandler { get; set; }
 
         /// <summary>
-        /// True when kernel code pages that are not in the expected kernel or module code regions are present.
+        /// True if kernel code pages that are not in the expected kernel or module code regions are present.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedKernelCodePages")]
         public virtual System.Nullable<bool> UnexpectedKernelCodePages { get; set; }
 
         /// <summary>
-        /// True when `kprobe` points are present with callbacks pointing to regions that are not in the expected kernel
+        /// True if `kprobe` points are present with callbacks pointing to regions that are not in the expected kernel
         /// or module code range.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedKprobeHandler")]
         public virtual System.Nullable<bool> UnexpectedKprobeHandler { get; set; }
 
         /// <summary>
-        /// True when unexpected processes in the scheduler run queue are present. Such processes are in the run queue,
+        /// True if unexpected processes in the scheduler run queue are present. Such processes are in the run queue,
         /// but not in the process task list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedProcessesInRunqueue")]
         public virtual System.Nullable<bool> UnexpectedProcessesInRunqueue { get; set; }
 
-        /// <summary>True when unexpected modifications of kernel read-only data memory are present.</summary>
+        /// <summary>True if unexpected modifications of kernel read-only data memory are present.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedReadOnlyDataModification")]
         public virtual System.Nullable<bool> UnexpectedReadOnlyDataModification { get; set; }
 
         /// <summary>
-        /// True when system call handlers that are are not in the expected kernel or module code regions are present.
+        /// True if system call handlers that are are not in the expected kernel or module code regions are present.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unexpectedSystemCallHandler")]
         public virtual System.Nullable<bool> UnexpectedSystemCallHandler { get; set; }
@@ -6764,36 +6772,43 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     public class Kubernetes : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Provides information on any Kubernetes access reviews (i.e. privilege checks) relevant to the finding.
+        /// Provides information on any Kubernetes access reviews (privilege checks) relevant to the finding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessReviews")]
         public virtual System.Collections.Generic.IList<AccessReview> AccessReviews { get; set; }
 
         /// <summary>
-        /// Provides Kubernetes role binding information for findings that involve RoleBindings or ClusterRoleBindings.
+        /// Provides Kubernetes role binding information for findings that involve [RoleBindings or
+        /// ClusterRoleBindings](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
         public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV1Binding> Bindings { get; set; }
 
         /// <summary>
-        /// GKE Node Pools associated with the finding. This field will contain NodePool information for each Node, when
-        /// it is available.
+        /// GKE [node pools](https://cloud.google.com/kubernetes-engine/docs/concepts/node-pools) associated with the
+        /// finding. This field contains node pool information for each node, when it is available.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodePools")]
         public virtual System.Collections.Generic.IList<NodePool> NodePools { get; set; }
 
-        /// <summary>Provides Kubernetes Node information.</summary>
+        /// <summary>
+        /// Provides Kubernetes
+        /// [node](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture#nodes) information.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
         public virtual System.Collections.Generic.IList<Node> Nodes { get; set; }
 
         /// <summary>
-        /// Kubernetes Pods associated with the finding. This field will contain Pod records for each container that is
-        /// owned by a Pod.
+        /// Kubernetes [Pods](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) associated with the finding.
+        /// This field contains Pod records for each container that is owned by a Pod.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pods")]
         public virtual System.Collections.Generic.IList<Pod> Pods { get; set; }
 
-        /// <summary>Provides Kubernetes role information for findings that involve Roles or ClusterRoles.</summary>
+        /// <summary>
+        /// Provides Kubernetes role information for findings that involve [Roles or
+        /// ClusterRoles](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roles")]
         public virtual System.Collections.Generic.IList<Role> Roles { get; set; }
 
@@ -6802,16 +6817,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
     }
 
     /// <summary>
-    /// Label represents a generic name=value label. Label has separate name and value fields to support filtering with
-    /// contains().
+    /// Represents a generic name-value label. A label has separate name and value fields to support filtering with the
+    /// `contains()` function. For more information, see [Filtering on array-type
+    /// fields](https://cloud.google.com/security-command-center/docs/how-to-api-list-findings#array-contains-filtering).
     /// </summary>
     public class Label : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Label name.</summary>
+        /// <summary>Name of the label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Label value.</summary>
+        /// <summary>Value that corresponds to the label's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
@@ -6871,10 +6887,13 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Kubernetes Nodes associated with the finding.</summary>
+    /// <summary>Kubernetes nodes associated with the finding.</summary>
     public class Node : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Full Resource name of the Compute Engine VM running the cluster node.</summary>
+        /// <summary>
+        /// [Full resource name](https://google.aip.dev/122#full-resource-names) of the Compute Engine VM running the
+        /// cluster node.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -6882,10 +6901,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Provides GKE Node Pool information.</summary>
+    /// <summary>Provides GKE node pool information.</summary>
     public class NodePool : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Kubernetes Node pool name.</summary>
+        /// <summary>Kubernetes node pool name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -6918,7 +6937,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Kubernetes Pod.</summary>
+    /// <summary>A Kubernetes Pod.</summary>
     public class Pod : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Pod containers associated with this finding, if any.</summary>
@@ -6969,22 +6988,22 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual System.Collections.Generic.IList<File> Libraries { get; set; }
 
         /// <summary>
-        /// The process name visible in utilities like `top` and `ps`; it can be accessed via `/proc/[pid]/comm` and
-        /// changed with `prctl(PR_SET_NAME)`.
+        /// The process name, as displayed in utilities like `top` and `ps`. This name can be accessed through
+        /// `/proc/[pid]/comm` and changed with `prctl(PR_SET_NAME)`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The parent process id.</summary>
+        /// <summary>The parent process ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentPid")]
         public virtual System.Nullable<long> ParentPid { get; set; }
 
-        /// <summary>The process id.</summary>
+        /// <summary>The process ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pid")]
         public virtual System.Nullable<long> Pid { get; set; }
 
         /// <summary>
-        /// When the process represents the invocation of a script, `binary` provides information about the interpreter
+        /// When the process represents the invocation of a script, `binary` provides information about the interpreter,
         /// while `script` provides information about the script file provided to the interpreter.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("script")]
@@ -7210,18 +7229,18 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a Kubernetes Subject.</summary>
+    /// <summary>Represents a Kubernetes subject.</summary>
     public class Subject : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Authentication type for subject.</summary>
+        /// <summary>Authentication type for the subject.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>Name for subject.</summary>
+        /// <summary>Name for the subject.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Namespace for subject.</summary>
+        /// <summary>Namespace for the subject.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ns")]
         public virtual string Ns { get; set; }
 

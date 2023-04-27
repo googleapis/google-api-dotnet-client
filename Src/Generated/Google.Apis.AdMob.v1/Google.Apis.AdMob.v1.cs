@@ -807,7 +807,7 @@ namespace Google.Apis.AdMob.v1.Data
     /// <summary>Describes an AdMob app for a specific platform (For example: Android or iOS).</summary>
     public class App : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The approval state for the app.</summary>
+        /// <summary>Output only. The approval state for the app. The field is read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appApprovalState")]
         public virtual string AppApprovalState { get; set; }
 

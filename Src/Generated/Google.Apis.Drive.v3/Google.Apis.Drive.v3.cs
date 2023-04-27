@@ -2330,13 +2330,13 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Permanently deletes all of the user's trashed files.</summary>
+        /// <summary>Permanently deletes all trashed files of a user or shared drive.</summary>
         public virtual EmptyTrashRequest EmptyTrash()
         {
             return new EmptyTrashRequest(service);
         }
 
-        /// <summary>Permanently deletes all of the user's trashed files.</summary>
+        /// <summary>Permanently deletes all trashed files of a user or shared drive.</summary>
         public class EmptyTrashRequest : DriveBaseServiceRequest<string>
         {
             /// <summary>Constructs a new EmptyTrash request.</summary>
@@ -3535,7 +3535,7 @@ namespace Google.Apis.Drive.v3
             }
         }
 
-        /// <summary>Subscribes to changes to a file.</summary>
+        /// <summary>Subscribe to changes on a file.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file.</param>
         public virtual WatchRequest Watch(Google.Apis.Drive.v3.Data.Channel body, string fileId)
@@ -3543,7 +3543,7 @@ namespace Google.Apis.Drive.v3
             return new WatchRequest(service, body, fileId);
         }
 
-        /// <summary>Subscribes to changes to a file.</summary>
+        /// <summary>Subscribe to changes on a file.</summary>
         public class WatchRequest : DriveBaseServiceRequest<Google.Apis.Drive.v3.Data.Channel>
         {
             /// <summary>Constructs a new Watch request.</summary>

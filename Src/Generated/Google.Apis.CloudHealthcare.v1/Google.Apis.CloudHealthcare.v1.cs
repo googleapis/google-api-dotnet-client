@@ -11687,6 +11687,44 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains the configuration for FHIR notifications.</summary>
+    public class FhirNotificationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on.
+        /// Supplied by the client. The notification is a `PubsubMessage` with the following fields: *
+        /// `PubsubMessage.Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of this notification.
+        /// It is guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is the time when the message
+        /// was published. Note that notifications are only sent if the topic is non-empty. [Topic
+        /// names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. The Cloud
+        /// Healthcare API service account, service-@gcp-sa-healthcare.iam.gserviceaccount.com, must have publisher
+        /// permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send
+        /// notifications to fail
+        /// (https://cloud.google.com/healthcare-api/docs/permissions-healthcare-api-gcp-products#dicom_fhir_and_hl7v2_store_cloud_pubsub_permissions).
+        /// If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging. For more information,
+        /// see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare-api/docs/how-tos/logging).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
+        public virtual string PubsubTopic { get; set; }
+
+        /// <summary>Whether to send full FHIR resource to this Pub/Sub topic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sendFullResource")]
+        public virtual System.Nullable<bool> SendFullResource { get; set; }
+
+        /// <summary>
+        /// Whether to send full FHIR resource to this pubsub topic for deleting FHIR resource. Note that setting this
+        /// to true does not guarantee that all previous resources will be sent in the format of full FHIR resource.
+        /// When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients
+        /// should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch
+        /// the full previous resource as a separate operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sendPreviousResourceOnDelete")]
+        public virtual System.Nullable<bool> SendPreviousResourceOnDelete { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a FHIR store.</summary>
     public class FhirStore : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11761,12 +11799,16 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message
-        /// attributes contain a map with a string describing the action that has triggered the notification. For
-        /// example, "action":"CreateResource".
+        /// Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this
+        /// FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the
+        /// action that has triggered the notification. For example, "action":"CreateResource".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfig")]
         public virtual NotificationConfig NotificationConfig { get; set; }
+
+        /// <summary>Specifies where and whether to send notifications upon changes to a FHIR store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationConfigs")]
+        public virtual System.Collections.Generic.IList<FhirNotificationConfig> NotificationConfigs { get; set; }
 
         /// <summary>
         /// A list of streaming configs that configure the destinations of streaming export for every resource mutation

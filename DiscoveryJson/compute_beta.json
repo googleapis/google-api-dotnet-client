@@ -8710,6 +8710,7 @@
      ]
     },
     "setAutoHealingPolicies": {
+     "deprecated": true,
      "description": "Motifies the autohealing policy for the instances in this managed instance group. [Deprecated] This method is deprecated. Use instanceGroupManagers.patch instead.",
      "flatPath": "projects/{project}/zones/{zone}/instanceGroupManagers/{instanceGroupManager}/setAutoHealingPolicies",
      "httpMethod": "POST",
@@ -11770,6 +11771,11 @@
        "location": "path",
        "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
        "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
        "type": "string"
       },
       "zone": {
@@ -23191,6 +23197,7 @@
      ]
     },
     "setAutoHealingPolicies": {
+     "deprecated": true,
      "description": "Modifies the autohealing policy for the instances in this managed instance group. [Deprecated] This method is deprecated. Use regionInstanceGroupManagers.patch instead.",
      "flatPath": "projects/{project}/regions/{region}/instanceGroupManagers/{instanceGroupManager}/setAutoHealingPolicies",
      "httpMethod": "POST",
@@ -25486,6 +25493,56 @@
   },
   "regionSecurityPolicies": {
    "methods": {
+    "addRule": {
+     "description": "Inserts a rule into a security policy.",
+     "flatPath": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/addRule",
+     "httpMethod": "POST",
+     "id": "compute.regionSecurityPolicies.addRule",
+     "parameterOrder": [
+      "project",
+      "region",
+      "securityPolicy"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region scoping this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "securityPolicy": {
+       "description": "Name of the security policy to update.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "validateOnly": {
+       "description": "If true, the request will not be committed.",
+       "location": "query",
+       "type": "boolean"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/addRule",
+     "request": {
+      "$ref": "SecurityPolicyRule"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
     "delete": {
      "description": "Deletes the specified policy.",
      "flatPath": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}",
@@ -25569,6 +25626,55 @@
      "path": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}",
      "response": {
       "$ref": "SecurityPolicy"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "getRule": {
+     "description": "Gets a rule at the specified priority.",
+     "flatPath": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/getRule",
+     "httpMethod": "GET",
+     "id": "compute.regionSecurityPolicies.getRule",
+     "parameterOrder": [
+      "project",
+      "region",
+      "securityPolicy"
+     ],
+     "parameters": {
+      "priority": {
+       "description": "The priority of the rule to get from the security policy.",
+       "format": "int32",
+       "location": "query",
+       "type": "integer"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region scoping this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "securityPolicy": {
+       "description": "Name of the security policy to which the queried rule belongs.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/getRule",
+     "response": {
+      "$ref": "SecurityPolicyRule"
      },
      "scopes": [
       "https://www.googleapis.com/auth/cloud-platform",
@@ -25728,6 +25834,110 @@
      "request": {
       "$ref": "SecurityPolicy"
      },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "patchRule": {
+     "description": "Patches a rule at the specified priority. To clear fields in the rule, leave the fields empty and specify them in the updateMask.",
+     "flatPath": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/patchRule",
+     "httpMethod": "POST",
+     "id": "compute.regionSecurityPolicies.patchRule",
+     "parameterOrder": [
+      "project",
+      "region",
+      "securityPolicy"
+     ],
+     "parameters": {
+      "priority": {
+       "description": "The priority of the rule to patch.",
+       "format": "int32",
+       "location": "query",
+       "type": "integer"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region scoping this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "securityPolicy": {
+       "description": "Name of the security policy to update.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "validateOnly": {
+       "description": "If true, the request will not be committed.",
+       "location": "query",
+       "type": "boolean"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/patchRule",
+     "request": {
+      "$ref": "SecurityPolicyRule"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "removeRule": {
+     "description": "Deletes a rule at the specified priority.",
+     "flatPath": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/removeRule",
+     "httpMethod": "POST",
+     "id": "compute.regionSecurityPolicies.removeRule",
+     "parameterOrder": [
+      "project",
+      "region",
+      "securityPolicy"
+     ],
+     "parameters": {
+      "priority": {
+       "description": "The priority of the rule to remove from the security policy.",
+       "format": "int32",
+       "location": "query",
+       "type": "integer"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region scoping this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "securityPolicy": {
+       "description": "Name of the security policy to update.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/removeRule",
      "response": {
       "$ref": "Operation"
      },
@@ -36741,7 +36951,7 @@
    }
   }
  },
- "revision": "20230403",
+ "revision": "20230418",
  "rootUrl": "https://compute.googleapis.com/",
  "schemas": {
   "AWSV4Signature": {
@@ -40888,11 +41098,13 @@
       "GENERAL_PURPOSE_N2",
       "GENERAL_PURPOSE_N2D",
       "GENERAL_PURPOSE_T2D",
+      "GRAPHICS_OPTIMIZED",
       "MEMORY_OPTIMIZED",
       "MEMORY_OPTIMIZED_M3",
       "TYPE_UNSPECIFIED"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -43181,6 +43393,10 @@
     "ipAddress": {
      "description": "IP address of the interface in the external VPN gateway. Only IPv4 is supported. This IP address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine.",
      "type": "string"
+    },
+    "ipv6Address": {
+     "description": "IPv6 address of the interface in the external VPN gateway. This IPv6 address can be either from your on-premise gateway or another Cloud provider's VPN gateway, it cannot be an IP address from Google Compute Engine. Must specify an IPv6 address (not IPV4-mapped) using any format described in RFC 4291 (e.g. 2001:db8:0:0:2d9:51:0:0). The output format is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).",
+     "type": "string"
     }
    },
    "type": "object"
@@ -45108,7 +45324,7 @@
    "type": "object"
   },
   "HealthCheck": {
-   "description": "Represents a Health Check resource. Google Compute Engine has two Health Check resources: * [Global](/compute/docs/reference/rest/beta/healthChecks) * [Regional](/compute/docs/reference/rest/beta/regionHealthChecks) Internal HTTP(S) load balancers must use regional health checks (`compute.v1.regionHealthChecks`). Traffic Director must use global health checks (`compute.v1.HealthChecks`). Internal TCP/UDP load balancers can use either regional or global health checks (`compute.v1.regionHealthChecks` or `compute.v1.HealthChecks`). External HTTP(S), TCP proxy, and SSL proxy load balancers as well as managed instance group auto-healing must use global health checks (`compute.v1.HealthChecks`). Backend service-based network load balancers must use regional health checks (`compute.v1.regionHealthChecks`). Target pool-based network load balancers must use legacy HTTP health checks (`compute.v1.httpHealthChecks`). For more information, see Health checks overview.",
+   "description": "Represents a Health Check resource. Google Compute Engine has two Health Check resources: * [Global](/compute/docs/reference/rest/beta/healthChecks) * [Regional](/compute/docs/reference/rest/beta/regionHealthChecks) Internal HTTP(S) load balancers must use regional health checks (`compute.v1.regionHealthChecks`). Traffic Director must use global health checks (`compute.v1.healthChecks`). Internal TCP/UDP load balancers can use either regional or global health checks (`compute.v1.regionHealthChecks` or `compute.v1.healthChecks`). External HTTP(S), TCP proxy, and SSL proxy load balancers as well as managed instance group auto-healing must use global health checks (`compute.v1.healthChecks`). Backend service-based network load balancers must use regional health checks (`compute.v1.regionHealthChecks`). Target pool-based network load balancers must use legacy HTTP health checks (`compute.v1.httpHealthChecks`). For more information, see Health checks overview.",
    "id": "HealthCheck",
    "properties": {
     "checkIntervalSec": {
@@ -60019,6 +60235,7 @@
       "COMMITTED_NVIDIA_A100_80GB_GPUS",
       "COMMITTED_NVIDIA_A100_GPUS",
       "COMMITTED_NVIDIA_K80_GPUS",
+      "COMMITTED_NVIDIA_L4_GPUS",
       "COMMITTED_NVIDIA_P100_GPUS",
       "COMMITTED_NVIDIA_P4_GPUS",
       "COMMITTED_NVIDIA_T4_GPUS",
@@ -60145,6 +60362,7 @@
       "XPN_SERVICE_PROJECTS"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -63744,6 +63962,18 @@
      "$ref": "RouterBgpPeerBfd",
      "description": "BFD configuration for the BGP peering."
     },
+    "customLearnedIpRanges": {
+     "description": "A list of user-defined custom learned route IP address ranges for a BGP session.",
+     "items": {
+      "$ref": "RouterBgpPeerCustomLearnedIpRange"
+     },
+     "type": "array"
+    },
+    "customLearnedRoutePriority": {
+     "description": "The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route ranges for the session. You can choose a value from `0` to `65335`. If you don't provide a value, Google Cloud assigns a priority of `100` to the ranges.",
+     "format": "int32",
+     "type": "integer"
+    },
     "enable": {
      "description": "The status of the BGP peer connection. If set to FALSE, any active session with the peer is terminated and all associated routing information is removed. If set to TRUE, the peer connection can be established with routing information. The default is TRUE.",
      "enum": [
@@ -63853,6 +64083,16 @@
       "",
       ""
      ],
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "RouterBgpPeerCustomLearnedIpRange": {
+   "id": "RouterBgpPeerCustomLearnedIpRange",
+   "properties": {
+    "range": {
+     "description": "The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a subnet mask, it is interpreted as, for IPv4, a `/32` singular IP address range, and, for IPv6, `/128`.",
      "type": "string"
     }
    },
@@ -66365,6 +66605,10 @@
     "pscServiceAttachmentId": {
      "$ref": "Uint128",
      "description": "[Output Only] An 128-bit global unique ID of the PSC service attachment."
+    },
+    "reconcileConnections": {
+     "description": "This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to true.",
+     "type": "boolean"
     },
     "region": {
      "description": "[Output Only] URL of the region where the service attachment resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.",
@@ -69958,7 +70202,7 @@
    "id": "TargetHttpsProxiesSetCertificateMapRequest",
    "properties": {
     "certificateMap": {
-     "description": "URL of the Certificate Map to associate with this TargetHttpsProxy.",
+     "description": "URL of the Certificate Map to associate with this TargetHttpsProxy. Accepted format is //certificatemanager.googleapis.com/projects/{project }/locations/{location}/certificateMaps/{resourceName}.",
      "type": "string"
     }
    },
@@ -70014,7 +70258,7 @@
      "type": "string"
     },
     "certificateMap": {
-     "description": "URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.",
+     "description": "URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored. Accepted format is //certificatemanager.googleapis.com/projects/{project }/locations/{location}/certificateMaps/{resourceName}.",
      "type": "string"
     },
     "creationTimestamp": {
@@ -71278,7 +71522,7 @@
    "id": "TargetSslProxiesSetCertificateMapRequest",
    "properties": {
     "certificateMap": {
-     "description": "URL of the Certificate Map to associate with this TargetSslProxy.",
+     "description": "URL of the Certificate Map to associate with this TargetSslProxy. Accepted format is //certificatemanager.googleapis.com/projects/{project }/locations/{location}/certificateMaps/{resourceName}.",
      "type": "string"
     }
    },
@@ -71320,7 +71564,7 @@
    "id": "TargetSslProxy",
    "properties": {
     "certificateMap": {
-     "description": "URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.",
+     "description": "URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored. Accepted format is //certificatemanager.googleapis.com/projects/{project }/locations/{location}/certificateMaps/{resourceName}.",
      "type": "string"
     },
     "creationTimestamp": {
@@ -73511,6 +73755,18 @@
      "description": "An optional description of this resource. Provide this property when you create the resource.",
      "type": "string"
     },
+    "gatewayIpVersion": {
+     "description": "The IP family of the gateway IPs for the HA-VPN gateway interfaces. If not specified, IPV4 will be used.",
+     "enum": [
+      "IPV4",
+      "IPV6"
+     ],
+     "enumDescriptions": [
+      "Every HA-VPN gateway interface is configured with an IPv4 address.",
+      "Every HA-VPN gateway interface is configured with an IPv6 address."
+     ],
+     "type": "string"
+    },
     "id": {
      "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server.",
      "format": "uint64",
@@ -73933,6 +74189,10 @@
     },
     "ipAddress": {
      "description": "[Output Only] IP address for this VPN interface associated with the VPN gateway. The IP address could be either a regional external IP address or a regional internal IP address. The two IP addresses for a VPN gateway must be all regional external or regional internal IP addresses. There cannot be a mix of regional external IP addresses and regional internal IP addresses. For HA VPN over Cloud Interconnect, the IP addresses for both interfaces could either be regional internal IP addresses or regional external IP addresses. For regular (non HA VPN over Cloud Interconnect) HA VPN tunnels, the IP address must be a regional external IP address.",
+     "type": "string"
+    },
+    "ipv6Address": {
+     "description": "[Output Only] IPv6 address for this VPN interface associated with the VPN gateway. The IPv6 address must be a regional external IPv6 address. The format is RFC 5952 format (e.g. 2001:db8::2d9:51:0:0).",
      "type": "string"
     }
    },

@@ -9886,7 +9886,7 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string AgentContent { get; set; }
 
         /// <summary>
-        /// The URI to a file containing the exported agent. This field is populated only if `agent_uri` is specified in
+        /// The URI to a file containing the exported agent. This field is populated if `agent_uri` is specified in
         /// ExportAgentRequest.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
@@ -10538,7 +10538,7 @@ namespace Google.Apis.Dialogflow.v3.Data
     /// <summary>
     /// An intent represents a user's intent to interact with a conversational agent. You can provide information for
     /// the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user
-    /// input) to your intent. Next ID: 15
+    /// input) to your intent.
     /// </summary>
     public class GoogleCloudDialogflowCxV3Intent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13687,7 +13687,7 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string AgentContent { get; set; }
 
         /// <summary>
-        /// The URI to a file containing the exported agent. This field is populated only if `agent_uri` is specified in
+        /// The URI to a file containing the exported agent. This field is populated if `agent_uri` is specified in
         /// ExportAgentRequest.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
@@ -14197,7 +14197,7 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents an example that the agent is trained on to identify the intent. Next ID: 15</summary>
+    /// <summary>Represents an example that the agent is trained on to identify the intent.</summary>
     public class GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The unique identifier of the training phrase.</summary>

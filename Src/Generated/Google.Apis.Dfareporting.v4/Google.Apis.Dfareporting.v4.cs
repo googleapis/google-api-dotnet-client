@@ -22182,6 +22182,13 @@ namespace Google.Apis.Dfareporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("treatmentForUnderage")]
         public virtual System.Nullable<bool> TreatmentForUnderage { get; set; }
 
+        /// <summary>
+        /// The user identifiers to enhance the conversion. The maximum number of user identifiers for each conversion
+        /// is 5.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userIdentifiers")]
+        public virtual System.Collections.Generic.IList<UserIdentifier> UserIdentifiers { get; set; }
+
         /// <summary>The value of the conversion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<double> Value { get; set; }
@@ -26060,6 +26067,48 @@ namespace Google.Apis.Dfareporting.v4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Identify a user by name and address.</summary>
+    public class OfflineUserAddressInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>City of the address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("city")]
+        public virtual string City { get; set; }
+
+        /// <summary>2-letter country code in ISO-3166-1 alpha-2 of the user's address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
+        public virtual string CountryCode { get; set; }
+
+        /// <summary>
+        /// First name of the user, which is hashed as SHA-256 after normalized (Lowercase all characters; Remove any
+        /// extra spaces before, after, and in between).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hashedFirstName")]
+        public virtual string HashedFirstName { get; set; }
+
+        /// <summary>
+        /// Last name of the user, which is hashed as SHA-256 after normalized (lower case only and no punctuation).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hashedLastName")]
+        public virtual string HashedLastName { get; set; }
+
+        /// <summary>
+        /// The street address of the user hashed using SHA-256 hash function after normalization (lower case only).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hashedStreetAddress")]
+        public virtual string HashedStreetAddress { get; set; }
+
+        /// <summary>Postal code of the user's address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postalCode")]
+        public virtual string PostalCode { get; set; }
+
+        /// <summary>State code of the address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Offset Position.</summary>
     public class OffsetPosition : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -29262,6 +29311,25 @@ namespace Google.Apis.Dfareporting.v4.Data
         /// <summary>Variable name in the tag. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variableType")]
         public virtual string VariableType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>User identifying information. Exactly one type of identifier must be specified.</summary>
+    public class UserIdentifier : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Address information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addressInfo")]
+        public virtual OfflineUserAddressInfo AddressInfo { get; set; }
+
+        /// <summary>Hashed email address using SHA-256 hash function after normalization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hashedEmail")]
+        public virtual string HashedEmail { get; set; }
+
+        /// <summary>Hashed phone number using SHA-256 hash function after normalization (E164 standard).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hashedPhoneNumber")]
+        public virtual string HashedPhoneNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

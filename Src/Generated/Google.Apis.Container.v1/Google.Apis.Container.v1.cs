@@ -7447,7 +7447,7 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("keyName")]
         public virtual string KeyName { get; set; }
 
-        /// <summary>Denotes the state of etcd encryption.</summary>
+        /// <summary>The desired state of etcd encryption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -9162,7 +9162,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
         public virtual OperationProgress Progress { get; set; }
 
-        /// <summary>Server-defined URL for the resource.</summary>
+        /// <summary>
+        /// Server-defined URI for the operation. Example:
+        /// `https://container.googleapis.com/v1alpha1/projects/123/locations/us-central1/operations/operation-123`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
 
@@ -9184,7 +9187,14 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
         public virtual string StatusMessage { get; set; }
 
-        /// <summary>Server-defined URL for the target of the operation.</summary>
+        /// <summary>
+        /// Server-defined URI for the target of the operation. The format of this is a URI to the resource being
+        /// modified (such as a cluster, node pool, or node). For node pool repairs, there may be multiple nodes being
+        /// repaired, but only one will be the target. Examples: -
+        /// `https://container.googleapis.com/v1/projects/123/locations/us-central1/clusters/my-cluster` -
+        /// `https://container.googleapis.com/v1/projects/123/zones/us-central1-c/clusters/my-cluster/nodePools/my-np` -
+        /// `https://container.googleapis.com/v1/projects/123/zones/us-central1-c/clusters/my-cluster/nodePools/my-np/node/my-node`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetLink")]
         public virtual string TargetLink { get; set; }
 

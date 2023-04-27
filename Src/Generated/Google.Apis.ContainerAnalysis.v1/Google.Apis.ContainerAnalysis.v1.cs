@@ -274,7 +274,6 @@ namespace Google.Apis.ContainerAnalysis.v1
             this.service = service;
             Notes = new NotesResource(service);
             Occurrences = new OccurrencesResource(service);
-            Resources = new ResourcesResource(service);
         }
 
         /// <summary>Gets the Notes resource.</summary>
@@ -1734,83 +1733,6 @@ namespace Google.Apis.ContainerAnalysis.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+/occurrences/[^/]+$",
-                    });
-                }
-            }
-        }
-
-        /// <summary>Gets the Resources resource.</summary>
-        public virtual ResourcesResource Resources { get; }
-
-        /// <summary>The "resources" collection of methods.</summary>
-        public class ResourcesResource
-        {
-            private const string Resource = "resources";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public ResourcesResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-            }
-
-            /// <summary>Gets a summary of the packages within a given resource.</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="name">
-            /// Required. The name of the resource to get a packages summary for in the form of
-            /// `projects/[PROJECT_ID]/resources/[RESOURCE_URL]`.
-            /// </param>
-            public virtual GeneratePackagesSummaryRequest GeneratePackagesSummary(Google.Apis.ContainerAnalysis.v1.Data.GeneratePackagesSummaryRequest body, string name)
-            {
-                return new GeneratePackagesSummaryRequest(service, body, name);
-            }
-
-            /// <summary>Gets a summary of the packages within a given resource.</summary>
-            public class GeneratePackagesSummaryRequest : ContainerAnalysisBaseServiceRequest<Google.Apis.ContainerAnalysis.v1.Data.PackagesSummaryResponse>
-            {
-                /// <summary>Constructs a new GeneratePackagesSummary request.</summary>
-                public GeneratePackagesSummaryRequest(Google.Apis.Services.IClientService service, Google.Apis.ContainerAnalysis.v1.Data.GeneratePackagesSummaryRequest body, string name) : base(service)
-                {
-                    Name = name;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. The name of the resource to get a packages summary for in the form of
-                /// `projects/[PROJECT_ID]/resources/[RESOURCE_URL]`.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.ContainerAnalysis.v1.Data.GeneratePackagesSummaryRequest Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "generatePackagesSummary";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "POST";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/{+name}:generatePackagesSummary";
-
-                /// <summary>Initializes GeneratePackagesSummary parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+/resources/.*$",
                     });
                 }
             }
@@ -4192,16 +4114,6 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// GeneratePackagesSummaryRequest is the request body for the GeneratePackagesSummary API method. It just takes a
-    /// single name argument, referring to the resource.
-    /// </summary>
-    public class GeneratePackagesSummaryRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>A SourceContext referring to a Gerrit project.</summary>
     public class GerritSourceContext : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4642,24 +4554,6 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expression")]
         public virtual string Expression { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Per license count</summary>
-    public class LicensesSummary : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The number of fixable vulnerabilities associated with this resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("count")]
-        public virtual System.Nullable<long> Count { get; set; }
-
-        /// <summary>
-        /// The license of the package. Note that the format of this value is not guaranteed. It may be nil, an empty
-        /// string, a boolean value (A | B), a differently formed boolean value (A OR B), etc...
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("license")]
-        public virtual string License { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5153,21 +5047,6 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         /// <summary>Output only. The version of the package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual Version Version { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A summary of the packages found within the given resource.</summary>
-    public class PackagesSummaryResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A listing by license name of each of the licenses and their counts.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("licensesSummary")]
-        public virtual System.Collections.Generic.IList<LicensesSummary> LicensesSummary { get; set; }
-
-        /// <summary>The unique URL of the image or the container for which this summary applies.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceUrl")]
-        public virtual string ResourceUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

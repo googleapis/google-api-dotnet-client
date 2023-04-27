@@ -2181,6 +2181,20 @@ namespace Google.Apis.AccessApproval.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notificationEmails")]
         public virtual System.Collections.Generic.IList<string> NotificationEmails { get; set; }
 
+        /// <summary>
+        /// This preference is communicated to Google personnel when sending an approval request but can be overridden
+        /// if necessary.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preferNoBroadApprovalRequests")]
+        public virtual System.Nullable<bool> PreferNoBroadApprovalRequests { get; set; }
+
+        /// <summary>
+        /// This preference is shared with Google personnel, but can be overridden if said personnel deems necessary.
+        /// The approver ultimately can set the expiration at approval time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preferredRequestExpirationDays")]
+        public virtual System.Nullable<int> PreferredRequestExpirationDays { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

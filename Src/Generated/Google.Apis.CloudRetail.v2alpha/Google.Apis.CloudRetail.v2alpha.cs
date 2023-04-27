@@ -792,9 +792,9 @@ namespace Google.Apis.CloudRetail.v2alpha
                         }
 
                         /// <summary>
-                        /// It is recommended to use the ProductService.AddLocalInventories method instead of
-                        /// ProductService.AddFulfillmentPlaces. ProductService.AddLocalInventories achieves the same
-                        /// results but provides more fine-grained control over ingesting local inventory data.
+                        /// We recommend that you use the ProductService.AddLocalInventories method instead of the
+                        /// ProductService.AddFulfillmentPlaces method. ProductService.AddLocalInventories achieves the
+                        /// same results but provides more fine-grained control over ingesting local inventory data.
                         /// Incrementally adds place IDs to Product.fulfillment_info.place_ids. This process is
                         /// asynchronous and does not require the Product to exist before updating fulfillment
                         /// information. If the request is valid, the update will be enqueued and processed downstream.
@@ -818,9 +818,9 @@ namespace Google.Apis.CloudRetail.v2alpha
                         }
 
                         /// <summary>
-                        /// It is recommended to use the ProductService.AddLocalInventories method instead of
-                        /// ProductService.AddFulfillmentPlaces. ProductService.AddLocalInventories achieves the same
-                        /// results but provides more fine-grained control over ingesting local inventory data.
+                        /// We recommend that you use the ProductService.AddLocalInventories method instead of the
+                        /// ProductService.AddFulfillmentPlaces method. ProductService.AddLocalInventories achieves the
+                        /// same results but provides more fine-grained control over ingesting local inventory data.
                         /// Incrementally adds place IDs to Product.fulfillment_info.place_ids. This process is
                         /// asynchronous and does not require the Product to exist before updating fulfillment
                         /// information. If the request is valid, the update will be enqueued and processed downstream.
@@ -1568,14 +1568,14 @@ namespace Google.Apis.CloudRetail.v2alpha
                         }
 
                         /// <summary>
-                        /// It is recommended to use the ProductService.RemoveLocalInventories method instead of
-                        /// ProductService.RemoveFulfillmentPlaces. ProductService.RemoveLocalInventories achieves the
-                        /// same results but provides more fine-grained control over ingesting local inventory data.
-                        /// Incrementally removes place IDs from a Product.fulfillment_info.place_ids. This process is
-                        /// asynchronous and does not require the Product to exist before updating fulfillment
-                        /// information. If the request is valid, the update will be enqueued and processed downstream.
-                        /// As a consequence, when a response is returned, the removed place IDs are not immediately
-                        /// manifested in the Product queried by ProductService.GetProduct or
+                        /// We recommend that you use the ProductService.RemoveLocalInventories method instead of the
+                        /// ProductService.RemoveFulfillmentPlaces method. ProductService.RemoveLocalInventories
+                        /// achieves the same results but provides more fine-grained control over ingesting local
+                        /// inventory data. Incrementally removes place IDs from a Product.fulfillment_info.place_ids.
+                        /// This process is asynchronous and does not require the Product to exist before updating
+                        /// fulfillment information. If the request is valid, the update will be enqueued and processed
+                        /// downstream. As a consequence, when a response is returned, the removed place IDs are not
+                        /// immediately manifested in the Product queried by ProductService.GetProduct or
                         /// ProductService.ListProducts. The returned Operations will be obsolete after 1 day, and
                         /// GetOperation API will return NOT_FOUND afterwards. If conflicting updates are issued, the
                         /// Operations associated with the stale updates will not be marked as done until being
@@ -1594,14 +1594,14 @@ namespace Google.Apis.CloudRetail.v2alpha
                         }
 
                         /// <summary>
-                        /// It is recommended to use the ProductService.RemoveLocalInventories method instead of
-                        /// ProductService.RemoveFulfillmentPlaces. ProductService.RemoveLocalInventories achieves the
-                        /// same results but provides more fine-grained control over ingesting local inventory data.
-                        /// Incrementally removes place IDs from a Product.fulfillment_info.place_ids. This process is
-                        /// asynchronous and does not require the Product to exist before updating fulfillment
-                        /// information. If the request is valid, the update will be enqueued and processed downstream.
-                        /// As a consequence, when a response is returned, the removed place IDs are not immediately
-                        /// manifested in the Product queried by ProductService.GetProduct or
+                        /// We recommend that you use the ProductService.RemoveLocalInventories method instead of the
+                        /// ProductService.RemoveFulfillmentPlaces method. ProductService.RemoveLocalInventories
+                        /// achieves the same results but provides more fine-grained control over ingesting local
+                        /// inventory data. Incrementally removes place IDs from a Product.fulfillment_info.place_ids.
+                        /// This process is asynchronous and does not require the Product to exist before updating
+                        /// fulfillment information. If the request is valid, the update will be enqueued and processed
+                        /// downstream. As a consequence, when a response is returned, the removed place IDs are not
+                        /// immediately manifested in the Product queried by ProductService.GetProduct or
                         /// ProductService.ListProducts. The returned Operations will be obsolete after 1 day, and
                         /// GetOperation API will return NOT_FOUND afterwards. If conflicting updates are issued, the
                         /// Operations associated with the stale updates will not be marked as done until being
@@ -2322,47 +2322,34 @@ namespace Google.Apis.CloudRetail.v2alpha
                         this.service = service;
                     }
 
-                    /// <summary>
-                    /// Creates a MerchantCenterAccountLink. MerchantCenterAccountLink cannot be set to a different
-                    /// oneof field, if so an INVALID_ARGUMENT is returned.
-                    /// </summary>
+                    /// <summary>Creates a MerchantCenterAccountLink.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">
-                    /// Output only. Immutable. Full resource name of the Merchant Center Account Link, such as
-                    /// `projects/*/locations/global/catalogs/default_catalog/merchantCenterAccountLinks/merchant_center_account_link`.
+                    /// <param name="parent">
+                    /// Required. The branch resource where this MerchantCenterAccountLink will be created. Format:
+                    /// projects/{PROJECT_NUMBER}/locations/global/catalogs/{CATALOG_ID}}
                     /// </param>
-                    public virtual CreateMerchantCenterAccountLinkRequest CreateMerchantCenterAccountLink(Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaMerchantCenterAccountLink body, string name)
+                    public virtual CreateRequest Create(Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaMerchantCenterAccountLink body, string parent)
                     {
-                        return new CreateMerchantCenterAccountLinkRequest(service, body, name);
+                        return new CreateRequest(service, body, parent);
                     }
 
-                    /// <summary>
-                    /// Creates a MerchantCenterAccountLink. MerchantCenterAccountLink cannot be set to a different
-                    /// oneof field, if so an INVALID_ARGUMENT is returned.
-                    /// </summary>
-                    public class CreateMerchantCenterAccountLinkRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2alpha.Data.GoogleLongrunningOperation>
+                    /// <summary>Creates a MerchantCenterAccountLink.</summary>
+                    public class CreateRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2alpha.Data.GoogleLongrunningOperation>
                     {
-                        /// <summary>Constructs a new CreateMerchantCenterAccountLink request.</summary>
-                        public CreateMerchantCenterAccountLinkRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaMerchantCenterAccountLink body, string name) : base(service)
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaMerchantCenterAccountLink body, string parent) : base(service)
                         {
-                            Name = name;
+                            Parent = parent;
                             Body = body;
                             InitParameters();
                         }
 
                         /// <summary>
-                        /// Output only. Immutable. Full resource name of the Merchant Center Account Link, such as
-                        /// `projects/*/locations/global/catalogs/default_catalog/merchantCenterAccountLinks/merchant_center_account_link`.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Name { get; private set; }
-
-                        /// <summary>
                         /// Required. The branch resource where this MerchantCenterAccountLink will be created. Format:
                         /// projects/{PROJECT_NUMBER}/locations/global/catalogs/{CATALOG_ID}}
                         /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Parent { get; set; }
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
 
                         /// <summary>Gets or sets the body of this request.</summary>
                         Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaMerchantCenterAccountLink Body { get; set; }
@@ -2371,33 +2358,25 @@ namespace Google.Apis.CloudRetail.v2alpha
                         protected override object GetBody() => Body;
 
                         /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "createMerchantCenterAccountLink";
+                        public override string MethodName => "create";
 
                         /// <summary>Gets the HTTP method.</summary>
                         public override string HttpMethod => "POST";
 
                         /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v2alpha/{+name}";
+                        public override string RestPath => "v2alpha/{+parent}/merchantCenterAccountLinks";
 
-                        /// <summary>Initializes CreateMerchantCenterAccountLink parameter list.</summary>
+                        /// <summary>Initializes Create parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();
-                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "name",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/merchantCenterAccountLinks/[^/]+$",
-                            });
                             RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "parent",
-                                IsRequired = false,
-                                ParameterType = "query",
+                                IsRequired = true,
+                                ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+$",
                             });
                         }
                     }
@@ -3302,8 +3281,7 @@ namespace Google.Apis.CloudRetail.v2alpha
                     /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` or
                     /// the name of the legacy placement resource, such as
                     /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search`. This field is
-                    /// used to identify the serving config name and the set of models that will be used to make the
-                    /// search.
+                    /// used to identify the serving config name and the set of models that are used to make the search.
                     /// </param>
                     public virtual SearchRequest Search(Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaSearchRequest body, string placement)
                     {
@@ -3329,8 +3307,8 @@ namespace Google.Apis.CloudRetail.v2alpha
                         /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config`
                         /// or the name of the legacy placement resource, such as
                         /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search`. This field
-                        /// is used to identify the serving config name and the set of models that will be used to make
-                        /// the search.
+                        /// is used to identify the serving config name and the set of models that are used to make the
+                        /// search.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("placement", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Placement { get; private set; }
@@ -3947,8 +3925,7 @@ namespace Google.Apis.CloudRetail.v2alpha
                     /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` or
                     /// the name of the legacy placement resource, such as
                     /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search`. This field is
-                    /// used to identify the serving config name and the set of models that will be used to make the
-                    /// search.
+                    /// used to identify the serving config name and the set of models that are used to make the search.
                     /// </param>
                     public virtual SearchRequest Search(Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaSearchRequest body, string placement)
                     {
@@ -3974,8 +3951,8 @@ namespace Google.Apis.CloudRetail.v2alpha
                         /// `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config`
                         /// or the name of the legacy placement resource, such as
                         /// `projects/*/locations/global/catalogs/default_catalog/placements/default_search`. This field
-                        /// is used to identify the serving config name and the set of models that will be used to make
-                        /// the search.
+                        /// is used to identify the serving config name and the set of models that are used to make the
+                        /// search.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("placement", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Placement { get; private set; }
@@ -4505,9 +4482,9 @@ namespace Google.Apis.CloudRetail.v2alpha
                     public virtual System.Nullable<bool> EnableAttributeSuggestions { get; set; }
 
                     /// <summary>
-                    /// The entity for customers that may run multiple different entities, domains, sites or regions,
-                    /// for example, `Google US`, `Google Ads`, `Waymo`, `google.com`, `youtube.com`, etc. If this is
-                    /// set, it should be exactly matched with UserEvent.entity to get per-entity autocomplete results.
+                    /// The entity for customers who run multiple entities, domains, sites, or regions, for example,
+                    /// `Google US`, `Google Ads`, `Waymo`, `google.com`, `youtube.com`, etc. If this is set, it must be
+                    /// an exact match with UserEvent.entity to get per-entity autocomplete results.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("entity", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Entity { get; set; }
@@ -5884,6 +5861,10 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastTuneTime")]
         public virtual object LastTuneTime { get; set; }
 
+        /// <summary>Optional. Additional model features config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelFeaturesConfig")]
+        public virtual GoogleCloudRetailV2ModelModelFeaturesConfig ModelFeaturesConfig { get; set; }
+
         /// <summary>
         /// Required. The fully qualified resource name of the model. Format:
         /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` catalog_id has
@@ -5958,6 +5939,31 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>More configs of the frequently-bought-together model type.</summary>
+    public class GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies the context of the model when used in predict requests. Only settable for the
+        /// `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextProductsType")]
+        public virtual string ContextProductsType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional model features config.</summary>
+    public class GoogleCloudRetailV2ModelModelFeaturesConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Additional configs for frequently-bought-together models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frequentlyBoughtTogetherConfig")]
+        public virtual GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig FrequentlyBoughtTogetherConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6481,6 +6487,23 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ExactSearchableOption { get; set; }
 
         /// <summary>
+        /// Set manually for numerical attributes only. If the facet SearchResponse.FacetSpec.intervals are not set by
+        /// the customer for a numerical attribute, then a weekly pipeline will calculate some intervals using some
+        /// percentiles on the distribution of all its product numerical attribute values. The latter computed intervals
+        /// might not be ideal for the use case of that attribute. For this reason, the customer can set them manually.
+        /// As another option, for any numerical attribute that is passed as a facet key in the request along with some
+        /// given intervals, then these given intervals will be the facet intervals returned in the response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("facetIntervals")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaInterval> FacetIntervals { get; set; }
+
+        /// <summary>
+        /// Each instance represents a list of attribute values to ignore as facet values for a specific time range.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoredFacetValues")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaCatalogAttributeIgnoredFacetValues> IgnoredFacetValues { get; set; }
+
+        /// <summary>
         /// Output only. Indicates whether this attribute has been used by any products. `True` if at least one Product
         /// is using this attribute in Product.attributes. Otherwise, this field is `False`. CatalogAttribute can be
         /// pre-loaded by using CatalogService.AddCatalogAttribute, CatalogService.ImportCatalogAttributes, or
@@ -6547,6 +6570,38 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Facet values to ignore on facets during the specified time range for the given SearchResponse.Facet.key
+    /// attribute.
+    /// </summary>
+    public class GoogleCloudRetailV2alphaCatalogAttributeIgnoredFacetValues : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If start time is empty and end time is not empty, then ignore these facet values before end time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual object EndTime { get; set; }
+
+        /// <summary>
+        /// Time range for the current list of facet values to ignore. If multiple time ranges are specified for an
+        /// facet value for the current attribute, consider all of them. If both are empty, ignore always. If start time
+        /// and end time are set, then start time must be before end time. If start time is not empty and end time is
+        /// empty, then will ignore these facet values after the start time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>
+        /// List of facet values to ignore for the following time range. The facet values are the same as the attribute
+        /// values.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The color information of a Product.</summary>
     public class GoogleCloudRetailV2alphaColorInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6602,11 +6657,11 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
         /// <summary>
         /// Matched recent searches of this user. The maximum number of recent searches is 10. This field is a
-        /// restricted feature. Contact Retail Search support team if you are interested in enabling it. This feature is
-        /// only available when CompleteQueryRequest.visitor_id field is set and UserEvent is imported. The recent
-        /// searches satisfy the follow rules: * They are ordered from latest to oldest. * They are matched with
-        /// CompleteQueryRequest.query case insensitively. * They are transformed to lower case. * They are UTF-8 safe.
-        /// Recent searches are deduplicated. More recent searches will be reserved when duplication happens.
+        /// restricted feature. If you want to enable it, contact Retail Search support. This feature is only available
+        /// when CompleteQueryRequest.visitor_id field is set and UserEvent is imported. The recent searches satisfy the
+        /// follow rules: * They are ordered from latest to oldest. * They are matched with CompleteQueryRequest.query
+        /// case insensitively. * They are transformed to lower case. * They are UTF-8 safe. Recent searches are
+        /// deduplicated. More recent searches will be reserved when duplication happens.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recentSearchResults")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaCompleteQueryResponseRecentSearchResult> RecentSearchResults { get; set; }
@@ -6707,7 +6762,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
         /// <summary>
         /// Output only. Name of the LRO corresponding to the latest suggestion terms list import. Can use GetOperation
-        /// API to retrieve the latest state of the Long Running Operation.
+        /// API method to retrieve the latest state of the Long Running Operation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastSuggestionsImportOperation")]
         public virtual string LastSuggestionsImportOperation { get; set; }
@@ -6980,7 +7035,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata for active A/B testing Experiments.</summary>
+    /// <summary>Metadata for active A/B testing Experiment.</summary>
     public class GoogleCloudRetailV2alphaExperimentInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -7327,8 +7382,10 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// Full Pub/Sub topic name for receiving notification. If this field is set, when the import is finished, a
         /// notification is sent to specified Pub/Sub topic. The message data is JSON string of a Operation. Format of
         /// the Pub/Sub topic is `projects/{project}/topics/{topic}`. It has to be within the same project as
-        /// ImportProductsRequest.parent. Make sure that `service-@gcp-sa-retail.iam.gserviceaccount.com` has the
-        /// `pubsub.topics.publish` IAM permission on the topic.
+        /// ImportProductsRequest.parent. Make sure that both
+        /// `cloud-retail-customer-data-access@system.gserviceaccount.com` and
+        /// `service-@gcp-sa-retail.iam.gserviceaccount.com` have the `pubsub.topics.publish` IAM permission on the
+        /// topic. Only supported when ImportProductsRequest.reconciliation_mode is set to `FULL`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationPubsubTopic")]
         public virtual string NotificationPubsubTopic { get; set; }
@@ -7799,6 +7856,10 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastTuneTime")]
         public virtual object LastTuneTime { get; set; }
 
+        /// <summary>Optional. Additional model features config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelFeaturesConfig")]
+        public virtual GoogleCloudRetailV2alphaModelModelFeaturesConfig ModelFeaturesConfig { get; set; }
+
         /// <summary>
         /// Required. The fully qualified resource name of the model. Format:
         /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` catalog_id has
@@ -7877,6 +7938,31 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>More configs of the frequently-bought-together model type.</summary>
+    public class GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies the context of the model when used in predict requests. Only settable for the
+        /// `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextProductsType")]
+        public virtual string ContextProductsType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional model features config.</summary>
+    public class GoogleCloudRetailV2alphaModelModelFeaturesConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Additional configs for frequently-bought-together models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frequentlyBoughtTogetherConfig")]
+        public virtual GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig FrequentlyBoughtTogetherConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9160,8 +9246,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     {
         /// <summary>
         /// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter
-        /// syntax is identical to SearchRequest.filter. See more details at the Retail Search [user
-        /// guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or
+        /// syntax is identical to SearchRequest.filter. For more information, see
+        /// [Filter](/retail/docs/filter-and-order#filter). * To filter products with product ID "product_1" or
         /// "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies:
         /// ANY("Red", "Blue")) *
         /// </summary>
@@ -9267,8 +9353,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     public class GoogleCloudRetailV2alphaSearchRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Boost specification to boost certain products. See more details at this [user
-        /// guide](https://cloud.google.com/retail/docs/boosting). Notice that if both ServingConfig.boost_control_ids
+        /// Boost specification to boost certain products. For more information, see [Boost
+        /// results](https://cloud.google.com/retail/docs/boosting). Notice that if both ServingConfig.boost_control_ids
         /// and SearchRequest.boost_spec are set, the boost conditions from both places are evaluated. If a search
         /// request matches multiple boost conditions, the final boost score is equal to the sum of the boost scores
         /// from all matched boost conditions.
@@ -9287,8 +9373,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// The default filter that is applied when a user performs a search without checking any filters on the search
         /// page. The filter applied to every search request when quality improvement such as query expansion is needed.
         /// For example, if a query does not have enough results, an expanded query with SearchRequest.canonical_filter
-        /// will be returned as a supplement of the original query. This field is strongly recommended to achieve high
-        /// search quality. See SearchRequest.filter for more details about filter syntax.
+        /// is returned as a supplement of the original query. This field is strongly recommended to achieve high search
+        /// quality. For more information about filter syntax, see SearchRequest.filter.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canonicalFilter")]
         public virtual string CanonicalFilter { get; set; }
@@ -9318,8 +9404,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
         /// <summary>
         /// The filter syntax consists of an expression language for constructing a predicate from one or more fields of
-        /// the products being filtered. Filter expression is case-sensitive. See more details at this [user
-        /// guide](https://cloud.google.com/retail/docs/filter-and-order#filter). If this field is unrecognizable, an
+        /// the products being filtered. Filter expression is case-sensitive. For more information, see
+        /// [Filter](https://cloud.google.com/retail/docs/filter-and-order#filter). If this field is unrecognizable, an
         /// INVALID_ARGUMENT is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
@@ -9332,9 +9418,9 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// length of 63 characters. * Keys and values can contain only lowercase letters, numeric characters,
         /// underscores, and dashes. All characters must use UTF-8 encoding, and international characters are allowed. *
         /// The key portion of a label must be unique. However, you can use the same key with multiple resources. * Keys
-        /// must start with a lowercase letter or international character. See [Google Cloud
-        /// Document](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements) for more
-        /// details.
+        /// must start with a lowercase letter or international character. For more information, see [Requirements for
+        /// labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements) in the
+        /// Resource Manager documentation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -9349,8 +9435,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
         /// <summary>
         /// The order in which products are returned. Products can be ordered by a field in an Product object. Leave it
-        /// unset if ordered by relevance. OrderBy expression is case-sensitive. See more details at this [user
-        /// guide](https://cloud.google.com/retail/docs/filter-and-order#order). If this field is unrecognizable, an
+        /// unset if ordered by relevance. OrderBy expression is case-sensitive. For more information, see
+        /// [Order](https://cloud.google.com/retail/docs/filter-and-order#order). If this field is unrecognizable, an
         /// INVALID_ARGUMENT is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderBy")]
@@ -9399,16 +9485,16 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string Query { get; set; }
 
         /// <summary>
-        /// The query expansion specification that specifies the conditions under which query expansion will occur. See
-        /// more details at this [user guide](https://cloud.google.com/retail/docs/result-size#query_expansion).
+        /// The query expansion specification that specifies the conditions under which query expansion occurs. For more
+        /// information, see [Query expansion](https://cloud.google.com/retail/docs/result-size#query_expansion).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryExpansionSpec")]
         public virtual GoogleCloudRetailV2alphaSearchRequestQueryExpansionSpec QueryExpansionSpec { get; set; }
 
         /// <summary>
         /// The relevance threshold of the search results. Defaults to RelevanceThreshold.HIGH, which means only the
-        /// most relevant results are shown, and the least number of results are returned. See more details at this
-        /// [user guide](https://cloud.google.com/retail/docs/result-size#relevance_thresholding).
+        /// most relevant results are shown, and the least number of results are returned. For more information, see
+        /// [Adjust result size](https://cloud.google.com/retail/docs/result-size#relevance_thresholding).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relevanceThreshold")]
         public virtual string RelevanceThreshold { get; set; }
@@ -9535,18 +9621,18 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     {
         /// <summary>
         /// Enables dynamic position for this facet. If set to true, the position of this facet among all facets in the
-        /// response is determined by Google Retail Search. It will be ordered together with dynamic facets if dynamic
-        /// facets is enabled. If set to false, the position of this facet in the response will be the same as in the
-        /// request, and it will be ranked before the facets with dynamic position enable and all dynamic facets. For
-        /// example, you may always want to have rating facet returned in the response, but it's not necessarily to
-        /// always display the rating facet at the top. In that case, you can set enable_dynamic_position to true so
-        /// that the position of rating facet in response will be determined by Google Retail Search. Another example,
-        /// assuming you have the following facets in the request: * "rating", enable_dynamic_position = true * "price",
+        /// response is determined by Google Retail Search. It is ordered together with dynamic facets if dynamic facets
+        /// is enabled. If set to false, the position of this facet in the response is the same as in the request, and
+        /// it is ranked before the facets with dynamic position enable and all dynamic facets. For example, you may
+        /// always want to have rating facet returned in the response, but it's not necessarily to always display the
+        /// rating facet at the top. In that case, you can set enable_dynamic_position to true so that the position of
+        /// rating facet in response is determined by Google Retail Search. Another example, assuming you have the
+        /// following facets in the request: * "rating", enable_dynamic_position = true * "price",
         /// enable_dynamic_position = false * "brands", enable_dynamic_position = false And also you have a dynamic
-        /// facets enable, which will generate a facet 'gender'. Then the final order of the facets in the response can
-        /// be ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google
-        /// Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" will always be
-        /// ranked at 1st and 2nd position since their enable_dynamic_position are false.
+        /// facets enable, which generates a facet "gender". Then, the final order of the facets in the response can be
+        /// ("price", "brands", "rating", "gender") or ("price", "brands", "gender", "rating") depends on how Google
+        /// Retail Search orders "gender" and "rating" facets. However, notice that "price" and "brands" are always
+        /// ranked at first and second position because their enable_dynamic_position values are false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableDynamicPosition")]
         public virtual System.Nullable<bool> EnableDynamicPosition { get; set; }
@@ -9597,7 +9683,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>
         /// Only get facet values that contains the given strings. For example, suppose "categories" has three values
         /// "Women &amp;gt; Shoe", "Women &amp;gt; Dress" and "Men &amp;gt; Shoe". If set "contains" to "Shoe", the
-        /// "categories" facet will give only "Women &amp;gt; Shoe" and "Men &amp;gt; Shoe". Only supported on textual
+        /// "categories" facet gives only "Women &amp;gt; Shoe" and "Men &amp;gt; Shoe". Only supported on textual
         /// fields. Maximum is 10.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contains")]
@@ -9606,11 +9692,11 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>
         /// Set only if values should be bucketized into intervals. Must be set for facets with numerical values. Must
         /// not be set for facet with text values. Maximum number of intervals is 40. For all numerical facet keys that
-        /// appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90 and 100 are computed
+        /// appear in the list of products from the catalog, the percentiles 0, 10, 30, 50, 70, 90, and 100 are computed
         /// from their distribution weekly. If the model assigns a high score to a numerical facet key and its intervals
-        /// are not specified in the search request, these percentiles will become the bounds for its intervals and will
-        /// be returned in the response. If the facet key intervals are specified in the request, then the specified
-        /// intervals will be returned instead.
+        /// are not specified in the search request, these percentiles become the bounds for its intervals and are
+        /// returned in the response. If the facet key intervals are specified in the request, then the specified
+        /// intervals are returned instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intervals")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaInterval> Intervals { get; set; }
@@ -9642,21 +9728,21 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>
         /// Only get facet values that start with the given string prefix. For example, suppose "categories" has three
         /// values "Women &amp;gt; Shoe", "Women &amp;gt; Dress" and "Men &amp;gt; Shoe". If set "prefixes" to "Women",
-        /// the "categories" facet will give only "Women &amp;gt; Shoe" and "Women &amp;gt; Dress". Only supported on
+        /// the "categories" facet gives only "Women &amp;gt; Shoe" and "Women &amp;gt; Dress". Only supported on
         /// textual fields. Maximum is 10.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("prefixes")]
         public virtual System.Collections.Generic.IList<string> Prefixes { get; set; }
 
         /// <summary>
-        /// The query that is used to compute facet for the given facet key. When provided, it will override the default
+        /// The query that is used to compute facet for the given facet key. When provided, it overrides the default
         /// behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter
         /// for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is
-        /// specified. In the response, SearchResponse.Facet.values.value will be always "1" and
-        /// SearchResponse.Facet.values.count will be the number of results that match the query. For example, you can
-        /// set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query
-        /// is "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet will count the products
-        /// that are both in stock and ship to store "123".
+        /// specified. In the response, SearchResponse.Facet.values.value is always "1" and
+        /// SearchResponse.Facet.values.count is the number of results that match the query. For example, you can set a
+        /// customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is
+        /// "availability: ANY(\"IN_STOCK\") AND shipToStore: ANY(\"123\")". Then the facet counts the products that are
+        /// both in stock and ship to store "123".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string Query { get; set; }
@@ -10296,8 +10382,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
 
         /// <summary>
         /// The entity for customers that may run multiple different entities, domains, sites or regions, for example,
-        /// `Google US`, `Google Ads`, `Waymo`, `google.com`, `youtube.com`, etc. It is recommended to set this field to
-        /// get better per-entity search, completion and prediction results.
+        /// `Google US`, `Google Ads`, `Waymo`, `google.com`, `youtube.com`, etc. We recommend that you set this field
+        /// to get better per-entity search, completion, and prediction results.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entity")]
         public virtual string Entity { get; set; }
@@ -10946,6 +11032,10 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastTuneTime")]
         public virtual object LastTuneTime { get; set; }
 
+        /// <summary>Optional. Additional model features config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelFeaturesConfig")]
+        public virtual GoogleCloudRetailV2betaModelModelFeaturesConfig ModelFeaturesConfig { get; set; }
+
         /// <summary>
         /// Required. The fully qualified resource name of the model. Format:
         /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` catalog_id has
@@ -11020,6 +11110,31 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>More configs of the frequently-bought-together model type.</summary>
+    public class GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies the context of the model when used in predict requests. Only settable for the
+        /// `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextProductsType")]
+        public virtual string ContextProductsType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Additional model features config.</summary>
+    public class GoogleCloudRetailV2betaModelModelFeaturesConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Additional configs for frequently-bought-together models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frequentlyBoughtTogetherConfig")]
+        public virtual GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig FrequentlyBoughtTogetherConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

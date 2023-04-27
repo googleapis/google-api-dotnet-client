@@ -758,10 +758,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
 
-        /// <summary>
-        /// The name of the category representing the document, from the [predefined
-        /// taxonomy](https://cloud.google.com/natural-language/docs/categories).
-        /// </summary>
+        /// <summary>The name of the category representing the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -959,7 +956,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1beta2.Data
 
     /// <summary>
     /// All available features for sentiment, syntax, and semantic analysis. Setting each one to true will enable that
-    /// specific analysis for the input. Next ID: 11
+    /// specific analysis for the input. Next ID: 12
     /// </summary>
     public class Features : Google.Apis.Requests.IDirectResponseSchema
     {
