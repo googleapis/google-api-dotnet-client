@@ -1357,7 +1357,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Workload monitoring Violation. Next Id: 22</summary>
+    /// <summary>Workload monitoring Violation. Next Id: 27</summary>
     public class GoogleCloudAssuredworkloadsV1Violation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A boolean that indicates if the violation is acknowledged</summary>
@@ -1404,10 +1404,6 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exceptionAuditLogLink")]
         public virtual string ExceptionAuditLogLink { get; set; }
 
-        /// <summary>Output only. List of all the exception detail added for the violation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("exceptionContexts")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1ViolationExceptionContext> ExceptionContexts { get; set; }
-
         /// <summary>
         /// Output only. Immutable. Name of the Violation. Format:
         /// organizations/{organization}/locations/{location}/workloads/{workload_id}/violations/{violations_id}
@@ -1447,25 +1443,6 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         /// <summary>Output only. The last time when the Violation record was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Violation exception detail. Next Id: 5</summary>
-    public class GoogleCloudAssuredworkloadsV1ViolationExceptionContext : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Timestamp when the violation was acknowledged.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("acknowledgementTime")]
-        public virtual object AcknowledgementTime { get; set; }
-
-        /// <summary>Business justification provided towards the acknowledgement of the violation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("comment")]
-        public virtual string Comment { get; set; }
-
-        /// <summary>Email address of the user (or service account) who acknowledged the violation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("principalEmail")]
-        public virtual string PrincipalEmail { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

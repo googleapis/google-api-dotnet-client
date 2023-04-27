@@ -685,24 +685,6 @@ namespace Google.Apis.FirebaseAppDistribution.v1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// The expression to filter feedback reports listed in the response. To learn more about
-                        /// filtering, refer to [Google's AIP-160 standard](http://aip.dev/160). Supported fields: -
-                        /// `tester` - `createTime` supports `&amp;lt;`, `&amp;lt;=`, `&amp;gt;` and `&amp;gt;=`, and
-                        /// expects an RFC-3339 formatted string Example: - `createTime &amp;lt;=
-                        /// "2023-03-10T00:00:00+04:00"` - `tester = "projects/-/testers/*@example.com"`
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Filter { get; set; }
-
-                        /// <summary>
-                        /// The fields used to order releases. Supported fields: - `createTime` - `tester` To specify
-                        /// descending order for a field, append a "desc" suffix, for example, `createTime desc`. If
-                        /// this parameter is not set, releases are ordered by `createTime` in descending order.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string OrderBy { get; set; }
-
-                        /// <summary>
                         /// The maximum number of feedback reports to return. The service may return fewer than this
                         /// value. The valid range is [1-100]; If unspecified (0), at most 25 feedback reports are
                         /// returned. Values above 100 are coerced to 100.
@@ -738,22 +720,6 @@ namespace Google.Apis.FirebaseAppDistribution.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/apps/[^/]+/releases/[^/]+$",
-                            });
-                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "orderBy",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
                             });
                             RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                             {

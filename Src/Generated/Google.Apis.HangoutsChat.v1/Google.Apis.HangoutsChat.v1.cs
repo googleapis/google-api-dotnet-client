@@ -3292,7 +3292,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 
-        /// <summary>The Google Chat user or app the membership corresponds to.</summary>
+        /// <summary>
+        /// The Google Chat user or app the membership corresponds to. If your Chat app [authenticates as a
+        /// user](https://developers.google.com/chat/api/guides/auth/users), the output populates the
+        /// [user](https://developers.google.com/chat/api/reference/rest/v1/User) `name` and `type`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("member")]
         public virtual User Member { get; set; }
 

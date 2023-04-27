@@ -312,6 +312,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                 {
                     this.service = service;
                     DataStores = new DataStoresResource(service);
+                    Engines = new EnginesResource(service);
                     Operations = new OperationsResource(service);
                 }
 
@@ -405,11 +406,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                                 /// <summary>
                                 /// Required. The ID to use for the Document, which will become the final component of
                                 /// the Document.name. If the caller does not have permission to create the Document,
-                                /// regardless of whether or not it exists, a PERMISSION_DENIED error is returned. This
-                                /// field must be unique among all Documents with the same parent. Otherwise, an
-                                /// ALREADY_EXISTS error is returned. This field must conform to
+                                /// regardless of whether or not it exists, a `PERMISSION_DENIED` error is returned.
+                                /// This field must be unique among all Documents with the same parent. Otherwise, an
+                                /// `ALREADY_EXISTS` error is returned. This field must conform to
                                 /// [RFC-1034](https://tools.ietf.org/html/rfc1034) standard with a length limit of 63
-                                /// characters. Otherwise, an INVALID_ARGUMENT error is returned.
+                                /// characters. Otherwise, an `INVALID_ARGUMENT` error is returned.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("documentId", Google.Apis.Util.RequestParameterType.Query)]
                                 public virtual string DocumentId { get; set; }
@@ -457,8 +458,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             /// Required. Full resource name of Document, such as
                             /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`.
                             /// If the caller does not have permission to delete the Document, regardless of whether or
-                            /// not it exists, a PERMISSION_DENIED error is returned. If the Document to delete does not
-                            /// exist, a NOT_FOUND error is returned.
+                            /// not it exists, a `PERMISSION_DENIED` error is returned. If the Document to delete does
+                            /// not exist, a `NOT_FOUND` error is returned.
                             /// </param>
                             public virtual DeleteRequest Delete(string name)
                             {
@@ -479,8 +480,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                                 /// Required. Full resource name of Document, such as
                                 /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`.
                                 /// If the caller does not have permission to delete the Document, regardless of whether
-                                /// or not it exists, a PERMISSION_DENIED error is returned. If the Document to delete
-                                /// does not exist, a NOT_FOUND error is returned.
+                                /// or not it exists, a `PERMISSION_DENIED` error is returned. If the Document to delete
+                                /// does not exist, a `NOT_FOUND` error is returned.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string Name { get; private set; }
@@ -514,8 +515,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             /// Required. Full resource name of Document, such as
                             /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`.
                             /// If the caller does not have permission to access the Document, regardless of whether or
-                            /// not it exists, a PERMISSION_DENIED error is returned. If the requested Document does not
-                            /// exist, a NOT_FOUND error is returned.
+                            /// not it exists, a `PERMISSION_DENIED` error is returned. If the requested Document does
+                            /// not exist, a `NOT_FOUND` error is returned.
                             /// </param>
                             public virtual GetRequest Get(string name)
                             {
@@ -536,8 +537,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                                 /// Required. Full resource name of Document, such as
                                 /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`.
                                 /// If the caller does not have permission to access the Document, regardless of whether
-                                /// or not it exists, a PERMISSION_DENIED error is returned. If the requested Document
-                                /// does not exist, a NOT_FOUND error is returned.
+                                /// or not it exists, a `PERMISSION_DENIED` error is returned. If the requested Document
+                                /// does not exist, a `NOT_FOUND` error is returned.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string Name { get; private set; }
@@ -641,7 +642,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`.
                             /// Use `default_branch` as the branch ID, to list documents under the default branch. If
                             /// the caller does not have permission to list Documentss under this branch, regardless of
-                            /// whether or not this branch exists, a PERMISSION_DENIED error is returned.
+                            /// whether or not this branch exists, a `PERMISSION_DENIED` error is returned.
                             /// </param>
                             public virtual ListRequest List(string parent)
                             {
@@ -663,7 +664,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                                 /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`.
                                 /// Use `default_branch` as the branch ID, to list documents under the default branch.
                                 /// If the caller does not have permission to list Documentss under this branch,
-                                /// regardless of whether or not this branch exists, a PERMISSION_DENIED error is
+                                /// regardless of whether or not this branch exists, a `PERMISSION_DENIED` error is
                                 /// returned.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -672,7 +673,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                                 /// <summary>
                                 /// Maximum number of Documents to return. If unspecified, defaults to 100. The maximum
                                 /// allowed value is 1000. Values above 1000 will be coerced to 1000. If this field is
-                                /// negative, an INVALID_ARGUMENT error is returned.
+                                /// negative, an `INVALID_ARGUMENT` error is returned.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                                 public virtual System.Nullable<int> PageSize { get; set; }
@@ -681,8 +682,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                                 /// A page token ListDocumentsResponse.next_page_token, received from a previous
                                 /// DocumentService.ListDocuments call. Provide this to retrieve the subsequent page.
                                 /// When paginating, all other parameters provided to DocumentService.ListDocuments must
-                                /// match the call that provided the page token. Otherwise, an INVALID_ARGUMENT error is
-                                /// returned.
+                                /// match the call that provided the page token. Otherwise, an `INVALID_ARGUMENT` error
+                                /// is returned.
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                                 public virtual string PageToken { get; set; }
@@ -1312,7 +1313,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// <param name="body">The body of the request.</param>
                         /// <param name="servingConfig">
                         /// Required. Full resource name of the format:
-                        /// projects/*/locations/global/collections/*/dataStores/*/servingConfigs/* Before you can
+                        /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` Before you can
                         /// request recommendations from your model, you must create at least one serving config for it.
                         /// </param>
                         public virtual RecommendRequest Recommend(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaRecommendRequest body, string servingConfig)
@@ -1333,7 +1334,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                             /// <summary>
                             /// Required. Full resource name of the format:
-                            /// projects/*/locations/global/collections/*/dataStores/*/servingConfigs/* Before you can
+                            /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` Before you can
                             /// request recommendations from your model, you must create at least one serving config for
                             /// it.
                             /// </summary>
@@ -1624,6 +1625,94 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     }
                 }
 
+                /// <summary>Gets the Engines resource.</summary>
+                public virtual EnginesResource Engines { get; }
+
+                /// <summary>The "engines" collection of methods.</summary>
+                public class EnginesResource
+                {
+                    private const string Resource = "engines";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public EnginesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        Operations = new OperationsResource(service);
+                    }
+
+                    /// <summary>Gets the Operations resource.</summary>
+                    public virtual OperationsResource Operations { get; }
+
+                    /// <summary>The "operations" collection of methods.</summary>
+                    public class OperationsResource
+                    {
+                        private const string Resource = "operations";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public OperationsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>
+                        /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                        /// operation result at intervals as recommended by the API service.
+                        /// </summary>
+                        /// <param name="name">The name of the operation resource.</param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>
+                        /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                        /// operation result at intervals as recommended by the API service.
+                        /// </summary>
+                        public class GetRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation resource.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+/operations/[^/]+$",
+                                });
+                            }
+                        }
+                    }
+                }
+
                 /// <summary>Gets the Operations resource.</summary>
                 public virtual OperationsResource Operations { get; }
 
@@ -1871,10 +1960,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             /// <summary>
                             /// Required. The ID to use for the Document, which will become the final component of the
                             /// Document.name. If the caller does not have permission to create the Document, regardless
-                            /// of whether or not it exists, a PERMISSION_DENIED error is returned. This field must be
-                            /// unique among all Documents with the same parent. Otherwise, an ALREADY_EXISTS error is
+                            /// of whether or not it exists, a `PERMISSION_DENIED` error is returned. This field must be
+                            /// unique among all Documents with the same parent. Otherwise, an `ALREADY_EXISTS` error is
                             /// returned. This field must conform to [RFC-1034](https://tools.ietf.org/html/rfc1034)
-                            /// standard with a length limit of 63 characters. Otherwise, an INVALID_ARGUMENT error is
+                            /// standard with a length limit of 63 characters. Otherwise, an `INVALID_ARGUMENT` error is
                             /// returned.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("documentId", Google.Apis.Util.RequestParameterType.Query)]
@@ -1923,8 +2012,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// Required. Full resource name of Document, such as
                         /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`.
                         /// If the caller does not have permission to delete the Document, regardless of whether or not
-                        /// it exists, a PERMISSION_DENIED error is returned. If the Document to delete does not exist,
-                        /// a NOT_FOUND error is returned.
+                        /// it exists, a `PERMISSION_DENIED` error is returned. If the Document to delete does not
+                        /// exist, a `NOT_FOUND` error is returned.
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
@@ -1945,8 +2034,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             /// Required. Full resource name of Document, such as
                             /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`.
                             /// If the caller does not have permission to delete the Document, regardless of whether or
-                            /// not it exists, a PERMISSION_DENIED error is returned. If the Document to delete does not
-                            /// exist, a NOT_FOUND error is returned.
+                            /// not it exists, a `PERMISSION_DENIED` error is returned. If the Document to delete does
+                            /// not exist, a `NOT_FOUND` error is returned.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -1980,8 +2069,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// Required. Full resource name of Document, such as
                         /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`.
                         /// If the caller does not have permission to access the Document, regardless of whether or not
-                        /// it exists, a PERMISSION_DENIED error is returned. If the requested Document does not exist,
-                        /// a NOT_FOUND error is returned.
+                        /// it exists, a `PERMISSION_DENIED` error is returned. If the requested Document does not
+                        /// exist, a `NOT_FOUND` error is returned.
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
@@ -2002,8 +2091,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             /// Required. Full resource name of Document, such as
                             /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}/documents/{document}`.
                             /// If the caller does not have permission to access the Document, regardless of whether or
-                            /// not it exists, a PERMISSION_DENIED error is returned. If the requested Document does not
-                            /// exist, a NOT_FOUND error is returned.
+                            /// not it exists, a `PERMISSION_DENIED` error is returned. If the requested Document does
+                            /// not exist, a `NOT_FOUND` error is returned.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -2107,7 +2196,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`.
                         /// Use `default_branch` as the branch ID, to list documents under the default branch. If the
                         /// caller does not have permission to list Documentss under this branch, regardless of whether
-                        /// or not this branch exists, a PERMISSION_DENIED error is returned.
+                        /// or not this branch exists, a `PERMISSION_DENIED` error is returned.
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -2129,7 +2218,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`.
                             /// Use `default_branch` as the branch ID, to list documents under the default branch. If
                             /// the caller does not have permission to list Documentss under this branch, regardless of
-                            /// whether or not this branch exists, a PERMISSION_DENIED error is returned.
+                            /// whether or not this branch exists, a `PERMISSION_DENIED` error is returned.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -2137,7 +2226,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             /// <summary>
                             /// Maximum number of Documents to return. If unspecified, defaults to 100. The maximum
                             /// allowed value is 1000. Values above 1000 will be coerced to 1000. If this field is
-                            /// negative, an INVALID_ARGUMENT error is returned.
+                            /// negative, an `INVALID_ARGUMENT` error is returned.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
@@ -2146,7 +2235,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             /// A page token ListDocumentsResponse.next_page_token, received from a previous
                             /// DocumentService.ListDocuments call. Provide this to retrieve the subsequent page. When
                             /// paginating, all other parameters provided to DocumentService.ListDocuments must match
-                            /// the call that provided the page token. Otherwise, an INVALID_ARGUMENT error is returned.
+                            /// the call that provided the page token. Otherwise, an `INVALID_ARGUMENT` error is
+                            /// returned.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
@@ -2776,7 +2866,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                     /// <param name="body">The body of the request.</param>
                     /// <param name="servingConfig">
                     /// Required. Full resource name of the format:
-                    /// projects/*/locations/global/collections/*/dataStores/*/servingConfigs/* Before you can request
+                    /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` Before you can request
                     /// recommendations from your model, you must create at least one serving config for it.
                     /// </param>
                     public virtual RecommendRequest Recommend(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaRecommendRequest body, string servingConfig)
@@ -2797,7 +2887,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta
 
                         /// <summary>
                         /// Required. Full resource name of the format:
-                        /// projects/*/locations/global/collections/*/dataStores/*/servingConfigs/* Before you can
+                        /// `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` Before you can
                         /// request recommendations from your model, you must create at least one serving config for it.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("servingConfig", Google.Apis.Util.RequestParameterType.Path)]
@@ -3776,15 +3866,17 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     {
         /// <summary>
         /// The numerical values of this custom attribute. For example, `[2.3, 15.4]` when the key is "lengths_cm".
-        /// Exactly one of text or numbers should be set. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// Exactly one of CustomAttribute.text or CustomAttribute.numbers should be set. Otherwise, an
+        /// `INVALID_ARGUMENT` error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numbers")]
         public virtual System.Collections.Generic.IList<System.Nullable<double>> Numbers { get; set; }
 
         /// <summary>
         /// The textual values of this custom attribute. For example, `["yellow", "green"]` when the key is "color".
-        /// Empty string is not allowed. Otherwise, an INVALID_ARGUMENT error is returned. Exactly one of text or
-        /// numbers should be set. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// Empty string is not allowed. Otherwise, an `INVALID_ARGUMENT` error is returned. Exactly one of
+        /// CustomAttribute.text or CustomAttribute.numbers should be set. Otherwise, an `INVALID_ARGUMENT` error is
+        /// returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual System.Collections.Generic.IList<string> Text { get; set; }
@@ -3804,8 +3896,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string Id { get; set; }
 
         /// <summary>
-        /// The JSON string representation of the document. It should conform to the registered schema or an
-        /// INVALID_ARGUMENT error is thrown.
+        /// The JSON string representation of the document. It should conform to the registered Schema.schema or an
+        /// `INVALID_ARGUMENT` error is thrown.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jsonData")]
         public virtual string JsonData { get; set; }
@@ -3830,8 +3922,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string SchemaId { get; set; }
 
         /// <summary>
-        /// The structured JSON data for the document. It should conform to the registered schema or an INVALID_ARGUMENT
-        /// error is thrown.
+        /// The structured JSON data for the document. It should conform to the registered Schema.schema or an
+        /// `INVALID_ARGUMENT` error is thrown.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structData")]
         public virtual System.Collections.Generic.IDictionary<string, object> StructData { get; set; }
@@ -3849,7 +3941,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Required. The Document resource full name, of the form:
-        /// projects/{project\_id}/locations/{location}/collections/{collection\_id}/dataStores/{data\_store\_id}/branches/{branch\_id}/documents/{document\_id}
+        /// `projects/{project_id}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/branches/{branch_id}/documents/{document_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4123,8 +4215,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Media progress should be computed using only the media_progress_duration relative to the media total length.
-        /// This value must be between [0, 1.0] inclusive. If this is not a playback or the progress cannot be computed
-        /// (e.g. ongoing livestream), this field should be unset.
+        /// This value must be between `[0, 1.0]` inclusive. If this is not a playback or the progress cannot be
+        /// computed (e.g. ongoing livestream), this field should be unset.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaProgressPercentage")]
         public virtual System.Nullable<float> MediaProgressPercentage { get; set; }
@@ -4210,12 +4302,12 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     {
         /// <summary>
         /// Filter for restricting recommendation results with a length limit of 5,000 characters. Currently, only
-        /// filter expressions on the `filter_tags` attribute is supported. Examples: * (filter_tags: ANY("Red", "Blue")
-        /// OR filter_tags: ANY("Hot", "Cold")) * (filter_tags: ANY("Red", "Blue")) AND NOT (filter_tags: ANY("Green"))
-        /// If your filter blocks all results, the API will return generic (unfiltered) popular Documents. If you only
-        /// want results strictly matching the filters, set `strictFiltering` to True in RecommendRequest.params to
-        /// receive empty results instead. Note that the API will never return Documents with storageStatus of "EXPIRED"
-        /// or "DELETED" regardless of filter choices.
+        /// filter expressions on the `filter_tags` attribute is supported. Examples: * `(filter_tags: ANY("Red",
+        /// "Blue") OR filter_tags: ANY("Hot", "Cold"))` * `(filter_tags: ANY("Red", "Blue")) AND NOT (filter_tags:
+        /// ANY("Green"))` If your filter blocks all results, the API will return generic (unfiltered) popular
+        /// Documents. If you only want results strictly matching the filters, set `strictFiltering` to True in
+        /// RecommendRequest.params to receive empty results instead. Note that the API will never return Documents with
+        /// `storageStatus` of `EXPIRED` or `DELETED` regardless of filter choices.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -4230,13 +4322,14 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Additional domain specific parameters for the recommendations. Allowed values: * `returnDocument`: Boolean.
-        /// If set to true, the associated Document object will be returned in RecommendResponse.results.document. *
-        /// `returnScore`: Boolean. If set to true, the recommendation 'score' corresponding to each returned Document
-        /// will be set in RecommendResponse.results.metadata. The given 'score' indicates the probability of a Document
+        /// If set to true, the associated Document object will be returned in
+        /// RecommendResponse.RecommendationResult.document. * `returnScore`: Boolean. If set to true, the
+        /// recommendation 'score' corresponding to each returned Document will be set in
+        /// RecommendResponse.RecommendationResult.metadata. The given 'score' indicates the probability of a Document
         /// conversion given the user's context and history. * `strictFiltering`: Boolean. True by default. If set to
         /// false, the service will return generic (unfiltered) popular Documents instead of empty if your filter blocks
         /// all recommendation results. * `diversityLevel`: String. Default empty. If set to be non-empty, then it needs
-        /// to be one of: * 'no-diversity' * 'low-diversity' * 'medium-diversity' * 'high-diversity' * 'auto-diversity'
+        /// to be one of: * `no-diversity` * `low-diversity` * `medium-diversity` * `high-diversity` * `auto-diversity`
         /// This gives request-level control and adjusts recommendation results based on Document category.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
@@ -4446,11 +4539,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// Custom attribute formatting must be consistent between imported events and events provided with prediction
         /// requests. This lets the Discovery Engine API use those custom attributes when training models and serving
         /// predictions, which helps improve recommendation quality. This field needs to pass all below criteria,
-        /// otherwise an INVALID_ARGUMENT error is returned: * The key must be a UTF-8 encoded string with a length
+        /// otherwise an `INVALID_ARGUMENT` error is returned: * The key must be a UTF-8 encoded string with a length
         /// limit of 5,000 characters. * For text attributes, at most 400 values are allowed. Empty values are not
         /// allowed. Each value must be a UTF-8 encoded string with a length limit of 256 characters. * For number
         /// attributes, at most 400 values are allowed. For product recommendations, an example of extra user
-        /// information is traffic_channel, which is how a user arrives at the site. Users can arrive at the site by
+        /// information is ` traffic_channel`, which is how a user arrives at the site. Users can arrive at the site by
         /// coming to the site directly, coming through Google search, or in other ways.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
@@ -4603,9 +4696,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     {
         /// <summary>
         /// User agent as included in the HTTP header. Required for getting SearchResponse.sponsored_results. The field
-        /// must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error
-        /// is returned. This should not be set when using the client side event reporting with GTM or JavaScript tag in
-        /// UserEventService.CollectUserEvent or if direct_user_request is set.
+        /// must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an `INVALID_ARGUMENT`
+        /// error is returned. This should not be set when using the client side event reporting with GTM or JavaScript
+        /// tag in UserEventService.CollectUserEvent or if direct_user_request is set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
         public virtual string UserAgent { get; set; }
@@ -4615,7 +4708,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// for anonymous users. Always use a hashed value for this ID. Don't set the field to the same fixed ID for
         /// different users. This mixes the event history of those users together, which results in degraded model
         /// quality. The field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an
-        /// INVALID_ARGUMENT error is returned.
+        /// `INVALID_ARGUMENT` error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; }

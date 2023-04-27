@@ -2018,12 +2018,6 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestAccess")]
         public virtual string RequestAccess { get; set; }
 
-        /// <summary>
-        /// Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("restrictedExportConfig")]
-        public virtual RestrictedExportConfig RestrictedExportConfig { get; set; }
-
         /// <summary>Output only. Current state of the listing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -2150,21 +2144,6 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
         /// <summary>Optional. Email or URL of the listing publisher. Max Length: 1000 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryContact")]
         public virtual string PrimaryContact { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Restricted export config, used to configure restricted export on linked dataset.</summary>
-    public class RestrictedExportConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>If true, enable restricted export.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; }
-
-        /// <summary>If true, restrict export of query result derived from restricted linked dataset table.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("restrictQueryResult")]
-        public virtual System.Nullable<bool> RestrictQueryResult { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

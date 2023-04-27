@@ -577,6 +577,10 @@ namespace Google.Apis.FirebaseCloudMessaging.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notificationPriority")]
         public virtual string NotificationPriority { get; set; }
 
+        /// <summary>Setting to control when a notification may be proxied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxy")]
+        public virtual string Proxy { get; set; }
+
         /// <summary>
         /// The sound to play when the device receives the notification. Supports "default" or the filename of a sound
         /// resource bundled in the app. Sound files must reside in /res/raw/.

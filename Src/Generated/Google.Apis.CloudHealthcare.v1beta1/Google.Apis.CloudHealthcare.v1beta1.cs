@@ -7367,8 +7367,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
 
                         /// <summary>
-                        /// Gets all incoming references to a given target FHIR resource. Can also get all incoming
-                        /// references when the target resource does not exist, for example, if the target has been
+                        /// Lists all the resources that directly refer to the given target FHIR resource. Can also
+                        /// support the case when the target resource doesn't exist, for example, if the target has been
                         /// deleted. On success, the response body contains a Bundle with type `searchset`, where each
                         /// entry in the Bundle contains the full content of the resource. If the operation fails, an
                         /// `OperationOutcome` is returned describing the failure. If the request cannot be mapped to a
@@ -7383,8 +7383,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         }
 
                         /// <summary>
-                        /// Gets all incoming references to a given target FHIR resource. Can also get all incoming
-                        /// references when the target resource does not exist, for example, if the target has been
+                        /// Lists all the resources that directly refer to the given target FHIR resource. Can also
+                        /// support the case when the target resource doesn't exist, for example, if the target has been
                         /// deleted. On success, the response body contains a Bundle with type `searchset`, where each
                         /// entry in the Bundle contains the full content of the resource. If the operation fails, an
                         /// `OperationOutcome` is returned describing the failure. If the request cannot be mapped to a
@@ -14466,6 +14466,16 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sendFullResource")]
         public virtual System.Nullable<bool> SendFullResource { get; set; }
 
+        /// <summary>
+        /// Whether to send full FHIR resource to this pubsub topic for deleting FHIR resource. Note that setting this
+        /// to true does not guarantee that all previous resources will be sent in the format of full FHIR resource.
+        /// When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients
+        /// should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch
+        /// the full previous resource as a separate operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sendPreviousResourceOnDelete")]
+        public virtual System.Nullable<bool> SendPreviousResourceOnDelete { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -14562,9 +14572,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// If non-empty, publish all resource modifications of this FHIR store to this destination. The Pub/Sub message
-        /// attributes contain a map with a string describing the action that has triggered the notification. For
-        /// example, "action":"CreateResource". Deprecated. Use `notification_configs` instead.
+        /// Deprecated. Use `notification_configs` instead. If non-empty, publish all resource modifications of this
+        /// FHIR store to this destination. The Pub/Sub message attributes contain a map with a string describing the
+        /// action that has triggered the notification. For example, "action":"CreateResource".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfig")]
         public virtual NotificationConfig NotificationConfig { get; set; }

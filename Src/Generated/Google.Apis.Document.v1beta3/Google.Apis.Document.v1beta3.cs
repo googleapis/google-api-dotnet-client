@@ -866,8 +866,8 @@ namespace Google.Apis.Document.v1beta3
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// The standard list page size. If unspecified, at most 5 evaluations will be returned. The
-                            /// maximum value is 100; values above 100 will be coerced to 100.
+                            /// The standard list page size. If unspecified, at most `5` evaluations will be returned.
+                            /// The maximum value is `100`; values above `100` will be coerced to `100`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
@@ -2060,7 +2060,7 @@ namespace Google.Apis.Document.v1beta3
             }
 
             /// <summary>
-            /// Fetches processor types. Note that we do not use ListProcessorTypes here because it is not paginated.
+            /// Fetches processor types. Note that we don't use ListProcessorTypes here, because it isn't paginated.
             /// </summary>
             /// <param name="parent">
             /// Required. The project of processor type to list. The available processor types may depend on the
@@ -2072,7 +2072,7 @@ namespace Google.Apis.Document.v1beta3
             }
 
             /// <summary>
-            /// Fetches processor types. Note that we do not use ListProcessorTypes here because it is not paginated.
+            /// Fetches processor types. Note that we don't use ListProcessorTypes here, because it isn't paginated.
             /// </summary>
             public class FetchProcessorTypesRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3FetchProcessorTypesResponse>
             {
@@ -2408,10 +2408,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for CreateLabelerPool.</summary>
+    /// <summary>The long-running operation metadata for CreateLabelerPool.</summary>
     public class GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -2419,10 +2419,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for DeleteLabelerPool.</summary>
+    /// <summary>The long-running operation metadata for DeleteLabelerPool.</summary>
     public class GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -2430,10 +2430,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for delete processor method.</summary>
+    /// <summary>The long-running operation metadata for delete processor method.</summary>
     public class GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -2441,10 +2441,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for delete processor version method.</summary>
+    /// <summary>The long-running operation metadata for delete processor version method.</summary>
     public class GoogleCloudDocumentaiUiv1beta3DeleteProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -2452,10 +2452,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for deploy processor version method.</summary>
+    /// <summary>The long-running operation metadata for deploy processor version method.</summary>
     public class GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -2470,10 +2470,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for disable processor method.</summary>
+    /// <summary>The long-running operation metadata for disable processor method.</summary>
     public class GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -2519,10 +2519,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for enable processor method.</summary>
+    /// <summary>The long-running operation metadata for enable processor method.</summary>
     public class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -2542,7 +2542,7 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Metadata of the EvaluateProcessorVersion method.</summary>
     public class GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -2550,7 +2550,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata of the EvaluateProcessorVersion method.</summary>
+    /// <summary>Response of the EvaluateProcessorVersion method.</summary>
     public class GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The resource name of the created evaluation.</summary>
@@ -2714,10 +2714,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for the ImportProcessorVersion method.</summary>
+    /// <summary>The long-running operation metadata for the ImportProcessorVersion method.</summary>
     public class GoogleCloudDocumentaiUiv1beta3ImportProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata for the long running operation.</summary>
+        /// <summary>The basic metadata for the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -2830,10 +2830,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for set default processor version method.</summary>
+    /// <summary>The long-running operation metadata for set default processor version method.</summary>
     public class GoogleCloudDocumentaiUiv1beta3SetDefaultProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -2851,7 +2851,7 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>The metadata that represents a processor version being created.</summary>
     public class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -2898,7 +2898,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The response for the TrainProcessorVersion method.</summary>
+    /// <summary>The response for TrainProcessorVersion.</summary>
     public class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The resource name of the processor version produced by training.</summary>
@@ -2909,10 +2909,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for the undeploy processor version method.</summary>
+    /// <summary>The long-running operation metadata for the undeploy processor version method.</summary>
     public class GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -2937,10 +2937,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for updating the human review configuration.</summary>
+    /// <summary>The long-running operation metadata for updating the human review configuration.</summary>
     public class GoogleCloudDocumentaiUiv1beta3UpdateHumanReviewConfigMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -2948,10 +2948,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for UpdateLabelerPool.</summary>
+    /// <summary>The long-running operation metadata for UpdateLabelerPool.</summary>
     public class GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -2959,7 +2959,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for batch process method.</summary>
+    /// <summary>The long-running operation metadata for BatchProcessDocuments.</summary>
     public class GoogleCloudDocumentaiV1BatchProcessMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The creation time of the operation.</summary>
@@ -3019,7 +3019,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for batch process document method.</summary>
+    /// <summary>Response message for BatchProcessDocuments.</summary>
     public class GoogleCloudDocumentaiV1BatchProcessResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -3053,10 +3053,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for delete processor method.</summary>
+    /// <summary>The long-running operation metadata for delete processor method.</summary>
     public class GoogleCloudDocumentaiV1DeleteProcessorMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -3064,10 +3064,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for delete processor version method.</summary>
+    /// <summary>The long-running operation metadata for delete processor version method.</summary>
     public class GoogleCloudDocumentaiV1DeleteProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -3075,10 +3075,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for deploy processor version method.</summary>
+    /// <summary>The long-running operation metadata for deploy processor version method.</summary>
     public class GoogleCloudDocumentaiV1DeployProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -3093,10 +3093,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for disable processor method.</summary>
+    /// <summary>The long-running operation metadata for disable processor method.</summary>
     public class GoogleCloudDocumentaiV1DisableProcessorMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -3113,10 +3113,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for enable processor method.</summary>
+    /// <summary>The long-running operation metadata for enable processor method.</summary>
     public class GoogleCloudDocumentaiV1EnableProcessorMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -3136,7 +3136,7 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Metadata of the EvaluateProcessorVersion method.</summary>
     public class GoogleCloudDocumentaiV1EvaluateProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -3144,7 +3144,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata of the EvaluateProcessorVersion method.</summary>
+    /// <summary>Response of the EvaluateProcessorVersion method.</summary>
     public class GoogleCloudDocumentaiV1EvaluateProcessorVersionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The resource name of the created evaluation.</summary>
@@ -3159,9 +3159,9 @@ namespace Google.Apis.Document.v1beta3.Data
     public class GoogleCloudDocumentaiV1HumanReviewStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The name of the operation triggered by the processed document. This field is populated only when the [state]
-        /// is [HUMAN_REVIEW_IN_PROGRESS]. It has the same response type and metadata as the long running operation
-        /// returned by [ReviewDocument] method.
+        /// The name of the operation triggered by the processed document. This field is populated only when the state
+        /// is `HUMAN_REVIEW_IN_PROGRESS`. It has the same response type and metadata as the long-running operation
+        /// returned by ReviewDocument.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("humanReviewOperation")]
         public virtual string HumanReviewOperation { get; set; }
@@ -3178,10 +3178,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for review document method.</summary>
+    /// <summary>The long-running operation metadata for review document method.</summary>
     public class GoogleCloudDocumentaiV1ReviewDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -3212,10 +3212,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for set default processor version method.</summary>
+    /// <summary>The long-running operation metadata for set default processor version method.</summary>
     public class GoogleCloudDocumentaiV1SetDefaultProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -3233,7 +3233,7 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>The metadata that represents a processor version being created.</summary>
     public class GoogleCloudDocumentaiV1TrainProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -3280,7 +3280,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The response for the TrainProcessorVersion method.</summary>
+    /// <summary>The response for TrainProcessorVersion.</summary>
     public class GoogleCloudDocumentaiV1TrainProcessorVersionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The resource name of the processor version produced by training.</summary>
@@ -3291,10 +3291,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for the undeploy processor version method.</summary>
+    /// <summary>The long-running operation metadata for the undeploy processor version method.</summary>
     public class GoogleCloudDocumentaiV1UndeployProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -4099,6 +4099,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
         public virtual GoogleCloudDocumentaiV1beta1DocumentProvenance Provenance { get; set; }
 
+        /// <summary>Text style attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("styleInfo")]
+        public virtual GoogleCloudDocumentaiV1beta1DocumentPageTokenStyleInfo StyleInfo { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4109,6 +4113,73 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>Detected break type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Font and other text style attributes.</summary>
+    public class GoogleCloudDocumentaiV1beta1DocumentPageTokenStyleInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Color of the background.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
+        public virtual GoogleTypeColor BackgroundColor { get; set; }
+
+        /// <summary>Whether the text is bold (equivalent to font weight &gt;= 700).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bold")]
+        public virtual System.Nullable<bool> Bold { get; set; }
+
+        /// <summary>Font size in points (1 point is 1/72").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fontSize")]
+        public virtual System.Nullable<int> FontSize { get; set; }
+
+        /// <summary>Name or style of the font.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fontType")]
+        public virtual string FontType { get; set; }
+
+        /// <summary>TrueType weight on a scale 100 (Thin) to 1000 (Ultra-heavy). Normal is 400, Bold is 700.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fontWeight")]
+        public virtual System.Nullable<int> FontWeight { get; set; }
+
+        /// <summary>Whether the text is handwritten.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("handwritten")]
+        public virtual System.Nullable<bool> Handwritten { get; set; }
+
+        /// <summary>Whether the text is italic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("italic")]
+        public virtual System.Nullable<bool> Italic { get; set; }
+
+        /// <summary>Letter spacing in points.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("letterSpacing")]
+        public virtual System.Nullable<double> LetterSpacing { get; set; }
+
+        /// <summary>Font size in pixels, equal to unrounded_fontsize * resolution / 72.0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pixelFontSize")]
+        public virtual System.Nullable<double> PixelFontSize { get; set; }
+
+        /// <summary>Whether the text are small caps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("smallcaps")]
+        public virtual System.Nullable<bool> Smallcaps { get; set; }
+
+        /// <summary>Whether the text is strikethrough.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("strikeout")]
+        public virtual System.Nullable<bool> Strikeout { get; set; }
+
+        /// <summary>Whether the text is a subscript.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscript")]
+        public virtual System.Nullable<bool> Subscript { get; set; }
+
+        /// <summary>Whether the text is a superscript.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("superscript")]
+        public virtual System.Nullable<bool> Superscript { get; set; }
+
+        /// <summary>Color of the text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textColor")]
+        public virtual GoogleTypeColor TextColor { get; set; }
+
+        /// <summary>Whether the text is underlined.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("underlined")]
+        public virtual System.Nullable<bool> Underlined { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5355,6 +5426,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
         public virtual GoogleCloudDocumentaiV1beta2DocumentProvenance Provenance { get; set; }
 
+        /// <summary>Text style attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("styleInfo")]
+        public virtual GoogleCloudDocumentaiV1beta2DocumentPageTokenStyleInfo StyleInfo { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5365,6 +5440,73 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>Detected break type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Font and other text style attributes.</summary>
+    public class GoogleCloudDocumentaiV1beta2DocumentPageTokenStyleInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Color of the background.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
+        public virtual GoogleTypeColor BackgroundColor { get; set; }
+
+        /// <summary>Whether the text is bold (equivalent to font weight &gt;= 700).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bold")]
+        public virtual System.Nullable<bool> Bold { get; set; }
+
+        /// <summary>Font size in points (1 point is 1/72").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fontSize")]
+        public virtual System.Nullable<int> FontSize { get; set; }
+
+        /// <summary>Name or style of the font.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fontType")]
+        public virtual string FontType { get; set; }
+
+        /// <summary>TrueType weight on a scale 100 (Thin) to 1000 (Ultra-heavy). Normal is 400, Bold is 700.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fontWeight")]
+        public virtual System.Nullable<int> FontWeight { get; set; }
+
+        /// <summary>Whether the text is handwritten.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("handwritten")]
+        public virtual System.Nullable<bool> Handwritten { get; set; }
+
+        /// <summary>Whether the text is italic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("italic")]
+        public virtual System.Nullable<bool> Italic { get; set; }
+
+        /// <summary>Letter spacing in points.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("letterSpacing")]
+        public virtual System.Nullable<double> LetterSpacing { get; set; }
+
+        /// <summary>Font size in pixels, equal to unrounded_fontsize * resolution / 72.0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pixelFontSize")]
+        public virtual System.Nullable<double> PixelFontSize { get; set; }
+
+        /// <summary>Whether the text are small caps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("smallcaps")]
+        public virtual System.Nullable<bool> Smallcaps { get; set; }
+
+        /// <summary>Whether the text is strikethrough.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("strikeout")]
+        public virtual System.Nullable<bool> Strikeout { get; set; }
+
+        /// <summary>Whether the text is a subscript.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscript")]
+        public virtual System.Nullable<bool> Subscript { get; set; }
+
+        /// <summary>Whether the text is a superscript.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("superscript")]
+        public virtual System.Nullable<bool> Superscript { get; set; }
+
+        /// <summary>Color of the text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textColor")]
+        public virtual GoogleTypeColor TextColor { get; set; }
+
+        /// <summary>Whether the text is underlined.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("underlined")]
+        public virtual System.Nullable<bool> Underlined { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5844,7 +5986,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for batch process method.</summary>
+    /// <summary>The long-running operation metadata for BatchProcessDocuments.</summary>
     public class GoogleCloudDocumentaiV1beta3BatchProcessMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The creation time of the operation.</summary>
@@ -5878,8 +6020,8 @@ namespace Google.Apis.Document.v1beta3.Data
     public class GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The name of the operation triggered by the processed document. If the human review process is not triggered,
-        /// this field will be empty. It has the same response type and metadata as the long running operation returned
+        /// The name of the operation triggered by the processed document. If the human review process isn't triggered,
+        /// this field will be empty. It has the same response type and metadata as the long-running operation returned
         /// by ReviewDocument method.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("humanReviewOperation")]
@@ -5912,7 +6054,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for batch process document method.</summary>
+    /// <summary>Request message for BatchProcessDocuments.</summary>
     public class GoogleCloudDocumentaiV1beta3BatchProcessRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The overall output config for batch process.</summary>
@@ -5952,7 +6094,7 @@ namespace Google.Apis.Document.v1beta3.Data
 
         /// <summary>
         /// Mimetype of the input. If the input is a raw document, the supported mimetypes are application/pdf,
-        /// image/tiff, and image/gif. If the input is a [Document] proto, the type should be application/json.
+        /// image/tiff, and image/gif. If the input is a Document proto, the type should be application/json.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
@@ -5972,7 +6114,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for batch process document method.</summary>
+    /// <summary>Response message for BatchProcessDocuments.</summary>
     public class GoogleCloudDocumentaiV1beta3BatchProcessResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -6021,10 +6163,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for delete processor method.</summary>
+    /// <summary>The long-running operation metadata for delete processor method.</summary>
     public class GoogleCloudDocumentaiV1beta3DeleteProcessorMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -6032,10 +6174,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for delete processor version method.</summary>
+    /// <summary>The long-running operation metadata for delete processor version method.</summary>
     public class GoogleCloudDocumentaiV1beta3DeleteProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -6043,10 +6185,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for deploy processor version method.</summary>
+    /// <summary>The long-running operation metadata for deploy processor version method.</summary>
     public class GoogleCloudDocumentaiV1beta3DeployProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -6068,10 +6210,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for disable processor method.</summary>
+    /// <summary>The long-running operation metadata for disable processor method.</summary>
     public class GoogleCloudDocumentaiV1beta3DisableProcessorMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -6871,6 +7013,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
         public virtual GoogleCloudDocumentaiV1beta3DocumentProvenance Provenance { get; set; }
 
+        /// <summary>Text style attributes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("styleInfo")]
+        public virtual GoogleCloudDocumentaiV1beta3DocumentPageTokenStyleInfo StyleInfo { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6881,6 +7027,73 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>Detected break type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Font and other text style attributes.</summary>
+    public class GoogleCloudDocumentaiV1beta3DocumentPageTokenStyleInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Color of the background.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
+        public virtual GoogleTypeColor BackgroundColor { get; set; }
+
+        /// <summary>Whether the text is bold (equivalent to font weight &gt;= 700).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bold")]
+        public virtual System.Nullable<bool> Bold { get; set; }
+
+        /// <summary>Font size in points (1 point is 1/72").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fontSize")]
+        public virtual System.Nullable<int> FontSize { get; set; }
+
+        /// <summary>Name or style of the font.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fontType")]
+        public virtual string FontType { get; set; }
+
+        /// <summary>TrueType weight on a scale 100 (Thin) to 1000 (Ultra-heavy). Normal is 400, Bold is 700.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fontWeight")]
+        public virtual System.Nullable<int> FontWeight { get; set; }
+
+        /// <summary>Whether the text is handwritten.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("handwritten")]
+        public virtual System.Nullable<bool> Handwritten { get; set; }
+
+        /// <summary>Whether the text is italic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("italic")]
+        public virtual System.Nullable<bool> Italic { get; set; }
+
+        /// <summary>Letter spacing in points.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("letterSpacing")]
+        public virtual System.Nullable<double> LetterSpacing { get; set; }
+
+        /// <summary>Font size in pixels, equal to unrounded_fontsize * resolution / 72.0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pixelFontSize")]
+        public virtual System.Nullable<double> PixelFontSize { get; set; }
+
+        /// <summary>Whether the text are small caps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("smallcaps")]
+        public virtual System.Nullable<bool> Smallcaps { get; set; }
+
+        /// <summary>Whether the text is strikethrough.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("strikeout")]
+        public virtual System.Nullable<bool> Strikeout { get; set; }
+
+        /// <summary>Whether the text is a subscript.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscript")]
+        public virtual System.Nullable<bool> Subscript { get; set; }
+
+        /// <summary>Whether the text is a superscript.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("superscript")]
+        public virtual System.Nullable<bool> Superscript { get; set; }
+
+        /// <summary>Color of the text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textColor")]
+        public virtual GoogleTypeColor TextColor { get; set; }
+
+        /// <summary>Whether the text is underlined.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("underlined")]
+        public virtual System.Nullable<bool> Underlined { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7289,10 +7502,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for enable processor method.</summary>
+    /// <summary>The long-running operation metadata for enable processor method.</summary>
     public class GoogleCloudDocumentaiV1beta3EnableProcessorMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -7319,7 +7532,7 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Metadata of the EvaluateProcessorVersion method.</summary>
     public class GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -7341,7 +7554,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata of the EvaluateProcessorVersion method.</summary>
+    /// <summary>Response of the EvaluateProcessorVersion method.</summary>
     public class GoogleCloudDocumentaiV1beta3EvaluateProcessorVersionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The resource name of the created evaluation.</summary>
@@ -7596,9 +7809,9 @@ namespace Google.Apis.Document.v1beta3.Data
     public class GoogleCloudDocumentaiV1beta3HumanReviewStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The name of the operation triggered by the processed document. This field is populated only when the [state]
-        /// is [HUMAN_REVIEW_IN_PROGRESS]. It has the same response type and metadata as the long running operation
-        /// returned by [ReviewDocument] method.
+        /// The name of the operation triggered by the processed document. This field is populated only when the state
+        /// is `HUMAN_REVIEW_IN_PROGRESS`. It has the same response type and metadata as the long-running operation
+        /// returned by ReviewDocument.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("humanReviewOperation")]
         public virtual string HumanReviewOperation { get; set; }
@@ -7615,10 +7828,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for the ImportProcessorVersion method.</summary>
+    /// <summary>The long-running operation metadata for the ImportProcessorVersion method.</summary>
     public class GoogleCloudDocumentaiV1beta3ImportProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata for the long running operation.</summary>
+        /// <summary>The basic metadata for the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -7627,12 +7840,12 @@ namespace Google.Apis.Document.v1beta3.Data
     }
 
     /// <summary>
-    /// The request message for the ImportProcessorVersion method. This method requires source processor version and
-    /// destination processor are in the same location. This method requires Document AI Service Agent of the
-    /// destination project in the source project's IAM with [Document AI Editor
-    /// role](https://cloud.google.com/document-ai/docs/access-control/iam-roles). The destination project is specified
-    /// as part of the `parent` field. The source project is specified as part of `source` field. The Service Agent for
-    /// Document AI can be found in https://cloud.google.com/iam/docs/service-agents.
+    /// The request message for the `ImportProcessorVersion` method. This method requires the source processor version
+    /// and destination processor to be in the same location. This method requires the Document AI Service Agent of the
+    /// destination project to have [Document AI Editor
+    /// role](https://cloud.google.com/document-ai/docs/access-control/iam-roles) on the source project. The destination
+    /// project is specified as part of the `parent` field. The source project is specified as part of `source` field.
+    /// The Service Agent for Document AI can be found in https://cloud.google.com/iam/docs/service-agents.
     /// </summary>
     public class GoogleCloudDocumentaiV1beta3ImportProcessorVersionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7655,7 +7868,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The response from ListEvaluations.</summary>
+    /// <summary>The response from `ListEvaluations`.</summary>
     public class GoogleCloudDocumentaiV1beta3ListEvaluationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The evaluations requested.</summary>
@@ -7748,6 +7961,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advancedOcrOptions")]
         public virtual System.Collections.Generic.IList<string> AdvancedOcrOptions { get; set; }
 
+        /// <summary>Turn on font id model and returns font style information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computeStyleInfo")]
+        public virtual System.Nullable<bool> ComputeStyleInfo { get; set; }
+
         /// <summary>
         /// Enables intelligent document quality scores after OCR. Can help with diagnosing why OCR responses are of
         /// poor quality for a given input. Adds additional latency comparable to regular OCR to the process call.
@@ -7811,8 +8028,8 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual GoogleCloudDocumentaiV1beta3Document Document { get; set; }
 
         /// <summary>
-        /// Specifies which fields to include in ProcessResponse's document. Only supports top level document and pages
-        /// field so it must be in the form of `{document_field_name}` or `pages.{page_field_name}`.
+        /// Specifies which fields to include in the `ProcessResponse` Document. Only supports top level document and
+        /// pages field so it must be in the form of `{document_field_name}` or `pages.{page_field_name}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldMask")]
         public virtual object FieldMask { get; set; }
@@ -7845,9 +8062,9 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual GoogleCloudDocumentaiV1beta3Document Document { get; set; }
 
         /// <summary>
-        /// The name of the operation triggered by the processed document. If the human review process is not triggered,
-        /// this field will be empty. It has the same response type and metadata as the long running operation returned
-        /// by ReviewDocument method.
+        /// The name of the operation triggered by the processed document. If the human review process isn't triggered,
+        /// this field is empty. It has the same response type and metadata as the long-running operation returned by
+        /// ReviewDocument.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("humanReviewOperation")]
         public virtual string HumanReviewOperation { get; set; }
@@ -7901,7 +8118,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string State { get; set; }
 
         /// <summary>
-        /// The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc. To get a list of processors types, see
+        /// The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`. To get a list of processor types, see
         /// FetchProcessorTypes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -7946,7 +8163,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sampleDocumentUris")]
         public virtual System.Collections.Generic.IList<string> SampleDocumentUris { get; set; }
 
-        /// <summary>The processor type, e.g., `OCR_PROCESSOR`, `INVOICE_PROCESSOR`, etc.</summary>
+        /// <summary>The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -8049,10 +8266,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for review document method.</summary>
+    /// <summary>The long-running operation metadata for review document method.</summary>
     public class GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -8129,10 +8346,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for set default processor version method.</summary>
+    /// <summary>The long-running operation metadata for set default processor version method.</summary>
     public class GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -8164,7 +8381,7 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>The metadata that represents a processor version being created.</summary>
     public class GoogleCloudDocumentaiV1beta3TrainProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -8253,7 +8470,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The response for the TrainProcessorVersion method.</summary>
+    /// <summary>The response for TrainProcessorVersion.</summary>
     public class GoogleCloudDocumentaiV1beta3TrainProcessorVersionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The resource name of the processor version produced by training.</summary>
@@ -8264,10 +8481,10 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The long running operation metadata for the undeploy processor version method.</summary>
+    /// <summary>The long-running operation metadata for the undeploy processor version method.</summary>
     public class GoogleCloudDocumentaiV1beta3UndeployProcessorVersionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -8322,7 +8539,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A resource that represents Google Cloud Platform location.</summary>
+    /// <summary>A resource that represents a Google Cloud location.</summary>
     public class GoogleCloudLocationLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>

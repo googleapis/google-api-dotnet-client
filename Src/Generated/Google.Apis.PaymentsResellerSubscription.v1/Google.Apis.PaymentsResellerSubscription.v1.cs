@@ -1589,7 +1589,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string ProcessingState { get; set; }
 
         /// <summary>
-        /// Required. Deprecated: consider using `line_items` as the input. Required. Resource name that identifies the
+        /// Optional. Deprecated: consider using `line_items` as the input. Required. Resource name that identifies the
         /// purchased products. The format will be 'partners/{partner_id}/products/{product_id}'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("products")]
