@@ -459,65 +459,6 @@ namespace Google.Apis.SA360.v0
                     });
                 }
             }
-
-            /// <summary>
-            /// Returns all rows that match the search stream query. List of thrown errors: [AuthenticationError]()
-            /// [AuthorizationError]() [HeaderError]() [InternalError]() [QueryError]() [QuotaError]() [RequestError]()
-            /// </summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="customerId">Required. The ID of the customer being queried.</param>
-            public virtual SearchStreamRequest SearchStream(Google.Apis.SA360.v0.Data.GoogleAdsSearchads360V0ServicesSearchSearchAds360StreamRequest body, string customerId)
-            {
-                return new SearchStreamRequest(service, body, customerId);
-            }
-
-            /// <summary>
-            /// Returns all rows that match the search stream query. List of thrown errors: [AuthenticationError]()
-            /// [AuthorizationError]() [HeaderError]() [InternalError]() [QueryError]() [QuotaError]() [RequestError]()
-            /// </summary>
-            public class SearchStreamRequest : SA360BaseServiceRequest<Google.Apis.SA360.v0.Data.GoogleAdsSearchads360V0ServicesSearchSearchAds360StreamResponse>
-            {
-                /// <summary>Constructs a new SearchStream request.</summary>
-                public SearchStreamRequest(Google.Apis.Services.IClientService service, Google.Apis.SA360.v0.Data.GoogleAdsSearchads360V0ServicesSearchSearchAds360StreamRequest body, string customerId) : base(service)
-                {
-                    CustomerId = customerId;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>Required. The ID of the customer being queried.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("customerId", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string CustomerId { get; private set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.SA360.v0.Data.GoogleAdsSearchads360V0ServicesSearchSearchAds360StreamRequest Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "searchStream";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "POST";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v0/customers/{+customerId}/searchAds360:searchStream";
-
-                /// <summary>Initializes SearchStream parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("customerId", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "customerId",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^[^/]+$",
-                    });
-                }
-            }
         }
     }
 
@@ -1371,6 +1312,37 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A Search Ads 360 text ad.</summary>
+    public class GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The tracking id of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adTrackId")]
+        public virtual System.Nullable<long> AdTrackId { get; set; }
+
+        /// <summary>The first line of the ad's description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description1")]
+        public virtual string Description1 { get; set; }
+
+        /// <summary>The second line of the ad's description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description2")]
+        public virtual string Description2 { get; set; }
+
+        /// <summary>The displayed mobile URL of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayMobileUrl")]
+        public virtual string DisplayMobileUrl { get; set; }
+
+        /// <summary>The displayed URL of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayUrl")]
+        public virtual string DisplayUrl { get; set; }
+
+        /// <summary>The headline of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headline")]
+        public virtual string Headline { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Segment only fields.</summary>
     public class GoogleAdsSearchads360V0CommonSegments : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1905,6 +1877,10 @@ namespace Google.Apis.SA360.v0.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
+
+        /// <summary>Immutable. Details pertaining to a text ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textAd")]
+        public virtual GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo TextAd { get; set; }
 
         /// <summary>Output only. The type of ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -4039,61 +4015,6 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>Total number of results that match the query ignoring the LIMIT clause.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalResultsCount")]
         public virtual System.Nullable<long> TotalResultsCount { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for SearchAds360Service.SearchStream.</summary>
-    public class GoogleAdsSearchads360V0ServicesSearchSearchAds360StreamRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The number of rows that are returned in each stream response batch. When too large batch is requested, the
-        /// server may decide to further limit the number of returned rows.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("batchSize")]
-        public virtual System.Nullable<int> BatchSize { get; set; }
-
-        /// <summary>Required. The query string.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("query")]
-        public virtual string Query { get; set; }
-
-        /// <summary>
-        /// Determines whether a summary row will be returned. By default, summary row is not returned. If requested,
-        /// the summary row will be sent in a response by itself after all other query results are returned.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("summaryRowSetting")]
-        public virtual string SummaryRowSetting { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for SearchAds360Service.SearchStream.</summary>
-    public class GoogleAdsSearchads360V0ServicesSearchSearchAds360StreamResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The headers of the custom columns in the results.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("customColumnHeaders")]
-        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V0ServicesCustomColumnHeader> CustomColumnHeaders { get; set; }
-
-        /// <summary>FieldMask that represents what fields were requested by the user.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fieldMask")]
-        public virtual object FieldMask { get; set; }
-
-        /// <summary>The unique id of the request that is used for debugging purposes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; }
-
-        /// <summary>The list of rows that matched the query.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("results")]
-        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V0ServicesSearchAds360Row> Results { get; set; }
-
-        /// <summary>
-        /// Summary row that contains summary of metrics in results. Summary of metrics means aggregation of metrics
-        /// across all results, here aggregation could be sum, average, rate, etc.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("summaryRow")]
-        public virtual GoogleAdsSearchads360V0ServicesSearchAds360Row SummaryRow { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

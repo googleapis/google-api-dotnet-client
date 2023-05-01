@@ -1374,8 +1374,8 @@ namespace Google.Apis.GKEHub.v1alpha
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Output only. The full, unique resource name of this fleet in the format of
-                /// `projects/{project}/locations/{location}/fleets/{fleet}`. Each GCP project can have at most one
-                /// fleet resource, named "default".
+                /// `projects/{project}/locations/{location}/fleets/{fleet}`. Each Google Cloud project can have at most
+                /// one fleet resource, named "default".
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.GKEHub.v1alpha.Data.Fleet body, string name)
                 {
@@ -1395,8 +1395,8 @@ namespace Google.Apis.GKEHub.v1alpha
 
                     /// <summary>
                     /// Output only. The full, unique resource name of this fleet in the format of
-                    /// `projects/{project}/locations/{location}/fleets/{fleet}`. Each GCP project can have at most one
-                    /// fleet resource, named "default".
+                    /// `projects/{project}/locations/{location}/fleets/{fleet}`. Each Google Cloud project can have at
+                    /// most one fleet resource, named "default".
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -4308,7 +4308,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     public class ApplianceCluster : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Immutable. Self-link of the GCP resource for the Appliance Cluster. For example:
+        /// Immutable. Self-link of the Google Cloud resource for the Appliance Cluster. For example:
         /// //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLink")]
@@ -5252,7 +5252,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     public class EdgeCluster : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Immutable. Self-link of the GCP resource for the Edge Cluster. For example:
+        /// Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example:
         /// //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLink")]
@@ -5332,7 +5332,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fleetDefaultMemberConfig")]
         public virtual CommonFleetDefaultMemberConfigSpec FleetDefaultMemberConfig { get; set; }
 
-        /// <summary>GCP labels for this Feature.</summary>
+        /// <summary>Labels for this Feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
@@ -5483,8 +5483,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
 
         /// <summary>
         /// Output only. The full, unique resource name of this fleet in the format of
-        /// `projects/{project}/locations/{location}/fleets/{fleet}`. Each GCP project can have at most one fleet
-        /// resource, named "default".
+        /// `projects/{project}/locations/{location}/fleets/{fleet}`. Each Google Cloud project can have at most one
+        /// fleet resource, named "default".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -5522,6 +5522,13 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>**Fleet Observability**: The Hub-wide input for the FleetObservability feature.</summary>
     public class FleetObservabilityFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is
+        /// disabled for the entire fleet.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
+        public virtual FleetObservabilityLoggingConfig LoggingConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5529,6 +5536,21 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>**FleetObservability**: An empty state left as an example Hub-wide Feature state.</summary>
     public class FleetObservabilityFeatureState : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>LoggingConfig defines the configuration for different types of logs.</summary>
+    public class FleetObservabilityLoggingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specified if applying the default routing config to logs not specified in other configs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultConfig")]
+        public virtual FleetObservabilityRoutingConfig DefaultConfig { get; set; }
+
+        /// <summary>Specified if applying the routing config to all logs for all fleet scopes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fleetScopeLogsConfig")]
+        public virtual FleetObservabilityRoutingConfig FleetScopeLogsConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5543,6 +5565,17 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>**FleetObservability**: An empty state left as an example membership-specific Feature state.</summary>
     public class FleetObservabilityMembershipState : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RoutingConfig configures the behaviour of fleet logging feature.</summary>
+    public class FleetObservabilityRoutingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>mode configures the logs routing mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5574,7 +5607,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual System.Nullable<bool> ClusterMissing { get; set; }
 
         /// <summary>
-        /// Immutable. Self-link of the GCP resource for the GKE cluster. For example:
+        /// Immutable. Self-link of the Google Cloud resource for the GKE cluster. For example:
         /// //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are
         /// also supported.
         /// </summary>
@@ -6060,7 +6093,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A resource that represents Google Cloud Platform location.</summary>
+    /// <summary>A resource that represents a Google Cloud location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
@@ -6129,7 +6162,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("externalId")]
         public virtual string ExternalId { get; set; }
 
-        /// <summary>Optional. GCP labels for this membership.</summary>
+        /// <summary>Optional. Labels for this membership.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
@@ -6464,7 +6497,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual System.Nullable<bool> ClusterMissing { get; set; }
 
         /// <summary>
-        /// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example:
+        /// Immutable. Self-link of the Google Cloud resource for the GKE Multi-Cloud cluster. For example:
         /// //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster
         /// //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
         /// //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
@@ -6566,7 +6599,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ClusterType { get; set; }
 
         /// <summary>
-        /// Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example:
+        /// Immutable. Self-link of the Google Cloud resource for the GKE On-Prem cluster. For example:
         /// //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster
         /// //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
         /// </summary>
@@ -6731,13 +6764,11 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>BundleInstallSpec is the specification configuration for a single managed bundle.</summary>
     public class PolicyControllerBundleInstallSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>the set of namespaces to be exempted from the bundle TODO (b/271878194): Decrement this</summary>
+        /// <summary>the set of namespaces to be exempted from the bundle</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exemptedNamespaces")]
         public virtual System.Collections.Generic.IList<string> ExemptedNamespaces { get; set; }
 
-        /// <summary>
-        /// Management specifies how the bundle will be managed by the controller. TODO (b/271878194): Remove this
-        /// </summary>
+        /// <summary>Management specifies how the bundle will be managed by the controller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("management")]
         public virtual string Management { get; set; }
 
@@ -6762,7 +6793,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("constraintViolationLimit")]
         public virtual System.Nullable<long> ConstraintViolationLimit { get; set; }
 
-        /// <summary>Map of deployment configs to deployments (“admission”, “audit”, “mutation”).</summary>
+        /// <summary>Map of deployment configs to deployments ("admission", "audit", "mutation').</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deploymentConfigs")]
         public virtual System.Collections.Generic.IDictionary<string, PolicyControllerPolicyControllerDeploymentConfig> DeploymentConfigs { get; set; }
 
@@ -6804,9 +6835,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("referentialRulesEnabled")]
         public virtual System.Nullable<bool> ReferentialRulesEnabled { get; set; }
 
-        /// <summary>
-        /// Configures the library templates to install along with Policy Controller. TODO (b/271878194): Remove this
-        /// </summary>
+        /// <summary>Configures the library templates to install along with Policy Controller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("templateLibraryConfig")]
         public virtual PolicyControllerTemplateLibraryConfig TemplateLibraryConfig { get; set; }
 
@@ -6841,15 +6870,12 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual System.Collections.Generic.IDictionary<string, PolicyControllerOnClusterState> ComponentStates { get; set; }
 
         /// <summary>
-        /// The state of the template library and any bundles included in the chosen version of the manifest TODO
-        /// (b/271878194): Remove this
+        /// The state of the template library and any bundles included in the chosen version of the manifest
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentStates")]
         public virtual System.Collections.Generic.IDictionary<string, PolicyControllerOnClusterState> ContentStates { get; set; }
 
-        /// <summary>
-        /// The overall content state observed by the Hub Feature controller. TODO (b/271878194): Decrement this
-        /// </summary>
+        /// <summary>The overall content state observed by the Hub Feature controller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyContentState")]
         public virtual PolicyControllerPolicyContentState PolicyContentState { get; set; }
 
@@ -6987,16 +7013,11 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>The config specifying which default library templates to install.</summary>
     public class PolicyControllerTemplateLibraryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Whether the standard template library should be installed or not. TODO (b/271878194): Remove this
-        /// </summary>
+        /// <summary>Whether the standard template library should be installed or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("included")]
         public virtual System.Nullable<bool> Included { get; set; }
 
-        /// <summary>
-        /// Configures the manner in which the template library is installed on the cluster. TODO (b/271878194):
-        /// Decrement this
-        /// </summary>
+        /// <summary>Configures the manner in which the template library is installed on the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installation")]
         public virtual string Installation { get; set; }
 

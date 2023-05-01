@@ -1,0 +1,31 @@
+{
+  "Google.Apis.GKEOnPrem.v1.GKEOnPremBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.GKEOnPrem.v1.GKEOnPremBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.GKEOnPrem.v1.ProjectsResource+LocationsResource+BareMetalAdminClustersResource+ListRequest.ViewEnum": [
+    "CLUSTER_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.GKEOnPrem.v1.ProjectsResource+LocationsResource+BareMetalClustersResource+ListRequest.ViewEnum": [
+    "CLUSTER_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.GKEOnPrem.v1.ProjectsResource+LocationsResource+VmwareAdminClustersResource+ListRequest.ViewEnum": [
+    "CLUSTER_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.GKEOnPrem.v1.ProjectsResource+LocationsResource+VmwareClustersResource+ListRequest.ViewEnum": [
+    "CLUSTER_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ]
+}

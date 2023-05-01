@@ -7899,7 +7899,9 @@ namespace Google.Apis.DisplayVideo.v1
 
             /// <summary>
             /// Activates a manual trigger. Each activation of the manual trigger must be at least 5 minutes apart,
-            /// otherwise an error will be returned.
+            /// otherwise an error will be returned. **Warning:** Line Items using manual triggers will stop serving in
+            /// Display &amp;amp; Video 360 on **May 17, 2023**. Read our [feature deprecation
+            /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Required. The ID of the advertiser that the manual trigger belongs.</param>
@@ -7911,7 +7913,9 @@ namespace Google.Apis.DisplayVideo.v1
 
             /// <summary>
             /// Activates a manual trigger. Each activation of the manual trigger must be at least 5 minutes apart,
-            /// otherwise an error will be returned.
+            /// otherwise an error will be returned. **Warning:** Line Items using manual triggers will stop serving in
+            /// Display &amp;amp; Video 360 on **May 17, 2023**. Read our [feature deprecation
+            /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
             /// </summary>
             public class ActivateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ManualTrigger>
             {
@@ -7970,7 +7974,12 @@ namespace Google.Apis.DisplayVideo.v1
                 }
             }
 
-            /// <summary>Creates a new manual trigger. Returns the newly created manual trigger if successful.</summary>
+            /// <summary>
+            /// Creates a new manual trigger. Returns the newly created manual trigger if successful. **Warning:** Line
+            /// Items using manual triggers will stop serving in Display &amp;amp; Video 360 on **May 17, 2023**. Read
+            /// our [feature deprecation announcement](/display-video/api/deprecations#features.manual_triggers) for
+            /// more information.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">
             /// Required. Immutable. The unique ID of the advertiser that the manual trigger belongs to.
@@ -7980,7 +7989,12 @@ namespace Google.Apis.DisplayVideo.v1
                 return new CreateRequest(service, body, advertiserId);
             }
 
-            /// <summary>Creates a new manual trigger. Returns the newly created manual trigger if successful.</summary>
+            /// <summary>
+            /// Creates a new manual trigger. Returns the newly created manual trigger if successful. **Warning:** Line
+            /// Items using manual triggers will stop serving in Display &amp;amp; Video 360 on **May 17, 2023**. Read
+            /// our [feature deprecation announcement](/display-video/api/deprecations#features.manual_triggers) for
+            /// more information.
+            /// </summary>
             public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ManualTrigger>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -8027,7 +8041,11 @@ namespace Google.Apis.DisplayVideo.v1
                 }
             }
 
-            /// <summary>Deactivates a manual trigger.</summary>
+            /// <summary>
+            /// Deactivates a manual trigger. **Warning:** Line Items using manual triggers will stop serving in Display
+            /// &amp;amp; Video 360 on **May 17, 2023**. Read our [feature deprecation
+            /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Required. The ID of the advertiser that the manual trigger belongs.</param>
             /// <param name="triggerId">Required. The ID of the manual trigger to deactivate.</param>
@@ -8036,7 +8054,11 @@ namespace Google.Apis.DisplayVideo.v1
                 return new DeactivateRequest(service, body, advertiserId, triggerId);
             }
 
-            /// <summary>Deactivates a manual trigger.</summary>
+            /// <summary>
+            /// Deactivates a manual trigger. **Warning:** Line Items using manual triggers will stop serving in Display
+            /// &amp;amp; Video 360 on **May 17, 2023**. Read our [feature deprecation
+            /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
+            /// </summary>
             public class DeactivateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ManualTrigger>
             {
                 /// <summary>Constructs a new Deactivate request.</summary>
@@ -8094,7 +8116,11 @@ namespace Google.Apis.DisplayVideo.v1
                 }
             }
 
-            /// <summary>Gets a manual trigger.</summary>
+            /// <summary>
+            /// Gets a manual trigger. **Warning:** Line Items using manual triggers will stop serving in Display
+            /// &amp;amp; Video 360 on **May 17, 2023**. Read our [feature deprecation
+            /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
+            /// </summary>
             /// <param name="advertiserId">Required. The ID of the advertiser this manual trigger belongs to.</param>
             /// <param name="triggerId">Required. The ID of the manual trigger to fetch.</param>
             public virtual GetRequest Get(long advertiserId, long triggerId)
@@ -8102,7 +8128,11 @@ namespace Google.Apis.DisplayVideo.v1
                 return new GetRequest(service, advertiserId, triggerId);
             }
 
-            /// <summary>Gets a manual trigger.</summary>
+            /// <summary>
+            /// Gets a manual trigger. **Warning:** Line Items using manual triggers will stop serving in Display
+            /// &amp;amp; Video 360 on **May 17, 2023**. Read our [feature deprecation
+            /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
+            /// </summary>
             public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ManualTrigger>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -8155,7 +8185,10 @@ namespace Google.Apis.DisplayVideo.v1
 
             /// <summary>
             /// Lists manual triggers that are accessible to the current user for a given advertiser ID. The order is
-            /// defined by the order_by parameter. A single advertiser_id is required.
+            /// defined by the order_by parameter. A single advertiser_id is required. **Warning:** Line Items using
+            /// manual triggers will stop serving in Display &amp;amp; Video 360 on **May 17, 2023**. Read our [feature
+            /// deprecation announcement](/display-video/api/deprecations#features.manual_triggers) for more
+            /// information.
             /// </summary>
             /// <param name="advertiserId">
             /// Required. The ID of the advertiser that the fetched manual triggers belong to.
@@ -8167,7 +8200,10 @@ namespace Google.Apis.DisplayVideo.v1
 
             /// <summary>
             /// Lists manual triggers that are accessible to the current user for a given advertiser ID. The order is
-            /// defined by the order_by parameter. A single advertiser_id is required.
+            /// defined by the order_by parameter. A single advertiser_id is required. **Warning:** Line Items using
+            /// manual triggers will stop serving in Display &amp;amp; Video 360 on **May 17, 2023**. Read our [feature
+            /// deprecation announcement](/display-video/api/deprecations#features.manual_triggers) for more
+            /// information.
             /// </summary>
             public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListManualTriggersResponse>
             {
@@ -8271,7 +8307,12 @@ namespace Google.Apis.DisplayVideo.v1
                 }
             }
 
-            /// <summary>Updates a manual trigger. Returns the updated manual trigger if successful.</summary>
+            /// <summary>
+            /// Updates a manual trigger. Returns the updated manual trigger if successful. **Warning:** Line Items
+            /// using manual triggers will stop serving in Display &amp;amp; Video 360 on **May 17, 2023**. Read our
+            /// [feature deprecation announcement](/display-video/api/deprecations#features.manual_triggers) for more
+            /// information.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">
             /// Required. Immutable. The unique ID of the advertiser that the manual trigger belongs to.
@@ -8282,7 +8323,12 @@ namespace Google.Apis.DisplayVideo.v1
                 return new PatchRequest(service, body, advertiserId, triggerId);
             }
 
-            /// <summary>Updates a manual trigger. Returns the updated manual trigger if successful.</summary>
+            /// <summary>
+            /// Updates a manual trigger. Returns the updated manual trigger if successful. **Warning:** Line Items
+            /// using manual triggers will stop serving in Display &amp;amp; Video 360 on **May 17, 2023**. Read our
+            /// [feature deprecation announcement](/display-video/api/deprecations#features.manual_triggers) for more
+            /// information.
+            /// </summary>
             public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ManualTrigger>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -19816,6 +19862,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// The first and third party audience ids and recencies of the excluded first and third party audience group.
         /// Used for negative targeting. The COMPLEMENT of the UNION of this group and other excluded audience groups is
         /// used as an INTERSECTION to any positive audience targeting. All items are logically ‘OR’ of each other.
+        /// **Warning:** `ACTIVITY_BASED` and `FREQUENCY_CAP` audience types will be deprecated on **May 20, 2023**.
+        /// After this date, these audiences will not be able to be added to resource targeting. Read our [feature
+        /// deprecation announcement](/display-video/api/deprecations#features.first_and_third_party_audience_types) for
+        /// more information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedFirstAndThirdPartyAudienceGroup")]
         public virtual FirstAndThirdPartyAudienceGroup ExcludedFirstAndThirdPartyAudienceGroup { get; set; }
@@ -19824,7 +19874,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// The Google audience ids of the excluded Google audience group. Used for negative targeting. The COMPLEMENT
         /// of the UNION of this group and other excluded audience groups is used as an INTERSECTION to any positive
         /// audience targeting. Only contains Affinity, In-market and Installed-apps type Google audiences. All items
-        /// are logically ‘OR’ of each other.
+        /// are logically ‘OR’ of each other. **Warning:** `GOOGLE_AUDIENCE_TYPE_INSTALLED_APPS` and
+        /// `GOOGLE_AUDIENCE_TYPE_NEW_MOBILE_DEVICES` audience types will be deprecated on **May 20, 2023**. After this
+        /// date, these audiences will not be able to be added to resource targeting. Read our [feature deprecation
+        /// announcement](/display-video/api/deprecations#features.google_audience_types) for more information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedGoogleAudienceGroup")]
         public virtual GoogleAudienceGroup ExcludedGoogleAudienceGroup { get; set; }
@@ -19843,13 +19896,21 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// The first and third party audience ids and recencies of included first and third party audience groups. Each
         /// first and third party audience group contains first and third party audience ids only. The relation between
         /// each first and third party audience group is INTERSECTION, and the result is UNION'ed with other audience
-        /// groups. Repeated groups with same settings will be ignored.
+        /// groups. Repeated groups with same settings will be ignored. **Warning:** `ACTIVITY_BASED` and
+        /// `FREQUENCY_CAP` audience types will be deprecated on **May 20, 2023**. After this date, these audiences will
+        /// not be able to be added to resource targeting. Read our [feature deprecation
+        /// announcement](/display-video/api/deprecations#features.first_and_third_party_audience_types) for more
+        /// information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedFirstAndThirdPartyAudienceGroups")]
         public virtual System.Collections.Generic.IList<FirstAndThirdPartyAudienceGroup> IncludedFirstAndThirdPartyAudienceGroups { get; set; }
 
         /// <summary>
         /// The Google audience ids of the included Google audience group. Contains Google audience ids only.
+        /// **Warning:** `GOOGLE_AUDIENCE_TYPE_INSTALLED_APPS` and `GOOGLE_AUDIENCE_TYPE_NEW_MOBILE_DEVICES` audience
+        /// types will be deprecated on **May 20, 2023**. After this date, these audiences will not be able to be added
+        /// to resource targeting. Read our [feature deprecation
+        /// announcement](/display-video/api/deprecations#features.google_audience_types) for more information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedGoogleAudienceGroup")]
         public virtual GoogleAudienceGroup IncludedGoogleAudienceGroup { get; set; }
@@ -24101,7 +24162,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// The ID of the manual trigger associated with the line item. * Required when flight_date_type is
         /// `LINE_ITEM_FLIGHT_DATE_TYPE_TRIGGER`. Must not be set otherwise. * When set, the line item's flight dates
         /// are inherited from its parent insertion order. * Active line items will spend when the selected trigger is
-        /// activated within the parent insertion order's flight dates.
+        /// activated within the parent insertion order's flight dates. **Warning:** Line Items using manual triggers
+        /// will stop serving in Display &amp;amp; Video 360 on **May 17, 2023**. Read our [feature deprecation
+        /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggerId")]
         public virtual System.Nullable<long> TriggerId { get; set; }
@@ -24719,7 +24782,11 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A single manual trigger in Display &amp; Video 360.</summary>
+    /// <summary>
+    /// A single manual trigger in Display &amp;amp; Video 360. **Warning:** Line Items using manual triggers will stop
+    /// serving in Display &amp;amp; Video 360 on **May 17, 2023**. Read our [feature deprecation
+    /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
+    /// </summary>
     public class ManualTrigger : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

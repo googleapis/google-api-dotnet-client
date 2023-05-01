@@ -4064,7 +4064,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>Deployment job composition.</summary>
     public class DeploymentJobs : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The deploy Job. This is the first job run in the phase.</summary>
+        /// <summary>Output only. The deploy Job. This is the deploy job in the phase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployJob")]
         public virtual Job DeployJob { get; set; }
 
@@ -4546,7 +4546,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A resource that represents Google Cloud Platform location.</summary>
+    /// <summary>A resource that represents Google Cloud location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>

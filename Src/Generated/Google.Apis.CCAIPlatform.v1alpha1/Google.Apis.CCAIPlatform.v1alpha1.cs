@@ -1254,13 +1254,21 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
     /// <summary>Represents a quota for contact centers.</summary>
     public class ContactCenterQuota : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Reflects the count limit of contact centers on a billing account.</summary>
+        /// <summary>
+        /// Deprecated: Use the Quota fields instead. Reflects the count limit of contact centers on a billing account.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactCenterCountLimit")]
         public virtual System.Nullable<int> ContactCenterCountLimit { get; set; }
 
-        /// <summary>Reflects the count sum of contact centers on a billing account.</summary>
+        /// <summary>
+        /// Deprecated: Use the Quota fields instead. Reflects the count sum of contact centers on a billing account.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contactCenterCountSum")]
         public virtual System.Nullable<int> ContactCenterCountSum { get; set; }
+
+        /// <summary>Quota details per contact center instance type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotas")]
+        public virtual System.Collections.Generic.IList<Quota> Quotas { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1337,7 +1345,7 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A resource that represents Google Cloud location.</summary>
+    /// <summary>A resource that represents a Google Cloud location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
@@ -1450,6 +1458,25 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Quota details.</summary>
+    public class Quota : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Reflects the count limit of contact centers on a billing account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contactCenterCountLimit")]
+        public virtual System.Nullable<int> ContactCenterCountLimit { get; set; }
+
+        /// <summary>Reflects the count sum of contact centers on a billing account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contactCenterCountSum")]
+        public virtual System.Nullable<int> ContactCenterCountSum { get; set; }
+
+        /// <summary>Contact center instance type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contactCenterInstanceSize")]
+        public virtual string ContactCenterInstanceSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

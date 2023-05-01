@@ -10350,6 +10350,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>DataProfileScan related setting.</summary>
     public class GoogleCloudDataplexV1DataProfileSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range
+        /// between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent
+        /// is not specified, 0 or 100.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("samplingPercent")]
+        public virtual System.Nullable<float> SamplingPercent { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10647,6 +10655,14 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>The list of rules to evaluate against a data source. At least one rule is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataQualityRule> Rules { get; set; }
+
+        /// <summary>
+        /// Optional. The percentage of the records to be selected from the dataset for DataScan. Value can range
+        /// between 0.0 and 100.0 with up to 3 significant decimal digits. Sampling is not applied if sampling_percent
+        /// is not specified, 0 or 100.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("samplingPercent")]
+        public virtual System.Nullable<float> SamplingPercent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12964,7 +12980,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A resource that represents Google Cloud Platform location.</summary>
+    /// <summary>A resource that represents a Google Cloud location.</summary>
     public class GoogleCloudLocationLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>

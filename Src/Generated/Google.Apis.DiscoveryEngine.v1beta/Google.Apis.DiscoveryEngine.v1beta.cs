@@ -802,6 +802,79 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                                     });
                                 }
                             }
+
+                            /// <summary>
+                            /// Permanently deletes all selected Documents under a branch. This process is asynchronous.
+                            /// If the request is valid, the removal will be enquired and processed offlines. Depending
+                            /// on the number of Documents, this operation could take hours to complete. Before the
+                            /// operation completes, some Documents may still be returned by DocumentService.GetDocument
+                            /// or DocumentService.ListDocuments. To get a sample of Documents that would be deleted,
+                            /// set PurgeDocumentsRequest.force to false.
+                            /// </summary>
+                            /// <param name="body">The body of the request.</param>
+                            /// <param name="parent">
+                            /// Required. The parent resource name, such as
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`.
+                            /// </param>
+                            public virtual PurgeRequest Purge(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequest body, string parent)
+                            {
+                                return new PurgeRequest(service, body, parent);
+                            }
+
+                            /// <summary>
+                            /// Permanently deletes all selected Documents under a branch. This process is asynchronous.
+                            /// If the request is valid, the removal will be enquired and processed offlines. Depending
+                            /// on the number of Documents, this operation could take hours to complete. Before the
+                            /// operation completes, some Documents may still be returned by DocumentService.GetDocument
+                            /// or DocumentService.ListDocuments. To get a sample of Documents that would be deleted,
+                            /// set PurgeDocumentsRequest.force to false.
+                            /// </summary>
+                            public class PurgeRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleLongrunningOperation>
+                            {
+                                /// <summary>Constructs a new Purge request.</summary>
+                                public PurgeRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequest body, string parent) : base(service)
+                                {
+                                    Parent = parent;
+                                    Body = body;
+                                    InitParameters();
+                                }
+
+                                /// <summary>
+                                /// Required. The parent resource name, such as
+                                /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`.
+                                /// </summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>Gets or sets the body of this request.</summary>
+                                Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequest Body { get; set; }
+
+                                /// <summary>Returns the body of the request.</summary>
+                                protected override object GetBody() => Body;
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "purge";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "POST";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1beta/{+parent}/documents:purge";
+
+                                /// <summary>Initializes Purge parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/branches/[^/]+$",
+                                    });
+                                }
+                            }
                         }
 
                         /// <summary>Gets the Operations resource.</summary>
@@ -1710,6 +1783,93 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                                 });
                             }
                         }
+
+                        /// <summary>
+                        /// Lists operations that match the specified filter in the request. If the server doesn't
+                        /// support this method, it returns `UNIMPLEMENTED`.
+                        /// </summary>
+                        /// <param name="name">The name of the operation's parent resource.</param>
+                        public virtual ListRequest List(string name)
+                        {
+                            return new ListRequest(service, name);
+                        }
+
+                        /// <summary>
+                        /// Lists operations that match the specified filter in the request. If the server doesn't
+                        /// support this method, it returns `UNIMPLEMENTED`.
+                        /// </summary>
+                        public class ListRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleLongrunningListOperationsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation's parent resource.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>The standard list filter.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>The standard list page size.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>The standard list page token.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta/{+name}/operations";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/engines/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
                     }
                 }
 
@@ -2352,6 +2512,79 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                                     ParameterType = "query",
                                     DefaultValue = null,
                                     Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Permanently deletes all selected Documents under a branch. This process is asynchronous. If
+                        /// the request is valid, the removal will be enquired and processed offlines. Depending on the
+                        /// number of Documents, this operation could take hours to complete. Before the operation
+                        /// completes, some Documents may still be returned by DocumentService.GetDocument or
+                        /// DocumentService.ListDocuments. To get a sample of Documents that would be deleted, set
+                        /// PurgeDocumentsRequest.force to false.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. The parent resource name, such as
+                        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`.
+                        /// </param>
+                        public virtual PurgeRequest Purge(Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequest body, string parent)
+                        {
+                            return new PurgeRequest(service, body, parent);
+                        }
+
+                        /// <summary>
+                        /// Permanently deletes all selected Documents under a branch. This process is asynchronous. If
+                        /// the request is valid, the removal will be enquired and processed offlines. Depending on the
+                        /// number of Documents, this operation could take hours to complete. Before the operation
+                        /// completes, some Documents may still be returned by DocumentService.GetDocument or
+                        /// DocumentService.ListDocuments. To get a sample of Documents that would be deleted, set
+                        /// PurgeDocumentsRequest.force to false.
+                        /// </summary>
+                        public class PurgeRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Purge request.</summary>
+                            public PurgeRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequest body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The parent resource name, such as
+                            /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/branches/{branch}`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1beta.Data.GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "purge";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1beta/{+parent}/documents:purge";
+
+                            /// <summary>Initializes Purge parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/branches/[^/]+$",
                                 });
                             }
                         }
@@ -3772,6 +4005,53 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata related to the progress of the PurgeDocuments operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaPurgeDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Count of entries that encountered errors while processing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
+        public virtual System.Nullable<long> FailureCount { get; set; }
+
+        /// <summary>Count of entries that were deleted successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<long> SuccessCount { get; set; }
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response message for DocumentService.PurgeDocuments method. If the long running operation is successfully done,
+    /// then this message is returned by the google.longrunning.Operations.response field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaPurgeDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The total count of documents purged as a result of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeCount")]
+        public virtual System.Nullable<long> PurgeCount { get; set; }
+
+        /// <summary>
+        /// A sample of document names that will be deleted. Only populated if `force` is set to false. A max of 100
+        /// names will be returned and the names are chosen at random.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeSample")]
+        public virtual System.Collections.Generic.IList<string> PurgeSample { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines the structure and layout of a type of document data.</summary>
     public class GoogleCloudDiscoveryengineV1alphaSchema : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4297,6 +4577,73 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata related to the progress of the PurgeDocuments operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaPurgeDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Count of entries that encountered errors while processing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
+        public virtual System.Nullable<long> FailureCount { get; set; }
+
+        /// <summary>Count of entries that were deleted successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<long> SuccessCount { get; set; }
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for DocumentService.PurgeDocuments method.</summary>
+    public class GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Filter matching documents to purge. Only currently supported value is “*” (all items).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Actually performs the purge. If `force` is set to false, return the expected purge count without deleting
+        /// any documents.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response message for DocumentService.PurgeDocuments method. If the long running operation is successfully done,
+    /// then this message is returned by the google.longrunning.Operations.response field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaPurgeDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The total count of documents purged as a result of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeCount")]
+        public virtual System.Nullable<long> PurgeCount { get; set; }
+
+        /// <summary>
+        /// A sample of document names that will be deleted. Only populated if `force` is set to false. A max of 100
+        /// names will be returned and the names are chosen at random.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeSample")]
+        public virtual System.Collections.Generic.IList<string> PurgeSample { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for Recommend method.</summary>
     public class GoogleCloudDiscoveryengineV1betaRecommendRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4473,8 +4820,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>
         /// The user's search query. See SearchRequest.query for definition. The value must be a UTF-8 encoded string
         /// with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. At least one of
-        /// search_query or page_categories is required for `search` events. Other event types should not set this
-        /// field. Otherwise, an INVALID_ARGUMENT error is returned.
+        /// search_query or PageInfo.page_category is required for `search` events. Other event types should not set
+        /// this field. Otherwise, an INVALID_ARGUMENT error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchQuery")]
         public virtual string SearchQuery { get; set; }
@@ -4551,15 +4898,15 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// Token to attribute an API response to user action(s) to trigger the event. Highly recommended for user
-        /// events that are the result of PredictionService.Predict. This field enables accurate attribution of
+        /// events that are the result of RecommendationService.Recommend. This field enables accurate attribution of
         /// recommendation model performance. The value must be one of: * PredictResponse.attribution_token for events
-        /// that are the result of PredictionService.Predict. * SearchResponse.attribution_token for events that are the
-        /// result of SearchService.Search. * CompleteQueryResponse.attribution_token for events that are the result of
-        /// SearchService.CompleteQuery. This token enables us to accurately attribute page view or conversion
-        /// completion back to the event and the particular predict response containing this clicked/purchased product.
-        /// If user clicks on product K in the recommendation results, pass PredictResponse.attribution_token as a URL
-        /// parameter to product K's page. When recording events on product K's page, log the
-        /// PredictResponse.attribution_token to this field.
+        /// that are the result of RecommendationService.Recommend. * SearchResponse.attribution_token for events that
+        /// are the result of SearchService.Search. * CompleteQueryResponse.attribution_token for events that are the
+        /// result of CompletionService.CompleteQuery. This token enables us to accurately attribute page view or
+        /// conversion completion back to the event and the particular predict response containing this
+        /// clicked/purchased product. If user clicks on product K in the recommendation results, pass
+        /// PredictResponse.attribution_token as a URL parameter to product K's page. When recording events on product
+        /// K's page, log the PredictResponse.attribution_token to this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributionToken")]
         public virtual string AttributionToken { get; set; }
@@ -4612,13 +4959,12 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
 
         /// <summary>
         /// The filter syntax consists of an expression language for constructing a predicate from one or more fields of
-        /// the documents being filtered. One example is for `search` events, the associated SearchService.SearchRequest
-        /// may contain a filter expression in SearchService.SearchRequest.filter conforming to
-        /// https://google.aip.dev/160#filtering. Similarly, for `view-item-list` events that are generated from a
-        /// PredictionService.PredictRequest, this field may be populated directly from
-        /// PredictionService.PredictRequest.filter conforming to https://google.aip.dev/160#filtering. The value must
-        /// be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is
-        /// returned.
+        /// the documents being filtered. One example is for `search` events, the associated SearchRequest may contain a
+        /// filter expression in SearchRequest.filter conforming to https://google.aip.dev/160#filtering. Similarly, for
+        /// `view-item-list` events that are generated from a RecommendationService.RecommendRequest, this field may be
+        /// populated directly from RecommendationService.RecommendRequest.filter conforming to
+        /// https://google.aip.dev/160#filtering. The value must be a UTF-8 encoded string with a length limit of 1,000
+        /// characters. Otherwise, an INVALID_ARGUMENT error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -4698,7 +5044,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// User agent as included in the HTTP header. Required for getting SearchResponse.sponsored_results. The field
         /// must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an `INVALID_ARGUMENT`
         /// error is returned. This should not be set when using the client side event reporting with GTM or JavaScript
-        /// tag in UserEventService.CollectUserEvent or if direct_user_request is set.
+        /// tag in UserEventService.CollectUserEvent or if UserEvent.direct_user_request is set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
         public virtual string UserAgent { get; set; }

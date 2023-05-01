@@ -10580,6 +10580,10 @@ namespace Google.Apis.Integrations.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalVariables")]
         public virtual System.Collections.Generic.IList<GoogleCloudConnectorsV1ConfigVariable> AdditionalVariables { get; set; }
 
+        /// <summary>Identifier key for auth config</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authKey")]
+        public virtual string AuthKey { get; set; }
+
         /// <summary>The type of authentication configured.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authType")]
         public virtual string AuthType { get; set; }
@@ -10863,6 +10867,12 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// <summary>Output only. Current status of the connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual GoogleCloudConnectorsV1ConnectionStatus Status { get; set; }
+
+        /// <summary>
+        /// Output only. This subscription type enum value states if the metrics should be sent for billing or not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptionType")]
+        public virtual string SubscriptionType { get; set; }
 
         /// <summary>Optional. Suspended indicates if a user has suspended a connection or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suspended")]
@@ -13408,7 +13418,7 @@ namespace Google.Apis.Integrations.v1alpha.Data
     }
 
     /// <summary>
-    /// Use this request to post all workflows associated with a given trigger id. Next available id: 10
+    /// Use this request to post all workflows associated with a given trigger id. Next available id: 11
     /// </summary>
     public class GoogleInternalCloudCrmEventbusV3PostToQueueWithTriggerIdRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13444,6 +13454,13 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
+
+        /// <summary>
+        /// This field is only required when using Admin Access. The resource name of target, or the parent resource
+        /// name. For example: "projects/*/locations/*/integrations/*"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
 
         /// <summary>Optional. Time in milliseconds since epoch when the given event would be scheduled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduledTime")]

@@ -3474,6 +3474,95 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 }
             }
         }
+
+        /// <summary>
+        /// Verifies the given App Check token and returns token usage signals that callers may act upon. This method
+        /// currently only supports App Check tokens exchanged from the following attestation providers: * Play
+        /// Integrity API * App Attest * DeviceCheck (`DCDevice` tokens) * reCAPTCHA Enterprise * reCAPTCHA v3 * Custom
+        /// providers App Check tokens exchanged from debug secrets are also supported. Calling this method on an
+        /// otherwise valid App Check token with an unsupported provider will cause an HTTP 400 error to be returned.
+        /// Returns whether this token was already consumed before this call. If this is the first time this method has
+        /// seen the given App Check token, the field `already_consumed` will contain the value `false`. The given token
+        /// will then be marked as `already_consumed` for all future invocations of this method for that token. Note
+        /// that if the given App Check token is invalid, an HTTP 403 error is returned instead of a response object,
+        /// regardless whether the token was already consumed. Currently, when evaluating whether an App Check token was
+        /// already consumed, only calls to this exact method are counted. Use of the App Check token elsewhere will not
+        /// mark the token as being already consumed.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">
+        /// Required. The relative resource name of the project for which the token was minted, in the format: ```
+        /// projects/{project_number} ``` If necessary, the `project_number` element can be replaced with the project ID
+        /// of the Firebase project. Learn more about using project identifiers in Google's [AIP
+        /// 2510](https://google.aip.dev/cloud/2510) standard.
+        /// </param>
+        public virtual VerifyAppCheckTokenRequest VerifyAppCheckToken(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest body, string project)
+        {
+            return new VerifyAppCheckTokenRequest(service, body, project);
+        }
+
+        /// <summary>
+        /// Verifies the given App Check token and returns token usage signals that callers may act upon. This method
+        /// currently only supports App Check tokens exchanged from the following attestation providers: * Play
+        /// Integrity API * App Attest * DeviceCheck (`DCDevice` tokens) * reCAPTCHA Enterprise * reCAPTCHA v3 * Custom
+        /// providers App Check tokens exchanged from debug secrets are also supported. Calling this method on an
+        /// otherwise valid App Check token with an unsupported provider will cause an HTTP 400 error to be returned.
+        /// Returns whether this token was already consumed before this call. If this is the first time this method has
+        /// seen the given App Check token, the field `already_consumed` will contain the value `false`. The given token
+        /// will then be marked as `already_consumed` for all future invocations of this method for that token. Note
+        /// that if the given App Check token is invalid, an HTTP 403 error is returned instead of a response object,
+        /// regardless whether the token was already consumed. Currently, when evaluating whether an App Check token was
+        /// already consumed, only calls to this exact method are counted. Use of the App Check token elsewhere will not
+        /// mark the token as being already consumed.
+        /// </summary>
+        public class VerifyAppCheckTokenRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse>
+        {
+            /// <summary>Constructs a new VerifyAppCheckToken request.</summary>
+            public VerifyAppCheckTokenRequest(Google.Apis.Services.IClientService service, Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest body, string project) : base(service)
+            {
+                Project = project;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The relative resource name of the project for which the token was minted, in the format: ```
+            /// projects/{project_number} ``` If necessary, the `project_number` element can be replaced with the
+            /// project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP
+            /// 2510](https://google.aip.dev/cloud/2510) standard.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "verifyAppCheckToken";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta/{+project}:verifyAppCheckToken";
+
+            /// <summary>Initializes VerifyAppCheckToken parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
+            }
+        }
     }
 }
 namespace Google.Apis.Firebaseappcheck.v1beta.Data
@@ -4286,6 +4375,34 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the VerifyAppCheckToken method.</summary>
+    public class GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The App Check token to verify.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appCheckToken")]
+        public virtual string AppCheckToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the VerifyAppCheckToken method.</summary>
+    public class GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether this token was already consumed. If this is the first time this method has seen the given App Check
+        /// token, this field will contain the value `false`. The given token will then be marked as `already_consumed`
+        /// for all future invocations of this method for that token. Note that if the given App Check token is invalid,
+        /// an HTTP 403 error is returned instead of a response containing this field, regardless whether the token was
+        /// already consumed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alreadyConsumed")]
+        public virtual System.Nullable<bool> AlreadyConsumed { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

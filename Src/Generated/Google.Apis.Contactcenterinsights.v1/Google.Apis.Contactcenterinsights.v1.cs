@@ -3065,6 +3065,32 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("runSilenceAnnotator")]
         public virtual System.Nullable<bool> RunSilenceAnnotator { get; set; }
 
+        /// <summary>Whether to run the summarization annotator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runSummarizationAnnotator")]
+        public virtual System.Nullable<bool> RunSummarizationAnnotator { get; set; }
+
+        /// <summary>Configuration for the summarization annotator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarizationConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig SummarizationConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for summarization.</summary>
+    public class GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Resource name of the Dialogflow conversation profile. Format:
+        /// projects/{project}/locations/{location}/conversationProfiles/{conversation_profile}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationProfile")]
+        public virtual string ConversationProfile { get; set; }
+
+        /// <summary>Default summarization model to be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarizationModel")]
+        public virtual string SummarizationModel { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3418,6 +3444,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("latestAnalysis")]
         public virtual GoogleCloudContactcenterinsightsV1Analysis LatestAnalysis { get; set; }
 
+        /// <summary>Output only. Latest summary of the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestSummary")]
+        public virtual GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData LatestSummary { get; set; }
+
         /// <summary>Immutable. The conversation medium, if unspecified will default to PHONE_CALL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("medium")]
         public virtual string Medium { get; set; }
@@ -3539,6 +3569,47 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>A user-specified ID representing the participant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Conversation summarization suggestion data.</summary>
+    public class GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
+
+        /// <summary>The confidence score of the summarization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
+        /// <summary>
+        /// The name of the model that generates this summary. Format:
+        /// projects/{project}/locations/{location}/conversationModels/{conversation_model}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationModel")]
+        public virtual string ConversationModel { get; set; }
+
+        /// <summary>
+        /// A map that contains metadata about the summarization and the document from which it originates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
+        /// <summary>The summarization content that is concatenated into one string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>
+        /// The summarization content that is divided into sections. The key is the section's name and the value is the
+        /// section's content. There is no specific format for the key or value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textSections")]
+        public virtual System.Collections.Generic.IDictionary<string, string> TextSections { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4667,6 +4738,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("articleSuggestion")]
         public virtual GoogleCloudContactcenterinsightsV1ArticleSuggestionData ArticleSuggestion { get; set; }
 
+        /// <summary>Conversation summarization suggestion data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationSummarizationSuggestion")]
+        public virtual GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData ConversationSummarizationSuggestion { get; set; }
+
         /// <summary>The time at which this annotation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
@@ -5145,6 +5220,32 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("runSilenceAnnotator")]
         public virtual System.Nullable<bool> RunSilenceAnnotator { get; set; }
 
+        /// <summary>Whether to run the summarization annotator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runSummarizationAnnotator")]
+        public virtual System.Nullable<bool> RunSummarizationAnnotator { get; set; }
+
+        /// <summary>Configuration for the summarization annotator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarizationConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorSummarizationConfig SummarizationConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for summarization.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorSummarizationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Resource name of the Dialogflow conversation profile. Format:
+        /// projects/{project}/locations/{location}/conversationProfiles/{conversation_profile}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationProfile")]
+        public virtual string ConversationProfile { get; set; }
+
+        /// <summary>Default summarization model to be used.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarizationModel")]
+        public virtual string SummarizationModel { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5393,6 +5494,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("latestAnalysis")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1Analysis LatestAnalysis { get; set; }
 
+        /// <summary>Output only. Latest summary of the conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestSummary")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData LatestSummary { get; set; }
+
         /// <summary>Immutable. The conversation medium, if unspecified will default to PHONE_CALL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("medium")]
         public virtual string Medium { get; set; }
@@ -5514,6 +5619,47 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>A user-specified ID representing the participant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
         public virtual string UserId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Conversation summarization suggestion data.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
+
+        /// <summary>The confidence score of the summarization.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
+        /// <summary>
+        /// The name of the model that generates this summary. Format:
+        /// projects/{project}/locations/{location}/conversationModels/{conversation_model}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationModel")]
+        public virtual string ConversationModel { get; set; }
+
+        /// <summary>
+        /// A map that contains metadata about the summarization and the document from which it originates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
+        /// <summary>The summarization content that is concatenated into one string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>
+        /// The summarization content that is divided into sections. The key is the section's name and the value is the
+        /// section's content. There is no specific format for the key or value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textSections")]
+        public virtual System.Collections.Generic.IDictionary<string, string> TextSections { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6389,6 +6535,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>Agent Assist Article Suggestion data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("articleSuggestion")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1ArticleSuggestionData ArticleSuggestion { get; set; }
+
+        /// <summary>Conversation summarization suggestion data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationSummarizationSuggestion")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData ConversationSummarizationSuggestion { get; set; }
 
         /// <summary>The time at which this annotation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]

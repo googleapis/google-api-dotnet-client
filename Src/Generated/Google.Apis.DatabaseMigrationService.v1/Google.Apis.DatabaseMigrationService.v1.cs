@@ -5485,7 +5485,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A resource that represents Google Cloud Platform location.</summary>
+    /// <summary>A resource that represents a Google Cloud location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
@@ -6287,6 +6287,15 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>IP Management configuration.</summary>
     public class SqlIpConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The name of the allocated IP address range for the private IP Cloud SQL instance. This name refers
+        /// to an already allocated IP range address. If set, the instance IP address will be created in the allocated
+        /// range. Note that this IP address range can't be modified after the instance is created. If you change the
+        /// VPC when configuring connectivity settings for the migration job, this field is not relevant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allocatedIpRange")]
+        public virtual string AllocatedIpRange { get; set; }
+
         /// <summary>
         /// The list of external networks that are allowed to connect to the instance using the IP. See
         /// https://en.wikipedia.org/wiki/CIDR_notation#CIDR_notation, also known as 'slash' notation (e.g.
