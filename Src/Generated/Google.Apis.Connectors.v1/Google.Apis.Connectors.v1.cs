@@ -2602,6 +2602,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("additionalVariables")]
         public virtual System.Collections.Generic.IList<ConfigVariable> AdditionalVariables { get; set; }
 
+        /// <summary>Identifier key for auth config</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authKey")]
+        public virtual string AuthKey { get; set; }
+
         /// <summary>The type of authentication configured.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authType")]
         public virtual string AuthType { get; set; }
@@ -2633,6 +2637,10 @@ namespace Google.Apis.Connectors.v1.Data
     /// <summary>AuthConfigTemplate defines required field over an authentication type.</summary>
     public class AuthConfigTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Identifier key for auth config</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authKey")]
+        public virtual string AuthKey { get; set; }
+
         /// <summary>The type of authentication configured.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authType")]
         public virtual string AuthType { get; set; }

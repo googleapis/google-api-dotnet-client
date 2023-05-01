@@ -725,7 +725,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
 
                             /// <summary>
                             /// If set, the request will be rejected if the latest version of the workstation on the
-                            /// server does not have this etag.
+                            /// server does not have this ETag.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Etag { get; set; }
@@ -1553,7 +1553,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
 
                         /// <summary>
                         /// If set, the request is rejected if the latest version of the workstation configuration on
-                        /// the server does not have this etag.
+                        /// the server does not have this ETag.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Etag { get; set; }
@@ -2226,7 +2226,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
 
                     /// <summary>
                     /// If set, the request will be rejected if the latest version of the workstation cluster on the
-                    /// server does not have this etag.
+                    /// server does not have this ETag.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
@@ -2628,7 +2628,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("command")]
         public virtual System.Collections.Generic.IList<string> Command { get; set; }
 
-        /// <summary>Environment variables passed to the container.</summary>
+        /// <summary>Environment variables passed to the container's entrypoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
         public virtual System.Collections.Generic.IDictionary<string, string> Env { get; set; }
 
@@ -2750,9 +2750,15 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
 
-        /// <summary>Number of instances to pool for faster workstation starup.</summary>
+        /// <summary>Number of instances to pool for faster workstation startup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("poolSize")]
         public virtual System.Nullable<int> PoolSize { get; set; }
+
+        /// <summary>
+        /// Output only. Number of instances currently available in the pool for faster workstation startup.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pooledInstances")]
+        public virtual System.Nullable<int> PooledInstances { get; set; }
 
         /// <summary>
         /// Email address of the service account used on VM instances used to support this configuration. If not set,
@@ -2851,7 +2857,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     {
         /// <summary>
         /// The generated bearer access token. To use this token, include it in an Authorization header of an HTTP
-        /// request sent to the associated workstation's hostname, for example, `Authorization: Bearer `.
+        /// request sent to the associated workstation's hostname—for example, `Authorization: Bearer `.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessToken")]
         public virtual string AccessToken { get; set; }
@@ -3203,6 +3209,21 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A readiness check to be performed on a workstation.</summary>
+    public class ReadinessCheck : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Path to which the request should be sent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>Port to which the request should be sent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("port")]
+        public virtual System.Nullable<int> Port { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for `SetIamPolicy` method.</summary>
     public class SetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3230,7 +3251,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     {
         /// <summary>
         /// If set, the request will be rejected if the latest version of the workstation on the server does not have
-        /// this etag.
+        /// this ETag.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -3274,7 +3295,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     {
         /// <summary>
         /// If set, the request will be rejected if the latest version of the workstation on the server does not have
-        /// this etag.
+        /// this ETag.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -3329,7 +3350,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Environment variables passed to the workstation container.</summary>
+        /// <summary>Environment variables passed to the workstation container's entrypoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
         public virtual System.Collections.Generic.IDictionary<string, string> Env { get; set; }
 
@@ -3559,6 +3580,13 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// <summary>Directories to persist across workstation sessions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("persistentDirectories")]
         public virtual System.Collections.Generic.IList<PersistentDirectory> PersistentDirectories { get; set; }
+
+        /// <summary>
+        /// Readiness checks to perform when starting a workstation using this workstation configuration. Mark a
+        /// workstation as running only after all specified readiness checks return 200 status codes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readinessChecks")]
+        public virtual System.Collections.Generic.IList<ReadinessCheck> ReadinessChecks { get; set; }
 
         /// <summary>
         /// Output only. Indicates whether this resource is currently being updated to match its intended state.

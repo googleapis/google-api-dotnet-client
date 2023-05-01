@@ -7249,7 +7249,7 @@ namespace Google.Apis.DataCatalog.v1.Data
     /// <summary>The source system of the Taxonomy.</summary>
     public class GoogleCloudDatacatalogV1TaxonomyService : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>P4SA Identity of the service.</summary>
+        /// <summary>The service agent for the service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identity")]
         public virtual string Identity { get; set; }
 

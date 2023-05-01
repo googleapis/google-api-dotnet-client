@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.Contactcenterinsights.v1 Client Library</Title>
-    <Version>1.60.0.3020</Version>
+    <Version>1.60.0.3035</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2023 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

@@ -2030,6 +2030,10 @@ namespace Google.Apis.ChromePolicy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>Output only. Field conditions required for this value to be valid.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldDependencies")]
+        public virtual System.Collections.Generic.IList<GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies> FieldDependencies { get; set; }
+
         /// <summary>Output only. The string represenstation of the value that can be set for the field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }

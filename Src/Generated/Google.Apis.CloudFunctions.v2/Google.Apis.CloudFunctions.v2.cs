@@ -1921,17 +1921,6 @@ namespace Google.Apis.CloudFunctions.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Extra GCF specific location information.</summary>
-    public class GoogleCloudFunctionsV2alphaLocationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The Cloud Function environments this location supports.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("environments")]
-        public virtual System.Collections.Generic.IList<string> Environments { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Represents the metadata of the long-running operation.</summary>
     public class GoogleCloudFunctionsV2alphaOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1961,7 +1950,7 @@ namespace Google.Apis.CloudFunctions.v2.Data
 
         /// <summary>Mechanism for reporting in-progress stages</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stages")]
-        public virtual System.Collections.Generic.IList<Stage> Stages { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleCloudFunctionsV2alphaStage> Stages { get; set; }
 
         /// <summary>Human-readable status of the operation, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
@@ -1974,6 +1963,37 @@ namespace Google.Apis.CloudFunctions.v2.Data
         /// <summary>Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Each Stage of the deployment process</summary>
+    public class GoogleCloudFunctionsV2alphaStage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Message describing the Stage</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Name of the Stage. This will be unique for each Stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Resource of the Stage</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>Link to the current Stage resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
+        public virtual string ResourceUri { get; set; }
+
+        /// <summary>Current state of the Stage</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>State messages from the current Stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateMessages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudFunctionsV2alphaStateMessage> StateMessages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1993,17 +2013,6 @@ namespace Google.Apis.CloudFunctions.v2.Data
         /// <summary>One-word CamelCase type of the state message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Extra GCF specific location information.</summary>
-    public class GoogleCloudFunctionsV2betaLocationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The Cloud Function environments this location supports.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("environments")]
-        public virtual System.Collections.Generic.IList<string> Environments { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2171,7 +2180,7 @@ namespace Google.Apis.CloudFunctions.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A resource that represents Google Cloud Platform location.</summary>
+    /// <summary>A resource that represents a Google Cloud location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
@@ -2198,17 +2207,6 @@ namespace Google.Apis.CloudFunctions.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Extra GCF specific location information.</summary>
-    public class LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The Cloud Function environments this location supports.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("environments")]
-        public virtual System.Collections.Generic.IList<string> Environments { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2717,37 +2715,6 @@ namespace Google.Apis.CloudFunctions.v2.Data
         /// <summary>A copy of the build's `source.storage_source`, if exists, with any generations resolved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolvedStorageSource")]
         public virtual StorageSource ResolvedStorageSource { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Each Stage of the deployment process</summary>
-    public class Stage : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Message describing the Stage</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; }
-
-        /// <summary>Name of the Stage. This will be unique for each Stage.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Resource of the Stage</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
-        public virtual string Resource { get; set; }
-
-        /// <summary>Link to the current Stage resource</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
-        public virtual string ResourceUri { get; set; }
-
-        /// <summary>Current state of the Stage</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>State messages from the current Stage.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("stateMessages")]
-        public virtual System.Collections.Generic.IList<GoogleCloudFunctionsV2alphaStateMessage> StateMessages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

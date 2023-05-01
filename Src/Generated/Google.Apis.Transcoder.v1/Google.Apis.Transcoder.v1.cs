@@ -1894,7 +1894,7 @@ namespace Google.Apis.Transcoder.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("muxStreams")]
         public virtual System.Collections.Generic.IList<string> MuxStreams { get; set; }
 
-        /// <summary>Required. Type of the manifest, can be `HLS` or `DASH`.</summary>
+        /// <summary>Required. Type of the manifest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 

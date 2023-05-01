@@ -1049,7 +1049,7 @@
    }
   }
  },
- "revision": "20230405",
+ "revision": "20230420",
  "rootUrl": "https://datamigration.googleapis.com/",
  "schemas": {
   "AuditConfig": {
@@ -1560,7 +1560,7 @@
    "type": "object"
   },
   "Location": {
-   "description": "A resource that represents Google Cloud Platform location.",
+   "description": "A resource that represents a Google Cloud location.",
    "id": "Location",
    "properties": {
     "displayName": {

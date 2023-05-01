@@ -4062,7 +4062,7 @@
    }
   }
  },
- "revision": "20230426",
+ "revision": "20230427",
  "rootUrl": "https://analyticsadmin.googleapis.com/",
  "schemas": {
   "GoogleAnalyticsAdminV1alphaAccessBetweenFilter": {
@@ -5387,6 +5387,10 @@
     "attributionSettings": {
      "$ref": "GoogleAnalyticsAdminV1alphaAttributionSettings",
      "description": "A snapshot of AttributionSettings resource in change history."
+    },
+    "audience": {
+     "$ref": "GoogleAnalyticsAdminV1alphaAudience",
+     "description": "A snapshot of an Audience resource in change history."
     },
     "bigqueryLink": {
      "$ref": "GoogleAnalyticsAdminV1alphaBigQueryLink",
@@ -7398,7 +7402,8 @@
        "ATTRIBUTION_SETTINGS",
        "EXPANDED_DATA_SET",
        "CHANNEL_GROUP",
-       "ENHANCED_MEASUREMENT_SETTINGS"
+       "ENHANCED_MEASUREMENT_SETTINGS",
+       "AUDIENCE"
       ],
       "enumDescriptions": [
        "Resource type unknown or not specified.",
@@ -7419,7 +7424,8 @@
        "AttributionSettings resource",
        "ExpandedDataSet resource",
        "ChannelGroup resource",
-       "EnhancedMeasurementSettings resource"
+       "EnhancedMeasurementSettings resource",
+       "Audience resource"
       ],
       "type": "string"
      },

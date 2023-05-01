@@ -1590,7 +1590,7 @@ namespace Google.Apis.GKEHub.v1alpha2.Data
     public class ApplianceCluster : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Immutable. Self-link of the GCP resource for the Appliance Cluster. For example:
+        /// Immutable. Self-link of the Google Cloud resource for the Appliance Cluster. For example:
         /// //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLink")]
@@ -1773,7 +1773,7 @@ namespace Google.Apis.GKEHub.v1alpha2.Data
     public class EdgeCluster : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Immutable. Self-link of the GCP resource for the Edge Cluster. For example:
+        /// Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example:
         /// //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceLink")]
@@ -1865,7 +1865,7 @@ namespace Google.Apis.GKEHub.v1alpha2.Data
         public virtual System.Nullable<bool> ClusterMissing { get; set; }
 
         /// <summary>
-        /// Immutable. Self-link of the GCP resource for the GKE cluster. For example:
+        /// Immutable. Self-link of the Google Cloud resource for the GKE cluster. For example:
         /// //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are
         /// also supported.
         /// </summary>
@@ -2071,7 +2071,7 @@ namespace Google.Apis.GKEHub.v1alpha2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A resource that represents Google Cloud Platform location.</summary>
+    /// <summary>A resource that represents a Google Cloud location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
@@ -2145,7 +2145,7 @@ namespace Google.Apis.GKEHub.v1alpha2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("infrastructureType")]
         public virtual string InfrastructureType { get; set; }
 
-        /// <summary>Optional. GCP labels for this membership.</summary>
+        /// <summary>Optional. Labels for this membership.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
@@ -2301,7 +2301,7 @@ namespace Google.Apis.GKEHub.v1alpha2.Data
         public virtual System.Nullable<bool> ClusterMissing { get; set; }
 
         /// <summary>
-        /// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example:
+        /// Immutable. Self-link of the Google Cloud resource for the GKE Multi-Cloud cluster. For example:
         /// //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster
         /// //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
         /// //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
@@ -2332,7 +2332,7 @@ namespace Google.Apis.GKEHub.v1alpha2.Data
         public virtual string ClusterType { get; set; }
 
         /// <summary>
-        /// Immutable. Self-link of the GCP resource for the GKE On-Prem cluster. For example:
+        /// Immutable. Self-link of the Google Cloud resource for the GKE On-Prem cluster. For example:
         /// //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster
         /// //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
         /// </summary>

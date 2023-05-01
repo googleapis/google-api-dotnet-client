@@ -7379,6 +7379,33 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("issuerUri")]
         public virtual string IssuerUri { get; set; }
 
+        /// <summary>
+        /// Required. Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console
+        /// sign-in and gcloud sign-in through the browser.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webSsoConfig")]
+        public virtual GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig WebSsoConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for web single sign-on for the OIDC provider.</summary>
+    public class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping
+        /// and attribute condition.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assertionClaimsBehavior")]
+        public virtual string AssertionClaimsBehavior { get; set; }
+
+        /// <summary>
+        /// Required. The Response Type to request for in the OIDC Authorization Request for web sign-in.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseType")]
+        public virtual string ResponseType { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8469,7 +8496,7 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens, or use existing tokens to
+        /// Disables the workforce pool. You cannot use a disabled pool to exchange tokens, or use existing tokens to
         /// access resources. If the pool is re-enabled, existing tokens grant access again.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
@@ -8567,8 +8594,8 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
-        /// Whether the provider is disabled. You cannot use a disabled provider to exchange tokens. However, existing
-        /// tokens still grant access.
+        /// Disables the workforce pool provider. You cannot use a disabled provider to exchange tokens. However,
+        /// existing tokens still grant access.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
         public virtual System.Nullable<bool> Disabled { get; set; }

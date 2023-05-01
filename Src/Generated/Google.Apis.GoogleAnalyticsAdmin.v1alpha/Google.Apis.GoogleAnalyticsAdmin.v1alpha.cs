@@ -10097,6 +10097,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attributionSettings")]
         public virtual GoogleAnalyticsAdminV1alphaAttributionSettings AttributionSettings { get; set; }
 
+        /// <summary>A snapshot of an Audience resource in change history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audience")]
+        public virtual GoogleAnalyticsAdminV1alphaAudience Audience { get; set; }
+
         /// <summary>A snapshot of a BigQuery link resource in change history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryLink")]
         public virtual GoogleAnalyticsAdminV1alphaBigQueryLink BigqueryLink { get; set; }

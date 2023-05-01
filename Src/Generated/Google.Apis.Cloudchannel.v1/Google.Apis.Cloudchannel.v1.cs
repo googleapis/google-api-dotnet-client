@@ -6127,6 +6127,10 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("associationInfo")]
         public virtual GoogleCloudChannelV1AssociationInfo AssociationInfo { get; set; }
 
+        /// <summary>Optional. The billing account resource name that is used to pay for this entitlement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingAccount")]
+        public virtual string BillingAccount { get; set; }
+
         /// <summary>Commitment settings for a commitment-based Offer. Required for commitment based offers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commitmentSettings")]
         public virtual GoogleCloudChannelV1CommitmentSettings CommitmentSettings { get; set; }
@@ -7898,6 +7902,10 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// <summary>Association information to other entitlements.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("associationInfo")]
         public virtual GoogleCloudChannelV1alpha1AssociationInfo AssociationInfo { get; set; }
+
+        /// <summary>Optional. The billing account resource name that is used to pay for this entitlement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingAccount")]
+        public virtual string BillingAccount { get; set; }
 
         /// <summary>
         /// Cloud Identity ID of a channel partner who will be the direct reseller for the customer's order. This field

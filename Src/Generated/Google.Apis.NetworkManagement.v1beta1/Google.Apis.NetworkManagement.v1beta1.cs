@@ -1459,7 +1459,7 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Wrapper for app engine service version attributes.</summary>
+    /// <summary>Wrapper for the App Engine service version attributes.</summary>
     public class AppEngineVersionEndpoint : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1940,9 +1940,9 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         /// <summary>
         /// Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM
         /// instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP
-        /// address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the
-        /// IP address that you provide is from the service project. In this case, the network that the IP address
-        /// resides in is defined in the host project.
+        /// address is specified, and the IP address is within a Google Cloud project. 2. When you are using Shared VPC
+        /// and the IP address that you provide is from the service project. In this case, the network that the IP
+        /// address resides in is defined in the host project.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
@@ -2346,7 +2346,7 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A resource that represents Google Cloud Platform location.</summary>
+    /// <summary>A resource that represents a Google Cloud location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
