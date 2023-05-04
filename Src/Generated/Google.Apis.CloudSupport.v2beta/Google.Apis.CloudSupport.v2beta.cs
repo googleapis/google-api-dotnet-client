@@ -316,8 +316,8 @@ namespace Google.Apis.CloudSupport.v2beta
             public virtual string PageToken { get; set; }
 
             /// <summary>
-            /// An expression written in the Cloud filter language. If non-empty, then only cases whose fields match the
-            /// filter are returned. If empty, then no messages are filtered out.
+            /// An expression written in the Google Cloud filter language. If non-empty, then only cases whose fields
+            /// match the filter are returned. If empty, then no messages are filtered out.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
@@ -677,12 +677,12 @@ namespace Google.Apis.CloudSupport.v2beta
         }
 
         /// <summary>
-        /// Create a new case and associate it with the given Cloud resource. The case object must have the following
-        /// fields set: display_name, description, classification, and severity.
+        /// Create a new case and associate it with the given Google Cloud Resource. The case object must have the
+        /// following fields set: `display_name`, `description`, `classification`, and `priority`.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
-        /// Required. The name of the Cloud resource under which the case should be created.
+        /// Required. The name of the Google Cloud Resource under which the case should be created.
         /// </param>
         public virtual CreateRequest Create(Google.Apis.CloudSupport.v2beta.Data.Case body, string parent)
         {
@@ -690,8 +690,8 @@ namespace Google.Apis.CloudSupport.v2beta
         }
 
         /// <summary>
-        /// Create a new case and associate it with the given Cloud resource. The case object must have the following
-        /// fields set: display_name, description, classification, and severity.
+        /// Create a new case and associate it with the given Google Cloud Resource. The case object must have the
+        /// following fields set: `display_name`, `description`, `classification`, and `priority`.
         /// </summary>
         public class CreateRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Case>
         {
@@ -703,7 +703,9 @@ namespace Google.Apis.CloudSupport.v2beta
                 InitParameters();
             }
 
-            /// <summary>Required. The name of the Cloud resource under which the case should be created.</summary>
+            /// <summary>
+            /// Required. The name of the Google Cloud Resource under which the case should be created.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
 
@@ -738,9 +740,9 @@ namespace Google.Apis.CloudSupport.v2beta
         }
 
         /// <summary>
-        /// Escalate a case. Escalating a case will initiate the Cloud Support escalation management process. This
-        /// operation is only available to certain Customer Care tiers. Go to https://cloud.google.com/support and look
-        /// for 'Technical support escalations' in the feature list to find out which tiers are able to perform
+        /// Escalate a case. Escalating a case will initiate the Google Cloud Support escalation management process.
+        /// This operation is only available to certain Customer Care tiers. Go to https://cloud.google.com/support and
+        /// look for 'Technical support escalations' in the feature list to find out which tiers are able to perform
         /// escalations.
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -751,9 +753,9 @@ namespace Google.Apis.CloudSupport.v2beta
         }
 
         /// <summary>
-        /// Escalate a case. Escalating a case will initiate the Cloud Support escalation management process. This
-        /// operation is only available to certain Customer Care tiers. Go to https://cloud.google.com/support and look
-        /// for 'Technical support escalations' in the feature list to find out which tiers are able to perform
+        /// Escalate a case. Escalating a case will initiate the Google Cloud Support escalation management process.
+        /// This operation is only available to certain Customer Care tiers. Go to https://cloud.google.com/support and
+        /// look for 'Technical support escalations' in the feature list to find out which tiers are able to perform
         /// escalations.
         /// </summary>
         public class EscalateRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.Case>
@@ -879,10 +881,9 @@ namespace Google.Apis.CloudSupport.v2beta
             /// filter. Else, the query doesn't filter the cases. Filter expressions use the following fields with the
             /// operators equals (`=`) and `AND`: - `state`: The accepted values are `OPEN` or `CLOSED`. - `priority`:
             /// The accepted values are `P0`, `P1`, `P2`, `P3`, or `P4`. You can specify multiple values for priority
-            /// using the `OR` operator. For example, `priority=P1 OR priority=P2`. - [DEPRECATED] `severity`: The
-            /// accepted values are `S0`, `S1`, `S2`, `S3`, or `S4`. - `creator.email`: The email address of the case
-            /// creator. Examples: - `state=CLOSED` - `state=OPEN AND creator.email="tester@example.com"` - `state=OPEN
-            /// AND (priority=P0 OR priority=P1)`
+            /// using the `OR` operator. For example, `priority=P1 OR priority=P2`. - `creator.email`: The email address
+            /// of the case creator. Examples: - `state=CLOSED` - `state=OPEN AND creator.email="tester@example.com"` -
+            /// `state=OPEN AND (priority=P0 OR priority=P1)`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -970,10 +971,10 @@ namespace Google.Apis.CloudSupport.v2beta
 
             /// <summary>
             /// A list of attributes of the case object that should be updated as part of this request. Supported values
-            /// are severity, display_name, and subscriber_email_addresses. If no fields are specified, all supported
-            /// fields are updated. WARNING: If you do not provide a field mask, then you may accidentally clear some
-            /// fields. For example, if you leave field mask empty and do not provide a value for
-            /// subscriber_email_addresses, then subscriber_email_addresses is updated to empty.
+            /// are `priority`, `display_name`, and `subscriber_email_addresses`. If no fields are specified, all
+            /// supported fields are updated. WARNING: If you do not provide a field mask, then you might accidentally
+            /// clear some fields. For example, if you leave the field mask empty and do not provide a value for
+            /// `subscriber_email_addresses`, then `subscriber_email_addresses` is updated to empty.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object UpdateMask { get; set; }
@@ -1046,18 +1047,18 @@ namespace Google.Apis.CloudSupport.v2beta
             /// (`=`) and `AND`: - `organization`: An organization name in the form `organizations/`. - `project`: A
             /// project name in the form `projects/`. - `state`: The accepted values are `OPEN` or `CLOSED`. -
             /// `priority`: The accepted values are `P0`, `P1`, `P2`, `P3`, or `P4`. You can specify multiple values for
-            /// priority using the `OR` operator. For example, `priority=P1 OR priority=P2`. - [DEPRECATED] `severity`:
-            /// The accepted values are `S0`, `S1`, `S2`, `S3`, or `S4`. - `creator.email`: The email address of the
-            /// case creator. - `billingAccount`: A billing account in the form `billingAccounts/` You must specify
-            /// eitehr `organization` or `project`. To search across `displayName`, `description`, and comments, use a
-            /// global restriction with no keyword or operator. For example, `"my search"`. To search only cases updated
-            /// after a certain date, use `update_time` retricted with that particular date, time, and timezone in ISO
-            /// datetime format. For example, `update_time&amp;gt;"2020-01-01T00:00:00-05:00"`. `update_time` only
-            /// supports the greater than operator (`&amp;gt;`). Examples: - `organization="organizations/123456789"` -
-            /// `project="projects/my-project-id"` - `project="projects/123456789"` -
-            /// `billing_account="billingAccounts/123456-A0B0C0-CUZ789"` - `organization="organizations/123456789" AND
-            /// state=CLOSED` - `project="projects/my-project-id" AND creator.email="tester@example.com"` -
-            /// `project="projects/my-project-id" AND (priority=P0 OR priority=P1)`
+            /// priority using the `OR` operator. For example, `priority=P1 OR priority=P2`. - `creator.email`: The
+            /// email address of the case creator. - `billingAccount`: A billing account in the form `billingAccounts/`
+            /// You must specify either `organization` or `project`. To search across `displayName`, `description`, and
+            /// comments, use a global restriction with no keyword or operator. For example, `"my search"`. To search
+            /// only cases updated after a certain date, use `update_time` restricted with that particular date, time,
+            /// and timezone in ISO datetime format. For example, `update_time&amp;gt;"2020-01-01T00:00:00-05:00"`.
+            /// `update_time` only supports the greater than operator (`&amp;gt;`). Examples: -
+            /// `organization="organizations/123456789"` - `project="projects/my-project-id"` -
+            /// `project="projects/123456789"` - `billing_account="billingAccounts/123456-A0B0C0-CUZ789"` -
+            /// `organization="organizations/123456789" AND state=CLOSED` - `project="projects/my-project-id" AND
+            /// creator.email="tester@example.com"` - `project="projects/my-project-id" AND (priority=P0 OR
+            /// priority=P1)`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
@@ -1605,7 +1606,7 @@ namespace Google.Apis.CloudSupport.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The priority of this case. If this is set, do not set severity.</summary>
+        /// <summary>The priority of this case.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priority")]
         public virtual string Priority { get; set; }
 
@@ -1939,13 +1940,13 @@ namespace Google.Apis.CloudSupport.v2beta.Data
     public class ListCasesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The list of cases associated with the cloud resource, after any filters have been applied.
+        /// The list of cases associated with the Google Cloud Resource, after any filters have been applied.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cases")]
         public virtual System.Collections.Generic.IList<Case> Cases { get; set; }
 
         /// <summary>
-        /// A token to retrieve the next page of results. This should be set in the `page_token` field of subsequent
+        /// A token to retrieve the next page of results. This should be set in the `page_token` field of the subsequent
         /// `ListCasesRequest` message that is issued. If unspecified, there are no more results to retrieve.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
@@ -2141,7 +2142,9 @@ namespace Google.Apis.CloudSupport.v2beta.Data
     /// <summary>The response message for the SearchCases endpoint.</summary>
     public class SearchCasesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of Case associated with the cloud resource, after any filters have been applied.</summary>
+        /// <summary>
+        /// The list of cases associated with the Google Cloud Resource, after any filters have been applied.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cases")]
         public virtual System.Collections.Generic.IList<Case> Cases { get; set; }
 

@@ -647,6 +647,21 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A Keyword criterion segment.</summary>
+    public class GoogleAdsSearchads360V0CommonKeyword : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The AdGroupCriterion resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupCriterion")]
+        public virtual string AdGroupCriterion { get; set; }
+
+        /// <summary>Keyword info.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("info")]
+        public virtual GoogleAdsSearchads360V0CommonKeywordInfo Info { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A keyword criterion.</summary>
     public class GoogleAdsSearchads360V0CommonKeywordInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1312,12 +1327,96 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An expanded dynamic search ad.</summary>
+    public class GoogleAdsSearchads360V0CommonSearchAds360ExpandedDynamicSearchAdInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The tracking id of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adTrackingId")]
+        public virtual System.Nullable<long> AdTrackingId { get; set; }
+
+        /// <summary>The first line of the ad's description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description1")]
+        public virtual string Description1 { get; set; }
+
+        /// <summary>The second line of the ad's description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description2")]
+        public virtual string Description2 { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Search Ads 360 expanded text ad.</summary>
+    public class GoogleAdsSearchads360V0CommonSearchAds360ExpandedTextAdInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The tracking id of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adTrackingId")]
+        public virtual System.Nullable<long> AdTrackingId { get; set; }
+
+        /// <summary>The first line of the ad's description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description1")]
+        public virtual string Description1 { get; set; }
+
+        /// <summary>The second line of the ad's description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description2")]
+        public virtual string Description2 { get; set; }
+
+        /// <summary>The headline of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headline")]
+        public virtual string Headline { get; set; }
+
+        /// <summary>The second headline of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headline2")]
+        public virtual string Headline2 { get; set; }
+
+        /// <summary>The third headline of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("headline3")]
+        public virtual string Headline3 { get; set; }
+
+        /// <summary>Text appended to the auto-generated visible URL with a delimiter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path1")]
+        public virtual string Path1 { get; set; }
+
+        /// <summary>Text appended to path1 with a delimiter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path2")]
+        public virtual string Path2 { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Search Ads 360 product ad.</summary>
+    public class GoogleAdsSearchads360V0CommonSearchAds360ProductAdInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Search Ads 360 responsive search ad.</summary>
+    public class GoogleAdsSearchads360V0CommonSearchAds360ResponsiveSearchAdInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The tracking id of the ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adTrackingId")]
+        public virtual System.Nullable<long> AdTrackingId { get; set; }
+
+        /// <summary>Text appended to the auto-generated visible URL with a delimiter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path1")]
+        public virtual string Path1 { get; set; }
+
+        /// <summary>Text appended to path1 with a delimiter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path2")]
+        public virtual string Path2 { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A Search Ads 360 text ad.</summary>
     public class GoogleAdsSearchads360V0CommonSearchAds360TextAdInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The tracking id of the ad.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("adTrackId")]
-        public virtual System.Nullable<long> AdTrackId { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("adTrackingId")]
+        public virtual System.Nullable<long> AdTrackingId { get; set; }
 
         /// <summary>The first line of the ad's description.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description1")]
@@ -1369,6 +1468,10 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>Device to which metrics apply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("device")]
         public virtual string Device { get; set; }
+
+        /// <summary>Keyword criterion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyword")]
+        public virtual GoogleAdsSearchads360V0CommonKeyword Keyword { get; set; }
 
         /// <summary>Month as represented by the date of the first day of a month. Formatted as yyyy-MM-dd.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("month")]
@@ -1855,6 +1958,14 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayUrl")]
         public virtual string DisplayUrl { get; set; }
 
+        /// <summary>Immutable. Details pertaining to an expanded dynamic search ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expandedDynamicSearchAd")]
+        public virtual GoogleAdsSearchads360V0CommonSearchAds360ExpandedDynamicSearchAdInfo ExpandedDynamicSearchAd { get; set; }
+
+        /// <summary>Immutable. Details pertaining to an expanded text ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expandedTextAd")]
+        public virtual GoogleAdsSearchads360V0CommonSearchAds360ExpandedTextAdInfo ExpandedTextAd { get; set; }
+
         /// <summary>The list of possible final URLs after all cross-domain redirects for the ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalUrls")]
         public virtual System.Collections.Generic.IList<string> FinalUrls { get; set; }
@@ -1871,12 +1982,20 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Immutable. Details pertaining to a product ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productAd")]
+        public virtual GoogleAdsSearchads360V0CommonSearchAds360ProductAdInfo ProductAd { get; set; }
+
         /// <summary>
         /// Immutable. The resource name of the ad. Ad resource names have the form:
         /// `customers/{customer_id}/ads/{ad_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
+
+        /// <summary>Immutable. Details pertaining to a responsive search ad.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responsiveSearchAd")]
+        public virtual GoogleAdsSearchads360V0CommonSearchAds360ResponsiveSearchAdInfo ResponsiveSearchAd { get; set; }
 
         /// <summary>Immutable. Details pertaining to a text ad.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textAd")]
@@ -2189,7 +2308,7 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("listingGroup")]
         public virtual GoogleAdsSearchads360V0CommonListingGroupInfo ListingGroup { get; set; }
 
-        /// <summary>Immutable. Location.</summary>
+        /// <summary>Output only. Location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual GoogleAdsSearchads360V0CommonLocationInfo Location { get; set; }
 

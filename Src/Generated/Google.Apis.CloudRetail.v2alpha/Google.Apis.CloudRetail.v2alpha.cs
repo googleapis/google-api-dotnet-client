@@ -2326,7 +2326,7 @@ namespace Google.Apis.CloudRetail.v2alpha
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
                     /// Required. The branch resource where this MerchantCenterAccountLink will be created. Format:
-                    /// projects/{PROJECT_NUMBER}/locations/global/catalogs/{CATALOG_ID}}
+                    /// `projects/{PROJECT_NUMBER}/locations/global/catalogs/{CATALOG_ID}`
                     /// </param>
                     public virtual CreateRequest Create(Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaMerchantCenterAccountLink body, string parent)
                     {
@@ -2346,7 +2346,7 @@ namespace Google.Apis.CloudRetail.v2alpha
 
                         /// <summary>
                         /// Required. The branch resource where this MerchantCenterAccountLink will be created. Format:
-                        /// projects/{PROJECT_NUMBER}/locations/global/catalogs/{CATALOG_ID}}
+                        /// `projects/{PROJECT_NUMBER}/locations/global/catalogs/{CATALOG_ID}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -2387,7 +2387,7 @@ namespace Google.Apis.CloudRetail.v2alpha
                     /// </summary>
                     /// <param name="name">
                     /// Required. Full resource name. Format:
-                    /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/merchantCenterAccountLinks/{merchant_center_account_link_id}
+                    /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/merchantCenterAccountLinks/{merchant_center_account_link_id}`
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -2409,7 +2409,7 @@ namespace Google.Apis.CloudRetail.v2alpha
 
                         /// <summary>
                         /// Required. Full resource name. Format:
-                        /// projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/merchantCenterAccountLinks/{merchant_center_account_link_id}
+                        /// `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/merchantCenterAccountLinks/{merchant_center_account_link_id}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -2441,7 +2441,7 @@ namespace Google.Apis.CloudRetail.v2alpha
                     /// <summary>Lists all MerchantCenterAccountLinks under the specified parent Catalog.</summary>
                     /// <param name="parent">
                     /// Required. The parent Catalog of the resource. It must match this format:
-                    /// projects/{PROJECT_NUMBER}/locations/global/catalogs/{CATALOG_ID}
+                    /// `projects/{PROJECT_NUMBER}/locations/global/catalogs/{CATALOG_ID}`
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -2460,7 +2460,7 @@ namespace Google.Apis.CloudRetail.v2alpha
 
                         /// <summary>
                         /// Required. The parent Catalog of the resource. It must match this format:
-                        /// projects/{PROJECT_NUMBER}/locations/global/catalogs/{CATALOG_ID}
+                        /// `projects/{PROJECT_NUMBER}/locations/global/catalogs/{CATALOG_ID}`
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -6445,8 +6445,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// The Merchant Center linking configuration. Once a link is added, the data stream from Merchant Center to
-        /// Cloud Retail will be enabled automatically. The requester must have access to the merchant center account in
+        /// The Merchant Center linking configuration. After a link is added, the data stream from Merchant Center to
+        /// Cloud Retail will be enabled automatically. The requester must have access to the Merchant Center account in
         /// order to make changes to this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantCenterLinkingConfig")]
@@ -6487,12 +6487,11 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ExactSearchableOption { get; set; }
 
         /// <summary>
-        /// Set manually for numerical attributes only. If the facet SearchResponse.FacetSpec.intervals are not set by
-        /// the customer for a numerical attribute, then a weekly pipeline will calculate some intervals using some
-        /// percentiles on the distribution of all its product numerical attribute values. The latter computed intervals
-        /// might not be ideal for the use case of that attribute. For this reason, the customer can set them manually.
-        /// As another option, for any numerical attribute that is passed as a facet key in the request along with some
-        /// given intervals, then these given intervals will be the facet intervals returned in the response.
+        /// If you don't set the facet SearchRequest.FacetSpec.FacetKey.intervals to a numerical attribute, then a
+        /// weekly pipeline calculates intervals using some percentiles on the distribution of all its product numerical
+        /// attribute values. The calculated intervals might not be ideal for some attributes. Therefore, we give you
+        /// the option the overwrite them. For any numerical attribute that is passed as a facet key in the request
+        /// along with given intervals, the given intervals are the facet intervals returned in the response.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("facetIntervals")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaInterval> FacetIntervals { get; set; }
@@ -7642,16 +7641,16 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     }
 
     /// <summary>
-    /// Represents a link between a Merchant Center account and a branch. Once a link is established, products from the
-    /// linked merchant center account will be streamed to the linked branch.
+    /// Represents a link between a Merchant Center account and a branch. After a link is established, products from the
+    /// linked Merchant Center account are streamed to the linked branch.
     /// </summary>
     public class GoogleCloudRetailV2alphaMerchantCenterAccountLink : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The branch id (e.g. 0/1/2) within the catalog that products from merchant_center_account_id are
+        /// Required. The branch ID (e.g. 0/1/2) within the catalog that products from merchant_center_account_id are
         /// streamed to. When updating this field, an empty value will use the currently configured default branch.
-        /// However, changing the default branch later on won't change the linked branch here. A single branch id can
-        /// only have one linked merchant center account id.
+        /// However, changing the default branch later on won't change the linked branch here. A single branch ID can
+        /// only have one linked Merchant Center account ID.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("branchId")]
         public virtual string BranchId { get; set; }
@@ -7746,8 +7745,8 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     }
 
     /// <summary>
-    /// Represents a link between a Merchant Center account and a branch. Once a link is established, products from the
-    /// linked merchant center account will be streamed to the linked branch.
+    /// Represents a link between a Merchant Center account and a branch. After a link is established, products from the
+    /// linked Merchant Center account are streamed to the linked branch.
     /// </summary>
     public class GoogleCloudRetailV2alphaMerchantCenterLink : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7755,7 +7754,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// The branch ID (e.g. 0/1/2) within this catalog that products from merchant_center_account_id are streamed
         /// to. When updating this field, an empty value will use the currently configured default branch. However,
         /// changing the default branch later on won't change the linked branch here. A single branch ID can only have
-        /// one linked merchant center account ID.
+        /// one linked Merchant Center account ID.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("branchId")]
         public virtual string BranchId { get; set; }
@@ -7786,7 +7785,7 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string LanguageCode { get; set; }
 
         /// <summary>
-        /// Required. The linked [Merchant center account
+        /// Required. The linked [Merchant Center account
         /// ID](https://developers.google.com/shopping-content/guides/accountstatuses). The account must be a standalone
         /// account or a sub-account of a MCA.
         /// </summary>
@@ -10907,16 +10906,16 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     }
 
     /// <summary>
-    /// Represents a link between a Merchant Center account and a branch. Once a link is established, products from the
-    /// linked merchant center account will be streamed to the linked branch.
+    /// Represents a link between a Merchant Center account and a branch. After a link is established, products from the
+    /// linked Merchant Center account are streamed to the linked branch.
     /// </summary>
     public class GoogleCloudRetailV2betaMerchantCenterAccountLink : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The branch id (e.g. 0/1/2) within the catalog that products from merchant_center_account_id are
+        /// Required. The branch ID (e.g. 0/1/2) within the catalog that products from merchant_center_account_id are
         /// streamed to. When updating this field, an empty value will use the currently configured default branch.
-        /// However, changing the default branch later on won't change the linked branch here. A single branch id can
-        /// only have one linked merchant center account id.
+        /// However, changing the default branch later on won't change the linked branch here. A single branch ID can
+        /// only have one linked Merchant Center account ID.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("branchId")]
         public virtual string BranchId { get; set; }

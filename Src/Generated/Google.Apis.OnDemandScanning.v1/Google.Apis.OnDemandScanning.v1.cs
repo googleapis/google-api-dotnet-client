@@ -983,18 +983,6 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class Binary : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual string Version { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Details of a build occurrence.</summary>
     public class BuildOccurrence : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2027,6 +2015,10 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
         public virtual string ResourceUri { get; set; }
 
+        /// <summary>Describes a specific SBOM reference occurrences.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sbomReference")]
+        public virtual SBOMReferenceOccurrence SbomReference { get; set; }
+
         /// <summary>Output only. The time this occurrence was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
@@ -2097,8 +2089,8 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         /// they've differed, we've stored the name of the source and its version in the package/version fields, but we
         /// should also store the binary package info, as that's what's actually installed. See b/175908657#comment15.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("binary")]
-        public virtual Binary Binary { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("binaryVersion")]
+        public virtual PackageVersion BinaryVersion { get; set; }
 
         /// <summary>
         /// The cpe_uri in [cpe format] (https://cpe.mitre.org/specification/) in which the vulnerability may manifest.
@@ -2148,6 +2140,14 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         /// <summary>CVEs that this package is no longer vulnerable to go/drydock-dd-custom-binary-scanning</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("patchedCve")]
         public virtual System.Collections.Generic.IList<string> PatchedCve { get; set; }
+
+        /// <summary>
+        /// The source package. Similar to the above, this is significant when the source is different than the binary
+        /// itself. Since the top-level package/version fields are based on an if/else, we need a separate field for
+        /// both binary and source if we want to know definitively where the data is coming from.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceVersion")]
+        public virtual PackageVersion SourceVersion { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("unused")]
         public virtual string Unused { get; set; }
@@ -2269,6 +2269,18 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class PackageVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Selects a repo using a Google Cloud Platform project ID (e.g., winged-cargo-31) and a repo name within that
     /// project.
@@ -2382,6 +2394,83 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         /// <summary>A server-assigned, globally unique identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The occurrence representing an SBOM reference as applied to a specific resource. The occurrence follows the DSSE
+    /// specification. See https://github.com/secure-systems-lab/dsse/blob/master/envelope.md for more details.
+    /// </summary>
+    public class SBOMReferenceOccurrence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The actual payload that contains the SBOM reference data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payload")]
+        public virtual SbomReferenceIntotoPayload Payload { get; set; }
+
+        /// <summary>
+        /// The kind of payload that SbomReferenceIntotoPayload takes. Since it's in the intoto format, this value is
+        /// expected to be 'application/vnd.in-toto+json'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("payloadType")]
+        public virtual string PayloadType { get; set; }
+
+        /// <summary>The signatures over the payload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signatures")]
+        public virtual System.Collections.Generic.IList<EnvelopeSignature> Signatures { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The actual payload that contains the SBOM Reference data. The payload follows the intoto statement
+    /// specification. See https://github.com/in-toto/attestation/blob/main/spec/v1.0/statement.md for more details.
+    /// </summary>
+    public class SbomReferenceIntotoPayload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifier for the schema of the Statement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("_type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Additional parameters of the Predicate. Includes the actual data about the SBOM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predicate")]
+        public virtual SbomReferenceIntotoPredicate Predicate { get; set; }
+
+        /// <summary>URI identifying the type of the Predicate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predicateType")]
+        public virtual string PredicateType { get; set; }
+
+        /// <summary>
+        /// Set of software artifacts that the attestation applies to. Each element represents a single software
+        /// artifact.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subject")]
+        public virtual System.Collections.Generic.IList<Subject> Subject { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A predicate which describes the SBOM being referenced.</summary>
+    public class SbomReferenceIntotoPredicate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A map of algorithm to digest of the contents of the SBOM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("digest")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Digest { get; set; }
+
+        /// <summary>The location of the SBOM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>The mime type of the SBOM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>The person or system referring this predicate to the consumer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referrerId")]
+        public virtual string ReferrerId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

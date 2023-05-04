@@ -7613,7 +7613,10 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("guaranteedImpressions")]
         public virtual System.Nullable<long> GuaranteedImpressions { get; set; }
 
-        /// <summary>Count of guaranteed looks. Required for deal, optional for product.</summary>
+        /// <summary>
+        /// Count of guaranteed looks. Required for deal, optional for product. For CPD deals, buyer changes to
+        /// guaranteed_looks will be ignored.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guaranteedLooks")]
         public virtual System.Nullable<long> GuaranteedLooks { get; set; }
 
@@ -7623,7 +7626,10 @@ namespace Google.Apis.AdExchangeBuyerII.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("impressionCap")]
         public virtual System.Nullable<long> ImpressionCap { get; set; }
 
-        /// <summary>Daily minimum looks for CPD deal types.</summary>
+        /// <summary>
+        /// Daily minimum looks for CPD deal types. For CPD deals, buyer should negotiate on this field instead of
+        /// guaranteed_looks.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimumDailyLooks")]
         public virtual System.Nullable<long> MinimumDailyLooks { get; set; }
 

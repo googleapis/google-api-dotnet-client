@@ -296,7 +296,7 @@ namespace Google.Apis.Cloudbilling.v1beta
         /// <param name="body">The body of the request.</param>
         /// <param name="billingAccount">
         /// Resource name of the billing account for the cost estimate. The resource name has the form
-        /// `billingAccounts/{billing_acount_id}`. For example, `billingAccounts/012345-567890-ABCDEF` is the resource
+        /// `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF` is the resource
         /// name for billing account `012345-567890-ABCDEF`. Must be specified.
         /// </param>
         public virtual EstimateCostScenarioRequest EstimateCostScenario(Google.Apis.Cloudbilling.v1beta.Data.EstimateCostScenarioForBillingAccountRequest body, string billingAccount)
@@ -319,7 +319,7 @@ namespace Google.Apis.Cloudbilling.v1beta
 
             /// <summary>
             /// Resource name of the billing account for the cost estimate. The resource name has the form
-            /// `billingAccounts/{billing_acount_id}`. For example, `billingAccounts/012345-567890-ABCDEF` is the
+            /// `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF` is the
             /// resource name for billing account `012345-567890-ABCDEF`. Must be specified.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("billingAccount", Google.Apis.Util.RequestParameterType.Path)]

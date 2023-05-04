@@ -815,23 +815,25 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1
                     /// only. Example: `apiLevel = 28 OR apiLevel = 29`. * `versionCode`: Matches error issues that
                     /// occurred in the requested app version codes only. Example: `versionCode = 123 OR versionCode =
                     /// 456`. * `deviceModel`: Matches error issues that occurred in the requested devices. Example:
-                    /// `deviceModel = "walleye" OR deviceModel = "marlin"`. * `deviceType`: Matches error issues that
-                    /// occurred in the requested device types. Example: `deviceType = "PHONE"`. * `errorIssueType`:
-                    /// Matches error issues of the requested types only. Valid candidates: `CRASH`, `ANR`. Example:
-                    /// `errorIssueType = CRASH OR errorIssueType = ANR`. * `appProcessState`: Matches error issues on
-                    /// the process state of an app, indicating whether an app runs in the foreground (user-visible) or
-                    /// background. Valid candidates: `FOREGROUND`, `BACKGROUND`. Example: `appProcessState =
-                    /// FOREGROUND`. * `isUserPerceived`: Matches error issues that are user-perceived. It is not
-                    /// accompanied by any operators. Example: `isUserPerceived`. ** Supported operators:** * Comparison
-                    /// operators: The only supported comparison operator is equality. The filtered field must appear on
-                    /// the left hand side of the comparison. * Logical Operators: Logical operators `AND` and `OR` can
-                    /// be used to build complex filters following a conjunctive normal form (CNF), i.e., conjunctions
-                    /// of disjunctions. The `OR` operator takes precedence over `AND` so the use of parenthesis is not
-                    /// necessary when building CNF. The `OR` operator is only supported to build disjunctions that
-                    /// apply to the same field, e.g., `versionCode = 123 OR errorIssueType = ANR` is not a valid
-                    /// filter. ** Examples ** Some valid filtering expressions: * `versionCode = 123 AND errorIssueType
-                    /// = ANR` * `versionCode = 123 AND errorIssueType = OR errorIssueType = CRASH` * `versionCode = 123
-                    /// AND (errorIssueType = OR errorIssueType = CRASH)`
+                    /// `deviceModel = "walleye" OR deviceModel = "marlin"`. * `deviceBrand`: Matches error issues that
+                    /// occurred in the requested device brands. Example: `deviceBrand = "Google". * `deviceType`:
+                    /// Matches error issues that occurred in the requested device types. Example: `deviceType =
+                    /// "PHONE"`. * `errorIssueType`: Matches error issues of the requested types only. Valid
+                    /// candidates: `CRASH`, `ANR`. Example: `errorIssueType = CRASH OR errorIssueType = ANR`. *
+                    /// `appProcessState`: Matches error issues on the process state of an app, indicating whether an
+                    /// app runs in the foreground (user-visible) or background. Valid candidates: `FOREGROUND`,
+                    /// `BACKGROUND`. Example: `appProcessState = FOREGROUND`. * `isUserPerceived`: Matches error issues
+                    /// that are user-perceived. It is not accompanied by any operators. Example: `isUserPerceived`. **
+                    /// Supported operators:** * Comparison operators: The only supported comparison operator is
+                    /// equality. The filtered field must appear on the left hand side of the comparison. * Logical
+                    /// Operators: Logical operators `AND` and `OR` can be used to build complex filters following a
+                    /// conjunctive normal form (CNF), i.e., conjunctions of disjunctions. The `OR` operator takes
+                    /// precedence over `AND` so the use of parenthesis is not necessary when building CNF. The `OR`
+                    /// operator is only supported to build disjunctions that apply to the same field, e.g.,
+                    /// `versionCode = 123 OR errorIssueType = ANR` is not a valid filter. ** Examples ** Some valid
+                    /// filtering expressions: * `versionCode = 123 AND errorIssueType = ANR` * `versionCode = 123 AND
+                    /// errorIssueType = OR errorIssueType = CRASH` * `versionCode = 123 AND (errorIssueType = OR
+                    /// errorIssueType = CRASH)`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -1228,26 +1230,27 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1
                     /// level) only. Example: `apiLevel = 28 OR apiLevel = 29`. * `versionCode`: Matches error reports
                     /// that occurred in the requested app version codes only. Example: `versionCode = 123 OR
                     /// versionCode = 456`. * `deviceModel`: Matches error reports that occurred in the requested
-                    /// devices. Example: `deviceModel = "walleye" OR deviceModel = "marlin"`. * `deviceType`: Matches
-                    /// error reports that occurred in the requested device types. Example: `deviceType = "PHONE"`. *
-                    /// `errorIssueType`: Matches error reports of the requested types only. Valid candidates:
-                    /// `JAVA_CRASH`, `NATIVE_CRASH`, `ANR`. Example: `errorIssueType = JAVA_CRASH OR errorIssueType =
-                    /// NATIVE_CRASH`. * `errorIssueId`: Matches error reports belonging to the requested error issue
-                    /// ids only. Example: `errorIssueId = 1234 OR errorIssueId = 4567`. * `appProcessState`: Matches
-                    /// error reports on the process state of an app, indicating whether an app runs in the foreground
-                    /// (user-visible) or background. Valid candidates: `FOREGROUND`, `BACKGROUND`. Example:
-                    /// `appProcessState = FOREGROUND`. * `isUserPerceived`: Matches error reports that are
-                    /// user-perceived. It is not accompanied by any operators. Example: `isUserPerceived`. ** Supported
-                    /// operators:** * Comparison operators: The only supported comparison operator is equality. The
-                    /// filtered field must appear on the left hand side of the comparison. * Logical Operators: Logical
-                    /// operators `AND` and `OR` can be used to build complex filters following a conjunctive normal
-                    /// form (CNF), i.e., conjunctions of disjunctions. The `OR` operator takes precedence over `AND` so
-                    /// the use of parenthesis is not necessary when building CNF. The `OR` operator is only supported
-                    /// to build disjunctions that apply to the same field, e.g., `versionCode = 123 OR versionCode =
-                    /// ANR`. The filter expression `versionCode = 123 OR errorIssueType = ANR` is not valid. **
-                    /// Examples ** Some valid filtering expressions: * `versionCode = 123 AND errorIssueType = ANR` *
-                    /// `versionCode = 123 AND errorIssueType = OR errorIssueType = CRASH` * `versionCode = 123 AND
-                    /// (errorIssueType = OR errorIssueType = CRASH)`
+                    /// devices. Example: `deviceModel = "walleye" OR deviceModel = "marlin"`. * `deviceBrand`: Matches
+                    /// error issues that occurred in the requested device brands. Example: `deviceBrand = "Google". *
+                    /// `deviceType`: Matches error reports that occurred in the requested device types. Example:
+                    /// `deviceType = "PHONE"`. * `errorIssueType`: Matches error reports of the requested types only.
+                    /// Valid candidates: `JAVA_CRASH`, `NATIVE_CRASH`, `ANR`. Example: `errorIssueType = JAVA_CRASH OR
+                    /// errorIssueType = NATIVE_CRASH`. * `errorIssueId`: Matches error reports belonging to the
+                    /// requested error issue ids only. Example: `errorIssueId = 1234 OR errorIssueId = 4567`. *
+                    /// `appProcessState`: Matches error reports on the process state of an app, indicating whether an
+                    /// app runs in the foreground (user-visible) or background. Valid candidates: `FOREGROUND`,
+                    /// `BACKGROUND`. Example: `appProcessState = FOREGROUND`. * `isUserPerceived`: Matches error
+                    /// reports that are user-perceived. It is not accompanied by any operators. Example:
+                    /// `isUserPerceived`. ** Supported operators:** * Comparison operators: The only supported
+                    /// comparison operator is equality. The filtered field must appear on the left hand side of the
+                    /// comparison. * Logical Operators: Logical operators `AND` and `OR` can be used to build complex
+                    /// filters following a conjunctive normal form (CNF), i.e., conjunctions of disjunctions. The `OR`
+                    /// operator takes precedence over `AND` so the use of parenthesis is not necessary when building
+                    /// CNF. The `OR` operator is only supported to build disjunctions that apply to the same field,
+                    /// e.g., `versionCode = 123 OR versionCode = ANR`. The filter expression `versionCode = 123 OR
+                    /// errorIssueType = ANR` is not valid. ** Examples ** Some valid filtering expressions: *
+                    /// `versionCode = 123 AND errorIssueType = ANR` * `versionCode = 123 AND errorIssueType = OR
+                    /// errorIssueType = CRASH` * `versionCode = 123 AND (errorIssueType = OR errorIssueType = CRASH)`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -2129,11 +2132,11 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
     /// is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value.
     /// **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device.
     /// * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string):
-    /// unique identifier of the user's device model. * `deviceType` (string): the type (also known as form factor) of
-    /// the user's device. * `countryCode` (string): the country or region of the user's device based on their IP
-    /// address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64):
-    /// RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary
-    /// system-on-chip, e.g., Samsung.
+    /// unique identifier of the user's device model. * `deviceBrand` (string): unique identifier of the user's device
+    /// brand. * `deviceType` (string): the type (also known as form factor) of the user's device. * `countryCode`
+    /// (string): the country or region of the user's device based on their IP address, represented as a 2-letter
+    /// ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets
+    /// (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
     /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
@@ -2187,11 +2190,11 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
     /// is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value.
     /// **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device.
     /// * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string):
-    /// unique identifier of the user's device model. * `deviceType` (string): the type (also known as form factor) of
-    /// the user's device. * `countryCode` (string): the country or region of the user's device based on their IP
-    /// address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64):
-    /// RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary
-    /// system-on-chip, e.g., Samsung.
+    /// unique identifier of the user's device model. * `deviceBrand` (string): unique identifier of the user's device
+    /// brand. * `deviceType` (string): the type (also known as form factor) of the user's device. * `countryCode`
+    /// (string): the country or region of the user's device based on their IP address, represented as a 2-letter
+    /// ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets
+    /// (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
     /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
@@ -2398,11 +2401,11 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
     /// rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value.
     /// **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device.
     /// * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string):
-    /// unique identifier of the user's device model. * `deviceType` (string): the type (also known as form factor) of
-    /// the user's device. * `countryCode` (string): the country or region of the user's device based on their IP
-    /// address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64):
-    /// RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary
-    /// system-on-chip, e.g., Samsung.
+    /// unique identifier of the user's device model. * `deviceBrand` (string): unique identifier of the user's device
+    /// brand. * `deviceType` (string): the type (also known as form factor) of the user's device. * `countryCode`
+    /// (string): the country or region of the user's device based on their IP address, represented as a 2-letter
+    /// ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets
+    /// (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
     /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
@@ -2531,11 +2534,12 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         /// <summary>
         /// Dimensions to slice the metrics by. **Supported dimensions:** * `apiLevel` (string): the API level of
         /// Android that was running on the user's device. * `versionCode` (int64): version of the app that was running
-        /// on the user's device. * `deviceModel` (string): unique identifier of the user's device model. * `deviceType`
-        /// (string): the type (also known as form factor) of the user's device. * `countryCode` (string): the country
-        /// or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
-        /// for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.).
-        /// * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
+        /// on the user's device. * `deviceModel` (string): unique identifier of the user's device model. *
+        /// `deviceBrand` (string): unique identifier of the user's device brand. * `deviceType` (string): the type
+        /// (also known as form factor) of the user's device. * `countryCode` (string): the country or region of the
+        /// user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United
+        /// States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). *
+        /// `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
         /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
@@ -2639,11 +2643,12 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         /// <summary>
         /// Dimensions to slice the metrics by. **Supported dimensions:** * `apiLevel` (string): the API level of
         /// Android that was running on the user's device. * `versionCode` (int64): version of the app that was running
-        /// on the user's device. * `deviceModel` (string): unique identifier of the user's device model. * `deviceType`
-        /// (string): the type (also known as form factor) of the user's device. * `countryCode` (string): the country
-        /// or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
-        /// for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.).
-        /// * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
+        /// on the user's device. * `deviceModel` (string): unique identifier of the user's device model. *
+        /// `deviceBrand` (string): unique identifier of the user's device brand. * `deviceType` (string): the type
+        /// (also known as form factor) of the user's device. * `countryCode` (string): the country or region of the
+        /// user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United
+        /// States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). *
+        /// `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
         /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
@@ -2831,11 +2836,12 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         /// <summary>
         /// Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of Android
         /// that was running on the user's device. * `versionCode` (int64): version of the app that was running on the
-        /// user's device. * `deviceModel` (string): unique identifier of the user's device model. * `deviceType`
-        /// (string): the type (also known as form factor) of the user's device. * `countryCode` (string): the country
-        /// or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
-        /// for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.).
-        /// * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
+        /// user's device. * `deviceModel` (string): unique identifier of the user's device model. * `deviceBrand`
+        /// (string): unique identifier of the user's device brand. * `deviceType` (string): the type (also known as
+        /// form factor) of the user's device. * `countryCode` (string): the country or region of the user's device
+        /// based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). *
+        /// `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake`
+        /// (string): Make of the device's primary system-on-chip, e.g., Samsung.
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
         /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
@@ -2931,11 +2937,12 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         /// <summary>
         /// Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of Android
         /// that was running on the user's device. * `versionCode` (int64): version of the app that was running on the
-        /// user's device. * `deviceModel` (string): unique identifier of the user's device model. * `deviceType`
-        /// (string): the type (also known as form factor) of the user's device. * `countryCode` (string): the country
-        /// or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
-        /// for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.).
-        /// * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
+        /// user's device. * `deviceModel` (string): unique identifier of the user's device model. * `deviceBrand`
+        /// (string): unique identifier of the user's device brand. * `deviceType` (string): the type (also known as
+        /// form factor) of the user's device. * `countryCode` (string): the country or region of the user's device
+        /// based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). *
+        /// `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake`
+        /// (string): Make of the device's primary system-on-chip, e.g., Samsung.
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
         /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
@@ -3037,11 +3044,12 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         /// <summary>
         /// Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of Android
         /// that was running on the user's device. * `versionCode` (int64): version of the app that was running on the
-        /// user's device. * `deviceModel` (string): unique identifier of the user's device model. * `deviceType`
-        /// (string): the type (also known as form factor) of the user's device. * `countryCode` (string): the country
-        /// or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
-        /// for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.).
-        /// * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
+        /// user's device. * `deviceModel` (string): unique identifier of the user's device model. * `deviceBrand`
+        /// (string): unique identifier of the user's device brand. * `deviceType` (string): the type (also known as
+        /// form factor) of the user's device. * `countryCode` (string): the country or region of the user's device
+        /// based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). *
+        /// `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake`
+        /// (string): Make of the device's primary system-on-chip, e.g., Samsung.
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
         /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
@@ -3136,11 +3144,12 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         /// <summary>
         /// Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of Android
         /// that was running on the user's device. * `versionCode` (int64): version of the app that was running on the
-        /// user's device. * `deviceModel` (string): unique identifier of the user's device model. * `deviceType`
-        /// (string): the type (also known as form factor) of the user's device. * `countryCode` (string): the country
-        /// or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US
-        /// for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.).
-        /// * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
+        /// user's device. * `deviceModel` (string): unique identifier of the user's device model. * `deviceBrand`
+        /// (string): unique identifier of the user's device brand. * `deviceType` (string): the type (also known as
+        /// form factor) of the user's device. * `countryCode` (string): the country or region of the user's device
+        /// based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). *
+        /// `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake`
+        /// (string): Make of the device's primary system-on-chip, e.g., Samsung.
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
         /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
@@ -3285,11 +3294,12 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
     /// multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the
     /// magnitude of the value. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was
     /// running on the user's device. * `versionCode` (int64): version of the app that was running on the user's device.
-    /// * `deviceModel` (string): unique identifier of the user's device model. * `deviceType` (string): the type (also
-    /// known as form factor) of the user's device. * `countryCode` (string): the country or region of the user's device
-    /// based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). *
-    /// `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string):
-    /// Make of the device's primary system-on-chip, e.g., Samsung.
+    /// * `deviceModel` (string): unique identifier of the user's device model. * `deviceBrand` (string): unique
+    /// identifier of the user's device brand. * `deviceType` (string): the type (also known as form factor) of the
+    /// user's device. * `countryCode` (string): the country or region of the user's device based on their IP address,
+    /// represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the
+    /// device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary
+    /// system-on-chip, e.g., Samsung.
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
     /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
@@ -3333,11 +3343,11 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
     /// `startType` (string): the type of start that was measured. Valid types are `HOT`, `WARM` and `COLD`. **Supported
     /// dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device. *
     /// `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string):
-    /// unique identifier of the user's device model. * `deviceType` (string): the type (also known as form factor) of
-    /// the user's device. * `countryCode` (string): the country or region of the user's device based on their IP
-    /// address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64):
-    /// RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary
-    /// system-on-chip, e.g., Samsung.
+    /// unique identifier of the user's device model. * `deviceBrand` (string): unique identifier of the user's device
+    /// brand. * `deviceType` (string): the type (also known as form factor) of the user's device. * `countryCode`
+    /// (string): the country or region of the user's device based on their IP address, represented as a 2-letter
+    /// ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets
+    /// (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
     /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
@@ -3382,10 +3392,11 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
     /// 1,000,000, depending on the magnitude of the value. **Supported dimensions:** * `apiLevel` (string): the API
     /// level of Android that was running on the user's device. * `versionCode` (int64): version of the app that was
     /// running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. *
-    /// `deviceType` (string): the type (also known as form factor) of the user's device. * `countryCode` (string): the
-    /// country or region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g.
-    /// US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). *
-    /// `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
+    /// `deviceBrand` (string): unique identifier of the user's device brand. * `deviceType` (string): the type (also
+    /// known as form factor) of the user's device. * `countryCode` (string): the country or region of the user's device
+    /// based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). *
+    /// `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string):
+    /// Make of the device's primary system-on-chip, e.g., Samsung.
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
     /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make

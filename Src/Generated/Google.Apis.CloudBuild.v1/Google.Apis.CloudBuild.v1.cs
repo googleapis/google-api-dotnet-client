@@ -6670,6 +6670,14 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string RepoType { get; set; }
 
         /// <summary>
+        /// The fully qualified resource name of the Repo API repository. Either uri or repository can be specified. If
+        /// unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to
+        /// read the specified path.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repository")]
+        public virtual string Repository { get; set; }
+
+        /// <summary>
         /// The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the filename (optional).
         /// This field respects the same syntax/resolution as described here: https://git-scm.com/docs/gitrevisions If
         /// unspecified, the revision from which the trigger invocation originated is assumed to be the revision from
@@ -7038,6 +7046,13 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// <summary>See RepoType below.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repoType")]
         public virtual string RepoType { get; set; }
+
+        /// <summary>
+        /// The qualified resource name of the Repo API repository Either uri or repository can be specified and is
+        /// required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repository")]
+        public virtual string Repository { get; set; }
 
         /// <summary>The URI of the repo. Either uri or repository can be specified and is required.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]

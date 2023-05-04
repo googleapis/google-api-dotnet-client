@@ -964,7 +964,7 @@
    }
   }
  },
- "revision": "20230426",
+ "revision": "20230502",
  "rootUrl": "https://serviceusage.googleapis.com/",
  "schemas": {
   "AdminQuotaPolicy": {
@@ -3382,7 +3382,8 @@
       "PHOTOS",
       "STREET_VIEW",
       "SHOPPING",
-      "GEO"
+      "GEO",
+      "GENERATIVE_AI"
      ],
      "enumDescriptions": [
       "Not useful.",
@@ -3391,7 +3392,8 @@
       "Photos Org.",
       "Street View Org.",
       "Shopping Org.",
-      "Geo Org."
+      "Geo Org.",
+      "Generative AI - https://developers.generativeai.google"
      ],
      "type": "string"
     },

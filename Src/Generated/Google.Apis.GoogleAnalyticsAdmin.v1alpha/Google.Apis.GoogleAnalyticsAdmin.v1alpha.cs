@@ -4421,7 +4421,328 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             public DataStreamsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                EventCreateRules = new EventCreateRulesResource(service);
                 MeasurementProtocolSecrets = new MeasurementProtocolSecretsResource(service);
+            }
+
+            /// <summary>Gets the EventCreateRules resource.</summary>
+            public virtual EventCreateRulesResource EventCreateRules { get; }
+
+            /// <summary>The "eventCreateRules" collection of methods.</summary>
+            public class EventCreateRulesResource
+            {
+                private const string Resource = "eventCreateRules";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public EventCreateRulesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates an EventCreateRule.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Example format: properties/123/dataStreams/456</param>
+                public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEventCreateRule body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates an EventCreateRule.</summary>
+                public class CreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEventCreateRule>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEventCreateRule body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Example format: properties/123/dataStreams/456</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEventCreateRule Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/eventCreateRules";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^properties/[^/]+/dataStreams/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Deletes an EventCreateRule.</summary>
+                /// <param name="name">
+                /// Required. Example format: properties/123/dataStreams/456/eventCreateRules/789
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes an EventCreateRule.</summary>
+                public class DeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Example format: properties/123/dataStreams/456/eventCreateRules/789</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^properties/[^/]+/dataStreams/[^/]+/eventCreateRules/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lookup for a single EventCreateRule.</summary>
+                /// <param name="name">
+                /// Required. The name of the EventCreateRule to get. Example format:
+                /// properties/123/dataStreams/456/eventCreateRules/789
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Lookup for a single EventCreateRule.</summary>
+                public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEventCreateRule>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the EventCreateRule to get. Example format:
+                    /// properties/123/dataStreams/456/eventCreateRules/789
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^properties/[^/]+/dataStreams/[^/]+/eventCreateRules/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists EventCreateRules on a web data stream.</summary>
+                /// <param name="parent">Required. Example format: properties/123/dataStreams/456</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists EventCreateRules on a web data stream.</summary>
+                public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListEventCreateRulesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Example format: properties/123/dataStreams/456</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The maximum number of resources to return. If unspecified, at most 50 resources will be
+                    /// returned. The maximum value is 200 (higher values will be coerced to the maximum).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous `ListEventCreateRules` call. Provide this to retrieve the
+                    /// subsequent page. When paginating, all other parameters provided to `ListEventCreateRules` must
+                    /// match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/eventCreateRules";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^properties/[^/]+/dataStreams/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates an EventCreateRule.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. Resource name for this EventCreateRule resource. Format:
+                /// properties/{property}/dataStreams/{data_stream}/eventCreateRules
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEventCreateRule body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates an EventCreateRule.</summary>
+                public class PatchRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEventCreateRule>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEventCreateRule body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. Resource name for this EventCreateRule resource. Format:
+                    /// properties/{property}/dataStreams/{data_stream}/eventCreateRules
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. The list of fields to be updated. Field names must be in snake case (e.g.,
+                    /// "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one
+                    /// path with the string "*" to match all fields.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEventCreateRule Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^properties/[^/]+/dataStreams/[^/]+/eventCreateRules/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the MeasurementProtocolSecrets resource.</summary>
@@ -10141,6 +10462,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enhancedMeasurementSettings")]
         public virtual GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings EnhancedMeasurementSettings { get; set; }
 
+        /// <summary>A snapshot of an EventCreateRule resource in change history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventCreateRule")]
+        public virtual GoogleAnalyticsAdminV1alphaEventCreateRule EventCreateRule { get; set; }
+
         /// <summary>A snapshot of an ExpandedDataSet resource in change history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expandedDataSet")]
         public virtual GoogleAnalyticsAdminV1alphaExpandedDataSet ExpandedDataSet { get; set; }
@@ -10973,6 +11298,53 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// An Event Create Rule defines conditions that will trigger the creation of an entirely new event based upon
+    /// matched criteria of a source event. Additional mutations of the parameters from the source event can be defined.
+    /// Unlike Event Edit rules, Event Creation Rules have no defined order. They will all be run independently. Event
+    /// Edit and Event Create rules can't be used to modify an event created from an Event Create rule.
+    /// </summary>
+    public class GoogleAnalyticsAdminV1alphaEventCreateRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the new event to be created. This value must: * be less than 40 characters * consist
+        /// only of letters, digits or _ (underscores) * start with a letter
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationEvent")]
+        public virtual string DestinationEvent { get; set; }
+
+        /// <summary>
+        /// Required. Must have at least one condition, and can have up to 10 max. Conditions on the source event must
+        /// match for this rule to be applied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventConditions")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaMatchingCondition> EventConditions { get; set; }
+
+        /// <summary>
+        /// Output only. Resource name for this EventCreateRule resource. Format:
+        /// properties/{property}/dataStreams/{data_stream}/eventCreateRules
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Parameter mutations define parameter behavior on the new event, and are applied in order. A maximum of 20
+        /// mutations can be applied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameterMutations")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaParameterMutation> ParameterMutations { get; set; }
+
+        /// <summary>
+        /// If true, the source parameters are copied to the new event. If false, or unset, all non-internal parameters
+        /// are not copied from the source event. Parameter mutations are applied after the parameters have been copied.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceCopyParameters")]
+        public virtual System.Nullable<bool> SourceCopyParameters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A resource message representing a GA4 ExpandedDataSet.</summary>
     public class GoogleAnalyticsAdminV1alphaExpandedDataSet : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11552,6 +11924,24 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListEventCreateRules RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaListEventCreateRulesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of EventCreateRules. These will be ordered stably, but in an arbitrary order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventCreateRules")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaEventCreateRule> EventCreateRules { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ListExpandedDataSets RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11679,6 +12069,39 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Defines a condition for when an Event Edit or Event Creation rule applies to an event.</summary>
+    public class GoogleAnalyticsAdminV1alphaMatchingCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The type of comparison to be applied to the value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comparisonType")]
+        public virtual string ComparisonType { get; set; }
+
+        /// <summary>
+        /// Required. The name of the field that is compared against for the condition. If 'event_name' is specified
+        /// this condition will apply to the name of the event. Otherwise the condition will apply to a parameter with
+        /// the specified name. This value cannot contain spaces.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual string Field { get; set; }
+
+        /// <summary>
+        /// Whether or not the result of the comparison should be negated. For example, if `negated` is true, then
+        /// 'equals' comparisons would function as 'not equals'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("negated")]
+        public virtual System.Nullable<bool> Negated { get; set; }
+
+        /// <summary>
+        /// Required. The value being compared against for this condition. The runtime implementation may perform type
+        /// coercion of this value to evaluate this condition based on the type of the parameter value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A secret value used for sending hits to Measurement Protocol.</summary>
     public class GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11714,6 +12137,30 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>Integer value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("int64Value")]
         public virtual System.Nullable<long> Int64Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines an event parameter to mutate.</summary>
+    public class GoogleAnalyticsAdminV1alphaParameterMutation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the parameter to mutate. This value must: * be less than 40 characters. * be unique
+        /// across across all mutations within the rule * consist only of letters, digits or _ (underscores) For event
+        /// edit rules, the name may also be set to 'event_name' to modify the event_name in place.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
+        public virtual string Parameter { get; set; }
+
+        /// <summary>
+        /// Required. The value mutation to perform. * Must be less than 100 characters. * To specify a constant value
+        /// for the param, use the value's string. * To copy value from another parameter, use syntax like
+        /// "[[other_parameter]]" For more details, see this [help center
+        /// article](https://support.google.com/analytics/answer/10085872?hl=en#modify-an-event&amp;amp;zippy=%2Cin-this-article%2Cmodify-parameters).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameterValue")]
+        public virtual string ParameterValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
