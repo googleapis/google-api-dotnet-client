@@ -2589,8 +2589,9 @@ namespace Google.Apis.CloudAsset.v1
 
             /// <summary>
             /// Optional. The page size for search result pagination. Page size is capped at 500 even if a larger value
-            /// is given. If set to zero, server will pick an appropriate default. Returned results may be fewer than
-            /// requested. When this happens, there could be more results as long as `next_page_token` is returned.
+            /// is given. If set to zero or a negative value, server will pick an appropriate default. Returned results
+            /// may be fewer than requested. When this happens, there could be more results as long as `next_page_token`
+            /// is returned.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }
@@ -2766,8 +2767,9 @@ namespace Google.Apis.CloudAsset.v1
 
             /// <summary>
             /// Optional. The page size for search result pagination. Page size is capped at 500 even if a larger value
-            /// is given. If set to zero, server will pick an appropriate default. Returned results may be fewer than
-            /// requested. When this happens, there could be more results as long as `next_page_token` is returned.
+            /// is given. If set to zero or a negative value, server will pick an appropriate default. Returned results
+            /// may be fewer than requested. When this happens, there could be more results as long as `next_page_token`
+            /// is returned.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<int> PageSize { get; set; }

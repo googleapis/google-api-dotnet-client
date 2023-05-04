@@ -6010,16 +6010,16 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     }
 
     /// <summary>
-    /// Represents a link between a Merchant Center account and a branch. Once a link is established, products from the
-    /// linked merchant center account will be streamed to the linked branch.
+    /// Represents a link between a Merchant Center account and a branch. After a link is established, products from the
+    /// linked Merchant Center account are streamed to the linked branch.
     /// </summary>
     public class GoogleCloudRetailV2alphaMerchantCenterAccountLink : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The branch id (e.g. 0/1/2) within the catalog that products from merchant_center_account_id are
+        /// Required. The branch ID (e.g. 0/1/2) within the catalog that products from merchant_center_account_id are
         /// streamed to. When updating this field, an empty value will use the currently configured default branch.
-        /// However, changing the default branch later on won't change the linked branch here. A single branch id can
-        /// only have one linked merchant center account id.
+        /// However, changing the default branch later on won't change the linked branch here. A single branch ID can
+        /// only have one linked Merchant Center account ID.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("branchId")]
         public virtual string BranchId { get; set; }
@@ -6872,8 +6872,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// The Merchant Center linking configuration. Once a link is added, the data stream from Merchant Center to
-        /// Cloud Retail will be enabled automatically. The requester must have access to the merchant center account in
+        /// The Merchant Center linking configuration. After a link is added, the data stream from Merchant Center to
+        /// Cloud Retail will be enabled automatically. The requester must have access to the Merchant Center account in
         /// order to make changes to this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantCenterLinkingConfig")]
@@ -7955,16 +7955,16 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     }
 
     /// <summary>
-    /// Represents a link between a Merchant Center account and a branch. Once a link is established, products from the
-    /// linked merchant center account will be streamed to the linked branch.
+    /// Represents a link between a Merchant Center account and a branch. After a link is established, products from the
+    /// linked Merchant Center account are streamed to the linked branch.
     /// </summary>
     public class GoogleCloudRetailV2betaMerchantCenterAccountLink : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The branch id (e.g. 0/1/2) within the catalog that products from merchant_center_account_id are
+        /// Required. The branch ID (e.g. 0/1/2) within the catalog that products from merchant_center_account_id are
         /// streamed to. When updating this field, an empty value will use the currently configured default branch.
-        /// However, changing the default branch later on won't change the linked branch here. A single branch id can
-        /// only have one linked merchant center account id.
+        /// However, changing the default branch later on won't change the linked branch here. A single branch ID can
+        /// only have one linked Merchant Center account ID.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("branchId")]
         public virtual string BranchId { get; set; }
@@ -8059,8 +8059,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
     }
 
     /// <summary>
-    /// Represents a link between a Merchant Center account and a branch. Once a link is established, products from the
-    /// linked merchant center account will be streamed to the linked branch.
+    /// Represents a link between a Merchant Center account and a branch. After a link is established, products from the
+    /// linked Merchant Center account are streamed to the linked branch.
     /// </summary>
     public class GoogleCloudRetailV2betaMerchantCenterLink : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8068,7 +8068,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// The branch ID (e.g. 0/1/2) within this catalog that products from merchant_center_account_id are streamed
         /// to. When updating this field, an empty value will use the currently configured default branch. However,
         /// changing the default branch later on won't change the linked branch here. A single branch ID can only have
-        /// one linked merchant center account ID.
+        /// one linked Merchant Center account ID.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("branchId")]
         public virtual string BranchId { get; set; }
@@ -8099,7 +8099,7 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         public virtual string LanguageCode { get; set; }
 
         /// <summary>
-        /// Required. The linked [Merchant center account
+        /// Required. The linked [Merchant Center account
         /// ID](https://developers.google.com/shopping-content/guides/accountstatuses). The account must be a standalone
         /// account or a sub-account of a MCA.
         /// </summary>

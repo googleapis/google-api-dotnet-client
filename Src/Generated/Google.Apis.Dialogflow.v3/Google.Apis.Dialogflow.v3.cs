@@ -10350,7 +10350,7 @@ namespace Google.Apis.Dialogflow.v3.Data
     {
         /// <summary>
         /// Required. The Google Cloud Storage URI for the exported objects. A URI is of the form:
-        /// gs://bucket/object-name-or-prefix Whether a full object name, or just a prefix, its usage depends on the
+        /// `gs://bucket/object-name-or-prefix` Whether a full object name, or just a prefix, its usage depends on the
         /// Dialogflow operation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
@@ -10621,7 +10621,7 @@ namespace Google.Apis.Dialogflow.v3.Data
     /// <summary>The agent's intent.</summary>
     public class GoogleCloudDialogflowCxV3IntentCoverageIntent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether or not the intent is covered by at least one of the agent's test cases.</summary>
+        /// <summary>Whether the intent is covered by at least one of the agent's test cases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("covered")]
         public virtual System.Nullable<bool> Covered { get; set; }
 
@@ -11412,7 +11412,7 @@ namespace Google.Apis.Dialogflow.v3.Data
     /// <summary>
     /// Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent
     /// query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to
-    /// be triggered.
+    /// be triggered. 5. DTMF digits to invoke an intent and fill in parameter value.
     /// </summary>
     public class GoogleCloudDialogflowCxV3QueryInput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12542,12 +12542,16 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Settings related to speech generating.</summary>
+    /// <summary>Settings related to speech synthesizing.</summary>
     public class GoogleCloudDialogflowCxV3TextToSpeechSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Configuration of how speech should be synthesized, mapping from language
-        /// (https://dialogflow.com/docs/reference/language) to SynthesizeSpeechConfig.
+        /// (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings
+        /// affect: - The synthesize configuration used in [phone
+        /// gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway). - You no longer
+        /// need to specify OutputAudioConfig.synthesize_speech_config when invoking API calls. Your agent will use the
+        /// pre-configured options for speech synthesizing.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("synthesizeSpeechConfigs")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDialogflowCxV3SynthesizeSpeechConfig> SynthesizeSpeechConfigs { get; set; }
@@ -12584,7 +12588,7 @@ namespace Google.Apis.Dialogflow.v3.Data
     /// <summary>A transition in a page.</summary>
     public class GoogleCloudDialogflowCxV3TransitionCoverageTransition : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether or not the transition is covered by at least one of the agent's test cases.</summary>
+        /// <summary>Whether the transition is covered by at least one of the agent's test cases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("covered")]
         public virtual System.Nullable<bool> Covered { get; set; }
 
@@ -12746,7 +12750,7 @@ namespace Google.Apis.Dialogflow.v3.Data
     /// <summary>A transition coverage in a transition route group.</summary>
     public class GoogleCloudDialogflowCxV3TransitionRouteGroupCoverageCoverageTransition : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether or not the transition route is covered by at least one of the agent's test cases.</summary>
+        /// <summary>Whether the transition route is covered by at least one of the agent's test cases.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("covered")]
         public virtual System.Nullable<bool> Covered { get; set; }
 
@@ -14393,7 +14397,7 @@ namespace Google.Apis.Dialogflow.v3.Data
     /// <summary>
     /// Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent
     /// query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to
-    /// be triggered.
+    /// be triggered. 5. DTMF digits to invoke an intent and fill in parameter value.
     /// </summary>
     public class GoogleCloudDialogflowCxV3beta1QueryInput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19805,7 +19809,7 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A resource that represents Google Cloud Platform location.</summary>
+    /// <summary>A resource that represents a Google Cloud location.</summary>
     public class GoogleCloudLocationLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>

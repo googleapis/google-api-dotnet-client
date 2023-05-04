@@ -6068,15 +6068,15 @@ namespace Google.Apis.Cloudchannel.v1.Data
     public class GoogleCloudChannelV1DateRange : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The latest invoice date (exclusive). If your product uses monthly invoices, and this value is not the
-        /// beginning of a month, this will adjust the date to the first day of the following month.
+        /// The latest invoice date (inclusive). If this value is not the last day of a month, this will move it forward
+        /// to the last day of the given month.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invoiceEndDate")]
         public virtual GoogleTypeDate InvoiceEndDate { get; set; }
 
         /// <summary>
-        /// The earliest invoice date (inclusive). If your product uses monthly invoices, and this value is not the
-        /// beginning of a month, this will adjust the date to the first day of the given month.
+        /// The earliest invoice date (inclusive). If this value is not the first day of a month, this will move it back
+        /// to the first day of the given month.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invoiceStartDate")]
         public virtual GoogleTypeDate InvoiceStartDate { get; set; }
@@ -6299,6 +6299,12 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
         public virtual string PageToken { get; set; }
+
+        /// <summary>
+        /// Optional. List of keys specifying which report partitions to return. If empty, returns all partitions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionKeys")]
+        public virtual System.Collections.Generic.IList<string> PartitionKeys { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7407,6 +7413,12 @@ namespace Google.Apis.Cloudchannel.v1.Data
     /// <summary>A row of report values.</summary>
     public class GoogleCloudChannelV1Row : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The key for the partition this row belongs to. This field is empty if the report is not partitioned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partitionKey")]
+        public virtual string PartitionKey { get; set; }
+
         /// <summary>The list of values in the row.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<GoogleCloudChannelV1ReportValue> Values { get; set; }
@@ -7856,15 +7868,15 @@ namespace Google.Apis.Cloudchannel.v1.Data
     public class GoogleCloudChannelV1alpha1DateRange : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The latest invoice date (exclusive). If your product uses monthly invoices, and this value is not the
-        /// beginning of a month, this will adjust the date to the first day of the following month.
+        /// The latest invoice date (inclusive). If this value is not the last day of a month, this will move it forward
+        /// to the last day of the given month.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invoiceEndDate")]
         public virtual GoogleTypeDate InvoiceEndDate { get; set; }
 
         /// <summary>
-        /// The earliest invoice date (inclusive). If your product uses monthly invoices, and this value is not the
-        /// beginning of a month, this will adjust the date to the first day of the given month.
+        /// The earliest invoice date (inclusive). If this value is not the first day of a month, this will move it back
+        /// to the first day of the given month.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invoiceStartDate")]
         public virtual GoogleTypeDate InvoiceStartDate { get; set; }

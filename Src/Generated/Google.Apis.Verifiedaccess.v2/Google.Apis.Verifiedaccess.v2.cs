@@ -352,16 +352,196 @@ namespace Google.Apis.Verifiedaccess.v2.Data
     /// <summary>Result message for VerifiedAccess.GenerateChallenge.</summary>
     public class Challenge : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Challenge generated with the old signing key, the bytes representation of SignedData (this will only be
-        /// present during key rotation).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("alternativeChallenge")]
-        public virtual string AlternativeChallenge { get; set; }
-
         /// <summary>Generated challenge, the bytes representation of SignedData.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("challenge")]
         public virtual string ChallengeValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Properties of the CrowdStrike agent installed on a device.</summary>
+    public class CrowdStrikeAgent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Agent ID of the Crowdstrike agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentId")]
+        public virtual string AgentId { get; set; }
+
+        /// <summary>The Customer ID to which the agent belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
+        public virtual string CustomerId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The device signals as reported by Chrome.</summary>
+    public class DeviceSignals : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Value of the AllowScreenLock policy on the device. See
+        /// https://chromeenterprise.google/policies/?policy=AllowScreenLock for more details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowScreenLock")]
+        public virtual System.Nullable<bool> AllowScreenLock { get; set; }
+
+        /// <summary>
+        /// Current version of the Chrome browser which generated this set of signals. Example value: "107.0.5286.0".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("browserVersion")]
+        public virtual string BrowserVersion { get; set; }
+
+        /// <summary>
+        /// Whether Chrome's built-in DNS client is used. The OS DNS client is otherwise used. This value may be
+        /// controlled by an enterprise policy: https://chromeenterprise.google/policies/#BuiltInDnsClientEnabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("builtInDnsClientEnabled")]
+        public virtual System.Nullable<bool> BuiltInDnsClientEnabled { get; set; }
+
+        /// <summary>Whether access to the Chrome Remote Desktop application is blocked via a policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chromeRemoteDesktopAppBlocked")]
+        public virtual System.Nullable<bool> ChromeRemoteDesktopAppBlocked { get; set; }
+
+        /// <summary>Crowdstrike agent properties installed on the device, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("crowdStrikeAgent")]
+        public virtual CrowdStrikeAgent CrowdStrikeAgent { get; set; }
+
+        /// <summary>
+        /// Affiliation IDs of the organizations that are affiliated with the organization that is currently managing
+        /// the device. When the sets of device and profile affiliation IDs overlap, it means that the organizations
+        /// managing the device and user are affiliated. To learn more about user affiliation, visit
+        /// https://support.google.com/chrome/a/answer/12801245?ref_topic=9027936.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceAffiliationIds")]
+        public virtual System.Collections.Generic.IList<string> DeviceAffiliationIds { get; set; }
+
+        /// <summary>Enrollment domain of the customer which is currently managing the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceEnrollmentDomain")]
+        public virtual string DeviceEnrollmentDomain { get; set; }
+
+        /// <summary>The name of the device's manufacturer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceManufacturer")]
+        public virtual string DeviceManufacturer { get; set; }
+
+        /// <summary>The name of the device's model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceModel")]
+        public virtual string DeviceModel { get; set; }
+
+        /// <summary>The encryption state of the disk. On ChromeOS, the main disk is always ENCRYPTED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskEncryption")]
+        public virtual string DiskEncryption { get; set; }
+
+        /// <summary>The display name of the device, as defined by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Hostname of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
+        public virtual string Hostname { get; set; }
+
+        /// <summary>International Mobile Equipment Identity (IMEI) of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imei")]
+        public virtual System.Collections.Generic.IList<string> Imei { get; set; }
+
+        /// <summary>MAC addresses of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("macAddresses")]
+        public virtual System.Collections.Generic.IList<string> MacAddresses { get; set; }
+
+        /// <summary>Mobile Equipment Identifier (MEID) of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meid")]
+        public virtual System.Collections.Generic.IList<string> Meid { get; set; }
+
+        /// <summary>The type of the Operating System currently running on the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operatingSystem")]
+        public virtual string OperatingSystem { get; set; }
+
+        /// <summary>
+        /// The state of the OS level firewall. On ChromeOS, the value will always be ENABLED on regular devices and
+        /// UNKNOWN on devices in developer mode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osFirewall")]
+        public virtual string OsFirewall { get; set; }
+
+        /// <summary>
+        /// The current version of the Operating System. On Windows and linux, the value will also include the security
+        /// patch information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
+        public virtual string OsVersion { get; set; }
+
+        /// <summary>
+        /// Whether the Password Protection Warning feature is enabled or not. Password protection alerts users when
+        /// they reuse their protected password on potentially suspicious sites. This setting is controlled by an
+        /// enterprise policy: https://chromeenterprise.google/policies/#PasswordProtectionWarningTrigger. Note that the
+        /// policy unset does not have the same effects as having the policy explicitly set to
+        /// `PASSWORD_PROTECTION_OFF`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passwordProtectionWarningTrigger")]
+        public virtual string PasswordProtectionWarningTrigger { get; set; }
+
+        /// <summary>
+        /// Affiliation IDs of the organizations that are affiliated with the organization that is currently managing
+        /// the Chrome Profile’s user or ChromeOS user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileAffiliationIds")]
+        public virtual System.Collections.Generic.IList<string> ProfileAffiliationIds { get; set; }
+
+        /// <summary>
+        /// Whether Enterprise-grade (i.e. custom) unsafe URL scanning is enabled or not. This setting may be controlled
+        /// by an enterprise policy: https://chromeenterprise.google/policies/#EnterpriseRealTimeUrlCheckMode
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("realtimeUrlCheckMode")]
+        public virtual string RealtimeUrlCheckMode { get; set; }
+
+        /// <summary>
+        /// Safe Browsing Protection Level. That setting may be controlled by an enterprise policy:
+        /// https://chromeenterprise.google/policies/#SafeBrowsingProtectionLevel.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safeBrowsingProtectionLevel")]
+        public virtual string SafeBrowsingProtectionLevel { get; set; }
+
+        /// <summary>
+        /// The state of the Screen Lock password protection. On ChromeOS, this value will always be ENABLED as there is
+        /// not way to disable requiring a password or pin when unlocking the device.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenLockSecured")]
+        public virtual string ScreenLockSecured { get; set; }
+
+        /// <summary>Whether the device's startup software has its Secure Boot feature enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secureBootMode")]
+        public virtual string SecureBootMode { get; set; }
+
+        /// <summary>The serial number of the device. On Windows, this represents the BIOS's serial number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
+        public virtual string SerialNumber { get; set; }
+
+        /// <summary>
+        /// Whether the Site Isolation (a.k.a Site Per Process) setting is enabled. That setting may be controlled by an
+        /// enterprise policy: https://chromeenterprise.google/policies/#SitePerProcess
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("siteIsolationEnabled")]
+        public virtual System.Nullable<bool> SiteIsolationEnabled { get; set; }
+
+        /// <summary>
+        /// List of the addesses of all OS level DNS servers configured in the device's network settings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("systemDnsServers")]
+        public virtual System.Collections.Generic.IList<string> SystemDnsServers { get; set; }
+
+        /// <summary>
+        /// Whether Chrome is blocking third-party software injection or not. This setting may be controlled by an
+        /// enterprise policy: https://chromeenterprise.google/policies/?policy=ThirdPartyBlockingEnabled
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyBlockingEnabled")]
+        public virtual System.Nullable<bool> ThirdPartyBlockingEnabled { get; set; }
+
+        /// <summary>Windows domain that the current machine has joined.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("windowsMachineDomain")]
+        public virtual string WindowsMachineDomain { get; set; }
+
+        /// <summary>Windows domain for the current OS user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("windowsUserDomain")]
+        public virtual string WindowsUserDomain { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -414,9 +594,15 @@ namespace Google.Apis.Verifiedaccess.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("devicePermanentId")]
         public virtual string DevicePermanentId { get; set; }
 
-        /// <summary>Device signal in json string representation.</summary>
+        /// <summary>
+        /// Deprecated. Device signal in json string representation. Prefer using `device_signals` instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceSignal")]
         public virtual string DeviceSignal { get; set; }
+
+        /// <summary>Device signals.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceSignals")]
+        public virtual DeviceSignals DeviceSignals { get; set; }
 
         /// <summary>Device attested key trust level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyTrustLevel")]

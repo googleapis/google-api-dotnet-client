@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.NetworkSecurity.v1beta1 Client Library</Title>
-    <Version>1.60.0.3026</Version>
+    <Version>1.60.0.3031</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2023 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

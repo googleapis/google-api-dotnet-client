@@ -3173,7 +3173,7 @@ namespace Google.Apis.YouTube.v3
         /// <param name="moderationStatus">
         /// Specifies the requested moderation status. Note, comments can be in statuses, which are not available
         /// through this call. For example, this call does not allow to mark a comment as 'likely spam'. Valid values:
-        /// MODERATION_STATUS_PUBLISHED, MODERATION_STATUS_HELD_FOR_REVIEW, MODERATION_STATUS_REJECTED.
+        /// 'heldForReview', 'published' or 'rejected'.
         /// </param>
         public virtual SetModerationStatusRequest SetModerationStatus(Google.Apis.Util.Repeatable<string> id, SetModerationStatusRequest.ModerationStatusEnum moderationStatus)
         {
@@ -3198,7 +3198,7 @@ namespace Google.Apis.YouTube.v3
             /// <summary>
             /// Specifies the requested moderation status. Note, comments can be in statuses, which are not available
             /// through this call. For example, this call does not allow to mark a comment as 'likely spam'. Valid
-            /// values: MODERATION_STATUS_PUBLISHED, MODERATION_STATUS_HELD_FOR_REVIEW, MODERATION_STATUS_REJECTED.
+            /// values: 'heldForReview', 'published' or 'rejected'.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("moderationStatus", Google.Apis.Util.RequestParameterType.Query)]
             public virtual ModerationStatusEnum ModerationStatus { get; private set; }
@@ -3206,7 +3206,7 @@ namespace Google.Apis.YouTube.v3
             /// <summary>
             /// Specifies the requested moderation status. Note, comments can be in statuses, which are not available
             /// through this call. For example, this call does not allow to mark a comment as 'likely spam'. Valid
-            /// values: MODERATION_STATUS_PUBLISHED, MODERATION_STATUS_HELD_FOR_REVIEW, MODERATION_STATUS_REJECTED.
+            /// values: 'heldForReview', 'published' or 'rejected'.
             /// </summary>
             public enum ModerationStatusEnum
             {

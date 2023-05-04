@@ -19298,7 +19298,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>
     /// Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent
     /// query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to
-    /// be triggered.
+    /// be triggered. 5. DTMF digits to invoke an intent and fill in parameter value.
     /// </summary>
     public class GoogleCloudDialogflowCxV3QueryInput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -21354,7 +21354,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>
     /// Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent
     /// query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to
-    /// be triggered.
+    /// be triggered. 5. DTMF digits to invoke an intent and fill in parameter value.
     /// </summary>
     public class GoogleCloudDialogflowCxV3beta1QueryInput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -24708,7 +24708,8 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual object ClickTime { get; set; }
 
         /// <summary>
-        /// Indicates whether the answer/item was clicked by the human agent or not. Default to false.
+        /// Indicates whether the answer/item was clicked by the human agent or not. Default to false. For knowledge
+        /// search, the answer record is considered to be clicked if the answer was copied or any URI was clicked.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clicked")]
         public virtual System.Nullable<bool> Clicked { get; set; }
@@ -29971,7 +29972,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A resource that represents Google Cloud Platform location.</summary>
+    /// <summary>A resource that represents a Google Cloud location.</summary>
     public class GoogleCloudLocationLocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>

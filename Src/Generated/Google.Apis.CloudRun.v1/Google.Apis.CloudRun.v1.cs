@@ -6043,6 +6043,36 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now
+    /// only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data
+    /// is destroyed with it (it does not persist across sandbox runs).
+    /// </summary>
+    public class EmptyDirVolumeSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The medium on which the data is stored. The default is "" which means to use the node's default medium. Must
+        /// be an empty string (default) or Memory. More info:
+        /// https://kubernetes.io/docs/concepts/storage/volumes#emptydir +optional
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("medium")]
+        public virtual string Medium { get; set; }
+
+        /// <summary>
+        /// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium.
+        /// The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here
+        /// and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type:
+        /// https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which
+        /// means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir
+        /// +optional
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeLimit")]
+        public virtual string SizeLimit { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Not supported by Cloud Run. EnvFromSource represents the source of a set of ConfigMaps</summary>
     public class EnvFromSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8140,6 +8170,10 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>Not supported in Cloud Run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configMap")]
         public virtual ConfigMapVolumeSource ConfigMap { get; set; }
+
+        /// <summary>Ephemeral storage used as a shared volume.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emptyDir")]
+        public virtual EmptyDirVolumeSource EmptyDir { get; set; }
 
         /// <summary>Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
