@@ -7208,6 +7208,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredEnablePrivateEndpoint")]
         public virtual System.Nullable<bool> DesiredEnablePrivateEndpoint { get; set; }
 
+        /// <summary>The desired fleet configuration for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredFleet")]
+        public virtual Fleet DesiredFleet { get; set; }
+
         /// <summary>The desired config of Gateway API on this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredGatewayApiConfig")]
         public virtual GatewayAPIConfig DesiredGatewayApiConfig { get; set; }

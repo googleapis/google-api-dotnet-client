@@ -8665,7 +8665,7 @@ namespace Google.Apis.Dataproc.v1.Data
     {
         /// <summary>
         /// The per-package log levels for the driver. This may include "root" package name to configure rootLogger.
-        /// Examples: 'com.google = FATAL', 'root = INFO', 'org.apache = DEBUG'
+        /// Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driverLogLevels")]
         public virtual System.Collections.Generic.IDictionary<string, string> DriverLogLevels { get; set; }
@@ -8731,30 +8731,30 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A Dataproc OSS metric.</summary>
+    /// <summary>A Dataproc custom metric.</summary>
     public class Metric : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Specify one or more available OSS metrics
-        /// (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric
-        /// course (for the SPARK metric source, any Spark metric
+        /// Optional. Specify one or more Custom metrics
+        /// (https://cloud.google.com/dataproc/docs/guides/dataproc-metrics#custom_metrics) to collect for the metric
+        /// course (for the SPARK metric source (any Spark metric
         /// (https://spark.apache.org/docs/latest/monitoring.html#metrics) can be specified).Provide metrics in the
         /// following format: METRIC_SOURCE: INSTANCE:GROUP:METRIC Use camelcase as appropriate.Examples:
         /// yarn:ResourceManager:QueueMetrics:AppsCompleted spark:driver:DAGScheduler:job.allJobs
         /// sparkHistoryServer:JVM:Memory:NonHeapMemoryUsage.committed hiveserver2:JVM:Memory:NonHeapMemoryUsage.used
-        /// Notes: Only the specified overridden metrics will be collected for the metric source. For example, if one or
-        /// more spark:executive metrics are listed as metric overrides, other SPARK metrics will not be collected. The
-        /// collection of the default metrics for other OSS metric sources is unaffected. For example, if both SPARK
-        /// andd YARN metric sources are enabled, and overrides are provided for Spark metrics only, all default YARN
-        /// metrics will be collected.
+        /// Notes: Only the specified overridden metrics are collected for the metric source. For example, if one or
+        /// more spark:executive metrics are listed as metric overrides, other SPARK metrics are not collected. The
+        /// collection of the metrics for other enabled custom metric sources is unaffected. For example, if both SPARK
+        /// andd YARN metric sources are enabled, and overrides are provided for Spark metrics only, all YARN metrics
+        /// are collected.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricOverrides")]
         public virtual System.Collections.Generic.IList<string> MetricOverrides { get; set; }
 
         /// <summary>
-        /// Required. Default metrics are collected unless metricOverrides are specified for the metric source (see
-        /// Available OSS metrics (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) for
-        /// more information).
+        /// Required. A standard set of metrics is collected unless metricOverrides are specified for the metric source
+        /// (see Custom metrics (https://cloud.google.com/dataproc/docs/guides/dataproc-metrics#custom_metrics) for more
+        /// information).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricSource")]
         public virtual string MetricSource { get; set; }

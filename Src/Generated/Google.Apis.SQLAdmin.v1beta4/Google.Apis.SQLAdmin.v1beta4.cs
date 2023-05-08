@@ -952,7 +952,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             }
         }
 
-        /// <summary>Inserts a resource containing information about a database inside a Cloud SQL instance.</summary>
+        /// <summary>
+        /// Inserts a resource containing information about a database inside a Cloud SQL instance. **Note:** You can't
+        /// modify the default character set and collation.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">Project ID of the project that contains the instance.</param>
         /// <param name="instance">Database instance ID. This does not include the project ID.</param>
@@ -961,7 +964,10 @@ namespace Google.Apis.SQLAdmin.v1beta4
             return new InsertRequest(service, body, project, instance);
         }
 
-        /// <summary>Inserts a resource containing information about a database inside a Cloud SQL instance.</summary>
+        /// <summary>
+        /// Inserts a resource containing information about a database inside a Cloud SQL instance. **Note:** You can't
+        /// modify the default character set and collation.
+        /// </summary>
         public class InsertRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -4505,6 +4511,13 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pointInTime")]
         public virtual object PointInTime { get; set; }
 
+        /// <summary>
+        /// (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is
+        /// specified, clone to the same zone as the source instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preferredZone")]
+        public virtual string PreferredZone { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6370,6 +6383,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>This is always `sql#getDiskShrinkConfig`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>Additional message to customers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
 
         /// <summary>The minimum size to which a disk can be shrunk in GigaBytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minimalTargetSizeGb")]

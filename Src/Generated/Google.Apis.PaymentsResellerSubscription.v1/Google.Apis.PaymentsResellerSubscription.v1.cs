@@ -1689,6 +1689,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemFreeTrialEndTime")]
         public virtual object LineItemFreeTrialEndTime { get; set; }
 
+        /// <summary>Output only. A unique index of the subscription line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItemIndex")]
+        public virtual System.Nullable<int> LineItemIndex { get; set; }
+
         /// <summary>
         /// Optional. The promotions applied on the line item. It can be: - a free trial promotion, which overrides the
         /// subscription-level free trial promotion. - an introductory pricing promotion. When used as input in Create

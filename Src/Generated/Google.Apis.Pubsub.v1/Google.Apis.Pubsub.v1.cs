@@ -3614,6 +3614,23 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Configuration for writing message data in Avro format. Message payloads and metadata will be written to files as
+    /// an Avro binary.
+    /// </summary>
+    public class AvroConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// When true, write the subscription name, message_id, publish_time, attributes, and ordering_key as additional
+        /// fields in the output.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeMetadata")]
+        public virtual System.Nullable<bool> WriteMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for a BigQuery subscription.</summary>
     public class BigQueryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3701,6 +3718,63 @@ namespace Google.Apis.Pubsub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for a Cloud Storage subscription.</summary>
+    public class CloudStorageConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set, message data will be written to Cloud Storage in Avro format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("avroConfig")]
+        public virtual AvroConfig AvroConfig { get; set; }
+
+        /// <summary>
+        /// Required. User-provided name for the Cloud Storage bucket. The bucket must be created by the user. The
+        /// bucket name must be without any prefix like "gs://". See the [bucket naming requirements]
+        /// (https://cloud.google.com/storage/docs/buckets#naming).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
+        /// <summary>
+        /// User-provided prefix for Cloud Storage filename. See the [object naming
+        /// requirements](https://cloud.google.com/storage/docs/objects#naming).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filenamePrefix")]
+        public virtual string FilenamePrefix { get; set; }
+
+        /// <summary>
+        /// User-provided suffix for Cloud Storage filename. See the [object naming
+        /// requirements](https://cloud.google.com/storage/docs/objects#naming).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filenameSuffix")]
+        public virtual string FilenameSuffix { get; set; }
+
+        /// <summary>
+        /// The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10
+        /// GiB. The max_bytes limit may be exceeded in cases where messages are larger than the limit.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxBytes")]
+        public virtual System.Nullable<long> MaxBytes { get; set; }
+
+        /// <summary>
+        /// The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10
+        /// minutes, default 5 minutes. May not exceed the subscription's acknowledgement deadline.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDuration")]
+        public virtual object MaxDuration { get; set; }
+
+        /// <summary>
+        /// Output only. An output-only field that indicates whether or not the subscription can receive messages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>If set, message data will be written to Cloud Storage in text format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textConfig")]
+        public virtual TextConfig TextConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4485,8 +4559,8 @@ namespace Google.Apis.Pubsub.v1.Data
     }
 
     /// <summary>
-    /// A subscription resource. If none of `push_config` or `bigquery_config` is set, then the subscriber will pull and
-    /// ack messages using API methods. At most one of these fields may be set.
+    /// A subscription resource. If none of `push_config`, `bigquery_config`, or `cloud_storage_config` is set, then the
+    /// subscriber will pull and ack messages using API methods. At most one of these fields may be set.
     /// </summary>
     public class Subscription : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4511,6 +4585,12 @@ namespace Google.Apis.Pubsub.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryConfig")]
         public virtual BigQueryConfig BigqueryConfig { get; set; }
+
+        /// <summary>
+        /// If delivery to Google Cloud Storage is used with this subscription, this field is used to configure it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudStorageConfig")]
+        public virtual CloudStorageConfig CloudStorageConfig { get; set; }
 
         /// <summary>
         /// A policy that specifies the conditions for dead lettering messages in this subscription. If
@@ -4662,6 +4742,16 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration for writing message data in text format. Message payloads will be written to files as raw text,
+    /// separated by a newline.
+    /// </summary>
+    public class TextConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

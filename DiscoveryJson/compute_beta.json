@@ -20273,6 +20273,55 @@
       "https://www.googleapis.com/auth/compute"
      ]
     },
+    "setSecurityPolicy": {
+     "description": "Sets the Google Cloud Armor security policy for the specified backend service. For more information, see Google Cloud Armor Overview",
+     "flatPath": "projects/{project}/regions/{region}/backendServices/{backendService}/setSecurityPolicy",
+     "httpMethod": "POST",
+     "id": "compute.regionBackendServices.setSecurityPolicy",
+     "parameterOrder": [
+      "project",
+      "region",
+      "backendService"
+     ],
+     "parameters": {
+      "backendService": {
+       "description": "Name of the BackendService resource to which the security policy should be set. The name should conform to RFC1035.",
+       "location": "path",
+       "required": true,
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region scoping this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/backendServices/{backendService}/setSecurityPolicy",
+     "request": {
+      "$ref": "SecurityPolicyReference"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
     "testIamPermissions": {
      "description": "Returns permissions that a caller has on the specified resource.",
      "flatPath": "projects/{project}/regions/{region}/backendServices/{resource}/testIamPermissions",
@@ -36951,7 +37000,7 @@
    }
   }
  },
- "revision": "20230418",
+ "revision": "20230425",
  "rootUrl": "https://compute.googleapis.com/",
  "schemas": {
   "AWSV4Signature": {
@@ -40842,6 +40891,10 @@
    "description": "Per-instance properties to be set on individual instances. To be extended in the future.",
    "id": "BulkInsertInstanceResourcePerInstanceProperties",
    "properties": {
+    "hostname": {
+     "description": "Specifies the hostname of the instance. More details in: https://cloud.google.com/compute/docs/instances/custom-hostname-vm#naming_convention",
+     "type": "string"
+    },
     "name": {
      "description": "This field is only temporary. It will be removed. Do not use it.",
      "type": "string"
@@ -41057,7 +41110,7 @@
      "type": "string"
     },
     "splitSourceCommitment": {
-     "description": "Source commitment to be splitted into a new commitment.",
+     "description": "Source commitment to be split into a new commitment.",
      "type": "string"
     },
     "startTimestamp": {
@@ -46097,6 +46150,22 @@
     },
     "healthState": {
      "description": "Health state of the network endpoint determined based on the health checks configured.",
+     "enum": [
+      "DRAINING",
+      "HEALTHY",
+      "UNHEALTHY",
+      "UNKNOWN"
+     ],
+     "enumDescriptions": [
+      "Endpoint is being drained.",
+      "Endpoint is healthy.",
+      "Endpoint is unhealthy.",
+      "Health status of the endpoint is unknown."
+     ],
+     "type": "string"
+    },
+    "ipv6HealthState": {
+     "description": "Health state of the ipv6 network endpoint determined based on the health checks configured.",
      "enum": [
       "DRAINING",
       "HEALTHY",
@@ -53943,7 +54012,7 @@
      "type": "string"
     },
     "network": {
-     "description": "[Output Only] The URL of the network which the Network Attachment belongs to.",
+     "description": "[Output Only] The URL of the network which the Network Attachment belongs to. Practically it is inferred by fetching the network of the first subnetwork associated. Because it is required that all the subnetworks must be from the same network, it is assured that the Network Attachment belongs to the same network as all the subnetworks.",
      "type": "string"
     },
     "producerAcceptLists": {
@@ -54672,6 +54741,10 @@
     },
     "ipAddress": {
      "description": "Optional IPv4 address of network endpoint. The IP address must belong to a VM in Compute Engine (either the primary IP or as part of an aliased IP range). If the IP address is not specified, then the primary IP address for the VM instance in the network that the network endpoint group belongs to will be used.",
+     "type": "string"
+    },
+    "ipv6Address": {
+     "description": "Optional IPv6 address of network endpoint.",
      "type": "string"
     },
     "port": {
@@ -74137,7 +74210,7 @@
      "type": "integer"
     },
     "peerGatewayInterface": {
-     "description": "The peer gateway interface this VPN tunnel is connected to, the peer gateway could either be an external VPN gateway or GCP VPN gateway.",
+     "description": "The peer gateway interface this VPN tunnel is connected to, the peer gateway could either be an external VPN gateway or a Google Cloud VPN gateway.",
      "format": "uint32",
      "type": "integer"
     },
@@ -74149,7 +74222,7 @@
    "type": "object"
   },
   "VpnGatewayStatusVpnConnection": {
-   "description": "A VPN connection contains all VPN tunnels connected from this VpnGateway to the same peer gateway. The peer gateway could either be a external VPN gateway or GCP VPN gateway.",
+   "description": "A VPN connection contains all VPN tunnels connected from this VpnGateway to the same peer gateway. The peer gateway could either be an external VPN gateway or a Google Cloud VPN gateway.",
    "id": "VpnGatewayStatusVpnConnection",
    "properties": {
     "peerExternalGateway": {

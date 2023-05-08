@@ -864,18 +864,21 @@ namespace Google.Apis.Texttospeech.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("audioConfig")]
         public virtual AudioConfig AudioConfig { get; set; }
 
-        /// <summary>Required. The Synthesizer requires either plain text or SSML as input.</summary>
+        /// <summary>
+        /// Required. The Synthesizer requires either plain text or SSML as input. While Long Audio is in preview, SSML
+        /// is temporarily unsupported.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("input")]
         public virtual SynthesisInput Input { get; set; }
 
         /// <summary>
-        /// Specifies a Cloud Storage URI for the synthesis results. Must be specified in the format:
+        /// Required. Specifies a Cloud Storage URI for the synthesis results. Must be specified in the format:
         /// `gs://bucket_name/object_name`, and the bucket must already exist.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputGcsUri")]
         public virtual string OutputGcsUri { get; set; }
 
-        /// <summary>The desired voice of the synthesized audio.</summary>
+        /// <summary>Required. The desired voice of the synthesized audio.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("voice")]
         public virtual VoiceSelectionParams Voice { get; set; }
 

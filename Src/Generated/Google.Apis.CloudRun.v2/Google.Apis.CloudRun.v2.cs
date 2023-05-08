@@ -2677,6 +2677,10 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("command")]
         public virtual System.Collections.Generic.IList<string> Command { get; set; }
 
+        /// <summary>Container names which must start before this container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dependsOn")]
+        public virtual System.Collections.Generic.IList<string> DependsOn { get; set; }
+
         /// <summary>List of environment variables to set in the container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2EnvVar> Env { get; set; }
@@ -2745,6 +2749,35 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now
+    /// only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data
+    /// is destroyed with it (it does not persist across sandbox runs).
+    /// </summary>
+    public class GoogleCloudRunV2EmptyDirVolumeSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the
+        /// default will currently be backed by memory but could change over time. +optional
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("medium")]
+        public virtual string Medium { get; set; }
+
+        /// <summary>
+        /// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium.
+        /// The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here
+        /// and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type:
+        /// https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which
+        /// means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir
+        /// +optional
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeLimit")]
+        public virtual string SizeLimit { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4332,6 +4365,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudSqlInstance")]
         public virtual GoogleCloudRunV2CloudSqlInstance CloudSqlInstance { get; set; }
+
+        /// <summary>Ephemeral storage used as a shared volume.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emptyDir")]
+        public virtual GoogleCloudRunV2EmptyDirVolumeSource EmptyDir { get; set; }
 
         /// <summary>Required. Volume's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

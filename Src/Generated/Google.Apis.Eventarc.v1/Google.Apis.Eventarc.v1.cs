@@ -811,7 +811,7 @@ namespace Google.Apis.Eventarc.v1
                     public virtual string ChannelId { get; set; }
 
                     /// <summary>
-                    /// Required. If set, validate the request and preview the review, but do not post it.
+                    /// Optional. If set, validate the request and preview the review, but do not post it.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -884,7 +884,7 @@ namespace Google.Apis.Eventarc.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Required. If set, validate the request and preview the review, but do not post it.
+                    /// Optional. If set, validate the request and preview the review, but do not post it.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -1175,7 +1175,7 @@ namespace Google.Apis.Eventarc.v1
                     public virtual object UpdateMask { get; set; }
 
                     /// <summary>
-                    /// Required. If set, validate the request and preview the review, but do not post it.
+                    /// Optional. If set, validate the request and preview the review, but do not post it.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -1850,7 +1850,7 @@ namespace Google.Apis.Eventarc.v1
                     public virtual string TriggerId { get; set; }
 
                     /// <summary>
-                    /// Required. If set, validate the request and preview the review, but do not post it.
+                    /// Optional. If set, validate the request and preview the review, but do not post it.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -1937,7 +1937,7 @@ namespace Google.Apis.Eventarc.v1
                     public virtual string Etag { get; set; }
 
                     /// <summary>
-                    /// Required. If set, validate the request and preview the review, but do not post it.
+                    /// Optional. If set, validate the request and preview the review, but do not post it.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -2267,7 +2267,7 @@ namespace Google.Apis.Eventarc.v1
                     public virtual object UpdateMask { get; set; }
 
                     /// <summary>
-                    /// Required. If set, validate the request and preview the review, but do not post it.
+                    /// Optional. If set, validate the request and preview the review, but do not post it.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }

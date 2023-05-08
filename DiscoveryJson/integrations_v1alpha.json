@@ -3202,7 +3202,7 @@
    }
   }
  },
- "revision": "20230425",
+ "revision": "20230502",
  "rootUrl": "https://integrations.googleapis.com/",
  "schemas": {
   "CrmlogErrorCode": {
@@ -3700,6 +3700,10 @@
     },
     "locationName": {
      "description": "Location name of the key ring, e.g. \"us-west1\".",
+     "type": "string"
+    },
+    "serviceAccount": {
+     "description": "Optional. The service account used for authentication of this KMS key. If this is not provided, the service account in Client.clientSource will be used.",
      "type": "string"
     }
    },
@@ -5890,12 +5894,36 @@
      "enum": [
       "UNSPECIFIED_EXTERNAL_CATEGORY",
       "CORE",
-      "CONNECTORS"
+      "CONNECTORS",
+      "EXTERNAL_HTTP",
+      "EXTERNAL_INTEGRATION_SERVICES",
+      "EXTERNAL_CUSTOMER_ACTIONS",
+      "EXTERNAL_FLOW_CONTROL",
+      "EXTERNAL_WORKSPACE",
+      "EXTERNAL_SECURITY",
+      "EXTERNAL_DATABASES",
+      "EXTERNAL_ANALYTICS",
+      "EXTERNAL_BYOC",
+      "EXTERNAL_BYOT",
+      "EXTERNAL_ARTIFICIAL_INTELIGENCE",
+      "EXTERNAL_DATA_MANIPULATION"
      ],
      "enumDescriptions": [
       "",
       "",
-      ""
+      "",
+      "HTTP tasks, e.g. rest api call task",
+      "Integration services, e.g. connector task",
+      "Customer ations, e.g. email task",
+      "Flow control, e.g. while loop task",
+      "Workspace tasks, e.g. list drive task",
+      "Security, e.g. kms related tasks",
+      "Database operation tasks, e.g. read firestore info tasks",
+      "Analytics tasks, e.g. dataflow creattion tasks",
+      "BYOC tasks",
+      "BYOT tasks",
+      "AI related tasks.",
+      "Data manipulation related tasks, e.g. data mapping task"
      ],
      "type": "string"
     },

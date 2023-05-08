@@ -16126,7 +16126,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class DeliveryTime : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Business days cutoff time definition. If not configured the cutoff time will be defaulted to 8AM PST.
+        /// Business days cutoff time definition. If not configured the cutoff time will be defaulted to 8AM PST. If
+        /// local delivery, use Service.StoreConfig.CutoffConfig.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cutoffTime")]
         public virtual CutoffTime CutoffTime { get; set; }
@@ -16193,6 +16194,21 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warehouseBasedDeliveryTimes")]
         public virtual System.Collections.Generic.IList<WarehouseBasedDeliveryTime> WarehouseBasedDeliveryTimes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Distance represented by an integer and unit.</summary>
+    public class Distance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The distance unit. Acceptable values are `None`, `Miles`, and `Kilometers`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unit")]
+        public virtual string Unit { get; set; }
+
+        /// <summary>The distance represented as a number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<long> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17521,10 +17537,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// The quota information per method in the Content API. Includes only methods with current usage greater than zero
-    /// for your account.
-    /// </summary>
+    /// <summary>The quota information per method in the Content API.</summary>
     public class MethodQuota : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -21153,6 +21166,14 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>
+        /// The date time when an offer becomes visible in search results across Google’s YouTube surfaces, in [ISO
+        /// 8601](http://en.wikipedia.org/wiki/ISO_8601) format. See [Disclosure date](
+        /// https://support.google.com/merchants/answer/13034208) for more information.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disclosureDate")]
+        public virtual string DisclosureDate { get; set; }
+
         /// <summary>An identifier for an item for dynamic remarketing campaigns.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayAdsId")]
         public virtual string DisplayAdsId { get; set; }
@@ -21883,7 +21904,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pendingCountries")]
         public virtual System.Collections.Generic.IList<string> PendingCountries { get; set; }
 
-        /// <summary>Destination approval status in `targetCountry` of the offer.</summary>
+        /// <summary>Deprecated. Destination approval status in `targetCountry` of the offer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
@@ -22230,6 +22251,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Canonical attribute name for attribute-specific issues.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canonicalAttribute")]
         public virtual string CanonicalAttribute { get; set; }
+
+        /// <summary>Error code of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24656,10 +24681,87 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual System.Collections.Generic.IList<RateGroup> RateGroups { get; set; }
 
         /// <summary>
-        /// Type of locations this service ships orders to. Acceptable values are: - "`delivery`" - "`pickup`"
+        /// Type of locations this service ships orders to. Acceptable values are: - "`delivery`" - "`pickup`" -
+        /// "`local_delivery`"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shipmentType")]
         public virtual string ShipmentType { get; set; }
+
+        /// <summary>
+        /// A list of stores your products are delivered from. This is only available for the local delivery shipment
+        /// type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeConfig")]
+        public virtual ServiceStoreConfig StoreConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stores that provide local delivery. Only valid with local delivery fulfillment.</summary>
+    public class ServiceStoreConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Time local delivery ends for the day. This can be either `local_cutoff_time` or `store_close_offset_hours`,
+        /// if both are provided an error is thrown.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cutoffConfig")]
+        public virtual ServiceStoreConfigCutoffConfig CutoffConfig { get; set; }
+
+        /// <summary>Maximum delivery radius. Only needed for local delivery fulfillment type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceRadius")]
+        public virtual Distance ServiceRadius { get; set; }
+
+        /// <summary>
+        /// A list of store codes that provide local delivery. If empty, then `store_service_type` must be `all_stores`,
+        /// or an error is thrown. If not empty, then `store_service_type` must be `selected_stores`, or an error is
+        /// thrown.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeCodes")]
+        public virtual System.Collections.Generic.IList<string> StoreCodes { get; set; }
+
+        /// <summary>
+        /// Indicates whether all stores listed by this merchant provide local delivery or not. Acceptable values are
+        /// `all stores` and `selected stores`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeServiceType")]
+        public virtual string StoreServiceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Time local delivery ends for the day based on the local timezone of the store. `local_cutoff_time` and
+    /// `store_close_offset_hours` are mutually exclusive.
+    /// </summary>
+    public class ServiceStoreConfigCutoffConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time in hours and minutes in the local timezone when local delivery ends.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localCutoffTime")]
+        public virtual ServiceStoreConfigCutoffConfigLocalCutoffTime LocalCutoffTime { get; set; }
+
+        /// <summary>
+        /// Represents cutoff time as the number of hours before store closing. Mutually exclusive with other fields
+        /// (hour and minute).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeCloseOffsetHours")]
+        public virtual System.Nullable<long> StoreCloseOffsetHours { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Time in hours and minutes in the local timezone when local delivery ends.</summary>
+    public class ServiceStoreConfigCutoffConfigLocalCutoffTime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Hour local delivery orders must be placed by to process the same day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hour")]
+        public virtual System.Nullable<long> Hour { get; set; }
+
+        /// <summary>Minute local delivery orders must be placed by to process the same day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minute")]
+        public virtual System.Nullable<long> Minute { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

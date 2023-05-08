@@ -2204,7 +2204,7 @@ namespace Google.Apis.BigQueryReservation.v1.Data
     /// <summary>A reservation is a mechanism used to guarantee slots to users.</summary>
     public class Reservation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The configuration parameters for the auto scaling feature. Note this is an alpha feature.</summary>
+        /// <summary>The configuration parameters for the auto scaling feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoscale")]
         public virtual Autoscale Autoscale { get; set; }
 
