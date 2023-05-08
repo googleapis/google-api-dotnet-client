@@ -2506,6 +2506,21 @@ namespace Google.Apis.CloudWorkstations.v1beta
 }
 namespace Google.Apis.CloudWorkstations.v1beta.Data
 {
+    /// <summary>An accelerator card attached to the instance.</summary>
+    public class Accelerator : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of accelerator cards exposed to the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<int> Count { get; set; }
+
+        /// <summary>Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
@@ -2734,6 +2749,10 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     /// <summary>A runtime using a Compute Engine instance.</summary>
     public class GceInstance : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A list of the type and count of accelerator cards attached to the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accelerators")]
+        public virtual System.Collections.Generic.IList<Accelerator> Accelerators { get; set; }
+
         /// <summary>Size of the boot disk in GB. Defaults to 50.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootDiskSizeGb")]
         public virtual System.Nullable<int> BootDiskSizeGb { get; set; }

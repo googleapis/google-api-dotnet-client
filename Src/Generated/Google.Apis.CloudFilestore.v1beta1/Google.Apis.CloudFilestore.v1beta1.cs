@@ -2537,6 +2537,17 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Directory Services configuration for Kerberos-based authentication.</summary>
+    public class DirectoryServicesConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration for Managed Service for Microsoft Active Directory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managedActiveDirectory")]
+        public virtual ManagedActiveDirectoryConfig ManagedActiveDirectory { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -2932,6 +2943,13 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
+        /// Directory Services configuration for Kerberos-based authentication. Should only be set if protocol is
+        /// "NFS_V4_1".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("directoryServices")]
+        public virtual DirectoryServicesConfig DirectoryServices { get; set; }
+
+        /// <summary>
         /// Server-specified ETag for the instance resource to prevent simultaneous updates from overwriting each other.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
@@ -3225,6 +3243,26 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// ManagedActiveDirectoryConfig contains all the parameters for connecting to Managed Active Directory.
+    /// </summary>
+    public class ManagedActiveDirectoryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The computer name is used as a prefix to the mount remote target. Example: if the computer_name is
+        /// `my-computer`, the mount command will look like: `$mount -o vers=4,sec=krb5 my-computer.filestore.:`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computer")]
+        public virtual string Computer { get; set; }
+
+        /// <summary>Fully qualified domain name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Network configuration for the instance.</summary>
     public class NetworkConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3310,6 +3348,10 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipRanges")]
         public virtual System.Collections.Generic.IList<string> IpRanges { get; set; }
+
+        /// <summary>The security flavors allowed for mount operations. The default is AUTH_SYS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityFlavors")]
+        public virtual System.Collections.Generic.IList<string> SecurityFlavors { get; set; }
 
         /// <summary>
         /// Either NO_ROOT_SQUASH, for allowing root access on the exported directory, or ROOT_SQUASH, for not allowing

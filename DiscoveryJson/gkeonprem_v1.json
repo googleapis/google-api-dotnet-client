@@ -2861,7 +2861,7 @@
    }
   }
  },
- "revision": "20230423",
+ "revision": "20230426",
  "rootUrl": "https://gkeonprem.googleapis.com/",
  "schemas": {
   "Authorization": {
@@ -2894,7 +2894,7 @@
    "type": "object"
   },
   "BareMetalAdminCluster": {
-   "description": "Resource that represents a bare metal admin cluster.",
+   "description": "## Resource that represents a bare metal admin cluster.",
    "id": "BareMetalAdminCluster",
    "properties": {
     "annotations": {
@@ -2905,6 +2905,7 @@
      "type": "object"
     },
     "bareMetalVersion": {
+     "description": "The Anthos clusters on bare metal version for the bare metal admin cluster.",
      "type": "string"
     },
     "clusterOperations": {
@@ -3249,6 +3250,7 @@
    "id": "BareMetalAdminPortConfig",
    "properties": {
     "controlPlaneLoadBalancerPort": {
+     "description": "The port that control plane hosted load balancers will listen on.",
      "format": "int32",
      "type": "integer"
     }
@@ -4981,7 +4983,7 @@
    "type": "object"
   },
   "VmwareAAGConfig": {
-   "description": "Specifies anti affinity group config for the VMware user cluster. ",
+   "description": "Specifies anti affinity group config for the VMware user cluster.",
    "id": "VmwareAAGConfig",
    "properties": {
     "aagConfigDisabled": {
@@ -5739,6 +5741,7 @@
    "type": "object"
   },
   "VmwareManualLbConfig": {
+   "description": "Represents configuration parameters for an already existing manual load balancer. Given the nature of manual load balancers it is expected that said load balancer will be fully managed by users. IMPORTANT: Please note that the Anthos On-Prem API will not generate or update ManualLB configurations it can only bind a pre-existing configuration to a new VMware user cluster.",
    "id": "VmwareManualLbConfig",
    "properties": {
     "controlPlaneNodePort": {

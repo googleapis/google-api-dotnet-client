@@ -6815,7 +6815,7 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Resource that represents a bare metal admin cluster.</summary>
+    /// <summary>## Resource that represents a bare metal admin cluster.</summary>
     public class BareMetalAdminCluster : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -6828,6 +6828,7 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
+        /// <summary>The Anthos clusters on bare metal version for the bare metal admin cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bareMetalVersion")]
         public virtual string BareMetalVersion { get; set; }
 
@@ -7173,6 +7174,7 @@ namespace Google.Apis.GKEOnPrem.v1.Data
     /// <summary>BareMetalAdminPortConfig is the specification of load balancer ports.</summary>
     public class BareMetalAdminPortConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The port that control plane hosted load balancers will listen on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("controlPlaneLoadBalancerPort")]
         public virtual System.Nullable<int> ControlPlaneLoadBalancerPort { get; set; }
 
@@ -8993,7 +8995,7 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Specifies anti affinity group config for the VMware user cluster. </summary>
+    /// <summary>Specifies anti affinity group config for the VMware user cluster.</summary>
     public class VmwareAAGConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -9740,6 +9742,12 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents configuration parameters for an already existing manual load balancer. Given the nature of manual
+    /// load balancers it is expected that said load balancer will be fully managed by users. IMPORTANT: Please note
+    /// that the Anthos On-Prem API will not generate or update ManualLB configurations it can only bind a pre-existing
+    /// configuration to a new VMware user cluster.
+    /// </summary>
     public class VmwareManualLbConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

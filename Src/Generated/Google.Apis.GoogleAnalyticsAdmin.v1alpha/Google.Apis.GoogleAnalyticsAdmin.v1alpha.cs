@@ -12157,7 +12157,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// Required. The value mutation to perform. * Must be less than 100 characters. * To specify a constant value
         /// for the param, use the value's string. * To copy value from another parameter, use syntax like
         /// "[[other_parameter]]" For more details, see this [help center
-        /// article](https://support.google.com/analytics/answer/10085872?hl=en#modify-an-event&amp;amp;zippy=%2Cin-this-article%2Cmodify-parameters).
+        /// article](https://support.google.com/analytics/answer/10085872#modify-an-event&amp;amp;zippy=%2Cin-this-article%2Cmodify-parameters).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterValue")]
         public virtual string ParameterValue { get; set; }

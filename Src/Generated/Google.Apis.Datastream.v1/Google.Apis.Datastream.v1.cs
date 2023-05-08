@@ -3132,6 +3132,7 @@ namespace Google.Apis.Datastream.v1.Data
 
         /// <summary>
         /// The maximum duration for which new events are added before a file is closed and a new file is created.
+        /// Values within the range of 15-60 seconds are allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileRotationInterval")]
         public virtual object FileRotationInterval { get; set; }
@@ -3315,7 +3316,7 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A resource that represents Google Cloud Platform location.</summary>
+    /// <summary>A resource that represents a Google Cloud location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>

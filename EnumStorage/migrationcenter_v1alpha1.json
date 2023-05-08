@@ -41,5 +41,15 @@
     "REPORT_VIEW_BASIC",
     "REPORT_VIEW_FULL",
     "REPORT_VIEW_STANDARD"
+  ],
+  "Google.Apis.MigrationCenterAPI.v1alpha1.ProjectsResource+LocationsResource+SourcesResource+ErrorFramesResource+GetRequest.ViewEnum": [
+    "ERROR_FRAME_VIEW_UNSPECIFIED",
+    "ERROR_FRAME_VIEW_BASIC",
+    "ERROR_FRAME_VIEW_FULL"
+  ],
+  "Google.Apis.MigrationCenterAPI.v1alpha1.ProjectsResource+LocationsResource+SourcesResource+ErrorFramesResource+ListRequest.ViewEnum": [
+    "ERROR_FRAME_VIEW_UNSPECIFIED",
+    "ERROR_FRAME_VIEW_BASIC",
+    "ERROR_FRAME_VIEW_FULL"
   ]
 }

@@ -4014,6 +4014,25 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The artifacts produced by a deploy operation.</summary>
+    public class DeployArtifact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. URI of a directory containing the artifacts. All paths are relative to this location.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifactUri")]
+        public virtual string ArtifactUri { get; set; }
+
+        /// <summary>
+        /// Output only. File paths of the manifests applied during the deploy operation relative to the URI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manifestPaths")]
+        public virtual System.Collections.Generic.IList<string> ManifestPaths { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A deploy Job.</summary>
     public class DeployJob : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4024,6 +4043,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>DeployJobRun contains information specific to a deploy `JobRun`.</summary>
     public class DeployJobRun : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The artifact of a deploy job run, if available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("artifact")]
+        public virtual DeployArtifact Artifact { get; set; }
+
         /// <summary>
         /// Output only. The resource name of the Cloud Build `Build` object that is used to deploy. Format is
         /// projects/{project}/locations/{location}/builds/{build}.
@@ -4546,7 +4569,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A resource that represents Google Cloud location.</summary>
+    /// <summary>A resource that represents a Google Cloud location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
@@ -4712,6 +4735,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>Contains the paths to the artifacts, relative to the URI, for a phase.</summary>
     public class PhaseArtifact : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. File path of the directory of rendered job manifests relative to the URI. This is only set if
+        /// it is applicable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobManifestsPath")]
+        public virtual string JobManifestsPath { get; set; }
+
         /// <summary>Output only. File path of the rendered manifest relative to the URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("manifestPath")]
         public virtual string ManifestPath { get; set; }

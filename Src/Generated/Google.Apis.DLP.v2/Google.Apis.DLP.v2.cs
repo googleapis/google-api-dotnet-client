@@ -9977,6 +9977,14 @@ namespace Google.Apis.DLP.v2.Data
         public virtual GooglePrivacyDlpV2Regex Regex { get; set; }
 
         /// <summary>
+        /// Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity
+        /// here will take precedent over that of the original InfoType. If unset for a CustomInfoType, it will default
+        /// to HIGH. This only applies to data profiling.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sensitivityScore")]
+        public virtual GooglePrivacyDlpV2SensitivityScore SensitivityScore { get; set; }
+
+        /// <summary>
         /// Load an existing `StoredInfoType` resource for use in `InspectDataSource`. Not currently supported in
         /// `InspectContent`.
         /// </summary>
@@ -11276,6 +11284,10 @@ namespace Google.Apis.DLP.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Optional custom sensitivity for this InfoType. This only applies to data profiling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sensitivityScore")]
+        public virtual GooglePrivacyDlpV2SensitivityScore SensitivityScore { get; set; }
 
         /// <summary>Optional version name for this InfoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]

@@ -7813,6 +7813,13 @@ namespace Google.Apis.Integrations.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locationName")]
         public virtual string LocationName { get; set; }
 
+        /// <summary>
+        /// Optional. The service account used for authentication of this KMS key. If this is not provided, the service
+        /// account in Client.clientSource will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

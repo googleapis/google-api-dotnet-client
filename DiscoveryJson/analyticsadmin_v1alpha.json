@@ -4216,7 +4216,7 @@
    }
   }
  },
- "revision": "20230503",
+ "revision": "20230504",
  "rootUrl": "https://analyticsadmin.googleapis.com/",
  "schemas": {
   "GoogleAnalyticsAdminV1alphaAccessBetweenFilter": {
@@ -7258,7 +7258,7 @@
      "type": "string"
     },
     "parameterValue": {
-     "description": "Required. The value mutation to perform. * Must be less than 100 characters. * To specify a constant value for the param, use the value's string. * To copy value from another parameter, use syntax like \"[[other_parameter]]\" For more details, see this [help center article](https://support.google.com/analytics/answer/10085872?hl=en#modify-an-event&zippy=%2Cin-this-article%2Cmodify-parameters).",
+     "description": "Required. The value mutation to perform. * Must be less than 100 characters. * To specify a constant value for the param, use the value's string. * To copy value from another parameter, use syntax like \"[[other_parameter]]\" For more details, see this [help center article](https://support.google.com/analytics/answer/10085872#modify-an-event&zippy=%2Cin-this-article%2Cmodify-parameters).",
      "type": "string"
     }
    },

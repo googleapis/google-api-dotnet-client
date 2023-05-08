@@ -3590,6 +3590,216 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1
                 public SourcesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    ErrorFrames = new ErrorFramesResource(service);
+                }
+
+                /// <summary>Gets the ErrorFrames resource.</summary>
+                public virtual ErrorFramesResource ErrorFrames { get; }
+
+                /// <summary>The "errorFrames" collection of methods.</summary>
+                public class ErrorFramesResource
+                {
+                    private const string Resource = "errorFrames";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ErrorFramesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Gets the details of an error frame.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the frame to retrieve. Format:
+                    /// projects/{project}/locations/{location}/sources/{source}/errorFrames/{error_frame}
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets the details of an error frame.</summary>
+                    public class GetRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.ErrorFrame>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the frame to retrieve. Format:
+                        /// projects/{project}/locations/{location}/sources/{source}/errorFrames/{error_frame}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. An optional view mode to control the level of details for the frame. The default
+                        /// is a basic frame view.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>
+                        /// Optional. An optional view mode to control the level of details for the frame. The default
+                        /// is a basic frame view.
+                        /// </summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>Value is unset. The system will fallback to the default value.</summary>
+                            [Google.Apis.Util.StringValueAttribute("ERROR_FRAME_VIEW_UNSPECIFIED")]
+                            ERRORFRAMEVIEWUNSPECIFIED = 0,
+
+                            /// <summary>Include basic frame data, but not the full contents.</summary>
+                            [Google.Apis.Util.StringValueAttribute("ERROR_FRAME_VIEW_BASIC")]
+                            ERRORFRAMEVIEWBASIC = 1,
+
+                            /// <summary>Include everything.</summary>
+                            [Google.Apis.Util.StringValueAttribute("ERROR_FRAME_VIEW_FULL")]
+                            ERRORFRAMEVIEWFULL = 2,
+                        }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sources/[^/]+/errorFrames/[^/]+$",
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all error frames in a given source and location.</summary>
+                    /// <param name="parent">Required. Parent value (the source) for `ListErrorFramesRequest`.</param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists all error frames in a given source and location.</summary>
+                    public class ListRequest : MigrationCenterAPIBaseServiceRequest<Google.Apis.MigrationCenterAPI.v1alpha1.Data.ListErrorFramesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. Parent value (the source) for `ListErrorFramesRequest`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Requested page size. Server may return fewer items than requested. If unspecified, server
+                        /// will pick an appropriate default.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>A token identifying a page of results the server should return.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>
+                        /// Optional. An optional view mode to control the level of details of each error frame. The
+                        /// default is a BASIC frame view.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>
+                        /// Optional. An optional view mode to control the level of details of each error frame. The
+                        /// default is a BASIC frame view.
+                        /// </summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>Value is unset. The system will fallback to the default value.</summary>
+                            [Google.Apis.Util.StringValueAttribute("ERROR_FRAME_VIEW_UNSPECIFIED")]
+                            ERRORFRAMEVIEWUNSPECIFIED = 0,
+
+                            /// <summary>Include basic frame data, but not the full contents.</summary>
+                            [Google.Apis.Util.StringValueAttribute("ERROR_FRAME_VIEW_BASIC")]
+                            ERRORFRAMEVIEWBASIC = 1,
+
+                            /// <summary>Include everything.</summary>
+                            [Google.Apis.Util.StringValueAttribute("ERROR_FRAME_VIEW_FULL")]
+                            ERRORFRAMEVIEWFULL = 2,
+                        }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha1/{+parent}/errorFrames";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/sources/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Creates a new source in a given project and location.</summary>
@@ -5090,6 +5300,29 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message representing a frame which failed to be processed due to an error.</summary>
+    public class ErrorFrame : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Frame ingestion time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ingestionTime")]
+        public virtual object IngestionTime { get; set; }
+
+        /// <summary>Output only. The identifier of the ErrorFrame.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The frame that was originally reported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalFrame")]
+        public virtual AssetFrame OriginalFrame { get; set; }
+
+        /// <summary>Output only. All the violations that were detected for the frame.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("violations")]
+        public virtual System.Collections.Generic.IList<FrameViolationEntry> Violations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A resource that reports result of the import job execution.</summary>
     public class ExecutionReport : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5142,6 +5375,21 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Fit level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fitLevel")]
         public virtual string FitLevel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A resource that contains a single violation of a reported `AssetFrame` resource.</summary>
+    public class FrameViolationEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The field of the original frame where the violation occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual string Field { get; set; }
+
+        /// <summary>A message describing the violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("violation")]
+        public virtual string Violation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5589,6 +5837,25 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>A list of assets.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assets")]
         public virtual System.Collections.Generic.IList<Asset> Assets { get; set; }
+
+        /// <summary>A token identifying a page of results the server should return.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A response for listing error frames.</summary>
+    public class ListErrorFramesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of error frames.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorFrames")]
+        public virtual System.Collections.Generic.IList<ErrorFrame> ErrorFrames { get; set; }
 
         /// <summary>A token identifying a page of results the server should return.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
@@ -6879,6 +7146,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>User-friendly display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. The number of frames that were reported by the source and contained errors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorFrameCount")]
+        public virtual System.Nullable<int> ErrorFrameCount { get; set; }
 
         /// <summary>If `true`, the source is managed by other service(s).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isManaged")]
