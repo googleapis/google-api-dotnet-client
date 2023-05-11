@@ -6523,6 +6523,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; }
 
+        /// <summary>The hostname of the vcenter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedVcenterHost")]
+        public virtual string ResolvedVcenterHost { get; set; }
+
         /// <summary>The thumbprint representing the certificate for the vcenter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbprint")]
         public virtual string Thumbprint { get; set; }

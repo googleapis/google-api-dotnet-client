@@ -804,12 +804,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             }
 
                             /// <summary>
-                            /// Permanently deletes all selected Documents under a branch. This process is asynchronous.
-                            /// If the request is valid, the removal will be enquired and processed offlines. Depending
-                            /// on the number of Documents, this operation could take hours to complete. Before the
-                            /// operation completes, some Documents may still be returned by DocumentService.GetDocument
-                            /// or DocumentService.ListDocuments. To get a sample of Documents that would be deleted,
-                            /// set PurgeDocumentsRequest.force to false.
+                            /// Permanently deletes all selected Documents in a branch. This process is asynchronous.
+                            /// Depending on the number of Documents to be deleted, this operation can take hours to
+                            /// complete. Before the delete operation completes, some Documents might still be returned
+                            /// by DocumentService.GetDocument or DocumentService.ListDocuments. To get a list of the
+                            /// Documents to be deleted, set PurgeDocumentsRequest.force to false.
                             /// </summary>
                             /// <param name="body">The body of the request.</param>
                             /// <param name="parent">
@@ -822,12 +821,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                             }
 
                             /// <summary>
-                            /// Permanently deletes all selected Documents under a branch. This process is asynchronous.
-                            /// If the request is valid, the removal will be enquired and processed offlines. Depending
-                            /// on the number of Documents, this operation could take hours to complete. Before the
-                            /// operation completes, some Documents may still be returned by DocumentService.GetDocument
-                            /// or DocumentService.ListDocuments. To get a sample of Documents that would be deleted,
-                            /// set PurgeDocumentsRequest.force to false.
+                            /// Permanently deletes all selected Documents in a branch. This process is asynchronous.
+                            /// Depending on the number of Documents to be deleted, this operation can take hours to
+                            /// complete. Before the delete operation completes, some Documents might still be returned
+                            /// by DocumentService.GetDocument or DocumentService.ListDocuments. To get a list of the
+                            /// Documents to be deleted, set PurgeDocumentsRequest.force to false.
                             /// </summary>
                             public class PurgeRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleLongrunningOperation>
                             {
@@ -2517,12 +2515,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         }
 
                         /// <summary>
-                        /// Permanently deletes all selected Documents under a branch. This process is asynchronous. If
-                        /// the request is valid, the removal will be enquired and processed offlines. Depending on the
-                        /// number of Documents, this operation could take hours to complete. Before the operation
-                        /// completes, some Documents may still be returned by DocumentService.GetDocument or
-                        /// DocumentService.ListDocuments. To get a sample of Documents that would be deleted, set
-                        /// PurgeDocumentsRequest.force to false.
+                        /// Permanently deletes all selected Documents in a branch. This process is asynchronous.
+                        /// Depending on the number of Documents to be deleted, this operation can take hours to
+                        /// complete. Before the delete operation completes, some Documents might still be returned by
+                        /// DocumentService.GetDocument or DocumentService.ListDocuments. To get a list of the Documents
+                        /// to be deleted, set PurgeDocumentsRequest.force to false.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
@@ -2535,12 +2532,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta
                         }
 
                         /// <summary>
-                        /// Permanently deletes all selected Documents under a branch. This process is asynchronous. If
-                        /// the request is valid, the removal will be enquired and processed offlines. Depending on the
-                        /// number of Documents, this operation could take hours to complete. Before the operation
-                        /// completes, some Documents may still be returned by DocumentService.GetDocument or
-                        /// DocumentService.ListDocuments. To get a sample of Documents that would be deleted, set
-                        /// PurgeDocumentsRequest.force to false.
+                        /// Permanently deletes all selected Documents in a branch. This process is asynchronous.
+                        /// Depending on the number of Documents to be deleted, this operation can take hours to
+                        /// complete. Before the delete operation completes, some Documents might still be returned by
+                        /// DocumentService.GetDocument or DocumentService.ListDocuments. To get a list of the Documents
+                        /// to be deleted, set PurgeDocumentsRequest.force to false.
                         /// </summary>
                         public class PurgeRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1beta.Data.GoogleLongrunningOperation>
                         {
@@ -4240,6 +4236,12 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<int> Quantity { get; set; }
 
+        /// <summary>
+        /// Required. The Document url - only allowed for DataStores with content_config PUBLIC_WEBSITE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4607,7 +4609,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     public class GoogleCloudDiscoveryengineV1betaPurgeDocumentsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Filter matching documents to purge. Only currently supported value is “*” (all items).
+        /// Required. Filter matching documents to purge. Only currently supported value is `*` (all items).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }

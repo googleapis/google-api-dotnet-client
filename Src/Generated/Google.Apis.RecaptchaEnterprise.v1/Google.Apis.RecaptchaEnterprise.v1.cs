@@ -1631,6 +1631,31 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains fields that are required to perform Apple-specific integrity checks.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1AppleDeveloperId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Apple developer key ID (10-character string).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyId")]
+        public virtual string KeyId { get; set; }
+
+        /// <summary>
+        /// Required. Input only. A private key (downloaded as a text file with a .p8 file extension) generated for your
+        /// Apple Developer account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateKey")]
+        public virtual string PrivateKey { get; set; }
+
+        /// <summary>
+        /// Required. The Apple team ID (10-character string) owning the provisioning profile used to build your
+        /// application.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("teamId")]
+        public virtual string TeamId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A reCAPTCHA Enterprise assessment resource.</summary>
     public class GoogleCloudRecaptchaenterpriseV1Assessment : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2063,6 +2088,14 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedBundleIds")]
         public virtual System.Collections.Generic.IList<string> AllowedBundleIds { get; set; }
+
+        /// <summary>
+        /// Apple Developer account details for the app the reCAPTCHA key will protect. reCAPTCHA Enterprise leverages
+        /// platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from abuse.
+        /// Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of your app.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appleDeveloperId")]
+        public virtual GoogleCloudRecaptchaenterpriseV1AppleDeveloperId AppleDeveloperId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -11088,6 +11088,15 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual TextConfig Text { get; set; }
 
+        /// <summary>
+        /// Ensures in-flight data remains in the region of origin during de-identification. Using this option results
+        /// in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME`
+        /// infoTypes. `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig`
+        /// if image redaction is required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useRegionalDataProcessing")]
+        public virtual System.Nullable<bool> UseRegionalDataProcessing { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -12830,7 +12839,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A resource that represents Google Cloud Platform location.</summary>
+    /// <summary>A resource that represents a Google Cloud location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
@@ -13657,6 +13666,14 @@ namespace Google.Apis.CloudHealthcare.v1.Data
 
     public class TextConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Transformations to apply to the detected data, overridden by `exclude_info_types`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalTransformations")]
+        public virtual System.Collections.Generic.IList<InfoTypeTransformation> AdditionalTransformations { get; set; }
+
+        /// <summary>InfoTypes to skip transforming, overriding `additional_transformations`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeInfoTypes")]
+        public virtual System.Collections.Generic.IList<string> ExcludeInfoTypes { get; set; }
+
         /// <summary>
         /// The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
         /// </summary>

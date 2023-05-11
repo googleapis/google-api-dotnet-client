@@ -6158,8 +6158,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// in the Offer.parameter_definitions. For Google Workspace, the following Parameters may be accepted as input:
         /// - max_units: The maximum assignable units for a flexible offer OR - num_units: The total commitment for
         /// commitment-based offers The response may additionally include the following output-only Parameters: -
-        /// assigned_units: The number of licenses assigned to users. For GCP billing subaccounts, the following
-        /// Parameter may be accepted as input: - display_name: The display name of the billing subaccount.
+        /// assigned_units: The number of licenses assigned to users. For Google Cloud billing subaccounts, the
+        /// following Parameter may be accepted as input: - display_name: The display name of the billing subaccount.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IList<GoogleCloudChannelV1Parameter> Parameters { get; set; }
@@ -6923,8 +6923,7 @@ namespace Google.Apis.Cloudchannel.v1.Data
     public class GoogleCloudChannelV1Plan : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Reseller Billing account to charge after an offer transaction. Only present for Google Cloud Platform
-        /// offers.
+        /// Reseller Billing account to charge after an offer transaction. Only present for Google Cloud offers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingAccount")]
         public virtual string BillingAccount { get; set; }
@@ -7097,7 +7096,7 @@ namespace Google.Apis.Cloudchannel.v1.Data
 
         /// <summary>
         /// Output only. Provisioning ID of the entitlement. For Google Workspace, this is the underlying Subscription
-        /// ID. For Google Cloud Platform, this is the Billing Account ID of the billing subaccount."
+        /// ID. For Google Cloud, this is the Billing Account ID of the billing subaccount."
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisioningId")]
         public virtual string ProvisioningId { get; set; }
@@ -7183,8 +7182,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
     }
 
     /// <summary>
-    /// The ID and description of a report that was used to generate report data. For example, "GCP Daily Spend",
-    /// "Google Workspace License Activity", etc.
+    /// The ID and description of a report that was used to generate report data. For example, "Google Cloud Daily
+    /// Spend", "Google Workspace License Activity", etc.
     /// </summary>
     public class GoogleCloudChannelV1Report : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7971,8 +7970,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// in the Offer.parameter_definitions. For Google Workspace, the following Parameters may be accepted as input:
         /// - max_units: The maximum assignable units for a flexible offer OR - num_units: The total commitment for
         /// commitment-based offers The response may additionally include the following output-only Parameters: -
-        /// assigned_units: The number of licenses assigned to users. For GCP billing subaccounts, the following
-        /// Parameter may be accepted as input: - display_name: The display name of the billing subaccount.
+        /// assigned_units: The number of licenses assigned to users. For Google Cloud billing subaccounts, the
+        /// following Parameter may be accepted as input: - display_name: The display name of the billing subaccount.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IList<GoogleCloudChannelV1alpha1Parameter> Parameters { get; set; }
@@ -8086,7 +8085,7 @@ namespace Google.Apis.Cloudchannel.v1.Data
 
         /// <summary>
         /// Output only. Provisioning ID of the entitlement. For Google Workspace, this is the underlying Subscription
-        /// ID. For Google Cloud Platform, this is the Billing Account ID of the billing subaccount."
+        /// ID. For Google Cloud, this is the Billing Account ID of the billing subaccount."
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisioningId")]
         public virtual string ProvisioningId { get; set; }
@@ -8144,8 +8143,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
     }
 
     /// <summary>
-    /// The ID and description of a report that was used to generate report data. For example, "GCP Daily Spend",
-    /// "Google Workspace License Activity", etc.
+    /// The ID and description of a report that was used to generate report data. For example, "Google Cloud Daily
+    /// Spend", "Google Workspace License Activity", etc.
     /// </summary>
     public class GoogleCloudChannelV1alpha1Report : Google.Apis.Requests.IDirectResponseSchema
     {

@@ -1042,7 +1042,7 @@
    }
   }
  },
- "revision": "20230427",
+ "revision": "20230504",
  "rootUrl": "https://documentai.googleapis.com/",
  "schemas": {
   "GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadata": {
@@ -1701,6 +1701,41 @@
     },
     "revisionId": {
      "description": "Reads the revision given by the id.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "GoogleCloudDocumentaiUiv1beta3SampleDocumentsMetadata": {
+   "description": "Metadata of the sample documents operation.",
+   "id": "GoogleCloudDocumentaiUiv1beta3SampleDocumentsMetadata",
+   "properties": {
+    "commonMetadata": {
+     "$ref": "GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata",
+     "description": "The basic metadata of the long running operation."
+    }
+   },
+   "type": "object"
+  },
+  "GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponse": {
+   "description": "Response of the sample documents operation.",
+   "id": "GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponse",
+   "properties": {
+    "selectedDocuments": {
+     "description": "The result of the sampling process.",
+     "items": {
+      "$ref": "GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponseSelectedDocument"
+     },
+     "type": "array"
+    }
+   },
+   "type": "object"
+  },
+  "GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponseSelectedDocument": {
+   "id": "GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponseSelectedDocument",
+   "properties": {
+    "documentId": {
+     "description": "An internal identifier for document.",
      "type": "string"
     }
    },
