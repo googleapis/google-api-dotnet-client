@@ -4008,6 +4008,13 @@ namespace Google.Apis.CloudBuild.v1
                     [Google.Apis.Util.RequestParameterAttribute("triggerId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string TriggerId { get; set; }
 
+                    /// <summary>
+                    /// Update mask for the resource. If this is set, the server will only update the fields specified
+                    /// in the field mask. Otherwise, a full update of the mutable resource fields will be performed.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
                     /// <summary>Gets or sets the body of this request.</summary>
                     Google.Apis.CloudBuild.v1.Data.BuildTrigger Body { get; set; }
 
@@ -4046,6 +4053,14 @@ namespace Google.Apis.CloudBuild.v1
                         RequestParameters.Add("triggerId", new Google.Apis.Discovery.Parameter
                         {
                             Name = "triggerId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4993,6 +5008,13 @@ namespace Google.Apis.CloudBuild.v1
                 [Google.Apis.Util.RequestParameterAttribute("triggerId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string TriggerId { get; private set; }
 
+                /// <summary>
+                /// Update mask for the resource. If this is set, the server will only update the fields specified in
+                /// the field mask. Otherwise, a full update of the mutable resource fields will be performed.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.CloudBuild.v1.Data.BuildTrigger Body { get; set; }
 
@@ -5025,6 +5047,14 @@ namespace Google.Apis.CloudBuild.v1
                         Name = "triggerId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });

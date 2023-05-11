@@ -5839,6 +5839,15 @@ namespace Google.Apis.Bigquery.v2.Data
     public class HivePartitioningOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// [Output-only] For permanent external tables, this field is populated with the hive partition keys in the
+        /// order they were inferred. The types of the partition keys can be deduced by checking the table schema (which
+        /// will include the partition keys). Not every API will populate this field in the output. For example,
+        /// Tables.Get will populate it, but Tables.List will not contain this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IList<string> Fields { get; set; }
+
+        /// <summary>
         /// [Optional] When set, what mode of hive partitioning to use when reading data. The following modes are
         /// supported. (1) AUTO: automatically infer partition key name(s) and type(s). (2) STRINGS: automatically infer
         /// partition key name(s). All types are interpreted as strings. (3) CUSTOM: partition key schema is encoded in
@@ -7558,6 +7567,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("optimalTrialIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> OptimalTrialIds { get; set; }
 
+        /// <summary>Output only. Remote model info</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteModelInfo")]
+        public virtual RemoteModelInfo RemoteModelInfo { get; set; }
+
         /// <summary>Information for all training runs in increasing order of start_time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingRuns")]
         public virtual System.Collections.Generic.IList<TrainingRun> TrainingRuns { get; set; }
@@ -8276,6 +8289,35 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userDefinedContext")]
         public virtual System.Collections.Generic.IDictionary<string, string> UserDefinedContext { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Remote Model Info</summary>
+    public class RemoteModelInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Fully qualified name of the user-provided connection object of the remote model. Format:
+        /// ```"projects/{project_id}/locations/{location_id}/connections/{connection_id}"```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connection")]
+        public virtual string Connection { get; set; }
+
+        /// <summary>Output only. The endpoint for remote model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
+        public virtual string Endpoint { get; set; }
+
+        /// <summary>
+        /// Output only. Max number of rows in each batch sent to the remote service. If unset, the number of rows in
+        /// each batch is set dynamically.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxBatchingRows")]
+        public virtual System.Nullable<long> MaxBatchingRows { get; set; }
+
+        /// <summary>Output only. The remote service type for remote model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteServiceType")]
+        public virtual string RemoteServiceType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9623,6 +9665,12 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inputLabelColumns")]
         public virtual System.Collections.Generic.IList<string> InputLabelColumns { get; set; }
 
+        /// <summary>
+        /// Name of the instance weight column for training data. This column isn't be used as a feature.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceWeightColumn")]
+        public virtual string InstanceWeightColumn { get; set; }
+
         /// <summary>Number of integral steps for the integrated gradients explain method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("integratedGradientsNumSteps")]
         public virtual System.Nullable<long> IntegratedGradientsNumSteps { get; set; }
@@ -9761,6 +9809,12 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("subsample")]
         public virtual System.Nullable<double> Subsample { get; set; }
 
+        /// <summary>
+        /// Based on the selected TF version, the corresponding docker image is used to train external models.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tfVersion")]
+        public virtual string TfVersion { get; set; }
+
         /// <summary>Column to be designated as time series data for ARIMA model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesDataColumn")]
         public virtual string TimeSeriesDataColumn { get; set; }
@@ -9800,6 +9854,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Whether to train a model from the last checkpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("warmStart")]
         public virtual System.Nullable<bool> WarmStart { get; set; }
+
+        /// <summary>User-selected XGBoost versions for training of XGBoost models.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("xgboostVersion")]
+        public virtual string XgboostVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

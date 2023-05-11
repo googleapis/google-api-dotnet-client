@@ -6549,12 +6549,12 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>More configs of the frequently-bought-together model type.</summary>
+    /// <summary>Additional configs for the frequently-bought-together model type.</summary>
     public class GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Specifies the context of the model when used in predict requests. Only settable for the
-        /// `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+        /// Optional. Specifies the context of the model when it is used in predict requests. Can only be set for the
+        /// `frequently-bought-together` type. If it isn't specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contextProductsType")]
         public virtual string ContextProductsType { get; set; }
@@ -9541,12 +9541,12 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>More configs of the frequently-bought-together model type.</summary>
+    /// <summary>Additional configs for the frequently-bought-together model type.</summary>
     public class GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Specifies the context of the model when used in predict requests. Only settable for the
-        /// `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+        /// Optional. Specifies the context of the model when it is used in predict requests. Can only be set for the
+        /// `frequently-bought-together` type. If it isn't specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contextProductsType")]
         public virtual string ContextProductsType { get; set; }
@@ -10359,12 +10359,12 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>More configs of the frequently-bought-together model type.</summary>
+    /// <summary>Additional configs for the frequently-bought-together model type.</summary>
     public class GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Specifies the context of the model when used in predict requests. Only settable for the
-        /// `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+        /// Optional. Specifies the context of the model when it is used in predict requests. Can only be set for the
+        /// `frequently-bought-together` type. If it isn't specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contextProductsType")]
         public virtual string ContextProductsType { get; set; }

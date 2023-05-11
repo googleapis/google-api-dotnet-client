@@ -5944,12 +5944,12 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>More configs of the frequently-bought-together model type.</summary>
+    /// <summary>Additional configs for the frequently-bought-together model type.</summary>
     public class GoogleCloudRetailV2ModelFrequentlyBoughtTogetherFeaturesConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Specifies the context of the model when used in predict requests. Only settable for the
-        /// `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+        /// Optional. Specifies the context of the model when it is used in predict requests. Can only be set for the
+        /// `frequently-bought-together` type. If it isn't specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contextProductsType")]
         public virtual string ContextProductsType { get; set; }
@@ -6487,22 +6487,6 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ExactSearchableOption { get; set; }
 
         /// <summary>
-        /// If you don't set the facet SearchRequest.FacetSpec.FacetKey.intervals to a numerical attribute, then a
-        /// weekly pipeline calculates intervals using some percentiles on the distribution of all its product numerical
-        /// attribute values. The calculated intervals might not be ideal for some attributes. Therefore, we give you
-        /// the option the overwrite them. For any numerical attribute that is passed as a facet key in the request
-        /// along with given intervals, the given intervals are the facet intervals returned in the response.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("facetIntervals")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaInterval> FacetIntervals { get; set; }
-
-        /// <summary>
-        /// Each instance represents a list of attribute values to ignore as facet values for a specific time range.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ignoredFacetValues")]
-        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2alphaCatalogAttributeIgnoredFacetValues> IgnoredFacetValues { get; set; }
-
-        /// <summary>
         /// Output only. Indicates whether this attribute has been used by any products. `True` if at least one Product
         /// is using this attribute in Product.attributes. Otherwise, this field is `False`. CatalogAttribute can be
         /// pre-loaded by using CatalogService.AddCatalogAttribute, CatalogService.ImportCatalogAttributes, or
@@ -6564,38 +6548,6 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Facet values to ignore on facets during the specified time range for the given SearchResponse.Facet.key
-    /// attribute.
-    /// </summary>
-    public class GoogleCloudRetailV2alphaCatalogAttributeIgnoredFacetValues : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// If start time is empty and end time is not empty, then ignore these facet values before end time.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
-
-        /// <summary>
-        /// Time range for the current list of facet values to ignore. If multiple time ranges are specified for an
-        /// facet value for the current attribute, consider all of them. If both are empty, ignore always. If start time
-        /// and end time are set, then start time must be before end time. If start time is not empty and end time is
-        /// empty, then will ignore these facet values after the start time.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
-
-        /// <summary>
-        /// List of facet values to ignore for the following time range. The facet values are the same as the attribute
-        /// values.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7942,12 +7894,12 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>More configs of the frequently-bought-together model type.</summary>
+    /// <summary>Additional configs for the frequently-bought-together model type.</summary>
     public class GoogleCloudRetailV2alphaModelFrequentlyBoughtTogetherFeaturesConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Specifies the context of the model when used in predict requests. Only settable for the
-        /// `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+        /// Optional. Specifies the context of the model when it is used in predict requests. Can only be set for the
+        /// `frequently-bought-together` type. If it isn't specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contextProductsType")]
         public virtual string ContextProductsType { get; set; }
@@ -11114,12 +11066,12 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>More configs of the frequently-bought-together model type.</summary>
+    /// <summary>Additional configs for the frequently-bought-together model type.</summary>
     public class GoogleCloudRetailV2betaModelFrequentlyBoughtTogetherFeaturesConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Specifies the context of the model when used in predict requests. Only settable for the
-        /// `frequently-bought-together` type. Will default to MULTI_CONTEXT if not specified.
+        /// Optional. Specifies the context of the model when it is used in predict requests. Can only be set for the
+        /// `frequently-bought-together` type. If it isn't specified, it defaults to MULTIPLE_CONTEXT_PRODUCTS.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contextProductsType")]
         public virtual string ContextProductsType { get; set; }

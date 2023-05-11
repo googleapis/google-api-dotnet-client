@@ -2084,6 +2084,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         {
             this.service = service;
             AccessBindings = new AccessBindingsResource(service);
+            AdSenseLinks = new AdSenseLinksResource(service);
             Audiences = new AudiencesResource(service);
             BigQueryLinks = new BigQueryLinksResource(service);
             ChannelGroups = new ChannelGroupsResource(service);
@@ -2662,6 +2663,266 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^properties/[^/]+/accessBindings/[^/]+$",
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the AdSenseLinks resource.</summary>
+        public virtual AdSenseLinksResource AdSenseLinks { get; }
+
+        /// <summary>The "adSenseLinks" collection of methods.</summary>
+        public class AdSenseLinksResource
+        {
+            private const string Resource = "adSenseLinks";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AdSenseLinksResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Creates an AdSenseLink.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The property for which to create an AdSense Link. Format: properties/{propertyId} Example:
+            /// properties/1234
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAdSenseLink body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates an AdSenseLink.</summary>
+            public class CreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAdSenseLink>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAdSenseLink body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The property for which to create an AdSense Link. Format: properties/{propertyId} Example:
+                /// properties/1234
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAdSenseLink Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}/adSenseLinks";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Deletes an AdSenseLink.</summary>
+            /// <param name="name">
+            /// Required. Unique identifier for the AdSense Link to be deleted. Format:
+            /// properties/{propertyId}/adSenseLinks/{linkId} Example: properties/1234/adSenseLinks/5678
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes an AdSenseLink.</summary>
+            public class DeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleProtobufEmpty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Unique identifier for the AdSense Link to be deleted. Format:
+                /// properties/{propertyId}/adSenseLinks/{linkId} Example: properties/1234/adSenseLinks/5678
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/adSenseLinks/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Looks up a single AdSenseLink.</summary>
+            /// <param name="name">
+            /// Required. Unique identifier for the AdSense Link requested. Format:
+            /// properties/{propertyId}/adSenseLinks/{linkId} Example: properties/1234/adSenseLinks/5678
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Looks up a single AdSenseLink.</summary>
+            public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAdSenseLink>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Unique identifier for the AdSense Link requested. Format:
+                /// properties/{propertyId}/adSenseLinks/{linkId} Example: properties/1234/adSenseLinks/5678
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/adSenseLinks/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists AdSenseLinks on a property.</summary>
+            /// <param name="parent">
+            /// Required. Resource name of the parent property. Format: properties/{propertyId} Example: properties/1234
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists AdSenseLinks on a property.</summary>
+            public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListAdSenseLinksResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the parent property. Format: properties/{propertyId} Example:
+                /// properties/1234
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// The maximum number of resources to return. If unspecified, at most 50 resources will be returned.
+                /// The maximum value is 200 (higher values will be coerced to the maximum).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A page token received from a previous `ListAdSenseLinks` call. Provide this to retrieve the
+                /// subsequent page. When paginating, all other parameters provided to `ListAdSenseLinks` must match the
+                /// call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}/adSenseLinks";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -9642,6 +9903,27 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A link between a GA4 Property and an AdSense for Content ad client.</summary>
+    public class GoogleAnalyticsAdminV1alphaAdSenseLink : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. The AdSense ad client code that the GA4 property is linked to. Example format:
+        /// "ca-pub-1234567890"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adClientCode")]
+        public virtual string AdClientCode { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name for this AdSense Link resource. Format:
+        /// properties/{propertyId}/adSenseLinks/{linkId} Example: properties/1234/adSenseLinks/6789
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for ApproveDisplayVideo360AdvertiserLinkProposal RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10413,6 +10695,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>A snapshot of an Account resource in change history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("account")]
         public virtual GoogleAnalyticsAdminV1alphaAccount Account { get; set; }
+
+        /// <summary>A snapshot of an AdSenseLink resource in change history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adsenseLink")]
+        public virtual GoogleAnalyticsAdminV1alphaAdSenseLink AdsenseLink { get; set; }
 
         /// <summary>A snapshot of AttributionSettings resource in change history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributionSettings")]
@@ -11723,6 +12009,24 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>Results that were accessible to the caller.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accounts")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaAccount> Accounts { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListAdSenseLinks method.</summary>
+    public class GoogleAnalyticsAdminV1alphaListAdSenseLinksResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of AdSenseLinks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adsenseLinks")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaAdSenseLink> AdsenseLinks { get; set; }
 
         /// <summary>
         /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no

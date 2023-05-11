@@ -6440,6 +6440,13 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string RequestedState { get; set; }
 
         /// <summary>
+        /// This field may ONLY be modified at runtime using the projects.jobs.update method to adjust job behavior.
+        /// This field has no effect when specified at job creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeUpdatableParams")]
+        public virtual RuntimeUpdatableParams RuntimeUpdatableParams { get; set; }
+
+        /// <summary>
         /// Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in
         /// any requests.
         /// </summary>
@@ -7769,6 +7776,30 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>SDK Info for the template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sdkInfo")]
         public virtual SDKInfo SdkInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Additional job parameters that can only be updated during runtime using the projects.jobs.update method. These
+    /// fields have no effect when specified during job creation.
+    /// </summary>
+    public class RuntimeUpdatableParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming
+        /// Engine jobs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxNumWorkers")]
+        public virtual System.Nullable<int> MaxNumWorkers { get; set; }
+
+        /// <summary>
+        /// The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine
+        /// jobs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minNumWorkers")]
+        public virtual System.Nullable<int> MinNumWorkers { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

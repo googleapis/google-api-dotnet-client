@@ -13677,6 +13677,18 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual TextConfig Text { get; set; }
 
+        /// <summary>
+        /// Ensures in-flight data remains in the region of origin during de-identification. Using this option results
+        /// in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME`
+        /// infoTypes. If the deprecated
+        /// [`DicomConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.dicom_config) or
+        /// [`FhirConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.fhir_config) are used, then
+        /// `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image
+        /// redaction is required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useRegionalDataProcessing")]
+        public virtual System.Nullable<bool> UseRegionalDataProcessing { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -15998,7 +16010,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A resource that represents Google Cloud Platform location.</summary>
+    /// <summary>A resource that represents a Google Cloud location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>

@@ -2098,7 +2098,7 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>LINT.IfChange Request message for BufferTask.</summary>
+    /// <summary>Request message for BufferTask.</summary>
     public class BufferTaskRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -2406,6 +2406,23 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpMethod")]
         public virtual string HttpMethod { get; set; }
+
+        /// <summary>
+        /// If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated
+        /// and attached as the `Authorization` header in the HTTP request. This type of authorization should generally
+        /// only be used when calling Google APIs hosted on *.googleapis.com.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oauthToken")]
+        public virtual OAuthToken OauthToken { get; set; }
+
+        /// <summary>
+        /// If specified, an [OIDC](https://developers.google.com/identity/protocols/OpenIDConnect) token will be
+        /// generated and attached as an `Authorization` header in the HTTP request. This type of authorization can be
+        /// used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token
+        /// yourself.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oidcToken")]
+        public virtual OidcToken OidcToken { get; set; }
 
         /// <summary>URI override. When specified, overrides the execution URI for all the tasks in the queue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uriOverride")]
