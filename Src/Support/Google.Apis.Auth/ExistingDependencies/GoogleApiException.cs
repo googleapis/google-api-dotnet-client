@@ -14,6 +14,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+// Note: the only reference to this is in ServiceAccountCredential. If we throw a different exception,
+// e.g. InvalidOperationException, we could remove GoogleApiException, SingleError and RequestError.
+
 using System;
 using System.Net;
 

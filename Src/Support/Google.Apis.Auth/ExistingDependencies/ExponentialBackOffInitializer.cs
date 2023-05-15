@@ -15,9 +15,10 @@ limitations under the License.
 */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+
+// ExponentialBackOffInitializer could be internal to Google.Apis.Auth (with code duplication).
+// We add it to the AuthorizationCodeFlow and ServiceCredential, but we don't expose it.
+// ExponentialBackOffPolicy is exposed via the DefaultExponentialBackOffPolicy propert in AuthorizationCodeFlow and ExternalAccountCredential.
 
 namespace Google.Apis.Http
 {
