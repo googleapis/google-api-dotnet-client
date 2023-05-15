@@ -23,7 +23,7 @@ using System.Reflection;
 namespace Google.Apis.Util
 {
     /// <summary>A utility class which contains helper methods and extension methods.</summary>
-    public static class Utilities
+    internal static class Utilities
     {
         /// <summary>Returns the version of the core library.</summary>
         public static string GetLibraryVersion()

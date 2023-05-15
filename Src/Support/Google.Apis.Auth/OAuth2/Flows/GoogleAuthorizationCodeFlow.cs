@@ -18,8 +18,6 @@ using Google.Apis.Auth.ExistingDependencies;
 using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Http;
-using Google.Apis.Json;
-using Google.Apis.Util;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;

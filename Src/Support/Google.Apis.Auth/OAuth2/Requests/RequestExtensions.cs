@@ -16,7 +16,6 @@ limitations under the License.
 
 using Google.Apis.Auth.ExistingDependencies;
 using Google.Apis.Auth.OAuth2.Responses;
-using Google.Apis.Json;
 using Google.Apis.Logging;
 using Google.Apis.Util;
 using System.Net.Http;

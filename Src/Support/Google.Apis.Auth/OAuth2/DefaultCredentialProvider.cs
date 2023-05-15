@@ -14,16 +14,15 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Auth.ExistingDependencies;
+using Google.Apis.Auth.OAuth2.Flows;
+using Google.Apis.Auth.OAuth2.Responses;
+using Google.Apis.Logging;
+using Google.Apis.Util;
 using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using Google.Apis.Auth.ExistingDependencies;
-using Google.Apis.Auth.OAuth2.Flows;
-using Google.Apis.Auth.OAuth2.Responses;
-using Google.Apis.Json;
-using Google.Apis.Logging;
-using Google.Apis.Util;
 
 namespace Google.Apis.Auth.OAuth2
 {

@@ -15,7 +15,6 @@ limitations under the License.
 */
 
 using Google.Apis.Auth.ExistingDependencies;
-using Google.Apis.Json;
 using Google.Apis.Util;
 using System;
 using System.Security.Cryptography;
