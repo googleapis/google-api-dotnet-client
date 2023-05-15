@@ -23,12 +23,16 @@ Supported Platforms:
 - .Net Standard 2.0
     </Description>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\..\..\third_party\System.Net.Http\GzipDeflateHandler.cs" Link="ExistingDependencies\GzipDeflateHandler.cs" />
+    <Compile Include="..\..\..\third_party\System.Net.Http\StreamReplacingHttpContent.cs" Link="ExistingDependencies\StreamReplacingHttpContent.cs" />
+  </ItemGroup>
 
   <!-- package references; common then per-target -->
   <ItemGroup>
-    <ProjectReference Include="..\Google.Apis.Core\Google.Apis.Core.csproj" />
-    <ProjectReference Include="..\Google.Apis\Google.Apis.csproj" />
-
+    <!-- Temporary reference to let us see other issues. -->
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    
     <PackageReference Include="ConfigureAwaitChecker.Analyzer" Version="5.0.0.1" PrivateAssets="All" />
     <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.3" PrivateAssets="All" />
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="All" />
@@ -37,6 +41,8 @@ Supported Platforms:
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
     <PackageReference Include="System.Diagnostics.Process" Version="4.3.0" />
     <PackageReference Include="System.Net.Requests" Version="4.3.0" />
+    <PackageReference Include="System.Reflection.TypeExtensions" Version="4.7.0" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
