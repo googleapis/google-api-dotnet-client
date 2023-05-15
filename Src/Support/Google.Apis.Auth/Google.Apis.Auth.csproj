@@ -23,10 +23,6 @@ Supported Platforms:
 - .Net Standard 2.0
     </Description>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="..\..\..\third_party\System.Net.Http\GzipDeflateHandler.cs" Link="ExistingDependencies\GzipDeflateHandler.cs" />
-    <Compile Include="..\..\..\third_party\System.Net.Http\StreamReplacingHttpContent.cs" Link="ExistingDependencies\StreamReplacingHttpContent.cs" />
-  </ItemGroup>
 
   <!-- package references; common then per-target -->
   <ItemGroup>

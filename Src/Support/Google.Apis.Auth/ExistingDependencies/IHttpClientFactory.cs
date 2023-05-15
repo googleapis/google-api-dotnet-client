@@ -16,6 +16,8 @@ limitations under the License.
 
 using System.Collections.Generic;
 
+// TODO: Remove entirely for the sake of 
+
 namespace Google.Apis.Http
 {
     /// <summary>Arguments for creating a HTTP client.</summary>

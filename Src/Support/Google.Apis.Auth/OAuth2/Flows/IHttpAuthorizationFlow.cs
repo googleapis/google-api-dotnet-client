@@ -27,7 +27,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
         /// given HTTP client factory.
         /// </summary>
         /// <param name="httpClientFactory">The http client factory to be used by the new instance.
-        /// May be null, in which case the default <see cref="HttpClientFactory"/> will be used.</param>
+        /// May be null, in which case the default <see cref="IHttpClientFactory"/> will be used.</param>
         /// <returns>A new instance with the same type as this but that will use <paramref name="httpClientFactory"/>
         /// to obtain an <see cref="ConfigurableHttpClient"/> to be used for token related operations.</returns>
         IHttpAuthorizationFlow WithHttpClientFactory(IHttpClientFactory httpClientFactory);
