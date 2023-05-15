@@ -297,9 +297,317 @@ namespace Google.Apis.Firestore.v1
             public DatabasesResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                BackupSchedules = new BackupSchedulesResource(service);
                 CollectionGroups = new CollectionGroupsResource(service);
                 Documents = new DocumentsResource(service);
                 Operations = new OperationsResource(service);
+            }
+
+            /// <summary>Gets the BackupSchedules resource.</summary>
+            public virtual BackupSchedulesResource BackupSchedules { get; }
+
+            /// <summary>The "backupSchedules" collection of methods.</summary>
+            public class BackupSchedulesResource
+            {
+                private const string Resource = "backupSchedules";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public BackupSchedulesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Creates a backup schedule on a database. At most two backup schedules can be configured on a
+                /// database, one daily backup schedule with retention up to 7 days and one weekly backup schedule with
+                /// retention up to 14 weeks.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent database. Format `projects/{project}/databases/{database}`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1BackupSchedule body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a backup schedule on a database. At most two backup schedules can be configured on a
+                /// database, one daily backup schedule with retention up to 7 days and one weekly backup schedule with
+                /// retention up to 14 weeks.
+                /// </summary>
+                public class CreateRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1BackupSchedule>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1BackupSchedule body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent database. Format `projects/{project}/databases/{database}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1BackupSchedule Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/backupSchedules";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a backup schedule.</summary>
+                /// <param name="name">
+                /// Required. The name of backup schedule. Format
+                /// `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a backup schedule.</summary>
+                public class DeleteRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of backup schedule. Format
+                    /// `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+/backupSchedules/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets information about a backup schedule.</summary>
+                /// <param name="name">
+                /// Required. The name of the backup schedule. Format
+                /// `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets information about a backup schedule.</summary>
+                public class GetRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1BackupSchedule>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the backup schedule. Format
+                    /// `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+/backupSchedules/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>List backup schedules.</summary>
+                /// <param name="parent">
+                /// Required. The parent database. Format is `projects/{project}/databases/{database}`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>List backup schedules.</summary>
+                public class ListRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ListBackupSchedulesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent database. Format is `projects/{project}/databases/{database}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/backupSchedules";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Updates a backup schedule.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. The unique backup schedule identifier across all locations and databases for the given
+                /// project. This will be auto-assigned. Format is
+                /// `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1BackupSchedule body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates a backup schedule.</summary>
+                public class PatchRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1BackupSchedule>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1BackupSchedule body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. The unique backup schedule identifier across all locations and databases for the
+                    /// given project. This will be auto-assigned. Format is
+                    /// `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The list of fields to be updated.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1BackupSchedule Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/databases/[^/]+/backupSchedules/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the CollectionGroups resource.</summary>
@@ -3103,6 +3411,81 @@ namespace Google.Apis.Firestore.v1
                     });
                 }
             }
+
+            /// <summary>
+            /// Create a new database by restore from an existing backup. The new database must be in the same cloud
+            /// region or multi-region location as the existing backup. This behaves similar to
+            /// FirestoreAdmin.CreateDatabase except instead of creating a new empty database, a new database is created
+            /// with the database type, index configuration, and documents from an existing backup. The long-running
+            /// operation can be used to track the progress of the restore, with the Operation's metadata field type
+            /// being the RestoreDatabaseMetadata. The response type is the Database if the restore was successful. The
+            /// new database is not readable or writeable until the LRO has completed. Cancelling the returned operation
+            /// will stop the restore and delete the in-progress database, if the restore is still active.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The project to restore the database in. Format is `projects/{project_id}`.
+            /// </param>
+            public virtual RestoreRequest Restore(Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1RestoreDatabaseRequest body, string parent)
+            {
+                return new RestoreRequest(service, body, parent);
+            }
+
+            /// <summary>
+            /// Create a new database by restore from an existing backup. The new database must be in the same cloud
+            /// region or multi-region location as the existing backup. This behaves similar to
+            /// FirestoreAdmin.CreateDatabase except instead of creating a new empty database, a new database is created
+            /// with the database type, index configuration, and documents from an existing backup. The long-running
+            /// operation can be used to track the progress of the restore, with the Operation's metadata field type
+            /// being the RestoreDatabaseMetadata. The response type is the Database if the restore was successful. The
+            /// new database is not readable or writeable until the LRO has completed. Cancelling the returned operation
+            /// will stop the restore and delete the in-progress database, if the restore is still active.
+            /// </summary>
+            public class RestoreRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleLongrunningOperation>
+            {
+                /// <summary>Constructs a new Restore request.</summary>
+                public RestoreRequest(Google.Apis.Services.IClientService service, Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1RestoreDatabaseRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The project to restore the database in. Format is `projects/{project_id}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1RestoreDatabaseRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "restore";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/databases:restore";
+
+                /// <summary>Initializes Restore parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the Locations resource.</summary>
@@ -3120,6 +3503,181 @@ namespace Google.Apis.Firestore.v1
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                Backups = new BackupsResource(service);
+            }
+
+            /// <summary>Gets the Backups resource.</summary>
+            public virtual BackupsResource Backups { get; }
+
+            /// <summary>The "backups" collection of methods.</summary>
+            public class BackupsResource
+            {
+                private const string Resource = "backups";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public BackupsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Deletes a backup.</summary>
+                /// <param name="name">
+                /// Required. Name of the backup to delete. format is
+                /// `projects/{project}/locations/{location}/backups/{backup}`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a backup.</summary>
+                public class DeleteRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the backup to delete. format is
+                    /// `projects/{project}/locations/{location}/backups/{backup}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/backups/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets information about a backup.</summary>
+                /// <param name="name">
+                /// Required. Name of the backup to fetch. Format is
+                /// `projects/{project}/locations/{location}/backups/{backup}`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets information about a backup.</summary>
+                public class GetRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1Backup>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the backup to fetch. Format is
+                    /// `projects/{project}/locations/{location}/backups/{backup}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/backups/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists all the backups.</summary>
+                /// <param name="parent">
+                /// Required. The location to list backups from. Format is `projects/{project}/locations/{location}`.
+                /// Use `{location} = '-'` to list backups from all locations for the given project. This allows listing
+                /// backups from a single location or from all locations.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists all the backups.</summary>
+                public class ListRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1.Data.GoogleFirestoreAdminV1ListBackupsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The location to list backups from. Format is
+                    /// `projects/{project}/locations/{location}`. Use `{location} = '-'` to list backups from all
+                    /// locations for the given project. This allows listing backups from a single location or from all
+                    /// locations.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/backups";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets information about a location.</summary>
@@ -3440,6 +3998,55 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A sequence of bits, encoded in a byte array. Each byte in the `bitmap` byte array stores 8 bits of the sequence.
+    /// The only exception is the last byte, which may store 8 _or fewer_ bits. The `padding` defines the number of bits
+    /// of the last byte to be ignored as "padding". The values of these "padding" bits are unspecified and must be
+    /// ignored. To retrieve the first bit, bit 0, calculate: `(bitmap[0] &amp;amp; 0x01) != 0`. To retrieve the second
+    /// bit, bit 1, calculate: `(bitmap[0] &amp;amp; 0x02) != 0`. To retrieve the third bit, bit 2, calculate:
+    /// `(bitmap[0] &amp;amp; 0x04) != 0`. To retrieve the fourth bit, bit 3, calculate: `(bitmap[0] &amp;amp; 0x08) !=
+    /// 0`. To retrieve bit n, calculate: `(bitmap[n / 8] &amp;amp; (0x01 &amp;lt;&amp;lt; (n % 8))) != 0`. The "size"
+    /// of a `BitSequence` (the number of bits it contains) is calculated by this formula: `(bitmap.length * 8) -
+    /// padding`.
+    /// </summary>
+    public class BitSequence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The bytes that encode the bit sequence. May have a length of zero.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bitmap")]
+        public virtual string Bitmap { get; set; }
+
+        /// <summary>
+        /// The number of bits of the last byte in `bitmap` to ignore as "padding". If the length of `bitmap` is zero,
+        /// then this value must be `0`. Otherwise, this value must be between 0 and 7, inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("padding")]
+        public virtual System.Nullable<int> Padding { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A bloom filter (https://en.wikipedia.org/wiki/Bloom_filter). The bloom filter hashes the entries with MD5 and
+    /// treats the resulting 128-bit hash as 2 distinct 64-bit hash values, interpreted as unsigned integers using 2's
+    /// complement encoding. These two hash values, named `h1` and `h2`, are then used to compute the `hash_count` hash
+    /// values using the formula, starting at `i=0`: h(i) = h1 + (i * h2) These resulting values are then taken modulo
+    /// the number of bits in the bloom filter to get the bits of the bloom filter to test for the given entry.
+    /// </summary>
+    public class BloomFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The bloom filter data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bits")]
+        public virtual BitSequence Bits { get; set; }
+
+        /// <summary>The number of hashes used by the algorithm.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hashCount")]
+        public virtual System.Nullable<int> HashCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A selection of a collection, such as `messages as m1`.</summary>
     public class CollectionSelector : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3745,6 +4352,19 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
         public virtual System.Nullable<int> TargetId { get; set; }
 
+        /// <summary>
+        /// A bloom filter that contains the UTF-8 byte encodings of the resource names of the documents that match
+        /// target_id, in the form `projects/{project_id}/databases/{database_id}/documents/{document_path}` that have
+        /// NOT changed since the query results indicated by the resume token or timestamp given in
+        /// `Target.resume_type`. This bloom filter may be omitted at the server's discretion, such as if it is deemed
+        /// that the client will not make use of it or if it is too computationally expensive to calculate or transmit.
+        /// Clients must gracefully handle this field being absent by falling back to the logic used before this field
+        /// existed; that is, re-add the target without a resume token to figure out which documents in the client's
+        /// cache are out of sync.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unchangedNames")]
+        public virtual BloomFilter UnchangedNames { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3866,6 +4486,111 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("unaryFilter")]
         public virtual UnaryFilter UnaryFilter { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A Backup of a Cloud Firestore Database. The backup contains all documents and index configurations for the given
+    /// database at specific point in time.
+    /// </summary>
+    public class GoogleFirestoreAdminV1Backup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Name of the Firestore database that the backup is from. Format is
+        /// `projects/{project}/databases/{database}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual string Database { get; set; }
+
+        /// <summary>
+        /// Output only. The system-generated UUID4 for the Firestore database that the backup is from.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseUid")]
+        public virtual string DatabaseUid { get; set; }
+
+        /// <summary>Output only. The timestamp at which this backup expires.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual object ExpireTime { get; set; }
+
+        /// <summary>
+        /// Output only. The unique resource name of the Backup. Format is
+        /// `projects/{project}/locations/{location}/backups/{backup}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The backup contains an externally consistent copy of the database at this time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotTime")]
+        public virtual object SnapshotTime { get; set; }
+
+        /// <summary>Output only. The current state of the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. Statistics about the backup. This data only becomes available after the backup is fully
+        /// materialized to secondary storage. This field will be empty till then.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stats")]
+        public virtual GoogleFirestoreAdminV1Stats Stats { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A backup schedule for a Cloud Firestore Database. This resource is owned by the database it is backing up, and
+    /// is deleted along with the database. The actual backups are not though.
+    /// </summary>
+    public class GoogleFirestoreAdminV1BackupSchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The timestamp at which this backup schedule was created and effective since. No backups will be
+        /// created for this schedule before this time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>For a schedule that runs daily at a specified time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dailyRecurrence")]
+        public virtual GoogleFirestoreAdminV1DailyRecurrence DailyRecurrence { get; set; }
+
+        /// <summary>
+        /// Output only. The unique backup schedule identifier across all locations and databases for the given project.
+        /// This will be auto-assigned. Format is
+        /// `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// At what relative time in the future, compared to the creation time of the backup should the backup be
+        /// deleted, i.e. keep backups for 7 days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retention")]
+        public virtual object Retention { get; set; }
+
+        /// <summary>
+        /// Output only. The timestamp at which this backup schedule was most recently updated. When a backup schedule
+        /// is first created, this is the same as create_time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>For a schedule that runs weekly on a specific day and time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("weeklyRecurrence")]
+        public virtual GoogleFirestoreAdminV1WeeklyRecurrence WeeklyRecurrence { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represent a recurring schedule that runs at a specific time every day. The time zone is UTC.</summary>
+    public class GoogleFirestoreAdminV1DailyRecurrence : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4329,6 +5054,39 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response for FirestoreAdmin.ListBackupSchedules.</summary>
+    public class GoogleFirestoreAdminV1ListBackupSchedulesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of all backup schedules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupSchedules")]
+        public virtual System.Collections.Generic.IList<GoogleFirestoreAdminV1BackupSchedule> BackupSchedules { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for FirestoreAdmin.ListBackups.</summary>
+    public class GoogleFirestoreAdminV1ListBackupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of all backups for the project. Ordered by `location ASC, create_time DESC, name ASC`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backups")]
+        public virtual System.Collections.Generic.IList<GoogleFirestoreAdminV1Backup> Backups { get; set; }
+
+        /// <summary>
+        /// List of locations that existing backups were not able to be fetched from. Instead of failing the entire
+        /// requests when a single location is unreachable, this response returns a partial result set and list of
+        /// locations unable to be reached here. The request can be retried against a single location to get a concrete
+        /// error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The list of databases for a project.</summary>
     public class GoogleFirestoreAdminV1ListDatabasesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4399,6 +5157,50 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request message for FirestoreAdmin.RestoreDatabase.</summary>
+    public class GoogleFirestoreAdminV1RestoreDatabaseRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Backup to restore from. Must be from the same project as the parent. Format is:
+        /// `projects/{project_id}/locations/{location}/backups/{backup}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backup")]
+        public virtual string Backup { get; set; }
+
+        /// <summary>
+        /// Required. The ID to use for the database, which will become the final component of the database's resource
+        /// name. This database id must not be associated with an existing database. This value should be 4-63
+        /// characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number.
+        /// Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseId")]
+        public virtual string DatabaseId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Backup specific statistics.</summary>
+    public class GoogleFirestoreAdminV1Stats : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The total number of documents contained in the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentCount")]
+        public virtual System.Nullable<long> DocumentCount { get; set; }
+
+        /// <summary>Output only. The total number of index entries contained in the backup.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexCount")]
+        public virtual System.Nullable<long> IndexCount { get; set; }
+
+        /// <summary>
+        /// Output only. Summation of the size of all documents and index entries in the backup, measured in bytes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeBytes")]
+        public virtual System.Nullable<long> SizeBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The TTL (time-to-live) configuration for documents that have this `Field` set. Storing a timestamp value into a
     /// TTL-enabled field will be treated as the document's absolute expiration time. Timestamp values in the past
@@ -4429,6 +5231,19 @@ namespace Google.Apis.Firestore.v1.Data
     /// <summary>Metadata related to the update database operation.</summary>
     public class GoogleFirestoreAdminV1UpdateDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a recurring schedule that runs on a specified day of the week. The time zone is UTC.
+    /// </summary>
+    public class GoogleFirestoreAdminV1WeeklyRecurrence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The day of week to run. DAY_OF_WEEK_UNSPECIFIED is not allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual string Day { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5113,6 +5928,14 @@ namespace Google.Apis.Firestore.v1.Data
         /// <summary>A target specified by a set of document names.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documents")]
         public virtual DocumentsTarget Documents { get; set; }
+
+        /// <summary>
+        /// The number of documents that last matched the query at the resume token or read time. This value is only
+        /// relevant when a `resume_type` is provided. This value being present and greater than zero signals that the
+        /// client wants `ExistenceFilter.unchanged_names` to be included in the response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expectedCount")]
+        public virtual System.Nullable<int> ExpectedCount { get; set; }
 
         /// <summary>If the target should be removed once it is current and consistent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("once")]

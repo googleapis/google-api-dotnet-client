@@ -2447,8 +2447,8 @@ namespace Google.Apis.CloudFunctions.v1.Data
         public virtual string Path { get; set; }
 
         /// <summary>
-        /// Version of the secret (version number or the string 'latest'). It is preferrable to use `latest` version
-        /// with secret volumes as secret value changes are reflected immediately.
+        /// Version of the secret (version number or the string 'latest'). It is preferable to use `latest` version with
+        /// secret volumes as secret value changes are reflected immediately.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }

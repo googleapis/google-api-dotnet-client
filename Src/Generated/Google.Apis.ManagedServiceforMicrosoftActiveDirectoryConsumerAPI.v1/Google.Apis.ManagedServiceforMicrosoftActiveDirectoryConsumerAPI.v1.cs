@@ -1365,6 +1365,65 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                         }
                     }
 
+                    /// <summary>Disable Domain Migration</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="domain">
+                    /// Required. The domain resource name using the form:
+                    /// `projects/{project_id}/locations/global/domains/{domain_name}`
+                    /// </param>
+                    public virtual DisableMigrationRequest DisableMigration(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.DisableMigrationRequest body, string domain)
+                    {
+                        return new DisableMigrationRequest(service, body, domain);
+                    }
+
+                    /// <summary>Disable Domain Migration</summary>
+                    public class DisableMigrationRequest : ManagedServiceforMicrosoftActiveDirectoryConsumerAPIBaseServiceRequest<Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new DisableMigration request.</summary>
+                        public DisableMigrationRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.DisableMigrationRequest body, string domain) : base(service)
+                        {
+                            Domain = domain;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The domain resource name using the form:
+                        /// `projects/{project_id}/locations/global/domains/{domain_name}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("domain", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Domain { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.DisableMigrationRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "disableMigration";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+domain}:disableMigration";
+
+                        /// <summary>Initializes DisableMigration parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("domain", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "domain",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/global/domains/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>DomainJoinMachine API joins a Compute Engine VM to the domain</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="domain">
@@ -1410,6 +1469,65 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1
                         public override string RestPath => "v1/{+domain}:domainJoinMachine";
 
                         /// <summary>Initializes DomainJoinMachine parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("domain", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "domain",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/global/domains/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Enable Domain Migration</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="domain">
+                    /// Required. The domain resource name using the form:
+                    /// `projects/{project_id}/locations/global/domains/{domain_name}`
+                    /// </param>
+                    public virtual EnableMigrationRequest EnableMigration(Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.EnableMigrationRequest body, string domain)
+                    {
+                        return new EnableMigrationRequest(service, body, domain);
+                    }
+
+                    /// <summary>Enable Domain Migration</summary>
+                    public class EnableMigrationRequest : ManagedServiceforMicrosoftActiveDirectoryConsumerAPIBaseServiceRequest<Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new EnableMigration request.</summary>
+                        public EnableMigrationRequest(Google.Apis.Services.IClientService service, Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.EnableMigrationRequest body, string domain) : base(service)
+                        {
+                            Domain = domain;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The domain resource name using the form:
+                        /// `projects/{project_id}/locations/global/domains/{domain_name}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("domain", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Domain { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Data.EnableMigrationRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "enableMigration";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+domain}:enableMigration";
+
+                        /// <summary>Initializes EnableMigration parameter list.</summary>
                         protected override void InitParameters()
                         {
                             base.InitParameters();
@@ -3546,6 +3664,13 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>DisableMigrationRequest is the request message for DisableMigration method.</summary>
+    public class DisableMigrationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a managed Microsoft Active Directory domain. If the domain is being changed, it will be placed into
     /// the UPDATING state, which indicates that the resource is being reconciled. At this point, Get will reflect an
@@ -3675,6 +3800,17 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>EnableMigrationRequest is the request message for EnableMigration method.</summary>
+    public class EnableMigrationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. List of the on-prem domains to be migrated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migratingDomains")]
+        public virtual System.Collections.Generic.IList<OnPremDomainDetails> MigratingDomains { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4351,7 +4487,7 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A resource that represents Google Cloud Platform location.</summary>
+    /// <summary>A resource that represents a Google Cloud location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
@@ -4440,6 +4576,24 @@ namespace Google.Apis.ManagedServiceforMicrosoftActiveDirectoryConsumerAPI.v1.Da
         /// <summary>Weekly cycle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weeklyCycle")]
         public virtual WeeklyCycle WeeklyCycle { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// OnPremDomainDetails is the message which contains details of on-prem domain which is trusted and needs to be
+    /// migrated.
+    /// </summary>
+    public class OnPremDomainDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Option to disable SID filtering.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableSidFiltering")]
+        public virtual System.Nullable<bool> DisableSidFiltering { get; set; }
+
+        /// <summary>Required. FQDN of the on-prem domain being migrated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domainName")]
+        public virtual string DomainName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

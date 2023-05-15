@@ -3560,7 +3560,11 @@ namespace Google.Apis.Monitoring.v3
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>A positive number that is the maximum number of results to return.</summary>
+                /// <summary>
+                /// A positive number that is the maximum number of results to return. The default and maximum value is
+                /// 10,000. If a page_size &amp;lt;= 0 or &amp;gt; 10,000 is submitted, will instead return a maximum of
+                /// 10,000 results.
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 

@@ -2979,7 +2979,7 @@
          ],
          "parameters": {
           "name": {
-           "description": "Output only. Resource name for this EventCreateRule resource. Format: properties/{property}/dataStreams/{data_stream}/eventCreateRules",
+           "description": "Output only. Resource name for this EventCreateRule resource. Format: properties/{property}/dataStreams/{data_stream}/eventCreateRules/{event_create_rule}",
            "location": "path",
            "pattern": "^properties/[^/]+/dataStreams/[^/]+/eventCreateRules/[^/]+$",
            "required": true,
@@ -4322,7 +4322,7 @@
    }
   }
  },
- "revision": "20230510",
+ "revision": "20230511",
  "rootUrl": "https://analyticsadmin.googleapis.com/",
  "schemas": {
   "GoogleAnalyticsAdminV1alphaAccessBetweenFilter": {
@@ -6515,7 +6515,7 @@
      "type": "array"
     },
     "name": {
-     "description": "Output only. Resource name for this EventCreateRule resource. Format: properties/{property}/dataStreams/{data_stream}/eventCreateRules",
+     "description": "Output only. Resource name for this EventCreateRule resource. Format: properties/{property}/dataStreams/{data_stream}/eventCreateRules/{event_create_rule}",
      "readOnly": true,
      "type": "string"
     },

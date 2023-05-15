@@ -2537,6 +2537,10 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateInstance")]
         public virtual System.Nullable<bool> PrivateInstance { get; set; }
 
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>Output only. Deprecated. Use tenant_project_id instead to extract the tenant project ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
@@ -2684,7 +2688,7 @@ namespace Google.Apis.DataFusion.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A resource that represents Google Cloud Platform location.</summary>
+    /// <summary>A resource that represents a Google Cloud location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>

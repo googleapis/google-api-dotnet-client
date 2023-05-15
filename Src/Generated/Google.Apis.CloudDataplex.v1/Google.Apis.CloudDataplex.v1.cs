@@ -11530,6 +11530,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>Applied configs for data profile type data scan job.</summary>
     public class GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Boolean indicating whether a row filter was applied in the DataScan job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowFilterApplied")]
+        public virtual System.Nullable<bool> RowFilterApplied { get; set; }
+
         /// <summary>
         /// The percentage of the records selected from the dataset for DataScan. Value ranges between 0.0 and 100.0.
         /// Value 0.0 or 100.0 imply that sampling was not applied.
@@ -11555,6 +11559,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>Applied configs for data quality type data scan job.</summary>
     public class GoogleCloudDataplexV1DataScanEventDataQualityAppliedConfigs : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Boolean indicating whether a row filter was applied in the DataScan job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rowFilterApplied")]
+        public virtual System.Nullable<bool> RowFilterApplied { get; set; }
+
         /// <summary>
         /// The percentage of the records selected from the dataset for DataScan. Value ranges between 0.0 and 100.0.
         /// Value 0.0 or 100.0 imply that sampling was not applied.
