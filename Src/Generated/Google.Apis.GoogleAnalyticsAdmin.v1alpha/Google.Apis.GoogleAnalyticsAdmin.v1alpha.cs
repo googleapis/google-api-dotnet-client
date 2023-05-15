@@ -4934,7 +4934,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Output only. Resource name for this EventCreateRule resource. Format:
-                /// properties/{property}/dataStreams/{data_stream}/eventCreateRules
+                /// properties/{property}/dataStreams/{data_stream}/eventCreateRules/{event_create_rule}
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaEventCreateRule body, string name)
                 {
@@ -4954,7 +4954,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
 
                     /// <summary>
                     /// Output only. Resource name for this EventCreateRule resource. Format:
-                    /// properties/{property}/dataStreams/{data_stream}/eventCreateRules
+                    /// properties/{property}/dataStreams/{data_stream}/eventCreateRules/{event_create_rule}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -11608,7 +11608,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>
         /// Output only. Resource name for this EventCreateRule resource. Format:
-        /// properties/{property}/dataStreams/{data_stream}/eventCreateRules
+        /// properties/{property}/dataStreams/{data_stream}/eventCreateRules/{event_create_rule}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

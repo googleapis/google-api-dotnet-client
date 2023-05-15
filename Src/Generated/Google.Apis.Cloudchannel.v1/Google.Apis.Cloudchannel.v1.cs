@@ -3902,6 +3902,84 @@ namespace Google.Apis.Cloudchannel.v1
             }
 
             /// <summary>
+            /// Lists the billing accounts that are eligible to purchase particular SKUs for a given customer. Possible
+            /// error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT:
+            /// Required request parameters are missing or invalid. Return value: Based on the provided list of SKUs,
+            /// returns a list of SKU groups that must be purchased using the same billing account and the billing
+            /// accounts eligible to purchase each SKU group.
+            /// </summary>
+            /// <param name="customer">
+            /// Required. The resource name of the customer to list eligible billing accounts for. Format:
+            /// accounts/{account_id}/customers/{customer_id}.
+            /// </param>
+            public virtual QueryEligibleBillingAccountsRequest QueryEligibleBillingAccounts(string customer)
+            {
+                return new QueryEligibleBillingAccountsRequest(service, customer);
+            }
+
+            /// <summary>
+            /// Lists the billing accounts that are eligible to purchase particular SKUs for a given customer. Possible
+            /// error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. * INVALID_ARGUMENT:
+            /// Required request parameters are missing or invalid. Return value: Based on the provided list of SKUs,
+            /// returns a list of SKU groups that must be purchased using the same billing account and the billing
+            /// accounts eligible to purchase each SKU group.
+            /// </summary>
+            public class QueryEligibleBillingAccountsRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1QueryEligibleBillingAccountsResponse>
+            {
+                /// <summary>Constructs a new QueryEligibleBillingAccounts request.</summary>
+                public QueryEligibleBillingAccountsRequest(Google.Apis.Services.IClientService service, string customer) : base(service)
+                {
+                    Customer = customer;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the customer to list eligible billing accounts for. Format:
+                /// accounts/{account_id}/customers/{customer_id}.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customer", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Customer { get; private set; }
+
+                /// <summary>
+                /// Required. List of SKUs to list eligible billing accounts for. At least one SKU is required. Format:
+                /// products/{product_id}/skus/{sku_id}.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("skus", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> Skus { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "queryEligibleBillingAccounts";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+customer}:queryEligibleBillingAccounts";
+
+                /// <summary>Initializes QueryEligibleBillingAccounts parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("customer", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customer",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/customers/[^/]+$",
+                    });
+                    RequestParameters.Add("skus", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "skus",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
             /// Transfers customer entitlements to new reseller. Possible error codes: * PERMISSION_DENIED: The customer
             /// doesn't belong to the reseller. * INVALID_ARGUMENT: Required request parameters are missing or invalid.
             /// * NOT_FOUND: The customer or offer resource was not found. * ALREADY_EXISTS: The SKU was already
@@ -5504,6 +5582,47 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// <summary>The name of the base entitlement, for which this entitlement is an add-on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseEntitlement")]
         public virtual string BaseEntitlement { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a billing account.</summary>
+    public class GoogleCloudChannelV1BillingAccount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The time when this billing account was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Output only. The 3-letter currency code defined in ISO 4217.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
+        public virtual string CurrencyCode { get; set; }
+
+        /// <summary>Display name of the billing account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. Resource name of the billing account. Format:
+        /// accounts/{account_id}/billingAccounts/{billing_account_id}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The CLDR region code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
+        public virtual string RegionCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a billing account that can be used to make a purchase.</summary>
+    public class GoogleCloudChannelV1BillingAccountPurchaseInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The billing account resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingAccount")]
+        public virtual GoogleCloudChannelV1BillingAccount BillingAccount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7133,6 +7252,21 @@ namespace Google.Apis.Cloudchannel.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for QueryEligibleBillingAccounts.</summary>
+    public class GoogleCloudChannelV1QueryEligibleBillingAccountsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of SKU purchase groups where each group represents a set of SKUs that must be purchased using the same
+        /// billing account. Each SKU from [QueryEligibleBillingAccountsRequest.skus] will appear in exactly one SKU
+        /// group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skuPurchaseGroups")]
+        public virtual System.Collections.Generic.IList<GoogleCloudChannelV1SkuPurchaseGroup> SkuPurchaseGroups { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request Message for RegisterSubscriber.</summary>
     public class GoogleCloudChannelV1RegisterSubscriberRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7507,6 +7641,23 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skuGroup")]
         public virtual string SkuGroup { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a set of SKUs that must be purchased using the same billing account.</summary>
+    public class GoogleCloudChannelV1SkuPurchaseGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of billing accounts that are eligible to purhcase these SKUs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingAccountPurchaseInfos")]
+        public virtual System.Collections.Generic.IList<GoogleCloudChannelV1BillingAccountPurchaseInfo> BillingAccountPurchaseInfos { get; set; }
+
+        /// <summary>
+        /// Resource names of the SKUs included in this group. Format: products/{product_id}/skus/{sku_id}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skus")]
+        public virtual System.Collections.Generic.IList<string> Skus { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

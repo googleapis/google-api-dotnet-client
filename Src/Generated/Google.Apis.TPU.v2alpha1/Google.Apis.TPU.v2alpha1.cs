@@ -1384,6 +1384,15 @@ namespace Google.Apis.TPU.v2alpha1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>
+                    /// If set to true, all running nodes belonging to this queued resource will be deleted first and
+                    /// then the queued resource will be deleted. Otherwise (i.e. force=false), the queued resource will
+                    /// only be deleted if its nodes have already been deleted or the queued resource is in the
+                    /// ACCEPTED, FAILED, or SUSPENDED state.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Force { get; set; }
+
                     /// <summary>Idempotent request UUID.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -1408,6 +1417,14 @@ namespace Google.Apis.TPU.v2alpha1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/queuedResources/[^/]+$",
+                        });
+                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                         {
@@ -2390,6 +2407,10 @@ namespace Google.Apis.TPU.v2alpha1.Data
         /// <summary>Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
+        /// <summary>Output only. Whether the Node belongs to a Multislice group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multisliceNode")]
+        public virtual System.Nullable<bool> MultisliceNode { get; set; }
 
         /// <summary>Output only. Immutable. The name of the TPU.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

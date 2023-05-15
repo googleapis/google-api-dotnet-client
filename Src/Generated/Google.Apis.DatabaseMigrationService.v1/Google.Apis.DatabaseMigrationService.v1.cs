@@ -5749,6 +5749,17 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Represents a Database Migration Service migration job object.</summary>
     public class MigrationJob : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The CMEK (customer-managed encryption key) fully qualified key name used for the migration job. This field
+        /// supports all migration jobs types except for: * Mysql to Mysql (use the cmek field in the cloudsql
+        /// connection profile instead). * PostrgeSQL to PostgreSQL (use the cmek field in the cloudsql connection
+        /// profile instead). * PostgreSQL to AlloyDB (use the kms_key_name field in the alloydb connection profile
+        /// instead). Each Cloud CMEK key has the following format:
+        /// projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cmekKeyName")]
+        public virtual string CmekKeyName { get; set; }
+
         /// <summary>The conversion workspace used by the migration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionWorkspace")]
         public virtual ConversionWorkspaceInfo ConversionWorkspace { get; set; }
@@ -6265,7 +6276,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
 
     /// <summary>
     /// Private Service Connect connectivity
-    /// (https://cloud.google.com/vpc/docs/private-service-connect#benefits-services)
+    /// (https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
     /// </summary>
     public class PrivateServiceConnectConnectivity : Google.Apis.Requests.IDirectResponseSchema
     {

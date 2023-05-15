@@ -1682,10 +1682,7 @@ namespace Google.Apis.Datastore.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// A Datastore data object. An entity is limited to 1 megabyte when stored. That _roughly_ corresponds to a limit
-    /// of 1 megabyte for the serialized form of this message.
-    /// </summary>
+    /// <summary>A Datastore data object. Must not exceed 1 MiB - 4 bytes.</summary>
     public class Entity : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

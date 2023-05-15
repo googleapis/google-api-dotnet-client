@@ -4180,6 +4180,25 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A detailed representation of a GooGet artifact.</summary>
+    public class GoogetArtifact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Operating system architecture of the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
+        public virtual string Architecture { get; set; }
+
+        /// <summary>Output only. The Artifact Registry resource name of the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The GooGet package name of the artifact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Files store content that is potentially associated with Packages or Versions.</summary>
     public class GoogleDevtoolsArtifactregistryV1File : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4300,6 +4319,21 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Error information explaining why a package was not imported.</summary>
+    public class ImportGoogetArtifactsErrorInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The detailed error status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>Google Cloud Storage location requested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
+        public virtual ImportGoogetArtifactsGcsSource GcsSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Google Cloud Storage location where the artifacts currently reside.</summary>
     public class ImportGoogetArtifactsGcsSource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4315,12 +4349,34 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The operation metadata for importing artifacts.</summary>
+    public class ImportGoogetArtifactsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request to import new googet artifacts.</summary>
     public class ImportGoogetArtifactsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Google Cloud Storage location where input content is located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual ImportGoogetArtifactsGcsSource GcsSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message from importing artifacts.</summary>
+    public class ImportGoogetArtifactsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Detailed error info for packages that were not imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<ImportGoogetArtifactsErrorInfo> Errors { get; set; }
+
+        /// <summary>The GooGet artifacts updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googetArtifacts")]
+        public virtual System.Collections.Generic.IList<GoogetArtifact> GoogetArtifacts { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4578,7 +4634,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A resource that represents Google Cloud Platform location.</summary>
+    /// <summary>A resource that represents a Google Cloud location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
@@ -5194,9 +5250,30 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The operation metadata for uploading artifacts.</summary>
+    public class UploadGoogetArtifactMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request to upload an artifact.</summary>
     public class UploadGoogetArtifactRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The response of the completed artifact upload operation. This response is contained in the Operation and
+    /// available to users.
+    /// </summary>
+    public class UploadGoogetArtifactResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Apt artifacts updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googetArtifacts")]
+        public virtual System.Collections.Generic.IList<GoogetArtifact> GoogetArtifacts { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

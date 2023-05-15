@@ -2373,6 +2373,55 @@ namespace Google.Apis.Firestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A sequence of bits, encoded in a byte array. Each byte in the `bitmap` byte array stores 8 bits of the sequence.
+    /// The only exception is the last byte, which may store 8 _or fewer_ bits. The `padding` defines the number of bits
+    /// of the last byte to be ignored as "padding". The values of these "padding" bits are unspecified and must be
+    /// ignored. To retrieve the first bit, bit 0, calculate: `(bitmap[0] &amp;amp; 0x01) != 0`. To retrieve the second
+    /// bit, bit 1, calculate: `(bitmap[0] &amp;amp; 0x02) != 0`. To retrieve the third bit, bit 2, calculate:
+    /// `(bitmap[0] &amp;amp; 0x04) != 0`. To retrieve the fourth bit, bit 3, calculate: `(bitmap[0] &amp;amp; 0x08) !=
+    /// 0`. To retrieve bit n, calculate: `(bitmap[n / 8] &amp;amp; (0x01 &amp;lt;&amp;lt; (n % 8))) != 0`. The "size"
+    /// of a `BitSequence` (the number of bits it contains) is calculated by this formula: `(bitmap.length * 8) -
+    /// padding`.
+    /// </summary>
+    public class BitSequence : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The bytes that encode the bit sequence. May have a length of zero.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bitmap")]
+        public virtual string Bitmap { get; set; }
+
+        /// <summary>
+        /// The number of bits of the last byte in `bitmap` to ignore as "padding". If the length of `bitmap` is zero,
+        /// then this value must be `0`. Otherwise, this value must be between 0 and 7, inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("padding")]
+        public virtual System.Nullable<int> Padding { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A bloom filter (https://en.wikipedia.org/wiki/Bloom_filter). The bloom filter hashes the entries with MD5 and
+    /// treats the resulting 128-bit hash as 2 distinct 64-bit hash values, interpreted as unsigned integers using 2's
+    /// complement encoding. These two hash values, named `h1` and `h2`, are then used to compute the `hash_count` hash
+    /// values using the formula, starting at `i=0`: h(i) = h1 + (i * h2) These resulting values are then taken modulo
+    /// the number of bits in the bloom filter to get the bits of the bloom filter to test for the given entry.
+    /// </summary>
+    public class BloomFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The bloom filter data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bits")]
+        public virtual BitSequence Bits { get; set; }
+
+        /// <summary>The number of hashes used by the algorithm.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hashCount")]
+        public virtual System.Nullable<int> HashCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A selection of a collection, such as `messages as m1`.</summary>
     public class CollectionSelector : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2677,6 +2726,19 @@ namespace Google.Apis.Firestore.v1beta1.Data
         /// <summary>The target ID to which this filter applies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
         public virtual System.Nullable<int> TargetId { get; set; }
+
+        /// <summary>
+        /// A bloom filter that contains the UTF-8 byte encodings of the resource names of the documents that match
+        /// target_id, in the form `projects/{project_id}/databases/{database_id}/documents/{document_path}` that have
+        /// NOT changed since the query results indicated by the resume token or timestamp given in
+        /// `Target.resume_type`. This bloom filter may be omitted at the server's discretion, such as if it is deemed
+        /// that the client will not make use of it or if it is too computationally expensive to calculate or transmit.
+        /// Clients must gracefully handle this field being absent by falling back to the logic used before this field
+        /// existed; that is, re-add the target without a resume token to figure out which documents in the client's
+        /// cache are out of sync.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unchangedNames")]
+        public virtual BloomFilter UnchangedNames { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3674,6 +3736,14 @@ namespace Google.Apis.Firestore.v1beta1.Data
         /// <summary>A target specified by a set of document names.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documents")]
         public virtual DocumentsTarget Documents { get; set; }
+
+        /// <summary>
+        /// The number of documents that last matched the query at the resume token or read time. This value is only
+        /// relevant when a `resume_type` is provided. This value being present and greater than zero signals that the
+        /// client wants `ExistenceFilter.unchanged_names` to be included in the response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expectedCount")]
+        public virtual System.Nullable<int> ExpectedCount { get; set; }
 
         /// <summary>If the target should be removed once it is current and consistent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("once")]

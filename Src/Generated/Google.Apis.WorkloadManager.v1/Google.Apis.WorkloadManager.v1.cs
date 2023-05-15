@@ -1782,6 +1782,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sentTime")]
         public virtual object SentTime { get; set; }
 
+        /// <summary>The insights data for the sqlserver workload validation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlserverValidation")]
+        public virtual SqlserverValidation SqlserverValidation { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1905,7 +1909,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A resource that represents Google Cloud Platform location.</summary>
+    /// <summary>A resource that represents a Google Cloud location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
@@ -2246,10 +2250,6 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceKind")]
         public virtual string ResourceKind { get; set; }
 
-        /// <summary>Indicates whether this is a new, updated, or missing resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceState")]
-        public virtual string ResourceState { get; set; }
-
         /// <summary>The type of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
@@ -2298,6 +2298,42 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>resource name</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
         public virtual string Resource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A presentation of SQLServer workload insight. The schema of SqlServer workloads validation related data.
+    /// </summary>
+    public class SqlserverValidation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The agent version collected this data point</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentVersion")]
+        public virtual string AgentVersion { get; set; }
+
+        /// <summary>A list of SqlServer validation metrics data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validationDetails")]
+        public virtual System.Collections.Generic.IList<SqlserverValidationValidationDetail> ValidationDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message describing the Sqlserver validation metrics.</summary>
+    public class SqlserverValidationValidationDetail : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The pairs of metrics data: field name &amp; field value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Details { get; set; }
+
+        /// <summary>The instance id where the ValidationDetail is generated from</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
+        public virtual string InstanceId { get; set; }
+
+        /// <summary>The Sqlserver system that the validation data is from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

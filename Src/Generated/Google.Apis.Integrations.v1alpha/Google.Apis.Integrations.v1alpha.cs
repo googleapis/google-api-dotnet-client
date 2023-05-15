@@ -10802,6 +10802,10 @@ namespace Google.Apis.Integrations.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("connectorVersion")]
         public virtual string ConnectorVersion { get; set; }
 
+        /// <summary>Output only. Flag to mark the version indicating the launch stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectorVersionLaunchStage")]
+        public virtual string ConnectorVersionLaunchStage { get; set; }
+
         /// <summary>Output only. Created time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
@@ -10875,9 +10879,7 @@ namespace Google.Apis.Integrations.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual GoogleCloudConnectorsV1ConnectionStatus Status { get; set; }
 
-        /// <summary>
-        /// Output only. This subscription type enum value states if the metrics should be sent for billing or not.
-        /// </summary>
+        /// <summary>Output only. This subscription type enum states the subscription type of the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptionType")]
         public virtual string SubscriptionType { get; set; }
 

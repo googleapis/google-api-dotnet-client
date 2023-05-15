@@ -3651,9 +3651,7 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual ConnectionStatus Status { get; set; }
 
-        /// <summary>
-        /// Output only. This subscription type enum value states if the metrics should be sent for billing or not.
-        /// </summary>
+        /// <summary>Output only. This subscription type enum states the subscription type of the project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscriptionType")]
         public virtual string SubscriptionType { get; set; }
 
