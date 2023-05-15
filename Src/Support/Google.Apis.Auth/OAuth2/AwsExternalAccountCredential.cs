@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Auth.ExistingDependencies;
 using Google.Apis.Http;
 using Google.Apis.Json;
 using Google.Apis.Util;
@@ -140,7 +141,7 @@ namespace Google.Apis.Auth.OAuth2
 
             var subjectToken = AwsSignedSubjectToken.Create(awsSecurityCredentials, awsRegion, new Uri(regionalizedVerificationUrl), Audience, Clock);
 
-            return Uri.EscapeDataString(NewtonsoftJsonSerializer.Instance.Serialize(subjectToken));
+            return Uri.EscapeDataString(ReplacementSerializer.Serialize(subjectToken));
         }
 
         /// <inheritdoc/>

@@ -18,7 +18,7 @@ using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-
+using Google.Apis.Auth.ExistingDependencies;
 using Google.Apis.Auth.OAuth2.Flows;
 using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Json;
@@ -165,7 +165,7 @@ namespace Google.Apis.Auth.OAuth2
             JsonCredentialParameters credentialParameters;
             try
             {
-                credentialParameters = NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(stream);
+                credentialParameters = ReplacementSerializer.Deserialize<JsonCredentialParameters>(stream);
             }
             catch (Exception e)
             {
@@ -180,8 +180,7 @@ namespace Google.Apis.Auth.OAuth2
             JsonCredentialParameters credentialParameters;
             try
             {
-                credentialParameters = await NewtonsoftJsonSerializer.Instance
-                    .DeserializeAsync<JsonCredentialParameters>(stream, cancellationToken)
+                credentialParameters = await ReplacementSerializer.DeserializeAsync<JsonCredentialParameters>(stream, cancellationToken)
                     .ConfigureAwait(false);
             }
             catch (Exception e)
@@ -197,7 +196,7 @@ namespace Google.Apis.Auth.OAuth2
             JsonCredentialParameters credentialParameters;
             try
             {
-                credentialParameters = NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(json);
+                credentialParameters = ReplacementSerializer.Deserialize<JsonCredentialParameters>(json);
             }
             catch (Exception e)
             {

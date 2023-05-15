@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Auth.ExistingDependencies;
 using Google.Apis.Json;
 using Newtonsoft.Json;
 using System;
@@ -97,7 +98,7 @@ namespace Google.Apis.Auth.OAuth2
                     && credentialJson != "")
                 {
                     // Deserialize the credentials
-                    var deserializedCredentials = NewtonsoftJsonSerializer.Instance.Deserialize<AwsSecurityCredentialsResponse>(credentialJson);
+                    var deserializedCredentials = ReplacementSerializer.Deserialize<AwsSecurityCredentialsResponse>(credentialJson);
 
                     if (deserializedCredentials.IsSuccess
                         && !string.IsNullOrEmpty(deserializedCredentials.AccessKeyId)

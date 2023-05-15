@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Auth.ExistingDependencies;
 using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Http;
@@ -120,7 +121,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
             if (!response.IsSuccessStatusCode)
             {
                 var content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                var error = NewtonsoftJsonSerializer.Instance.Deserialize<TokenErrorResponse>(content);
+                var error = ReplacementSerializer.Deserialize<TokenErrorResponse>(content);
                 throw new TokenResponseException(error, response.StatusCode);
             }
 

@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Auth.ExistingDependencies;
 using Google.Apis.Json;
 using Google.Apis.Logging;
 using Google.Apis.Util;
@@ -159,7 +160,7 @@ namespace Google.Apis.Auth.OAuth2.Responses
                     // "{"error": {"code": 404, "message": "...", "errors": [{"message": "...", ...}], "status": "NOT_FOUND"}}" 
                     var error = response.RequestMessage?.RequestUri?.AbsoluteUri.StartsWith(GoogleAuthConsts.IamServiceAccountEndpointCommonPrefix) == true ?
                         new TokenErrorResponse { Error = content } :
-                        NewtonsoftJsonSerializer.Instance.Deserialize<TokenErrorResponse>(content);
+                        ReplacementSerializer.Deserialize<TokenErrorResponse>(content);
                     throw new TokenResponseException(error, response.StatusCode);
                 }
 
@@ -176,7 +177,7 @@ namespace Google.Apis.Auth.OAuth2.Responses
                 else
                 {
                     typeName = nameof(TokenResponse);
-                    newToken = NewtonsoftJsonSerializer.Instance.Deserialize<TokenResponse>(content);
+                    newToken = ReplacementSerializer.Deserialize<TokenResponse>(content);
                 }
                 // We make some modifications to the token before returning, to guarantee consistency
                 // for our code across endpoint usage.

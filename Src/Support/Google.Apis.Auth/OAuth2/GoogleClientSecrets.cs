@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Auth.ExistingDependencies;
 using Google.Apis.Json;
 using System;
 using System.IO;
@@ -58,11 +59,11 @@ namespace Google.Apis.Auth.OAuth2
 
         /// <summary>Loads the Google client secret from the input stream.</summary>
         public static GoogleClientSecrets FromStream(Stream stream) =>
-            NewtonsoftJsonSerializer.Instance.Deserialize<GoogleClientSecrets>(stream);
+            ReplacementSerializer.Deserialize<GoogleClientSecrets>(stream);
 
         /// <summary>Asynchronously loads the Google client secret from the input stream.</summary>
         public static Task<GoogleClientSecrets> FromStreamAsync(Stream stream, CancellationToken cancellationToken = default) =>
-            NewtonsoftJsonSerializer.Instance.DeserializeAsync<GoogleClientSecrets>(stream, cancellationToken);
+            ReplacementSerializer.DeserializeAsync<GoogleClientSecrets>(stream, cancellationToken);
 
         /// <summary>Loads the Google client secret from a JSON file.</summary>
         public static GoogleClientSecrets FromFile(string clientSecretsFilePath)

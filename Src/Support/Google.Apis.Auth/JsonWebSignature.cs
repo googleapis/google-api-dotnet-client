@@ -51,7 +51,7 @@ namespace Google.Apis.Auth
         /// <exception cref="InvalidJwtException">If the token is invalid or expired.</exception>
         /// <typeparam name="TPayload">The type of the payload to return, so user code can validate
         /// additional claims. Should extend <see cref="Payload"/>. Payload information will be deserialized
-        /// using <see cref="NewtonsoftJsonSerializer.Instance"/>.</typeparam>
+        /// using the default serializer.</typeparam>
         public async static Task<TPayload> VerifySignedTokenAsync<TPayload>(
             string signedJwt, SignedTokenVerificationOptions options = null, CancellationToken cancellationToken = default)
             where TPayload : Payload

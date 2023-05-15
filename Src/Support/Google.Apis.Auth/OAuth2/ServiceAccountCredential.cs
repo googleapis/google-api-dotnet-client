@@ -26,6 +26,7 @@ using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Json;
 using Google.Apis.Util;
 using Google.Apis.Http;
+using Google.Apis.Auth.ExistingDependencies;
 
 #if NETSTANDARD1_3 || NETSTANDARD2_0 || NET461
 using RsaKey = System.Security.Cryptography.RSA;
@@ -439,7 +440,7 @@ namespace Google.Apis.Auth.OAuth2
         private string CreateAssertionFromPayload(JsonWebSignature.Payload payload)
         {
             string serializedHeader = CreateSerializedHeader();
-            string serializedPayload = NewtonsoftJsonSerializer.Instance.Serialize(payload);
+            string serializedPayload = ReplacementSerializer.Serialize(payload);
 
             var assertion = new StringBuilder();
             assertion.Append(TokenEncodingHelpers.UrlSafeBase64Encode(serializedHeader))
@@ -490,7 +491,7 @@ namespace Google.Apis.Auth.OAuth2
                 KeyId = KeyId
             };
 
-            return NewtonsoftJsonSerializer.Instance.Serialize(header);
+            return ReplacementSerializer.Serialize(header);
         }
 
         /// <summary>

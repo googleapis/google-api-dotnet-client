@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Auth.ExistingDependencies;
 using Google.Apis.Http;
 using Google.Apis.Json;
 using System;
@@ -124,7 +125,7 @@ namespace Google.Apis.Auth.OAuth2
                 return responseText;
             }
 
-            var jsonResponse = NewtonsoftJsonSerializer.Instance.Deserialize<Dictionary<string, string>>(responseText);
+            var jsonResponse = ReplacementSerializer.Deserialize<Dictionary<string, string>>(responseText);
 
             return jsonResponse[SubjectTokenJsonFieldName];
         }
