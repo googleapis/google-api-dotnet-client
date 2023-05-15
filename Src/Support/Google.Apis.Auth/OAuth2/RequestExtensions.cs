@@ -14,8 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Auth.ExistingDependencies;
 using Google.Apis.Http;
-using Google.Apis.Requests;
 using Google.Apis.Util;
 using System;
 
@@ -36,7 +36,7 @@ namespace Google.Apis.Auth.OAuth2
         /// <param name="request">The request which requires a credential. Must not be null.</param>
         /// <param name="credential">The credential to use for this request only. Must not be null.</param>
         /// <returns></returns>
-        public static T AddCredential<T>(this T request, ICredential credential) where T : ClientServiceRequest
+        public static T AddCredential<T>(this T request, ICredential credential) where T : ICredentialedRequest
         {
             request.ThrowIfNull(nameof(request));
             credential.ThrowIfNull(nameof(credential));

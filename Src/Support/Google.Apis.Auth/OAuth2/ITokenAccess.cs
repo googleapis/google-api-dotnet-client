@@ -17,14 +17,12 @@ limitations under the License.
 using System.Threading;
 using System.Threading.Tasks;
 
-using Google.Apis.Auth.OAuth2.Responses;
-
 namespace Google.Apis.Auth.OAuth2
 {
     /// <summary>
     /// Allows direct retrieval of access tokens to authenticate requests.
     /// This is necessary for workflows where you don't want to use 
-    /// <see cref="T:Google.Apis.Services.BaseClientService"/> to access the API.
+    /// BaseClientService to access the API.
     /// (e.g. gRPC that implemenents the entire HTTP2 stack internally).
     /// </summary>
     public interface ITokenAccess
