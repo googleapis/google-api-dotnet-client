@@ -17,6 +17,8 @@ limitations under the License.
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
+// FIXME: Write code to create an HttpRequestMessage for this.
+
 namespace Google.Apis.Auth.OAuth2.Requests
 {
     internal abstract class ImpersonationRequest

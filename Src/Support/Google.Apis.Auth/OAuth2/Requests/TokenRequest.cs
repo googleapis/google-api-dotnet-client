@@ -14,13 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 namespace Google.Apis.Auth.OAuth2.Requests
 {
+    // FIXME: Write code to create an HttpRequestMessage for this.
+
     /// <summary>
     /// OAuth 2.0 request for an access token as specified in http://tools.ietf.org/html/rfc6749#section-4.
     /// </summary>
@@ -29,22 +26,18 @@ namespace Google.Apis.Auth.OAuth2.Requests
         /// <summary>
         /// Gets or sets space-separated list of scopes as specified in http://tools.ietf.org/html/rfc6749#section-3.3.
         /// </summary>
-        [Google.Apis.Util.RequestParameterAttribute("scope")]
         public string Scope { get; set; }
 
         /// <summary>
         /// Gets or sets the Grant type. Sets <c>authorization_code</c> or <c>password</c> or <c>client_credentials</c> 
         /// or <c>refresh_token</c> or absolute URI of the extension grant type.
         /// </summary>
-        [Google.Apis.Util.RequestParameterAttribute("grant_type")]
         public string GrantType { get; set; }
 
         /// <summary>Gets or sets the client Identifier.</summary>
-        [Google.Apis.Util.RequestParameterAttribute("client_id")]
         public string ClientId { get; set; }
 
         /// <summary>Gets or sets the client Secret.</summary>
-        [Google.Apis.Util.RequestParameterAttribute("client_secret")]
         public string ClientSecret { get; set; }
     }
 }

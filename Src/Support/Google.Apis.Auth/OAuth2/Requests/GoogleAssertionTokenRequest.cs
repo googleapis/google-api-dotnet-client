@@ -15,6 +15,8 @@ limitations under the License.
 */
 
 
+// FIXME: Write code to create an HttpRequestMessage for this.
+
 namespace Google.Apis.Auth.OAuth2.Requests
 {
     /// <summary>
@@ -24,7 +26,6 @@ namespace Google.Apis.Auth.OAuth2.Requests
     public class GoogleAssertionTokenRequest : TokenRequest
     {
         /// <summary>Gets or sets the JWT (including signature).</summary>
-        [Google.Apis.Util.RequestParameterAttribute("assertion")]
         public string Assertion { get; set; }
 
         /// <summary>

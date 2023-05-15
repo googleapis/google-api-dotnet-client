@@ -14,13 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 using Google.Apis.Requests;
-using Google.Apis.Requests.Parameters;
+using System;
 
 namespace Google.Apis.Auth.OAuth2.Requests
 {
@@ -43,12 +38,8 @@ namespace Google.Apis.Auth.OAuth2.Requests
         /// <summary>Creates a <see cref="System.Uri"/> which is used to request the authorization code.</summary>
         public Uri Build()
         {
-            var builder = new RequestBuilder()
-                {
-                    BaseUri = AuthorizationServerUrl
-                };
-            ParameterUtils.InitParameters(builder, this);
-            return builder.BuildUri();
+            // FIXME: Implement the code without using common RequestBuilder stuff.
+            return null;
         }
     }
 }

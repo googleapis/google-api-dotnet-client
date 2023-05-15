@@ -17,7 +17,6 @@ limitations under the License.
 using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Json;
 using Google.Apis.Logging;
-using Google.Apis.Requests.Parameters;
 using Google.Apis.Util;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -82,9 +81,10 @@ namespace Google.Apis.Auth.OAuth2.Requests
             string url, AuthenticationHeaderValue authenticationHeaderValue,
             IClock clock, ILogger logger, CancellationToken taskCancellationToken)
         {
+            // TODO: Reimplement without the common parameter code we had before.
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, url)
             {
-                Content = ParameterUtils.CreateFormUrlEncodedContent(request)
+                Content = new StringContent("FIXME")
             };
             if (authenticationHeaderValue is not null)
             {

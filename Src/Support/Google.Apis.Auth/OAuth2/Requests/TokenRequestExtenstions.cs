@@ -22,8 +22,10 @@ using System.Threading.Tasks;
 
 namespace Google.Apis.Auth.OAuth2.Requests
 {
+    // TODO: Only use this if we really need to...
+
     /// <summary>Extension methods to <see cref="TokenRequest"/>.</summary>
-    public static class TokenRequestExtenstions
+    public static class TokenRequestExtensions
     {
         /// <summary>
         /// Executes the token request in order to receive a 

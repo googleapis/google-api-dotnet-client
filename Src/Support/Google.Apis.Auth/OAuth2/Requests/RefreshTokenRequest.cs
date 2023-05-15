@@ -14,6 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+// FIXME: Write code to create an HttpRequestMessage for this.
+
 namespace Google.Apis.Auth.OAuth2.Requests
 {
     /// <summary>
@@ -23,7 +25,6 @@ namespace Google.Apis.Auth.OAuth2.Requests
     public class RefreshTokenRequest : TokenRequest
     {
         /// <summary>Gets or sets the Refresh token issued to the client.</summary>
-        [Google.Apis.Util.RequestParameterAttribute("refresh_token")]
         public string RefreshToken { get; set; }
 
         /// <summary>

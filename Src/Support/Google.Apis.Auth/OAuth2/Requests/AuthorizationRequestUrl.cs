@@ -29,11 +29,9 @@ namespace Google.Apis.Auth.OAuth2.Requests
         /// <c>token</c> for requesting an access token (implicit grant), or space separated registered extension 
         /// values. See http://tools.ietf.org/html/rfc6749#section-3.1.1 for more details
         /// </summary>
-        [Google.Apis.Util.RequestParameterAttribute("response_type", Google.Apis.Util.RequestParameterType.Query)]
         public string ResponseType { get; set; }
 
         /// <summary>Gets or sets the client identifier.</summary>
-        [Google.Apis.Util.RequestParameterAttribute("client_id", Google.Apis.Util.RequestParameterType.Query)]
         public string ClientId { get; set; }
 
         /// <summary>
@@ -41,21 +39,18 @@ namespace Google.Apis.Auth.OAuth2.Requests
         /// client after a successful authorization grant, as specified in 
         /// http://tools.ietf.org/html/rfc6749#section-3.1.2 or <c>null</c> for none.
         /// </summary>
-        [Google.Apis.Util.RequestParameterAttribute("redirect_uri", Google.Apis.Util.RequestParameterType.Query)]
         public string RedirectUri { get; set; }
 
         /// <summary>
         /// Gets or sets space-separated list of scopes, as specified in http://tools.ietf.org/html/rfc6749#section-3.3
         /// or <c>null</c> for none.
         /// </summary>
-        [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Query)]
         public string Scope { get; set; }
 
         /// <summary>
         /// Gets or sets the state (an opaque value used by the client to maintain state between the request and 
         /// callback, as mentioned in http://tools.ietf.org/html/rfc6749#section-3.1.2.2 or <c>null</c> for none.
         /// </summary>
-        [Google.Apis.Util.RequestParameterAttribute("state", Google.Apis.Util.RequestParameterType.Query)]
         public string State { get; set; }
 
         private readonly Uri authorizationServerUrl;
