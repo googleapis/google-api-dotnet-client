@@ -292,9 +292,9 @@ namespace Google.Apis.Auth.OAuth2
         {
             if (HasCustomTokenUrl)
             {
-                // If the impersonated credential has a custom access token URL we don't know how the OIDC token and blob signing
-                // tokens may look like, so we cannot support those operations.
-                // For TPC, regional endpoints, etc. we only need to change the definition of custom, which at the moment is
+                // If the impersonated credential has a custom access token URL we don't know how the OIDC URL and blob signing
+                // URL may look like, so we cannot support those operations.
+                // For supporting TPC, regional endpoints, etc. we only need to change the definition of custom, which at the moment is:
                 // everything different of GoogleAuthConsts.IamAccessTokenEndpointFormatString.
                 throw new InvalidOperationException("Operation not supported when a custom access token URL has been specified.");
             }
