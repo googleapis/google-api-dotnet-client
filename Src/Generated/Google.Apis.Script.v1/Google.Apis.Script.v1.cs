@@ -2378,6 +2378,10 @@ namespace Google.Apis.Script.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectName")]
         public virtual string ProjectName { get; set; }
 
+        /// <summary>Which version of maestro to use to execute the script.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
+        public virtual string RuntimeVersion { get; set; }
+
         /// <summary>Time the execution started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual object StartTime { get; set; }

@@ -802,7 +802,9 @@ namespace Google.Apis.Assuredworkloads.v1
 
                 /// <summary>
                 /// Deletes the workload. Make sure that workload's direct children are already in a deleted state,
-                /// otherwise the request will fail with a FAILED_PRECONDITION error.
+                /// otherwise the request will fail with a FAILED_PRECONDITION error. In addition to
+                /// assuredworkloads.workload.delete permission, the user should also have orgpolicy.policy.set
+                /// permission on the deleted folder to remove Assured Workloads OrgPolicies.
                 /// </summary>
                 /// <param name="name">
                 /// Required. The `name` field is used to identify the workload. Format:
@@ -815,7 +817,9 @@ namespace Google.Apis.Assuredworkloads.v1
 
                 /// <summary>
                 /// Deletes the workload. Make sure that workload's direct children are already in a deleted state,
-                /// otherwise the request will fail with a FAILED_PRECONDITION error.
+                /// otherwise the request will fail with a FAILED_PRECONDITION error. In addition to
+                /// assuredworkloads.workload.delete permission, the user should also have orgpolicy.policy.set
+                /// permission on the deleted folder to remove Assured Workloads OrgPolicies.
                 /// </summary>
                 public class DeleteRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleProtobufEmpty>
                 {
@@ -873,7 +877,7 @@ namespace Google.Apis.Assuredworkloads.v1
 
                 /// <summary>Gets Assured Workload associated with a CRM Node</summary>
                 /// <param name="name">
-                /// Required. The resource name of the Workload to fetch. This is the workload's relative path in the
+                /// Required. The resource name of the Workload to fetch. This is the workloads's relative path in the
                 /// API, formatted as "organizations/{organization_id}/locations/{location_id}/workloads/{workload_id}".
                 /// For example, "organizations/123/locations/us-east1/workloads/assured-workload-1".
                 /// </param>
@@ -893,7 +897,7 @@ namespace Google.Apis.Assuredworkloads.v1
                     }
 
                     /// <summary>
-                    /// Required. The resource name of the Workload to fetch. This is the workload's relative path in
+                    /// Required. The resource name of the Workload to fetch. This is the workloads's relative path in
                     /// the API, formatted as
                     /// "organizations/{organization_id}/locations/{location_id}/workloads/{workload_id}". For example,
                     /// "organizations/123/locations/us-east1/workloads/assured-workload-1".
@@ -1320,7 +1324,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request of updating permission settings for a partner workload.</summary>
+    /// <summary>Request for updating permission settings for a partner workload.</summary>
     public class GoogleCloudAssuredworkloadsV1MutatePartnerPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. The etag of the workload. If this is provided, it must match the server's etag.</summary>
@@ -1608,6 +1612,10 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("partner")]
         public virtual string Partner { get; set; }
 
+        /// <summary>Optional. Permissions granted to the AW Partner SA account for the customer workload</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerPermissions")]
+        public virtual GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions PartnerPermissions { get; set; }
+
         /// <summary>
         /// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a
         /// folder resource which is a child of the Workload parent. If not specified all resources are created under
@@ -1640,7 +1648,8 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         /// <summary>
         /// Optional. Indicates whether the e-mail notification for a violation is enabled for a workload. This value
         /// will be by default True, and if not present will be considered as true. This should only be updated via
-        /// updateWorkload call. Any Changes to this field during the createWorkload call will not be honored.
+        /// updateWorkload call. Any Changes to this field during the createWorkload call will not be honored. This will
+        /// always be true while creating the workload.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("violationNotificationsEnabled")]
         public virtual System.Nullable<bool> ViolationNotificationsEnabled { get; set; }
@@ -1680,10 +1689,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Settings specific to the Key Management Service. This message is deprecated. In order to create a Keyring,
-    /// callers should specify, ENCRYPTION_KEYS_PROJECT or KEYRING in ResourceSettings.resource_type field.
-    /// </summary>
+    /// <summary>Settings specific to the Key Management Service.</summary>
     public class GoogleCloudAssuredworkloadsV1WorkloadKMSSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1714,10 +1720,6 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         /// <summary>Allow partner to monitor folder and remediate violations</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remediateFolderViolations")]
         public virtual System.Nullable<bool> RemediateFolderViolations { get; set; }
-
-        /// <summary>Allow partner to approve or reject Service Access requests</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccessApprover")]
-        public virtual System.Nullable<bool> ServiceAccessApprover { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1757,8 +1759,8 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string ResourceId { get; set; }
 
         /// <summary>
-        /// Indicates the type of resource. This field should be specified to correspond the id to the right resource
-        /// type (CONSUMER_FOLDER or ENCRYPTION_KEYS_PROJECT)
+        /// Indicates the type of resource. This field should be specified to correspond the id to the right project
+        /// type (CONSUMER_PROJECT or ENCRYPTION_KEYS_PROJECT)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }

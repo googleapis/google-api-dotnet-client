@@ -7531,7 +7531,7 @@ namespace Google.Apis.Spanner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("replicas")]
         public virtual System.Collections.Generic.IList<ReplicaInfo> Replicas { get; set; }
 
-        /// <summary>Output only. The current instance config state.</summary>
+        /// <summary>Output only. The current instance config state. Applicable only for USER_MANAGED configs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
     }

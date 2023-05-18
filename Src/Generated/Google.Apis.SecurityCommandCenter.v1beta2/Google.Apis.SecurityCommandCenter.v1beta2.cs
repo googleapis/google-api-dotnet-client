@@ -5144,6 +5144,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataProfile")]
         public virtual string DataProfile { get; set; }
 
+        /// <summary>The resource hierarchy level at which the data profile was generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentType")]
+        public virtual string ParentType { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

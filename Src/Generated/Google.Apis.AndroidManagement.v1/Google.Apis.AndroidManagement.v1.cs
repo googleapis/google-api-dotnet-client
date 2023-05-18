@@ -3572,6 +3572,22 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Covers controls for device connectivity such as Wi-Fi, USB data access, keyboard/mouse connections, and more.
+    /// </summary>
+    public class DeviceConnectivityManagement : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Controls what can be transferred via USB, files and/or data. This is supported only on company-owned
+        /// devices.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("usbDataAccess")]
+        public virtual string UsbDataAccess { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information about security related device settings on device.</summary>
     public class DeviceSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5120,6 +5136,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultPermissionPolicy")]
         public virtual string DefaultPermissionPolicy { get; set; }
 
+        /// <summary>
+        /// Covers controls for device connectivity such as Wi-Fi, USB data access, keyboard/mouse connections, and
+        /// more.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceConnectivityManagement")]
+        public virtual DeviceConnectivityManagement DeviceConnectivityManagement { get; set; }
+
         /// <summary>The device owner information to be shown on the lock screen.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceOwnerLockScreenInfo")]
         public virtual UserFacingMessage DeviceOwnerLockScreenInfo { get; set; }
@@ -5462,9 +5485,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual System.Nullable<bool> VpnConfigDisabled { get; set; }
 
         /// <summary>
-        /// Whether configuring Wi-Fi access points is disabled. Note: If a network connection can't be made at boot
-        /// time and configuring Wi-Fi is disabled then network escape hatch will be shown in order to refresh the
-        /// device policy (see networkEscapeHatchEnabled).
+        /// Whether configuring Wi-Fi networks is disabled. Supported on fully managed devices and work profiles on
+        /// company-owned devices. For fully managed devices, setting this to true removes all configured networks and
+        /// retains only the networks configured using openNetworkConfiguration. For work profiles on company-owned
+        /// devices, existing configured networks are not affected and the user is not allowed to add, remove, or modify
+        /// Wi-Fi networks. Note: If a network connection can't be made at boot time and configuring Wi-Fi is disabled
+        /// then network escape hatch will be shown in order to refresh the device policy (see
+        /// networkEscapeHatchEnabled).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wifiConfigDisabled")]
         public virtual System.Nullable<bool> WifiConfigDisabled { get; set; }

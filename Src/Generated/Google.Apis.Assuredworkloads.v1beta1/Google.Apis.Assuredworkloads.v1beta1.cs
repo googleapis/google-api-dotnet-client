@@ -1558,6 +1558,37 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Operation metadata to give request details of CreateWorkload.</summary>
+    public class GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Compliance controls that should be applied to the resources managed by the workload.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("complianceRegime")]
+        public virtual string ComplianceRegime { get; set; }
+
+        /// <summary>Optional. Time when the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Optional. The display name of the workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional. The parent of the workload.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>
+        /// Optional. Resource properties in the input that are used for creating/customizing workload resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceSettings")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1WorkloadResourceSettings> ResourceSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response of ListViolations endpoint.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1ListViolationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1877,6 +1908,10 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("partner")]
         public virtual string Partner { get; set; }
 
+        /// <summary>Optional. Permissions granted to the AW Partner SA account for the customer workload</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerPermissions")]
+        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions PartnerPermissions { get; set; }
+
         /// <summary>
         /// Input only. The parent resource for the resources managed by this Assured Workload. May be either empty or a
         /// folder resource which is a child of the Workload parent. If not specified all resources are created under
@@ -2038,6 +2073,21 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rotationPeriod")]
         public virtual object RotationPeriod { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Permissions granted to the AW Partner SA account for the customer workload</summary>
+    public class GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Allow the partner to view inspectability logs and monitoring violations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataLogsViewer")]
+        public virtual System.Nullable<bool> DataLogsViewer { get; set; }
+
+        /// <summary>Allow partner to monitor folder and remediate violations</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remediateFolderViolations")]
+        public virtual System.Nullable<bool> RemediateFolderViolations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

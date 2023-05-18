@@ -2914,6 +2914,31 @@ namespace Google.Apis.ChromeManagement.v1.Data
     }
 
     /// <summary>
+    /// Heartbeat status report of a device. * Available for Kiosks * This field provides online/offline/unknown status
+    /// of a device and will only be included if the status has changed (e.g. Online -&amp;gt; Offline) * Data for this
+    /// field is controlled via policy: [HeartbeatEnabled](https://chromeenterprise.google/policies/#HeartbeatEnabled)
+    /// [More
+    /// Info](https://support.google.com/chrome/a/answer/6179663#:~:text=On%20the%20Chrome,device%20status%20alerts) *
+    /// Heartbeat Frequency: 2 mins * Note: If a device goes offline, it can take up to 12 minutes for the online status
+    /// of the device to be updated * Cache: If the device is offline, the collected data is stored locally, and will be
+    /// reported when the device is next online: N/A * Reported for affiliated users only: N/A * Granular permission
+    /// needed: TELEMETRY_API_DEVICE_ACTIVITY_REPORT
+    /// </summary>
+    public class GoogleChromeManagementV1HeartbeatStatusReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Timestamp of when status changed was detected</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
+        public virtual object ReportTime { get; set; }
+
+        /// <summary>State the device changed to</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Data that describes the result of the HTTPS latency diagnostics routine, with the HTTPS requests issued to
     /// Google websites.
     /// </summary>
@@ -2982,6 +3007,34 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Output only. Permissions of the installed app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Kiosk app status report of a device. * Available for Kiosks * This field provides the app id and version number
+    /// running on a kiosk device and the timestamp of when the report was last updated * Data for this field is
+    /// controlled via policy:
+    /// [ReportDeviceSessionStatus](https://chromeenterprise.google/policies/#ReportDeviceSessionStatus) * Data
+    /// Collection Frequency: Only at Upload * Default Data Reporting Frequency: 3 hours - Policy Controlled: Yes *
+    /// Cache: If the device is offline, the collected data is stored locally, and will be reported when the device is
+    /// next online: No * Reported for affiliated users only: N/A * Granular permission needed:
+    /// TELEMETRY_API_APPS_REPORT
+    /// </summary>
+    public class GoogleChromeManagementV1KioskAppStatusReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>App id of kiosk app for example "mdmkkicfmmkgmpkmkdikhlbggogpicma"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appId")]
+        public virtual string AppId { get; set; }
+
+        /// <summary>App version number of kiosk app for example "1.10.118"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appVersion")]
+        public virtual string AppVersion { get; set; }
+
+        /// <summary>Timestamp of when report was collected</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
+        public virtual object ReportTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3429,6 +3482,17 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Output only. Graphics reports collected periodically.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("graphicsStatusReport")]
         public virtual System.Collections.Generic.IList<GoogleChromeManagementV1GraphicsStatusReport> GraphicsStatusReport { get; set; }
+
+        /// <summary>
+        /// Output only. Heartbeat status report containing timestamps periodically sorted in decreasing order of
+        /// report_time
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("heartbeatStatusReport")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1HeartbeatStatusReport> HeartbeatStatusReport { get; set; }
+
+        /// <summary>Output only. Kiosk app status report for the kiosk device</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kioskAppStatusReport")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1KioskAppStatusReport> KioskAppStatusReport { get; set; }
 
         /// <summary>Output only. Information regarding memory specs for the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memoryInfo")]

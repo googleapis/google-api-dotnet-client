@@ -9357,14 +9357,22 @@ namespace Google.Apis.Admin.Directory.directory_v1
             }
         }
 
-        /// <summary>Creates a user.</summary>
+        /// <summary>
+        /// Creates a user. Mutate calls immediately following user creation might sometimes fail as the user isn't
+        /// fully created due to propagation delay in our backends. Check the error details for the "User creation is
+        /// not complete" message to see if this is the case. Retrying the calls after some time can help in this case.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual InsertRequest Insert(Google.Apis.Admin.Directory.directory_v1.Data.User body)
         {
             return new InsertRequest(service, body);
         }
 
-        /// <summary>Creates a user.</summary>
+        /// <summary>
+        /// Creates a user. Mutate calls immediately following user creation might sometimes fail as the user isn't
+        /// fully created due to propagation delay in our backends. Check the error details for the "User creation is
+        /// not complete" message to see if this is the case. Retrying the calls after some time can help in this case.
+        /// </summary>
         public class InsertRequest : DirectoryBaseServiceRequest<Google.Apis.Admin.Directory.directory_v1.Data.User>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -12162,7 +12170,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
     /// </summary>
     public class Member : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Defines mail delivery preferences of member. This is only supported by create/update/get.</summary>
+        /// <summary>
+        /// Defines mail delivery preferences of member. This field is only supported by `insert`, `update`, and `get`
+        /// methods.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delivery_settings")]
         public virtual string DeliverySettings { get; set; }
 

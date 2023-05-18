@@ -901,7 +901,9 @@ namespace Google.Apis.DoubleClickBidManager.v2.Data
 
         /// <summary>
         /// The type of the report. The type of the report will dictate what dimesions, filters, and metrics can be
-        /// used.
+        /// used. **Warning:** The `AUDIENCE_COMPOSITION` report type will be deprecated in Display &amp;amp; Video 360
+        /// on **June 8, 2023**. Once deprecated, you will no longer be able to create new or retrieve existing Query
+        /// and Report resources of this type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }

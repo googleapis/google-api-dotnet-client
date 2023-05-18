@@ -12789,6 +12789,20 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reachedEndPage")]
         public virtual System.Nullable<bool> ReachedEndPage { get; set; }
 
+        /// <summary>
+        /// Sentiment magnitude of the user utterance if
+        /// [sentiment](https://cloud.google.com/dialogflow/cx/docs/concept/sentiment) was enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentimentMagnitude")]
+        public virtual System.Nullable<float> SentimentMagnitude { get; set; }
+
+        /// <summary>
+        /// Sentiment score of the user utterance if
+        /// [sentiment](https://cloud.google.com/dialogflow/cx/docs/concept/sentiment) was enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentimentScore")]
+        public virtual System.Nullable<float> SentimentScore { get; set; }
+
         /// <summary>Whether user was specifically asking for a live agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEscalated")]
         public virtual System.Nullable<bool> UserEscalated { get; set; }
@@ -13029,9 +13043,24 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowedCaCerts")]
         public virtual System.Collections.Generic.IList<string> AllowedCaCerts { get; set; }
 
+        /// <summary>Optional. HTTP method for the flexible webhook calls. Standard webhook always uses POST.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpMethod")]
+        public virtual string HttpMethod { get; set; }
+
+        /// <summary>
+        /// Optional. Maps the values extracted from specific fields of the flexible webhook response into session
+        /// parameters. - Key: session parameter name - Value: field path in the webhook response
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameterMapping")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ParameterMapping { get; set; }
+
         /// <summary>The password for HTTP Basic authentication.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; }
+
+        /// <summary>Optional. Defines a custom JSON object as request body to send to flexible webhook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestBody")]
+        public virtual string RequestBody { get; set; }
 
         /// <summary>The HTTP request headers to send together with webhook requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestHeaders")]
@@ -13044,6 +13073,10 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>The user name for HTTP Basic authentication.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; }
+
+        /// <summary>Optional. Type of the webhook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookType")]
+        public virtual string WebhookType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15005,6 +15038,20 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reachedEndPage")]
         public virtual System.Nullable<bool> ReachedEndPage { get; set; }
 
+        /// <summary>
+        /// Sentiment magnitude of the user utterance if
+        /// [sentiment](https://cloud.google.com/dialogflow/cx/docs/concept/sentiment) was enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentimentMagnitude")]
+        public virtual System.Nullable<float> SentimentMagnitude { get; set; }
+
+        /// <summary>
+        /// Sentiment score of the user utterance if
+        /// [sentiment](https://cloud.google.com/dialogflow/cx/docs/concept/sentiment) was enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentimentScore")]
+        public virtual System.Nullable<float> SentimentScore { get; set; }
+
         /// <summary>Whether user was specifically asking for a live agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEscalated")]
         public virtual System.Nullable<bool> UserEscalated { get; set; }
@@ -15085,9 +15132,24 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowedCaCerts")]
         public virtual System.Collections.Generic.IList<string> AllowedCaCerts { get; set; }
 
+        /// <summary>Optional. HTTP method for the flexible webhook calls. Standard webhook always uses POST.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpMethod")]
+        public virtual string HttpMethod { get; set; }
+
+        /// <summary>
+        /// Optional. Maps the values extracted from specific fields of the flexible webhook response into session
+        /// parameters. - Key: session parameter name - Value: field path in the webhook response
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameterMapping")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ParameterMapping { get; set; }
+
         /// <summary>The password for HTTP Basic authentication.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; }
+
+        /// <summary>Optional. Defines a custom JSON object as request body to send to flexible webhook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestBody")]
+        public virtual string RequestBody { get; set; }
 
         /// <summary>The HTTP request headers to send together with webhook requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestHeaders")]
@@ -15100,6 +15162,10 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>The user name for HTTP Basic authentication.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; }
+
+        /// <summary>Optional. Type of the webhook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookType")]
+        public virtual string WebhookType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19766,6 +19832,20 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>Whether turn resulted in End Session page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reachedEndPage")]
         public virtual System.Nullable<bool> ReachedEndPage { get; set; }
+
+        /// <summary>
+        /// Sentiment magnitude of the user utterance if
+        /// [sentiment](https://cloud.google.com/dialogflow/cx/docs/concept/sentiment) was enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentimentMagnitude")]
+        public virtual System.Nullable<float> SentimentMagnitude { get; set; }
+
+        /// <summary>
+        /// Sentiment score of the user utterance if
+        /// [sentiment](https://cloud.google.com/dialogflow/cx/docs/concept/sentiment) was enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentimentScore")]
+        public virtual System.Nullable<float> SentimentScore { get; set; }
 
         /// <summary>Whether agent has triggered the event corresponding to user abandoning the conversation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggeredAbandonmentEvent")]

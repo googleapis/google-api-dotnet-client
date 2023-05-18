@@ -35,6 +35,7 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
         public PlaydeveloperreportingService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Anomalies = new AnomaliesResource(this);
+            Apps = new AppsResource(this);
             Vitals = new VitalsResource(this);
         }
 
@@ -72,6 +73,9 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
 
         /// <summary>Gets the Anomalies resource.</summary>
         public virtual AnomaliesResource Anomalies { get; }
+
+        /// <summary>Gets the Apps resource.</summary>
+        public virtual AppsResource Apps { get; }
 
         /// <summary>Gets the Vitals resource.</summary>
         public virtual VitalsResource Vitals { get; }
@@ -350,6 +354,132 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
                     DefaultValue = null,
                     Pattern = null,
                 });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "apps" collection of methods.</summary>
+    public class AppsResource
+    {
+        private const string Resource = "apps";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public AppsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Describes filtering options for releases.</summary>
+        /// <param name="name">
+        /// Required. Name of the resource, i.e. app the filtering options are for. Format: apps/{app}
+        /// </param>
+        public virtual FetchReleaseFilterOptionsRequest FetchReleaseFilterOptions(string name)
+        {
+            return new FetchReleaseFilterOptionsRequest(service, name);
+        }
+
+        /// <summary>Describes filtering options for releases.</summary>
+        public class FetchReleaseFilterOptionsRequest : PlaydeveloperreportingBaseServiceRequest<Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1ReleaseFilterOptions>
+        {
+            /// <summary>Constructs a new FetchReleaseFilterOptions request.</summary>
+            public FetchReleaseFilterOptionsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. Name of the resource, i.e. app the filtering options are for. Format: apps/{app}
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "fetchReleaseFilterOptions";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha1/{+name}:fetchReleaseFilterOptions";
+
+            /// <summary>Initializes FetchReleaseFilterOptions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^apps/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>Searches for Apps accessible by the user.</summary>
+        public virtual SearchRequest Search()
+        {
+            return new SearchRequest(service);
+        }
+
+        /// <summary>Searches for Apps accessible by the user.</summary>
+        public class SearchRequest : PlaydeveloperreportingBaseServiceRequest<Google.Apis.Playdeveloperreporting.v1alpha1.Data.GooglePlayDeveloperReportingV1alpha1SearchAccessibleAppsResponse>
+        {
+            /// <summary>Constructs a new Search request.</summary>
+            public SearchRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// The maximum number of apps to return. The service may return fewer than this value. If unspecified, at
+            /// most 50 apps will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// A page token, received from a previous `SearchAccessibleApps` call. Provide this to retrieve the
+            /// subsequent page. When paginating, all other parameters provided to `SearchAccessibleApps` must match the
+            /// call that provided the page token.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "search";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha1/apps:search";
+
+            /// <summary>Initializes Search parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
                 RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageSize",
@@ -955,6 +1085,16 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
                     public virtual System.Nullable<int> IntervalStartTimeYear { get; set; }
 
                     /// <summary>
+                    /// Specifies a field that will be used to order the results. ** Supported dimensions:** *
+                    /// `errorReportCount`: Orders issues by number of error reports. * `distinctUsers`: Orders issues
+                    /// by number of unique affected users. ** Supported operations:** * `asc` for ascending order. *
+                    /// `desc` for descending order. Format: A field and an operation, e.g., `errorReportCount desc`
+                    /// *Note:* currently only one field is supported at a time.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
                     /// The maximum number of error issues to return. The service may return fewer than this value. If
                     /// unspecified, at most 50 error issues will be returned. The maximum value is 1000; values above
                     /// 1000 will be coerced to 1000.
@@ -1154,6 +1294,14 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1
                         RequestParameters.Add("interval.startTime.year", new Google.Apis.Discovery.Parameter
                         {
                             Name = "interval.startTime.year",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2130,13 +2278,15 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
     /// user is counted in this metric if they used the app in the foreground during the aggregation period. Care must
     /// be taken not to aggregate this count further, as it may result in users being counted multiple times. The value
     /// is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value.
-    /// **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device.
-    /// * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string):
-    /// unique identifier of the user's device model. * `deviceBrand` (string): unique identifier of the user's device
-    /// brand. * `deviceType` (string): the type (also known as form factor) of the user's device. * `countryCode`
-    /// (string): the country or region of the user's device based on their IP address, represented as a 2-letter
-    /// ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets
-    /// (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
+    /// **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device,
+    /// e.g., 26. * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel`
+    /// (string): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device',
+    /// where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. *
+    /// `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the
+    /// type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or
+    /// region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the
+    /// United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). *
+    /// `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
     /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
@@ -2159,6 +2309,39 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
         /// <summary>The resource name. Format: apps/{app}/anrRateMetricSet</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A representation of an app in the Play Store.</summary>
+    public class GooglePlayDeveloperReportingV1alpha1App : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Title of the app. This is the latest title as set in the Play Console and may not yet have been reviewed, so
+        /// might not match the Play Store. Example: `Google Maps`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The resource name. Format: apps/{app}</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Package name of the app. Example: `com.example.app123`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Representations of an app version.</summary>
+    public class GooglePlayDeveloperReportingV1alpha1AppVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Numeric version code of the app version (set by the app's developer).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionCode")]
+        public virtual System.Nullable<long> VersionCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2188,13 +2371,15 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
     /// considered to be in active use if it is displaying any activity or executing any foreground service. Care must
     /// be taken not to aggregate this count further, as it may result in users being counted multiple times. The value
     /// is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value.
-    /// **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device.
-    /// * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string):
-    /// unique identifier of the user's device model. * `deviceBrand` (string): unique identifier of the user's device
-    /// brand. * `deviceType` (string): the type (also known as form factor) of the user's device. * `countryCode`
-    /// (string): the country or region of the user's device based on their IP address, represented as a 2-letter
-    /// ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets
-    /// (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
+    /// **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device,
+    /// e.g., 26. * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel`
+    /// (string): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device',
+    /// where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. *
+    /// `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the
+    /// type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or
+    /// region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the
+    /// United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). *
+    /// `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
     /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
@@ -2232,6 +2417,40 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
         /// <summary>The confidence interval's upper bound.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upperBound")]
         public virtual GoogleTypeDecimal UpperBound { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Identifier of a device.</summary>
+    public class GooglePlayDeveloperReportingV1alpha1DeviceId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Value of Build.BRAND.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildBrand")]
+        public virtual string BuildBrand { get; set; }
+
+        /// <summary>Value of Build.DEVICE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buildDevice")]
+        public virtual string BuildDevice { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Summary of a device</summary>
+    public class GooglePlayDeveloperReportingV1alpha1DeviceModelSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifier of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
+        public virtual GooglePlayDeveloperReportingV1alpha1DeviceId DeviceId { get; set; }
+
+        /// <summary>Link to the device in Play Device Catalog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceUri")]
+        public virtual string DeviceUri { get; set; }
+
+        /// <summary>Display name of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("marketingName")]
+        public virtual string MarketingName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2275,14 +2494,15 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
     /// is not rounded, however it may be an approximation. **Required dimension:** This dimension must be always
     /// specified in all requests in the `dimensions` field in query requests. * `reportType` (string): the type of
     /// error. The value should correspond to one of the possible values in ErrorType. **Supported dimensions:** *
-    /// `apiLevel` (string): the API level of Android that was running on the user's device. * `versionCode` (int64):
-    /// version of the app that was running on the user's device. * `deviceModel` (string): unique identifier of the
-    /// user's device model. * `deviceType` (string): identifier of the device's form factor, e.g., PHONE. * `issueId`
-    /// (string): the id an error was assigned to. The value should correspond to the `{issue}` component of the issue
-    /// name. * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake`
-    /// (string): Make of the device's primary system-on-chip, e.g., Samsung.
-    /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
-    /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
+    /// `apiLevel` (string): the API level of Android that was running on the user's device, e.g., 26. * `versionCode`
+    /// (int64): version of the app that was running on the user's device. * `deviceModel` (string): unique identifier
+    /// of the user's device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to
+    /// Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceType` (string): identifier of
+    /// the device's form factor, e.g., PHONE. * `issueId` (string): the id an error was assigned to. The value should
+    /// correspond to the `{issue}` component of the issue name. * `deviceRamBucket` (int64): RAM of the device, in MB,
+    /// in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.,
+    /// Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) *
+    /// `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
     /// of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". *
     /// `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the
@@ -2328,6 +2548,63 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
         public virtual string Cause { get; set; }
 
         /// <summary>
+        /// An estimate of the number of unique users who have experienced this issue (only considering occurrences
+        /// matching the filters and within the requested time period).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distinctUsers")]
+        public virtual System.Nullable<long> DistinctUsers { get; set; }
+
+        /// <summary>
+        /// An estimated percentage of users affected by any issue that are affected by this issue (only considering
+        /// occurrences matching the filters and within the requested time period).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("distinctUsersPercent")]
+        public virtual GoogleTypeDecimal DistinctUsersPercent { get; set; }
+
+        /// <summary>
+        /// The total number of error reports in this issue (only considering occurrences matching the filters and
+        /// within the requested time period).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorReportCount")]
+        public virtual System.Nullable<long> ErrorReportCount { get; set; }
+
+        /// <summary>
+        /// The earliest (inclusive) app version appearing in this ErrorIssue in the requested time period (only
+        /// considering occurrences matching the filters).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstAppVersion")]
+        public virtual GooglePlayDeveloperReportingV1alpha1AppVersion FirstAppVersion { get; set; }
+
+        /// <summary>
+        /// The smallest OS version in which this error cluster has occurred in the requested time period (only
+        /// considering occurrences matching the filters and within the requested time period).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firstOsVersion")]
+        public virtual GooglePlayDeveloperReportingV1alpha1OsVersion FirstOsVersion { get; set; }
+
+        /// <summary>Link to the issue in Android vitals in the Play Console.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueUri")]
+        public virtual string IssueUri { get; set; }
+
+        /// <summary>
+        /// The latest (inclusive) app version appearing in this ErrorIssue in the requested time period (only
+        /// considering occurrences matching the filters).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastAppVersion")]
+        public virtual GooglePlayDeveloperReportingV1alpha1AppVersion LastAppVersion { get; set; }
+
+        /// <summary>Start of the hour during which the last error report in this issue occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastErrorReportTime")]
+        public virtual object LastErrorReportTime { get; set; }
+
+        /// <summary>
+        /// The latest OS version in which this error cluster has occurred in the requested time period (only
+        /// considering occurrences matching the filters and within the requested time period).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastOsVersion")]
+        public virtual GooglePlayDeveloperReportingV1alpha1OsVersion LastOsVersion { get; set; }
+
+        /// <summary>
         /// Location where the issue happened. Depending on the type this can be either: * APPLICATION_NOT_RESPONDING:
         /// the name of the activity or service that stopped responding. * CRASH: the likely method name that caused the
         /// error.
@@ -2355,6 +2632,14 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
     /// </summary>
     public class GooglePlayDeveloperReportingV1alpha1ErrorReport : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A device model on which an event in this error report occurred on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceModel")]
+        public virtual GooglePlayDeveloperReportingV1alpha1DeviceModelSummary DeviceModel { get; set; }
+
+        /// <summary>Start of the hour during which the latest event in this error report occurred.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
+        public virtual object EventTime { get; set; }
+
         /// <summary>
         /// The issue this report was associated with. **Please note:** this resource is currently in Alpha. There could
         /// be changes to the issue grouping that would result in similar but more recent error reports being assigned
@@ -2366,6 +2651,10 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
         /// <summary>The resource name of the report. Format: apps/{app}/errorReports/{report}</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The OS version on which an event in this error report occurred on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
+        public virtual GooglePlayDeveloperReportingV1alpha1OsVersion OsVersion { get; set; }
 
         /// <summary>
         /// Textual representation of the error report. These textual reports are produced by the platform. The reports
@@ -2399,13 +2688,15 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
     /// doing any work on the device, i.e., not just active foreground usage but also background work. Care must be
     /// taken not to aggregate this count further, as it may result in users being counted multiple times. The value is
     /// rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the value.
-    /// **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device.
-    /// * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string):
-    /// unique identifier of the user's device model. * `deviceBrand` (string): unique identifier of the user's device
-    /// brand. * `deviceType` (string): the type (also known as form factor) of the user's device. * `countryCode`
-    /// (string): the country or region of the user's device based on their IP address, represented as a 2-letter
-    /// ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets
-    /// (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
+    /// **Supported dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device,
+    /// e.g., 26. * `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel`
+    /// (string): unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device',
+    /// where deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. *
+    /// `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the
+    /// type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or
+    /// region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the
+    /// United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). *
+    /// `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
     /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
@@ -2528,18 +2819,31 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Representation of an OS version.</summary>
+    public class GooglePlayDeveloperReportingV1alpha1OsVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Numeric version code of the OS - API level</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiLevel")]
+        public virtual System.Nullable<long> ApiLevel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for QueryAnrRateMetricSet.</summary>
     public class GooglePlayDeveloperReportingV1alpha1QueryAnrRateMetricSetRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Dimensions to slice the metrics by. **Supported dimensions:** * `apiLevel` (string): the API level of
-        /// Android that was running on the user's device. * `versionCode` (int64): version of the app that was running
-        /// on the user's device. * `deviceModel` (string): unique identifier of the user's device model. *
-        /// `deviceBrand` (string): unique identifier of the user's device brand. * `deviceType` (string): the type
-        /// (also known as form factor) of the user's device. * `countryCode` (string): the country or region of the
-        /// user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United
-        /// States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). *
-        /// `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
+        /// Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that
+        /// was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model.
+        /// The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device
+        /// corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's
+        /// device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's
+        /// device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP
+        /// address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket`
+        /// (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the
+        /// device's primary system-on-chip, e.g., Samsung.
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
         /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
@@ -2642,13 +2946,15 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
     {
         /// <summary>
         /// Dimensions to slice the metrics by. **Supported dimensions:** * `apiLevel` (string): the API level of
-        /// Android that was running on the user's device. * `versionCode` (int64): version of the app that was running
-        /// on the user's device. * `deviceModel` (string): unique identifier of the user's device model. *
-        /// `deviceBrand` (string): unique identifier of the user's device brand. * `deviceType` (string): the type
-        /// (also known as form factor) of the user's device. * `countryCode` (string): the country or region of the
-        /// user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United
-        /// States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). *
-        /// `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
+        /// Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that
+        /// was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model.
+        /// The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device
+        /// corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's
+        /// device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's
+        /// device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP
+        /// address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket`
+        /// (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the
+        /// device's primary system-on-chip, e.g., Samsung.
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
         /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
@@ -2753,14 +3059,16 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
     {
         /// <summary>
         /// Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of Android
-        /// that was running on the user's device. * `versionCode` (int64): version of the app that was running on the
-        /// user's device. * `deviceModel` (string): unique identifier of the user's device model. * `deviceType`
-        /// (string): identifier of the device's form factor, e.g., PHONE. * `reportType` (string): the type of error.
-        /// The value should correspond to one of the possible values in ErrorType. * `isUserPerceived` (string):
-        /// denotes whether error is user perceived or not, USER_PERCEIVED or NOT_USER_PERCEIVED. * `issueId` (string):
-        /// the id an error was assigned to. The value should correspond to the `{issue}` component of the issue name. *
-        /// `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake`
-        /// (string): Make of the device's primary system-on-chip, e.g., Samsung.
+        /// that was running on the user's device, e.g., 26. * `versionCode` (int64): unique identifier of the user's
+        /// device model. The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to
+        /// Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. * `deviceModel` (string): unique
+        /// identifier of the user's device model. * `deviceType` (string): identifier of the device's form factor,
+        /// e.g., PHONE. * `reportType` (string): the type of error. The value should correspond to one of the possible
+        /// values in ErrorType. * `isUserPerceived` (string): denotes whether error is user perceived or not,
+        /// USER_PERCEIVED or NOT_USER_PERCEIVED. * `issueId` (string): the id an error was assigned to. The value
+        /// should correspond to the `{issue}` component of the issue name. * `deviceRamBucket` (int64): RAM of the
+        /// device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary
+        /// system-on-chip, e.g., Samsung.
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
         /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
@@ -2836,13 +3144,15 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
     {
         /// <summary>
         /// Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of Android
-        /// that was running on the user's device. * `versionCode` (int64): version of the app that was running on the
-        /// user's device. * `deviceModel` (string): unique identifier of the user's device model. * `deviceBrand`
-        /// (string): unique identifier of the user's device brand. * `deviceType` (string): the type (also known as
-        /// form factor) of the user's device. * `countryCode` (string): the country or region of the user's device
-        /// based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). *
-        /// `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake`
-        /// (string): Make of the device's primary system-on-chip, e.g., Samsung.
+        /// that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was
+        /// running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The
+        /// form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device
+        /// corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's
+        /// device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's
+        /// device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP
+        /// address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket`
+        /// (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the
+        /// device's primary system-on-chip, e.g., Samsung.
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
         /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
@@ -2937,13 +3247,15 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
     {
         /// <summary>
         /// Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of Android
-        /// that was running on the user's device. * `versionCode` (int64): version of the app that was running on the
-        /// user's device. * `deviceModel` (string): unique identifier of the user's device model. * `deviceBrand`
-        /// (string): unique identifier of the user's device brand. * `deviceType` (string): the type (also known as
-        /// form factor) of the user's device. * `countryCode` (string): the country or region of the user's device
-        /// based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). *
-        /// `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake`
-        /// (string): Make of the device's primary system-on-chip, e.g., Samsung.
+        /// that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was
+        /// running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The
+        /// form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device
+        /// corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's
+        /// device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's
+        /// device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP
+        /// address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket`
+        /// (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the
+        /// device's primary system-on-chip, e.g., Samsung.
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
         /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
@@ -3044,13 +3356,15 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
     {
         /// <summary>
         /// Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of Android
-        /// that was running on the user's device. * `versionCode` (int64): version of the app that was running on the
-        /// user's device. * `deviceModel` (string): unique identifier of the user's device model. * `deviceBrand`
-        /// (string): unique identifier of the user's device brand. * `deviceType` (string): the type (also known as
-        /// form factor) of the user's device. * `countryCode` (string): the country or region of the user's device
-        /// based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). *
-        /// `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake`
-        /// (string): Make of the device's primary system-on-chip, e.g., Samsung.
+        /// that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was
+        /// running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The
+        /// form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device
+        /// corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's
+        /// device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's
+        /// device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP
+        /// address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket`
+        /// (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the
+        /// device's primary system-on-chip, e.g., Samsung.
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
         /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
@@ -3144,13 +3458,15 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
     {
         /// <summary>
         /// Dimensions to slice the data by. **Supported dimensions:** * `apiLevel` (string): the API level of Android
-        /// that was running on the user's device. * `versionCode` (int64): version of the app that was running on the
-        /// user's device. * `deviceModel` (string): unique identifier of the user's device model. * `deviceBrand`
-        /// (string): unique identifier of the user's device brand. * `deviceType` (string): the type (also known as
-        /// form factor) of the user's device. * `countryCode` (string): the country or region of the user's device
-        /// based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). *
-        /// `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake`
-        /// (string): Make of the device's primary system-on-chip, e.g., Samsung.
+        /// that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was
+        /// running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. The
+        /// form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device
+        /// corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's
+        /// device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's
+        /// device, e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP
+        /// address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket`
+        /// (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the
+        /// device's primary system-on-chip, e.g., Samsung.
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
         /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
         /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string):
@@ -3241,6 +3557,52 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A representation of an app release.</summary>
+    public class GooglePlayDeveloperReportingV1alpha1Release : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Readable identifier of the release.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The version codes contained in this release.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionCodes")]
+        public virtual System.Collections.Generic.IList<System.Nullable<long>> VersionCodes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A set of filtering options for releases and version codes specific to an app.</summary>
+    public class GooglePlayDeveloperReportingV1alpha1ReleaseFilterOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of tracks to filter releases over. Provides the grouping of version codes under releases and tracks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tracks")]
+        public virtual System.Collections.Generic.IList<GooglePlayDeveloperReportingV1alpha1Track> Tracks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for SearchAccessibleApps.</summary>
+    public class GooglePlayDeveloperReportingV1alpha1SearchAccessibleAppsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The apps accessible to the user calling the endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apps")]
+        public virtual System.Collections.Generic.IList<GooglePlayDeveloperReportingV1alpha1App> Apps { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response with a paginated list of issues that matched the request.</summary>
     public class GooglePlayDeveloperReportingV1alpha1SearchErrorIssuesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3294,15 +3656,16 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
     /// any frames. Care must be taken not to aggregate this count further, as it may result in users being counted
     /// multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the
     /// magnitude of the value. **Supported dimensions:** * `apiLevel` (string): the API level of Android that was
-    /// running on the user's device. * `versionCode` (int64): version of the app that was running on the user's device.
-    /// * `deviceModel` (string): unique identifier of the user's device model. * `deviceBrand` (string): unique
-    /// identifier of the user's device brand. * `deviceType` (string): the type (also known as form factor) of the
-    /// user's device. * `countryCode` (string): the country or region of the user's device based on their IP address,
-    /// represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the
-    /// device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary
-    /// system-on-chip, e.g., Samsung.
-    /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
-    /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
+    /// running on the user's device, e.g., 26. * `versionCode` (int64): version of the app that was running on the
+    /// user's device. * `deviceModel` (string): unique identifier of the user's device model. The form of the
+    /// identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device corresponds to
+    /// Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's device brand, e.g.,
+    /// google. * `deviceType` (string): the type (also known as form factor) of the user's device, e.g., PHONE. *
+    /// `countryCode` (string): the country or region of the user's device based on their IP address, represented as a
+    /// 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB,
+    /// in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g.,
+    /// Samsung. [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) *
+    /// `deviceSocModel` (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
     /// of the device's CPU, e.g., Qualcomm. * `deviceCpuModel` (string): Model of the device's CPU, e.g., "Kryo 240". *
     /// `deviceGpuMake` (string): Make of the device's GPU, e.g., ARM. * `deviceGpuModel` (string): Model of the
@@ -3342,13 +3705,15 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
     /// value is rounded to the nearest multiple of 10, 100, 1,000 or 1,000,000, depending on the magnitude of the
     /// value. **Required dimension:** This dimension must be specified with each request for the request to be valid. *
     /// `startType` (string): the type of start that was measured. Valid types are `HOT`, `WARM` and `COLD`. **Supported
-    /// dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device. *
+    /// dimensions:** * `apiLevel` (string): the API level of Android that was running on the user's device, e.g., 26. *
     /// `versionCode` (int64): version of the app that was running on the user's device. * `deviceModel` (string):
-    /// unique identifier of the user's device model. * `deviceBrand` (string): unique identifier of the user's device
-    /// brand. * `deviceType` (string): the type (also known as form factor) of the user's device. * `countryCode`
-    /// (string): the country or region of the user's device based on their IP address, represented as a 2-letter
-    /// ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets
-    /// (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
+    /// unique identifier of the user's device model. The form of the identifier is 'deviceBrand/device', where
+    /// deviceBrand corresponds to Build.BRAND and device corresponds to Build.DEVICE, e.g., google/coral. *
+    /// `deviceBrand` (string): unique identifier of the user's device brand, e.g., google. * `deviceType` (string): the
+    /// type (also known as form factor) of the user's device, e.g., PHONE. * `countryCode` (string): the country or
+    /// region of the user's device based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the
+    /// United States). * `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). *
+    /// `deviceSocMake` (string): Make of the device's primary system-on-chip, e.g., Samsung.
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
     /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
@@ -3391,13 +3756,15 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
     /// foreground usage but also background work. Care must be taken not to aggregate this count further, as it may
     /// result in users being counted multiple times. The value is rounded to the nearest multiple of 10, 100, 1,000 or
     /// 1,000,000, depending on the magnitude of the value. **Supported dimensions:** * `apiLevel` (string): the API
-    /// level of Android that was running on the user's device. * `versionCode` (int64): version of the app that was
-    /// running on the user's device. * `deviceModel` (string): unique identifier of the user's device model. *
-    /// `deviceBrand` (string): unique identifier of the user's device brand. * `deviceType` (string): the type (also
-    /// known as form factor) of the user's device. * `countryCode` (string): the country or region of the user's device
-    /// based on their IP address, represented as a 2-letter ISO-3166 code (e.g. US for the United States). *
-    /// `deviceRamBucket` (int64): RAM of the device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string):
-    /// Make of the device's primary system-on-chip, e.g., Samsung.
+    /// level of Android that was running on the user's device, e.g., 26. * `versionCode` (int64): version of the app
+    /// that was running on the user's device. * `deviceModel` (string): unique identifier of the user's device model.
+    /// The form of the identifier is 'deviceBrand/device', where deviceBrand corresponds to Build.BRAND and device
+    /// corresponds to Build.DEVICE, e.g., google/coral. * `deviceBrand` (string): unique identifier of the user's
+    /// device brand, e.g., google. * `deviceType` (string): the type (also known as form factor) of the user's device,
+    /// e.g., PHONE. * `countryCode` (string): the country or region of the user's device based on their IP address,
+    /// represented as a 2-letter ISO-3166 code (e.g. US for the United States). * `deviceRamBucket` (int64): RAM of the
+    /// device, in MB, in buckets (3GB, 4GB, etc.). * `deviceSocMake` (string): Make of the device's primary
+    /// system-on-chip, e.g., Samsung.
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MANUFACTURER) * `deviceSocModel`
     /// (string): Model of the device's primary system-on-chip, e.g., "Exynos 2100".
     /// [Reference](https://developer.android.com/reference/android/os/Build#SOC_MODEL) * `deviceCpuMake` (string): Make
@@ -3462,6 +3829,25 @@ namespace Google.Apis.Playdeveloperreporting.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual GoogleTypeDateTime StartTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A representation of a Play release track.</summary>
+    public class GooglePlayDeveloperReportingV1alpha1Track : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Readable identifier of the track.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Represents all active releases in the track.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("servingReleases")]
+        public virtual System.Collections.Generic.IList<GooglePlayDeveloperReportingV1alpha1Release> ServingReleases { get; set; }
+
+        /// <summary>The type of the track.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

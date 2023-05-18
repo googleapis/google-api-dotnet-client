@@ -8,7 +8,17 @@
     "1",
     "2"
   ],
+  "Google.Apis.GKEOnPrem.v1.ProjectsResource+LocationsResource+BareMetalAdminClustersResource+GetRequest.ViewEnum": [
+    "CLUSTER_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
   "Google.Apis.GKEOnPrem.v1.ProjectsResource+LocationsResource+BareMetalAdminClustersResource+ListRequest.ViewEnum": [
+    "CLUSTER_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.GKEOnPrem.v1.ProjectsResource+LocationsResource+BareMetalClustersResource+GetRequest.ViewEnum": [
     "CLUSTER_VIEW_UNSPECIFIED",
     "BASIC",
     "FULL"
@@ -19,6 +29,11 @@
     "FULL"
   ],
   "Google.Apis.GKEOnPrem.v1.ProjectsResource+LocationsResource+VmwareAdminClustersResource+ListRequest.ViewEnum": [
+    "CLUSTER_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.GKEOnPrem.v1.ProjectsResource+LocationsResource+VmwareClustersResource+GetRequest.ViewEnum": [
     "CLUSTER_VIEW_UNSPECIFIED",
     "BASIC",
     "FULL"
