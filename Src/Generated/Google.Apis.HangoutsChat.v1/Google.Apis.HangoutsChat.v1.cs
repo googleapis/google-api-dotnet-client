@@ -62,8 +62,16 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>Private Service: https://www.googleapis.com/auth/chat.bot</summary>
             public static string ChatBot = "https://www.googleapis.com/auth/chat.bot";
 
+            /// <summary>
+            /// Delete conversations and spaces &amp;amp; remove access to associated files in Google Chat
+            /// </summary>
+            public static string ChatDelete = "https://www.googleapis.com/auth/chat.delete";
+
             /// <summary>View, add, and remove members from conversations in Google Chat</summary>
             public static string ChatMemberships = "https://www.googleapis.com/auth/chat.memberships";
+
+            /// <summary>Add and remove itself from conversations in Google Chat</summary>
+            public static string ChatMembershipsApp = "https://www.googleapis.com/auth/chat.memberships.app";
 
             /// <summary>View members in Google Chat conversations.</summary>
             public static string ChatMembershipsReadonly = "https://www.googleapis.com/auth/chat.memberships.readonly";
@@ -76,6 +84,15 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>Compose and send messages in Google Chat</summary>
             public static string ChatMessagesCreate = "https://www.googleapis.com/auth/chat.messages.create";
 
+            /// <summary>View, add, and delete reactions to messages in Google Chat</summary>
+            public static string ChatMessagesReactions = "https://www.googleapis.com/auth/chat.messages.reactions";
+
+            /// <summary>Add reactions to messages in Google Chat</summary>
+            public static string ChatMessagesReactionsCreate = "https://www.googleapis.com/auth/chat.messages.reactions.create";
+
+            /// <summary>View reactions to messages in Google Chat</summary>
+            public static string ChatMessagesReactionsReadonly = "https://www.googleapis.com/auth/chat.messages.reactions.readonly";
+
             /// <summary>View messages and reactions in Google Chat</summary>
             public static string ChatMessagesReadonly = "https://www.googleapis.com/auth/chat.messages.readonly";
 
@@ -83,6 +100,9 @@ namespace Google.Apis.HangoutsChat.v1
             /// Create conversations and spaces and view or update metadata (including history settings) in Google Chat
             /// </summary>
             public static string ChatSpaces = "https://www.googleapis.com/auth/chat.spaces";
+
+            /// <summary>Create new conversations in Google Chat</summary>
+            public static string ChatSpacesCreate = "https://www.googleapis.com/auth/chat.spaces.create";
 
             /// <summary>View chat and spaces in Google Chat</summary>
             public static string ChatSpacesReadonly = "https://www.googleapis.com/auth/chat.spaces.readonly";
@@ -94,8 +114,16 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>Private Service: https://www.googleapis.com/auth/chat.bot</summary>
             public const string ChatBot = "https://www.googleapis.com/auth/chat.bot";
 
+            /// <summary>
+            /// Delete conversations and spaces &amp;amp; remove access to associated files in Google Chat
+            /// </summary>
+            public const string ChatDelete = "https://www.googleapis.com/auth/chat.delete";
+
             /// <summary>View, add, and remove members from conversations in Google Chat</summary>
             public const string ChatMemberships = "https://www.googleapis.com/auth/chat.memberships";
+
+            /// <summary>Add and remove itself from conversations in Google Chat</summary>
+            public const string ChatMembershipsApp = "https://www.googleapis.com/auth/chat.memberships.app";
 
             /// <summary>View members in Google Chat conversations.</summary>
             public const string ChatMembershipsReadonly = "https://www.googleapis.com/auth/chat.memberships.readonly";
@@ -108,6 +136,15 @@ namespace Google.Apis.HangoutsChat.v1
             /// <summary>Compose and send messages in Google Chat</summary>
             public const string ChatMessagesCreate = "https://www.googleapis.com/auth/chat.messages.create";
 
+            /// <summary>View, add, and delete reactions to messages in Google Chat</summary>
+            public const string ChatMessagesReactions = "https://www.googleapis.com/auth/chat.messages.reactions";
+
+            /// <summary>Add reactions to messages in Google Chat</summary>
+            public const string ChatMessagesReactionsCreate = "https://www.googleapis.com/auth/chat.messages.reactions.create";
+
+            /// <summary>View reactions to messages in Google Chat</summary>
+            public const string ChatMessagesReactionsReadonly = "https://www.googleapis.com/auth/chat.messages.reactions.readonly";
+
             /// <summary>View messages and reactions in Google Chat</summary>
             public const string ChatMessagesReadonly = "https://www.googleapis.com/auth/chat.messages.readonly";
 
@@ -115,6 +152,9 @@ namespace Google.Apis.HangoutsChat.v1
             /// Create conversations and spaces and view or update metadata (including history settings) in Google Chat
             /// </summary>
             public const string ChatSpaces = "https://www.googleapis.com/auth/chat.spaces";
+
+            /// <summary>Create new conversations in Google Chat</summary>
+            public const string ChatSpacesCreate = "https://www.googleapis.com/auth/chat.spaces.create";
 
             /// <summary>View chat and spaces in Google Chat</summary>
             public const string ChatSpacesReadonly = "https://www.googleapis.com/auth/chat.spaces.readonly";
@@ -454,6 +494,221 @@ namespace Google.Apis.HangoutsChat.v1
                 return mediaDownloader.DownloadAsync(this.GenerateRequestUri(), stream, cancellationToken);
             }
         }
+
+        /// <summary>
+        /// [Developer Preview](https://developers.google.com/workspace/preview): Uploads an attachment. Requires user
+        /// [authentication](https://developers.google.com/chat/api/guides/auth/users). You can upload attachments up to
+        /// 200 MB. Certain file types aren't supported. For details, see [File types blocked by Google
+        /// Chat](https://support.google.com/chat/answer/7651457?&amp;amp;co=GENIE.Platform%3DDesktop#File%20types%20blocked%20in%20Google%20Chat).
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">
+        /// Required. Resource name of the Chat space in which the attachment is uploaded. Format "spaces/{space}".
+        /// </param>
+        public virtual UploadRequest Upload(Google.Apis.HangoutsChat.v1.Data.UploadAttachmentRequest body, string parent)
+        {
+            return new UploadRequest(service, body, parent);
+        }
+
+        /// <summary>
+        /// [Developer Preview](https://developers.google.com/workspace/preview): Uploads an attachment. Requires user
+        /// [authentication](https://developers.google.com/chat/api/guides/auth/users). You can upload attachments up to
+        /// 200 MB. Certain file types aren't supported. For details, see [File types blocked by Google
+        /// Chat](https://support.google.com/chat/answer/7651457?&amp;amp;co=GENIE.Platform%3DDesktop#File%20types%20blocked%20in%20Google%20Chat).
+        /// </summary>
+        public class UploadRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.UploadAttachmentResponse>
+        {
+            /// <summary>Constructs a new Upload request.</summary>
+            public UploadRequest(Google.Apis.Services.IClientService service, Google.Apis.HangoutsChat.v1.Data.UploadAttachmentRequest body, string parent) : base(service)
+            {
+                Parent = parent;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. Resource name of the Chat space in which the attachment is uploaded. Format "spaces/{space}".
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.HangoutsChat.v1.Data.UploadAttachmentRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "upload";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+parent}/attachments:upload";
+
+            /// <summary>Initializes Upload parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^spaces/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// [Developer Preview](https://developers.google.com/workspace/preview): Uploads an attachment. Requires user
+        /// [authentication](https://developers.google.com/chat/api/guides/auth/users). You can upload attachments up to
+        /// 200 MB. Certain file types aren't supported. For details, see [File types blocked by Google
+        /// Chat](https://support.google.com/chat/answer/7651457?&amp;amp;co=GENIE.Platform%3DDesktop#File%20types%20blocked%20in%20Google%20Chat).
+        /// </summary>
+        /// <remarks>
+        /// Considerations regarding <paramref name="stream"/>:
+        /// <list type="bullet">
+        /// <item>
+        /// <description>
+        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before reading
+        /// commences. If <paramref name="stream"/> is not seekable, then it will be read from its current position
+        /// </description>
+        /// </item>
+        /// <item>
+        /// <description>
+        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+        /// </description>
+        /// </item>
+        /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
+        /// </list>
+        /// </remarks>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">
+        /// Required. Resource name of the Chat space in which the attachment is uploaded. Format "spaces/{space}".
+        /// </param>
+        /// <param name="stream">The stream to upload. See remarks for further information.</param>
+        /// <param name="contentType">The content type of the stream to upload.</param>
+        public virtual UploadMediaUpload Upload(Google.Apis.HangoutsChat.v1.Data.UploadAttachmentRequest body, string parent, System.IO.Stream stream, string contentType)
+        {
+            return new UploadMediaUpload(service, body, parent, stream, contentType);
+        }
+
+        /// <summary>Upload media upload which supports resumable upload.</summary>
+        public class UploadMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.HangoutsChat.v1.Data.UploadAttachmentRequest, Google.Apis.HangoutsChat.v1.Data.UploadAttachmentResponse>
+        {
+            /// <summary>V1 error format.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+            /// <summary>V1 error format.</summary>
+            public enum XgafvEnum
+            {
+                /// <summary>v1 error format</summary>
+                [Google.Apis.Util.StringValueAttribute("1")]
+                Value1 = 0,
+
+                /// <summary>v2 error format</summary>
+                [Google.Apis.Util.StringValueAttribute("2")]
+                Value2 = 1,
+            }
+
+            /// <summary>OAuth access token.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string AccessToken { get; set; }
+
+            /// <summary>Data format for response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+            /// <summary>Data format for response.</summary>
+            public enum AltEnum
+            {
+                /// <summary>Responses with Content-Type of application/json</summary>
+                [Google.Apis.Util.StringValueAttribute("json")]
+                Json = 0,
+
+                /// <summary>Media download with context-dependent Content-Type</summary>
+                [Google.Apis.Util.StringValueAttribute("media")]
+                Media = 1,
+
+                /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+                [Google.Apis.Util.StringValueAttribute("proto")]
+                Proto = 2,
+            }
+
+            /// <summary>JSONP</summary>
+            [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Callback { get; set; }
+
+            /// <summary>Selector specifying which fields to include in a partial response.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Fields { get; set; }
+
+            /// <summary>
+            /// API key. Your API key identifies your project and provides you with API access, quota, and reports.
+            /// Required unless you provide an OAuth 2.0 token.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Key { get; set; }
+
+            /// <summary>OAuth 2.0 token for the current user.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("oauth_token", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string OauthToken { get; set; }
+
+            /// <summary>Returns response with indentations and line breaks.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> PrettyPrint { get; set; }
+
+            /// <summary>
+            /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned
+            /// to a user, but should not exceed 40 characters.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string QuotaUser { get; set; }
+
+            /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+            [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UploadType { get; set; }
+
+            /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+            [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UploadProtocol { get; set; }
+
+            /// <summary>
+            /// Required. Resource name of the Chat space in which the attachment is uploaded. Format "spaces/{space}".
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>Constructs a new Upload media upload instance.</summary>
+            /// <remarks>
+            /// Considerations regarding <paramref name="stream"/>:
+            /// <list type="bullet">
+            /// <item>
+            /// <description>
+            /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c> before
+            /// reading commences. If <paramref name="stream"/> is not seekable, then it will be read from its current
+            /// position
+            /// </description>
+            /// </item>
+            /// <item>
+            /// <description>
+            /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is completed
+            /// </description>
+            /// </item>
+            /// <item><description>Caller is responsible for closing the <paramref name="stream"/></description></item>
+            /// </list>
+            /// </remarks>
+            public UploadMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.HangoutsChat.v1.Data.UploadAttachmentRequest body, string parent, System.IO.Stream stream, string contentType)
+                : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "v1/{+parent}/attachments:upload"), "POST", stream, contentType)
+            {
+                Parent = parent;
+                Body = body;
+            }
+        }
     }
 
     /// <summary>The "spaces" collection of methods.</summary>
@@ -487,6 +742,152 @@ namespace Google.Apis.HangoutsChat.v1
             public MembersResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+            }
+
+            /// <summary>
+            /// [Developer Preview](https://developers.google.com/workspace/preview): Creates a human membership or app
+            /// membership for the calling app. Creating memberships for other apps is not supported. Requires [user
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) and the `chat.memberships`
+            /// (for human membership) or `chat.memberships.app` (for app membership) scope. To specify the member to
+            /// add, set the `membership.member.name` in the `CreateMembershipRequest`: - To add the calling app to the
+            /// space, use `users/app`. - To add a human user, use `users/{user}`, where `{user}` is either the
+            /// `{person_id}` for the [person](https://developers.google.com/people/api/rest/v1/people) from the People
+            /// API, or the `id` for the
+            /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users) in the Admin SDK
+            /// Directory API. For example, if the People API `Person` `resourceName` is `people/123456789`, the user
+            /// can be added to the space by setting the `membership.member.name` to `users/123456789`.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The resource name of the space for which to create the membership. Format: spaces/{space}
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.HangoutsChat.v1.Data.Membership body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>
+            /// [Developer Preview](https://developers.google.com/workspace/preview): Creates a human membership or app
+            /// membership for the calling app. Creating memberships for other apps is not supported. Requires [user
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) and the `chat.memberships`
+            /// (for human membership) or `chat.memberships.app` (for app membership) scope. To specify the member to
+            /// add, set the `membership.member.name` in the `CreateMembershipRequest`: - To add the calling app to the
+            /// space, use `users/app`. - To add a human user, use `users/{user}`, where `{user}` is either the
+            /// `{person_id}` for the [person](https://developers.google.com/people/api/rest/v1/people) from the People
+            /// API, or the `id` for the
+            /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users) in the Admin SDK
+            /// Directory API. For example, if the People API `Person` `resourceName` is `people/123456789`, the user
+            /// can be added to the space by setting the `membership.member.name` to `users/123456789`.
+            /// </summary>
+            public class CreateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Membership>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.HangoutsChat.v1.Data.Membership body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the space for which to create the membership. Format: spaces/{space}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.HangoutsChat.v1.Data.Membership Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/members";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^spaces/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// [Developer Preview](https://developers.google.com/workspace/preview): Deletes a membership. Requires
+            /// [user authentication](https://developers.google.com/chat/api/guides/auth/users) and the
+            /// `chat.memberships` or `chat.memberships.app` authorization scope.
+            /// </summary>
+            /// <param name="name">
+            /// Required. Resource name of the membership to delete. Chat apps can delete human users' or their own
+            /// memberships. Chat apps can't delete other apps' memberships. When deleting a human membership, requires
+            /// the `chat.memberships` scope and `spaces/{space}/members/{member}` format. When deleting an app
+            /// membership, requires the `chat.memberships.app` scope and `spaces/{space}/members/app` format. Format:
+            /// spaces/{space}/members/{member} or spaces/{space}/members/app
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>
+            /// [Developer Preview](https://developers.google.com/workspace/preview): Deletes a membership. Requires
+            /// [user authentication](https://developers.google.com/chat/api/guides/auth/users) and the
+            /// `chat.memberships` or `chat.memberships.app` authorization scope.
+            /// </summary>
+            public class DeleteRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Membership>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the membership to delete. Chat apps can delete human users' or their own
+                /// memberships. Chat apps can't delete other apps' memberships. When deleting a human membership,
+                /// requires the `chat.memberships` scope and `spaces/{space}/members/{member}` format. When deleting an
+                /// app membership, requires the `chat.memberships.app` scope and `spaces/{space}/members/app` format.
+                /// Format: spaces/{space}/members/{member} or spaces/{space}/members/app
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^spaces/[^/]+/members/[^/]+$",
+                    });
+                }
             }
 
             /// <summary>
@@ -601,6 +1002,21 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
+                /// Optional. A query filter. You can filter memberships by a member's role
+                /// ([`role`](https://developers.google.com/chat/api/reference/rest/v1/spaces.members#membershiprole))
+                /// and type ([`member.type`](https://developers.google.com/chat/api/reference/rest/v1/User#type)). To
+                /// filter by role, set `role` to `ROLE_MEMBER` or `ROLE_MANAGER`. To filter by type, set `member.type`
+                /// to `HUMAN` or `BOT`. To filter by both role and type, use the `AND` operator. To filter by either
+                /// role or type, use the `OR` operator. For example, the following queries are valid: ``` role =
+                /// "ROLE_MANAGER" OR role = "ROLE_MEMBER" member.type = "HUMAN" AND role = "ROLE_MANAGER" ``` The
+                /// following queries are invalid: ``` member.type = "HUMAN" AND member.type = "BOT" role =
+                /// "ROLE_MANAGER" AND role = "ROLE_MEMBER" ``` Invalid queries are rejected by the server with an
+                /// `INVALID_ARGUMENT` error.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
                 /// The maximum number of memberships to return. The service may return fewer than this value. If
                 /// unspecified, at most 100 memberships are returned. The maximum value is 1000; values above 1000 are
                 /// coerced to 1000. Negative values return an INVALID_ARGUMENT error.
@@ -615,6 +1031,15 @@ namespace Google.Apis.HangoutsChat.v1
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
+
+                /// <summary>
+                /// Optional. When `true`, also returns memberships associated with invited members, in addition to
+                /// other types of memberships. If a filter is set, invited memberships that don't match the filter
+                /// criteria aren't returned. Currently requires [user
+                /// authentication](https://developers.google.com/chat/api/guides/auth/users).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("showInvited", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowInvited { get; set; }
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
@@ -637,6 +1062,14 @@ namespace Google.Apis.HangoutsChat.v1
                         DefaultValue = null,
                         Pattern = @"^spaces/[^/]+$",
                     });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                     RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageSize",
@@ -648,6 +1081,14 @@ namespace Google.Apis.HangoutsChat.v1
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("showInvited", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showInvited",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -673,6 +1114,7 @@ namespace Google.Apis.HangoutsChat.v1
             {
                 this.service = service;
                 Attachments = new AttachmentsResource(service);
+                Reactions = new ReactionsResource(service);
             }
 
             /// <summary>Gets the Attachments resource.</summary>
@@ -745,6 +1187,275 @@ namespace Google.Apis.HangoutsChat.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^spaces/[^/]+/messages/[^/]+/attachments/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Reactions resource.</summary>
+            public virtual ReactionsResource Reactions { get; }
+
+            /// <summary>The "reactions" collection of methods.</summary>
+            public class ReactionsResource
+            {
+                private const string Resource = "reactions";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ReactionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// [Developer Preview](https://developers.google.com/workspace/preview): Creates a reaction and adds it
+                /// to a message. Requires [user
+                /// authentication](https://developers.google.com/chat/api/guides/auth/users) and the `chat.messages`,
+                /// `chat.messages.reactions`, or `chat.messages.reactions.create` scope. Only unicode emoji are
+                /// supported.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The message where the reaction is created. Format: spaces/{space}/messages/{message}
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.HangoutsChat.v1.Data.Reaction body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// [Developer Preview](https://developers.google.com/workspace/preview): Creates a reaction and adds it
+                /// to a message. Requires [user
+                /// authentication](https://developers.google.com/chat/api/guides/auth/users) and the `chat.messages`,
+                /// `chat.messages.reactions`, or `chat.messages.reactions.create` scope. Only unicode emoji are
+                /// supported.
+                /// </summary>
+                public class CreateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Reaction>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.HangoutsChat.v1.Data.Reaction body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The message where the reaction is created. Format: spaces/{space}/messages/{message}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.HangoutsChat.v1.Data.Reaction Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/reactions";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^spaces/[^/]+/messages/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// [Developer Preview](https://developers.google.com/workspace/preview): Deletes a reaction to a
+                /// message. Requires [user authentication](https://developers.google.com/chat/api/guides/auth/users)
+                /// and the `chat.messages` or `chat.messages.reactions` scope.
+                /// </summary>
+                /// <param name="name">
+                /// Required. Name of the reaction to delete. Format:
+                /// spaces/{space}/messages/{message}/reactions/{reaction}
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>
+                /// [Developer Preview](https://developers.google.com/workspace/preview): Deletes a reaction to a
+                /// message. Requires [user authentication](https://developers.google.com/chat/api/guides/auth/users)
+                /// and the `chat.messages` or `chat.messages.reactions` scope.
+                /// </summary>
+                public class DeleteRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the reaction to delete. Format:
+                    /// spaces/{space}/messages/{message}/reactions/{reaction}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^spaces/[^/]+/messages/[^/]+/reactions/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// [Developer Preview](https://developers.google.com/workspace/preview): Lists reactions to a message.
+                /// Requires [user authentication](https://developers.google.com/chat/api/guides/auth/users) and
+                /// `chat.messages`, `chat.messages.readonly`, `chat.messages.reactions`, or
+                /// `chat.messages.reactions.readonly` scope.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. The message users reacted to. Format: spaces/{space}/messages/{message}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>
+                /// [Developer Preview](https://developers.google.com/workspace/preview): Lists reactions to a message.
+                /// Requires [user authentication](https://developers.google.com/chat/api/guides/auth/users) and
+                /// `chat.messages`, `chat.messages.readonly`, `chat.messages.reactions`, or
+                /// `chat.messages.reactions.readonly` scope.
+                /// </summary>
+                public class ListRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.ListReactionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The message users reacted to. Format: spaces/{space}/messages/{message}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. A query filter. You can filter reactions by
+                    /// [emoji](https://developers.google.com/chat/api/reference/rest/v1/Emoji) (either `emoji.unicode`
+                    /// or `emoji.custom_emoji.uid`) and
+                    /// [user](https://developers.google.com/chat/api/reference/rest/v1/User) (`user.name`). To filter
+                    /// reactions for multiple emojis or users, join similar fields with the `OR` operator, such as
+                    /// `emoji.unicode = "🙂" OR emoji.unicode = "👍"` and `user.name = "users/AAAAAA" OR user.name =
+                    /// "users/BBBBBB"`. To filter reactions by emoji and user, use the `AND` operator, such as
+                    /// `emoji.unicode = "🙂" AND user.name = "users/AAAAAA"`. If your query uses both `AND` and `OR`,
+                    /// group them with parentheses. For example, the following queries are valid: ``` user.name =
+                    /// "users/{user}" emoji.unicode = "🙂" emoji.custom_emoji.uid = "{uid}" emoji.unicode = "🙂" OR
+                    /// emoji.unicode = "👍" emoji.unicode = "🙂" OR emoji.custom_emoji.uid = "{uid}" emoji.unicode =
+                    /// "🙂" AND user.name = "users/{user}" (emoji.unicode = "🙂" OR emoji.custom_emoji.uid = "{uid}")
+                    /// AND user.name = "users/{user}" ``` The following queries are invalid: ``` emoji.unicode = "🙂"
+                    /// AND emoji.unicode = "👍" emoji.unicode = "🙂" AND emoji.custom_emoji.uid = "{uid}" emoji.unicode
+                    /// = "🙂" OR user.name = "users/{user}" emoji.unicode = "🙂" OR emoji.custom_emoji.uid = "{uid}" OR
+                    /// user.name = "users/{user}" emoji.unicode = "🙂" OR emoji.custom_emoji.uid = "{uid}" AND
+                    /// user.name = "users/{user}" ``` Invalid queries are rejected by the server with an
+                    /// `INVALID_ARGUMENT` error.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of reactions returned. The service may return fewer reactions than
+                    /// this value. If unspecified, the default value is 25. The maximum value is 200; values above 200
+                    /// are changed to 200.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. (If resuming from a previous query.) A page token received from a previous list
+                    /// reactions call. Provide this to retrieve the subsequent page. When paginating, the filter value
+                    /// should match the call that provided the page token. Passing a different value may lead to
+                    /// unexpected results.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/reactions";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^spaces/[^/]+/messages/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -968,6 +1679,15 @@ namespace Google.Apis.HangoutsChat.v1
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// When `true`, deleting a message also deletes its threaded replies. When `false`, if a message has
+                /// threaded replies, deletion fails. Only applies when [authenticating as a
+                /// user](https://developers.google.com/chat/api/guides/auth/users). Has no effect when [authenticating
+                /// with a service account] (https://developers.google.com/chat/api/guides/auth/service-accounts).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> Force { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
 
@@ -988,6 +1708,14 @@ namespace Google.Apis.HangoutsChat.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^spaces/[^/]+/messages/[^/]+$",
+                    });
+                    RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "force",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -1067,6 +1795,158 @@ namespace Google.Apis.HangoutsChat.v1
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^spaces/[^/]+/messages/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// [Developer Preview](https://developers.google.com/workspace/preview): Lists messages in a space that the
+            /// caller is a member of, including messages from blocked members and spaces. Requires [user
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) and the `chat.messages` or
+            /// `chat.messages.readonly` authorization scope. This method is only supported in spaces that don't allow
+            /// users from outside the Workspace organization to join.
+            /// </summary>
+            /// <param name="parent">
+            /// Required. The resource name of the space to list messages from. Format: spaces/{space}
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>
+            /// [Developer Preview](https://developers.google.com/workspace/preview): Lists messages in a space that the
+            /// caller is a member of, including messages from blocked members and spaces. Requires [user
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users) and the `chat.messages` or
+            /// `chat.messages.readonly` authorization scope. This method is only supported in spaces that don't allow
+            /// users from outside the Workspace organization to join.
+            /// </summary>
+            public class ListRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.ListMessagesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the space to list messages from. Format: spaces/{space}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// A query filter. You can filter messages by date (`create_time`) and thread (`thread.name`). To
+                /// filter messages by the date they were created, specify the `create_time` with a timestamp in
+                /// [RFC-3339](https://www.rfc-editor.org/rfc/rfc3339) format and double quotation marks. For example,
+                /// `"2023-04-21T11:30:00-04:00"`. You can use the greater than operator `&amp;gt;` to list messages
+                /// that were created after a timestamp, or the less than operator `&amp;lt;` to list messages that were
+                /// created before a timestamp. To filter messages within a time interval, use the `AND` operator
+                /// between two timestamps. To filter by thread, specify the `thread.name`, formatted as
+                /// `spaces/{space}/threads/{thread}`. You can only specify one `thread.name` per query. To filter by
+                /// both thread and date, use the `AND` operator in your query. For example, the following queries are
+                /// valid: ``` create_time &amp;gt; "2012-04-21T11:30:00-04:00" create_time &amp;gt;
+                /// "2012-04-21T11:30:00-04:00" AND thread.name = spaces/AAAAAAAAAAA/threads/123 create_time &amp;gt;
+                /// "2012-04-21T11:30:00+00:00" AND create_time &amp;lt; "2013-01-01T00:00:00+00:00" AND thread.name =
+                /// spaces/AAAAAAAAAAA/threads/123 thread.name = spaces/AAAAAAAAAAA/threads/123 ``` Invalid queries are
+                /// rejected by the server with an `INVALID_ARGUMENT` error.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// Optional, if resuming from a previous query. How the list of messages is ordered. Specify a value to
+                /// order by and an ordering operation. Valid ordering operation values are: - `ASC` for ascending. -
+                /// `DESC` for descending. The default ordering is `create_time ASC`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string OrderBy { get; set; }
+
+                /// <summary>
+                /// The maximum number of messages returned. The service may return fewer messages than this value. If
+                /// unspecified, at most 25 are returned. The maximum value is 1000; values above 1000 are coerced to
+                /// 1000. Negative values return an `INVALID_ARGUMENT` error.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional, if resuming from a previous query. A page token received from a previous list messages
+                /// call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided
+                /// should match the call that provided the page token. Passing different values to the other parameters
+                /// may lead to unexpected results.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>
+                /// Whether to include deleted messages. Deleted messages include deleted time and metadata about their
+                /// deletion, but message content is unavailable.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("showDeleted", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ShowDeleted { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/messages";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^spaces/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "orderBy",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("showDeleted", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "showDeleted",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -1305,6 +2185,198 @@ namespace Google.Apis.HangoutsChat.v1
         }
 
         /// <summary>
+        /// [Developer Preview](https://developers.google.com/workspace/preview): Creates a named space. Spaces grouped
+        /// by topics or that have guest access are not supported. Requires [user
+        /// authentication](https://developers.google.com/chat/api/guides/auth/users) and the `chat.spaces.create` or
+        /// `chat.spaces` scope.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRequest Create(Google.Apis.HangoutsChat.v1.Data.Space body)
+        {
+            return new CreateRequest(service, body);
+        }
+
+        /// <summary>
+        /// [Developer Preview](https://developers.google.com/workspace/preview): Creates a named space. Spaces grouped
+        /// by topics or that have guest access are not supported. Requires [user
+        /// authentication](https://developers.google.com/chat/api/guides/auth/users) and the `chat.spaces.create` or
+        /// `chat.spaces` scope.
+        /// </summary>
+        public class CreateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Space>
+        {
+            /// <summary>Constructs a new Create request.</summary>
+            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.HangoutsChat.v1.Data.Space body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Optional. A unique identifier for this request. A random UUID is recommended. Specifying an existing
+            /// request ID returns the space created with that ID instead of creating a new space. Specifying an
+            /// existing request ID from the same Chat app with a different authenticated user returns an error.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string RequestId { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.HangoutsChat.v1.Data.Space Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "create";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/spaces";
+
+            /// <summary>Initializes Create parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "requestId",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// [Developer Preview](https://developers.google.com/workspace/preview): Deletes a named space. Always performs
+        /// a cascading delete, which means that the space's child resources - like messages posted in the space and
+        /// memberships in the space - are also deleted. Requires [user
+        /// authentication](https://developers.google.com/chat/api/guides/auth/users) from a user who has permission to
+        /// delete the space, and the `chat.delete` scope.
+        /// </summary>
+        /// <param name="name">Required. Resource name of the space to delete. Format: spaces/{space}</param>
+        public virtual DeleteRequest Delete(string name)
+        {
+            return new DeleteRequest(service, name);
+        }
+
+        /// <summary>
+        /// [Developer Preview](https://developers.google.com/workspace/preview): Deletes a named space. Always performs
+        /// a cascading delete, which means that the space's child resources - like messages posted in the space and
+        /// memberships in the space - are also deleted. Requires [user
+        /// authentication](https://developers.google.com/chat/api/guides/auth/users) from a user who has permission to
+        /// delete the space, and the `chat.delete` scope.
+        /// </summary>
+        public class DeleteRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Empty>
+        {
+            /// <summary>Constructs a new Delete request.</summary>
+            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>Required. Resource name of the space to delete. Format: spaces/{space}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "delete";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "DELETE";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes Delete parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^spaces/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// [Developer Preview](https://developers.google.com/workspace/preview): Returns the existing direct message
+        /// with the specified user. With [user
+        /// authentication](https://developers.google.com/chat/api/guides/auth/users), returns the direct message space
+        /// between the specified user and the authenticated user. With [service account
+        /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts), returns the direct
+        /// message space between the specified user and the calling Chat app. If no direct message space is found,
+        /// returns a `404 NOT_FOUND` error. Requires [user
+        /// authentication](https://developers.google.com/chat/api/guides/auth/users) or [service account
+        /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+        /// </summary>
+        public virtual FindDirectMessageRequest FindDirectMessage()
+        {
+            return new FindDirectMessageRequest(service);
+        }
+
+        /// <summary>
+        /// [Developer Preview](https://developers.google.com/workspace/preview): Returns the existing direct message
+        /// with the specified user. With [user
+        /// authentication](https://developers.google.com/chat/api/guides/auth/users), returns the direct message space
+        /// between the specified user and the authenticated user. With [service account
+        /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts), returns the direct
+        /// message space between the specified user and the calling Chat app. If no direct message space is found,
+        /// returns a `404 NOT_FOUND` error. Requires [user
+        /// authentication](https://developers.google.com/chat/api/guides/auth/users) or [service account
+        /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts).
+        /// </summary>
+        public class FindDirectMessageRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Space>
+        {
+            /// <summary>Constructs a new FindDirectMessage request.</summary>
+            public FindDirectMessageRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. Resource name of the user to find direct message with. Format: users/{user}, where `{user}` is
+            /// either the `{person_id}` for the [person](https://developers.google.com/people/api/rest/v1/people) from
+            /// the People API, or the `id` for the
+            /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users) in the Admin SDK
+            /// Directory API. For example, if the People API `Person.resourceName` is `people/123456789`, you can find
+            /// a direct message with that person by using `users/123456789` as the `name`.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Name { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "findDirectMessage";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/spaces:findDirectMessage";
+
+            /// <summary>Initializes FindDirectMessage parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
         /// Returns a space. Requires [authentication](https://developers.google.com/chat/api/guides/auth). Fully
         /// supports [service account
         /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts). Supports [user
@@ -1401,6 +2473,23 @@ namespace Google.Apis.HangoutsChat.v1
             }
 
             /// <summary>
+            /// Optional. A query filter. Requires [user
+            /// authentication](https://developers.google.com/chat/api/guides/auth/users). You can filter spaces by the
+            /// space type ([`space_type`](https://developers.google.com/chat/api/reference/rest/v1/spaces#spacetype)).
+            /// To filter by space type, you must specify valid `enum` value, such as `SPACE` or `GROUP_CHAT` (the
+            /// `space_type` cannot be `SPACE_TYPE_UNSPECIFIED`). To query for multiple space types, use the `OR`
+            /// operator. For example, the following queries are valid: ``` space_type = "SPACE" spaceType =
+            /// "GROUP_CHAT" OR spaceType = "DIRECT_MESSAGE" ``` Invalid queries are rejected by the server with an
+            /// `INVALID_ARGUMENT` error. With [service account
+            /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts), this field is
+            /// ignored and the query always returns all spaces. But Chat API still validates the query syntax with
+            /// service accounts, so invalid queries are still rejected. [Developer
+            /// Preview](https://developers.google.com/workspace/preview).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
             /// Optional. The maximum number of spaces to return. The service may return fewer than this value. If
             /// unspecified, at most 100 spaces are returned. The maximum value is 1000; values above 1000 are coerced
             /// to 1000. Negative values return an `INVALID_ARGUMENT` error.
@@ -1429,6 +2518,14 @@ namespace Google.Apis.HangoutsChat.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
                 RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                 {
                     Name = "pageSize",
@@ -1445,6 +2542,170 @@ namespace Google.Apis.HangoutsChat.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
+            }
+        }
+
+        /// <summary>
+        /// [Developer Preview](https://developers.google.com/workspace/preview): Updates a space. Requires [user
+        /// authentication](https://developers.google.com/chat/api/guides/auth/users) and the `chat.spaces` scope.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="name">Resource name of the space. Format: spaces/{space}</param>
+        public virtual PatchRequest Patch(Google.Apis.HangoutsChat.v1.Data.Space body, string name)
+        {
+            return new PatchRequest(service, body, name);
+        }
+
+        /// <summary>
+        /// [Developer Preview](https://developers.google.com/workspace/preview): Updates a space. Requires [user
+        /// authentication](https://developers.google.com/chat/api/guides/auth/users) and the `chat.spaces` scope.
+        /// </summary>
+        public class PatchRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Space>
+        {
+            /// <summary>Constructs a new Patch request.</summary>
+            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.HangoutsChat.v1.Data.Space body, string name) : base(service)
+            {
+                Name = name;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Resource name of the space. Format: spaces/{space}</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>
+            /// Required. The field paths to be updated, comma separated if there are multiple. Currently supported
+            /// field paths: - display_name (Only supports changing the display name of a space with the SPACE type, or
+            /// when also including the `space_type` mask to change a GROUP_CHAT space type to SPACE. Trying to update
+            /// the display name of a GROUP_CHAT or a DIRECT_MESSAGE space results in an invalid argument error.) -
+            /// space_type (Only supports changing a GROUP_CHAT space type to SPACE. Include `display_name` together
+            /// with `space_type` in the update mask and ensure that the specified space has a non-empty display name
+            /// and the SPACE space type. Including the `space_type` mask and the SPACE type in the specified space when
+            /// updating the display name is optional if the existing space already has the SPACE type. Trying to update
+            /// the space type in other ways results in an invalid argument error). - space_details -
+            /// space_history_state (Supports [turning history on or off for the
+            /// space](https://support.google.com/chat/answer/7664687) if [the organization allows users to change their
+            /// history setting](https://support.google.com/a/answer/7664184). Warning: mutually exclusive with all
+            /// other field paths.)
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual object UpdateMask { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.HangoutsChat.v1.Data.Space Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "patch";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "PATCH";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes Patch parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^spaces/[^/]+$",
+                });
+                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "updateMask",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// [Developer Preview](https://developers.google.com/workspace/preview): Creates a space and adds specified
+        /// users to it. The calling user is automatically added to the space, and shouldn't be specified as a
+        /// membership in the request. To specify the human members to add, add memberships with the appropriate
+        /// `member.name` in the `SetUpSpaceRequest`. To add a human user, use `users/{user}`, where `{user}` is either
+        /// the `{person_id}` for the [person](https://developers.google.com/people/api/rest/v1/people) from the People
+        /// API, or the `id` for the [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users)
+        /// in the Admin SDK Directory API. For example, if the People API `Person` `resourceName` is
+        /// `people/123456789`, you can add the user to the space by including a membership with `users/123456789` as
+        /// the `member.name`. For a space or group chat, if the caller blocks or is blocked by some members, then those
+        /// members aren't added to the created space. To create a direct message (DM) between the calling user and
+        /// another human user, specify exactly one membership to represent the human user. If one user blocks the
+        /// other, the request fails and the DM isn't created. To create a DM between the calling user and the calling
+        /// app, set `Space.singleUserBotDm` to true and don't specify any memberships. You can only use this method to
+        /// add app memberships to DMs. To add the calling app as a member of other space types, use [create
+        /// membership](https://developers.google.com/chat/api/reference/rest/v1/spaces.members/create) If a DM already
+        /// exists between two users, even when one user blocks the other at the time a request is made, then the
+        /// existing DM is returned. Spaces with threaded replies or guest access are not supported. Requires [user
+        /// authentication](https://developers.google.com/chat/api/guides/auth/users) and the `chat.spaces.create` or
+        /// `chat.spaces` scope.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual SetupRequest Setup(Google.Apis.HangoutsChat.v1.Data.SetUpSpaceRequest body)
+        {
+            return new SetupRequest(service, body);
+        }
+
+        /// <summary>
+        /// [Developer Preview](https://developers.google.com/workspace/preview): Creates a space and adds specified
+        /// users to it. The calling user is automatically added to the space, and shouldn't be specified as a
+        /// membership in the request. To specify the human members to add, add memberships with the appropriate
+        /// `member.name` in the `SetUpSpaceRequest`. To add a human user, use `users/{user}`, where `{user}` is either
+        /// the `{person_id}` for the [person](https://developers.google.com/people/api/rest/v1/people) from the People
+        /// API, or the `id` for the [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users)
+        /// in the Admin SDK Directory API. For example, if the People API `Person` `resourceName` is
+        /// `people/123456789`, you can add the user to the space by including a membership with `users/123456789` as
+        /// the `member.name`. For a space or group chat, if the caller blocks or is blocked by some members, then those
+        /// members aren't added to the created space. To create a direct message (DM) between the calling user and
+        /// another human user, specify exactly one membership to represent the human user. If one user blocks the
+        /// other, the request fails and the DM isn't created. To create a DM between the calling user and the calling
+        /// app, set `Space.singleUserBotDm` to true and don't specify any memberships. You can only use this method to
+        /// add app memberships to DMs. To add the calling app as a member of other space types, use [create
+        /// membership](https://developers.google.com/chat/api/reference/rest/v1/spaces.members/create) If a DM already
+        /// exists between two users, even when one user blocks the other at the time a request is made, then the
+        /// existing DM is returned. Spaces with threaded replies or guest access are not supported. Requires [user
+        /// authentication](https://developers.google.com/chat/api/guides/auth/users) and the `chat.spaces.create` or
+        /// `chat.spaces` scope.
+        /// </summary>
+        public class SetupRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Space>
+        {
+            /// <summary>Constructs a new Setup request.</summary>
+            public SetupRequest(Google.Apis.Services.IClientService service, Google.Apis.HangoutsChat.v1.Data.SetUpSpaceRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.HangoutsChat.v1.Data.SetUpSpaceRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "setup";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/spaces:setup";
+
+            /// <summary>Initializes Setup parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
             }
         }
     }
@@ -1596,6 +2857,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     public class AttachmentDataRef : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Opaque token containing a reference to an uploaded attachment. Treated by clients as an opaque string and
+        /// used to create or update Chat messages with attachments. [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachmentUploadToken")]
+        public virtual string AttachmentUploadToken { get; set; }
+
         /// <summary>
         /// The resource name of the attachment data. This is used with the media API to download the attachment data.
         /// </summary>
@@ -1858,6 +3127,19 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents a custom emoji. [Developer Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class CustomEmoji : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unique key for the custom emoji resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Date input values.</summary>
     public class DateInput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1883,6 +3165,20 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>Time since epoch time, in milliseconds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("msSinceEpoch")]
         public virtual System.Nullable<long> MsSinceEpoch { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Information about a deleted message. A message is deleted when `delete_time` is set. [Developer
+    /// Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class DeletionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates who deleted the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletionType")]
+        public virtual string DeletionType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2007,6 +3303,42 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>The id for the drive file, for use with the Drive API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveFileId")]
         public virtual string DriveFileId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An emoji that is used as a reaction to a message. [Developer
+    /// Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class Emoji : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. A custom emoji.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customEmoji")]
+        public virtual CustomEmoji CustomEmoji { get; set; }
+
+        /// <summary>A basic emoji represented by a unicode string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unicode")]
+        public virtual string Unicode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The number of people who reacted to a message with a specific emoji. [Developer
+    /// Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class EmojiReactionSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Emoji associated with the reactions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emoji")]
+        public virtual Emoji Emoji { get; set; }
+
+        /// <summary>The total number of reactions using the associated emoji.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reactionCount")]
+        public virtual System.Nullable<int> ReactionCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2326,6 +3658,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryButton")]
         public virtual GoogleAppsCardV1Button SecondaryButton { get; set; }
 
+        /// <summary>
+        /// A list of widgets included in the card footer. Primary button and secondary button are rendered below these
+        /// widgets.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("widgets")]
+        public virtual System.Collections.Generic.IList<GoogleAppsCardV1FooterWidget> Widgets { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2360,50 +3699,97 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A column.</summary>
+    public class GoogleAppsCardV1Column : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies whether widgets align to the left, right, or center of a column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("horizontalAlignment")]
+        public virtual string HorizontalAlignment { get; set; }
+
+        /// <summary>Specifies how a column fills the width of the card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("horizontalSizeStyle")]
+        public virtual string HorizontalSizeStyle { get; set; }
+
+        /// <summary>Specifies whether widgets align to the top, bottom, or center of a column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verticalAlignment")]
+        public virtual string VerticalAlignment { get; set; }
+
+        /// <summary>
+        /// An array of widgets included in a column. Widgets appear in the order that they are specified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("widgets")]
+        public virtual System.Collections.Generic.IList<GoogleAppsCardV1Widgets> Widgets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
-    /// Lets users specify a date, a time, or both a date and a time. Accepts text input from users, but features an
-    /// interactive date and time selector that helps users enter correctly-formatted dates and times. If users enter a
-    /// date or time incorrectly, the widget shows an error that prompts users to enter the correct format. Not
-    /// supported by Chat apps. Support by Chat apps coming soon.
+    /// The `Columns` widget displays up to 2 columns in a card message or dialog. You can add widgets to each column;
+    /// the widgets appear in the order that they are specified. The height of each column is determined by the taller
+    /// column. For example, if the first column is taller than the second column, both columns have the height of the
+    /// first column. Because each column can contain a different number of widgets, you can't define rows or align
+    /// widgets between the columns. Columns are displayed side-by-side. You can customize the width of each column
+    /// using the `HorizontalSizeStyle` field. If the user's screen width is too narrow, the second column wraps below
+    /// the first: * On web, the second column wraps if the screen width is less than or equal to 480 pixels. * On iOS
+    /// devices, the second column wraps if the screen width is less than or equal to 300 pt. * On Android devices, the
+    /// second column wraps if the screen width is less than or equal to 320 dp. To include more than 2 columns, or to
+    /// use rows, use the `Grid` widget. Supported by Chat apps, but not Google Workspace Add-ons.
+    /// </summary>
+    public class GoogleAppsCardV1Columns : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An array of columns. You can include up to 2 columns in a card or dialog.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnItems")]
+        public virtual System.Collections.Generic.IList<GoogleAppsCardV1Column> ColumnItems { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Lets users input a date, a time, or both a date and a time. Users can input text or use the picker to select
+    /// dates and times. If users input an invalid date or time, the picker shows an error that prompts users to input
+    /// the information correctly.
     /// </summary>
     public class GoogleAppsCardV1DateTimePicker : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The text that prompts users to enter a date, time, or datetime. Specify text that helps the user enter the
-        /// information your app needs. For example, if users are setting an appointment, then a label like "Appointment
-        /// date" or "Appointment date and time" might work well.
+        /// The text that prompts users to input a date, a time, or a date and time. For example, if users are
+        /// scheduling an appointment, use a label such as `Appointment date` or `Appointment date and time`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
         public virtual string Label { get; set; }
 
         /// <summary>
-        /// The name by which the datetime picker is identified in a form input event. For details about working with
+        /// The name by which the `DateTimePicker` is identified in a form input event. For details about working with
         /// form inputs, see [Receive form
         /// data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Triggered when the user clicks **Save** or **Clear** from the datetime picker interface.</summary>
+        /// <summary>Triggered when the user clicks **Save** or **Clear** from the `DateTimePicker` interface.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onChangeAction")]
         public virtual GoogleAppsCardV1Action OnChangeAction { get; set; }
 
         /// <summary>
         /// The number representing the time zone offset from UTC, in minutes. If set, the `value_ms_epoch` is displayed
-        /// in the specified time zone. If not set, it uses the user's time zone setting on the client side.
+        /// in the specified time zone. If unset, the value defaults to the user's time zone setting.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timezoneOffsetDate")]
         public virtual System.Nullable<int> TimezoneOffsetDate { get; set; }
 
-        /// <summary>What kind of date and time input the datetime picker supports.</summary>
+        /// <summary>Whether the widget supports inputting a date, a time, or the date and time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
         /// <summary>
-        /// The value displayed as the default value before user input or previous user input, represented in
-        /// milliseconds ([Epoch time](https://en.wikipedia.org/wiki/Unix_time)). For `DATE_AND_TIME` type, the full
-        /// epoch value is used. For `DATE_ONLY` type, only date of the epoch time is used. For `TIME_ONLY` type, only
-        /// time of the epoch time is used. For example, to represent 3:00 AM, set epoch time to `3 * 60 * 60 * 1000`.
+        /// The default value displayed in the widget, in milliseconds since [Unix epoch
+        /// time](https://en.wikipedia.org/wiki/Unix_time). Specify the value based on the type of picker
+        /// (`DateTimePickerType`): * `DATE_AND_TIME`: a calendar date and time in UTC. For example, to represent
+        /// January 1, 2023 at 12:00 PM UTC, use `1672574400000`. * `DATE_ONLY`: a calendar date at 00:00:00 UTC. For
+        /// example, to represent January 1, 2023, use `1672531200000`. * `TIME_ONLY`: a time in UTC. For example, to
+        /// represent 12:00 PM, use `43200000` (or `12 * 60 * 60 * 1000`).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueMsEpoch")]
         public virtual System.Nullable<long> ValueMsEpoch { get; set; }
@@ -2482,11 +3868,39 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The CardFixedFooter can contain a list of these widgets.</summary>
+    public class GoogleAppsCardV1FooterWidget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ButtonList widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buttonList")]
+        public virtual GoogleAppsCardV1ButtonList ButtonList { get; set; }
+
+        /// <summary>DateTimePicker widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateTimePicker")]
+        public virtual GoogleAppsCardV1DateTimePicker DateTimePicker { get; set; }
+
+        /// <summary>DecoratedText widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("decoratedText")]
+        public virtual GoogleAppsCardV1DecoratedText DecoratedText { get; set; }
+
+        /// <summary>TextInput widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textInput")]
+        public virtual GoogleAppsCardV1TextInput TextInput { get; set; }
+
+        /// <summary>TextParagraph widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textParagraph")]
+        public virtual GoogleAppsCardV1TextParagraph TextParagraph { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
-    /// Displays a grid with a collection of items. A grid supports any number of columns and items. The number of rows
-    /// is determined by items divided by columns. A grid with 10 items and 2 columns has 5 rows. A grid with 11 items
-    /// and 2 columns has 6 rows. For example, the following JSON creates a 2 column grid with a single item: ```
-    /// "grid": { "title": "A fine collection of items", "columnCount": 2, "borderStyle": { "type": "STROKE",
+    /// Displays a grid with a collection of items. Items can only include text or images. A grid supports any number of
+    /// columns and items. The number of rows is determined by items divided by columns. A grid with 10 items and 2
+    /// columns has 5 rows. A grid with 11 items and 2 columns has 6 rows. For responsive columns, or to include more
+    /// than text or images, use `Columns`. For example, the following JSON creates a 2 column grid with a single item:
+    /// ``` "grid": { "title": "A fine collection of items", "columnCount": 2, "borderStyle": { "type": "STROKE",
     /// "cornerRadius": 4 }, "items": [ { "image": { "imageUri": "https://www.example.com/image.png", "cropStyle": {
     /// "type": "SQUARE" }, "borderStyle": { "type": "STROKE" } }, "title": "An item", "textAlignment": "CENTER" } ],
     /// "onClick": { "openLink": { "url": "https://www.example.com" } } } ```
@@ -2523,7 +3937,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a single item in the grid layout.</summary>
+    /// <summary>
+    /// Represents an item in a grid layout. Items can contain text, an image, or both text and an image.
+    /// </summary>
     public class GoogleAppsCardV1GridItem : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3016,10 +4432,20 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual GoogleAppsCardV1ButtonList ButtonList { get; set; }
 
         /// <summary>
-        /// Displays a selection/input widget for date, time, or date and time. Not supported by Chat apps. Support by
-        /// Chat apps is coming soon. For example, the following JSON creates a datetime picker to schedule an
-        /// appointment: ``` "dateTimePicker": { "name": "appointment_time", "label": "Book your appointment at:",
-        /// "type": "DATE_AND_TIME", "valueMsEpoch": "796435200000" } ```
+        /// Displays up to 2 columns. To include more than 2 columns, or to use rows, use the `Grid` widget. For
+        /// example, the following JSON creates 2 columns that each contain text paragraphs: ``` "columns": {
+        /// "columnItems": [ { "horizontalSizeStyle": "FILL_AVAILABLE_SPACE", "horizontalAlignment": "CENTER",
+        /// "verticalAlignment": "CENTER", "widgets": [ { "textParagraph": { "text": "First column text paragraph" } } ]
+        /// }, { "horizontalSizeStyle": "FILL_AVAILABLE_SPACE", "horizontalAlignment": "CENTER", "verticalAlignment":
+        /// "CENTER", "widgets": [ { "textParagraph": { "text": "Second column text paragraph" } } ] } ] } ```
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columns")]
+        public virtual GoogleAppsCardV1Columns Columns { get; set; }
+
+        /// <summary>
+        /// Displays a widget that lets users input a date, time, or date and time. For example, the following JSON
+        /// creates a date time picker to schedule an appointment: ``` "dateTimePicker": { "name": "appointment_time",
+        /// "label": "Book your appointment at:", "type": "DATE_AND_TIME", "valueMsEpoch": "796435200000" } ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateTimePicker")]
         public virtual GoogleAppsCardV1DateTimePicker DateTimePicker { get; set; }
@@ -3052,6 +4478,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("grid")]
         public virtual GoogleAppsCardV1Grid Grid { get; set; }
+
+        /// <summary>Specifies whether widgets align to the left, right, or center of a column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("horizontalAlignment")]
+        public virtual string HorizontalAlignment { get; set; }
 
         /// <summary>
         /// Displays an image. For example, the following JSON creates an image with alternative text: ``` "image": {
@@ -3087,6 +4517,41 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// see Formatting text in Google Chat apps and Formatting text in Google Workspace Add-ons. For example, the
         /// following JSON creates a bolded text: ``` "textParagraph": { "text": " *bold text*" } ```
         /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textParagraph")]
+        public virtual GoogleAppsCardV1TextParagraph TextParagraph { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The supported widgets that you can include in a column.</summary>
+    public class GoogleAppsCardV1Widgets : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>ButtonList widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buttonList")]
+        public virtual GoogleAppsCardV1ButtonList ButtonList { get; set; }
+
+        /// <summary>DateTimePicker widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateTimePicker")]
+        public virtual GoogleAppsCardV1DateTimePicker DateTimePicker { get; set; }
+
+        /// <summary>DecoratedText widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("decoratedText")]
+        public virtual GoogleAppsCardV1DecoratedText DecoratedText { get; set; }
+
+        /// <summary>Image widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual GoogleAppsCardV1Image Image { get; set; }
+
+        /// <summary>SelectionInput widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectionInput")]
+        public virtual GoogleAppsCardV1SelectionInput SelectionInput { get; set; }
+
+        /// <summary>TextInput widget.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textInput")]
+        public virtual GoogleAppsCardV1TextInput TextInput { get; set; }
+
+        /// <summary>TextParagraph widget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textParagraph")]
         public virtual GoogleAppsCardV1TextParagraph TextParagraph { get; set; }
 
@@ -3237,6 +4702,39 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class ListMessagesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messages")]
+        public virtual System.Collections.Generic.IList<Message> Messages { get; set; }
+
+        /// <summary>
+        /// A token that can be sent as `pageToken` to retrieve the next page of results. If empty, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ListReactionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Continuation token to retrieve the next page of results. It will be empty for the last page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of reactions in the requested (or first) page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reactions")]
+        public virtual System.Collections.Generic.IList<Reaction> Reactions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class ListSpacesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3327,7 +4825,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("actionResponse")]
         public virtual ActionResponse ActionResponse { get; set; }
 
-        /// <summary>Output only. Annotations associated with the text in this message.</summary>
+        /// <summary>Output only. Annotations associated with the `text` in this message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IList<Annotation> Annotations { get; set; }
 
@@ -3371,6 +4869,27 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>Output only. The time at which the message was created in Google Chat server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Output only. The time at which the message was deleted in Google Chat server. If the message is never
+        /// deleted, this field is empty. [Developer Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual object DeleteTime { get; set; }
+
+        /// <summary>
+        /// Output only. Information about a deleted message. A message is deleted when `delete_time` is set. [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletionMetadata")]
+        public virtual DeletionMetadata DeletionMetadata { get; set; }
+
+        /// <summary>
+        /// Output only. The list of emoji reaction summaries on the message. [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emojiReactionSummaries")]
+        public virtual System.Collections.Generic.IList<EmojiReactionSummary> EmojiReactionSummaries { get; set; }
 
         /// <summary>
         /// A plain-text description of the message's cards, used when the actual cards cannot be displayed (e.g. mobile
@@ -3472,6 +4991,29 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
+    /// A reaction to a message. [Developer Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class Reaction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The emoji used in the reaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emoji")]
+        public virtual Emoji Emoji { get; set; }
+
+        /// <summary>
+        /// The resource name of the reaction. Format: spaces/{space}/messages/{message}/reactions/{reaction}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The user who created the reaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("user")]
+        public virtual User User { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A section contains a collection of widgets that are rendered (vertically) in the order that they are specified.
     /// Across all platforms, cards have a narrow fixed width, so there is currently no need for layout properties (e.g.
     /// float).
@@ -3488,6 +5030,47 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>A section must contain at least 1 widget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("widgets")]
         public virtual System.Collections.Generic.IList<WidgetMarkup> Widgets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>[Developer Preview](https://developers.google.com/workspace/preview).</summary>
+    public class SetUpSpaceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The initial set of in-domain users invited to join the space. The calling user is automatically
+        /// added to the space, and shouldn't be specified as a membership. The set currently allows up to 20
+        /// memberships (in addition to the caller). The `Membership.member` field must contain a user with `name`
+        /// populated and `User.Type.HUMAN`. All other fields are ignored. Optional when setting `Space.spaceType` to
+        /// `SPACE`. Required when setting `Space.spaceType` to `GROUP_CHAT`, along with at least two memberships.
+        /// Required when setting `Space.spaceType` to `DIRECT_MESSAGE` with a human user, along with exactly one
+        /// membership. Must be empty when creating a 1:1 conversation between a human and the calling Chat app (when
+        /// setting `Space.spaceType` to `DIRECT_MESSAGE` and `Space.singleUserBotDm` to `true`). Not supported:
+        /// Inviting guest users, or adding other Chat apps.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memberships")]
+        public virtual System.Collections.Generic.IList<Membership> Memberships { get; set; }
+
+        /// <summary>
+        /// Optional. A unique identifier for this request. A random UUID is recommended. Specifying an existing request
+        /// ID returns the space created with that ID instead of creating a new space. Specifying an existing request ID
+        /// from the same Chat app with a different authenticated user returns an error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>
+        /// Required. The `Space.spaceType` field is required. To create a space, set `Space.spaceType` to `SPACE` and
+        /// set `Space.displayName`. To create a group chat, set `Space.spaceType` to `GROUP_CHAT`. Don't set
+        /// `Space.displayName`. To create a 1:1 conversation between humans, set `Space.spaceType` to `DIRECT_MESSAGE`
+        /// and set `Space.singleUserBotDm` to `false`. Don't set `Space.displayName` or `Space.spaceDetails`. To create
+        /// an 1:1 conversation between a human and the calling Chat app, set `Space.spaceType` to `DIRECT_MESSAGE` and
+        /// `Space.singleUserBotDm` to `true`. Don't set `Space.displayName` or `Space.spaceDetails`. If a
+        /// `DIRECT_MESSAGE` space already exists, that space is returned instead of creating a new space.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("space")]
+        public virtual Space Space { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3566,9 +5149,23 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("spaceDetails")]
         public virtual SpaceDetails SpaceDetails { get; set; }
 
+        /// <summary>
+        /// The message history state for messages and threads in this space. [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spaceHistoryState")]
+        public virtual string SpaceHistoryState { get; set; }
+
         /// <summary>Output only. The threading state in the Chat space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spaceThreadingState")]
         public virtual string SpaceThreadingState { get; set; }
+
+        /// <summary>
+        /// The type of space. Required when creating or updating a space. Output only for other usage. [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spaceType")]
+        public virtual string SpaceType { get; set; }
 
         /// <summary>
         /// Output only. Deprecated: Use `spaceThreadingState` instead. Whether messages are threaded in this space.
@@ -3730,6 +5327,27 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>The user timezone offset, in milliseconds, from Coordinated Universal Time (UTC).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offset")]
         public virtual System.Nullable<int> Offset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>[Developer Preview](https://developers.google.com/workspace/preview).</summary>
+    public class UploadAttachmentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The filename of the attachment, including the file extension.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filename")]
+        public virtual string Filename { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class UploadAttachmentResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Reference to the uploaded attachment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachmentDataRef")]
+        public virtual AttachmentDataRef AttachmentDataRef { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

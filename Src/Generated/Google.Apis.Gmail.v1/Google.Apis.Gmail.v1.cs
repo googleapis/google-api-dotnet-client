@@ -7356,7 +7356,7 @@ namespace Google.Apis.Gmail.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
         public virtual string EmailAddress { get; set; }
 
-        /// <summary>If a key pair is associated, the identifier of the key pair, CseKeyPair.</summary>
+        /// <summary>If a key pair is associated, the ID of the key pair, CseKeyPair.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryKeyPairId")]
         public virtual string PrimaryKeyPairId { get; set; }
 

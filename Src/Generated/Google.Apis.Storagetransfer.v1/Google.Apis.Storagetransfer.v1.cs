@@ -1537,6 +1537,18 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string BucketName { get; set; }
 
         /// <summary>
+        /// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret
+        /// Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted
+        /// `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure
+        /// Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for
+        /// more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in
+        /// [preview](https://cloud.google.com/terms/service-terms#1). Format:
+        /// `projects/{project_number}/secrets/{secret_name}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("credentialsSecret")]
+        public virtual string CredentialsSecret { get; set; }
+
+        /// <summary>
         /// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is
         /// treated as an object prefix. As such, it should generally not begin with a '/'.
         /// </summary>
@@ -1577,6 +1589,18 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// <summary>Required. The container to transfer from the Azure Storage account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("container")]
         public virtual string Container { get; set; }
+
+        /// <summary>
+        /// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret
+        /// Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted
+        /// `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure
+        /// Blob Storage] (https://cloud.google.com/storage-transfer/docs/source-microsoft-azure#secret_manager) for
+        /// more information. If `credentials_secret` is specified, do not specify azure_credentials. This feature is in
+        /// [preview](https://cloud.google.com/terms/service-terms#1). Format:
+        /// `projects/{project_number}/secrets/{secret_name}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("credentialsSecret")]
+        public virtual string CredentialsSecret { get; set; }
 
         /// <summary>
         /// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is
@@ -2646,7 +2670,11 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDataSource")]
         public virtual GcsData GcsDataSource { get; set; }
 
-        /// <summary>Cloud Storage intermediate data location.</summary>
+        /// <summary>
+        /// For transfers between file systems, specifies a Cloud Storage bucket to be used as an intermediate location
+        /// through which to transfer data. See [Transfer data between file
+        /// systems](https://cloud.google.com/storage-transfer/docs/file-to-file) for more information.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsIntermediateDataLocation")]
         public virtual GcsData GcsIntermediateDataLocation { get; set; }
 

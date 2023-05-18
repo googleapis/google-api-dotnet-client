@@ -7264,6 +7264,10 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("features")]
         public virtual System.Collections.Generic.IList<string> Features { get; set; }
 
+        /// <summary>The localized full app store description, if available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullDescription")]
+        public virtual string FullDescription { get; set; }
+
         /// <summary>
         /// A link to an image that can be used as an icon for the product. This image is suitable for use at up to
         /// 512px x 512px.

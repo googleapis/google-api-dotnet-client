@@ -1,6 +1,12 @@
 {
   "Google.Apis.Drive.v2.DriveBaseServiceRequest<<TResponse>>.AltEnum": [
-    "json"
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Drive.v2.DriveBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
   ],
   "Google.Apis.Drive.v2.FilesResource+CopyRequest.VisibilityEnum": [
     "DEFAULT",
@@ -11,11 +17,17 @@
     "FULL"
   ],
   "Google.Apis.Drive.v2.FilesResource+InsertMediaUpload.AltEnum": [
-    "json"
+    "json",
+    "media",
+    "proto"
   ],
   "Google.Apis.Drive.v2.FilesResource+InsertMediaUpload.VisibilityEnum": [
     "DEFAULT",
     "PRIVATE"
+  ],
+  "Google.Apis.Drive.v2.FilesResource+InsertMediaUpload.XgafvEnum": [
+    "1",
+    "2"
   ],
   "Google.Apis.Drive.v2.FilesResource+InsertRequest.VisibilityEnum": [
     "DEFAULT",
@@ -38,7 +50,9 @@
     "nowIfNeeded"
   ],
   "Google.Apis.Drive.v2.FilesResource+UpdateMediaUpload.AltEnum": [
-    "json"
+    "json",
+    "media",
+    "proto"
   ],
   "Google.Apis.Drive.v2.FilesResource+UpdateMediaUpload.ModifiedDateBehaviorEnum": [
     "fromBody",
@@ -47,6 +61,10 @@
     "noChange",
     "now",
     "nowIfNeeded"
+  ],
+  "Google.Apis.Drive.v2.FilesResource+UpdateMediaUpload.XgafvEnum": [
+    "1",
+    "2"
   ],
   "Google.Apis.Drive.v2.FilesResource+UpdateRequest.ModifiedDateBehaviorEnum": [
     "fromBody",

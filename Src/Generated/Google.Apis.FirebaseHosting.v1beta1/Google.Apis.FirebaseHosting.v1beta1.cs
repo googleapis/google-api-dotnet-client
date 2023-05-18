@@ -4759,6 +4759,13 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceId")]
         public virtual string ServiceId { get; set; }
 
+        /// <summary>
+        /// Optional. User-provided TrafficConfig tag to send traffic to. When omitted, traffic is sent to the
+        /// service-wide URI
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

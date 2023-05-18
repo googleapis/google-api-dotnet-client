@@ -1177,6 +1177,10 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
         public virtual string PackageName { get; set; }
 
+        /// <summary>Services contained in the tag.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("services")]
+        public virtual System.Collections.Generic.IList<Service> Services { get; set; }
+
         /// <summary>Specifies the API Level on which the application is designed to run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetSdkVersion")]
         public virtual System.Nullable<int> TargetSdkVersion { get; set; }
@@ -2036,6 +2040,21 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>Timeout in seconds for each intent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
         public virtual object Timeout { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The section of an tag. https://developer.android.com/guide/topics/manifest/service-element</summary>
+    public class Service : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Intent filters in the service</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentFilter")]
+        public virtual System.Collections.Generic.IList<IntentFilter> IntentFilter { get; set; }
+
+        /// <summary>The android:name value</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -3477,6 +3477,15 @@ namespace Google.Apis.Cloudchannel.v1
                 public virtual string Customer { get; private set; }
 
                 /// <summary>
+                /// Optional. Resource name of the new target Billing Account. Provide this Billing Account when setting
+                /// up billing for a trial subscription. Format:
+                /// accounts/{account_id}/billing_accounts/{billing_account_id}. This field is only relevant for
+                /// multi-currency accounts. It should be left empty for single currency accounts.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("changeOfferPurchase.billingAccount", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string ChangeOfferPurchaseBillingAccount { get; set; }
+
+                /// <summary>
                 /// Required. Resource name of the entitlement. Format:
                 /// accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
                 /// </summary>
@@ -3489,6 +3498,13 @@ namespace Google.Apis.Cloudchannel.v1
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("changeOfferPurchase.newSku", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string ChangeOfferPurchaseNewSku { get; set; }
+
+                /// <summary>
+                /// Optional. Billing account that the result should be restricted to. Format:
+                /// accounts/{account_id}/billing_accounts/{billing_account_id}.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("createEntitlementPurchase.billingAccount", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CreateEntitlementPurchaseBillingAccount { get; set; }
 
                 /// <summary>
                 /// Required. SKU that the result should be restricted to. Format: products/{product_id}/skus/{sku_id}.
@@ -3535,6 +3551,14 @@ namespace Google.Apis.Cloudchannel.v1
                         DefaultValue = null,
                         Pattern = @"^accounts/[^/]+/customers/[^/]+$",
                     });
+                    RequestParameters.Add("changeOfferPurchase.billingAccount", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "changeOfferPurchase.billingAccount",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
                     RequestParameters.Add("changeOfferPurchase.entitlement", new Google.Apis.Discovery.Parameter
                     {
                         Name = "changeOfferPurchase.entitlement",
@@ -3546,6 +3570,14 @@ namespace Google.Apis.Cloudchannel.v1
                     RequestParameters.Add("changeOfferPurchase.newSku", new Google.Apis.Discovery.Parameter
                     {
                         Name = "changeOfferPurchase.newSku",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("createEntitlementPurchase.billingAccount", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "createEntitlementPurchase.billingAccount",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -5649,6 +5681,14 @@ namespace Google.Apis.Cloudchannel.v1.Data
     /// <summary>Request message for CloudChannelService.ChangeOffer.</summary>
     public class GoogleCloudChannelV1ChangeOfferRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The billing account resource name that is used to pay for this entitlement when setting up billing
+        /// on a trial subscription. This field is only relevant for multi-currency accounts. It should be left empty
+        /// for single currency accounts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingAccount")]
+        public virtual string BillingAccount { get; set; }
+
         /// <summary>Required. New Offer. Format: accounts/{account_id}/offers/{offer_id}.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offer")]
         public virtual string Offer { get; set; }
@@ -6721,6 +6761,14 @@ namespace Google.Apis.Cloudchannel.v1.Data
     /// <summary>Request message for CloudChannelService.ListTransferableOffers</summary>
     public class GoogleCloudChannelV1ListTransferableOffersRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The Billing Account to look up Offers for. Format:
+        /// accounts/{account_id}/billing_accounts/{billing_account_id}. This field is only relevant for multi-currency
+        /// accounts. It should be left empty for single currency accounts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingAccount")]
+        public virtual string BillingAccount { get; set; }
+
         /// <summary>Customer's Cloud Identity ID</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloudIdentityId")]
         public virtual string CloudIdentityId { get; set; }

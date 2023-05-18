@@ -415,6 +415,23 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Contains guidance details about the Integrity API response, providing additional context to the integrity
+    /// verdicts.
+    /// </summary>
+    public class GuidanceDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This shows when there is an issue with at least one of the integrity verdicts, and provides user remediation
+        /// guidance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userRemediation")]
+        public virtual System.Collections.Generic.IList<string> UserRemediation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Contains the integrity request information.</summary>
     public class RequestDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -471,6 +488,10 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         /// <summary>Required. Details about the device integrity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceIntegrity")]
         public virtual DeviceIntegrity DeviceIntegrity { get; set; }
+
+        /// <summary>Additional guidance related to the integrity API response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guidanceDetails")]
+        public virtual GuidanceDetails GuidanceDetails { get; set; }
 
         /// <summary>Required. Details about the integrity request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestDetails")]

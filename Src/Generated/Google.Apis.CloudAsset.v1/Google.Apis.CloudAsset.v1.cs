@@ -6887,8 +6887,7 @@ namespace Google.Apis.CloudAsset.v1.Data
 
         /// <summary>
         /// TagValue IDs, in the format of tagValues/{TAG_VALUE_ID}. To search against the `tagValueIds`: * Use a field
-        /// query. Example: - `tagValueIds:"456"` - `tagValueIds="tagValues/456"` * Use a free text query. Example: -
-        /// `456`
+        /// query. Example: - `tagValueIds="tagValues/456"`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagValueIds")]
         public virtual System.Collections.Generic.IList<string> TagValueIds { get; set; }

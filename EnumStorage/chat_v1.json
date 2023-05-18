@@ -23,6 +23,15 @@
     "1",
     "2"
   ],
+  "Google.Apis.HangoutsChat.v1.MediaResource+UploadMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.HangoutsChat.v1.MediaResource+UploadMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
   "Google.Apis.HangoutsChat.v1.RoomsResource+ConversationsResource+MessagesRequest.MessageReplyOptionEnum": [
     "MESSAGE_REPLY_OPTION_UNSPECIFIED",
     "REPLY_MESSAGE_FALLBACK_TO_NEW_THREAD",

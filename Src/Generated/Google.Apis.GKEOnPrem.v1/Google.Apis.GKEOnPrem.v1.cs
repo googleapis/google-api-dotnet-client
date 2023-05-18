@@ -662,6 +662,40 @@ namespace Google.Apis.GKEOnPrem.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>
+                    /// View for bare metal admin cluster. When `BASIC` is specified, only the cluster resource name and
+                    /// membership are returned. The default/unset value `CLUSTER_VIEW_UNSPECIFIED` is the same as
+                    /// `FULL', which returns the complete cluster configuration details.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>
+                    /// View for bare metal admin cluster. When `BASIC` is specified, only the cluster resource name and
+                    /// membership are returned. The default/unset value `CLUSTER_VIEW_UNSPECIFIED` is the same as
+                    /// `FULL', which returns the complete cluster configuration details.
+                    /// </summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>If the value is not set, the default `FULL` view is used.</summary>
+                        [Google.Apis.Util.StringValueAttribute("CLUSTER_VIEW_UNSPECIFIED")]
+                        CLUSTERVIEWUNSPECIFIED = 0,
+
+                        /// <summary>
+                        /// Includes basic information of a cluster resource including cluster resource name and
+                        /// membership.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("BASIC")]
+                        BASIC = 1,
+
+                        /// <summary>
+                        /// Includes the complete configuration for bare metal admin cluster resource. This is the
+                        /// default value for GetBareMetalAdminClusterRequest method.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("FULL")]
+                        FULL = 2,
+                    }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
@@ -682,6 +716,14 @@ namespace Google.Apis.GKEOnPrem.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/bareMetalAdminClusters/[^/]+$",
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -2744,6 +2786,40 @@ namespace Google.Apis.GKEOnPrem.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>
+                    /// View for bare metal user cluster. When `BASIC` is specified, only the cluster resource name and
+                    /// admin cluster membership are returned. The default/unset value `CLUSTER_VIEW_UNSPECIFIED` is the
+                    /// same as `FULL', which returns the complete cluster configuration details.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>
+                    /// View for bare metal user cluster. When `BASIC` is specified, only the cluster resource name and
+                    /// admin cluster membership are returned. The default/unset value `CLUSTER_VIEW_UNSPECIFIED` is the
+                    /// same as `FULL', which returns the complete cluster configuration details.
+                    /// </summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>If the value is not set, the default `FULL` view is used.</summary>
+                        [Google.Apis.Util.StringValueAttribute("CLUSTER_VIEW_UNSPECIFIED")]
+                        CLUSTERVIEWUNSPECIFIED = 0,
+
+                        /// <summary>
+                        /// Includes basic information of a cluster resource including cluster resource name and admin
+                        /// cluster membership.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("BASIC")]
+                        BASIC = 1,
+
+                        /// <summary>
+                        /// Includes the complete configuration for bare metal cluster resource. This is the default
+                        /// value for GetBareMetalClusterRequest method.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("FULL")]
+                        FULL = 2,
+                    }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
@@ -2764,6 +2840,14 @@ namespace Google.Apis.GKEOnPrem.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/bareMetalClusters/[^/]+$",
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -5963,6 +6047,40 @@ namespace Google.Apis.GKEOnPrem.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>
+                    /// View for VMware user cluster. When `BASIC` is specified, only the cluster resource name and
+                    /// admin cluster membership are returned. The default/unset value `CLUSTER_VIEW_UNSPECIFIED` is the
+                    /// same as `FULL', which returns the complete cluster configuration details.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>
+                    /// View for VMware user cluster. When `BASIC` is specified, only the cluster resource name and
+                    /// admin cluster membership are returned. The default/unset value `CLUSTER_VIEW_UNSPECIFIED` is the
+                    /// same as `FULL', which returns the complete cluster configuration details.
+                    /// </summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>If the value is not set, the default `FULL` view is used.</summary>
+                        [Google.Apis.Util.StringValueAttribute("CLUSTER_VIEW_UNSPECIFIED")]
+                        CLUSTERVIEWUNSPECIFIED = 0,
+
+                        /// <summary>
+                        /// Includes basic information of a cluster resource including cluster resource name and admin
+                        /// cluster membership.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("BASIC")]
+                        BASIC = 1,
+
+                        /// <summary>
+                        /// Includes the complete configuration for VMware cluster resource. This is the default value
+                        /// for GetVmwareClusterRequest method.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("FULL")]
+                        FULL = 2,
+                    }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
@@ -5983,6 +6101,14 @@ namespace Google.Apis.GKEOnPrem.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/vmwareClusters/[^/]+$",
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -8206,16 +8332,6 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bareMetalAdminClusterId")]
         public virtual string BareMetalAdminClusterId { get; set; }
-
-        /// <summary>
-        /// The object name of the bare metal OnPremAdminCluster custom resource on the associated admin cluster. This
-        /// field is used to support conflicting resource names when enrolling existing clusters to the API. When not
-        /// provided, this field will resolve to the bare_metal_admin_cluster_id. Otherwise, it must match the object
-        /// name of the bare metal OnPremAdminCluster custom resource. It is not modifiable outside / beyond the
-        /// enrollment operation.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("localName")]
-        public virtual string LocalName { get; set; }
 
         /// <summary>Required. This is the full resource name of this admin cluster's fleet membership.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membership")]

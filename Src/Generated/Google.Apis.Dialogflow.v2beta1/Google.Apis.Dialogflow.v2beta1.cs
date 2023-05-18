@@ -285,6 +285,7 @@ namespace Google.Apis.Dialogflow.v2beta1
             KnowledgeBases = new KnowledgeBasesResource(service);
             Locations = new LocationsResource(service);
             Operations = new OperationsResource(service);
+            Suggestions = new SuggestionsResource(service);
         }
 
         /// <summary>Gets the Agent resource.</summary>
@@ -9292,6 +9293,7 @@ namespace Google.Apis.Dialogflow.v2beta1
                 Conversations = new ConversationsResource(service);
                 KnowledgeBases = new KnowledgeBasesResource(service);
                 Operations = new OperationsResource(service);
+                Suggestions = new SuggestionsResource(service);
             }
 
             /// <summary>Gets the Agent resource.</summary>
@@ -17485,6 +17487,87 @@ namespace Google.Apis.Dialogflow.v2beta1
                 }
             }
 
+            /// <summary>Gets the Suggestions resource.</summary>
+            public virtual SuggestionsResource Suggestions { get; }
+
+            /// <summary>The "suggestions" collection of methods.</summary>
+            public class SuggestionsResource
+            {
+                private const string Resource = "suggestions";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SuggestionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Generates and returns a summary for a conversation that does not have a resource created for it.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource to charge for the Summary's generation. Format:
+                /// `projects//locations/`.
+                /// </param>
+                public virtual GenerateStatelessSummaryRequest GenerateStatelessSummary(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1GenerateStatelessSummaryRequest body, string parent)
+                {
+                    return new GenerateStatelessSummaryRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Generates and returns a summary for a conversation that does not have a resource created for it.
+                /// </summary>
+                public class GenerateStatelessSummaryRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1GenerateStatelessSummaryResponse>
+                {
+                    /// <summary>Constructs a new GenerateStatelessSummary request.</summary>
+                    public GenerateStatelessSummaryRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1GenerateStatelessSummaryRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource to charge for the Summary's generation. Format:
+                    /// `projects//locations/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1GenerateStatelessSummaryRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "generateStatelessSummary";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2beta1/{+parent}/suggestions:generateStatelessSummary";
+
+                    /// <summary>Initializes GenerateStatelessSummary parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+            }
+
             /// <summary>Deletes the specified agent.</summary>
             /// <param name="parent">
             /// Required. The project that the agent to delete is associated with. Format: `projects/` or
@@ -18007,6 +18090,86 @@ namespace Google.Apis.Dialogflow.v2beta1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Suggestions resource.</summary>
+        public virtual SuggestionsResource Suggestions { get; }
+
+        /// <summary>The "suggestions" collection of methods.</summary>
+        public class SuggestionsResource
+        {
+            private const string Resource = "suggestions";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public SuggestionsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Generates and returns a summary for a conversation that does not have a resource created for it.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The parent resource to charge for the Summary's generation. Format: `projects//locations/`.
+            /// </param>
+            public virtual GenerateStatelessSummaryRequest GenerateStatelessSummary(Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1GenerateStatelessSummaryRequest body, string parent)
+            {
+                return new GenerateStatelessSummaryRequest(service, body, parent);
+            }
+
+            /// <summary>
+            /// Generates and returns a summary for a conversation that does not have a resource created for it.
+            /// </summary>
+            public class GenerateStatelessSummaryRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1GenerateStatelessSummaryResponse>
+            {
+                /// <summary>Constructs a new GenerateStatelessSummary request.</summary>
+                public GenerateStatelessSummaryRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1GenerateStatelessSummaryRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent resource to charge for the Summary's generation. Format:
+                /// `projects//locations/`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Dialogflow.v2beta1.Data.GoogleCloudDialogflowV2beta1GenerateStatelessSummaryRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "generateStatelessSummary";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2beta1/{+parent}/suggestions:generateStatelessSummary";
+
+                /// <summary>Initializes GenerateStatelessSummary parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
                     });
                 }
             }
@@ -19906,6 +20069,20 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reachedEndPage")]
         public virtual System.Nullable<bool> ReachedEndPage { get; set; }
 
+        /// <summary>
+        /// Sentiment magnitude of the user utterance if
+        /// [sentiment](https://cloud.google.com/dialogflow/cx/docs/concept/sentiment) was enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentimentMagnitude")]
+        public virtual System.Nullable<float> SentimentMagnitude { get; set; }
+
+        /// <summary>
+        /// Sentiment score of the user utterance if
+        /// [sentiment](https://cloud.google.com/dialogflow/cx/docs/concept/sentiment) was enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentimentScore")]
+        public virtual System.Nullable<float> SentimentScore { get; set; }
+
         /// <summary>Whether user was specifically asking for a live agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEscalated")]
         public virtual System.Nullable<bool> UserEscalated { get; set; }
@@ -19986,9 +20163,24 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowedCaCerts")]
         public virtual System.Collections.Generic.IList<string> AllowedCaCerts { get; set; }
 
+        /// <summary>Optional. HTTP method for the flexible webhook calls. Standard webhook always uses POST.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpMethod")]
+        public virtual string HttpMethod { get; set; }
+
+        /// <summary>
+        /// Optional. Maps the values extracted from specific fields of the flexible webhook response into session
+        /// parameters. - Key: session parameter name - Value: field path in the webhook response
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameterMapping")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ParameterMapping { get; set; }
+
         /// <summary>The password for HTTP Basic authentication.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; }
+
+        /// <summary>Optional. Defines a custom JSON object as request body to send to flexible webhook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestBody")]
+        public virtual string RequestBody { get; set; }
 
         /// <summary>The HTTP request headers to send together with webhook requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestHeaders")]
@@ -20001,6 +20193,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// <summary>The user name for HTTP Basic authentication.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; }
+
+        /// <summary>Optional. Type of the webhook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookType")]
+        public virtual string WebhookType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21962,6 +22158,20 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reachedEndPage")]
         public virtual System.Nullable<bool> ReachedEndPage { get; set; }
 
+        /// <summary>
+        /// Sentiment magnitude of the user utterance if
+        /// [sentiment](https://cloud.google.com/dialogflow/cx/docs/concept/sentiment) was enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentimentMagnitude")]
+        public virtual System.Nullable<float> SentimentMagnitude { get; set; }
+
+        /// <summary>
+        /// Sentiment score of the user utterance if
+        /// [sentiment](https://cloud.google.com/dialogflow/cx/docs/concept/sentiment) was enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentimentScore")]
+        public virtual System.Nullable<float> SentimentScore { get; set; }
+
         /// <summary>Whether user was specifically asking for a live agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEscalated")]
         public virtual System.Nullable<bool> UserEscalated { get; set; }
@@ -22042,9 +22252,24 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allowedCaCerts")]
         public virtual System.Collections.Generic.IList<string> AllowedCaCerts { get; set; }
 
+        /// <summary>Optional. HTTP method for the flexible webhook calls. Standard webhook always uses POST.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpMethod")]
+        public virtual string HttpMethod { get; set; }
+
+        /// <summary>
+        /// Optional. Maps the values extracted from specific fields of the flexible webhook response into session
+        /// parameters. - Key: session parameter name - Value: field path in the webhook response
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameterMapping")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ParameterMapping { get; set; }
+
         /// <summary>The password for HTTP Basic authentication.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; }
+
+        /// <summary>Optional. Defines a custom JSON object as request body to send to flexible webhook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestBody")]
+        public virtual string RequestBody { get; set; }
 
         /// <summary>The HTTP request headers to send together with webhook requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestHeaders")]
@@ -22057,6 +22282,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// <summary>The user name for HTTP Basic authentication.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; }
+
+        /// <summary>Optional. Type of the webhook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("webhookType")]
+        public virtual string WebhookType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26126,6 +26355,101 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request message for Conversations.GenerateStatelessSummary.</summary>
+    public class GoogleCloudDialogflowV2beta1GenerateStatelessSummaryRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A ConversationProfile containing information required for Summary generation. Required fields:
+        /// {language_code, security_settings} Optional fields: {agent_assistant_config}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationProfile")]
+        public virtual GoogleCloudDialogflowV2beta1ConversationProfile ConversationProfile { get; set; }
+
+        /// <summary>
+        /// The name of the latest conversation message used as context for generating a Summary. If empty, the latest
+        /// message of the conversation will be used. The format is specific to the user and the names of the messages
+        /// provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestMessage")]
+        public virtual string LatestMessage { get; set; }
+
+        /// <summary>
+        /// Max number of messages prior to and including [latest_message] to use as context when compiling the
+        /// suggestion. By default 500 and at most 1000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxContextSize")]
+        public virtual System.Nullable<int> MaxContextSize { get; set; }
+
+        /// <summary>Required. The conversation to suggest a summary for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statelessConversation")]
+        public virtual GoogleCloudDialogflowV2beta1GenerateStatelessSummaryRequestMinimalConversation StatelessConversation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The minimum amount of information required to generate a Summary without having a Conversation resource created.
+    /// </summary>
+    public class GoogleCloudDialogflowV2beta1GenerateStatelessSummaryRequestMinimalConversation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The messages that the Summary will be generated from. It is expected that this message content is
+        /// already redacted and does not contain any PII. Required fields: {content, language_code, participant,
+        /// participant_role} Optional fields: {send_time} If send_time is not provided, then the messages must be
+        /// provided in chronological order.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messages")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1Message> Messages { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Conversations.GenerateStatelessSummary.</summary>
+    public class GoogleCloudDialogflowV2beta1GenerateStatelessSummaryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Number of messages prior to and including last_conversation_message used to compile the suggestion. It may
+        /// be smaller than the GenerateStatelessSummaryRequest.context_size field in the request if there weren't that
+        /// many messages in the conversation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextSize")]
+        public virtual System.Nullable<int> ContextSize { get; set; }
+
+        /// <summary>
+        /// The name of the latest conversation message used as context for compiling suggestion. The format is specific
+        /// to the user and the names of the messages provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestMessage")]
+        public virtual string LatestMessage { get; set; }
+
+        /// <summary>Generated summary.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
+        public virtual GoogleCloudDialogflowV2beta1GenerateStatelessSummaryResponseSummary Summary { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Generated summary for a conversation.</summary>
+    public class GoogleCloudDialogflowV2beta1GenerateStatelessSummaryResponseSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The summary content that is concatenated into one string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>
+        /// The summary content that is divided into sections. The key is the section's name and the value is the
+        /// section's content. There is no specific format for the key or value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textSections")]
+        public virtual System.Collections.Generic.IDictionary<string, string> TextSections { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines the Human Agent Assistant to connect to a conversation.</summary>
     public class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -26158,6 +26482,13 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// </summary>
     public class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Version of current baseline model. It will be ignored if model is set. Valid versions are: Article
+        /// Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baselineModelVersion")]
+        public virtual string BaselineModelVersion { get; set; }
+
         /// <summary>Conversation model resource name. Format: `projects//conversationModels/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual string Model { get; set; }
@@ -26279,7 +26610,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// value is in the range [0.05, 0.1]. For a custom model, there is no recommended value. Tune this value by
         /// starting from a very low value and slowly increasing until you have desired results. If this field is not
         /// set, it is default to 0.0, which means that all suggestions are returned. Supported features:
-        /// ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE.
+        /// ARTICLE_SUGGESTION, FAQ, SMART_REPLY, SMART_COMPOSE, KNOWLEDGE_SEARCH, KNOWLEDGE_ASSIST.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidenceThreshold")]
         public virtual System.Nullable<float> ConfidenceThreshold { get; set; }
@@ -29929,6 +30260,20 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// <summary>Whether turn resulted in End Session page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reachedEndPage")]
         public virtual System.Nullable<bool> ReachedEndPage { get; set; }
+
+        /// <summary>
+        /// Sentiment magnitude of the user utterance if
+        /// [sentiment](https://cloud.google.com/dialogflow/cx/docs/concept/sentiment) was enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentimentMagnitude")]
+        public virtual System.Nullable<float> SentimentMagnitude { get; set; }
+
+        /// <summary>
+        /// Sentiment score of the user utterance if
+        /// [sentiment](https://cloud.google.com/dialogflow/cx/docs/concept/sentiment) was enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentimentScore")]
+        public virtual System.Nullable<float> SentimentScore { get; set; }
 
         /// <summary>Whether agent has triggered the event corresponding to user abandoning the conversation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggeredAbandonmentEvent")]
