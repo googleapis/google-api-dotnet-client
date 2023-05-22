@@ -2510,9 +2510,7 @@ namespace Google.Apis.Batch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// A TaskGroup contains one or multiple Tasks that share the same Runnable but with different runtime parameters.
-    /// </summary>
+    /// <summary>A TaskGroup defines one or more Tasks that all share the same TaskSpec.</summary>
     public class TaskGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -2543,6 +2541,10 @@ namespace Google.Apis.Batch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requireHostsFile")]
         public virtual System.Nullable<bool> RequireHostsFile { get; set; }
 
+        /// <summary>Scheduling policy for Tasks in the TaskGroup. The default value is AS_SOON_AS_POSSIBLE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schedulingPolicy")]
+        public virtual string SchedulingPolicy { get; set; }
+
         /// <summary>Number of Tasks in the TaskGroup. Default is 1.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taskCount")]
         public virtual System.Nullable<long> TaskCount { get; set; }
@@ -2560,7 +2562,7 @@ namespace Google.Apis.Batch.v1.Data
         /// count will be the length of task_environments. Tasks get a BATCH_TASK_INDEX and BATCH_TASK_COUNT environment
         /// variable, in addition to any environment variables set in task_environments, specifying the number of Tasks
         /// in the Task's parent TaskGroup, and the specific Task's index in the TaskGroup (0 through BATCH_TASK_COUNT -
-        /// 1). task_environments supports up to 200 entries.
+        /// 1).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taskEnvironments")]
         public virtual System.Collections.Generic.IList<Environment> TaskEnvironments { get; set; }

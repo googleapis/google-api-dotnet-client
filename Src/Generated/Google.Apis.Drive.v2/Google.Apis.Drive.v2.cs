@@ -57,10 +57,10 @@ namespace Google.Apis.Drive.v2
         public override string Name => "drive";
 
         /// <summary>Gets the service base URI.</summary>
-        public override string BaseUri => BaseUriOverride ?? "https://www.googleapis.com/";
+        public override string BaseUri => BaseUriOverride ?? "https://www.googleapis.com/drive/v2/";
 
         /// <summary>Gets the service base path.</summary>
-        public override string BasePath => "";
+        public override string BasePath => "drive/v2/";
 
         /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
         public override string BatchUri => "https://www.googleapis.com/batch/drive/v2";
@@ -410,7 +410,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/about";
+            public override string RestPath => "about";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -486,7 +486,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/apps/{appId}";
+            public override string RestPath => "apps/{appId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -548,7 +548,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/apps";
+            public override string RestPath => "apps";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -644,7 +644,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/changes/{changeId}";
+            public override string RestPath => "changes/{changeId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -734,7 +734,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/changes/startPageToken";
+            public override string RestPath => "changes/startPageToken";
 
             /// <summary>Initializes GetStartPageToken parameter list.</summary>
             protected override void InitParameters()
@@ -880,7 +880,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/changes";
+            public override string RestPath => "changes";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -1122,7 +1122,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/changes/watch";
+            public override string RestPath => "changes/watch";
 
             /// <summary>Initializes Watch parameter list.</summary>
             protected override void InitParameters()
@@ -1266,14 +1266,14 @@ namespace Google.Apis.Drive.v2
             this.service = service;
         }
 
-        /// <summary>Stop watching resources through this channel.</summary>
+        /// <summary>Stops watching resources through this channel.</summary>
         /// <param name="body">The body of the request.</param>
         public virtual StopRequest Stop(Google.Apis.Drive.v2.Data.Channel body)
         {
             return new StopRequest(service, body);
         }
 
-        /// <summary>Stop watching resources through this channel.</summary>
+        /// <summary>Stops watching resources through this channel.</summary>
         public class StopRequest : DriveBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Stop request.</summary>
@@ -1296,7 +1296,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/channels/stop";
+            public override string RestPath => "channels/stop";
 
             /// <summary>Initializes Stop parameter list.</summary>
             protected override void InitParameters()
@@ -1361,7 +1361,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{folderId}/children/{childId}";
+            public override string RestPath => "files/{folderId}/children/{childId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -1428,7 +1428,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{folderId}/children/{childId}";
+            public override string RestPath => "files/{folderId}/children/{childId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -1503,7 +1503,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{folderId}/children";
+            public override string RestPath => "files/{folderId}/children";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -1594,7 +1594,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{folderId}/children";
+            public override string RestPath => "files/{folderId}/children";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -1692,7 +1692,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/comments/{commentId}";
+            public override string RestPath => "files/{fileId}/comments/{commentId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -1757,7 +1757,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/comments/{commentId}";
+            public override string RestPath => "files/{fileId}/comments/{commentId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -1826,7 +1826,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/comments";
+            public override string RestPath => "files/{fileId}/comments";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -1896,7 +1896,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/comments";
+            public override string RestPath => "files/{fileId}/comments";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -1987,7 +1987,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/comments/{commentId}";
+            public override string RestPath => "files/{fileId}/comments/{commentId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -2054,7 +2054,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/comments/{commentId}";
+            public override string RestPath => "files/{fileId}/comments/{commentId}";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -2142,7 +2142,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/drives/{driveId}";
+            public override string RestPath => "drives/{driveId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -2210,7 +2210,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/drives/{driveId}";
+            public override string RestPath => "drives/{driveId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -2263,7 +2263,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/drives/{driveId}/hide";
+            public override string RestPath => "drives/{driveId}/hide";
 
             /// <summary>Initializes Hide parameter list.</summary>
             protected override void InitParameters()
@@ -2283,10 +2283,10 @@ namespace Google.Apis.Drive.v2
         /// <summary>Creates a new shared drive.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="requestId">
-        /// An ID, such as a random UUID, which uniquely identifies this user's request for idempotent creation of a
-        /// shared drive. A repeated request by the same user and with the same request ID will avoid creating
-        /// duplicates by attempting to create the same shared drive. If the shared drive already exists a 409 error
-        /// will be returned.
+        /// Required. An ID, such as a random UUID, which uniquely identifies this user's request for idempotent
+        /// creation of a shared drive. A repeated request by the same user and with the same request ID will avoid
+        /// creating duplicates by attempting to create the same shared drive. If the shared drive already exists a 409
+        /// error will be returned.
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.Drive.v2.Data.Drive body, string requestId)
         {
@@ -2305,10 +2305,10 @@ namespace Google.Apis.Drive.v2
             }
 
             /// <summary>
-            /// An ID, such as a random UUID, which uniquely identifies this user's request for idempotent creation of a
-            /// shared drive. A repeated request by the same user and with the same request ID will avoid creating
-            /// duplicates by attempting to create the same shared drive. If the shared drive already exists a 409 error
-            /// will be returned.
+            /// Required. An ID, such as a random UUID, which uniquely identifies this user's request for idempotent
+            /// creation of a shared drive. A repeated request by the same user and with the same request ID will avoid
+            /// creating duplicates by attempting to create the same shared drive. If the shared drive already exists a
+            /// 409 error will be returned.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; private set; }
@@ -2326,7 +2326,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/drives";
+            public override string RestPath => "drives";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -2392,7 +2392,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/drives";
+            public override string RestPath => "drives";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -2461,7 +2461,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/drives/{driveId}/unhide";
+            public override string RestPath => "drives/{driveId}/unhide";
 
             /// <summary>Initializes Unhide parameter list.</summary>
             protected override void InitParameters()
@@ -2521,7 +2521,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/drives/{driveId}";
+            public override string RestPath => "drives/{driveId}";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -2673,7 +2673,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/copy";
+            public override string RestPath => "files/{fileId}/copy";
 
             /// <summary>Initializes Copy parameter list.</summary>
             protected override void InitParameters()
@@ -2835,7 +2835,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}";
+            public override string RestPath => "files/{fileId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -2909,7 +2909,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/trash";
+            public override string RestPath => "files/trash";
 
             /// <summary>Initializes EmptyTrash parameter list.</summary>
             protected override void InitParameters()
@@ -2939,7 +2939,7 @@ namespace Google.Apis.Drive.v2
         /// the exported content is limited to 10MB.
         /// </summary>
         /// <param name="fileId">The ID of the file.</param>
-        /// <param name="mimeType">The MIME type of the format requested for this export.</param>
+        /// <param name="mimeType">Required. The MIME type of the format requested for this export.</param>
         public virtual ExportRequest Export(string fileId, string mimeType)
         {
             return new ExportRequest(service, fileId, mimeType);
@@ -2964,7 +2964,7 @@ namespace Google.Apis.Drive.v2
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
-            /// <summary>The MIME type of the format requested for this export.</summary>
+            /// <summary>Required. The MIME type of the format requested for this export.</summary>
             [Google.Apis.Util.RequestParameterAttribute("mimeType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string MimeType { get; private set; }
 
@@ -2975,7 +2975,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/export";
+            public override string RestPath => "files/{fileId}/export";
 
             /// <summary>Initializes Export parameter list.</summary>
             protected override void InitParameters()
@@ -3125,7 +3125,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/generateIds";
+            public override string RestPath => "files/generateIds";
 
             /// <summary>Initializes GenerateIds parameter list.</summary>
             protected override void InitParameters()
@@ -3162,8 +3162,8 @@ namespace Google.Apis.Drive.v2
         ///  Gets a file's metadata or content by ID. If you provide the URL parameter `alt=media`, then the response
         /// includes the file contents in the response body. Downloading content with `alt=media` only works if the file
         /// is stored in Drive. To download Google Docs, Sheets, and Slides use
-        /// [`files.export`](/drive/api/reference/rest/v2/files/export) instead. For further information on downloading
-        /// files, refer to [Download files](/drive/api/guides/manage-downloads).
+        /// [`files.export`](/drive/api/reference/rest/v2/files/export) instead. For more information, see [Download
+        /// &amp;amp; export files](/drive/api/guides/manage-downloads).
         /// </summary>
         /// <param name="fileId">The ID for the file in question.</param>
         public virtual GetRequest Get(string fileId)
@@ -3175,8 +3175,8 @@ namespace Google.Apis.Drive.v2
         ///  Gets a file's metadata or content by ID. If you provide the URL parameter `alt=media`, then the response
         /// includes the file contents in the response body. Downloading content with `alt=media` only works if the file
         /// is stored in Drive. To download Google Docs, Sheets, and Slides use
-        /// [`files.export`](/drive/api/reference/rest/v2/files/export) instead. For further information on downloading
-        /// files, refer to [Download files](/drive/api/guides/manage-downloads).
+        /// [`files.export`](/drive/api/reference/rest/v2/files/export) instead. For more information, see [Download
+        /// &amp;amp; export files](/drive/api/guides/manage-downloads).
         /// </summary>
         public class GetRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.File>
         {
@@ -3254,7 +3254,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}";
+            public override string RestPath => "files/{fileId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -3422,17 +3422,17 @@ namespace Google.Apis.Drive.v2
 
         /// <summary>
         ///  Inserts a new file. This method supports an */upload* URI and accepts uploaded media with the following
-        /// characteristics: - *Maximum file size:* 5120GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid
+        /// characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid
         /// MIME type, rather than the literal `*/*` value. The literal `*/*` is only used to indicate that any valid
-        /// MIME type can be uploaded. For further information on uploading files, refer to [Upload
-        /// files](/drive/api/guides/manage-uploads). Apps creating shortcuts with `files.insert` must specify the MIME
+        /// MIME type can be uploaded. For more information on uploading files, see [Upload file
+        /// data](/drive/api/guides/manage-uploads). Apps creating shortcuts with `files.insert` must specify the MIME
         /// type `application/vnd.google-apps.shortcut`. Apps should specify a file extension in the `title` property
         /// when inserting files with the API. For example, an operation to insert a JPEG file should specify something
         /// like `"title": "cat.jpg"` in the metadata. Subsequent `GET` requests include the read-only `fileExtension`
         /// property populated with the extension originally specified in the `title` property. When a Google Drive user
         /// requests to download a file, or when the file is downloaded through the sync client, Drive builds a full
-        /// filename (with extension) based on the title. In cases where the extension is missing, Google Drive attempts
-        /// to determine the extension based on the file's MIME type.
+        /// filename (with extension) based on the title. In cases where the extension is missing, Drive attempts to
+        /// determine the extension based on the file's MIME type.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual InsertRequest Insert(Google.Apis.Drive.v2.Data.File body)
@@ -3442,17 +3442,17 @@ namespace Google.Apis.Drive.v2
 
         /// <summary>
         ///  Inserts a new file. This method supports an */upload* URI and accepts uploaded media with the following
-        /// characteristics: - *Maximum file size:* 5120GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid
+        /// characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid
         /// MIME type, rather than the literal `*/*` value. The literal `*/*` is only used to indicate that any valid
-        /// MIME type can be uploaded. For further information on uploading files, refer to [Upload
-        /// files](/drive/api/guides/manage-uploads). Apps creating shortcuts with `files.insert` must specify the MIME
+        /// MIME type can be uploaded. For more information on uploading files, see [Upload file
+        /// data](/drive/api/guides/manage-uploads). Apps creating shortcuts with `files.insert` must specify the MIME
         /// type `application/vnd.google-apps.shortcut`. Apps should specify a file extension in the `title` property
         /// when inserting files with the API. For example, an operation to insert a JPEG file should specify something
         /// like `"title": "cat.jpg"` in the metadata. Subsequent `GET` requests include the read-only `fileExtension`
         /// property populated with the extension originally specified in the `title` property. When a Google Drive user
         /// requests to download a file, or when the file is downloaded through the sync client, Drive builds a full
-        /// filename (with extension) based on the title. In cases where the extension is missing, Google Drive attempts
-        /// to determine the extension based on the file's MIME type.
+        /// filename (with extension) based on the title. In cases where the extension is missing, Drive attempts to
+        /// determine the extension based on the file's MIME type.
         /// </summary>
         public class InsertRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.File>
         {
@@ -3549,7 +3549,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files";
+            public override string RestPath => "files";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -3664,17 +3664,17 @@ namespace Google.Apis.Drive.v2
 
         /// <summary>
         ///  Inserts a new file. This method supports an */upload* URI and accepts uploaded media with the following
-        /// characteristics: - *Maximum file size:* 5120GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid
+        /// characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid
         /// MIME type, rather than the literal `*/*` value. The literal `*/*` is only used to indicate that any valid
-        /// MIME type can be uploaded. For further information on uploading files, refer to [Upload
-        /// files](/drive/api/guides/manage-uploads). Apps creating shortcuts with `files.insert` must specify the MIME
+        /// MIME type can be uploaded. For more information on uploading files, see [Upload file
+        /// data](/drive/api/guides/manage-uploads). Apps creating shortcuts with `files.insert` must specify the MIME
         /// type `application/vnd.google-apps.shortcut`. Apps should specify a file extension in the `title` property
         /// when inserting files with the API. For example, an operation to insert a JPEG file should specify something
         /// like `"title": "cat.jpg"` in the metadata. Subsequent `GET` requests include the read-only `fileExtension`
         /// property populated with the extension originally specified in the `title` property. When a Google Drive user
         /// requests to download a file, or when the file is downloaded through the sync client, Drive builds a full
-        /// filename (with extension) based on the title. In cases where the extension is missing, Google Drive attempts
-        /// to determine the extension based on the file's MIME type.
+        /// filename (with extension) based on the title. In cases where the extension is missing, Drive attempts to
+        /// determine the extension based on the file's MIME type.
         /// </summary>
         /// <remarks>
         /// Considerations regarding <paramref name="stream"/>:
@@ -3875,7 +3875,7 @@ namespace Google.Apis.Drive.v2
             /// </list>
             /// </remarks>
             public InsertMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Drive.v2.Data.File body, System.IO.Stream stream, string contentType)
-                : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "drive/v2/files"), "POST", stream, contentType)
+                : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "files"), "POST", stream, contentType)
             {
                 Body = body;
             }
@@ -3883,9 +3883,10 @@ namespace Google.Apis.Drive.v2
 
         /// <summary>
         ///  Lists the user's files. This method accepts the `q` parameter, which is a search query combining one or
-        /// more search terms. For more information, see the [Search for files](/drive/api/guides/search-files) guide.
-        /// *Note:* This method returns *all* files by default, including trashed files. If you don't want trashed files
-        /// to appear in the list, use the `trashed=false` query parameter to filter trashed files from the results.
+        /// more search terms. For more information, see the [Search for files &amp;amp;
+        /// folders](/drive/api/guides/search-files) guide. *Note:* This method returns *all* files by default,
+        /// including trashed files. If you don't want trashed files to appear in the list, use the `trashed=false`
+        /// query parameter to remove trashed files from the results.
         /// </summary>
         public virtual ListRequest List()
         {
@@ -3894,9 +3895,10 @@ namespace Google.Apis.Drive.v2
 
         /// <summary>
         ///  Lists the user's files. This method accepts the `q` parameter, which is a search query combining one or
-        /// more search terms. For more information, see the [Search for files](/drive/api/guides/search-files) guide.
-        /// *Note:* This method returns *all* files by default, including trashed files. If you don't want trashed files
-        /// to appear in the list, use the `trashed=false` query parameter to filter trashed files from the results.
+        /// more search terms. For more information, see the [Search for files &amp;amp;
+        /// folders](/drive/api/guides/search-files) guide. *Note:* This method returns *all* files by default,
+        /// including trashed files. If you don't want trashed files to appear in the list, use the `trashed=false`
+        /// query parameter to remove trashed files from the results.
         /// </summary>
         public class ListRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.FileList>
         {
@@ -4023,7 +4025,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files";
+            public override string RestPath => "files";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -4199,7 +4201,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/listLabels";
+            public override string RestPath => "files/{fileId}/listLabels";
 
             /// <summary>Initializes ListLabels parameter list.</summary>
             protected override void InitParameters()
@@ -4272,7 +4274,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/modifyLabels";
+            public override string RestPath => "files/{fileId}/modifyLabels";
 
             /// <summary>Initializes ModifyLabels parameter list.</summary>
             protected override void InitParameters()
@@ -4467,7 +4469,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}";
+            public override string RestPath => "files/{fileId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -4676,7 +4678,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/touch";
+            public override string RestPath => "files/{fileId}/touch";
 
             /// <summary>Initializes Touch parameter list.</summary>
             protected override void InitParameters()
@@ -4728,10 +4730,10 @@ namespace Google.Apis.Drive.v2
         /// <summary>
         ///  Moves a file to the trash. The currently authenticated user must own the file or be at least a
         /// `fileOrganizer` on the parent for shared drive files. Only the owner may trash a file. The trashed item is
-        /// excluded from all `files.list` responses returned for any user who does not own the file. However, all users
+        /// excluded from all `files.list` responses returned for any user who doesn't own the file. However, all users
         /// with access to the file can see the trashed item metadata in an API response. All users with access can
         /// copy, download, export, and share the file. *Note:* Files moved to the trash still appear by default in
-        /// results from the`files.list` method. To permanently remove a file, use `files.delete`.
+        /// results from the `files.list` method. To permanently remove a file, use `files.delete`.
         /// </summary>
         /// <param name="fileId">The ID of the file to trash.</param>
         public virtual TrashRequest Trash(string fileId)
@@ -4742,10 +4744,10 @@ namespace Google.Apis.Drive.v2
         /// <summary>
         ///  Moves a file to the trash. The currently authenticated user must own the file or be at least a
         /// `fileOrganizer` on the parent for shared drive files. Only the owner may trash a file. The trashed item is
-        /// excluded from all `files.list` responses returned for any user who does not own the file. However, all users
+        /// excluded from all `files.list` responses returned for any user who doesn't own the file. However, all users
         /// with access to the file can see the trashed item metadata in an API response. All users with access can
         /// copy, download, export, and share the file. *Note:* Files moved to the trash still appear by default in
-        /// results from the`files.list` method. To permanently remove a file, use `files.delete`.
+        /// results from the `files.list` method. To permanently remove a file, use `files.delete`.
         /// </summary>
         public class TrashRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.File>
         {
@@ -4787,7 +4789,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/trash";
+            public override string RestPath => "files/{fileId}/trash";
 
             /// <summary>Initializes Trash parameter list.</summary>
             protected override void InitParameters()
@@ -4890,7 +4892,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/untrash";
+            public override string RestPath => "files/{fileId}/untrash";
 
             /// <summary>Initializes Untrash parameter list.</summary>
             protected override void InitParameters()
@@ -4943,10 +4945,10 @@ namespace Google.Apis.Drive.v2
         ///  Updates a file's metadata and/or content. When calling this method, only populate fields in the request
         /// that you want to modify. When updating fields, some fields might be changed automatically, such as
         /// `modifiedDate`. This method supports patch semantics. This method supports an */upload* URI and accepts
-        /// uploaded media with the following characteristics: - *Maximum file size:* 5120GB - *Accepted Media MIME
+        /// uploaded media with the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME
         /// types:*`*/*` Note: Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only
-        /// used to indicate that any valid MIME type can be uploaded. For further information on uploading files, refer
-        /// to [Upload files](/drive/api/guides/manage-uploads).
+        /// used to indicate that any valid MIME type can be uploaded. For more information on uploading files, see
+        /// [Upload file data](/drive/api/guides/manage-uploads).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="fileId">The ID of the file to update.</param>
@@ -4959,10 +4961,10 @@ namespace Google.Apis.Drive.v2
         ///  Updates a file's metadata and/or content. When calling this method, only populate fields in the request
         /// that you want to modify. When updating fields, some fields might be changed automatically, such as
         /// `modifiedDate`. This method supports patch semantics. This method supports an */upload* URI and accepts
-        /// uploaded media with the following characteristics: - *Maximum file size:* 5120GB - *Accepted Media MIME
+        /// uploaded media with the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME
         /// types:*`*/*` Note: Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only
-        /// used to indicate that any valid MIME type can be uploaded. For further information on uploading files, refer
-        /// to [Upload files](/drive/api/guides/manage-uploads).
+        /// used to indicate that any valid MIME type can be uploaded. For more information on uploading files, see
+        /// [Upload file data](/drive/api/guides/manage-uploads).
         /// </summary>
         public class UpdateRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.File>
         {
@@ -5121,7 +5123,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}";
+            public override string RestPath => "files/{fileId}";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -5286,10 +5288,10 @@ namespace Google.Apis.Drive.v2
         ///  Updates a file's metadata and/or content. When calling this method, only populate fields in the request
         /// that you want to modify. When updating fields, some fields might be changed automatically, such as
         /// `modifiedDate`. This method supports patch semantics. This method supports an */upload* URI and accepts
-        /// uploaded media with the following characteristics: - *Maximum file size:* 5120GB - *Accepted Media MIME
+        /// uploaded media with the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME
         /// types:*`*/*` Note: Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only
-        /// used to indicate that any valid MIME type can be uploaded. For further information on uploading files, refer
-        /// to [Upload files](/drive/api/guides/manage-uploads).
+        /// used to indicate that any valid MIME type can be uploaded. For more information on uploading files, see
+        /// [Upload file data](/drive/api/guides/manage-uploads).
         /// </summary>
         /// <remarks>
         /// Considerations regarding <paramref name="stream"/>:
@@ -5552,7 +5554,7 @@ namespace Google.Apis.Drive.v2
             /// </list>
             /// </remarks>
             public UpdateMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Drive.v2.Data.File body, string fileId, System.IO.Stream stream, string contentType)
-                : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "drive/v2/files/{fileId}"), "PUT", stream, contentType)
+                : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "files/{fileId}"), "PUT", stream, contentType)
             {
                 FileId = fileId;
                 Body = body;
@@ -5650,7 +5652,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/watch";
+            public override string RestPath => "files/{fileId}/watch";
 
             /// <summary>Initializes Watch parameter list.</summary>
             protected override void InitParameters()
@@ -5787,7 +5789,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/parents/{parentId}";
+            public override string RestPath => "files/{fileId}/parents/{parentId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -5854,7 +5856,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/parents/{parentId}";
+            public override string RestPath => "files/{fileId}/parents/{parentId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -5929,7 +5931,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/parents";
+            public override string RestPath => "files/{fileId}/parents";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -5998,7 +6000,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/parents";
+            public override string RestPath => "files/{fileId}/parents";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -6086,7 +6088,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/permissions/{permissionId}";
+            public override string RestPath => "files/{fileId}/permissions/{permissionId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -6185,7 +6187,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/permissions/{permissionId}";
+            public override string RestPath => "files/{fileId}/permissions/{permissionId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -6262,7 +6264,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/permissionIds/{email}";
+            public override string RestPath => "permissionIds/{email}";
 
             /// <summary>Initializes GetIdForEmail parameter list.</summary>
             protected override void InitParameters()
@@ -6360,7 +6362,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/permissions";
+            public override string RestPath => "files/{fileId}/permissions";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -6498,7 +6500,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/permissions";
+            public override string RestPath => "files/{fileId}/permissions";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -6638,7 +6640,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/permissions/{permissionId}";
+            public override string RestPath => "files/{fileId}/permissions/{permissionId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -6778,7 +6780,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/permissions/{permissionId}";
+            public override string RestPath => "files/{fileId}/permissions/{permissionId}";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -6896,7 +6898,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/properties/{propertyKey}";
+            public override string RestPath => "files/{fileId}/properties/{propertyKey}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -6967,7 +6969,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/properties/{propertyKey}";
+            public override string RestPath => "files/{fileId}/properties/{propertyKey}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -7036,7 +7038,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/properties";
+            public override string RestPath => "files/{fileId}/properties";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -7081,7 +7083,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/properties";
+            public override string RestPath => "files/{fileId}/properties";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -7146,7 +7148,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/properties/{propertyKey}";
+            public override string RestPath => "files/{fileId}/properties/{propertyKey}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -7227,7 +7229,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/properties/{propertyKey}";
+            public override string RestPath => "files/{fileId}/properties/{propertyKey}";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -7315,7 +7317,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/comments/{commentId}/replies/{replyId}";
+            public override string RestPath => "files/{fileId}/comments/{commentId}/replies/{replyId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -7392,7 +7394,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/comments/{commentId}/replies/{replyId}";
+            public override string RestPath => "files/{fileId}/comments/{commentId}/replies/{replyId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -7475,7 +7477,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/comments/{commentId}/replies";
+            public override string RestPath => "files/{fileId}/comments/{commentId}/replies";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -7551,7 +7553,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/comments/{commentId}/replies";
+            public override string RestPath => "files/{fileId}/comments/{commentId}/replies";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -7648,7 +7650,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/comments/{commentId}/replies/{replyId}";
+            public override string RestPath => "files/{fileId}/comments/{commentId}/replies/{replyId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -7729,7 +7731,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/comments/{commentId}/replies/{replyId}";
+            public override string RestPath => "files/{fileId}/comments/{commentId}/replies/{replyId}";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -7819,7 +7821,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/revisions/{revisionId}";
+            public override string RestPath => "files/{fileId}/revisions/{revisionId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -7878,7 +7880,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/revisions/{revisionId}";
+            public override string RestPath => "files/{fileId}/revisions/{revisionId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -7942,7 +7944,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/revisions";
+            public override string RestPath => "files/{fileId}/revisions";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -8017,7 +8019,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/revisions/{revisionId}";
+            public override string RestPath => "files/{fileId}/revisions/{revisionId}";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -8084,7 +8086,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/files/{fileId}/revisions/{revisionId}";
+            public override string RestPath => "files/{fileId}/revisions/{revisionId}";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -8152,7 +8154,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/teamdrives/{teamDriveId}";
+            public override string RestPath => "teamdrives/{teamDriveId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -8204,7 +8206,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/teamdrives/{teamDriveId}";
+            public override string RestPath => "teamdrives/{teamDriveId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -8232,9 +8234,10 @@ namespace Google.Apis.Drive.v2
         /// <summary>Deprecated: Use `drives.insert` instead.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="requestId">
-        /// An ID, such as a random UUID, which uniquely identifies this user's request for idempotent creation of a
-        /// Team Drive. A repeated request by the same user and with the same request ID will avoid creating duplicates
-        /// by attempting to create the same Team Drive. If the Team Drive already exists a 409 error will be returned.
+        /// Required. An ID, such as a random UUID, which uniquely identifies this user's request for idempotent
+        /// creation of a Team Drive. A repeated request by the same user and with the same request ID will avoid
+        /// creating duplicates by attempting to create the same Team Drive. If the Team Drive already exists a 409
+        /// error will be returned.
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.Drive.v2.Data.TeamDrive body, string requestId)
         {
@@ -8253,10 +8256,10 @@ namespace Google.Apis.Drive.v2
             }
 
             /// <summary>
-            /// An ID, such as a random UUID, which uniquely identifies this user's request for idempotent creation of a
-            /// Team Drive. A repeated request by the same user and with the same request ID will avoid creating
-            /// duplicates by attempting to create the same Team Drive. If the Team Drive already exists a 409 error
-            /// will be returned.
+            /// Required. An ID, such as a random UUID, which uniquely identifies this user's request for idempotent
+            /// creation of a Team Drive. A repeated request by the same user and with the same request ID will avoid
+            /// creating duplicates by attempting to create the same Team Drive. If the Team Drive already exists a 409
+            /// error will be returned.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string RequestId { get; private set; }
@@ -8274,7 +8277,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/teamdrives";
+            public override string RestPath => "teamdrives";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -8332,7 +8335,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/teamdrives";
+            public override string RestPath => "teamdrives";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -8416,7 +8419,7 @@ namespace Google.Apis.Drive.v2
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "drive/v2/teamdrives/{teamDriveId}";
+            public override string RestPath => "teamdrives/{teamDriveId}";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()

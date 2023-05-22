@@ -314,7 +314,164 @@ namespace Google.Apis.BeyondCorp.v1alpha
                 public GlobalResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    PartnerTenants = new PartnerTenantsResource(service);
                     Tenants = new TenantsResource(service);
+                }
+
+                /// <summary>Gets the PartnerTenants resource.</summary>
+                public virtual PartnerTenantsResource PartnerTenants { get; }
+
+                /// <summary>The "partnerTenants" collection of methods.</summary>
+                public class PartnerTenantsResource
+                {
+                    private const string Resource = "partnerTenants";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public PartnerTenantsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Creates a new BeyondCorp Enterprise partnerTenant in a given organization and can only be called
+                    /// by onboarded BeyondCorp Enterprise partner.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The resource name of the PartnerTenant using the form:
+                    /// `organizations/{organization_id}/locations/global`
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerTenant body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Creates a new BeyondCorp Enterprise partnerTenant in a given organization and can only be called
+                    /// by onboarded BeyondCorp Enterprise partner.
+                    /// </summary>
+                    public class CreateRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerTenant body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the PartnerTenant using the form:
+                        /// `organizations/{organization_id}/locations/global`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that
+                        /// if you must retry your request, the server will know to ignore the request if it has already
+                        /// been completed. The server will guarantee that for at least 60 minutes since the first
+                        /// request. For example, consider a situation where you make an initial request and the request
+                        /// times out. If you make the request again with the same request ID, the server can check if
+                        /// original operation with the same request ID was received, and if so, will ignore the second
+                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
+                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerTenant Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+parent}/partnerTenants";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/locations/global$",
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets details of a single PartnerTenant.</summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the PartnerTenant using the form:
+                    /// `organizations/{organization_id}/locations/global/partnerTenants/{partner_tenant_id}`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets details of a single PartnerTenant.</summary>
+                    public class GetRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerTenant>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the PartnerTenant using the form:
+                        /// `organizations/{organization_id}/locations/global/partnerTenants/{partner_tenant_id}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/locations/global/partnerTenants/[^/]+$",
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the Tenants resource.</summary>
@@ -353,8 +510,8 @@ namespace Google.Apis.BeyondCorp.v1alpha
                         }
 
                         /// <summary>
-                        /// Creates a new BeyondCorp Enterprise ProxyConfiguration in a given organization and tenant.
-                        /// Can only be called by on onboarded Beyondcorp Enterprise partner.
+                        /// Creates a new BeyondCorp Enterprise ProxyConfiguration in a given organization and
+                        /// PartnerTenant. Can only be called by on onboarded Beyondcorp Enterprise partner.
                         /// </summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
@@ -367,8 +524,8 @@ namespace Google.Apis.BeyondCorp.v1alpha
                         }
 
                         /// <summary>
-                        /// Creates a new BeyondCorp Enterprise ProxyConfiguration in a given organization and tenant.
-                        /// Can only be called by on onboarded Beyondcorp Enterprise partner.
+                        /// Creates a new BeyondCorp Enterprise ProxyConfiguration in a given organization and
+                        /// PartnerTenant. Can only be called by on onboarded Beyondcorp Enterprise partner.
                         /// </summary>
                         public class CreateRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleLongrunningOperation>
                         {
@@ -439,7 +596,7 @@ namespace Google.Apis.BeyondCorp.v1alpha
                             }
                         }
 
-                        /// <summary>Gets details of a single Tenant.</summary>
+                        /// <summary>Gets details of a single ProxyConfig.</summary>
                         /// <param name="name">
                         /// Required. The resource name of the Tenant using the form:
                         /// `organizations/{organization_id}/locations/global/tenants/{tenant_id}/proxyConfigs/{proxy_config_id}`
@@ -449,7 +606,7 @@ namespace Google.Apis.BeyondCorp.v1alpha
                             return new GetRequest(service, name);
                         }
 
-                        /// <summary>Gets details of a single Tenant.</summary>
+                        /// <summary>Gets details of a single ProxyConfig.</summary>
                         public class GetRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpPartnerservicesV1alphaProxyConfig>
                         {
                             /// <summary>Constructs a new Get request.</summary>
@@ -9293,21 +9450,27 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message contains the authentication information to validate against the proxy server.</summary>
-    public class GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Message contains the JWT encryption information for the proxy server.</summary>
+    public class GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Service Account for encrypting the JWT.</summary>
+        /// <summary>Optional. Service Account for encryption key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionSaEmail")]
         public virtual string EncryptionSaEmail { get; set; }
+
+        /// <summary>Optional. JWK in string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jwk")]
+        public virtual string Jwk { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata associated with Tenant and is provided by the Partner.</summary>
+    /// <summary>Metadata associated with PartnerTenant and is provided by the Partner.</summary>
     public class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. UUID used by the Partner to refer to the Tenant in their internal systems.</summary>
+        /// <summary>
+        /// Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerTenantId")]
         public virtual string PartnerTenantId { get; set; }
 
@@ -9354,13 +9517,48 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information about a BeyoncCorp Enterprise PartnerTenant.</summary>
+    public class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerTenant : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>
+        /// Optional. An arbitrary caller-provided name for the PartnerTenant. Cannot exceed 64 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional. Google group email to which the PartnerTenant is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleGroupEmail")]
+        public virtual string GoogleGroupEmail { get; set; }
+
+        /// <summary>Optional. Google group ID to which the PartnerTenant is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleGroupId")]
+        public virtual string GoogleGroupId { get; set; }
+
+        /// <summary>
+        /// Output only. Unique resource name of the PartnerTenant. The name is ignored when creating PartnerTenant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Metadata provided by the Partner associated with PartnerTenant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("partnerMetadata")]
+        public virtual GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata PartnerMetadata { get; set; }
+
+        /// <summary>Output only. Timestamp when the resource was last modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Proxy Configuration of a Tenant.</summary>
     public class GoogleCloudBeyondcorpPartnerservicesV1alphaProxyConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Information to facilitate Authentication against the proxy server.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("authenticationInfo")]
-        public virtual GoogleCloudBeyondcorpPartnerservicesV1alphaAuthenticationInfo AuthenticationInfo { get; set; }
-
         /// <summary>Output only. Timestamp when the resource was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
@@ -9370,6 +9568,10 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>Optional. Information to encrypt JWT for the proxy server.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionInfo")]
+        public virtual GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo EncryptionInfo { get; set; }
 
         /// <summary>Output only. ProxyConfig resource name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

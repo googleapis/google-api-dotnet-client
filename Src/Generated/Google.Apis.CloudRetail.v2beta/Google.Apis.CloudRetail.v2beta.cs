@@ -6929,7 +6929,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// <summary>
         /// When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG, if INDEXABLE_ENABLED
         /// attribute values are indexed so that it can be filtered, faceted, or boosted in SearchService.Search. Must
-        /// be specified, otherwise throws INVALID_FORMAT error.
+        /// be specified when AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG, otherwise
+        /// throws INVALID_FORMAT error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexableOption")]
         public virtual string IndexableOption { get; set; }
@@ -6964,7 +6965,8 @@ namespace Google.Apis.CloudRetail.v2beta.Data
         /// When AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG, if SEARCHABLE_ENABLED,
         /// attribute values are searchable by text queries in SearchService.Search. If SEARCHABLE_ENABLED but attribute
         /// type is numerical, attribute values will not be searchable by text queries in SearchService.Search, as there
-        /// are no text values associated to numerical attributes. Must be specified, otherwise throws INVALID_FORMAT
+        /// are no text values associated to numerical attributes. Must be specified, when
+        /// AttributesConfig.attribute_config_level is CATALOG_LEVEL_ATTRIBUTE_CONFIG, otherwise throws INVALID_FORMAT
         /// error.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchableOption")]

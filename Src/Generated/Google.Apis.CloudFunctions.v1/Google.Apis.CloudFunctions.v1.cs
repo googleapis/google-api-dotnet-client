@@ -1833,6 +1833,17 @@ namespace Google.Apis.CloudFunctions.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Extra GCF specific location information.</summary>
+    public class GoogleCloudFunctionsV2LocationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Cloud Function environments this location supports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environments")]
+        public virtual System.Collections.Generic.IList<string> Environments { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents the metadata of the long-running operation.</summary>
     public class GoogleCloudFunctionsV2OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1930,6 +1941,17 @@ namespace Google.Apis.CloudFunctions.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Extra GCF specific location information.</summary>
+    public class GoogleCloudFunctionsV2alphaLocationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Cloud Function environments this location supports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environments")]
+        public virtual System.Collections.Generic.IList<string> Environments { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents the metadata of the long-running operation.</summary>
     public class GoogleCloudFunctionsV2alphaOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2022,6 +2044,17 @@ namespace Google.Apis.CloudFunctions.v1.Data
         /// <summary>One-word CamelCase type of the state message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Extra GCF specific location information.</summary>
+    public class GoogleCloudFunctionsV2betaLocationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Cloud Function environments this location supports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environments")]
+        public virtual System.Collections.Generic.IList<string> Environments { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -486,7 +486,7 @@ namespace Google.Apis.CloudTrace.v2.Data
         /// A set of attributes. Each attribute's key can be up to 128 bytes long. The value can be a string up to 256
         /// bytes, a signed 64-bit integer, or the boolean values `true` or `false`. For example: "/instance_id": {
         /// "string_value": { "value": "my-instance" } } "/http/request_bytes": { "int_value": 300 }
-        /// "abc.com/myattribute": { "bool_value": false }
+        /// "example.com/myattribute": { "bool_value": false }
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributeMap")]
         public virtual System.Collections.Generic.IDictionary<string, AttributeValue> AttributeMap { get; set; }

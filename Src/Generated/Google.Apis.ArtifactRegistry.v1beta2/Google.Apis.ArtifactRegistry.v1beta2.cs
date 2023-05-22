@@ -1039,7 +1039,10 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
                         }
 
                         /// <summary>Lists tags.</summary>
-                        /// <param name="parent">The name of the parent resource whose tags will be listed.</param>
+                        /// <param name="parent">
+                        /// The name of the parent package whose tags will be listed. Example:
+                        /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1
+                        /// </param>
                         public virtual ListRequest List(string parent)
                         {
                             return new ListRequest(service, parent);
@@ -1055,7 +1058,10 @@ namespace Google.Apis.ArtifactRegistry.v1beta2
                                 InitParameters();
                             }
 
-                            /// <summary>The name of the parent resource whose tags will be listed.</summary>
+                            /// <summary>
+                            /// The name of the parent package whose tags will be listed. Example:
+                            /// "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1
+                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 

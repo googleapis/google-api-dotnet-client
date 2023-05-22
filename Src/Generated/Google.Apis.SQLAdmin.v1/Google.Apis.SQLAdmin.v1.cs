@@ -5063,6 +5063,24 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>Options for exporting BAK files (SQL Server-only)</summary>
         public class BakExportOptionsData
         {
+            /// <summary>Type of this bak file will be export, FULL or DIFF, SQL Server only</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("bakType")]
+            public virtual string BakType { get; set; }
+
+            /// <summary>
+            /// Whether or not the export will be exeucted with COPY_ONLY, SQL Server only deprecated as the behavior
+            /// should default to copy_only = true use differential_base instead
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("copyOnly")]
+            public virtual System.Nullable<bool> CopyOnly { get; set; }
+
+            /// <summary>
+            /// Whether or not the backup can be use as differential base only non copy only backup can be served as
+            /// differential base
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("differentialBase")]
+            public virtual System.Nullable<bool> DifferentialBase { get; set; }
+
             /// <summary>
             /// Option for specifying how many stripes to use for the export. If blank, and the value of the striped
             /// field is true, the number of stripes is automatically chosen.
@@ -5318,8 +5336,27 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>Import parameters specific to SQL Server .BAK files</summary>
         public class BakImportOptionsData
         {
+            /// <summary>Type of the bak content, FULL or DIFF</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("bakType")]
+            public virtual string BakType { get; set; }
+
             [Newtonsoft.Json.JsonPropertyAttribute("encryptionOptions")]
             public virtual EncryptionOptionsData EncryptionOptions { get; set; }
+
+            /// <summary>
+            /// Whether or not the backup importing will restore database with NORECOVERY option Applies only to Cloud
+            /// SQL for SQL Server.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("noRecovery")]
+            public virtual System.Nullable<bool> NoRecovery { get; set; }
+
+            /// <summary>
+            /// Whether or not the backup importing request will just bring database online without downloading Bak
+            /// content only one of "no_recovery" and "recovery_only" can be true otherwise error will return. Applies
+            /// only to Cloud SQL for SQL Server.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("recoveryOnly")]
+            public virtual System.Nullable<bool> RecoveryOnly { get; set; }
 
             /// <summary>
             /// Whether or not the backup set being restored is striped. Applies only to Cloud SQL for SQL Server.

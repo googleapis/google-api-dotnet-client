@@ -4105,9 +4105,7 @@ namespace Google.Apis.Pubsub.v1.Data
 
     /// <summary>
     /// Contains information needed for generating an [OpenID Connect
-    /// token](https://developers.google.com/identity/protocols/OpenIDConnect). [Service account
-    /// email](https://cloud.google.com/iam/docs/service-accounts) used for generating the OIDC token. For more
-    /// information on setting up authentication, see [Push subscriptions](https://cloud.google.com/pubsub/docs/push).
+    /// token](https://developers.google.com/identity/protocols/OpenIDConnect).
     /// </summary>
     public class OidcToken : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4121,6 +4119,11 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("audience")]
         public virtual string Audience { get; set; }
 
+        /// <summary>
+        /// [Service account email](https://cloud.google.com/iam/docs/service-accounts) used for generating the OIDC
+        /// token. For more information on setting up authentication, see [Push
+        /// subscriptions](https://cloud.google.com/pubsub/docs/push).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountEmail")]
         public virtual string ServiceAccountEmail { get; set; }
 

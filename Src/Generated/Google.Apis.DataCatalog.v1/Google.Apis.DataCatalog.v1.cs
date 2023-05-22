@@ -394,6 +394,20 @@ namespace Google.Apis.DataCatalog.v1
             public virtual string LinkedResource { get; set; }
 
             /// <summary>
+            /// Location where the lookup should be performed. Required to lookup entry that is not a part of `DPMS` or
+            /// `DATAPLEX` `integrated_system` using its `fully_qualified_name`. Ignored in other cases.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Location { get; set; }
+
+            /// <summary>
+            /// Project where the lookup should be performed. Required to lookup entry that is not a part of `DPMS` or
+            /// `DATAPLEX` `integrated_system` using its `fully_qualified_name`. Ignored in other cases.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Project { get; set; }
+
+            /// <summary>
             /// The SQL name of the entry. SQL names are case-sensitive. Examples: *
             /// `pubsub.topic.{PROJECT_ID}.{TOPIC_ID}` *
             /// `pubsub.topic.{PROJECT_ID}.`\``{TOPIC.ID.SEPARATED.WITH.DOTS}`\` *
@@ -429,6 +443,22 @@ namespace Google.Apis.DataCatalog.v1
                 RequestParameters.Add("linkedResource", new Google.Apis.Discovery.Parameter
                 {
                     Name = "linkedResource",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "location",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,

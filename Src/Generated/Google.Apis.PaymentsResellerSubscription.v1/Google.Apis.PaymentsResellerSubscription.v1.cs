@@ -1392,7 +1392,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     /// <summary>Specifies product specific payload.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1ProductPayload : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Payload specific to Google One products.</summary>
+        /// <summary>Product-specific payloads. Payload specific to Google One products.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleOnePayload")]
         public virtual GoogleCloudPaymentsResellerSubscriptionV1GoogleOnePayload GoogleOnePayload { get; set; }
 

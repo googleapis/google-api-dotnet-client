@@ -2673,7 +2673,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     {
         /// <summary>
         /// Immutable. The name of the Google Cloud KMS encryption key. For example,
-        /// `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`.
+        /// `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`. The key must be in the same
+        /// region as the workstation configuration.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
         public virtual string KmsKey { get; set; }

@@ -32,8 +32,8 @@
    }
   }
  },
- "basePath": "",
- "baseUrl": "https://www.googleapis.com/",
+ "basePath": "/drive/v2/",
+ "baseUrl": "https://www.googleapis.com/drive/v2/",
  "batchPath": "batch/drive/v2",
  "description": "The Google Drive API allows clients to access resources from Google Drive.",
  "discoveryVersion": "v1",
@@ -131,7 +131,7 @@
    "methods": {
     "get": {
      "description": "Gets the information about the current user along with Drive API settings",
-     "flatPath": "drive/v2/about",
+     "flatPath": "about",
      "httpMethod": "GET",
      "id": "drive.about.get",
      "parameterOrder": [],
@@ -156,7 +156,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/about",
+     "path": "about",
      "response": {
       "$ref": "About"
      },
@@ -176,7 +176,7 @@
    "methods": {
     "get": {
      "description": "Gets a specific app.",
-     "flatPath": "drive/v2/apps/{appId}",
+     "flatPath": "apps/{appId}",
      "httpMethod": "GET",
      "id": "drive.apps.get",
      "parameterOrder": [
@@ -190,7 +190,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/apps/{appId}",
+     "path": "apps/{appId}",
      "response": {
       "$ref": "App"
      },
@@ -206,7 +206,7 @@
     },
     "list": {
      "description": "Lists a user's installed apps.",
-     "flatPath": "drive/v2/apps",
+     "flatPath": "apps",
      "httpMethod": "GET",
      "id": "drive.apps.list",
      "parameterOrder": [],
@@ -229,7 +229,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/apps",
+     "path": "apps",
      "response": {
       "$ref": "AppList"
      },
@@ -243,7 +243,7 @@
    "methods": {
     "get": {
      "description": "Deprecated: Use `changes.getStartPageToken` and `changes.list` to retrieve recent changes.",
-     "flatPath": "drive/v2/changes/{changeId}",
+     "flatPath": "changes/{changeId}",
      "httpMethod": "GET",
      "id": "drive.changes.get",
      "parameterOrder": [
@@ -279,7 +279,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/changes/{changeId}",
+     "path": "changes/{changeId}",
      "response": {
       "$ref": "Change"
      },
@@ -296,7 +296,7 @@
     },
     "getStartPageToken": {
      "description": "Gets the starting pageToken for listing future changes.",
-     "flatPath": "drive/v2/changes/startPageToken",
+     "flatPath": "changes/startPageToken",
      "httpMethod": "GET",
      "id": "drive.changes.getStartPageToken",
      "parameterOrder": [],
@@ -324,7 +324,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/changes/startPageToken",
+     "path": "changes/startPageToken",
      "response": {
       "$ref": "StartPageToken"
      },
@@ -341,7 +341,7 @@
     },
     "list": {
      "description": "Lists the changes for a user or shared drive.",
-     "flatPath": "drive/v2/changes",
+     "flatPath": "changes",
      "httpMethod": "GET",
      "id": "drive.changes.list",
      "parameterOrder": [],
@@ -433,7 +433,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/changes",
+     "path": "changes",
      "response": {
       "$ref": "ChangeList"
      },
@@ -451,7 +451,7 @@
     },
     "watch": {
      "description": "Subscribe to changes for a user.",
-     "flatPath": "drive/v2/changes/watch",
+     "flatPath": "changes/watch",
      "httpMethod": "POST",
      "id": "drive.changes.watch",
      "parameterOrder": [],
@@ -543,7 +543,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/changes/watch",
+     "path": "changes/watch",
      "request": {
       "$ref": "Channel",
       "parameterName": "resource"
@@ -568,13 +568,13 @@
   "channels": {
    "methods": {
     "stop": {
-     "description": "Stop watching resources through this channel.",
-     "flatPath": "drive/v2/channels/stop",
+     "description": "Stops watching resources through this channel.",
+     "flatPath": "channels/stop",
      "httpMethod": "POST",
      "id": "drive.channels.stop",
      "parameterOrder": [],
      "parameters": {},
-     "path": "drive/v2/channels/stop",
+     "path": "channels/stop",
      "request": {
       "$ref": "Channel",
       "parameterName": "resource"
@@ -596,7 +596,7 @@
    "methods": {
     "delete": {
      "description": "Removes a child from a folder.",
-     "flatPath": "drive/v2/files/{folderId}/children/{childId}",
+     "flatPath": "files/{folderId}/children/{childId}",
      "httpMethod": "DELETE",
      "id": "drive.children.delete",
      "parameterOrder": [
@@ -623,7 +623,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{folderId}/children/{childId}",
+     "path": "files/{folderId}/children/{childId}",
      "scopes": [
       "https://www.googleapis.com/auth/drive",
       "https://www.googleapis.com/auth/drive.file"
@@ -631,7 +631,7 @@
     },
     "get": {
      "description": "Gets a specific child reference.",
-     "flatPath": "drive/v2/files/{folderId}/children/{childId}",
+     "flatPath": "files/{folderId}/children/{childId}",
      "httpMethod": "GET",
      "id": "drive.children.get",
      "parameterOrder": [
@@ -652,7 +652,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{folderId}/children/{childId}",
+     "path": "files/{folderId}/children/{childId}",
      "response": {
       "$ref": "ChildReference"
      },
@@ -668,7 +668,7 @@
     },
     "insert": {
      "description": "Inserts a file into a folder.",
-     "flatPath": "drive/v2/files/{folderId}/children",
+     "flatPath": "files/{folderId}/children",
      "httpMethod": "POST",
      "id": "drive.children.insert",
      "parameterOrder": [
@@ -700,7 +700,7 @@
        "type": "boolean"
       }
      },
-     "path": "drive/v2/files/{folderId}/children",
+     "path": "files/{folderId}/children",
      "request": {
       "$ref": "ChildReference"
      },
@@ -715,7 +715,7 @@
     },
     "list": {
      "description": "Lists a folder's children.",
-     "flatPath": "drive/v2/files/{folderId}/children",
+     "flatPath": "files/{folderId}/children",
      "httpMethod": "GET",
      "id": "drive.children.list",
      "parameterOrder": [
@@ -752,7 +752,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{folderId}/children",
+     "path": "files/{folderId}/children",
      "response": {
       "$ref": "ChildList"
      },
@@ -772,7 +772,7 @@
    "methods": {
     "delete": {
      "description": "Deletes a comment.",
-     "flatPath": "drive/v2/files/{fileId}/comments/{commentId}",
+     "flatPath": "files/{fileId}/comments/{commentId}",
      "httpMethod": "DELETE",
      "id": "drive.comments.delete",
      "parameterOrder": [
@@ -793,7 +793,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/comments/{commentId}",
+     "path": "files/{fileId}/comments/{commentId}",
      "scopes": [
       "https://www.googleapis.com/auth/drive",
       "https://www.googleapis.com/auth/drive.file"
@@ -801,7 +801,7 @@
     },
     "get": {
      "description": "Gets a comment by ID.",
-     "flatPath": "drive/v2/files/{fileId}/comments/{commentId}",
+     "flatPath": "files/{fileId}/comments/{commentId}",
      "httpMethod": "GET",
      "id": "drive.comments.get",
      "parameterOrder": [
@@ -828,7 +828,7 @@
        "type": "boolean"
       }
      },
-     "path": "drive/v2/files/{fileId}/comments/{commentId}",
+     "path": "files/{fileId}/comments/{commentId}",
      "response": {
       "$ref": "Comment"
      },
@@ -840,7 +840,7 @@
     },
     "insert": {
      "description": "Creates a new comment on the given file.",
-     "flatPath": "drive/v2/files/{fileId}/comments",
+     "flatPath": "files/{fileId}/comments",
      "httpMethod": "POST",
      "id": "drive.comments.insert",
      "parameterOrder": [
@@ -854,7 +854,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/comments",
+     "path": "files/{fileId}/comments",
      "request": {
       "$ref": "Comment"
      },
@@ -868,7 +868,7 @@
     },
     "list": {
      "description": "Lists a file's comments.",
-     "flatPath": "drive/v2/files/{fileId}/comments",
+     "flatPath": "files/{fileId}/comments",
      "httpMethod": "GET",
      "id": "drive.comments.list",
      "parameterOrder": [
@@ -907,7 +907,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/comments",
+     "path": "files/{fileId}/comments",
      "response": {
       "$ref": "CommentList"
      },
@@ -919,7 +919,7 @@
     },
     "patch": {
      "description": "Updates an existing comment.",
-     "flatPath": "drive/v2/files/{fileId}/comments/{commentId}",
+     "flatPath": "files/{fileId}/comments/{commentId}",
      "httpMethod": "PATCH",
      "id": "drive.comments.patch",
      "parameterOrder": [
@@ -940,7 +940,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/comments/{commentId}",
+     "path": "files/{fileId}/comments/{commentId}",
      "request": {
       "$ref": "Comment"
      },
@@ -954,7 +954,7 @@
     },
     "update": {
      "description": "Updates an existing comment.",
-     "flatPath": "drive/v2/files/{fileId}/comments/{commentId}",
+     "flatPath": "files/{fileId}/comments/{commentId}",
      "httpMethod": "PUT",
      "id": "drive.comments.update",
      "parameterOrder": [
@@ -975,7 +975,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/comments/{commentId}",
+     "path": "files/{fileId}/comments/{commentId}",
      "request": {
       "$ref": "Comment"
      },
@@ -993,7 +993,7 @@
    "methods": {
     "delete": {
      "description": "Permanently deletes a shared drive for which the user is an organizer. The shared drive cannot contain any untrashed items.",
-     "flatPath": "drive/v2/drives/{driveId}",
+     "flatPath": "drives/{driveId}",
      "httpMethod": "DELETE",
      "id": "drive.drives.delete",
      "parameterOrder": [
@@ -1019,14 +1019,14 @@
        "type": "boolean"
       }
      },
-     "path": "drive/v2/drives/{driveId}",
+     "path": "drives/{driveId}",
      "scopes": [
       "https://www.googleapis.com/auth/drive"
      ]
     },
     "get": {
      "description": "Gets a shared drive's metadata by ID.",
-     "flatPath": "drive/v2/drives/{driveId}",
+     "flatPath": "drives/{driveId}",
      "httpMethod": "GET",
      "id": "drive.drives.get",
      "parameterOrder": [
@@ -1046,7 +1046,7 @@
        "type": "boolean"
       }
      },
-     "path": "drive/v2/drives/{driveId}",
+     "path": "drives/{driveId}",
      "response": {
       "$ref": "Drive"
      },
@@ -1057,7 +1057,7 @@
     },
     "hide": {
      "description": "Hides a shared drive from the default view.",
-     "flatPath": "drive/v2/drives/{driveId}/hide",
+     "flatPath": "drives/{driveId}/hide",
      "httpMethod": "POST",
      "id": "drive.drives.hide",
      "parameterOrder": [
@@ -1071,7 +1071,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/drives/{driveId}/hide",
+     "path": "drives/{driveId}/hide",
      "response": {
       "$ref": "Drive"
      },
@@ -1081,7 +1081,7 @@
     },
     "insert": {
      "description": "Creates a new shared drive.",
-     "flatPath": "drive/v2/drives",
+     "flatPath": "drives",
      "httpMethod": "POST",
      "id": "drive.drives.insert",
      "parameterOrder": [
@@ -1089,13 +1089,13 @@
      ],
      "parameters": {
       "requestId": {
-       "description": "An ID, such as a random UUID, which uniquely identifies this user's request for idempotent creation of a shared drive. A repeated request by the same user and with the same request ID will avoid creating duplicates by attempting to create the same shared drive. If the shared drive already exists a 409 error will be returned.",
+       "description": "Required. An ID, such as a random UUID, which uniquely identifies this user's request for idempotent creation of a shared drive. A repeated request by the same user and with the same request ID will avoid creating duplicates by attempting to create the same shared drive. If the shared drive already exists a 409 error will be returned.",
        "location": "query",
        "required": true,
        "type": "string"
       }
      },
-     "path": "drive/v2/drives",
+     "path": "drives",
      "request": {
       "$ref": "Drive"
      },
@@ -1108,7 +1108,7 @@
     },
     "list": {
      "description": " Lists the user's shared drives. This method accepts the `q` parameter, which is a search query combining one or more search terms. For more information, see the [Search for shared drives](/drive/api/guides/search-shareddrives) guide.",
-     "flatPath": "drive/v2/drives",
+     "flatPath": "drives",
      "httpMethod": "GET",
      "id": "drive.drives.list",
      "parameterOrder": [],
@@ -1139,7 +1139,7 @@
        "type": "boolean"
       }
      },
-     "path": "drive/v2/drives",
+     "path": "drives",
      "response": {
       "$ref": "DriveList"
      },
@@ -1150,7 +1150,7 @@
     },
     "unhide": {
      "description": "Restores a shared drive to the default view.",
-     "flatPath": "drive/v2/drives/{driveId}/unhide",
+     "flatPath": "drives/{driveId}/unhide",
      "httpMethod": "POST",
      "id": "drive.drives.unhide",
      "parameterOrder": [
@@ -1164,7 +1164,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/drives/{driveId}/unhide",
+     "path": "drives/{driveId}/unhide",
      "response": {
       "$ref": "Drive"
      },
@@ -1174,7 +1174,7 @@
     },
     "update": {
      "description": "Updates the metadata for a shared drive.",
-     "flatPath": "drive/v2/drives/{driveId}",
+     "flatPath": "drives/{driveId}",
      "httpMethod": "PUT",
      "id": "drive.drives.update",
      "parameterOrder": [
@@ -1194,7 +1194,7 @@
        "type": "boolean"
       }
      },
-     "path": "drive/v2/drives/{driveId}",
+     "path": "drives/{driveId}",
      "request": {
       "$ref": "Drive"
      },
@@ -1211,7 +1211,7 @@
    "methods": {
     "copy": {
      "description": "Creates a copy of the specified file.",
-     "flatPath": "drive/v2/files/{fileId}/copy",
+     "flatPath": "files/{fileId}/copy",
      "httpMethod": "POST",
      "id": "drive.files.copy",
      "parameterOrder": [
@@ -1300,7 +1300,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/copy",
+     "path": "files/{fileId}/copy",
      "request": {
       "$ref": "File"
      },
@@ -1317,7 +1317,7 @@
     },
     "delete": {
      "description": "Permanently deletes a file by ID. Skips the trash. The currently authenticated user must own the file or be an organizer on the parent for shared drive files.",
-     "flatPath": "drive/v2/files/{fileId}",
+     "flatPath": "files/{fileId}",
      "httpMethod": "DELETE",
      "id": "drive.files.delete",
      "parameterOrder": [
@@ -1349,7 +1349,7 @@
        "type": "boolean"
       }
      },
-     "path": "drive/v2/files/{fileId}",
+     "path": "files/{fileId}",
      "scopes": [
       "https://www.googleapis.com/auth/drive",
       "https://www.googleapis.com/auth/drive.appdata",
@@ -1358,7 +1358,7 @@
     },
     "emptyTrash": {
      "description": "Permanently deletes all of the user's trashed files.",
-     "flatPath": "drive/v2/files/trash",
+     "flatPath": "files/trash",
      "httpMethod": "DELETE",
      "id": "drive.files.emptyTrash",
      "parameterOrder": [],
@@ -1375,14 +1375,14 @@
        "type": "boolean"
       }
      },
-     "path": "drive/v2/files/trash",
+     "path": "files/trash",
      "scopes": [
       "https://www.googleapis.com/auth/drive"
      ]
     },
     "export": {
      "description": "Exports a Google Workspace document to the requested MIME type and returns exported byte content. Note that the exported content is limited to 10MB.",
-     "flatPath": "drive/v2/files/{fileId}/export",
+     "flatPath": "files/{fileId}/export",
      "httpMethod": "GET",
      "id": "drive.files.export",
      "parameterOrder": [
@@ -1397,13 +1397,13 @@
        "type": "string"
       },
       "mimeType": {
-       "description": "The MIME type of the format requested for this export.",
+       "description": "Required. The MIME type of the format requested for this export.",
        "location": "query",
        "required": true,
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/export",
+     "path": "files/{fileId}/export",
      "scopes": [
       "https://www.googleapis.com/auth/drive",
       "https://www.googleapis.com/auth/drive.file",
@@ -1414,7 +1414,7 @@
     },
     "generateIds": {
      "description": "Generates a set of file IDs which can be provided in insert or copy requests.",
-     "flatPath": "drive/v2/files/generateIds",
+     "flatPath": "files/generateIds",
      "httpMethod": "GET",
      "id": "drive.files.generateIds",
      "parameterOrder": [],
@@ -1441,7 +1441,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/generateIds",
+     "path": "files/generateIds",
      "response": {
       "$ref": "GeneratedIds"
      },
@@ -1452,8 +1452,8 @@
      ]
     },
     "get": {
-     "description": " Gets a file's metadata or content by ID. If you provide the URL parameter `alt=media`, then the response includes the file contents in the response body. Downloading content with `alt=media` only works if the file is stored in Drive. To download Google Docs, Sheets, and Slides use [`files.export`](/drive/api/reference/rest/v2/files/export) instead. For further information on downloading files, refer to [Download files](/drive/api/guides/manage-downloads).",
-     "flatPath": "drive/v2/files/{fileId}",
+     "description": " Gets a file's metadata or content by ID. If you provide the URL parameter `alt=media`, then the response includes the file contents in the response body. Downloading content with `alt=media` only works if the file is stored in Drive. To download Google Docs, Sheets, and Slides use [`files.export`](/drive/api/reference/rest/v2/files/export) instead. For more information, see [Download & export files](/drive/api/guides/manage-downloads).",
+     "flatPath": "files/{fileId}",
      "httpMethod": "GET",
      "id": "drive.files.get",
      "parameterOrder": [
@@ -1519,7 +1519,7 @@
        "type": "boolean"
       }
      },
-     "path": "drive/v2/files/{fileId}",
+     "path": "files/{fileId}",
      "response": {
       "$ref": "File"
      },
@@ -1537,8 +1537,8 @@
      "useMediaDownloadService": true
     },
     "insert": {
-     "description": " Inserts a new file. This method supports an */upload* URI and accepts uploaded media with the following characteristics: - *Maximum file size:* 5120GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only used to indicate that any valid MIME type can be uploaded. For further information on uploading files, refer to [Upload files](/drive/api/guides/manage-uploads). Apps creating shortcuts with `files.insert` must specify the MIME type `application/vnd.google-apps.shortcut`. Apps should specify a file extension in the `title` property when inserting files with the API. For example, an operation to insert a JPEG file should specify something like `\"title\": \"cat.jpg\"` in the metadata. Subsequent `GET` requests include the read-only `fileExtension` property populated with the extension originally specified in the `title` property. When a Google Drive user requests to download a file, or when the file is downloaded through the sync client, Drive builds a full filename (with extension) based on the title. In cases where the extension is missing, Google Drive attempts to determine the extension based on the file's MIME type.",
-     "flatPath": "drive/v2/files",
+     "description": " Inserts a new file. This method supports an */upload* URI and accepts uploaded media with the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only used to indicate that any valid MIME type can be uploaded. For more information on uploading files, see [Upload file data](/drive/api/guides/manage-uploads). Apps creating shortcuts with `files.insert` must specify the MIME type `application/vnd.google-apps.shortcut`. Apps should specify a file extension in the `title` property when inserting files with the API. For example, an operation to insert a JPEG file should specify something like `\"title\": \"cat.jpg\"` in the metadata. Subsequent `GET` requests include the read-only `fileExtension` property populated with the extension originally specified in the `title` property. When a Google Drive user requests to download a file, or when the file is downloaded through the sync client, Drive builds a full filename (with extension) based on the title. In cases where the extension is missing, Drive attempts to determine the extension based on the file's MIME type.",
+     "flatPath": "files",
      "httpMethod": "POST",
      "id": "drive.files.insert",
      "mediaUpload": {
@@ -1641,7 +1641,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files",
+     "path": "files",
      "request": {
       "$ref": "File"
      },
@@ -1657,8 +1657,8 @@
      "supportsMediaUpload": true
     },
     "list": {
-     "description": " Lists the user's files. This method accepts the `q` parameter, which is a search query combining one or more search terms. For more information, see the [Search for files](/drive/api/guides/search-files) guide. *Note:* This method returns *all* files by default, including trashed files. If you don't want trashed files to appear in the list, use the `trashed=false` query parameter to filter trashed files from the results.",
-     "flatPath": "drive/v2/files",
+     "description": " Lists the user's files. This method accepts the `q` parameter, which is a search query combining one or more search terms. For more information, see the [Search for files & folders](/drive/api/guides/search-files) guide. *Note:* This method returns *all* files by default, including trashed files. If you don't want trashed files to appear in the list, use the `trashed=false` query parameter to remove trashed files from the results.",
+     "flatPath": "files",
      "httpMethod": "GET",
      "id": "drive.files.list",
      "parameterOrder": [],
@@ -1767,7 +1767,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files",
+     "path": "files",
      "response": {
       "$ref": "FileList"
      },
@@ -1784,7 +1784,7 @@
     },
     "listLabels": {
      "description": "Lists the labels on a file.",
-     "flatPath": "drive/v2/files/{fileId}/listLabels",
+     "flatPath": "files/{fileId}/listLabels",
      "httpMethod": "GET",
      "id": "drive.files.listLabels",
      "parameterOrder": [
@@ -1812,7 +1812,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/listLabels",
+     "path": "files/{fileId}/listLabels",
      "response": {
       "$ref": "LabelList"
      },
@@ -1826,7 +1826,7 @@
     },
     "modifyLabels": {
      "description": "Modifies the set of labels applied to a file. Returns a list of the labels that were added or modified.",
-     "flatPath": "drive/v2/files/{fileId}/modifyLabels",
+     "flatPath": "files/{fileId}/modifyLabels",
      "httpMethod": "POST",
      "id": "drive.files.modifyLabels",
      "parameterOrder": [
@@ -1840,7 +1840,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/modifyLabels",
+     "path": "files/{fileId}/modifyLabels",
      "request": {
       "$ref": "ModifyLabelsRequest"
      },
@@ -1855,7 +1855,7 @@
     },
     "patch": {
      "description": "Updates a file's metadata and/or content. When calling this method, only populate fields in the request that you want to modify. When updating fields, some fields might change automatically, such as modifiedDate. This method supports patch semantics.",
-     "flatPath": "drive/v2/files/{fileId}",
+     "flatPath": "files/{fileId}",
      "httpMethod": "PATCH",
      "id": "drive.files.patch",
      "parameterOrder": [
@@ -1985,7 +1985,7 @@
        "type": "boolean"
       }
      },
-     "path": "drive/v2/files/{fileId}",
+     "path": "files/{fileId}",
      "request": {
       "$ref": "File"
      },
@@ -2003,7 +2003,7 @@
     },
     "touch": {
      "description": "Set the file's updated time to the current server time.",
-     "flatPath": "drive/v2/files/{fileId}/touch",
+     "flatPath": "files/{fileId}/touch",
      "httpMethod": "POST",
      "id": "drive.files.touch",
      "parameterOrder": [
@@ -2039,7 +2039,7 @@
        "type": "boolean"
       }
      },
-     "path": "drive/v2/files/{fileId}/touch",
+     "path": "files/{fileId}/touch",
      "response": {
       "$ref": "File"
      },
@@ -2052,8 +2052,8 @@
      ]
     },
     "trash": {
-     "description": " Moves a file to the trash. The currently authenticated user must own the file or be at least a `fileOrganizer` on the parent for shared drive files. Only the owner may trash a file. The trashed item is excluded from all `files.list` responses returned for any user who does not own the file. However, all users with access to the file can see the trashed item metadata in an API response. All users with access can copy, download, export, and share the file. *Note:* Files moved to the trash still appear by default in results from the`files.list` method. To permanently remove a file, use `files.delete`.",
-     "flatPath": "drive/v2/files/{fileId}/trash",
+     "description": " Moves a file to the trash. The currently authenticated user must own the file or be at least a `fileOrganizer` on the parent for shared drive files. Only the owner may trash a file. The trashed item is excluded from all `files.list` responses returned for any user who doesn't own the file. However, all users with access to the file can see the trashed item metadata in an API response. All users with access can copy, download, export, and share the file. *Note:* Files moved to the trash still appear by default in results from the `files.list` method. To permanently remove a file, use `files.delete`.",
+     "flatPath": "files/{fileId}/trash",
      "httpMethod": "POST",
      "id": "drive.files.trash",
      "parameterOrder": [
@@ -2089,7 +2089,7 @@
        "type": "boolean"
       }
      },
-     "path": "drive/v2/files/{fileId}/trash",
+     "path": "files/{fileId}/trash",
      "response": {
       "$ref": "File"
      },
@@ -2102,7 +2102,7 @@
     },
     "untrash": {
      "description": "Restores a file from the trash. The currently authenticated user must own the file or be at least a `fileOrganizer` on the parent for shared drive files. Only the owner may untrash a file.",
-     "flatPath": "drive/v2/files/{fileId}/untrash",
+     "flatPath": "files/{fileId}/untrash",
      "httpMethod": "POST",
      "id": "drive.files.untrash",
      "parameterOrder": [
@@ -2138,7 +2138,7 @@
        "type": "boolean"
       }
      },
-     "path": "drive/v2/files/{fileId}/untrash",
+     "path": "files/{fileId}/untrash",
      "response": {
       "$ref": "File"
      },
@@ -2150,8 +2150,8 @@
      ]
     },
     "update": {
-     "description": " Updates a file's metadata and/or content. When calling this method, only populate fields in the request that you want to modify. When updating fields, some fields might be changed automatically, such as `modifiedDate`. This method supports patch semantics. This method supports an */upload* URI and accepts uploaded media with the following characteristics: - *Maximum file size:* 5120GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only used to indicate that any valid MIME type can be uploaded. For further information on uploading files, refer to [Upload files](/drive/api/guides/manage-uploads).",
-     "flatPath": "drive/v2/files/{fileId}",
+     "description": " Updates a file's metadata and/or content. When calling this method, only populate fields in the request that you want to modify. When updating fields, some fields might be changed automatically, such as `modifiedDate`. This method supports patch semantics. This method supports an */upload* URI and accepts uploaded media with the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only used to indicate that any valid MIME type can be uploaded. For more information on uploading files, see [Upload file data](/drive/api/guides/manage-uploads).",
+     "flatPath": "files/{fileId}",
      "httpMethod": "PUT",
      "id": "drive.files.update",
      "mediaUpload": {
@@ -2297,7 +2297,7 @@
        "type": "boolean"
       }
      },
-     "path": "drive/v2/files/{fileId}",
+     "path": "files/{fileId}",
      "request": {
       "$ref": "File"
      },
@@ -2316,7 +2316,7 @@
     },
     "watch": {
      "description": "Subscribes to changes to a file.",
-     "flatPath": "drive/v2/files/{fileId}/watch",
+     "flatPath": "files/{fileId}/watch",
      "httpMethod": "POST",
      "id": "drive.files.watch",
      "parameterOrder": [
@@ -2382,7 +2382,7 @@
        "type": "boolean"
       }
      },
-     "path": "drive/v2/files/{fileId}/watch",
+     "path": "files/{fileId}/watch",
      "request": {
       "$ref": "Channel",
       "parameterName": "resource"
@@ -2407,7 +2407,7 @@
    "methods": {
     "delete": {
      "description": "Removes a parent from a file.",
-     "flatPath": "drive/v2/files/{fileId}/parents/{parentId}",
+     "flatPath": "files/{fileId}/parents/{parentId}",
      "httpMethod": "DELETE",
      "id": "drive.parents.delete",
      "parameterOrder": [
@@ -2434,7 +2434,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/parents/{parentId}",
+     "path": "files/{fileId}/parents/{parentId}",
      "scopes": [
       "https://www.googleapis.com/auth/drive",
       "https://www.googleapis.com/auth/drive.file"
@@ -2442,7 +2442,7 @@
     },
     "get": {
      "description": "Gets a specific parent reference.",
-     "flatPath": "drive/v2/files/{fileId}/parents/{parentId}",
+     "flatPath": "files/{fileId}/parents/{parentId}",
      "httpMethod": "GET",
      "id": "drive.parents.get",
      "parameterOrder": [
@@ -2463,7 +2463,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/parents/{parentId}",
+     "path": "files/{fileId}/parents/{parentId}",
      "response": {
       "$ref": "ParentReference"
      },
@@ -2479,7 +2479,7 @@
     },
     "insert": {
      "description": "Adds a parent folder for a file.",
-     "flatPath": "drive/v2/files/{fileId}/parents",
+     "flatPath": "files/{fileId}/parents",
      "httpMethod": "POST",
      "id": "drive.parents.insert",
      "parameterOrder": [
@@ -2511,7 +2511,7 @@
        "type": "boolean"
       }
      },
-     "path": "drive/v2/files/{fileId}/parents",
+     "path": "files/{fileId}/parents",
      "request": {
       "$ref": "ParentReference"
      },
@@ -2526,7 +2526,7 @@
     },
     "list": {
      "description": "Lists a file's parents.",
-     "flatPath": "drive/v2/files/{fileId}/parents",
+     "flatPath": "files/{fileId}/parents",
      "httpMethod": "GET",
      "id": "drive.parents.list",
      "parameterOrder": [
@@ -2540,7 +2540,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/parents",
+     "path": "files/{fileId}/parents",
      "response": {
       "$ref": "ParentList"
      },
@@ -2560,7 +2560,7 @@
    "methods": {
     "delete": {
      "description": "Deletes a permission from a file or shared drive. **Warning:** Concurrent permissions operations on the same file are not supported; only the last update is applied.",
-     "flatPath": "drive/v2/files/{fileId}/permissions/{permissionId}",
+     "flatPath": "files/{fileId}/permissions/{permissionId}",
      "httpMethod": "DELETE",
      "id": "drive.permissions.delete",
      "parameterOrder": [
@@ -2599,7 +2599,7 @@
        "type": "boolean"
       }
      },
-     "path": "drive/v2/files/{fileId}/permissions/{permissionId}",
+     "path": "files/{fileId}/permissions/{permissionId}",
      "scopes": [
       "https://www.googleapis.com/auth/drive",
       "https://www.googleapis.com/auth/drive.file"
@@ -2607,7 +2607,7 @@
     },
     "get": {
      "description": "Gets a permission by ID.",
-     "flatPath": "drive/v2/files/{fileId}/permissions/{permissionId}",
+     "flatPath": "files/{fileId}/permissions/{permissionId}",
      "httpMethod": "GET",
      "id": "drive.permissions.get",
      "parameterOrder": [
@@ -2646,7 +2646,7 @@
        "type": "boolean"
       }
      },
-     "path": "drive/v2/files/{fileId}/permissions/{permissionId}",
+     "path": "files/{fileId}/permissions/{permissionId}",
      "response": {
       "$ref": "Permission"
      },
@@ -2661,7 +2661,7 @@
     },
     "getIdForEmail": {
      "description": "Returns the permission ID for an email address.",
-     "flatPath": "drive/v2/permissionIds/{email}",
+     "flatPath": "permissionIds/{email}",
      "httpMethod": "GET",
      "id": "drive.permissions.getIdForEmail",
      "parameterOrder": [
@@ -2675,7 +2675,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/permissionIds/{email}",
+     "path": "permissionIds/{email}",
      "response": {
       "$ref": "PermissionId"
      },
@@ -2692,7 +2692,7 @@
     },
     "insert": {
      "description": "Inserts a permission for a file or shared drive. **Warning:** Concurrent permissions operations on the same file are not supported; only the last update is applied.",
-     "flatPath": "drive/v2/files/{fileId}/permissions",
+     "flatPath": "files/{fileId}/permissions",
      "httpMethod": "POST",
      "id": "drive.permissions.insert",
      "parameterOrder": [
@@ -2747,7 +2747,7 @@
        "type": "boolean"
       }
      },
-     "path": "drive/v2/files/{fileId}/permissions",
+     "path": "files/{fileId}/permissions",
      "request": {
       "$ref": "Permission"
      },
@@ -2761,7 +2761,7 @@
     },
     "list": {
      "description": "Lists a file's or shared drive's permissions.",
-     "flatPath": "drive/v2/files/{fileId}/permissions",
+     "flatPath": "files/{fileId}/permissions",
      "httpMethod": "GET",
      "id": "drive.permissions.list",
      "parameterOrder": [
@@ -2811,7 +2811,7 @@
        "type": "boolean"
       }
      },
-     "path": "drive/v2/files/{fileId}/permissions",
+     "path": "files/{fileId}/permissions",
      "response": {
       "$ref": "PermissionList"
      },
@@ -2826,7 +2826,7 @@
     },
     "patch": {
      "description": "Updates a permission using patch semantics. **Warning:** Concurrent permissions operations on the same file are not supported; only the last update is applied.",
-     "flatPath": "drive/v2/files/{fileId}/permissions/{permissionId}",
+     "flatPath": "files/{fileId}/permissions/{permissionId}",
      "httpMethod": "PATCH",
      "id": "drive.permissions.patch",
      "parameterOrder": [
@@ -2877,7 +2877,7 @@
        "type": "boolean"
       }
      },
-     "path": "drive/v2/files/{fileId}/permissions/{permissionId}",
+     "path": "files/{fileId}/permissions/{permissionId}",
      "request": {
       "$ref": "Permission"
      },
@@ -2891,7 +2891,7 @@
     },
     "update": {
      "description": "Updates a permission. **Warning:** Concurrent permissions operations on the same file are not supported; only the last update is applied.",
-     "flatPath": "drive/v2/files/{fileId}/permissions/{permissionId}",
+     "flatPath": "files/{fileId}/permissions/{permissionId}",
      "httpMethod": "PUT",
      "id": "drive.permissions.update",
      "parameterOrder": [
@@ -2942,7 +2942,7 @@
        "type": "boolean"
       }
      },
-     "path": "drive/v2/files/{fileId}/permissions/{permissionId}",
+     "path": "files/{fileId}/permissions/{permissionId}",
      "request": {
       "$ref": "Permission"
      },
@@ -2960,7 +2960,7 @@
    "methods": {
     "delete": {
      "description": "Deletes a property.",
-     "flatPath": "drive/v2/files/{fileId}/properties/{propertyKey}",
+     "flatPath": "files/{fileId}/properties/{propertyKey}",
      "httpMethod": "DELETE",
      "id": "drive.properties.delete",
      "parameterOrder": [
@@ -2987,7 +2987,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/properties/{propertyKey}",
+     "path": "files/{fileId}/properties/{propertyKey}",
      "scopes": [
       "https://www.googleapis.com/auth/drive",
       "https://www.googleapis.com/auth/drive.appdata",
@@ -2997,7 +2997,7 @@
     },
     "get": {
      "description": "Gets a property by its key.",
-     "flatPath": "drive/v2/files/{fileId}/properties/{propertyKey}",
+     "flatPath": "files/{fileId}/properties/{propertyKey}",
      "httpMethod": "GET",
      "id": "drive.properties.get",
      "parameterOrder": [
@@ -3024,7 +3024,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/properties/{propertyKey}",
+     "path": "files/{fileId}/properties/{propertyKey}",
      "response": {
       "$ref": "Property"
      },
@@ -3040,7 +3040,7 @@
     },
     "insert": {
      "description": "Adds a property to a file, or updates it if it already exists.",
-     "flatPath": "drive/v2/files/{fileId}/properties",
+     "flatPath": "files/{fileId}/properties",
      "httpMethod": "POST",
      "id": "drive.properties.insert",
      "parameterOrder": [
@@ -3054,7 +3054,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/properties",
+     "path": "files/{fileId}/properties",
      "request": {
       "$ref": "Property"
      },
@@ -3070,7 +3070,7 @@
     },
     "list": {
      "description": "Lists a file's properties.",
-     "flatPath": "drive/v2/files/{fileId}/properties",
+     "flatPath": "files/{fileId}/properties",
      "httpMethod": "GET",
      "id": "drive.properties.list",
      "parameterOrder": [
@@ -3084,7 +3084,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/properties",
+     "path": "files/{fileId}/properties",
      "response": {
       "$ref": "PropertyList"
      },
@@ -3100,7 +3100,7 @@
     },
     "patch": {
      "description": "Updates a property.",
-     "flatPath": "drive/v2/files/{fileId}/properties/{propertyKey}",
+     "flatPath": "files/{fileId}/properties/{propertyKey}",
      "httpMethod": "PATCH",
      "id": "drive.properties.patch",
      "parameterOrder": [
@@ -3127,7 +3127,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/properties/{propertyKey}",
+     "path": "files/{fileId}/properties/{propertyKey}",
      "request": {
       "$ref": "Property"
      },
@@ -3143,7 +3143,7 @@
     },
     "update": {
      "description": "Updates a property.",
-     "flatPath": "drive/v2/files/{fileId}/properties/{propertyKey}",
+     "flatPath": "files/{fileId}/properties/{propertyKey}",
      "httpMethod": "PUT",
      "id": "drive.properties.update",
      "parameterOrder": [
@@ -3170,7 +3170,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/properties/{propertyKey}",
+     "path": "files/{fileId}/properties/{propertyKey}",
      "request": {
       "$ref": "Property"
      },
@@ -3190,7 +3190,7 @@
    "methods": {
     "delete": {
      "description": "Deletes a reply.",
-     "flatPath": "drive/v2/files/{fileId}/comments/{commentId}/replies/{replyId}",
+     "flatPath": "files/{fileId}/comments/{commentId}/replies/{replyId}",
      "httpMethod": "DELETE",
      "id": "drive.replies.delete",
      "parameterOrder": [
@@ -3218,7 +3218,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/comments/{commentId}/replies/{replyId}",
+     "path": "files/{fileId}/comments/{commentId}/replies/{replyId}",
      "scopes": [
       "https://www.googleapis.com/auth/drive",
       "https://www.googleapis.com/auth/drive.file"
@@ -3226,7 +3226,7 @@
     },
     "get": {
      "description": "Gets a reply.",
-     "flatPath": "drive/v2/files/{fileId}/comments/{commentId}/replies/{replyId}",
+     "flatPath": "files/{fileId}/comments/{commentId}/replies/{replyId}",
      "httpMethod": "GET",
      "id": "drive.replies.get",
      "parameterOrder": [
@@ -3260,7 +3260,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/comments/{commentId}/replies/{replyId}",
+     "path": "files/{fileId}/comments/{commentId}/replies/{replyId}",
      "response": {
       "$ref": "CommentReply"
      },
@@ -3272,7 +3272,7 @@
     },
     "insert": {
      "description": "Creates a new reply to the given comment.",
-     "flatPath": "drive/v2/files/{fileId}/comments/{commentId}/replies",
+     "flatPath": "files/{fileId}/comments/{commentId}/replies",
      "httpMethod": "POST",
      "id": "drive.replies.insert",
      "parameterOrder": [
@@ -3293,7 +3293,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/comments/{commentId}/replies",
+     "path": "files/{fileId}/comments/{commentId}/replies",
      "request": {
       "$ref": "CommentReply"
      },
@@ -3307,7 +3307,7 @@
     },
     "list": {
      "description": "Lists all of the replies to a comment.",
-     "flatPath": "drive/v2/files/{fileId}/comments/{commentId}/replies",
+     "flatPath": "files/{fileId}/comments/{commentId}/replies",
      "httpMethod": "GET",
      "id": "drive.replies.list",
      "parameterOrder": [
@@ -3348,7 +3348,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/comments/{commentId}/replies",
+     "path": "files/{fileId}/comments/{commentId}/replies",
      "response": {
       "$ref": "CommentReplyList"
      },
@@ -3360,7 +3360,7 @@
     },
     "patch": {
      "description": "Updates an existing reply.",
-     "flatPath": "drive/v2/files/{fileId}/comments/{commentId}/replies/{replyId}",
+     "flatPath": "files/{fileId}/comments/{commentId}/replies/{replyId}",
      "httpMethod": "PATCH",
      "id": "drive.replies.patch",
      "parameterOrder": [
@@ -3388,7 +3388,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/comments/{commentId}/replies/{replyId}",
+     "path": "files/{fileId}/comments/{commentId}/replies/{replyId}",
      "request": {
       "$ref": "CommentReply"
      },
@@ -3402,7 +3402,7 @@
     },
     "update": {
      "description": "Updates an existing reply.",
-     "flatPath": "drive/v2/files/{fileId}/comments/{commentId}/replies/{replyId}",
+     "flatPath": "files/{fileId}/comments/{commentId}/replies/{replyId}",
      "httpMethod": "PUT",
      "id": "drive.replies.update",
      "parameterOrder": [
@@ -3430,7 +3430,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/comments/{commentId}/replies/{replyId}",
+     "path": "files/{fileId}/comments/{commentId}/replies/{replyId}",
      "request": {
       "$ref": "CommentReply"
      },
@@ -3448,7 +3448,7 @@
    "methods": {
     "delete": {
      "description": "Permanently deletes a file version. You can only delete revisions for files with binary content, like images or videos. Revisions for other files, like Google Docs or Sheets, and the last remaining file version can't be deleted.",
-     "flatPath": "drive/v2/files/{fileId}/revisions/{revisionId}",
+     "flatPath": "files/{fileId}/revisions/{revisionId}",
      "httpMethod": "DELETE",
      "id": "drive.revisions.delete",
      "parameterOrder": [
@@ -3469,7 +3469,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/revisions/{revisionId}",
+     "path": "files/{fileId}/revisions/{revisionId}",
      "scopes": [
       "https://www.googleapis.com/auth/drive",
       "https://www.googleapis.com/auth/drive.appdata",
@@ -3478,7 +3478,7 @@
     },
     "get": {
      "description": "Gets a specific revision.",
-     "flatPath": "drive/v2/files/{fileId}/revisions/{revisionId}",
+     "flatPath": "files/{fileId}/revisions/{revisionId}",
      "httpMethod": "GET",
      "id": "drive.revisions.get",
      "parameterOrder": [
@@ -3499,7 +3499,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/revisions/{revisionId}",
+     "path": "files/{fileId}/revisions/{revisionId}",
      "response": {
       "$ref": "Revision"
      },
@@ -3515,7 +3515,7 @@
     },
     "list": {
      "description": "Lists a file's revisions.",
-     "flatPath": "drive/v2/files/{fileId}/revisions",
+     "flatPath": "files/{fileId}/revisions",
      "httpMethod": "GET",
      "id": "drive.revisions.list",
      "parameterOrder": [
@@ -3543,7 +3543,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/revisions",
+     "path": "files/{fileId}/revisions",
      "response": {
       "$ref": "RevisionList"
      },
@@ -3559,7 +3559,7 @@
     },
     "patch": {
      "description": "Updates a revision.",
-     "flatPath": "drive/v2/files/{fileId}/revisions/{revisionId}",
+     "flatPath": "files/{fileId}/revisions/{revisionId}",
      "httpMethod": "PATCH",
      "id": "drive.revisions.patch",
      "parameterOrder": [
@@ -3580,7 +3580,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/revisions/{revisionId}",
+     "path": "files/{fileId}/revisions/{revisionId}",
      "request": {
       "$ref": "Revision"
      },
@@ -3595,7 +3595,7 @@
     },
     "update": {
      "description": "Updates a revision.",
-     "flatPath": "drive/v2/files/{fileId}/revisions/{revisionId}",
+     "flatPath": "files/{fileId}/revisions/{revisionId}",
      "httpMethod": "PUT",
      "id": "drive.revisions.update",
      "parameterOrder": [
@@ -3616,7 +3616,7 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/files/{fileId}/revisions/{revisionId}",
+     "path": "files/{fileId}/revisions/{revisionId}",
      "request": {
       "$ref": "Revision"
      },
@@ -3635,7 +3635,7 @@
    "methods": {
     "delete": {
      "description": "Deprecated: Use `drives.delete` instead.",
-     "flatPath": "drive/v2/teamdrives/{teamDriveId}",
+     "flatPath": "teamdrives/{teamDriveId}",
      "httpMethod": "DELETE",
      "id": "drive.teamdrives.delete",
      "parameterOrder": [
@@ -3649,14 +3649,14 @@
        "type": "string"
       }
      },
-     "path": "drive/v2/teamdrives/{teamDriveId}",
+     "path": "teamdrives/{teamDriveId}",
      "scopes": [
       "https://www.googleapis.com/auth/drive"
      ]
     },
     "get": {
      "description": "Deprecated: Use `drives.get` instead.",
-     "flatPath": "drive/v2/teamdrives/{teamDriveId}",
+     "flatPath": "teamdrives/{teamDriveId}",
      "httpMethod": "GET",
      "id": "drive.teamdrives.get",
      "parameterOrder": [
@@ -3676,7 +3676,7 @@
        "type": "boolean"
       }
      },
-     "path": "drive/v2/teamdrives/{teamDriveId}",
+     "path": "teamdrives/{teamDriveId}",
      "response": {
       "$ref": "TeamDrive"
      },
@@ -3687,7 +3687,7 @@
     },
     "insert": {
      "description": "Deprecated: Use `drives.insert` instead.",
-     "flatPath": "drive/v2/teamdrives",
+     "flatPath": "teamdrives",
      "httpMethod": "POST",
      "id": "drive.teamdrives.insert",
      "parameterOrder": [
@@ -3695,13 +3695,13 @@
      ],
      "parameters": {
       "requestId": {
-       "description": "An ID, such as a random UUID, which uniquely identifies this user's request for idempotent creation of a Team Drive. A repeated request by the same user and with the same request ID will avoid creating duplicates by attempting to create the same Team Drive. If the Team Drive already exists a 409 error will be returned.",
+       "description": "Required. An ID, such as a random UUID, which uniquely identifies this user's request for idempotent creation of a Team Drive. A repeated request by the same user and with the same request ID will avoid creating duplicates by attempting to create the same Team Drive. If the Team Drive already exists a 409 error will be returned.",
        "location": "query",
        "required": true,
        "type": "string"
       }
      },
-     "path": "drive/v2/teamdrives",
+     "path": "teamdrives",
      "request": {
       "$ref": "TeamDrive"
      },
@@ -3714,7 +3714,7 @@
     },
     "list": {
      "description": "Deprecated: Use `drives.list` instead.",
-     "flatPath": "drive/v2/teamdrives",
+     "flatPath": "teamdrives",
      "httpMethod": "GET",
      "id": "drive.teamdrives.list",
      "parameterOrder": [],
@@ -3745,7 +3745,7 @@
        "type": "boolean"
       }
      },
-     "path": "drive/v2/teamdrives",
+     "path": "teamdrives",
      "response": {
       "$ref": "TeamDriveList"
      },
@@ -3756,7 +3756,7 @@
     },
     "update": {
      "description": "Deprecated: Use `drives.update` instead.",
-     "flatPath": "drive/v2/teamdrives/{teamDriveId}",
+     "flatPath": "teamdrives/{teamDriveId}",
      "httpMethod": "PUT",
      "id": "drive.teamdrives.update",
      "parameterOrder": [
@@ -3776,7 +3776,7 @@
        "type": "boolean"
       }
      },
-     "path": "drive/v2/teamdrives/{teamDriveId}",
+     "path": "teamdrives/{teamDriveId}",
      "request": {
       "$ref": "TeamDrive"
      },
@@ -3790,7 +3790,7 @@
    }
   }
  },
- "revision": "20230502",
+ "revision": "20230517",
  "rootUrl": "https://www.googleapis.com/",
  "schemas": {
   "About": {
@@ -6608,7 +6608,7 @@
    "type": "object"
   }
  },
- "servicePath": "",
+ "servicePath": "drive/v2/",
  "title": "Google Drive API",
  "version": "v2"
 }

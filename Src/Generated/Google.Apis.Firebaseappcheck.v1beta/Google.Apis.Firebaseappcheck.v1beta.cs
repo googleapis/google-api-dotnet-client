@@ -3482,12 +3482,15 @@ namespace Google.Apis.Firebaseappcheck.v1beta
         /// providers App Check tokens exchanged from debug secrets are also supported. Calling this method on an
         /// otherwise valid App Check token with an unsupported provider will cause an HTTP 400 error to be returned.
         /// Returns whether this token was already consumed before this call. If this is the first time this method has
-        /// seen the given App Check token, the field `already_consumed` will contain the value `false`. The given token
-        /// will then be marked as `already_consumed` for all future invocations of this method for that token. Note
-        /// that if the given App Check token is invalid, an HTTP 403 error is returned instead of a response object,
-        /// regardless whether the token was already consumed. Currently, when evaluating whether an App Check token was
-        /// already consumed, only calls to this exact method are counted. Use of the App Check token elsewhere will not
-        /// mark the token as being already consumed.
+        /// seen the given App Check token, the field `already_consumed` in the response will be absent. The given token
+        /// will then be marked as `already_consumed` (set to `true`) for all future invocations of this method for that
+        /// token. Note that if the given App Check token is invalid, an HTTP 403 error is returned instead of a
+        /// response object, regardless whether the token was already consumed. Currently, when evaluating whether an
+        /// App Check token was already consumed, only calls to this exact method are counted. Use of the App Check
+        /// token elsewhere will not mark the token as being already consumed. The caller must have the
+        /// [`firebaseappcheck.appCheckTokens.verify`](https://firebase.google.com/docs/projects/iam/permissions#app-check)
+        /// permission to call this method. This permission is part of the [Firebase App Check Token Verifier
+        /// role](https://firebase.google.com/docs/projects/iam/roles-predefined-product#app-check).
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">
@@ -3508,12 +3511,15 @@ namespace Google.Apis.Firebaseappcheck.v1beta
         /// providers App Check tokens exchanged from debug secrets are also supported. Calling this method on an
         /// otherwise valid App Check token with an unsupported provider will cause an HTTP 400 error to be returned.
         /// Returns whether this token was already consumed before this call. If this is the first time this method has
-        /// seen the given App Check token, the field `already_consumed` will contain the value `false`. The given token
-        /// will then be marked as `already_consumed` for all future invocations of this method for that token. Note
-        /// that if the given App Check token is invalid, an HTTP 403 error is returned instead of a response object,
-        /// regardless whether the token was already consumed. Currently, when evaluating whether an App Check token was
-        /// already consumed, only calls to this exact method are counted. Use of the App Check token elsewhere will not
-        /// mark the token as being already consumed.
+        /// seen the given App Check token, the field `already_consumed` in the response will be absent. The given token
+        /// will then be marked as `already_consumed` (set to `true`) for all future invocations of this method for that
+        /// token. Note that if the given App Check token is invalid, an HTTP 403 error is returned instead of a
+        /// response object, regardless whether the token was already consumed. Currently, when evaluating whether an
+        /// App Check token was already consumed, only calls to this exact method are counted. Use of the App Check
+        /// token elsewhere will not mark the token as being already consumed. The caller must have the
+        /// [`firebaseappcheck.appCheckTokens.verify`](https://firebase.google.com/docs/projects/iam/permissions#app-check)
+        /// permission to call this method. This permission is part of the [Firebase App Check Token Verifier
+        /// role](https://firebase.google.com/docs/projects/iam/roles-predefined-product#app-check).
         /// </summary>
         public class VerifyAppCheckTokenRequest : FirebaseappcheckBaseServiceRequest<Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse>
         {
@@ -4383,7 +4389,10 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
     /// <summary>Request message for the VerifyAppCheckToken method.</summary>
     public class GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The App Check token to verify.</summary>
+        /// <summary>
+        /// Required. The App Check token to verify. App Check tokens exchanged from the SafetyNet provider are not
+        /// supported; an HTTP 400 error will be returned.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appCheckToken")]
         public virtual string AppCheckToken { get; set; }
 
@@ -4396,10 +4405,10 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
     {
         /// <summary>
         /// Whether this token was already consumed. If this is the first time this method has seen the given App Check
-        /// token, this field will contain the value `false`. The given token will then be marked as `already_consumed`
-        /// for all future invocations of this method for that token. Note that if the given App Check token is invalid,
-        /// an HTTP 403 error is returned instead of a response containing this field, regardless whether the token was
-        /// already consumed.
+        /// token, this field will be omitted from the response. The given token will then be marked as
+        /// `already_consumed` (set to `true`) for all future invocations of this method for that token. Note that if
+        /// the given App Check token is invalid, an HTTP 403 error is returned instead of a response containing this
+        /// field, regardless whether the token was already consumed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alreadyConsumed")]
         public virtual System.Nullable<bool> AlreadyConsumed { get; set; }

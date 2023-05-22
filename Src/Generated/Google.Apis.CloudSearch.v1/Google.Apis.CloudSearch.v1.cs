@@ -5019,6 +5019,35 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Starting state for an individual add-on frame.</summary>
+    public class AddOnFrameStartingState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Additional data internal to the add-on that can be used to initialize itself.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalData")]
+        public virtual string AdditionalData { get; set; }
+
+        /// <summary>The uri of the artifact being used for an add-on co-activity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Starting state properties for add-on co-activity.</summary>
+    public class AddOnStartingState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of starting state frames for the add-on co-activity. Keys for this map are the values of the
+        /// AddOnFrameType enum.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addOnFrameStartingStates")]
+        public virtual System.Collections.Generic.IDictionary<string, AddOnFrameStartingState> AddOnFrameStartingStates { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class AddonComposeUiActionMarkup : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -5224,6 +5253,21 @@ namespace Google.Apis.CloudSearch.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("youtubeMetadata")]
         public virtual YoutubeMetadata YoutubeMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about the screen annotation session.</summary>
+    public class AnnotationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The device resource names of other devices which can annotate the screen.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coannotatorDeviceIds")]
+        public virtual System.Collections.Generic.IList<string> CoannotatorDeviceIds { get; set; }
+
+        /// <summary>Whether the annotation is active.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isActive")]
+        public virtual System.Nullable<bool> IsActive { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5488,11 +5532,15 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dlpScanSummary")]
         public virtual DlpScanSummary DlpScanSummary { get; set; }
 
+        /// <summary>The list of experiments this video is enabled for Next tag: 19</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("experiment")]
+        public virtual System.Collections.Generic.IList<string> Experiment { get; set; }
+
         /// <summary>GroupId to which this attachment is uploaded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
         public virtual GroupId GroupId { get; set; }
 
-        /// <summary>If the uploaded file is a video that has been transcoded on the client side Next tag: 18</summary>
+        /// <summary>If the uploaded file is a video that has been transcoded on the client side</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isClientSideTranscodedVideo")]
         public virtual System.Nullable<bool> IsClientSideTranscodedVideo { get; set; }
 
@@ -6026,6 +6074,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("meetingCode")]
         public virtual string MeetingCode { get; set; }
 
+        /// <summary>Required. Type of the meeting. This controls the chat client UX.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meetingType")]
+        public virtual string MeetingType { get; set; }
+
         /// <summary>
         /// Required. A URL, in the format "https://meet.google.com/*" (e.g. https://meet.google.com/cxv-zbgj-wzw), to
         /// identify and access the meeting space.
@@ -6101,6 +6153,23 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata used to describe how to render a message in search results page, e.g., highlighting and snipetting. In
+    /// future, we can use this proto to return more search specific data attached to a message.
+    /// </summary>
+    public class AppsDynamiteSharedMessageSearchInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An example use case: clients can use this field to highlight matched segments in message text_body defined
+        /// in http://google3/apps/dynamite/v1/frontend/api/message.proto;l=104;rcl=513400736.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchedSegmentsInTextBody")]
+        public virtual System.Collections.Generic.IList<AppsDynamiteSharedTextSegmentsWithDescription> MatchedSegmentsInTextBody { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6529,7 +6598,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents the complete border style applied to widgets.</summary>
+    /// <summary>The style options for the border of a card or widget, including the border type and color.</summary>
     public class AppsDynamiteStorageBorderStyle : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The corner radius for the border.</summary>
@@ -6718,13 +6787,12 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// <summary>Represents a Columns widget that displays a single row of columns.</summary>
     public class AppsDynamiteStorageColumns : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Each card supports up to 2 columns.</summary>
+        /// <summary>
+        /// Each card supports up to 2 columns. If the user's screen width is less than or equal to 480 pixels, the
+        /// second column wraps below the first column.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columnItems")]
         public virtual System.Collections.Generic.IList<AppsDynamiteStorageColumnsColumn> ColumnItems { get; set; }
-
-        /// <summary>Controls how the column resizes based on screen width.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("wrapStyle")]
-        public virtual string WrapStyle { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7828,6 +7896,15 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cardAddOnData")]
         public virtual AppsDynamiteStorageCard CardAddOnData { get; set; }
 
+        /// <summary>
+        /// Contains additional metadata that further enhance the annotation when it is returned as part of search
+        /// response. For example, this can be used to define how the attachment matches the search. Information can be
+        /// used to highlight in rendering search results. The following are the different attachment text fields that
+        /// are covered by this field: 1. ContextualAddOn.Card.CardHeader.title 2. CardItem.CardItemHeader.title
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("componentSearchInfo")]
+        public virtual AppsDynamiteSharedMessageComponentSearchInfo ComponentSearchInfo { get; set; }
+
         /// <summary>Deprecated version of Gmail AddOn attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deprecatedAddOnData")]
         public virtual ContextualAddOnMarkup DeprecatedAddOnData { get; set; }
@@ -8273,6 +8350,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("availableAccessTypes")]
         public virtual System.Collections.Generic.IList<string> AvailableAccessTypes { get; set; }
 
+        /// <summary>Available screen annotation tool types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableAnnotationToolTypes")]
+        public virtual System.Collections.Generic.IList<string> AvailableAnnotationToolTypes { get; set; }
+
         /// <summary>
         /// Output only. The set of reactions that clients are allowed to send and can expect to receive. Note that a
         /// device in the conference should have the MAY_SEND_REACTIONS privilege to be able to send reactions.
@@ -8412,6 +8493,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Indicates whether the chat lock is currently on or off.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chatLock")]
         public virtual System.Nullable<bool> ChatLock { get; set; }
+
+        /// <summary>Indicates whether the co-activity lock is currently on or off.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coActivityLock")]
+        public virtual System.Nullable<bool> CoActivityLock { get; set; }
 
         /// <summary>Whether Client-side Encryption is enabled for this conference.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cseEnabled")]
@@ -8892,9 +8977,29 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("activityTitle")]
         public virtual string ActivityTitle { get; set; }
 
+        /// <summary>The add-on id of the current add-on being used for co-activity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addOnId")]
+        public virtual string AddOnId { get; set; }
+
+        /// <summary>The starting state of the add-on frames for co-activity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addOnStartingState")]
+        public virtual AddOnStartingState AddOnStartingState { get; set; }
+
         /// <summary>Identifies the app handling this co-activity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("coActivityApp")]
         public virtual string CoActivityApp { get; set; }
+
+        /// <summary>The resource name of the device that initiated the co-activity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initiatorDeviceId")]
+        public virtual string InitiatorDeviceId { get; set; }
+
+        /// <summary>The resource name of the device that is presenting the add-on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("presentationDeviceId")]
+        public virtual string PresentationDeviceId { get; set; }
+
+        /// <summary>The project number of the add-on to determine version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
+        public virtual System.Nullable<long> ProjectNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9341,7 +9446,15 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class DataLossPreventionMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The DLP scan summary that should only be set after the message is scanned in the Chat backend.
+        /// The scan record contains the action taken on the message send as well as scan the summary for the message
+        /// contents and the attachment, if applicable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dlpMessageScanRecord")]
+        public virtual DlpMessageScanRecord DlpMessageScanRecord { get; set; }
+
+        /// <summary>
+        /// Deprecated. To be replaced by DLP scan record. The DLP scan summary that should only be set after the
+        /// message is scanned in the Chat backend.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dlpScanSummary")]
         public virtual DlpScanSummary DlpScanSummary { get; set; }
@@ -9725,6 +9838,32 @@ namespace Google.Apis.CloudSearch.v1.Data
     }
 
     /// <summary>
+    /// A summary of a DLP scan. This is a combination summary that contains both scan on message and scan on
+    /// attachments if any.
+    /// </summary>
+    public class DlpMessageScanRecord : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Summaries of the attachment scan if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachmentScanSummary")]
+        public virtual DlpScanSummary AttachmentScanSummary { get; set; }
+
+        /// <summary>The applied action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dlpAction")]
+        public virtual DlpAction DlpAction { get; set; }
+
+        /// <summary>Summaries of the message scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageScanSummary")]
+        public virtual DlpScanSummary MessageScanSummary { get; set; }
+
+        /// <summary>The DLP scan outcome for the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scanOutcome")]
+        public virtual string ScanOutcome { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A summary of a DLP scan event. This is a summary and should contain the minimum amount of data required to
     /// identify and process DLP scans. It is written to Starcast and encoded &amp;amp; returned to the client on
     /// attachment upload.
@@ -9756,6 +9895,13 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scanOutcome")]
         public virtual string ScanOutcome { get; set; }
+
+        /// <summary>
+        /// The event that triggered the scan. This corresponds to the rule trigger configured in admin console and maps
+        /// to the different things that can be scanned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scanTrigger")]
+        public virtual string ScanTrigger { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11171,7 +11317,10 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// </summary>
     public class GoogleChatV1ContextualAddOnMarkupCardSection : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The header of the section, text formatted supported.</summary>
+        /// <summary>
+        /// The header of the section. Formatted text is supported. For more information about formatting text, see
+        /// Formatting text in Google Chat apps and Formatting text in Google Workspace Add-ons.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
         public virtual string Header { get; set; }
 
@@ -11186,7 +11335,9 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// <summary>A widget is a UI element that presents texts, images, etc.</summary>
     public class GoogleChatV1WidgetMarkup : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of buttons. Buttons is also oneof data and only one of these fields should be set.</summary>
+        /// <summary>
+        /// A list of buttons. Buttons is also `oneof data` and only one of these fields should be set.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buttons")]
         public virtual System.Collections.Generic.IList<GoogleChatV1WidgetMarkupButton> Buttons { get; set; }
 
@@ -11317,7 +11468,10 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// </summary>
     public class GoogleChatV1WidgetMarkupKeyValue : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The text of the bottom label. Formatted text supported.</summary>
+        /// <summary>
+        /// The text of the bottom label. Formatted text supported. For more information about formatting text, see
+        /// Formatting text in Google Chat apps and Formatting text in Google Workspace Add-ons.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bottomLabel")]
         public virtual string BottomLabel { get; set; }
 
@@ -11325,7 +11479,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("button")]
         public virtual GoogleChatV1WidgetMarkupButton Button { get; set; }
 
-        /// <summary>The text of the content. Formatted text supported and always required.</summary>
+        /// <summary>
+        /// The text of the content. Formatted text supported and always required. For more information about formatting
+        /// text, see Formatting text in Google Chat apps and Formatting text in Google Workspace Add-ons.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
 
@@ -11345,7 +11502,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
         public virtual GoogleChatV1WidgetMarkupOnClick OnClick { get; set; }
 
-        /// <summary>The text of the top label. Formatted text supported.</summary>
+        /// <summary>
+        /// The text of the top label. Formatted text supported. For more information about formatting text, see
+        /// Formatting text in Google Chat apps and Formatting text in Google Workspace Add-ons.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topLabel")]
         public virtual string TopLabel { get; set; }
 
@@ -11394,7 +11554,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A paragraph of text. Formatted text supported.</summary>
+    /// <summary>
+    /// A paragraph of text. Formatted text supported. For more information about formatting text, see Formatting text
+    /// in Google Chat apps and Formatting text in Google Workspace Add-ons.
+    /// </summary>
     public class GoogleChatV1WidgetMarkupTextParagraph : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
@@ -13415,7 +13578,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Annotation metadata to display system messages for membership changes. Next Tag: 8</summary>
+    /// <summary>Annotation metadata to display system messages for membership changes. Next Tag: 13</summary>
     public class MembershipChangedMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("affectedMemberProfiles")]
@@ -13634,11 +13797,34 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string MessageOrigin { get; set; }
 
         /// <summary>
+        /// Contains reference to another message. It is used in shortcuts which are used to collect messages from
+        /// different spaces with a certain common property into another space. For example, all @mentions of a user are
+        /// collected into a mention shortcut space (go/chat-shortcuts-backend-design for more details). Most
+        /// information from the source message (like text) are copied onto top-level Message fields of shortcut
+        /// messages by the server. The MessageReference is helpful for clients to enable things like click navigation
+        /// to source message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageReference")]
+        public virtual MessageReference MessageReference { get; set; }
+
+        /// <summary>
+        /// Contains additional metadata that further annotates this message when returned as a search response. For
+        /// example, this field can be used to highlight messages during search results rendering. In this case, clients
+        /// can use this field to highlight matched segments in the message text_body (defined with tag 6).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageSearchInfo")]
+        public virtual AppsDynamiteSharedMessageSearchInfo MessageSearchInfo { get; set; }
+
+        /// <summary>
         /// State of the message, indicating whether the message is visible to all members in the group or is only
         /// visible to the sender only, or the private_message_viewer if it is set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageState")]
         public virtual string MessageState { get; set; }
+
+        /// <summary>Indicates the number of unicode emojis in the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numberOfUnicodeEmojis")]
+        public virtual System.Nullable<int> NumberOfUnicodeEmojis { get; set; }
 
         /// <summary>Indicates if this message contains any suggestions that were provided by any Apps.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originAppSuggestions")]
@@ -13855,6 +14041,24 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("babelProps")]
         public virtual BabelMessageProps BabelProps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Contains reference to another message. It is used in shortcuts which are used to collect messages from different
+    /// spaces with a certain common property into another space. For example, all @mentions of a user are collected
+    /// into a mention shortcut space (go/chat-shortcuts-backend-design for more details). Clients can use this
+    /// reference to enable navigation to the source message when the shortcut message is clicked and also to identify a
+    /// few other details about the source message. Other fields (like text) from the source message are copied on to
+    /// the top-level fields in the Message proto by the server (More details in
+    /// go/chat-shortcuts-client-server-design).
+    /// </summary>
+    public class MessageReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceInfo")]
+        public virtual SourceMessageInfo SourceInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14634,6 +14838,10 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// </summary>
     public class Presenter : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Screen annotation information associated with this presentation session.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("annotationInfo")]
+        public virtual AnnotationInfo AnnotationInfo { get; set; }
+
         /// <summary>
         /// The device resource name of the device which requested the current presenter to be set. This field can not
         /// be modified by clients.
@@ -16170,6 +16378,27 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// SearchLink metadata, for SEARCH_LINK segments. For a search link, the "text" field should contain the display
+    /// text. This is currently not indexed.
+    /// </summary>
+    public class SearchLinkData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>For lightweight scoring in serving time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kgEntityConfidence")]
+        public virtual System.Nullable<float> KgEntityConfidence { get; set; }
+
+        /// <summary>MID of the KG entity being linked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mid")]
+        public virtual string Mid { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("queryBroadnessScore")]
+        public virtual System.Nullable<float> QueryBroadnessScore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Additional search quality metadata of the item.</summary>
     public class SearchQualityMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16382,6 +16611,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("linkData")]
         public virtual LinkData LinkData { get; set; }
 
+        /// <summary>For SEARCH_LINK type:</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchLinkData")]
+        public virtual SearchLinkData SearchLinkData { get; set; }
+
         /// <summary>
         /// Text content of the Segment. As a general rule, this field should contain the actual text that should be
         /// rendered in the UI. Thus, for a hashtag, it should be "#Foo", and for a link, it should be the display text.
@@ -16580,6 +16813,13 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("chatLock")]
         public virtual System.Nullable<bool> ChatLock { get; set; }
+
+        /// <summary>
+        /// The co-activity lock of the meeting space that lets owner control whether the participants can start/stop or
+        /// update the state of co-activity.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coActivityLock")]
+        public virtual System.Nullable<bool> CoActivityLock { get; set; }
 
         /// <summary>Whether meeting artifacts will be shared with cohosts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cohostArtifactSharingEnabled")]
@@ -16886,6 +17126,19 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numSuggestions")]
         public virtual System.Nullable<int> NumSuggestions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class SourceMessageInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Source message ID</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
+        public virtual MessageId MessageId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("messageType")]
+        public virtual string MessageType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
