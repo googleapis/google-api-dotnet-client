@@ -860,7 +860,7 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
 
         /// <summary>
         /// Output only. Error regarding the state of the Execution resource. For example, this field will have error
-        /// details if the Execution data is unavailable due to revoked KMS key permissions.
+        /// details if the execution data is unavailable due to revoked KMS key permissions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateError")]
         public virtual StateError StateError { get; set; }

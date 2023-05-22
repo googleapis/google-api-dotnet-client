@@ -10361,10 +10361,10 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The results of a Deidentify action from an Inspect job.</summary>
+    /// <summary>The results of a Deidentify action from an inspect job.</summary>
     public class GooglePrivacyDlpV2DeidentifyDataSourceDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Stats about de-identification.</summary>
+        /// <summary>Stats about the de-identification operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deidentifyStats")]
         public virtual GooglePrivacyDlpV2DeidentifyDataSourceStats DeidentifyStats { get; set; }
 
@@ -13055,21 +13055,21 @@ namespace Google.Apis.DLP.v2.Data
     public class GooglePrivacyDlpV2RequestedDeidentifyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Snapshot of the state of the DeidentifyTemplate from the Deidentify action at the time this job was run.
+        /// Snapshot of the state of the `DeidentifyTemplate` from the Deidentify action at the time this job was run.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotDeidentifyTemplate")]
         public virtual GooglePrivacyDlpV2DeidentifyTemplate SnapshotDeidentifyTemplate { get; set; }
 
         /// <summary>
-        /// Snapshot of the state of the image redact DeidentifyTemplate from the Deidentify action at the time this job
-        /// was run.
+        /// Snapshot of the state of the image transformation `DeidentifyTemplate` from the `Deidentify` action at the
+        /// time this job was run.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotImageRedactTemplate")]
         public virtual GooglePrivacyDlpV2DeidentifyTemplate SnapshotImageRedactTemplate { get; set; }
 
         /// <summary>
-        /// Snapshot of the state of the structured DeidentifyTemplate from the Deidentify action at the time this job
-        /// was run.
+        /// Snapshot of the state of the structured `DeidentifyTemplate` from the `Deidentify` action at the time this
+        /// job was run.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotStructuredDeidentifyTemplate")]
         public virtual GooglePrivacyDlpV2DeidentifyTemplate SnapshotStructuredDeidentifyTemplate { get; set; }
@@ -13203,10 +13203,12 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Score is a summary of all elements in the data profile. A higher number means more sensitive.</summary>
+    /// <summary>
+    /// Score is calculated from of all elements in the data profile. A higher level means the data is more sensitive.
+    /// </summary>
     public class GooglePrivacyDlpV2SensitivityScore : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The score applied to the resource.</summary>
+        /// <summary>The sensitivity score applied to the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("score")]
         public virtual string Score { get; set; }
 
@@ -13480,7 +13482,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("datasetLocation")]
         public virtual string DatasetLocation { get; set; }
 
-        /// <summary>The GCP project ID that owns the BigQuery dataset.</summary>
+        /// <summary>The Google Cloud project ID that owns the BigQuery dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetProjectId")]
         public virtual string DatasetProjectId { get; set; }
 

@@ -5561,6 +5561,10 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5753,7 +5757,7 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// Optional. If set to a valid TCP port (1-65535), instructs the SIDECAR proxy to listen on the specified port
         /// of localhost (127.0.0.1) address. The SIDECAR proxy will expect all traffic to be redirected to this port
         /// regardless of its actual ip:port destination. If unset, a port '15001' is used as the interception port.
-        /// This will is applicable only for sidecar proxy deployments.
+        /// This is applicable only for sidecar proxy deployments.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interceptionPort")]
         public virtual System.Nullable<int> InterceptionPort { get; set; }

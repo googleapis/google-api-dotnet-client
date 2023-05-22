@@ -12441,6 +12441,505 @@
     }
    }
   },
+  "instantSnapshots": {
+   "methods": {
+    "aggregatedList": {
+     "description": "Retrieves an aggregated list of instantSnapshots.",
+     "flatPath": "projects/{project}/aggregated/instantSnapshots",
+     "httpMethod": "GET",
+     "id": "compute.instantSnapshots.aggregatedList",
+     "parameterOrder": [
+      "project"
+     ],
+     "parameters": {
+      "filter": {
+       "description": "A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:` operator can be used with string fields to match substrings. For non-string fields it is equivalent to the `=` operator. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq \"double quoted literal\"` `(fieldname1 eq literal) (fieldname2 ne \"literal\")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name \"instance\", you would use `name ne .*instance`.",
+       "location": "query",
+       "type": "string"
+      },
+      "includeAllScopes": {
+       "description": "Indicates whether every visible scope for each scope type (zone, region, global) should be included in the response. For new resource types added after this field, the flag has no effect as new resource types will always include every visible scope for each scope type in response. For resource types which predate this field, if this flag is omitted or false, only scopes of the scope types where the resource type is expected to be found will be included.",
+       "location": "query",
+       "type": "boolean"
+      },
+      "maxResults": {
+       "default": "500",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)",
+       "format": "uint32",
+       "location": "query",
+       "minimum": "0",
+       "type": "integer"
+      },
+      "orderBy": {
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy=\"creationTimestamp desc\"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.",
+       "location": "query",
+       "type": "string"
+      },
+      "pageToken": {
+       "description": "Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.",
+       "location": "query",
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "returnPartialSuccess": {
+       "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
+       "location": "query",
+       "type": "boolean"
+      }
+     },
+     "path": "projects/{project}/aggregated/instantSnapshots",
+     "response": {
+      "$ref": "InstantSnapshotAggregatedList"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "delete": {
+     "description": "Deletes the specified InstantSnapshot resource. Keep in mind that deleting a single instantSnapshot might not necessarily delete all the data on that instantSnapshot. If any data on the instantSnapshot that is marked for deletion is needed for subsequent instantSnapshots, the data will be moved to the next corresponding instantSnapshot. For more information, see Deleting instantSnapshots.",
+     "flatPath": "projects/{project}/zones/{zone}/instantSnapshots/{instantSnapshot}",
+     "httpMethod": "DELETE",
+     "id": "compute.instantSnapshots.delete",
+     "parameterOrder": [
+      "project",
+      "zone",
+      "instantSnapshot"
+     ],
+     "parameters": {
+      "instantSnapshot": {
+       "description": "Name of the InstantSnapshot resource to delete.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      },
+      "zone": {
+       "description": "The name of the zone for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/zones/{zone}/instantSnapshots/{instantSnapshot}",
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "export": {
+     "description": "Export the changed blocks between two instant snapshots to a customer's bucket in the user specified format.",
+     "flatPath": "projects/{project}/zones/{zone}/instantSnapshots/{instantSnapshot}/export",
+     "httpMethod": "POST",
+     "id": "compute.instantSnapshots.export",
+     "parameterOrder": [
+      "project",
+      "zone",
+      "instantSnapshot"
+     ],
+     "parameters": {
+      "instantSnapshot": {
+       "description": "Name of the instant snapshot to export.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      },
+      "zone": {
+       "description": "The name of the zone for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/zones/{zone}/instantSnapshots/{instantSnapshot}/export",
+     "request": {
+      "$ref": "InstantSnapshotsExportRequest"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "get": {
+     "description": "Returns the specified InstantSnapshot resource in the specified zone.",
+     "flatPath": "projects/{project}/zones/{zone}/instantSnapshots/{instantSnapshot}",
+     "httpMethod": "GET",
+     "id": "compute.instantSnapshots.get",
+     "parameterOrder": [
+      "project",
+      "zone",
+      "instantSnapshot"
+     ],
+     "parameters": {
+      "instantSnapshot": {
+       "description": "Name of the InstantSnapshot resource to return.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "zone": {
+       "description": "The name of the zone for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/zones/{zone}/instantSnapshots/{instantSnapshot}",
+     "response": {
+      "$ref": "InstantSnapshot"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "getIamPolicy": {
+     "description": "Gets the access control policy for a resource. May be empty if no such policy or resource exists.",
+     "flatPath": "projects/{project}/zones/{zone}/instantSnapshots/{resource}/getIamPolicy",
+     "httpMethod": "GET",
+     "id": "compute.instantSnapshots.getIamPolicy",
+     "parameterOrder": [
+      "project",
+      "zone",
+      "resource"
+     ],
+     "parameters": {
+      "optionsRequestedPolicyVersion": {
+       "description": "Requested IAM Policy version.",
+       "format": "int32",
+       "location": "query",
+       "type": "integer"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "resource": {
+       "description": "Name or id of the resource for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "zone": {
+       "description": "The name of the zone for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/zones/{zone}/instantSnapshots/{resource}/getIamPolicy",
+     "response": {
+      "$ref": "Policy"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "insert": {
+     "description": "Creates an instant snapshot in the specified zone.",
+     "flatPath": "projects/{project}/zones/{zone}/instantSnapshots",
+     "httpMethod": "POST",
+     "id": "compute.instantSnapshots.insert",
+     "parameterOrder": [
+      "project",
+      "zone"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      },
+      "zone": {
+       "description": "Name of the zone for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/zones/{zone}/instantSnapshots",
+     "request": {
+      "$ref": "InstantSnapshot"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "list": {
+     "description": "Retrieves the list of InstantSnapshot resources contained within the specified zone.",
+     "flatPath": "projects/{project}/zones/{zone}/instantSnapshots",
+     "httpMethod": "GET",
+     "id": "compute.instantSnapshots.list",
+     "parameterOrder": [
+      "project",
+      "zone"
+     ],
+     "parameters": {
+      "filter": {
+       "description": "A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:` operator can be used with string fields to match substrings. For non-string fields it is equivalent to the `=` operator. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq \"double quoted literal\"` `(fieldname1 eq literal) (fieldname2 ne \"literal\")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name \"instance\", you would use `name ne .*instance`.",
+       "location": "query",
+       "type": "string"
+      },
+      "maxResults": {
+       "default": "500",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)",
+       "format": "uint32",
+       "location": "query",
+       "minimum": "0",
+       "type": "integer"
+      },
+      "orderBy": {
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy=\"creationTimestamp desc\"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.",
+       "location": "query",
+       "type": "string"
+      },
+      "pageToken": {
+       "description": "Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.",
+       "location": "query",
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "returnPartialSuccess": {
+       "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
+       "location": "query",
+       "type": "boolean"
+      },
+      "zone": {
+       "description": "The name of the zone for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/zones/{zone}/instantSnapshots",
+     "response": {
+      "$ref": "InstantSnapshotList"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "setIamPolicy": {
+     "description": "Sets the access control policy on the specified resource. Replaces any existing policy.",
+     "flatPath": "projects/{project}/zones/{zone}/instantSnapshots/{resource}/setIamPolicy",
+     "httpMethod": "POST",
+     "id": "compute.instantSnapshots.setIamPolicy",
+     "parameterOrder": [
+      "project",
+      "zone",
+      "resource"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "resource": {
+       "description": "Name or id of the resource for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "zone": {
+       "description": "The name of the zone for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/zones/{zone}/instantSnapshots/{resource}/setIamPolicy",
+     "request": {
+      "$ref": "ZoneSetPolicyRequest"
+     },
+     "response": {
+      "$ref": "Policy"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "setLabels": {
+     "description": "Sets the labels on a instantSnapshot in the given zone. To learn more about labels, read the Labeling Resources documentation.",
+     "flatPath": "projects/{project}/zones/{zone}/instantSnapshots/{resource}/setLabels",
+     "httpMethod": "POST",
+     "id": "compute.instantSnapshots.setLabels",
+     "parameterOrder": [
+      "project",
+      "zone",
+      "resource"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      },
+      "resource": {
+       "description": "Name or id of the resource for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "zone": {
+       "description": "The name of the zone for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/zones/{zone}/instantSnapshots/{resource}/setLabels",
+     "request": {
+      "$ref": "ZoneSetLabelsRequest"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "testIamPermissions": {
+     "description": "Returns permissions that a caller has on the specified resource.",
+     "flatPath": "projects/{project}/zones/{zone}/instantSnapshots/{resource}/testIamPermissions",
+     "httpMethod": "POST",
+     "id": "compute.instantSnapshots.testIamPermissions",
+     "parameterOrder": [
+      "project",
+      "zone",
+      "resource"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "resource": {
+       "description": "Name or id of the resource for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "zone": {
+       "description": "The name of the zone for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/zones/{zone}/instantSnapshots/{resource}/testIamPermissions",
+     "request": {
+      "$ref": "TestPermissionsRequest"
+     },
+     "response": {
+      "$ref": "TestPermissionsResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    }
+   }
+  },
   "interconnectAttachments": {
    "methods": {
     "aggregatedList": {
@@ -24191,6 +24690,445 @@
      "scopes": [
       "https://www.googleapis.com/auth/cloud-platform",
       "https://www.googleapis.com/auth/compute"
+     ]
+    }
+   }
+  },
+  "regionInstantSnapshots": {
+   "methods": {
+    "delete": {
+     "description": "Deletes the specified InstantSnapshot resource. Keep in mind that deleting a single instantSnapshot might not necessarily delete all the data on that instantSnapshot. If any data on the instantSnapshot that is marked for deletion is needed for subsequent instantSnapshots, the data will be moved to the next corresponding instantSnapshot. For more information, see Deleting instantSnapshots.",
+     "flatPath": "projects/{project}/regions/{region}/instantSnapshots/{instantSnapshot}",
+     "httpMethod": "DELETE",
+     "id": "compute.regionInstantSnapshots.delete",
+     "parameterOrder": [
+      "project",
+      "region",
+      "instantSnapshot"
+     ],
+     "parameters": {
+      "instantSnapshot": {
+       "description": "Name of the InstantSnapshot resource to delete.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/instantSnapshots/{instantSnapshot}",
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "export": {
+     "description": "Export the changed blocks between two instant snapshots to a customer's bucket in the user specified format.",
+     "flatPath": "projects/{project}/regions/{region}/instantSnapshots/{instantSnapshot}/export",
+     "httpMethod": "POST",
+     "id": "compute.regionInstantSnapshots.export",
+     "parameterOrder": [
+      "project",
+      "region",
+      "instantSnapshot"
+     ],
+     "parameters": {
+      "instantSnapshot": {
+       "description": "Name of the instant snapshot to export.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the zone for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/instantSnapshots/{instantSnapshot}/export",
+     "request": {
+      "$ref": "RegionInstantSnapshotsExportRequest"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "get": {
+     "description": "Returns the specified InstantSnapshot resource in the specified region.",
+     "flatPath": "projects/{project}/regions/{region}/instantSnapshots/{instantSnapshot}",
+     "httpMethod": "GET",
+     "id": "compute.regionInstantSnapshots.get",
+     "parameterOrder": [
+      "project",
+      "region",
+      "instantSnapshot"
+     ],
+     "parameters": {
+      "instantSnapshot": {
+       "description": "Name of the InstantSnapshot resource to return.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/instantSnapshots/{instantSnapshot}",
+     "response": {
+      "$ref": "InstantSnapshot"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "getIamPolicy": {
+     "description": "Gets the access control policy for a resource. May be empty if no such policy or resource exists.",
+     "flatPath": "projects/{project}/regions/{region}/instantSnapshots/{resource}/getIamPolicy",
+     "httpMethod": "GET",
+     "id": "compute.regionInstantSnapshots.getIamPolicy",
+     "parameterOrder": [
+      "project",
+      "region",
+      "resource"
+     ],
+     "parameters": {
+      "optionsRequestedPolicyVersion": {
+       "description": "Requested IAM Policy version.",
+       "format": "int32",
+       "location": "query",
+       "type": "integer"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "resource": {
+       "description": "Name or id of the resource for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/instantSnapshots/{resource}/getIamPolicy",
+     "response": {
+      "$ref": "Policy"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "insert": {
+     "description": "Creates an instant snapshot in the specified region.",
+     "flatPath": "projects/{project}/regions/{region}/instantSnapshots",
+     "httpMethod": "POST",
+     "id": "compute.regionInstantSnapshots.insert",
+     "parameterOrder": [
+      "project",
+      "region"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/instantSnapshots",
+     "request": {
+      "$ref": "InstantSnapshot"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "list": {
+     "description": "Retrieves the list of InstantSnapshot resources contained within the specified region.",
+     "flatPath": "projects/{project}/regions/{region}/instantSnapshots",
+     "httpMethod": "GET",
+     "id": "compute.regionInstantSnapshots.list",
+     "parameterOrder": [
+      "project",
+      "region"
+     ],
+     "parameters": {
+      "filter": {
+       "description": "A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:` operator can be used with string fields to match substrings. For non-string fields it is equivalent to the `=` operator. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq \"double quoted literal\"` `(fieldname1 eq literal) (fieldname2 ne \"literal\")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name \"instance\", you would use `name ne .*instance`.",
+       "location": "query",
+       "type": "string"
+      },
+      "maxResults": {
+       "default": "500",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)",
+       "format": "uint32",
+       "location": "query",
+       "minimum": "0",
+       "type": "integer"
+      },
+      "orderBy": {
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy=\"creationTimestamp desc\"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.",
+       "location": "query",
+       "type": "string"
+      },
+      "pageToken": {
+       "description": "Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.",
+       "location": "query",
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "returnPartialSuccess": {
+       "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
+       "location": "query",
+       "type": "boolean"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/instantSnapshots",
+     "response": {
+      "$ref": "InstantSnapshotList"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "setIamPolicy": {
+     "description": "Sets the access control policy on the specified resource. Replaces any existing policy.",
+     "flatPath": "projects/{project}/regions/{region}/instantSnapshots/{resource}/setIamPolicy",
+     "httpMethod": "POST",
+     "id": "compute.regionInstantSnapshots.setIamPolicy",
+     "parameterOrder": [
+      "project",
+      "region",
+      "resource"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "resource": {
+       "description": "Name or id of the resource for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/instantSnapshots/{resource}/setIamPolicy",
+     "request": {
+      "$ref": "RegionSetPolicyRequest"
+     },
+     "response": {
+      "$ref": "Policy"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "setLabels": {
+     "description": "Sets the labels on a instantSnapshot in the given region. To learn more about labels, read the Labeling Resources documentation.",
+     "flatPath": "projects/{project}/regions/{region}/instantSnapshots/{resource}/setLabels",
+     "httpMethod": "POST",
+     "id": "compute.regionInstantSnapshots.setLabels",
+     "parameterOrder": [
+      "project",
+      "region",
+      "resource"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      },
+      "resource": {
+       "description": "Name or id of the resource for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/instantSnapshots/{resource}/setLabels",
+     "request": {
+      "$ref": "RegionSetLabelsRequest"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "testIamPermissions": {
+     "description": "Returns permissions that a caller has on the specified resource.",
+     "flatPath": "projects/{project}/regions/{region}/instantSnapshots/{resource}/testIamPermissions",
+     "httpMethod": "POST",
+     "id": "compute.regionInstantSnapshots.testIamPermissions",
+     "parameterOrder": [
+      "project",
+      "region",
+      "resource"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "resource": {
+       "description": "Name or id of the resource for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/instantSnapshots/{resource}/testIamPermissions",
+     "request": {
+      "$ref": "TestPermissionsRequest"
+     },
+     "response": {
+      "$ref": "TestPermissionsResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
      ]
     }
    }
@@ -37241,7 +38179,7 @@
    }
   }
  },
- "revision": "20230502",
+ "revision": "20230509",
  "rootUrl": "https://compute.googleapis.com/",
  "schemas": {
   "AWSV4Signature": {
@@ -42315,6 +43253,14 @@
     },
     "sourceImageId": {
      "description": "[Output Only] The ID value of the image used to create this disk. This value identifies the exact image that was used to create this persistent disk. For example, if you created the persistent disk from an image that was later deleted and recreated under the same name, the source image ID would identify the exact version of the image that was used.",
+     "type": "string"
+    },
+    "sourceInstantSnapshot": {
+     "description": "The source instant snapshot used to create this disk. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot ",
+     "type": "string"
+    },
+    "sourceInstantSnapshotId": {
+     "description": "[Output Only] The unique ID of the instant snapshot used to create this disk. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact version of the instant snapshot that was used.",
      "type": "string"
     },
     "sourceSnapshot": {
@@ -48803,7 +49749,7 @@
      "type": "string"
     },
     "initialDelaySec": {
-     "description": "The number of seconds that the managed instance group waits before it applies autohealing policies to new instances or recently recreated instances. This initial delay allows instances to initialize and run their startup scripts before the instance group determines that they are UNHEALTHY. This prevents the managed instance group from recreating its instances prematurely. This value must be from range [0, 3600].",
+     "description": "The initial delay is the number of seconds that a new VM takes to initialize and run its startup script. During a VM's initial delay period, the MIG ignores unsuccessful health checks because the VM might be in the startup process. This prevents the MIG from prematurely recreating a VM. If the health check receives a healthy response during the initial delay, it indicates that the startup process is complete and the VM is ready. The value of initial delay must be between 0 and 3600 seconds. The default value is 0.",
      "format": "int32",
      "type": "integer"
     }
@@ -51179,6 +52125,521 @@
       "$ref": "CustomerEncryptionKeyProtectedDisk"
      },
      "type": "array"
+    }
+   },
+   "type": "object"
+  },
+  "InstantSnapshot": {
+   "description": "Represents a InstantSnapshot resource. You can use instant snapshots to create disk rollback points quickly..",
+   "id": "InstantSnapshot",
+   "properties": {
+    "architecture": {
+     "description": "[Output Only] The architecture of the instant snapshot. Valid values are ARM64 or X86_64.",
+     "enum": [
+      "ARCHITECTURE_UNSPECIFIED",
+      "ARM64",
+      "X86_64"
+     ],
+     "enumDescriptions": [
+      "Default value indicating Architecture is not set.",
+      "Machines with architecture ARM64",
+      "Machines with architecture X86_64"
+     ],
+     "type": "string"
+    },
+    "creationTimestamp": {
+     "description": "[Output Only] Creation timestamp in RFC3339 text format.",
+     "type": "string"
+    },
+    "description": {
+     "description": "An optional description of this resource. Provide this property when you create the resource.",
+     "type": "string"
+    },
+    "diskSizeGb": {
+     "description": "[Output Only] Size of the source disk, specified in GB.",
+     "format": "int64",
+     "type": "string"
+    },
+    "id": {
+     "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server.",
+     "format": "uint64",
+     "type": "string"
+    },
+    "kind": {
+     "default": "compute#instantSnapshot",
+     "description": "[Output Only] Type of the resource. Always compute#instantSnapshot for InstantSnapshot resources.",
+     "type": "string"
+    },
+    "labelFingerprint": {
+     "description": "A fingerprint for the labels being applied to this InstantSnapshot, which is essentially a hash of the labels set used for optimistic locking. The fingerprint is initially generated by Compute Engine and changes after every request to modify or update labels. You must always provide an up-to-date fingerprint hash in order to update or change labels, otherwise the request will fail with error 412 conditionNotMet. To see the latest fingerprint, make a get() request to retrieve a InstantSnapshot.",
+     "format": "byte",
+     "type": "string"
+    },
+    "labels": {
+     "additionalProperties": {
+      "type": "string"
+     },
+     "description": "Labels to apply to this InstantSnapshot. These can be later modified by the setLabels method. Label values may be empty.",
+     "type": "object"
+    },
+    "name": {
+     "description": "Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
+     "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+     "type": "string"
+    },
+    "region": {
+     "description": "[Output Only] URL of the region where the instant snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.",
+     "type": "string"
+    },
+    "resourceStatus": {
+     "$ref": "InstantSnapshotResourceStatus",
+     "description": "[Output Only] Status information for the instant snapshot resource."
+    },
+    "satisfiesPzs": {
+     "description": "[Output Only] Reserved for future use.",
+     "type": "boolean"
+    },
+    "selfLink": {
+     "description": "[Output Only] Server-defined URL for the resource.",
+     "type": "string"
+    },
+    "selfLinkWithId": {
+     "description": "[Output Only] Server-defined URL for this resource's resource id.",
+     "type": "string"
+    },
+    "sourceDisk": {
+     "description": "URL of the source disk used to create this instant snapshot. Note that the source disk must be in the same zone/region as the instant snapshot to be created. This can be a full or valid partial URL. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /disks/disk - https://www.googleapis.com/compute/v1/projects/project/regions/region /disks/disk - projects/project/zones/zone/disks/disk - projects/project/regions/region/disks/disk - zones/zone/disks/disk - regions/region/disks/disk ",
+     "type": "string"
+    },
+    "sourceDiskId": {
+     "description": "[Output Only] The ID value of the disk used to create this InstantSnapshot. This value may be used to determine whether the InstantSnapshot was taken from the current or a previous instance of a given disk name.",
+     "type": "string"
+    },
+    "status": {
+     "description": "[Output Only] The status of the instantSnapshot. This can be CREATING, DELETING, FAILED, or READY.",
+     "enum": [
+      "CREATING",
+      "DELETING",
+      "FAILED",
+      "READY"
+     ],
+     "enumDescriptions": [
+      "InstantSnapshot creation is in progress.",
+      "InstantSnapshot is currently being deleted.",
+      "InstantSnapshot creation failed.",
+      "InstantSnapshot has been created successfully."
+     ],
+     "type": "string"
+    },
+    "zone": {
+     "description": "[Output Only] URL of the zone where the instant snapshot resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "InstantSnapshotAggregatedList": {
+   "id": "InstantSnapshotAggregatedList",
+   "properties": {
+    "id": {
+     "description": "[Output Only] Unique identifier for the resource; defined by the server.",
+     "type": "string"
+    },
+    "items": {
+     "additionalProperties": {
+      "$ref": "InstantSnapshotsScopedList",
+      "description": "[Output Only] Name of the scope containing this set of instantSnapshots."
+     },
+     "description": "A list of InstantSnapshotsScopedList resources.",
+     "type": "object"
+    },
+    "kind": {
+     "default": "compute#instantSnapshotAggregatedList",
+     "description": "[Output Only] Type of resource. Always compute#instantSnapshotAggregatedList for aggregated lists of instantSnapshots.",
+     "type": "string"
+    },
+    "nextPageToken": {
+     "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results.",
+     "type": "string"
+    },
+    "selfLink": {
+     "description": "[Output Only] Server-defined URL for this resource.",
+     "type": "string"
+    },
+    "unreachables": {
+     "description": "[Output Only] Unreachable resources.",
+     "items": {
+      "type": "string"
+     },
+     "type": "array"
+    },
+    "warning": {
+     "description": "[Output Only] Informational warning message.",
+     "properties": {
+      "code": {
+       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+       "enum": [
+        "CLEANUP_FAILED",
+        "DEPRECATED_RESOURCE_USED",
+        "DEPRECATED_TYPE_USED",
+        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+        "EXPERIMENTAL_TYPE_USED",
+        "EXTERNAL_API_WARNING",
+        "FIELD_VALUE_OVERRIDEN",
+        "INJECTED_KERNELS_DEPRECATED",
+        "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB",
+        "LARGE_DEPLOYMENT_WARNING",
+        "MISSING_TYPE_DEPENDENCY",
+        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+        "NEXT_HOP_CANNOT_IP_FORWARD",
+        "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE",
+        "NEXT_HOP_INSTANCE_NOT_FOUND",
+        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+        "NEXT_HOP_NOT_RUNNING",
+        "NOT_CRITICAL_ERROR",
+        "NO_RESULTS_ON_PAGE",
+        "PARTIAL_SUCCESS",
+        "REQUIRED_TOS_AGREEMENT",
+        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+        "RESOURCE_NOT_DELETED",
+        "SCHEMA_VALIDATION_IGNORED",
+        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+        "UNDECLARED_PROPERTIES",
+        "UNREACHABLE"
+       ],
+       "enumDescriptions": [
+        "Warning about failed cleanup of transient changes made by a failed operation.",
+        "A link to a deprecated resource was created.",
+        "When deploying and at least one of the resources has a type marked as deprecated",
+        "The user created a boot disk that is larger than image size.",
+        "When deploying and at least one of the resources has a type marked as experimental",
+        "Warning that is present in an external api call",
+        "Warning that value of a field has been overridden. Deprecated unused field.",
+        "The operation involved use of an injected kernel, which is deprecated.",
+        "A WEIGHTED_MAGLEV backend service is associated with a health check that is not of type HTTP/HTTPS/HTTP2.",
+        "When deploying a deployment with a exceedingly large number of resources",
+        "A resource depends on a missing type",
+        "The route's nextHopIp address is not assigned to an instance on the network.",
+        "The route's next hop instance cannot ip forward.",
+        "The route's nextHopInstance URL refers to an instance that does not have an ipv6 interface on the same network as the route.",
+        "The route's nextHopInstance URL refers to an instance that does not exist.",
+        "The route's nextHopInstance URL refers to an instance that is not on the same network as the route.",
+        "The route's next hop instance does not have a status of RUNNING.",
+        "Error which is not critical. We decided to continue the process despite the mentioned error.",
+        "No results are present on a particular list page.",
+        "Success is reported, but some results may be missing due to errors",
+        "The user attempted to use a resource that requires a TOS they have not accepted.",
+        "Warning that a resource is in use.",
+        "One or more of the resources set to auto-delete could not be deleted because they were in use.",
+        "When a resource schema validation is ignored.",
+        "Instance template used in instance group manager is valid as such, but its application does not make a lot of sense, because it allows only single instance in instance group.",
+        "When undeclared properties in the schema are present",
+        "A given scope cannot be reached."
+       ],
+       "type": "string"
+      },
+      "data": {
+       "description": "[Output Only] Metadata about this warning in key: value format. For example: \"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" } ",
+       "items": {
+        "properties": {
+         "key": {
+          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).",
+          "type": "string"
+         },
+         "value": {
+          "description": "[Output Only] A warning data value corresponding to the key.",
+          "type": "string"
+         }
+        },
+        "type": "object"
+       },
+       "type": "array"
+      },
+      "message": {
+       "description": "[Output Only] A human-readable description of the warning code.",
+       "type": "string"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "InstantSnapshotExportParams": {
+   "id": "InstantSnapshotExportParams",
+   "properties": {
+    "baseInstantSnapshot": {
+     "description": "An optional base instant snapshot that this resource is compared against. If not specified, all blocks of this resource are exported. The base instant snapshot and this resource must be created from the same disk. The base instant snapshot must be created earlier in time than this resource.",
+     "type": "string"
+    },
+    "bucketName": {
+     "description": "The name of an existing bucket in Cloud Storage where the changed blocks will be stored. The Google Service Account must have read and write access to this bucket. The bucket has to be in the same region as this resource.",
+     "type": "string"
+    },
+    "encryptionKey": {
+     "$ref": "CustomerEncryptionKey",
+     "description": "Encryption key used to encrypt the instant snapshot."
+    },
+    "objectName": {
+     "description": "Name of the output Bigstore object storing the changed blocks. Object name must be less than 1024 bytes in length.",
+     "type": "string"
+    },
+    "outputType": {
+     "description": "The format of the output file.",
+     "enum": [
+      "INVALID",
+      "METADATA_AND_DATA",
+      "METADATA_ONLY"
+     ],
+     "enumDescriptions": [
+      "",
+      "",
+      ""
+     ],
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "InstantSnapshotList": {
+   "description": "Contains a list of InstantSnapshot resources.",
+   "id": "InstantSnapshotList",
+   "properties": {
+    "id": {
+     "description": "[Output Only] Unique identifier for the resource; defined by the server.",
+     "type": "string"
+    },
+    "items": {
+     "description": "A list of InstantSnapshot resources.",
+     "items": {
+      "$ref": "InstantSnapshot"
+     },
+     "type": "array"
+    },
+    "kind": {
+     "default": "compute#instantSnapshotList",
+     "description": "Type of resource.",
+     "type": "string"
+    },
+    "nextPageToken": {
+     "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results.",
+     "type": "string"
+    },
+    "selfLink": {
+     "description": "[Output Only] Server-defined URL for this resource.",
+     "type": "string"
+    },
+    "warning": {
+     "description": "[Output Only] Informational warning message.",
+     "properties": {
+      "code": {
+       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+       "enum": [
+        "CLEANUP_FAILED",
+        "DEPRECATED_RESOURCE_USED",
+        "DEPRECATED_TYPE_USED",
+        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+        "EXPERIMENTAL_TYPE_USED",
+        "EXTERNAL_API_WARNING",
+        "FIELD_VALUE_OVERRIDEN",
+        "INJECTED_KERNELS_DEPRECATED",
+        "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB",
+        "LARGE_DEPLOYMENT_WARNING",
+        "MISSING_TYPE_DEPENDENCY",
+        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+        "NEXT_HOP_CANNOT_IP_FORWARD",
+        "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE",
+        "NEXT_HOP_INSTANCE_NOT_FOUND",
+        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+        "NEXT_HOP_NOT_RUNNING",
+        "NOT_CRITICAL_ERROR",
+        "NO_RESULTS_ON_PAGE",
+        "PARTIAL_SUCCESS",
+        "REQUIRED_TOS_AGREEMENT",
+        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+        "RESOURCE_NOT_DELETED",
+        "SCHEMA_VALIDATION_IGNORED",
+        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+        "UNDECLARED_PROPERTIES",
+        "UNREACHABLE"
+       ],
+       "enumDescriptions": [
+        "Warning about failed cleanup of transient changes made by a failed operation.",
+        "A link to a deprecated resource was created.",
+        "When deploying and at least one of the resources has a type marked as deprecated",
+        "The user created a boot disk that is larger than image size.",
+        "When deploying and at least one of the resources has a type marked as experimental",
+        "Warning that is present in an external api call",
+        "Warning that value of a field has been overridden. Deprecated unused field.",
+        "The operation involved use of an injected kernel, which is deprecated.",
+        "A WEIGHTED_MAGLEV backend service is associated with a health check that is not of type HTTP/HTTPS/HTTP2.",
+        "When deploying a deployment with a exceedingly large number of resources",
+        "A resource depends on a missing type",
+        "The route's nextHopIp address is not assigned to an instance on the network.",
+        "The route's next hop instance cannot ip forward.",
+        "The route's nextHopInstance URL refers to an instance that does not have an ipv6 interface on the same network as the route.",
+        "The route's nextHopInstance URL refers to an instance that does not exist.",
+        "The route's nextHopInstance URL refers to an instance that is not on the same network as the route.",
+        "The route's next hop instance does not have a status of RUNNING.",
+        "Error which is not critical. We decided to continue the process despite the mentioned error.",
+        "No results are present on a particular list page.",
+        "Success is reported, but some results may be missing due to errors",
+        "The user attempted to use a resource that requires a TOS they have not accepted.",
+        "Warning that a resource is in use.",
+        "One or more of the resources set to auto-delete could not be deleted because they were in use.",
+        "When a resource schema validation is ignored.",
+        "Instance template used in instance group manager is valid as such, but its application does not make a lot of sense, because it allows only single instance in instance group.",
+        "When undeclared properties in the schema are present",
+        "A given scope cannot be reached."
+       ],
+       "type": "string"
+      },
+      "data": {
+       "description": "[Output Only] Metadata about this warning in key: value format. For example: \"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" } ",
+       "items": {
+        "properties": {
+         "key": {
+          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).",
+          "type": "string"
+         },
+         "value": {
+          "description": "[Output Only] A warning data value corresponding to the key.",
+          "type": "string"
+         }
+        },
+        "type": "object"
+       },
+       "type": "array"
+      },
+      "message": {
+       "description": "[Output Only] A human-readable description of the warning code.",
+       "type": "string"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "InstantSnapshotResourceStatus": {
+   "id": "InstantSnapshotResourceStatus",
+   "properties": {
+    "storageSizeBytes": {
+     "description": "[Output Only] The storage size of this instant snapshot.",
+     "format": "int64",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "InstantSnapshotsExportRequest": {
+   "id": "InstantSnapshotsExportRequest",
+   "properties": {
+    "exportParams": {
+     "$ref": "InstantSnapshotExportParams",
+     "description": "Parameters to export the changed blocks."
+    }
+   },
+   "type": "object"
+  },
+  "InstantSnapshotsScopedList": {
+   "id": "InstantSnapshotsScopedList",
+   "properties": {
+    "instantSnapshots": {
+     "description": "[Output Only] A list of instantSnapshots contained in this scope.",
+     "items": {
+      "$ref": "InstantSnapshot"
+     },
+     "type": "array"
+    },
+    "warning": {
+     "description": "[Output Only] Informational warning which replaces the list of instantSnapshots when the list is empty.",
+     "properties": {
+      "code": {
+       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+       "enum": [
+        "CLEANUP_FAILED",
+        "DEPRECATED_RESOURCE_USED",
+        "DEPRECATED_TYPE_USED",
+        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+        "EXPERIMENTAL_TYPE_USED",
+        "EXTERNAL_API_WARNING",
+        "FIELD_VALUE_OVERRIDEN",
+        "INJECTED_KERNELS_DEPRECATED",
+        "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB",
+        "LARGE_DEPLOYMENT_WARNING",
+        "MISSING_TYPE_DEPENDENCY",
+        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+        "NEXT_HOP_CANNOT_IP_FORWARD",
+        "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE",
+        "NEXT_HOP_INSTANCE_NOT_FOUND",
+        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+        "NEXT_HOP_NOT_RUNNING",
+        "NOT_CRITICAL_ERROR",
+        "NO_RESULTS_ON_PAGE",
+        "PARTIAL_SUCCESS",
+        "REQUIRED_TOS_AGREEMENT",
+        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+        "RESOURCE_NOT_DELETED",
+        "SCHEMA_VALIDATION_IGNORED",
+        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+        "UNDECLARED_PROPERTIES",
+        "UNREACHABLE"
+       ],
+       "enumDescriptions": [
+        "Warning about failed cleanup of transient changes made by a failed operation.",
+        "A link to a deprecated resource was created.",
+        "When deploying and at least one of the resources has a type marked as deprecated",
+        "The user created a boot disk that is larger than image size.",
+        "When deploying and at least one of the resources has a type marked as experimental",
+        "Warning that is present in an external api call",
+        "Warning that value of a field has been overridden. Deprecated unused field.",
+        "The operation involved use of an injected kernel, which is deprecated.",
+        "A WEIGHTED_MAGLEV backend service is associated with a health check that is not of type HTTP/HTTPS/HTTP2.",
+        "When deploying a deployment with a exceedingly large number of resources",
+        "A resource depends on a missing type",
+        "The route's nextHopIp address is not assigned to an instance on the network.",
+        "The route's next hop instance cannot ip forward.",
+        "The route's nextHopInstance URL refers to an instance that does not have an ipv6 interface on the same network as the route.",
+        "The route's nextHopInstance URL refers to an instance that does not exist.",
+        "The route's nextHopInstance URL refers to an instance that is not on the same network as the route.",
+        "The route's next hop instance does not have a status of RUNNING.",
+        "Error which is not critical. We decided to continue the process despite the mentioned error.",
+        "No results are present on a particular list page.",
+        "Success is reported, but some results may be missing due to errors",
+        "The user attempted to use a resource that requires a TOS they have not accepted.",
+        "Warning that a resource is in use.",
+        "One or more of the resources set to auto-delete could not be deleted because they were in use.",
+        "When a resource schema validation is ignored.",
+        "Instance template used in instance group manager is valid as such, but its application does not make a lot of sense, because it allows only single instance in instance group.",
+        "When undeclared properties in the schema are present",
+        "A given scope cannot be reached."
+       ],
+       "type": "string"
+      },
+      "data": {
+       "description": "[Output Only] Metadata about this warning in key: value format. For example: \"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" } ",
+       "items": {
+        "properties": {
+         "key": {
+          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).",
+          "type": "string"
+         },
+         "value": {
+          "description": "[Output Only] A warning data value corresponding to the key.",
+          "type": "string"
+         }
+        },
+        "type": "object"
+       },
+       "type": "array"
+      },
+      "message": {
+       "description": "[Output Only] A human-readable description of the warning code.",
+       "type": "string"
+      }
+     },
+     "type": "object"
     }
    },
    "type": "object"
@@ -62412,6 +63873,16 @@
    },
    "type": "object"
   },
+  "RegionInstantSnapshotsExportRequest": {
+   "id": "RegionInstantSnapshotsExportRequest",
+   "properties": {
+    "exportParams": {
+     "$ref": "InstantSnapshotExportParams",
+     "description": "Parameters to export the changed blocks."
+    }
+   },
+   "type": "object"
+  },
   "RegionList": {
    "description": "Contains a list of region resources.",
    "id": "RegionList",
@@ -66849,6 +68320,10 @@
      "$ref": "Expr",
      "description": "User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header. Expressions containing `evaluateThreatIntelligence` require Cloud Armor Managed Protection Plus tier and are not supported in Edge Policies nor in Regional Policies. Expressions containing `evaluatePreconfiguredExpr('sourceiplist-*')` require Cloud Armor Managed Protection Plus tier and are only supported in Global Security Policies."
     },
+    "exprOptions": {
+     "$ref": "SecurityPolicyRuleMatcherExprOptions",
+     "description": "The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr')."
+    },
     "versionedExpr": {
      "description": "Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.",
      "enum": [
@@ -66900,6 +68375,36 @@
     },
     "ports": {
      "description": "An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: [\"22\"], [\"80\",\"443\"], and [\"12345-12349\"]. This field may only be specified when versioned_expr is set to FIREWALL.",
+     "items": {
+      "type": "string"
+     },
+     "type": "array"
+    }
+   },
+   "type": "object"
+  },
+  "SecurityPolicyRuleMatcherExprOptions": {
+   "id": "SecurityPolicyRuleMatcherExprOptions",
+   "properties": {
+    "recaptchaOptions": {
+     "$ref": "SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions",
+     "description": "reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect."
+    }
+   },
+   "type": "object"
+  },
+  "SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions": {
+   "id": "SecurityPolicyRuleMatcherExprOptionsRecaptchaOptions",
+   "properties": {
+    "actionTokenSiteKeys": {
+     "description": "A list of site keys to be used during the validation of reCAPTCHA action-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.",
+     "items": {
+      "type": "string"
+     },
+     "type": "array"
+    },
+    "sessionTokenSiteKeys": {
+     "description": "A list of site keys to be used during the validation of reCAPTCHA session-tokens. The provided site keys need to be created from reCAPTCHA API under the same project where the security policy is created.",
      "items": {
       "type": "string"
      },
@@ -67270,11 +68775,11 @@
      "description": "The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication. Allowed only for INTERNET_IP_PORT and INTERNET_FQDN_PORT NEG backends."
     },
     "clientTlsPolicy": {
-     "description": "Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.",
+     "description": "Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted.",
      "type": "string"
     },
     "subjectAltNames": {
-     "description": "Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode). Note: This field currently has no impact.",
+     "description": "Optional. A list of Subject Alternative Names (SANs) that the client verifies during a mutual TLS handshake with an server/endpoint for this BackendService. When the server presents its X.509 certificate to the client, the client inspects the certificate's subjectAltName field. If the field contains one of the specified values, the communication continues. Otherwise, it fails. This additional check enables the client to verify that the server is authorized to run the requested service. Note that the contents of the server certificate's subjectAltName field are configured by the Public Key Infrastructure which provisions server identities. Only applies to a global BackendService with loadBalancingScheme set to INTERNAL_SELF_MANAGED. Only applies when BackendService has an attached clientTlsPolicy with clientCertificate (mTLS mode).",
      "items": {
       "type": "string"
      },
@@ -68204,6 +69709,14 @@
     },
     "sourceDiskId": {
      "description": "[Output Only] The ID value of the disk used to create this snapshot. This value may be used to determine whether the snapshot was taken from the current or a previous instance of a given disk name.",
+     "type": "string"
+    },
+    "sourceInstantSnapshot": {
+     "description": "The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot ",
+     "type": "string"
+    },
+    "sourceInstantSnapshotId": {
+     "description": "[Output Only] The unique ID of the instant snapshot used to create this snapshot. This value identifies the exact instant snapshot that was used to create this persistent disk. For example, if you created the persistent disk from an instant snapshot that was later deleted and recreated under the same name, the source instant snapshot ID would identify the exact instant snapshot that was used.",
      "type": "string"
     },
     "sourceSnapshotSchedulePolicy": {

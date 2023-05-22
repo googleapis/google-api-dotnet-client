@@ -312,22 +312,22 @@ namespace Google.Apis.BeyondCorp.v1
                 public GlobalResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-                    Tenants = new TenantsResource(service);
+                    PartnerTenants = new PartnerTenantsResource(service);
                 }
 
-                /// <summary>Gets the Tenants resource.</summary>
-                public virtual TenantsResource Tenants { get; }
+                /// <summary>Gets the PartnerTenants resource.</summary>
+                public virtual PartnerTenantsResource PartnerTenants { get; }
 
-                /// <summary>The "tenants" collection of methods.</summary>
-                public class TenantsResource
+                /// <summary>The "partnerTenants" collection of methods.</summary>
+                public class PartnerTenantsResource
                 {
-                    private const string Resource = "tenants";
+                    private const string Resource = "partnerTenants";
 
                     /// <summary>The service which this resource belongs to.</summary>
                     private readonly Google.Apis.Services.IClientService service;
 
                     /// <summary>Constructs a new resource.</summary>
-                    public TenantsResource(Google.Apis.Services.IClientService service)
+                    public PartnerTenantsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
                         ProxyConfigs = new ProxyConfigsResource(service);
@@ -418,7 +418,7 @@ namespace Google.Apis.BeyondCorp.v1
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = @"^organizations/[^/]+/locations/global/tenants/[^/]+/proxyConfigs/[^/]+$",
+                                    Pattern = @"^organizations/[^/]+/locations/global/partnerTenants/[^/]+/proxyConfigs/[^/]+$",
                                 });
                                 RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
                                 {
@@ -493,7 +493,7 @@ namespace Google.Apis.BeyondCorp.v1
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = @"^organizations/[^/]+/locations/global/tenants/[^/]+/proxyConfigs/[^/]+$",
+                                    Pattern = @"^organizations/[^/]+/locations/global/partnerTenants/[^/]+/proxyConfigs/[^/]+$",
                                 });
                             }
                         }
@@ -564,7 +564,7 @@ namespace Google.Apis.BeyondCorp.v1
                                     IsRequired = true,
                                     ParameterType = "path",
                                     DefaultValue = null,
-                                    Pattern = @"^organizations/[^/]+/locations/global/tenants/[^/]+/proxyConfigs/[^/]+$",
+                                    Pattern = @"^organizations/[^/]+/locations/global/partnerTenants/[^/]+/proxyConfigs/[^/]+$",
                                 });
                             }
                         }
@@ -638,7 +638,7 @@ namespace Google.Apis.BeyondCorp.v1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^organizations/[^/]+/locations/global/tenants/[^/]+$",
+                                Pattern = @"^organizations/[^/]+/locations/global/partnerTenants/[^/]+$",
                             });
                             RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
                             {
@@ -713,7 +713,7 @@ namespace Google.Apis.BeyondCorp.v1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^organizations/[^/]+/locations/global/tenants/[^/]+$",
+                                Pattern = @"^organizations/[^/]+/locations/global/partnerTenants/[^/]+$",
                             });
                         }
                     }
@@ -784,7 +784,7 @@ namespace Google.Apis.BeyondCorp.v1
                                 IsRequired = true,
                                 ParameterType = "path",
                                 DefaultValue = null,
-                                Pattern = @"^organizations/[^/]+/locations/global/tenants/[^/]+$",
+                                Pattern = @"^organizations/[^/]+/locations/global/partnerTenants/[^/]+$",
                             });
                         }
                     }

@@ -17668,6 +17668,25 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a Dialogflow assist answer.</summary>
+    public class GoogleCloudDialogflowV2beta1DialogflowAssistAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of answer record, in the format of "projects//locations//answerRecords/"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
+
+        /// <summary>An intent suggestion generated from conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentSuggestion")]
+        public virtual GoogleCloudDialogflowV2beta1IntentSuggestion IntentSuggestion { get; set; }
+
+        /// <summary>Result from v2 agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryResult")]
+        public virtual GoogleCloudDialogflowV2beta1QueryResult QueryResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Each intent parameter has a type, called the entity type, which dictates exactly how data from an end-user
     /// expression is extracted. Dialogflow provides predefined system entities that can match many common types of
@@ -18992,6 +19011,28 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents an intent suggestion.</summary>
+    public class GoogleCloudDialogflowV2beta1IntentSuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Human readable description for better understanding an intent like its scope, content, result etc. Maximum
+        /// character limit: 140 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The display name of the intent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The unique identifier of this intent. Format: `projects//locations//agent/intents/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentV2")]
+        public virtual string IntentV2 { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents an example that the agent is trained on.</summary>
     public class GoogleCloudDialogflowV2beta1IntentTrainingPhrase : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19519,6 +19560,35 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response message for Participants.SuggestDialogflowAssists.</summary>
+    public class GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Number of messages prior to and including latest_message to compile the suggestion. It may be smaller than
+        /// the SuggestDialogflowAssistsRequest.context_size field in the request if there aren't that many messages in
+        /// the conversation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contextSize")]
+        public virtual System.Nullable<int> ContextSize { get; set; }
+
+        /// <summary>
+        /// Output only. Multiple reply options provided by Dialogflow assist service. The order is based on the rank of
+        /// the model prediction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowAssistAnswers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1DialogflowAssistAnswer> DialogflowAssistAnswers { get; set; }
+
+        /// <summary>
+        /// The name of the latest conversation message used to suggest answer. Format:
+        /// `projects//locations//conversations//messages/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestMessage")]
+        public virtual string LatestMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Participants.SuggestFaqAnswers.</summary>
     public class GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19587,6 +19657,10 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>SuggestArticlesResponse if request is for ARTICLE_SUGGESTION.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestArticlesResponse")]
         public virtual GoogleCloudDialogflowV2beta1SuggestArticlesResponse SuggestArticlesResponse { get; set; }
+
+        /// <summary>SuggestDialogflowAssistsResponse if request is for DIALOGFLOW_ASSIST.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestDialogflowAssistsResponse")]
+        public virtual GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse SuggestDialogflowAssistsResponse { get; set; }
 
         /// <summary>SuggestFaqAnswersResponse if request is for FAQ_ANSWER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestFaqAnswersResponse")]

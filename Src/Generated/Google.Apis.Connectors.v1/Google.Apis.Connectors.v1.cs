@@ -3578,6 +3578,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("connectorVersion")]
         public virtual string ConnectorVersion { get; set; }
 
+        /// <summary>Output only. Flag to mark the version indicating the launch stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectorVersionLaunchStage")]
+        public virtual string ConnectorVersionLaunchStage { get; set; }
+
         /// <summary>Output only. Created time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
@@ -4487,6 +4491,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authCode")]
         public virtual string AuthCode { get; set; }
 
+        /// <summary>Auth URL for Authorization Code Flow</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authUri")]
+        public virtual string AuthUri { get; set; }
+
         /// <summary>Client ID for user-provided OAuth app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; }
@@ -4978,6 +4986,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Output only. Flag indicates if user is in PayG model</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payg")]
         public virtual System.Nullable<bool> Payg { get; set; }
+
+        /// <summary>Output only. Tenant project id of the consumer project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenantProjectId")]
+        public virtual string TenantProjectId { get; set; }
 
         /// <summary>Optional. Flag indicates whether vpc-sc is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcsc")]

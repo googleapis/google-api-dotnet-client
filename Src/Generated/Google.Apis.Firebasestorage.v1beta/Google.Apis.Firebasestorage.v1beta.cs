@@ -302,7 +302,7 @@ namespace Google.Apis.Firebasestorage.v1beta
             /// <param name="body">The body of the request.</param>
             /// <param name="bucket">
             /// Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket,
-            /// `projects/{project_number}/buckets/{bucket_id}`.
+            /// `projects/{project_id_or_number}/buckets/{bucket_id}`.
             /// </param>
             public virtual AddFirebaseRequest AddFirebase(Google.Apis.Firebasestorage.v1beta.Data.AddFirebaseRequest body, string bucket)
             {
@@ -322,7 +322,7 @@ namespace Google.Apis.Firebasestorage.v1beta
 
                 /// <summary>
                 /// Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket,
-                /// `projects/{project_number}/buckets/{bucket_id}`.
+                /// `projects/{project_id_or_number}/buckets/{bucket_id}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Bucket { get; private set; }
@@ -360,7 +360,7 @@ namespace Google.Apis.Firebasestorage.v1beta
             /// <summary>Gets a single linked storage bucket.</summary>
             /// <param name="name">
             /// Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket,
-            /// `projects/{project_number}/buckets/{bucket_id}`.
+            /// `projects/{project_id_or_number}/buckets/{bucket_id}`.
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -379,7 +379,7 @@ namespace Google.Apis.Firebasestorage.v1beta
 
                 /// <summary>
                 /// Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket,
-                /// `projects/{project_number}/buckets/{bucket_id}`.
+                /// `projects/{project_id_or_number}/buckets/{bucket_id}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -410,7 +410,7 @@ namespace Google.Apis.Firebasestorage.v1beta
 
             /// <summary>Lists the linked storage buckets for a project.</summary>
             /// <param name="parent">
-            /// Required. Resource name of the parent Firebase project, `projects/{project_number}`.
+            /// Required. Resource name of the parent Firebase project, `projects/{project_id_or_number}`.
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -428,7 +428,7 @@ namespace Google.Apis.Firebasestorage.v1beta
                 }
 
                 /// <summary>
-                /// Required. Resource name of the parent Firebase project, `projects/{project_number}`.
+                /// Required. Resource name of the parent Firebase project, `projects/{project_id_or_number}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -491,7 +491,7 @@ namespace Google.Apis.Firebasestorage.v1beta
             /// <param name="body">The body of the request.</param>
             /// <param name="bucket">
             /// Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket,
-            /// `projects/{project_number}/buckets/{bucket_id}`.
+            /// `projects/{project_id_or_number}/buckets/{bucket_id}`.
             /// </param>
             public virtual RemoveFirebaseRequest RemoveFirebase(Google.Apis.Firebasestorage.v1beta.Data.RemoveFirebaseRequest body, string bucket)
             {
@@ -511,7 +511,7 @@ namespace Google.Apis.Firebasestorage.v1beta
 
                 /// <summary>
                 /// Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket,
-                /// `projects/{project_number}/buckets/{bucket_id}`.
+                /// `projects/{project_id_or_number}/buckets/{bucket_id}`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Bucket { get; private set; }

@@ -4520,6 +4520,25 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The details of an AWS instance disk.</summary>
+    public class AwsDiskDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ordinal number of the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskNumber")]
+        public virtual System.Nullable<int> DiskNumber { get; set; }
+
+        /// <summary>Size in GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
+        public virtual System.Nullable<long> SizeGb { get; set; }
+
+        /// <summary>AWS volume ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumeId")]
+        public virtual string VolumeId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>AwsSecurityGroup describes a security group of an AWS VM.</summary>
     public class AwsSecurityGroup : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4586,6 +4605,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         /// <summary>The total size of the disks being migrated in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("committedStorageBytes")]
         public virtual System.Nullable<long> CommittedStorageBytes { get; set; }
+
+        /// <summary>The disks attached to the source VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disks")]
+        public virtual System.Collections.Generic.IList<AwsDiskDetails> Disks { get; set; }
 
         /// <summary>The firmware type of the source VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firmware")]
