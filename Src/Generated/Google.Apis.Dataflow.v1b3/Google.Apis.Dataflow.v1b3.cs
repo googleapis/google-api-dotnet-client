@@ -7482,6 +7482,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dropLateData")]
         public virtual System.Nullable<bool> DropLateData { get; set; }
 
+        /// <summary>If true, then this location represents dynamic topics.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dynamicDestinations")]
+        public virtual System.Nullable<bool> DynamicDestinations { get; set; }
+
         /// <summary>
         /// If set, contains a pubsub label from which to extract record ids. If left empty, record deduplication will
         /// be strictly best effort.

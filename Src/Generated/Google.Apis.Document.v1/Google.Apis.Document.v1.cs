@@ -2574,6 +2574,7 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>Document Identifier.</summary>
     public class GoogleCloudDocumentaiUiv1beta3DocumentId : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A document id within user managed Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsManagedDocId")]
         public virtual GoogleCloudDocumentaiUiv1beta3DocumentIdGCSManagedDocumentId GcsManagedDocId { get; set; }
 
@@ -2581,11 +2582,17 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("revisionRef")]
         public virtual GoogleCloudDocumentaiUiv1beta3RevisionRef RevisionRef { get; set; }
 
+        /// <summary>A document id within unmanaged dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unmanagedDocId")]
+        public virtual GoogleCloudDocumentaiUiv1beta3DocumentIdUnmanagedDocumentId UnmanagedDocId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Identifies a document uniquely within the scope of a dataset in the Cloud Storage option.</summary>
+    /// <summary>
+    /// Identifies a document uniquely within the scope of a dataset in user managed Cloud Storage option.
+    /// </summary>
     public class GoogleCloudDocumentaiUiv1beta3DocumentIdGCSManagedDocumentId : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Id of the document (indexed) managed by Content Warehouse.</summary>
@@ -2595,6 +2602,17 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>Required. The Cloud Storage uri where the actual document is stored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
         public virtual string GcsUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Identifies a document uniquely within the scope of a dataset in unmanaged option.</summary>
+    public class GoogleCloudDocumentaiUiv1beta3DocumentIdUnmanagedDocumentId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The id of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("docId")]
+        public virtual string DocId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8637,15 +8655,15 @@ namespace Google.Apis.Document.v1.Data
     }
 
     /// <summary>
-    /// Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to/from
-    /// color representations in various languages over compactness. For example, the fields of this representation can
-    /// be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to
+    /// Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to and
+    /// from color representations in various languages over compactness. For example, the fields of this representation
+    /// can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to
     /// UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily
-    /// formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't carry information about the
-    /// absolute color space that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020,
-    /// etc.). By default, applications should assume the sRGB color space. When color equality needs to be decided,
+    /// formatted into a CSS `rgba()` string in JavaScript. This reference page does not have information about the
+    /// absolute color space that should be used to interpret the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and
+    /// BT.2020. By default, applications should assume the sRGB color space. When color equality needs to be decided,
     /// implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha
-    /// values each differ by at most 1e-5. Example (Java): import com.google.type.Color; // ... public static
+    /// values each differ by at most `1e-5`. Example (Java): import com.google.type.Color; // ... public static
     /// java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ?
     /// protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(),
     /// protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float)

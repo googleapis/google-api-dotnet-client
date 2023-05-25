@@ -2717,7 +2717,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Policy for an individual app.</summary>
+    /// <summary>
+    /// Policy for an individual app. Note: Application availability on a given device cannot be changed using this
+    /// policy if installAppsDisabled is enabled.
+    /// </summary>
     public class ApplicationPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3578,8 +3581,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
     public class DeviceConnectivityManagement : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Controls what can be transferred via USB, files and/or data. This is supported only on company-owned
-        /// devices.
+        /// Controls what files and/or data can be transferred via USB. Supported only on company-owned devices.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usbDataAccess")]
         public virtual string UsbDataAccess { get; set; }

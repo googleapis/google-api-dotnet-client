@@ -1288,8 +1288,9 @@ namespace Google.Apis.StreetViewPublish.v1
 
             /// <summary>
             /// Optional. The filter expression. For example: `placeId=ChIJj61dQgK6j4AR4GeTYWZsKWw`. The filters
-            /// supported are: `placeId`, `min_latitude`, `max_latitude`, `min_longitude`, and `max_longitude`. See
-            /// https://google.aip.dev/160 for more information.
+            /// supported are: `placeId`, `min_latitude`, `max_latitude`, `min_longitude`, `max_longitude`,
+            /// 'min_capture_time_seconds', and 'max_capture_time_seconds'. See https://google.aip.dev/160 for more
+            /// information.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }

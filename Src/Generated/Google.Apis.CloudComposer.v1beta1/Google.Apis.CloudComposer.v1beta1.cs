@@ -432,6 +432,63 @@ namespace Google.Apis.CloudComposer.v1beta1
                     }
                 }
 
+                /// <summary>Triggers database failover (only for highly resilient environments).</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="environment">
+                /// Target environment: "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                /// </param>
+                public virtual DatabaseFailoverRequest DatabaseFailover(Google.Apis.CloudComposer.v1beta1.Data.DatabaseFailoverRequest body, string environment)
+                {
+                    return new DatabaseFailoverRequest(service, body, environment);
+                }
+
+                /// <summary>Triggers database failover (only for highly resilient environments).</summary>
+                public class DatabaseFailoverRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new DatabaseFailover request.</summary>
+                    public DatabaseFailoverRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudComposer.v1beta1.Data.DatabaseFailoverRequest body, string environment) : base(service)
+                    {
+                        Environment = environment;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Target environment: "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("environment", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Environment { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudComposer.v1beta1.Data.DatabaseFailoverRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "databaseFailover";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+environment}:databaseFailover";
+
+                    /// <summary>Initializes DatabaseFailover parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("environment", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "environment",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/environments/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Delete an environment.</summary>
                 /// <param name="name">
                 /// The environment to delete, in the form:
@@ -475,6 +532,116 @@ namespace Google.Apis.CloudComposer.v1beta1
                         RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                         {
                             Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/environments/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Executes Airflow CLI command.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="environment">
+                /// The resource name of the environment in the form:
+                /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}".
+                /// </param>
+                public virtual ExecuteAirflowCommandRequest ExecuteAirflowCommand(Google.Apis.CloudComposer.v1beta1.Data.ExecuteAirflowCommandRequest body, string environment)
+                {
+                    return new ExecuteAirflowCommandRequest(service, body, environment);
+                }
+
+                /// <summary>Executes Airflow CLI command.</summary>
+                public class ExecuteAirflowCommandRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1beta1.Data.ExecuteAirflowCommandResponse>
+                {
+                    /// <summary>Constructs a new ExecuteAirflowCommand request.</summary>
+                    public ExecuteAirflowCommandRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudComposer.v1beta1.Data.ExecuteAirflowCommandRequest body, string environment) : base(service)
+                    {
+                        Environment = environment;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// The resource name of the environment in the form:
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("environment", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Environment { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudComposer.v1beta1.Data.ExecuteAirflowCommandRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "executeAirflowCommand";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+environment}:executeAirflowCommand";
+
+                    /// <summary>Initializes ExecuteAirflowCommand parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("environment", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "environment",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/environments/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Fetches database properties.</summary>
+                /// <param name="environment">
+                /// Required. The resource name of the environment, in the form:
+                /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                /// </param>
+                public virtual FetchDatabasePropertiesRequest FetchDatabaseProperties(string environment)
+                {
+                    return new FetchDatabasePropertiesRequest(service, environment);
+                }
+
+                /// <summary>Fetches database properties.</summary>
+                public class FetchDatabasePropertiesRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1beta1.Data.FetchDatabasePropertiesResponse>
+                {
+                    /// <summary>Constructs a new FetchDatabaseProperties request.</summary>
+                    public FetchDatabasePropertiesRequest(Google.Apis.Services.IClientService service, string environment) : base(service)
+                    {
+                        Environment = environment;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the environment, in the form:
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("environment", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Environment { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "fetchDatabaseProperties";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+environment}:fetchDatabaseProperties";
+
+                    /// <summary>Initializes FetchDatabaseProperties parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("environment", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "environment",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
@@ -816,6 +983,65 @@ namespace Google.Apis.CloudComposer.v1beta1
                     }
                 }
 
+                /// <summary>Polls Airflow CLI command execution and fetches logs.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="environment">
+                /// The resource name of the environment in the form:
+                /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                /// </param>
+                public virtual PollAirflowCommandRequest PollAirflowCommand(Google.Apis.CloudComposer.v1beta1.Data.PollAirflowCommandRequest body, string environment)
+                {
+                    return new PollAirflowCommandRequest(service, body, environment);
+                }
+
+                /// <summary>Polls Airflow CLI command execution and fetches logs.</summary>
+                public class PollAirflowCommandRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1beta1.Data.PollAirflowCommandResponse>
+                {
+                    /// <summary>Constructs a new PollAirflowCommand request.</summary>
+                    public PollAirflowCommandRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudComposer.v1beta1.Data.PollAirflowCommandRequest body, string environment) : base(service)
+                    {
+                        Environment = environment;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// The resource name of the environment in the form:
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("environment", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Environment { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudComposer.v1beta1.Data.PollAirflowCommandRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "pollAirflowCommand";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+environment}:pollAirflowCommand";
+
+                    /// <summary>Initializes PollAirflowCommand parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("environment", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "environment",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/environments/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Restart Airflow web server.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -926,6 +1152,65 @@ namespace Google.Apis.CloudComposer.v1beta1
                     public override string RestPath => "v1beta1/{+environment}:saveSnapshot";
 
                     /// <summary>Initializes SaveSnapshot parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("environment", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "environment",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/environments/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Stops Airflow CLI command execution.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="environment">
+                /// The resource name of the environment in the form:
+                /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}".
+                /// </param>
+                public virtual StopAirflowCommandRequest StopAirflowCommand(Google.Apis.CloudComposer.v1beta1.Data.StopAirflowCommandRequest body, string environment)
+                {
+                    return new StopAirflowCommandRequest(service, body, environment);
+                }
+
+                /// <summary>Stops Airflow CLI command execution.</summary>
+                public class StopAirflowCommandRequest : CloudComposerBaseServiceRequest<Google.Apis.CloudComposer.v1beta1.Data.StopAirflowCommandResponse>
+                {
+                    /// <summary>Constructs a new StopAirflowCommand request.</summary>
+                    public StopAirflowCommandRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudComposer.v1beta1.Data.StopAirflowCommandRequest body, string environment) : base(service)
+                    {
+                        Environment = environment;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// The resource name of the environment in the form:
+                    /// "projects/{projectId}/locations/{locationId}/environments/{environmentId}".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("environment", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Environment { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudComposer.v1beta1.Data.StopAirflowCommandRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "stopAirflowCommand";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+environment}:stopAirflowCommand";
+
+                    /// <summary>Initializes StopAirflowCommand parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();
@@ -1376,6 +1661,20 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request to trigger database failover (only for highly resilient environments).</summary>
+    public class DatabaseFailoverRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for DatabaseFailoverRequest.</summary>
+    public class DatabaseFailoverResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
     /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
@@ -1571,6 +1870,13 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("recoveryConfig")]
         public virtual RecoveryConfig RecoveryConfig { get; set; }
 
+        /// <summary>
+        /// Optional. Resilience mode of the Cloud Composer Environment. This field is supported for Cloud Composer
+        /// environments in versions composer-2.2.0-airflow-*.*.* and newer.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resilienceMode")]
+        public virtual string ResilienceMode { get; set; }
+
         /// <summary>The configuration settings for software inside the environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("softwareConfig")]
         public virtual SoftwareConfig SoftwareConfig { get; set; }
@@ -1596,6 +1902,92 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloadsConfig")]
         public virtual WorkloadsConfig WorkloadsConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Execute Airflow Command request.</summary>
+    public class ExecuteAirflowCommandRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Airflow command.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("command")]
+        public virtual string Command { get; set; }
+
+        /// <summary>
+        /// Parameters for the Airflow command/subcommand as an array of arguments. It may contain positional arguments
+        /// like `["my-dag-id"]`, key-value parameters like `["--foo=bar"]` or `["--foo","bar"]`, or other flags like
+        /// `["-f"]`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IList<string> Parameters { get; set; }
+
+        /// <summary>Airflow subcommand.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subcommand")]
+        public virtual string Subcommand { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response to ExecuteAirflowCommandRequest.</summary>
+    public class ExecuteAirflowCommandResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Error message. Empty if there was no error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual string Error { get; set; }
+
+        /// <summary>The unique ID of the command execution for polling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionId")]
+        public virtual string ExecutionId { get; set; }
+
+        /// <summary>The name of the pod where the command is executed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pod")]
+        public virtual string Pod { get; set; }
+
+        /// <summary>The namespace of the pod where the command is executed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("podNamespace")]
+        public virtual string PodNamespace { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about how a command ended.</summary>
+    public class ExitInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Error message. Empty if there was no error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual string Error { get; set; }
+
+        /// <summary>The exit code from the command execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exitCode")]
+        public virtual System.Nullable<int> ExitCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for FetchDatabasePropertiesRequest.</summary>
+    public class FetchDatabasePropertiesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The availability status of the failover replica. A false status indicates that the failover replica is out
+        /// of sync. The primary instance can only fail over to the failover replica when the status is true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isFailoverReplicaAvailable")]
+        public virtual System.Nullable<bool> IsFailoverReplicaAvailable { get; set; }
+
+        /// <summary>The Compute Engine zone that the instance is currently serving from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryGceZone")]
+        public virtual string PrimaryGceZone { get; set; }
+
+        /// <summary>
+        /// The Compute Engine zone that the failover instance is currently serving from for a regional Cloud SQL
+        /// instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryGceZone")]
+        public virtual string SecondaryGceZone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1686,6 +2078,21 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// <summary>Whether it is impossible to upgrade an environment running with the image version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeDisabled")]
         public virtual System.Nullable<bool> UpgradeDisabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains information about a single line from logs.</summary>
+    public class Line : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Text content of the log line.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>Number of the line.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineNumber")]
+        public virtual System.Nullable<int> LineNumber { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2034,6 +2441,51 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Poll Airflow Command request.</summary>
+    public class PollAirflowCommandRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unique ID of the command execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionId")]
+        public virtual string ExecutionId { get; set; }
+
+        /// <summary>Line number from which new logs should be fetched.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextLineNumber")]
+        public virtual System.Nullable<int> NextLineNumber { get; set; }
+
+        /// <summary>The name of the pod where the command is executed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pod")]
+        public virtual string Pod { get; set; }
+
+        /// <summary>The namespace of the pod where the command is executed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("podNamespace")]
+        public virtual string PodNamespace { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response to PollAirflowCommandRequest.</summary>
+    public class PollAirflowCommandResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The result exit status of the command.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exitInfo")]
+        public virtual ExitInfo ExitInfo { get; set; }
+
+        /// <summary>
+        /// Output from the command execution. It may not contain the full output and the caller may need to poll for
+        /// more lines.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("output")]
+        public virtual System.Collections.Generic.IList<Line> Output { get; set; }
+
+        /// <summary>Whether the command execution has finished and there is no more output.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputEnd")]
+        public virtual System.Nullable<bool> OutputEnd { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration options for the private GKE cluster in a Cloud Composer environment.</summary>
     public class PrivateClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2335,6 +2787,47 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Stop Airflow Command request.</summary>
+    public class StopAirflowCommandRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The unique ID of the command execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionId")]
+        public virtual string ExecutionId { get; set; }
+
+        /// <summary>
+        /// If true, the execution is terminated forcefully (SIGKILL). If false, the execution is stopped gracefully,
+        /// giving it time for cleanup.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; }
+
+        /// <summary>The name of the pod where the command is executed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pod")]
+        public virtual string Pod { get; set; }
+
+        /// <summary>The namespace of the pod where the command is executed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("podNamespace")]
+        public virtual string PodNamespace { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response to StopAirflowCommandRequest.</summary>
+    public class StopAirflowCommandResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the execution is still running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDone")]
+        public virtual System.Nullable<bool> IsDone { get; set; }
+
+        /// <summary>Output message from stopping execution request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("output")]
+        public virtual System.Collections.Generic.IList<string> Output { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -4343,7 +4343,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     /// <summary>Google Cloud Storage location where the artifacts currently reside.</summary>
     public class ImportGoogetArtifactsGcsSource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Cloud Storage paths URI (e.g., gs://my_bucket/my_object).</summary>
+        /// <summary>Cloud Storage paths URI (e.g., `gs://my_bucket/my_object`).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uris")]
         public virtual System.Collections.Generic.IList<string> Uris { get; set; }
 
@@ -4853,7 +4853,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// The name of the package, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1".
+        /// The name of the package, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`.
         /// If the package ID part contains slashes, the slashes are escaped.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -5276,7 +5276,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     /// </summary>
     public class UploadGoogetArtifactResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Apt artifacts updated.</summary>
+        /// <summary>The GooGet artifacts updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googetArtifacts")]
         public virtual System.Collections.Generic.IList<GoogetArtifact> GoogetArtifacts { get; set; }
 
