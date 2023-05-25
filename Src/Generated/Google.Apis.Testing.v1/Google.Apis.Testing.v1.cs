@@ -2063,6 +2063,12 @@ namespace Google.Apis.Testing.v1.Data
     /// <summary>Output only. Details about the shard.</summary>
     public class Shard : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Output only. The estimated shard duration based on previous test case timing records, if available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedShardDuration")]
+        public virtual object EstimatedShardDuration { get; set; }
+
         /// <summary>Output only. The total number of shards.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numShards")]
         public virtual System.Nullable<int> NumShards { get; set; }

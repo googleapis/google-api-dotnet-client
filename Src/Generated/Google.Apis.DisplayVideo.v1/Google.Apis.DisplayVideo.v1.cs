@@ -7941,8 +7941,8 @@ namespace Google.Apis.DisplayVideo.v1
 
             /// <summary>
             /// Activates a manual trigger. Each activation of the manual trigger must be at least 5 minutes apart,
-            /// otherwise an error will be returned. **Warning:** Line Items using manual triggers will stop serving in
-            /// Display &amp;amp; Video 360 on **May 17, 2023**. Read our [feature deprecation
+            /// otherwise an error will be returned. **Warning:** Line Items using manual triggers no longer serve in
+            /// Display &amp;amp; Video 360. This method will sunset on August 1, 2023. Read our [feature deprecation
             /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
             /// </summary>
             /// <param name="body">The body of the request.</param>
@@ -7955,8 +7955,8 @@ namespace Google.Apis.DisplayVideo.v1
 
             /// <summary>
             /// Activates a manual trigger. Each activation of the manual trigger must be at least 5 minutes apart,
-            /// otherwise an error will be returned. **Warning:** Line Items using manual triggers will stop serving in
-            /// Display &amp;amp; Video 360 on **May 17, 2023**. Read our [feature deprecation
+            /// otherwise an error will be returned. **Warning:** Line Items using manual triggers no longer serve in
+            /// Display &amp;amp; Video 360. This method will sunset on August 1, 2023. Read our [feature deprecation
             /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
             /// </summary>
             public class ActivateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ManualTrigger>
@@ -8018,9 +8018,9 @@ namespace Google.Apis.DisplayVideo.v1
 
             /// <summary>
             /// Creates a new manual trigger. Returns the newly created manual trigger if successful. **Warning:** Line
-            /// Items using manual triggers will stop serving in Display &amp;amp; Video 360 on **May 17, 2023**. Read
-            /// our [feature deprecation announcement](/display-video/api/deprecations#features.manual_triggers) for
-            /// more information.
+            /// Items using manual triggers no longer serve in Display &amp;amp; Video 360. This method will sunset on
+            /// August 1, 2023. Read our [feature deprecation
+            /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">
@@ -8033,9 +8033,9 @@ namespace Google.Apis.DisplayVideo.v1
 
             /// <summary>
             /// Creates a new manual trigger. Returns the newly created manual trigger if successful. **Warning:** Line
-            /// Items using manual triggers will stop serving in Display &amp;amp; Video 360 on **May 17, 2023**. Read
-            /// our [feature deprecation announcement](/display-video/api/deprecations#features.manual_triggers) for
-            /// more information.
+            /// Items using manual triggers no longer serve in Display &amp;amp; Video 360. This method will sunset on
+            /// August 1, 2023. Read our [feature deprecation
+            /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
             /// </summary>
             public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ManualTrigger>
             {
@@ -8084,8 +8084,8 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
             /// <summary>
-            /// Deactivates a manual trigger. **Warning:** Line Items using manual triggers will stop serving in Display
-            /// &amp;amp; Video 360 on **May 17, 2023**. Read our [feature deprecation
+            /// Deactivates a manual trigger. **Warning:** Line Items using manual triggers no longer serve in Display
+            /// &amp;amp; Video 360. This method will sunset on August 1, 2023. Read our [feature deprecation
             /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
             /// </summary>
             /// <param name="body">The body of the request.</param>
@@ -8097,8 +8097,8 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
             /// <summary>
-            /// Deactivates a manual trigger. **Warning:** Line Items using manual triggers will stop serving in Display
-            /// &amp;amp; Video 360 on **May 17, 2023**. Read our [feature deprecation
+            /// Deactivates a manual trigger. **Warning:** Line Items using manual triggers no longer serve in Display
+            /// &amp;amp; Video 360. This method will sunset on August 1, 2023. Read our [feature deprecation
             /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
             /// </summary>
             public class DeactivateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ManualTrigger>
@@ -8159,8 +8159,8 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
             /// <summary>
-            /// Gets a manual trigger. **Warning:** Line Items using manual triggers will stop serving in Display
-            /// &amp;amp; Video 360 on **May 17, 2023**. Read our [feature deprecation
+            /// Gets a manual trigger. **Warning:** Line Items using manual triggers no longer serve in Display
+            /// &amp;amp; Video 360. This method will sunset on August 1, 2023. Read our [feature deprecation
             /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
             /// </summary>
             /// <param name="advertiserId">Required. The ID of the advertiser this manual trigger belongs to.</param>
@@ -8171,8 +8171,8 @@ namespace Google.Apis.DisplayVideo.v1
             }
 
             /// <summary>
-            /// Gets a manual trigger. **Warning:** Line Items using manual triggers will stop serving in Display
-            /// &amp;amp; Video 360 on **May 17, 2023**. Read our [feature deprecation
+            /// Gets a manual trigger. **Warning:** Line Items using manual triggers no longer serve in Display
+            /// &amp;amp; Video 360. This method will sunset on August 1, 2023. Read our [feature deprecation
             /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
             /// </summary>
             public class GetRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ManualTrigger>
@@ -8228,9 +8228,9 @@ namespace Google.Apis.DisplayVideo.v1
             /// <summary>
             /// Lists manual triggers that are accessible to the current user for a given advertiser ID. The order is
             /// defined by the order_by parameter. A single advertiser_id is required. **Warning:** Line Items using
-            /// manual triggers will stop serving in Display &amp;amp; Video 360 on **May 17, 2023**. Read our [feature
-            /// deprecation announcement](/display-video/api/deprecations#features.manual_triggers) for more
-            /// information.
+            /// manual triggers no longer serve in Display &amp;amp; Video 360. This method will sunset on August 1,
+            /// 2023. Read our [feature deprecation
+            /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
             /// </summary>
             /// <param name="advertiserId">
             /// Required. The ID of the advertiser that the fetched manual triggers belong to.
@@ -8243,9 +8243,9 @@ namespace Google.Apis.DisplayVideo.v1
             /// <summary>
             /// Lists manual triggers that are accessible to the current user for a given advertiser ID. The order is
             /// defined by the order_by parameter. A single advertiser_id is required. **Warning:** Line Items using
-            /// manual triggers will stop serving in Display &amp;amp; Video 360 on **May 17, 2023**. Read our [feature
-            /// deprecation announcement](/display-video/api/deprecations#features.manual_triggers) for more
-            /// information.
+            /// manual triggers no longer serve in Display &amp;amp; Video 360. This method will sunset on August 1,
+            /// 2023. Read our [feature deprecation
+            /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
             /// </summary>
             public class ListRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ListManualTriggersResponse>
             {
@@ -8352,9 +8352,9 @@ namespace Google.Apis.DisplayVideo.v1
 
             /// <summary>
             /// Updates a manual trigger. Returns the updated manual trigger if successful. **Warning:** Line Items
-            /// using manual triggers will stop serving in Display &amp;amp; Video 360 on **May 17, 2023**. Read our
-            /// [feature deprecation announcement](/display-video/api/deprecations#features.manual_triggers) for more
-            /// information.
+            /// using manual triggers no longer serve in Display &amp;amp; Video 360. This method will sunset on August
+            /// 1, 2023. Read our [feature deprecation
+            /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">
@@ -8368,9 +8368,9 @@ namespace Google.Apis.DisplayVideo.v1
 
             /// <summary>
             /// Updates a manual trigger. Returns the updated manual trigger if successful. **Warning:** Line Items
-            /// using manual triggers will stop serving in Display &amp;amp; Video 360 on **May 17, 2023**. Read our
-            /// [feature deprecation announcement](/display-video/api/deprecations#features.manual_triggers) for more
-            /// information.
+            /// using manual triggers no longer serve in Display &amp;amp; Video 360. This method will sunset on August
+            /// 1, 2023. Read our [feature deprecation
+            /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
             /// </summary>
             public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.ManualTrigger>
             {
@@ -24229,11 +24229,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ReservationType { get; set; }
 
         /// <summary>
-        /// The [targeting expansion](//support.google.com/displayvideo/answer/10191558) settings of the line item. This
-        /// config is only applicable when eligible audience list targeting is assigned to the line item. Beginning
-        /// **March 25, 2023**, these settings may represent the [optimized targeting
-        /// feature](//support.google.com/displayvideo/answer/12060859) in place of targeting expansion. This feature
-        /// will be rolled out to all partners by early May 2023.
+        /// The [optimized targeting](//support.google.com/displayvideo/answer/12060859) settings of the line item. This
+        /// config is only applicable for display, video, or audio line items that use automated bidding and positively
+        /// target eligible audience lists.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingExpansion")]
         public virtual TargetingExpansionConfig TargetingExpansion { get; set; }
@@ -24307,9 +24305,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
         /// The ID of the manual trigger associated with the line item. * Required when flight_date_type is
         /// `LINE_ITEM_FLIGHT_DATE_TYPE_TRIGGER`. Must not be set otherwise. * When set, the line item's flight dates
         /// are inherited from its parent insertion order. * Active line items will spend when the selected trigger is
-        /// activated within the parent insertion order's flight dates. **Warning:** Line Items using manual triggers
-        /// will stop serving in Display &amp;amp; Video 360 on **May 17, 2023**. Read our [feature deprecation
-        /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
+        /// activated within the parent insertion order's flight dates. **Warning:** Line Items using manual triggers no
+        /// longer serve in Display &amp;amp; Video 360. This field will sunset on August 1, 2023. Read our [feature
+        /// deprecation announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggerId")]
         public virtual System.Nullable<long> TriggerId { get; set; }
@@ -24928,8 +24926,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
     }
 
     /// <summary>
-    /// A single manual trigger in Display &amp;amp; Video 360. **Warning:** Line Items using manual triggers will stop
-    /// serving in Display &amp;amp; Video 360 on **May 17, 2023**. Read our [feature deprecation
+    /// A single manual trigger in Display &amp;amp; Video 360. **Warning:** Line Items using manual triggers no longer
+    /// serve in Display &amp;amp; Video 360. This resource will sunset on August 1, 2023. Read our [feature deprecation
     /// announcement](/display-video/api/deprecations#features.manual_triggers) for more information.
     /// </summary>
     public class ManualTrigger : Google.Apis.Requests.IDirectResponseSchema
@@ -26286,37 +26284,26 @@ namespace Google.Apis.DisplayVideo.v1.Data
     }
 
     /// <summary>
-    /// Settings that control the targeting expansion of the line item. Targeting expansion allows the line item to
-    /// reach a larger audience based on the original audience list and the targeting expansion level. Beginning **March
-    /// 25, 2023**, these settings may represent the [optimized targeting
-    /// feature](//support.google.com/displayvideo/answer/12060859) in place of targeting expansion. This feature will
-    /// be rolled out to all partners by early May 2023.
+    /// Settings that control the [optimized targeting](//support.google.com/displayvideo/answer/12060859) settings of
+    /// the line item.
     /// </summary>
     public class TargetingExpansionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Whether to exclude first-party audiences from use in targeting expansion or optimized targeting.
-        /// Similar audiences of the excluded first-party lists will not be excluded. Only applicable when a first-party
-        /// audience is positively targeted (directly or included in a combined audience), otherwise this selection will
-        /// be ignored. Beginning **March 25, 2023**, this field may be deprecated with the replacement of targeting
-        /// expansion with [optimized targeting](//support.google.com/displayvideo/answer/12060859). Upon deprecation,
-        /// this field will be set to `false`. If this field is set to `true` when deprecated, all positive first-party
-        /// audience targeting assigned to this line item will be replaced with negative targeting of the same
-        /// first-party audiences to ensure the continued exclusion of those audiences. This field will be deprecated
-        /// for all partners by early May 2023.
+        /// Whether to exclude first-party audiences from use in targeting expansion. This field was deprecated with the
+        /// launch of [optimized targeting](//support.google.com/displayvideo/answer/12060859). This field will be set
+        /// to `false`. If this field is set to `true` when deprecated, all positive first-party audience targeting
+        /// assigned to this line item will be replaced with negative targeting of the same first-party audiences to
+        /// ensure the continued exclusion of those audiences.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeFirstPartyAudience")]
         public virtual System.Nullable<bool> ExcludeFirstPartyAudience { get; set; }
 
         /// <summary>
-        /// Required. Magnitude of expansion for applicable targeting under this line item. Beginning **March 25,
-        /// 2023**, the behavior of this field may change in the following ways with the replacement of targeting
-        /// expansion with [optimized targeting](//support.google.com/displayvideo/answer/12060859): * This field will
-        /// represent the optimized targeting checkbox, with a `NO_EXPANSION` value representing optimized targeting
-        /// turned off and a `LEAST_EXPANSION` value representing optimized targeting turned on. * `NO_EXPANSION` will
-        /// be the default value for the field and will be automatically assigned if you do not set the field. * If you
-        /// set the field to any value other than `NO_EXPANSION`, it will automatically be set to `LEAST_EXPANSION`.
-        /// This behavior will be rolled out to all partners by early May 2023.
+        /// Required. Whether optimized targeting is turned on. This field supports the following values: *
+        /// `NO_EXPANSION`: optimized targeting is turned off * `LEAST_EXPANSION`: optimized targeting is turned on If
+        /// this field is set to any other value, it will automatically be set to `LEAST_EXPANSION`. `NO_EXPANSION` will
+        /// be the default value for the field and will be automatically assigned if you do not set the field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingExpansionLevel")]
         public virtual string TargetingExpansionLevel { get; set; }

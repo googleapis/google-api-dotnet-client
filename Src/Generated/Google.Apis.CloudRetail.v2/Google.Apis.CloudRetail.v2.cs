@@ -9396,6 +9396,12 @@ namespace Google.Apis.CloudRetail.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
+        /// <summary>
+        /// Optional. An optional arbitrary string that could be used as a tag for tracking link source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
         /// <summary>Output only. Represents the state of the link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -10217,6 +10223,12 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// <summary>Output only. Google Cloud project ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
+
+        /// <summary>
+        /// Optional. An optional arbitrary string that could be used as a tag for tracking link source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
 
         /// <summary>Output only. Represents the state of the link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]

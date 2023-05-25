@@ -2475,6 +2475,69 @@ namespace Google.Apis.Translate.v3
                 }
             }
 
+            /// <summary>Romanize input text written in non-Latin scripts to Latin text.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. Project or location to make a call. Must refer to a caller's project. Format:
+            /// `projects/{project-number-or-id}/locations/{location-id}` or `projects/{project-number-or-id}`. For
+            /// global calls, use `projects/{project-number-or-id}/locations/global` or
+            /// `projects/{project-number-or-id}`.
+            /// </param>
+            public virtual RomanizeTextRequest RomanizeText(Google.Apis.Translate.v3.Data.RomanizeTextRequest body, string parent)
+            {
+                return new RomanizeTextRequest(service, body, parent);
+            }
+
+            /// <summary>Romanize input text written in non-Latin scripts to Latin text.</summary>
+            public class RomanizeTextRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v3.Data.RomanizeTextResponse>
+            {
+                /// <summary>Constructs a new RomanizeText request.</summary>
+                public RomanizeTextRequest(Google.Apis.Services.IClientService service, Google.Apis.Translate.v3.Data.RomanizeTextRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Project or location to make a call. Must refer to a caller's project. Format:
+                /// `projects/{project-number-or-id}/locations/{location-id}` or `projects/{project-number-or-id}`. For
+                /// global calls, use `projects/{project-number-or-id}/locations/global` or
+                /// `projects/{project-number-or-id}`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Translate.v3.Data.RomanizeTextRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "romanizeText";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v3/{+parent}:romanizeText";
+
+                /// <summary>Initializes RomanizeText parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Translates documents in synchronous mode.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -2761,6 +2824,68 @@ namespace Google.Apis.Translate.v3
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Romanize input text written in non-Latin scripts to Latin text.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="parent">
+        /// Required. Project or location to make a call. Must refer to a caller's project. Format:
+        /// `projects/{project-number-or-id}/locations/{location-id}` or `projects/{project-number-or-id}`. For global
+        /// calls, use `projects/{project-number-or-id}/locations/global` or `projects/{project-number-or-id}`.
+        /// </param>
+        public virtual RomanizeTextRequest RomanizeText(Google.Apis.Translate.v3.Data.RomanizeTextRequest body, string parent)
+        {
+            return new RomanizeTextRequest(service, body, parent);
+        }
+
+        /// <summary>Romanize input text written in non-Latin scripts to Latin text.</summary>
+        public class RomanizeTextRequest : TranslateBaseServiceRequest<Google.Apis.Translate.v3.Data.RomanizeTextResponse>
+        {
+            /// <summary>Constructs a new RomanizeText request.</summary>
+            public RomanizeTextRequest(Google.Apis.Services.IClientService service, Google.Apis.Translate.v3.Data.RomanizeTextRequest body, string parent) : base(service)
+            {
+                Parent = parent;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. Project or location to make a call. Must refer to a caller's project. Format:
+            /// `projects/{project-number-or-id}/locations/{location-id}` or `projects/{project-number-or-id}`. For
+            /// global calls, use `projects/{project-number-or-id}/locations/global` or
+            /// `projects/{project-number-or-id}`.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Translate.v3.Data.RomanizeTextRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "romanizeText";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v3/{+parent}:romanizeText";
+
+            /// <summary>Initializes RomanizeText parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
                 });
             }
         }
@@ -3885,6 +4010,57 @@ namespace Google.Apis.Translate.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A single romanization response.</summary>
+    public class Romanization : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The ISO-639 language code of source text in the initial request, detected automatically, if no source
+        /// language was passed within the initial request. If the source language was passed, auto-detection of the
+        /// language does not occur and this field is empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detectedLanguageCode")]
+        public virtual string DetectedLanguageCode { get; set; }
+
+        /// <summary>
+        /// Romanized text. If an error occurs during romanization, this field might be excluded from the response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("romanizedText")]
+        public virtual string RomanizedText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for synchronous romanization.</summary>
+    public class RomanizeTextRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The content of the input in string format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contents")]
+        public virtual System.Collections.Generic.IList<string> Contents { get; set; }
+
+        /// <summary>
+        /// Optional. The ISO-639 language code of the input text if known, for example, "hi" or "zh". If the source
+        /// language isn't specified, the API attempts to identify the source language automatically and returns the
+        /// source language for each content in the response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceLanguageCode")]
+        public virtual string SourceLanguageCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for synchronous romanization.</summary>
+    public class RomanizeTextResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Text romanization responses. This field has the same length as `contents`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("romanizations")]
+        public virtual System.Collections.Generic.IList<Romanization> Romanizations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The `Status` type defines a logical error model that is suitable for different programming environments,
     /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -4157,6 +4333,10 @@ namespace Google.Apis.Translate.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetLanguageCode")]
         public virtual string TargetLanguageCode { get; set; }
 
+        /// <summary>Optional. Transliteration to be applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transliterationConfig")]
+        public virtual TransliterationConfig TransliterationConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4210,6 +4390,17 @@ namespace Google.Apis.Translate.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("translatedText")]
         public virtual string TranslatedText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Confugures transliteration feature on top of translation.</summary>
+    public class TransliterationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If true, source text in romanized form can be translated to the target language.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableTransliteration")]
+        public virtual System.Nullable<bool> EnableTransliteration { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

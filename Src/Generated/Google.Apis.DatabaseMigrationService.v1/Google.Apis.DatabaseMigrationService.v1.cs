@@ -6016,6 +6016,13 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateConnectivity")]
         public virtual PrivateConnectivity PrivateConnectivity { get; set; }
 
+        /// <summary>
+        /// SSL configuration for the destination to connect to the source database. The supported configuration for
+        /// Oracle SSL is of SERVER_ONLY type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ssl")]
+        public virtual SslConfig Ssl { get; set; }
+
         /// <summary>Static Service IP connectivity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("staticServiceIpConnectivity")]
         public virtual StaticServiceIpConnectivity StaticServiceIpConnectivity { get; set; }

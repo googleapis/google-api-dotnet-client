@@ -10506,7 +10506,8 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual System.Collections.Generic.IList<Entity> Entities { get; set; }
 
         /// <summary>
-        /// entity_mentions contains all the annotated medical entities that were mentioned in the provided document.
+        /// The `entity_mentions` field contains all the annotated medical entities that were mentioned in the provided
+        /// document.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityMentions")]
         public virtual System.Collections.Generic.IList<EntityMention> EntityMentions { get; set; }
@@ -11721,7 +11722,7 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         public virtual System.Nullable<bool> SendFullResource { get; set; }
 
         /// <summary>
-        /// Whether to send full FHIR resource to this pubsub topic for deleting FHIR resource. Note that setting this
+        /// Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this
         /// to true does not guarantee that all previous resources will be sent in the format of full FHIR resource.
         /// When a resource change is too large or during heavy traffic, only the resource name will be sent. Clients
         /// should always check the "payloadType" label from a Pub/Sub message to determine whether it needs to fetch

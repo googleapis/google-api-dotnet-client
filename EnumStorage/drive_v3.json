@@ -1,15 +1,33 @@
 {
   "Google.Apis.Drive.v3.DriveBaseServiceRequest<<TResponse>>.AltEnum": [
-    "json"
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Drive.v3.DriveBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
   ],
   "Google.Apis.Drive.v3.FilesResource+CreateMediaUpload.AltEnum": [
-    "json"
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Drive.v3.FilesResource+CreateMediaUpload.XgafvEnum": [
+    "1",
+    "2"
   ],
   "Google.Apis.Drive.v3.FilesResource+ListRequest.CorpusEnum": [
     "domain",
     "user"
   ],
   "Google.Apis.Drive.v3.FilesResource+UpdateMediaUpload.AltEnum": [
-    "json"
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Drive.v3.FilesResource+UpdateMediaUpload.XgafvEnum": [
+    "1",
+    "2"
   ]
 }
