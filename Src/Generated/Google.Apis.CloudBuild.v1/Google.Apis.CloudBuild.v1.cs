@@ -996,9 +996,9 @@ namespace Google.Apis.CloudBuild.v1
             /// built from the tip of a branch, the retried build will build from the tip of that branch, which may not
             /// be the same revision as the original build. * If the original build specified a commit sha or revision
             /// ID, the retried build will use the identical source. For builds that specify `StorageSource`: * If the
-            /// original build pulled source from Google Cloud Storage without specifying the generation of the object,
-            /// the new build will use the current object, which may be different from the original build source. * If
-            /// the original build pulled source from Cloud Storage and specified the generation of the object, the new
+            /// original build pulled source from Cloud Storage without specifying the generation of the object, the new
+            /// build will use the current object, which may be different from the original build source. * If the
+            /// original build pulled source from Cloud Storage and specified the generation of the object, the new
             /// build will attempt to use the same object, which may or may not be available depending on the bucket's
             /// lifecycle management settings.
             /// </summary>
@@ -1018,9 +1018,9 @@ namespace Google.Apis.CloudBuild.v1
             /// built from the tip of a branch, the retried build will build from the tip of that branch, which may not
             /// be the same revision as the original build. * If the original build specified a commit sha or revision
             /// ID, the retried build will use the identical source. For builds that specify `StorageSource`: * If the
-            /// original build pulled source from Google Cloud Storage without specifying the generation of the object,
-            /// the new build will use the current object, which may be different from the original build source. * If
-            /// the original build pulled source from Cloud Storage and specified the generation of the object, the new
+            /// original build pulled source from Cloud Storage without specifying the generation of the object, the new
+            /// build will use the current object, which may be different from the original build source. * If the
+            /// original build pulled source from Cloud Storage and specified the generation of the object, the new
             /// build will attempt to use the same object, which may or may not be available depending on the bucket's
             /// lifecycle management settings.
             /// </summary>
@@ -2474,11 +2474,11 @@ namespace Google.Apis.CloudBuild.v1
                 /// build built from the tip of a branch, the retried build will build from the tip of that branch,
                 /// which may not be the same revision as the original build. * If the original build specified a commit
                 /// sha or revision ID, the retried build will use the identical source. For builds that specify
-                /// `StorageSource`: * If the original build pulled source from Google Cloud Storage without specifying
-                /// the generation of the object, the new build will use the current object, which may be different from
-                /// the original build source. * If the original build pulled source from Cloud Storage and specified
-                /// the generation of the object, the new build will attempt to use the same object, which may or may
-                /// not be available depending on the bucket's lifecycle management settings.
+                /// `StorageSource`: * If the original build pulled source from Cloud Storage without specifying the
+                /// generation of the object, the new build will use the current object, which may be different from the
+                /// original build source. * If the original build pulled source from Cloud Storage and specified the
+                /// generation of the object, the new build will attempt to use the same object, which may or may not be
+                /// available depending on the bucket's lifecycle management settings.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -2497,11 +2497,11 @@ namespace Google.Apis.CloudBuild.v1
                 /// build built from the tip of a branch, the retried build will build from the tip of that branch,
                 /// which may not be the same revision as the original build. * If the original build specified a commit
                 /// sha or revision ID, the retried build will use the identical source. For builds that specify
-                /// `StorageSource`: * If the original build pulled source from Google Cloud Storage without specifying
-                /// the generation of the object, the new build will use the current object, which may be different from
-                /// the original build source. * If the original build pulled source from Cloud Storage and specified
-                /// the generation of the object, the new build will attempt to use the same object, which may or may
-                /// not be available depending on the bucket's lifecycle management settings.
+                /// `StorageSource`: * If the original build pulled source from Cloud Storage without specifying the
+                /// generation of the object, the new build will use the current object, which may be different from the
+                /// original build source. * If the original build pulled source from Cloud Storage and specified the
+                /// generation of the object, the new build will attempt to use the same object, which may or may not be
+                /// available depending on the bucket's lifecycle management settings.
                 /// </summary>
                 public class RetryRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Operation>
                 {
@@ -5422,7 +5422,7 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual System.Collections.Generic.IList<FileHashes> FileHash { get; set; }
 
         /// <summary>
-        /// The path of an artifact in a Google Cloud Storage bucket, with the generation number. For example,
+        /// The path of an artifact in a Cloud Storage bucket, with the generation number. For example,
         /// `gs://mybucket/path/to/output.jar#generation`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
@@ -5839,7 +5839,7 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string LogUrl { get; set; }
 
         /// <summary>
-        /// Google Cloud Storage bucket where logs should be written (see [Bucket Name
+        /// Cloud Storage bucket where logs should be written (see [Bucket Name
         /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of
         /// the format `${logs_bucket}/log-${build_id}.txt`.
         /// </summary>
@@ -6006,7 +6006,7 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
         public virtual System.Collections.Generic.IList<string> Env { get; set; }
 
-        /// <summary>Option to define build log streaming behavior to Google Cloud Storage.</summary>
+        /// <summary>Option to define build log streaming behavior to Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logStreamingOption")]
         public virtual string LogStreamingOption { get; set; }
 
@@ -6700,7 +6700,7 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string RepoType { get; set; }
 
         /// <summary>
-        /// The fully qualified resource name of the Repo API repository. Either uri or repository can be specified. If
+        /// The fully qualified resource name of the Repos API repository. Either URI or repository can be specified. If
         /// unspecified, the repo from which the trigger invocation originated is assumed to be the repo from which to
         /// read the specified path.
         /// </summary>
@@ -7078,13 +7078,16 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string RepoType { get; set; }
 
         /// <summary>
-        /// The qualified resource name of the Repo API repository Either uri or repository can be specified and is
-        /// required.
+        /// The connected repository resource name, in the format `projects/*/locations/*/connections/*/repositories/*`.
+        /// Either `uri` or `repository` can be specified and is required.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repository")]
         public virtual string Repository { get; set; }
 
-        /// <summary>The URI of the repo. Either uri or repository can be specified and is required.</summary>
+        /// <summary>
+        /// The URI of the repo (e.g. https://github.com/user/repo.git). Either `uri` or `repository` can be specified
+        /// and is required.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -7941,13 +7944,13 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("repoSource")]
         public virtual RepoSource RepoSource { get; set; }
 
-        /// <summary>If provided, get the source from this location in Google Cloud Storage.</summary>
+        /// <summary>If provided, get the source from this location in Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageSource")]
         public virtual StorageSource StorageSource { get; set; }
 
         /// <summary>
-        /// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview; see
-        /// description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
+        /// If provided, get the source from this manifest in Cloud Storage. This feature is in Preview; see description
+        /// [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageSourceManifest")]
         public virtual StorageSourceManifest StorageSourceManifest { get; set; }
@@ -8019,26 +8022,25 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Location of the source in an archive file in Google Cloud Storage.</summary>
+    /// <summary>Location of the source in an archive file in Cloud Storage.</summary>
     public class StorageSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Google Cloud Storage bucket containing the source (see [Bucket Name
+        /// Cloud Storage bucket containing the source (see [Bucket Name
         /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
         public virtual string Bucket { get; set; }
 
         /// <summary>
-        /// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be
-        /// used.
+        /// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
         public virtual System.Nullable<long> Generation { get; set; }
 
         /// <summary>
-        /// Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive
-        /// file (`.tar.gz`) containing source to build.
+        /// Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file
+        /// (`.tar.gz`) containing source to build.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("object")]
         public virtual string Object__ { get; set; }
@@ -8048,28 +8050,25 @@ namespace Google.Apis.CloudBuild.v1.Data
     }
 
     /// <summary>
-    /// Location of the source manifest in Google Cloud Storage. This feature is in Preview; see description
+    /// Location of the source manifest in Cloud Storage. This feature is in Preview; see description
     /// [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
     /// </summary>
     public class StorageSourceManifest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Google Cloud Storage bucket containing the source manifest (see [Bucket Name
+        /// Cloud Storage bucket containing the source manifest (see [Bucket Name
         /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
         public virtual string Bucket { get; set; }
 
         /// <summary>
-        /// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be
-        /// used.
+        /// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
         public virtual System.Nullable<long> Generation { get; set; }
 
-        /// <summary>
-        /// Google Cloud Storage object containing the source manifest. This object must be a JSON file.
-        /// </summary>
+        /// <summary>Cloud Storage object containing the source manifest. This object must be a JSON file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("object")]
         public virtual string Object__ { get; set; }
 

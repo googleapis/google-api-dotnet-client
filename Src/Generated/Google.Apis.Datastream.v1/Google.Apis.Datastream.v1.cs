@@ -2451,6 +2451,14 @@ namespace Google.Apis.Datastream.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>The binary log file name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("cdcStrategy.specificStartPosition.mysqlLogPosition.logFile", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string CdcStrategySpecificStartPositionMysqlLogPositionLogFile { get; set; }
+
+                    /// <summary>The position within the binary log file. Default is head of file.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("cdcStrategy.specificStartPosition.mysqlLogPosition.logPosition", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> CdcStrategySpecificStartPositionMysqlLogPositionLogPosition { get; set; }
+
                     /// <summary>Optional. Update the stream without validating it.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> Force { get; set; }
@@ -2510,6 +2518,22 @@ namespace Google.Apis.Datastream.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/streams/[^/]+$",
+                        });
+                        RequestParameters.Add("cdcStrategy.specificStartPosition.mysqlLogPosition.logFile", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "cdcStrategy.specificStartPosition.mysqlLogPosition.logFile",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("cdcStrategy.specificStartPosition.mysqlLogPosition.logPosition", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "cdcStrategy.specificStartPosition.mysqlLogPosition.logPosition",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
                         {

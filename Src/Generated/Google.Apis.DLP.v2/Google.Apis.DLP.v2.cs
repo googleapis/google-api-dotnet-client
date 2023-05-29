@@ -58,7 +58,7 @@ namespace Google.Apis.DLP.v2
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Data Loss Prevention (DLP) API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Data Loss Prevention (DLP).</summary>
         public class Scope
         {
             /// <summary>
@@ -68,9 +68,7 @@ namespace Google.Apis.DLP.v2
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
-        /// <summary>
-        /// Available OAuth 2.0 scope constants for use with the Cloud Data Loss Prevention (DLP) API.
-        /// </summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Data Loss Prevention (DLP).</summary>
         public static class ScopeConstants
         {
             /// <summary>
@@ -12342,6 +12340,13 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("estimatedPrevalence")]
         public virtual System.Nullable<int> EstimatedPrevalence { get; set; }
 
+        /// <summary>
+        /// Whether this infoType was excluded from sensitivity and risk analysis due to factors such as low prevalence
+        /// (subject to change).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedFromAnalysis")]
+        public virtual System.Nullable<bool> ExcludedFromAnalysis { get; set; }
+
         /// <summary>The other infoType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
         public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; }
@@ -12518,7 +12523,7 @@ namespace Google.Apis.DLP.v2.Data
 
     public class GooglePrivacyDlpV2ProfileStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Profiling status code and optional message</summary>
+        /// <summary>Profiling status code and optional message. status.code will be 0 (default value) for OK.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual GoogleRpcStatus Status { get; set; }
 
