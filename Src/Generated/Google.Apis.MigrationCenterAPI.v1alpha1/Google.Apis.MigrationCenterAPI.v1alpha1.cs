@@ -4990,8 +4990,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual System.Nullable<bool> AllowMissing { get; set; }
 
         /// <summary>
-        /// Required. The IDs of the assets to delete. A maximum of 1000 assets can be deleted in a batch. format:
-        /// projects/{project}/locations/{location}/asset/{name}.
+        /// Required. The IDs of the assets to delete. A maximum of 1000 assets can be deleted in a batch. Format:
+        /// projects/{project}/locations/{location}/assets/{name}.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("names")]
         public virtual System.Collections.Generic.IList<string> Names { get; set; }

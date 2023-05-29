@@ -4064,6 +4064,200 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata related to the progress of the ImportDocuments operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1ImportDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Count of entries that encountered errors while processing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
+        public virtual System.Nullable<long> FailureCount { get; set; }
+
+        /// <summary>Count of entries that were processed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<long> SuccessCount { get; set; }
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the ImportDocumentsRequest. If the long running operation is done, then this message is returned by
+    /// the google.longrunning.Operations.response field if the operation was successful.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1ImportDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Echoes the destination for the complete errors in the request if set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorConfig")]
+        public virtual GoogleCloudDiscoveryengineV1ImportErrorConfig ErrorConfig { get; set; }
+
+        /// <summary>A sample of errors encountered while processing the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration of destination for Import related errors.</summary>
+    public class GoogleCloudDiscoveryengineV1ImportErrorConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Cloud Storage prefix for import errors. This must be an empty, existing Cloud Storage directory. Import
+        /// errors will be written to sharded files in this directory, one per line, as a JSON-encoded
+        /// `google.rpc.Status` message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
+        public virtual string GcsPrefix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the Import operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1ImportUserEventsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Count of entries that encountered errors while processing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
+        public virtual System.Nullable<long> FailureCount { get; set; }
+
+        /// <summary>Count of entries that were processed successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<long> SuccessCount { get; set; }
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the ImportUserEventsRequest. If the long running operation was successful, then this message is
+    /// returned by the google.longrunning.Operations.response field if the operation was successful.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1ImportUserEventsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Echoes the destination for the complete errors if this field was set in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorConfig")]
+        public virtual GoogleCloudDiscoveryengineV1ImportErrorConfig ErrorConfig { get; set; }
+
+        /// <summary>A sample of errors encountered while processing the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorSamples")]
+        public virtual System.Collections.Generic.IList<GoogleRpcStatus> ErrorSamples { get; set; }
+
+        /// <summary>Count of user events imported with complete existing Documents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("joinedEventsCount")]
+        public virtual System.Nullable<long> JoinedEventsCount { get; set; }
+
+        /// <summary>
+        /// Count of user events imported, but with Document information not found in the existing Branch.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unjoinedEventsCount")]
+        public virtual System.Nullable<long> UnjoinedEventsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the PurgeDocuments operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1PurgeDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Count of entries that encountered errors while processing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
+        public virtual System.Nullable<long> FailureCount { get; set; }
+
+        /// <summary>Count of entries that were deleted successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<long> SuccessCount { get; set; }
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response message for DocumentService.PurgeDocuments method. If the long running operation is successfully done,
+    /// then this message is returned by the google.longrunning.Operations.response field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1PurgeDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The total count of documents purged as a result of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeCount")]
+        public virtual System.Nullable<long> PurgeCount { get; set; }
+
+        /// <summary>
+        /// A sample of document names that will be deleted. Only populated if `force` is set to false. A max of 100
+        /// names will be returned and the names are chosen at random.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeSample")]
+        public virtual System.Collections.Generic.IList<string> PurgeSample { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines the structure and layout of a type of document data.</summary>
+    public class GoogleCloudDiscoveryengineV1Schema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The JSON representation of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonSchema")]
+        public virtual string JsonSchema { get; set; }
+
+        /// <summary>
+        /// Immutable. The full resource name of the schema, in the format of
+        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`.
+        /// This field must be a UTF-8 encoded string with a length limit of 1024 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The structured representation of the schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("structSchema")]
+        public virtual System.Collections.Generic.IDictionary<string, object> StructSchema { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for SiteSearchEngineService.BatchCreateTargetSites method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaBatchCreateTargetSitesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>TargetSites created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetSites")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaTargetSite> TargetSites { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>BigQuery source import data from.</summary>
     public class GoogleCloudDiscoveryengineV1alphaBigQuerySource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4296,6 +4490,18 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Request message for Import methods.</summary>
     public class GoogleCloudDiscoveryengineV1alphaImportDocumentsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Whether to automatically generate IDs for the documents if absent. If set to `true`, Document.ids are
+        /// automatically generated based on the hash of the payload, where IDs may not be consistent during multiple
+        /// imports. In which case ReconciliationMode.FULL is highly recommended to avoid duplicate contents. If unset
+        /// or set to `false`, Document.ids have to be specified using id_field, otherwises, documents without IDs will
+        /// fail to be imported. Only set this field when using GcsSource or BigQuerySource, and when
+        /// GcsSource.data_schema or BigQuerySource.data_schema is `custom`. Otherwise, an INVALID_ARGUMENT error is
+        /// thrown.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoGenerateIds")]
+        public virtual System.Nullable<bool> AutoGenerateIds { get; set; }
+
         /// <summary>BigQuery input source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigquerySource")]
         public virtual GoogleCloudDiscoveryengineV1alphaBigQuerySource BigquerySource { get; set; }
@@ -4307,6 +4513,21 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Cloud Storage location for the input content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GoogleCloudDiscoveryengineV1alphaGcsSource GcsSource { get; set; }
+
+        /// <summary>
+        /// The field in the Cloud Storage and BigQuery sources that indicates the unique IDs of the documents. For
+        /// GcsSource it is the key of the JSON field. For instance, `my_id` for JSON `{"my_id": "some_uuid"}`. For
+        /// BigQuerySource it is the column name of the BigQuery table where the unique ids are stored. The values of
+        /// the JSON field or the BigQuery column will be used as the Document.ids. The JSON field or the BigQuery
+        /// column must be of string type, and the values must be set as valid strings conform to
+        /// [RFC-1034](https://tools.ietf.org/html/rfc1034) with 1-63 characters. Otherwise, documents without valid IDs
+        /// will fail to be imported. Only set this field when using GcsSource or BigQuerySource, and when
+        /// GcsSource.data_schema or BigQuerySource.data_schema is `custom`. And only set this field when
+        /// auto_generate_ids is unset or set as `false`. Otherwise, an INVALID_ARGUMENT error is thrown. If it is
+        /// unset, a default value `_id` is used when importing from the allowed data sources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idField")]
+        public virtual string IdField { get; set; }
 
         /// <summary>The Inline source for the input content for documents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inlineSource")]
@@ -4820,6 +5041,48 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("searchQuery")]
         public virtual string SearchQuery { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A target site for the SiteSearchEngine.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaTargetSite : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Input only. If set to false, an uri_pattern will be generated to include all pages whose address contains
+        /// the provided_uri_pattern. If set to true, an uri_pattern will be generated to try to be an exact match of
+        /// the provided_uri_pattern or just the specific page if the provided_uri_pattern is a specific one.
+        /// provided_uri_pattern will always be normalized to generate the uri pattern to be used by the search engine.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exactMatch")]
+        public virtual System.Nullable<bool> ExactMatch { get; set; }
+
+        /// <summary>Output only. This is system-generated based on the provided_uri_pattern.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedUriPattern")]
+        public virtual string GeneratedUriPattern { get; set; }
+
+        /// <summary>
+        /// Output only. The fully qualified resource name of the target site.
+        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/siteSearchEngine/targetSites/{target_site}`
+        /// The `target_site_id` is system-generated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. Input only. The user provided uri pattern from which the `generated_uri_pattern` is generated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("providedUriPattern")]
+        public virtual string ProvidedUriPattern { get; set; }
+
+        /// <summary>The type of the target site, e.g. whether the site is to be included or excluded.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Output only. The target site's last updated time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -2249,8 +2249,9 @@ namespace Google.Apis.Bigquery.v2
             public virtual string DatasetId { get; private set; }
 
             /// <summary>
-            /// If set, then only the Routines matching this filter are returned. The current supported form is either
-            /// "routine_type:" or "routineType:", where is a RoutineType enum. Example: "routineType:SCALAR_FUNCTION".
+            /// If set, then only the Routines matching this filter are returned. The supported format is
+            /// `routineType:{RoutineType}`, where `{RoutineType}` is a RoutineType enum. For example:
+            /// `routineType:SCALAR_FUNCTION`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -5230,7 +5231,7 @@ namespace Google.Apis.Bigquery.v2.Data
     public class EncryptionConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// [Optional] Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
+        /// Optional. Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
         /// The BigQuery Service Account associated with your project requires access to this encryption key.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
@@ -5589,6 +5590,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreUnknownValues")]
         public virtual System.Nullable<bool> IgnoreUnknownValues { get; set; }
+
+        /// <summary>Additional properties to set if `sourceFormat` is set to `NEWLINE_DELIMITED_JSON`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonOptions")]
+        public virtual JsonOptions JsonOptions { get; set; }
 
         /// <summary>
         /// [Optional] The maximum number of bad records that BigQuery can ignore when reading data. If the number of
@@ -7330,6 +7335,19 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    public class JsonOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// [Optional] The character encoding of the data. The supported values are UTF-8, UTF-16BE, UTF-16LE, UTF-32BE,
+        /// and UTF-32LE. The default value is UTF-8.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encoding")]
+        public virtual string Encoding { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class ListModelsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -7615,18 +7633,18 @@ namespace Google.Apis.Bigquery.v2.Data
 
     public class ModelReference : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Required] The ID of the dataset containing this model.</summary>
+        /// <summary>Required. The ID of the dataset containing this model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
         public virtual string DatasetId { get; set; }
 
         /// <summary>
-        /// [Required] The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores
+        /// Required. The ID of the model. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores
         /// (_). The maximum length is 1,024 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("modelId")]
         public virtual string ModelId { get; set; }
 
-        /// <summary>[Required] The ID of the project containing this model.</summary>
+        /// <summary>Required. The ID of the project containing this model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
@@ -8427,16 +8445,16 @@ namespace Google.Apis.Bigquery.v2.Data
 
     public class RoutineReference : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Required] The ID of the dataset containing this routine.</summary>
+        /// <summary>Required. The ID of the dataset containing this routine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
         public virtual string DatasetId { get; set; }
 
-        /// <summary>[Required] The ID of the project containing this routine.</summary>
+        /// <summary>Required. The ID of the project containing this routine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
         /// <summary>
-        /// [Required] The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores
+        /// Required. The ID of the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores
         /// (_). The maximum length is 256 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routineId")]
@@ -8499,22 +8517,22 @@ namespace Google.Apis.Bigquery.v2.Data
 
     public class RowAccessPolicyReference : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>[Required] The ID of the dataset containing this row access policy.</summary>
+        /// <summary>Required. The ID of the dataset containing this row access policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
         public virtual string DatasetId { get; set; }
 
         /// <summary>
-        /// [Required] The ID of the row access policy. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
+        /// Required. The ID of the row access policy. The ID must contain only letters (a-z, A-Z), numbers (0-9), or
         /// underscores (_). The maximum length is 256 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyId")]
         public virtual string PolicyId { get; set; }
 
-        /// <summary>[Required] The ID of the project containing this row access policy.</summary>
+        /// <summary>Required. The ID of the project containing this row access policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
-        /// <summary>[Required] The ID of the table containing this row access policy.</summary>
+        /// <summary>Required. The ID of the table containing this row access policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
         public virtual string TableId { get; set; }
 
@@ -8972,6 +8990,17 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("model")]
         public virtual ModelDefinition Model { get; set; }
 
+        /// <summary>[Output-only] Number of logical bytes that are less than 90 days old.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numActiveLogicalBytes")]
+        public virtual System.Nullable<long> NumActiveLogicalBytes { get; set; }
+
+        /// <summary>
+        /// [Output-only] Number of physical bytes less than 90 days old. This data is not kept in real time, and might
+        /// be delayed by a few seconds to a few minutes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numActivePhysicalBytes")]
+        public virtual System.Nullable<long> NumActivePhysicalBytes { get; set; }
+
         /// <summary>
         /// [Output-only] The size of this table in bytes, excluding any data in the streaming buffer.
         /// </summary>
@@ -8981,6 +9010,24 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Output-only] The number of bytes in the table that are considered "long-term storage".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numLongTermBytes")]
         public virtual System.Nullable<long> NumLongTermBytes { get; set; }
+
+        /// <summary>[Output-only] Number of logical bytes that are more than 90 days old.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numLongTermLogicalBytes")]
+        public virtual System.Nullable<long> NumLongTermLogicalBytes { get; set; }
+
+        /// <summary>
+        /// [Output-only] Number of physical bytes more than 90 days old. This data is not kept in real time, and might
+        /// be delayed by a few seconds to a few minutes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numLongTermPhysicalBytes")]
+        public virtual System.Nullable<long> NumLongTermPhysicalBytes { get; set; }
+
+        /// <summary>
+        /// [Output-only] The number of partitions present in the table or materialized view. This data is not kept in
+        /// real time, and might be delayed by a few seconds to a few minutes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numPartitions")]
+        public virtual System.Nullable<long> NumPartitions { get; set; }
 
         /// <summary>
         /// [Output-only] [TrustedTester] The physical size of this table in bytes, excluding any data in the streaming
@@ -8995,51 +9042,22 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("numRows")]
         public virtual System.Nullable<ulong> NumRows { get; set; }
 
-        /// <summary>[Output-only] Number of logical bytes that are less than 90 days old.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("num_active_logical_bytes")]
-        public virtual System.Nullable<long> NumActiveLogicalBytes { get; set; }
-
-        /// <summary>
-        /// [Output-only] Number of physical bytes less than 90 days old. This data is not kept in real time, and might
-        /// be delayed by a few seconds to a few minutes.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("num_active_physical_bytes")]
-        public virtual System.Nullable<long> NumActivePhysicalBytes { get; set; }
-
-        /// <summary>[Output-only] Number of logical bytes that are more than 90 days old.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("num_long_term_logical_bytes")]
-        public virtual System.Nullable<long> NumLongTermLogicalBytes { get; set; }
-
-        /// <summary>
-        /// [Output-only] Number of physical bytes more than 90 days old. This data is not kept in real time, and might
-        /// be delayed by a few seconds to a few minutes.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("num_long_term_physical_bytes")]
-        public virtual System.Nullable<long> NumLongTermPhysicalBytes { get; set; }
-
-        /// <summary>
-        /// [Output-only] The number of partitions present in the table or materialized view. This data is not kept in
-        /// real time, and might be delayed by a few seconds to a few minutes.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("num_partitions")]
-        public virtual System.Nullable<long> NumPartitions { get; set; }
-
         /// <summary>
         /// [Output-only] Number of physical bytes used by time travel storage (deleted or changed data). This data is
         /// not kept in real time, and might be delayed by a few seconds to a few minutes.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("num_time_travel_physical_bytes")]
+        [Newtonsoft.Json.JsonPropertyAttribute("numTimeTravelPhysicalBytes")]
         public virtual System.Nullable<long> NumTimeTravelPhysicalBytes { get; set; }
 
         /// <summary>[Output-only] Total number of logical bytes in the table or materialized view.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("num_total_logical_bytes")]
+        [Newtonsoft.Json.JsonPropertyAttribute("numTotalLogicalBytes")]
         public virtual System.Nullable<long> NumTotalLogicalBytes { get; set; }
 
         /// <summary>
         /// [Output-only] The physical size of this table in bytes. This also includes storage used for time travel.
         /// This data is not kept in real time, and might be delayed by a few seconds to a few minutes.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("num_total_physical_bytes")]
+        [Newtonsoft.Json.JsonPropertyAttribute("numTotalPhysicalBytes")]
         public virtual System.Nullable<long> NumTotalPhysicalBytes { get; set; }
 
         /// <summary>
@@ -9075,6 +9093,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("streamingBuffer")]
         public virtual Streamingbuffer StreamingBuffer { get; set; }
 
+        /// <summary>[Optional] The table constraints on the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableConstraints")]
+        public virtual TableConstraints TableConstraints { get; set; }
+
         /// <summary>[Required] Reference describing the ID of this table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableReference")]
         public virtual TableReference TableReference { get; set; }
@@ -9108,6 +9130,61 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
+    }
+
+    public class TableConstraints : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Optional] The foreign keys of the tables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("foreignKeys")]
+        public virtual System.Collections.Generic.IList<ForeignKeysData> ForeignKeys { get; set; }
+
+        /// <summary>[Optional] The primary key of the table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryKey")]
+        public virtual PrimaryKeyData PrimaryKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+
+        /// <summary>[Optional] The foreign keys of the tables.</summary>
+        public class ForeignKeysData
+        {
+            [Newtonsoft.Json.JsonPropertyAttribute("columnReferences")]
+            public virtual System.Collections.Generic.IList<ColumnReferencesData> ColumnReferences { get; set; }
+
+            [Newtonsoft.Json.JsonPropertyAttribute("name")]
+            public virtual string Name { get; set; }
+
+            [Newtonsoft.Json.JsonPropertyAttribute("referencedTable")]
+            public virtual ReferencedTableData ReferencedTable { get; set; }
+
+            public class ColumnReferencesData
+            {
+                [Newtonsoft.Json.JsonPropertyAttribute("referencedColumn")]
+                public virtual string ReferencedColumn { get; set; }
+
+                [Newtonsoft.Json.JsonPropertyAttribute("referencingColumn")]
+                public virtual string ReferencingColumn { get; set; }
+            }
+
+            public class ReferencedTableData
+            {
+                [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
+                public virtual string DatasetId { get; set; }
+
+                [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+                public virtual string ProjectId { get; set; }
+
+                [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
+                public virtual string TableId { get; set; }
+            }
+        }
+
+        /// <summary>[Optional] The primary key of the table.</summary>
+        public class PrimaryKeyData
+        {
+            [Newtonsoft.Json.JsonPropertyAttribute("columns")]
+            public virtual System.Collections.Generic.IList<string> Columns { get; set; }
+        }
     }
 
     public class TableDataInsertAllRequest : Google.Apis.Requests.IDirectResponseSchema
@@ -9526,6 +9603,12 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>If true, detect step changes and make data adjustment in the input time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adjustStepChanges")]
         public virtual System.Nullable<bool> AdjustStepChanges { get; set; }
+
+        /// <summary>
+        /// Whether to use approximate feature contribution method in XGBoost model explanation for global explain.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("approxGlobalFeatureContrib")]
+        public virtual System.Nullable<bool> ApproxGlobalFeatureContrib { get; set; }
 
         /// <summary>Whether to enable auto ARIMA or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoArima")]

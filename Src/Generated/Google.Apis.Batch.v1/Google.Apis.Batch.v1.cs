@@ -1752,8 +1752,7 @@ namespace Google.Apis.Batch.v1.Data
         public virtual string MachineType { get; set; }
 
         /// <summary>
-        /// The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform. Not
-        /// yet implemented.
+        /// The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minCpuPlatform")]
         public virtual string MinCpuPlatform { get; set; }

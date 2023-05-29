@@ -883,7 +883,7 @@ namespace Google.Apis.Integrations.v1alpha
 
                     /// <summary>
                     /// Filtering as supported in
-                    /// https://developers.google.com/authorized-buyers/apis/guides/v2/list-filters.
+                    /// https://developers.google.com/authorized-buyers/apis/guides/list-filters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -3073,6 +3073,71 @@ namespace Google.Apis.Integrations.v1alpha
                     }
                 }
 
+                /// <summary>
+                /// Executes an integration on receiving events from Integration Connector triggers, Eventarc or CPS
+                /// Trigger. The details about integration are derived from CloudEvent request body.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The integration resource name. Format:
+                /// projects/{gcp_project_id}/locations/{location}/integrations/{integration_id}
+                /// </param>
+                public virtual ExecuteEventRequest ExecuteEvent(Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaExecuteEventRequest body, string name)
+                {
+                    return new ExecuteEventRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Executes an integration on receiving events from Integration Connector triggers, Eventarc or CPS
+                /// Trigger. The details about integration are derived from CloudEvent request body.
+                /// </summary>
+                public class ExecuteEventRequest : IntegrationsBaseServiceRequest<Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaExecuteEventResponse>
+                {
+                    /// <summary>Constructs a new ExecuteEvent request.</summary>
+                    public ExecuteEventRequest(Google.Apis.Services.IClientService service, Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaExecuteEventRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The integration resource name. Format:
+                    /// projects/{gcp_project_id}/locations/{location}/integrations/{integration_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Integrations.v1alpha.Data.GoogleCloudIntegrationsV1alphaExecuteEventRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "executeEvent";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}:executeEvent";
+
+                    /// <summary>Initializes ExecuteEvent parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/integrations/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Returns the list of all integrations in the specified project.</summary>
                 /// <param name="parent">
                 /// Required. Project and location from which the integrations should be listed. Format:
@@ -3539,7 +3604,7 @@ namespace Google.Apis.Integrations.v1alpha
 
                         /// <summary>
                         /// Filtering as supported in
-                        /// https://developers.google.com/authorized-buyers/apis/guides/v2/list-filters.
+                        /// https://developers.google.com/authorized-buyers/apis/guides/list-filters.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -3969,7 +4034,7 @@ namespace Google.Apis.Integrations.v1alpha
 
                         /// <summary>
                         /// Filtering as supported in
-                        /// https://developers.google.com/authorized-buyers/apis/guides/v2/list-filters.
+                        /// https://developers.google.com/authorized-buyers/apis/guides/list-filters.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -6370,7 +6435,7 @@ namespace Google.Apis.Integrations.v1alpha
 
                             /// <summary>
                             /// Filtering as supported in
-                            /// https://developers.google.com/authorized-buyers/apis/guides/v2/list-filters.
+                            /// https://developers.google.com/authorized-buyers/apis/guides/list-filters.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
@@ -6704,7 +6769,7 @@ namespace Google.Apis.Integrations.v1alpha
 
                         /// <summary>
                         /// Filtering as supported in
-                        /// https://developers.google.com/authorized-buyers/apis/guides/v2/list-filters.
+                        /// https://developers.google.com/authorized-buyers/apis/guides/list-filters.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -7074,7 +7139,7 @@ namespace Google.Apis.Integrations.v1alpha
 
                         /// <summary>
                         /// Filtering as supported in
-                        /// https://developers.google.com/authorized-buyers/apis/guides/v2/list-filters.
+                        /// https://developers.google.com/authorized-buyers/apis/guides/list-filters.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
@@ -7408,7 +7473,7 @@ namespace Google.Apis.Integrations.v1alpha
 
                     /// <summary>
                     /// Filtering as supported in
-                    /// https://developers.google.com/authorized-buyers/apis/guides/v2/list-filters.
+                    /// https://developers.google.com/authorized-buyers/apis/guides/list-filters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -10629,6 +10694,10 @@ namespace Google.Apis.Integrations.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authCode")]
         public virtual string AuthCode { get; set; }
 
+        /// <summary>Auth URL for Authorization Code Flow</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authUri")]
+        public virtual string AuthUri { get; set; }
+
         /// <summary>Client ID for user-provided OAuth app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; }
@@ -10769,6 +10838,10 @@ namespace Google.Apis.Integrations.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
+        /// <summary>Value is a Encryption Key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyValue")]
+        public virtual GoogleCloudConnectorsV1EncryptionKey KeyValue { get; set; }
+
         /// <summary>Value is a secret.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretValue")]
         public virtual GoogleCloudConnectorsV1Secret SecretValue { get; set; }
@@ -10793,6 +10866,13 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// <summary>Optional. Configuration for configuring the connection with an external system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configVariables")]
         public virtual System.Collections.Generic.IList<GoogleCloudConnectorsV1ConfigVariable> ConfigVariables { get; set; }
+
+        /// <summary>
+        /// Output only. Connection revision. This field is only updated when the connection is created or updated by
+        /// User.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionRevision")]
+        public virtual System.Nullable<long> ConnectionRevision { get; set; }
 
         /// <summary>
         /// Required. Connector version on which the connection is created. The format is:
@@ -10942,6 +11022,24 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// <summary>The key is the destination identifier that is supported by the Connector.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Encryption Key value.</summary>
+    public class GoogleCloudConnectorsV1EncryptionKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The [KMS key name] with which the content of the Operation is encrypted. The expected format:
+        /// `projects/*/locations/*/keyRings/*/cryptoKeys/*`. Will be empty string if google managed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>Type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11556,6 +11654,31 @@ namespace Google.Apis.Integrations.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual GoogleCloudIntegrationsV1alphaValueType Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for triggering an integration using event triggers.</summary>
+    public class GoogleCloudIntegrationsV1alphaExecuteEventRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Details about the trigger which is to be executed and values for input variable to the
+        /// integration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudEvent")]
+        public virtual IoCloudeventsV1CloudEvent CloudEvent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for executing an integration.</summary>
+    public class GoogleCloudIntegrationsV1alphaExecuteEventResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The id of the execution corresponding to this run of integration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionId")]
+        public virtual string ExecutionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12866,7 +12989,7 @@ namespace Google.Apis.Integrations.v1alpha.Data
         public virtual object ScheduleTime { get; set; }
 
         /// <summary>
-        /// Matched against all {@link TriggerConfig}s across all integrations. i.e.
+        /// Required. Matched against all {@link TriggerConfig}s across all integrations. i.e.
         /// TriggerConfig.trigger_id.equals(trigger_id)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggerId")]
@@ -13504,6 +13627,67 @@ namespace Google.Apis.Integrations.v1alpha.Data
     /// </summary>
     public class GoogleProtobufEmpty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>-- CloudEvent Context Attributes</summary>
+    public class IoCloudeventsV1CloudEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional &amp; Extension Attributes</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
+        public virtual System.Collections.Generic.IDictionary<string, IoCloudeventsV1CloudEventCloudEventAttributeValue> Attributes { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("binaryData")]
+        public virtual string BinaryData { get; set; }
+
+        /// <summary>Required Attributes</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("protoData")]
+        public virtual System.Collections.Generic.IDictionary<string, object> ProtoData { get; set; }
+
+        /// <summary>URI-reference</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("specVersion")]
+        public virtual string SpecVersion { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("textData")]
+        public virtual string TextData { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class IoCloudeventsV1CloudEventCloudEventAttributeValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("ceBoolean")]
+        public virtual System.Nullable<bool> CeBoolean { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("ceBytes")]
+        public virtual string CeBytes { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("ceInteger")]
+        public virtual System.Nullable<int> CeInteger { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("ceString")]
+        public virtual string CeString { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("ceTimestamp")]
+        public virtual object CeTimestamp { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("ceUri")]
+        public virtual string CeUri { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("ceUriRef")]
+        public virtual string CeUriRef { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

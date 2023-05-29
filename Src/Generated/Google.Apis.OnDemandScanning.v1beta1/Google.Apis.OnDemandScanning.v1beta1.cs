@@ -976,6 +976,28 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class BinarySourceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The binary package. This is significant when the source is different than the binary itself. Historically if
+        /// they've differed, we've stored the name of the source and its version in the package/version fields, but we
+        /// should also store the binary package info, as that's what's actually installed. See b/175908657#comment15.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("binaryVersion")]
+        public virtual PackageVersion BinaryVersion { get; set; }
+
+        /// <summary>
+        /// The source package. Similar to the above, this is significant when the source is different than the binary
+        /// itself. Since the top-level package/version fields are based on an if/else, we need a separate field for
+        /// both binary and source if we want to know definitively where the data is coming from.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceVersion")]
+        public virtual PackageVersion SourceVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details of a build occurrence.</summary>
     public class BuildOccurrence : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2077,11 +2099,11 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("architecture")]
         public virtual string Architecture { get; set; }
 
-        /// <summary>
-        /// The binary package. This is significant when the source is different than the binary itself. Historically if
-        /// they've differed, we've stored the name of the source and its version in the package/version fields, but we
-        /// should also store the binary package info, as that's what's actually installed. See b/175908657#comment15.
-        /// </summary>
+        /// <summary>A bundle containing the binary and source information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("binarySourceInfo")]
+        public virtual System.Collections.Generic.IList<BinarySourceInfo> BinarySourceInfo { get; set; }
+
+        /// <summary>DEPRECATED</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binaryVersion")]
         public virtual PackageVersion BinaryVersion { get; set; }
 
@@ -2134,11 +2156,7 @@ namespace Google.Apis.OnDemandScanning.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("patchedCve")]
         public virtual System.Collections.Generic.IList<string> PatchedCve { get; set; }
 
-        /// <summary>
-        /// The source package. Similar to the above, this is significant when the source is different than the binary
-        /// itself. Since the top-level package/version fields are based on an if/else, we need a separate field for
-        /// both binary and source if we want to know definitively where the data is coming from.
-        /// </summary>
+        /// <summary>DEPRECATED</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceVersion")]
         public virtual PackageVersion SourceVersion { get; set; }
 

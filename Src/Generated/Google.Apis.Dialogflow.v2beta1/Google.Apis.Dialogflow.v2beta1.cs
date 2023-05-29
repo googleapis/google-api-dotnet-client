@@ -19966,7 +19966,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>The description of differences between original and replayed agent output.</summary>
     public class GoogleCloudDialogflowCxV3TestRunDifference : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A description of the diff, showing the actual output vs expected output.</summary>
+        /// <summary>A human readable description of the diff, showing the actual output vs expected output.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -22055,7 +22055,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>The description of differences between original and replayed agent output.</summary>
     public class GoogleCloudDialogflowCxV3beta1TestRunDifference : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A description of the diff, showing the actual output vs expected output.</summary>
+        /// <summary>A human readable description of the diff, showing the actual output vs expected output.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 

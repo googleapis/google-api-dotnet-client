@@ -18657,6 +18657,13 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kmsServiceAccountId")]
         public virtual string KmsServiceAccountId { get; set; }
 
+        /// <summary>
+        /// Output only. The service account for the given container. Sinks use this service account as their
+        /// writer_identity if no custom service account is provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingServiceAccountId")]
+        public virtual string LoggingServiceAccountId { get; set; }
+
         /// <summary>Output only. The resource name of the settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
