@@ -6114,6 +6114,12 @@ namespace Google.Apis.DataCatalog.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcsBucketPath")]
         public virtual string GcsBucketPath { get; set; }
 
+        /// <summary>
+        /// Optional. (Optional) Dataplex task job id, if specified will be used as part of ImportEntries LRO ID
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
+        public virtual string JobId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -537,6 +537,45 @@ namespace Google.Apis.CloudNaturalLanguage.v1
                 base.InitParameters();
             }
         }
+
+        /// <summary>Moderates a document for harmful and sensitive categories.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual ModerateTextRequest ModerateText(Google.Apis.CloudNaturalLanguage.v1.Data.ModerateTextRequest body)
+        {
+            return new ModerateTextRequest(service, body);
+        }
+
+        /// <summary>Moderates a document for harmful and sensitive categories.</summary>
+        public class ModerateTextRequest : CloudNaturalLanguageBaseServiceRequest<Google.Apis.CloudNaturalLanguage.v1.Data.ModerateTextResponse>
+        {
+            /// <summary>Constructs a new ModerateText request.</summary>
+            public ModerateTextRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudNaturalLanguage.v1.Data.ModerateTextRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudNaturalLanguage.v1.Data.ModerateTextRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "moderateText";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/documents:moderateText";
+
+            /// <summary>Initializes ModerateText parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
     }
 }
 namespace Google.Apis.CloudNaturalLanguage.v1.Data
@@ -730,6 +769,10 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("language")]
         public virtual string Language { get; set; }
+
+        /// <summary>Harmful and sensitive categories identified in the input document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("moderationCategories")]
+        public virtual System.Collections.Generic.IList<ClassificationCategory> ModerationCategories { get; set; }
 
         /// <summary>
         /// Sentences in the input document. Populated if the user enables AnnotateTextRequest.Features.extract_syntax.
@@ -975,6 +1018,32 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
         /// <summary>Extract syntax information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extractSyntax")]
         public virtual System.Nullable<bool> ExtractSyntax { get; set; }
+
+        /// <summary>Moderate the document for harmful and sensitive categories.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("moderateText")]
+        public virtual System.Nullable<bool> ModerateText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The document moderation request message.</summary>
+    public class ModerateTextRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Input document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("document")]
+        public virtual Document Document { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The document moderation response message.</summary>
+    public class ModerateTextResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Harmful and sensitive categories representing the input document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("moderationCategories")]
+        public virtual System.Collections.Generic.IList<ClassificationCategory> ModerationCategories { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

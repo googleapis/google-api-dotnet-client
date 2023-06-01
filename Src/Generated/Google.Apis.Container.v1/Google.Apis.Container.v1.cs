@@ -8485,6 +8485,28 @@ namespace Google.Apis.Container.v1.Data
     }
 
     /// <summary>
+    /// Specifies the NodeAffinity key, values, and affinity operator according to [shared sole tenant node group
+    /// affinities](https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes#node_affinity_and_anti-affinity).
+    /// </summary>
+    public class NodeAffinity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Key for NodeAffinity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>Operator for NodeAffinity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operator")]
+        public virtual string Operator__ { get; set; }
+
+        /// <summary>Values for NodeAffinity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Parameters that describe the nodes in a cluster. GKE Autopilot clusters do not recognize parameters in
     /// `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
     /// </summary>
@@ -8678,6 +8700,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Shielded Instance options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceConfig")]
         public virtual ShieldedInstanceConfig ShieldedInstanceConfig { get; set; }
+
+        /// <summary>Parameters for node pools to be backed by shared sole tenant node groups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("soleTenantConfig")]
+        public virtual SoleTenantConfig SoleTenantConfig { get; set; }
 
         /// <summary>Spot flag for enabling Spot VM, which is a rebrand of the existing preemptible flag.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spot")]
@@ -10242,6 +10268,20 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Whether Shielded Nodes features are enabled on all nodes in this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// SoleTenantConfig contains the NodeAffinities to specify what shared sole tenant node groups should back the node
+    /// pool.
+    /// </summary>
+    public class SoleTenantConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>NodeAffinities used to match to a shared sole tenant node group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeAffinities")]
+        public virtual System.Collections.Generic.IList<NodeAffinity> NodeAffinities { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

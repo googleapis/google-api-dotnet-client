@@ -1173,126 +1173,6 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1
         }
 
         /// <summary>
-        /// Associates a location to a place ID. Any previous association is overwritten. This operation is only valid
-        /// if the location is unverified. The association must be valid, that is, it appears in the list of
-        /// `SearchGoogleLocations`.
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="name">Required. The resource name of the location to associate.</param>
-        public virtual AssociateRequest Associate(Google.Apis.MyBusinessBusinessInformation.v1.Data.AssociateLocationRequest body, string name)
-        {
-            return new AssociateRequest(service, body, name);
-        }
-
-        /// <summary>
-        /// Associates a location to a place ID. Any previous association is overwritten. This operation is only valid
-        /// if the location is unverified. The association must be valid, that is, it appears in the list of
-        /// `SearchGoogleLocations`.
-        /// </summary>
-        public class AssociateRequest : MyBusinessBusinessInformationBaseServiceRequest<Google.Apis.MyBusinessBusinessInformation.v1.Data.Empty>
-        {
-            /// <summary>Constructs a new Associate request.</summary>
-            public AssociateRequest(Google.Apis.Services.IClientService service, Google.Apis.MyBusinessBusinessInformation.v1.Data.AssociateLocationRequest body, string name) : base(service)
-            {
-                Name = name;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Required. The resource name of the location to associate.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.MyBusinessBusinessInformation.v1.Data.AssociateLocationRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "associate";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/{+name}:associate";
-
-            /// <summary>Initializes Associate parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "name",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^locations/[^/]+$",
-                });
-            }
-        }
-
-        /// <summary>
-        /// Clears an association between a location and its place ID. This operation is only valid if the location is
-        /// unverified.
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="name">Required. The resource name of the location to disassociate.</param>
-        public virtual ClearLocationAssociationRequest ClearLocationAssociation(Google.Apis.MyBusinessBusinessInformation.v1.Data.ClearLocationAssociationRequest body, string name)
-        {
-            return new ClearLocationAssociationRequest(service, body, name);
-        }
-
-        /// <summary>
-        /// Clears an association between a location and its place ID. This operation is only valid if the location is
-        /// unverified.
-        /// </summary>
-        public class ClearLocationAssociationRequest : MyBusinessBusinessInformationBaseServiceRequest<Google.Apis.MyBusinessBusinessInformation.v1.Data.Empty>
-        {
-            /// <summary>Constructs a new ClearLocationAssociation request.</summary>
-            public ClearLocationAssociationRequest(Google.Apis.Services.IClientService service, Google.Apis.MyBusinessBusinessInformation.v1.Data.ClearLocationAssociationRequest body, string name) : base(service)
-            {
-                Name = name;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Required. The resource name of the location to disassociate.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.MyBusinessBusinessInformation.v1.Data.ClearLocationAssociationRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "clearLocationAssociation";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/{+name}:clearLocationAssociation";
-
-            /// <summary>Initializes ClearLocationAssociation parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "name",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^locations/[^/]+$",
-                });
-            }
-        }
-
-        /// <summary>
         /// Deletes a location. If this location cannot be deleted using the API and it is marked so in the
         /// `google.mybusiness.businessinformation.v1.LocationState`, use the [Google Business
         /// Profile](https://business.google.com/manage/) website.
@@ -1683,17 +1563,6 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for Locations.AssociateLocationRequest.</summary>
-    public class AssociateLocationRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The association to establish. If not set, it indicates no match.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("placeId")]
-        public virtual string PlaceId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// A location attribute. Attributes provide additional information about a location. The attributes that can be set
     /// on a location may vary based on the properties of that location (for example, category). Available attributes
@@ -1961,13 +1830,6 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for Locations.ClearLocationAssociationRequest.</summary>
-    public class ClearLocationAssociationRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

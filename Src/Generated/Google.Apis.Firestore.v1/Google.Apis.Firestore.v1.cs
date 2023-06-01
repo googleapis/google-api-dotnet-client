@@ -5217,7 +5217,7 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Information about an TTL configuration change.</summary>
+    /// <summary>Information about a TTL configuration change.</summary>
     public class GoogleFirestoreAdminV1TtlConfigDelta : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies how the TTL configuration is changing.</summary>

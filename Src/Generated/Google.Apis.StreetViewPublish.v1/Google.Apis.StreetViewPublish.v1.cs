@@ -1930,6 +1930,10 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sequenceBounds")]
         public virtual LatLngBounds SequenceBounds { get; set; }
 
+        /// <summary>Output only. Set if a Photo within the PhotoSequence contains a takedown.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("takedown")]
+        public virtual System.Nullable<bool> Takedown { get; set; }
+
         /// <summary>
         /// Input only. Required when creating photo sequence. The resource name where the bytes of the photo sequence
         /// (in the form of video) are uploaded.

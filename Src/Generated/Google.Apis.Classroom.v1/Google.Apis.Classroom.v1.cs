@@ -6447,10 +6447,10 @@ namespace Google.Apis.Classroom.v1.Data
 
         /// <summary>
         /// The Calendar ID for a calendar that all course members can see, to which Classroom adds events for course
-        /// work and announcements in the course. The Calendar for a course is created asynchronously when the `course
-        /// is set to the `CourseState.ACTIVE` for the first time (i.e. at creation time or when it is updated to
-        /// `ACTIVE` through the UI or the API). The Calendar ID will not be populated until this processing is
-        /// completed. Read-only.
+        /// work and announcements in the course. The Calendar for a course is created asynchronously when the course is
+        /// set to `CourseState.ACTIVE` for the first time (at creation time or when it is updated to `ACTIVE` through
+        /// the UI or the API). The Calendar ID will not be populated until the creation process is completed.
+        /// Read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("calendarId")]
         public virtual string CalendarId { get; set; }
