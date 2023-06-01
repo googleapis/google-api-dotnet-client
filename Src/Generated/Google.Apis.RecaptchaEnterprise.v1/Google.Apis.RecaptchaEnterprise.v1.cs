@@ -1640,7 +1640,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
 
         /// <summary>
         /// Required. Input only. A private key (downloaded as a text file with a .p8 file extension) generated for your
-        /// Apple Developer account.
+        /// Apple Developer account. Ensure that Apple DeviceCheck is enabled for the private key.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateKey")]
         public virtual string PrivateKey { get; set; }
@@ -2091,7 +2091,7 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
 
         /// <summary>
         /// Apple Developer account details for the app that is protected by the reCAPTCHA Key. reCAPTCHA Enterprise
-        /// leverages platform specific checks like Apple AppAttest and Apple DeviceCheck to protect your app from
+        /// leverages platform-specific checks like Apple App Attest and Apple DeviceCheck to protect your app from
         /// abuse. Providing these fields allows reCAPTCHA Enterprise to get a better assessment of the integrity of
         /// your app.
         /// </summary>

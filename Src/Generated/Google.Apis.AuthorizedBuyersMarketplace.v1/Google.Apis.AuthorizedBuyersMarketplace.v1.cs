@@ -329,8 +329,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
 
                 /// <summary>
                 /// Optional query string using the [Cloud API list filtering
-                /// syntax](https://developers.google.com/authorized-buyers/apis/guides/v2/list-filters) Supported
-                /// columns for filtering are: * deal.displayName * deal.dealType * deal.createTime * deal.updateTime *
+                /// syntax](https://developers.google.com/authorized-buyers/apis/guides/list-filters) Supported columns
+                /// for filtering are: * deal.displayName * deal.dealType * deal.createTime * deal.updateTime *
                 /// deal.flightStartTime * deal.flightEndTime * dealServingStatus
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
@@ -1494,11 +1494,11 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
 
                 /// <summary>
                 /// Query string using the [Filtering
-                /// Syntax](https://developers.google.com/authorized-buyers/apis/guides/v2/list-filters) Supported
-                /// fields for filtering are: * partnerClientId Use this field to filter the clients by the
-                /// partnerClientId. For example, if the partnerClientId of the client is "1234", the value of this
-                /// field should be `partnerClientId = "1234"`, in order to get only the client whose partnerClientId is
-                /// "1234" in the response.
+                /// Syntax](https://developers.google.com/authorized-buyers/apis/guides/list-filters) Supported fields
+                /// for filtering are: * partnerClientId Use this field to filter the clients by the partnerClientId.
+                /// For example, if the partnerClientId of the client is "1234", the value of this field should be
+                /// `partnerClientId = "1234"`, in order to get only the client whose partnerClientId is "1234" in the
+                /// response.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -1812,8 +1812,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
 
                 /// <summary>
                 /// Optional query string using the [Cloud API list filtering
-                /// syntax](https://developers.google.com/authorized-buyers/apis/guides/v2/list-filters) Supported
-                /// columns for filtering are: * deal.displayName * deal.dealType * deal.createTime * deal.updateTime *
+                /// syntax](https://developers.google.com/authorized-buyers/apis/guides/list-filters) Supported columns
+                /// for filtering are: * deal.displayName * deal.dealType * deal.createTime * deal.updateTime *
                 /// deal.flightStartTime * deal.flightEndTime * dealServingStatus
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
@@ -2601,7 +2601,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             }
 
             /// <summary>
-            /// Gets a proposal using its name. The proposal is returned at most recent revision. revision.
+            /// Gets a proposal using its resource name. The proposal is returned at the latest revision.
             /// </summary>
             /// <param name="name">
             /// Required. Name of the proposal. Format: `buyers/{accountId}/proposals/{proposalId}`
@@ -2612,7 +2612,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             }
 
             /// <summary>
-            /// Gets a proposal using its name. The proposal is returned at most recent revision. revision.
+            /// Gets a proposal using its resource name. The proposal is returned at the latest revision.
             /// </summary>
             public class GetRequest : AuthorizedBuyersMarketplaceBaseServiceRequest<Google.Apis.AuthorizedBuyersMarketplace.v1.Data.Proposal>
             {
@@ -2654,9 +2654,9 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             }
 
             /// <summary>
-            /// Lists proposals. A filter expression (list filter syntax) may be specified to filter the results. This
-            /// will not list finalized versions of proposals that are being renegotiated; to retrieve these use the
-            /// finalizedProposals resource.
+            /// Lists proposals. A filter expression using [Cloud API list filtering
+            /// syntax](https://developers.google.com/authorized-buyers/apis/guides/list-filters) may be specified to
+            /// filter the results.
             /// </summary>
             /// <param name="parent">
             /// Required. Parent that owns the collection of proposals Format: `buyers/{accountId}`
@@ -2667,9 +2667,9 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
             }
 
             /// <summary>
-            /// Lists proposals. A filter expression (list filter syntax) may be specified to filter the results. This
-            /// will not list finalized versions of proposals that are being renegotiated; to retrieve these use the
-            /// finalizedProposals resource.
+            /// Lists proposals. A filter expression using [Cloud API list filtering
+            /// syntax](https://developers.google.com/authorized-buyers/apis/guides/list-filters) may be specified to
+            /// filter the results.
             /// </summary>
             public class ListRequest : AuthorizedBuyersMarketplaceBaseServiceRequest<Google.Apis.AuthorizedBuyersMarketplace.v1.Data.ListProposalsResponse>
             {
@@ -2688,8 +2688,8 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
 
                 /// <summary>
                 /// Optional query string using the [Cloud API list filtering
-                /// syntax](https://developers.google.com/authorized-buyers/apis/guides/v2/list-filters) Supported
-                /// columns for filtering are: * displayName * dealType * updateTime * state
+                /// syntax](https://developers.google.com/authorized-buyers/apis/guides/list-filters) Supported columns
+                /// for filtering are: * displayName * dealType * updateTime * state
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
@@ -2755,10 +2755,10 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
 
             /// <summary>
             /// Updates the proposal at the given revision number. If the revision number in the request is behind the
-            /// latest from the server, an error message will be returned. See FieldMask for how to use FieldMask. Only
-            /// fields specified in the UpdateProposalRequest.update_mask will be updated; Fields noted as 'Immutable'
-            /// or 'Output only' yet specified in the UpdateProposalRequest.update_mask will be ignored and left
-            /// unchanged. Updating a private auction proposal is not allowed and will result in an error.
+            /// latest one kept in the server, an error message will be returned. See FieldMask for how to use
+            /// FieldMask. Only fields specified in the UpdateProposalRequest.update_mask will be updated; Fields noted
+            /// as 'Immutable' or 'Output only' yet specified in the UpdateProposalRequest.update_mask will be ignored
+            /// and left unchanged. Updating a private auction proposal is not allowed and will result in an error.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -2772,10 +2772,10 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
 
             /// <summary>
             /// Updates the proposal at the given revision number. If the revision number in the request is behind the
-            /// latest from the server, an error message will be returned. See FieldMask for how to use FieldMask. Only
-            /// fields specified in the UpdateProposalRequest.update_mask will be updated; Fields noted as 'Immutable'
-            /// or 'Output only' yet specified in the UpdateProposalRequest.update_mask will be ignored and left
-            /// unchanged. Updating a private auction proposal is not allowed and will result in an error.
+            /// latest one kept in the server, an error message will be returned. See FieldMask for how to use
+            /// FieldMask. Only fields specified in the UpdateProposalRequest.update_mask will be updated; Fields noted
+            /// as 'Immutable' or 'Output only' yet specified in the UpdateProposalRequest.update_mask will be ignored
+            /// and left unchanged. Updating a private auction proposal is not allowed and will result in an error.
             /// </summary>
             public class PatchRequest : AuthorizedBuyersMarketplaceBaseServiceRequest<Google.Apis.AuthorizedBuyersMarketplace.v1.Data.Proposal>
             {
@@ -3015,7 +3015,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1
 
                 /// <summary>
                 /// Optional query string using the [Cloud API list filtering]
-                /// (https://developers.google.com/authorized-buyers/apis/guides/v2/list-filters) syntax.
+                /// (https://developers.google.com/authorized-buyers/apis/guides/list-filters) syntax.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }

@@ -292,6 +292,7 @@ namespace Google.Apis.GKEOnPrem.v1
                 this.service = service;
                 BareMetalAdminClusters = new BareMetalAdminClustersResource(service);
                 BareMetalClusters = new BareMetalClustersResource(service);
+                BareMetalStandaloneClusters = new BareMetalStandaloneClustersResource(service);
                 Operations = new OperationsResource(service);
                 VmwareAdminClusters = new VmwareAdminClustersResource(service);
                 VmwareClusters = new VmwareClustersResource(service);
@@ -1815,6 +1816,39 @@ namespace Google.Apis.GKEOnPrem.v1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
+                        /// <summary>
+                        /// View for bare metal node pool. When `BASIC` is specified, only the node pool resource name
+                        /// is returned. The default/unset value `NODE_POOL_VIEW_UNSPECIFIED` is the same as `FULL',
+                        /// which returns the complete node pool configuration details.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>
+                        /// View for bare metal node pool. When `BASIC` is specified, only the node pool resource name
+                        /// is returned. The default/unset value `NODE_POOL_VIEW_UNSPECIFIED` is the same as `FULL',
+                        /// which returns the complete node pool configuration details.
+                        /// </summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>If the value is not set, the default `FULL` view is used.</summary>
+                            [Google.Apis.Util.StringValueAttribute("NODE_POOL_VIEW_UNSPECIFIED")]
+                            NODEPOOLVIEWUNSPECIFIED = 0,
+
+                            /// <summary>
+                            /// Includes basic information of a node pool resource including node pool resource name.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("BASIC")]
+                            BASIC = 1,
+
+                            /// <summary>
+                            /// Includes the complete configuration for bare metal node pool resource. This is the
+                            /// default value for GetBareMetalNodePoolRequest method.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("FULL")]
+                            FULL = 2,
+                        }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
@@ -1835,6 +1869,14 @@ namespace Google.Apis.GKEOnPrem.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/bareMetalClusters/[^/]+/bareMetalNodePools/[^/]+$",
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
@@ -1967,6 +2009,39 @@ namespace Google.Apis.GKEOnPrem.v1
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
+                        /// <summary>
+                        /// View for bare metal node pools. When `BASIC` is specified, only the node pool resource name
+                        /// is returned. The default/unset value `NODE_POOL_VIEW_UNSPECIFIED` is the same as `FULL',
+                        /// which returns the complete node pool configuration details.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>
+                        /// View for bare metal node pools. When `BASIC` is specified, only the node pool resource name
+                        /// is returned. The default/unset value `NODE_POOL_VIEW_UNSPECIFIED` is the same as `FULL',
+                        /// which returns the complete node pool configuration details.
+                        /// </summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>If the value is not set, the default `FULL` view is used.</summary>
+                            [Google.Apis.Util.StringValueAttribute("NODE_POOL_VIEW_UNSPECIFIED")]
+                            NODEPOOLVIEWUNSPECIFIED = 0,
+
+                            /// <summary>
+                            /// Includes basic information of a node pool resource including node pool resource name.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("BASIC")]
+                            BASIC = 1,
+
+                            /// <summary>
+                            /// Includes the complete configuration for bare metal node pool resource. This is the
+                            /// default value for ListBareMetalNodePoolsRequest method.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("FULL")]
+                            FULL = 2,
+                        }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
@@ -2004,6 +2079,14 @@ namespace Google.Apis.GKEOnPrem.v1
                                 DefaultValue = null,
                                 Pattern = null,
                             });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                         }
                     }
 
@@ -2029,6 +2112,14 @@ namespace Google.Apis.GKEOnPrem.v1
                         /// <summary>Immutable. The bare metal node pool resource name.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// If set to true, and the bare metal node pool is not found, the request will create a new
+                        /// bare metal node pool with the provided configuration. The user must have both create and
+                        /// update permission to call Update with allow_missing set to true.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> AllowMissing { get; set; }
 
                         /// <summary>
                         /// Required. Field mask is used to specify the fields to be overwritten in the
@@ -2070,6 +2161,14 @@ namespace Google.Apis.GKEOnPrem.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/bareMetalClusters/[^/]+/bareMetalNodePools/[^/]+$",
+                            });
+                            RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "allowMissing",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                             RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                             {
@@ -3520,6 +3619,110 @@ namespace Google.Apis.GKEOnPrem.v1
                 }
             }
 
+            /// <summary>Gets the BareMetalStandaloneClusters resource.</summary>
+            public virtual BareMetalStandaloneClustersResource BareMetalStandaloneClusters { get; }
+
+            /// <summary>The "bareMetalStandaloneClusters" collection of methods.</summary>
+            public class BareMetalStandaloneClustersResource
+            {
+                private const string Resource = "bareMetalStandaloneClusters";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public BareMetalStandaloneClustersResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    BareMetalStandaloneNodePools = new BareMetalStandaloneNodePoolsResource(service);
+                }
+
+                /// <summary>Gets the BareMetalStandaloneNodePools resource.</summary>
+                public virtual BareMetalStandaloneNodePoolsResource BareMetalStandaloneNodePools { get; }
+
+                /// <summary>The "bareMetalStandaloneNodePools" collection of methods.</summary>
+                public class BareMetalStandaloneNodePoolsResource
+                {
+                    private const string Resource = "bareMetalStandaloneNodePools";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public BareMetalStandaloneNodePoolsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Enrolls an existing bare metal standalone node pool to the Anthos On-Prem API within a given
+                    /// project and location. Through enrollment, an existing standalone node pool will become Anthos
+                    /// On-Prem API managed. The corresponding GCP resources will be created.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent resource where this node pool will be created.
+                    /// projects/{project}/locations/{location}/bareMetalStandaloneClusters/{cluster}
+                    /// </param>
+                    public virtual EnrollRequest Enroll(Google.Apis.GKEOnPrem.v1.Data.EnrollBareMetalStandaloneNodePoolRequest body, string parent)
+                    {
+                        return new EnrollRequest(service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Enrolls an existing bare metal standalone node pool to the Anthos On-Prem API within a given
+                    /// project and location. Through enrollment, an existing standalone node pool will become Anthos
+                    /// On-Prem API managed. The corresponding GCP resources will be created.
+                    /// </summary>
+                    public class EnrollRequest : GKEOnPremBaseServiceRequest<Google.Apis.GKEOnPrem.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Enroll request.</summary>
+                        public EnrollRequest(Google.Apis.Services.IClientService service, Google.Apis.GKEOnPrem.v1.Data.EnrollBareMetalStandaloneNodePoolRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent resource where this node pool will be created.
+                        /// projects/{project}/locations/{location}/bareMetalStandaloneClusters/{cluster}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.GKEOnPrem.v1.Data.EnrollBareMetalStandaloneNodePoolRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "enroll";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/bareMetalStandaloneNodePools:enroll";
+
+                        /// <summary>Initializes Enroll parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/bareMetalStandaloneClusters/[^/]+$",
+                            });
+                        }
+                    }
+                }
+            }
+
             /// <summary>Gets the Operations resource.</summary>
             public virtual OperationsResource Operations { get; }
 
@@ -4066,6 +4269,40 @@ namespace Google.Apis.GKEOnPrem.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
+                    /// <summary>
+                    /// View for VMware admin cluster. When `BASIC` is specified, only the cluster resource name and
+                    /// membership are returned. The default/unset value `CLUSTER_VIEW_UNSPECIFIED` is the same as
+                    /// `FULL', which returns the complete cluster configuration details.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>
+                    /// View for VMware admin cluster. When `BASIC` is specified, only the cluster resource name and
+                    /// membership are returned. The default/unset value `CLUSTER_VIEW_UNSPECIFIED` is the same as
+                    /// `FULL', which returns the complete cluster configuration details.
+                    /// </summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>If the value is not set, the default `FULL` view is used.</summary>
+                        [Google.Apis.Util.StringValueAttribute("CLUSTER_VIEW_UNSPECIFIED")]
+                        CLUSTERVIEWUNSPECIFIED = 0,
+
+                        /// <summary>
+                        /// Includes basic information of a cluster resource including cluster resource name and
+                        /// membership.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("BASIC")]
+                        BASIC = 1,
+
+                        /// <summary>
+                        /// Includes the complete configuration for VMware admin cluster resource. This is the default
+                        /// value for GetVmwareAdminClusterRequest method.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("FULL")]
+                        FULL = 2,
+                    }
+
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "get";
 
@@ -4086,6 +4323,14 @@ namespace Google.Apis.GKEOnPrem.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/vmwareAdminClusters/[^/]+$",
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -5252,6 +5497,39 @@ namespace Google.Apis.GKEOnPrem.v1
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
+                        /// <summary>
+                        /// View for VMware node pool. When `BASIC` is specified, only the node pool resource name is
+                        /// returned. The default/unset value `NODE_POOL_VIEW_UNSPECIFIED` is the same as `FULL', which
+                        /// returns the complete node pool configuration details.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>
+                        /// View for VMware node pool. When `BASIC` is specified, only the node pool resource name is
+                        /// returned. The default/unset value `NODE_POOL_VIEW_UNSPECIFIED` is the same as `FULL', which
+                        /// returns the complete node pool configuration details.
+                        /// </summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>If the value is not set, the default `FULL` view is used.</summary>
+                            [Google.Apis.Util.StringValueAttribute("NODE_POOL_VIEW_UNSPECIFIED")]
+                            NODEPOOLVIEWUNSPECIFIED = 0,
+
+                            /// <summary>
+                            /// Includes basic information of a node pool resource including node pool resource name.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("BASIC")]
+                            BASIC = 1,
+
+                            /// <summary>
+                            /// Includes the complete configuration for VMware node pool resource. This is the default
+                            /// value for GetVmwareNodePoolRequest method.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("FULL")]
+                            FULL = 2,
+                        }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "get";
 
@@ -5272,6 +5550,14 @@ namespace Google.Apis.GKEOnPrem.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/vmwareClusters/[^/]+/vmwareNodePools/[^/]+$",
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
@@ -5400,6 +5686,39 @@ namespace Google.Apis.GKEOnPrem.v1
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
+                        /// <summary>
+                        /// View for VMware node pools. When `BASIC` is specified, only the node pool resource name is
+                        /// returned. The default/unset value `NODE_POOL_VIEW_UNSPECIFIED` is the same as `FULL', which
+                        /// returns the complete node pool configuration details.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>
+                        /// View for VMware node pools. When `BASIC` is specified, only the node pool resource name is
+                        /// returned. The default/unset value `NODE_POOL_VIEW_UNSPECIFIED` is the same as `FULL', which
+                        /// returns the complete node pool configuration details.
+                        /// </summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>If the value is not set, the default `FULL` view is used.</summary>
+                            [Google.Apis.Util.StringValueAttribute("NODE_POOL_VIEW_UNSPECIFIED")]
+                            NODEPOOLVIEWUNSPECIFIED = 0,
+
+                            /// <summary>
+                            /// Includes basic information of a node pool resource including node pool resource name.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("BASIC")]
+                            BASIC = 1,
+
+                            /// <summary>
+                            /// Includes the complete configuration for VMware node pool resource. This is the default
+                            /// value for ListVmwareNodePoolsRequest method.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("FULL")]
+                            FULL = 2,
+                        }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
@@ -5432,6 +5751,14 @@ namespace Google.Apis.GKEOnPrem.v1
                             RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -5689,6 +6016,13 @@ namespace Google.Apis.GKEOnPrem.v1
                         public virtual string Name { get; private set; }
 
                         /// <summary>
+                        /// If set to true, and the VMware node pool is not found, the request will succeed but no
+                        /// action will be taken on the server and return a completed LRO.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> AllowMissing { get; set; }
+
+                        /// <summary>
                         /// The current etag of the VMware node pool. If an etag is provided and does not match the
                         /// current etag of node pool, deletion will be blocked and an ABORTED error will be returned.
                         /// </summary>
@@ -5722,6 +6056,14 @@ namespace Google.Apis.GKEOnPrem.v1
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/vmwareClusters/[^/]+/vmwareNodePools/[^/]+$",
                             });
+                            RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "allowMissing",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                             RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "etag",
@@ -5742,7 +6084,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     }
                 }
 
-                /// <summary>Creates a new VMware cluster in a given project and location.</summary>
+                /// <summary>Creates a new VMware user cluster in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The parent of the project and location where this cluster is created in. Format:
@@ -5753,7 +6095,7 @@ namespace Google.Apis.GKEOnPrem.v1
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Creates a new VMware cluster in a given project and location.</summary>
+                /// <summary>Creates a new VMware user cluster in a given project and location.</summary>
                 public class CreateRequest : GKEOnPremBaseServiceRequest<Google.Apis.GKEOnPrem.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -6908,9 +7250,9 @@ namespace Google.Apis.GKEOnPrem.v1.Data
     public class Authorization : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. For VMware user, bare metal user and standalone clusters, users that will be granted the
-        /// cluster-admin role on the cluster, providing full access to the cluster. For bare metal Admin cluster, users
-        /// will be granted the view role, which is a view only access.
+        /// Required. For VMware and bare metal user clusters, users will be granted the cluster-admin role on the
+        /// cluster, which provides full administrative access to the cluster. For bare metal admin clusters, users will
+        /// be granted the cluster-view role, which limits users to read-only access.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adminUsers")]
         public virtual System.Collections.Generic.IList<ClusterUser> AdminUsers { get; set; }
@@ -7719,7 +8061,7 @@ namespace Google.Apis.GKEOnPrem.v1.Data
     }
 
     /// <summary>
-    /// KubeletConfig defines the modifiable kubelet configurations for baremetal machines. Note: this list includes
+    /// KubeletConfig defines the modifiable kubelet configurations for bare metal machines. Note: this list includes
     /// fields supported in GKE (see
     /// https://cloud.google.com/kubernetes-engine/docs/how-to/node-system-config#kubelet-options).
     /// </summary>
@@ -8073,7 +8415,7 @@ namespace Google.Apis.GKEOnPrem.v1.Data
     /// </summary>
     public class BareMetalNodePoolConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The modifiable kubelet configurations for the baremetal machines.</summary>
+        /// <summary>The modifiable kubelet configurations for the bare metal machines.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kubeletConfig")]
         public virtual BareMetalKubeletConfig KubeletConfig { get; set; }
 
@@ -8391,19 +8733,27 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message for enrolling an existing bare metal standalone node pool to the GKE on-prem API.</summary>
+    public class EnrollBareMetalStandaloneNodePoolRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// User provided OnePlatform identifier that is used as part of the resource name. This value must be up to 40
+        /// characters and follow RFC-1123 (https://tools.ietf.org/html/rfc1123) format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bareMetalStandaloneNodePoolId")]
+        public virtual string BareMetalStandaloneNodePoolId { get; set; }
+
+        /// <summary>If set, only validate the request, but do not actually enroll the node pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for enrolling an existing VMware admin cluster to the GKE on-prem API.</summary>
     public class EnrollVmwareAdminClusterRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The object name of the VMware OnPremAdminCluster custom resource on the associated admin cluster. This field
-        /// is used to support conflicting resource names when enrolling existing clusters to the API. When not
-        /// provided, this field will resolve to the vmware_admin_cluster_id. Otherwise, it must match the object name
-        /// of the VMware OnPremAdminCluster custom resource. It is not modifiable outside / beyond the enrollment
-        /// operation.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("localName")]
-        public virtual string LocalName { get; set; }
-
         /// <summary>Required. This is the full resource name of this admin cluster's fleet membership.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membership")]
         public virtual string Membership { get; set; }
@@ -8795,6 +9145,13 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// <summary>Output only. API version used to start the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
         public virtual string ApiVersion { get; set; }
+
+        /// <summary>
+        /// Output only. Denotes if the local managing cluster's control plane is currently disconnected. This is
+        /// expected to occur temporarily during self-managed cluster upgrades.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlPlaneDisconnected")]
+        public virtual System.Nullable<bool> ControlPlaneDisconnected { get; set; }
 
         /// <summary>Output only. The time the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
@@ -9624,9 +9981,7 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkConfig")]
         public virtual VmwareNetworkConfig NetworkConfig { get; set; }
 
-        /// <summary>
-        /// The Anthos clusters on the VMware version for your user cluster. Defaults to the admin cluster version.
-        /// </summary>
+        /// <summary>Required. The Anthos clusters on the VMware version for your user cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onPremVersion")]
         public virtual string OnPremVersion { get; set; }
 

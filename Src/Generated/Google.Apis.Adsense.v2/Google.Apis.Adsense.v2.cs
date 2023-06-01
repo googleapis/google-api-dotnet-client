@@ -4489,7 +4489,7 @@ namespace Google.Apis.Adsense.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reportingDimensionId")]
         public virtual string ReportingDimensionId { get; set; }
 
-        /// <summary>State of the ad unit.</summary>
+        /// <summary>Required. State of the ad unit.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 

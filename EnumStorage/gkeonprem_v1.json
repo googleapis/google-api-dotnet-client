@@ -18,12 +18,27 @@
     "BASIC",
     "FULL"
   ],
+  "Google.Apis.GKEOnPrem.v1.ProjectsResource+LocationsResource+BareMetalClustersResource+BareMetalNodePoolsResource+GetRequest.ViewEnum": [
+    "NODE_POOL_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.GKEOnPrem.v1.ProjectsResource+LocationsResource+BareMetalClustersResource+BareMetalNodePoolsResource+ListRequest.ViewEnum": [
+    "NODE_POOL_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
   "Google.Apis.GKEOnPrem.v1.ProjectsResource+LocationsResource+BareMetalClustersResource+GetRequest.ViewEnum": [
     "CLUSTER_VIEW_UNSPECIFIED",
     "BASIC",
     "FULL"
   ],
   "Google.Apis.GKEOnPrem.v1.ProjectsResource+LocationsResource+BareMetalClustersResource+ListRequest.ViewEnum": [
+    "CLUSTER_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.GKEOnPrem.v1.ProjectsResource+LocationsResource+VmwareAdminClustersResource+GetRequest.ViewEnum": [
     "CLUSTER_VIEW_UNSPECIFIED",
     "BASIC",
     "FULL"
@@ -40,6 +55,16 @@
   ],
   "Google.Apis.GKEOnPrem.v1.ProjectsResource+LocationsResource+VmwareClustersResource+ListRequest.ViewEnum": [
     "CLUSTER_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.GKEOnPrem.v1.ProjectsResource+LocationsResource+VmwareClustersResource+VmwareNodePoolsResource+GetRequest.ViewEnum": [
+    "NODE_POOL_VIEW_UNSPECIFIED",
+    "BASIC",
+    "FULL"
+  ],
+  "Google.Apis.GKEOnPrem.v1.ProjectsResource+LocationsResource+VmwareClustersResource+VmwareNodePoolsResource+ListRequest.ViewEnum": [
+    "NODE_POOL_VIEW_UNSPECIFIED",
     "BASIC",
     "FULL"
   ]

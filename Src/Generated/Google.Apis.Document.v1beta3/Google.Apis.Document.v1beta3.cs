@@ -666,8 +666,161 @@ namespace Google.Apis.Document.v1beta3
                 public ProcessorsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Dataset = new DatasetResource(service);
                     HumanReviewConfig = new HumanReviewConfigResource(service);
                     ProcessorVersions = new ProcessorVersionsResource(service);
+                }
+
+                /// <summary>Gets the Dataset resource.</summary>
+                public virtual DatasetResource Dataset { get; }
+
+                /// <summary>The "dataset" collection of methods.</summary>
+                public class DatasetResource
+                {
+                    private const string Resource = "dataset";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public DatasetResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Gets the DatasetSchema of a Dataset.</summary>
+                    /// <param name="name">
+                    /// Required. The dataset schema resource name. Format:
+                    /// projects/{project}/locations/{location}/processors/{processor}/dataset/datasetSchema
+                    /// </param>
+                    public virtual GetDatasetSchemaRequest GetDatasetSchema(string name)
+                    {
+                        return new GetDatasetSchemaRequest(service, name);
+                    }
+
+                    /// <summary>Gets the DatasetSchema of a Dataset.</summary>
+                    public class GetDatasetSchemaRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3DatasetSchema>
+                    {
+                        /// <summary>Constructs a new GetDatasetSchema request.</summary>
+                        public GetDatasetSchemaRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The dataset schema resource name. Format:
+                        /// projects/{project}/locations/{location}/processors/{processor}/dataset/datasetSchema
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>If set, only returns the visible fields of the schema.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("visibleFieldsOnly", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> VisibleFieldsOnly { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getDatasetSchema";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta3/{+name}";
+
+                        /// <summary>Initializes GetDatasetSchema parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/processors/[^/]+/dataset/datasetSchema$",
+                            });
+                            RequestParameters.Add("visibleFieldsOnly", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "visibleFieldsOnly",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates a DatasetSchema.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Dataset schema resource name. Format:
+                    /// `projects/{project}/locations/{location}/processors/{processor}/dataset/datasetSchema`
+                    /// </param>
+                    public virtual UpdateDatasetSchemaRequest UpdateDatasetSchema(Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3DatasetSchema body, string name)
+                    {
+                        return new UpdateDatasetSchemaRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates a DatasetSchema.</summary>
+                    public class UpdateDatasetSchemaRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3DatasetSchema>
+                    {
+                        /// <summary>Constructs a new UpdateDatasetSchema request.</summary>
+                        public UpdateDatasetSchemaRequest(Google.Apis.Services.IClientService service, Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3DatasetSchema body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Dataset schema resource name. Format:
+                        /// `projects/{project}/locations/{location}/processors/{processor}/dataset/datasetSchema`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>The update mask applies to the resource.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3DatasetSchema Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "updateDatasetSchema";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta3/{+name}";
+
+                        /// <summary>Initializes UpdateDatasetSchema parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/processors/[^/]+/dataset/datasetSchema$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>Gets the HumanReviewConfig resource.</summary>
@@ -2053,6 +2206,77 @@ namespace Google.Apis.Document.v1beta3
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/processors/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Updates metadata associated with a dataset.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Dataset resource name. Format:
+                /// `projects/{project}/locations/{location}/processors/{processor}/dataset`
+                /// </param>
+                public virtual UpdateDatasetRequest UpdateDataset(Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3Dataset body, string name)
+                {
+                    return new UpdateDatasetRequest(service, body, name);
+                }
+
+                /// <summary>Updates metadata associated with a dataset.</summary>
+                public class UpdateDatasetRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1beta3.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new UpdateDataset request.</summary>
+                    public UpdateDatasetRequest(Google.Apis.Services.IClientService service, Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3Dataset body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Dataset resource name. Format:
+                    /// `projects/{project}/locations/{location}/processors/{processor}/dataset`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The update mask applies to the resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3Dataset Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "updateDataset";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta3/{+name}";
+
+                    /// <summary>Initializes UpdateDataset parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/processors/[^/]+/dataset$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -6214,6 +6438,108 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A singleton resource under a `Processor` which configs a collection of documents.</summary>
+    public class GoogleCloudDocumentaiV1beta3Dataset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Document Warehouse-based dataset config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentWarehouseConfig")]
+        public virtual GoogleCloudDocumentaiV1beta3DatasetDocumentWarehouseConfig DocumentWarehouseConfig { get; set; }
+
+        /// <summary>
+        /// Optional. User managed GCS dataset config. Use this config if the dataset documents are stored under a user
+        /// managed GCS location.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsManagedConfig")]
+        public virtual GoogleCloudDocumentaiV1beta3DatasetGCSManagedConfig GcsManagedConfig { get; set; }
+
+        /// <summary>
+        /// Dataset resource name. Format: `projects/{project}/locations/{location}/processors/{processor}/dataset`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Optional. A lightweight indexing source with low latency and high reliablity, but lack advanced features
+        /// like CMEK and content based search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spannerIndexingConfig")]
+        public virtual GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig SpannerIndexingConfig { get; set; }
+
+        /// <summary>Required. State of the dataset. Will be ignored when updating dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Optional. Unmanaged dataset config. Use this config if the dataset documents are managed by the document
+        /// service internally (not user managed).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unmanagedDatasetConfig")]
+        public virtual GoogleCloudDocumentaiV1beta3DatasetUnmanagedDatasetConfig UnmanagedDatasetConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config specific to the Document Warehouse-based implementation.</summary>
+    public class GoogleCloudDocumentaiV1beta3DatasetDocumentWarehouseConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The collection in Document Warehouse associated with the dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collection")]
+        public virtual string Collection { get; set; }
+
+        /// <summary>Output only. The schema in Document Warehouse associated with the dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schema")]
+        public virtual string Schema { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config specific to the GCS-based implementation.</summary>
+    public class GoogleCloudDocumentaiV1beta3DatasetGCSManagedConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The Cloud Storage uri (a directory) where the documents belonging to the dataset must be stored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
+        public virtual GoogleCloudDocumentaiV1beta3GcsPrefix GcsPrefix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Dataset Schema.</summary>
+    public class GoogleCloudDocumentaiV1beta3DatasetSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Schema of the dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentSchema")]
+        public virtual GoogleCloudDocumentaiV1beta3DocumentSchema DocumentSchema { get; set; }
+
+        /// <summary>
+        /// Dataset schema resource name. Format:
+        /// `projects/{project}/locations/{location}/processors/{processor}/dataset/datasetSchema`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config specific to spanner based indexing.</summary>
+    public class GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config specific to unmanaged config</summary>
+    public class GoogleCloudDocumentaiV1beta3DatasetUnmanagedDatasetConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The long-running operation metadata for the DeleteProcessor method.</summary>
     public class GoogleCloudDocumentaiV1beta3DeleteProcessorMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7319,6 +7645,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>Metadata for the entity type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityTypeMetadata")]
+        public virtual GoogleCloudDocumentaiV1beta3EntityTypeMetadata EntityTypeMetadata { get; set; }
+
         /// <summary>
         /// If specified, lists all the possible values for this entity. This should not be more than a handful of
         /// values. If the number of values is &amp;gt;10 or could change frequently use the `EntityType.value_ontology`
@@ -7367,6 +7697,10 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>Occurrence type limits the number of instances an entity type appears in the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("occurrenceType")]
         public virtual string OccurrenceType { get; set; }
+
+        /// <summary>Any additional metadata about the property can be added here.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("propertyMetadata")]
+        public virtual GoogleCloudDocumentaiV1beta3PropertyMetadata PropertyMetadata { get; set; }
 
         /// <summary>
         /// A reference to the value type of the property. This type is subject to the same conventions as the
@@ -7578,6 +7912,17 @@ namespace Google.Apis.Document.v1beta3.Data
     /// </summary>
     public class GoogleCloudDocumentaiV1beta3EnableProcessorResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about an entity type.</summary>
+    public class GoogleCloudDocumentaiV1beta3EntityTypeMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the entity type should be considered as "inactive".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inactive")]
+        public virtual System.Nullable<bool> Inactive { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8302,6 +8647,17 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>If set, the processor version that will be used as a replacement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replacementProcessorVersion")]
         public virtual string ReplacementProcessorVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about a property.</summary>
+    public class GoogleCloudDocumentaiV1beta3PropertyMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the property should be considered as "inactive".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inactive")]
+        public virtual System.Nullable<bool> Inactive { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

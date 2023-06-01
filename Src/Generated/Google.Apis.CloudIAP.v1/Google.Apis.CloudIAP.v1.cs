@@ -1554,6 +1554,67 @@ namespace Google.Apis.CloudIAP.v1
                 });
             }
         }
+
+        /// <summary>Validates a given CEL expression conforms to IAP restrictions.</summary>
+        /// <param name="name">Required. The resource name of the IAP protected resource.</param>
+        public virtual ValidateAttributeExpressionRequest ValidateAttributeExpression(string name)
+        {
+            return new ValidateAttributeExpressionRequest(service, name);
+        }
+
+        /// <summary>Validates a given CEL expression conforms to IAP restrictions.</summary>
+        public class ValidateAttributeExpressionRequest : CloudIAPBaseServiceRequest<Google.Apis.CloudIAP.v1.Data.ValidateIapAttributeExpressionResponse>
+        {
+            /// <summary>Constructs a new ValidateAttributeExpression request.</summary>
+            public ValidateAttributeExpressionRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>Required. The resource name of the IAP protected resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>
+            /// Required. User input string expression. Should be of the form
+            /// 'attributes.saml_attributes.filter(attribute, attribute.name in ['{attribute_name}',
+            /// '{attribute_name}'])'
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("expression", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Expression { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "validateAttributeExpression";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}:validateAttributeExpression";
+
+            /// <summary>Initializes ValidateAttributeExpression parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^.*$",
+                });
+                RequestParameters.Add("expression", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "expression",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
     }
 }
 namespace Google.Apis.CloudIAP.v1.Data
@@ -2282,6 +2343,16 @@ namespace Google.Apis.CloudIAP.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// API requires a return message, but currently all response strings will fit in the status and public message. In
+    /// the future, this response can hold AST validation info.
+    /// </summary>
+    public class ValidateIapAttributeExpressionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

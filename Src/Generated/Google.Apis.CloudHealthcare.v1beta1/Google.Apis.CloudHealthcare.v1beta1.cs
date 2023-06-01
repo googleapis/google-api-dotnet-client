@@ -13986,6 +13986,15 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     public class EntityMention : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Additional information about the entity mention. For example, for an entity mention of type `DATE` this can
+        /// be its more specific date types from the following list: `ADMISSION_DATE`, `CONSULTATION_DATE`,
+        /// `DISCHARGE_DATE`, `SERVICE_DATE`, `VISIT_DATE`, `DIAGNOSIS_DATE`, `MED_STARTED_DATE`, `MED_ENDED_DATE`,
+        /// `NOTE_DATE`, `PROCEDURE_DATE`, `RADIATION_STARTED_DATE`, `RADIATION_ENDED_DATE`, `STAGE_DATE`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalInfo")]
+        public virtual System.Collections.Generic.IList<Feature> AdditionalInfo { get; set; }
+
+        /// <summary>
         /// The certainty assessment of the entity mention. Its value is one of: LIKELY, SOMEWHAT_LIKELY, UNCERTAIN,
         /// SOMEWHAT_UNLIKELY, UNLIKELY, CONDITIONAL
         /// </summary>

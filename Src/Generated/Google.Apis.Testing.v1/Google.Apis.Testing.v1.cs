@@ -1858,6 +1858,13 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Skips the starting activity</summary>
+    public class NoActivityIntent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An opaque binary blob file to install on the device before the test starts.</summary>
     public class ObbFile : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2032,6 +2039,10 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>An intent that starts the main launcher activity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("launcherActivity")]
         public virtual LauncherActivityIntent LauncherActivity { get; set; }
+
+        /// <summary>Skips the starting activity</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noActivity")]
+        public virtual NoActivityIntent NoActivity { get; set; }
 
         /// <summary>An intent that starts an activity with specific details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startActivity")]
