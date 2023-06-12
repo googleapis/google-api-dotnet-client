@@ -92,7 +92,11 @@
     "COST_PER_CLICK",
     "ADS_PER_IMPRESSION",
     "TOTAL_EARNINGS",
-    "WEBSEARCH_RESULT_PAGES"
+    "WEBSEARCH_RESULT_PAGES",
+    "FUNNEL_REQUESTS",
+    "FUNNEL_IMPRESSIONS",
+    "FUNNEL_CLICKS",
+    "FUNNEL_RPM"
   ],
   "Google.Apis.Adsense.v2.AccountsResource+ReportsResource+GenerateCsvRequest.ReportingTimeZoneEnum": [
     "REPORTING_TIME_ZONE_UNSPECIFIED",
@@ -192,7 +196,11 @@
     "COST_PER_CLICK",
     "ADS_PER_IMPRESSION",
     "TOTAL_EARNINGS",
-    "WEBSEARCH_RESULT_PAGES"
+    "WEBSEARCH_RESULT_PAGES",
+    "FUNNEL_REQUESTS",
+    "FUNNEL_IMPRESSIONS",
+    "FUNNEL_CLICKS",
+    "FUNNEL_RPM"
   ],
   "Google.Apis.Adsense.v2.AccountsResource+ReportsResource+GenerateRequest.ReportingTimeZoneEnum": [
     "REPORTING_TIME_ZONE_UNSPECIFIED",

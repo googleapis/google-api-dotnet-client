@@ -2122,6 +2122,25 @@ namespace Google.Apis.NetworkManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// For display only. Details of a Google Service sending packets to a VPC network. Although the source IP might be
+    /// a publicly routable address, some Google Services use special routes within Google production infrastructure to
+    /// reach Compute Engine Instances. https://cloud.google.com/vpc/docs/routes#special_return_paths
+    /// </summary>
+    public class GoogleServiceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Recognized type of a Google Service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleServiceType")]
+        public virtual string GoogleServiceType { get; set; }
+
+        /// <summary>Source IP address.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceIp")]
+        public virtual string SourceIp { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>For display only. Metadata associated with a Compute Engine instance.</summary>
     public class InstanceInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2675,6 +2694,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// <summary>Display information of a Google Kubernetes Engine cluster master.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeMaster")]
         public virtual GKEMasterInfo GkeMaster { get; set; }
+
+        /// <summary>Display information of a Google service</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleService")]
+        public virtual GoogleServiceInfo GoogleService { get; set; }
 
         /// <summary>Display information of a Compute Engine instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]

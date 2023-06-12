@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.DriveLabels.v2beta Client Library</Title>
-    <Version>1.60.0.3058</Version>
+    <Version>1.60.0.3079</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2023 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>

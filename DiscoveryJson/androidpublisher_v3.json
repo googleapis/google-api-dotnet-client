@@ -4047,7 +4047,7 @@
    }
   }
  },
- "revision": "20230524",
+ "revision": "20230608",
  "rootUrl": "https://androidpublisher.googleapis.com/",
  "schemas": {
   "AcquisitionTargetingRule": {
@@ -4508,6 +4508,17 @@
    "description": "Request message for DeactivateSubscriptionOffer.",
    "id": "DeactivateSubscriptionOfferRequest",
    "properties": {},
+   "type": "object"
+  },
+  "DeferredItemReplacement": {
+   "description": "Information related to deferred item replacement.",
+   "id": "DeferredItemReplacement",
+   "properties": {
+    "productId": {
+     "description": "The product_id going to replace the existing product_id.",
+     "type": "string"
+    }
+   },
    "type": "object"
   },
   "DeobfuscationFile": {
@@ -5194,11 +5205,13 @@
        "CAN_MANAGE_PUBLIC_LISTING",
        "CAN_MANAGE_DRAFT_APPS",
        "CAN_MANAGE_ORDERS",
-       "CAN_MANAGE_APP_CONTENT"
+       "CAN_MANAGE_APP_CONTENT",
+       "CAN_VIEW_NON_FINANCIAL_DATA",
+       "CAN_VIEW_APP_QUALITY"
       ],
       "enumDescriptions": [
        "Unknown or unspecified permission.",
-       "View app information (read-only).",
+       "View app information (read-only). Deprecated: Try defining a more granular capability. Otherwise, check AppLevelPermission.CAN_VIEW_NON_FINANCIAL_DATA.",
        "View financial data.",
        "Admin (all permissions).",
        "Reply to reviews.",
@@ -5208,7 +5221,9 @@
        "Manage store presence.",
        "Edit and delete draft apps.",
        "Manage orders and subscriptions.",
-       "Manage policy related pages."
+       "Manage policy related pages.",
+       "View app information (read-only).",
+       "View app quality data such as Vitals, Crashes etc."
       ],
       "type": "string"
      },
@@ -6661,6 +6676,10 @@
      "$ref": "AutoRenewingPlan",
      "description": "The item is auto renewing."
     },
+    "deferredItemReplacement": {
+     "$ref": "DeferredItemReplacement",
+     "description": "Information for deferred item replacement."
+    },
     "expiryTime": {
      "description": "Time at which the subscription expired or will expire unless the access is extended (ex. renews).",
      "format": "google-datetime",
@@ -7117,7 +7136,9 @@
        "CAN_CREATE_MANAGED_PLAY_APPS_GLOBAL",
        "CAN_CHANGE_MANAGED_PLAY_SETTING_GLOBAL",
        "CAN_MANAGE_ORDERS_GLOBAL",
-       "CAN_MANAGE_APP_CONTENT_GLOBAL"
+       "CAN_MANAGE_APP_CONTENT_GLOBAL",
+       "CAN_VIEW_NON_FINANCIAL_DATA_GLOBAL",
+       "CAN_VIEW_APP_QUALITY_GLOBAL"
       ],
       "enumDescriptions": [
        "Unknown or unspecified permission.",
@@ -7135,7 +7156,9 @@
        "Create and publish private apps to your organization.",
        "Choose whether apps are public, or only available to your organization.",
        "Manage orders and subscriptions.",
-       "Manage policy related pages on all apps for the developer."
+       "Manage policy related pages on all apps for the developer.",
+       "View app information and download bulk reports (read-only).",
+       "View app quality information for all apps for the developer."
       ],
       "type": "string"
      },

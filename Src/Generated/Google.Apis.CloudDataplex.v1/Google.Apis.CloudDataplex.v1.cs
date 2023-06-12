@@ -1314,6 +1314,18 @@ namespace Google.Apis.CloudDataplex.v1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
+                        /// Optional. An expression for filtering the results of the ListDataScanJobs request.If
+                        /// unspecified, all datascan jobs will be returned. Multiple filters can be applied (with AND,
+                        /// OR logical operators). Filters are case-sensitive.Allowed fields are: start_time
+                        /// end_timestart_time and end_time expect RFC-3339 formatted strings (e.g.
+                        /// 2018-10-08T18:30:00-07:00).For instance, 'start_time &amp;gt; 2018-10-08T00:00:00.123456789Z
+                        /// AND end_time &amp;lt; 2018-10-09T00:00:00.123456789Z' limits results to DataScanJobs between
+                        /// specified start and end times.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
                         /// Optional. Maximum number of DataScanJobs to return. The service may return fewer than this
                         /// value. If unspecified, at most 10 DataScanJobs will be returned. The maximum value is 1000;
                         /// values above 1000 will be coerced to 1000.
@@ -1349,6 +1361,14 @@ namespace Google.Apis.CloudDataplex.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/dataScans/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                             RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                             {
@@ -11044,6 +11064,20 @@ namespace Google.Apis.CloudDataplex.v1.Data
     public class GoogleCloudDataplexV1DataProfileSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. The fields to exclude from data profile.If specified, the fields will be excluded from data
+        /// profile, regardless of include_fields value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeFields")]
+        public virtual GoogleCloudDataplexV1DataProfileSpecSelectedFields ExcludeFields { get; set; }
+
+        /// <summary>
+        /// Optional. The fields to include in data profile.If not specified, all fields at the time of profile scan job
+        /// execution are included, except for ones listed in exclude_fields.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeFields")]
+        public virtual GoogleCloudDataplexV1DataProfileSpecSelectedFields IncludeFields { get; set; }
+
+        /// <summary>
         /// Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL
         /// expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 &amp;gt;= 0 AND col2 &amp;lt;
         /// 10
@@ -11058,6 +11092,21 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("samplingPercent")]
         public virtual System.Nullable<float> SamplingPercent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The specification for fields to include or exclude in data profile scan.</summary>
+    public class GoogleCloudDataplexV1DataProfileSpecSelectedFields : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Expected input is a list of fully qualified names of fields as in the schema.Only top-level field
+        /// names for nested fields are supported. For instance, if 'x' is of nested field type, listing 'x' is
+        /// supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldNames")]
+        public virtual System.Collections.Generic.IList<string> FieldNames { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12017,7 +12066,9 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Environment represents a user-visible compute infrastructure for analytics within a lake.</summary>
+    /// <summary>
+    /// Environment represents a user-visible compute infrastructure for analytics within a lake. LINT.IfChange
+    /// </summary>
     public class GoogleCloudDataplexV1Environment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Environment creation time.</summary>
@@ -12265,6 +12316,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>The time when the job ended running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
         public virtual object EndTime { get; set; }
+
+        /// <summary>Job execution trigger.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("executionTrigger")]
+        public virtual string ExecutionTrigger { get; set; }
 
         /// <summary>The unique id identifying the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]

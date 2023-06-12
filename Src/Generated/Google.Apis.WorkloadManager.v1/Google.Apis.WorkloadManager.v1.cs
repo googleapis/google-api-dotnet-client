@@ -1407,6 +1407,10 @@ namespace Google.Apis.WorkloadManager.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>The Cloud Storage bucket name for custom rules.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("customRulesBucket", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string CustomRulesBucket { get; set; }
+
                     /// <summary>Filter based on primary_category, secondary_category</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -1442,6 +1446,14 @@ namespace Google.Apis.WorkloadManager.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("customRulesBucket", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "customRulesBucket",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                         {
@@ -1633,6 +1645,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>Output only. [Output only] Create time stamp</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
+
+        /// <summary>The Cloud Storage bucket name for custom rules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customRulesBucket")]
+        public virtual string CustomRulesBucket { get; set; }
 
         /// <summary>Description of the Evaluation</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -2068,7 +2084,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
     /// <summary>Message describing resource status</summary>
     public class ResourceStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>the new version of rule id if exists</summary>
+        /// <summary>Historical: Used before 2023-05-22 the new version of rule id if exists</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rulesNewerVersions")]
         public virtual System.Collections.Generic.IList<string> RulesNewerVersions { get; set; }
 
@@ -2323,13 +2339,9 @@ namespace Google.Apis.WorkloadManager.v1.Data
     /// <summary>Message describing the Sqlserver validation metrics.</summary>
     public class SqlserverValidationValidationDetail : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The pairs of metrics data: field name &amp; field value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("details")]
-        public virtual System.Collections.Generic.IDictionary<string, string> Details { get; set; }
-
-        /// <summary>The instance id where the ValidationDetail is generated from</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
-        public virtual string InstanceId { get; set; }
+        /// <summary> pairs of metrics data: column name &amp; column value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Fields { get; set; }
 
         /// <summary>The Sqlserver system that the validation data is from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
@@ -2393,6 +2405,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>Required. The metrics data details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insight")]
         public virtual Insight Insight { get; set; }
+
+        /// <summary>Optional. The instance id where the insight is generated from</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
+        public virtual string InstanceId { get; set; }
 
         /// <summary>
         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry

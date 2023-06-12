@@ -2684,7 +2684,7 @@ namespace Google.Apis.CloudDeploy.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. If set to true, then deleting an already deleted or non-existing DeliveryPipeline will
+                    /// Optional. If set to true, then deleting an already deleted or non-existing `Target` will
                     /// succeed.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
@@ -5318,6 +5318,14 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployment")]
         public virtual string Deployment { get; set; }
+
+        /// <summary>
+        /// Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy
+        /// will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment
+        /// has on the cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disablePodOverprovisioning")]
+        public virtual System.Nullable<bool> DisablePodOverprovisioning { get; set; }
 
         /// <summary>Required. Name of the Kubernetes Service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]

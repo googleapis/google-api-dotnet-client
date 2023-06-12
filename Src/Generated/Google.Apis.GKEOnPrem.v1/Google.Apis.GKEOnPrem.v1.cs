@@ -292,7 +292,6 @@ namespace Google.Apis.GKEOnPrem.v1
                 this.service = service;
                 BareMetalAdminClusters = new BareMetalAdminClustersResource(service);
                 BareMetalClusters = new BareMetalClustersResource(service);
-                BareMetalStandaloneClusters = new BareMetalStandaloneClustersResource(service);
                 Operations = new OperationsResource(service);
                 VmwareAdminClusters = new VmwareAdminClustersResource(service);
                 VmwareClusters = new VmwareClustersResource(service);
@@ -1268,6 +1267,16 @@ namespace Google.Apis.GKEOnPrem.v1
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
 
+                    /// <summary>
+                    /// If set to true, the unenrollment of a bare metal admin cluster resource will succeed even if
+                    /// errors occur during unenrollment. This parameter can be used when you want to unenroll admin
+                    /// cluster resource and the on-prem admin cluster is disconnected / unreachable. WARNING: Using
+                    /// this parameter when your admin cluster still exists may result in a deleted GCP admin cluster
+                    /// but existing resourcelink in on-prem admin cluster and membership.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("ignoreErrors", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IgnoreErrors { get; set; }
+
                     /// <summary>Validate the request without actually doing any updates.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -1304,6 +1313,14 @@ namespace Google.Apis.GKEOnPrem.v1
                         RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
                         {
                             Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("ignoreErrors", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "ignoreErrors",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3615,110 +3632,6 @@ namespace Google.Apis.GKEOnPrem.v1
                             DefaultValue = null,
                             Pattern = null,
                         });
-                    }
-                }
-            }
-
-            /// <summary>Gets the BareMetalStandaloneClusters resource.</summary>
-            public virtual BareMetalStandaloneClustersResource BareMetalStandaloneClusters { get; }
-
-            /// <summary>The "bareMetalStandaloneClusters" collection of methods.</summary>
-            public class BareMetalStandaloneClustersResource
-            {
-                private const string Resource = "bareMetalStandaloneClusters";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public BareMetalStandaloneClustersResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                    BareMetalStandaloneNodePools = new BareMetalStandaloneNodePoolsResource(service);
-                }
-
-                /// <summary>Gets the BareMetalStandaloneNodePools resource.</summary>
-                public virtual BareMetalStandaloneNodePoolsResource BareMetalStandaloneNodePools { get; }
-
-                /// <summary>The "bareMetalStandaloneNodePools" collection of methods.</summary>
-                public class BareMetalStandaloneNodePoolsResource
-                {
-                    private const string Resource = "bareMetalStandaloneNodePools";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public BareMetalStandaloneNodePoolsResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-                    }
-
-                    /// <summary>
-                    /// Enrolls an existing bare metal standalone node pool to the Anthos On-Prem API within a given
-                    /// project and location. Through enrollment, an existing standalone node pool will become Anthos
-                    /// On-Prem API managed. The corresponding GCP resources will be created.
-                    /// </summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="parent">
-                    /// Required. The parent resource where this node pool will be created.
-                    /// projects/{project}/locations/{location}/bareMetalStandaloneClusters/{cluster}
-                    /// </param>
-                    public virtual EnrollRequest Enroll(Google.Apis.GKEOnPrem.v1.Data.EnrollBareMetalStandaloneNodePoolRequest body, string parent)
-                    {
-                        return new EnrollRequest(service, body, parent);
-                    }
-
-                    /// <summary>
-                    /// Enrolls an existing bare metal standalone node pool to the Anthos On-Prem API within a given
-                    /// project and location. Through enrollment, an existing standalone node pool will become Anthos
-                    /// On-Prem API managed. The corresponding GCP resources will be created.
-                    /// </summary>
-                    public class EnrollRequest : GKEOnPremBaseServiceRequest<Google.Apis.GKEOnPrem.v1.Data.Operation>
-                    {
-                        /// <summary>Constructs a new Enroll request.</summary>
-                        public EnrollRequest(Google.Apis.Services.IClientService service, Google.Apis.GKEOnPrem.v1.Data.EnrollBareMetalStandaloneNodePoolRequest body, string parent) : base(service)
-                        {
-                            Parent = parent;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Required. The parent resource where this node pool will be created.
-                        /// projects/{project}/locations/{location}/bareMetalStandaloneClusters/{cluster}
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Parent { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.GKEOnPrem.v1.Data.EnrollBareMetalStandaloneNodePoolRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "enroll";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/{+parent}/bareMetalStandaloneNodePools:enroll";
-
-                        /// <summary>Initializes Enroll parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "parent",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/bareMetalStandaloneClusters/[^/]+$",
-                            });
-                        }
                     }
                 }
             }
@@ -8408,6 +8321,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// <summary>Output only. The time at which this bare metal node pool was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
+
+        /// <summary>The worker node pool upgrade policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradePolicy")]
+        public virtual BareMetalNodePoolUpgradePolicy UpgradePolicy { get; set; }
     }
 
     /// <summary>
@@ -8442,12 +8359,41 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>BareMetalNodePoolUpgradePolicy defines the node pool upgrade policy.</summary>
+    public class BareMetalNodePoolUpgradePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The parallel upgrade settings for worker node pools.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parallelUpgradeConfig")]
+        public virtual BareMetalParallelUpgradeConfig ParallelUpgradeConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specifies operating system settings for cluster provisioning.</summary>
     public class BareMetalOsEnvironmentConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Whether the package repo should not be included when initializing bare metal machines.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageRepoExcluded")]
         public virtual System.Nullable<bool> PackageRepoExcluded { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>BareMetalParallelUpgradeConfig defines the parallel upgrade settings for worker node pools.</summary>
+    public class BareMetalParallelUpgradeConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The maximum number of nodes that can be upgraded at once. Defaults to 1.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("concurrentNodes")]
+        public virtual System.Nullable<int> ConcurrentNodes { get; set; }
+
+        /// <summary>
+        /// The minimum number of nodes that should be healthy and available during an upgrade. If set to the default
+        /// value of 0, it is possible that none of the nodes will be available during an upgrade.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumAvailableNodes")]
+        public virtual System.Nullable<int> MinimumAvailableNodes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8531,6 +8477,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
     /// <summary>Contains information about a specific Anthos on bare metal version.</summary>
     public class BareMetalVersionInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The list of upgrade dependencies for this version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dependencies")]
+        public virtual System.Collections.Generic.IList<UpgradeDependency> Dependencies { get; set; }
+
         /// <summary>
         /// If set, the cluster dependencies (e.g. the admin cluster, other user clusters managed by the same admin
         /// cluster, version skew policy, etc) must be upgraded before this version can be installed or upgraded to.
@@ -8724,24 +8674,6 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bareMetalNodePoolId")]
         public virtual string BareMetalNodePoolId { get; set; }
-
-        /// <summary>If set, only validate the request, but do not actually enroll the node pool.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
-        public virtual System.Nullable<bool> ValidateOnly { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Message for enrolling an existing bare metal standalone node pool to the GKE on-prem API.</summary>
-    public class EnrollBareMetalStandaloneNodePoolRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// User provided OnePlatform identifier that is used as part of the resource name. This value must be up to 40
-        /// characters and follow RFC-1123 (https://tools.ietf.org/html/rfc1123) format.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bareMetalStandaloneNodePoolId")]
-        public virtual string BareMetalStandaloneNodePoolId { get; set; }
 
         /// <summary>If set, only validate the request, but do not actually enroll the node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
@@ -9406,6 +9338,32 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>UpgradeDependency represents a dependency when upgrading a resource.</summary>
+    public class UpgradeDependency : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Current version of the dependency e.g. 1.15.0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentVersion")]
+        public virtual string CurrentVersion { get; set; }
+
+        /// <summary>Local name of the dependency.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("localName")]
+        public virtual string LocalName { get; set; }
+
+        /// <summary>Resource name of the dependency.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>
+        /// Target version of the dependency e.g. 1.16.1. This is the version the dependency needs to be upgraded to
+        /// before a resource can be upgraded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetVersion")]
+        public virtual string TargetVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -6739,7 +6739,8 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>
         /// Output only. A short-lived link to the file's thumbnail, if available. Typically lasts on the order of
-        /// hours. Only populated when the requesting app can access the file's content.
+        /// hours. Only populated when the requesting app can access the file's content. If the file isn't shared
+        /// publicly, the URL returned in `Files.thumbnailLink` must be fetched using a credentialed request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailLink")]
         public virtual string ThumbnailLink { get; set; }

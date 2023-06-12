@@ -4395,7 +4395,7 @@ namespace Google.Apis.Translate.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Confugures transliteration feature on top of translation.</summary>
+    /// <summary>Configures transliteration feature on top of translation.</summary>
     public class TransliterationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If true, source text in romanized form can be translated to the target language.</summary>

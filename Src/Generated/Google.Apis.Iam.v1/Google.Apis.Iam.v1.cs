@@ -7706,6 +7706,16 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("issuerUri")]
         public virtual string IssuerUri { get; set; }
 
+        /// <summary>
+        /// Optional. OIDC JWKs in JSON String format. For details on the definition of a JWK, see
+        /// https://tools.ietf.org/html/rfc7517. If not set, the `jwks_uri` from the discovery document(fetched from the
+        /// .well-known path of the `issuer_uri`) will be used. Currently, RSA and EC asymmetric keys are supported. The
+        /// JWK must use following format and include only the following fields: { "keys": [ { "kty": "RSA/EC", "alg":
+        /// "", "use": "sig", "kid": "", "n": "", "e": "", "x": "", "y": "", "crv": "" } ] }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jwksJson")]
+        public virtual string JwksJson { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

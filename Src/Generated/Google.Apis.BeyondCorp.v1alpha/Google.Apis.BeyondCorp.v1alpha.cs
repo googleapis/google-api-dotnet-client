@@ -810,6 +810,73 @@ namespace Google.Apis.BeyondCorp.v1alpha
                             }
                         }
 
+                        /// <summary>Deletes a single ProxyConfig.</summary>
+                        /// <param name="name">Required. Name of the resource.</param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(service, name);
+                        }
+
+                        /// <summary>Deletes a single ProxyConfig.</summary>
+                        public class DeleteRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. Name of the resource.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// Optional. An optional request ID to identify requests. Specify a unique request ID so
+                            /// that if you must retry your request, the server will know to ignore the request if it
+                            /// has already been completed. The server will guarantee that for at least 60 minutes after
+                            /// the first request. For example, consider a situation where you make an initial request
+                            /// and the request times out. If you make the request again with the same request ID, the
+                            /// server can check if original operation with the same request ID was received, and if so,
+                            /// will ignore the second request. This prevents clients from accidentally creating
+                            /// duplicate commitments. The request ID must be a valid UUID with the exception that zero
+                            /// UUID is not supported (00000000-0000-0000-0000-000000000000).
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string RequestId { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^organizations/[^/]+/locations/global/partnerTenants/[^/]+/proxyConfigs/[^/]+$",
+                                });
+                                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "requestId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
                         /// <summary>Gets details of a single ProxyConfig.</summary>
                         /// <param name="name">
                         /// Required. The resource name of the ProxyConfig using the form:
@@ -1474,6 +1541,104 @@ namespace Google.Apis.BeyondCorp.v1alpha
                             RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates a single PartnerTenant.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Output only. Unique resource name of the PartnerTenant. The name is ignored when creating
+                    /// PartnerTenant.
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerTenant body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates a single PartnerTenant.</summary>
+                    public class PatchRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerTenant body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Output only. Unique resource name of the PartnerTenant. The name is ignored when creating
+                        /// PartnerTenant.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. An optional request ID to identify requests. Specify a unique request ID so that
+                        /// if you must retry your request, the server will know to ignore the request if it has already
+                        /// been completed. The server will guarantee that for at least 60 minutes since the first
+                        /// request. For example, consider a situation where you make an initial request and the request
+                        /// times out. If you make the request again with the same request ID, the server can check if
+                        /// original operation with the same request ID was received, and if so, will ignore the second
+                        /// request. This prevents clients from accidentally creating duplicate commitments. The request
+                        /// ID must be a valid UUID with the exception that zero UUID is not supported
+                        /// (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>
+                        /// Required. Field mask is used to specify the fields to be overwritten in the PartnerTenant
+                        /// resource by the update. The fields specified in the update_mask are relative to the
+                        /// resource, not the full request. A field will be overwritten if it is in the mask. If the
+                        /// user does not provide a mask then all fields will be overwritten.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerTenant Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/locations/global/partnerTenants/[^/]+$",
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -10867,13 +11032,12 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Optional. Google group email to which the PartnerTenant is enabled.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("googleGroupEmail")]
-        public virtual string GoogleGroupEmail { get; set; }
-
-        /// <summary>Optional. Google group ID to which the PartnerTenant is enabled.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("googleGroupId")]
-        public virtual string GoogleGroupId { get; set; }
+        /// <summary>
+        /// Optional. Group information for the users enabled to use the partnerTenant. If the group information is not
+        /// provided then the partnerTenant will be enabled for all users.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("group")]
+        public virtual GoogleCloudBeyondcorpPartnerservicesV1alphaGroup Group { get; set; }
 
         /// <summary>
         /// Output only. Unique resource name of the PartnerTenant. The name is ignored when creating PartnerTenant.

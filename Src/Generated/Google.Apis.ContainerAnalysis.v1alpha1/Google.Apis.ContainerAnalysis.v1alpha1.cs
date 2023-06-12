@@ -3818,7 +3818,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         public virtual string LogUrl { get; set; }
 
         /// <summary>
-        /// Google Cloud Storage bucket where logs should be written (see [Bucket Name
+        /// Cloud Storage bucket where logs should be written (see [Bucket Name
         /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Logs file names will be of
         /// the format `${logs_bucket}/log-${build_id}.txt`.
         /// </summary>
@@ -3989,7 +3989,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
         public virtual System.Collections.Generic.IList<string> Env { get; set; }
 
-        /// <summary>Option to define build log streaming behavior to Google Cloud Storage.</summary>
+        /// <summary>Option to define build log streaming behavior to Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logStreamingOption")]
         public virtual string LogStreamingOption { get; set; }
 
@@ -4489,13 +4489,13 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("repoSource")]
         public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1RepoSource RepoSource { get; set; }
 
-        /// <summary>If provided, get the source from this location in Google Cloud Storage.</summary>
+        /// <summary>If provided, get the source from this location in Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageSource")]
         public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSource StorageSource { get; set; }
 
         /// <summary>
-        /// If provided, get the source from this manifest in Google Cloud Storage. This feature is in Preview; see
-        /// description [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
+        /// If provided, get the source from this manifest in Cloud Storage. This feature is in Preview; see description
+        /// [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageSourceManifest")]
         public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSourceManifest StorageSourceManifest { get; set; }
@@ -4538,26 +4538,25 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Location of the source in an archive file in Google Cloud Storage.</summary>
+    /// <summary>Location of the source in an archive file in Cloud Storage.</summary>
     public class ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Google Cloud Storage bucket containing the source (see [Bucket Name
+        /// Cloud Storage bucket containing the source (see [Bucket Name
         /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
         public virtual string Bucket { get; set; }
 
         /// <summary>
-        /// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be
-        /// used.
+        /// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
         public virtual System.Nullable<long> Generation { get; set; }
 
         /// <summary>
-        /// Google Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive
-        /// file (`.tar.gz`) containing source to build.
+        /// Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file
+        /// (`.tar.gz`) containing source to build.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("object")]
         public virtual string Object__ { get; set; }
@@ -4567,28 +4566,25 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     }
 
     /// <summary>
-    /// Location of the source manifest in Google Cloud Storage. This feature is in Preview; see description
+    /// Location of the source manifest in Cloud Storage. This feature is in Preview; see description
     /// [here](https://github.com/GoogleCloudPlatform/cloud-builders/tree/master/gcs-fetcher).
     /// </summary>
     public class ContaineranalysisGoogleDevtoolsCloudbuildV1StorageSourceManifest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Google Cloud Storage bucket containing the source manifest (see [Bucket Name
+        /// Cloud Storage bucket containing the source manifest (see [Bucket Name
         /// Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
         public virtual string Bucket { get; set; }
 
         /// <summary>
-        /// Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be
-        /// used.
+        /// Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
         public virtual System.Nullable<long> Generation { get; set; }
 
-        /// <summary>
-        /// Google Cloud Storage object containing the source manifest. This object must be a JSON file.
-        /// </summary>
+        /// <summary>Cloud Storage object containing the source manifest. This object must be a JSON file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("object")]
         public virtual string Object__ { get; set; }
 

@@ -1326,6 +1326,10 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("videoLink")]
         public virtual System.Collections.Generic.IList<string> VideoLink { get; set; }
 
+        /// <summary>Virtual Model (3d) asset link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("virtualModelLink")]
+        public virtual string VirtualModelLink { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -3672,8 +3672,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual GoogleRpcStatus Error { get; set; }
 
         /// <summary>
-        /// An IANA published MIME type (also referred to as media type). For more information, see
-        /// https://www.iana.org/assignments/media-types/media-types.xhtml.
+        /// An IANA published [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
@@ -4040,8 +4039,8 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual System.Nullable<float> Confidence { get; set; }
 
         /// <summary>
-        /// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see
-        /// https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        /// The [BCP-47 language code](https://www.unicode.org/reports/tr35/#Unicode_locale_identifier), such as `en-US`
+        /// or `sr-Latn`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
@@ -4130,7 +4129,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
         public virtual System.Nullable<int> Height { get; set; }
 
-        /// <summary>Encoding mime type for the image.</summary>
+        /// <summary>
+        /// Encoding [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml) for the
+        /// image.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
 
@@ -4142,14 +4144,14 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Image Quality Scores for the page image</summary>
+    /// <summary>Image Quality Scores for the page image.</summary>
     public class GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScores : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of detected defects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedDefects")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScoresDetectedDefect> DetectedDefects { get; set; }
 
-        /// <summary>The overall quality score. Range `[0, 1]` where 1 is perfect quality.</summary>
+        /// <summary>The overall quality score. Range `[0, 1]` where `1` is perfect quality.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qualityScore")]
         public virtual System.Nullable<float> QualityScore { get; set; }
 
@@ -4161,7 +4163,8 @@ namespace Google.Apis.Document.v1beta3.Data
     public class GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScoresDetectedDefect : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Confidence of detected defect. Range `[0, 1]` where 1 indicates strong confidence of that the defect exists.
+        /// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence of that the defect
+        /// exists.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
@@ -4634,8 +4637,8 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual GoogleCloudDocumentaiV1beta1DocumentStyleFontSize FontSize { get; set; }
 
         /// <summary>
-        /// Font weight. Possible values are normal, bold, bolder, and lighter.
-        /// https://www.w3schools.com/cssref/pr_font_weight.asp
+        /// [Font weight](https://www.w3schools.com/cssref/pr_font_weight.asp). Possible values are `normal`, `bold`,
+        /// `bolder`, and `lighter`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fontWeight")]
         public virtual string FontWeight { get; set; }
@@ -4645,14 +4648,14 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual GoogleCloudDocumentaiV1beta1DocumentTextAnchor TextAnchor { get; set; }
 
         /// <summary>
-        /// Text decoration. Follows CSS standard. https://www.w3schools.com/cssref/pr_text_text-decoration.asp
+        /// [Text decoration](https://www.w3schools.com/cssref/pr_text_text-decoration.asp). Follows CSS standard.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textDecoration")]
         public virtual string TextDecoration { get; set; }
 
         /// <summary>
-        /// Text style. Possible values are normal, italic, and oblique.
-        /// https://www.w3schools.com/cssref/pr_font_font-style.asp
+        /// [Text style](https://www.w3schools.com/cssref/pr_font_font-style.asp). Possible values are `normal`,
+        /// `italic`, and `oblique`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textStyle")]
         public virtual string TextStyle { get; set; }
@@ -4668,7 +4671,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<float> Size { get; set; }
 
-        /// <summary>Unit for the font size. Follows CSS naming (in, px, pt, etc.).</summary>
+        /// <summary>Unit for the font size. Follows CSS naming (`in`, `px`, `pt`, etc.).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; }
 
@@ -4972,8 +4975,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentLabel> Labels { get; set; }
 
         /// <summary>
-        /// An IANA published MIME type (also referred to as media type). For more information, see
-        /// https://www.iana.org/assignments/media-types/media-types.xhtml.
+        /// An IANA published [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
@@ -5369,8 +5371,8 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual System.Nullable<float> Confidence { get; set; }
 
         /// <summary>
-        /// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see
-        /// https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        /// The [BCP-47 language code](https://www.unicode.org/reports/tr35/#Unicode_locale_identifier), such as `en-US`
+        /// or `sr-Latn`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
@@ -5459,7 +5461,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
         public virtual System.Nullable<int> Height { get; set; }
 
-        /// <summary>Encoding mime type for the image.</summary>
+        /// <summary>
+        /// Encoding [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml) for the
+        /// image.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
 
@@ -5471,14 +5476,14 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Image Quality Scores for the page image</summary>
+    /// <summary>Image Quality Scores for the page image.</summary>
     public class GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScores : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of detected defects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedDefects")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScoresDetectedDefect> DetectedDefects { get; set; }
 
-        /// <summary>The overall quality score. Range `[0, 1]` where 1 is perfect quality.</summary>
+        /// <summary>The overall quality score. Range `[0, 1]` where `1` is perfect quality.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qualityScore")]
         public virtual System.Nullable<float> QualityScore { get; set; }
 
@@ -5490,7 +5495,8 @@ namespace Google.Apis.Document.v1beta3.Data
     public class GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScoresDetectedDefect : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Confidence of detected defect. Range `[0, 1]` where 1 indicates strong confidence of that the defect exists.
+        /// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence of that the defect
+        /// exists.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
@@ -5963,8 +5969,8 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual GoogleCloudDocumentaiV1beta2DocumentStyleFontSize FontSize { get; set; }
 
         /// <summary>
-        /// Font weight. Possible values are normal, bold, bolder, and lighter.
-        /// https://www.w3schools.com/cssref/pr_font_weight.asp
+        /// [Font weight](https://www.w3schools.com/cssref/pr_font_weight.asp). Possible values are `normal`, `bold`,
+        /// `bolder`, and `lighter`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fontWeight")]
         public virtual string FontWeight { get; set; }
@@ -5974,14 +5980,14 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual GoogleCloudDocumentaiV1beta2DocumentTextAnchor TextAnchor { get; set; }
 
         /// <summary>
-        /// Text decoration. Follows CSS standard. https://www.w3schools.com/cssref/pr_text_text-decoration.asp
+        /// [Text decoration](https://www.w3schools.com/cssref/pr_text_text-decoration.asp). Follows CSS standard.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textDecoration")]
         public virtual string TextDecoration { get; set; }
 
         /// <summary>
-        /// Text style. Possible values are normal, italic, and oblique.
-        /// https://www.w3schools.com/cssref/pr_font_font-style.asp
+        /// [Text style](https://www.w3schools.com/cssref/pr_font_font-style.asp). Possible values are `normal`,
+        /// `italic`, and `oblique`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textStyle")]
         public virtual string TextStyle { get; set; }
@@ -5997,7 +6003,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<float> Size { get; set; }
 
-        /// <summary>Unit for the font size. Follows CSS naming (in, px, pt, etc.).</summary>
+        /// <summary>Unit for the font size. Follows CSS naming (`in`, `px`, `pt`, etc.).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; }
 
@@ -6351,7 +6357,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("processOptions")]
         public virtual GoogleCloudDocumentaiV1beta3ProcessOptions ProcessOptions { get; set; }
 
-        /// <summary>Whether Human Review feature should be skipped for this request. Default to false.</summary>
+        /// <summary>Whether Human Review feature should be skipped for this request. Default to `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipHumanReview")]
         public virtual System.Nullable<bool> SkipHumanReview { get; set; }
 
@@ -6367,7 +6373,8 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string GcsSource { get; set; }
 
         /// <summary>
-        /// Media type (MIME type) of the input. If the input is a raw document, refer to [supported file
+        /// An IANA published [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml)
+        /// of the input. If the input is a raw document, refer to [supported file
         /// types](https://cloud.google.com/document-ai/docs/file-types) for the list of media types. If the input is a
         /// Document, the type should be `application/json`.
         /// </summary>
@@ -6438,7 +6445,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A singleton resource under a `Processor` which configs a collection of documents.</summary>
+    /// <summary>A singleton resource under a Processor which configures a collection of documents.</summary>
     public class GoogleCloudDocumentaiV1beta3Dataset : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Document Warehouse-based dataset config.</summary>
@@ -6459,7 +6466,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Optional. A lightweight indexing source with low latency and high reliablity, but lack advanced features
+        /// Optional. A lightweight indexing source with low latency and high reliability, but lack advanced features
         /// like CMEK and content based search.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spannerIndexingConfig")]
@@ -6644,8 +6651,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual GoogleRpcStatus Error { get; set; }
 
         /// <summary>
-        /// An IANA published MIME type (also referred to as media type). For more information, see
-        /// https://www.iana.org/assignments/media-types/media-types.xhtml.
+        /// An IANA published [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
@@ -7060,8 +7066,8 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual System.Nullable<float> Confidence { get; set; }
 
         /// <summary>
-        /// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see
-        /// https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        /// The [BCP-47 language code](https://www.unicode.org/reports/tr35/#Unicode_locale_identifier), such as `en-US`
+        /// or `sr-Latn`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
@@ -7150,7 +7156,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
         public virtual System.Nullable<int> Height { get; set; }
 
-        /// <summary>Encoding mime type for the image.</summary>
+        /// <summary>
+        /// Encoding [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml) for the
+        /// image.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
 
@@ -7162,14 +7171,14 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Image Quality Scores for the page image</summary>
+    /// <summary>Image Quality Scores for the page image.</summary>
     public class GoogleCloudDocumentaiV1beta3DocumentPageImageQualityScores : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of detected defects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedDefects")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3DocumentPageImageQualityScoresDetectedDefect> DetectedDefects { get; set; }
 
-        /// <summary>The overall quality score. Range `[0, 1]` where 1 is perfect quality.</summary>
+        /// <summary>The overall quality score. Range `[0, 1]` where `1` is perfect quality.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qualityScore")]
         public virtual System.Nullable<float> QualityScore { get; set; }
 
@@ -7181,7 +7190,8 @@ namespace Google.Apis.Document.v1beta3.Data
     public class GoogleCloudDocumentaiV1beta3DocumentPageImageQualityScoresDetectedDefect : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Confidence of detected defect. Range `[0, 1]` where 1 indicates strong confidence of that the defect exists.
+        /// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence of that the defect
+        /// exists.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
@@ -7658,12 +7668,12 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual GoogleCloudDocumentaiV1beta3DocumentSchemaEntityTypeEnumValues EnumValues { get; set; }
 
         /// <summary>
-        /// Name of the type. It must be unique within the schema file and cannot be a 'Common Type'. Besides that we
-        /// use the following naming conventions: - *use `snake_casing`* - name matching is case-sensitive - Maximum 64
-        /// characters. - Must start with a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward
-        /// compatibility internal infrastructure and tooling can handle any ascii character) - The `/` is sometimes
-        /// used to denote a property of a type. For example `line_item/amount`. This convention is deprecated, but will
-        /// still be honored for backward compatibility.
+        /// Name of the type. It must be unique within the schema file and cannot be a "Common Type". The following
+        /// naming conventions are used: - Use `snake_casing` - Name matching is case-sensitive - Maximum 64 characters.
+        /// - Must start with a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward compatibility
+        /// internal infrastructure and tooling can handle any ascii character) - The `/` is sometimes used to denote a
+        /// property of a type. For example `line_item/amount`. This convention is deprecated, but will still be honored
+        /// for backward compatibility.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7721,7 +7731,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual System.Nullable<bool> DocumentAllowMultipleLabels { get; set; }
 
         /// <summary>
-        /// If true, a `document` entity type can be applied to subdocument ( splitting). Otherwise, it can only be
+        /// If true, a `document` entity type can be applied to subdocument (splitting). Otherwise, it can only be
         /// applied to the entire document (classification).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentSplitter")]
@@ -7788,8 +7798,8 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual GoogleCloudDocumentaiV1beta3DocumentStyleFontSize FontSize { get; set; }
 
         /// <summary>
-        /// Font weight. Possible values are normal, bold, bolder, and lighter.
-        /// https://www.w3schools.com/cssref/pr_font_weight.asp
+        /// [Font weight](https://www.w3schools.com/cssref/pr_font_weight.asp). Possible values are `normal`, `bold`,
+        /// `bolder`, and `lighter`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fontWeight")]
         public virtual string FontWeight { get; set; }
@@ -7799,14 +7809,14 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual GoogleCloudDocumentaiV1beta3DocumentTextAnchor TextAnchor { get; set; }
 
         /// <summary>
-        /// Text decoration. Follows CSS standard. https://www.w3schools.com/cssref/pr_text_text-decoration.asp
+        /// [Text decoration](https://www.w3schools.com/cssref/pr_text_text-decoration.asp). Follows CSS standard.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textDecoration")]
         public virtual string TextDecoration { get; set; }
 
         /// <summary>
-        /// Text style. Possible values are normal, italic, and oblique.
-        /// https://www.w3schools.com/cssref/pr_font_font-style.asp
+        /// [Text style](https://www.w3schools.com/cssref/pr_font_font-style.asp). Possible values are `normal`,
+        /// `italic`, and `oblique`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textStyle")]
         public virtual string TextStyle { get; set; }
@@ -7822,7 +7832,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<float> Size { get; set; }
 
-        /// <summary>Unit for the font size. Follows CSS naming (in, px, pt, etc.).</summary>
+        /// <summary>Unit for the font size. Follows CSS naming (`in`, `px`, `pt`, etc.).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; }
 
@@ -8411,9 +8421,7 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Options for Process API</summary>
     public class GoogleCloudDocumentaiV1beta3ProcessOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Only applicable to "Document OCR Processor". Returns error if set on other processor types.
-        /// </summary>
+        /// <summary>Only applicable to `OCR_PROCESSOR`. Returns error if set on other processor types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ocrConfig")]
         public virtual GoogleCloudDocumentaiV1beta3OcrConfig OcrConfig { get; set; }
 
@@ -8497,8 +8505,8 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// The KMS key used for encryption/decryption in CMEK scenarios. See
-        /// https://cloud.google.com/security-key-management.
+        /// The [KMS key](https://cloud.google.com/security-key-management) used for encryption/decryption in CMEK
+        /// scenarios.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; }
@@ -8575,7 +8583,10 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>The location information about where the processor is available.</summary>
     public class GoogleCloudDocumentaiV1beta3ProcessorTypeLocationInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The location id, currently must be one of [us, eu].</summary>
+        /// <summary>
+        /// The location id, refer to [regional and multi-regional support](/document-ai/docs/regions) for supported
+        /// locations.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; }
 
@@ -8585,7 +8596,7 @@ namespace Google.Apis.Document.v1beta3.Data
 
     /// <summary>
     /// A processor version is an implementation of a processor. Each processor can have multiple versions, pre-trained
-    /// by Google internally or up-trained by the customer. At a time, a processor can only have one default version
+    /// by Google internally or uptrained by the customer. At a time, a processor can only have one default version
     /// version. So the processor's behavior (when processing documents) is defined by a default version
     /// </summary>
     public class GoogleCloudDocumentaiV1beta3ProcessorVersion : Google.Apis.Requests.IDirectResponseSchema
@@ -8606,7 +8617,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentSchema")]
         public virtual GoogleCloudDocumentaiV1beta3DocumentSchema DocumentSchema { get; set; }
 
-        /// <summary>Denotes that this ProcessorVersion is managed by google.</summary>
+        /// <summary>Denotes that this `ProcessorVersion` is managed by Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleManaged")]
         public virtual System.Nullable<bool> GoogleManaged { get; set; }
 

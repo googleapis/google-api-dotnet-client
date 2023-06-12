@@ -3673,6 +3673,217 @@ namespace Google.Apis.Appengine.v1
                 public ApplicationsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Services = new ServicesResource(service);
+                }
+
+                /// <summary>Gets the Services resource.</summary>
+                public virtual ServicesResource Services { get; }
+
+                /// <summary>The "services" collection of methods.</summary>
+                public class ServicesResource
+                {
+                    private const string Resource = "services";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ServicesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Gets the current configuration of the specified service.</summary>
+                    /// <param name="projectsId">
+                    /// Part of `name`. Name of the resource requested. Example: apps/myapp/services/default.
+                    /// </param>
+                    /// <param name="locationsId">Part of `name`. See documentation of `projectsId`.</param>
+                    /// <param name="applicationsId">Part of `name`. See documentation of `projectsId`.</param>
+                    /// <param name="servicesId">Part of `name`. See documentation of `projectsId`.</param>
+                    public virtual GetRequest Get(string projectsId, string locationsId, string applicationsId, string servicesId)
+                    {
+                        return new GetRequest(service, projectsId, locationsId, applicationsId, servicesId);
+                    }
+
+                    /// <summary>Gets the current configuration of the specified service.</summary>
+                    public class GetRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.Service>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string projectsId, string locationsId, string applicationsId, string servicesId) : base(service)
+                        {
+                            ProjectsId = projectsId;
+                            LocationsId = locationsId;
+                            ApplicationsId = applicationsId;
+                            ServicesId = servicesId;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Part of `name`. Name of the resource requested. Example: apps/myapp/services/default.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProjectsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string LocationsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("applicationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ApplicationsId { get; private set; }
+
+                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("servicesId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ServicesId { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "locationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("applicationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "applicationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("servicesId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "servicesId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all the services in the application.</summary>
+                    /// <param name="projectsId">
+                    /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+                    /// </param>
+                    /// <param name="locationsId">Part of `parent`. See documentation of `projectsId`.</param>
+                    /// <param name="applicationsId">Part of `parent`. See documentation of `projectsId`.</param>
+                    public virtual ListRequest List(string projectsId, string locationsId, string applicationsId)
+                    {
+                        return new ListRequest(service, projectsId, locationsId, applicationsId);
+                    }
+
+                    /// <summary>Lists all the services in the application.</summary>
+                    public class ListRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.ListServicesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string projectsId, string locationsId, string applicationsId) : base(service)
+                        {
+                            ProjectsId = projectsId;
+                            LocationsId = locationsId;
+                            ApplicationsId = applicationsId;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ProjectsId { get; private set; }
+
+                        /// <summary>Part of `parent`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string LocationsId { get; private set; }
+
+                        /// <summary>Part of `parent`. See documentation of `projectsId`.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("applicationsId", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string ApplicationsId { get; private set; }
+
+                        /// <summary>Maximum results to return per page.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Continuation token for fetching the next page of results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "projectsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "locationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("applicationsId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "applicationsId",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
                 }
 
                 /// <summary>
@@ -3805,6 +4016,105 @@ namespace Google.Apis.Appengine.v1
                     public override string RestPath => "v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}";
 
                     /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "projectsId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "locationsId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("applicationsId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "applicationsId",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Recreates the required App Engine features for the specified App Engine application, for example a
+                /// Cloud Storage bucket or App Engine service account. Use this method if you receive an error message
+                /// about a missing feature, for example, Error retrieving the App Engine service account. If you have
+                /// deleted your App Engine service account, this will not be able to recreate it. Instead, you should
+                /// attempt to use the IAM undelete API if possible at
+                /// https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts/undelete?apix_params=%7B"name"%3A"projects%2F-%2FserviceAccounts%2Funique_id"%2C"resource"%3A%7B%7D%7D
+                /// . If the deletion was recent, the numeric ID can be found in the Cloud Console Activity Log.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="projectsId">
+                /// Part of `name`. Name of the application to repair. Example: apps/myapp
+                /// </param>
+                /// <param name="locationsId">Part of `name`. See documentation of `projectsId`.</param>
+                /// <param name="applicationsId">Part of `name`. See documentation of `projectsId`.</param>
+                public virtual RepairRequest Repair(Google.Apis.Appengine.v1.Data.RepairApplicationRequest body, string projectsId, string locationsId, string applicationsId)
+                {
+                    return new RepairRequest(service, body, projectsId, locationsId, applicationsId);
+                }
+
+                /// <summary>
+                /// Recreates the required App Engine features for the specified App Engine application, for example a
+                /// Cloud Storage bucket or App Engine service account. Use this method if you receive an error message
+                /// about a missing feature, for example, Error retrieving the App Engine service account. If you have
+                /// deleted your App Engine service account, this will not be able to recreate it. Instead, you should
+                /// attempt to use the IAM undelete API if possible at
+                /// https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts/undelete?apix_params=%7B"name"%3A"projects%2F-%2FserviceAccounts%2Funique_id"%2C"resource"%3A%7B%7D%7D
+                /// . If the deletion was recent, the numeric ID can be found in the Cloud Console Activity Log.
+                /// </summary>
+                public class RepairRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Repair request.</summary>
+                    public RepairRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1.Data.RepairApplicationRequest body, string projectsId, string locationsId, string applicationsId) : base(service)
+                    {
+                        ProjectsId = projectsId;
+                        LocationsId = locationsId;
+                        ApplicationsId = applicationsId;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Part of `name`. Name of the application to repair. Example: apps/myapp</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ProjectsId { get; private set; }
+
+                    /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string LocationsId { get; private set; }
+
+                    /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("applicationsId", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string ApplicationsId { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Appengine.v1.Data.RepairApplicationRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "repair";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}:repair";
+
+                    /// <summary>Initializes Repair parameter list.</summary>
                     protected override void InitParameters()
                     {
                         base.InitParameters();

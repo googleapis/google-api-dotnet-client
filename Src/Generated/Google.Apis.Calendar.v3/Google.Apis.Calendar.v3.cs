@@ -5472,6 +5472,13 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("officeLocation")]
         public virtual OfficeLocationData OfficeLocation { get; set; }
 
+        /// <summary>
+        /// Indicates what kind of location this is. Any details will be specified in a sub-field of the specified name
+        /// (but which may be missing if empty). Any other fields will be ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
 

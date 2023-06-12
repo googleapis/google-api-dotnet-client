@@ -10476,6 +10476,17 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Information related to deferred item replacement.</summary>
+    public class DeferredItemReplacement : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The product_id going to replace the existing product_id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productId")]
+        public virtual string ProductId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a deobfuscation file.</summary>
     public class DeobfuscationFile : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12756,6 +12767,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>The item is auto renewing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoRenewingPlan")]
         public virtual AutoRenewingPlan AutoRenewingPlan { get; set; }
+
+        /// <summary>Information for deferred item replacement.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deferredItemReplacement")]
+        public virtual DeferredItemReplacement DeferredItemReplacement { get; set; }
 
         /// <summary>
         /// Time at which the subscription expired or will expire unless the access is extended (ex. renews).

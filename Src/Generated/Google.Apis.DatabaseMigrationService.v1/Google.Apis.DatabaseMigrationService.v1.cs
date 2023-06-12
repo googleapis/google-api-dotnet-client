@@ -6017,8 +6017,8 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual PrivateConnectivity PrivateConnectivity { get; set; }
 
         /// <summary>
-        /// SSL configuration for the destination to connect to the source database. The supported configuration for
-        /// Oracle SSL is of SERVER_ONLY type.
+        /// SSL configuration for the connection to the source Oracle database. * Only `SERVER_ONLY` configuration is
+        /// supported for Oracle SSL. * SSL is supported for Oracle versions 12 and above.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ssl")]
         public virtual SslConfig Ssl { get; set; }

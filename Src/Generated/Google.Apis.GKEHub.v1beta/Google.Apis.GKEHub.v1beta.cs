@@ -3971,9 +3971,10 @@ namespace Google.Apis.GKEHub.v1beta.Data
 
         /// <summary>
         /// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other
-        /// ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored,
-        /// ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the
-        /// presence of git field.
+        /// ConfigSync fields will be applied if exist. If set to false and Managed Config Sync is disabled, all other
+        /// ConfigSync fields will be ignored, ConfigSync resources will be deleted. Setting this field to false while
+        /// enabling Managed Config Sync is invalid. If omitted, ConfigSync resources will be managed if: * the git or
+        /// oci field is present; or * Managed Config Sync is enabled (i.e., managed.enabled is true).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
@@ -3985,6 +3986,16 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// <summary>Configuration for Managed Config Sync.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managed")]
         public virtual ConfigManagementManaged Managed { get; set; }
+
+        /// <summary>
+        /// The Email of the GCP Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and
+        /// Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer
+        /// (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace
+        /// `config-management-monitoring` should be binded to the GSA. This field is required when Managed Config Sync
+        /// is enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricsGcpServiceAccountEmail")]
+        public virtual string MetricsGcpServiceAccountEmail { get; set; }
 
         /// <summary>OCI repo configuration for the cluster</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oci")]
@@ -4040,6 +4051,17 @@ namespace Google.Apis.GKEHub.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Errors pertaining to the installation of Config Sync</summary>
+    public class ConfigManagementConfigSyncError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A string representing the user facing error message</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>State information for ConfigSync</summary>
     public class ConfigManagementConfigSyncState : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4048,6 +4070,10 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deploymentState")]
         public virtual ConfigManagementConfigSyncDeploymentState DeploymentState { get; set; }
+
+        /// <summary>Errors pertaining to the installation of Config Sync.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<ConfigManagementConfigSyncError> Errors { get; set; }
 
         /// <summary>The state of ConfigSync's process to sync configs to a cluster</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syncState")]
@@ -4281,10 +4307,18 @@ namespace Google.Apis.GKEHub.v1beta.Data
     public class ConfigManagementManaged : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Set to true to enable Managed Config Sync. Defaults to false which disables Managed Config Sync.
+        /// Set to true to enable Managed Config Sync. Defaults to false which disables Managed Config Sync. Setting
+        /// this field to true when configSync.enabled is false is invalid.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>
+        /// Set to true to stop syncing configs for a single cluster. Default to false. If set to true, Managed Config
+        /// Sync will not upgrade Config Sync.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stopSyncing")]
+        public virtual System.Nullable<bool> StopSyncing { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4298,6 +4332,16 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// <summary>Binauthz conifguration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binauthz")]
         public virtual ConfigManagementBinauthzConfig Binauthz { get; set; }
+
+        /// <summary>
+        /// The user-specified cluster name used by Config Sync cluster-name-selector annotation or ClusterSelector, for
+        /// applying configs to only a subset of clusters. Omit this field if the cluster's fleet membership name is
+        /// used by Config Sync cluster-name-selector annotation or ClusterSelector. Set this field if a name different
+        /// from the cluster's fleet membership name is used by Config Sync cluster-name-selector annotation or
+        /// ClusterSelector.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
+        public virtual string Cluster { get; set; }
 
         /// <summary>Config Sync configuration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configSync")]
@@ -4327,9 +4371,8 @@ namespace Google.Apis.GKEHub.v1beta.Data
         public virtual ConfigManagementBinauthzState BinauthzState { get; set; }
 
         /// <summary>
-        /// The user-defined name for the cluster used by ClusterSelectors to group clusters together. This should match
-        /// Membership's membership_name, unless the user installed ACM on the cluster manually prior to enabling the
-        /// ACM hub feature. Unique within a Anthos Config Management installation.
+        /// This field is set to the `cluster_name` field of the Membership Spec if it is not empty. Otherwise, it is
+        /// set to the cluster's fleet membership name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
         public virtual string ClusterName { get; set; }
@@ -5327,7 +5370,10 @@ namespace Google.Apis.GKEHub.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>MembershipFeatureSpec contains configuration information for a single Membership.</summary>
+    /// <summary>
+    /// MembershipFeatureSpec contains configuration information for a single Membership. NOTE: Please use snake case in
+    /// your feature name.
+    /// </summary>
     public class MembershipFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Anthos Observability-specific spec</summary>

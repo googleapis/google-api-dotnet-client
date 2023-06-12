@@ -4937,6 +4937,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     {
         /// <summary>
         /// Daily resource usage aggregations. Contains all of the data available for an asset, up to the last 420 days.
+        /// Aggregations are sorted from oldest to most recent.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dailyResourceUsageAggregations")]
         public virtual System.Collections.Generic.IList<DailyResourceUsageAggregation> DailyResourceUsageAggregations { get; set; }

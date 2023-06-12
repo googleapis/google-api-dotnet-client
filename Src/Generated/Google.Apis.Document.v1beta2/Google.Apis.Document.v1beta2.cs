@@ -1925,8 +1925,7 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual GoogleRpcStatus Error { get; set; }
 
         /// <summary>
-        /// An IANA published MIME type (also referred to as media type). For more information, see
-        /// https://www.iana.org/assignments/media-types/media-types.xhtml.
+        /// An IANA published [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
@@ -2293,8 +2292,8 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual System.Nullable<float> Confidence { get; set; }
 
         /// <summary>
-        /// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see
-        /// https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        /// The [BCP-47 language code](https://www.unicode.org/reports/tr35/#Unicode_locale_identifier), such as `en-US`
+        /// or `sr-Latn`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
@@ -2383,7 +2382,10 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
         public virtual System.Nullable<int> Height { get; set; }
 
-        /// <summary>Encoding mime type for the image.</summary>
+        /// <summary>
+        /// Encoding [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml) for the
+        /// image.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
 
@@ -2395,14 +2397,14 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Image Quality Scores for the page image</summary>
+    /// <summary>Image Quality Scores for the page image.</summary>
     public class GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScores : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of detected defects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedDefects")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScoresDetectedDefect> DetectedDefects { get; set; }
 
-        /// <summary>The overall quality score. Range `[0, 1]` where 1 is perfect quality.</summary>
+        /// <summary>The overall quality score. Range `[0, 1]` where `1` is perfect quality.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qualityScore")]
         public virtual System.Nullable<float> QualityScore { get; set; }
 
@@ -2414,7 +2416,8 @@ namespace Google.Apis.Document.v1beta2.Data
     public class GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScoresDetectedDefect : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Confidence of detected defect. Range `[0, 1]` where 1 indicates strong confidence of that the defect exists.
+        /// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence of that the defect
+        /// exists.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
@@ -2887,8 +2890,8 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual GoogleCloudDocumentaiV1beta1DocumentStyleFontSize FontSize { get; set; }
 
         /// <summary>
-        /// Font weight. Possible values are normal, bold, bolder, and lighter.
-        /// https://www.w3schools.com/cssref/pr_font_weight.asp
+        /// [Font weight](https://www.w3schools.com/cssref/pr_font_weight.asp). Possible values are `normal`, `bold`,
+        /// `bolder`, and `lighter`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fontWeight")]
         public virtual string FontWeight { get; set; }
@@ -2898,14 +2901,14 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual GoogleCloudDocumentaiV1beta1DocumentTextAnchor TextAnchor { get; set; }
 
         /// <summary>
-        /// Text decoration. Follows CSS standard. https://www.w3schools.com/cssref/pr_text_text-decoration.asp
+        /// [Text decoration](https://www.w3schools.com/cssref/pr_text_text-decoration.asp). Follows CSS standard.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textDecoration")]
         public virtual string TextDecoration { get; set; }
 
         /// <summary>
-        /// Text style. Possible values are normal, italic, and oblique.
-        /// https://www.w3schools.com/cssref/pr_font_font-style.asp
+        /// [Text style](https://www.w3schools.com/cssref/pr_font_font-style.asp). Possible values are `normal`,
+        /// `italic`, and `oblique`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textStyle")]
         public virtual string TextStyle { get; set; }
@@ -2921,7 +2924,7 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<float> Size { get; set; }
 
-        /// <summary>Unit for the font size. Follows CSS naming (in, px, pt, etc.).</summary>
+        /// <summary>Unit for the font size. Follows CSS naming (`in`, `px`, `pt`, etc.).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; }
 
@@ -3253,8 +3256,7 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentLabel> Labels { get; set; }
 
         /// <summary>
-        /// An IANA published MIME type (also referred to as media type). For more information, see
-        /// https://www.iana.org/assignments/media-types/media-types.xhtml.
+        /// An IANA published [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
@@ -3650,8 +3652,8 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual System.Nullable<float> Confidence { get; set; }
 
         /// <summary>
-        /// The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see
-        /// https://www.unicode.org/reports/tr35/#Unicode_locale_identifier.
+        /// The [BCP-47 language code](https://www.unicode.org/reports/tr35/#Unicode_locale_identifier), such as `en-US`
+        /// or `sr-Latn`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
@@ -3740,7 +3742,10 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("height")]
         public virtual System.Nullable<int> Height { get; set; }
 
-        /// <summary>Encoding mime type for the image.</summary>
+        /// <summary>
+        /// Encoding [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml) for the
+        /// image.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
 
@@ -3752,14 +3757,14 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Image Quality Scores for the page image</summary>
+    /// <summary>Image Quality Scores for the page image.</summary>
     public class GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScores : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of detected defects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("detectedDefects")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScoresDetectedDefect> DetectedDefects { get; set; }
 
-        /// <summary>The overall quality score. Range `[0, 1]` where 1 is perfect quality.</summary>
+        /// <summary>The overall quality score. Range `[0, 1]` where `1` is perfect quality.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qualityScore")]
         public virtual System.Nullable<float> QualityScore { get; set; }
 
@@ -3771,7 +3776,8 @@ namespace Google.Apis.Document.v1beta2.Data
     public class GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScoresDetectedDefect : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Confidence of detected defect. Range `[0, 1]` where 1 indicates strong confidence of that the defect exists.
+        /// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence of that the defect
+        /// exists.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
@@ -4244,8 +4250,8 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual GoogleCloudDocumentaiV1beta2DocumentStyleFontSize FontSize { get; set; }
 
         /// <summary>
-        /// Font weight. Possible values are normal, bold, bolder, and lighter.
-        /// https://www.w3schools.com/cssref/pr_font_weight.asp
+        /// [Font weight](https://www.w3schools.com/cssref/pr_font_weight.asp). Possible values are `normal`, `bold`,
+        /// `bolder`, and `lighter`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fontWeight")]
         public virtual string FontWeight { get; set; }
@@ -4255,14 +4261,14 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual GoogleCloudDocumentaiV1beta2DocumentTextAnchor TextAnchor { get; set; }
 
         /// <summary>
-        /// Text decoration. Follows CSS standard. https://www.w3schools.com/cssref/pr_text_text-decoration.asp
+        /// [Text decoration](https://www.w3schools.com/cssref/pr_text_text-decoration.asp). Follows CSS standard.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textDecoration")]
         public virtual string TextDecoration { get; set; }
 
         /// <summary>
-        /// Text style. Possible values are normal, italic, and oblique.
-        /// https://www.w3schools.com/cssref/pr_font_font-style.asp
+        /// [Text style](https://www.w3schools.com/cssref/pr_font_font-style.asp). Possible values are `normal`,
+        /// `italic`, and `oblique`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textStyle")]
         public virtual string TextStyle { get; set; }
@@ -4278,7 +4284,7 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<float> Size { get; set; }
 
-        /// <summary>Unit for the font size. Follows CSS naming (in, px, pt, etc.).</summary>
+        /// <summary>Unit for the font size. Follows CSS naming (`in`, `px`, `pt`, etc.).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; }
 

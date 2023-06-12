@@ -1757,6 +1757,10 @@ namespace Google.Apis.CloudFunctions.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
+        /// <summary>Output only. The deployed url for the function.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2724,6 +2728,13 @@ namespace Google.Apis.CloudFunctions.v2.Data
     /// <summary>The location of the function source code.</summary>
     public class Source : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// If provided, get the source from GitHub repository. This option is valid only for GCF 1st Gen function.
+        /// Example: https://github.com///blob//
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitUri")]
+        public virtual string GitUri { get; set; }
+
         /// <summary>If provided, get the source from this location in a Cloud Source Repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repoSource")]
         public virtual RepoSource RepoSource { get; set; }
@@ -2741,6 +2752,10 @@ namespace Google.Apis.CloudFunctions.v2.Data
     /// </summary>
     public class SourceProvenance : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A copy of the build's `source.git_uri`, if exists, with any commits resolved.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitUri")]
+        public virtual string GitUri { get; set; }
+
         /// <summary>A copy of the build's `source.repo_source`, if exists, with any revisions resolved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolvedRepoSource")]
         public virtual RepoSource ResolvedRepoSource { get; set; }

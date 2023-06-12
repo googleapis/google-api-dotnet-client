@@ -2989,6 +2989,10 @@ namespace Google.Apis.Eventarc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gke")]
         public virtual GKE Gke { get; set; }
 
+        /// <summary>An HTTP endpoint destination described by an URI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("httpEndpoint")]
+        public virtual HttpEndpoint HttpEndpoint { get; set; }
+
         /// <summary>
         /// The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should
         /// be deployed in the same project as the trigger. Format:
@@ -3301,6 +3305,31 @@ namespace Google.Apis.Eventarc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a HTTP endpoint destination.</summary>
+    public class HttpEndpoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Forwards DNS requests to the VPC specified by network config to resolve the HTTP endpoint. Default
+        /// to false. If set to true, Eventarc will create a peering zone to the consumer VPC and forward DNS requests.
+        /// See: https://cloud.google.com/dns/docs/zones/zones-overview#peering_zones Enable this if the URI uses an
+        /// internal DNS name or a private Cloud DNS zone.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forwardDnsRequests")]
+        public virtual System.Nullable<bool> ForwardDnsRequests { get; set; }
+
+        /// <summary>
+        /// Required. The URI of the HTTP enpdoint. The value must be a RFC2396 URI string. Examples:
+        /// `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`. Only HTTP and HTTPS protocols are
+        /// supported. The host can be either a static IP addressable from the VPC specified by the network config, or
+        /// an internal DNS hostname of the service resolvable via Cloud DNS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

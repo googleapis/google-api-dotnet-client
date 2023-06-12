@@ -1646,7 +1646,10 @@ namespace Google.Apis.CloudSupport.v2beta.Data
     /// <summary>A classification object with a product type and value.</summary>
     public class CaseClassification : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The display name of the classification.</summary>
+        /// <summary>
+        /// A display name for the classification. The display name is not static and can change. To uniquely and
+        /// consistently identify classifications, use the `CaseClassification.id` field.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 

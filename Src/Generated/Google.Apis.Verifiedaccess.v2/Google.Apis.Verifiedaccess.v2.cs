@@ -375,12 +375,15 @@ namespace Google.Apis.Verifiedaccess.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The device signals as reported by Chrome.</summary>
+    /// <summary>
+    /// The device signals as reported by Chrome. Unless otherwise specified, signals are available on all platforms.
+    /// </summary>
     public class DeviceSignals : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Value of the AllowScreenLock policy on the device. See
-        /// https://chromeenterprise.google/policies/?policy=AllowScreenLock for more details.
+        /// https://chromeenterprise.google/policies/?policy=AllowScreenLock for more details. Available on ChromeOS
+        /// only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowScreenLock")]
         public virtual System.Nullable<bool> AllowScreenLock { get; set; }
@@ -402,7 +405,9 @@ namespace Google.Apis.Verifiedaccess.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("chromeRemoteDesktopAppBlocked")]
         public virtual System.Nullable<bool> ChromeRemoteDesktopAppBlocked { get; set; }
 
-        /// <summary>Crowdstrike agent properties installed on the device, if any.</summary>
+        /// <summary>
+        /// Crowdstrike agent properties installed on the device, if any. Available on Windows and MacOS only.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crowdStrikeAgent")]
         public virtual CrowdStrikeAgent CrowdStrikeAgent { get; set; }
 
@@ -439,7 +444,7 @@ namespace Google.Apis.Verifiedaccess.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
         public virtual string Hostname { get; set; }
 
-        /// <summary>International Mobile Equipment Identity (IMEI) of the device.</summary>
+        /// <summary>International Mobile Equipment Identity (IMEI) of the device. Available on ChromeOS only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imei")]
         public virtual System.Collections.Generic.IList<string> Imei { get; set; }
 
@@ -447,7 +452,7 @@ namespace Google.Apis.Verifiedaccess.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("macAddresses")]
         public virtual System.Collections.Generic.IList<string> MacAddresses { get; set; }
 
-        /// <summary>Mobile Equipment Identifier (MEID) of the device.</summary>
+        /// <summary>Mobile Equipment Identifier (MEID) of the device. Available on ChromeOS only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("meid")]
         public virtual System.Collections.Generic.IList<string> Meid { get; set; }
 
@@ -507,11 +512,16 @@ namespace Google.Apis.Verifiedaccess.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("screenLockSecured")]
         public virtual string ScreenLockSecured { get; set; }
 
-        /// <summary>Whether the device's startup software has its Secure Boot feature enabled.</summary>
+        /// <summary>
+        /// Whether the device's startup software has its Secure Boot feature enabled. Available on Windows only.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secureBootMode")]
         public virtual string SecureBootMode { get; set; }
 
-        /// <summary>The serial number of the device. On Windows, this represents the BIOS's serial number.</summary>
+        /// <summary>
+        /// The serial number of the device. On Windows, this represents the BIOS's serial number. Not available on most
+        /// Linux distributions.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serialNumber")]
         public virtual string SerialNumber { get; set; }
 
@@ -530,16 +540,21 @@ namespace Google.Apis.Verifiedaccess.v2.Data
 
         /// <summary>
         /// Whether Chrome is blocking third-party software injection or not. This setting may be controlled by an
-        /// enterprise policy: https://chromeenterprise.google/policies/?policy=ThirdPartyBlockingEnabled
+        /// enterprise policy: https://chromeenterprise.google/policies/?policy=ThirdPartyBlockingEnabled. Available on
+        /// Windows only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyBlockingEnabled")]
         public virtual System.Nullable<bool> ThirdPartyBlockingEnabled { get; set; }
 
-        /// <summary>Windows domain that the current machine has joined.</summary>
+        /// <summary>The trigger which generated this set of signals.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trigger")]
+        public virtual string Trigger { get; set; }
+
+        /// <summary>Windows domain that the current machine has joined. Available on Windows only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windowsMachineDomain")]
         public virtual string WindowsMachineDomain { get; set; }
 
-        /// <summary>Windows domain for the current OS user.</summary>
+        /// <summary>Windows domain for the current OS user. Available on Windows only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windowsUserDomain")]
         public virtual string WindowsUserDomain { get; set; }
 
@@ -609,6 +624,17 @@ namespace Google.Apis.Verifiedaccess.v2.Data
         public virtual string KeyTrustLevel { get; set; }
 
         /// <summary>
+        /// Unique customer id that this profile belongs to, as defined by the Google Admin SDK at
+        /// https://developers.google.com/admin-sdk/directory/v1/guides/manage-customers
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileCustomerId")]
+        public virtual string ProfileCustomerId { get; set; }
+
+        /// <summary>Profile attested key trust level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileKeyTrustLevel")]
+        public virtual string ProfileKeyTrustLevel { get; set; }
+
+        /// <summary>
         /// Certificate Signing Request (in the SPKAC format, base64 encoded) is returned in this field. This field will
         /// be set only if device has included CSR in its challenge response. (the option to include CSR is now
         /// available for both user and machine responses)
@@ -621,6 +647,10 @@ namespace Google.Apis.Verifiedaccess.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("virtualDeviceId")]
         public virtual string VirtualDeviceId { get; set; }
+
+        /// <summary>The ID of a profile on the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("virtualProfileId")]
+        public virtual string VirtualProfileId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

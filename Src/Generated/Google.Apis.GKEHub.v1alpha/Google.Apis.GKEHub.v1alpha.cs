@@ -4736,6 +4736,248 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>GKEUpgrade represents a GKE provided upgrade, e.g., control plane upgrade.</summary>
+    public class ClusterUpgradeGKEUpgrade : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Name of the upgrade, e.g., "k8s_control_plane". It should be a valid upgrade name. It must not exceet 99
+        /// characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Version of the upgrade, e.g., "1.22.1-gke.100". It should be a valid version. It must not exceet 99
+        /// characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// GKEUpgradeFeatureCondition describes the condition of the feature for GKE clusters at a certain point of time.
+    /// </summary>
+    public class ClusterUpgradeGKEUpgradeFeatureCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Reason why the feature is in this status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>Status of the condition, one of True, False, Unknown.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>Type of the condition, for example, "ready".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Last timestamp the condition was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>GKEUpgradeFeatureState contains feature states for GKE clusters in the scope.</summary>
+    public class ClusterUpgradeGKEUpgradeFeatureState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Current conditions of the feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
+        public virtual System.Collections.Generic.IList<ClusterUpgradeGKEUpgradeFeatureCondition> Conditions { get; set; }
+
+        /// <summary>Scope-level upgrade state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual System.Collections.Generic.IList<ClusterUpgradeScopeGKEUpgradeState> State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Properties of a GKE upgrade that can be overridden by the user. For example, a user can skip soaking by
+    /// overriding the soaking to 0.
+    /// </summary>
+    public class ClusterUpgradeGKEUpgradeOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Post conditions to override for the specified upgrade (name + version). Required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postConditions")]
+        public virtual ClusterUpgradePostConditions PostConditions { get; set; }
+
+        /// <summary>Required. Which upgrade to override. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgrade")]
+        public virtual ClusterUpgradeGKEUpgrade Upgrade { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// IgnoredMembership represents a membership ignored by the feature. A membership can be ignored because it was
+    /// manually upgraded to a newer version than RC default.
+    /// </summary>
+    public class ClusterUpgradeIgnoredMembership : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time when the membership was first set to ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoredTime")]
+        public virtual object IgnoredTime { get; set; }
+
+        /// <summary>Reason why the membership is ignored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ScopeGKEUpgradeState is a GKEUpgrade and its state per-membership.</summary>
+    public class ClusterUpgradeMembershipGKEUpgradeState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Status of the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual ClusterUpgradeUpgradeStatus Status { get; set; }
+
+        /// <summary>Which upgrade to track the state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgrade")]
+        public virtual ClusterUpgradeGKEUpgrade Upgrade { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Per-membership state for this feature.</summary>
+    public class ClusterUpgradeMembershipState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether this membership is ignored by the feature. For example, manually upgraded clusters can be ignored if
+        /// they are newer than the default versions of its release channel.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignored")]
+        public virtual ClusterUpgradeIgnoredMembership Ignored { get; set; }
+
+        /// <summary>
+        /// Fully qualified scope names that this clusters is bound to which also have rollout sequencing enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
+
+        /// <summary>Actual upgrade state against desired.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgrades")]
+        public virtual System.Collections.Generic.IList<ClusterUpgradeMembershipGKEUpgradeState> Upgrades { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Post conditional checks after an upgrade has been applied on all eligible clusters.</summary>
+    public class ClusterUpgradePostConditions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot
+        /// exceed 30 days. Required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("soaking")]
+        public virtual object Soaking { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ScopeGKEUpgradeState is a GKEUpgrade and its state at the scope level.</summary>
+    public class ClusterUpgradeScopeGKEUpgradeState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of GKE clusters in each status code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stats")]
+        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<long>> Stats { get; set; }
+
+        /// <summary>Status of the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual ClusterUpgradeUpgradeStatus Status { get; set; }
+
+        /// <summary>Which upgrade to track the state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgrade")]
+        public virtual ClusterUpgradeGKEUpgrade Upgrade { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>**ClusterUpgrade**: The configuration for the scope-level ClusterUpgrade feature.</summary>
+    public class ClusterUpgradeScopeSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Allow users to override some properties of each GKE upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeUpgradeOverrides")]
+        public virtual System.Collections.Generic.IList<ClusterUpgradeGKEUpgradeOverride> GkeUpgradeOverrides { get; set; }
+
+        /// <summary>Required. Post conditions to evaluate to mark an upgrade COMPLETE. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postConditions")]
+        public virtual ClusterUpgradePostConditions PostConditions { get; set; }
+
+        /// <summary>
+        /// This scope consumes upgrades that have COMPLETE status code in the upstream scopes. See UpgradeStatus.Code
+        /// for code definitions. The scope name should be in the form: `projects/{p}/locations/global/scopes/{s}` Where
+        /// {p} is the project, {s} is a valid Scope in this project. {p} WILL match the Feature's project. This is
+        /// defined as repeated for future proof reasons. Initial implementation will enforce at most one upstream
+        /// scope.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upstreamScopes")]
+        public virtual System.Collections.Generic.IList<string> UpstreamScopes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>**ClusterUpgrade**: The state for the scope-level ClusterUpgrade feature.</summary>
+    public class ClusterUpgradeScopeState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This scopes whose upstream_scopes contain the current scope. The scope name should be in the form:
+        /// `projects/{p}/locations/gloobal/scopes/{s}` Where {p} is the project, {s} is a valid Scope in this project.
+        /// {p} WILL match the Feature's project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downstreamScopes")]
+        public virtual System.Collections.Generic.IList<string> DownstreamScopes { get; set; }
+
+        /// <summary>Feature state for GKE clusters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeState")]
+        public virtual ClusterUpgradeGKEUpgradeFeatureState GkeState { get; set; }
+
+        /// <summary>
+        /// A list of memberships ignored by the feature. For example, manually upgraded clusters can be ignored if they
+        /// are newer than the default versions of its release channel. The membership resource is in the format:
+        /// `projects/{p}/locations/{l}/membership/{m}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignored")]
+        public virtual System.Collections.Generic.IDictionary<string, ClusterUpgradeIgnoredMembership> Ignored { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>UpgradeStatus provides status information for each upgrade.</summary>
+    public class ClusterUpgradeUpgradeStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Status code of the upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>Reason for this status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>Last timestamp the status was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>CommonFeatureSpec contains Hub-wide configuration information</summary>
     public class CommonFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4852,9 +5094,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
 
         /// <summary>
         /// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other
-        /// ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored,
-        /// ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the
-        /// presence of git field.
+        /// ConfigSync fields will be applied if exist. If set to false and Managed Config Sync is disabled, all other
+        /// ConfigSync fields will be ignored, ConfigSync resources will be deleted. Setting this field to false while
+        /// enabling Managed Config Sync is invalid. If omitted, ConfigSync resources will be managed if: * the git or
+        /// oci field is present; or * Managed Config Sync is enabled (i.e., managed.enabled is true).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
@@ -4866,6 +5109,16 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Configuration for Managed Config Sync.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("managed")]
         public virtual ConfigManagementManaged Managed { get; set; }
+
+        /// <summary>
+        /// The Email of the GCP Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and
+        /// Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer
+        /// (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace
+        /// `config-management-monitoring` should be binded to the GSA. This field is required when Managed Config Sync
+        /// is enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metricsGcpServiceAccountEmail")]
+        public virtual string MetricsGcpServiceAccountEmail { get; set; }
 
         /// <summary>OCI repo configuration for the cluster</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oci")]
@@ -4921,6 +5174,17 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Errors pertaining to the installation of Config Sync</summary>
+    public class ConfigManagementConfigSyncError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A string representing the user facing error message</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>State information for ConfigSync</summary>
     public class ConfigManagementConfigSyncState : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4929,6 +5193,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deploymentState")]
         public virtual ConfigManagementConfigSyncDeploymentState DeploymentState { get; set; }
+
+        /// <summary>Errors pertaining to the installation of Config Sync.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<ConfigManagementConfigSyncError> Errors { get; set; }
 
         /// <summary>The state of ConfigSync's process to sync configs to a cluster</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syncState")]
@@ -5162,10 +5430,18 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     public class ConfigManagementManaged : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Set to true to enable Managed Config Sync. Defaults to false which disables Managed Config Sync.
+        /// Set to true to enable Managed Config Sync. Defaults to false which disables Managed Config Sync. Setting
+        /// this field to true when configSync.enabled is false is invalid.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>
+        /// Set to true to stop syncing configs for a single cluster. Default to false. If set to true, Managed Config
+        /// Sync will not upgrade Config Sync.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stopSyncing")]
+        public virtual System.Nullable<bool> StopSyncing { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5179,6 +5455,16 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Binauthz conifguration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binauthz")]
         public virtual ConfigManagementBinauthzConfig Binauthz { get; set; }
+
+        /// <summary>
+        /// The user-specified cluster name used by Config Sync cluster-name-selector annotation or ClusterSelector, for
+        /// applying configs to only a subset of clusters. Omit this field if the cluster's fleet membership name is
+        /// used by Config Sync cluster-name-selector annotation or ClusterSelector. Set this field if a name different
+        /// from the cluster's fleet membership name is used by Config Sync cluster-name-selector annotation or
+        /// ClusterSelector.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
+        public virtual string Cluster { get; set; }
 
         /// <summary>Config Sync configuration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configSync")]
@@ -5208,9 +5494,8 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual ConfigManagementBinauthzState BinauthzState { get; set; }
 
         /// <summary>
-        /// The user-defined name for the cluster used by ClusterSelectors to group clusters together. This should match
-        /// Membership's membership_name, unless the user installed ACM on the cluster manually prior to enabling the
-        /// ACM hub feature. Unique within a Anthos Config Management installation.
+        /// This field is set to the `cluster_name` field of the Membership Spec if it is not empty. Otherwise, it is
+        /// set to the cluster's fleet membership name.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
         public virtual string ClusterName { get; set; }
@@ -6556,7 +6841,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>MembershipFeatureSpec contains configuration information for a single Membership.</summary>
+    /// <summary>
+    /// MembershipFeatureSpec contains configuration information for a single Membership. NOTE: Please use snake case in
+    /// your feature name.
+    /// </summary>
     public class MembershipFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Anthos Observability-specific spec</summary>
@@ -6605,6 +6893,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Appdevexperience specific state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appdevexperience")]
         public virtual AppDevExperienceFeatureState Appdevexperience { get; set; }
+
+        /// <summary>ClusterUpgrade state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterupgrade")]
+        public virtual ClusterUpgradeMembershipState Clusterupgrade { get; set; }
 
         /// <summary>Config Management-specific state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configmanagement")]
@@ -7443,6 +7735,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>ScopeFeatureSpec contains feature specs for a fleet scope.</summary>
     public class ScopeFeatureSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Spec for the ClusterUpgrade feature at the scope level</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterupgrade")]
+        public virtual ClusterUpgradeScopeSpec Clusterupgrade { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7450,6 +7746,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>ScopeFeatureState contains Scope-wide Feature status information.</summary>
     public class ScopeFeatureState : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>State for the ClusterUpgrade feature at the scope level</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterupgrade")]
+        public virtual ClusterUpgradeScopeState Clusterupgrade { get; set; }
+
         /// <summary>Output only. The "running state" of the Feature in this Scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual FeatureState State { get; set; }

@@ -2691,6 +2691,10 @@ namespace Google.Apis.Connectors.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
+                        /// <summary>Filter string.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
                         /// <summary>Page size.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
@@ -2719,6 +2723,14 @@ namespace Google.Apis.Connectors.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/providers/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                             RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                             {
@@ -3490,6 +3502,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
+        /// <summary>Value is a Encryption Key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyValue")]
+        public virtual EncryptionKey KeyValue { get; set; }
+
         /// <summary>Value is a secret.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretValue")]
         public virtual Secret SecretValue { get; set; }
@@ -3569,6 +3585,13 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Optional. Configuration for configuring the connection with an external system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configVariables")]
         public virtual System.Collections.Generic.IList<ConfigVariable> ConfigVariables { get; set; }
+
+        /// <summary>
+        /// Output only. Connection revision. This field is only updated when the connection is created or updated by
+        /// User.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionRevision")]
+        public virtual System.Nullable<long> ConnectionRevision { get; set; }
 
         /// <summary>
         /// Required. Connector version on which the connection is created. The format is:
@@ -3973,6 +3996,24 @@ namespace Google.Apis.Connectors.v1.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Encryption Key value.</summary>
+    public class EncryptionKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The [KMS key name] with which the content of the Operation is encrypted. The expected format:
+        /// `projects/*/locations/*/keyRings/*/cryptoKeys/*`. Will be empty string if google managed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>Type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

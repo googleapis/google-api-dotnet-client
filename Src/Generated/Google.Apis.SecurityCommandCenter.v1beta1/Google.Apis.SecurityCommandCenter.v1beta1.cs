@@ -2164,6 +2164,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
         public virtual string ServiceName { get; set; }
 
+        /// <summary>The caller's user agent string associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
+        public virtual string UserAgent { get; set; }
+
         /// <summary>
         /// Type of user agent associated with the finding. For example, an operating system shell or an embedded or
         /// standalone application.
@@ -4552,8 +4556,8 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
 
         /// <summary>
         /// A flag that indicates if Asset Discovery should be enabled. If the flag is set to `true`, then discovery of
-        /// assets will occur. If it is set to `false, all historical assets will remain, but discovery of future assets
-        /// will not occur.
+        /// assets will occur. If it is set to `false`, all historical assets will remain, but discovery of future
+        /// assets will not occur.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableAssetDiscovery")]
         public virtual System.Nullable<bool> EnableAssetDiscovery { get; set; }

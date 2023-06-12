@@ -2509,6 +2509,55 @@ namespace Google.Apis.CloudSearch.v1
         }
 
         /// <summary>
+        /// Provides functionality to remove logged activity for a user. Currently to be used only for dynamite 1p
+        /// clients **Note:** This API requires a standard end user account to execute. A service account can't perform
+        /// Remove Activity requests directly; to use a service account to perform queries, set up [Google Workspace
+        /// domain-wide delegation of authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual RemoveActivityRequest RemoveActivity(Google.Apis.CloudSearch.v1.Data.RemoveActivityRequest body)
+        {
+            return new RemoveActivityRequest(service, body);
+        }
+
+        /// <summary>
+        /// Provides functionality to remove logged activity for a user. Currently to be used only for dynamite 1p
+        /// clients **Note:** This API requires a standard end user account to execute. A service account can't perform
+        /// Remove Activity requests directly; to use a service account to perform queries, set up [Google Workspace
+        /// domain-wide delegation of authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
+        /// </summary>
+        public class RemoveActivityRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.RemoveActivityResponse>
+        {
+            /// <summary>Constructs a new RemoveActivity request.</summary>
+            public RemoveActivityRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudSearch.v1.Data.RemoveActivityRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudSearch.v1.Data.RemoveActivityRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "removeActivity";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/query:removeActivity";
+
+            /// <summary>Initializes RemoveActivity parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
+        /// <summary>
         /// The Cloud Search Query API provides the search method, which returns the most relevant results from a user
         /// query. The results can come from Google Workspace apps, such as Gmail or Google Drive, or they can come from
         /// data that you have indexed from a third party. **Note:** This API requires a standard end user account to
@@ -5493,7 +5542,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Metadata used only in Dynamite backend for uploaded attachments.</summary>
+    /// <summary>Metadata used only in Dynamite backend for uploaded attachments. NEXT ID: 20</summary>
     public class AppsDynamiteSharedBackendUploadMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Blobstore path for the uploaded attachment</summary>
@@ -5532,7 +5581,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dlpScanSummary")]
         public virtual DlpScanSummary DlpScanSummary { get; set; }
 
-        /// <summary>The list of experiments this video is enabled for Next tag: 19</summary>
+        /// <summary>The list of experiments this video is enabled for</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("experiment")]
         public virtual System.Collections.Generic.IList<string> Experiment { get; set; }
 
@@ -5543,6 +5592,9 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>If the uploaded file is a video that has been transcoded on the client side</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isClientSideTranscodedVideo")]
         public virtual System.Nullable<bool> IsClientSideTranscodedVideo { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("migratedFromHangoutsMetadata")]
+        public virtual AppsDynamiteSharedBackendUploadMetadataMigratedFromHangoutsMetadata MigratedFromHangoutsMetadata { get; set; }
 
         /// <summary>Original dimension of the content. Only set for image attachments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalDimension")]
@@ -5584,6 +5636,31 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Result for a virus scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("virusScanResult")]
         public virtual string VirusScanResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for attachments migrated from Hangouts</summary>
+    public class AppsDynamiteSharedBackendUploadMetadataMigratedFromHangoutsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("photoId")]
+        public virtual AppsDynamiteSharedBackendUploadMetadataMigratedFromHangoutsMetadataPhotoId PhotoId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTimestampUsec")]
+        public virtual System.Nullable<long> UpdateTimestampUsec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class AppsDynamiteSharedBackendUploadMetadataMigratedFromHangoutsMetadataPhotoId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("photoId")]
+        public virtual System.Nullable<long> PhotoId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
+        public virtual System.Nullable<long> UserId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6165,8 +6242,10 @@ namespace Google.Apis.CloudSearch.v1.Data
     public class AppsDynamiteSharedMessageSearchInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// An example use case: clients can use this field to highlight matched segments in message text_body defined
-        /// in http://google3/apps/dynamite/v1/frontend/api/message.proto;l=104;rcl=513400736.
+        /// Current usage: - DescriptionType=KEYWORD_MATCH is populated in this field to return metadata for keyword
+        /// matches, which clients can use to highlight matched segments in a message's text_body. -
+        /// DescriptionType=SNIPPET can be used to return metadata describing how a message's text_body can be broken up
+        /// to provide a snippet.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matchedSegmentsInTextBody")]
         public virtual System.Collections.Generic.IList<AppsDynamiteSharedTextSegmentsWithDescription> MatchedSegmentsInTextBody { get; set; }
@@ -8218,6 +8297,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("supportedUses")]
         public virtual System.Collections.Generic.IList<string> SupportedUses { get; set; }
 
+        /// <summary>Determine how uninstall is permitted for this app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uninstallCapability")]
+        public virtual string UninstallCapability { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9025,15 +9108,15 @@ namespace Google.Apis.CloudSearch.v1.Data
     }
 
     /// <summary>
-    /// Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to/from
-    /// color representations in various languages over compactness. For example, the fields of this representation can
-    /// be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to
+    /// Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to and
+    /// from color representations in various languages over compactness. For example, the fields of this representation
+    /// can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to
     /// UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily
-    /// formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't carry information about the
-    /// absolute color space that should be used to interpret the RGB value (e.g. sRGB, Adobe RGB, DCI-P3, BT.2020,
-    /// etc.). By default, applications should assume the sRGB color space. When color equality needs to be decided,
+    /// formatted into a CSS `rgba()` string in JavaScript. This reference page does not have information about the
+    /// absolute color space that should be used to interpret the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and
+    /// BT.2020. By default, applications should assume the sRGB color space. When color equality needs to be decided,
     /// implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha
-    /// values each differ by at most 1e-5. Example (Java): import com.google.type.Color; // ... public static
+    /// values each differ by at most `1e-5`. Example (Java): import com.google.type.Color; // ... public static
     /// java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ?
     /// protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(),
     /// protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float)
@@ -11244,7 +11327,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A card is a UI element that can contain UI widgets such as texts, images.</summary>
+    /// <summary>A card is a UI element that can contain UI widgets such as text and images.</summary>
     public class GoogleChatV1ContextualAddOnMarkupCard : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The actions of this card.</summary>
@@ -11287,7 +11370,7 @@ namespace Google.Apis.CloudSearch.v1.Data
 
     public class GoogleChatV1ContextualAddOnMarkupCardCardHeader : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The image's type (e.g. square border or circular border).</summary>
+        /// <summary>The image's type (for example, square border or circular border).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageStyle")]
         public virtual string ImageStyle { get; set; }
 
@@ -11301,7 +11384,7 @@ namespace Google.Apis.CloudSearch.v1.Data
 
         /// <summary>
         /// The title must be specified. The header has a fixed height: if both a title and subtitle is specified, each
-        /// will take up 1 line. If only the title is specified, it will take up both lines.
+        /// takes up one line. If only the title is specified, it takes up both lines.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
@@ -11312,19 +11395,22 @@ namespace Google.Apis.CloudSearch.v1.Data
 
     /// <summary>
     /// A section contains a collection of widgets that are rendered (vertically) in the order that they are specified.
-    /// Across all platforms, cards have a narrow fixed width, so there is currently no need for layout properties (e.g.
-    /// float).
+    /// Across all platforms, cards have a narrow fixed width, so there's currently no need for layout properties (for
+    /// example, float).
     /// </summary>
     public class GoogleChatV1ContextualAddOnMarkupCardSection : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// The header of the section. Formatted text is supported. For more information about formatting text, see
-        /// Formatting text in Google Chat apps and Formatting text in Google Workspace Add-ons.
+        /// [Formatting text in Google Chat
+        /// apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting) and
+        /// [Formatting text in Google Workspace
+        /// Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
         public virtual string Header { get; set; }
 
-        /// <summary>A section must contain at least 1 widget.</summary>
+        /// <summary>A section must contain at least one widget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("widgets")]
         public virtual System.Collections.Generic.IList<GoogleChatV1WidgetMarkup> Widgets { get; set; }
 
@@ -11332,7 +11418,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A widget is a UI element that presents texts, images, etc.</summary>
+    /// <summary>A widget is a UI element that presents text and images.</summary>
     public class GoogleChatV1WidgetMarkup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -11360,11 +11446,11 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// <summary>A button. Can be a text button or an image button.</summary>
     public class GoogleChatV1WidgetMarkupButton : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A button with image and onclick action.</summary>
+        /// <summary>A button with image and `onclick` action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageButton")]
         public virtual GoogleChatV1WidgetMarkupImageButton ImageButton { get; set; }
 
-        /// <summary>A button with text and onclick action.</summary>
+        /// <summary>A button with text and `onclick` action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textButton")]
         public virtual GoogleChatV1WidgetMarkupTextButton TextButton { get; set; }
 
@@ -11373,15 +11459,15 @@ namespace Google.Apis.CloudSearch.v1.Data
     }
 
     /// <summary>
-    /// A form action describes the behavior when the form is submitted. For example, an Apps Script can be invoked to
+    /// A form action describes the behavior when the form is submitted. For example, you can invoke Apps Script to
     /// handle the form.
     /// </summary>
     public class GoogleChatV1WidgetMarkupFormAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// The method name is used to identify which part of the form triggered the form submission. This information
-        /// is echoed back to the Chat app as part of the card click event. The same method name can be used for several
-        /// elements that trigger a common behavior if desired.
+        /// is echoed back to the Chat app as part of the card click event. You can use the same method name for several
+        /// elements that trigger a common behavior.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actionMethodName")]
         public virtual string ActionMethodName { get; set; }
@@ -11396,8 +11482,8 @@ namespace Google.Apis.CloudSearch.v1.Data
 
     /// <summary>
     /// List of string parameters to supply when the action method is invoked. For example, consider three snooze
-    /// buttons: snooze now, snooze 1 day, snooze next week. You might use action method = snooze(), passing the snooze
-    /// type and snooze time in the list of string parameters.
+    /// buttons: snooze now, snooze one day, snooze next week. You might use `action method = snooze()`, passing the
+    /// snooze type and snooze time in the list of string parameters.
     /// </summary>
     public class GoogleChatV1WidgetMarkupFormActionActionParameter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11413,12 +11499,12 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An image that is specified by a URL and can have an onclick action.</summary>
+    /// <summary>An image that's specified by a URL and can have an `onclick` action.</summary>
     public class GoogleChatV1WidgetMarkupImage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The aspect ratio of this image (width/height). This field allows clients to reserve the right height for the
-        /// image while waiting for it to load. It's not meant to override the native aspect ratio of the image. If
+        /// The aspect ratio of this image (width and height). This field lets you reserve the right height for the
+        /// image while waiting for it to load. It's not meant to override the built-in aspect ratio of the image. If
         /// unset, the server fills it by prefetching the image.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aspectRatio")]
@@ -11428,7 +11514,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
         public virtual string ImageUrl { get; set; }
 
-        /// <summary>The onclick action.</summary>
+        /// <summary>The `onclick` action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
         public virtual GoogleChatV1WidgetMarkupOnClick OnClick { get; set; }
 
@@ -11436,10 +11522,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An image button with an onclick action.</summary>
+    /// <summary>An image button with an `onclick` action.</summary>
     public class GoogleChatV1WidgetMarkupImageButton : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The icon specified by an enum that indices to an icon provided by Chat API.</summary>
+        /// <summary>The icon specified by an `enum` that indices to an icon provided by Chat API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("icon")]
         public virtual string Icon { get; set; }
 
@@ -11448,13 +11534,13 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string IconUrl { get; set; }
 
         /// <summary>
-        /// The name of this image_button which will be used for accessibility. Default value will be provided if
-        /// developers don't specify.
+        /// The name of this `image_button` that's used for accessibility. Default value is provided if this name isn't
+        /// specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The onclick action.</summary>
+        /// <summary>The `onclick` action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
         public virtual GoogleChatV1WidgetMarkupOnClick OnClick { get; set; }
 
@@ -11463,14 +11549,17 @@ namespace Google.Apis.CloudSearch.v1.Data
     }
 
     /// <summary>
-    /// A UI element contains a key (label) and a value (content). And this element may also contain some actions such
-    /// as onclick button.
+    /// A UI element contains a key (label) and a value (content). This element can also contain some actions such as
+    /// `onclick` button.
     /// </summary>
     public class GoogleChatV1WidgetMarkupKeyValue : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// The text of the bottom label. Formatted text supported. For more information about formatting text, see
-        /// Formatting text in Google Chat apps and Formatting text in Google Workspace Add-ons.
+        /// [Formatting text in Google Chat
+        /// apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting) and
+        /// [Formatting text in Google Workspace
+        /// Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bottomLabel")]
         public virtual string BottomLabel { get; set; }
@@ -11481,7 +11570,10 @@ namespace Google.Apis.CloudSearch.v1.Data
 
         /// <summary>
         /// The text of the content. Formatted text supported and always required. For more information about formatting
-        /// text, see Formatting text in Google Chat apps and Formatting text in Google Workspace Add-ons.
+        /// text, see [Formatting text in Google Chat
+        /// apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting) and
+        /// [Formatting text in Google Workspace
+        /// Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
@@ -11490,7 +11582,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contentMultiline")]
         public virtual System.Nullable<bool> ContentMultiline { get; set; }
 
-        /// <summary>An enum value that will be replaced by the Chat API with the corresponding icon image.</summary>
+        /// <summary>An enum value that's replaced by the Chat API with the corresponding icon image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("icon")]
         public virtual string Icon { get; set; }
 
@@ -11498,13 +11590,16 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
         public virtual string IconUrl { get; set; }
 
-        /// <summary>The onclick action. Only the top label, bottom label and content region are clickable.</summary>
+        /// <summary>The `onclick` action. Only the top label, bottom label, and content region are clickable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
         public virtual GoogleChatV1WidgetMarkupOnClick OnClick { get; set; }
 
         /// <summary>
         /// The text of the top label. Formatted text supported. For more information about formatting text, see
-        /// Formatting text in Google Chat apps and Formatting text in Google Workspace Add-ons.
+        /// [Formatting text in Google Chat
+        /// apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting) and
+        /// [Formatting text in Google Workspace
+        /// Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topLabel")]
         public virtual string TopLabel { get; set; }
@@ -11513,14 +11608,14 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An onclick action (e.g. open a link).</summary>
+    /// <summary>An `onclick` action (for example, open a link).</summary>
     public class GoogleChatV1WidgetMarkupOnClick : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A form action will be triggered by this onclick if specified.</summary>
+        /// <summary>A form action is triggered by this `onclick` action if specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual GoogleChatV1WidgetMarkupFormAction Action { get; set; }
 
-        /// <summary>This onclick triggers an open link action if specified.</summary>
+        /// <summary>This `onclick` action triggers an open link action if specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openLink")]
         public virtual GoogleChatV1WidgetMarkupOpenLink OpenLink { get; set; }
 
@@ -11539,10 +11634,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A button with text and onclick action.</summary>
+    /// <summary>A button with text and `onclick` action.</summary>
     public class GoogleChatV1WidgetMarkupTextButton : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The onclick action of the button.</summary>
+        /// <summary>The `onclick` action of the button.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
         public virtual GoogleChatV1WidgetMarkupOnClick OnClick { get; set; }
 
@@ -11555,8 +11650,10 @@ namespace Google.Apis.CloudSearch.v1.Data
     }
 
     /// <summary>
-    /// A paragraph of text. Formatted text supported. For more information about formatting text, see Formatting text
-    /// in Google Chat apps and Formatting text in Google Workspace Add-ons.
+    /// A paragraph of text. Formatted text supported. For more information about formatting text, see [Formatting text
+    /// in Google Chat apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting)
+    /// and [Formatting text in Google Workspace
+    /// Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
     /// </summary>
     public class GoogleChatV1WidgetMarkupTextParagraph : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15297,6 +15394,17 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Details about a user's query activity.</summary>
+    public class QueryActivity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>User input query to be logged/removed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class QueryCountByStatus : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
@@ -15811,6 +15919,30 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("references")]
         public virtual System.Collections.Generic.IList<Reference> ReferencesValue { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Remove Logged Activity Request.</summary>
+    public class RemoveActivityRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Request options, such as the search application and clientId.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
+
+        /// <summary>User Activity containing the data to be deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userActivity")]
+        public virtual UserActivity UserActivity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Remove Logged Activity Response. will return an empty response for now. Will be revisited in later phases.
+    /// </summary>
+    public class RemoveActivityResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -17195,6 +17327,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("suggestedQuery")]
         public virtual string SuggestedQuery { get; set; }
 
+        /// <summary>Suggestion triggered for the current query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestionType")]
+        public virtual string SuggestionType { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -18331,6 +18467,16 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dlpMetricsMetadata")]
         public virtual AppsDynamiteSharedDlpMetricsMetadata DlpMetricsMetadata { get; set; }
 
+        /// <summary>
+        /// Message component search metadata for this upload_metadata (currently used for message highlighting and
+        /// snippeting). For use by Search backend only; clients should get upload_metadata search info from
+        /// Annotation.component_search_info. This field is necessary because backend Message keeps UploadMetadata in a
+        /// separate field. Upon converting from backend message to frontend message, this field will be copied to
+        /// Annotation.component_search_info while the corresponding UploadMetadata is converted into an Annotation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalOnlyComponentSearchInfo")]
+        public virtual AppsDynamiteSharedMessageComponentSearchInfo InternalOnlyComponentSearchInfo { get; set; }
+
         /// <summary>The timestamp of the most recent virus scan completed (in microseconds).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestVirusScanTimestamp")]
         public virtual System.Nullable<long> LatestVirusScanTimestamp { get; set; }
@@ -18509,6 +18655,17 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Visibility of user's Profile</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userProfileVisibility")]
         public virtual string UserProfileVisibility { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>User's single or bulk query activity. This can be a logging query or deletion query.</summary>
+    public class UserActivity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Contains data which needs to be logged/removed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryActivity")]
+        public virtual QueryActivity QueryActivity { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

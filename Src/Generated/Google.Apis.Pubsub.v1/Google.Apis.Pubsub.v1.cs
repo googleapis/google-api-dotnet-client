@@ -4103,6 +4103,20 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Sets the `data` field as the HTTP body for delivery.</summary>
+    public class NoWrapper : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// When true, writes the Pub/Sub message metadata to `x-goog-pubsub-:` headers of the HTTP request. Writes the
+        /// Pub/Sub message attributes to `:` headers of the HTTP request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeMetadata")]
+        public virtual System.Nullable<bool> WriteMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Contains information needed for generating an [OpenID Connect
     /// token](https://developers.google.com/identity/protocols/OpenIDConnect).
@@ -4272,6 +4286,16 @@ namespace Google.Apis.Pubsub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The payload to the push endpoint is in the form of the JSON representation of a PubsubMessage
+    /// (https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#pubsubmessage).
+    /// </summary>
+    public class PubsubWrapper : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for the `Pull` method.</summary>
     public class PullRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4330,12 +4354,23 @@ namespace Google.Apis.Pubsub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string, string> Attributes { get; set; }
 
+        /// <summary>When set, the payload to the push endpoint is not wrapped.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noWrapper")]
+        public virtual NoWrapper NoWrapper { get; set; }
+
         /// <summary>
         /// If specified, Pub/Sub will generate and attach an OIDC JWT token as an `Authorization` header in the HTTP
         /// request for every pushed message.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oidcToken")]
         public virtual OidcToken OidcToken { get; set; }
+
+        /// <summary>
+        /// When set, the payload to the push endpoint is in the form of the JSON representation of a PubsubMessage
+        /// (https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#pubsubmessage).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubsubWrapper")]
+        public virtual PubsubWrapper PubsubWrapper { get; set; }
 
         /// <summary>
         /// A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use
