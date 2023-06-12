@@ -1150,7 +1150,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     }
                 }
 
-                /// <summary>Check if a notebook instance is healthy.</summary>
+                /// <summary>Checks whether a notebook instance is healthy.</summary>
                 /// <param name="name">
                 /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
                 /// </param>
@@ -1159,7 +1159,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     return new GetInstanceHealthRequest(service, name);
                 }
 
-                /// <summary>Check if a notebook instance is healthy.</summary>
+                /// <summary>Checks whether a notebook instance is healthy.</summary>
                 public class GetInstanceHealthRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.GetInstanceHealthResponse>
                 {
                     /// <summary>Constructs a new GetInstanceHealth request.</summary>
@@ -1199,7 +1199,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     }
                 }
 
-                /// <summary>Check if a notebook instance is upgradable.</summary>
+                /// <summary>Checks whether a notebook instance is upgradable.</summary>
                 /// <param name="notebookInstance">
                 /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
                 /// </param>
@@ -1208,7 +1208,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     return new IsUpgradeableRequest(service, notebookInstance);
                 }
 
-                /// <summary>Check if a notebook instance is upgradable.</summary>
+                /// <summary>Checks whether a notebook instance is upgradable.</summary>
                 public class IsUpgradeableRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.IsInstanceUpgradeableResponse>
                 {
                     /// <summary>Constructs a new IsUpgradeable request.</summary>
@@ -3221,7 +3221,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     }
                 }
 
-                /// <summary>Report and process a runtime event.</summary>
+                /// <summary>Reports and processes a runtime event.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}`
@@ -3231,7 +3231,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     return new ReportEventRequest(service, body, name);
                 }
 
-                /// <summary>Report and process a runtime event.</summary>
+                /// <summary>Reports and processes a runtime event.</summary>
                 public class ReportEventRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v1.Data.Operation>
                 {
                     /// <summary>Constructs a new ReportEvent request.</summary>
@@ -4190,7 +4190,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1
 namespace Google.Apis.AIPlatformNotebooks.v1.Data
 {
     /// <summary>
-    /// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check
+    /// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. See
     /// [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination.
     /// TPUs are not supported.
     /// </summary>
@@ -4912,7 +4912,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("noProxyAccess")]
         public virtual System.Nullable<bool> NoProxyAccess { get; set; }
 
-        /// <summary>If true, no public IP will be assigned to this instance.</summary>
+        /// <summary>If true, no external IP will be assigned to this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("noPublicIp")]
         public virtual System.Nullable<bool> NoPublicIp { get; set; }
 
@@ -5789,7 +5789,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     }
 
     /// <summary>
-    /// A set of Shielded Instance options. Check [Images using supported Shielded VM
+    /// A set of Shielded Instance options. See [Images using supported Shielded VM
     /// features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are
     /// valid.
     /// </summary>
@@ -5956,7 +5956,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     }
 
     /// <summary>
-    /// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. Check
+    /// Definition of a hardware accelerator. Note that not all combinations of `type` and `core_count` are valid. See
     /// [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus) to find a valid combination. TPUs are not
     /// supported.
     /// </summary>
@@ -5994,7 +5994,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     {
         /// <summary>
         /// Required. Count of cores of this accelerator. Note that not all combinations of `type` and `core_count` are
-        /// valid. Check [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid
+        /// valid. See [GPUs on Compute Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid
         /// combination. TPUs are not supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("coreCount")]
@@ -6033,7 +6033,7 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     }
 
     /// <summary>
-    /// A set of Shielded Instance options. Check [Images using supported Shielded VM
+    /// A set of Shielded Instance options. See [Images using supported Shielded VM
     /// features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are
     /// valid.
     /// </summary>

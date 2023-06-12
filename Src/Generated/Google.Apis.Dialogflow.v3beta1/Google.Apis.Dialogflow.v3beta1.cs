@@ -13311,7 +13311,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sampleRateHertz")]
         public virtual System.Nullable<int> SampleRateHertz { get; set; }
 
-        /// <summary>Optional. Configuration of how speech should be synthesized.</summary>
+        /// <summary>
+        /// Optional. Configuration of how speech should be synthesized. If not specified, Agent.text_to_speech_settings
+        /// is applied.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("synthesizeSpeechConfig")]
         public virtual GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig SynthesizeSpeechConfig { get; set; }
 
@@ -14606,10 +14609,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>
         /// Configuration of how speech should be synthesized, mapping from language
         /// (https://cloud.google.com/dialogflow/cx/docs/reference/language) to SynthesizeSpeechConfig. These settings
-        /// affect: - The synthesize configuration used in [phone
-        /// gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway). - You no longer
-        /// need to specify OutputAudioConfig.synthesize_speech_config when invoking API calls. Your agent will use the
-        /// pre-configured options for speech synthesizing.
+        /// affect: - The [phone gateway](https://cloud.google.com/dialogflow/cx/docs/concept/integration/phone-gateway)
+        /// synthesize configuration set via Agent.text_to_speech_settings. - How speech is synthesized when invoking
+        /// session APIs. Agent.text_to_speech_settings only applies if OutputAudioConfig.synthesize_speech_config is
+        /// not specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("synthesizeSpeechConfigs")]
         public virtual System.Collections.Generic.IDictionary<string, GoogleCloudDialogflowCxV3beta1SynthesizeSpeechConfig> SynthesizeSpeechConfigs { get; set; }

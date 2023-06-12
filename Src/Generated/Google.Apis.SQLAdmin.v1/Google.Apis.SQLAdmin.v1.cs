@@ -2769,6 +2769,65 @@ namespace Google.Apis.SQLAdmin.v1
             this.service = service;
         }
 
+        /// <summary>Cancels an instance operation that has been performed on an instance.</summary>
+        /// <param name="project">Project ID of the project that contains the instance.</param>
+        /// <param name="operation">Instance operation ID.</param>
+        public virtual CancelRequest Cancel(string project, string operation)
+        {
+            return new CancelRequest(service, project, operation);
+        }
+
+        /// <summary>Cancels an instance operation that has been performed on an instance.</summary>
+        public class CancelRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1.Data.Empty>
+        {
+            /// <summary>Constructs a new Cancel request.</summary>
+            public CancelRequest(Google.Apis.Services.IClientService service, string project, string operation) : base(service)
+            {
+                Project = project;
+                Operation = operation;
+                InitParameters();
+            }
+
+            /// <summary>Project ID of the project that contains the instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Instance operation ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("operation", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Operation { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "cancel";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/projects/{project}/operations/{operation}/cancel";
+
+            /// <summary>Initializes Cancel parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("operation", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "operation",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Retrieves an instance operation that has been performed on an instance.</summary>
         /// <param name="project">Project ID of the project that contains the instance.</param>
         /// <param name="operation">Instance operation ID.</param>
@@ -4276,7 +4335,7 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }
 
-        /// <summary>(Postgres only) Whether point in time recovery is enabled.</summary>
+        /// <summary>Whether point in time recovery is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pointInTimeRecoveryEnabled")]
         public virtual System.Nullable<bool> PointInTimeRecoveryEnabled { get; set; }
 
@@ -4510,13 +4569,6 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>Timestamp, if specified, identifies the time to which the source instance is cloned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pointInTime")]
         public virtual object PointInTime { get; set; }
-
-        /// <summary>
-        /// (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is
-        /// specified, clone to the same zone as the source instance.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("preferredZone")]
-        public virtual string PreferredZone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5006,6 +5058,17 @@ namespace Google.Apis.SQLAdmin.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyVersionName")]
         public virtual string KmsKeyVersionName { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    /// </summary>
+    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6465,6 +6528,10 @@ namespace Google.Apis.SQLAdmin.v1.Data
         /// <summary>External sync mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("syncMode")]
         public virtual string SyncMode { get; set; }
+
+        /// <summary>Optional. Parallel level for initial data sync. Currently only applicable for MySQL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syncParallelLevel")]
+        public virtual string SyncParallelLevel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

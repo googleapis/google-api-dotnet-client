@@ -845,14 +845,20 @@ namespace Google.Apis.Dataflow.v1b3
                 }
             }
 
-            /// <summary>List the jobs of a project across all regions.</summary>
+            /// <summary>
+            /// List the jobs of a project across all regions. **Note:** This method doesn't support filtering the list
+            /// of jobs by name.
+            /// </summary>
             /// <param name="projectId">The project which owns the jobs.</param>
             public virtual AggregatedRequest Aggregated(string projectId)
             {
                 return new AggregatedRequest(service, projectId);
             }
 
-            /// <summary>List the jobs of a project across all regions.</summary>
+            /// <summary>
+            /// List the jobs of a project across all regions. **Note:** This method doesn't support filtering the list
+            /// of jobs by name.
+            /// </summary>
             public class AggregatedRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListJobsResponse>
             {
                 /// <summary>Constructs a new Aggregated request.</summary>
@@ -906,7 +912,7 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Location { get; set; }
 
-                /// <summary>Optional. The job name. Optional.</summary>
+                /// <summary>Optional. The job name.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Name { get; set; }
 
@@ -1400,8 +1406,10 @@ namespace Google.Apis.Dataflow.v1b3
             /// List the jobs of a project. To list the jobs of a project in a region, we recommend using
             /// `projects.locations.jobs.list` with a [regional endpoint]
             /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To list the all jobs across all
-            /// regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not recommended, as you can only
-            /// get the list of jobs that are running in `us-central1`.
+            /// regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not recommended, because you can
+            /// only get the list of jobs that are running in `us-central1`. `projects.locations.jobs.list` and
+            /// `projects.jobs.list` support filtering the list of jobs by name. Filtering by name isn't supported by
+            /// `projects.jobs.aggregated`.
             /// </summary>
             /// <param name="projectId">The project which owns the jobs.</param>
             public virtual ListRequest List(string projectId)
@@ -1413,8 +1421,10 @@ namespace Google.Apis.Dataflow.v1b3
             /// List the jobs of a project. To list the jobs of a project in a region, we recommend using
             /// `projects.locations.jobs.list` with a [regional endpoint]
             /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To list the all jobs across all
-            /// regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not recommended, as you can only
-            /// get the list of jobs that are running in `us-central1`.
+            /// regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not recommended, because you can
+            /// only get the list of jobs that are running in `us-central1`. `projects.locations.jobs.list` and
+            /// `projects.jobs.list` support filtering the list of jobs by name. Filtering by name isn't supported by
+            /// `projects.jobs.aggregated`.
             /// </summary>
             public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListJobsResponse>
             {
@@ -1469,7 +1479,7 @@ namespace Google.Apis.Dataflow.v1b3
                 [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Location { get; set; }
 
-                /// <summary>Optional. The job name. Optional.</summary>
+                /// <summary>Optional. The job name.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Name { get; set; }
 
@@ -3291,8 +3301,10 @@ namespace Google.Apis.Dataflow.v1b3
                 /// List the jobs of a project. To list the jobs of a project in a region, we recommend using
                 /// `projects.locations.jobs.list` with a [regional endpoint]
                 /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To list the all jobs across
-                /// all regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not recommended, as you
-                /// can only get the list of jobs that are running in `us-central1`.
+                /// all regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not recommended, because
+                /// you can only get the list of jobs that are running in `us-central1`. `projects.locations.jobs.list`
+                /// and `projects.jobs.list` support filtering the list of jobs by name. Filtering by name isn't
+                /// supported by `projects.jobs.aggregated`.
                 /// </summary>
                 /// <param name="projectId">The project which owns the jobs.</param>
                 /// <param name="location">
@@ -3308,8 +3320,10 @@ namespace Google.Apis.Dataflow.v1b3
                 /// List the jobs of a project. To list the jobs of a project in a region, we recommend using
                 /// `projects.locations.jobs.list` with a [regional endpoint]
                 /// (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). To list the all jobs across
-                /// all regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not recommended, as you
-                /// can only get the list of jobs that are running in `us-central1`.
+                /// all regions, use `projects.jobs.aggregated`. Using `projects.jobs.list` is not recommended, because
+                /// you can only get the list of jobs that are running in `us-central1`. `projects.locations.jobs.list`
+                /// and `projects.jobs.list` support filtering the list of jobs by name. Filtering by name isn't
+                /// supported by `projects.jobs.aggregated`.
                 /// </summary>
                 public class ListRequest : DataflowBaseServiceRequest<Google.Apis.Dataflow.v1b3.Data.ListJobsResponse>
                 {
@@ -3365,7 +3379,7 @@ namespace Google.Apis.Dataflow.v1b3
                         ACTIVE = 3,
                     }
 
-                    /// <summary>Optional. The job name. Optional.</summary>
+                    /// <summary>Optional. The job name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Name { get; set; }
 

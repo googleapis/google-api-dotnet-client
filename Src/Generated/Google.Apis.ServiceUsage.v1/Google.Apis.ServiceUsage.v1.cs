@@ -1012,16 +1012,16 @@ namespace Google.Apis.ServiceUsage.v1.Data
     /// <summary>The response message of "AddEnableRules" method.</summary>
     public class AddEnableRulesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The values added to the parent consumer policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("addedValues")]
+        public virtual System.Collections.Generic.IList<string> AddedValues { get; set; }
+
         /// <summary>
         /// The parent consumer policy. It can be `projects/12345/consumerPolicies/default`, or
         /// `folders/12345/consumerPolicies/default`, or `organizations/12345/consumerPolicies/default`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
-
-        /// <summary>The values added to the parent consumer policy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("values")]
-        public virtual System.Collections.Generic.IList<ValueInfo> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2519,17 +2519,6 @@ namespace Google.Apis.ServiceUsage.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Unimplemented. Do not use. GroupValue contains information of a service group.</summary>
-    public class GroupValue : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The name of the value. Example: `groups/googleSerivice`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Defines the HTTP configuration for an API service. It contains a list of HttpRule, each specifying the mapping
     /// of an RPC method to one or more HTTP REST API methods.
@@ -3818,6 +3807,10 @@ namespace Google.Apis.ServiceUsage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
+        /// <summary>The values removed from the parent consumer policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removedValues")]
+        public virtual System.Collections.Generic.IList<string> RemovedValues { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3851,31 +3844,6 @@ namespace Google.Apis.ServiceUsage.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uniqueId")]
         public virtual string UniqueId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>ServiceValue contains information of a service.</summary>
-    public class ServiceValue : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The DNS address at which this service is available.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dnsAddress")]
-        public virtual string DnsAddress { get; set; }
-
-        /// <summary>The name of the value. Example: `services/storage.googleapis.com`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// A link to pricing information for the service, such as https://cloud.google.com/bigquery/pricing.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pricingLink")]
-        public virtual string PricingLink { get; set; }
-
-        /// <summary>Terms of Service</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tos")]
-        public virtual System.Collections.Generic.IList<TermsOfService> Tos { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4005,21 +3973,6 @@ namespace Google.Apis.ServiceUsage.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>TermsOfService captures the metadata about a given terms of service</summary>
-    public class TermsOfService : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Title of the terms of service.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>URL/URI of the terms of service.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>A protocol buffer message type.</summary>
     public class Type : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4137,36 +4090,6 @@ namespace Google.Apis.ServiceUsage.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipServiceControl")]
         public virtual System.Nullable<bool> SkipServiceControl { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Information about the value field. Only support value type as service now.</summary>
-    public class ValueInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The information related to the value if it is a service group.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("groupValue")]
-        public virtual GroupValue GroupValue { get; set; }
-
-        /// <summary>
-        /// For public services, it must point to the product landing page. For private services, it should point to the
-        /// internal site. For service group, it is TBD.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("learnmoreLink")]
-        public virtual string LearnmoreLink { get; set; }
-
-        /// <summary>The information related to the value if it is a service.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serviceValue")]
-        public virtual ServiceValue ServiceValue { get; set; }
-
-        /// <summary>The product summary for this value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
-        public virtual string Summary { get; set; }
-
-        /// <summary>The product title for this value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

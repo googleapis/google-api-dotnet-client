@@ -2661,7 +2661,7 @@ namespace Google.Apis.CloudRun.v2.Data
 
     /// <summary>
     /// A single application container. This specifies both the container to run, the command to run in the container
-    /// and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container
+    /// and the arguments to supply to it. Note that additional arguments can be supplied by the system to the container
     /// at runtime.
     /// </summary>
     public class GoogleCloudRunV2Container : Google.Apis.Requests.IDirectResponseSchema
@@ -2787,7 +2787,7 @@ namespace Google.Apis.CloudRun.v2.Data
     public class GoogleCloudRunV2EnvVar : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
+        /// Required. Name of the environment variable. Must be a C_IDENTIFIER, and must not exceed 32768 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3845,6 +3845,12 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Output only. Email address of the authenticated creator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creator")]
         public virtual string Creator { get; set; }
+
+        /// <summary>
+        /// Custom audiences that can be used in the audience field of ID token for authenticated requests.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customAudiences")]
+        public virtual System.Collections.Generic.IList<string> CustomAudiences { get; set; }
 
         /// <summary>Output only. The deletion time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]

@@ -10414,6 +10414,112 @@ namespace Google.Apis.ShoppingContent.v2_1
                 });
             }
         }
+
+        /// <summary>List all promotions from your Merchant Center account.</summary>
+        /// <param name="merchantId">Required. The ID of the account that contains the collection.</param>
+        public virtual ListRequest List(long merchantId)
+        {
+            return new ListRequest(service, merchantId);
+        }
+
+        /// <summary>List all promotions from your Merchant Center account.</summary>
+        public class ListRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.ListPromotionResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, long merchantId) : base(service)
+            {
+                MerchantId = merchantId;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the account that contains the collection.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>
+            /// [CLDR country code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) (for example,
+            /// "US"), used as a filter on promotions target country.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("countryCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string CountryCode { get; set; }
+
+            /// <summary>
+            /// The two-letter ISO 639-1 language code associated with the promotions, used as a filter.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string LanguageCode { get; set; }
+
+            /// <summary>
+            /// The maximum number of promotions to return. The service may return fewer than this value. If
+            /// unspecified, at most 50 labels will be returned. The maximum value is 1000; values above 1000 will be
+            /// coerced to 1000.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// A page token, received from a previous `ListPromotion` call. Provide this to retrieve the subsequent
+            /// page. When paginating, all other parameters provided to `ListPromotion` must match the call that
+            /// provided the page token.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/promotions";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("countryCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "countryCode",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "languageCode",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
     }
 
     /// <summary>The "pubsubnotificationsettings" collection of methods.</summary>
@@ -17302,6 +17408,24 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for Promotions.List method.</summary>
+    public class ListPromotionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of all available promotions for the merchant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
+        public virtual System.Collections.Generic.IList<Promotion> Promotions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for the `ListRegions` method.</summary>
     public class ListRegionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -21341,8 +21465,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// The date time when an offer becomes visible in search results across Google’s YouTube surfaces, in [ISO
-        /// 8601](http://en.wikipedia.org/wiki/ISO_8601) format. See [Disclosure date](
-        /// https://support.google.com/merchants/answer/13034208) for more information.
+        /// 8601](http://en.wikipedia.org/wiki/ISO_8601) format. See [Disclosure
+        /// date](https://support.google.com/merchants/answer/13034208) for more information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disclosureDate")]
         public virtual string DisclosureDate { get; set; }

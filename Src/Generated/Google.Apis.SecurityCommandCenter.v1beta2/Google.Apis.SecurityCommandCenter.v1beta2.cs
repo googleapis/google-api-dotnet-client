@@ -5070,6 +5070,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceName")]
         public virtual string ServiceName { get; set; }
 
+        /// <summary>The caller's user agent string associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
+        public virtual string UserAgent { get; set; }
+
         /// <summary>
         /// Type of user agent associated with the finding. For example, an operating system shell or an embedded or
         /// standalone application.

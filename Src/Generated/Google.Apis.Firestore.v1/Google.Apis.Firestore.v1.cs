@@ -4621,6 +4621,16 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string DeleteProtectionState { get; set; }
 
         /// <summary>
+        /// Output only. The earliest timestamp at which older versions of the data can be read from the database. See
+        /// [version_retention_period] above; this field is populated with `now - version_retention_period`. This value
+        /// is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover
+        /// data, make sure to account for the time from the moment when the value is queried to the moment when you
+        /// initiate the recovery.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("earliestVersionTime")]
+        public virtual object EarliestVersionTime { get; set; }
+
+        /// <summary>
         /// This checksum is computed by the server based on the value of other fields, and may be sent on update and
         /// delete requests to ensure the client has an up-to-date value before proceeding.
         /// </summary>
@@ -4647,6 +4657,10 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Whether to enable the PITR feature on this database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pointInTimeRecoveryEnablement")]
+        public virtual string PointInTimeRecoveryEnablement { get; set; }
+
         /// <summary>
         /// The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information
         /// about how to choose.
@@ -4664,6 +4678,14 @@ namespace Google.Apis.Firestore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
+
+        /// <summary>
+        /// Output only. The period during which past versions of data are retained in the database. Any read or query
+        /// can specify a `read_time` within this window, and will read the state of the database at that time. If the
+        /// PITR feature is enabled, the retention period is 7 days. Otherwise, the retention period is 1 hour.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionRetentionPeriod")]
+        public virtual object VersionRetentionPeriod { get; set; }
     }
 
     /// <summary>Metadata for google.longrunning.Operation results from FirestoreAdmin.ExportDocuments.</summary>
@@ -4730,6 +4752,15 @@ namespace Google.Apis.Firestore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputUriPrefix")]
         public virtual string OutputUriPrefix { get; set; }
+
+        /// <summary>
+        /// The timestamp that corresponds to the version of the database to be exported. The timestamp must be rounded
+        /// to the minute, in the past, and not older than 1 hour. If specified, then the exported documents will
+        /// represent a consistent view of the database at the provided time. Otherwise, there are no guarantees about
+        /// the consistency of the exported documents.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotTime")]
+        public virtual object SnapshotTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

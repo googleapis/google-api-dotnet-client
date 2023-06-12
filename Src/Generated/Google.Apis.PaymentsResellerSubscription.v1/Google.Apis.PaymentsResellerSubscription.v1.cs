@@ -1806,6 +1806,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     /// <summary>Payload specific to Youtube products.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The access expiration time for this line item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessEndTime")]
+        public virtual object AccessEndTime { get; set; }
+
         /// <summary>The list of eligibility_ids which are applicable for the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerEligibilityIds")]
         public virtual System.Collections.Generic.IList<string> PartnerEligibilityIds { get; set; }

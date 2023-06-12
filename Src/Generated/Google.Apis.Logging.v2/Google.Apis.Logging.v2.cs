@@ -2818,6 +2818,14 @@ namespace Google.Apis.Logging.v2
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
+                /// Optional. A service account provided by the caller that will be used to write the log entries. Must
+                /// be of format serviceAccount:some@email. This can only be specified if writing to a destination
+                /// outside the sink's project. If not specified, a p4 service account will automatically be generated.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CustomWriterIdentity { get; set; }
+
+                /// <summary>
                 /// Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this
                 /// value is omitted or set to false, and if the sink's parent is a project, then the value returned as
                 /// writer_identity is the same group or service account used by Cloud Logging before the addition of
@@ -2855,6 +2863,14 @@ namespace Google.Apis.Logging.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^billingAccounts/[^/]+$",
+                    });
+                    RequestParameters.Add("customWriterIdentity", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customWriterIdentity",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
                     {
@@ -3107,6 +3123,14 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
                 /// <summary>
+                /// Optional. A service account provided by the caller that will be used to write the log entries. Must
+                /// be of format serviceAccount:some@email. This can only be specified if writing to a destination
+                /// outside the sink's project. If not specified, a p4 service account will automatically be generated.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CustomWriterIdentity { get; set; }
+
+                /// <summary>
                 /// Optional. See sinks.create for a description of this field. When updating a sink, the effect of this
                 /// field on the value of writer_identity in the updated sink depends on both the old and new values of
                 /// this field: If the old and new values of this field are both false or both true, then there is no
@@ -3156,6 +3180,14 @@ namespace Google.Apis.Logging.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^billingAccounts/[^/]+/sinks/[^/]+$",
+                    });
+                    RequestParameters.Add("customWriterIdentity", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customWriterIdentity",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
                     {
@@ -3219,6 +3251,14 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
                 /// <summary>
+                /// Optional. A service account provided by the caller that will be used to write the log entries. Must
+                /// be of format serviceAccount:some@email. This can only be specified if writing to a destination
+                /// outside the sink's project. If not specified, a p4 service account will automatically be generated.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CustomWriterIdentity { get; set; }
+
+                /// <summary>
                 /// Optional. See sinks.create for a description of this field. When updating a sink, the effect of this
                 /// field on the value of writer_identity in the updated sink depends on both the old and new values of
                 /// this field: If the old and new values of this field are both false or both true, then there is no
@@ -3268,6 +3308,14 @@ namespace Google.Apis.Logging.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^billingAccounts/[^/]+/sinks/[^/]+$",
+                    });
+                    RequestParameters.Add("customWriterIdentity", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customWriterIdentity",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
                     {
@@ -6473,6 +6521,14 @@ namespace Google.Apis.Logging.v2
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
+                /// Optional. A service account provided by the caller that will be used to write the log entries. Must
+                /// be of format serviceAccount:some@email. This can only be specified if writing to a destination
+                /// outside the sink's project. If not specified, a p4 service account will automatically be generated.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CustomWriterIdentity { get; set; }
+
+                /// <summary>
                 /// Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this
                 /// value is omitted or set to false, and if the sink's parent is a project, then the value returned as
                 /// writer_identity is the same group or service account used by Cloud Logging before the addition of
@@ -6510,6 +6566,14 @@ namespace Google.Apis.Logging.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^folders/[^/]+$",
+                    });
+                    RequestParameters.Add("customWriterIdentity", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customWriterIdentity",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
                     {
@@ -6762,6 +6826,14 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
                 /// <summary>
+                /// Optional. A service account provided by the caller that will be used to write the log entries. Must
+                /// be of format serviceAccount:some@email. This can only be specified if writing to a destination
+                /// outside the sink's project. If not specified, a p4 service account will automatically be generated.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CustomWriterIdentity { get; set; }
+
+                /// <summary>
                 /// Optional. See sinks.create for a description of this field. When updating a sink, the effect of this
                 /// field on the value of writer_identity in the updated sink depends on both the old and new values of
                 /// this field: If the old and new values of this field are both false or both true, then there is no
@@ -6811,6 +6883,14 @@ namespace Google.Apis.Logging.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^folders/[^/]+/sinks/[^/]+$",
+                    });
+                    RequestParameters.Add("customWriterIdentity", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customWriterIdentity",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
                     {
@@ -6874,6 +6954,14 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
                 /// <summary>
+                /// Optional. A service account provided by the caller that will be used to write the log entries. Must
+                /// be of format serviceAccount:some@email. This can only be specified if writing to a destination
+                /// outside the sink's project. If not specified, a p4 service account will automatically be generated.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CustomWriterIdentity { get; set; }
+
+                /// <summary>
                 /// Optional. See sinks.create for a description of this field. When updating a sink, the effect of this
                 /// field on the value of writer_identity in the updated sink depends on both the old and new values of
                 /// this field: If the old and new values of this field are both false or both true, then there is no
@@ -6923,6 +7011,14 @@ namespace Google.Apis.Logging.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^folders/[^/]+/sinks/[^/]+$",
+                    });
+                    RequestParameters.Add("customWriterIdentity", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customWriterIdentity",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
                     {
@@ -11640,6 +11736,14 @@ namespace Google.Apis.Logging.v2
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
+                /// Optional. A service account provided by the caller that will be used to write the log entries. Must
+                /// be of format serviceAccount:some@email. This can only be specified if writing to a destination
+                /// outside the sink's project. If not specified, a p4 service account will automatically be generated.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CustomWriterIdentity { get; set; }
+
+                /// <summary>
                 /// Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this
                 /// value is omitted or set to false, and if the sink's parent is a project, then the value returned as
                 /// writer_identity is the same group or service account used by Cloud Logging before the addition of
@@ -11677,6 +11781,14 @@ namespace Google.Apis.Logging.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^organizations/[^/]+$",
+                    });
+                    RequestParameters.Add("customWriterIdentity", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customWriterIdentity",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
                     {
@@ -11929,6 +12041,14 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
                 /// <summary>
+                /// Optional. A service account provided by the caller that will be used to write the log entries. Must
+                /// be of format serviceAccount:some@email. This can only be specified if writing to a destination
+                /// outside the sink's project. If not specified, a p4 service account will automatically be generated.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CustomWriterIdentity { get; set; }
+
+                /// <summary>
                 /// Optional. See sinks.create for a description of this field. When updating a sink, the effect of this
                 /// field on the value of writer_identity in the updated sink depends on both the old and new values of
                 /// this field: If the old and new values of this field are both false or both true, then there is no
@@ -11978,6 +12098,14 @@ namespace Google.Apis.Logging.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^organizations/[^/]+/sinks/[^/]+$",
+                    });
+                    RequestParameters.Add("customWriterIdentity", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customWriterIdentity",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
                     {
@@ -12041,6 +12169,14 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
                 /// <summary>
+                /// Optional. A service account provided by the caller that will be used to write the log entries. Must
+                /// be of format serviceAccount:some@email. This can only be specified if writing to a destination
+                /// outside the sink's project. If not specified, a p4 service account will automatically be generated.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CustomWriterIdentity { get; set; }
+
+                /// <summary>
                 /// Optional. See sinks.create for a description of this field. When updating a sink, the effect of this
                 /// field on the value of writer_identity in the updated sink depends on both the old and new values of
                 /// this field: If the old and new values of this field are both false or both true, then there is no
@@ -12090,6 +12226,14 @@ namespace Google.Apis.Logging.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^organizations/[^/]+/sinks/[^/]+$",
+                    });
+                    RequestParameters.Add("customWriterIdentity", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customWriterIdentity",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
                     {
@@ -15248,6 +15392,14 @@ namespace Google.Apis.Logging.v2
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
+                /// Optional. A service account provided by the caller that will be used to write the log entries. Must
+                /// be of format serviceAccount:some@email. This can only be specified if writing to a destination
+                /// outside the sink's project. If not specified, a p4 service account will automatically be generated.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CustomWriterIdentity { get; set; }
+
+                /// <summary>
                 /// Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this
                 /// value is omitted or set to false, and if the sink's parent is a project, then the value returned as
                 /// writer_identity is the same group or service account used by Cloud Logging before the addition of
@@ -15285,6 +15437,14 @@ namespace Google.Apis.Logging.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("customWriterIdentity", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customWriterIdentity",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
                     {
@@ -15537,6 +15697,14 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
                 /// <summary>
+                /// Optional. A service account provided by the caller that will be used to write the log entries. Must
+                /// be of format serviceAccount:some@email. This can only be specified if writing to a destination
+                /// outside the sink's project. If not specified, a p4 service account will automatically be generated.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CustomWriterIdentity { get; set; }
+
+                /// <summary>
                 /// Optional. See sinks.create for a description of this field. When updating a sink, the effect of this
                 /// field on the value of writer_identity in the updated sink depends on both the old and new values of
                 /// this field: If the old and new values of this field are both false or both true, then there is no
@@ -15586,6 +15754,14 @@ namespace Google.Apis.Logging.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+/sinks/[^/]+$",
+                    });
+                    RequestParameters.Add("customWriterIdentity", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customWriterIdentity",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
                     {
@@ -15649,6 +15825,14 @@ namespace Google.Apis.Logging.v2
                 public virtual string SinkName { get; private set; }
 
                 /// <summary>
+                /// Optional. A service account provided by the caller that will be used to write the log entries. Must
+                /// be of format serviceAccount:some@email. This can only be specified if writing to a destination
+                /// outside the sink's project. If not specified, a p4 service account will automatically be generated.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string CustomWriterIdentity { get; set; }
+
+                /// <summary>
                 /// Optional. See sinks.create for a description of this field. When updating a sink, the effect of this
                 /// field on the value of writer_identity in the updated sink depends on both the old and new values of
                 /// this field: If the old and new values of this field are both false or both true, then there is no
@@ -15698,6 +15882,14 @@ namespace Google.Apis.Logging.v2
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+/sinks/[^/]+$",
+                    });
+                    RequestParameters.Add("customWriterIdentity", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "customWriterIdentity",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                     RequestParameters.Add("uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
                     {
@@ -15912,6 +16104,14 @@ namespace Google.Apis.Logging.v2
             public virtual string Parent { get; private set; }
 
             /// <summary>
+            /// Optional. A service account provided by the caller that will be used to write the log entries. Must be
+            /// of format serviceAccount:some@email. This can only be specified if writing to a destination outside the
+            /// sink's project. If not specified, a p4 service account will automatically be generated.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string CustomWriterIdentity { get; set; }
+
+            /// <summary>
             /// Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value
             /// is omitted or set to false, and if the sink's parent is a project, then the value returned as
             /// writer_identity is the same group or service account used by Cloud Logging before the addition of writer
@@ -15949,6 +16149,14 @@ namespace Google.Apis.Logging.v2
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^[^/]+/[^/]+$",
+                });
+                RequestParameters.Add("customWriterIdentity", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customWriterIdentity",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
                 RequestParameters.Add("uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
                 {
@@ -16197,6 +16405,14 @@ namespace Google.Apis.Logging.v2
             public virtual string SinkName { get; private set; }
 
             /// <summary>
+            /// Optional. A service account provided by the caller that will be used to write the log entries. Must be
+            /// of format serviceAccount:some@email. This can only be specified if writing to a destination outside the
+            /// sink's project. If not specified, a p4 service account will automatically be generated.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("customWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string CustomWriterIdentity { get; set; }
+
+            /// <summary>
             /// Optional. See sinks.create for a description of this field. When updating a sink, the effect of this
             /// field on the value of writer_identity in the updated sink depends on both the old and new values of this
             /// field: If the old and new values of this field are both false or both true, then there is no change to
@@ -16245,6 +16461,14 @@ namespace Google.Apis.Logging.v2
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^[^/]+/[^/]+/sinks/[^/]+$",
+                });
+                RequestParameters.Add("customWriterIdentity", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "customWriterIdentity",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
                 });
                 RequestParameters.Add("uniqueWriterIdentity", new Google.Apis.Discovery.Parameter
                 {
@@ -17277,9 +17501,11 @@ namespace Google.Apis.Logging.v2.Data
     public class ListLogEntriesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Only log entries that match the filter are returned. An empty filter matches all log entries in
-        /// the resources listed in resource_names. Referencing a parent resource that is not listed in resource_names
-        /// will cause the filter to return no results. The maximum length of a filter is 20,000 characters.
+        /// Optional. A filter that chooses which log entries to return. For more information, see Logging query
+        /// language (https://cloud.google.com/logging/docs/view/logging-query-language).Only log entries that match the
+        /// filter are returned. An empty filter matches all log entries in the resources listed in resource_names.
+        /// Referencing a parent resource that is not listed in resource_names will cause the filter to return no
+        /// results. The maximum length of a filter is 20,000 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -18024,10 +18250,10 @@ namespace Google.Apis.Logging.v2.Data
         /// <summary>
         /// Required. The export destination: "storage.googleapis.com/[GCS_BUCKET]"
         /// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-        /// "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's writer_identity, set when the
-        /// sink is created, must have permission to write to the destination or else the log entries are not exported.
-        /// For more information, see Exporting Logs with Sinks
-        /// (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
+        /// "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
+        /// "logging.googleapis.com/projects/[PROJECT_ID]" The sink's writer_identity, set when the sink is created,
+        /// must have permission to write to the destination or else the log entries are not exported. For more
+        /// information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual string Destination { get; set; }

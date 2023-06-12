@@ -334,6 +334,244 @@ namespace Google.Apis.Networkconnectivity.v1
                     public HubsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                        Groups = new GroupsResource(service);
+                    }
+
+                    /// <summary>Gets the Groups resource.</summary>
+                    public virtual GroupsResource Groups { get; }
+
+                    /// <summary>The "groups" collection of methods.</summary>
+                    public class GroupsResource
+                    {
+                        private const string Resource = "groups";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public GroupsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>
+                        /// Gets the access control policy for a resource. Returns an empty policy if the resource
+                        /// exists and does not have a policy set.
+                        /// </summary>
+                        /// <param name="resource">
+                        /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </param>
+                        public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                        {
+                            return new GetIamPolicyRequest(service, resource);
+                        }
+
+                        /// <summary>
+                        /// Gets the access control policy for a resource. Returns an empty policy if the resource
+                        /// exists and does not have a policy set.
+                        /// </summary>
+                        public class GetIamPolicyRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.Policy>
+                        {
+                            /// <summary>Constructs a new GetIamPolicy request.</summary>
+                            public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                            {
+                                Resource = resource;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                            /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value
+                            /// for this field.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Resource { get; private set; }
+
+                            /// <summary>
+                            /// Optional. The maximum policy version that will be used to format the policy. Valid
+                            /// values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests
+                            /// for policies with any conditional role bindings must specify version 3. Policies with no
+                            /// conditional role bindings may specify any valid value or leave the field unset. The
+                            /// policy in the response might use the policy version that you specified, or it might use
+                            /// a lower policy version. For example, if you specify version 3, but the policy has no
+                            /// conditional role bindings, the response uses version 1. To learn which resources support
+                            /// conditions in their IAM policies, see the [IAM
+                            /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "getIamPolicy";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                            /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "resource",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/global/hubs/[^/]+/groups/[^/]+$",
+                                });
+                                RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "options.requestedPolicyVersion",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
+                        /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="resource">
+                        /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </param>
+                        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Networkconnectivity.v1.Data.SetIamPolicyRequest body, string resource)
+                        {
+                            return new SetIamPolicyRequest(service, body, resource);
+                        }
+
+                        /// <summary>
+                        /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
+                        /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                        /// </summary>
+                        public class SetIamPolicyRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.Policy>
+                        {
+                            /// <summary>Constructs a new SetIamPolicy request.</summary>
+                            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
+                            {
+                                Resource = resource;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                            /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value
+                            /// for this field.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Resource { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Networkconnectivity.v1.Data.SetIamPolicyRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "setIamPolicy";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                            /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "resource",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/global/hubs/[^/]+/groups/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Returns permissions that a caller has on the specified resource. If the resource does not
+                        /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This
+                        /// operation is designed to be used for building permission-aware UIs and command-line tools,
+                        /// not for authorization checking. This operation may "fail open" without warning.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="resource">
+                        /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </param>
+                        public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.Networkconnectivity.v1.Data.TestIamPermissionsRequest body, string resource)
+                        {
+                            return new TestIamPermissionsRequest(service, body, resource);
+                        }
+
+                        /// <summary>
+                        /// Returns permissions that a caller has on the specified resource. If the resource does not
+                        /// exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This
+                        /// operation is designed to be used for building permission-aware UIs and command-line tools,
+                        /// not for authorization checking. This operation may "fail open" without warning.
+                        /// </summary>
+                        public class TestIamPermissionsRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.TestIamPermissionsResponse>
+                        {
+                            /// <summary>Constructs a new TestIamPermissions request.</summary>
+                            public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
+                            {
+                                Resource = resource;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                            /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value
+                            /// for this field.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Resource { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.Networkconnectivity.v1.Data.TestIamPermissionsRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "testIamPermissions";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+resource}:testIamPermissions";
+
+                            /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "resource",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/global/hubs/[^/]+/groups/[^/]+$",
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>Creates a new Network Connectivity Center hub in the specified project.</summary>
@@ -1885,96 +2123,6 @@ namespace Google.Apis.Networkconnectivity.v1
                 public ServiceClassesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-                }
-
-                /// <summary>Creates a new ServiceClass in a given project and location.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The parent resource's name of the ServiceClass.</param>
-                public virtual CreateRequest Create(Google.Apis.Networkconnectivity.v1.Data.ServiceClass body, string parent)
-                {
-                    return new CreateRequest(service, body, parent);
-                }
-
-                /// <summary>Creates a new ServiceClass in a given project and location.</summary>
-                public class CreateRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
-                {
-                    /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1.Data.ServiceClass body, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. The parent resource's name of the ServiceClass.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string RequestId { get; set; }
-
-                    /// <summary>
-                    /// Optional. Resource ID (i.e. 'foo' in '[...]/projects/p/locations/l/serviceClasses/foo') See
-                    /// https://google.aip.dev/122#resource-id-segments Unique per location. If one is not provided, one
-                    /// will be generated.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("serviceClassId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ServiceClassId { get; set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Networkconnectivity.v1.Data.ServiceClass Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "create";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+parent}/serviceClasses";
-
-                    /// <summary>Initializes Create parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("serviceClassId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "serviceClassId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
                 }
 
                 /// <summary>Deletes a single ServiceClass.</summary>
@@ -4958,6 +5106,10 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>The consumer project where PSC connections are allowed to be created in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
+
+        /// <summary>Output only. Overall state of PSC Connections management for this consumer psc config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

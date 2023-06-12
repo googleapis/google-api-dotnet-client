@@ -2911,6 +2911,35 @@ namespace Google.Apis.Adsense.v2
                     /// <summary>Number of results pages.</summary>
                     [Google.Apis.Util.StringValueAttribute("WEBSEARCH_RESULT_PAGES")]
                     WEBSEARCHRESULTPAGES = 32,
+
+                    /// <summary>
+                    /// Number of requests for non-ad units (for example a related search unit). For more information,
+                    /// see [Funnel requests](https://support.google.com/adsense/answer/11586959).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("FUNNEL_REQUESTS")]
+                    FUNNELREQUESTS = 33,
+
+                    /// <summary>
+                    /// Number of requests for non-ad units ads that returned content that was shown to the user. For
+                    /// more information, see [Funnel impressions](https://support.google.com/adsense/answer/11585767).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("FUNNEL_IMPRESSIONS")]
+                    FUNNELIMPRESSIONS = 34,
+
+                    /// <summary>
+                    /// Number of times a user clicked on a non-ad unit, triggering further ad requests. For more
+                    /// information, see [Funnel clicks](https://support.google.com/adsense/answer/11586382).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("FUNNEL_CLICKS")]
+                    FUNNELCLICKS = 35,
+
+                    /// <summary>
+                    /// Revenue per thousand funnel impressions. This is calculated by dividing estimated revenue by the
+                    /// number of funnel impressions multiplied by 1000. For more information, see [Funnel
+                    /// RPM](https://support.google.com/adsense/answer/11585979).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("FUNNEL_RPM")]
+                    FUNNELRPM = 36,
                 }
 
                 /// <summary>
@@ -3715,6 +3744,35 @@ namespace Google.Apis.Adsense.v2
                     /// <summary>Number of results pages.</summary>
                     [Google.Apis.Util.StringValueAttribute("WEBSEARCH_RESULT_PAGES")]
                     WEBSEARCHRESULTPAGES = 32,
+
+                    /// <summary>
+                    /// Number of requests for non-ad units (for example a related search unit). For more information,
+                    /// see [Funnel requests](https://support.google.com/adsense/answer/11586959).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("FUNNEL_REQUESTS")]
+                    FUNNELREQUESTS = 33,
+
+                    /// <summary>
+                    /// Number of requests for non-ad units ads that returned content that was shown to the user. For
+                    /// more information, see [Funnel impressions](https://support.google.com/adsense/answer/11585767).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("FUNNEL_IMPRESSIONS")]
+                    FUNNELIMPRESSIONS = 34,
+
+                    /// <summary>
+                    /// Number of times a user clicked on a non-ad unit, triggering further ad requests. For more
+                    /// information, see [Funnel clicks](https://support.google.com/adsense/answer/11586382).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("FUNNEL_CLICKS")]
+                    FUNNELCLICKS = 35,
+
+                    /// <summary>
+                    /// Revenue per thousand funnel impressions. This is calculated by dividing estimated revenue by the
+                    /// number of funnel impressions multiplied by 1000. For more information, see [Funnel
+                    /// RPM](https://support.google.com/adsense/answer/11585979).
+                    /// </summary>
+                    [Google.Apis.Util.StringValueAttribute("FUNNEL_RPM")]
+                    FUNNELRPM = 36,
                 }
 
                 /// <summary>

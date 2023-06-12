@@ -5539,7 +5539,7 @@ namespace Google.Apis.CloudRun.v1.Data
 
     /// <summary>
     /// A domain that a user has been authorized to administer. To authorize use of a domain, verify ownership via
-    /// [Webmaster Central](https://www.google.com/webmasters/verification/home).
+    /// [Search Console](https://search.google.com/search-console/welcome).
     /// </summary>
     public class AuthorizedDomain : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7189,7 +7189,7 @@ namespace Google.Apis.CloudRun.v1.Data
 
         /// <summary>
         /// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds.
-        /// Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. .
+        /// Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("initialDelaySeconds")]
         public virtual System.Nullable<int> InitialDelaySeconds { get; set; }
@@ -7197,7 +7197,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>
         /// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for
         /// liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than
-        /// timeout_seconds. .
+        /// timeout_seconds.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("periodSeconds")]
         public virtual System.Nullable<int> PeriodSeconds { get; set; }

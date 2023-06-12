@@ -2829,7 +2829,7 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastStartTime")]
         public virtual object LastStartTime { get; set; }
 
-        /// <summary>Backfill job state.</summary>
+        /// <summary>Output only. Backfill job state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
@@ -4347,7 +4347,7 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual System.Collections.Generic.IList<ValidationMessage> Message { get; set; }
 
-        /// <summary>Validation execution status.</summary>
+        /// <summary>Output only. Validation execution status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 

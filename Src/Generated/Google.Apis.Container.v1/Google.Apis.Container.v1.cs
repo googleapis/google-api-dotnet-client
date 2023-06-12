@@ -1297,6 +1297,61 @@ namespace Google.Apis.Container.v1
                     }
                 }
 
+                /// <summary>
+                /// Checks the cluster compatibility with Autopilot mode, and returns a list of compatibility issues.
+                /// </summary>
+                /// <param name="name">
+                /// The name (project, location, cluster) of the cluster to retrieve. Specified in the format
+                /// `projects/*/locations/*/clusters/*`.
+                /// </param>
+                public virtual CheckAutopilotCompatibilityRequest CheckAutopilotCompatibility(string name)
+                {
+                    return new CheckAutopilotCompatibilityRequest(service, name);
+                }
+
+                /// <summary>
+                /// Checks the cluster compatibility with Autopilot mode, and returns a list of compatibility issues.
+                /// </summary>
+                public class CheckAutopilotCompatibilityRequest : ContainerBaseServiceRequest<Google.Apis.Container.v1.Data.CheckAutopilotCompatibilityResponse>
+                {
+                    /// <summary>Constructs a new CheckAutopilotCompatibility request.</summary>
+                    public CheckAutopilotCompatibilityRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// The name (project, location, cluster) of the cluster to retrieve. Specified in the format
+                    /// `projects/*/locations/*/clusters/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "checkAutopilotCompatibility";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:checkAutopilotCompatibility";
+
+                    /// <summary>Initializes CheckAutopilotCompatibility parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/clusters/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Completes master IP rotation.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -6181,6 +6236,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
         public virtual string AcceleratorType { get; set; }
 
+        /// <summary>The configuration for auto installation of GPU driver.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gpuDriverInstallationConfig")]
+        public virtual GPUDriverInstallationConfig GpuDriverInstallationConfig { get; set; }
+
         /// <summary>
         /// Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user
         /// guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
@@ -6339,6 +6398,43 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
+        /// <summary>Workload policy configuration for Autopilot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadPolicyConfig")]
+        public virtual WorkloadPolicyConfig WorkloadPolicyConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// AutopilotCompatibilityIssue contains information about a specific compatibility issue with Autopilot mode.
+    /// </summary>
+    public class AutopilotCompatibilityIssue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The constraint type of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("constraintType")]
+        public virtual string ConstraintType { get; set; }
+
+        /// <summary>The description of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>A URL to a public documnetation, which addresses resolving this issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentationUrl")]
+        public virtual string DocumentationUrl { get; set; }
+
+        /// <summary>The incompatibility type of this issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("incompatibilityType")]
+        public virtual string IncompatibilityType { get; set; }
+
+        /// <summary>The last time when this issue was observed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastObservation")]
+        public virtual object LastObservation { get; set; }
+
+        /// <summary>The name of the resources which are subject to this issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subjects")]
+        public virtual System.Collections.Generic.IList<string> Subjects { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6408,6 +6504,27 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Specifies the upgrade settings for NAP created node pools</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upgradeSettings")]
         public virtual UpgradeSettings UpgradeSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Best effort provisioning.</summary>
+    public class BestEffortProvisioning : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// When this is enabled, cluster/node pool creations will ignore non-fatal errors like stockout to best
+        /// provision as many nodes as possible right now and eventually bring up all target number of nodes
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>
+        /// Minimum number of nodes to be provisioned to be considered as succeeded, and the rest of nodes will be
+        /// provisioned gradually and eventually when stockout issue has been resolved.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minProvisionNodes")]
+        public virtual System.Nullable<int> MinProvisionNodes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6527,6 +6644,21 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
         public virtual string Zone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CheckAutopilotCompatibilityResponse has a list of compatibility issues.</summary>
+    public class CheckAutopilotCompatibilityResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of issues for the given operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issues")]
+        public virtual System.Collections.Generic.IList<AutopilotCompatibilityIssue> Issues { get; set; }
+
+        /// <summary>The summary of the autopilot compatibility response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summary")]
+        public virtual string Summary { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6659,6 +6791,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>An optional description of this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>Beta APIs Config</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableK8sBetaApis")]
+        public virtual K8sBetaAPIConfig EnableK8sBetaApis { get; set; }
 
         /// <summary>
         /// Kubernetes alpha features are enabled on this cluster. This includes alpha API groups (e.g. v1alpha1) and
@@ -6909,6 +7045,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUsageExportConfig")]
         public virtual ResourceUsageExportConfig ResourceUsageExportConfig { get; set; }
 
+        /// <summary>Enable/Disable Security Posture API features for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityPostureConfig")]
+        public virtual SecurityPostureConfig SecurityPostureConfig { get; set; }
+
         /// <summary>[Output only] Server-defined URL for the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
@@ -7023,6 +7163,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredAuthenticatorGroupsConfig")]
         public virtual AuthenticatorGroupsConfig DesiredAuthenticatorGroupsConfig { get; set; }
 
+        /// <summary>The desired workload policy configuration for the autopilot cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredAutopilotWorkloadPolicyConfig")]
+        public virtual WorkloadPolicyConfig DesiredAutopilotWorkloadPolicyConfig { get; set; }
+
         /// <summary>The desired configuration options for the Binary Authorization feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredBinaryAuthorization")]
         public virtual BinaryAuthorization DesiredBinaryAuthorization { get; set; }
@@ -7050,6 +7194,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>DNSConfig contains clusterDNS config for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredDnsConfig")]
         public virtual DNSConfig DesiredDnsConfig { get; set; }
+
+        /// <summary>Enable/Disable FQDN Network Policy for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredEnableFqdnNetworkPolicy")]
+        public virtual System.Nullable<bool> DesiredEnableFqdnNetworkPolicy { get; set; }
 
         /// <summary>Enable/Disable private endpoint for the cluster's master.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredEnablePrivateEndpoint")]
@@ -7080,6 +7228,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>The desired config of Intra-node visibility.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredIntraNodeVisibilityConfig")]
         public virtual IntraNodeVisibilityConfig DesiredIntraNodeVisibilityConfig { get; set; }
+
+        /// <summary>Desired Beta APIs to be enabled for cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredK8sBetaApis")]
+        public virtual K8sBetaAPIConfig DesiredK8sBetaApis { get; set; }
 
         /// <summary>The desired L4 Internal Load Balancer Subsetting configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredL4ilbSubsettingConfig")]
@@ -7196,6 +7348,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("desiredResourceUsageExportConfig")]
         public virtual ResourceUsageExportConfig DesiredResourceUsageExportConfig { get; set; }
 
+        /// <summary>Enable/Disable Security Posture API features for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredSecurityPostureConfig")]
+        public virtual SecurityPostureConfig DesiredSecurityPostureConfig { get; set; }
+
         /// <summary>
         /// ServiceExternalIPsConfig specifies the config for the use of Services with ExternalIPs field.
         /// </summary>
@@ -7220,6 +7376,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Configuration for Workload Identity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredWorkloadIdentityConfig")]
         public virtual WorkloadIdentityConfig DesiredWorkloadIdentityConfig { get; set; }
+
+        /// <summary>Kubernetes open source beta apis enabled on the cluster. Only beta apis</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableK8sBetaApis")]
+        public virtual K8sBetaAPIConfig EnableK8sBetaApis { get; set; }
 
         /// <summary>
         /// The current etag of the cluster. If an etag is provided and does not match the current etag of the cluster,
@@ -7563,6 +7723,17 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>GPUDriverInstallationConfig specifies the version of GPU driver to be auto installed.</summary>
+    public class GPUDriverInstallationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Mode for how the GPU driver is installed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gpuDriverVersion")]
+        public virtual string GpuDriverVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7978,6 +8149,17 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>K8sBetaAPIConfig , configuration for beta APIs</summary>
+    public class K8sBetaAPIConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enabled k8s beta APIs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabledApis")]
+        public virtual System.Collections.Generic.IList<string> EnabledApis { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for the Kubernetes Dashboard.</summary>
     public class KubernetesDashboard : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8381,6 +8563,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>DNSConfig contains clusterDNS config for this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnsConfig")]
         public virtual DNSConfig DnsConfig { get; set; }
+
+        /// <summary>Whether FQDN Network Policy is enabled on this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableFqdnNetworkPolicy")]
+        public virtual System.Nullable<bool> EnableFqdnNetworkPolicy { get; set; }
 
         /// <summary>
         /// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible
@@ -8905,6 +9091,10 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoscaling")]
         public virtual NodePoolAutoscaling Autoscaling { get; set; }
+
+        /// <summary>Enable best effort provisioning for nodes</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bestEffortProvisioning")]
+        public virtual BestEffortProvisioning BestEffortProvisioning { get; set; }
 
         /// <summary>Which conditions caused the current node pool state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
@@ -9646,6 +9836,23 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestedUpgradeTarget")]
         public virtual string SuggestedUpgradeTarget { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// SecurityPostureConfig defines the flags needed to enable/disable features for the Security Posture API.
+    /// </summary>
+    public class SecurityPostureConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Sets which mode to use for Security Posture features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+        public virtual string Mode { get; set; }
+
+        /// <summary>Sets which mode to use for vulnerability scanning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vulnerabilityMode")]
+        public virtual string VulnerabilityMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10896,6 +11103,17 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>WorkloadPolicyConfig is the configuration of workload policy for autopilot clusters.</summary>
+    public class WorkloadPolicyConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If true, workloads can use NET_ADMIN capability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowNetAdmin")]
+        public virtual System.Nullable<bool> AllowNetAdmin { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

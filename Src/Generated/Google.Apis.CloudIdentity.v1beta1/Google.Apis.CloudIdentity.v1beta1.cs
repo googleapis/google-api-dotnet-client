@@ -5601,9 +5601,17 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
     /// <summary>Resource representing the Android specific attributes of a Device.</summary>
     public class GoogleAppsCloudidentityDevicesV1AndroidAttributes : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Whether the device passes Android CTS compliance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ctsProfileMatch")]
+        public virtual System.Nullable<bool> CtsProfileMatch { get; set; }
+
         /// <summary>Whether applications from unknown sources can be installed on device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabledUnknownSources")]
         public virtual System.Nullable<bool> EnabledUnknownSources { get; set; }
+
+        /// <summary>Whether any potentially harmful apps were detected on the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hasPotentiallyHarmfulApps")]
+        public virtual System.Nullable<bool> HasPotentiallyHarmfulApps { get; set; }
 
         /// <summary>
         /// Whether this account is on an owner/primary profile. For phones, only true for owner profiles. Android 4+
@@ -5622,6 +5630,14 @@ namespace Google.Apis.CloudIdentity.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportsWorkProfile")]
         public virtual System.Nullable<bool> SupportsWorkProfile { get; set; }
+
+        /// <summary>Whether Android verified boot status is GREEN.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifiedBoot")]
+        public virtual System.Nullable<bool> VerifiedBoot { get; set; }
+
+        /// <summary>Whether Google Play Protect Verify Apps is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifyAppsEnabled")]
+        public virtual System.Nullable<bool> VerifyAppsEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

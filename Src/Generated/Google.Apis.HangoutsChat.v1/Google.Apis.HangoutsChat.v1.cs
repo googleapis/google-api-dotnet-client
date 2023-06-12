@@ -1500,11 +1500,11 @@ namespace Google.Apis.HangoutsChat.v1
             /// both [user authentication](https://developers.google.com/chat/api/guides/auth/users) and [app
             /// authentication] (https://developers.google.com/chat/api/guides/auth/service-accounts). [User
             /// authentication](https://developers.google.com/chat/api/guides/auth/users) requires the `chat.messages`
-            /// or `chat.messages.create` authorization scope. Creating a card message requires [app authentication]
-            /// (https://developers.google.com/chat/api/guides/auth/service-accounts) Because Chat provides
-            /// authentication for [webhooks](https://developers.google.com/chat/how-tos/webhooks) as part of the URL
-            /// that's generated when a webhook is registered, webhooks can create messages without a service account or
-            /// user authentication.
+            /// or `chat.messages.create` authorization scope. Creating a card message only supports and requires [app
+            /// authentication] (https://developers.google.com/chat/api/guides/auth/service-accounts). Because Chat
+            /// provides authentication for [webhooks](https://developers.google.com/chat/how-tos/webhooks) as part of
+            /// the URL that's generated when a webhook is registered, webhooks can create messages without a service
+            /// account or user authentication.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -1522,11 +1522,11 @@ namespace Google.Apis.HangoutsChat.v1
             /// both [user authentication](https://developers.google.com/chat/api/guides/auth/users) and [app
             /// authentication] (https://developers.google.com/chat/api/guides/auth/service-accounts). [User
             /// authentication](https://developers.google.com/chat/api/guides/auth/users) requires the `chat.messages`
-            /// or `chat.messages.create` authorization scope. Creating a card message requires [app authentication]
-            /// (https://developers.google.com/chat/api/guides/auth/service-accounts) Because Chat provides
-            /// authentication for [webhooks](https://developers.google.com/chat/how-tos/webhooks) as part of the URL
-            /// that's generated when a webhook is registered, webhooks can create messages without a service account or
-            /// user authentication.
+            /// or `chat.messages.create` authorization scope. Creating a card message only supports and requires [app
+            /// authentication] (https://developers.google.com/chat/api/guides/auth/service-accounts). Because Chat
+            /// provides authentication for [webhooks](https://developers.google.com/chat/how-tos/webhooks) as part of
+            /// the URL that's generated when a webhook is registered, webhooks can create messages without a service
+            /// account or user authentication.
             /// </summary>
             public class CreateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Message>
             {
@@ -2040,7 +2040,7 @@ namespace Google.Apis.HangoutsChat.v1
 
                 /// <summary>
                 /// Required. The field paths to update. Separate multiple values with commas. Currently supported field
-                /// paths: - `text` - `cards` (Requires [service account
+                /// paths: - `text` - `attachment` - `cards` (Requires [service account
                 /// authentication](/chat/api/guides/auth/service-accounts).) - `cards_v2` (Requires [service account
                 /// authentication](/chat/api/guides/auth/service-accounts).)
                 /// </summary>
@@ -2153,7 +2153,7 @@ namespace Google.Apis.HangoutsChat.v1
 
                 /// <summary>
                 /// Required. The field paths to update. Separate multiple values with commas. Currently supported field
-                /// paths: - `text` - `cards` (Requires [service account
+                /// paths: - `text` - `attachment` - `cards` (Requires [service account
                 /// authentication](/chat/api/guides/auth/service-accounts).) - `cards_v2` (Requires [service account
                 /// authentication](/chat/api/guides/auth/service-accounts).)
                 /// </summary>
@@ -3034,7 +3034,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// from color representations in various languages over compactness. For example, the fields of this representation
     /// can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to
     /// UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily
-    /// formatted into a CSS `rgba()` string in JavaScript. This reference page does not have information about the
+    /// formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't have information about the
     /// absolute color space that should be used to interpret the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and
     /// BT.2020. By default, applications should assume the sRGB color space. When color equality needs to be decided,
     /// implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha
@@ -3675,13 +3675,6 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryButton")]
         public virtual GoogleAppsCardV1Button SecondaryButton { get; set; }
 
-        /// <summary>
-        /// A list of widgets included in the card footer. Primary button and secondary button are rendered below these
-        /// widgets.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("widgets")]
-        public virtual System.Collections.Generic.IList<GoogleAppsCardV1FooterWidget> Widgets { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3884,33 +3877,6 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// </summary>
     public class GoogleAppsCardV1Divider : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The CardFixedFooter can contain a list of these widgets.</summary>
-    public class GoogleAppsCardV1FooterWidget : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>ButtonList widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("buttonList")]
-        public virtual GoogleAppsCardV1ButtonList ButtonList { get; set; }
-
-        /// <summary>DateTimePicker widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dateTimePicker")]
-        public virtual GoogleAppsCardV1DateTimePicker DateTimePicker { get; set; }
-
-        /// <summary>DecoratedText widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("decoratedText")]
-        public virtual GoogleAppsCardV1DecoratedText DecoratedText { get; set; }
-
-        /// <summary>TextInput widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("textInput")]
-        public virtual GoogleAppsCardV1TextInput TextInput { get; set; }
-
-        /// <summary>TextParagraph widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("textParagraph")]
-        public virtual GoogleAppsCardV1TextParagraph TextParagraph { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4250,8 +4216,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class GoogleAppsCardV1SelectionItem : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// When `true`, more than one item is selected. If more than one item is selected for radio buttons and
-        /// dropdown menus, the first selected item is received and the ones after are ignored.
+        /// Whether the item is selected by default. If the selection input only accepts one value (such as for radio
+        /// buttons or a dropdown menu), only set this field for one item.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selected")]
         public virtual System.Nullable<bool> Selected { get; set; }
@@ -4907,7 +4873,12 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientAssignedMessageId")]
         public virtual string ClientAssignedMessageId { get; set; }
 
-        /// <summary>Output only. The time at which the message was created in Google Chat.</summary>
+        /// <summary>
+        /// For spaces created in Chat, the time at which the message was created. This field is output only, except
+        /// when used in imported spaces. [Developer Preview](https://developers.google.com/workspace/preview): For
+        /// imported spaces, set this field to the historical timestamp at which the message was created in the source
+        /// in order to preserve the original creation time.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
 

@@ -585,7 +585,7 @@ namespace Google.Apis.BusinessProfilePerformance.v1
                 [Google.Apis.Util.StringValueAttribute("WEBSITE_CLICKS")]
                 WEBSITECLICKS = 8,
 
-                /// <summary>The number of bookings received from the business profile.</summary>
+                /// <summary>The number of bookings made from the business profile via Reserve with Google.</summary>
                 [Google.Apis.Util.StringValueAttribute("BUSINESS_BOOKINGS")]
                 BUSINESSBOOKINGS = 9,
 
@@ -805,7 +805,7 @@ namespace Google.Apis.BusinessProfilePerformance.v1
                 [Google.Apis.Util.StringValueAttribute("WEBSITE_CLICKS")]
                 WEBSITECLICKS = 8,
 
-                /// <summary>The number of bookings received from the business profile.</summary>
+                /// <summary>The number of bookings made from the business profile via Reserve with Google.</summary>
                 [Google.Apis.Util.StringValueAttribute("BUSINESS_BOOKINGS")]
                 BUSINESSBOOKINGS = 9,
 

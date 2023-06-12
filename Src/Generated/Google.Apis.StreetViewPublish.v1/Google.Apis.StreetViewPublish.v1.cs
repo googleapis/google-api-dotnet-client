@@ -981,7 +981,7 @@ namespace Google.Apis.StreetViewPublish.v1
             /// Optional. The filter expression. For example: `imagery_type=SPHERICAL`. The filters supported are:
             /// `imagery_type`, `processing_state`, `min_latitude`, `max_latitude`, `min_longitude`, `max_longitude`,
             /// and `filename_query`. See https://google.aip.dev/160 for more information. Filename queries should sent
-            /// as a Phrase in order to support multple words and special characters by adding escaped quotes. Ex:
+            /// as a Phrase in order to support multiple words and special characters by adding escaped quotes. Ex:
             /// filename_query="example of a phrase.mp4"
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]

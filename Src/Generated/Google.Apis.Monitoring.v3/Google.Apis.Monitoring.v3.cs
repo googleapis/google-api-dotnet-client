@@ -7538,8 +7538,8 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
 
         /// <summary>
-        /// Read-only description of how the alert policy is invalid. OK if the alert policy is valid. If not OK, the
-        /// alert policy will not generate incidents.
+        /// Read-only description of how the alert policy is invalid. This field is only set when the alert policy is
+        /// invalid. An invalid alert policy will not generate incidents.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validity")]
         public virtual Status Validity { get; set; }
