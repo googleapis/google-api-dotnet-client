@@ -16,6 +16,8 @@ limitations under the License.
 
 using Google.Apis.Util;
 using System;
+using System.Globalization;
+using System.Threading;
 using Xunit;
 
 namespace Google.Apis.Tests.Apis.Util
@@ -76,6 +78,96 @@ namespace Google.Apis.Tests.Apis.Util
             Assert.Null(Google.Apis.Util.Utilities.ConvertToString(nullable));
             MockEnum? nullEnum = null;
             Assert.Null(Google.Apis.Util.Utilities.ConvertToString(nullEnum));
+        }
+
+        [Fact]
+        public void GetDateTimeOffsetFromString_Null() =>
+            Assert.Null(Utilities.GetDateTimeOffsetFromString(null));
+
+        [Theory]
+        [InlineData("broken")]
+        [InlineData("")]
+        [InlineData("2023-13-01T00:00:00Z")]
+        [InlineData("2023-13-01T00:00:00+00")] // We require the Z
+        [InlineData("2023-13-01T00:00:00+01")] // We require the Z
+        [InlineData("2023-12-01T00:00:00.000000Z")] // We only support millisecond precision
+        public void GetDateTimeOffsetFromString_Invalid(string input) =>
+            Assert.Throws<FormatException>(() => Utilities.GetDateTimeOffsetFromString(input));
+
+        [Theory]
+        [InlineData("2023-12-01T00:00:00Z", 2023, 12, 1, 0, 0, 0, 0)]
+        [InlineData("0001-01-01T00:00:00Z", 1, 1, 1, 0, 0, 0, 0)]
+        [InlineData("9999-12-31T23:59:59.999Z", 9999, 12, 31, 23, 59, 59, 999)]
+        [InlineData("2023-06-14T12:23:45.5Z", 2023, 6, 14, 12,23, 45, 500)] // This is slightly unfortunate, but not actively harmful.
+        [InlineData("2023-06-14T12:23:45.123Z", 2023, 6, 14, 12, 23, 45, 123)]
+        [InlineData("2023-06-14T12:23:45.000Z", 2023, 6, 14, 12, 23, 45, 0)] // .000 is redundant but valid
+        [InlineData("2023-06-14T12:23:45Z", 2023, 6, 14, 12, 23, 45, 0)]
+        public void GetDateTimeOffsetFromString_Valid(string input, int year, int month, int day, int hour, int minute, int second, int millisecond)
+        {
+            var actual = Utilities.GetDateTimeOffsetFromString(input).Value;
+            var expected = new DateTimeOffset(year, month, day, hour, minute, second, millisecond, TimeSpan.Zero);
+            Assert.Equal(expected, actual);
+            // Be explicit about this, as DateTimeOffset.Equals only compares instants in time, not offsets.
+            Assert.Equal(TimeSpan.Zero, actual.Offset);
+        }
+
+        [Theory]
+        [InlineData(5000000, "2023-06-13T15:54:13.500Z")]
+        [InlineData(1234567, "2023-06-13T15:54:13.123Z")]
+        [InlineData(1239999, "2023-06-13T15:54:13.123Z")]
+        [InlineData(9999999, "2023-06-13T15:54:13.999Z")]
+        [InlineData(10000, "2023-06-13T15:54:13.001Z")]
+        [InlineData(100000, "2023-06-13T15:54:13.010Z")]
+        [InlineData(0, "2023-06-13T15:54:13Z")]
+        public void GetStringFromDateTimeOffset_MillisecondHandling(int tickOfSecond, string expectedResult)
+        {
+            var value = new DateTimeOffset(2023, 6, 13, 15, 54, 13, TimeSpan.Zero).AddTicks(tickOfSecond);
+            Assert.Equal(expectedResult, Utilities.GetStringFromDateTimeOffset(value));
+        }
+
+        // Local time of 2023-06-13T15:54:13, with variable UTC offset.
+        [Theory]
+        [InlineData(60, "2023-06-13T14:54:13Z")]
+        [InlineData(30, "2023-06-13T15:24:13Z")]
+        [InlineData(0, "2023-06-13T15:54:13Z")]
+        [InlineData(-30, "2023-06-13T16:24:13Z")]
+        [InlineData(-60, "2023-06-13T16:54:13Z")]
+        public void GetStringFromDateTimeOffset_ConvertsToUtc(int offsetMinutes, string expectedResult)
+        {
+            var value = new DateTimeOffset(2023, 6, 13, 15, 54, 13, TimeSpan.FromMinutes(offsetMinutes));
+            Assert.Equal(expectedResult, Utilities.GetStringFromDateTimeOffset(value));
+        }
+
+        [Fact]
+        public void GetStringFromDateTimeOffset_Null() =>
+            Assert.Null(Utilities.GetStringFromDateTimeOffset(null));
+
+        [Fact]
+        public void GetStringFromDateTimeOffset_NonGregorianCulture()
+        {
+            var culture = CultureInfo.GetCultureInfo("fa-AF");
+
+            var original = CultureInfo.CurrentCulture;
+            try
+            {
+                Thread.CurrentThread.CurrentCulture = culture;
+                // Demonstrate that there's a problem for DateTime, albeit with an invalid raw value...
+                // (DateTime.Parse seems to use the invariant culture if a full ISO-8601 timestamp is provided...)
+                var dtResult = Utilities.GetDateTimeFromString("2023-06-14");
+                // The difference in calendar means the year is actually 2644.
+                Assert.NotEqual(2023, dtResult.Value.Year);
+
+                // We don't have the possibility of this problem for DateTimeOffset, because
+                // we use the invariant culture. We can't check this against the "just date" value,
+                // because we require the exact value for DateTimeOffset.
+                var dtoResult = Utilities.GetDateTimeFromString("2023-06-14T00:00:00Z");
+                var expected = new DateTimeOffset(2023, 6, 14, 0, 0, 0, TimeSpan.Zero);
+                Assert.Equal(expected, dtoResult.Value);
+            }
+            finally
+            {
+                Thread.CurrentThread.CurrentCulture = original;
+            }
         }
     }
 }

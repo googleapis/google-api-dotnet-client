@@ -204,5 +204,28 @@ namespace Google.Apis.Util
             }
             return ConvertToRFC3339(date.Value);
         }
+
+        /// <summary>
+        /// Parses the input string and returns <see cref="System.DateTimeOffset"/> if the input is
+        /// of the format "yyyy-MM-ddTHH:mm:ss.FFFZ" or "yyyy-MM-ddTHH:mm:ssZ". If the input is null,
+        /// this method returns <c>null</c>. Otherwise, <see cref="FormatException"/> is thrown.
+        /// </summary>
+        public static DateTimeOffset? GetDateTimeOffsetFromString(string raw) =>
+            raw is null
+            ? (DateTimeOffset?) null
+            : DateTimeOffset.ParseExact(raw, "yyyy-MM-dd'T'HH:mm:ss.FFF'Z'", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal);
+
+        /// <summary>
+        /// Returns a string from the input <see cref="DateTimeOffset"/> instance, or <c>null</c> if
+        /// <paramref name="date"/> is null. The string is always in the format "yyyy-MM-ddTHH:mm:ss.fffZ" or
+        /// "yyyy-MM-ddTHH:mm:ssZ" - always UTC, always either second or millisecond precision, and always using the
+        /// invariant culture.
+        /// </summary>
+        public static string GetStringFromDateTimeOffset(DateTimeOffset? date) =>
+            date is null
+            ? null
+            // While FFF sounds like it should work, we really want to produce no subsecond parts or 3 digits.
+            : date.Value.Millisecond == 0 ? date.Value.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss'Z'")
+            : date.Value.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss.fff'Z'");
     }
 }
