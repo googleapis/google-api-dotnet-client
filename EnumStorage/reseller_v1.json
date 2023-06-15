@@ -12,5 +12,10 @@
     "deletion_type_undefined",
     "cancel",
     "transfer_to_direct"
+  ],
+  "Google.Apis.Reseller.v1.SubscriptionsResource+InsertRequest.ActionEnum": [
+    "actionUnspecified",
+    "buy",
+    "switch"
   ]
 }

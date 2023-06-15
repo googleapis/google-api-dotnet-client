@@ -1309,6 +1309,82 @@ namespace Google.Apis.CloudRetail.v2
                         }
 
                         /// <summary>
+                        /// Permanently deletes all selected Products under a branch. This process is asynchronous. If
+                        /// the request is valid, the removal will be enqueued and processed offline. Depending on the
+                        /// number of Products, this operation could take hours to complete. Before the operation
+                        /// completes, some Products may still be returned by ProductService.GetProduct or
+                        /// ProductService.ListProducts. Depending on the number of Products, this operation could take
+                        /// hours to complete. To get a sample of Products that would be deleted, set
+                        /// PurgeProductsRequest.force to false.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. The resource name of the branch under which the products are created. The format
+                        /// is `projects/${projectId}/locations/global/catalogs/${catalogId}/branches/${branchId}`
+                        /// </param>
+                        public virtual PurgeRequest Purge(Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2PurgeProductsRequest body, string parent)
+                        {
+                            return new PurgeRequest(service, body, parent);
+                        }
+
+                        /// <summary>
+                        /// Permanently deletes all selected Products under a branch. This process is asynchronous. If
+                        /// the request is valid, the removal will be enqueued and processed offline. Depending on the
+                        /// number of Products, this operation could take hours to complete. Before the operation
+                        /// completes, some Products may still be returned by ProductService.GetProduct or
+                        /// ProductService.ListProducts. Depending on the number of Products, this operation could take
+                        /// hours to complete. To get a sample of Products that would be deleted, set
+                        /// PurgeProductsRequest.force to false.
+                        /// </summary>
+                        public class PurgeRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Purge request.</summary>
+                            public PurgeRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2PurgeProductsRequest body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the branch under which the products are created. The
+                            /// format is
+                            /// `projects/${projectId}/locations/global/catalogs/${catalogId}/branches/${branchId}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudRetail.v2.Data.GoogleCloudRetailV2PurgeProductsRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "purge";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v2/{+parent}/products:purge";
+
+                            /// <summary>Initializes Purge parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/catalogs/[^/]+/branches/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
                         /// We recommend that you use the ProductService.RemoveLocalInventories method instead of the
                         /// ProductService.RemoveFulfillmentPlaces method. ProductService.RemoveLocalInventories
                         /// achieves the same results but provides more fine-grained control over ingesting local
@@ -7313,6 +7389,84 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata related to the progress of the PurgeProducts operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudRetailV2PurgeProductsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Count of entries that encountered errors while processing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
+        public virtual System.Nullable<long> FailureCount { get; set; }
+
+        /// <summary>Count of entries that were deleted successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<long> SuccessCount { get; set; }
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for PurgeProducts method.</summary>
+    public class GoogleCloudRetailV2PurgeProductsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The filter string to specify the products to be deleted with a length limit of 5,000 characters.
+        /// Empty string filter is not allowed. "*" implies delete all items in a branch. The eligible fields for
+        /// filtering are: * `availability`: Double quoted Product.availability string. * `create_time` : in ISO 8601
+        /// "zulu" format. Supported syntax: * Comparators ("&amp;gt;", "&amp;lt;", "&amp;gt;=", "&amp;lt;=", "=").
+        /// Examples: * create_time &amp;lt;= "2015-02-13T17:05:46Z" * availability = "IN_STOCK" * Conjunctions ("AND")
+        /// Examples: * create_time &amp;lt;= "2015-02-13T17:05:46Z" AND availability = "PREORDER" * Disjunctions ("OR")
+        /// Examples: * create_time &amp;lt;= "2015-02-13T17:05:46Z" OR availability = "IN_STOCK" * Can support nested
+        /// queries. Examples: * (create_time &amp;lt;= "2015-02-13T17:05:46Z" AND availability = "PREORDER") OR
+        /// (create_time &amp;gt;= "2015-02-14T13:03:32Z" AND availability = "IN_STOCK") * Filter Limits: * Filter
+        /// should not contain more than 6 conditions. * Max nesting depth should not exceed 2 levels. Examples queries:
+        /// * Delete back order products created before a timestamp. create_time &amp;lt;= "2015-02-13T17:05:46Z" OR
+        /// availability = "BACKORDER"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// Actually perform the purge. If `force` is set to false, the method will return the expected purge count
+        /// without deleting any products.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the PurgeProductsRequest. If the long running operation is successfully done, then this message is
+    /// returned by the google.longrunning.Operations.response field.
+    /// </summary>
+    public class GoogleCloudRetailV2PurgeProductsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The total count of products purged as a result of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeCount")]
+        public virtual System.Nullable<long> PurgeCount { get; set; }
+
+        /// <summary>
+        /// A sample of the product names that will be deleted. Only populated if `force` is set to false. A max of 100
+        /// names will be returned and the names are chosen at random.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeSample")]
+        public virtual System.Collections.Generic.IList<string> PurgeSample { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for PurgeUserEvents method.</summary>
     public class GoogleCloudRetailV2PurgeUserEventsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10433,6 +10587,53 @@ namespace Google.Apis.CloudRetail.v2.Data
     /// </summary>
     public class GoogleCloudRetailV2betaPurgeMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the PurgeProducts operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudRetailV2betaPurgeProductsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Count of entries that encountered errors while processing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
+        public virtual System.Nullable<long> FailureCount { get; set; }
+
+        /// <summary>Count of entries that were deleted successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<long> SuccessCount { get; set; }
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the PurgeProductsRequest. If the long running operation is successfully done, then this message is
+    /// returned by the google.longrunning.Operations.response field.
+    /// </summary>
+    public class GoogleCloudRetailV2betaPurgeProductsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The total count of products purged as a result of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeCount")]
+        public virtual System.Nullable<long> PurgeCount { get; set; }
+
+        /// <summary>
+        /// A sample of the product names that will be deleted. Only populated if `force` is set to false. A max of 100
+        /// names will be returned and the names are chosen at random.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeSample")]
+        public virtual System.Collections.Generic.IList<string> PurgeSample { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

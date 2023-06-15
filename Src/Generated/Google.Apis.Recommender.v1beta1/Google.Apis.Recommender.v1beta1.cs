@@ -36,8 +36,10 @@ namespace Google.Apis.Recommender.v1beta1
         {
             BillingAccounts = new BillingAccountsResource(this);
             Folders = new FoldersResource(this);
+            InsightTypes = new InsightTypesResource(this);
             Organizations = new OrganizationsResource(this);
             Projects = new ProjectsResource(this);
+            Recommenders = new RecommendersResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -84,11 +86,17 @@ namespace Google.Apis.Recommender.v1beta1
         /// <summary>Gets the Folders resource.</summary>
         public virtual FoldersResource Folders { get; }
 
+        /// <summary>Gets the InsightTypes resource.</summary>
+        public virtual InsightTypesResource InsightTypes { get; }
+
         /// <summary>Gets the Organizations resource.</summary>
         public virtual OrganizationsResource Organizations { get; }
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
+
+        /// <summary>Gets the Recommenders resource.</summary>
+        public virtual RecommendersResource Recommenders { get; }
     }
 
     /// <summary>A base abstract class for Recommender requests.</summary>
@@ -2120,6 +2128,81 @@ namespace Google.Apis.Recommender.v1beta1
                         }
                     }
                 }
+            }
+        }
+    }
+
+    /// <summary>The "insightTypes" collection of methods.</summary>
+    public class InsightTypesResource
+    {
+        private const string Resource = "insightTypes";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public InsightTypesResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Lists available InsightTypes. No IAM permissions are required.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>Lists available InsightTypes. No IAM permissions are required.</summary>
+        public class ListRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1ListInsightTypesResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Optional. The number of InsightTypes to return per page. The service may return fewer than this value.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// Optional. A page token, received from a previous `ListRecommenders` call. Provide this to retrieve the
+            /// subsequent page.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta1/insightTypes";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
     }
@@ -4273,6 +4356,82 @@ namespace Google.Apis.Recommender.v1beta1
             }
         }
     }
+
+    /// <summary>The "recommenders" collection of methods.</summary>
+    public class RecommendersResource
+    {
+        private const string Resource = "recommenders";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public RecommendersResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Lists all available Recommenders. No IAM permissions are required.</summary>
+        public virtual ListRequest List()
+        {
+            return new ListRequest(service);
+        }
+
+        /// <summary>Lists all available Recommenders. No IAM permissions are required.</summary>
+        public class ListRequest : RecommenderBaseServiceRequest<Google.Apis.Recommender.v1beta1.Data.GoogleCloudRecommenderV1beta1ListRecommendersResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Optional. The number of RecommenderTypes to return per page. The service may return fewer than this
+            /// value.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// Optional. A page token, received from a previous `ListRecommenders` call. Provide this to retrieve the
+            /// subsequent page.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1beta1/recommenders";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
 }
 namespace Google.Apis.Recommender.v1beta1.Data
 {
@@ -4411,6 +4570,22 @@ namespace Google.Apis.Recommender.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The type of insight. See google3/googledata/devsite/site-cloud/en/recommender/docs/insights/insight-types.md for
+    /// more info.
+    /// </summary>
+    public class GoogleCloudRecommenderV1beta1InsightType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The insight_type’s name in format insightTypes/{insight_type} eg: insightTypes/google.iam.policy.Insight
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for an InsightType.</summary>
     public class GoogleCloudRecommenderV1beta1InsightTypeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4474,6 +4649,24 @@ namespace Google.Apis.Recommender.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for the `ListInsightTypes` method. Next ID: 3</summary>
+    public class GoogleCloudRecommenderV1beta1ListInsightTypesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The set of recommenders available</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insightTypes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1beta1InsightType> InsightTypes { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response to the `ListInsights` method.</summary>
     public class GoogleCloudRecommenderV1beta1ListInsightsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4505,6 +4698,24 @@ namespace Google.Apis.Recommender.v1beta1.Data
         /// <summary>The set of recommendations for the `parent` resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommendations")]
         public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1beta1Recommendation> Recommendations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the `ListRecommender` method. Next ID: 3</summary>
+    public class GoogleCloudRecommenderV1beta1ListRecommendersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The set of recommenders available</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("recommenders")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRecommenderV1beta1RecommenderType> Recommenders { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4857,6 +5068,23 @@ namespace Google.Apis.Recommender.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("params")]
         public virtual System.Collections.Generic.IDictionary<string, object> Params__ { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The type of a recommender. See google3/googledata/devsite/site-cloud/en/recommender/docs/recommenders.md for
+    /// more info.
+    /// </summary>
+    public class GoogleCloudRecommenderV1beta1RecommenderType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The recommender's name in format RecommenderTypes/{recommender_type} eg:
+        /// recommenderTypes/google.iam.policy.Recommender
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -56,7 +56,7 @@ namespace Google.Apis.CloudDebugger.v2
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Debugger API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Debugger API (Deprecated).</summary>
         public class Scope
         {
             /// <summary>
@@ -69,7 +69,7 @@ namespace Google.Apis.CloudDebugger.v2
             public static string CloudDebugger = "https://www.googleapis.com/auth/cloud_debugger";
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Debugger API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Debugger API (Deprecated).</summary>
         public static class ScopeConstants
         {
             /// <summary>

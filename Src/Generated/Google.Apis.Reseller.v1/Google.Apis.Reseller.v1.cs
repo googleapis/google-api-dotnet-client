@@ -1357,6 +1357,39 @@ namespace Google.Apis.Reseller.v1
             public virtual string CustomerId { get; private set; }
 
             /// <summary>
+            /// The intented insert action. The usage of this field is governed by certain policies which are being
+            /// developed &amp;amp; tested currently. Hence, these might not work as intended. Once this is fully tested
+            /// &amp;amp; available to consume, we will share more information about its usage, limitations and policy
+            /// documentation.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("action", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ActionEnum> Action { get; set; }
+
+            /// <summary>
+            /// The intented insert action. The usage of this field is governed by certain policies which are being
+            /// developed &amp;amp; tested currently. Hence, these might not work as intended. Once this is fully tested
+            /// &amp;amp; available to consume, we will share more information about its usage, limitations and policy
+            /// documentation.
+            /// </summary>
+            public enum ActionEnum
+            {
+                /// <summary>
+                /// Auto determines whether to create new subscription, upgrade or downagrade existing subscription or
+                /// transfer the existing subscription
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("actionUnspecified")]
+                ActionUnspecified = 0,
+
+                /// <summary>Create new subscription</summary>
+                [Google.Apis.Util.StringValueAttribute("buy")]
+                Buy = 1,
+
+                /// <summary>Switch existing subscription to another sku (upgrade/downgrade)</summary>
+                [Google.Apis.Util.StringValueAttribute("switch")]
+                Switch__ = 2,
+            }
+
+            /// <summary>
             /// The `customerAuthToken` query string is required when creating a resold account that transfers a direct
             /// customer's subscription or transfers another reseller customer's subscription to your reseller
             /// management. This is a hexadecimal authentication token needed to complete the subscription transfer. For
@@ -1364,6 +1397,15 @@ namespace Google.Apis.Reseller.v1
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("customerAuthToken", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string CustomerAuthToken { get; set; }
+
+            /// <summary>
+            /// The sku_id of the existing subscription to be upgraded or downgraded. This is required when action is
+            /// SWITCH. The usage of this field is governed by certain policies which are being developed &amp;amp;
+            /// tested currently. Hence, these might not work as intended. Once this is fully tested &amp;amp; available
+            /// to consume, we will share more information about its usage, limitations and policy documentation.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("sourceSkuId", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string SourceSkuId { get; set; }
 
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Reseller.v1.Data.Subscription Body { get; set; }
@@ -1392,9 +1434,25 @@ namespace Google.Apis.Reseller.v1
                     DefaultValue = null,
                     Pattern = null,
                 });
+                RequestParameters.Add("action", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "action",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
                 RequestParameters.Add("customerAuthToken", new Google.Apis.Discovery.Parameter
                 {
                     Name = "customerAuthToken",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("sourceSkuId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "sourceSkuId",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,

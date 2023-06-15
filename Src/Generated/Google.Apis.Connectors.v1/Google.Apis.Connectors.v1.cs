@@ -3494,6 +3494,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
         public virtual System.Nullable<bool> BoolValue { get; set; }
 
+        /// <summary>Value is a Encryption Key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionKeyValue")]
+        public virtual EncryptionKey EncryptionKeyValue { get; set; }
+
         /// <summary>Value is an integer</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intValue")]
         public virtual System.Nullable<long> IntValue { get; set; }
@@ -3501,10 +3505,6 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Key of the config variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
-
-        /// <summary>Value is a Encryption Key.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("keyValue")]
-        public virtual EncryptionKey KeyValue { get; set; }
 
         /// <summary>Value is a secret.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secretValue")]
@@ -3550,6 +3550,13 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Flag represents that this `ConfigVariable` must be provided for a connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("required")]
         public virtual System.Nullable<bool> Required { get; set; }
+
+        /// <summary>
+        /// Condition under which a field would be required. The condition can be represented in the form of a logical
+        /// expression.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredCondition")]
+        public virtual LogicalExpression RequiredCondition { get; set; }
 
         /// <summary>Role grant configuration for the config variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roleGrant")]
@@ -4196,6 +4203,33 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Field that needs to be compared.</summary>
+    public class FieldComparison : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Boolean value</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("boolValue")]
+        public virtual System.Nullable<bool> BoolValue { get; set; }
+
+        /// <summary>Comparator to use for comparing the field value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comparator")]
+        public virtual string Comparator { get; set; }
+
+        /// <summary>Integer value</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intValue")]
+        public virtual System.Nullable<long> IntValue { get; set; }
+
+        /// <summary>Key of the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("key")]
+        public virtual string Key { get; set; }
+
+        /// <summary>String value</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
+        public virtual string StringValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata of an input parameter.</summary>
     public class InputParameter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4457,6 +4491,25 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Describes why a connection is locked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Struct for representing boolean expressions.</summary>
+    public class LogicalExpression : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of fields to be compared.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldComparisons")]
+        public virtual System.Collections.Generic.IList<FieldComparison> FieldComparisons { get; set; }
+
+        /// <summary>A list of nested conditions to be compared.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logicalExpressions")]
+        public virtual System.Collections.Generic.IList<LogicalExpression> LogicalExpressions { get; set; }
+
+        /// <summary>The logical operator to use between the fields and conditions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logicalOperator")]
+        public virtual string LogicalOperator { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4855,7 +4908,7 @@ namespace Google.Apis.Connectors.v1.Data
 
     /// <summary>
     /// This configuration defines all the Cloud IAM roles that needs to be granted to a particular GCP resource for the
-    /// selected prinicpal like service account. These configurations will let UI display to customers what IAM roles
+    /// selected principal like service account. These configurations will let UI display to customers what IAM roles
     /// need to be granted by them. Or these configurations can be used by the UI to render a 'grant' button to do the
     /// same on behalf of the user.
     /// </summary>

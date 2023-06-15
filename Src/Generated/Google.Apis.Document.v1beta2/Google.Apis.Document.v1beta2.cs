@@ -968,7 +968,7 @@ namespace Google.Apis.Document.v1beta2.Data
     /// <summary>Document Identifier.</summary>
     public class GoogleCloudDocumentaiUiv1beta3DocumentId : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A document id within user managed Cloud Storage.</summary>
+        /// <summary>A document id within user-managed Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsManagedDocId")]
         public virtual GoogleCloudDocumentaiUiv1beta3DocumentIdGCSManagedDocumentId GcsManagedDocId { get; set; }
 
@@ -985,7 +985,7 @@ namespace Google.Apis.Document.v1beta2.Data
     }
 
     /// <summary>
-    /// Identifies a document uniquely within the scope of a dataset in user managed Cloud Storage option.
+    /// Identifies a document uniquely within the scope of a dataset in the user-managed Cloud Storage option.
     /// </summary>
     public class GoogleCloudDocumentaiUiv1beta3DocumentIdGCSManagedDocumentId : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -993,7 +993,7 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cwDocId")]
         public virtual string CwDocId { get; set; }
 
-        /// <summary>Required. The Cloud Storage uri where the actual document is stored.</summary>
+        /// <summary>Required. The Cloud Storage URI where the actual document is stored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
         public virtual string GcsUri { get; set; }
 
@@ -2144,7 +2144,7 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual GoogleCloudDocumentaiV1beta1DocumentPageImage Image { get; set; }
 
-        /// <summary>Image Quality Scores.</summary>
+        /// <summary>Image quality scores.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageQualityScores")]
         public virtual GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScores ImageQualityScores { get; set; }
 
@@ -2397,7 +2397,7 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Image Quality Scores for the page image.</summary>
+    /// <summary>Image quality scores for the page image.</summary>
     public class GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScores : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of detected defects.</summary>
@@ -2416,8 +2416,7 @@ namespace Google.Apis.Document.v1beta2.Data
     public class GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScoresDetectedDefect : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence of that the defect
-        /// exists.
+        /// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence that the defect exists.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
@@ -2924,7 +2923,7 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<float> Size { get; set; }
 
-        /// <summary>Unit for the font size. Follows CSS naming (`in`, `px`, `pt`, etc.).</summary>
+        /// <summary>Unit for the font size. Follows CSS naming (such as `in`, `px`, and `pt`).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; }
 
@@ -3504,7 +3503,7 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual GoogleCloudDocumentaiV1beta2DocumentPageImage Image { get; set; }
 
-        /// <summary>Image Quality Scores.</summary>
+        /// <summary>Image quality scores.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageQualityScores")]
         public virtual GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScores ImageQualityScores { get; set; }
 
@@ -3757,7 +3756,7 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Image Quality Scores for the page image.</summary>
+    /// <summary>Image quality scores for the page image.</summary>
     public class GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScores : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of detected defects.</summary>
@@ -3776,8 +3775,7 @@ namespace Google.Apis.Document.v1beta2.Data
     public class GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScoresDetectedDefect : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence of that the defect
-        /// exists.
+        /// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence that the defect exists.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
@@ -4284,7 +4282,7 @@ namespace Google.Apis.Document.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<float> Size { get; set; }
 
-        /// <summary>Unit for the font size. Follows CSS naming (`in`, `px`, `pt`, etc.).</summary>
+        /// <summary>Unit for the font size. Follows CSS naming (such as `in`, `px`, and `pt`).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; }
 
@@ -5172,7 +5170,7 @@ namespace Google.Apis.Document.v1beta2.Data
     /// from color representations in various languages over compactness. For example, the fields of this representation
     /// can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to
     /// UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily
-    /// formatted into a CSS `rgba()` string in JavaScript. This reference page does not have information about the
+    /// formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't have information about the
     /// absolute color space that should be used to interpret the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and
     /// BT.2020. By default, applications should assume the sRGB color space. When color equality needs to be decided,
     /// implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha

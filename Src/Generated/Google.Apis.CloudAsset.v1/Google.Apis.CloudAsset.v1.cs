@@ -1446,13 +1446,6 @@ namespace Google.Apis.CloudAsset.v1
             public virtual System.Nullable<bool> AnalysisQueryOptionsExpandRoles { get; set; }
 
             /// <summary>
-            /// Optional. If true, the response includes deny policy analysis results, and you can see which access
-            /// tuples are denied. Default is false.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("analysisQuery.options.includeDenyPolicyAnalysis", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> AnalysisQueryOptionsIncludeDenyPolicyAnalysis { get; set; }
-
-            /// <summary>
             /// Optional. If true, the result will output the relevant membership relationships between groups and other
             /// groups, and between groups and principals. Default is false.
             /// </summary>
@@ -1578,14 +1571,6 @@ namespace Google.Apis.CloudAsset.v1
                 RequestParameters.Add("analysisQuery.options.expandRoles", new Google.Apis.Discovery.Parameter
                 {
                     Name = "analysisQuery.options.expandRoles",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("analysisQuery.options.includeDenyPolicyAnalysis", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "analysisQuery.options.includeDenyPolicyAnalysis",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -2817,16 +2802,16 @@ namespace Google.Apis.CloudAsset.v1
             public virtual string Query { get; set; }
 
             /// <summary>
-            /// Optional. A comma-separated list of fields specifying which fields to be returned in
-            /// ResourceSearchResult. Only '*' or combination of top level fields can be specified. Field names of both
-            /// snake_case and camelCase are supported. Examples: `"*"`, `"name,location"`, `"name,versionedResources"`.
-            /// The read_mask paths must be valid field paths listed but not limited to (both snake_case and camelCase
-            /// are supported): * name * assetType * project * displayName * description * location * tagKeys *
-            /// tagValues * tagValueIds * labels * networkTags * kmsKey (This field is deprecated. Please use the
-            /// `kmsKeys` field to retrieve Cloud KMS key information.) * kmsKeys * createTime * updateTime * state *
-            /// additionalAttributes * versionedResources If read_mask is not specified, all fields except
-            /// versionedResources will be returned. If only '*' is specified, all fields including versionedResources
-            /// will be returned. Any invalid field path will trigger INVALID_ARGUMENT error.
+            /// Optional. A comma-separated list of fields that you want returned in the results. The following fields
+            /// are returned by default if not specified: * `name` * `assetType` * `project` * `folders` *
+            /// `organization` * `displayName` * `description` * `location` * `labels` * `networkTags` * `kmsKeys` *
+            /// `createTime` * `updateTime` * `state` * `additionalAttributes` * `parentFullResourceName` *
+            /// `parentAssetType` Some fields of large size, such as `versionedResources` and `attachedResources`, are
+            /// not returned by default, but you can specify them in the `read_mask` parameter if you want to include
+            /// them. If `"*"` is specified, all [available
+            /// fields](https://cloud.google.com/asset-inventory/docs/reference/rest/v1/TopLevel/searchAllResources#resourcesearchresult)
+            /// are returned. Examples: `"name,location"`, `"name,versionedResources"`, `"*"`. Any invalid field path
+            /// will trigger INVALID_ARGUMENT error.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
             public virtual object ReadMask { get; set; }
@@ -3544,24 +3529,6 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A denied access contains details about an access tuple that is blocked by IAM deny policies.</summary>
-    public class DeniedAccess : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// A denied access tuple that is either fully or partially denied by IAM deny rules. This access tuple should
-        /// match at least one access tuple derived from IamPolicyAnalysisResult.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deniedAccessTuple")]
-        public virtual GoogleCloudAssetV1DeniedAccessAccessTuple DeniedAccessTuple { get; set; }
-
-        /// <summary>The details about how denied_access_tuple is denied.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("denyDetails")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAssetV1DeniedAccessDenyDetail> DenyDetails { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>The effective IAM policies on one resource.</summary>
     public class EffectiveIamPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4150,113 +4117,6 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An IAM role or permission under analysis.</summary>
-    public class GoogleCloudAssetV1DeniedAccessAccess : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The IAM permission in [v1 format](https://cloud.google.com/iam/docs/permissions-reference)
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("permission")]
-        public virtual string Permission { get; set; }
-
-        /// <summary>The IAM role.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>An access tuple contains a tuple of a resource, an identity and an access.</summary>
-    public class GoogleCloudAssetV1DeniedAccessAccessTuple : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>One access from IamPolicyAnalysisResult.AccessControlList.accesses.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("access")]
-        public virtual GoogleCloudAssetV1DeniedAccessAccess Access { get; set; }
-
-        /// <summary>One identity from IamPolicyAnalysisResult.IdentityList.identities.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("identity")]
-        public virtual GoogleCloudAssetV1DeniedAccessIdentity Identity { get; set; }
-
-        /// <summary>One resource from IamPolicyAnalysisResult.AccessControlList.resources.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
-        public virtual GoogleCloudAssetV1DeniedAccessResource Resource { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A deny detail that explains which IAM deny rule denies the denied_access_tuple.</summary>
-    public class GoogleCloudAssetV1DeniedAccessDenyDetail : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The denied accesses. If this deny_rule fully denies the denied_access_tuple, this field will be same as
-        /// AccessTuple.access. Otherwise, this field can contain AccessTuple.access and its descendant accesses, such
-        /// as a subset of IAM permissions contained in an IAM role.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("accesses")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAssetV1DeniedAccessAccess> Accesses { get; set; }
-
-        /// <summary>A deny rule in an IAM deny policy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("denyRule")]
-        public virtual GoogleIamV2DenyRule DenyRule { get; set; }
-
-        /// <summary>
-        /// Whether the deny_rule fully denies all access granted by the denied_access_tuple. `True` means the deny rule
-        /// fully blocks the access tuple. `False` means the deny rule partially blocks the access tuple."
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fullyDenied")]
-        public virtual System.Nullable<bool> FullyDenied { get; set; }
-
-        /// <summary>
-        /// If this deny_rule fully denies the denied_access_tuple, this field will be same as AccessTuple.identity.
-        /// Otherwise, this field can contain AccessTuple.identity and its descendant identities, such as a subset of
-        /// users in a group.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("identities")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAssetV1DeniedAccessIdentity> Identities { get; set; }
-
-        /// <summary>
-        /// The resources that the identities are denied access to. If this deny_rule fully denies the
-        /// denied_access_tuple, this field will be same as AccessTuple.resource. Otherwise, this field can contain
-        /// AccessTuple.resource and its descendant resources.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAssetV1DeniedAccessResource> Resources { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>An identity under analysis.</summary>
-    public class GoogleCloudAssetV1DeniedAccessIdentity : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The identity of members, formatted as appear in an [IAM policy
-        /// binding](https://cloud.google.com/iam/reference/rest/v1/Binding). For example, they might be formatted like
-        /// the following: - user:foo@google.com - group:group1@google.com -
-        /// serviceAccount:s1@prj1.iam.gserviceaccount.com - projectOwner:some_project_id - domain:google.com - allUsers
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A Google Cloud resource under analysis.</summary>
-    public class GoogleCloudAssetV1DeniedAccessResource : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format)
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fullResourceName")]
-        public virtual string FullResourceName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>A directional edge.</summary>
     public class GoogleCloudAssetV1Edge : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4453,7 +4313,11 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a rule defined in an organization policy</summary>
+    /// <summary>
+    /// This rule message is a customized version of the one defined in the Organization Policy system. In addition to
+    /// the fields defined in the original organization policy, it contains additional field(s) under specific
+    /// circumstances to support analysis results.
+    /// </summary>
     public class GoogleCloudAssetV1Rule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4918,78 +4782,6 @@ namespace Google.Apis.CloudAsset.v1.Data
     /// </summary>
     public class GoogleCloudOrgpolicyV1RestoreDefault : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A deny rule in an IAM deny policy.</summary>
-    public class GoogleIamV2DenyRule : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The condition that determines whether this deny rule applies to a request. If the condition expression
-        /// evaluates to `true`, then the deny rule is applied; otherwise, the deny rule is not applied. Each deny rule
-        /// is evaluated independently. If this deny rule does not apply to a request, other deny rules might still
-        /// apply. The condition can use CEL functions that evaluate [resource
-        /// tags](https://cloud.google.com/iam/help/conditions/resource-tags). Other functions and operators are not
-        /// supported.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("denialCondition")]
-        public virtual Expr DenialCondition { get; set; }
-
-        /// <summary>
-        /// The permissions that are explicitly denied by this rule. Each permission uses the format
-        /// `{service_fqdn}/{resource}.{verb}`, where `{service_fqdn}` is the fully qualified domain name for the
-        /// service. For example, `iam.googleapis.com/roles.list`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deniedPermissions")]
-        public virtual System.Collections.Generic.IList<string> DeniedPermissions { get; set; }
-
-        /// <summary>
-        /// The identities that are prevented from using one or more permissions on Google Cloud resources. This field
-        /// can contain the following values: * `principalSet://goog/public:all`: A special identifier that represents
-        /// any principal that is on the internet, even if they do not have a Google Account or are not logged in. *
-        /// `principal://goog/subject/{email_id}`: A specific Google Account. Includes Gmail, Cloud Identity, and Google
-        /// Workspace user accounts. For example, `principal://goog/subject/alice@example.com`. *
-        /// `deleted:principal://goog/subject/{email_id}?uid={uid}`: A specific Google Account that was deleted
-        /// recently. For example, `deleted:principal://goog/subject/alice@example.com?uid=1234567890`. If the Google
-        /// Account is recovered, this identifier reverts to the standard identifier for a Google Account. *
-        /// `principalSet://goog/group/{group_id}`: A Google group. For example,
-        /// `principalSet://goog/group/admins@example.com`. * `deleted:principalSet://goog/group/{group_id}?uid={uid}`:
-        /// A Google group that was deleted recently. For example,
-        /// `deleted:principalSet://goog/group/admins@example.com?uid=1234567890`. If the Google group is restored, this
-        /// identifier reverts to the standard identifier for a Google group. *
-        /// `principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}`: A Google Cloud service
-        /// account. For example,
-        /// `principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com`. *
-        /// `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/{service_account_id}?uid={uid}`: A Google
-        /// Cloud service account that was deleted recently. For example,
-        /// `deleted:principal://iam.googleapis.com/projects/-/serviceAccounts/my-service-account@iam.gserviceaccount.com?uid=1234567890`.
-        /// If the service account is undeleted, this identifier reverts to the standard identifier for a service
-        /// account. * `principalSet://goog/cloudIdentityCustomerId/{customer_id}`: All of the principals associated
-        /// with the specified Google Workspace or Cloud Identity customer ID. For example,
-        /// `principalSet://goog/cloudIdentityCustomerId/C01Abc35`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deniedPrincipals")]
-        public virtual System.Collections.Generic.IList<string> DeniedPrincipals { get; set; }
-
-        /// <summary>
-        /// Specifies the permissions that this rule excludes from the set of denied permissions given by
-        /// `denied_permissions`. If a permission appears in `denied_permissions` _and_ in `exception_permissions` then
-        /// it will _not_ be denied. The excluded permissions can be specified using the same syntax as
-        /// `denied_permissions`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("exceptionPermissions")]
-        public virtual System.Collections.Generic.IList<string> ExceptionPermissions { get; set; }
-
-        /// <summary>
-        /// The identities that are excluded from the deny rule, even if they are listed in the `denied_principals`. For
-        /// example, you could add a Google group to the `denied_principals`, then exclude specific users who belong to
-        /// that group. This field can contain the same values as the `denied_principals` field, excluding
-        /// `principalSet://goog/public:all`, which represents all users on the internet.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("exceptionPrincipals")]
-        public virtual System.Collections.Generic.IList<string> ExceptionPrincipals { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5634,14 +5426,6 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual System.Collections.Generic.IList<IamPolicyAnalysisResult> AnalysisResults { get; set; }
 
         /// <summary>
-        /// A list of DeniedAccess, which contains all access tuples in the analysis_results that are denied by IAM deny
-        /// policies. If no access tuples are denied, the list is empty. This is only populated when
-        /// IamPolicyAnalysisQuery.Options.include_deny_policy_analysis is true.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deniedAccesses")]
-        public virtual System.Collections.Generic.IList<DeniedAccess> DeniedAccesses { get; set; }
-
-        /// <summary>
         /// Represents whether all entries in the analysis_results have been fully explored to answer the query.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fullyExplored")]
@@ -6129,13 +5913,6 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expandRoles")]
         public virtual System.Nullable<bool> ExpandRoles { get; set; }
-
-        /// <summary>
-        /// Optional. If true, the response includes deny policy analysis results, and you can see which access tuples
-        /// are denied. Default is false.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("includeDenyPolicyAnalysis")]
-        public virtual System.Nullable<bool> IncludeDenyPolicyAnalysis { get; set; }
 
         /// <summary>
         /// Optional. If true, the result will output the relevant membership relationships between groups and other

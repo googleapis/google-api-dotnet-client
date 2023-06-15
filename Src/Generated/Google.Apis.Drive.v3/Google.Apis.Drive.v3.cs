@@ -5867,15 +5867,14 @@ namespace Google.Apis.Drive.v3.Data
 
         /// <summary>
         /// The starting page token for future changes. This will be present only if the end of the current changes list
-        /// has been reached.
+        /// has been reached. The page token doesn't expire.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newStartPageToken")]
         public virtual string NewStartPageToken { get; set; }
 
         /// <summary>
         /// The page token for the next page of changes. This will be absent if the end of the changes list has been
-        /// reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted
-        /// from the first page of results.
+        /// reached. The page token doesn't expire.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -6057,7 +6056,8 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>
         /// The page token for the next page of comments. This will be absent if the end of the comments list has been
         /// reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted
-        /// from the first page of results.
+        /// from the first page of results. The page token is typically valid for several hours. However, if new items
+        /// are added or removed, your expected results might differ.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -6405,7 +6405,8 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>
         /// The page token for the next page of shared drives. This will be absent if the end of the list has been
         /// reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted
-        /// from the first page of results.
+        /// from the first page of results. The page token is typically valid for several hours. However, if new items
+        /// are added or removed, your expected results might differ.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -7290,7 +7291,8 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>
         /// The page token for the next page of files. This will be absent if the end of the files list has been
         /// reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted
-        /// from the first page of results.
+        /// from the first page of results. The page token is typically valid for several hours. However, if new items
+        /// are added or removed, your expected results might differ.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -7439,7 +7441,8 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>
         /// The page token for the next page of labels. This field will be absent if the end of the list has been
         /// reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted
-        /// from the first page of results.
+        /// from the first page of results. The page token is typically valid for several hours. However, if new items
+        /// are added or removed, your expected results might differ.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -7690,7 +7693,8 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>
         /// The page token for the next page of permissions. This field will be absent if the end of the permissions
         /// list has been reached. If the token is rejected for any reason, it should be discarded, and pagination
-        /// should be restarted from the first page of results.
+        /// should be restarted from the first page of results. The page token is typically valid for several hours.
+        /// However, if new items are added or removed, your expected results might differ.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -7784,7 +7788,8 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>
         /// The page token for the next page of replies. This will be absent if the end of the replies list has been
         /// reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted
-        /// from the first page of results.
+        /// from the first page of results. The page token is typically valid for several hours. However, if new items
+        /// are added or removed, your expected results might differ.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -7903,7 +7908,8 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>
         /// The page token for the next page of revisions. This will be absent if the end of the revisions list has been
         /// reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted
-        /// from the first page of results.
+        /// from the first page of results. The page token is typically valid for several hours. However, if new items
+        /// are added or removed, your expected results might differ.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -7927,7 +7933,7 @@ namespace Google.Apis.Drive.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>The starting page token for listing changes.</summary>
+        /// <summary>The starting page token for listing future changes. The page token doesn't expire.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startPageToken")]
         public virtual string StartPageTokenValue { get; set; }
 
@@ -8202,7 +8208,8 @@ namespace Google.Apis.Drive.v3.Data
         /// <summary>
         /// The page token for the next page of Team Drives. This will be absent if the end of the Team Drives list has
         /// been reached. If the token is rejected for any reason, it should be discarded, and pagination should be
-        /// restarted from the first page of results.
+        /// restarted from the first page of results. The page token is typically valid for several hours. However, if
+        /// new items are added or removed, your expected results might differ.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }

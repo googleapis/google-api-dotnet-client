@@ -1996,7 +1996,7 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
     /// <summary>
     /// `Documentation` provides the information for describing a service. Example: documentation: summary: &amp;gt; The
     /// Google Calendar API gives access to most calendar features. pages: - name: Overview content: (== include
-    /// google/foo/overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==) subpages; - name:
+    /// google/foo/overview.md ==) - name: Tutorial content: (== include google/foo/tutorial.md ==) subpages: - name:
     /// Java content: (== include google/foo/tutorial_java.md ==) rules: - selector: google.calendar.Calendar.Get
     /// description: &amp;gt; ... - selector: google.calendar.Calendar.Put description: &amp;gt; ... Documentation is
     /// provided in markdown syntax. In addition to standard markdown features, definition lists, tables and fenced code
@@ -2039,6 +2039,13 @@ namespace Google.Apis.ServiceConsumerManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
         public virtual System.Collections.Generic.IList<DocumentationRule> Rules { get; set; }
+
+        /// <summary>
+        /// Specifies section and content to override boilerplate content provided by go/api-docgen. Currently overrides
+        /// following sections: 1. rest.service.client_libraries
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sectionOverrides")]
+        public virtual System.Collections.Generic.IList<Page> SectionOverrides { get; set; }
 
         /// <summary>
         /// Specifies the service root url if the default one (the service name from the yaml file) is not suitable.

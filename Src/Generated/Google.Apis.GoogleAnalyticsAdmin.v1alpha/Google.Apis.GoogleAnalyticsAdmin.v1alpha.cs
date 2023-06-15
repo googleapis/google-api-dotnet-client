@@ -11323,7 +11323,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
     public class GoogleAnalyticsAdminV1alphaDataStreamWebStreamData : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Immutable. Domain name of the web app being measured, or empty. Example: "http://www.google.com",
+        /// Domain name of the web app being measured, or empty. Example: "http://www.google.com",
         /// "https://www.google.com"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultUri")]
@@ -11336,10 +11336,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("firebaseAppId")]
         public virtual string FirebaseAppId { get; set; }
 
-        /// <summary>
-        /// Output only. Analytics "Measurement ID", without the "G-" prefix. Example: "G-1A2BCD345E" would just be
-        /// "1A2BCD345E"
-        /// </summary>
+        /// <summary>Output only. Analytics Measurement ID. Example: "G-1A2BCD345E"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("measurementId")]
         public virtual string MeasurementId { get; set; }
 
@@ -11505,7 +11502,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
     }
 
     /// <summary>
-    /// Singleton resource under a WebDataStream, configuring measurement of additional site interactions and content.
+    /// Singleton resource under a web DataStream, configuring measurement of additional site interactions and content.
     /// </summary>
     public class GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings : Google.Apis.Requests.IDirectResponseSchema
     {

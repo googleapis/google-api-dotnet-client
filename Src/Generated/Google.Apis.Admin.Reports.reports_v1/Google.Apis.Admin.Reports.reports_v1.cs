@@ -1195,8 +1195,8 @@ namespace Google.Apis.Admin.Reports.reports_v1
         /// parameters, see the Customers Usage parameters reference guides.
         /// </summary>
         /// <param name="date">
-        /// Represents the date the usage occurred, based on PST time zone. The timestamp is in the [ISO 8601
-        /// format](https://en.wikipedia.org/wiki/ISO_8601), `yyyy-mm-dd`.
+        /// Represents the date the usage occurred, based on UTC-8:00 (Pacific Standard Time). The timestamp is in the
+        /// [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601), `yyyy-mm-dd`.
         /// </param>
         public virtual GetRequest Get(string date)
         {
@@ -1218,8 +1218,8 @@ namespace Google.Apis.Admin.Reports.reports_v1
             }
 
             /// <summary>
-            /// Represents the date the usage occurred, based on PST time zone. The timestamp is in the [ISO 8601
-            /// format](https://en.wikipedia.org/wiki/ISO_8601), `yyyy-mm-dd`.
+            /// Represents the date the usage occurred, based on UTC-8:00 (Pacific Standard Time). The timestamp is in
+            /// the [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601), `yyyy-mm-dd`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("date", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Date { get; private set; }
@@ -1327,8 +1327,8 @@ namespace Google.Apis.Admin.Reports.reports_v1
         /// obtain the `entityKey` for a particular `entityType`, see the Entities Usage parameters reference guides.
         /// </param>
         /// <param name="date">
-        /// Represents the date the usage occurred. The timestamp is in the ISO 8601 format, yyyy-mm-dd. We recommend
-        /// you use your account's time zone for this.
+        /// Represents the date the usage occurred, based on UTC-8:00 (Pacific Standard Time). The timestamp is in the
+        /// [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601), `yyyy-mm-dd`.
         /// </param>
         public virtual GetRequest Get(GetRequest.EntityTypeEnum entityType, string entityKey, string date)
         {
@@ -1373,8 +1373,8 @@ namespace Google.Apis.Admin.Reports.reports_v1
             public virtual string EntityKey { get; private set; }
 
             /// <summary>
-            /// Represents the date the usage occurred. The timestamp is in the ISO 8601 format, yyyy-mm-dd. We
-            /// recommend you use your account's time zone for this.
+            /// Represents the date the usage occurred, based on UTC-8:00 (Pacific Standard Time). The timestamp is in
+            /// the [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601), `yyyy-mm-dd`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("date", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Date { get; private set; }
@@ -1539,7 +1539,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
         /// then use the returned `ID` as the `userKey`.
         /// </param>
         /// <param name="date">
-        /// Represents the date the usage occurred, based on GMT-7:00 (Pacific Standard Time). The timestamp is in the
+        /// Represents the date the usage occurred, based on UTC-8:00 (Pacific Standard Time). The timestamp is in the
         /// [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601), `yyyy-mm-dd`.
         /// </param>
         public virtual GetRequest Get(string userKey, string date)
@@ -1572,7 +1572,7 @@ namespace Google.Apis.Admin.Reports.reports_v1
             public virtual string UserKey { get; private set; }
 
             /// <summary>
-            /// Represents the date the usage occurred, based on GMT-7:00 (Pacific Standard Time). The timestamp is in
+            /// Represents the date the usage occurred, based on UTC-8:00 (Pacific Standard Time). The timestamp is in
             /// the [ISO 8601 format](https://en.wikipedia.org/wiki/ISO_8601), `yyyy-mm-dd`.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("date", Google.Apis.Util.RequestParameterType.Path)]
