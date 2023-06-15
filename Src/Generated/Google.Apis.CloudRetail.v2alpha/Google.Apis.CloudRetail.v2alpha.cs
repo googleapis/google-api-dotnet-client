@@ -5994,6 +5994,53 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     }
 
     /// <summary>
+    /// Metadata related to the progress of the PurgeProducts operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudRetailV2PurgeProductsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Count of entries that encountered errors while processing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
+        public virtual System.Nullable<long> FailureCount { get; set; }
+
+        /// <summary>Count of entries that were deleted successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<long> SuccessCount { get; set; }
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the PurgeProductsRequest. If the long running operation is successfully done, then this message is
+    /// returned by the google.longrunning.Operations.response field.
+    /// </summary>
+    public class GoogleCloudRetailV2PurgeProductsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The total count of products purged as a result of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeCount")]
+        public virtual System.Nullable<long> PurgeCount { get; set; }
+
+        /// <summary>
+        /// A sample of the product names that will be deleted. Only populated if `force` is set to false. A max of 100
+        /// names will be returned and the names are chosen at random.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeSample")]
+        public virtual System.Collections.Generic.IList<string> PurgeSample { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Response of the PurgeUserEventsRequest. If the long running operation is successfully done, then this message is
     /// returned by the google.longrunning.Operations.response field.
     /// </summary>
@@ -11140,6 +11187,53 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     /// </summary>
     public class GoogleCloudRetailV2betaPurgeMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the PurgeProducts operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudRetailV2betaPurgeProductsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Count of entries that encountered errors while processing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
+        public virtual System.Nullable<long> FailureCount { get; set; }
+
+        /// <summary>Count of entries that were deleted successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<long> SuccessCount { get; set; }
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the PurgeProductsRequest. If the long running operation is successfully done, then this message is
+    /// returned by the google.longrunning.Operations.response field.
+    /// </summary>
+    public class GoogleCloudRetailV2betaPurgeProductsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The total count of products purged as a result of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeCount")]
+        public virtual System.Nullable<long> PurgeCount { get; set; }
+
+        /// <summary>
+        /// A sample of the product names that will be deleted. Only populated if `force` is set to false. A max of 100
+        /// names will be returned and the names are chosen at random.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeSample")]
+        public virtual System.Collections.Generic.IList<string> PurgeSample { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

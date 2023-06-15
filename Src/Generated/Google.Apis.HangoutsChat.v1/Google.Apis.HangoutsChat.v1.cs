@@ -916,7 +916,9 @@ namespace Google.Apis.HangoutsChat.v1
             /// `chat.memberships` or `chat.memberships.readonly` authorization scope.
             /// </summary>
             /// <param name="name">
-            /// Required. Resource name of the membership to retrieve. Format: `spaces/{space}/members/{member}`
+            /// Required. Resource name of the membership to retrieve. To get the app's own membership, you can
+            /// optionally use `spaces/{space}/members/app`. Format: `spaces/{space}/members/{member}` or
+            /// `spaces/{space}/members/app`
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -942,7 +944,9 @@ namespace Google.Apis.HangoutsChat.v1
                 }
 
                 /// <summary>
-                /// Required. Resource name of the membership to retrieve. Format: `spaces/{space}/members/{member}`
+                /// Required. Resource name of the membership to retrieve. To get the app's own membership, you can
+                /// optionally use `spaces/{space}/members/app`. Format: `spaces/{space}/members/{member}` or
+                /// `spaces/{space}/members/app`
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3207,7 +3211,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Google Chat events.</summary>
+    /// <summary>
+    /// Google Chat events. To learn how to use events, see [Receive and respond to Google Chat
+    /// events](https://developers.google.com/chat/api/guides/message-formats).
+    /// </summary>
     public class DeprecatedEvent : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

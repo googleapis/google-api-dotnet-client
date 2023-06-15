@@ -389,59 +389,6 @@ namespace Google.Apis.Baremetalsolution.v2
                     this.service = service;
                 }
 
-                /// <summary>Create an Instance.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The parent project and location.</param>
-                public virtual CreateRequest Create(Google.Apis.Baremetalsolution.v2.Data.Instance body, string parent)
-                {
-                    return new CreateRequest(service, body, parent);
-                }
-
-                /// <summary>Create an Instance.</summary>
-                public class CreateRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.Operation>
-                {
-                    /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Baremetalsolution.v2.Data.Instance body, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. The parent project and location.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Baremetalsolution.v2.Data.Instance Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "create";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+parent}/instances";
-
-                    /// <summary>Initializes Create parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                    }
-                }
-
                 /// <summary>Detach LUN from Instance.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="instance">Required. Name of the instance.</param>
@@ -3763,6 +3710,10 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// <summary>Private network address, if any. Filled if InstanceConfig.multivlan_config is false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateNetwork")]
         public virtual NetworkAddress PrivateNetwork { get; set; }
+
+        /// <summary>List of names of ssh keys used to provision the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sshKeyNames")]
+        public virtual System.Collections.Generic.IList<string> SshKeyNames { get; set; }
 
         /// <summary>
         /// User note field, it can be used by customers to add additional information for the BMS Ops team .

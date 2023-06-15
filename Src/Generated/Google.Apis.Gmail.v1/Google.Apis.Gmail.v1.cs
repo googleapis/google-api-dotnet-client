@@ -8501,6 +8501,13 @@ namespace Google.Apis.Gmail.v1.Data
         public virtual string LabelFilterAction { get; set; }
 
         /// <summary>
+        /// Filtering behavior of labelIds list specified. This field replaces label_filter_action; if set,
+        /// label_filter_action is ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelFilterBehavior")]
+        public virtual string LabelFilterBehavior { get; set; }
+
+        /// <summary>
         /// List of label_ids to restrict notifications about. By default, if unspecified, all changes are pushed out.
         /// If specified then dictates which labels are required for a push notification to be generated.
         /// </summary>

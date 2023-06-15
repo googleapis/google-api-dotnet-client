@@ -38179,7 +38179,7 @@
    }
   }
  },
- "revision": "20230530",
+ "revision": "20230606",
  "rootUrl": "https://compute.googleapis.com/",
  "schemas": {
   "AWSV4Signature": {
@@ -43001,7 +43001,7 @@
    "id": "CustomerEncryptionKey",
    "properties": {
     "kmsKeyName": {
-     "description": "The name of the encryption key that is stored in Google Cloud KMS. For example: \"kmsKeyName\": \"projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key ",
+     "description": "The name of the encryption key that is stored in Google Cloud KMS. For example: \"kmsKeyName\": \"projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key The fully-qualifed key name may be returned for resource GET requests. For example: \"kmsKeyName\": \"projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeyVersions/1 ",
      "type": "string"
     },
     "kmsKeyServiceAccount": {
@@ -65718,6 +65718,10 @@
     },
     "nextHopGateway": {
      "description": "The URL to a gateway that should handle matching packets. You can only specify the internet gateway using a full or partial valid URL: projects/ project/global/gateways/default-internet-gateway",
+     "type": "string"
+    },
+    "nextHopHub": {
+     "description": "[Output Only] The full resource name of the Network Connectivity Center hub that will handle matching packets.",
      "type": "string"
     },
     "nextHopIlb": {

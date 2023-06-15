@@ -16304,6 +16304,26 @@ namespace Google.Apis.CloudSearch.v1.Data
     }
 
     /// <summary>
+    /// IMPORTANT: It is unsafe to accept this message from an untrusted source, since it's trivial for an attacker to
+    /// forge serialized messages that don't fulfill the type's safety contract -- for example, it could contain
+    /// attacker controlled script. A system which receives a SafeHtmlProto implicitly trusts the producer of the
+    /// SafeHtmlProto. So, it's generally safe to return this message in RPC responses, but generally unsafe to accept
+    /// it in RPC requests.
+    /// </summary>
+    public class SafeHtmlProto : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// IMPORTANT: Never set or read this field, even from tests, it is private. See documentation at the top of
+        /// .proto file for programming language packages with which to create or read this message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateDoNotAccessOrElseSafeHtmlWrappedValue")]
+        public virtual string PrivateDoNotAccessOrElseSafeHtmlWrappedValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Message containing a string that is safe to use in URL contexts in DOM APIs and HTML documents, where the URL
     /// context does not refer to a resource that loads code.
     /// </summary>
@@ -17326,6 +17346,13 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>The suggested spelling of the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestedQuery")]
         public virtual string SuggestedQuery { get; set; }
+
+        /// <summary>
+        /// The sanitized HTML representing the spell corrected query that can be used in the UI. This usually has
+        /// language-specific tags to mark up parts of the query that are spell checked.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedQueryHtml")]
+        public virtual SafeHtmlProto SuggestedQueryHtml { get; set; }
 
         /// <summary>Suggestion triggered for the current query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestionType")]

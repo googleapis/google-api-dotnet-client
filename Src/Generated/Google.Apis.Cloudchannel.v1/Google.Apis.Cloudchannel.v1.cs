@@ -285,6 +285,7 @@ namespace Google.Apis.Cloudchannel.v1
             Offers = new OffersResource(service);
             ReportJobs = new ReportJobsResource(service);
             Reports = new ReportsResource(service);
+            SkuGroups = new SkuGroupsResource(service);
         }
 
         /// <summary>Gets the ChannelPartnerLinks resource.</summary>
@@ -3479,7 +3480,7 @@ namespace Google.Apis.Cloudchannel.v1
                 /// <summary>
                 /// Optional. Resource name of the new target Billing Account. Provide this Billing Account when setting
                 /// up billing for a trial subscription. Format:
-                /// accounts/{account_id}/billing_accounts/{billing_account_id}. This field is only relevant for
+                /// accounts/{account_id}/billingAccounts/{billing_account_id}. This field is only relevant for
                 /// multi-currency accounts. It should be left empty for single currency accounts.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("changeOfferPurchase.billingAccount", Google.Apis.Util.RequestParameterType.Query)]
@@ -3501,7 +3502,7 @@ namespace Google.Apis.Cloudchannel.v1
 
                 /// <summary>
                 /// Optional. Billing account that the result should be restricted to. Format:
-                /// accounts/{account_id}/billing_accounts/{billing_account_id}.
+                /// accounts/{account_id}/billingAccounts/{billing_account_id}.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("createEntitlementPurchase.billingAccount", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string CreateEntitlementPurchaseBillingAccount { get; set; }
@@ -4613,6 +4614,238 @@ namespace Google.Apis.Cloudchannel.v1
             }
         }
 
+        /// <summary>Gets the SkuGroups resource.</summary>
+        public virtual SkuGroupsResource SkuGroups { get; }
+
+        /// <summary>The "skuGroups" collection of methods.</summary>
+        public class SkuGroupsResource
+        {
+            private const string Resource = "skuGroups";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public SkuGroupsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                BillableSkus = new BillableSkusResource(service);
+            }
+
+            /// <summary>Gets the BillableSkus resource.</summary>
+            public virtual BillableSkusResource BillableSkus { get; }
+
+            /// <summary>The "billableSkus" collection of methods.</summary>
+            public class BillableSkusResource
+            {
+                private const string Resource = "billableSkus";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public BillableSkusResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Lists the Billable SKUs in a given SKU group. Possible error codes: PERMISSION_DENIED: If the
+                /// account making the request and the account being queried for are different, or the account doesn't
+                /// exist. INVALID_ARGUMENT: Missing or invalid required parameters in the request. INTERNAL: Any
+                /// non-user error related to technical issue in the backend. In this case, contact cloud channel
+                /// support. Return Value: If successful, the BillableSku resources. The data for each resource is
+                /// displayed in the ascending order of: * BillableSku.service_display_name *
+                /// BillableSku.sku_display_name If unsuccessful, returns an error.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. Resource name of the SKU group. Format: accounts/{account}/skuGroups/{sku_group}.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>
+                /// Lists the Billable SKUs in a given SKU group. Possible error codes: PERMISSION_DENIED: If the
+                /// account making the request and the account being queried for are different, or the account doesn't
+                /// exist. INVALID_ARGUMENT: Missing or invalid required parameters in the request. INTERNAL: Any
+                /// non-user error related to technical issue in the backend. In this case, contact cloud channel
+                /// support. Return Value: If successful, the BillableSku resources. The data for each resource is
+                /// displayed in the ascending order of: * BillableSku.service_display_name *
+                /// BillableSku.sku_display_name If unsuccessful, returns an error.
+                /// </summary>
+                public class ListRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ListSkuGroupBillableSkusResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the SKU group. Format: accounts/{account}/skuGroups/{sku_group}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum number of SKUs to return. The service may return fewer than this value. If
+                    /// unspecified, returns a maximum of 100000 SKUs. The maximum value is 100000; values above 100000
+                    /// will be coerced to 100000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A token identifying a page of results beyond the first page. Obtained through
+                    /// ListSkuGroupBillableSkus.next_page_token of the previous
+                    /// CloudChannelService.ListSkuGroupBillableSkus call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/billableSkus";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/skuGroups/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>
+            /// Lists the Rebilling supported SKU groups the account is authorized to sell. Reference:
+            /// https://cloud.google.com/skus/sku-groups Possible Error Codes: * PERMISSION_DENIED: If the account
+            /// making the request and the account being queried are different, or the account doesn't exist. *
+            /// INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud
+            /// Channel support. Return Value: If successful, the SkuGroup resources. The data for each resource is
+            /// displayed in the alphabetical order of SKU group display name. The data for each resource is displayed
+            /// in the ascending order of SkuGroup.display_name If unsuccessful, returns an error.
+            /// </summary>
+            /// <param name="parent">
+            /// Required. The resource name of the account from which to list SKU groups. Parent uses the format:
+            /// accounts/{account}.
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>
+            /// Lists the Rebilling supported SKU groups the account is authorized to sell. Reference:
+            /// https://cloud.google.com/skus/sku-groups Possible Error Codes: * PERMISSION_DENIED: If the account
+            /// making the request and the account being queried are different, or the account doesn't exist. *
+            /// INTERNAL: Any non-user error related to technical issues in the backend. In this case, contact Cloud
+            /// Channel support. Return Value: If successful, the SkuGroup resources. The data for each resource is
+            /// displayed in the alphabetical order of SKU group display name. The data for each resource is displayed
+            /// in the ascending order of SkuGroup.display_name If unsuccessful, returns an error.
+            /// </summary>
+            public class ListRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1ListSkuGroupsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The resource name of the account from which to list SKU groups. Parent uses the format:
+                /// accounts/{account}.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of SKU groups to return. The service may return fewer than this value.
+                /// If unspecified, returns a maximum of 1000 SKU groups. The maximum value is 1000; values above 1000
+                /// will be coerced to 1000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A token identifying a page of results beyond the first page. Obtained through
+                /// ListSkuGroups.next_page_token of the previous CloudChannelService.ListSkuGroups call.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/skuGroups";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
         /// <summary>
         /// Confirms the existence of Cloud Identity accounts based on the domain and if the Cloud Identity accounts are
         /// owned by the reseller. Possible error codes: * PERMISSION_DENIED: The reseller account making the request is
@@ -5614,6 +5847,34 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// <summary>The name of the base entitlement, for which this entitlement is an add-on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("baseEntitlement")]
         public virtual string BaseEntitlement { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the Billable SKU information.</summary>
+    public class GoogleCloudChannelV1BillableSku : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Resource name of Service which contains Repricing SKU. Format: services/{service}. Example:
+        /// "services/B7D9-FDCB-15D8".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>Unique human readable name for the Service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceDisplayName")]
+        public virtual string ServiceDisplayName { get; set; }
+
+        /// <summary>
+        /// Resource name of Billable SKU. Format: billableSkus/{sku}. Example: billableSkus/6E1B-6634-470F".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sku")]
+        public virtual string Sku { get; set; }
+
+        /// <summary>Unique human readable name for the SKU.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skuDisplayName")]
+        public virtual string SkuDisplayName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6721,6 +6982,41 @@ namespace Google.Apis.Cloudchannel.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListSkuGroupBillableSkus.</summary>
+    public class GoogleCloudChannelV1ListSkuGroupBillableSkusResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of billable SKUs in the requested SKU group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billableSkus")]
+        public virtual System.Collections.Generic.IList<GoogleCloudChannelV1BillableSku> BillableSkus { get; set; }
+
+        /// <summary>
+        /// A token to retrieve the next page of results. Pass to ListSkuGroupBillableSkus.page_token to obtain that
+        /// page.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for ListSkuGroups.</summary>
+    public class GoogleCloudChannelV1ListSkuGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token to retrieve the next page of results. Pass to ListSkuGroups.page_token to obtain that page.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of SKU groups requested.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skuGroups")]
+        public virtual System.Collections.Generic.IList<GoogleCloudChannelV1SkuGroup> SkuGroups { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ListSkus.</summary>
     public class GoogleCloudChannelV1ListSkusResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6763,7 +7059,7 @@ namespace Google.Apis.Cloudchannel.v1.Data
     {
         /// <summary>
         /// Optional. The Billing Account to look up Offers for. Format:
-        /// accounts/{account_id}/billing_accounts/{billing_account_id}. This field is only relevant for multi-currency
+        /// accounts/{account_id}/billingAccounts/{billing_account_id}. This field is only relevant for multi-currency
         /// accounts. It should be left empty for single currency accounts.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingAccount")]
@@ -7674,6 +7970,24 @@ namespace Google.Apis.Cloudchannel.v1.Data
         /// <summary>Product the SKU is associated with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("product")]
         public virtual GoogleCloudChannelV1Product Product { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the SKU group information.</summary>
+    public class GoogleCloudChannelV1SkuGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unique human readable identifier for the SKU group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Resource name of SKU group. Format: accounts/{account}/skuGroups/{sku_group}. Example:
+        /// "accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
