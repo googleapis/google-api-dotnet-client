@@ -14,7 +14,10 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Json;
 using Google.Apis.Testing;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -27,6 +30,8 @@ namespace Google.Apis.Util
     /// <summary>A utility class which contains helper methods and extension methods.</summary>
     public static class Utilities
     {
+        private static readonly JsonSerializerSettings s_serializerSettingsWithoutDateParsing = new JsonSerializerSettings { DateParseHandling = DateParseHandling.None };
+
         /// <summary>Returns the version of the core library.</summary>
         [VisibleForTestOnly]
         public static string GetLibraryVersion()
@@ -227,5 +232,44 @@ namespace Google.Apis.Util
             // While FFF sounds like it should work, we really want to produce no subsecond parts or 3 digits.
             : date.Value.Millisecond == 0 ? date.Value.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss'Z'")
             : date.Value.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss.fff'Z'");
+
+        /// <summary>
+        /// Deserializes the given raw value to an object using <see cref="NewtonsoftJsonSerializer.Instance"/>,
+        /// as if it were a JSON string value.
+        /// </summary>
+        /// <param name="rawValue">The string value to deserialize. May be null, in which case null is returned.</param>
+        /// <returns>The deserialized value.</returns>
+        public static object DeserializeForGoogleFormat(string rawValue)
+        {
+            if (rawValue is null)
+            {
+                return null;
+            }
+            // We need to encode the string as JSON - add quotes round it, escape backslashes etc.
+            string json = JsonConvert.SerializeObject(rawValue);
+            return NewtonsoftJsonSerializer.Instance.Deserialize<object>(json);
+        }
+
+        /// <summary>
+        /// Serializes the given value using <see cref="NewtonsoftJsonSerializer.Instance"/>.
+        /// </summary>
+        /// <param name="value">The value to serialize. May be null, in which case null is returned.</param>
+        /// <returns>The string representation of the object.</returns>
+        /// <exception cref="ArgumentException">The value does not serialize to a JSON string.</exception>
+        public static string SerializeForGoogleFormat(object value)
+        {
+            if (value is null)
+            {
+                return null;
+            }
+            var json = NewtonsoftJsonSerializer.Instance.Serialize(value);
+            if (json is null || json.Length < 2 || !json.StartsWith("\"") || !json.EndsWith("\""))
+            {
+                throw new ArgumentException("Value did not serialize to a JSON string.");
+            }
+            // Okay, so we have a JSON string. Now we need to parse it to retrieve the actual string value,
+            // with no conversion to DateTime etc.
+            return JsonConvert.DeserializeObject<string>(json, s_serializerSettingsWithoutDateParsing);
+        }
     }
 }
