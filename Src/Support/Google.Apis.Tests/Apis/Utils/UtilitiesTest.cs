@@ -169,5 +169,54 @@ namespace Google.Apis.Tests.Apis.Util
                 Thread.CurrentThread.CurrentCulture = original;
             }
         }
+
+        [Fact]
+        public void SerializeForGoogleFormat_Null() =>
+            Assert.Null(Utilities.SerializeForGoogleFormat(null));
+
+        [Theory]
+        [InlineData("simple")]
+        [InlineData("with \"quotes\"")]
+        [InlineData("with emoji \U0001F604")]
+        [InlineData("with backslash \\")]
+        [InlineData("2023-06-15T10:52:00+00:00")] // DeserializeForGoogleFormat would return a DateTime
+        public void SerializeForGoogleFormat_String(string input) =>
+            Assert.Equal(input, Utilities.SerializeForGoogleFormat(input));
+
+        [Fact]
+        public void SerializeForGoogleFormat_DateTime() =>
+            Assert.Equal("2023-06-15T10:52:00.000Z", Utilities.SerializeForGoogleFormat(new DateTime(2023, 6, 15, 10, 52, 0, DateTimeKind.Utc)));
+
+        [Fact]
+        public void SerializeForGoogleFormat_DateTimeOffset_Utc() =>
+            Assert.Equal("2023-06-15T10:52:00+00:00", Utilities.SerializeForGoogleFormat(new DateTimeOffset(2023, 6, 15, 10, 52, 0, TimeSpan.Zero)));
+
+        [Fact]
+        public void SerializeForGoogleFormat_DateTimeOffset_NonUtc() =>
+            Assert.Equal("2023-06-15T10:52:00+01:00", Utilities.SerializeForGoogleFormat(new DateTimeOffset(2023, 6, 15, 10, 52, 0, TimeSpan.FromHours(1))));
+
+        [Fact]
+        public void DeserializeForGoogleFormat_Null() =>
+            Assert.Null(Utilities.DeserializeForGoogleFormat(null));
+
+        [Theory]
+        [InlineData("simple")]
+        [InlineData("with \"quotes\"")]
+        [InlineData("with emoji \U0001F604")]
+        [InlineData("with backslash \\")]
+        public void DeserializeForGoogleFormat_String(string input) =>
+            Assert.Equal(input, Utilities.DeserializeForGoogleFormat(input));
+
+        [Theory]
+        [InlineData("2023-06-15T10:52:00.000Z")]
+        [InlineData("2023-06-15T10:52:00Z")]
+        public void DeserializeForGoogleFormat_DateTime(string text)
+        {
+            var result = Utilities.DeserializeForGoogleFormat(text);
+            var dt = Assert.IsAssignableFrom<DateTime>(result);
+            Assert.Equal(new DateTime(2023, 6, 15, 10, 52, 0, DateTimeKind.Utc), dt);
+            // DateTime.Equals doesn't take the kind into account.
+            Assert.Equal(DateTimeKind.Utc, dt.Kind);
+        }
     }
 }
