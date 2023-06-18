@@ -16,8 +16,7 @@ limitations under the License.
 
 using System;
 
-using Google.Apis.Requests;
-using Google.Apis.Requests.Parameters;
+// FIXME: Write code to create an HttpRequestMessage for this.
 
 namespace Google.Apis.Auth.OAuth2.Requests
 {
@@ -35,7 +34,6 @@ namespace Google.Apis.Auth.OAuth2.Requests
         }
 
         /// <summary>Gets or sets the token to revoke.</summary>
-        [Google.Apis.Util.RequestParameterAttribute("token")]
         public string Token { get; set; }
 
         public GoogleRevokeTokenRequest(Uri revokeTokenUrl)
@@ -46,12 +44,8 @@ namespace Google.Apis.Auth.OAuth2.Requests
         /// <summary>Creates a <see cref="System.Uri"/> which is used to request the authorization code.</summary>
         public Uri Build()
         {
-            var builder = new RequestBuilder()
-            {
-                BaseUri = revokeTokenUrl
-            };
-            ParameterUtils.InitParameters(builder, this);
-            return builder.BuildUri();
+            // FIXME: Implement the code without using common RequestBuilder stuff.
+            return null;
         }
     }
 }

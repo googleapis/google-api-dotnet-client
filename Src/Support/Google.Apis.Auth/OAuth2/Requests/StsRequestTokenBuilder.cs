@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using Google.Apis.Json;
+using Google.Apis.Auth.ExistingDependencies;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -88,7 +88,7 @@ namespace Google.Apis.Auth.OAuth2.Requests
                 : null;
 
             var options = (authenticationHeader is null && WorkforcePoolUserProject is string)
-                ? NewtonsoftJsonSerializer.Instance.Serialize(new { userProject = WorkforcePoolUserProject })
+                ? ReplacementSerializer.Serialize(new { userProject = WorkforcePoolUserProject })
                 : null;
 
             var scope = Scopes?.Any() == true ? string.Join(" ", Scopes) : null;

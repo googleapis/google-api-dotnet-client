@@ -327,7 +327,7 @@ namespace Google.Apis.Auth.OAuth2
         /// Creates a copy of this credential with the specified HTTP client factory.
         /// </summary>
         /// <param name="factory">The HTTP client factory to be used by the new credential.
-        /// May be null, in which case the default <see cref="HttpClientFactory"/> will be used.</param>
+        /// May be null, in which case the default <see cref="IHttpClientFactory"/> will be used.</param>
         public virtual GoogleCredential CreateWithHttpClientFactory(IHttpClientFactory factory) =>
             new GoogleCredential(credential.WithHttpClientFactory(factory));
 

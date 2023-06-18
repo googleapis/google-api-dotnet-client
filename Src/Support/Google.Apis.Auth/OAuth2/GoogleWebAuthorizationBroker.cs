@@ -21,6 +21,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Google.Apis.Auth.OAuth2.Flows;
+using Google.Apis.Util;
 using Google.Apis.Util.Store;
 
 namespace Google.Apis.Auth.OAuth2
@@ -34,22 +35,10 @@ namespace Google.Apis.Auth.OAuth2
     /// </remarks>
     public class GoogleWebAuthorizationBroker
     {
-        // It's unforunate this is a public field. But it cannot be changed due to backward compatibility.
-        /// <summary>The folder which is used by the <see cref="Google.Apis.Util.Store.FileDataStore"/>.</summary>
-        /// <remarks>
-        /// The reason that this is not 'private const' is that a user can change it and store the credentials in a
-        /// different location.
-        /// </remarks>
-        public static string Folder = "Google.Apis.Auth";
-
         /// <summary>
         /// Asynchronously authorizes the specified user.
         /// Requires user interaction; see <see cref="GoogleWebAuthorizationBroker"/> remarks for more details.
         /// </summary>
-        /// <remarks>
-        /// In case no data store is specified, <see cref="Google.Apis.Util.Store.FileDataStore"/> will be used by 
-        /// default.
-        /// </remarks>
         /// <param name="clientSecrets">The client secrets.</param>
         /// <param name="scopes">
         /// The scopes which indicate the Google API access your application is requesting.
@@ -75,10 +64,6 @@ namespace Google.Apis.Auth.OAuth2
         /// Asynchronously authorizes the specified user.
         /// Requires user interaction; see <see cref="GoogleWebAuthorizationBroker"/> remarks for more details.
         /// </summary>
-        /// <remarks>
-        /// In case no data store is specified, <see cref="Google.Apis.Util.Store.FileDataStore"/> will be used by 
-        /// default.
-        /// </remarks>
         /// <param name="clientSecretsStream">
         /// The client secrets stream. The authorization code flow constructor is responsible for disposing the stream.
         /// </param>
@@ -87,12 +72,12 @@ namespace Google.Apis.Auth.OAuth2
         /// </param>
         /// <param name="user">The user to authorize.</param>
         /// <param name="taskCancellationToken">Cancellation token to cancel an operation.</param>
-        /// <param name="dataStore">The data store, if not specified a file data store will be used.</param>
+        /// <param name="dataStore">The data store.</param>
         /// <param name="codeReceiver">The code receiver, if not specified a local server code receiver will be used.</param>
         /// <returns>User credential.</returns>
         public static async Task<UserCredential> AuthorizeAsync(Stream clientSecretsStream,
             IEnumerable<string> scopes, string user, CancellationToken taskCancellationToken,
-            IDataStore dataStore = null, ICodeReceiver codeReceiver = null)
+            IDataStore dataStore, ICodeReceiver codeReceiver = null)
         {
             var initializer = new GoogleAuthorizationCodeFlow.Initializer
             {
@@ -136,16 +121,15 @@ namespace Google.Apis.Auth.OAuth2
         /// </param>
         /// <param name="user">The user to authorize.</param>
         /// <param name="taskCancellationToken">Cancellation token to cancel an operation.</param>
-        /// <param name="dataStore">The data store, if not specified a file data store will be used.</param>
+        /// <param name="dataStore">The data store. Must not be null.</param>
         /// <param name="codeReceiver">The code receiver, if not specified a local server code receiver will be used.</param>
         /// <returns>User credential.</returns>
         public static async Task<UserCredential> AuthorizeAsync(
             GoogleAuthorizationCodeFlow.Initializer initializer, IEnumerable<string> scopes, string user,
-            CancellationToken taskCancellationToken, IDataStore dataStore = null,
-            ICodeReceiver codeReceiver = null)
+            CancellationToken taskCancellationToken, IDataStore dataStore, ICodeReceiver codeReceiver = null)
         {
             initializer.Scopes = scopes;
-            initializer.DataStore = dataStore ?? new FileDataStore(Folder);
+            initializer.DataStore = dataStore.ThrowIfNull(nameof(dataStore));
 
             var flow = new GoogleAuthorizationCodeFlow(initializer);
             codeReceiver = codeReceiver ?? new LocalServerCodeReceiver();

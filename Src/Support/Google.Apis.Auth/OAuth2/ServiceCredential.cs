@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Auth.ExistingDependencies;
 using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Http;
 using Google.Apis.Logging;
@@ -215,7 +216,7 @@ namespace Google.Apis.Auth.OAuth2
             DefaultExponentialBackOffPolicy = initializer.DefaultExponentialBackOffPolicy;
             HttpClientInitializers = new List<IConfigurableHttpClientInitializer>(initializer.HttpClientInitializers).AsReadOnly();
 
-            HttpClientFactory = initializer.HttpClientFactory ?? new HttpClientFactory();
+            HttpClientFactory = initializer.HttpClientFactory ?? new AuthHttpClientFactory();
             HttpClient = HttpClientFactory.CreateHttpClient(BuildCreateHttpClientArgs());
             _refreshManager = new TokenRefreshManager(RequestAccessTokenAsync, Clock, Logger);
 

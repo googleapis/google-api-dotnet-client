@@ -14,7 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using Google.Apis.Util;
 using System.Net.Http.Headers;
 
 namespace Google.Apis.Auth.OAuth2.Requests
@@ -45,47 +44,40 @@ namespace Google.Apis.Auth.OAuth2.Requests
         /// Gets the grant type for this request.
         /// Only <code>urn:ietf:params:oauth:grant-type:token-exchange</code> is currently supported.
         /// </summary>
-        [RequestParameter("grant_type")]
         public string GrantType { get; }
 
         /// <summary>
         /// The audience for which the requested token is intended. For instance:
         /// "//iam.googleapis.com/projects/my-project-id/locations/global/workloadIdentityPools/my-pool-id/providers/my-provider-id"
         /// </summary>
-        [RequestParameter("audience")]
         public string Audience { get; }
 
         /// <summary>
         /// The space-delimited list of desired scopes for the requested token as defined in
         /// http://tools.ietf.org/html/rfc6749#section-3.3. 
         /// </summary>
-        [RequestParameter("scope")]
         public string Scope { get; }
 
         /// <summary>
         /// The type of the requested security token.
         /// Only <code>urn:ietf:params:oauth:token-type:access_token</code> is currently supported.
         /// </summary>
-        [RequestParameter("requested_token_type")]
         public string RequestedTokenType { get; }
 
         /// <summary>
         /// In terms of Google 3PI support, this is the 3PI credential.
         /// </summary>
-        [RequestParameter("subject_token")]
         public string SubjectToken { get; }
 
         /// <summary>
         /// The subject token type.
         /// </summary>
-        [RequestParameter("subject_token_type")]
         public string SubjectTokenType { get; }
 
         /// <summary>
         /// Google specific STS token request options.
         /// May be null.
         /// </summary>
-        [RequestParameter("options")]
         public string GoogleOptions { get; }
 
         /// <summary>
@@ -93,5 +85,7 @@ namespace Google.Apis.Auth.OAuth2.Requests
         /// May be null.
         /// </summary>
         public AuthenticationHeaderValue AuthenticationHeader { get; }
+
+        // FIXME: Probably hand-write code to create an appropriate HttpRequestMessage.
     }
 }

@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using Google.Apis.Json;
+using Google.Apis.Auth.ExistingDependencies;
 using Google.Apis.Util;
 using System;
 using System.Security.Cryptography;
@@ -76,8 +76,8 @@ namespace Google.Apis.Auth
             var encodedPayload = parts[1];
 
             // Decode the three parts of the JWT: header.payload.signature
-            var headerValue = NewtonsoftJsonSerializer.Instance.Deserialize<TJwsHeader>(TokenEncodingHelpers.Base64UrlToString(encodedHeader));
-            var payloadValue = NewtonsoftJsonSerializer.Instance.Deserialize<TJwsPayload>(TokenEncodingHelpers.Base64UrlToString(encodedPayload));
+            var headerValue = ReplacementSerializer.Deserialize<TJwsHeader>(TokenEncodingHelpers.Base64UrlToString(encodedHeader));
+            var payloadValue = ReplacementSerializer.Deserialize<TJwsPayload>(TokenEncodingHelpers.Base64UrlToString(encodedPayload));
             var signature = TokenEncodingHelpers.Base64UrlDecode(parts[2]);
 
             return new SignedToken<TJwsHeader, TJwsPayload>(encodedHeader, encodedPayload, headerValue, payloadValue, signature);

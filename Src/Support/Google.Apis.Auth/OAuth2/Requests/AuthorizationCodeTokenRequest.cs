@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
+// FIXME: Write code to create an HttpRequestMessage for this.
 
 namespace Google.Apis.Auth.OAuth2.Requests
 {
@@ -25,13 +25,11 @@ namespace Google.Apis.Auth.OAuth2.Requests
     public class AuthorizationCodeTokenRequest : TokenRequest
     {
         /// <summary>Gets or sets the authorization code received from the authorization server.</summary>
-        [Google.Apis.Util.RequestParameterAttribute("code")]
         public string Code { get; set; }
 
         /// <summary>
         /// Gets or sets the redirect URI parameter matching the redirect URI parameter in the authorization request.
         /// </summary>
-        [Google.Apis.Util.RequestParameterAttribute("redirect_uri")]
         public string RedirectUri { get; set; }
 
         /// <summary>

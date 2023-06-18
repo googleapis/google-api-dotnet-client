@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Auth.ExistingDependencies;
 using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Http;
@@ -203,7 +204,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
 
             // Set the HTTP client.
             DefaultExponentialBackOffPolicy = initializer.DefaultExponentialBackOffPolicy;
-            HttpClientFactory = initializer.HttpClientFactory ?? new HttpClientFactory();
+            HttpClientFactory = initializer.HttpClientFactory ?? new AuthHttpClientFactory();
 
             var httpArgs = new CreateHttpClientArgs();
             // Add exponential back-off initializer if necessary.
