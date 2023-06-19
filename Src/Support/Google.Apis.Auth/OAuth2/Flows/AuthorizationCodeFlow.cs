@@ -263,13 +263,28 @@ namespace Google.Apis.Auth.OAuth2.Flows
         public async Task<TokenResponse> ExchangeCodeForTokenAsync(string userId, string code, string redirectUri,
             CancellationToken taskCancellationToken)
         {
-            var authorizationCodeTokenReq = new AuthorizationCodeTokenRequest
+            var authorizationCodeTokenReq = CreateAuthorizationCodeTokenRequest(userId, code, redirectUri);
+
+            return await ExchangeCodeForTokenAsync(userId, authorizationCodeTokenReq, taskCancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Creates a <see cref="AuthorizationCodeTokenRequest"/> for the given parameters.
+        /// </summary>
+        protected internal AuthorizationCodeTokenRequest CreateAuthorizationCodeTokenRequest(string userId, string code, string redirectUri) =>
+            new AuthorizationCodeTokenRequest
             {
                 Scope = Scopes == null ? null : string.Join(" ", Scopes),
                 RedirectUri = redirectUri,
                 Code = code,
             };
 
+        /// <summary>
+        /// Executes <paramref name="authorizationCodeTokenReq"/> and stores and returns the received token.
+        /// </summary>
+        protected internal async Task<TokenResponse> ExchangeCodeForTokenAsync(string userId, AuthorizationCodeTokenRequest authorizationCodeTokenReq,
+            CancellationToken taskCancellationToken)
+        {
             var token = await FetchTokenAsync(userId, authorizationCodeTokenReq, taskCancellationToken)
                 .ConfigureAwait(false);
             await StoreTokenAsync(userId, token, taskCancellationToken).ConfigureAwait(false);

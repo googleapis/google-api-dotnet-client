@@ -57,7 +57,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
         /// <summary>Creates an authorization code request with the specified redirect URI.</summary>
         AuthorizationCodeRequestUrl CreateAuthorizationCodeRequest(string redirectUri);
 
-        /// <summary>Asynchronously exchanges code with a token.</summary>
+        /// <summary>Asynchronously exchanges an authorization code for an access token.</summary>
         /// <param name="userId">User identifier.</param>
         /// <param name="code">Authorization code received from the authorization server.</param>
         /// <param name="redirectUri">Redirect URI which is used in the token request.</param>
