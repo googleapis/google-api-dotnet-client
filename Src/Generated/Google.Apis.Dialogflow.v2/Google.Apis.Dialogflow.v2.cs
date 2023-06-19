@@ -24693,7 +24693,7 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// automatic reload for documents sourced from a public url, see `source` field for the source types. Reload
         /// status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If
         /// a reload fails with internal errors, the system will try to reload the document on the next day. If a reload
-        /// fails with non-retriable errors (e.g. PERMISION_DENIED), the system will not try to reload the document
+        /// fails with non-retriable errors (e.g. PERMISSION_DENIED), the system will not try to reload the document
         /// anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the
         /// errors.
         /// </summary>
@@ -25828,8 +25828,8 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual GoogleCloudDialogflowV2ImportDocumentTemplate DocumentTemplate { get; set; }
 
         /// <summary>
-        /// The Google Cloud Storage location for the documents. The path can include a wildcard. These URIs may have
-        /// the forms `gs:///`. `gs:////*.`.
+        /// Optional. The Google Cloud Storage location for the documents. The path can include a wildcard. These URIs
+        /// may have the forms `gs:///`. `gs:////*.`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GoogleCloudDialogflowV2GcsSources GcsSource { get; set; }
@@ -30746,6 +30746,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>SuggestDialogflowAssistsResponse if request is for DIALOGFLOW_ASSIST.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestDialogflowAssistsResponse")]
         public virtual GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse SuggestDialogflowAssistsResponse { get; set; }
+
+        /// <summary>SuggestDialogflowAssistsResponse if request is for ENTITY_EXTRACTION.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestEntityExtractionResponse")]
+        public virtual GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse SuggestEntityExtractionResponse { get; set; }
 
         /// <summary>SuggestFaqAnswersResponse if request is for FAQ_ANSWER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestFaqAnswersResponse")]

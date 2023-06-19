@@ -284,8 +284,11 @@ namespace Google.Apis.CloudSupport.v2beta
 
         /// <summary>
         /// Retrieve valid classifications to be used when creating a support case. The classications are hierarchical,
-        /// with each classification containing all levels of the hierarchy, separated by " &amp;gt; ". For example
-        /// "Technical Issue &amp;gt; Compute &amp;gt; Compute Engine".
+        /// with each classification containing all levels of the hierarchy, separated by `" &amp;gt; "`. For example
+        /// `"Technical Issue &amp;gt; Compute &amp;gt; Compute Engine"`. Classification IDs returned by
+        /// `caseClassifications.search` are guaranteed to be valid for at least 6 months. If a given classification is
+        /// deactiveated, it will immediately stop being returned. After 6 months, `case.create` requests using the
+        /// classification ID will fail.
         /// </summary>
         public virtual SearchRequest Search()
         {
@@ -294,8 +297,11 @@ namespace Google.Apis.CloudSupport.v2beta
 
         /// <summary>
         /// Retrieve valid classifications to be used when creating a support case. The classications are hierarchical,
-        /// with each classification containing all levels of the hierarchy, separated by " &amp;gt; ". For example
-        /// "Technical Issue &amp;gt; Compute &amp;gt; Compute Engine".
+        /// with each classification containing all levels of the hierarchy, separated by `" &amp;gt; "`. For example
+        /// `"Technical Issue &amp;gt; Compute &amp;gt; Compute Engine"`. Classification IDs returned by
+        /// `caseClassifications.search` are guaranteed to be valid for at least 6 months. If a given classification is
+        /// deactiveated, it will immediately stop being returned. After 6 months, `case.create` requests using the
+        /// classification ID will fail.
         /// </summary>
         public class SearchRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2beta.Data.SearchCaseClassificationsResponse>
         {
@@ -1655,7 +1661,10 @@ namespace Google.Apis.CloudSupport.v2beta.Data
 
         /// <summary>
         /// The unique ID for a classification. Must be specified for case creation. To retrieve valid classification
-        /// IDs for case creation, use `caseClassifications.search`.
+        /// IDs for case creation, use `caseClassifications.search`. Classification IDs returned by
+        /// `caseClassifications.search` are guaranteed to be valid for at least 6 months. If a given classification is
+        /// deactiveated, it will immediately stop being returned. After 6 months, `case.create` requests using the
+        /// classification ID will fail.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }

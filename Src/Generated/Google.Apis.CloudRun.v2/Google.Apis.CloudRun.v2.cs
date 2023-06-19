@@ -2773,8 +2773,7 @@ namespace Google.Apis.CloudRun.v2.Data
         /// The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here
         /// and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type:
         /// https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which
-        /// means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir
-        /// +optional
+        /// means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeLimit")]
         public virtual string SizeLimit { get; set; }

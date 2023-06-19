@@ -19634,6 +19634,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("suggestDialogflowAssistsResponse")]
         public virtual GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse SuggestDialogflowAssistsResponse { get; set; }
 
+        /// <summary>SuggestDialogflowAssistsResponse if request is for ENTITY_EXTRACTION.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestEntityExtractionResponse")]
+        public virtual GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse SuggestEntityExtractionResponse { get; set; }
+
         /// <summary>SuggestFaqAnswersResponse if request is for FAQ_ANSWER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestFaqAnswersResponse")]
         public virtual GoogleCloudDialogflowV2beta1SuggestFaqAnswersResponse SuggestFaqAnswersResponse { get; set; }

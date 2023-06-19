@@ -1848,8 +1848,8 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
 
         /// <summary>
         /// Identifies whether the user has requested cancellation of the operation. Operations that have successfully
-        /// been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// `Code.CANCELLED`.
+        /// been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of 1,
+        /// corresponding to `Code.CANCELLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
         public virtual System.Nullable<bool> CancelRequested { get; set; }
@@ -1956,8 +1956,8 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
 
         /// <summary>
         /// Identifies whether the user has requested cancellation of the operation. Operations that have successfully
-        /// been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// `Code.CANCELLED`.
+        /// been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of 1,
+        /// corresponding to `Code.CANCELLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
         public virtual System.Nullable<bool> CancelRequested { get; set; }
@@ -2064,8 +2064,8 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
 
         /// <summary>
         /// Identifies whether the user has requested cancellation of the operation. Operations that have successfully
-        /// been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// `Code.CANCELLED`.
+        /// been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of 1,
+        /// corresponding to `Code.CANCELLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
         public virtual System.Nullable<bool> CancelRequested { get; set; }

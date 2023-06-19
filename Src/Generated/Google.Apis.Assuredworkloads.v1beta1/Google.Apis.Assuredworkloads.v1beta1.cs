@@ -1517,7 +1517,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
 }
 namespace Google.Apis.Assuredworkloads.v1beta1.Data
 {
-    /// <summary>Request for acknowledging the violation Next Id: 4</summary>
+    /// <summary>Request for acknowledging the violation Next Id: 5</summary>
     public class GoogleCloudAssuredworkloadsV1beta1AcknowledgeViolationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. Business justification explaining the need for violation acknowledgement</summary>
@@ -1993,11 +1993,11 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
     /// <summary>Represents the Compliance Status of this workload</summary>
     public class GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Count of active Violations which are acknowledged in the Workload.</summary>
+        /// <summary>Number of current orgPolicy violations which are acknowledged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acknowledgedViolationCount")]
         public virtual System.Nullable<int> AcknowledgedViolationCount { get; set; }
 
-        /// <summary>Count of active Violations which haven't been acknowledged.</summary>
+        /// <summary>Number of current orgPolicy violations which are not acknowledged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeViolationCount")]
         public virtual System.Nullable<int> ActiveViolationCount { get; set; }
 

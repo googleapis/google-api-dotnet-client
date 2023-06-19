@@ -25205,7 +25205,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     public class GoogleCloudDialogflowV2beta1BatchCreateMessagesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. A maximum of 1000 Messages can be created in a batch. CreateMessageRequest.message.send_time is
+        /// Required. A maximum of 300 messages can be created in a batch. CreateMessageRequest.message.send_time is
         /// required. All created messages will have identical Message.create_time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
@@ -26909,8 +26909,8 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         public virtual GoogleCloudDialogflowV2beta1ImportDocumentTemplate DocumentTemplate { get; set; }
 
         /// <summary>
-        /// The Google Cloud Storage location for the documents. The path can include a wildcard. These URIs may have
-        /// the forms `gs:///`. `gs:////*.`.
+        /// Optional. The Google Cloud Storage location for the documents. The path can include a wildcard. These URIs
+        /// may have the forms `gs:///`. `gs:////*.`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GoogleCloudDialogflowV2beta1GcsSources GcsSource { get; set; }
@@ -29950,6 +29950,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// <summary>SuggestDialogflowAssistsResponse if request is for DIALOGFLOW_ASSIST.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestDialogflowAssistsResponse")]
         public virtual GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse SuggestDialogflowAssistsResponse { get; set; }
+
+        /// <summary>SuggestDialogflowAssistsResponse if request is for ENTITY_EXTRACTION.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestEntityExtractionResponse")]
+        public virtual GoogleCloudDialogflowV2beta1SuggestDialogflowAssistsResponse SuggestEntityExtractionResponse { get; set; }
 
         /// <summary>SuggestFaqAnswersResponse if request is for FAQ_ANSWER.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestFaqAnswersResponse")]

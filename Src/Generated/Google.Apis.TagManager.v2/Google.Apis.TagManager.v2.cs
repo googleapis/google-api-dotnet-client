@@ -10152,15 +10152,25 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
         public virtual string Fingerprint { get; set; }
 
-        /// <summary>Transformation display name.</summary>
+        /// <summary>
+        /// Transformation display name. @mutable tagmanager.accounts.containers.workspaces.transformations.create
+        /// @mutable tagmanager.accounts.containers.workspaces.transformations.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>User notes on how to apply this transformation in the container.</summary>
+        /// <summary>
+        /// User notes on how to apply this transformation in the container. @mutable
+        /// tagmanager.accounts.containers.workspaces.transformations.create @mutable
+        /// tagmanager.accounts.containers.workspaces.transformations.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notes")]
         public virtual string Notes { get; set; }
 
-        /// <summary>The transformation's parameters.</summary>
+        /// <summary>
+        /// The transformation's parameters. @mutable tagmanager.accounts.containers.workspaces.transformations.create
+        /// @mutable tagmanager.accounts.containers.workspaces.transformations.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
         public virtual System.Collections.Generic.IList<Parameter> Parameter { get; set; }
 
@@ -10180,7 +10190,10 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transformationId")]
         public virtual string TransformationId { get; set; }
 
-        /// <summary>Transformation type.</summary>
+        /// <summary>
+        /// Transformation type. @mutable tagmanager.accounts.containers.workspaces.transformations.create @mutable
+        /// tagmanager.accounts.containers.workspaces.transformations.update
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 

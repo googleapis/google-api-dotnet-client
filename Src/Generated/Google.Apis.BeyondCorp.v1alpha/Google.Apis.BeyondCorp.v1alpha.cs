@@ -435,6 +435,79 @@ namespace Google.Apis.BeyondCorp.v1alpha
                             }
                         }
 
+                        /// <summary>Deletes an existing BrowserDlpRule.</summary>
+                        /// <param name="name">
+                        /// Required. The resource name of the BrowserDlpRule using the form:
+                        /// `organizations/{organization_id}/locations/global/partnerTenants/{partner_tenant_id}/browserDlpRules/{browser_dlp_rule_id}`
+                        /// </param>
+                        public virtual DeleteRequest Delete(string name)
+                        {
+                            return new DeleteRequest(service, name);
+                        }
+
+                        /// <summary>Deletes an existing BrowserDlpRule.</summary>
+                        public class DeleteRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Delete request.</summary>
+                            public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the BrowserDlpRule using the form:
+                            /// `organizations/{organization_id}/locations/global/partnerTenants/{partner_tenant_id}/browserDlpRules/{browser_dlp_rule_id}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// Optional. An optional request ID to identify requests. Specify a unique request ID so
+                            /// that if you must retry your request, the server will know to ignore the request if it
+                            /// has already been completed. The server will guarantee that for at least 60 minutes after
+                            /// the first request. For example, consider a situation where you make an initial request
+                            /// and the request times out. If you make the request again with the same request ID, the
+                            /// server can check if original operation with the same request ID was received, and if so,
+                            /// will ignore the second request. This prevents clients from accidentally creating
+                            /// duplicate commitments. The request ID must be a valid UUID with the exception that zero
+                            /// UUID is not supported (00000000-0000-0000-0000-000000000000).
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string RequestId { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "delete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "DELETE";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+name}";
+
+                            /// <summary>Initializes Delete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^organizations/[^/]+/locations/global/partnerTenants/[^/]+/browserDlpRules/[^/]+$",
+                                });
+                                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "requestId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
                         /// <summary>Gets details of a single BrowserDlpRule.</summary>
                         /// <param name="name">
                         /// Required. The resource name of the BrowserDlpRule using the form:
@@ -559,6 +632,103 @@ namespace Google.Apis.BeyondCorp.v1alpha
                                 RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "options.requestedPolicyVersion",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Update an existing BrowserDlpRule in a given organization and PartnerTenant.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Output only. Unique resource name. The name is ignored when creating BrowserDlpRule.
+                        /// </param>
+                        public virtual PatchRequest Patch(Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpPartnerservicesV1alphaBrowserDlpRule body, string name)
+                        {
+                            return new PatchRequest(service, body, name);
+                        }
+
+                        /// <summary>
+                        /// Update an existing BrowserDlpRule in a given organization and PartnerTenant.
+                        /// </summary>
+                        public class PatchRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Patch request.</summary>
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpPartnerservicesV1alphaBrowserDlpRule body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Output only. Unique resource name. The name is ignored when creating BrowserDlpRule.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// Optional. An optional request ID to identify requests. Specify a unique request ID so
+                            /// that if you must retry your request, the server will know to ignore the request if it
+                            /// has already been completed. The server will guarantee that for at least 60 minutes since
+                            /// the first request. For example, consider a situation where you make an initial request
+                            /// and the request times out. If you make the request again with the same request ID, the
+                            /// server can check if original operation with the same request ID was received, and if so,
+                            /// will ignore the second request. This prevents clients from accidentally creating
+                            /// duplicate commitments. The request ID must be a valid UUID with the exception that zero
+                            /// UUID is not supported (00000000-0000-0000-0000-000000000000).
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string RequestId { get; set; }
+
+                            /// <summary>
+                            /// Required. Supported fields include: rule_setting.value.*, group.id/group.email.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpPartnerservicesV1alphaBrowserDlpRule Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "patch";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PATCH";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+name}";
+
+                            /// <summary>Initializes Patch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^organizations/[^/]+/locations/global/partnerTenants/[^/]+/browserDlpRules/[^/]+$",
+                                });
+                                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "requestId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1001,6 +1171,147 @@ namespace Google.Apis.BeyondCorp.v1alpha
                                 RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "options.requestedPolicyVersion",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Lists ProxyConfigs for PartnerTenant in a given organization.</summary>
+                        /// <param name="parent">
+                        /// Required. The parent organization to which the ProxyConfigs belong. Format:
+                        /// `organizations/{organization_id}/locations/global/partnerTenants/{partner_tenant_id}`
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>Lists ProxyConfigs for PartnerTenant in a given organization.</summary>
+                        public class ListRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpPartnerservicesV1alphaListProxyConfigsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The parent organization to which the ProxyConfigs belong. Format:
+                            /// `organizations/{organization_id}/locations/global/partnerTenants/{partner_tenant_id}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+parent}/proxyConfigs";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^organizations/[^/]+/locations/global/partnerTenants/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Updates a single proxy config.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">Output only. ProxyConfig resource name.</param>
+                        public virtual PatchRequest Patch(Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpPartnerservicesV1alphaProxyConfig body, string name)
+                        {
+                            return new PatchRequest(service, body, name);
+                        }
+
+                        /// <summary>Updates a single proxy config.</summary>
+                        public class PatchRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Patch request.</summary>
+                            public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpPartnerservicesV1alphaProxyConfig body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>Output only. ProxyConfig resource name.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>
+                            /// Optional. An optional request ID to identify requests. Specify a unique request ID so
+                            /// that if you must retry your request, the server will know to ignore the request if it
+                            /// has already been completed. The server will guarantee that for at least 60 minutes after
+                            /// the first request. For example, consider a situation where you make an initial request
+                            /// and the request times out. If you make the request again with the same request ID, the
+                            /// server can check if original operation with the same request ID was received, and if so,
+                            /// will ignore the second request. This prevents clients from accidentally creating
+                            /// duplicate commitments. The request ID must be a valid UUID with the exception that zero
+                            /// UUID is not supported (00000000-0000-0000-0000-000000000000).
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string RequestId { get; set; }
+
+                            /// <summary>
+                            /// Required. Mutable fields include: display_name, proxy_uri, routing_info, transport_info,
+                            /// encryption_info.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual object UpdateMask { get; set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpPartnerservicesV1alphaProxyConfig Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "patch";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "PATCH";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+name}";
+
+                            /// <summary>Initializes Patch parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^organizations/[^/]+/locations/global/partnerTenants/[^/]+/proxyConfigs/[^/]+$",
+                                });
+                                RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "requestId",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "updateMask",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -1461,38 +1772,6 @@ namespace Google.Apis.BeyondCorp.v1alpha
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>
-                        /// Optional. Filter partnerTenants to be returned. See [List Sub-Collections]
-                        /// (https://cloud.google.com/apis/design/design_patterns#list_sub-collections) for more
-                        /// details. All fields can be used in the filter. Usage: field_filter="fieldName1=fieldVal1 AND
-                        /// fieldName2=fieldVal2". NOTE: Only `AND` conditions are allowed.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Filter { get; set; }
-
-                        /// <summary>
-                        /// Optional. Specifies the ordering of results. Currently, only ordering by the "name" and
-                        /// "create_time" fields are supported. See [Sorting
-                        /// order](https://cloud.google.com/apis/design/design_patterns#sorting_order) for more
-                        /// information.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string OrderBy { get; set; }
-
-                        /// <summary>
-                        /// Optional. The maximum number of items to return. The service may return fewer than this
-                        /// value. If unspecified, at most 50 items will be returned. The maximum value is 1000; values
-                        /// above 1000 are coerced to 1000. Regardless of the page_size value, the response may include
-                        /// a partial list and a caller should only rely on response's next_page_token to determine if
-                        /// there are more instances left to be queried.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
-                        /// <summary>Optional. A token identifying a page of results the server should return.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
@@ -1513,38 +1792,6 @@ namespace Google.Apis.BeyondCorp.v1alpha
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^organizations/[^/]+/locations/global$",
-                            });
-                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "filter",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "orderBy",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
                             });
                         }
                     }
@@ -10948,20 +11195,20 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
     /// <summary>Message for response to listing PartnerTenants.</summary>
     public class GoogleCloudBeyondcorpPartnerservicesV1alphaListPartnerTenantsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// A token which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
-        /// subsequent pages.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
         /// <summary>The list of PartnerTenant objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerTenants")]
         public virtual System.Collections.Generic.IList<GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerTenant> PartnerTenants { get; set; }
 
-        /// <summary>Locations that could not be reached.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing ProxyConfigs.</summary>
+    public class GoogleCloudBeyondcorpPartnerservicesV1alphaListProxyConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of ProxyConfig objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxyConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudBeyondcorpPartnerservicesV1alphaProxyConfig> ProxyConfigs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
