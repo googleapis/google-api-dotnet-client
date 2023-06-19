@@ -34,6 +34,15 @@ namespace Google.Apis.Auth.OAuth2.Requests
         [RequestParameter("redirect_uri")]
         public string RedirectUri { get; set; }
 
+
+        /// <summary>
+        /// Gets or sets the code verifier matching the code challenge in the authorization request.
+        /// See https://developers.google.com/identity/protocols/oauth2/native-app#exchange-authorization-code
+        /// for more information.
+        /// </summary>
+        [RequestParameter("code_verifier")]
+        public string CodeVerifier { get; set; }
+
         /// <summary>
         /// Constructs a new authorization code token request and sets grant_type to <c>authorization_code</c>.
         /// </summary>
