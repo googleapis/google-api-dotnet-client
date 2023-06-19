@@ -79,6 +79,22 @@ namespace Google.Apis.Auth.OAuth2.Requests
         public string Nonce { get; set; }
 
         /// <summary>
+        /// Gets or sets the code challenge.
+        /// See https://developers.google.com/identity/protocols/oauth2/native-app#create-the-code-challenge
+        /// for more information.
+        /// </summary>
+        [RequestParameter("code_challenge", RequestParameterType.Query)]
+        public string CodeChallenge { get; set; }
+
+        /// <summary>
+        /// Gets or sets the code challenge method.
+        /// See https://developers.google.com/identity/protocols/oauth2/native-app#create-the-code-challenge
+        /// for more information.
+        /// </summary>
+        [RequestParameter("code_challenge_method", RequestParameterType.Query)]
+        public string CodeChallengeMethod { get; set; }
+
+        /// <summary>
         /// Gets or sets a collection of user defined query parameters to facilitate any not explicitly supported
         /// by the library which will be included in the resultant authentication URL.
         /// </summary>
