@@ -21,6 +21,8 @@ using Google.Apis.Auth.OAuth2.Flows;
 using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Logging;
+using Google.Apis.Util;
+using Google.Apis.Util.Store;
 
 namespace Google.Apis.Auth.OAuth2
 {
@@ -35,7 +37,7 @@ namespace Google.Apis.Auth.OAuth2
     {
         private static readonly ILogger Logger = ApplicationContext.Logger.ForType<AuthorizationCodeInstalledApp>();
 
-        private readonly IAuthorizationCodeFlow flow;
+        private readonly IPkceAuthorizationCodeFlow flow;
         private readonly ICodeReceiver codeReceiver;
 
         /// <summary>
@@ -43,7 +45,11 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         public AuthorizationCodeInstalledApp(IAuthorizationCodeFlow flow, ICodeReceiver codeReceiver)
         {
-            this.flow = flow;
+            this.flow = flow switch
+            {
+                IPkceAuthorizationCodeFlow pkceFlow => pkceFlow,
+                _ => new NoOpPckeAuthorizationFlow(flow)
+            };
             this.codeReceiver = codeReceiver;
         }
 
@@ -72,7 +78,7 @@ namespace Google.Apis.Auth.OAuth2
             {
                 // Create an authorization code request.
                 var redirectUri = CodeReceiver.RedirectUri;
-                AuthorizationCodeRequestUrl codeRequest = Flow.CreateAuthorizationCodeRequest(redirectUri);
+                AuthorizationCodeRequestUrl codeRequest = flow.CreateAuthorizationCodeRequest(redirectUri, out string codeVerifier);
 
                 // Receive the code.
                 var response = await CodeReceiver.ReceiveCodeAsync(codeRequest, taskCancellationToken)
@@ -88,7 +94,7 @@ namespace Google.Apis.Auth.OAuth2
                 Logger.Debug("Received \"{0}\" code", response.Code);
 
                 // Get the token based on the code.
-                token = await Flow.ExchangeCodeForTokenAsync(userId, response.Code, redirectUri,
+                token = await flow.ExchangeCodeForTokenAsync(userId, response.Code, codeVerifier, redirectUri,
                     taskCancellationToken).ConfigureAwait(false);
             }
 
@@ -109,5 +115,57 @@ namespace Google.Apis.Auth.OAuth2
         }
 
         #endregion
+
+        /// <summary>
+        /// Helper class to wrap non PKCE flows so that <see cref="AuthorizationCodeInstalledApp"/>
+        /// does not need to know whether its flow supports PKCE or not.
+        /// </summary>
+        private class NoOpPckeAuthorizationFlow : IPkceAuthorizationCodeFlow
+        {
+            private readonly IAuthorizationCodeFlow flow;
+
+            internal NoOpPckeAuthorizationFlow(IAuthorizationCodeFlow flow) => this.flow = flow;
+
+            public IAccessMethod AccessMethod => flow.AccessMethod;
+
+            public IClock Clock => flow.Clock;
+
+            public IDataStore DataStore => flow.DataStore;
+
+            public AuthorizationCodeRequestUrl CreateAuthorizationCodeRequest(string redirectUri, out string codeVerifier)
+            {
+                // Let's return an invalid codeVerifier just to make certain that it wouldn't be accepted server side
+                // if we were to have a bug an include it in the request. But this should never be included in a request.
+                codeVerifier = "invalid+*/";
+                return flow.CreateAuthorizationCodeRequest(redirectUri);
+            }
+
+            public AuthorizationCodeRequestUrl CreateAuthorizationCodeRequest(string redirectUri) =>
+                flow.CreateAuthorizationCodeRequest(redirectUri);
+
+            public Task DeleteTokenAsync(string userId, CancellationToken taskCancellationToken) =>
+                flow.DeleteTokenAsync(userId, taskCancellationToken);
+
+            public void Dispose() => flow.Dispose();
+
+            public Task<TokenResponse> ExchangeCodeForTokenAsync(string userId, string code, string codeVerifier, string redirectUri, CancellationToken taskCancellationToken) =>
+                // We ignore the codeVerifier parameter.
+                flow.ExchangeCodeForTokenAsync(userId, code, redirectUri, taskCancellationToken);
+
+            public Task<TokenResponse> ExchangeCodeForTokenAsync(string userId, string code, string redirectUri, CancellationToken taskCancellationToken) =>
+                flow.ExchangeCodeForTokenAsync(userId, code, redirectUri, taskCancellationToken);
+
+            public Task<TokenResponse> LoadTokenAsync(string userId, CancellationToken taskCancellationToken) =>
+                flow.LoadTokenAsync(userId, taskCancellationToken);
+
+            public Task<TokenResponse> RefreshTokenAsync(string userId, string refreshToken, CancellationToken taskCancellationToken) =>
+                flow.RefreshTokenAsync(userId, refreshToken, taskCancellationToken);
+
+            public Task RevokeTokenAsync(string userId, string token, CancellationToken taskCancellationToken) =>
+                flow.RevokeTokenAsync(userId, token, taskCancellationToken);
+
+            public bool ShouldForceTokenRetrieval() =>
+                flow.ShouldForceTokenRetrieval();
+        }
     }
 }
