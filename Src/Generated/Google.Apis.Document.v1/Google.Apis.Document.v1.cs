@@ -2574,7 +2574,7 @@ namespace Google.Apis.Document.v1.Data
     /// <summary>Document Identifier.</summary>
     public class GoogleCloudDocumentaiUiv1beta3DocumentId : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A document id within user-managed Cloud Storage.</summary>
+        /// <summary>A document id within user managed Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsManagedDocId")]
         public virtual GoogleCloudDocumentaiUiv1beta3DocumentIdGCSManagedDocumentId GcsManagedDocId { get; set; }
 
@@ -2591,7 +2591,7 @@ namespace Google.Apis.Document.v1.Data
     }
 
     /// <summary>
-    /// Identifies a document uniquely within the scope of a dataset in the user-managed Cloud Storage option.
+    /// Identifies a document uniquely within the scope of a dataset in user managed Cloud Storage option.
     /// </summary>
     public class GoogleCloudDocumentaiUiv1beta3DocumentIdGCSManagedDocumentId : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2599,7 +2599,7 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cwDocId")]
         public virtual string CwDocId { get; set; }
 
-        /// <summary>Required. The Cloud Storage URI where the actual document is stored.</summary>
+        /// <summary>Required. The Cloud Storage uri where the actual document is stored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
         public virtual string GcsUri { get; set; }
 
@@ -3208,7 +3208,7 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inputDocuments")]
         public virtual GoogleCloudDocumentaiV1BatchDocumentsInputConfig InputDocuments { get; set; }
 
-        /// <summary>Whether human review should be skipped for this request. Default to `false`.</summary>
+        /// <summary>Whether Human Review feature should be skipped for this request. Default to `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipHumanReview")]
         public virtual System.Nullable<bool> SkipHumanReview { get; set; }
 
@@ -3636,7 +3636,7 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual GoogleCloudDocumentaiV1DocumentPageImage Image { get; set; }
 
-        /// <summary>Image quality scores.</summary>
+        /// <summary>Image Quality Scores.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageQualityScores")]
         public virtual GoogleCloudDocumentaiV1DocumentPageImageQualityScores ImageQualityScores { get; set; }
 
@@ -3889,7 +3889,7 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Image quality scores for the page image.</summary>
+    /// <summary>Image Quality Scores for the page image.</summary>
     public class GoogleCloudDocumentaiV1DocumentPageImageQualityScores : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of detected defects.</summary>
@@ -3908,7 +3908,8 @@ namespace Google.Apis.Document.v1.Data
     public class GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence that the defect exists.
+        /// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence of that the defect
+        /// exists.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
@@ -4382,11 +4383,11 @@ namespace Google.Apis.Document.v1.Data
 
         /// <summary>
         /// Name of the type. It must be unique within the schema file and cannot be a "Common Type". The following
-        /// naming conventions are used: - Use `snake_casing`. - Name matching is case-sensitive. - Maximum 64
-        /// characters. - Must start with a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward
-        /// compatibility internal infrastructure and tooling can handle any ascii character.) - The `/` is sometimes
-        /// used to denote a property of a type. For example `line_item/amount`. This convention is deprecated, but will
-        /// still be honored for backward compatibility.
+        /// naming conventions are used: - Use `snake_casing` - Name matching is case-sensitive - Maximum 64 characters.
+        /// - Must start with a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward compatibility
+        /// internal infrastructure and tooling can handle any ascii character) - The `/` is sometimes used to denote a
+        /// property of a type. For example `line_item/amount`. This convention is deprecated, but will still be honored
+        /// for backward compatibility.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4541,7 +4542,7 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<float> Size { get; set; }
 
-        /// <summary>Unit for the font size. Follows CSS naming (such as `in`, `px`, and `pt`).</summary>
+        /// <summary>Unit for the font size. Follows CSS naming (`in`, `px`, `pt`, etc.).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; }
 
@@ -5033,7 +5034,7 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rawDocument")]
         public virtual GoogleCloudDocumentaiV1RawDocument RawDocument { get; set; }
 
-        /// <summary>Whether human review should be skipped for this request. Default to `false`.</summary>
+        /// <summary>Whether Human Review feature should be skipped for this request. Default to false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipHumanReview")]
         public virtual System.Nullable<bool> SkipHumanReview { get; set; }
 
@@ -5075,7 +5076,7 @@ namespace Google.Apis.Document.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// The [KMS key](https://cloud.google.com/security-key-management) used for encryption and decryption in CMEK
+        /// The [KMS key](https://cloud.google.com/security-key-management) used for encryption/decryption in CMEK
         /// scenarios.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
@@ -5154,8 +5155,8 @@ namespace Google.Apis.Document.v1.Data
     public class GoogleCloudDocumentaiV1ProcessorTypeLocationInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The location ID. For supported locations, refer to [regional and multi-regional
-        /// support](/document-ai/docs/regions).
+        /// The location id, refer to [regional and multi-regional support](/document-ai/docs/regions) for supported
+        /// locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; }
@@ -5165,9 +5166,9 @@ namespace Google.Apis.Document.v1.Data
     }
 
     /// <summary>
-    /// A processor version is an implementation of a processor. Each processor can have multiple versions, pretrained
-    /// by Google internally or uptrained by the customer. A processor can only have one default version at a time. Its
-    /// document-processing behavior is defined by that version.
+    /// A processor version is an implementation of a processor. Each processor can have multiple versions, pre-trained
+    /// by Google internally or uptrained by the customer. At a time, a processor can only have one default version
+    /// version. So the processor's behavior (when processing documents) is defined by a default version
     /// </summary>
     public class GoogleCloudDocumentaiV1ProcessorVersion : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5794,7 +5795,7 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual GoogleCloudDocumentaiV1beta1DocumentPageImage Image { get; set; }
 
-        /// <summary>Image quality scores.</summary>
+        /// <summary>Image Quality Scores.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageQualityScores")]
         public virtual GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScores ImageQualityScores { get; set; }
 
@@ -6047,7 +6048,7 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Image quality scores for the page image.</summary>
+    /// <summary>Image Quality Scores for the page image.</summary>
     public class GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScores : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of detected defects.</summary>
@@ -6066,7 +6067,8 @@ namespace Google.Apis.Document.v1.Data
     public class GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScoresDetectedDefect : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence that the defect exists.
+        /// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence of that the defect
+        /// exists.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
@@ -6573,7 +6575,7 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<float> Size { get; set; }
 
-        /// <summary>Unit for the font size. Follows CSS naming (such as `in`, `px`, and `pt`).</summary>
+        /// <summary>Unit for the font size. Follows CSS naming (`in`, `px`, `pt`, etc.).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; }
 
@@ -7125,7 +7127,7 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual GoogleCloudDocumentaiV1beta2DocumentPageImage Image { get; set; }
 
-        /// <summary>Image quality scores.</summary>
+        /// <summary>Image Quality Scores.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageQualityScores")]
         public virtual GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScores ImageQualityScores { get; set; }
 
@@ -7378,7 +7380,7 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Image quality scores for the page image.</summary>
+    /// <summary>Image Quality Scores for the page image.</summary>
     public class GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScores : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of detected defects.</summary>
@@ -7397,7 +7399,8 @@ namespace Google.Apis.Document.v1.Data
     public class GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScoresDetectedDefect : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence that the defect exists.
+        /// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence of that the defect
+        /// exists.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
@@ -7904,7 +7907,7 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<float> Size { get; set; }
 
-        /// <summary>Unit for the font size. Follows CSS naming (such as `in`, `px`, and `pt`).</summary>
+        /// <summary>Unit for the font size. Follows CSS naming (`in`, `px`, `pt`, etc.).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; }
 
@@ -8668,7 +8671,7 @@ namespace Google.Apis.Document.v1.Data
     /// from color representations in various languages over compactness. For example, the fields of this representation
     /// can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to
     /// UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily
-    /// formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't have information about the
+    /// formatted into a CSS `rgba()` string in JavaScript. This reference page does not have information about the
     /// absolute color space that should be used to interpret the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and
     /// BT.2020. By default, applications should assume the sRGB color space. When color equality needs to be decided,
     /// implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha

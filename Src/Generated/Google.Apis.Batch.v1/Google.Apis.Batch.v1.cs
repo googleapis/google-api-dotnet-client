@@ -1312,6 +1312,70 @@ namespace Google.Apis.Batch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Container runnable representation on the agent side.</summary>
+    public class AgentContainer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Overrides the `CMD` specified in the container. If there is an ENTRYPOINT (either in the container image or
+        /// with the entrypoint field below) then commands are appended as arguments to the ENTRYPOINT.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commands")]
+        public virtual System.Collections.Generic.IList<string> Commands { get; set; }
+
+        /// <summary>Overrides the `ENTRYPOINT` specified in the container.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entrypoint")]
+        public virtual string Entrypoint { get; set; }
+
+        /// <summary>The URI to pull the container image from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
+        public virtual string ImageUri { get; set; }
+
+        /// <summary>
+        /// Arbitrary additional options to include in the "docker run" command when running this container, e.g.
+        /// "--network host".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("options")]
+        public virtual string Options { get; set; }
+
+        /// <summary>
+        /// Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to
+        /// match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
+        public virtual System.Collections.Generic.IList<string> Volumes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// AgentEnvironment is the Environment representation between Agent and CLH communication. The environment is used
+    /// in both task level and agent level.
+    /// </summary>
+    public class AgentEnvironment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An encrypted JSON dictionary where the key/value pairs correspond to environment variable names and their
+        /// values.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptedVariables")]
+        public virtual AgentKMSEnvMap EncryptedVariables { get; set; }
+
+        /// <summary>
+        /// A map of environment variable names to Secret Manager secret names. The VM will access the named secrets to
+        /// set the value of each environment variable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretVariables")]
+        public virtual System.Collections.Generic.IDictionary<string, string> SecretVariables { get; set; }
+
+        /// <summary>A map of environment variable names to values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variables")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Variables { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>VM Agent Info.</summary>
     public class AgentInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1334,6 +1398,23 @@ namespace Google.Apis.Batch.v1.Data
         /// <summary>Task Info.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tasks")]
         public virtual System.Collections.Generic.IList<AgentTaskInfo> Tasks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// AgentKMSEnvMap contains the encrypted key/value pair to be used in the environment on the Agent side.
+    /// </summary>
+    public class AgentKMSEnvMap : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The value of the cipherText response from the `encrypt` method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cipherText")]
+        public virtual string CipherText { get; set; }
+
+        /// <summary>The name of the KMS key that will be used to decrypt the cipher text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keyName")]
+        public virtual string KeyName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1386,12 +1467,44 @@ namespace Google.Apis.Batch.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Script runnable representation on the agent side.</summary>
+    public class AgentScript : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Script file path on the host VM. To specify an interpreter, please add a `#!`(also known as [shebang
+        /// line](https://en.wikipedia.org/wiki/Shebang_(Unix))) as the first line of the file.(For example, to execute
+        /// the script using bash, `#!/bin/bash` should be the first line of the file. To execute the script
+        /// using`Python3`, `#!/usr/bin/env python3` should be the first line of the file.) Otherwise, the file will by
+        /// default be excuted by `/bin/sh`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>
+        /// Shell script text. To specify an interpreter, please add a `#!\n` at the beginning of the text.(For example,
+        /// to execute the script using bash, `#!/bin/bash\n` should be added. To execute the script using`Python3`,
+        /// `#!/usr/bin/env python3\n` should be added.) Otherwise, the script will by default be excuted by `/bin/sh`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// TODO(b/182501497) The message needs to be redefined when the Agent API server updates data in storage per the
     /// backend design.
     /// </summary>
     public class AgentTask : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// AgentTaskSpec is the taskSpec representation between Agent and CLH communication. This field will replace
+        /// the TaskSpec field above in future to have a better separation between user-facaing API and internal API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentTaskSpec")]
+        public virtual AgentTaskSpec AgentTaskSpec { get; set; }
+
         /// <summary>The intended state of the task.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("intendedState")]
         public virtual string IntendedState { get; set; }
@@ -1400,7 +1513,7 @@ namespace Google.Apis.Batch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reachedBarrier")]
         public virtual System.Nullable<long> ReachedBarrier { get; set; }
 
-        /// <summary>Task Spec.</summary>
+        /// <summary>Task Spec. This field will be replaced by agent_task_spec below in future.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spec")]
         public virtual TaskSpec Spec { get; set; }
 
@@ -1440,6 +1553,76 @@ namespace Google.Apis.Batch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taskStatus")]
         public virtual TaskStatus TaskStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AgentTaskRunnable is the Runnable representation between Agent and CLH communication.</summary>
+    public class AgentTaskRunnable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// By default, after a Runnable fails, no further Runnable are executed. This flag indicates that this Runnable
+        /// must be run even if the Task has already failed. This is useful for Runnables that copy output files off of
+        /// the VM or for debugging. The always_run flag does not override the Task's overall max_run_duration. If the
+        /// max_run_duration has expired then no further Runnables will execute, not even always_run Runnables.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alwaysRun")]
+        public virtual System.Nullable<bool> AlwaysRun { get; set; }
+
+        /// <summary>
+        /// This flag allows a Runnable to continue running in the background while the Task executes subsequent
+        /// Runnables. This is useful to provide services to other Runnables (or to provide debugging support tools like
+        /// SSH servers).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("background")]
+        public virtual System.Nullable<bool> Background { get; set; }
+
+        /// <summary>Container runnable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("container")]
+        public virtual AgentContainer Container { get; set; }
+
+        /// <summary>
+        /// Environment variables for this Runnable (overrides variables set for the whole Task or TaskGroup).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual AgentEnvironment Environment { get; set; }
+
+        /// <summary>
+        /// Normally, a non-zero exit status causes the Task to fail. This flag allows execution of other Runnables to
+        /// continue instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreExitStatus")]
+        public virtual System.Nullable<bool> IgnoreExitStatus { get; set; }
+
+        /// <summary>Script runnable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("script")]
+        public virtual AgentScript Script { get; set; }
+
+        /// <summary>Timeout for this Runnable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
+        public virtual object Timeout { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AgentTaskSpec is the user's TaskSpec representation between Agent and CLH communication.</summary>
+    public class AgentTaskSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Environment variables to set before running the Task.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual AgentEnvironment Environment { get; set; }
+
+        /// <summary>
+        /// Maximum duration the task should run. The task will be killed and marked as FAILED if over this limit.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxRunDuration")]
+        public virtual object MaxRunDuration { get; set; }
+
+        /// <summary>AgentTaskRunnable is runanbles that will be executed on the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runnables")]
+        public virtual System.Collections.Generic.IList<AgentTaskRunnable> Runnables { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1644,7 +1827,8 @@ namespace Google.Apis.Batch.v1.Data
         /// Specify the image by its family name: projects/{project}/global/images/family/{image_family} * Specify the
         /// image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in
         /// short names. The following image values are supported for a boot disk: * "batch-debian": use Batch Debian
-        /// images. * "batch-centos": use Batch CentOS images. * "batch-cos": use Batch Container-Optimized images.
+        /// images. * "batch-centos": use Batch CentOS images. * "batch-cos": use Batch Container-Optimized images. *
+        /// "batch-hpc-centos": use Batch HPC CentOS images.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual string Image { get; set; }

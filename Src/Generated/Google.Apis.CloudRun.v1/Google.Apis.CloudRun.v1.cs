@@ -5912,9 +5912,16 @@ namespace Google.Apis.CloudRun.v1.Data
     /// <summary>Per container override specification.</summary>
     public class ContainerOverride : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Arguments to the entrypoint. Will replace existing args for override.</summary>
+        /// <summary>
+        /// Arguments to the entrypoint. Will replace existing args for override if present. Must be empty if
+        /// `clear_args` is set to true.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IList<string> Args { get; set; }
+
+        /// <summary>Optional. True if the intention is to clear out existing args list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clearArgs")]
+        public virtual System.Nullable<bool> ClearArgs { get; set; }
 
         /// <summary>
         /// List of environment variables to set in the container. Will be merged with existing env for override.
@@ -6063,8 +6070,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here
         /// and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type:
         /// https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which
-        /// means that the limit is undefined. More info: http://kubernetes.io/docs/user-guide/volumes#emptydir
-        /// +optional
+        /// means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeLimit")]
         public virtual string SizeLimit { get; set; }
@@ -7517,8 +7523,8 @@ namespace Google.Apis.CloudRun.v1.Data
     public class RunJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Overrides specification for a given execution of a job. If provided, overrides will be applied to
-        /// update the execution or task spec.
+        /// Optional. Private preview feature. Currently only available by invitation. Overrides specification for a
+        /// given execution of a job. If provided, overrides will be applied to update the execution or task spec.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overrides")]
         public virtual Overrides Overrides { get; set; }

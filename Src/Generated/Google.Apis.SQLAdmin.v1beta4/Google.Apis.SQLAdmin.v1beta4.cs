@@ -2232,6 +2232,73 @@ namespace Google.Apis.SQLAdmin.v1beta4
             }
         }
 
+        /// <summary>Reencrypt CMEK instance with latest key version.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">ID of the project that contains the instance.</param>
+        /// <param name="instance">Cloud SQL instance ID. This does not include the project ID.</param>
+        public virtual ReencryptRequest Reencrypt(Google.Apis.SQLAdmin.v1beta4.Data.InstancesReencryptRequest body, string project, string instance)
+        {
+            return new ReencryptRequest(service, body, project, instance);
+        }
+
+        /// <summary>Reencrypt CMEK instance with latest key version.</summary>
+        public class ReencryptRequest : SQLAdminBaseServiceRequest<Google.Apis.SQLAdmin.v1beta4.Data.Operation>
+        {
+            /// <summary>Constructs a new Reencrypt request.</summary>
+            public ReencryptRequest(Google.Apis.Services.IClientService service, Google.Apis.SQLAdmin.v1beta4.Data.InstancesReencryptRequest body, string project, string instance) : base(service)
+            {
+                Project = project;
+                Instance = instance;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>ID of the project that contains the instance.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Cloud SQL instance ID. This does not include the project ID.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("instance", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Instance { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.SQLAdmin.v1beta4.Data.InstancesReencryptRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "reencrypt";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "sql/v1beta4/projects/{project}/instances/{instance}/reencrypt";
+
+            /// <summary>Initializes Reencrypt parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("instance", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "instance",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>
         /// Deletes all client certificates and generates a new server SSL certificate for the instance.
         /// </summary>
@@ -4372,6 +4439,21 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Backup Reencryption Config</summary>
+    public class BackupReencryptionConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Backup re-encryption limit</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupLimit")]
+        public virtual System.Nullable<int> BackupLimit { get; set; }
+
+        /// <summary>Type of backups users want to re-encrypt.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupType")]
+        public virtual string BackupType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// We currently only support backup retention by specifying the number of backups we will retain.
     /// </summary>
@@ -4594,6 +4676,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseVersion")]
         public virtual string DatabaseVersion { get; set; }
+
+        /// <summary>The dns name of the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsName")]
+        public virtual string DnsName { get; set; }
 
         /// <summary>The assigned IP addresses for the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddresses")]
@@ -5130,15 +5216,12 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
             [Newtonsoft.Json.JsonPropertyAttribute("bakType")]
             public virtual string BakType { get; set; }
 
-            /// <summary>
-            /// Whether or not the export will be exeucted with COPY_ONLY, SQL Server only deprecated as the behavior
-            /// should default to copy_only = true use differential_base instead
-            /// </summary>
+            /// <summary>Deprecated: copy_only is deprecated. Use differential_base instead</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("copyOnly")]
             public virtual System.Nullable<bool> CopyOnly { get; set; }
 
             /// <summary>
-            /// Whether or not the backup can be use as differential base only non copy only backup can be served as
+            /// Whether or not the backup can be used as a differential base copy_only backup can not be served as
             /// differential base
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("differentialBase")]
@@ -5639,6 +5722,17 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>This is always `sql#instancesListServerCas`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Database Instance reencrypt request.</summary>
+    public class InstancesReencryptRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration specific to backup re-encryption</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("backupReencryptionConfig")]
+        public virtual BackupReencryptionConfig BackupReencryptionConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

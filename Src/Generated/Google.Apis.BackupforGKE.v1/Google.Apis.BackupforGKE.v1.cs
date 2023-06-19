@@ -4317,6 +4317,17 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual RetentionPolicy RetentionPolicy { get; set; }
 
         /// <summary>
+        /// Output only. State of the BackupPlan. This State field reflects the various stages a BackupPlan can be in
+        /// during the Create operation. It will be set to "DEACTIVATED" if the BackupPlan is deactivated on an Update
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Human-readable description of why BackupPlan is in the current `state`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateReason")]
+        public virtual string StateReason { get; set; }
+
+        /// <summary>
         /// Output only. Server generated global unique identifier of
         /// [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
         /// </summary>
@@ -4420,6 +4431,28 @@ namespace Google.Apis.BackupforGKE.v1.Data
     /// </summary>
     public class ClusterResourceRestoreScope : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// If True, all valid cluster-scoped resources will be restored. Mutually exclusive to any other field in the
+        /// message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allGroupKinds")]
+        public virtual System.Nullable<bool> AllGroupKinds { get; set; }
+
+        /// <summary>
+        /// A list of cluster-scoped resource group kinds to NOT restore from the backup. If specified, all valid
+        /// cluster-scoped resources will be restored except for those specified in the list. Mutually exclusive to any
+        /// other field in the message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedGroupKinds")]
+        public virtual System.Collections.Generic.IList<GroupKind> ExcludedGroupKinds { get; set; }
+
+        /// <summary>
+        /// If True, no cluster-scoped resources will be restored. This has the same restore scope as if the message is
+        /// not defined. Mutually exclusive to any other field in the message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noGroupKinds")]
+        public virtual System.Nullable<bool> NoGroupKinds { get; set; }
+
         /// <summary>
         /// A list of cluster-scoped resource group kinds to restore from the backup. If specified, only the selected
         /// resources will be restored. Mutually exclusive to any other field in the message.
@@ -4926,6 +4959,42 @@ namespace Google.Apis.BackupforGKE.v1.Data
     }
 
     /// <summary>
+    /// ResourceFilter specifies matching criteria to limit the scope of a change to a specific set of kubernetes
+    /// resources that are selected for restoration from a backup.
+    /// </summary>
+    public class ResourceFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// (Filtering parameter) Any resource subject to transformation must belong to one of the listed "types". If
+        /// this field is not provided, no type filtering will be performed (all resources of all types matching
+        /// previous filtering parameters will be candidates for transformation).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupKinds")]
+        public virtual System.Collections.Generic.IList<GroupKind> GroupKinds { get; set; }
+
+        /// <summary>
+        /// This is a [JSONPath] (https://github.com/json-path/JsonPath/blob/master/README.md) expression that matches
+        /// specific fields of candidate resources and it operates as a filtering parameter (resources that are not
+        /// matched with this expression will not be candidates for transformation).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonPath")]
+        public virtual string JsonPath { get; set; }
+
+        /// <summary>
+        /// (Filtering parameter) Any resource subject to transformation must be contained within one of the listed
+        /// Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed
+        /// (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for
+        /// transformation). To mix cluster-scoped and namespaced resources in the same rule, use an empty string ("")
+        /// as one of the target namespaces.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("namespaces")]
+        public virtual System.Collections.Generic.IList<string> Namespaces { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents both a request to Restore some portion of a Backup into a target GKE cluster and a record of the
     /// restore operation itself. Next id: 18
     /// </summary>
@@ -5049,12 +5118,25 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual ClusterResourceRestoreScope ClusterResourceRestoreScope { get; set; }
 
         /// <summary>
+        /// A list of selected namespaces excluded from restoration. All namespaces except those in this list will be
+        /// restored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedNamespaces")]
+        public virtual Namespaces ExcludedNamespaces { get; set; }
+
+        /// <summary>
         /// Defines the behavior for handling the situation where sets of namespaced resources being restored already
         /// exist in the target cluster. This MUST be set to a value other than
         /// NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespacedResourceRestoreMode")]
         public virtual string NamespacedResourceRestoreMode { get; set; }
+
+        /// <summary>
+        /// Do not restore any namespaced resources if set to "True". Specifying this field to "False" is not allowed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noNamespaces")]
+        public virtual System.Nullable<bool> NoNamespaces { get; set; }
 
         /// <summary>
         /// A list of selected ProtectedApplications to restore. The listed ProtectedApplications and all the resources
@@ -5077,6 +5159,14 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("substitutionRules")]
         public virtual System.Collections.Generic.IList<SubstitutionRule> SubstitutionRules { get; set; }
+
+        /// <summary>
+        /// A list of transformation rules to be applied against Kubernetes resources as they are selected for
+        /// restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a
+        /// rule may impact the filtering logic of subsequent rules. An empty list means no transformation will occur.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transformationRules")]
+        public virtual System.Collections.Generic.IList<TransformationRule> TransformationRules { get; set; }
 
         /// <summary>
         /// Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED
@@ -5144,6 +5234,17 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual RestoreConfig RestoreConfig { get; set; }
 
         /// <summary>
+        /// Output only. State of the RestorePlan. This State field reflects the various stages a RestorePlan can be in
+        /// during the Create operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Human-readable description of why RestorePlan is in the current `state`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateReason")]
+        public virtual string StateReason { get; set; }
+
+        /// <summary>
         /// Output only. Server generated global unique identifier of
         /// [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
         /// </summary>
@@ -5191,14 +5292,13 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Schedule defines scheduling parameters for automatically creating Backups via this BackupPlan.
-    /// </summary>
+    /// <summary>Defines scheduling parameters for automatically creating Backups via this BackupPlan.</summary>
     public class Schedule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating
-        /// Backups via this BackupPlan. If this is defined, then backup_retain_days must also be defined. Default
+        /// Backups via this BackupPlan. This is mutually exclusive with the rpo_config field since at most one schedule
+        /// can be defined for a BackupPlan. If this is defined, then backup_retain_days must also be defined. Default
         /// (empty): no automatic backup creation will occur.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cronSchedule")]
@@ -5313,6 +5413,69 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A transformation rule to be applied against Kubernetes resources as they are selected for restoration from a
+    /// Backup. A rule contains both filtering logic (which resources are subject to transform) and transformation
+    /// logic.
+    /// </summary>
+    public class TransformationRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The description is a user specified string description of the transformation rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. A list of transformation rule actions to take against candidate resources. Actions are executed in
+        /// order defined - this order matters, as they could potentially interfere with each other and the first
+        /// operation could affect the outcome of the second operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldActions")]
+        public virtual System.Collections.Generic.IList<TransformationRuleAction> FieldActions { get; set; }
+
+        /// <summary>
+        /// This field is used to specify a set of fields that should be used to determine which resources in backup
+        /// should be acted upon by the supplied transformation rule actions, and this will ensure that only specific
+        /// resources are affected by transformation rule actions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceFilter")]
+        public virtual ResourceFilter ResourceFilter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// TransformationRuleAction defines a TransformationRule action based on the JSON Patch RFC
+    /// (https://www.rfc-editor.org/rfc/rfc6902)
+    /// </summary>
+    public class TransformationRuleAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A string containing a JSON Pointer value that references the location in the target document to move the
+        /// value from.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fromPath")]
+        public virtual string FromPath { get; set; }
+
+        /// <summary>Required. op specifies the operation to perform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("op")]
+        public virtual string Op { get; set; }
+
+        /// <summary>
+        /// A string containing a JSON-Pointer value that references a location within the target document where the
+        /// operation is performed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>A string that specifies the desired value in string format to use for transformation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

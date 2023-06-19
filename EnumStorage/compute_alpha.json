@@ -8,6 +8,16 @@
     "1",
     "2"
   ],
+  "Google.Apis.Compute.alpha.InstancesResource+GetRequest.ViewEnum": [
+    "BASIC",
+    "FULL",
+    "INSTANCE_VIEW_UNSPECIFIED"
+  ],
+  "Google.Apis.Compute.alpha.InstancesResource+ListRequest.ViewEnum": [
+    "BASIC",
+    "FULL",
+    "INSTANCE_VIEW_UNSPECIFIED"
+  ],
   "Google.Apis.Compute.alpha.InstancesResource+UpdateRequest.MinimalActionEnum": [
     "INVALID",
     "NO_EFFECT",
@@ -20,8 +30,28 @@
     "REFRESH",
     "RESTART"
   ],
+  "Google.Apis.Compute.alpha.InstanceTemplatesResource+GetRequest.ViewEnum": [
+    "BASIC",
+    "FULL",
+    "INSTANCE_VIEW_UNSPECIFIED"
+  ],
+  "Google.Apis.Compute.alpha.InstanceTemplatesResource+ListRequest.ViewEnum": [
+    "BASIC",
+    "FULL",
+    "INSTANCE_VIEW_UNSPECIFIED"
+  ],
   "Google.Apis.Compute.alpha.NetworksResource+ListPeeringRoutesRequest.DirectionEnum": [
     "INCOMING",
     "OUTGOING"
+  ],
+  "Google.Apis.Compute.alpha.RegionInstanceTemplatesResource+GetRequest.ViewEnum": [
+    "BASIC",
+    "FULL",
+    "INSTANCE_VIEW_UNSPECIFIED"
+  ],
+  "Google.Apis.Compute.alpha.RegionInstanceTemplatesResource+ListRequest.ViewEnum": [
+    "BASIC",
+    "FULL",
+    "INSTANCE_VIEW_UNSPECIFIED"
   ]
 }

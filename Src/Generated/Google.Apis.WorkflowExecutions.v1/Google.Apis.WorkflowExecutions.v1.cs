@@ -1055,6 +1055,14 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("GCPCloudEventsMode")]
         public virtual string GCPCloudEventsMode { get; set; }
 
+        /// <summary>
+        /// The number of attempts that have been made to deliver this message. This is set by Pub/Sub for subscriptions
+        /// that have the "dead letter" feature enabled, and hence provided here for compatibility, but is ignored by
+        /// Workflows.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deliveryAttempt")]
+        public virtual System.Nullable<int> DeliveryAttempt { get; set; }
+
         /// <summary>Required. The message of the Pub/Sub push notification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual PubsubMessage Message { get; set; }

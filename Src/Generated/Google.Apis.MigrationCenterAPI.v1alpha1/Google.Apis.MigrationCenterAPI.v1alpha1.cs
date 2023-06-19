@@ -4901,7 +4901,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Asset performance data samples.</summary>
+        /// <summary>Asset performance data samples. Samples that are older than 40 days are ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceSamples")]
         public virtual System.Collections.Generic.IList<PerformanceSample> PerformanceSamples { get; set; }
 
@@ -6627,7 +6627,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual NetworkUsageSample Network { get; set; }
 
-        /// <summary>Time the sample was collected.</summary>
+        /// <summary>Required. Time the sample was collected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleTime")]
         public virtual object SampleTime { get; set; }
 
@@ -7033,9 +7033,17 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pricingTrack")]
         public virtual string PricingTrack { get; set; }
 
+        /// <summary>A set of findings that applies to Stole-Tenant machines in the input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("soleTenantFinding")]
+        public virtual ReportSummarySoleTenantFinding SoleTenantFinding { get; set; }
+
         /// <summary>Text describing the business priority specified for this Preference Set</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topPriority")]
         public virtual string TopPriority { get; set; }
+
+        /// <summary>A set of findings that applies to VMWare machines in the input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmwareEngineFinding")]
+        public virtual ReportSummaryVMWareEngineFinding VmwareEngineFinding { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7120,6 +7128,44 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A set of findings that applies to assets destined for Sole-Tenant nodes.</summary>
+    public class ReportSummarySoleTenantFinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Count of assets which are allocated</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allocatedAssetCount")]
+        public virtual System.Nullable<long> AllocatedAssetCount { get; set; }
+
+        /// <summary>Set of regions in which the assets are allocated</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allocatedRegions")]
+        public virtual System.Collections.Generic.IList<string> AllocatedRegions { get; set; }
+
+        /// <summary>Set of per-nodetype allocation records</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeAllocations")]
+        public virtual System.Collections.Generic.IList<ReportSummarySoleTenantNodeAllocation> NodeAllocations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the assets allocated to a specific Sole-Tenant node type.</summary>
+    public class ReportSummarySoleTenantNodeAllocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Count of assets allocated to these nodes</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allocatedAssetCount")]
+        public virtual System.Nullable<long> AllocatedAssetCount { get; set; }
+
+        /// <summary>Sole Tenant node type, e.g. "m3-node-128-3904"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("node")]
+        public virtual SoleTenantNodeType Node { get; set; }
+
+        /// <summary>Count of this node type to be provisioned</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
+        public virtual System.Nullable<long> NodeCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Utilization Chart is a specific type of visualization which displays a metric classified into "Used" and "Free"
     /// buckets.
@@ -7133,6 +7179,58 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Aggregate value which falls into the "Used" bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("used")]
         public virtual System.Nullable<long> Used { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A set of findings that applies to assets destined for VMWare Engine.</summary>
+    public class ReportSummaryVMWareEngineFinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Count of assets which are allocated</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allocatedAssetCount")]
+        public virtual System.Nullable<long> AllocatedAssetCount { get; set; }
+
+        /// <summary>Set of regions in which the assets were allocated</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allocatedRegions")]
+        public virtual System.Collections.Generic.IList<string> AllocatedRegions { get; set; }
+
+        /// <summary>Set of per-nodetype allocation records</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeAllocations")]
+        public virtual System.Collections.Generic.IList<ReportSummaryVMWareNodeAllocation> NodeAllocations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A VMWare Engine Node</summary>
+    public class ReportSummaryVMWareNode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Code to identify VMware Engine node series, e.g. "ve1-standard-72". Based on the displayName of
+        /// cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.nodeTypes
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents assets allocated to a specific VMWare Node type.</summary>
+    public class ReportSummaryVMWareNodeAllocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Count of assets allocated to these nodes</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allocatedAssetCount")]
+        public virtual System.Nullable<long> AllocatedAssetCount { get; set; }
+
+        /// <summary>Count of this node type to be provisioned</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
+        public virtual System.Nullable<long> NodeCount { get; set; }
+
+        /// <summary>VMWare node type, e.g. "ve1-standard-72"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmwareNode")]
+        public virtual ReportSummaryVMWareNode VmwareNode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7285,6 +7383,47 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>The preference set used by default for a project.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preferenceSet")]
         public virtual string PreferenceSet { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Preferences concerning Sole Tenancy nodes and VMs.</summary>
+    public class SoleTenancyPreferences : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you
+        /// are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitmentPlan")]
+        public virtual string CommitmentPlan { get; set; }
+
+        /// <summary>CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuOvercommitRatio")]
+        public virtual System.Nullable<double> CpuOvercommitRatio { get; set; }
+
+        /// <summary>Sole Tenancy nodes maintenance policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostMaintenancePolicy")]
+        public virtual string HostMaintenancePolicy { get; set; }
+
+        /// <summary>
+        /// A list of sole tenant node types. An empty list means that all possible node types will be considered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeTypes")]
+        public virtual System.Collections.Generic.IList<SoleTenantNodeType> NodeTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Sole Tenant node type.</summary>
+    public class SoleTenantNodeType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeName")]
+        public virtual string NodeName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7674,6 +7813,21 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sizingOptimizationStrategy")]
         public virtual string SizingOptimizationStrategy { get; set; }
 
+        /// <summary>Preferences concerning Sole Tenant nodes and virtual machines.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("soleTenancyPreferences")]
+        public virtual SoleTenancyPreferences SoleTenancyPreferences { get; set; }
+
+        /// <summary>
+        /// Target product for assets using this preference set. Specify either target product or business goal, but not
+        /// both.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetProduct")]
+        public virtual string TargetProduct { get; set; }
+
+        /// <summary>Preferences concerning insights and recommendations for Google Cloud VMware Engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmwareEnginePreferences")]
+        public virtual VmwareEnginePreferences VmwareEnginePreferences { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7704,6 +7858,38 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>VMWare engine migration target.</summary>
     public class VmwareEngineMigrationTarget : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The user preferences relating to Google Cloud VMware Engine target platform.</summary>
+    public class VmwareEnginePreferences : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Commitment plan to consider when calculating costs for virtual machine insights and recommendations. If you
+        /// are unsure which value to set, a 3 year commitment plan is often a good value to start with.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitmentPlan")]
+        public virtual string CommitmentPlan { get; set; }
+
+        /// <summary>CPU overcommit ratio. Acceptable values are between 1.0 and 8.0, with 0.1 increment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuOvercommitRatio")]
+        public virtual System.Nullable<double> CpuOvercommitRatio { get; set; }
+
+        /// <summary>Memory overcommit ratio. Acceptable values are 1.0, 1.25, 1.5, 1.75 and 2.0.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryOvercommitRatio")]
+        public virtual System.Nullable<double> MemoryOvercommitRatio { get; set; }
+
+        /// <summary>
+        /// The Deduplication and Compression ratio is based on the logical (Used Before) space required to store data
+        /// before applying deduplication and compression, in relation to the physical (Used After) space required after
+        /// applying deduplication and compression. Specifically, the ratio is the Used Before space divided by the Used
+        /// After space. For example, if the Used Before space is 3 GB, but the physical Used After space is 1 GB, the
+        /// deduplication and compression ratio is 3x. Acceptable values are between 1.0 and 4.0.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageDeduplicationCompressionRatio")]
+        public virtual System.Nullable<double> StorageDeduplicationCompressionRatio { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

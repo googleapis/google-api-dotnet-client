@@ -5311,7 +5311,12 @@ namespace Google.Apis.AndroidPublisher.v3
             this.service = service;
         }
 
-        /// <summary>Deletes an in-app product (i.e. a managed product or a subscription).</summary>
+        /// <summary>
+        /// Deletes an in-app product (i.e. a managed product or a subscription). This method should no longer be used
+        /// to delete subscriptions. See [this
+        /// article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+        /// for more information.
+        /// </summary>
         /// <param name="packageName">Package name of the app.</param>
         /// <param name="sku">Unique identifier for the in-app product.</param>
         public virtual DeleteRequest Delete(string packageName, string sku)
@@ -5319,7 +5324,12 @@ namespace Google.Apis.AndroidPublisher.v3
             return new DeleteRequest(service, packageName, sku);
         }
 
-        /// <summary>Deletes an in-app product (i.e. a managed product or a subscription).</summary>
+        /// <summary>
+        /// Deletes an in-app product (i.e. a managed product or a subscription). This method should no longer be used
+        /// to delete subscriptions. See [this
+        /// article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+        /// for more information.
+        /// </summary>
         public class DeleteRequest : AndroidPublisherBaseServiceRequest<string>
         {
             /// <summary>Constructs a new Delete request.</summary>
@@ -5370,7 +5380,12 @@ namespace Google.Apis.AndroidPublisher.v3
             }
         }
 
-        /// <summary>Gets an in-app product, which can be a managed product or a subscription.</summary>
+        /// <summary>
+        /// Gets an in-app product, which can be a managed product or a subscription. This method should no longer be
+        /// used to retrieve subscriptions. See [this
+        /// article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+        /// for more information.
+        /// </summary>
         /// <param name="packageName">Package name of the app.</param>
         /// <param name="sku">Unique identifier for the in-app product.</param>
         public virtual GetRequest Get(string packageName, string sku)
@@ -5378,7 +5393,12 @@ namespace Google.Apis.AndroidPublisher.v3
             return new GetRequest(service, packageName, sku);
         }
 
-        /// <summary>Gets an in-app product, which can be a managed product or a subscription.</summary>
+        /// <summary>
+        /// Gets an in-app product, which can be a managed product or a subscription. This method should no longer be
+        /// used to retrieve subscriptions. See [this
+        /// article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+        /// for more information.
+        /// </summary>
         public class GetRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.InAppProduct>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -5429,7 +5449,12 @@ namespace Google.Apis.AndroidPublisher.v3
             }
         }
 
-        /// <summary>Creates an in-app product (i.e. a managed product or a subscription).</summary>
+        /// <summary>
+        /// Creates an in-app product (i.e. a managed product or a subscription). This method should no longer be used
+        /// to create subscriptions. See [this
+        /// article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+        /// for more information.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="packageName">Package name of the app.</param>
         public virtual InsertRequest Insert(Google.Apis.AndroidPublisher.v3.Data.InAppProduct body, string packageName)
@@ -5437,7 +5462,12 @@ namespace Google.Apis.AndroidPublisher.v3
             return new InsertRequest(service, body, packageName);
         }
 
-        /// <summary>Creates an in-app product (i.e. a managed product or a subscription).</summary>
+        /// <summary>
+        /// Creates an in-app product (i.e. a managed product or a subscription). This method should no longer be used
+        /// to create subscriptions. See [this
+        /// article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+        /// for more information.
+        /// </summary>
         public class InsertRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.InAppProduct>
         {
             /// <summary>Constructs a new Insert request.</summary>
@@ -5502,7 +5532,9 @@ namespace Google.Apis.AndroidPublisher.v3
         /// Lists all in-app products - both managed products and subscriptions. If an app has a large number of in-app
         /// products, the response may be paginated. In this case the response field `tokenPagination.nextPageToken`
         /// will be set and the caller should provide its value as a `token` request parameter to retrieve the next
-        /// page.
+        /// page. This method should no longer be used to retrieve subscriptions. See [this
+        /// article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+        /// for more information.
         /// </summary>
         /// <param name="packageName">Package name of the app.</param>
         public virtual ListRequest List(string packageName)
@@ -5514,7 +5546,9 @@ namespace Google.Apis.AndroidPublisher.v3
         /// Lists all in-app products - both managed products and subscriptions. If an app has a large number of in-app
         /// products, the response may be paginated. In this case the response field `tokenPagination.nextPageToken`
         /// will be set and the caller should provide its value as a `token` request parameter to retrieve the next
-        /// page.
+        /// page. This method should no longer be used to retrieve subscriptions. See [this
+        /// article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+        /// for more information.
         /// </summary>
         public class ListRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.InappproductsListResponse>
         {
@@ -5589,7 +5623,12 @@ namespace Google.Apis.AndroidPublisher.v3
             }
         }
 
-        /// <summary>Patches an in-app product (i.e. a managed product or a subscription).</summary>
+        /// <summary>
+        /// Patches an in-app product (i.e. a managed product or a subscription). This method should no longer be used
+        /// to update subscriptions. See [this
+        /// article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+        /// for more information.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="packageName">Package name of the app.</param>
         /// <param name="sku">Unique identifier for the in-app product.</param>
@@ -5598,7 +5637,12 @@ namespace Google.Apis.AndroidPublisher.v3
             return new PatchRequest(service, body, packageName, sku);
         }
 
-        /// <summary>Patches an in-app product (i.e. a managed product or a subscription).</summary>
+        /// <summary>
+        /// Patches an in-app product (i.e. a managed product or a subscription). This method should no longer be used
+        /// to update subscriptions. See [this
+        /// article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+        /// for more information.
+        /// </summary>
         public class PatchRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.InAppProduct>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -5672,7 +5716,12 @@ namespace Google.Apis.AndroidPublisher.v3
             }
         }
 
-        /// <summary>Updates an in-app product (i.e. a managed product or a subscription).</summary>
+        /// <summary>
+        /// Updates an in-app product (i.e. a managed product or a subscription). This method should no longer be used
+        /// to update subscriptions. See [this
+        /// article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+        /// for more information.
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="packageName">Package name of the app.</param>
         /// <param name="sku">Unique identifier for the in-app product.</param>
@@ -5681,7 +5730,12 @@ namespace Google.Apis.AndroidPublisher.v3
             return new UpdateRequest(service, body, packageName, sku);
         }
 
-        /// <summary>Updates an in-app product (i.e. a managed product or a subscription).</summary>
+        /// <summary>
+        /// Updates an in-app product (i.e. a managed product or a subscription). This method should no longer be used
+        /// to update subscriptions. See [this
+        /// article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
+        /// for more information.
+        /// </summary>
         public class UpdateRequest : AndroidPublisherBaseServiceRequest<Google.Apis.AndroidPublisher.v3.Data.InAppProduct>
         {
             /// <summary>Constructs a new Update request.</summary>

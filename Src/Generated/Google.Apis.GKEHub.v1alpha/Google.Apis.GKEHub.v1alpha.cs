@@ -5628,6 +5628,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("templateLibraryInstalled")]
         public virtual System.Nullable<bool> TemplateLibraryInstalled { get; set; }
 
+        /// <summary>Output only. Last time this membership spec was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5635,6 +5639,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>State for the migration of PolicyController from ACM -&gt; PoCo Hub.</summary>
     public class ConfigManagementPolicyControllerMigration : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Last time this membership spec was copied to PoCo feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("copyTime")]
+        public virtual object CopyTime { get; set; }
+
         /// <summary>Stage of the migration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stage")]
         public virtual string Stage { get; set; }
@@ -7469,6 +7477,13 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>The state of the any bundles included in the chosen version of the manifest</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bundleStates")]
         public virtual System.Collections.Generic.IDictionary<string, PolicyControllerOnClusterState> BundleStates { get; set; }
+
+        /// <summary>
+        /// The state of the referential data sync configuration. This could represent the state of either the syncSet
+        /// object(s) or the config object, depending on the version of PoCo configured by the user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("referentialSyncConfigState")]
+        public virtual PolicyControllerOnClusterState ReferentialSyncConfigState { get; set; }
 
         /// <summary>The state of the template library</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("templateLibraryState")]

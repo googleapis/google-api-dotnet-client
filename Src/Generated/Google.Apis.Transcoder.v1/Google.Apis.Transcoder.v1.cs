@@ -1195,6 +1195,17 @@ namespace Google.Apis.Transcoder.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>`DASH` manifest configuration.</summary>
+    public class DashConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The segment reference scheme for a `DASH` manifest. The default is `SEGMENT_LIST`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("segmentReferenceScheme")]
+        public virtual string SegmentReferenceScheme { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Deblock preprocessing configuration. **Note:** This configuration is not supported.</summary>
     public class Deblock : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1879,6 +1890,10 @@ namespace Google.Apis.Transcoder.v1.Data
     /// <summary>Manifest configuration.</summary>
     public class Manifest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>`DASH` manifest configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dash")]
+        public virtual DashConfig Dash { get; set; }
+
         /// <summary>
         /// The name of the generated file. The default is `manifest` with the extension suffix corresponding to the
         /// `Manifest.type`.

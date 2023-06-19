@@ -1639,7 +1639,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing Evaluation object</summary>
+    /// <summary>LINT.IfChange Message describing Evaluation object</summary>
     public class Evaluation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. [Output only] Create time stamp</summary>
@@ -1681,7 +1681,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ruleVersions")]
         public virtual System.Collections.Generic.IList<string> RuleVersions { get; set; }
 
-        /// <summary>crontab format schedule for scheduled evaluation, example: 0 */3 * * *</summary>
+        /// <summary>
+        /// crontab format schedule for scheduled evaluation, currently only support the following schedule: "0 */1 * *
+        /// *", "0 */6 * * *", "0 */12 * * *", "0 0 */1 * *", "0 0 */7 * *",
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
         public virtual string Schedule { get; set; }
 
@@ -1783,6 +1786,10 @@ namespace Google.Apis.WorkloadManager.v1.Data
     /// <summary>A presentation of host resource usage where the workload runs.</summary>
     public class Insight : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Required. The instance id where the insight is generated from</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
+        public virtual string InstanceId { get; set; }
+
         /// <summary>
         /// The insights data for sap system discovery. This is a copy of SAP System proto and should get updated
         /// whenever that one changes.
@@ -2173,7 +2180,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The schema of SAP system discovery data.</summary>
+    /// <summary>LINT.IfChange The schema of SAP system discovery data.</summary>
     public class SapDiscovery : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An SAP system may run without an application layer.</summary>
@@ -2405,10 +2412,6 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>Required. The metrics data details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insight")]
         public virtual Insight Insight { get; set; }
-
-        /// <summary>Optional. The instance id where the insight is generated from</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
-        public virtual string InstanceId { get; set; }
 
         /// <summary>
         /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry

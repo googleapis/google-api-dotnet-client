@@ -11013,7 +11013,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// quartile (Q2) is the median of a data set. So, 50% of the data lies below this point. The third quartile
         /// (Q3) splits off the highest 25% of data from the lowest 75%. It is known as the upper or 75th empirical
         /// quartile, as 75% of the data lies below this point. Here, the quartiles is provided as an ordered list of
-        /// quartile values for the scanned data, occurring in order Q1, median, Q3.
+        /// approximate quartile values for the scanned data, occurring in order Q1, median, Q3.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quartiles")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> Quartiles { get; set; }
@@ -11579,6 +11579,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>Applied configs for data profile type data scan job.</summary>
     public class GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Boolean indicating whether a column filter was applied in the DataScan job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnFilterApplied")]
+        public virtual System.Nullable<bool> ColumnFilterApplied { get; set; }
+
         /// <summary>Boolean indicating whether a row filter was applied in the DataScan job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowFilterApplied")]
         public virtual System.Nullable<bool> RowFilterApplied { get; set; }
