@@ -142,12 +142,35 @@ namespace Google.Apis.Auth.OAuth2
         public static async Task<UserCredential> AuthorizeAsync(
             GoogleAuthorizationCodeFlow.Initializer initializer, IEnumerable<string> scopes, string user,
             CancellationToken taskCancellationToken, IDataStore dataStore = null,
+            ICodeReceiver codeReceiver = null) =>
+            await AuthorizeAsync(initializer, scopes, user, usePkce: true, taskCancellationToken, dataStore, codeReceiver).ConfigureAwait(false);
+
+        /// <summary>
+        /// The core logic for asynchronously authorizing the specified user.
+        /// Requires user interaction; see <see cref="GoogleWebAuthorizationBroker"/> remarks for more details.
+        /// </summary>
+        /// <param name="initializer">The authorization code initializer.</param>
+        /// <param name="scopes">
+        /// The scopes which indicate the Google API access your application is requesting.
+        /// </param>
+        /// <param name="user">The user to authorize.</param>
+        /// <param name="usePkce">
+        /// If true, PKCE will be used by the authorization flow. Note that using PKCE is recommended for security reasons.
+        /// See https://developers.google.com/identity/protocols/oauth2/native-app for more information.
+        /// </param>
+        /// <param name="taskCancellationToken">Cancellation token to cancel an operation.</param>
+        /// <param name="dataStore">The data store, if not specified a file data store will be used.</param>
+        /// <param name="codeReceiver">The code receiver, if not specified a local server code receiver will be used.</param>
+        /// <returns>User credential.</returns>
+        public static async Task<UserCredential> AuthorizeAsync(
+            GoogleAuthorizationCodeFlow.Initializer initializer, IEnumerable<string> scopes, string user, bool usePkce,
+            CancellationToken taskCancellationToken, IDataStore dataStore = null,
             ICodeReceiver codeReceiver = null)
         {
             initializer.Scopes = scopes;
             initializer.DataStore = dataStore ?? new FileDataStore(Folder);
 
-            var flow = new GoogleAuthorizationCodeFlow(initializer);
+            var flow = usePkce ? new PkceGoogleAuthorizationCodeFlow(initializer) : new GoogleAuthorizationCodeFlow(initializer);
             codeReceiver = codeReceiver ?? new LocalServerCodeReceiver();
 
             // Create an authorization code installed app instance and authorize the user.

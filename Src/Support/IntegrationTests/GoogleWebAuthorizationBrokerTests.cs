@@ -15,6 +15,7 @@ limitations under the License.
 */
 
 using Google.Apis.Auth.OAuth2;
+using Google.Apis.Auth.OAuth2.Flows;
 using Google.Apis.Storage.v1;
 using Google.Apis.Storage.v1.Data;
 using Google.Apis.Util.Store;
@@ -28,8 +29,9 @@ namespace IntegrationTests
 {
     public class GoogleWebAuthorizationBrokerTests
     {
-        [Fact]
-        public async Task AuthClientSecretAndAccessTokenCredential()
+        [Theory]
+        [CombinatorialData]
+        public async Task AuthClientSecretAndAccessTokenCredential(bool usePkce)
         {
             // Warning: This test is interactive!
             // It will bring up a browser window that must be responded to before the test can complete.
@@ -38,8 +40,10 @@ namespace IntegrationTests
             // NullDataStore is used to ensure the AuthorizationUrl is definitely used.
             // "email" scope requested first to test for second scope being passed correctly to auth URL.
             UserCredential cred = await GoogleWebAuthorizationBroker.AuthorizeAsync(
-                Helper.GetClientSecretStream(), new string[] { "email", StorageService.Scope.CloudPlatformReadOnly },
-                "user", CancellationToken.None, new NullDataStore());
+                new GoogleAuthorizationCodeFlow.Initializer() { ClientSecretsStream = Helper.GetClientSecretStream() },
+                new string[] { "email", StorageService.Scope.CloudPlatformReadOnly },
+                "user", usePkce, CancellationToken.None, new NullDataStore());
+
             Assert.NotNull(cred);
 
             // Test access token can be retrieved.
