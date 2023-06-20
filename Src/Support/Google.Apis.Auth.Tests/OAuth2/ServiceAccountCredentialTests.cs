@@ -22,6 +22,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
@@ -60,6 +61,49 @@ namespace Google.Apis.Auth.Tests.OAuth2
                 "CUkbN-ZI-EWoL-HhgiV_3ISrXMvbDHYhBR0vvtXE0PcRcsMEf51Y0jV4DXZ8hf-QJFq7O" +
                 "Hrepwe93dnDE6uNVnbj41_0phuy1WKwae29Qp2aPI2Y8E8Z2tXQlF87E_MdgjXVeTF8k";
             Assert.Equal(expectedToken, accessToken);
+        }
+
+        [Fact]
+        public async Task ValidLocallySignedAccessToken_FromPrivateKey_AlsoOnRetry()
+        {
+            string dummyServiceAccountCredentialFileContents = GetContents("service_account_credential.json");
+
+            var credentialParameters = NewtonsoftJsonSerializer.Instance.Deserialize<JsonCredentialParameters>(dummyServiceAccountCredentialFileContents);
+            var messageHandler = new FetchesTokenMessageHandler();
+            var initializer = new ServiceAccountCredential.Initializer(credentialParameters.ClientEmail)
+            {
+                Clock = new MockClock(new DateTime(2016, 1, 1, 0, 0, 0, DateTimeKind.Utc)),
+                // This fetches the token "a" from server side.
+                HttpClientFactory = new MockHttpClientFactory(new FetchesTokenMessageHandler()),
+            };
+            var cred = new ServiceAccountCredential(initializer.FromPrivateKey(credentialParameters.PrivateKey));
+            
+            // We obtain an access token normally.
+            // This should be a self signed token not a server side token.
+            string accessToken = await cred.GetAccessTokenForRequestAsync("http://authurl/");
+            Assert.NotNull(accessToken);
+            Assert.NotEmpty(accessToken);
+            Assert.NotEqual("a", accessToken);
+            Assert.Equal(0, messageHandler.Calls);
+            // If the token was fetched from the service, the TokenResponse would have been set.
+            Assert.Null(cred.Token);
+
+            var fakeFailedRequest = new HttpRequestMessage();
+            fakeFailedRequest.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            // On retries (i.e. when handling unsuccesful requests), we shouldn't need to
+            // attempt to fetch a server side token if the credential is using self signed JWTs.
+            // Instead a JWT will be regenerated, if needed, next time the request is attempted.
+            bool handled = await cred.HandleResponseAsync(new HandleUnsuccessfulResponseArgs
+            {
+                CurrentFailedTry = 1,
+                TotalTries = 3,
+                Request = fakeFailedRequest,
+                Response = new HttpResponseMessage(System.Net.HttpStatusCode.Unauthorized)
+            });
+            Assert.True(handled);
+            Assert.Equal(0, messageHandler.Calls);
+            // If the token was fetched from the service, the TokenResponse would have been set.
+            Assert.Null(cred.Token);
         }
 
         private string ToHex(byte[] bs) => bs.Aggregate("", (acc, b) => acc + b.ToString("X2"));
