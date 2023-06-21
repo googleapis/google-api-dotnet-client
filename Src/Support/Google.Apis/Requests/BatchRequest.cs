@@ -420,7 +420,7 @@ namespace Google.Apis.Requests
         [VisibleForTestOnly]
         internal static async Task<HttpContent> CreateIndividualRequest(IClientServiceRequest request)
         {
-            HttpRequestMessage requestMessage = request.CreateRequest(false);
+            using HttpRequestMessage requestMessage = request.CreateRequest(false);
             string requestContent = await CreateRequestContentString(requestMessage).ConfigureAwait(false);
 
             var content = new StringContent(requestContent);

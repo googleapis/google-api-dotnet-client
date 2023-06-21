@@ -35,7 +35,7 @@ namespace Google.Apis.Auth.OAuth2.Requests
         internal static async Task<HttpResponseMessage> PostJsonAsync(
             this object request, HttpClient httpClient, string url, CancellationToken cancellationToken)
         {
-            var httpRequest = new HttpRequestMessage(HttpMethod.Post, url)
+            using var httpRequest = new HttpRequestMessage(HttpMethod.Post, url)
             {
                 Content = new StringContent(NewtonsoftJsonSerializer.Instance.Serialize(request), Encoding.UTF8, "application/json")
             };
@@ -50,10 +50,12 @@ namespace Google.Apis.Auth.OAuth2.Requests
         internal static async Task<TResponse> PostJsonAsync<TResponse>(
             this object request, HttpClient httpClient, string url, CancellationToken cancellationToken)
         {
-            var response = await request.PostJsonAsync(httpClient, url, cancellationToken).ConfigureAwait(false);
+            using var response = await request.PostJsonAsync(httpClient, url, cancellationToken).ConfigureAwait(false);
             response.EnsureSuccessStatusCode();
-            return await NewtonsoftJsonSerializer.Instance.DeserializeAsync<TResponse>(
-                await response.Content.ReadAsStreamAsync().ConfigureAwait(false), cancellationToken).ConfigureAwait(false);
+
+            using var stream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+
+            return await NewtonsoftJsonSerializer.Instance.DeserializeAsync<TResponse>(stream, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -66,7 +68,7 @@ namespace Google.Apis.Auth.OAuth2.Requests
             this object request, HttpClient httpClient, string url,
             IClock clock, ILogger logger, CancellationToken cancellationToken)
         {
-            var response = await request.PostJsonAsync(httpClient, url, cancellationToken).ConfigureAwait(false);
+            using var response = await request.PostJsonAsync(httpClient, url, cancellationToken).ConfigureAwait(false);
             return await TokenResponse.FromHttpResponseAsync(response, clock, logger).ConfigureAwait(false);
         }
 
@@ -82,7 +84,7 @@ namespace Google.Apis.Auth.OAuth2.Requests
             string url, AuthenticationHeaderValue authenticationHeaderValue,
             IClock clock, ILogger logger, CancellationToken taskCancellationToken)
         {
-            var httpRequest = new HttpRequestMessage(HttpMethod.Post, url)
+            using var httpRequest = new HttpRequestMessage(HttpMethod.Post, url)
             {
                 Content = ParameterUtils.CreateFormUrlEncodedContent(request)
             };
@@ -91,7 +93,7 @@ namespace Google.Apis.Auth.OAuth2.Requests
                 httpRequest.Headers.Authorization = authenticationHeaderValue;
             }
 
-            var response = await httpClient.SendAsync(httpRequest, taskCancellationToken).ConfigureAwait(false);
+            using var response = await httpClient.SendAsync(httpRequest, taskCancellationToken).ConfigureAwait(false);
             return await TokenResponse.FromHttpResponseAsync(response, clock, logger).ConfigureAwait(false);
         }
     }

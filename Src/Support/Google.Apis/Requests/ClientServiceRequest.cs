@@ -184,12 +184,14 @@ namespace Google.Apis.Requests
         /// <inheritdoc/>
         public Stream ExecuteAsStream()
         {
-            // TODO(peleyal): should we copy the stream, and dispose the response?
             try
             {
                 // Sync call.
-                var response = ExecuteUnparsedAsync(CancellationToken.None).Result;
-                return response.Content.ReadAsStreamAsync().Result;
+                using var response = ExecuteUnparsedAsync(CancellationToken.None).Result;
+
+                var memoryStream = new MemoryStream();
+                response.Content.ReadAsStreamAsync().Result.CopyTo(memoryStream);
+                return memoryStream;
             }
             catch (AggregateException aex)
             {
@@ -227,11 +229,13 @@ namespace Google.Apis.Requests
         /// <inheritdoc/>
         public async Task<Stream> ExecuteAsStreamAsync(CancellationToken cancellationToken)
         {
-            // TODO(peleyal): should we copy the stream, and dispose the response?
-            var response = await ExecuteUnparsedAsync(cancellationToken).ConfigureAwait(false);
+            using var response = await ExecuteUnparsedAsync(cancellationToken).ConfigureAwait(false);
 
             cancellationToken.ThrowIfCancellationRequested();
-            return await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+
+            var memoryStream = new MemoryStream();
+            await response.Content.CopyToAsync(memoryStream).ConfigureAwait(false);
+            return memoryStream;
         }
 
         #region Helpers

@@ -194,9 +194,9 @@ namespace Google.Apis.Auth.OAuth2
         public override async Task<bool> RequestAccessTokenAsync(CancellationToken taskCancellationToken)
         {
             // Create and send the HTTP request to compute server token URL.
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, EffectiveTokenServerUrl);
+            using var httpRequest = new HttpRequestMessage(HttpMethod.Get, EffectiveTokenServerUrl);
             httpRequest.Headers.Add(MetadataFlavor, GoogleMetadataHeader);
-            var response = await HttpClient.SendAsync(httpRequest, taskCancellationToken).ConfigureAwait(false);
+            using var response = await HttpClient.SendAsync(httpRequest, taskCancellationToken).ConfigureAwait(false);
             Token = await TokenResponse.FromHttpResponseAsync(response, Clock, Logger).ConfigureAwait(false);
             return true;
         }
@@ -227,10 +227,10 @@ namespace Google.Apis.Auth.OAuth2
                 }
             }
 
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, uri);
+            using var httpRequest = new HttpRequestMessage(HttpMethod.Get, uri);
             httpRequest.Headers.Add(MetadataFlavor, GoogleMetadataHeader);
 
-            var response = await HttpClient.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            using var response = await HttpClient.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
             var token = await TokenResponse.FromHttpResponseAsync(response, Clock, Logger).ConfigureAwait(false);
             caller.Token = token;
             return true;
@@ -266,10 +266,10 @@ namespace Google.Apis.Auth.OAuth2
 
         private async Task<string> FetchDefaultServiceAccountEmailAsync()
         {
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, GoogleAuthConsts.EffectiveComputeDefaultServiceAccountEmailUrl);
+            using var httpRequest = new HttpRequestMessage(HttpMethod.Get, GoogleAuthConsts.EffectiveComputeDefaultServiceAccountEmailUrl);
             httpRequest.Headers.Add(MetadataFlavor, GoogleMetadataHeader);
 
-            var response = await HttpClient.SendAsync(httpRequest).ConfigureAwait(false);
+            using var response = await HttpClient.SendAsync(httpRequest).ConfigureAwait(false);
             response.EnsureSuccessStatusCode();
             return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
         }
@@ -309,9 +309,9 @@ namespace Google.Apis.Auth.OAuth2
                     cts.CancelAfter(MetadataServerPingTimeoutInMilliseconds);
                     try
                     {
-                        var httpRequest = new HttpRequestMessage(HttpMethod.Get, GoogleAuthConsts.EffectiveMetadataServerUrl);
+                        using var httpRequest = new HttpRequestMessage(HttpMethod.Get, GoogleAuthConsts.EffectiveMetadataServerUrl);
                         httpRequest.Headers.Add(MetadataFlavor, GoogleMetadataHeader);
-                        var response = await httpClient.SendAsync(httpRequest, cts.Token).ConfigureAwait(false);
+                        using var response = await httpClient.SendAsync(httpRequest, cts.Token).ConfigureAwait(false);
                         if (response.Headers.TryGetValues(MetadataFlavor, out var headerValues)
                             && headerValues.Contains(GoogleMetadataHeader))
                         {

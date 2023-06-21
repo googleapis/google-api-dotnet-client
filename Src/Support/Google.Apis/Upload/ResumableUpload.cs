@@ -534,7 +534,7 @@ namespace Google.Apis.Upload
             }
             // The first "resuming" request is to query the server in which point the upload was interrupted.
             var range = String.Format("bytes */{0}", StreamLength < 0 ? "*" : StreamLength.ToString());
-            HttpRequestMessage request = new RequestBuilder()
+            using HttpRequestMessage request = new RequestBuilder()
             {
                 BaseUri = UploadUri,
                 Method = HttpConsts.Put
@@ -543,9 +543,8 @@ namespace Google.Apis.Upload
 
             try
             {
-                HttpResponseMessage response;
                 new ServerErrorCallback(this).AddToRequest(request);
-                response = await HttpClient.SendAsync(request, cancellationToken)
+                using HttpResponseMessage response = await HttpClient.SendAsync(request, cancellationToken)
                     .ConfigureAwait(false);
 
                 if (await HandleResponse(response).ConfigureAwait(false))
@@ -623,7 +622,7 @@ namespace Google.Apis.Upload
         {
             cancellationToken.ThrowIfCancellationRequested();
 
-            HttpRequestMessage request = new RequestBuilder()
+            using HttpRequestMessage request = new RequestBuilder()
                 {
                     BaseUri = UploadUri,
                     Method = HttpConsts.Put
@@ -648,7 +647,7 @@ namespace Google.Apis.Upload
             // but just occasionally it'll return a 308 that makes us resend a chunk. We need to
             // be aware of that so that the upload interceptor is called appropriately afterwards.
             long bytesServerReceivedBefore = BytesServerReceived;
-            HttpResponseMessage response = await HttpClient.SendAsync(request, cancellationToken)
+            using HttpResponseMessage response = await HttpClient.SendAsync(request, cancellationToken)
                 .ConfigureAwait(false);
             var completed = await HandleResponse(response).ConfigureAwait(false);
             long bytesServerReceivedAfter = BytesServerReceived;
@@ -1134,9 +1133,9 @@ namespace Google.Apis.Upload
         /// <inheritdoc/>
         public override async Task<Uri> InitiateSessionAsync(CancellationToken cancellationToken = default(CancellationToken))
         {
-            HttpRequestMessage request = CreateInitializeRequest();
+            using HttpRequestMessage request = CreateInitializeRequest();
             Options?.ModifySessionInitiationRequest?.Invoke(request);
-            var response = await Service.HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
+            using var response = await Service.HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
 
             if (!response.IsSuccessStatusCode)
             {

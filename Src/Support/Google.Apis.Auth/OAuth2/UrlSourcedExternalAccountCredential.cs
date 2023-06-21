@@ -109,13 +109,13 @@ namespace Google.Apis.Auth.OAuth2
         /// <inheritdoc/>
         protected async override Task<string> GetSubjectTokenAsyncImpl(CancellationToken taskCancellationToken)
         {
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, SubjectTokenUrl);
+            using var httpRequest = new HttpRequestMessage(HttpMethod.Get, SubjectTokenUrl);
             foreach (var headerPair in Headers)
             {
                 httpRequest.Headers.Add(headerPair.Key, headerPair.Value);
             }
 
-            var response = await HttpClient.SendAsync(httpRequest, taskCancellationToken).ConfigureAwait(false);
+            using var response = await HttpClient.SendAsync(httpRequest, taskCancellationToken).ConfigureAwait(false);
             response.EnsureSuccessStatusCode();
             var responseText = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 

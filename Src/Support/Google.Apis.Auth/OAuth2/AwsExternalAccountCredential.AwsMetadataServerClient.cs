@@ -68,18 +68,18 @@ namespace Google.Apis.Auth.OAuth2
                 }
 
                 // https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html#instance-metadata-v2-how-it-works
-                var request = new HttpRequestMessage(HttpMethod.Put, _imdsV2SessionTokenUrl)
+                using var request = new HttpRequestMessage(HttpMethod.Put, _imdsV2SessionTokenUrl)
                 {
                     Headers = { { ImdsV2SessionTokenTtlHeaderName, ImdsV2SessionTokenTtlSeconds } }
                 };
-                var response = await _httpClient.SendAsync(request, _cancellationToken).ConfigureAwait(false);
+                using var response = await _httpClient.SendAsync(request, _cancellationToken).ConfigureAwait(false);
                 response.EnsureSuccessStatusCode();
                 return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             }
 
             internal async Task<string> FetchMetadataAsync(string metadataUrl)
             {
-                var request = new HttpRequestMessage(HttpMethod.Get, metadataUrl);
+                using var request = new HttpRequestMessage(HttpMethod.Get, metadataUrl);
 
                 // https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html#instance-metadata-v2-how-it-works
                 if (await _imdsV2SessionToken.Value.ConfigureAwait(false) is string sessionToken)
@@ -87,7 +87,7 @@ namespace Google.Apis.Auth.OAuth2
                     request.Headers.Add(MetatadaServerRequestImdsV2SessionTokenHeaderName, sessionToken);
                 }
 
-                var response = await _httpClient.SendAsync(request, _cancellationToken).ConfigureAwait(false);
+                using var response = await _httpClient.SendAsync(request, _cancellationToken).ConfigureAwait(false);
                 response.EnsureSuccessStatusCode();
                 return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             }
