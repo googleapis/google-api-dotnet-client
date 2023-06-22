@@ -1039,7 +1039,7 @@ namespace Google.Apis.ServiceUsage.v1.Data
 
         /// <summary>
         ///  If this map is nonempty, then this policy applies only to specific values for dimensions defined in the
-        /// limit unit. For example, an policy on a limit with the unit `1/{project}/{region}` could contain an entry
+        /// limit unit. For example, a policy on a limit with the unit `1/{project}/{region}` could contain an entry
         /// with the key `region` and the value `us-east-1`; the policy is only applied to quota consumed in that
         /// region. This map has the following restrictions: * If `region` appears as a key, its value must be a valid
         /// Cloud region. * If `zone` appears as a key, its value must be a valid Cloud zone. * Keys other than `region`

@@ -2167,8 +2167,9 @@ namespace Google.Apis.ServiceUsage.v1beta1
         /// <summary>Generates service identity for service.</summary>
         /// <param name="parent">
         /// Name of the consumer and service to generate an identity for. The `GenerateServiceIdentity` methods
-        /// currently only support projects. An example name would be: `projects/123/services/example.googleapis.com`
-        /// where `123` is the project number.
+        /// currently support projects, folders, organizations. Example parents would be:
+        /// `projects/123/services/example.googleapis.com` `folders/123/services/example.googleapis.com`
+        /// `organizations/123/services/example.googleapis.com`
         /// </param>
         public virtual GenerateServiceIdentityRequest GenerateServiceIdentity(string parent)
         {
@@ -2187,8 +2188,9 @@ namespace Google.Apis.ServiceUsage.v1beta1
 
             /// <summary>
             /// Name of the consumer and service to generate an identity for. The `GenerateServiceIdentity` methods
-            /// currently only support projects. An example name would be:
-            /// `projects/123/services/example.googleapis.com` where `123` is the project number.
+            /// currently support projects, folders, organizations. Example parents would be:
+            /// `projects/123/services/example.googleapis.com` `folders/123/services/example.googleapis.com`
+            /// `organizations/123/services/example.googleapis.com`
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
@@ -2415,7 +2417,7 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
 
         /// <summary>
         ///  If this map is nonempty, then this policy applies only to specific values for dimensions defined in the
-        /// limit unit. For example, an policy on a limit with the unit `1/{project}/{region}` could contain an entry
+        /// limit unit. For example, a policy on a limit with the unit `1/{project}/{region}` could contain an entry
         /// with the key `region` and the value `us-east-1`; the policy is only applied to quota consumed in that
         /// region. This map has the following restrictions: * If `region` appears as a key, its value must be a valid
         /// Cloud region. * If `zone` appears as a key, its value must be a valid Cloud zone. * Keys other than `region`

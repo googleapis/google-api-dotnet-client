@@ -4421,7 +4421,7 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("connector")]
         public virtual string Connector { get; set; }
 
-        /// <summary>Traffic VPC egress settings.</summary>
+        /// <summary>Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("egress")]
         public virtual string Egress { get; set; }
 

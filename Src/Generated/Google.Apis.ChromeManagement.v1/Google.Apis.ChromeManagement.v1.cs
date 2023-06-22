@@ -1621,12 +1621,13 @@ namespace Google.Apis.ChromeManagement.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. Only include resources that match the filter. Supported filter fields: - device_id -
-                    /// user_id - device_org_unit_id - user_org_unit_id - timestamp - event_type The "timestamp" filter
-                    /// accepts either the Unix Epoch milliseconds format or the RFC3339 UTC "Zulu" format with
-                    /// nanosecond resolution and up to nine fractional digits. Both formats should be surrounded by
-                    /// simple double quotes. Examples: "2014-10-02T15:01:23Z", "2014-10-02T15:01:23.045123456Z",
-                    /// "1679283943823".
+                    /// Optional. Only include resources that match the filter. Although this parameter is currently
+                    /// optional, this parameter will be required- please specify at least 1 event type. Supported
+                    /// filter fields: - device_id - user_id - device_org_unit_id - user_org_unit_id - timestamp -
+                    /// event_type The "timestamp" filter accepts either the Unix Epoch milliseconds format or the
+                    /// RFC3339 UTC "Zulu" format with nanosecond resolution and up to nine fractional digits. Both
+                    /// formats should be surrounded by simple double quotes. Examples: "2014-10-02T15:01:23Z",
+                    /// "2014-10-02T15:01:23.045123456Z", "1679283943823".
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -1641,7 +1642,10 @@ namespace Google.Apis.ChromeManagement.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>Required. Read mask to specify which fields to return.</summary>
+                    /// <summary>
+                    /// Required. Read mask to specify which fields to return. Although currently required, this field
+                    /// will become optional, while the filter parameter with an event type will be come required.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object ReadMask { get; set; }
 

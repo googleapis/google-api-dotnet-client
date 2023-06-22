@@ -2647,11 +2647,11 @@ namespace Google.Apis.Calendar.v3
             /// <summary>
             /// Event types to return. Optional. Possible values are:  - "default"  - "focusTime"  - "outOfOffice"This
             /// parameter can be repeated multiple times to return events of different types. Currently, this is the
-            /// only allowed value for this field:  - ["default", "focusTime", "outOfOffice"] This value will be the
-            /// default.  If you're enrolled in the Working Location developer preview program, in addition to the
-            /// default value above you can also set the "workingLocation" event type:  - ["default", "focusTime",
-            /// "outOfOffice", "workingLocation"]  - ["workingLocation"] Additional combinations of these 4 event types
-            /// will be made available in later releases. Developer Preview.
+            /// only allowed value for this field:  - ["default", "focusTime", "outOfOffice"] This value is the default.
+            ///  If you're enrolled in the Working Location developer preview program, in addition to the default value
+            /// above you can also set the "workingLocation" event type:  - ["default", "focusTime", "outOfOffice",
+            /// "workingLocation"]  - ["workingLocation"] Additional combinations of these four event types will be made
+            /// available in later releases. Developer Preview.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("eventTypes", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> EventTypes { get; set; }
@@ -3607,11 +3607,11 @@ namespace Google.Apis.Calendar.v3
             /// <summary>
             /// Event types to return. Optional. Possible values are:  - "default"  - "focusTime"  - "outOfOffice"This
             /// parameter can be repeated multiple times to return events of different types. Currently, this is the
-            /// only allowed value for this field:  - ["default", "focusTime", "outOfOffice"] This value will be the
-            /// default.  If you're enrolled in the Working Location developer preview program, in addition to the
-            /// default value above you can also set the "workingLocation" event type:  - ["default", "focusTime",
-            /// "outOfOffice", "workingLocation"]  - ["workingLocation"] Additional combinations of these 4 event types
-            /// will be made available in later releases. Developer Preview.
+            /// only allowed value for this field:  - ["default", "focusTime", "outOfOffice"] This value is the default.
+            ///  If you're enrolled in the Working Location developer preview program, in addition to the default value
+            /// above you can also set the "workingLocation" event type:  - ["default", "focusTime", "outOfOffice",
+            /// "workingLocation"]  - ["workingLocation"] Additional combinations of these four event types will be made
+            /// available in later releases. Developer Preview.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("eventTypes", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> EventTypes { get; set; }
@@ -5161,7 +5161,7 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
         public virtual string Visibility { get; set; }
 
-        /// <summary>Developer Preview: Working Location event data. Read-only.</summary>
+        /// <summary>Working Location event data. Read-only. Developer Preview.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workingLocationProperties")]
         public virtual EventWorkingLocationProperties WorkingLocationProperties { get; set; }
 
@@ -5473,8 +5473,8 @@ namespace Google.Apis.Calendar.v3.Data
         public virtual OfficeLocationData OfficeLocation { get; set; }
 
         /// <summary>
-        /// Indicates what kind of location this is. Any details will be specified in a sub-field of the specified name
-        /// (but which may be missing if empty). Any other fields will be ignored.
+        /// Indicates what kind of location this is. Any details are specified in a sub-field of the specified name (but
+        /// which may be missing if empty). Any other fields are ignored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
