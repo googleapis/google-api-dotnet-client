@@ -42,7 +42,6 @@ namespace Google.Apis.ShoppingContent.v2_1
             Collectionstatuses = new CollectionstatusesResource(this);
             Conversionsources = new ConversionsourcesResource(this);
             Csses = new CssesResource(this);
-            Customers = new CustomersResource(this);
             Datafeeds = new DatafeedsResource(this);
             Datafeedstatuses = new DatafeedstatusesResource(this);
             Freelistingsprogram = new FreelistingsprogramResource(this);
@@ -129,9 +128,6 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         /// <summary>Gets the Csses resource.</summary>
         public virtual CssesResource Csses { get; }
-
-        /// <summary>Gets the Customers resource.</summary>
-        public virtual CustomersResource Customers { get; }
 
         /// <summary>Gets the Datafeeds resource.</summary>
         public virtual DatafeedsResource Datafeeds { get; }
@@ -4098,82 +4094,6 @@ namespace Google.Apis.ShoppingContent.v2_1
                 RequestParameters.Add("cssDomainId", new Google.Apis.Discovery.Parameter
                 {
                     Name = "cssDomainId",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-    }
-
-    /// <summary>The "customers" collection of methods.</summary>
-    public class CustomersResource
-    {
-        private const string Resource = "customers";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public CustomersResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-        }
-
-        /// <summary>
-        /// Allows uploading one customer information entry. Adding a customer with loyalty data enables the customer to
-        /// see personalized loyalty annotations on search. Uploading a previously existing customer will overwrite the
-        /// old entry.
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="merchantId">Required. The ID of the account that owns the customer information.</param>
-        public virtual CreateRequest Create(Google.Apis.ShoppingContent.v2_1.Data.Customer body, long merchantId)
-        {
-            return new CreateRequest(service, body, merchantId);
-        }
-
-        /// <summary>
-        /// Allows uploading one customer information entry. Adding a customer with loyalty data enables the customer to
-        /// see personalized loyalty annotations on search. Uploading a previously existing customer will overwrite the
-        /// old entry.
-        /// </summary>
-        public class CreateRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.Customer>
-        {
-            /// <summary>Constructs a new Create request.</summary>
-            public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.Customer body, long merchantId) : base(service)
-            {
-                MerchantId = merchantId;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Required. The ID of the account that owns the customer information.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual long MerchantId { get; private set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.ShoppingContent.v2_1.Data.Customer Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "create";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{merchantId}/customers";
-
-            /// <summary>Initializes Create parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "merchantId",
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
@@ -15663,36 +15583,6 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The value of the attribute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// The object representing a customer to update data for. Includes a customer identifier (such as email address)
-    /// and any associated metadata to add. LoyaltyData triggers adding customer data for the purpose of loyalty
-    /// personalization.
-    /// </summary>
-    public class Customer : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The customer's email address. No extra string processing needed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
-        public virtual string EmailAddress { get; set; }
-
-        /// <summary>Loyalty data associated with the customer.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("loyaltyData")]
-        public virtual CustomerLoyaltyData LoyaltyData { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The loyalty data of the customer.</summary>
-    public class CustomerLoyaltyData : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The tier information for the given user. Can be an empty string.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("loyaltyTier")]
-        public virtual string LoyaltyTier { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

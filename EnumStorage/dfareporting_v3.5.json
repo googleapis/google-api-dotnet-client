@@ -309,6 +309,15 @@
     "PLANNING_PLACEMENT_TYPE_REGULAR",
     "PLANNING_PLACEMENT_TYPE_CREDIT"
   ],
+  "Google.Apis.Dfareporting.v3_5.MediaResource+UploadMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Dfareporting.v3_5.MediaResource+UploadMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
   "Google.Apis.Dfareporting.v3_5.MobileAppsResource+ListRequest.DirectoriesEnum": [
     "UNKNOWN",
     "APPLE_APP_STORE",

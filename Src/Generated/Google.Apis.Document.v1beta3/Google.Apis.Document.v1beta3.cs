@@ -688,7 +688,7 @@ namespace Google.Apis.Document.v1beta3
                         this.service = service;
                     }
 
-                    /// <summary>Gets the DatasetSchema of a Dataset.</summary>
+                    /// <summary>Gets the `DatasetSchema` of a `Dataset`.</summary>
                     /// <param name="name">
                     /// Required. The dataset schema resource name. Format:
                     /// projects/{project}/locations/{location}/processors/{processor}/dataset/datasetSchema
@@ -698,7 +698,7 @@ namespace Google.Apis.Document.v1beta3
                         return new GetDatasetSchemaRequest(service, name);
                     }
 
-                    /// <summary>Gets the DatasetSchema of a Dataset.</summary>
+                    /// <summary>Gets the `DatasetSchema` of a `Dataset`.</summary>
                     public class GetDatasetSchemaRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3DatasetSchema>
                     {
                         /// <summary>Constructs a new GetDatasetSchema request.</summary>
@@ -751,7 +751,7 @@ namespace Google.Apis.Document.v1beta3
                         }
                     }
 
-                    /// <summary>Updates a DatasetSchema.</summary>
+                    /// <summary>Updates a `DatasetSchema`.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Dataset schema resource name. Format:
@@ -762,7 +762,7 @@ namespace Google.Apis.Document.v1beta3
                         return new UpdateDatasetSchemaRequest(service, body, name);
                     }
 
-                    /// <summary>Updates a DatasetSchema.</summary>
+                    /// <summary>Updates a `DatasetSchema`.</summary>
                     public class UpdateDatasetSchemaRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3DatasetSchema>
                     {
                         /// <summary>Constructs a new UpdateDatasetSchema request.</summary>
@@ -2715,7 +2715,7 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Document Identifier.</summary>
     public class GoogleCloudDocumentaiUiv1beta3DocumentId : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A document id within user managed Cloud Storage.</summary>
+        /// <summary>A document id within user-managed Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsManagedDocId")]
         public virtual GoogleCloudDocumentaiUiv1beta3DocumentIdGCSManagedDocumentId GcsManagedDocId { get; set; }
 
@@ -2732,7 +2732,7 @@ namespace Google.Apis.Document.v1beta3.Data
     }
 
     /// <summary>
-    /// Identifies a document uniquely within the scope of a dataset in user managed Cloud Storage option.
+    /// Identifies a document uniquely within the scope of a dataset in the user-managed Cloud Storage option.
     /// </summary>
     public class GoogleCloudDocumentaiUiv1beta3DocumentIdGCSManagedDocumentId : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2740,7 +2740,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cwDocId")]
         public virtual string CwDocId { get; set; }
 
-        /// <summary>Required. The Cloud Storage uri where the actual document is stored.</summary>
+        /// <summary>Required. The Cloud Storage URI where the actual document is stored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
         public virtual string GcsUri { get; set; }
 
@@ -3891,7 +3891,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual GoogleCloudDocumentaiV1beta1DocumentPageImage Image { get; set; }
 
-        /// <summary>Image Quality Scores.</summary>
+        /// <summary>Image quality scores.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageQualityScores")]
         public virtual GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScores ImageQualityScores { get; set; }
 
@@ -4144,7 +4144,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Image Quality Scores for the page image.</summary>
+    /// <summary>Image quality scores for the page image.</summary>
     public class GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScores : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of detected defects.</summary>
@@ -4163,8 +4163,7 @@ namespace Google.Apis.Document.v1beta3.Data
     public class GoogleCloudDocumentaiV1beta1DocumentPageImageQualityScoresDetectedDefect : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence of that the defect
-        /// exists.
+        /// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence that the defect exists.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
@@ -4671,7 +4670,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<float> Size { get; set; }
 
-        /// <summary>Unit for the font size. Follows CSS naming (`in`, `px`, `pt`, etc.).</summary>
+        /// <summary>Unit for the font size. Follows CSS naming (such as `in`, `px`, and `pt`).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; }
 
@@ -5223,7 +5222,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual GoogleCloudDocumentaiV1beta2DocumentPageImage Image { get; set; }
 
-        /// <summary>Image Quality Scores.</summary>
+        /// <summary>Image quality scores.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageQualityScores")]
         public virtual GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScores ImageQualityScores { get; set; }
 
@@ -5476,7 +5475,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Image Quality Scores for the page image.</summary>
+    /// <summary>Image quality scores for the page image.</summary>
     public class GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScores : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of detected defects.</summary>
@@ -5495,8 +5494,7 @@ namespace Google.Apis.Document.v1beta3.Data
     public class GoogleCloudDocumentaiV1beta2DocumentPageImageQualityScoresDetectedDefect : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence of that the defect
-        /// exists.
+        /// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence that the defect exists.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
@@ -6003,7 +6001,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<float> Size { get; set; }
 
-        /// <summary>Unit for the font size. Follows CSS naming (`in`, `px`, `pt`, etc.).</summary>
+        /// <summary>Unit for the font size. Follows CSS naming (such as `in`, `px`, and `pt`).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; }
 
@@ -6357,7 +6355,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("processOptions")]
         public virtual GoogleCloudDocumentaiV1beta3ProcessOptions ProcessOptions { get; set; }
 
-        /// <summary>Whether Human Review feature should be skipped for this request. Default to `false`.</summary>
+        /// <summary>Whether human review should be skipped for this request. Default to `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipHumanReview")]
         public virtual System.Nullable<bool> SkipHumanReview { get; set; }
 
@@ -6448,13 +6446,13 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>A singleton resource under a Processor which configures a collection of documents.</summary>
     public class GoogleCloudDocumentaiV1beta3Dataset : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Document Warehouse-based dataset config.</summary>
+        /// <summary>Optional. Document AI Warehouse-based dataset configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentWarehouseConfig")]
         public virtual GoogleCloudDocumentaiV1beta3DatasetDocumentWarehouseConfig DocumentWarehouseConfig { get; set; }
 
         /// <summary>
-        /// Optional. User managed GCS dataset config. Use this config if the dataset documents are stored under a user
-        /// managed GCS location.
+        /// Optional. User-managed Cloud Storage dataset configuration. Use this configuration if the dataset documents
+        /// are stored under a user-managed Cloud Storage location.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsManagedConfig")]
         public virtual GoogleCloudDocumentaiV1beta3DatasetGCSManagedConfig GcsManagedConfig { get; set; }
@@ -6466,19 +6464,19 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Optional. A lightweight indexing source with low latency and high reliability, but lack advanced features
-        /// like CMEK and content based search.
+        /// Optional. A lightweight indexing source with low latency and high reliability, but lacking advanced features
+        /// like CMEK and content-based search.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spannerIndexingConfig")]
         public virtual GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig SpannerIndexingConfig { get; set; }
 
-        /// <summary>Required. State of the dataset. Will be ignored when updating dataset.</summary>
+        /// <summary>Required. State of the dataset. Ignored when updating dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
         /// <summary>
-        /// Optional. Unmanaged dataset config. Use this config if the dataset documents are managed by the document
-        /// service internally (not user managed).
+        /// Optional. Unmanaged dataset configuration. Use this configuration if the dataset documents are managed by
+        /// the document service internally (not user-managed).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unmanagedDatasetConfig")]
         public virtual GoogleCloudDocumentaiV1beta3DatasetUnmanagedDatasetConfig UnmanagedDatasetConfig { get; set; }
@@ -6487,14 +6485,14 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Config specific to the Document Warehouse-based implementation.</summary>
+    /// <summary>Configuration specific to the Document AI Warehouse-based implementation.</summary>
     public class GoogleCloudDocumentaiV1beta3DatasetDocumentWarehouseConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The collection in Document Warehouse associated with the dataset.</summary>
+        /// <summary>Output only. The collection in Document AI Warehouse associated with the dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("collection")]
         public virtual string Collection { get; set; }
 
-        /// <summary>Output only. The schema in Document Warehouse associated with the dataset.</summary>
+        /// <summary>Output only. The schema in Document AI Warehouse associated with the dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schema")]
         public virtual string Schema { get; set; }
 
@@ -6502,11 +6500,11 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Config specific to the GCS-based implementation.</summary>
+    /// <summary>Configuration specific to the Cloud Storage-based implementation.</summary>
     public class GoogleCloudDocumentaiV1beta3DatasetGCSManagedConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The Cloud Storage uri (a directory) where the documents belonging to the dataset must be stored.
+        /// Required. The Cloud Storage URI (a directory) where the documents belonging to the dataset must be stored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
         public virtual GoogleCloudDocumentaiV1beta3GcsPrefix GcsPrefix { get; set; }
@@ -6533,14 +6531,14 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Config specific to spanner based indexing.</summary>
+    /// <summary>Configuration specific to spanner-based indexing.</summary>
     public class GoogleCloudDocumentaiV1beta3DatasetSpannerIndexingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Config specific to unmanaged config</summary>
+    /// <summary>Configuration specific to an unmanaged dataset.</summary>
     public class GoogleCloudDocumentaiV1beta3DatasetUnmanagedDatasetConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -6918,7 +6916,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual GoogleCloudDocumentaiV1beta3DocumentPageImage Image { get; set; }
 
-        /// <summary>Image Quality Scores.</summary>
+        /// <summary>Image quality scores.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageQualityScores")]
         public virtual GoogleCloudDocumentaiV1beta3DocumentPageImageQualityScores ImageQualityScores { get; set; }
 
@@ -7171,7 +7169,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Image Quality Scores for the page image.</summary>
+    /// <summary>Image quality scores for the page image.</summary>
     public class GoogleCloudDocumentaiV1beta3DocumentPageImageQualityScores : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A list of detected defects.</summary>
@@ -7190,8 +7188,7 @@ namespace Google.Apis.Document.v1beta3.Data
     public class GoogleCloudDocumentaiV1beta3DocumentPageImageQualityScoresDetectedDefect : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence of that the defect
-        /// exists.
+        /// Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence that the defect exists.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
         public virtual System.Nullable<float> Confidence { get; set; }
@@ -7669,11 +7666,11 @@ namespace Google.Apis.Document.v1beta3.Data
 
         /// <summary>
         /// Name of the type. It must be unique within the schema file and cannot be a "Common Type". The following
-        /// naming conventions are used: - Use `snake_casing` - Name matching is case-sensitive - Maximum 64 characters.
-        /// - Must start with a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward compatibility
-        /// internal infrastructure and tooling can handle any ascii character) - The `/` is sometimes used to denote a
-        /// property of a type. For example `line_item/amount`. This convention is deprecated, but will still be honored
-        /// for backward compatibility.
+        /// naming conventions are used: - Use `snake_casing`. - Name matching is case-sensitive. - Maximum 64
+        /// characters. - Must start with a letter. - Allowed characters: ASCII letters `[a-z0-9_-]`. (For backward
+        /// compatibility internal infrastructure and tooling can handle any ascii character.) - The `/` is sometimes
+        /// used to denote a property of a type. For example `line_item/amount`. This convention is deprecated, but will
+        /// still be honored for backward compatibility.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -7832,7 +7829,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<float> Size { get; set; }
 
-        /// <summary>Unit for the font size. Follows CSS naming (`in`, `px`, `pt`, etc.).</summary>
+        /// <summary>Unit for the font size. Follows CSS naming (such as `in`, `px`, and `pt`).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
         public virtual string Unit { get; set; }
 
@@ -7929,7 +7926,7 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Metadata about an entity type.</summary>
     public class GoogleCloudDocumentaiV1beta3EntityTypeMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether the entity type should be considered as "inactive".</summary>
+        /// <summary>Whether the entity type should be considered inactive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inactive")]
         public virtual System.Nullable<bool> Inactive { get; set; }
 
@@ -8455,7 +8452,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rawDocument")]
         public virtual GoogleCloudDocumentaiV1beta3RawDocument RawDocument { get; set; }
 
-        /// <summary>Whether Human Review feature should be skipped for this request. Default to false.</summary>
+        /// <summary>Whether human review should be skipped for this request. Default to `false`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipHumanReview")]
         public virtual System.Nullable<bool> SkipHumanReview { get; set; }
 
@@ -8505,7 +8502,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// The [KMS key](https://cloud.google.com/security-key-management) used for encryption/decryption in CMEK
+        /// The [KMS key](https://cloud.google.com/security-key-management) used for encryption and decryption in CMEK
         /// scenarios.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
@@ -8584,8 +8581,8 @@ namespace Google.Apis.Document.v1beta3.Data
     public class GoogleCloudDocumentaiV1beta3ProcessorTypeLocationInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The location id, refer to [regional and multi-regional support](/document-ai/docs/regions) for supported
-        /// locations.
+        /// The location ID. For supported locations, refer to [regional and multi-regional
+        /// support](/document-ai/docs/regions).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; }
@@ -8595,9 +8592,9 @@ namespace Google.Apis.Document.v1beta3.Data
     }
 
     /// <summary>
-    /// A processor version is an implementation of a processor. Each processor can have multiple versions, pre-trained
-    /// by Google internally or uptrained by the customer. At a time, a processor can only have one default version
-    /// version. So the processor's behavior (when processing documents) is defined by a default version
+    /// A processor version is an implementation of a processor. Each processor can have multiple versions, pretrained
+    /// by Google internally or uptrained by the customer. A processor can only have one default version at a time. Its
+    /// document-processing behavior is defined by that version.
     /// </summary>
     public class GoogleCloudDocumentaiV1beta3ProcessorVersion : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8862,6 +8859,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("baseProcessorVersion")]
         public virtual string BaseProcessorVersion { get; set; }
 
+        /// <summary>Options to control Custom Document Extraction (CDE) Processor.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customDocumentExtractionOptions")]
+        public virtual GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestCustomDocumentExtractionOptions CustomDocumentExtractionOptions { get; set; }
+
         /// <summary>Optional. The schema the processor version will be trained with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentSchema")]
         public virtual GoogleCloudDocumentaiV1beta3DocumentSchema DocumentSchema { get; set; }
@@ -8873,6 +8874,17 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>Required. The processor version to be created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processorVersion")]
         public virtual GoogleCloudDocumentaiV1beta3ProcessorVersion ProcessorVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Options to control the training of the Custom Document Extraction (CDE) Processor.</summary>
+    public class GoogleCloudDocumentaiV1beta3TrainProcessorVersionRequestCustomDocumentExtractionOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Training method to use for CDE training.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingMethod")]
+        public virtual string TrainingMethod { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9097,7 +9109,7 @@ namespace Google.Apis.Document.v1beta3.Data
     /// from color representations in various languages over compactness. For example, the fields of this representation
     /// can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to
     /// UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily
-    /// formatted into a CSS `rgba()` string in JavaScript. This reference page does not have information about the
+    /// formatted into a CSS `rgba()` string in JavaScript. This reference page doesn't have information about the
     /// absolute color space that should be used to interpret the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and
     /// BT.2020. By default, applications should assume the sRGB color space. When color equality needs to be decided,
     /// implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha

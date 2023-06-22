@@ -2755,8 +2755,8 @@ namespace Google.Apis.Storage.v1
         /// <summary>Permanently deletes the ACL entry for the specified entity on the specified object.</summary>
         /// <param name="bucket">Name of a bucket.</param>
         /// <param name="storageObject">
-        /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI
-        /// Path Parts.
+        /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI
+        /// Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
         /// </param>
         /// <param name="entity">
         /// The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress,
@@ -2784,8 +2784,8 @@ namespace Google.Apis.Storage.v1
             public virtual string Bucket { get; private set; }
 
             /// <summary>
-            /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding
-            /// URI Path Parts.
+            /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding
+            /// URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("object", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Object { get; private set; }
@@ -2866,8 +2866,8 @@ namespace Google.Apis.Storage.v1
         /// <summary>Returns the ACL entry for the specified entity on the specified object.</summary>
         /// <param name="bucket">Name of a bucket.</param>
         /// <param name="storageObject">
-        /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI
-        /// Path Parts.
+        /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI
+        /// Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
         /// </param>
         /// <param name="entity">
         /// The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress,
@@ -2895,8 +2895,8 @@ namespace Google.Apis.Storage.v1
             public virtual string Bucket { get; private set; }
 
             /// <summary>
-            /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding
-            /// URI Path Parts.
+            /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding
+            /// URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("object", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Object { get; private set; }
@@ -2978,8 +2978,8 @@ namespace Google.Apis.Storage.v1
         /// <param name="body">The body of the request.</param>
         /// <param name="bucket">Name of a bucket.</param>
         /// <param name="storageObject">
-        /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI
-        /// Path Parts.
+        /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI
+        /// Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
         /// </param>
         public virtual InsertRequest Insert(Google.Apis.Storage.v1.Data.ObjectAccessControl body, string bucket, string storageObject)
         {
@@ -3003,8 +3003,8 @@ namespace Google.Apis.Storage.v1
             public virtual string Bucket { get; private set; }
 
             /// <summary>
-            /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding
-            /// URI Path Parts.
+            /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding
+            /// URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("object", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Object { get; private set; }
@@ -3076,8 +3076,8 @@ namespace Google.Apis.Storage.v1
         /// <summary>Retrieves ACL entries on the specified object.</summary>
         /// <param name="bucket">Name of a bucket.</param>
         /// <param name="storageObject">
-        /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI
-        /// Path Parts.
+        /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI
+        /// Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
         /// </param>
         public virtual ListRequest List(string bucket, string storageObject)
         {
@@ -3100,8 +3100,8 @@ namespace Google.Apis.Storage.v1
             public virtual string Bucket { get; private set; }
 
             /// <summary>
-            /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding
-            /// URI Path Parts.
+            /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding
+            /// URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("object", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Object { get; private set; }
@@ -3168,8 +3168,8 @@ namespace Google.Apis.Storage.v1
         /// <param name="body">The body of the request.</param>
         /// <param name="bucket">Name of a bucket.</param>
         /// <param name="storageObject">
-        /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI
-        /// Path Parts.
+        /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI
+        /// Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
         /// </param>
         /// <param name="entity">
         /// The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress,
@@ -3198,8 +3198,8 @@ namespace Google.Apis.Storage.v1
             public virtual string Bucket { get; private set; }
 
             /// <summary>
-            /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding
-            /// URI Path Parts.
+            /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding
+            /// URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("object", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Object { get; private set; }
@@ -3287,8 +3287,8 @@ namespace Google.Apis.Storage.v1
         /// <param name="body">The body of the request.</param>
         /// <param name="bucket">Name of a bucket.</param>
         /// <param name="storageObject">
-        /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI
-        /// Path Parts.
+        /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI
+        /// Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
         /// </param>
         /// <param name="entity">
         /// The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress,
@@ -3317,8 +3317,8 @@ namespace Google.Apis.Storage.v1
             public virtual string Bucket { get; private set; }
 
             /// <summary>
-            /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding
-            /// URI Path Parts.
+            /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding
+            /// URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("object", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Object { get; private set; }
@@ -3423,8 +3423,8 @@ namespace Google.Apis.Storage.v1
         /// Name of the bucket containing the source objects. The destination object is stored in this bucket.
         /// </param>
         /// <param name="destinationObject">
-        /// Name of the new object. For information about how to URL encode object names to be path safe, see Encoding
-        /// URI Path Parts.
+        /// Name of the new object. For information about how to URL encode object names to be path safe, see [Encoding
+        /// URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
         /// </param>
         public virtual ComposeRequest Compose(Google.Apis.Storage.v1.Data.ComposeRequest body, string destinationBucket, string destinationObject)
         {
@@ -3451,7 +3451,7 @@ namespace Google.Apis.Storage.v1
 
             /// <summary>
             /// Name of the new object. For information about how to URL encode object names to be path safe, see
-            /// Encoding URI Path Parts.
+            /// [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("destinationObject", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DestinationObject { get; private set; }
@@ -3598,11 +3598,12 @@ namespace Google.Apis.Storage.v1
         /// <param name="sourceBucket">Name of the bucket in which to find the source object.</param>
         /// <param name="sourceObject">
         /// Name of the source object. For information about how to URL encode object names to be path safe, see
-        /// Encoding URI Path Parts.
+        /// [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
         /// </param>
         /// <param name="destinationBucket">
         /// Name of the bucket in which to store the new object. Overrides the provided object metadata's bucket value,
-        /// if any.For information about how to URL encode object names to be path safe, see Encoding URI Path Parts.
+        /// if any.For information about how to URL encode object names to be path safe, see [Encoding URI Path
+        /// Parts](http://cloud/storage/docs/request-endpoints#encoding).
         /// </param>
         /// <param name="destinationObject">
         /// Name of the new object. Required when the object metadata is not otherwise provided. Overrides the object
@@ -3633,15 +3634,15 @@ namespace Google.Apis.Storage.v1
 
             /// <summary>
             /// Name of the source object. For information about how to URL encode object names to be path safe, see
-            /// Encoding URI Path Parts.
+            /// [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("sourceObject", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SourceObject { get; private set; }
 
             /// <summary>
             /// Name of the bucket in which to store the new object. Overrides the provided object metadata's bucket
-            /// value, if any.For information about how to URL encode object names to be path safe, see Encoding URI
-            /// Path Parts.
+            /// value, if any.For information about how to URL encode object names to be path safe, see [Encoding URI
+            /// Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("destinationBucket", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DestinationBucket { get; private set; }
@@ -3949,8 +3950,8 @@ namespace Google.Apis.Storage.v1
         /// </summary>
         /// <param name="bucket">Name of the bucket in which the object resides.</param>
         /// <param name="storageObject">
-        /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI
-        /// Path Parts.
+        /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI
+        /// Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
         /// </param>
         public virtual DeleteRequest Delete(string bucket, string storageObject)
         {
@@ -3976,8 +3977,8 @@ namespace Google.Apis.Storage.v1
             public virtual string Bucket { get; private set; }
 
             /// <summary>
-            /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding
-            /// URI Path Parts.
+            /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding
+            /// URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("object", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Object { get; private set; }
@@ -4104,8 +4105,8 @@ namespace Google.Apis.Storage.v1
         /// <summary>Retrieves an object or its metadata.</summary>
         /// <param name="bucket">Name of the bucket in which the object resides.</param>
         /// <param name="storageObject">
-        /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI
-        /// Path Parts.
+        /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI
+        /// Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
         /// </param>
         public virtual GetRequest Get(string bucket, string storageObject)
         {
@@ -4129,8 +4130,8 @@ namespace Google.Apis.Storage.v1
             public virtual string Bucket { get; private set; }
 
             /// <summary>
-            /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding
-            /// URI Path Parts.
+            /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding
+            /// URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("object", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Object { get; private set; }
@@ -4365,8 +4366,8 @@ namespace Google.Apis.Storage.v1
         /// <summary>Returns an IAM policy for the specified object.</summary>
         /// <param name="bucket">Name of the bucket in which the object resides.</param>
         /// <param name="storageObject">
-        /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI
-        /// Path Parts.
+        /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI
+        /// Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
         /// </param>
         public virtual GetIamPolicyRequest GetIamPolicy(string bucket, string storageObject)
         {
@@ -4389,8 +4390,8 @@ namespace Google.Apis.Storage.v1
             public virtual string Bucket { get; private set; }
 
             /// <summary>
-            /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding
-            /// URI Path Parts.
+            /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding
+            /// URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("object", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Object { get; private set; }
@@ -4529,7 +4530,7 @@ namespace Google.Apis.Storage.v1
             /// <summary>
             /// Name of the object. Required when the object metadata is not otherwise provided. Overrides the object
             /// metadata's name value, if any. For information about how to URL encode object names to be path safe, see
-            /// Encoding URI Path Parts.
+            /// [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
@@ -4836,7 +4837,7 @@ namespace Google.Apis.Storage.v1
             /// <summary>
             /// Name of the object. Required when the object metadata is not otherwise provided. Overrides the object
             /// metadata's name value, if any. For information about how to URL encode object names to be path safe, see
-            /// Encoding URI Path Parts.
+            /// [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
@@ -5144,8 +5145,8 @@ namespace Google.Apis.Storage.v1
         /// <param name="body">The body of the request.</param>
         /// <param name="bucket">Name of the bucket in which the object resides.</param>
         /// <param name="storageObject">
-        /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI
-        /// Path Parts.
+        /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI
+        /// Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
         /// </param>
         public virtual PatchRequest Patch(Google.Apis.Storage.v1.Data.Object body, string bucket, string storageObject)
         {
@@ -5169,8 +5170,8 @@ namespace Google.Apis.Storage.v1
             public virtual string Bucket { get; private set; }
 
             /// <summary>
-            /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding
-            /// URI Path Parts.
+            /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding
+            /// URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("object", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Object { get; private set; }
@@ -5370,7 +5371,7 @@ namespace Google.Apis.Storage.v1
         /// <param name="sourceBucket">Name of the bucket in which to find the source object.</param>
         /// <param name="sourceObject">
         /// Name of the source object. For information about how to URL encode object names to be path safe, see
-        /// Encoding URI Path Parts.
+        /// [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
         /// </param>
         /// <param name="destinationBucket">
         /// Name of the bucket in which to store the new object. Overrides the provided object metadata's bucket value,
@@ -5379,7 +5380,7 @@ namespace Google.Apis.Storage.v1
         /// <param name="destinationObject">
         /// Name of the new object. Required when the object metadata is not otherwise provided. Overrides the object
         /// metadata's name value, if any. For information about how to URL encode object names to be path safe, see
-        /// Encoding URI Path Parts.
+        /// [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
         /// </param>
         public virtual RewriteRequest Rewrite(Google.Apis.Storage.v1.Data.Object body, string sourceBucket, string sourceObject, string destinationBucket, string destinationObject)
         {
@@ -5406,7 +5407,7 @@ namespace Google.Apis.Storage.v1
 
             /// <summary>
             /// Name of the source object. For information about how to URL encode object names to be path safe, see
-            /// Encoding URI Path Parts.
+            /// [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("sourceObject", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string SourceObject { get; private set; }
@@ -5421,7 +5422,7 @@ namespace Google.Apis.Storage.v1
             /// <summary>
             /// Name of the new object. Required when the object metadata is not otherwise provided. Overrides the
             /// object metadata's name value, if any. For information about how to URL encode object names to be path
-            /// safe, see Encoding URI Path Parts.
+            /// safe, see [Encoding URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("destinationObject", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string DestinationObject { get; private set; }
@@ -5755,8 +5756,8 @@ namespace Google.Apis.Storage.v1
         /// <param name="body">The body of the request.</param>
         /// <param name="bucket">Name of the bucket in which the object resides.</param>
         /// <param name="storageObject">
-        /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI
-        /// Path Parts.
+        /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI
+        /// Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
         /// </param>
         public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Storage.v1.Data.Policy body, string bucket, string storageObject)
         {
@@ -5780,8 +5781,8 @@ namespace Google.Apis.Storage.v1
             public virtual string Bucket { get; private set; }
 
             /// <summary>
-            /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding
-            /// URI Path Parts.
+            /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding
+            /// URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("object", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Object { get; private set; }
@@ -5855,8 +5856,8 @@ namespace Google.Apis.Storage.v1
         /// </summary>
         /// <param name="bucket">Name of the bucket in which the object resides.</param>
         /// <param name="storageObject">
-        /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI
-        /// Path Parts.
+        /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI
+        /// Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
         /// </param>
         /// <param name="permissions">Permissions to test.</param>
         public virtual TestIamPermissionsRequest TestIamPermissions(string bucket, string storageObject, Google.Apis.Util.Repeatable<string> permissions)
@@ -5883,8 +5884,8 @@ namespace Google.Apis.Storage.v1
             public virtual string Bucket { get; private set; }
 
             /// <summary>
-            /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding
-            /// URI Path Parts.
+            /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding
+            /// URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("object", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Object { get; private set; }
@@ -5963,8 +5964,8 @@ namespace Google.Apis.Storage.v1
         /// <param name="body">The body of the request.</param>
         /// <param name="bucket">Name of the bucket in which the object resides.</param>
         /// <param name="storageObject">
-        /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI
-        /// Path Parts.
+        /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI
+        /// Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
         /// </param>
         public virtual UpdateRequest Update(Google.Apis.Storage.v1.Data.Object body, string bucket, string storageObject)
         {
@@ -5988,8 +5989,8 @@ namespace Google.Apis.Storage.v1
             public virtual string Bucket { get; private set; }
 
             /// <summary>
-            /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding
-            /// URI Path Parts.
+            /// Name of the object. For information about how to URL encode object names to be path safe, see [Encoding
+            /// URI Path Parts](http://cloud/storage/docs/request-endpoints#encoding).
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("object", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Object { get; private set; }

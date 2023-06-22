@@ -9973,6 +9973,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("acquisitionConversionEventLookbackWindow")]
         public virtual string AcquisitionConversionEventLookbackWindow { get; set; }
 
+        /// <summary>Required. The Conversion Export Scope for data exported to linked Ads Accounts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adsWebConversionDataExportScope")]
+        public virtual string AdsWebConversionDataExportScope { get; set; }
+
         /// <summary>
         /// Output only. Resource name of this attribution settings resource. Format:
         /// properties/{property_id}/attributionSettings Example: "properties/1000/attributionSettings"

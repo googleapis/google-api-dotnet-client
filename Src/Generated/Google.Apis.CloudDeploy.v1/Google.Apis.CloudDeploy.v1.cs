@@ -4084,6 +4084,24 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>DeployParameters contains deploy parameters information.</summary>
+    public class DeployParameters : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Deploy parameters are applied to targets with match labels. If unspecified, deploy parameters are
+        /// applied to all targets (including child targets of a multi-target).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchTargetLabels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> MatchTargetLabels { get; set; }
+
+        /// <summary>Required. Values are deploy parameters in key-value pairs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Deployment job composition.</summary>
     public class DeploymentJobs : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4953,6 +4971,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryPipelineSnapshot")]
         public virtual DeliveryPipeline DeliveryPipelineSnapshot { get; set; }
 
+        /// <summary>Optional. The deploy parameters to use for all targets in this release.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployParameters")]
+        public virtual System.Collections.Generic.IDictionary<string, string> DeployParameters { get; set; }
+
         /// <summary>Description of the `Release`. Max length is 255 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -5408,6 +5430,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>Stage specifies a location to which to deploy.</summary>
     public class Stage : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The deploy parameters to use for the target in this stage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployParameters")]
+        public virtual System.Collections.Generic.IList<DeployParameters> DeployParameters { get; set; }
+
         /// <summary>Skaffold profiles to use when rendering the manifest for this stage's `Target`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profiles")]
         public virtual System.Collections.Generic.IList<string> Profiles { get; set; }
@@ -5506,6 +5532,10 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Output only. Time at which the `Target` was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual object CreateTime { get; set; }
+
+        /// <summary>Optional. The deploy parameters to use for this target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deployParameters")]
+        public virtual System.Collections.Generic.IDictionary<string, string> DeployParameters { get; set; }
 
         /// <summary>Optional. Description of the `Target`. Max length is 255 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]

@@ -4939,99 +4939,6 @@ namespace Google.Apis.CloudSearch.v1
 }
 namespace Google.Apis.CloudSearch.v1.Data
 {
-    /// <summary>Abuse reporting configuration outlining what is supported in this conference.</summary>
-    public class AbuseReportingConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Whether the current call may include video recordings in its abuse reports.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("recordingAllowed")]
-        public virtual System.Nullable<bool> RecordingAllowed { get; set; }
-
-        /// <summary>
-        /// Whether the current call may include user generated content (chat, polls, Q&amp;amp;A...) in its abuse
-        /// reports.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("writtenUgcAllowed")]
-        public virtual System.Nullable<bool> WrittenUgcAllowed { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Information about how devices in a meeting have acked for a session/operation.</summary>
-    public class AckInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. Number of meeting devices that have not acked yet.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unackedDeviceCount")]
-        public virtual System.Nullable<int> UnackedDeviceCount { get; set; }
-
-        /// <summary>Output only. IDs of meeting devices (at most ten are provided) that have not acked yet.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unackedDeviceIds")]
-        public virtual System.Collections.Generic.IList<string> UnackedDeviceIds { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// The request set by clients to instruct Backend how the user intend to fix the ACL. Technically it's not a
-    /// request to ACL Fixer, because Backend uses /DriveService.Share to modify Drive ACLs.
-    /// </summary>
-    public class AclFixRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// For Spaces messages: This field is ignored. For DMs messages: The list of email addresses that should be
-        /// added to the Drive item's ACL. In general, the list should not be empty when the boolean "should_fix" field
-        /// is set; otherwise, the list should be empty. During transition - when clients do not specify this field but
-        /// the "should_fix" is true, we follow the legacy behavior: share to all users in the DM regardless of emails.
-        /// This behavior is being phased out.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("recipientEmails")]
-        public virtual System.Collections.Generic.IList<string> RecipientEmails { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("role")]
-        public virtual string Role { get; set; }
-
-        /// <summary>
-        /// Whether to attempt to fix the ACL by adding the room or DM members to the Drive file's ACL.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("shouldFix")]
-        public virtual System.Nullable<bool> ShouldFix { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// The message reconstructed based on information in the response of /PermissionFixOptionsService.Query (or the
-    /// Apiary API that wraps it). Indicates the ability of the requester to change the access to the Drive file for the
-    /// room roster or the DM members. Used in GetMessagePreviewMetadataResponse only.
-    /// </summary>
-    public class AclFixStatus : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("fixability")]
-        public virtual string Fixability { get; set; }
-
-        /// <summary>
-        /// List of recipient email addresses for which access can be granted. This field contains the same email
-        /// addresses from the GetMessagePreviewMetadata request if all recipients can be successfully added to the ACL
-        /// as determined by Drive ACL Fixer. For now, the field is non-empty if and only if the "fixability" value is
-        /// "CAN_FIX".
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fixableEmailAddress")]
-        public virtual System.Collections.Generic.IList<string> FixableEmailAddress { get; set; }
-
-        /// <summary>
-        /// List of recipient email addresses for which an out-of-domain-sharing warning must be shown, stating that
-        /// these email addresses are not in the Google Apps organization that the requested item belong to. Empty if
-        /// all recipients are in the same Google Apps organization.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("outOfDomainWarningEmailAddress")]
-        public virtual System.Collections.Generic.IList<string> OutOfDomainWarningEmailAddress { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Next tag: 4</summary>
     public class AclInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5051,3012 +4958,15 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// List of string parameters that developers can specify when the above action method (in apps script) is invoked.
-    /// An example use case is for 3 snooze buttons: snooze now, snooze 1 day, snooze next week. Developers can have
-    /// action method = snooze() and pass the snooze type and snooze time in list of string parameters.
-    /// </summary>
-    public class ActionParameter : Google.Apis.Requests.IDirectResponseSchema
+    public class Action : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Starting state for an individual add-on frame.</summary>
-    public class AddOnFrameStartingState : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Additional data internal to the add-on that can be used to initialize itself.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("additionalData")]
-        public virtual string AdditionalData { get; set; }
-
-        /// <summary>The uri of the artifact being used for an add-on co-activity.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Starting state properties for add-on co-activity.</summary>
-    public class AddOnStartingState : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// List of starting state frames for the add-on co-activity. Keys for this map are the values of the
-        /// AddOnFrameType enum.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("addOnFrameStartingStates")]
-        public virtual System.Collections.Generic.IDictionary<string, AddOnFrameStartingState> AddOnFrameStartingStates { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AddonComposeUiActionMarkup : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Earlier we used to populate just the affected_members list and inferred the new membership state (roles didn't
-    /// exist back then) from the Type. go/dynamite-finra required backend to know the previous membership state to
-    /// reconstruct membership history. The proper solution involved cleaning up up Type enum, but it was used in many,
-    /// many places. This was added as a stop-gap solution to unblock FINRA without breaking everything. Later role
-    /// update and target audience update started relying on this to communicate information to clients about what
-    /// transition happened. So this is now required to be populated and should be in sync with affected_members for new
-    /// messages.
-    /// </summary>
-    public class AffectedMembership : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("affectedMember")]
-        public virtual MemberId AffectedMember { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("priorMembershipRole")]
-        public virtual string PriorMembershipRole { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("priorMembershipState")]
-        public virtual string PriorMembershipState { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("targetMembershipRole")]
-        public virtual string TargetMembershipRole { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Represents a principal who has authenticated as any kind of user which the application understands. This is
-    /// typically used for "wiki-like" security, where anyone is allowed access so long as they can be held accountable
-    /// for that access. Since the purpose is knowing whom to blame, it is up to the application to decide what kinds of
-    /// users it knows how to blame. For example, an application might choose to include GAIA users in "all
-    /// authenticated users", but not include MDB users. Nothing here.
-    /// </summary>
-    public class AllAuthenticatedUsersProto : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// NOTE WHEN ADDING NEW PROTO FIELDS: Be sure to add datapol annotations to new fields with potential PII, so they
-    /// get scrubbed when logging protos for errors. NEXT TAG: 32
-    /// </summary>
-    public class Annotation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("babelPlaceholderMetadata")]
-        public virtual BabelPlaceholderMetadata BabelPlaceholderMetadata { get; set; }
-
-        /// <summary>
-        /// LINT.ThenChange(//depot/google3/java/com/google/apps/dynamite/v1/backend/action/common/SystemMessageHelper.java)
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cardCapabilityMetadata")]
-        public virtual CardCapabilityMetadata CardCapabilityMetadata { get; set; }
-
-        /// <summary>
-        /// Whether the annotation should be rendered as a preview chip. If this is missing or unspecified, fallback to
-        /// should_not_render on the metadata.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("chipRenderType")]
-        public virtual string ChipRenderType { get; set; }
-
-        /// <summary>
-        /// Contains additional metadata that further enhances the annotation when it is returned as part of search
-        /// response. For example, this can be used to define how the annotation matches the search. Information can be
-        /// used to highlight in rendering search results. The following are the different annotation text fields that
-        /// can be highlighted by this field: 1. DriveMetadata.title 2. UploadMetadata.content_name 3.
-        /// GsuiteIntegrationMetadata.TasksMessageIntegrationRenderData.title 4.
-        /// GsuiteIntegrationMetadata.CalendarEventAnnotationData.title
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("componentSearchInfo")]
-        public virtual AppsDynamiteSharedMessageComponentSearchInfo ComponentSearchInfo { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("consentedAppUnfurlMetadata")]
-        public virtual ConsentedAppUnfurlMetadata ConsentedAppUnfurlMetadata { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("customEmojiMetadata")]
-        public virtual CustomEmojiMetadata CustomEmojiMetadata { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("dataLossPreventionMetadata")]
-        public virtual DataLossPreventionMetadata DataLossPreventionMetadata { get; set; }
-
-        /// <summary>Chip annotations</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("driveMetadata")]
-        public virtual DriveMetadata DriveMetadata { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("formatMetadata")]
-        public virtual FormatMetadata FormatMetadata { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("groupRetentionSettingsUpdated")]
-        public virtual GroupRetentionSettingsUpdatedMetaData GroupRetentionSettingsUpdated { get; set; }
-
-        /// <summary>
-        /// Metadata for 1P integrations like tasks, calendar. These are supported only through integration server as 1P
-        /// integrations use the integration API (which in turn uses backend API with special permissions) to post
-        /// messages. Clients should never set this. LINT.IfChange
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gsuiteIntegrationMetadata")]
-        public virtual GsuiteIntegrationMetadata GsuiteIntegrationMetadata { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("incomingWebhookChangedMetadata")]
-        public virtual IncomingWebhookChangedMetadata IncomingWebhookChangedMetadata { get; set; }
-
-        /// <summary>The inline render format of this annotation. go/drive-smart-chips-chat-v2.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inlineRenderFormat")]
-        public virtual string InlineRenderFormat { get; set; }
-
-        /// <summary>
-        /// LINT.ThenChange(//depot/google3/java/com/google/apps/dynamite/v1/backend/action/common/SystemMessageHelper.java)
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("integrationConfigUpdated")]
-        public virtual IntegrationConfigUpdatedMetadata IntegrationConfigUpdated { get; set; }
-
-        /// <summary>Additional interaction data for this annotation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("interactionData")]
-        public virtual InteractionData InteractionData { get; set; }
-
-        /// <summary>
-        /// Length of the text_body substring beginning from start_index the Annotation corresponds to.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("length")]
-        public virtual System.Nullable<int> Length { get; set; }
-
-        /// <summary>
-        /// * A client-assigned ID for this annotation. This is helpful in matching the back-filled annotations to the
-        /// original annotations on client side, without having to re-parse the message. There is no guarantee an
-        /// annotation has a local_id, it's a purely client used and controlled field with no guarantee of uniqueness.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("localId")]
-        public virtual string LocalId { get; set; }
-
-        /// <summary>Metadata for system messages. Clients should never set this. LINT.IfChange</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("membershipChanged")]
-        public virtual MembershipChangedMetadata MembershipChanged { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("readReceiptsSettingsMetadata")]
-        public virtual ReadReceiptsSettingsUpdatedMetadata ReadReceiptsSettingsMetadata { get; set; }
-
-        /// <summary>
-        /// Metadata that defines all of the required features that must be rendered in the message. Clients can use
-        /// this to see whether they support the entire message, or show a fallback chip otherwise. See
-        /// go/message-quoting-client-to-server for details. LINT.ThenChange(
-        /// //depot/google3/java/com/google/apps/dynamite/v1/allshared/parser/AnnotationSanitizer.java,
-        /// //depot/google3/java/com/google/apps/dynamite/v1/backend/action/common/SystemMessageHelper.java,
-        /// //depot/google3/java/com/google/caribou/eli/mediation/chat/AnnotationConverter.java )
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requiredMessageFeaturesMetadata")]
-        public virtual RequiredMessageFeaturesMetadata RequiredMessageFeaturesMetadata { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("roomUpdated")]
-        public virtual RoomUpdatedMetadata RoomUpdated { get; set; }
-
-        /// <summary>
-        /// Whether or not the annotation is invalidated by the server. Example of situations for invalidation include:
-        /// when the URL is malformed, or when Drive item ID is rejected by Drive Service.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serverInvalidated")]
-        public virtual System.Nullable<bool> ServerInvalidated { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("slashCommandMetadata")]
-        public virtual SlashCommandMetadata SlashCommandMetadata { get; set; }
-
-        /// <summary>Start index (0-indexed) of the Message text the Annotation corresponds to, inclusive.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-        public virtual System.Nullable<int> StartIndex { get; set; }
-
-        /// <summary>Type of the Annotation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>
-        /// * A unique server-assigned ID for this annotation. This is helpful in matching annotation objects when
-        /// fetched from service. All uploads should have a unique_id after the message they are attached to is
-        /// successfully sent. Url annotations that originally were uploads (i.e. policy violations) will have a
-        /// unique_id after the message they are attached to is successfully sent. No other url annotations should have
-        /// a unique_id. All drive annotations should have a unique_id after the message they are attached to is
-        /// successfully sent.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uniqueId")]
-        public virtual string UniqueId { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("uploadMetadata")]
-        public virtual UploadMetadata UploadMetadata { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("urlMetadata")]
-        public virtual UrlMetadata UrlMetadata { get; set; }
-
-        /// <summary>Metadata that clients can set for annotations. LINT.IfChange In-text annotations</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userMentionMetadata")]
-        public virtual UserMentionMetadata UserMentionMetadata { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("videoCallMetadata")]
-        public virtual VideoCallMetadata VideoCallMetadata { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("youtubeMetadata")]
-        public virtual YoutubeMetadata YoutubeMetadata { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Information about the screen annotation session.</summary>
-    public class AnnotationInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The device resource names of other devices which can annotate the screen.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("coannotatorDeviceIds")]
-        public virtual System.Collections.Generic.IList<string> CoannotatorDeviceIds { get; set; }
-
-        /// <summary>Whether the annotation is active.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("isActive")]
-        public virtual System.Nullable<bool> IsActive { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Identifier of an App.</summary>
-    public class AppId : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Enum indicating the type of App this is.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("appType")]
-        public virtual string AppType { get; set; }
-
-        /// <summary>
-        /// Enum indicating which 1P App this is when app_type is GSUITE_APP. Determined &amp;amp; set by the 1P API as
-        /// a convenience for all users of this identifier(Eg. clients, chime, backend etc.) to map to 1P properties.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gsuiteAppType")]
-        public virtual string GsuiteAppType { get; set; }
-
-        /// <summary>
-        /// Numeric identifier of the App. Set to Project number for 1/3P Apps. For Webhook, this is WebhookId.
-        /// Determined &amp;amp; set by the 1P API from App credentials on the side channel.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Next Id: 7</summary>
-    public class AppsDynamiteSharedActivityFeedAnnotationData : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Timestamp of when the Activity Feed message that contains this annotation was created. This is roughly when
-        /// the activity happened, such as when a reaction happened, but will have at least some small delay, since the
-        /// Activity Feed message is created asynchronously after. This timestamp should only be used for display when
-        /// the activity create time is not available in the Chat UI, like the time of a reaction.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("activityFeedMessageCreateTime")]
-        public virtual object ActivityFeedMessageCreateTime { get; set; }
-
-        /// <summary>
-        /// Unique id of the Activity Feed message used by clients to implement click-to-source. This is the same
-        /// messageId as the top-level id field for the Activity Feed item.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("activityFeedMessageId")]
-        public virtual MessageId ActivityFeedMessageId { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("chatItem")]
-        public virtual AppsDynamiteSharedChatItem ChatItem { get; set; }
-
-        /// <summary>Only populated on read path and should not be persisted in storage.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sharedUserInfo")]
-        public virtual UserInfo SharedUserInfo { get; set; }
-
-        /// <summary>Use shared_user_info instead.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userInfo")]
-        public virtual AppsDynamiteSharedActivityFeedAnnotationDataUserInfo UserInfo { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>UserId of the AF item updater to show and the updater count to show.</summary>
-    public class AppsDynamiteSharedActivityFeedAnnotationDataUserInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Describes how updater_count_to_show should be used.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updaterCountDisplayType")]
-        public virtual string UpdaterCountDisplayType { get; set; }
-
-        /// <summary>
-        /// The number of updaters for clients to show, currently set to the total number of updaters minus the one set
-        /// in updater_to_show.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updaterCountToShow")]
-        public virtual System.Nullable<int> UpdaterCountToShow { get; set; }
-
-        /// <summary>The updater for clients to show.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updaterToShow")]
-        public virtual UserId UpdaterToShow { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Optional field for apps overriding display info</summary>
-    public class AppsDynamiteSharedAppProfile : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Displayed user avatar emoji.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("avatarEmoji")]
-        public virtual string AvatarEmoji { get; set; }
-
-        /// <summary>Displayed user avatar url.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("avatarUrl")]
-        public virtual string AvatarUrl { get; set; }
-
-        /// <summary>Displayed user name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// This is the internal version of the API proto at google3/google/chat/v1/gsuite_message_integration.proto Data
-    /// used to render Assistant suggestions. See go/bullseye-rendering.
-    /// </summary>
-    public class AppsDynamiteSharedAssistantAnnotationData : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The suggestion to render in the card.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("suggestion")]
-        public virtual AppsDynamiteSharedAssistantSuggestion Suggestion { get; set; }
-
-        /// <summary>
-        /// Set when the initial query was unfulfillable. Only an on-demand unfulfillable query will result in a
-        /// response (not a proactive query). 1. On-demand: user explicitly invokes the bot 2. Proactive: bot makes
-        /// proactive suggestion (when available) by listening to all user messages.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unfulfillable")]
-        public virtual AppsDynamiteSharedAssistantUnfulfillableRequest Unfulfillable { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents info regarding suggestion debug information.</summary>
-    public class AppsDynamiteSharedAssistantDebugContext : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The query that triggered the resulting suggestion.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("query")]
-        public virtual string Query { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Data needed to render feedback on the Assistant card</summary>
-    public class AppsDynamiteSharedAssistantFeedbackContext : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Specifies a list of feedback chips to show</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("feedbackChips")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteSharedAssistantFeedbackContextFeedbackChip> FeedbackChips { get; set; }
-
-        /// <summary>Whether the thumbs feedback is provided</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("thumbsFeedback")]
-        public virtual string ThumbsFeedback { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Suggestion chips for users to indicate positive or negative feedback</summary>
-    public class AppsDynamiteSharedAssistantFeedbackContextFeedbackChip : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>What type of chip to display</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("feedbackChipType")]
-        public virtual string FeedbackChipType { get; set; }
-
-        /// <summary>Whether the chip has been selected</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Session context specific for Assistant suggestions.</summary>
-    public class AppsDynamiteSharedAssistantSessionContext : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Unique identifier populated by the contextual request handler for each vertical (Ex: File Suggestions, Smart
-        /// Scheduling, etc.) that can be used to track sessions end-to-end. May span multiple users (sender-specific).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contextualSessionId")]
-        public virtual string ContextualSessionId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Data for an Assistant suggestion.</summary>
-    public class AppsDynamiteSharedAssistantSuggestion : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Info regarding suggestion debug information.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("debugContext")]
-        public virtual AppsDynamiteSharedAssistantDebugContext DebugContext { get; set; }
-
-        /// <summary>Data for rendering feedback.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("feedbackContext")]
-        public virtual AppsDynamiteSharedAssistantFeedbackContext FeedbackContext { get; set; }
-
-        /// <summary>Suggestion type that suggests documents (docs, slides, sheets).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("findDocumentSuggestion")]
-        public virtual AppsDynamiteSharedFindDocumentSuggestion FindDocumentSuggestion { get; set; }
-
-        /// <summary>String representation of the suggestions provided.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serializedSuggestions")]
-        public virtual string SerializedSuggestions { get; set; }
-
-        /// <summary>Session context specific to the Assistant suggestion.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sessionContext")]
-        public virtual AppsDynamiteSharedAssistantSessionContext SessionContext { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Data for a response to an unfulfillable request.</summary>
-    public class AppsDynamiteSharedAssistantUnfulfillableRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsDynamiteSharedAvatarInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("emoji")]
-        public virtual AppsDynamiteSharedEmoji Emoji { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata used only in Dynamite backend for uploaded attachments. NEXT ID: 20</summary>
-    public class AppsDynamiteSharedBackendUploadMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Blobstore path for the uploaded attachment</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("blobPath")]
-        public virtual string BlobPath { get; set; }
-
-        /// <summary>The original file name for the content, not the full path.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contentName")]
-        public virtual string ContentName { get; set; }
-
-        /// <summary>
-        /// Scotty reported content size by default.
-        /// http://google3/uploader/agent/scotty_agent.proto?l=101&amp;amp;rcl=140889785
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contentSize")]
-        public virtual System.Nullable<long> ContentSize { get; set; }
-
-        /// <summary>
-        /// Type is from Scotty's best_guess by default:
-        /// http://google3/uploader/agent/scotty_agent.proto?l=51&amp;amp;rcl=140889785
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
-        public virtual string ContentType { get; set; }
-
-        /// <summary>
-        /// The results of the Data Loss Prevention (DLP) scan of the attachment. DEPRECATED: use dlp_scan_summary
-        /// instead.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dlpScanOutcome")]
-        public virtual string DlpScanOutcome { get; set; }
-
-        /// <summary>
-        /// Summary of a Data Loss Prevention (DLP) scan of the attachment. Attachments are evaluated in the backend
-        /// when they are uploaded.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dlpScanSummary")]
-        public virtual DlpScanSummary DlpScanSummary { get; set; }
-
-        /// <summary>The list of experiments this video is enabled for</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("experiment")]
-        public virtual System.Collections.Generic.IList<string> Experiment { get; set; }
-
-        /// <summary>GroupId to which this attachment is uploaded.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
-        public virtual GroupId GroupId { get; set; }
-
-        /// <summary>If the uploaded file is a video that has been transcoded on the client side</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("isClientSideTranscodedVideo")]
-        public virtual System.Nullable<bool> IsClientSideTranscodedVideo { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("migratedFromHangoutsMetadata")]
-        public virtual AppsDynamiteSharedBackendUploadMetadataMigratedFromHangoutsMetadata MigratedFromHangoutsMetadata { get; set; }
-
-        /// <summary>Original dimension of the content. Only set for image attachments.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("originalDimension")]
-        public virtual AppsDynamiteSharedDimension OriginalDimension { get; set; }
-
-        /// <summary>
-        /// The message id of a quote reply referencing this attachment. When present, this attachment has been quoted
-        /// in a reply message. Normally, the attachment is fetched through the message id in the blob_path, but in the
-        /// case of a quote reply, the blob_path would contain the quoted message id. Thus this message id field is
-        /// needed to fetch the quote reply message instead. This field is conditionally populated at read time for
-        /// quotes and never persisted in storage. See go/message-quoting-attachments for more context.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("quoteReplyMessageId")]
-        public virtual MessageId QuoteReplyMessageId { get; set; }
-
-        /// <summary>The SHA256 hash of the attachment bytes.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sha256")]
-        public virtual string Sha256 { get; set; }
-
-        /// <summary>User IP address at upload time. Ex. "123.1.2.3". Used by Ares abuse scanning.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uploadIp")]
-        public virtual string UploadIp { get; set; }
-
-        /// <summary>Timestamp of when user finished uploading the content.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uploadTimestampUsec")]
-        public virtual System.Nullable<long> UploadTimestampUsec { get; set; }
-
-        /// <summary>
-        /// VideoID of the video attachments. This ID shall meets the Youtube ID format of 16 hex characters. For
-        /// example, '4c14b8825af6059b' is a valid ID.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("videoId")]
-        public virtual string VideoId { get; set; }
-
-        /// <summary>Full Blobstore ID for the video thumbnail.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("videoThumbnailBlobId")]
-        public virtual string VideoThumbnailBlobId { get; set; }
-
-        /// <summary>Result for a virus scan.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("virusScanResult")]
-        public virtual string VirusScanResult { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata for attachments migrated from Hangouts</summary>
-    public class AppsDynamiteSharedBackendUploadMetadataMigratedFromHangoutsMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("photoId")]
-        public virtual AppsDynamiteSharedBackendUploadMetadataMigratedFromHangoutsMetadataPhotoId PhotoId { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTimestampUsec")]
-        public virtual System.Nullable<long> UpdateTimestampUsec { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsDynamiteSharedBackendUploadMetadataMigratedFromHangoutsMetadataPhotoId : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("photoId")]
-        public virtual System.Nullable<long> PhotoId { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
-        public virtual System.Nullable<long> UserId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsDynamiteSharedCalendarEventAnnotationData : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("calendarEvent")]
-        public virtual AppsDynamiteSharedCalendarEventAnnotationDataCalendarEvent CalendarEvent { get; set; }
-
-        /// <summary>Notification about the creation of an event.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("eventCreation")]
-        public virtual AppsDynamiteSharedCalendarEventAnnotationDataEventCreation EventCreation { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsDynamiteSharedCalendarEventAnnotationDataCalendarEvent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The end time of the event.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual AppsDynamiteSharedCalendarEventAnnotationDataCalendarEventTime EndTime { get; set; }
-
-        /// <summary>ID of the event.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; }
-
-        /// <summary>The start time of the event.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual AppsDynamiteSharedCalendarEventAnnotationDataCalendarEventTime StartTime { get; set; }
-
-        /// <summary>Title of the event (at the time the message was generated).</summary>
+        /// <summary>[Required] Title of the action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsDynamiteSharedCalendarEventAnnotationDataCalendarEventTime : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>All day event.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allDay")]
-        public virtual Date AllDay { get; set; }
-
-        /// <summary>Non all day event.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("timed")]
-        public virtual object Timed { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Creation of an event (no extra data for now).</summary>
-    public class AppsDynamiteSharedCalendarEventAnnotationDataEventCreation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Data used to render Meet or Google Voice chips in Chat. See go/dynamite-calling-artifacts-in-chat.
-    /// </summary>
-    public class AppsDynamiteSharedCallAnnotationData : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Timestamp when the call ended. Used to render the call ended system message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("callEndedTimestamp")]
-        public virtual object CallEndedTimestamp { get; set; }
-
-        /// <summary>
-        /// Required. Call metadata required to create the call artifacts. For now, the metadata contains only the call
-        /// id to identify the call. This field allows additional data (e.g. voice call type) to be added if needed in
-        /// the future.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("callMetadata")]
-        public virtual AppsDynamiteSharedCallMetadata CallMetadata { get; set; }
-
-        /// <summary>Required. Indicates the call status for the space. Used to determine the chip's state.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("callStatus")]
-        public virtual string CallStatus { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Metadata required to generate call artifacts. This can either be the metadata for a Meet or, in the future,
-    /// Google Voice call.
-    /// </summary>
-    public class AppsDynamiteSharedCallMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Metadata specific for the Meet call.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("meetMetadata")]
-        public virtual AppsDynamiteSharedMeetMetadata MeetMetadata { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Card click which identifies one suggestion provided by the app/bot.</summary>
-    public class AppsDynamiteSharedCardClickSuggestion : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Identify the button/action that created the suggestion. A simple example would be a card button within the
-        /// stream, or the id which can identify a specific suggestion.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("actionId")]
-        public virtual string ActionId { get; set; }
-
-        /// <summary>The message_id for the message that was posted by the app/bot.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("suggestionMessageId")]
-        public virtual MessageId SuggestionMessageId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Next Id: 5</summary>
-    public class AppsDynamiteSharedChatItem : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Information needed to render the specific type of feed item.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("activityInfo")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteSharedChatItemActivityInfo> ActivityInfo { get; set; }
-
-        /// <summary>Only populated on read path and should not be persisted in storage.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("groupInfo")]
-        public virtual AppsDynamiteSharedChatItemGroupInfo GroupInfo { get; set; }
-
-        /// <summary>
-        /// Additional information about the original chat message that isn't captured in the top-level message proto.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("messageInfo")]
-        public virtual AppsDynamiteSharedMessageInfo MessageInfo { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsDynamiteSharedChatItemActivityInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("feedItemNudge")]
-        public virtual AppsDynamiteSharedChatItemActivityInfoFeedItemNudge FeedItemNudge { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("feedItemReactions")]
-        public virtual AppsDynamiteSharedChatItemActivityInfoFeedItemReactions FeedItemReactions { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("feedItemThreadReply")]
-        public virtual AppsDynamiteSharedChatItemActivityInfoFeedItemThreadReply FeedItemThreadReply { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("feedItemUserMention")]
-        public virtual AppsDynamiteSharedChatItemActivityInfoFeedItemUserMention FeedItemUserMention { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Existence of this attribute indicates that the AF item is for a message nudge item.</summary>
-    public class AppsDynamiteSharedChatItemActivityInfoFeedItemNudge : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Nudge type of the nudge feed item.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nudgeType")]
-        public virtual string NudgeType { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Existence of this attribute indicates that the AF item is for message reactions, but it is intentionally left
-    /// empty since the list of reactions can be found in the top-level Message.Reactions.
-    /// </summary>
-    public class AppsDynamiteSharedChatItemActivityInfoFeedItemReactions : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Existence of this attribute indicates that the AF item is for thread reply.</summary>
-    public class AppsDynamiteSharedChatItemActivityInfoFeedItemThreadReply : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Reply type of the thread reply feed item. The field is not persisted in storage. It's populated when
-        /// constructing Activity Feed payload.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("replyType")]
-        public virtual string ReplyType { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Existence of this attribute indicates that the AF item is for a user mention item.</summary>
-    public class AppsDynamiteSharedChatItemActivityInfoFeedItemUserMention : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>User mention type</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Information about the space that the item originated from. This will be used to display Activity Feed items from
-    /// rooms, and only contain the necessary information, such as the space name and group attributes. NEXT TAG: 6
-    /// </summary>
-    public class AppsDynamiteSharedChatItemGroupInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// This is needed to determine what type of group the source message came from to support click-to-source.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("attributeCheckerGroupType")]
-        public virtual string AttributeCheckerGroupType { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("groupName")]
-        public virtual string GroupName { get; set; }
-
-        /// <summary>Timestamp of when the group containing the message has been read by the user.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("groupReadTimeUsec")]
-        public virtual System.Nullable<long> GroupReadTimeUsec { get; set; }
-
-        /// <summary>
-        /// Indicates whether the group has inline replies enabled. If enabled, clients will render the space with
-        /// inline replies.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inlineThreadingEnabled")]
-        public virtual System.Nullable<bool> InlineThreadingEnabled { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Denotes a type of content report a user can send.</summary>
-    public class AppsDynamiteSharedContentReportType : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Google-defined system violation, covering the most common violations.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("systemViolation")]
-        public virtual string SystemViolation { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Proto representation of a custom emoji. May be used in both APIs and in Spanner, but certain fields should be
-    /// restricted to one or the other. See the per-field documentation for details. NEXT_TAG: 14
-    /// </summary>
-    public class AppsDynamiteSharedCustomEmoji : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// ID for the underlying image data in Blobstore. This field should *only* be present in Spanner or within the
-        /// server, but should not be exposed in public APIs.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("blobId")]
-        public virtual string BlobId { get; set; }
-
-        /// <summary>
-        /// Content type of the file used to upload the emoji. Used for takeout. Written to Spanner when the emoji is
-        /// created.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
-        public virtual string ContentType { get; set; }
-
-        /// <summary>
-        /// Time when the Emoji was created, in microseconds. This field may be present in Spanner, within the server,
-        /// or in public APIs.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTimeMicros")]
-        public virtual System.Nullable<long> CreateTimeMicros { get; set; }
-
-        /// <summary>This field should *never* be persisted to Spanner.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("creatorUserId")]
-        public virtual UserId CreatorUserId { get; set; }
-
-        /// <summary>
-        /// Time when the emoji was deleted, in microseconds. This field may be present in Spanner, within the server,
-        /// or in public APIs. Only present if the emoji has been deleted.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deleteTimeMicros")]
-        public virtual System.Nullable<long> DeleteTimeMicros { get; set; }
-
-        /// <summary>
-        /// Output only. A short-lived URL clients can use for directly accessing a custom emoji image. This field is
-        /// intended for API consumption, and should *never* be persisted to Spanner.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ephemeralUrl")]
-        public virtual string EphemeralUrl { get; set; }
-
-        /// <summary>This field should *never* be persisted to Spanner.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ownerCustomerId")]
-        public virtual CustomerId OwnerCustomerId { get; set; }
-
-        /// <summary>
-        /// Opaque token that clients use to construct the URL for accessing the custom emoji’s image data. This field
-        /// is intended for API consumption, and should *never* be persisted to Spanner.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("readToken")]
-        public virtual string ReadToken { get; set; }
-
-        /// <summary>
-        /// User-provided, human-readable ID for the custom emoji. Users are expected to observe this field in the UI
-        /// instead of the UUID. This shortcode should be unique within an organization, but has no global uniqueness
-        /// guarantees, unlike the UUID. This field should *never* be persisted to Spanner.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("shortcode")]
-        public virtual string Shortcode { get; set; }
-
-        /// <summary>
-        /// Snapshot of the current state of the emoji, which may differ from the source-of-truth in the CustomEmojis
-        /// table. This field should *never* be persisted to Spanner.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTimeMicros")]
-        public virtual System.Nullable<long> UpdateTimeMicros { get; set; }
-
-        /// <summary>Unique key for a custom emoji resource. Required. This field is *always* populated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uuid")]
-        public virtual string Uuid { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Dimension for the uploaded attachments.</summary>
-    public class AppsDynamiteSharedDimension : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("height")]
-        public virtual System.Nullable<int> Height { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("width")]
-        public virtual System.Nullable<int> Width { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>LINT.IfChange</summary>
-    public class AppsDynamiteSharedDlpMetricsMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>[required] Describes the DLP status of message send and attachment upload events.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dlpStatus")]
-        public virtual string DlpStatus { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Data for rendering a document.</summary>
-    public class AppsDynamiteSharedDocument : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Unique file ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fileId")]
-        public virtual string FileId { get; set; }
-
-        /// <summary>Justification to explain why this document is being suggested.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("justification")]
-        public virtual AppsDynamiteSharedJustification Justification { get; set; }
-
-        /// <summary>Time the document was last modified.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
-        public virtual object LastModifiedTime { get; set; }
-
-        /// <summary>Used to determine which icon to render (e.g. docs, slides, sheets)</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-        public virtual string MimeType { get; set; }
-
-        /// <summary>Title of the document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>URL of the document.</summary>
+        /// <summary>[Optional] Url of the action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsDynamiteSharedEmoji : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A custom emoji.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("customEmoji")]
-        public virtual AppsDynamiteSharedCustomEmoji CustomEmoji { get; set; }
-
-        /// <summary>A basic emoji represented by a unicode string.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unicode")]
-        public virtual string Unicode { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Data for a FindDocument suggestion type.</summary>
-    public class AppsDynamiteSharedFindDocumentSuggestion : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>List of documents to render as suggestions.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("documentSuggestions")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteSharedDocument> DocumentSuggestions { get; set; }
-
-        /// <summary>Whether to show the action buttons in the card for the suggestions.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("showActionButtons")]
-        public virtual System.Nullable<bool> ShowActionButtons { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>NEXT TAG: 3 A GroupDetails proto will store the information pertaining to single Group.</summary>
-    public class AppsDynamiteSharedGroupDetails : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// A simple text that describes the purpose of a single Group, the general theme of the topics to be posted
-        /// and/or the denominator of the Group participants.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>
-        /// A simple text describing the rules and expectations from members when participating in conversation.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("guidelines")]
-        public virtual string Guidelines { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsDynamiteSharedGroupVisibility : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Data for rendering a justification for a document.</summary>
-    public class AppsDynamiteSharedJustification : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Time the action took place.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("actionTime")]
-        public virtual object ActionTime { get; set; }
-
-        /// <summary>Type of action performed on the document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("actionType")]
-        public virtual string ActionType { get; set; }
-
-        /// <summary>Owner of the document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("documentOwner")]
-        public virtual AppsDynamiteSharedJustificationPerson DocumentOwner { get; set; }
-
-        /// <summary>
-        /// Words or phrases from the user's query that describes the document content. (Ex: Users query is "Can you
-        /// share the document about Bullseye?" the extracted topic would be "Bullseye").
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("topics")]
-        public virtual System.Collections.Generic.IList<string> Topics { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Data for rendering a person associated with a document.</summary>
-    public class AppsDynamiteSharedJustificationPerson : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Whether the person is the recipient of the suggestions.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("isRecipient")]
-        public virtual System.Nullable<bool> IsRecipient { get; set; }
-
-        /// <summary>Obfuscated user ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("user")]
-        public virtual UserId User { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata specific for a Meet call that are required to generate call artifacts.</summary>
-    public class AppsDynamiteSharedMeetMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. A globally unique code (e.g. "cxv-zbgj-wzw") that points to a meeting space. Note: Meeting codes
-        /// may be regenerated, which will cause old meeting codes to become invalid.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("meetingCode")]
-        public virtual string MeetingCode { get; set; }
-
-        /// <summary>Required. Type of the meeting. This controls the chat client UX.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("meetingType")]
-        public virtual string MeetingType { get; set; }
-
-        /// <summary>
-        /// Required. A URL, in the format "https://meet.google.com/*" (e.g. https://meet.google.com/cxv-zbgj-wzw), to
-        /// identify and access the meeting space.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("meetingUrl")]
-        public virtual string MeetingUrl { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Metadata used to describe search information in a specific component of a chat message, for example an
-    /// annotation or an attachment.
-    /// </summary>
-    public class AppsDynamiteSharedMessageComponentSearchInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Whether the whole component matched the search.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("matchedSearch")]
-        public virtual System.Nullable<bool> MatchedSearch { get; set; }
-
-        /// <summary>
-        /// Backend should always set TextWithDescription.text_body based on the title (or its snippet) of the
-        /// annotation or attachment.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("titleTextWithDescription")]
-        public virtual AppsDynamiteSharedTextWithDescription TitleTextWithDescription { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Information that references a Dynamite chat message. This is only used for Activity Feed messages.
-    /// </summary>
-    public class AppsDynamiteSharedMessageInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Id of the source chat message. This is kept here because the top-level message ID to refers the AF message
-        /// ID.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
-        public virtual MessageId MessageId { get; set; }
-
-        /// <summary>The type of the source chat message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("messageType")]
-        public virtual string MessageType { get; set; }
-
-        /// <summary>
-        /// Timestamp of when the topic containing the message has been read by the user. This is populated if the
-        /// message references an inline reply, in which case the space may be marked as read but the topic still has
-        /// unread messages.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("topicReadTimeUsec")]
-        public virtual System.Nullable<long> TopicReadTimeUsec { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The payload(restricted to 1P applications) to be stored with a specific message.</summary>
-    public class AppsDynamiteSharedMessageIntegrationPayload : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Pantheon project number used to identify the calling app.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
-        public virtual System.Nullable<long> ProjectNumber { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("tasksMessageIntegrationPayload")]
-        public virtual AppsDynamiteSharedTasksMessageIntegrationPayload TasksMessageIntegrationPayload { get; set; }
-
-        /// <summary>
-        /// An enum indicating which 1P application's payload this is. This field is required to add 1P payload.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Metadata used to describe how to render a message in search results page, e.g., highlighting and snipetting. In
-    /// future, we can use this proto to return more search specific data attached to a message.
-    /// </summary>
-    public class AppsDynamiteSharedMessageSearchInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Current usage: - DescriptionType=KEYWORD_MATCH is populated in this field to return metadata for keyword
-        /// matches, which clients can use to highlight matched segments in a message's text_body. -
-        /// DescriptionType=SNIPPET can be used to return metadata describing how a message's text_body can be broken up
-        /// to provide a snippet.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("matchedSegmentsInTextBody")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteSharedTextSegmentsWithDescription> MatchedSegmentsInTextBody { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Contains info about the entity that something is, or is owned by.</summary>
-    public class AppsDynamiteSharedOrganizationInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("consumerInfo")]
-        public virtual AppsDynamiteSharedOrganizationInfoConsumerInfo ConsumerInfo { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("customerInfo")]
-        public virtual AppsDynamiteSharedOrganizationInfoCustomerInfo CustomerInfo { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Intentionally empty. Used to disambiguate consumer and customer use cases in oneof below.</summary>
-    public class AppsDynamiteSharedOrganizationInfoConsumerInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsDynamiteSharedOrganizationInfoCustomerInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
-        public virtual CustomerId CustomerId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Stores the suggestion provided by apps/bots.</summary>
-    public class AppsDynamiteSharedOriginAppSuggestion : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("appId")]
-        public virtual AppId AppId { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("cardClickSuggestion")]
-        public virtual AppsDynamiteSharedCardClickSuggestion CardClickSuggestion { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsDynamiteSharedPhoneNumber : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The phone number type, e.g., work, mobile, etc.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The actual phone number.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsDynamiteSharedReaction : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The total number of users who have reacted.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("count")]
-        public virtual System.Nullable<int> Count { get; set; }
-
-        /// <summary>When the first emoji of this type was added.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTimestamp")]
-        public virtual System.Nullable<long> CreateTimestamp { get; set; }
-
-        /// <summary>
-        /// Whether the current user reacted using this emoji. Note: Unlike most properties of messages, this is
-        /// different per-user.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("currentUserParticipated")]
-        public virtual System.Nullable<bool> CurrentUserParticipated { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("emoji")]
-        public virtual AppsDynamiteSharedEmoji Emoji { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The settings of retention period of a message or topic.</summary>
-    public class AppsDynamiteSharedRetentionSettings : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The timestamp after which the message/topic should be removed, in microseconds since the epoch, when state
-        /// == EPHEMERAL_ONE_DAY. The value should not be set in other cases.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("expiryTimestamp")]
-        public virtual System.Nullable<long> ExpiryTimestamp { get; set; }
-
-        /// <summary>The retention state.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Contains info on membership count for member types: HUMAN_USER, APP_USER &amp;amp; ROSTER_MEMBER different
-    /// states: INVITED, JOINED
-    /// </summary>
-    public class AppsDynamiteSharedSegmentedMembershipCount : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("memberType")]
-        public virtual string MemberType { get; set; }
-
-        /// <summary>count of members with given type and state</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("membershipCount")]
-        public virtual System.Nullable<int> MembershipCount { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("membershipState")]
-        public virtual string MembershipState { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsDynamiteSharedSegmentedMembershipCounts : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteSharedSegmentedMembershipCount> Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Defines the representation of a single matching space.</summary>
-    public class AppsDynamiteSharedSpaceInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("avatarInfo")]
-        public virtual AppsDynamiteSharedAvatarInfo AvatarInfo { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("avatarUrl")]
-        public virtual string AvatarUrl { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
-        public virtual GroupId GroupId { get; set; }
-
-        /// <summary>
-        /// The email address of the user that invited the calling user to the room, if available. This field will only
-        /// be populated for direct invites, it will be empty if the user was indirectly invited to the group.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inviterEmail")]
-        public virtual string InviterEmail { get; set; }
-
-        /// <summary>Whether this is a space that enables guest access</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("isExternal")]
-        public virtual System.Nullable<bool> IsExternal { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// Deprecated. Use segmented_membership_counts instead which also includes other counts such as rosters.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("numMembers")]
-        public virtual System.Nullable<int> NumMembers { get; set; }
-
-        /// <summary>Member counts object with types of members and their respective counts.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("segmentedMembershipCounts")]
-        public virtual AppsDynamiteSharedSegmentedMembershipCounts SegmentedMembershipCounts { get; set; }
-
-        /// <summary>searching user's membership state in this space</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userMembershipState")]
-        public virtual string UserMembershipState { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// This is the internal version of the API proto at google3/google/chat/v1/gsuite_message_integration.proto
-    /// </summary>
-    public class AppsDynamiteSharedTasksAnnotationData : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("assigneeChange")]
-        public virtual AppsDynamiteSharedTasksAnnotationDataAssigneeChange AssigneeChange { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("completionChange")]
-        public virtual AppsDynamiteSharedTasksAnnotationDataCompletionChange CompletionChange { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("creation")]
-        public virtual AppsDynamiteSharedTasksAnnotationDataCreation Creation { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("deletionChange")]
-        public virtual AppsDynamiteSharedTasksAnnotationDataDeletionChange DeletionChange { get; set; }
-
-        /// <summary>ID of task. Will be used to create deep links to Tasks.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("taskId")]
-        public virtual string TaskId { get; set; }
-
-        /// <summary>Task properties after the update has been applied.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("taskProperties")]
-        public virtual AppsDynamiteSharedTasksAnnotationDataTaskProperties TaskProperties { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("userDefinedMessage")]
-        public virtual AppsDynamiteSharedTasksAnnotationDataUserDefinedMessage UserDefinedMessage { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsDynamiteSharedTasksAnnotationDataAssigneeChange : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Obfuscated user ID of previous assignee. Not set if the task was originally not assigned.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("oldAssignee")]
-        public virtual UserId OldAssignee { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsDynamiteSharedTasksAnnotationDataCompletionChange : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsDynamiteSharedTasksAnnotationDataCreation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsDynamiteSharedTasksAnnotationDataDeletionChange : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>All relevant task properties for a Chat message.</summary>
-    public class AppsDynamiteSharedTasksAnnotationDataTaskProperties : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Obfuscated user ID of new assignee. Not set if the task doesn't have an assignee.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("assignee")]
-        public virtual UserId Assignee { get; set; }
-
-        /// <summary>Whether the task is marked as completed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("completed")]
-        public virtual System.Nullable<bool> Completed { get; set; }
-
-        /// <summary>Whether the task is marked as deleted.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
-        public virtual System.Nullable<bool> Deleted { get; set; }
-
-        /// <summary>
-        /// The description of the task. If Task original description's length is greater than 1024, then Task BE sends
-        /// the truncated description to Dynamite Integration Server.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>
-        /// Set if the task has a date but no time. Source of truth in Tasks BE: http://shortn/_wyT7eB4Ixv
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
-        public virtual Date StartDate { get; set; }
-
-        /// <summary>
-        /// Set if the task has both a date and a time. Source of truth in Tasks BE: http://shortn/_u6cr0F5ttE
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
-
-        /// <summary>The title of the task.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Used for task card attachments on custom user messages that should be kept as is without generating an i18n
-    /// event message, e.g. the user starts a conversation from an existing task. IMPORTANT: please don't populate this
-    /// field yet as it could break existing flows until it's implemented. See code at http://shortn/_CM74CdENMx used by
-    /// http://shortn/_5o85POJY8Q.
-    /// </summary>
-    public class AppsDynamiteSharedTasksAnnotationDataUserDefinedMessage : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A payload containing Tasks metadata for rendering a live card. Currently not used by the Tasks integration.
-    /// </summary>
-    public class AppsDynamiteSharedTasksMessageIntegrationPayload : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Defines a segment in a text.</summary>
-    public class AppsDynamiteSharedTextSegment : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Length of the segment in the text.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("length")]
-        public virtual System.Nullable<int> Length { get; set; }
-
-        /// <summary>Start index (0-indexed and inclusive) of the segment in the text.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
-        public virtual System.Nullable<int> StartIndex { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Defines text segments with description type associated.</summary>
-    public class AppsDynamiteSharedTextSegmentsWithDescription : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("descriptionType")]
-        public virtual string DescriptionType { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("textSegment")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteSharedTextSegment> TextSegment { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Defines a text with descriptive text segments associated.</summary>
-    public class AppsDynamiteSharedTextWithDescription : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("textBody")]
-        public virtual string TextBody { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("textSegmentsWithDescription")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteSharedTextSegmentsWithDescription> TextSegmentsWithDescription { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>User-block relationship</summary>
-    public class AppsDynamiteSharedUserBlockRelationship : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("hasBlockedRequester")]
-        public virtual System.Nullable<bool> HasBlockedRequester { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("isBlockedByRequester")]
-        public virtual System.Nullable<bool> IsBlockedByRequester { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Reference to a transcoded video attachment.</summary>
-    public class AppsDynamiteSharedVideoReference : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Available transcode format. Value is defined in video/storage/proto/content_header.proto</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("format")]
-        public virtual System.Collections.Generic.IList<System.Nullable<int>> Format { get; set; }
-
-        /// <summary>Transcode status</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// An action that describes the behavior when the form is submitted. For example, an Apps Script can be invoked to
-    /// handle the form.
-    /// </summary>
-    public class AppsDynamiteStorageAction : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Apps Script function to invoke when the containing element is clicked/activated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("function")]
-        public virtual string Function { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("interaction")]
-        public virtual string Interaction { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("loadIndicator")]
-        public virtual string LoadIndicator { get; set; }
-
-        /// <summary>List of action parameters.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteStorageActionActionParameter> Parameters { get; set; }
-
-        /// <summary>
-        /// Indicates whether form values persist after the action. The default value is `false`. If `true`, form values
-        /// remain after the action is triggered. When using
-        /// [LoadIndicator.NONE](workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator) for actions,
-        /// `persist_values` = `true`is recommended, as it ensures that any changes made by the user after form or on
-        /// change actions are sent to the server are not overwritten by the response. If `false`, the form values are
-        /// cleared when the action is triggered. When `persist_values` is set to `false`, it is strongly recommended
-        /// that the card use [LoadIndicator.SPINNER](workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
-        /// for all actions, as this locks the UI to ensure no changes are made by the user while the action is being
-        /// processed.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("persistValues")]
-        public virtual System.Nullable<bool> PersistValues { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// List of string parameters to supply when the action method is invoked. For example, consider three snooze
-    /// buttons: snooze now, snooze 1 day, snooze next week. You might use action method = snooze(), passing the snooze
-    /// type and snooze time in the list of string parameters.
-    /// </summary>
-    public class AppsDynamiteStorageActionActionParameter : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The name of the parameter for the action script.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; }
-
-        /// <summary>The value of the parameter.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The style options for the border of a card or widget, including the border type and color.</summary>
-    public class AppsDynamiteStorageBorderStyle : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The corner radius for the border.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cornerRadius")]
-        public virtual System.Nullable<int> CornerRadius { get; set; }
-
-        /// <summary>The colors to use when the type is `BORDER_TYPE_STROKE`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("strokeColor")]
-        public virtual Color StrokeColor { get; set; }
-
-        /// <summary>The border type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A button. Can be a text button or an image button.</summary>
-    public class AppsDynamiteStorageButton : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The alternative text used for accessibility. Has no effect when an icon is set; use `icon.alt_text` instead.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("altText")]
-        public virtual string AltText { get; set; }
-
-        /// <summary>If set, the button is filled with a solid background.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("color")]
-        public virtual Color Color { get; set; }
-
-        /// <summary>If true, the button is displayed in a disabled state and doesn't respond to user actions.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
-        public virtual System.Nullable<bool> Disabled { get; set; }
-
-        /// <summary>The icon image.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("icon")]
-        public virtual AppsDynamiteStorageIcon Icon { get; set; }
-
-        /// <summary>The action to perform when the button is clicked.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
-        public virtual AppsDynamiteStorageOnClick OnClick { get; set; }
-
-        /// <summary>The text of the button.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A list of buttons layed out horizontally.</summary>
-    public class AppsDynamiteStorageButtonList : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("buttons")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteStorageButton> Buttons { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A card is a UI element that can contain UI widgets such as text and images. For more information, see Cards .
-    /// For example, the following JSON creates a card that has a header with the name, position, icons, and link for a
-    /// contact, followed by a section with contact information like email and phone number. ``` { "header": { "title":
-    /// "Heba Salam", "subtitle": "Software Engineer", "imageStyle": "ImageStyle.AVATAR", "imageUrl":
-    /// "https://example.com/heba_salam.png", "imageAltText": "Avatar for Heba Salam" }, "sections" : [ { "header":
-    /// "Contact Info", "widgets": [ { "decorated_text": { "icon": { "knownIcon": "EMAIL" }, "content":
-    /// "heba.salam@example.com" } }, { "decoratedText": { "icon": { "knownIcon": "PERSON" }, "content": "Online" } }, {
-    /// "decoratedText": { "icon": { "knownIcon": "PHONE" }, "content": "+1 (555) 555-1234" } }, { "buttons": [ {
-    /// "textButton": { "text": "Share", }, "onClick": { "openLink": { "url": "https://example.com/share" } } }, {
-    /// "textButton": { "text": "Edit", }, "onClick": { "action": { "function": "goToView", "parameters": [ { "key":
-    /// "viewType", "value": "EDIT" } ], "loadIndicator": "LoadIndicator.SPINNER" } } } ] } ], "collapsible": true,
-    /// "uncollapsibleWidgetsCount": 3 } ], "cardActions": [ { "actionLabel": "Send Feedback", "onClick": { "openLink":
-    /// { "url": "https://example.com/feedback" } } } ], "name": "contact-card-K3wB6arF2H9L" } ```
-    /// </summary>
-    public class AppsDynamiteStorageCard : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The actions of this card. They are added to a card's generated toolbar menu. For example, the following JSON
-        /// constructs a card action menu with Settings and Send Feedback options: ``` "card_actions": [ {
-        /// "actionLabel": "Setting", "onClick": { "action": { "functionName": "goToView", "parameters": [ { "key":
-        /// "viewType", "value": "SETTING" } ], "loadIndicator": "LoadIndicator.SPINNER" } } }, { "actionLabel": "Send
-        /// Feedback", "onClick": { "openLink": { "url": "https://example.com/feedback" } } } ] ```
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cardActions")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteStorageCardCardAction> CardActions { get; set; }
-
-        /// <summary>The header of the card. A header usually contains a title and an image.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual AppsDynamiteStorageCardCardHeader Header { get; set; }
-
-        /// <summary>Name of the card, which is used as a identifier for the card in card navigation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Sections are separated by a line divider.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sections")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteStorageCardSection> Sections { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A card action is the action associated with the card. For example, an invoice card might include actions such as
-    /// delete invoice, email invoice, or open the invoice in a browser.
-    /// </summary>
-    public class AppsDynamiteStorageCardCardAction : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The label that displays as the action menu item.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("actionLabel")]
-        public virtual string ActionLabel { get; set; }
-
-        /// <summary>The onclick action for this action item.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
-        public virtual AppsDynamiteStorageOnClick OnClick { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsDynamiteStorageCardCardHeader : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The alternative text of this image which is used for accessibility.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageAltText")]
-        public virtual string ImageAltText { get; set; }
-
-        /// <summary>The image's type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
-        public virtual string ImageType { get; set; }
-
-        /// <summary>The URL of the image in the card header.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
-        public virtual string ImageUrl { get; set; }
-
-        /// <summary>The subtitle of the card header.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
-        public virtual string Subtitle { get; set; }
-
-        /// <summary>
-        /// The title of the card header. The title must be specified. The header has a fixed height: if both a title
-        /// and subtitle are specified, each takes up one line. If only the title is specified, it takes up both lines.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A section contains a collection of widgets that are rendered vertically in the order that they are specified.
-    /// Across all platforms, cards have a narrow fixed width, so there is currently no need for layout properties, for
-    /// example, float.
-    /// </summary>
-    public class AppsDynamiteStorageCardSection : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Indicates whether this section is collapsible. If a section is collapsible, the description must be given.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("collapsible")]
-        public virtual System.Nullable<bool> Collapsible { get; set; }
-
-        /// <summary>The header of the section. Formatted text is supported.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual string Header { get; set; }
-
-        /// <summary>
-        /// The number of uncollapsible widgets. For example, when a section contains five widgets and the
-        /// `numUncollapsibleWidget` is set to `2`, the first two widgets are always shown and the last three are
-        /// collapsed as default. The `numUncollapsibleWidget` is taken into account only when collapsible is set to
-        /// `true`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uncollapsibleWidgetsCount")]
-        public virtual System.Nullable<int> UncollapsibleWidgetsCount { get; set; }
-
-        /// <summary>A section must contain at least 1 widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("widgets")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteStorageWidget> Widgets { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents a Columns widget that displays a single row of columns.</summary>
-    public class AppsDynamiteStorageColumns : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Each card supports up to 2 columns. If the user's screen width is less than or equal to 480 pixels, the
-        /// second column wraps below the first column.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("columnItems")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteStorageColumnsColumn> ColumnItems { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents a Column that consists of widgets stacked vertically.</summary>
-    public class AppsDynamiteStorageColumnsColumn : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The horizontal alignment of the column.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("horizontalAlignment")]
-        public virtual string HorizontalAlignment { get; set; }
-
-        /// <summary>Specifies how the column content is sized horizontally.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("horizontalSizeStyle")]
-        public virtual string HorizontalSizeStyle { get; set; }
-
-        /// <summary>The vertical alignment of the column.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("verticalAlignment")]
-        public virtual string VerticalAlignment { get; set; }
-
-        /// <summary>
-        /// LINT.ThenChange(//depot/google3/google/apps/card/v1/card.proto) Array of widgets included in the column.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("widgets")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteStorageColumnsColumnWidgets> Widgets { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>LINT.IfChange The `column` widget can contain these widgets.</summary>
-    public class AppsDynamiteStorageColumnsColumnWidgets : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>ButtonList widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("buttonList")]
-        public virtual AppsDynamiteStorageButtonList ButtonList { get; set; }
-
-        /// <summary>DateTimePicker widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dateTimePicker")]
-        public virtual AppsDynamiteStorageDateTimePicker DateTimePicker { get; set; }
-
-        /// <summary>DecoratedText widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("decoratedText")]
-        public virtual AppsDynamiteStorageDecoratedText DecoratedText { get; set; }
-
-        /// <summary>Image widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual AppsDynamiteStorageImage Image { get; set; }
-
-        /// <summary>SelectionInput widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("selectionInput")]
-        public virtual AppsDynamiteStorageSelectionInput SelectionInput { get; set; }
-
-        /// <summary>TextInput widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("textInput")]
-        public virtual AppsDynamiteStorageTextInput TextInput { get; set; }
-
-        /// <summary>Text paragraph widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("textParagraph")]
-        public virtual AppsDynamiteStorageTextParagraph TextParagraph { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The widget that lets users to specify a date and time.</summary>
-    public class AppsDynamiteStorageDateTimePicker : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The label for the field that displays to the user.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual string Label { get; set; }
-
-        /// <summary>The name of the text input that's used in formInput, and uniquely identifies this input.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// Triggered when the user clicks Save or Clear from the date/time picker dialog. This is only triggered if the
-        /// value changed as a result of the Save/Clear operation.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onChangeAction")]
-        public virtual AppsDynamiteStorageAction OnChangeAction { get; set; }
-
-        /// <summary>
-        /// The number representing the time zone offset from UTC, in minutes. If set, the `value_ms_epoch` is displayed
-        /// in the specified time zone. If not set, it uses the user's time zone setting on the client side.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("timezoneOffsetDate")]
-        public virtual System.Nullable<int> TimezoneOffsetDate { get; set; }
-
-        /// <summary>The type of the date/time picker.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>
-        /// The value to display as the default value before user input or previous user input. It is represented in
-        /// milliseconds (Epoch time). For `DATE_AND_TIME` type, the full epoch value is used. For `DATE_ONLY` type,
-        /// only date of the epoch time is used. For `TIME_ONLY` type, only time of the epoch time is used. For example,
-        /// you can set epoch time to `3 * 60 * 60 * 1000` to represent 3am.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("valueMsEpoch")]
-        public virtual System.Nullable<long> ValueMsEpoch { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A widget that displays text with optional decorations such as a label above or below the text, an icon in front
-    /// of the text, a selection widget or a button after the text.
-    /// </summary>
-    public class AppsDynamiteStorageDecoratedText : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The formatted text label that shows below the main text.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bottomLabel")]
-        public virtual string BottomLabel { get; set; }
-
-        /// <summary>A button that can be clicked to trigger an action.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("button")]
-        public virtual AppsDynamiteStorageButton Button { get; set; }
-
-        /// <summary>An icon displayed after the text.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endIcon")]
-        public virtual AppsDynamiteStorageIcon EndIcon { get; set; }
-
-        /// <summary>Deprecated in favor of start_icon.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("icon")]
-        public virtual AppsDynamiteStorageIcon Icon { get; set; }
-
-        /// <summary>Only the top and bottom label and content region are clickable.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
-        public virtual AppsDynamiteStorageOnClick OnClick { get; set; }
-
-        /// <summary>The icon displayed in front of the text.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startIcon")]
-        public virtual AppsDynamiteStorageIcon StartIcon { get; set; }
-
-        /// <summary>A switch widget can be clicked to change its state or trigger an action.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("switchControl")]
-        public virtual AppsDynamiteStorageDecoratedTextSwitchControl SwitchControl { get; set; }
-
-        /// <summary>Required. The main widget formatted text. See Text formatting for details.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; }
-
-        /// <summary>The formatted text label that shows above the main text.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("topLabel")]
-        public virtual string TopLabel { get; set; }
-
-        /// <summary>
-        /// The wrap text setting. If `true`, the text is wrapped and displayed in multiline. Otherwise, the text is
-        /// truncated.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("wrapText")]
-        public virtual System.Nullable<bool> WrapText { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsDynamiteStorageDecoratedTextSwitchControl : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The control type, either switch or checkbox.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("controlType")]
-        public virtual string ControlType { get; set; }
-
-        /// <summary>The name of the switch widget that's used in formInput.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The action when the switch state is changed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onChangeAction")]
-        public virtual AppsDynamiteStorageAction OnChangeAction { get; set; }
-
-        /// <summary>If the switch is selected.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("selected")]
-        public virtual System.Nullable<bool> Selected { get; set; }
-
-        /// <summary>The value is what is passed back in the callback.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A divider that appears in between widgets.</summary>
-    public class AppsDynamiteStorageDivider : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents a Grid widget that displays items in a configurable grid layout.</summary>
-    public class AppsDynamiteStorageGrid : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The border style to apply to each grid item.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("borderStyle")]
-        public virtual AppsDynamiteStorageBorderStyle BorderStyle { get; set; }
-
-        /// <summary>
-        /// The number of columns to display in the grid. A default value is used if this field isn't specified, and
-        /// that default value is different depending on where the grid is shown (dialog versus companion).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("columnCount")]
-        public virtual System.Nullable<int> ColumnCount { get; set; }
-
-        /// <summary>The items to display in the grid.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteStorageGridGridItem> Items { get; set; }
-
-        /// <summary>
-        /// This callback is reused by each individual grid item, but with the item's identifier and index in the items
-        /// list added to the callback's parameters.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
-        public virtual AppsDynamiteStorageOnClick OnClick { get; set; }
-
-        /// <summary>The text that displays in the grid header.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents a single item in the grid layout.</summary>
-    public class AppsDynamiteStorageGridGridItem : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// A user-specified identifier for this grid item. This identifier is returned in the parent Grid's onClick
-        /// callback parameters.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
-
-        /// <summary>The image that displays in the grid item.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual AppsDynamiteStorageImageComponent Image { get; set; }
-
-        /// <summary>The layout to use for the grid item.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("layout")]
-        public virtual string Layout { get; set; }
-
-        /// <summary>The grid item's subtitle.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
-        public virtual string Subtitle { get; set; }
-
-        /// <summary>The horizontal alignment of the grid item's text.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("textAlignment")]
-        public virtual string TextAlignment { get; set; }
-
-        /// <summary>The grid item's title.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsDynamiteStorageIcon : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The description of the icon, used for accessibility. The default value is provided if you don't specify one.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("altText")]
-        public virtual string AltText { get; set; }
-
-        /// <summary>The icon specified by a URL.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
-        public virtual string IconUrl { get; set; }
-
-        /// <summary>
-        /// The crop style applied to the image. In some cases, applying a `CIRCLE` crop causes the image to be drawn
-        /// larger than a standard icon.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
-        public virtual string ImageType { get; set; }
-
-        /// <summary>The icon specified by the string name of a list of known icons</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("knownIcon")]
-        public virtual string KnownIcon { get; set; }
-
-        /// <summary>
-        /// Display one of the [Google Material Icons](https://fonts.google.com/icons). For example, to display a [check
-        /// box
-        /// icon](https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Acheck_box%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048),
-        /// use "material_icon": { "name": "check_box" }
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("materialIcon")]
-        public virtual AppsDynamiteStorageMaterialIcon MaterialIcon { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>An image that is specified by a URL and can have an onClick action.</summary>
-    public class AppsDynamiteStorageImage : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The alternative text of this image, used for accessibility.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("altText")]
-        public virtual string AltText { get; set; }
-
-        /// <summary>An image URL.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
-        public virtual string ImageUrl { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
-        public virtual AppsDynamiteStorageOnClick OnClick { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsDynamiteStorageImageComponent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The accessibility label for the image.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("altText")]
-        public virtual string AltText { get; set; }
-
-        /// <summary>The border style to apply to the image.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("borderStyle")]
-        public virtual AppsDynamiteStorageBorderStyle BorderStyle { get; set; }
-
-        /// <summary>The crop style to apply to the image.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cropStyle")]
-        public virtual AppsDynamiteStorageImageCropStyle CropStyle { get; set; }
-
-        /// <summary>The image URL.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
-        public virtual string ImageUri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents the crop style applied to an image.</summary>
-    public class AppsDynamiteStorageImageCropStyle : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The aspect ratio to use if the crop type is `RECTANGLE_CUSTOM`.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("aspectRatio")]
-        public virtual System.Nullable<double> AspectRatio { get; set; }
-
-        /// <summary>The crop type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A [Google Font Icon](https://fonts.google.com/icons), which includes over 2500+ options. For example, to display
-    /// a [check box
-    /// icon](https://fonts.google.com/icons?selected=Material%20Symbols%20Outlined%3Acheck_box%3AFILL%400%3Bwght%40400%3BGRAD%400%3Bopsz%4048)
-    /// with customized weight and grade, write { "name": "check_box", "fill": true, "weight": 300, "grade": -25 }
-    /// </summary>
-    public class AppsDynamiteStorageMaterialIcon : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Whether it renders a filled icon. Default value is false. See Customization in [Google Font
-        /// Icon](https://fonts.google.com/icons) for details.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fill")]
-        public virtual System.Nullable<bool> Fill { get; set; }
-
-        /// <summary>
-        /// Weight and grade affect a symbol’s thickness. Adjustments to grade are more granular than adjustments to
-        /// weight and have a small impact on the size of the symbol. Choose from {-25, 0, 200}. If absent, default
-        /// value is 0. If any other value is specified, a broken image icon will be displayed. See Customization in
-        /// [Google Font Icon](https://fonts.google.com/icons) for details.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("grade")]
-        public virtual System.Nullable<int> Grade { get; set; }
-
-        /// <summary>
-        /// The icon name defined in the [Google Material Icon](https://fonts.google.com/icons) in snake_case. e.g.
-        /// "check_box". Any invalid name will be trimmed as empty string result in the icon falied to render.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// The stroke weight of the icon. Choose from {100, 200, 300, 400, 500, 600, 700}. If absent, default value is
-        /// 400. If any other value is specified, a broken image icon will be displayed. See Customization in [Google
-        /// Font Icon](https://fonts.google.com/icons) for details.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("weight")]
-        public virtual System.Nullable<int> Weight { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsDynamiteStorageOnClick : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>If specified, an action is triggered by this onClick.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual AppsDynamiteStorageAction Action { get; set; }
-
-        /// <summary>
-        /// Triggers host app action on click directly without invoking form actions. This is currently not available to
-        /// end-users and is used internal only.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hostAppAction")]
-        public virtual HostAppActionMarkup HostAppAction { get; set; }
-
-        /// <summary>
-        /// An add-on triggers this action when the action needs to open a link. This differs from the open_link above
-        /// in that this needs to talk to server to get the link. Thus some preparation work is required for web client
-        /// to do before the open link action response comes back.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("openDynamicLinkAction")]
-        public virtual AppsDynamiteStorageAction OpenDynamicLinkAction { get; set; }
-
-        /// <summary>If specified, this onClick triggers an open link action.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("openLink")]
-        public virtual AppsDynamiteStorageOpenLink OpenLink { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsDynamiteStorageOpenLink : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Represents the platform specific uri/intent to open on each client. For example: A companion_url will open
-        /// in a companion window on the web. An iOS URL and android intent will open in the corresponding hosting apps.
-        /// If these platform specific URLs can't be handled correctly, i.e. if the companion isn't supported on web and
-        /// the hosting apps aren't available on the mobile platforms then the `uri` will open in a new browser window
-        /// on all the platforms.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("appUri")]
-        public virtual AppsDynamiteStorageOpenLinkAppUri AppUri { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("onClose")]
-        public virtual string OnClose { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("openAs")]
-        public virtual string OpenAs { get; set; }
-
-        /// <summary>The URL to open.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents the platform specific uri/intent to open for each client.</summary>
-    public class AppsDynamiteStorageOpenLinkAppUri : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>An intent object to be opened in the corresponding android hosting app.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("androidIntent")]
-        public virtual AppsDynamiteStorageOpenLinkAppUriIntent AndroidIntent { get; set; }
-
-        /// <summary>A companion uri string to be opened in the chat companion window. on the web.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("companionUri")]
-        public virtual string CompanionUri { get; set; }
-
-        /// <summary>A uri string to be opened in the corresponding iOS hosting app.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("iosUri")]
-        public virtual string IosUri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Android intent.</summary>
-    public class AppsDynamiteStorageOpenLinkAppUriIntent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// A list of extra data for the android intent. For example, for a calendar event edit intent, the event title
-        /// information can be passed as extra data.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("extraData")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteStorageOpenLinkAppUriIntentExtraData> ExtraData { get; set; }
-
-        /// <summary>
-        /// An android intent action string for the {@link android.content.Intent} object. For example: for the view
-        /// intent action type, a valid value will be android.content.Intent.ACTION_VIEW.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("intentAction")]
-        public virtual string IntentAction { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Extra data for an android intent. Valid keys are defined in the hosting app contract.</summary>
-    public class AppsDynamiteStorageOpenLinkAppUriIntentExtraData : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A key for the intent extra data.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; }
-
-        /// <summary>Value for the given extra data key.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A widget that creates a UI item (for example, a drop-down list) with options for users to select.
-    /// </summary>
-    public class AppsDynamiteStorageSelectionInput : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteStorageSelectionInputSelectionItem> Items { get; set; }
-
-        /// <summary>The label displayed ahead of the switch control.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual string Label { get; set; }
-
-        /// <summary>The name of the text input which is used in formInput.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// If specified, the form is submitted when the selection changes. If not specified, you must specify a
-        /// separate button.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onChangeAction")]
-        public virtual AppsDynamiteStorageAction OnChangeAction { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The item in the switch control. A radio button, at most one of the items is selected.</summary>
-    public class AppsDynamiteStorageSelectionInputSelectionItem : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// If more than one item is selected for `RADIO_BUTTON` and `DROPDOWN`, the first selected item is treated as
-        /// selected and the ones after are ignored.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("selected")]
-        public virtual System.Nullable<bool> Selected { get; set; }
-
-        /// <summary>The text to be displayed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; }
-
-        /// <summary>The value associated with this item. The client should use this as a form input value.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A container wrapping elements necessary for showing suggestion items used in text input autocomplete.
-    /// </summary>
-    public class AppsDynamiteStorageSuggestions : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A list of suggestions items which will be used in are used in autocomplete.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteStorageSuggestionsSuggestionItem> Items { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A suggestion item. Only supports text for now.</summary>
-    public class AppsDynamiteStorageSuggestionsSuggestionItem : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A text input is a UI item where users can input text. A text input can also have an onChange action and
-    /// suggestions.
-    /// </summary>
-    public class AppsDynamiteStorageTextInput : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The refresh function that returns suggestions based on the user's input text. If the callback is not
-        /// specified, autocomplete is done in client side based on the initial suggestion items.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("autoCompleteAction")]
-        public virtual AppsDynamiteStorageAction AutoCompleteAction { get; set; }
-
-        /// <summary>The hint text.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hintText")]
-        public virtual string HintText { get; set; }
-
-        /// <summary>The initial suggestions made before any user input.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("initialSuggestions")]
-        public virtual AppsDynamiteStorageSuggestions InitialSuggestions { get; set; }
-
-        /// <summary>At least one of label and hintText must be specified.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual string Label { get; set; }
-
-        /// <summary>The name of the text input which is used in formInput.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The onChange action, for example, invoke a function.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onChangeAction")]
-        public virtual AppsDynamiteStorageAction OnChangeAction { get; set; }
-
-        /// <summary>The style of the text, for example, a single line or multiple lines.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The default value when there is no input from the user.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A paragraph of text that supports formatting. See [Text
-    /// formatting](workspace/add-ons/concepts/widgets#text_formatting") for details.
-    /// </summary>
-    public class AppsDynamiteStorageTextParagraph : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The text that's shown in the widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A widget is a UI element that presents texts, images, etc.</summary>
-    public class AppsDynamiteStorageWidget : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// A list of buttons. For example, the following JSON creates two buttons. The first is a filled text button
-        /// and the second is an image button that opens a link: ``` "buttonList": { "buttons": [ "button": { "text":
-        /// "Edit", "Color": { "Red": 255 "Green": 255 "Blue": 255 } "disabled": true }, "button": { "icon": {
-        /// "knownIcon": "INVITE" "altText": "check calendar" }, "onClick": { "openLink": { "url":
-        /// "https://example.com/calendar" } } }, ] } ```
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("buttonList")]
-        public virtual AppsDynamiteStorageButtonList ButtonList { get; set; }
-
-        /// <summary>
-        /// Displays a single row of columns with widgets stacked vertically in each column. For example, the following
-        /// JSON creates a 2 column widget each containing a single item. ``` "columns": { "wrapStyle": "WRAP",
-        /// "columnItems": [ { "horizontalSizeStyle": "FILL_AVAILABLE_SPACE", "horizontalAlignment": "CENTER",
-        /// "verticalAlignment" : "CENTER", "widgets": [ { "textParagraph": { "text": "First column text paragraph", } }
-        /// ] }, { "horizontalSizeStyle": "FILL_AVAILABLE_SPACE", "horizontalAlignment": "CENTER", "verticalAlignment" :
-        /// "CENTER", "widgets": [ { "textParagraph": { "text": "Second column text paragraph", } } ] }, ] } } ```
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("columns")]
-        public virtual AppsDynamiteStorageColumns Columns { get; set; }
-
-        /// <summary>
-        /// Displays a selection/input widget for date/time. For example, the following JSON creates a date/time picker
-        /// for an appointment time: ``` "date_time_picker": { "name": "appointment_time", "label": "Book your
-        /// appointment at:", "type": "DateTimePickerType.DATE_AND_TIME", "valueMsEpoch": "796435200000" } ```
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dateTimePicker")]
-        public virtual AppsDynamiteStorageDateTimePicker DateTimePicker { get; set; }
-
-        /// <summary>
-        /// Displays a decorated text item in this widget. For example, the following JSON creates a decorated text
-        /// widget showing email address: ``` "decoratedText": { "icon": { "knownIcon": "EMAIL" }, "topLabel": "Email
-        /// Address", "content": "heba.salam@example.com", "bottomLabel": "This is a new Email address!",
-        /// "switchWidget": { "name": "has_send_welcome_email_to_heba_salam", "selected": false, "controlType":
-        /// "ControlType.CHECKBOX" } } ```
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("decoratedText")]
-        public virtual AppsDynamiteStorageDecoratedText DecoratedText { get; set; }
-
-        /// <summary>
-        /// Displays a divider. For example, the following JSON creates a divider: ``` "divider": { } ```
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("divider")]
-        public virtual AppsDynamiteStorageDivider Divider { get; set; }
-
-        /// <summary>
-        /// Displays a grid with a collection of items. For example, the following JSON creates a 2 column grid with a
-        /// single item: ``` "grid": { "title": "A fine collection of items", "numColumns": 2, "borderStyle": { "type":
-        /// "STROKE", "cornerRadius": 4.0 }, "items": [ "image": { "imageUri": "https://www.example.com/image.png",
-        /// "cropStyle": { "type": "SQUARE" }, "borderStyle": { "type": "STROKE" } }, "title": "An item",
-        /// "textAlignment": "CENTER" ], "onClick": { "openLink": { "url":"https://www.example.com" } } } ```
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("grid")]
-        public virtual AppsDynamiteStorageGrid Grid { get; set; }
-
-        /// <summary>The horizontal alignment of this widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("horizontalAlignment")]
-        public virtual string HorizontalAlignment { get; set; }
-
-        /// <summary>
-        /// Displays an image in this widget. For example, the following JSON creates an image with alternative text:
-        /// ``` "image": { "imageUrl": "https://example.com/heba_salam.png" "altText": "Avatar for Heba Salam" } ```
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual AppsDynamiteStorageImage Image { get; set; }
-
-        /// <summary>
-        /// Displays a switch control in this widget. For example, the following JSON creates a dropdown selection for
-        /// size: ``` "switchControl": { "name": "size", "label": "Size" "type": "SelectionType.DROPDOWN", "items": [ {
-        /// "text": "S", "value": "small", "selected": false }, { "text": "M", "value": "medium", "selected": true }, {
-        /// "text": "L", "value": "large", "selected": false }, { "text": "XL", "value": "extra_large", "selected":
-        /// false } ] } ```
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("selectionInput")]
-        public virtual AppsDynamiteStorageSelectionInput SelectionInput { get; set; }
-
-        /// <summary>
-        /// Displays a text input in this widget. For example, the following JSON creates a text input for mail address:
-        /// ``` "textInput": { "name": "mailing_address", "label": "Mailing Address" } ``` As another example, the
-        /// following JSON creates a text input for programming language with static suggestions: ``` "textInput": {
-        /// "name": "preferred_programing_language", "label": "Preferred Language", "initialSuggestions": { "items": [ {
-        /// "text": "C++" }, { "text": "Java" }, { "text": "JavaScript" }, { "text": "Python" } ] } } ```
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("textInput")]
-        public virtual AppsDynamiteStorageTextInput TextInput { get; set; }
-
-        /// <summary>
-        /// Displays a text paragraph in this widget. For example, the following JSON creates a bolded text: ```
-        /// "textParagraph": { "text": " *bold text*" } ```
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("textParagraph")]
-        public virtual AppsDynamiteStorageTextParagraph TextParagraph { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Interactive objects inside a message. Documentation: - https://api.slack.com/docs/message-buttons
-    /// </summary>
-    public class AppsDynamiteV1ApiCompatV1Action : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Confirmation dialog config.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("confirm")]
-        public virtual AppsDynamiteV1ApiCompatV1ActionConfirm Confirm { get; set; }
-
-        /// <summary>Unique identifier for this action.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Button style ("default", "primary", or "danger").</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("style")]
-        public virtual string Style { get; set; }
-
-        /// <summary>User-facing label for the action.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; }
-
-        /// <summary>Action type - currently only "button".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>Payload for this action. Will be sent to the action handler along with name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Confirmation dialog config.</summary>
-    public class AppsDynamiteV1ApiCompatV1ActionConfirm : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>"Cancel" button label.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dismiss_text")]
-        public virtual string DismissText { get; set; }
-
-        /// <summary>"OK" button label.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ok_text")]
-        public virtual string OkText { get; set; }
-
-        /// <summary>Confirmation dialog body text.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; }
-
-        /// <summary>Confirmation dialog title.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Richly formatted attachments. Documentation: - https://api.slack.com/docs/message-attachments</summary>
-    public class AppsDynamiteV1ApiCompatV1Attachment : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Array of actions (currently only buttons).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("actions")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteV1ApiCompatV1Action> Actions { get; set; }
-
-        /// <summary>
-        /// Undocumented - used in interactive button examples. The only valid value appears to be "default".
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("attachment_type")]
-        public virtual string AttachmentType { get; set; }
-
-        /// <summary>Avatar URL for the user.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("author_icon")]
-        public virtual string AuthorIcon { get; set; }
-
-        /// <summary>URL that the user name should link to.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("author_link")]
-        public virtual string AuthorLink { get; set; }
-
-        /// <summary>User name to display as the author of the message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("author_name")]
-        public virtual string AuthorName { get; set; }
-
-        /// <summary>
-        /// Unique identifier for the collection of buttons within this attachment. Will be sent back to the action
-        /// handler URL when a button is clicked.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("callback_id")]
-        public virtual string CallbackId { get; set; }
-
-        /// <summary>A color "bar" to display to the left of the attachment.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("color")]
-        public virtual string Color { get; set; }
-
-        /// <summary>Fallback plain-text string for clients that don't support attachments.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fallback")]
-        public virtual string Fallback { get; set; }
-
-        /// <summary>Columns of text inside the attachment body.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fields")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteV1ApiCompatV1Field> Fields { get; set; }
-
-        /// <summary>A string displayed at the bottom of the attachment.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("footer")]
-        public virtual string Footer { get; set; }
-
-        /// <summary>Avatar URL displayed to the left of the footer.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("footer_icon")]
-        public virtual string FooterIcon { get; set; }
-
-        /// <summary>URL of an image to display in an image chip.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("image_url")]
-        public virtual string ImageUrl { get; set; }
-
-        /// <summary>List of fields to apply formatting to.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mrkdwn_in")]
-        public virtual System.Collections.Generic.IList<string> MrkdwnIn { get; set; }
-
-        /// <summary>A string to show above the attachment.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pretext")]
-        public virtual string Pretext { get; set; }
-
-        /// <summary>Main text.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; }
-
-        /// <summary>URL of a thumbnail image to display to the right of the attachment body.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("thumb_url")]
-        public virtual string ThumbUrl { get; set; }
-
-        /// <summary>Title string of this attachment.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>URL that the title string should link to.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title_link")]
-        public virtual string TitleLink { get; set; }
-
-        /// <summary>UNIX timestamp of the attachment.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ts")]
-        public virtual System.Nullable<int> Ts { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A column of text in an attachment. Documentation: - https://api.slack.com/docs/message-attachments
-    /// </summary>
-    public class AppsDynamiteV1ApiCompatV1Field : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Whether the field can be shown side-by-side with another field.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("short")]
-        public virtual System.Nullable<bool> Short__ { get; set; }
-
-        /// <summary>The heading text, shown in bold.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>The text value of the field.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsExtensionsMarkupCalendarClientActionMarkupAddAttachmentsActionMarkup : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("addonAttachments")]
-        public virtual System.Collections.Generic.IList<AppsExtensionsMarkupCalendarClientActionMarkupAddAttachmentsActionMarkupAddonAttachment> AddonAttachments { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsExtensionsMarkupCalendarClientActionMarkupAddAttachmentsActionMarkupAddonAttachment : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Link to the resource's icon.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
-        public virtual string IconUrl { get; set; }
-
-        /// <summary>MIME type of the content in resource_url.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-        public virtual string MimeType { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceUrl")]
-        public virtual string ResourceUrl { get; set; }
-
-        /// <summary>Title of the attachment.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Markup that defines conference data associated to a Google Calendar event.</summary>
-    public class AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkup : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Unique identifier for this conference data. Maximum 512 characters long.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("conferenceId")]
-        public virtual string ConferenceId { get; set; }
-
-        /// <summary>
-        /// An identifier of the conferencing solution. Must match a value from the deployment's
-        /// `calendar.conferenceSolution.id` field.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("conferenceSolutionId")]
-        public virtual string ConferenceSolutionId { get; set; }
-
-        /// <summary>Entry points to the conference. Maximum 300 entry points are allowed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entryPoints")]
-        public virtual System.Collections.Generic.IList<AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupEntryPointMarkup> EntryPoints { get; set; }
-
-        /// <summary>If set, it means an error occurred during conference creation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupError Error { get; set; }
-
-        /// <summary>
-        /// Additional notes (such as instructions from the administrator, legal notices) to display to the user. Can
-        /// contain HTML. Max length 2048 characters.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("note")]
-        public virtual string Note { get; set; }
-
-        /// <summary>Additional add-on parameters. Maximum 300 parameters are allowed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IList<AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupParameter> Parameters { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A way to join the conference.</summary>
-    public class AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupEntryPointMarkup : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>An access code for accessing the conference. Maximum 128 characters long.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("accessCode")]
-        public virtual string AccessCode { get; set; }
-
-        /// <summary>
-        /// Features of the entry point, such as being toll or toll-free. One entry point can have multiple features.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("features")]
-        public virtual System.Collections.Generic.IList<string> Features { get; set; }
-
-        /// <summary>The label of the entry point to display to the user. Maximum 512 characters long.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual string Label { get; set; }
-
-        /// <summary>A meeting code for accessing the conference. Maximum 128 characters long.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("meetingCode")]
-        public virtual string MeetingCode { get; set; }
-
-        /// <summary>A passcode for accessing the conference. Maximum 128 characters long.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("passcode")]
-        public virtual string Passcode { get; set; }
-
-        /// <summary>A password for accessing the conference. Maximum 128 characters long.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("password")]
-        public virtual string Password { get; set; }
-
-        /// <summary>A PIN for accessing the conference. Maximum 128 characters long.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pin")]
-        public virtual string Pin { get; set; }
-
-        /// <summary>
-        /// The CLDR/ISO 3166 region code for the country associated with this entry point. Applicable only to
-        /// `Type.PHONE`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
-        public virtual string RegionCode { get; set; }
-
-        /// <summary>The type of the entry point. Required.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>
-        /// A URI for joining the conference. Supports tel: and http(s): and should be at most 1300 characters long.
-        /// Required.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents an error that occurred during conference creation.</summary>
-    public class AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupError : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// If the error type is `AUTHENTICATION`, the add-on can provide a URL allowing users to log in. Maximum 1300
-        /// characters long.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("authenticationUrl")]
-        public virtual string AuthenticationUrl { get; set; }
-
-        /// <summary>The type of error. Required.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Solution-specific parameters that are persisted with the event data and, if an update or delete is needed, are
-    /// passed to the add-on. For example: `[{key: 'sessionKey', value: '123'}, {key: 'meetingId', value: '456'}]`
-    /// </summary>
-    public class AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkupParameter : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The key of the parameter. Maximum 50 characters long. Required.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; }
-
-        /// <summary>The value of the parameter. Maximum 1024 characters long. Required.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsExtensionsMarkupCalendarClientActionMarkupEditAttendeesActionMarkup : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A list of attendees to add to the Google Calendar event.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("addAttendeeEmails")]
-        public virtual System.Collections.Generic.IList<string> AddAttendeeEmails { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AppsExtensionsMarkupCalendarClientActionMarkupEditConferenceDataActionMarkup : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The conference data to add to the Google Calendar event.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("conferenceData")]
-        public virtual AppsExtensionsMarkupCalendarClientActionMarkupConferenceDataMarkup ConferenceData { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Attachments that follow the message text.</summary>
-    public class Attachment : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Revised version of Gmail AddOn attachment approved by API design review.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("addOnData")]
-        public virtual GoogleChatV1ContextualAddOnMarkup AddOnData { get; set; }
-
-        /// <summary>
-        /// The userId for the bot/app that created this data, to be used for attribution of attachments when the
-        /// attachment was not created by the message sender.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("appId")]
-        public virtual UserId AppId { get; set; }
-
-        /// <summary>To identify an attachment within repeated in a message</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("attachmentId")]
-        public virtual string AttachmentId { get; set; }
-
-        /// <summary>Card AddOn attachment with the possibility for specifying editable widgets.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cardAddOnData")]
-        public virtual AppsDynamiteStorageCard CardAddOnData { get; set; }
-
-        /// <summary>
-        /// Contains additional metadata that further enhance the annotation when it is returned as part of search
-        /// response. For example, this can be used to define how the attachment matches the search. Information can be
-        /// used to highlight in rendering search results. The following are the different attachment text fields that
-        /// are covered by this field: 1. ContextualAddOn.Card.CardHeader.title 2. CardItem.CardItemHeader.title
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("componentSearchInfo")]
-        public virtual AppsDynamiteSharedMessageComponentSearchInfo ComponentSearchInfo { get; set; }
-
-        /// <summary>Deprecated version of Gmail AddOn attachment.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deprecatedAddOnData")]
-        public virtual ContextualAddOnMarkup DeprecatedAddOnData { get; set; }
-
-        /// <summary>Slack attachment.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("slackData")]
-        public virtual AppsDynamiteV1ApiCompatV1Attachment SlackData { get; set; }
-
-        /// <summary>The height of image url as fetched by fife. This field is asynchronously filled.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("slackDataImageUrlHeight")]
-        public virtual System.Nullable<int> SlackDataImageUrlHeight { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// An Attribute is a piece of data attached an Item. Attributes are opaque to the Starbox and have no effect on,
-    /// nor are they effected by, message storage, indexing, or search.
-    /// </summary>
-    public class Attribute : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The name of the attribute. Required - If a write is attempted with an empty string, the server will return
-        /// an error.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual CaribouAttributeValue Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>An attribute was deleted from some (subset of the) messages in this thread.</summary>
-    public class AttributeRemoved : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("attributeId")]
-        public virtual string AttributeId { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("messageKeys")]
-        public virtual System.Collections.Generic.IList<MultiKey> MessageKeys { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>An attribute was added to some (subset of the) messages in this thread.</summary>
-    public class AttributeSet : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("attributeId")]
-        public virtual string AttributeId { get; set; }
-
-        /// <summary>
-        /// The serialized attribute_value as persisted in the storage layer. The application is responsible for
-        /// deserializing it to an Attribute.Value if appropriate.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("attributeValue")]
-        public virtual string AttributeValue { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("messageKeys")]
-        public virtual System.Collections.Generic.IList<MultiKey> MessageKeys { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class Attributes : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("attribute")]
-        public virtual System.Collections.Generic.IList<Attribute> Attribute { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8093,95 +5003,18 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// A combination of an identifier for a Drive resource (e.g. file, folder, or drive) and any secrets needed to
-    /// access it. The secrets should never be logged, and this proto annotates those secret fields to ensure that they
-    /// are not. Clients are encouraged to use this proto rather than defining their own, to ensure that secrets are
-    /// correctly annotated.
-    /// </summary>
-    public class AuthorizedItemId : Google.Apis.Requests.IDirectResponseSchema
+    public class BackgroundColoredText : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Serialized ID of the Drive resource</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
-
         /// <summary>
-        /// Resource key of the Drive item. This field should be unset if, depending on the context, the item does not
-        /// have a resource key, or if none was specified. This must never be logged.
+        /// [Optional] Color of the background. The text color can change depending on the selected background color,
+        /// and the client does not have control over this. If missing, the background will be WHITE.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceKey")]
-        public virtual string ResourceKey { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
+        public virtual string BackgroundColor { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AutoComplete : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<AutoCompleteItem> Items { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class AutoCompleteItem : Google.Apis.Requests.IDirectResponseSchema
-    {
+        /// <summary>[Required] The text to display.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Container for Babel (Hangouts Classic) only message properties. The properties here will not be consumed by
-    /// Dynamite clients. They are relevant only for Hangouts Classic.
-    /// </summary>
-    public class BabelMessageProps : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Babel clients locally generate this ID to dedupe against the async fanout.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clientGeneratedId")]
-        public virtual System.Nullable<long> ClientGeneratedId { get; set; }
-
-        /// <summary>Stores additional Babel-specific properties (such as event metadata).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contentExtension")]
-        public virtual ChatContentExtension ContentExtension { get; set; }
-
-        /// <summary>Stores the delivery source of messages (such as phone number for SMS).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deliveryMedium")]
-        public virtual DeliveryMedium DeliveryMedium { get; set; }
-
-        /// <summary>Primary identifier used by Hangouts Classic for its events (messages).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; }
-
-        /// <summary>Stores message segments (text content) and attachments (media URLs).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("messageContent")]
-        public virtual ChatConserverMessageContent MessageContent { get; set; }
-
-        /// <summary>Whether or not these message properties were backfilled by go/dinnertrain.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("wasUpdatedByBackfill")]
-        public virtual System.Nullable<bool> WasUpdatedByBackfill { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Annotation metadata for Babel-only items that signals which type of placeholder message should be displayed in
-    /// Babel clients.
-    /// </summary>
-    public class BabelPlaceholderMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("deleteMetadata")]
-        public virtual DeleteMetadata DeleteMetadata { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("editMetadata")]
-        public virtual EditMetadata EditMetadata { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("hangoutVideoMetadata")]
-        public virtual HangoutVideoEventMetadata HangoutVideoMetadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8220,975 +5053,11 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a complete border style that can be applied to widgets.</summary>
-    public class BorderStyle : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The corner radius for the border.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cornerRadius")]
-        public virtual System.Nullable<int> CornerRadius { get; set; }
-
-        /// <summary>The colors to use when the type is STROKE.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("strokeColor")]
-        public virtual string StrokeColor { get; set; }
-
-        /// <summary>The border type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Bot-specific profile information.</summary>
-    public class BotInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("appAllowlistStatus")]
-        public virtual string AppAllowlistStatus { get; set; }
-
-        /// <summary>Identifier of the application associated with the bot.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("appId")]
-        public virtual AppId AppId { get; set; }
-
-        /// <summary>
-        /// URL for the avatar picture of the User in dynamite. This field should be populated if the request is
-        /// FetchBotCategories/ListBotCatalogEntries
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("botAvatarUrl")]
-        public virtual string BotAvatarUrl { get; set; }
-
-        /// <summary>
-        /// Non-unique, user-defined display name of the Bot. This field should be populated if the request is
-        /// FetchBotCategories/ListBotCatalogEntries.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("botName")]
-        public virtual string BotName { get; set; }
-
-        /// <summary>Short description for the bot.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>Name of bot developer.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("developerName")]
-        public virtual string DeveloperName { get; set; }
-
-        /// <summary>URL for the banner image in GSuite Market Place. The banner will be 220x140.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("marketPlaceBannerUrl")]
-        public virtual string MarketPlaceBannerUrl { get; set; }
-
-        /// <summary>Indicates whether bot is enabled/disabled.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; }
-
-        /// <summary>If the app supports a home screen.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("supportHomeScreen")]
-        public virtual System.Nullable<bool> SupportHomeScreen { get; set; }
-
-        /// <summary>
-        /// Urls with additional information related to the bot. This field should always be set even if all the fields
-        /// within it are empty, so that it is convenient for clients to work with this field in javascript.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("supportUrls")]
-        public virtual SupportUrls SupportUrls { get; set; }
-
-        /// <summary>
-        /// The supported uses are limited according to the user that made the request. If the user does not have
-        /// permission to use the bot, the list will be empty. This could occur for non whitelisted bots in the catalog.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("supportedUses")]
-        public virtual System.Collections.Generic.IList<string> SupportedUses { get; set; }
-
-        /// <summary>Determine how uninstall is permitted for this app.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uninstallCapability")]
-        public virtual string UninstallCapability { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Information about a bot response, branched from shared/bot_response.proto without frontend User proto as we
-    /// never store it.
-    /// </summary>
-    public class BotResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("botId")]
-        public virtual UserId BotId { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("requiredAction")]
-        public virtual string RequiredAction { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("responseType")]
-        public virtual string ResponseType { get; set; }
-
-        /// <summary>URL for setting up bot.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("setupUrl")]
-        public virtual string SetupUrl { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Broadcast access information of a meeting space.</summary>
-    public class BroadcastAccess : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The policy that controls the broadcast's viewer access.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("accessPolicy")]
-        public virtual string AccessPolicy { get; set; }
-
-        /// <summary>
-        /// A URL that can be used to access the broadcast of the meeting. This field will be empty if broadcast is not
-        /// enabled. It will be populated by the backend. Clients cannot modify the value.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("viewUrl")]
-        public virtual string ViewUrl { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Information about a broadcast session.</summary>
-    public class BroadcastSessionInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A unique server-generated ID for the broadcast session.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("broadcastSessionId")]
-        public virtual string BroadcastSessionId { get; set; }
-
-        /// <summary>Output only. Current broadcast session's statistics.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("broadcastStats")]
-        public virtual BroadcastStats BroadcastStats { get; set; }
-
-        /// <summary>Input only. Deprecated field, should not be used.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ingestionId")]
-        public virtual string IngestionId { get; set; }
-
-        /// <summary>Broadcast session's state information.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sessionStateInfo")]
-        public virtual SessionStateInfo SessionStateInfo { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Statistics of the broadcast session.</summary>
-    public class BroadcastStats : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Estimated concurrent viewer count.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("estimatedViewerCount")]
-        public virtual System.Nullable<long> EstimatedViewerCount { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class Button : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("imageButton")]
-        public virtual ImageButton ImageButton { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("textButton")]
-        public virtual TextButton TextButton { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class CalendarClientActionMarkup : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>An action that adds attachments to the Google Calendar event.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("addAttachmentsActionMarkup")]
-        public virtual AppsExtensionsMarkupCalendarClientActionMarkupAddAttachmentsActionMarkup AddAttachmentsActionMarkup { get; set; }
-
-        /// <summary>An action that adds attendees to the Google Calendar event.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("editAttendeesActionMarkup")]
-        public virtual AppsExtensionsMarkupCalendarClientActionMarkupEditAttendeesActionMarkup EditAttendeesActionMarkup { get; set; }
-
-        /// <summary>An action that adds conference data to the Google Calendar event.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("editConferenceDataActionMarkup")]
-        public virtual AppsExtensionsMarkupCalendarClientActionMarkupEditConferenceDataActionMarkup EditConferenceDataActionMarkup { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Contains information regarding an ongoing conference (aka call) for a meeting space.</summary>
-    public class CallInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Abuse reporting configuration for the ongoing conference.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("abuseReportingConfig")]
-        public virtual AbuseReportingConfig AbuseReportingConfig { get; set; }
-
-        /// <summary>
-        /// Output only. Display name of the owner of artifacts generated in this conference. The expected use of this
-        /// in clients is to present info like "This recording will be sent to John Doe's Drive". This field can be
-        /// empty if preferred display name determination fails for any reason.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("artifactOwner")]
-        public virtual UserDisplayInfo ArtifactOwner { get; set; }
-
-        /// <summary>Output only. Documents attached to an ongoing conference.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("attachedDocuments")]
-        public virtual System.Collections.Generic.IList<DocumentInfo> AttachedDocuments { get; set; }
-
-        /// <summary>List of available access types of the conference.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("availableAccessTypes")]
-        public virtual System.Collections.Generic.IList<string> AvailableAccessTypes { get; set; }
-
-        /// <summary>Available screen annotation tool types.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("availableAnnotationToolTypes")]
-        public virtual System.Collections.Generic.IList<string> AvailableAnnotationToolTypes { get; set; }
-
-        /// <summary>
-        /// Output only. The set of reactions that clients are allowed to send and can expect to receive. Note that a
-        /// device in the conference should have the MAY_SEND_REACTIONS privilege to be able to send reactions.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("availableReactions")]
-        public virtual System.Collections.Generic.IList<ReactionInfo> AvailableReactions { get; set; }
-
-        /// <summary>Information about active broadcast session in the ongoing conference.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("broadcastSessionInfo")]
-        public virtual BroadcastSessionInfo BroadcastSessionInfo { get; set; }
-
-        /// <summary>
-        /// Output only. The calendar event ID of a Google Calendar event that the meeting space is associated with. If
-        /// the meeting space is not associated with an event in Google Calendar, this field is empty. For recurring
-        /// events, it refers to the recurring instance associated with the current call, as determined by the server.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("calendarEventId")]
-        public virtual string CalendarEventId { get; set; }
-
-        /// <summary>
-        /// The current co-activity session, or unset if there is none in progress. A co-activity session can be
-        /// initiated by devices in JOINED state . Initiator of the co-activity is expected to populate this field to
-        /// start the session. Once clients detect that the co-activity has finished, any JOINED device can clear this
-        /// field to end the co-activity session. In the case of switching activities, the initiator of the new activity
-        /// merely needs to override this with the new co-activity data, and all connected clients are expected to
-        /// handle the transition gracefully.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("coActivity")]
-        public virtual CoActivity CoActivity { get; set; }
-
-        /// <summary>The current collaboration session, or unset if no collaboration is in progress.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("collaboration")]
-        public virtual Collaboration Collaboration { get; set; }
-
-        /// <summary>CSE information for the ongoing conference.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cseInfo")]
-        public virtual CseInfo CseInfo { get; set; }
-
-        /// <summary>
-        /// Output only. The maximum number of devices that may be in the joined state simultaneously in this
-        /// conference. This can be used by clients to guess whether it will be possible to join, but the only way to
-        /// know is to try to join. It can also be used to inform users about the limit that is in effect. This limit is
-        /// normally set when the conference is created and not changed during the lifetime of the conference. But there
-        /// are some cases where it may change, so clients should be aware that the information may be stale.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxJoinedDevices")]
-        public virtual System.Nullable<int> MaxJoinedDevices { get; set; }
-
-        /// <summary>
-        /// Output only. The name or description of the organization or domain that the organizer belongs to. The
-        /// expected use of this in clients is to present messages like "John Doe (outside of Google.com) is trying to
-        /// join this call", where "Google.com" is the organization name. The field will be empty if the organization
-        /// name could not be determined, possibly because of a backend error.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("organizationName")]
-        public virtual string OrganizationName { get; set; }
-
-        /// <summary>Paygate information to clients.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("paygateInfo")]
-        public virtual PaygateInfo PaygateInfo { get; set; }
-
-        /// <summary>
-        /// The current presenter in the call, or unset if there is no current presenter. Clients can set this to change
-        /// the presenter.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("presenter")]
-        public virtual Presenter Presenter { get; set; }
-
-        /// <summary>
-        /// Deprecated, use RecordingSessionInfo instead. Info about recording for this conference. This will always be
-        /// set in server responses, with a valid recording status. This is superseded by streaming_sessions field,
-        /// which contains the same information about this recording as well as additional information about other
-        /// application type at the same time. This will be deprecated and removed at some point.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("recordingInfo")]
-        public virtual RecordingInfo RecordingInfo { get; set; }
-
-        /// <summary>Information about active recording session in the ongoing conference.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("recordingSessionInfo")]
-        public virtual RecordingSessionInfo RecordingSessionInfo { get; set; }
-
-        /// <summary>Settings of the ongoing conference.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("settings")]
-        public virtual CallSettings Settings { get; set; }
-
-        /// <summary>
-        /// Output only. Info about streaming sessions (recording or broadcast) for this conference. This should contain
-        /// all active sessions. Currently, it's guaranteed to have at most one recording and at most one broadcast (at
-        /// most two sessions in total). For each application type (recording or broadcast), latest inactive session is
-        /// included if there's no active one.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("streamingSessions")]
-        public virtual System.Collections.Generic.IList<StreamingSessionInfo> StreamingSessions { get; set; }
-
-        /// <summary>Information about active transcription session in the ongoing conference.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("transcriptionSessionInfo")]
-        public virtual TranscriptionSessionInfo TranscriptionSessionInfo { get; set; }
-
-        /// <summary>
-        /// The number of devices viewing the conference - MeetingDevices that are in VIEWER role and JOINED state in
-        /// the conference.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("viewerCount")]
-        public virtual System.Nullable<int> ViewerCount { get; set; }
-
-        /// <summary>Information about active YouTube broadcast sessions in the ongoing conference.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("youTubeBroadcastSessionInfos")]
-        public virtual System.Collections.Generic.IList<YouTubeBroadcastSessionInfo> YouTubeBroadcastSessionInfos { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Effective settings of the ongoing conference.</summary>
-    public class CallSettings : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Indicates whether the access lock is currently on or off.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("accessLock")]
-        public virtual System.Nullable<bool> AccessLock { get; set; }
-
-        /// <summary>The current access type of the conference.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("accessType")]
-        public virtual string AccessType { get; set; }
-
-        /// <summary>Whether users can join this conference before a host (Host or Cohost).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allowJoiningBeforeHost")]
-        public virtual System.Nullable<bool> AllowJoiningBeforeHost { get; set; }
-
-        /// <summary>Indicates whether the attendance report is currently enabled or disabled.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("attendanceReportEnabled")]
-        public virtual System.Nullable<bool> AttendanceReportEnabled { get; set; }
-
-        /// <summary>Indicates whether the audio lock is currently on or off.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("audioLock")]
-        public virtual System.Nullable<bool> AudioLock { get; set; }
-
-        /// <summary>Indicates whether the chat lock is currently on or off.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("chatLock")]
-        public virtual System.Nullable<bool> ChatLock { get; set; }
-
-        /// <summary>Indicates whether the co-activity lock is currently on or off.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("coActivityLock")]
-        public virtual System.Nullable<bool> CoActivityLock { get; set; }
-
-        /// <summary>Whether Client-side Encryption is enabled for this conference.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cseEnabled")]
-        public virtual System.Nullable<bool> CseEnabled { get; set; }
-
-        /// <summary>Indicates whether moderation is currently on or off.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("moderationEnabled")]
-        public virtual System.Nullable<bool> ModerationEnabled { get; set; }
-
-        /// <summary>Indicates whether the present lock is currently on or off.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("presentLock")]
-        public virtual System.Nullable<bool> PresentLock { get; set; }
-
-        /// <summary>Indicates whether the reactions lock is currently on or off.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reactionsLock")]
-        public virtual System.Nullable<bool> ReactionsLock { get; set; }
-
-        /// <summary>Indicates whether the video lock is currently on or off.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("videoLock")]
-        public virtual System.Nullable<bool> VideoLock { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Represents a principal which possesses a particular secret string whose cryptographic hash is specified here.
-    /// CapTokens ("Capability Tokens") are used in ACLProto. It's expected that ACLs with CapTokenHolders will strongly
-    /// enforce them by Keystore-wrapping crypto keys for the corresponding CapTokens.
-    /// </summary>
-    public class CapTokenHolderProto : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The hash of the corresponding capability token. The value is defined to be identical to the one in
-        /// acl.proto's CapTokenMetadata: 10-byte prefix of HMAC-SHA1 of the token. The HMAC key is the following fixed
-        /// (non-secret) 512-bit value: 79b1c8f4 82baf523 b8a9ab4a e960f438 c45be041 11f1f222 e8a3f64d aeb05e3d c3576acc
-        /// ec649194 aede422c 4e48e0d1 ff21234a a6ed6b49 a7fa592e efd7bba3
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tokenHmacSha1Prefix")]
-        public virtual string TokenHmacSha1Prefix { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class Card : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("cardActions")]
-        public virtual System.Collections.Generic.IList<CardAction> CardActions { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("displayStyle")]
-        public virtual string DisplayStyle { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("fixedFooter")]
-        public virtual FixedFooter FixedFooter { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual CardHeader Header { get; set; }
-
-        /// <summary>Name of the card used in CardNavigation.pop_to_card_name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// When displaying contextual content, the peek card header acts as a placeholder so that the user can navigate
-        /// forward between the homepage cards and the contextual cards.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("peekCardHeader")]
-        public virtual CardHeader PeekCardHeader { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("sections")]
-        public virtual System.Collections.Generic.IList<Section> Sections { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// When an AddOn Card is shown in detailed view, a card action is the action associated with the card. For an
-    /// invoice card, a typical action would be: delete invoice, email invoice or open the invoice in browser.
-    /// </summary>
-    public class CardAction : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The label used to be displayed in the action menu item.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("actionLabel")]
-        public virtual string ActionLabel { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
-        public virtual OnClick OnClick { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class CardCapabilityMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>NEXT TAG : 2</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requiredCapabilities")]
-        public virtual System.Collections.Generic.IList<string> RequiredCapabilities { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class CardHeader : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The alternative text of this image which will be used for accessibility.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageAltText")]
-        public virtual string ImageAltText { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("imageStyle")]
-        public virtual string ImageStyle { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
-        public virtual string ImageUrl { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
-        public virtual string Subtitle { get; set; }
-
-        /// <summary>
-        /// The title must be specified. The header has a fixed height: if both a title and subtitle is specified, each
-        /// will take up 1 line. If only the title is specified, it will take up both lines. The header is rendered in
-        /// collapsed and detailed view.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class CaribouAttributeValue : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Tags 1 through 15 are reserved for the most commonly used fields.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("booleanValue")]
-        public virtual System.Nullable<bool> BooleanValue { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("intValue")]
-        public virtual System.Nullable<int> IntValue { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("longValue")]
-        public virtual System.Nullable<long> LongValue { get; set; }
-
-        /// <summary>
-        /// Generally, applications should avoid storing raw bytes and instead store structured data as protocol buffer
-        /// extensions. This both reduces the amount of ad-hoc attribute parsing code as well as eliminates an
-        /// intermediate copy of the data when deserializing the value. The rawByteValue field is mainly provided for
-        /// compatibility with attributes stored before the introduction of the Attribute.Value.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rawByteValue")]
-        public virtual string RawByteValue { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
-        public virtual string StringValue { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Actions handled by Chat Clients.</summary>
-    public class ChatClientActionMarkup : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Metadata used as inputs to the localization that is performed on Dynamite-originated messages that are
-    /// incompatible with Hangouts clients. See go/localization-of-system-messages for more details.
-    /// </summary>
-    public class ChatConserverDynamitePlaceholderMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("attachmentMetadata")]
-        public virtual ChatConserverDynamitePlaceholderMetadataAttachmentMetadata AttachmentMetadata { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("botMessageMetadata")]
-        public virtual ChatConserverDynamitePlaceholderMetadataBotMessageMetadata BotMessageMetadata { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("calendarEventMetadata")]
-        public virtual ChatConserverDynamitePlaceholderMetadataCalendarEventMetadata CalendarEventMetadata { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("deleteMetadata")]
-        public virtual ChatConserverDynamitePlaceholderMetadataDeleteMetadata DeleteMetadata { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("editMetadata")]
-        public virtual ChatConserverDynamitePlaceholderMetadataEditMetadata EditMetadata { get; set; }
-
-        /// <summary>The space URL embedded in the localized string.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("spaceUrl")]
-        public virtual string SpaceUrl { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("tasksMetadata")]
-        public virtual ChatConserverDynamitePlaceholderMetadataTasksMetadata TasksMetadata { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("videoCallMetadata")]
-        public virtual ChatConserverDynamitePlaceholderMetadataVideoCallMetadata VideoCallMetadata { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>An attachment uploaded in Dynamite and its filename.</summary>
-    public class ChatConserverDynamitePlaceholderMetadataAttachmentMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("filename")]
-        public virtual string Filename { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A bot sent a message in Dynamite.</summary>
-    public class ChatConserverDynamitePlaceholderMetadataBotMessageMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A Calendar event message in Dynamite.</summary>
-    public class ChatConserverDynamitePlaceholderMetadataCalendarEventMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A message was deleted in Dynamite.</summary>
-    public class ChatConserverDynamitePlaceholderMetadataDeleteMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>An edit was made in Dynamite.</summary>
-    public class ChatConserverDynamitePlaceholderMetadataEditMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A Tasks message in Dynamite.</summary>
-    public class ChatConserverDynamitePlaceholderMetadataTasksMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A Meet initiated in Dynamite and its URL.</summary>
-    public class ChatConserverDynamitePlaceholderMetadataVideoCallMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("meetingUrl")]
-        public virtual string MeetingUrl { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// The content of a chat message, which includes 0 or more segments along with 0 or more embeds, which represent
-    /// various attachment types (like photos).
-    /// </summary>
-    public class ChatConserverMessageContent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Items attached to this message, such as photos. This should *NOT* be set by clients. It will be
-        /// automatically set from media uploaded along with this request and using the information provided in
-        /// existing_media.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("attachment")]
-        public virtual System.Collections.Generic.IList<SocialCommonAttachmentAttachment> Attachment { get; set; }
-
-        /// <summary>
-        /// The text part of the message content. Segments are concatenated together to yield the full message. A
-        /// message can have zero or more segments.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("segment")]
-        public virtual System.Collections.Generic.IList<Segment> Segment { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>NEXT ID: 12</summary>
-    public class ChatContentExtension : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Annotations to decorate this event.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("annotation")]
-        public virtual System.Collections.Generic.IList<EventAnnotation> Annotation { get; set; }
-
-        /// <summary>
-        /// This metadata informs how the placeholder string will be localized dynamically in Hangouts. See
-        /// go/localization-of-system-messages. This is only used as part of REGULAR_CHAT_MESSAGE events.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dynamitePlaceholderMetadata")]
-        public virtual ChatConserverDynamitePlaceholderMetadata DynamitePlaceholderMetadata { get; set; }
-
-        /// <summary>
-        /// Is this event OnTR or OffTR? Since some events can be ON_THE_RECORD and have an expiration_timestamp (for
-        /// example enterprise retention users) we need to store the otr status.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("eventOtrStatus")]
-        public virtual string EventOtrStatus { get; set; }
-
-        /// <summary>Group-link sharing toggle event.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("groupLinkSharingModificationEvent")]
-        public virtual GroupLinkSharingModificationEvent GroupLinkSharingModificationEvent { get; set; }
-
-        /// <summary>Audio/video Hangout event.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hangoutEvent")]
-        public virtual HangoutEvent HangoutEvent { get; set; }
-
-        /// <summary>
-        /// Invite accepted events. Note: this is only used ephemerally to sync to Gmail. No actual cent is stored in
-        /// Papyrus.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inviteAcceptedEvent")]
-        public virtual InviteAcceptedEvent InviteAcceptedEvent { get; set; }
-
-        /// <summary>Join/leave events.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("membershipChangeEvent")]
-        public virtual MembershipChangeEvent MembershipChangeEvent { get; set; }
-
-        /// <summary>Metadata for off-the-record message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("otrChatMessageEvent")]
-        public virtual OtrChatMessageEvent OtrChatMessageEvent { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("otrModificationEvent")]
-        public virtual OtrModificationEvent OtrModificationEvent { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("renameEvent")]
-        public virtual RenameEvent RenameEvent { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Represents the invitees or other users associated with a Babel Chat (see http://goto/babel). Corresponds to
-    /// GroupType CHAT in //social/graph/storage/proto/data.proto.
-    /// </summary>
-    public class ChatProto : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Chat IDs consist of alphanumeric characters and colons. Currently required.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("chatId")]
-        public virtual string ChatId { get; set; }
-
-        /// <summary>
-        /// The type of Chat members to consider, e.g. "all members" vs. "invitee" These are defined by
-        /// legacy_relation_id values in social.graph.storage.EdgeTypeEnum.EdgeType enum options in
-        /// social/graph/storage/proto/id.proto. See chat.pb (defined in
-        /// production/config/cdd/socialgraph/mixer_config/prod/node_type_config) for all valid edge types associated
-        /// with chat. Currently required.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("memberType")]
-        public virtual System.Nullable<int> MemberType { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     public class CheckAccessResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Returns true if principal has access. Returns false otherwise.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hasAccess")]
         public virtual System.Nullable<bool> HasAccess { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Represents a Google+ Circle. Currently (12/2011), a Circle is identical to the ContactGroup with matching
-    /// parameters, but Circle must only be used for true Circles and not other Focus groups, and should be preferred
-    /// over ContactGroup where applicable. Soon it may become more efficient to check membership in a Circle than in a
-    /// ContactGroup (see http://go/superglue). Support for this principal type is currently (12/2011) incomplete --
-    /// e.g., Keystore does not support it yet (see b/5703421).
-    /// </summary>
-    public class CircleProto : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Circle ID is unique only relative to the owner's Gaia ID. Currently required.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("circleId")]
-        public virtual System.Nullable<long> CircleId { get; set; }
-
-        /// <summary>The owner of the circle. Currently required.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ownerGaiaId")]
-        public virtual System.Nullable<long> OwnerGaiaId { get; set; }
-
-        /// <summary>
-        /// If present, then tests for membership in this circle must use data known to be at least as fresh as the
-        /// given (FBS-assigned) timestamp. See http://go/fbs-consistent-read-after-important-write Before using this,
-        /// be sure that any service checking authorization against this circle supports checking consistency
-        /// timestamps. For example, as of 12/2011, Keystore only supports this for the Moonshine configuration, and in
-        /// others authorization checks will fail if the timestamp is present.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requiredConsistencyTimestampUsec")]
-        public virtual System.Nullable<long> RequiredConsistencyTimestampUsec { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Represents the context of the client on behalf of which a HistoryRecord is produced. The ClientContext message
-    /// can be used to hold context about the service client (e.g. the internal server making fusebox requests) or the
-    /// user client (e.g. the IP address of the end user).
-    /// </summary>
-    public class ClientContext : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The client operation to which this history record belongs. The notion of a client operation is provided to
-        /// keep track of client operations which might span multiple transactions in the lower level.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clientOperationId")]
-        public virtual string ClientOperationId { get; set; }
-
-        /// <summary>E.g. "pinto", "imap", "bigtop", "upload"</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clientType")]
-        public virtual string ClientType { get; set; }
-
-        /// <summary>
-        /// Contains information about the session which created this history record. This will be empty if the history
-        /// record was generated by an internal request.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sessionContext")]
-        public virtual SessionContext SessionContext { get; set; }
-
-        /// <summary>Textual representation of the user's IP address, if available.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userIp")]
-        public virtual string UserIp { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Principal associated with a Cloud Principal representing third party user.</summary>
-    public class CloudPrincipalProto : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Format: "{identity-pool}:{subject}#" Details: go/cloud-principal-identifiers</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// ClusterInfo contains clustering related information for a particular thread that would be sent as part of the
-    /// conversation view. Today, this information would be used by iOS notification server to identify whether the
-    /// thread belongs to a cluster. If the thread belongs to a grouped cluster, it would identify whether the cluster
-    /// is throttled.
-    /// </summary>
-    public class ClusterInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// IDs of the highest priority clusters to which the thread belongs to. If this field is not present, the
-        /// thread does not belong to any cluster and would be shown in the inbox, unclustered.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
-        public virtual System.Collections.Generic.IList<string> ClusterId { get; set; }
-
-        /// <summary>
-        /// If the thread belongs to a grouped cluster and all of those clusters are throttled, then this field is set
-        /// to true.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("throttled")]
-        public virtual System.Nullable<bool> Throttled { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Metadata about a co-activity session.</summary>
-    public class CoActivity : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The title of the activity in this co-activity session. For example, this might be the title of the video
-        /// being co-watched, or the name of the round of a game being co-played.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("activityTitle")]
-        public virtual string ActivityTitle { get; set; }
-
-        /// <summary>The add-on id of the current add-on being used for co-activity.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("addOnId")]
-        public virtual string AddOnId { get; set; }
-
-        /// <summary>The starting state of the add-on frames for co-activity.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("addOnStartingState")]
-        public virtual AddOnStartingState AddOnStartingState { get; set; }
-
-        /// <summary>Identifies the app handling this co-activity.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("coActivityApp")]
-        public virtual string CoActivityApp { get; set; }
-
-        /// <summary>The resource name of the device that initiated the co-activity.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("initiatorDeviceId")]
-        public virtual string InitiatorDeviceId { get; set; }
-
-        /// <summary>The resource name of the device that is presenting the add-on.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("presentationDeviceId")]
-        public virtual string PresentationDeviceId { get; set; }
-
-        /// <summary>The project number of the add-on to determine version.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
-        public virtual System.Nullable<long> ProjectNumber { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Information about a collaboration session.</summary>
-    public class Collaboration : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The attachment being collaborated on.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("attachmentId")]
-        public virtual string AttachmentId { get; set; }
-
-        /// <summary>Display info of the user who initiated the collaboration session.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("initiator")]
-        public virtual UserDisplayInfo Initiator { get; set; }
-
-        /// <summary>The uri of the artifact being collaborated on.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to and
-    /// from color representations in various languages over compactness. For example, the fields of this representation
-    /// can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to
-    /// UIColor's `+colorWithRed:green:blue:alpha` method in iOS; and, with just a little work, it can be easily
-    /// formatted into a CSS `rgba()` string in JavaScript. This reference page does not have information about the
-    /// absolute color space that should be used to interpret the RGB value—for example, sRGB, Adobe RGB, DCI-P3, and
-    /// BT.2020. By default, applications should assume the sRGB color space. When color equality needs to be decided,
-    /// implementations, unless documented otherwise, treat two colors as equal if all their red, green, blue, and alpha
-    /// values each differ by at most `1e-5`. Example (Java): import com.google.type.Color; // ... public static
-    /// java.awt.Color fromProto(Color protocolor) { float alpha = protocolor.hasAlpha() ?
-    /// protocolor.getAlpha().getValue() : 1.0; return new java.awt.Color( protocolor.getRed(), protocolor.getGreen(),
-    /// protocolor.getBlue(), alpha); } public static Color toProto(java.awt.Color color) { float red = (float)
-    /// color.getRed(); float green = (float) color.getGreen(); float blue = (float) color.getBlue(); float denominator
-    /// = 255.0; Color.Builder resultBuilder = Color .newBuilder() .setRed(red / denominator) .setGreen(green /
-    /// denominator) .setBlue(blue / denominator); int alpha = color.getAlpha(); if (alpha != 255) { result.setAlpha(
-    /// FloatValue .newBuilder() .setValue(((float) alpha) / denominator) .build()); } return resultBuilder.build(); }
-    /// // ... Example (iOS / Obj-C): // ... static UIColor* fromProto(Color* protocolor) { float red = [protocolor
-    /// red]; float green = [protocolor green]; float blue = [protocolor blue]; FloatValue* alpha_wrapper = [protocolor
-    /// alpha]; float alpha = 1.0; if (alpha_wrapper != nil) { alpha = [alpha_wrapper value]; } return [UIColor
-    /// colorWithRed:red green:green blue:blue alpha:alpha]; } static Color* toProto(UIColor* color) { CGFloat red,
-    /// green, blue, alpha; if (![color getRed:&amp;amp;red green:&amp;amp;green blue:&amp;amp;blue
-    /// alpha:&amp;amp;alpha]) { return nil; } Color* result = [[Color alloc] init]; [result setRed:red]; [result
-    /// setGreen:green]; [result setBlue:blue]; if (alpha &amp;lt;= 0.9999) { [result
-    /// setAlpha:floatWrapperWithValue(alpha)]; } [result autorelease]; return result; } // ... Example (JavaScript): //
-    /// ... var protoToCssColor = function(rgb_color) { var redFrac = rgb_color.red || 0.0; var greenFrac =
-    /// rgb_color.green || 0.0; var blueFrac = rgb_color.blue || 0.0; var red = Math.floor(redFrac * 255); var green =
-    /// Math.floor(greenFrac * 255); var blue = Math.floor(blueFrac * 255); if (!('alpha' in rgb_color)) { return
-    /// rgbToCssColor(red, green, blue); } var alphaFrac = rgb_color.alpha.value || 0.0; var rgbParams = [red, green,
-    /// blue].join(','); return ['rgba(', rgbParams, ',', alphaFrac, ')'].join(''); }; var rgbToCssColor = function(red,
-    /// green, blue) { var rgbNumber = new Number((red &amp;lt;&amp;lt; 16) | (green &amp;lt;&amp;lt; 8) | blue); var
-    /// hexString = rgbNumber.toString(16); var missingZeros = 6 - hexString.length; var resultBuilder = ['#']; for (var
-    /// i = 0; i &amp;lt; missingZeros; i++) { resultBuilder.push('0'); } resultBuilder.push(hexString); return
-    /// resultBuilder.join(''); }; // ...
-    /// </summary>
-    public class Color : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The fraction of this color that should be applied to the pixel. That is, the final pixel color is defined by
-        /// the equation: `pixel color = alpha * (this color) + (1.0 - alpha) * (background color)` This means that a
-        /// value of 1.0 corresponds to a solid color, whereas a value of 0.0 corresponds to a completely transparent
-        /// color. This uses a wrapper message rather than a simple float scalar so that it is possible to distinguish
-        /// between a default value and the value being unset. If omitted, this color object is rendered as a solid
-        /// color (as if the alpha value had been explicitly given a value of 1.0).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("alpha")]
-        public virtual System.Nullable<float> Alpha { get; set; }
-
-        /// <summary>The amount of blue in the color as a value in the interval [0, 1].</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("blue")]
-        public virtual System.Nullable<float> Blue { get; set; }
-
-        /// <summary>The amount of green in the color as a value in the interval [0, 1].</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("green")]
-        public virtual System.Nullable<float> Green { get; set; }
-
-        /// <summary>The amount of red in the color as a value in the interval [0, 1].</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("red")]
-        public virtual System.Nullable<float> Red { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// An individual instance (or "tag") of a label configured as a communal type that's associated with a message.
-    /// </summary>
-    public class CommunalLabelTag : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Gaia ID of the user who added the tag, if any. Not present for any tags automatically created by server-side
-        /// processing.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("creatorUserId")]
-        public virtual System.Nullable<long> CreatorUserId { get; set; }
-
-        /// <summary>
-        /// A string ID representing the label. Possible ID values are documented at go/chat-labels-howto:ids. Example:
-        /// "^*t_p" for "Pinned".
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labelId")]
-        public virtual string LabelId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9208,100 +5077,99 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Annotation metadata app unfurl consent.</summary>
-    public class ConsentedAppUnfurlMetadata : Google.Apis.Requests.IDirectResponseSchema
+    public class Content : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Client specified AppId, which will not be sanitized and is untrusted.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clientSpecifiedAppId")]
-        public virtual UserId ClientSpecifiedAppId { get; set; }
+        /// <summary>[Optional] Actions for this card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actions")]
+        public virtual System.Collections.Generic.IList<Action> Actions { get; set; }
+
+        /// <summary>[Optional] Description of the card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual SafeHtmlProto Description { get; set; }
+
+        /// <summary>[Optional] Subtitle of the card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
+        public virtual BackgroundColoredText Subtitle { get; set; }
+
+        /// <summary>[Optional] Title of the card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual BackgroundColoredText Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// A group of contacts for a given user, as described in http://cs/p#google3/focus/backend/proto/backend.proto
-    /// Historically (and in still-existing ACLs), this was used to represent Google+ circles as well as contact groups,
-    /// but this use is now deprecated. New code should use the CIRCLE principal type to represent Google+ circles.
-    /// </summary>
-    public class ContactGroupProto : Google.Apis.Requests.IDirectResponseSchema
+    public class Context : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Group ID is unique only relative to the owner's Gaia ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
-        public virtual System.Nullable<long> GroupId { get; set; }
+        /// <summary>
+        /// [Optional] App where the card should be shown. If missing, the card will be shown in TOPAZ.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("app")]
+        public virtual System.Collections.Generic.IList<string> App { get; set; }
 
-        [Newtonsoft.Json.JsonPropertyAttribute("ownerGaiaId")]
-        public virtual System.Nullable<long> OwnerGaiaId { get; set; }
+        /// <summary>[Optional] Day of week when the card should be shown, where 0 is Monday.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dayOfWeek")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> DayOfWeek { get; set; }
 
         /// <summary>
-        /// If present, then tests for membership in this ContactGroup must use data known to be at least as fresh as
-        /// the given (FBS-assigned) timestamp. See http://go/fbs-consistent-read-after-important-write Before using
-        /// this, be sure that any service checking authorization against this group supports checking consistency
-        /// timestamps. For example, as of 12/2011, Keystore only supports this for the Moonshine configuration, and in
-        /// others authorization checks will fail if the timestamp is present.
+        /// [Optional] Date (in seconds since epoch) when the card should stop being shown. If missing, end_date_sec
+        /// will be set to Jan 1st, 2100.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requiredConsistencyTimestampUsec")]
-        public virtual System.Nullable<long> RequiredConsistencyTimestampUsec { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class ContentReport : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The time at which the report is generated. Always populated when it is in a response.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reportCreateTimestamp")]
-        public virtual object ReportCreateTimestamp { get; set; }
-
-        /// <summary>Additional user-provided justification on the report. Optional.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reportJustification")]
-        public virtual ContentReportJustification ReportJustification { get; set; }
-
-        /// <summary>Type of the report. Always populated when it is in a response.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reportType")]
-        public virtual AppsDynamiteSharedContentReportType ReportType { get; set; }
-
-        /// <summary>User ID of the reporter. Always populated when it is in a response.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reporterUserId")]
-        public virtual UserId ReporterUserId { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("endDateSec")]
+        public virtual System.Nullable<long> EndDateSec { get; set; }
 
         /// <summary>
-        /// Create timestamp of the revisions of the message when it's reported. Always populated when it is in a
-        /// response.
+        /// [Optional] End time in seconds, within a day, when the card should stop being shown if it's within
+        /// [start_date_sec, end_date_sec]. If missing, this is set to 86400 (24 hours x 3600 sec/hour), i.e., midnight
+        /// next day.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("revisionCreateTimestamp")]
-        public virtual object RevisionCreateTimestamp { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class ContentReportJustification : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. User-generated free-text justification for the content report.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userJustification")]
-        public virtual string UserJustification { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Summarized info of content reports. Usually less expensive to fetch than to fetch all detailed reports. Set only
-    /// when the request asks for it.
-    /// </summary>
-    public class ContentReportSummary : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Total number of reports attached to this (revision of) message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("numberReports")]
-        public virtual System.Nullable<int> NumberReports { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("endDayOffsetSec")]
+        public virtual System.Nullable<long> EndDayOffsetSec { get; set; }
 
         /// <summary>
-        /// Totoal number of reports attached to all revisions of this message (i.e. since creation). Set only when the
-        /// request asks for it.
+        /// [Optional] The locales for which the card should be triggered (e.g., en_US and en_CA). If missing, the card
+        /// is going to show to clients regardless of their locale.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("numberReportsAllRevisions")]
-        public virtual System.Nullable<int> NumberReportsAllRevisions { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("locale")]
+        public virtual System.Collections.Generic.IList<string> Locale { get; set; }
+
+        /// <summary>
+        /// [Optional] Text-free locations where the card should be shown. This is expected to match the user's location
+        /// in focus. If no location is specified, the card will be shown for any location.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual System.Collections.Generic.IList<string> Location { get; set; }
+
+        /// <summary>
+        /// [Required only for Answer and RHS cards - will be ignored for Homepage] cards. It's the exact
+        /// case-insensitive queries that will trigger the Answer or RHS card.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual System.Collections.Generic.IList<string> Query { get; set; }
+
+        /// <summary>
+        /// [Optional] Date (in seconds since epoch) when the card should start being shown. If missing, start_date_sec
+        /// will be Jan 1st, 1970 UTC.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDateSec")]
+        public virtual System.Nullable<long> StartDateSec { get; set; }
+
+        /// <summary>
+        /// [Optional] Start time in seconds, within a day, when the card should be shown if it's within
+        /// [start_date_sec, end_date_sec]. If 0, the card will be shown from 12:00am on.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDayOffsetSec")]
+        public virtual System.Nullable<long> StartDayOffsetSec { get; set; }
+
+        /// <summary>
+        /// [Optional] Surface where the card should be shown in. If missing, the card will be shown in any surface.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("surface")]
+        public virtual System.Collections.Generic.IList<string> Surface { get; set; }
+
+        /// <summary>[Required] Type of the card (homepage, Answer or RHS).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual System.Collections.Generic.IList<string> Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9327,86 +5195,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// The markup for developers to specify the contents of a contextual AddOn. A contextual AddOn is triggered in
-    /// context of an email. For that email, there can be N items that are associated with the email (e.g. contacts,
-    /// sales lead, meeting information). Each item is represented as a "card". A card has two views, collapsed and
-    /// detailed. If there are more than 1 card, the cards are show as a list of collapsed views. The end user can
-    /// expand into the detailed view for each of those cards. In the detailed view, developers have the freedom to use
-    /// a variety of "widgets" to construct it. The model here is to restrict (make consistent for end users) the
-    /// navigation of the N cards but providing developers the freedom to build the detailed view that can best
-    /// represent their use case/content. Go http://go/aoig-widgets1 to see the mocks. Post v1, we plan to support new
-    /// AddOn use cases that will require different and separate 'templates'. For example, a compose triggered AddOn
-    /// which will support a new set of use cases with different user interaction patterns. As a result, we will likely
-    /// need a very different template than this one.
-    /// </summary>
-    public class ContextualAddOnMarkup : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A card must contain a header and at least 1 section.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cards")]
-        public virtual System.Collections.Generic.IList<Card> Cards { get; set; }
-
-        /// <summary>Deprecated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("toolbar")]
-        public virtual Toolbar Toolbar { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Information needed for Client-side Encryption.</summary>
-    public class CseInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// CSE domain name claimed by the meeting owner's company. This field is expected to be used for display
-        /// purposes only, i.e., "Extra encryption added by $cse_domain". It can differ from the `cse_domain` as defined
-        /// elsewhere on the User, in the case of cross-domain meetings.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cseDomain")]
-        public virtual string CseDomain { get; set; }
-
-        /// <summary>The wrapped CSE key used by this conference.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("wrappedKey")]
-        public virtual string WrappedKey { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class CustomEmojiMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("customEmoji")]
-        public virtual AppsDynamiteSharedCustomEmoji CustomEmoji { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The result of a user running a custom function.</summary>
-    public class CustomFunctionReturnValueMarkup : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The error message to show to the user if something went wrong.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
-        public virtual string ErrorMessage { get; set; }
-
-        /// <summary>The value that resulted from running the custom function.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual object Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents a GSuite customer ID. Obfuscated with CustomerIdObfuscator.</summary>
-    public class CustomerId : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("customerId")]
-        public virtual string CustomerIdValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9516,35 +5304,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>The count of unique active users in the past thirty days</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirtyDaysActiveUsersCount")]
         public virtual System.Nullable<long> ThirtyDaysActiveUsersCount { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Annotation metadata for Data Loss Prevention that pertains to DLP violation on message send or edit events. It
-    /// is used for client -&amp;gt; BE communication and other downstream process in BE (e.g. storage and audit
-    /// logging), and it should never be returned to the client.
-    /// </summary>
-    public class DataLossPreventionMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The scan record contains the action taken on the message send as well as scan the summary for the message
-        /// contents and the attachment, if applicable.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dlpMessageScanRecord")]
-        public virtual DlpMessageScanRecord DlpMessageScanRecord { get; set; }
-
-        /// <summary>
-        /// Deprecated. To be replaced by DLP scan record. The DLP scan summary that should only be set after the
-        /// message is scanned in the Chat backend.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dlpScanSummary")]
-        public virtual DlpScanSummary DlpScanSummary { get; set; }
-
-        /// <summary>Flag set by client on message resend to bypass WARN violation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("warnAcknowledged")]
-        public virtual System.Nullable<bool> WarnAcknowledged { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9733,49 +5492,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class DateTimePicker : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The label for the field, which is displayed to the user.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual string Label { get; set; }
-
-        /// <summary>
-        /// The name of the text field which is used in FormInput, and uniquely identifies this input.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// Triggered when the user clicks on the Save, or Clear button from the date / time picker dialog. Will only be
-        /// triggered if the value changed as a result of the Save / Clear operation.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onChange")]
-        public virtual FormAction OnChange { get; set; }
-
-        /// <summary>
-        /// The number representing the time-zone offset from UTC, in minutes. If set, the value_ms_epoch will be
-        /// displayed in the specified time zone. If not set, it will use the user's timezone setting in client side.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("timezoneOffsetDate")]
-        public virtual System.Nullable<int> TimezoneOffsetDate { get; set; }
-
-        /// <summary>The type of the DateTimePicker.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>
-        /// The value to display which can be the default value before user input or previous user input. It is
-        /// represented in milliseconds (Epoch time). - For DATE_AND_TIME type, the full epoch value is used. - For
-        /// DATE_ONLY type, only date of the epoch time is used. - For TIME_ONLY type, only time of the epoch time is
-        /// used. For example, you can set epoch time to 3 * 60 * 60 * 1000 to represent 3am.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("valueMsEpoch")]
-        public virtual System.Nullable<long> ValueMsEpoch { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>List of date values.</summary>
     public class DateValues : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9799,52 +5515,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Deep-linking data is used to construct a deep-link URI for an activity or frame's embed, such that on click, the
-    /// user is taken to the right place in a mobile app. If the app is not installed, the user is taken to the app
-    /// store. If not on mobile, an analogous web uri is used.
-    /// </summary>
-    public class DeepLinkData : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Application ID (or project ID) from Google API Console.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("appId")]
-        public virtual System.Nullable<long> AppId { get; set; }
-
-        /// <summary>
-        /// The data for a Google API Console client is entered by a developer during client registration and is stored
-        /// in PackagingService.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("client")]
-        public virtual System.Collections.Generic.IList<PackagingServiceClient> Client { get; set; }
-
-        /// <summary>
-        /// The ID for non-URL content. Embeds may either have no analogous web presence or prefer a native mobile
-        /// experience if supported. In the case of no web presence, instead of setting the "url" field of an embed,
-        /// such developers will set this field and other content fields, e.g. thumbnail, title, description. If set,
-        /// this field is used to construct the deep-link URI. Note that the native experience is preferred over the web
-        /// link and the web link is used as a fallback.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deepLinkId")]
-        public virtual string DeepLinkId { get; set; }
-
-        /// <summary>Analogous web presence. Used as desktop fallback or when no native link data is present.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A message delete in Dynamite inserts a Babel-only item containing this field. This is only inserted for messages
-    /// before the source-of-truth flip. See go/hsc-message-deletions for more details.
-    /// </summary>
-    public class DeleteMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     public class DeleteQueueItemsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The name of connector making this call. Format: datasources/{source_id}/connectors/{ID}</summary>
@@ -9863,26 +5533,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class DeliveryMedium : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Describes the medium the cent was sent/received. For example, if I receive an SMS via GV, the medium_type
-        /// will be GV.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mediumType")]
-        public virtual string MediumType { get; set; }
-
-        /// <summary>
-        /// In the case of multiple GV/native numbers, this defines the exact number to send from. It is used to
-        /// differentiate mediums that have the same type, but different addresses (e.g. two android phones).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("selfPhone")]
-        public virtual VoicePhoneNumber SelfPhone { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// A reference to a top-level property within the object that should be displayed in search results. The values of
     /// the chosen properties is displayed in the search results along with the display label for that property if one
@@ -9896,116 +5546,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("propertyName")]
         public virtual string PropertyName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class Divider : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class DlpAction : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("actionType")]
-        public virtual string ActionType { get; set; }
-
-        /// <summary>The custom error message defined by the customer administrator.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unsafeHtmlMessageBody")]
-        public virtual string UnsafeHtmlMessageBody { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A summary of a DLP scan. This is a combination summary that contains both scan on message and scan on
-    /// attachments if any.
-    /// </summary>
-    public class DlpMessageScanRecord : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Summaries of the attachment scan if any.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("attachmentScanSummary")]
-        public virtual DlpScanSummary AttachmentScanSummary { get; set; }
-
-        /// <summary>The applied action.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dlpAction")]
-        public virtual DlpAction DlpAction { get; set; }
-
-        /// <summary>Summaries of the message scan.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("messageScanSummary")]
-        public virtual DlpScanSummary MessageScanSummary { get; set; }
-
-        /// <summary>The DLP scan outcome for the message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scanOutcome")]
-        public virtual string ScanOutcome { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A summary of a DLP scan event. This is a summary and should contain the minimum amount of data required to
-    /// identify and process DLP scans. It is written to Starcast and encoded &amp;amp; returned to the client on
-    /// attachment upload.
-    /// </summary>
-    public class DlpScanSummary : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("dlpAction")]
-        public virtual DlpAction DlpAction { get; set; }
-
-        /// <summary>
-        /// The scan ID of the corresponding {@link DlpViolationScanRecord} in the {@link EphemeralDlpScans} Spanner
-        /// table. This can be used to fetch additional details about the scan, e.g. for audit logging.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scanId")]
-        public virtual string ScanId { get; set; }
-
-        /// <summary>
-        /// Indicates that was no attempt to scan a message or attachment because it was not applicable in the given
-        /// context (e.g. atomic mutuate). If this is true, scan_outcome should not be set. This flag is used to
-        /// identify messages that DLP did not attempt to scan for monitoring scan coverage. Contents that DLP attempted
-        /// to scan but skipped can be identified by DlpScanOutcome.SCAN_SKIPPED_* reasons. DEPRECATED: The prober can
-        /// determine this from the context.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scanNotApplicableForContext")]
-        public virtual System.Nullable<bool> ScanNotApplicableForContext { get; set; }
-
-        /// <summary>
-        /// The outcome of a DLP Scan. If this is set, scan_not_applicable_for_context should not be true.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scanOutcome")]
-        public virtual string ScanOutcome { get; set; }
-
-        /// <summary>
-        /// The event that triggered the scan. This corresponds to the rule trigger configured in admin console and maps
-        /// to the different things that can be scanned.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scanTrigger")]
-        public virtual string ScanTrigger { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class DmId : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Unique server assigned Id, per Direct Message Space.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dmId")]
-        public virtual string DmIdValue { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Information on a document attached to an active conference.</summary>
-    public class DocumentInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A whiteboard document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("whiteboardInfo")]
-        public virtual WhiteboardInfo WhiteboardInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10049,15 +5589,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class DriveClientActionMarkup : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("requestFileScope")]
-        public virtual RequestFileScope RequestFileScope { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Drive follow-up search restricts (e.g. "followup:suggestions").</summary>
     public class DriveFollowUpRestrict : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10078,137 +5609,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Annotation metadata for Drive artifacts.</summary>
-    public class DriveMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("aclFixRequest")]
-        public virtual AclFixRequest AclFixRequest { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("aclFixStatus")]
-        public virtual AclFixStatus AclFixStatus { get; set; }
-
-        /// <summary>Can the current user edit this resource</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("canEdit")]
-        public virtual System.Nullable<bool> CanEdit { get; set; }
-
-        /// <summary>Can the current user share this resource</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("canShare")]
-        public virtual System.Nullable<bool> CanShare { get; set; }
-
-        /// <summary>Can the current user view this resource</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("canView")]
-        public virtual System.Nullable<bool> CanView { get; set; }
-
-        /// <summary>
-        /// DriveAction for organizing this file in Drive. If the user does not have access to the Drive file, the value
-        /// will be DriveAction.DRIVE_ACTION_UNSPECIFIED. This field is only set when part of a FileResult in a
-        /// ListFilesResponse.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("driveAction")]
-        public virtual string DriveAction { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("driveState")]
-        public virtual string DriveState { get; set; }
-
-        /// <summary>Output only. Trusted Resource URL for drive file embedding.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("embedUrl")]
-        public virtual TrustedResourceUrlProto EmbedUrl { get; set; }
-
-        /// <summary>
-        /// Indicates whether the Drive link contains an encrypted doc ID. If true, Dynamite should not attempt to query
-        /// the doc ID in Drive Service. See go/docid-encryption for details.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("encryptedDocId")]
-        public virtual System.Nullable<bool> EncryptedDocId { get; set; }
-
-        /// <summary>This is deprecated and unneeded. TODO (b/182479059): Remove this.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("encryptedResourceKey")]
-        public virtual string EncryptedResourceKey { get; set; }
-
-        /// <summary>
-        /// External mimetype of the Drive Resource (Useful for creating Drive URL) See: http://b/35219462
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("externalMimetype")]
-        public virtual string ExternalMimetype { get; set; }
-
-        /// <summary>Drive resource ID of the artifact.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
-
-        /// <summary>
-        /// Deprecated. Whether the setting to restrict downloads is enabled for this file. This was previously used to
-        /// determine whether to hide the download and print buttons in the UI, but is no longer used by clients,
-        /// because Projector now independently queries Drive to ensure that we have the most up-to-date value.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("isDownloadRestricted")]
-        public virtual System.Nullable<bool> IsDownloadRestricted { get; set; }
-
-        /// <summary>
-        /// If the current user is the Drive file's owner. The field is currently only set for Annotations for the
-        /// ListFiles action (as opposed to fetching Topics/Messages with Drive annotations).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("isOwner")]
-        public virtual System.Nullable<bool> IsOwner { get; set; }
-
-        /// <summary>Only present if this DriveMetadata is converted from an UploadMetadata.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("legacyUploadMetadata")]
-        public virtual LegacyUploadMetadata LegacyUploadMetadata { get; set; }
-
-        /// <summary>Mimetype of the Drive Resource</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mimetype")]
-        public virtual string Mimetype { get; set; }
-
-        /// <summary>The display name of the organization owning the Drive item.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("organizationDisplayName")]
-        public virtual string OrganizationDisplayName { get; set; }
-
-        /// <summary>
-        /// Shortcut ID of this drive file in the shared drive, which is associated with a named room this file was
-        /// shared in. Shortcuts will not be created for DMs or unnamed rooms. This is populated after the DriveMetadata
-        /// is migrated to shared drive. go/chat-shared-drive-uploads.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("shortcutAuthorizedItemId")]
-        public virtual AuthorizedItemId ShortcutAuthorizedItemId { get; set; }
-
-        /// <summary>
-        /// If this field is set to true, server should still contact external backends to get metadata for search but
-        /// clients should not render this chip.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("shouldNotRender")]
-        public virtual System.Nullable<bool> ShouldNotRender { get; set; }
-
-        /// <summary>Thumbnail image of the Drive Resource</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("thumbnailHeight")]
-        public virtual System.Nullable<int> ThumbnailHeight { get; set; }
-
-        /// <summary>Thumbnail image of the Drive Resource</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
-        public virtual string ThumbnailUrl { get; set; }
-
-        /// <summary>Thumbnail image of the Drive Resource</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("thumbnailWidth")]
-        public virtual System.Nullable<int> ThumbnailWidth { get; set; }
-
-        /// <summary>Title of the Drive Resource</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>
-        /// Url string fragment that generally indicates the specific location in the linked file. Example:
-        /// #header=h.123abc456. If the fragment is not present this will not be present and therefore default to an
-        /// empty string. The "#" will not be included.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("urlFragment")]
-        public virtual string UrlFragment { get; set; }
-
-        /// <summary>This is considered SPII and should not be logged.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("wrappedResourceKey")]
-        public virtual WrappedResourceKey WrappedResourceKey { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Drive mime-type search restricts (e.g. "type:pdf").</summary>
     public class DriveMimeTypeRestrict : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10224,144 +5624,6 @@ namespace Google.Apis.CloudSearch.v1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// This is the proto for holding message level scoring information. This data is used for logging in query-api
-    /// server and for testing purposes.
-    /// </summary>
-    public class DynamiteMessagesScoringInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("commonContactCount")]
-        public virtual System.Nullable<long> CommonContactCount { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("commonCountToContactListCountRatio")]
-        public virtual System.Nullable<double> CommonCountToContactListCountRatio { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("commonCountToMembershipCountRatio")]
-        public virtual System.Nullable<double> CommonCountToMembershipCountRatio { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("creatorGaiaId")]
-        public virtual System.Nullable<long> CreatorGaiaId { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("creatorInSearcherContactList")]
-        public virtual System.Nullable<bool> CreatorInSearcherContactList { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("crowdingMultiplier")]
-        public virtual System.Nullable<double> CrowdingMultiplier { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("dasContactCount")]
-        public virtual System.Nullable<long> DasContactCount { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("finalScore")]
-        public virtual System.Nullable<double> FinalScore { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("freshnessScore")]
-        public virtual System.Nullable<double> FreshnessScore { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("joinedSpaceAffinityScore")]
-        public virtual System.Nullable<double> JoinedSpaceAffinityScore { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("lastReadTimestampAgeInDays")]
-        public virtual System.Nullable<double> LastReadTimestampAgeInDays { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("messageAgeInDays")]
-        public virtual System.Nullable<double> MessageAgeInDays { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("messageSenderAffinityScore")]
-        public virtual System.Nullable<double> MessageSenderAffinityScore { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("spaceId")]
-        public virtual System.Nullable<long> SpaceId { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("spaceMembershipCount")]
-        public virtual System.Nullable<long> SpaceMembershipCount { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("topicalityScore")]
-        public virtual System.Nullable<double> TopicalityScore { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("unjoinedSpaceAffinityScore")]
-        public virtual System.Nullable<double> UnjoinedSpaceAffinityScore { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// This is the proto for holding space level scoring information. This data is used for logging in query-api server
-    /// and for testing purposes.
-    /// </summary>
-    public class DynamiteSpacesScoringInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("affinityScore")]
-        public virtual System.Nullable<double> AffinityScore { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("commonContactCountAffinityScore")]
-        public virtual System.Nullable<double> CommonContactCountAffinityScore { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("contactsIntersectionCount")]
-        public virtual System.Nullable<double> ContactsIntersectionCount { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("finalScore")]
-        public virtual System.Nullable<double> FinalScore { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("freshnessScore")]
-        public virtual System.Nullable<double> FreshnessScore { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("joinedSpacesAffinityScore")]
-        public virtual System.Nullable<double> JoinedSpacesAffinityScore { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("lastMessagePostedTimestampSecs")]
-        public virtual System.Nullable<long> LastMessagePostedTimestampSecs { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("lastReadTimestampSecs")]
-        public virtual System.Nullable<long> LastReadTimestampSecs { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("memberCountScore")]
-        public virtual System.Nullable<double> MemberCountScore { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("memberMetadataCount")]
-        public virtual System.Nullable<double> MemberMetadataCount { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("messageScore")]
-        public virtual System.Nullable<double> MessageScore { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("numAucContacts")]
-        public virtual System.Nullable<long> NumAucContacts { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("smallContactListAffinityScore")]
-        public virtual System.Nullable<double> SmallContactListAffinityScore { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("smallUnjoinedSpacesAffinityScore")]
-        public virtual System.Nullable<double> SmallUnjoinedSpacesAffinityScore { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("spaceAgeInDays")]
-        public virtual System.Nullable<double> SpaceAgeInDays { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("spaceCreationTimestampSecs")]
-        public virtual System.Nullable<long> SpaceCreationTimestampSecs { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("topicalityScore")]
-        public virtual System.Nullable<double> TopicalityScore { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A message edit in Dynamite inserts a Babel-only item containing this field.</summary>
-    public class EditMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class EditorClientActionMarkup : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("requestFileScopeForActiveDocument")]
-        public virtual RequestFileScopeForActiveDocument RequestFileScopeForActiveDocument { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10394,82 +5656,1219 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Represents a verified owner of the given email address. Note that a single address may have many owners, and a
-    /// single user may own many addresses. (All lower-case, in display form -- see com.google.gaia.client.GaiaEmail)
-    /// </summary>
-    public class EmailOwnerProto : Google.Apis.Requests.IDirectResponseSchema
+    public class EnterpriseTopazFrontendTeamsLink : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; }
+        /// <summary>The identifying link type</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual SafeUrlProto Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class EnterpriseTopazFrontendTeamsPersonCorePhoneNumber : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Phone number in no particular format (as comes from the Focus profile).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual string PhoneNumber { get; set; }
+
+        /// <summary>Phone number URL</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneUrl")]
+        public virtual SafeUrlProto PhoneUrl { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An AgendaEntry, e.g., a Calendar Event.</summary>
+    public class EnterpriseTopazSidekickAgendaEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URL of the agenda item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agendaItemUrl")]
+        public virtual string AgendaItemUrl { get; set; }
+
+        /// <summary>The chronology from the present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chronology")]
+        public virtual string Chronology { get; set; }
+
+        /// <summary>Person who created the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creator")]
+        public virtual EnterpriseTopazSidekickPerson Creator { get; set; }
+
+        /// <summary>
+        /// Attendance status for the current user making the request. This is a convenience data member in order to
+        /// avoid figuring out the same by iterating the invitee list above on the caller side.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("currentUserAttendingStatus")]
+        public virtual string CurrentUserAttendingStatus { get; set; }
+
+        /// <summary>Description of the agenda item (i.e., typically, summary in calendar event).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Items related to the current AgendaEntry. E.g., related drive/mail/groups documents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("document")]
+        public virtual System.Collections.Generic.IList<EnterpriseTopazSidekickCommonDocument> Document { get; set; }
+
+        /// <summary>End date "Friday, August 26" in the user's timezone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
+        public virtual string EndDate { get; set; }
+
+        /// <summary>End time (HH:mm) in the user's timezone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTime { get; set; }
+
+        /// <summary>End time in milliseconds</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTimeMs")]
+        public virtual System.Nullable<long> EndTimeMs { get; set; }
+
+        /// <summary>Event id provided by Calendar API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
+        public virtual string EventId { get; set; }
+
+        /// <summary>Whether the guests can invite other guests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestsCanInviteOthers")]
+        public virtual System.Nullable<bool> GuestsCanInviteOthers { get; set; }
+
+        /// <summary>Whether the guests can modify the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestsCanModify")]
+        public virtual System.Nullable<bool> GuestsCanModify { get; set; }
+
+        /// <summary>
+        /// Whether the guests of the event can be seen. If false, the user is going to be reported as the only attendee
+        /// to the meeting, even though there may be more attendees.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guestsCanSeeGuests")]
+        public virtual System.Nullable<bool> GuestsCanSeeGuests { get; set; }
+
+        /// <summary>Hangout meeting identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hangoutId")]
+        public virtual string HangoutId { get; set; }
+
+        /// <summary>Absolute URL for the Hangout meeting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hangoutUrl")]
+        public virtual string HangoutUrl { get; set; }
+
+        /// <summary>People attending the meeting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invitee")]
+        public virtual System.Collections.Generic.IList<EnterpriseTopazSidekickPerson> Invitee { get; set; }
+
+        /// <summary>Whether the entry lasts all day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isAllDay")]
+        public virtual System.Nullable<bool> IsAllDay { get; set; }
+
+        /// <summary>Last time the event was modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModificationTimeMs")]
+        public virtual System.Nullable<long> LastModificationTimeMs { get; set; }
+
+        /// <summary>Agenda item location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>Whether this should be notified to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notifyToUser")]
+        public virtual System.Nullable<bool> NotifyToUser { get; set; }
+
+        /// <summary>Whether guest list is not returned because number of attendees is too large.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("otherAttendeesExcluded")]
+        public virtual System.Nullable<bool> OtherAttendeesExcluded { get; set; }
+
+        /// <summary>Whether the requester is the owner of the agenda entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requesterIsOwner")]
+        public virtual System.Nullable<bool> RequesterIsOwner { get; set; }
+
+        /// <summary>Whether the details of this entry should be displayed to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("showFullEventDetailsToUse")]
+        public virtual System.Nullable<bool> ShowFullEventDetailsToUse { get; set; }
+
+        /// <summary>Start date "Friday, August 26" in the user's timezone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
+        public virtual string StartDate { get; set; }
+
+        /// <summary>Start time (HH:mm) in the user's timezone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTime { get; set; }
+
+        /// <summary>Start time in milliseconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTimeMs")]
+        public virtual System.Nullable<long> StartTimeMs { get; set; }
+
+        /// <summary>User's calendar timezone;</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
+        public virtual string TimeZone { get; set; }
+
+        /// <summary>Title of the agenda item.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class EnterpriseTopazSidekickAgendaGroupCardProto : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("agendaItem")]
+        public virtual System.Collections.Generic.IList<EnterpriseTopazSidekickAgendaItem> AgendaItem { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("context")]
+        public virtual EnterpriseTopazSidekickAgendaGroupCardProtoContext Context { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("currentAgendaItem")]
+        public virtual EnterpriseTopazSidekickAgendaItem CurrentAgendaItem { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The context that resulted in the generation of the card.</summary>
+    public class EnterpriseTopazSidekickAgendaGroupCardProtoContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// User friendly free text that describes the context of the card (e.g. "Next meeting with Bob"). This is
+        /// largely only applicable when the card is generated from a query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("context")]
+        public virtual string Context { get; set; }
+
+        /// <summary>
+        /// Localized free text that describes the dates represented by the card. Currently, the card will only
+        /// represent a single day.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("date")]
+        public virtual string Date { get; set; }
+
+        /// <summary>Represents restrictions applied to the events requested in the user's query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventsRestrict")]
+        public virtual string EventsRestrict { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class EnterpriseTopazSidekickAgendaItem : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("conflictedGroup")]
+        public virtual EnterpriseTopazSidekickConflictingEventsCardProto ConflictedGroup { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("gapBefore")]
+        public virtual EnterpriseTopazSidekickGap GapBefore { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("meeting")]
+        public virtual EnterpriseTopazSidekickAgendaEntry Meeting { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of answers represented as free text.</summary>
+    public class EnterpriseTopazSidekickAnswerAnswerList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Answers that have a corresponding label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labeledAnswer")]
+        public virtual System.Collections.Generic.IList<EnterpriseTopazSidekickAnswerAnswerListLabeledAnswer> LabeledAnswer { get; set; }
+
+        /// <summary>Answer type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An answer with a corresponding label.</summary>
+    public class EnterpriseTopazSidekickAnswerAnswerListLabeledAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The free text answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answer")]
+        public virtual string Answer { get; set; }
+
+        /// <summary>A localized label for the answer (e.g. "Cell phone" vs "Desk phone").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
 
     /// <summary>
-    /// Represents an embedded object in an update. This is a wrapper class that can contain a single specific item
-    /// proto in an extension field. Think of it as a base class like `Message` in Java. Each item proto must declare
-    /// that it extends this proto: message ExampleObject { option (item_type) = EXAMPLE_OBJECT; extend EmbedClientItem
-    /// { optional ExampleObject example_object = ; } } See go/es-embeds for details.
+    /// Contains a list of suggested queries. Allows the user to determine what natural language queries they can ask
+    /// Cloud Search (e.g. "what can I search for?").
     /// </summary>
-    public class EmbedClientItem : Google.Apis.Requests.IDirectResponseSchema
+    public class EnterpriseTopazSidekickAnswerSuggestedQueryAnswerCard : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of queries to suggest.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedQueryCategory")]
+        public virtual System.Collections.Generic.IList<EnterpriseTopazSidekickAnswerSuggestedQueryCategory> SuggestedQueryCategory { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains a list of suggested queries for a single category.</summary>
+    public class EnterpriseTopazSidekickAnswerSuggestedQueryCategory : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The query list category.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        /// <summary>Whether this category is enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isEnabled")]
+        public virtual System.Nullable<bool> IsEnabled { get; set; }
+
+        /// <summary>List of suggested queries to show the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual System.Collections.Generic.IList<string> Query { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Wrapper proto for the Assist cards.</summary>
+    public class EnterpriseTopazSidekickAssistCardProto : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Agenda group card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agendaGroupCardProto")]
+        public virtual EnterpriseTopazSidekickAgendaGroupCardProto AgendaGroupCardProto { get; set; }
+
+        /// <summary>Card metadata such as chronology and render mode of the card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cardMetadata")]
+        public virtual EnterpriseTopazSidekickCardMetadata CardMetadata { get; set; }
+
+        /// <summary>Card type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cardType")]
+        public virtual string CardType { get; set; }
+
+        /// <summary>Conflicting events card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conflictingMeetingsCard")]
+        public virtual EnterpriseTopazSidekickConflictingEventsCardProto ConflictingMeetingsCard { get; set; }
+
+        /// <summary>Answer card for documents that are applicable to the current query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentListCard")]
+        public virtual EnterpriseTopazSidekickDocumentPerCategoryList DocumentListCard { get; set; }
+
+        /// <summary>Documents with mentions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentsWithMentions")]
+        public virtual EnterpriseTopazSidekickDocumentPerCategoryList DocumentsWithMentions { get; set; }
+
+        /// <summary>Find meeting time card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("findMeetingTimeCard")]
+        public virtual EnterpriseTopazSidekickFindMeetingTimeCardProto FindMeetingTimeCard { get; set; }
+
+        /// <summary>Generic answer card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericAnswerCard")]
+        public virtual EnterpriseTopazSidekickGenericAnswerCard GenericAnswerCard { get; set; }
+
+        /// <summary>Get and keep ahead card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("getAndKeepAheadCard")]
+        public virtual EnterpriseTopazSidekickGetAndKeepAheadCardProto GetAndKeepAheadCard { get; set; }
+
+        /// <summary>Meeting card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meeting")]
+        public virtual EnterpriseTopazSidekickAgendaEntry Meeting { get; set; }
+
+        /// <summary>Meeting notes card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meetingNotesCard")]
+        public virtual EnterpriseTopazSidekickMeetingNotesCardProto MeetingNotesCard { get; set; }
+
+        /// <summary>Request for meeting notes card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meetingNotesCardRequest")]
+        public virtual EnterpriseTopazSidekickMeetingNotesCardRequest MeetingNotesCardRequest { get; set; }
+
+        /// <summary>The people disambiguation card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peopleDisambiguationCard")]
+        public virtual EnterpriseTopazSidekickPeopleDisambiguationCard PeopleDisambiguationCard { get; set; }
+
+        /// <summary>People Search promotion card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peoplePromotionCard")]
+        public virtual PeoplePromotionCard PeoplePromotionCard { get; set; }
+
+        /// <summary>Answer card that represents a single person.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("personAnswerCard")]
+        public virtual EnterpriseTopazSidekickPeopleAnswerPersonAnswerCard PersonAnswerCard { get; set; }
+
+        /// <summary>Full profile card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("personProfileCard")]
+        public virtual EnterpriseTopazSidekickPersonProfileCard PersonProfileCard { get; set; }
+
+        /// <summary>Card with recommended documents for the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("personalizedDocsCard")]
+        public virtual EnterpriseTopazSidekickPersonalizedDocsCardProto PersonalizedDocsCard { get; set; }
+
+        /// <summary>Answer card that represents a list of people related to a person.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedPeopleAnswerCard")]
+        public virtual EnterpriseTopazSidekickPeopleAnswerRelatedPeopleAnswerCard RelatedPeopleAnswerCard { get; set; }
+
+        /// <summary>Sahre meeting docs card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shareMeetingDocsCard")]
+        public virtual EnterpriseTopazSidekickShareMeetingDocsCardProto ShareMeetingDocsCard { get; set; }
+
+        /// <summary>Shared documents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sharedDocuments")]
+        public virtual EnterpriseTopazSidekickDocumentPerCategoryList SharedDocuments { get; set; }
+
+        /// <summary>Answer card for what natural language queries the user can ask.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestedQueryAnswerCard")]
+        public virtual EnterpriseTopazSidekickAnswerSuggestedQueryAnswerCard SuggestedQueryAnswerCard { get; set; }
+
+        /// <summary>Third party answer cards.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyAnswerCard")]
+        public virtual ThirdPartyGenericCard ThirdPartyAnswerCard { get; set; }
+
+        /// <summary>Work In Progress card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workInProgressCardProto")]
+        public virtual EnterpriseTopazSidekickRecentDocumentsCardProto WorkInProgressCardProto { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Card metadata.</summary>
+    public class EnterpriseTopazSidekickCardMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The canonical ID of the embed. If absent, the canonical ID is equal to the ID; if present, then the
-        /// canonical ID represents an "equivalence class" of embeds which really refer to the same object. (For
-        /// example, the URLs http://www.foo.com/ and http://foo.com/ refer to the same object) This field may be
-        /// updated periodically by background processes.
+        /// Declares a preference for how this card should be packed in MSCR. All cards in a response must correspond to
+        /// a single category. As a result, cards may be dropped from the response if this field is set. Any card that
+        /// does not match the category of the card with the highest priority in the response will be dropped.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("canonicalId")]
-        public virtual string CanonicalId { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("cardCategory")]
+        public virtual string CardCategory { get; set; }
 
         /// <summary>
-        /// Deep-linking data to take the user to the right place in a mobile app. This is only used for preview and
-        /// attribution. Links that are specific to a given embed type should live on that specific embed's proto by
-        /// using Link. See http://goto.google.com/mariana-design.
+        /// An ID to identify the card and match actions to it. Be thoughtful of new card IDs since actions will be
+        /// associated to that ID. E.g., if two card IDs collide, the system will think that the actions have been
+        /// applied to the same card. Similarly, if EAS can return multiple cards of the same type (e.g., Meetings),
+        /// ensure that the card_id identifies a given instance of the card so that, e.g., dismissals only affect the
+        /// dismissed card as opposed to affecting all meeting cards.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deepLinkData")]
-        public virtual DeepLinkData DeepLinkData { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("cardId")]
+        public virtual string CardId { get; set; }
 
-        /// <summary>
-        /// The ID of the embed. This corresponds to the schema.org ID, as represented in the ItemScope.id field.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
+        /// <summary>Chronology.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chronology")]
+        public virtual string Chronology { get; set; }
 
-        /// <summary>
-        /// The provenance of the embed, populated when the embed originated from a web fetch. The provenance captures
-        /// information about the web page the embed had originated, like the URL that was retrieved and the retrieved
-        /// URL's canonical form. This is useful in the case where the URL shared by the URL redirects (e.g., in the
-        /// case of a shortened URL).
-        /// </summary>
+        /// <summary>Debug info (only reported if request's debug_level &gt; 0).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("debugInfo")]
+        public virtual string DebugInfo { get; set; }
+
+        /// <summary>Information about the NLP done to get the card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nlpMetadata")]
+        public virtual EnterpriseTopazSidekickNlpMetadata NlpMetadata { get; set; }
+
+        /// <summary>Ranking params.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rankingParams")]
+        public virtual EnterpriseTopazSidekickRankingParams RankingParams { get; set; }
+
+        /// <summary>Render mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("renderMode")]
+        public virtual string RenderMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Container of debugging information in all object levels. Extend as needed.</summary>
+    public class EnterpriseTopazSidekickCommonDebugInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Debug message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Representation of a document. NEXT_TAG: 15</summary>
+    public class EnterpriseTopazSidekickCommonDocument : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Access type, i.e., whether the user has access to the document or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessType")]
+        public virtual string AccessType { get; set; }
+
+        /// <summary>Information for debugging.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("debugInfo")]
+        public virtual EnterpriseTopazSidekickCommonDebugInfo DebugInfo { get; set; }
+
+        /// <summary>Document id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
+        public virtual string DocumentId { get; set; }
+
+        /// <summary>Drive document metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("driveDocumentMetadata")]
+        public virtual EnterpriseTopazSidekickCommonDocumentDriveDocumentMetadata DriveDocumentMetadata { get; set; }
+
+        /// <summary>Generic Drive-based url in the format of drive.google.com/open to be used for deeplink</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericUrl")]
+        public virtual string GenericUrl { get; set; }
+
+        /// <summary>Justification on why the document is selected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("justification")]
+        public virtual EnterpriseTopazSidekickCommonDocumentJustification Justification { get; set; }
+
+        /// <summary>MIME type</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
+        public virtual string MimeType { get; set; }
+
+        /// <summary>Document provenance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
-        public virtual Provenance Provenance { get; set; }
+        public virtual string Provenance { get; set; }
 
-        /// <summary>
-        /// The ID used to identify the embed during rendering. This field will match ID, if set, otherwise it will be
-        /// the ID of the parent activity. This field is only populated on the server for client use and is not
-        /// persisted to storage.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("renderId")]
-        public virtual string RenderId { get; set; }
+        /// <summary>Justification of why this document is being returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
 
-        /// <summary>Signature of the embed, used for verification.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("signature")]
-        public virtual string Signature { get; set; }
+        /// <summary>A sampling of the text from the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
+        public virtual string Snippet { get; set; }
 
-        /// <summary>Transient generic data that will not be saved on the server.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("transientData")]
-        public virtual TransientData TransientData { get; set; }
+        /// <summary>Thumbnail URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
+        public virtual string ThumbnailUrl { get; set; }
 
-        /// <summary>
-        /// The first value in `type` determines which extension field will be set. When creating an EmbedClientItem,
-        /// you only need to set the first (primary) type in this field. When the server receives the item, it will
-        /// populate the full type list using the parent annotations in the ItemType enum.
-        /// </summary>
+        /// <summary>Title of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>Type of the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual System.Collections.Generic.IList<string> Type { get; set; }
+        public virtual string Type { get; set; }
+
+        /// <summary>Absolute URL of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Meta data for drive documents.</summary>
+    public class EnterpriseTopazSidekickCommonDocumentDriveDocumentMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The drive document cosmo id. Client could use the id to build a URL to open a document. Please use
+        /// Document.document_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
+        public virtual string DocumentId { get; set; }
+
+        /// <summary>
+        /// Additional field to identify whether a document is private since scope set to LIMITED can mean both that the
+        /// doc is private or that it's shared with others. is_private indicates whether the doc is not shared with
+        /// anyone except for the owner.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isPrivate")]
+        public virtual System.Nullable<bool> IsPrivate { get; set; }
+
+        /// <summary>Timestamp of the most recent comment added to the document in milliseconds since epoch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastCommentTimeMs")]
+        public virtual System.Nullable<ulong> LastCommentTimeMs { get; set; }
+
+        /// <summary>Timestamp of the most recent edit from the current user in milliseconds since epoch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastEditTimeMs")]
+        public virtual System.Nullable<ulong> LastEditTimeMs { get; set; }
+
+        /// <summary>Last modification time of the document (independent of the user that modified it).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModificationTimeMillis")]
+        public virtual System.Nullable<long> LastModificationTimeMillis { get; set; }
+
+        /// <summary>Timestamp of the last updated time of the document in milliseconds since epoch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdatedTimeMs")]
+        public virtual System.Nullable<ulong> LastUpdatedTimeMs { get; set; }
+
+        /// <summary>Timestamp of the most recent view from the current user in milliseconds since epoch.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastViewTimeMs")]
+        public virtual System.Nullable<ulong> LastViewTimeMs { get; set; }
+
+        /// <summary>The owner of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("owner")]
+        public virtual EnterpriseTopazSidekickCommonPerson Owner { get; set; }
+
+        /// <summary>
+        /// ACL scope of the document which identifies the sharing status of the doc (e.g., limited, shared with link,
+        /// team drive, ...).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Justification of why we are reporting the document.</summary>
+    public class EnterpriseTopazSidekickCommonDocumentJustification : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A locale aware message that explains why this document was selected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("justification")]
+        public virtual string Justification { get; set; }
+
+        /// <summary>Reason on why the document is selected. Populate for trending documents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Common representation of a person.</summary>
+    public class EnterpriseTopazSidekickCommonPerson : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The birthday.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("birthday")]
+        public virtual EnterpriseTopazSidekickCommonPersonBirthday Birthday { get; set; }
+
+        /// <summary>Cell phone number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cellPhone")]
+        public virtual string CellPhone { get; set; }
+
+        /// <summary>The department the person works in (e.g. Engineering).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("department")]
+        public virtual string Department { get; set; }
+
+        /// <summary>Desk location (e.g. US-MTV-PR55-5-5B1I).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deskLocation")]
+        public virtual string DeskLocation { get; set; }
+
+        /// <summary>Work desk phone number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deskPhone")]
+        public virtual string DeskPhone { get; set; }
+
+        /// <summary>The full name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Email.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>The last name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("familyName")]
+        public virtual string FamilyName { get; set; }
+
+        /// <summary>The fully formatted address (e.g. 1255 Pear Avenue, Mountain View 94043, United States).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fullAddress")]
+        public virtual string FullAddress { get; set; }
+
+        /// <summary>This field is deprecated. The obfuscated_id should be used instead.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gaiaId")]
+        public virtual System.Nullable<long> GaiaId { get; set; }
+
+        /// <summary>The first name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("givenName")]
+        public virtual string GivenName { get; set; }
+
+        /// <summary>The person's job title (e.g. Software Engineer).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobTitle")]
+        public virtual string JobTitle { get; set; }
+
+        /// <summary>The manager.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manager")]
+        public virtual EnterpriseTopazSidekickCommonPerson Manager { get; set; }
+
+        /// <summary>The obfuscated GAIA ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedId")]
+        public virtual string ObfuscatedId { get; set; }
+
+        /// <summary>The URL for the Focus profile picture.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("photoUrl")]
+        public virtual string PhotoUrl { get; set; }
+
+        /// <summary>The street address (e.g. 1255 Pear Avenue).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streetAddress")]
+        public virtual string StreetAddress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class EnterpriseTopazSidekickCommonPersonBirthday : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unstructured birthday.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Conflicting meetings card proto.</summary>
+    public class EnterpriseTopazSidekickConflictingEventsCardProto : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>All the events that conflict with main_event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conflictingEvent")]
+        public virtual System.Collections.Generic.IList<EnterpriseTopazSidekickAgendaEntry> ConflictingEvent { get; set; }
+
+        /// <summary>The event identified as being the most important.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mainEvent")]
+        public virtual EnterpriseTopazSidekickAgendaEntry MainEvent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a mapping between a document type and its corresponding documents. Use for Work in Progress card in
+    /// v1 homepage.
+    /// </summary>
+    public class EnterpriseTopazSidekickDocumentGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Document group type</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groupType")]
+        public virtual string GroupType { get; set; }
+
+        /// <summary>The list of corresponding documents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("personalizedDocument")]
+        public virtual System.Collections.Generic.IList<EnterpriseTopazSidekickCommonDocument> PersonalizedDocument { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class EnterpriseTopazSidekickDocumentPerCategoryList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("documents")]
+        public virtual System.Collections.Generic.IList<EnterpriseTopazSidekickDocumentPerCategoryListDocumentPerCategoryListEntry> Documents { get; set; }
+
+        /// <summary>
+        /// Localized message explaining how the documents were derived (e.g. from the last 30 days activity). This
+        /// field is optional.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("helpMessage")]
+        public virtual string HelpMessage { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("listType")]
+        public virtual string ListType { get; set; }
+
+        /// <summary>Description of the types of documents present in the list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listTypeDescription")]
+        public virtual string ListTypeDescription { get; set; }
+
+        /// <summary>Response message in case no documents are present in the card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseMessage")]
+        public virtual string ResponseMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class EnterpriseTopazSidekickDocumentPerCategoryListDocumentPerCategoryListEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("document")]
+        public virtual EnterpriseTopazSidekickCommonDocument Document { get; set; }
+
+        /// <summary>Reason this document was selected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rationale")]
+        public virtual string Rationale { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response to find meeting time among a set of people.</summary>
+    public class EnterpriseTopazSidekickFindMeetingTimeCardProto : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Slots when all attendees have availability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonAvailableTimeSlots")]
+        public virtual System.Collections.Generic.IList<EnterpriseTopazSidekickTimeSlot> CommonAvailableTimeSlots { get; set; }
+
+        /// <summary>Invitees to the event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invitees")]
+        public virtual System.Collections.Generic.IList<EnterpriseTopazSidekickPerson> Invitees { get; set; }
+
+        /// <summary>Requester.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requester")]
+        public virtual EnterpriseTopazSidekickPerson Requester { get; set; }
+
+        /// <summary>Details about the scheduled meeting, if one exists.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduledMeeting")]
+        public virtual EnterpriseTopazSidekickScheduledMeeting ScheduledMeeting { get; set; }
+
+        /// <summary>Invitees that have been skipped in the computation, most likely because they are groups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skippedInvitees")]
+        public virtual System.Collections.Generic.IList<EnterpriseTopazSidekickPerson> SkippedInvitees { get; set; }
+
+        /// <summary>Min and max timestamp used to find a common available timeslot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeBoundaries")]
+        public virtual EnterpriseTopazSidekickTimeSlot TimeBoundaries { get; set; }
+
+        /// <summary>Timezone ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timezoneId")]
+        public virtual string TimezoneId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class EnterpriseTopazSidekickGap : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Localized time string in the format: 1 hour 15 minutes</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayRemainingTime")]
+        public virtual string DisplayRemainingTime { get; set; }
+
+        /// <summary>Localized time string in the format:(Locale CZ) 8:30 odp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTime { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("endTimeMs")]
+        public virtual System.Nullable<ulong> EndTimeMs { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("remainingTime")]
+        public virtual object RemainingTime { get; set; }
+
+        /// <summary>Localized time string in the format:(Locale CZ) 8:30 odp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTime { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("startTimeMs")]
+        public virtual System.Nullable<ulong> StartTimeMs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class EnterpriseTopazSidekickGenericAnswerCard : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answer")]
+        public virtual string Answer { get; set; }
+
+        /// <summary>Title or header of the card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Get and keep ahead card</summary>
+    public class EnterpriseTopazSidekickGetAndKeepAheadCardProto : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("declinedEvents")]
+        public virtual EnterpriseTopazSidekickGetAndKeepAheadCardProtoDeclinedEvents DeclinedEvents { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("mentionedDocuments")]
+        public virtual EnterpriseTopazSidekickDocumentPerCategoryList MentionedDocuments { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("sharedDocuments")]
+        public virtual EnterpriseTopazSidekickDocumentPerCategoryList SharedDocuments { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of events where all guests declined.</summary>
+    public class EnterpriseTopazSidekickGetAndKeepAheadCardProtoDeclinedEvents : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("events")]
+        public virtual System.Collections.Generic.IList<EnterpriseTopazSidekickAgendaEntry> Events { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Errors in the creation of meeting notes.</summary>
+    public class EnterpriseTopazSidekickMeetingNotesCardError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The description of the reason why create-meeting-notes failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The event to request meeting notes creation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("event")]
+        public virtual EnterpriseTopazSidekickAgendaEntry Event__ { get; set; }
+
+        /// <summary>The reason why create-meeting-notes failed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about the meeting notes created.</summary>
+    public class EnterpriseTopazSidekickMeetingNotesCardProto : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The event to request meeting notes creation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("event")]
+        public virtual EnterpriseTopazSidekickAgendaEntry Event__ { get; set; }
+
+        /// <summary>Google Drive ID (a.k.a. resource ID) of the file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileId")]
+        public virtual string FileId { get; set; }
+
+        /// <summary>Title we want to show for meeting notes in the answer card</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>New URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("url")]
+        public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Meeting notes card request.</summary>
+    public class EnterpriseTopazSidekickMeetingNotesCardRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Who are the meeting notes created for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canCreateFor")]
+        public virtual System.Collections.Generic.IList<string> CanCreateFor { get; set; }
+
+        /// <summary>The error and reason if known error occured.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual EnterpriseTopazSidekickMeetingNotesCardError Error { get; set; }
+
+        /// <summary>The event to request meeting notes creation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("event")]
+        public virtual EnterpriseTopazSidekickAgendaEntry Event__ { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about the NLP interpretation of the query.</summary>
+    public class EnterpriseTopazSidekickNlpMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Confidence of the interpretation that generated this card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("confidence")]
+        public virtual System.Nullable<float> Confidence { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for disambiguation.</summary>
+    public class EnterpriseTopazSidekickPeopleAnswerDisambiguationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of people that also matched the query. This list is not complete.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disambiguation")]
+        public virtual System.Collections.Generic.IList<EnterpriseTopazSidekickPeopleAnswerDisambiguationInfoDisambiguationPerson> Disambiguation { get; set; }
+
+        /// <summary>
+        /// The name that was extracted from the query. This may be in the form of the given name, last name, full name,
+        /// LDAP, or email address. This name can be considered suitable for displaying to the user and can largely be
+        /// considered to be normalized (e.g. "Bob's" -&amp;gt; "Bob").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A person that also matches the query, but was not selected due to a lower affinity with the requesting user.
+    /// </summary>
+    public class EnterpriseTopazSidekickPeopleAnswerDisambiguationInfoDisambiguationPerson : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The profile of this person.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("person")]
+        public virtual EnterpriseTopazSidekickCommonPerson Person { get; set; }
+
+        /// <summary>
+        /// The query that can be used to produce an answer card with the same attribute, but for this person.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual string Query { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Recommended header to display for the card.</summary>
+    public class EnterpriseTopazSidekickPeopleAnswerPeopleAnswerCardHeader : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The suggested title to display. This defaults to the user's query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An answer card for a single person.</summary>
+    public class EnterpriseTopazSidekickPeopleAnswerPersonAnswerCard : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of answers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answer")]
+        public virtual System.Collections.Generic.IList<SafeHtmlProto> Answer { get; set; }
+
+        /// <summary>List of answers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerText")]
+        public virtual EnterpriseTopazSidekickAnswerAnswerList AnswerText { get; set; }
+
+        /// <summary>Disambiguation information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disambiguationInfo")]
+        public virtual EnterpriseTopazSidekickPeopleAnswerDisambiguationInfo DisambiguationInfo { get; set; }
+
+        /// <summary>The header to display for the card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("header")]
+        public virtual EnterpriseTopazSidekickPeopleAnswerPeopleAnswerCardHeader Header { get; set; }
+
+        /// <summary>The response status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseStatus")]
+        public virtual string ResponseStatus { get; set; }
+
+        /// <summary>
+        /// Localized user friendly message to display to the user in the case of missing data or an error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
+        public virtual string StatusMessage { get; set; }
+
+        /// <summary>The profile of the person that was the subject of the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subject")]
+        public virtual EnterpriseTopazSidekickCommonPerson Subject { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An answer card for a list of people that are related to the subject of the query.</summary>
+    public class EnterpriseTopazSidekickPeopleAnswerRelatedPeopleAnswerCard : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Disambiguation information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disambiguationInfo")]
+        public virtual EnterpriseTopazSidekickPeopleAnswerDisambiguationInfo DisambiguationInfo { get; set; }
+
+        /// <summary>The header to display for the card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("header")]
+        public virtual EnterpriseTopazSidekickPeopleAnswerPeopleAnswerCardHeader Header { get; set; }
+
+        /// <summary>A list of people that are related to the query subject.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedPeople")]
+        public virtual System.Collections.Generic.IList<EnterpriseTopazSidekickCommonPerson> RelatedPeople { get; set; }
+
+        /// <summary>Defines the type of relation the list of people have with the subject of the card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relationType")]
+        public virtual string RelationType { get; set; }
+
+        /// <summary>The response status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseStatus")]
+        public virtual string ResponseStatus { get; set; }
+
+        /// <summary>
+        /// Localized user friendly message to display to the user in the case of missing data or an error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
+        public virtual string StatusMessage { get; set; }
+
+        /// <summary>The profile of the person that was the subject of the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subject")]
+        public virtual EnterpriseTopazSidekickCommonPerson Subject { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class EnterpriseTopazSidekickPeopleDisambiguationCard : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Candidate persons for the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("person")]
+        public virtual System.Collections.Generic.IList<EnterpriseTopazSidekickCommonPerson> Person { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Person.</summary>
+    public class EnterpriseTopazSidekickPerson : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The level of affinity this person has with the requesting user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("affinityLevel")]
+        public virtual string AffinityLevel { get; set; }
+
+        /// <summary>Attendance status of the person when included in a meeting event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attendingStatus")]
+        public virtual string AttendingStatus { get; set; }
+
+        /// <summary>Email.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>Gaia id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gaiaId")]
+        public virtual System.Nullable<long> GaiaId { get; set; }
+
+        /// <summary>Whether the invitee is a group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isGroup")]
+        public virtual System.Nullable<bool> IsGroup { get; set; }
+
+        /// <summary>Name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Obfuscated Gaia id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedGaiaId")]
+        public virtual string ObfuscatedGaiaId { get; set; }
+
+        /// <summary>Absolute URL to the profile photo of the person.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("photoUrl")]
+        public virtual string PhotoUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class EnterpriseTopazSidekickPersonProfileCard : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedPeople")]
+        public virtual System.Collections.Generic.IList<EnterpriseTopazSidekickPersonProfileCardRelatedPeople> RelatedPeople { get; set; }
+
+        /// <summary>The subject of the card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subject")]
+        public virtual EnterpriseTopazSidekickCommonPerson Subject { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class EnterpriseTopazSidekickPersonProfileCardRelatedPeople : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Related people.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relatedPerson")]
+        public virtual System.Collections.Generic.IList<EnterpriseTopazSidekickCommonPerson> RelatedPerson { get; set; }
+
+        /// <summary>Relation type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relation")]
+        public virtual string Relation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Personalized docs card proto.</summary>
+    public class EnterpriseTopazSidekickPersonalizedDocsCardProto : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Document group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentGroup")]
+        public virtual System.Collections.Generic.IList<EnterpriseTopazSidekickDocumentGroup> DocumentGroup { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Ranking params.</summary>
+    public class EnterpriseTopazSidekickRankingParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The end-time that this object will expect to occur. If the type is marked as FIXED, then this end-time will
+        /// persist after bidding. If the type is marked as FLEXIBLE, this field is NOT expected to be filled and will
+        /// be filled in after it has won a bid. Expected to be set when type is set to FIXED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTimeMs")]
+        public virtual System.Nullable<ulong> EndTimeMs { get; set; }
+
+        /// <summary>
+        /// The priority to determine between objects that have the same start_time_ms The lower-value of priority ==
+        /// ranked higher. Max-priority = 0. Expected to be set for all types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual string Priority { get; set; }
+
+        /// <summary>The score of the card to be used to break priority-ties</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; }
+
+        /// <summary>
+        /// The span that this card will take in the stream Expected to be set when type is set to FLEXIBLE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spanMs")]
+        public virtual System.Nullable<ulong> SpanMs { get; set; }
+
+        /// <summary>
+        /// The start-time that this object will bid-for If the type is marked as FIXED, then this start-time will
+        /// persist after bidding. If the type is marked as FLEXIBLE, then it will occur at the given time or sometime
+        /// after the requested time. Expected to be set for all types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTimeMs")]
+        public virtual System.Nullable<ulong> StartTimeMs { get; set; }
+
+        /// <summary>The packing type of this object.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class EnterpriseTopazSidekickRecentDocumentsCardProto : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("document")]
+        public virtual System.Collections.Generic.IList<EnterpriseTopazSidekickCommonDocument> Document { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about scheduled meetings.</summary>
+    public class EnterpriseTopazSidekickScheduledMeeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The meeting location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meetingLocation")]
+        public virtual string MeetingLocation { get; set; }
+
+        /// <summary>The meeting time slot.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meetingTime")]
+        public virtual EnterpriseTopazSidekickTimeSlot MeetingTime { get; set; }
+
+        /// <summary>The meeting title.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("meetingTitle")]
+        public virtual string MeetingTitle { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Share meeting docs card proto.</summary>
+    public class EnterpriseTopazSidekickShareMeetingDocsCardProto : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Documents to share for the given meeting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("document")]
+        public virtual System.Collections.Generic.IList<EnterpriseTopazSidekickCommonDocument> Document { get; set; }
+
+        /// <summary>Event.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("event")]
+        public virtual EnterpriseTopazSidekickAgendaEntry Event__ { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Slot of time.</summary>
+    public class EnterpriseTopazSidekickTimeSlot : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Day end time at the user's timezone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTimeDay")]
+        public virtual string EndTimeDay { get; set; }
+
+        /// <summary>Hour and minute of the end time at the user's timezone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTimeHourAndMinute")]
+        public virtual string EndTimeHourAndMinute { get; set; }
+
+        /// <summary>End time in milliseconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTimeInMillis")]
+        public virtual System.Nullable<long> EndTimeInMillis { get; set; }
+
+        /// <summary>Day start time at user's timezone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTimeDay")]
+        public virtual string StartTimeDay { get; set; }
+
+        /// <summary>Hour and minute of the start time at the user's timezone.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTimeHourAndMinute")]
+        public virtual string StartTimeHourAndMinute { get; set; }
+
+        /// <summary>Start time in milliseconds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTimeInMillis")]
+        public virtual System.Nullable<long> StartTimeInMillis { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10592,41 +6991,6 @@ namespace Google.Apis.CloudSearch.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual Source Source { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class EventAnnotation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual System.Nullable<int> Type { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Represents the invitees or other users associated with a Google+ Event (see http://goto/events-backend-design).
-    /// </summary>
-    public class EventProto : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Event IDs consist of alphanumeric characters and colons. Currently required.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
-        public virtual string EventId { get; set; }
-
-        /// <summary>
-        /// The type of Event members to consider, e.g. "all members" vs. "owners" vs. "admins". These are defined by
-        /// legacy_relation_id values in social.graph.storage.EdgeTypeEnum.EdgeType enum options in
-        /// social/graph/storage/proto/id.proto. See event.pb (defined in
-        /// production/config/cdd/socialgraph/mixer_config/prod/node_type_config) for all valid edge types associated
-        /// with event. Currently required.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("memberType")]
-        public virtual System.Nullable<int> MemberType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10767,20 +7131,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A filter was created.</summary>
-    public class FilterCreated : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A filter was deleted.</summary>
-    public class FilterDeleted : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Filter options to be applied on query.</summary>
     public class FilterOptions : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10794,147 +7144,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("objectType")]
         public virtual string ObjectType { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>HistoryRecord for changes associated with a filter, namely: FILTER_CREATED FILTER_DELETED</summary>
-    public class FilterUpdate : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("filterCreated")]
-        public virtual FilterCreated FilterCreated { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("filterDeleted")]
-        public virtual FilterDeleted FilterDeleted { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("filterId")]
-        public virtual string FilterId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A persistent (sticky) footer that is added to the bottom of the card.</summary>
-    public class FixedFooter : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("buttons")]
-        public virtual System.Collections.Generic.IList<Button> Buttons { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("primaryButton")]
-        public virtual TextButton PrimaryButton { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("secondaryButton")]
-        public virtual TextButton SecondaryButton { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class Folder : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Folder mapping id.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<ulong> Id { get; set; }
-
-        /// <summary>One for each copy of the message in the IMAP folder.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual System.Collections.Generic.IList<ImapsyncFolderAttributeFolderMessage> Message { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>This is the content of //imapsync/folder attribute.</summary>
-    public class FolderAttribute : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>List of all IMAP folders where the message presents.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("folder")]
-        public virtual System.Collections.Generic.IList<Folder> Folder { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class FormAction : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Apps script function that should be invoked in the developer's apps script when the containing element is
-        /// clicked/activated.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("actionMethodName")]
-        public virtual string ActionMethodName { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("loadIndicator")]
-        public virtual string LoadIndicator { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IList<ActionParameter> Parameters { get; set; }
-
-        /// <summary>
-        /// Indicates whether form values persist after the action. When false, the Apps Script is responsible for
-        /// persisting values, by setting any form field values using the formInputs in the event. Disabling this
-        /// behavior can be used if the add-on needs the ability to clear form fields, for example, as with persistent
-        /// values, there is no means for clearing existing values. When disabling persistent values, it is strongly
-        /// recommended that the add-on use LoadIndicator.SPINNER for all events, as this locks the UI to ensure no
-        /// changes are made by the user while the action is being processed. When using LoadIndicator.NONE for any of
-        /// the actions, persistent values are recommended, as it ensures that any changes made by the user after form /
-        /// on change actions are sent to the server are not overwritten by the response. Persistent values disabled by
-        /// default. While we recommend persistent values be used in the typical use case, we do not enable by default,
-        /// as doing so would change the current behavior of existing add-ons in prod.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("persistValues")]
-        public virtual System.Nullable<bool> PersistValues { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Annotation metadata for markup formatting</summary>
-    public class FormatMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Font color is set if and only if format_type is FONT_COLOR. The components are stored as (alpha
-        /// &amp;lt;&amp;lt; 24) | (red &amp;lt;&amp;lt; 16) | (green &amp;lt;&amp;lt; 8) | blue. Clients should always
-        /// set the alpha component to 0xFF. NEXT TAG: 3
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fontColor")]
-        public virtual System.Nullable<long> FontColor { get; set; }
-
-        /// <summary>LINT.ThenChange(//depot/google3/apps/dynamite/v1/web/datakeys/annotated_span.proto)</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("formatType")]
-        public virtual string FormatType { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Formatting information for a segment.</summary>
-    public class Formatting : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("bold")]
-        public virtual System.Nullable<bool> Bold { get; set; }
-
-        /// <summary>This indicates that the segment should be rendered as highlighted or visually emphasized.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("highlight")]
-        public virtual System.Nullable<bool> Highlight { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("italics")]
-        public virtual System.Nullable<bool> Italics { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("strikethrough")]
-        public virtual System.Nullable<bool> Strikethrough { get; set; }
-
-        /// <summary>
-        /// If set, this indicates that the segment should be rendered with the specified style. The absence of an
-        /// explicit style represents "no style", i.e. the segment can be rendered with the default style chosen by the
-        /// application.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("style")]
-        public virtual string Style { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("underline")]
-        public virtual System.Nullable<bool> Underline { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10968,153 +7177,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// The Item message is the read interface for user data (traditionally referred to as a "message", such as a mail
-    /// message or a chat message, but generalized to encompass other types such as tasks) and stored in Tingle. Each
-    /// Item is associated with a single Thread. An Item contains three classes of data. (1): Item "fields" are common
-    /// to items of all message types (e.g. mail, chat, task, etc.) and are identified by the ItemFieldSpec.FetchType
-    /// enum when fetching Items. (2): Item "attributes" represent data associated with an Item that is stored on behalf
-    /// of the client but to which the fusebox and storage layers are otherwise agnostic. (3): Item "parts" are
-    /// application-defined protocol buffers that affect how the Item is indexed. Item parts are referenced as
-    /// extensions to the ItemParts message. By default the application specifies the index terms associated with an
-    /// Item part. For performance sensitive applications, the storage layer can be modified to understand and index
-    /// data types natively.
-    /// </summary>
-    public class FuseboxItem : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
-        public virtual Attributes Attributes { get; set; }
-
-        /// <summary>The creation time of the Item in micro seconds.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("creationTimeMicroseconds")]
-        public virtual System.Nullable<ulong> CreationTimeMicroseconds { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("history")]
-        public virtual History History { get; set; }
-
-        /// <summary>
-        /// The key is used to refer to an item. Note that every field of the MultiKey is unique to the Item, and thus
-        /// the Item can be looked up by any of the fields.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("itemKey")]
-        public virtual MultiKey ItemKey { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
-        public virtual Labels Labels { get; set; }
-
-        /// <summary>
-        /// The modification time of the Item in micro seconds. Modifications to the message include label addition,
-        /// deletion, etc.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastModificationTimeUs")]
-        public virtual System.Nullable<ulong> LastModificationTimeUs { get; set; }
-
-        /// <summary>go/lockpicker Locker counterpart of references.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lockerReferences")]
-        public virtual References LockerReferences { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("matchInfo")]
-        public virtual MatchInfo MatchInfo { get; set; }
-
-        /// <summary>Type-specific data are represented as extensions to the ItemParts message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("parts")]
-        public virtual ItemParts Parts { get; set; }
-
-        /// <summary>
-        /// The read timestamp at which this item was read. This is a temporary field used to check if two items
-        /// streamed during dual reading were read at the same timestamp. This will be populated by Fusebox RPCs. "DO
-        /// NOT USE UNLESS YOU TALK TO FUSEBOX TEAM (gmail-fusebox@)".
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("readTs")]
-        public virtual System.Nullable<long> ReadTs { get; set; }
-
-        /// <summary>References to attachments, video attachments in Youtube and Hangout messages.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("references")]
-        public virtual References References { get; set; }
-
-        /// <summary>The snippet is a brief bit of text describing this item.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual string Snippet { get; set; }
-
-        /// <summary>The key of the Thread with which this Item is associated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("threadKey")]
-        public virtual MultiKey ThreadKey { get; set; }
-
-        /// <summary>
-        /// A base64 encoded and encrypted string generated from the Gaia Id and the thread id. Used to generate the
-        /// permalink for this thread, exposed from Gmail API.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("threadLocator")]
-        public virtual string ThreadLocator { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("triggers")]
-        public virtual Triggers Triggers { get; set; }
-
-        /// <summary>The latest history operation id that resulted in a mutation of the item.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<ulong> Version { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// In the context of a search, the MatchInfo contains information about which Items matched the query.
-    /// </summary>
-    public class FuseboxItemThreadMatchInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// If SearchQuery.Options.Clustering is present, the query will be treated as a cluster query, and this field
-        /// may be populated with the cluster ID of the cluster to which this thread belongs, if any. The cluster ID
-        /// will be a label on the message.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
-        public virtual string ClusterId { get; set; }
-
-        /// <summary>
-        /// The server id of the last item that matched the query. This is always set, regardless of the
-        /// compute_matching_items_per_thread option. This is the value by which search results are sorted, in
-        /// descending (i.e. newest first) order.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastMatchingItemId")]
-        public virtual System.Nullable<ulong> LastMatchingItemId { get; set; }
-
-        /// <summary>
-        /// The MultiKey of the last item that matched the query. This is always set, regardless of the
-        /// compute_matching_items_per_thread option. This is the value by which search results are sorted, in
-        /// descending (i.e. newest first) order.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastMatchingItemKey")]
-        public virtual MultiKey LastMatchingItemKey { get; set; }
-
-        /// <summary>
-        /// If SearchQuery.Options.compute_matching_items_per_thread, this field will contain the keys of all items that
-        /// matched the query, in ascending order. Note that this option requires extra computation.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("matchingItemKey")]
-        public virtual System.Collections.Generic.IList<MultiKey> MatchingItemKey { get; set; }
-
-        /// <summary>
-        /// The rank of this ItemThread in the result set of the query. This rank may be used to sort ItemThreads in
-        /// proper order. Ranks are specific to a query, and stable for a given query at a specific time.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rank")]
-        public virtual Rank Rank { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>If the Value field is not set this means the pref did not exist.</summary>
-    public class FuseboxPrefUpdatePreState : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     public class GSuitePrincipal : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>This principal represents all users of the Google Workspace domain of the customer.</summary>
@@ -11128,64 +7190,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>This principal references a Google Workspace user account.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gsuiteUserEmail")]
         public virtual string GsuiteUserEmail { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class GaiaGroupProto : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
-        public virtual System.Nullable<long> GroupId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A Gaia account, which may represent a user, device, service account, etc. For prod (@prod.google.com) accounts,
-    /// use MdbUserProto instead.
-    /// </summary>
-    public class GaiaUserProto : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
-        public virtual System.Nullable<long> UserId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Details on the third-party interoperability settings for the meeting space.</summary>
-    public class GatewayAccess : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Whether third-party gateway accesses are enabled for this meeting space. If enabled, the actual access code
-        /// can be retrieved by calling the GetGatewayAccess RPC method.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Details how to join the conference via a SIP gateway.</summary>
-    public class GatewaySipAccess : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Permanent numeric code for manual entry on specially configured devices, currently the same as the PSTN
-        /// "Universal pin".
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sipAccessCode")]
-        public virtual string SipAccessCode { get; set; }
-
-        /// <summary>
-        /// The SIP URI the conference can be reached through. The string is on one of the formats: "sip:@" "sips:@"
-        /// where currently is the 13-digit universal pin (with the future option to support using a Meet meeting code
-        /// as well), and is a valid address to be resolved using a DNS SRV lookup, or a dotted quad.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11298,372 +7302,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class GmailClientActionMarkup : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("addonComposeUiActionMarkup")]
-        public virtual AddonComposeUiActionMarkup AddonComposeUiActionMarkup { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("openCreatedDraftActionMarkup")]
-        public virtual OpenCreatedDraftActionMarkup OpenCreatedDraftActionMarkup { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("taskAction")]
-        public virtual TaskActionMarkup TaskAction { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("updateDraftActionMarkup")]
-        public virtual UpdateDraftActionMarkup UpdateDraftActionMarkup { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The markup for developers to specify the contents of a contextual AddOn.</summary>
-    public class GoogleChatV1ContextualAddOnMarkup : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A list of cards. A card must contain a header and at least 1 section.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cards")]
-        public virtual System.Collections.Generic.IList<GoogleChatV1ContextualAddOnMarkupCard> Cards { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A card is a UI element that can contain UI widgets such as text and images.</summary>
-    public class GoogleChatV1ContextualAddOnMarkupCard : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The actions of this card.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cardActions")]
-        public virtual System.Collections.Generic.IList<GoogleChatV1ContextualAddOnMarkupCardCardAction> CardActions { get; set; }
-
-        /// <summary>The header of the card. A header usually contains a title and an image.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual GoogleChatV1ContextualAddOnMarkupCardCardHeader Header { get; set; }
-
-        /// <summary>Name of the card.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Sections are separated by a line divider.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sections")]
-        public virtual System.Collections.Generic.IList<GoogleChatV1ContextualAddOnMarkupCardSection> Sections { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A card action is the action associated with the card. For an invoice card, a typical action would be: delete
-    /// invoice, email invoice or open the invoice in browser. Not supported by Google Chat apps.
-    /// </summary>
-    public class GoogleChatV1ContextualAddOnMarkupCardCardAction : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The label used to be displayed in the action menu item.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("actionLabel")]
-        public virtual string ActionLabel { get; set; }
-
-        /// <summary>The onclick action for this action item.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
-        public virtual GoogleChatV1WidgetMarkupOnClick OnClick { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class GoogleChatV1ContextualAddOnMarkupCardCardHeader : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The image's type (for example, square border or circular border).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageStyle")]
-        public virtual string ImageStyle { get; set; }
-
-        /// <summary>The URL of the image in the card header.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
-        public virtual string ImageUrl { get; set; }
-
-        /// <summary>The subtitle of the card header.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
-        public virtual string Subtitle { get; set; }
-
-        /// <summary>
-        /// The title must be specified. The header has a fixed height: if both a title and subtitle is specified, each
-        /// takes up one line. If only the title is specified, it takes up both lines.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A section contains a collection of widgets that are rendered (vertically) in the order that they are specified.
-    /// Across all platforms, cards have a narrow fixed width, so there's currently no need for layout properties (for
-    /// example, float).
-    /// </summary>
-    public class GoogleChatV1ContextualAddOnMarkupCardSection : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The header of the section. Formatted text is supported. For more information about formatting text, see
-        /// [Formatting text in Google Chat
-        /// apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting) and
-        /// [Formatting text in Google Workspace
-        /// Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("header")]
-        public virtual string Header { get; set; }
-
-        /// <summary>A section must contain at least one widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("widgets")]
-        public virtual System.Collections.Generic.IList<GoogleChatV1WidgetMarkup> Widgets { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A widget is a UI element that presents text and images.</summary>
-    public class GoogleChatV1WidgetMarkup : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// A list of buttons. Buttons is also `oneof data` and only one of these fields should be set.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("buttons")]
-        public virtual System.Collections.Generic.IList<GoogleChatV1WidgetMarkupButton> Buttons { get; set; }
-
-        /// <summary>Display an image in this widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual GoogleChatV1WidgetMarkupImage Image { get; set; }
-
-        /// <summary>Display a key value item in this widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("keyValue")]
-        public virtual GoogleChatV1WidgetMarkupKeyValue KeyValue { get; set; }
-
-        /// <summary>Display a text paragraph in this widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("textParagraph")]
-        public virtual GoogleChatV1WidgetMarkupTextParagraph TextParagraph { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A button. Can be a text button or an image button.</summary>
-    public class GoogleChatV1WidgetMarkupButton : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A button with image and `onclick` action.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageButton")]
-        public virtual GoogleChatV1WidgetMarkupImageButton ImageButton { get; set; }
-
-        /// <summary>A button with text and `onclick` action.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("textButton")]
-        public virtual GoogleChatV1WidgetMarkupTextButton TextButton { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A form action describes the behavior when the form is submitted. For example, you can invoke Apps Script to
-    /// handle the form.
-    /// </summary>
-    public class GoogleChatV1WidgetMarkupFormAction : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The method name is used to identify which part of the form triggered the form submission. This information
-        /// is echoed back to the Chat app as part of the card click event. You can use the same method name for several
-        /// elements that trigger a common behavior.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("actionMethodName")]
-        public virtual string ActionMethodName { get; set; }
-
-        /// <summary>List of action parameters.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
-        public virtual System.Collections.Generic.IList<GoogleChatV1WidgetMarkupFormActionActionParameter> Parameters { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// List of string parameters to supply when the action method is invoked. For example, consider three snooze
-    /// buttons: snooze now, snooze one day, snooze next week. You might use `action method = snooze()`, passing the
-    /// snooze type and snooze time in the list of string parameters.
-    /// </summary>
-    public class GoogleChatV1WidgetMarkupFormActionActionParameter : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The name of the parameter for the action script.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; }
-
-        /// <summary>The value of the parameter.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>An image that's specified by a URL and can have an `onclick` action.</summary>
-    public class GoogleChatV1WidgetMarkupImage : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The aspect ratio of this image (width and height). This field lets you reserve the right height for the
-        /// image while waiting for it to load. It's not meant to override the built-in aspect ratio of the image. If
-        /// unset, the server fills it by prefetching the image.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("aspectRatio")]
-        public virtual System.Nullable<double> AspectRatio { get; set; }
-
-        /// <summary>The URL of the image.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
-        public virtual string ImageUrl { get; set; }
-
-        /// <summary>The `onclick` action.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
-        public virtual GoogleChatV1WidgetMarkupOnClick OnClick { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>An image button with an `onclick` action.</summary>
-    public class GoogleChatV1WidgetMarkupImageButton : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The icon specified by an `enum` that indices to an icon provided by Chat API.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("icon")]
-        public virtual string Icon { get; set; }
-
-        /// <summary>The icon specified by a URL.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
-        public virtual string IconUrl { get; set; }
-
-        /// <summary>
-        /// The name of this `image_button` that's used for accessibility. Default value is provided if this name isn't
-        /// specified.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The `onclick` action.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
-        public virtual GoogleChatV1WidgetMarkupOnClick OnClick { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A UI element contains a key (label) and a value (content). This element can also contain some actions such as
-    /// `onclick` button.
-    /// </summary>
-    public class GoogleChatV1WidgetMarkupKeyValue : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The text of the bottom label. Formatted text supported. For more information about formatting text, see
-        /// [Formatting text in Google Chat
-        /// apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting) and
-        /// [Formatting text in Google Workspace
-        /// Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bottomLabel")]
-        public virtual string BottomLabel { get; set; }
-
-        /// <summary>A button that can be clicked to trigger an action.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("button")]
-        public virtual GoogleChatV1WidgetMarkupButton Button { get; set; }
-
-        /// <summary>
-        /// The text of the content. Formatted text supported and always required. For more information about formatting
-        /// text, see [Formatting text in Google Chat
-        /// apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting) and
-        /// [Formatting text in Google Workspace
-        /// Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual string Content { get; set; }
-
-        /// <summary>If the content should be multiline.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contentMultiline")]
-        public virtual System.Nullable<bool> ContentMultiline { get; set; }
-
-        /// <summary>An enum value that's replaced by the Chat API with the corresponding icon image.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("icon")]
-        public virtual string Icon { get; set; }
-
-        /// <summary>The icon specified by a URL.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
-        public virtual string IconUrl { get; set; }
-
-        /// <summary>The `onclick` action. Only the top label, bottom label, and content region are clickable.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
-        public virtual GoogleChatV1WidgetMarkupOnClick OnClick { get; set; }
-
-        /// <summary>
-        /// The text of the top label. Formatted text supported. For more information about formatting text, see
-        /// [Formatting text in Google Chat
-        /// apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting) and
-        /// [Formatting text in Google Workspace
-        /// Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("topLabel")]
-        public virtual string TopLabel { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>An `onclick` action (for example, open a link).</summary>
-    public class GoogleChatV1WidgetMarkupOnClick : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A form action is triggered by this `onclick` action if specified.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual GoogleChatV1WidgetMarkupFormAction Action { get; set; }
-
-        /// <summary>This `onclick` action triggers an open link action if specified.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("openLink")]
-        public virtual GoogleChatV1WidgetMarkupOpenLink OpenLink { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A link that opens a new window.</summary>
-    public class GoogleChatV1WidgetMarkupOpenLink : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The URL to open.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A button with text and `onclick` action.</summary>
-    public class GoogleChatV1WidgetMarkupTextButton : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The `onclick` action of the button.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
-        public virtual GoogleChatV1WidgetMarkupOnClick OnClick { get; set; }
-
-        /// <summary>The text of the button.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A paragraph of text. Formatted text supported. For more information about formatting text, see [Formatting text
-    /// in Google Chat apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting)
-    /// and [Formatting text in Google Workspace
-    /// Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
-    /// </summary>
-    public class GoogleChatV1WidgetMarkupTextParagraph : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// The corpus specific metadata for office-type documents, from Google Docs and other sources. This message is
     /// passed to the scorer and beyond. Next tag: 9
@@ -11758,307 +7396,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class Grid : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The border style to apply to each grid item.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("borderStyle")]
-        public virtual BorderStyle BorderStyle { get; set; }
-
-        /// <summary>The items to display in the grid.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<GridItem> Items { get; set; }
-
-        /// <summary>
-        /// The number of columns to display in the grid. Note that a default value will be used if this field is not
-        /// specified, and that default value will be different depending on where the grid is shown (dialog vs
-        /// companion).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("numColumns")]
-        public virtual System.Nullable<int> NumColumns { get; set; }
-
-        /// <summary>
-        /// This callback will be reused by each individual GridItem, but with the item's identifier and index in the
-        /// items list added to the callback's parameters.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
-        public virtual OnClick OnClick { get; set; }
-
-        /// <summary>The text to display in the grid header.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class GridItem : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// A user-specified identifier for this grid item. This identifier will be returned in the parent Grid's
-        /// on_click callback's parameters.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("identifier")]
-        public virtual string Identifier { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual ImageComponent Image { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("layout")]
-        public virtual string Layout { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("subtitle")]
-        public virtual string Subtitle { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("textAlignment")]
-        public virtual string TextAlignment { get; set; }
-
-        /// <summary>Text properties.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class GroupDetailsUpdatedMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("newGroupDetails")]
-        public virtual AppsDynamiteSharedGroupDetails NewGroupDetails { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("prevGroupDetails")]
-        public virtual AppsDynamiteSharedGroupDetails PrevGroupDetails { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Id representing a group that could be a space, a chat, or a direct message space. Which ID is set here will
-    /// determine which group
-    /// </summary>
-    public class GroupId : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Unique, immutable ID of the Direct Message Space</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dmId")]
-        public virtual DmId DmId { get; set; }
-
-        /// <summary>Unique, immutable ID of the Space</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("spaceId")]
-        public virtual SpaceId SpaceId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class GroupLinkSharingModificationEvent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("newStatus")]
-        public virtual string NewStatus { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class GroupRetentionSettingsUpdatedMetaData : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The user who triggered the retention settings update</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("initiator")]
-        public virtual UserId Initiator { get; set; }
-
-        /// <summary>The updated space retention settings</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("retentionSettings")]
-        public virtual AppsDynamiteSharedRetentionSettings RetentionSettings { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Annotation metadata for a GsuiteIntegration artifact.</summary>
-    public class GsuiteIntegrationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("activityFeedData")]
-        public virtual AppsDynamiteSharedActivityFeedAnnotationData ActivityFeedData { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("assistantData")]
-        public virtual AppsDynamiteSharedAssistantAnnotationData AssistantData { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("calendarEventData")]
-        public virtual AppsDynamiteSharedCalendarEventAnnotationData CalendarEventData { get; set; }
-
-        /// <summary>Data used to render call artifacts.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("callData")]
-        public virtual AppsDynamiteSharedCallAnnotationData CallData { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("clientType")]
-        public virtual string ClientType { get; set; }
-
-        /// <summary>
-        /// A list of all strings that are to be indexed for this 1P chip. Each string in this list would be the
-        /// contents of a single string field in the 1P chip. Eg. For Tasks[title = “hello world”, description = “good
-        /// bye”]. If we want to index only the title, this would be set to [“hello world”]. If both title and
-        /// description, then this would be [“hello world”, “good bye”]. Please make sure that the contents of this
-        /// field is a subset of strings that are rendered as part of the 1P Chip.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("indexableTexts")]
-        public virtual System.Collections.Generic.IList<string> IndexableTexts { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("tasksData")]
-        public virtual AppsDynamiteSharedTasksAnnotationData TasksData { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class HangoutEvent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("hangoutDurationSecs")]
-        public virtual System.Nullable<long> HangoutDurationSecs { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("mediaType")]
-        public virtual string MediaType { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("participantId")]
-        public virtual System.Collections.Generic.IList<StoredParticipantId> ParticipantId { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A message representing the Hangout video start/end events in Babel</summary>
-    public class HangoutVideoEventMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("hangoutVideoType")]
-        public virtual string HangoutVideoType { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Hashtag metadata, for HASHTAG segments. For a hashtag, the "text" field should contain the display text, and the
-    /// search_text field should represent the topic being referenced, without the hash symbol; for example, we might
-    /// have: text = "#Google" hashtag_data.search_text = "Google" Another example: text = "#pikachu"
-    /// hashtag_data.search_text = "Pokemon" Both strings should be considered part of the searchable text. In go/sbe,
-    /// both are indexed and searchable.
-    /// </summary>
-    public class HashtagData : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("searchText")]
-        public virtual string SearchText { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The most recent history records associated with the item.</summary>
-    public class History : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("record")]
-        public virtual System.Collections.Generic.IList<HistoryRecord> Record { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class HistoryRecord : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// This will almost always be set, but there are corner cases in which the information is not available, and
-        /// thus applications must handle its absence appropriately.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clientContext")]
-        public virtual ClientContext ClientContext { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("filterUpdate")]
-        public virtual FilterUpdate FilterUpdate { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("imapUpdate")]
-        public virtual ImapUpdate ImapUpdate { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("labelUpdate")]
-        public virtual LabelUpdate LabelUpdate { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("prefUpdate")]
-        public virtual PrefUpdate PrefUpdate { get; set; }
-
-        /// <summary>
-        /// Each HistoryRecord has a unique id. Ids are monotonically increasing, and not necessarily contiguous.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("recordId")]
-        public virtual System.Nullable<ulong> RecordId { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("threadUpdate")]
-        public virtual ThreadUpdate ThreadUpdate { get; set; }
-
-        /// <summary>
-        /// This will almost always be set, but there are corner cases in which the information is not available, and
-        /// thus applications must handle its absence appropriately.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("transactionContext")]
-        public virtual TransactionContext TransactionContext { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("txnDebugInfo")]
-        public virtual TransactionDebugInfo TxnDebugInfo { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Actions handled by individual host apps.</summary>
-    public class HostAppActionMarkup : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Actions handled by Calendar.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("calendarAction")]
-        public virtual CalendarClientActionMarkup CalendarAction { get; set; }
-
-        /// <summary>Actions handled by Chat.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("chatAction")]
-        public virtual ChatClientActionMarkup ChatAction { get; set; }
-
-        /// <summary>Actions handled by Drive.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("driveAction")]
-        public virtual DriveClientActionMarkup DriveAction { get; set; }
-
-        /// <summary>Actions handled by Docs, Sheets, or Slides.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("editorAction")]
-        public virtual EditorClientActionMarkup EditorAction { get; set; }
-
-        /// <summary>Actions handled by Gmail.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gmailAction")]
-        public virtual GmailClientActionMarkup GmailAction { get; set; }
-
-        /// <summary>Actions handled by Sheets.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sheetsAction")]
-        public virtual SheetsClientActionMarkup SheetsAction { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents a single host. Optionally, the MDB owner of the host can be specified.</summary>
-    public class HostProto : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Lower-case, fully qualified hostname.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hostName")]
-        public virtual string HostName { get; set; }
-
-        /// <summary>
-        /// If present, then any checks that compare this Principal to LOAS peer info must confirm the peer's machine
-        /// owner is equal to 'host_owner'. If absent, then any peer machine owner is acceptable.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hostOwner")]
-        public virtual string HostOwner { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Used to provide a search operator for html properties. This is optional. Search operators let users restrict the
     /// query to specific fields relevant to the type of item being searched.
@@ -12110,29 +7447,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class IconImage : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The alternative text of this icon_url which will be used for accessibility.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("altText")]
-        public virtual string AltText { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("icon")]
-        public virtual string Icon { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
-        public virtual string IconUrl { get; set; }
-
-        /// <summary>
-        /// The image cropping style. Note that icons with a CIRCLE style are rendered larger than the default icon
-        /// size.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageStyle")]
-        public virtual string ImageStyle { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Identifies a particular object, including both Users and DirEntries. This Id is unique across the entire server
     /// instance, such as the production or qa instance.
@@ -12166,249 +7480,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nameSpace")]
         public virtual System.Nullable<int> NameSpace__ { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class Image : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The alternative text of this image which will be used for accessibility.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("altText")]
-        public virtual string AltText { get; set; }
-
-        /// <summary>The aspect ratio of this image (width/height).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("aspectRatio")]
-        public virtual System.Nullable<double> AspectRatio { get; set; }
-
-        /// <summary>
-        /// Image url specified by developers. Server side, we will wrap with FIFE so client apps can configure
-        /// size/cropping/etc.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
-        public virtual string ImageUrl { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
-        public virtual OnClick OnClick { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class ImageButton : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("icon")]
-        public virtual string Icon { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
-        public virtual string IconUrl { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
-        public virtual OnClick OnClick { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// NOTE: Through future refactoring work, this image component will eventually be used in the Image widget, and
-    /// will likely replace the Icon proto as well.
-    /// </summary>
-    public class ImageComponent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("altText")]
-        public virtual string AltText { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("borderStyle")]
-        public virtual BorderStyle BorderStyle { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("cropStyle")]
-        public virtual ImageCropStyle CropStyle { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
-        public virtual string ImageUrl { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents a crop style that can be applied to an image.</summary>
-    public class ImageCropStyle : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The aspect ratio to use if the crop type is RECTANGLE_CUSTOM.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("aspectRatio")]
-        public virtual System.Nullable<double> AspectRatio { get; set; }
-
-        /// <summary>The crop type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>This is deprecated and please use KeyValue.</summary>
-    public class ImageKeyValue : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("icon")]
-        public virtual string Icon { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
-        public virtual string IconUrl { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
-        public virtual OnClick OnClick { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class ImapSessionContext : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("app")]
-        public virtual string App { get; set; }
-
-        /// <summary>User agent information</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deviceType")]
-        public virtual string DeviceType { get; set; }
-
-        /// <summary>
-        /// As agreed with Bond team, this holds the fingerprint of any "aguid" or "guid" provided by the ID command.
-        /// The fingerprint should be calculated by fingerprint2011. Note that not all clients will provide aguid or
-        /// guid through ID command.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("guidFingerprint")]
-        public virtual System.Nullable<ulong> GuidFingerprint { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("os")]
-        public virtual string Os { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("osVersion")]
-        public virtual OsVersion OsVersion { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("possiblyTrimmedModel")]
-        public virtual PossiblyTrimmedModel PossiblyTrimmedModel { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Message delete history record extension that exports //imapsync/folder attribute of deleted messages which have
-    /// ^is label.
-    /// </summary>
-    public class ImapSyncDelete : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Contains the value of //imapsync/folder attribute of deleted message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mappings")]
-        public virtual FolderAttribute Mappings { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("msgId")]
-        public virtual System.Nullable<ulong> MsgId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class ImapUidsReassign : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Label</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labelId")]
-        public virtual string LabelId { get; set; }
-
-        /// <summary>The message Ids</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
-        public virtual System.Collections.Generic.IList<System.Nullable<ulong>> MessageId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>HistoryRecord for changes associated with IMAP, namely: IMAP_UIDS_REASSIGN</summary>
-    public class ImapUpdate : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("imapUidsReassign")]
-        public virtual ImapUidsReassign ImapUidsReassign { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class ImapsyncFolderAttributeFolderMessage : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Flags of the message. Represents unseen and flagged state.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("flags")]
-        public virtual ImapsyncFolderAttributeFolderMessageFlags Flags { get; set; }
-
-        /// <summary>UID of the message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
-        public virtual System.Nullable<ulong> Uid { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class ImapsyncFolderAttributeFolderMessageFlags : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Flagged state of the message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("flagged")]
-        public virtual System.Nullable<bool> Flagged { get; set; }
-
-        /// <summary>Seen state of the message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("seen")]
-        public virtual System.Nullable<bool> Seen { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Annotation metadata to display system messages for incoming webhook events. Next Tag: 7</summary>
-    public class IncomingWebhookChangedMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The webhook name at the time of the change. Used in Spanner storage, BE API responses and FE API responses.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("incomingWebhookName")]
-        public virtual string IncomingWebhookName { get; set; }
-
-        /// <summary>
-        /// The user id of the user whose action triggered this system message. Used in Spanner storage, BE API
-        /// responses and FE API responses.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("initiatorId")]
-        public virtual UserId InitiatorId { get; set; }
-
-        /// <summary>
-        /// Complete profile when ListTopicsRequest FetchOptions.USER is set. Otherwise, only the id will be filled in.
-        /// Used in FE API responses.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("initiatorProfile")]
-        public virtual User InitiatorProfile { get; set; }
-
-        /// <summary>
-        /// The webhook id of the incoming webhook in question. This field should not be used to load webhook
-        /// information dynamically and is only present for debugging purposes. Used in Spanner storage, BE API
-        /// responses and FE API responses.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("obfuscatedIncomingWebhookId")]
-        public virtual string ObfuscatedIncomingWebhookId { get; set; }
-
-        /// <summary>
-        /// Only populated for UPDATED_NAME and UPDATED_NAME_AND_AVATAR events, where the webhook name was changed. Used
-        /// in Spanner storage, BE API responses and FE API responses.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("oldIncomingWebhookName")]
-        public virtual string OldIncomingWebhookName { get; set; }
-
-        /// <summary>Used in Spanner storage, BE API responses and FE API responses.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12454,23 +7525,6 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// <summary>Request message for `InitializeCustomer` method.</summary>
     public class InitializeCustomerRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class InsertContent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The content to be inserted.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual string Content { get; set; }
-
-        /// <summary>The type of inserted content.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
-        public virtual string ContentType { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-        public virtual string MimeType { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -12581,46 +7635,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class IntegrationConfigMutation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Add an app using its identifier.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("addApp")]
-        public virtual AppId AddApp { get; set; }
-
-        /// <summary>Add a pinned tab using its identifier.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("addPinnedItem")]
-        public virtual PinnedItemId AddPinnedItem { get; set; }
-
-        /// <summary>Remove an active app using its identifier.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("removeApp")]
-        public virtual AppId RemoveApp { get; set; }
-
-        /// <summary>Remove an active pinned tab using its identifier.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("removePinnedItem")]
-        public virtual PinnedItemId RemovePinnedItem { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Annotation metadata to display system message for integration config updated event. This metadata is stored in
-    /// spanner, and can be dispatched to clients without any field modification or transformation.
-    /// </summary>
-    public class IntegrationConfigUpdatedMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The user whose action triggered this system message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("initiatorId")]
-        public virtual UserId InitiatorId { get; set; }
-
-        /// <summary>A list of updates applied on the integration config.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mutations")]
-        public virtual System.Collections.Generic.IList<IntegrationConfigMutation> Mutations { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Represents an interaction between a user and an item.</summary>
     public class Interaction : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12637,52 +7651,6 @@ namespace Google.Apis.CloudSearch.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Interaction data for an annotation, which may be supplemental to the metadata oneof. For example, this will
-    /// contain the fully built navigation target for smart chips. NEXT TAG: 2
-    /// </summary>
-    public class InteractionData : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// A general navigation target associated with the annotation this message is contained in. For smart chips,
-        /// this will be the destination of the tap/click target and will be returned by the server. For scenarios where
-        /// the chip originated from a user-provided url, this value will be provided by clients; otherwise it will be
-        /// built by the corresponding metadata parts.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual SafeUrlProto Url { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class InviteAcceptedEvent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("participantId")]
-        public virtual System.Collections.Generic.IList<StoredParticipantId> ParticipantId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Invitee information from a Dynamite invitation. See go/dynamite-invitee-mgmt.</summary>
-    public class InviteeInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Email as typed by the user when invited to Room or DM. This value will be canonicalized and hashed before
-        /// retained in storage.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; }
-
-        /// <summary>Unique, immutable ID of the User.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
-        public virtual UserId UserId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12948,16 +7916,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Container for type-specific extensions of an Item. This protobuf is defined in a separate file to allow types to
-    /// reference/extend the message without depending on other fusebox protobufs. See items.proto.
-    /// </summary>
-    public class ItemParts : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>This contains item's status and any errors.</summary>
     public class ItemStatus : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12993,363 +7951,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("object")]
         public virtual StructuredDataObject Object__ { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// An ItemThread is an ordered list of Items. An ItemThread corresponds to a "conversation" in the context of mail.
-    /// An Item belongs to exactly one ItemThread.
-    /// </summary>
-    public class ItemThread : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("clusterInfo")]
-        public virtual ClusterInfo ClusterInfo { get; set; }
-
-        /// <summary>
-        /// The Items in the ItemThread. In the context of a search, the list of Items may be a subset of those that
-        /// logically belong to the ItemThread. The details of which items are included are available in the
-        /// ItemThreadView returned in the overall rpc response.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("item")]
-        public virtual System.Collections.Generic.IList<FuseboxItem> Item { get; set; }
-
-        /// <summary>
-        /// The server id of the last item returned in the ItemThread. This can be deduced from the [item] list but is
-        /// provided for convenience. When manually constructing an ItemThreadViewSpec to perform operations on the
-        /// ItemThread, this value can be used as the [high_item_id_watermark].
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastItemId")]
-        public virtual System.Nullable<ulong> LastItemId { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("matchInfo")]
-        public virtual FuseboxItemThreadMatchInfo MatchInfo { get; set; }
-
-        /// <summary>A snippet summarizing the thread. This field is only populated for searches.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual string Snippet { get; set; }
-
-        /// <summary>
-        /// The MultiKey that identifies this thread. This value never changes, i.e. remains constant across
-        /// modifications to the thread, including addition, relabeling, or deletion of contained Items. As such, the
-        /// thread key may not necessarily correspond to the key of an contained Item. Legacy note: The "server_id" of
-        /// the thread key is equivalent to the notion of the "original thread id" in the CSS API.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("threadKey")]
-        public virtual MultiKey ThreadKey { get; set; }
-
-        /// <summary>
-        /// A base64 encoded and encrypted string generated from the Gaia Id and the thread id. Used to generate the
-        /// permalink for this thread, exposed from Gmail API.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("threadLocator")]
-        public virtual string ThreadLocator { get; set; }
-
-        /// <summary>Next available id : 10</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("topicState")]
-        public virtual TopicState TopicState { get; set; }
-
-        /// <summary>The latest history operation id that resulted in a mutation of any item in the thread.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<ulong> Version { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Identifies a jobsetted server as a target for Trigger dispatch.</summary>
-    public class JobsettedServerSpec : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>E.g. "gateway", "stubby" etc. Leave unset to use the default unnamed port.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("portName")]
-        public virtual string PortName { get; set; }
-
-        /// <summary>E.g. "satellite-server", "bigtop-sync", etc.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serverName")]
-        public virtual string ServerName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class KeyValue : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Formatted text supported.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bottomLabel")]
-        public virtual string BottomLabel { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("button")]
-        public virtual Button Button { get; set; }
-
-        /// <summary>Formatted text supported and always required.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("content")]
-        public virtual string Content { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("contentMultiline")]
-        public virtual System.Nullable<bool> ContentMultiline { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("endIcon")]
-        public virtual IconImage EndIcon { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("icon")]
-        public virtual string Icon { get; set; }
-
-        /// <summary>The alternative text of this icon_url which will be used for accessibility.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("iconAltText")]
-        public virtual string IconAltText { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
-        public virtual string IconUrl { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("imageStyle")]
-        public virtual string ImageStyle { get; set; }
-
-        /// <summary>Only the top/bottom label + content region is clickable.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
-        public virtual OnClick OnClick { get; set; }
-
-        /// <summary>The optional icon to display before the text content.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startIcon")]
-        public virtual IconImage StartIcon { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("switchWidget")]
-        public virtual SwitchWidget SwitchWidget { get; set; }
-
-        /// <summary>Formatted text supported.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("topLabel")]
-        public virtual string TopLabel { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A label was added to some (subset of the) messages in this thread.</summary>
-    public class LabelAdded : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("labelId")]
-        public virtual string LabelId { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("labelName")]
-        public virtual string LabelName { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("messageKeys")]
-        public virtual System.Collections.Generic.IList<MultiKey> MessageKeys { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("syncId")]
-        public virtual System.Nullable<long> SyncId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A label was created.</summary>
-    public class LabelCreated : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A label was deleted.</summary>
-    public class LabelDeleted : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A label was removed from some (subset of the) messages in this thread.</summary>
-    public class LabelRemoved : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("labelId")]
-        public virtual string LabelId { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("labelName")]
-        public virtual string LabelName { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("messageKeys")]
-        public virtual System.Collections.Generic.IList<MultiKey> MessageKeys { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("syncId")]
-        public virtual System.Nullable<long> SyncId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A label was renamed.</summary>
-    public class LabelRenamed : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("oldCanonicalName")]
-        public virtual string OldCanonicalName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// HistoryRecord for changes associated with a label, namely: LABEL_CREATED LABEL_DELETED LABEL_RENAMED
-    /// LABEL_UPDATED
-    /// </summary>
-    public class LabelUpdate : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("canonicalName")]
-        public virtual string CanonicalName { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("labelCreated")]
-        public virtual LabelCreated LabelCreated { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("labelDeleted")]
-        public virtual LabelDeleted LabelDeleted { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("labelId")]
-        public virtual string LabelId { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("labelRenamed")]
-        public virtual LabelRenamed LabelRenamed { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("labelUpdated")]
-        public virtual LabelUpdated LabelUpdated { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("syncId")]
-        public virtual System.Nullable<long> SyncId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A label pref was updated outside of a rename, create, or delete.</summary>
-    public class LabelUpdated : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class Labels : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The display name of the labels. This is populated (instead of the id) when the request fetch_spec has
-        /// LABEL_DISPLAY_NAMES.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual System.Collections.Generic.IList<string> DisplayName { get; set; }
-
-        /// <summary>The ids of the labels attached to the Item, e.g. "^i", "^x_1"</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Collections.Generic.IList<string> Id { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The language configuration for the session.</summary>
-    public class LanguageConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The spoken language(s) in BCP47 language code.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("spokenLanguages")]
-        public virtual System.Collections.Generic.IList<string> SpokenLanguages { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class LdapGroupProto : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("groupName")]
-        public virtual string GroupName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class LdapUserProto : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("userName")]
-        public virtual string UserName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The original UploadMetadata that this DriveMetadata was converted from.</summary>
-    public class LegacyUploadMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// A unique ID generated from legacy UploadMetadata. This is used for interopping URLs after uploading blob to
-        /// shared drive. Links in Classic might break without this. go/drive-file-attachment-interop-from-dynamite.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("legacyUniqueId")]
-        public virtual string LegacyUniqueId { get; set; }
-
-        /// <summary>
-        /// The blob in this UploadMetadata has been uploaded to shared drive. This UploadMetadata is no longer attached
-        /// to a message. go/shared-drive-data-migration.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uploadMetadata")]
-        public virtual UploadMetadata UploadMetadata { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Link metadata, for LINK segments. Anchor text should be stored in the "text" field of the Segment, which can
-    /// also serve as a fallback.
-    /// </summary>
-    public class LinkData : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// An Attachment represents the structured entity to which we are linking. It contains an Embed
-        /// (apps/tacotown/proto/embeds/embed_client.proto) with fields specific to the appropriate type of linked
-        /// entity. For example, if we are linking to a photo album, the Embed may include the album ID and gaia ID of
-        /// the creator. Clients that understand the Embed type within the Attachment may construct and/or decorate
-        /// their link appropriately e.g. to make use of type-specific functionality or first-party integrations. The
-        /// link_target and (if appropriate) display_url fields must still be set even when an Attachment is present, so
-        /// that clients who do not know how to interpret the Attachment can fall back to those fields, and render the
-        /// Segment as an ordinary web link. N.B. Even when an Attachment is present, the intention of a "LINK" Segment
-        /// is for the Segment to be presented inline with the rest of the text of a post or comment, with a clickable
-        /// link or other UI suitable for inlining (though the client may modify the UI based on Attachment data, e.g.
-        /// to add appropriate hovers, icons, etc.). When an entity is intended to be rendered separately from the main
-        /// body of the post/comment, a separate Attachment proto can be added outside the set of Segments. N.B. Within
-        /// the Attachment, fields of EmbedClientItem have their own visibility annotations, which should be enforced
-        /// separately from Segment visibility annotations. See: apps/tacotown/proto/embeds/embed_annotations.proto
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("attachment")]
-        public virtual SocialCommonAttachmentAttachment Attachment { get; set; }
-
-        /// <summary>
-        /// The hint to use when rendering the associated attachment. Ignored if there is no associated attachment.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("attachmentRenderHint")]
-        public virtual string AttachmentRenderHint { get; set; }
-
-        /// <summary>
-        /// If we wish to show the user a different (e.g. shortened) version of the URL for display purposes, then that
-        /// version should be set here. If this field isn't set, link_target will be used for both purposes.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayUrl")]
-        public virtual string DisplayUrl { get; set; }
-
-        /// <summary>
-        /// link_target is the URL to navigate to when clicked. This could be the original URL, or a URL signed by the
-        /// GWS URL signing service.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("linkTarget")]
-        public virtual string LinkTarget { get; set; }
-
-        /// <summary>
-        /// LinkType is an optional field that provides additional information regarding link target. For example, link
-        /// type can be identified as the SELF_LINK when the request was executed from the same link as the link target.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("linkType")]
-        public virtual string LinkType { get; set; }
-
-        /// <summary>
-        /// Title is an optional field that provides a short string that describes the link or its destination. User
-        /// interfaces often use title as a tooltip or for accessibility purposes. However, they are of course free to
-        /// present this data in any form. This field is plain text.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13458,11 +8059,56 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class MatchInfo : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Geo information used for rendering a map that shows the user's work location.</summary>
+    public class MapInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Reference keys for image attachments that matches search query.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("matchingImageReferenceKey")]
-        public virtual System.Collections.Generic.IList<string> MatchingImageReferenceKey { get; set; }
+        /// <summary>Latitude in degrees</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lat")]
+        public virtual System.Nullable<double> Lat { get; set; }
+
+        /// <summary>
+        /// URL to a view of a map centered on the user's work location in Campus Maps (for google.com) or Google Maps
+        /// (external).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationUrl")]
+        public virtual SafeUrlProto LocationUrl { get; set; }
+
+        /// <summary>Longitude in degrees</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("long")]
+        public virtual System.Nullable<double> Long__ { get; set; }
+
+        /// <summary>MapTiles for the area around a user's work location</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mapTile")]
+        public virtual System.Collections.Generic.IList<MapTile> MapTile { get; set; }
+
+        /// <summary>
+        /// The zoom level of the map. A constant zoom value of 18 is used for now to match the zoom of the map shown on
+        /// a Moma Teams Profile page
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zoom")]
+        public virtual System.Nullable<int> Zoom { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information used to render a map tile image in the proper location on a map.</summary>
+    public class MapTile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// URL to an image file containing an office layout of the user's location for their organization, if one is
+        /// available. For google.com, this image is from Corp Campus Maps.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
+        public virtual SafeUrlProto ImageUrl { get; set; }
+
+        /// <summary>Map tile x coordinate</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tileX")]
+        public virtual System.Nullable<double> TileX { get; set; }
+
+        /// <summary>Map tile y coordinate</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tileY")]
+        public virtual System.Nullable<double> TileY { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13483,41 +8129,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// An entity from the MDB namespace that is to be interpreted as a group. If using this for authorization, you
-    /// should do an exact match of the peer role against group_name or any of the names in the Chubby expansion of the
-    /// MDB group named group_name.
-    /// </summary>
-    public class MdbGroupProto : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("groupName")]
-        public virtual string GroupName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// An entity from the MDB namespace that is to be interpreted as a user. If using this for authorization, you
-    /// should only do an exact match on the peer role against user_name.
-    /// </summary>
-    public class MdbUserProto : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Do not set this field. Contact credentials-eng@ if you believe you absolutely need to use it. This is the
-        /// @prod.google.com Gaia ID that corresponds to the MDB user, see go/authn-merge for details. This field may
-        /// always be safely ignored when performing an authorization check.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gaiaId")]
-        public virtual System.Nullable<long> GaiaId { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("userName")]
-        public virtual string UserName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Media resource.</summary>
     public class Media : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13525,645 +8136,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    ///  A meeting space is a persistent object that is the context for one or more calls. The meeting space is what
-    /// makes users find each other when they want to meet and to find shared resources. With two exceptions, all the
-    /// fields in the meeting space resource are visible publicly to any client, even anonymous users. The exceptions
-    /// are that * The call_info field is only visible to clients that have a device (as indicated by the meeting token)
-    /// in the JOINED or HIDDEN state. * The meeting_alias field will only be set for users who are in the same domain
-    /// as the meeting space. The meeting space resource (outside call_info) should only contain information necessary
-    /// to join a call in the meeting space, and not any other metadata about the meeting space, such as what
-    /// organization it belongs to or things related to ongoing calls.
-    /// </summary>
-    public class MeetingSpace : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Which number classes are accepted by this meeting at the moment? When there is no ongoing conference, this
-        /// field may change independent of the version number of the MeetingSpace. When a conference starts, this field
-        /// will be locked to the value at that time, and then will be unlocked again at the end of the conference.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("acceptedNumberClass")]
-        public virtual System.Collections.Generic.IList<string> AcceptedNumberClass { get; set; }
-
-        /// <summary>Broadcast access information for this meeting space.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("broadcastAccess")]
-        public virtual BroadcastAccess BroadcastAccess { get; set; }
-
-        /// <summary>
-        /// Information relevant to an ongoing conference. This field will be set in responses if the client requesting
-        /// the meeting space has a device in one of the JOINED, HIDDEN, or MISSING_PREREQUISITES states. The field will
-        /// also be set without a created device if the client requesting the meeting space is eligible to directly
-        /// create a device in the JOINED state without knocking, eg a same-domain joiner. Can also only be updated by
-        /// clients with a device in the JOINED state.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("callInfo")]
-        public virtual CallInfo CallInfo { get; set; }
-
-        /// <summary>
-        /// The interop gateway access information for the meeting space. A gateway access can be used when joining
-        /// conferences from non-Google equipment through an interop gateway.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gatewayAccess")]
-        public virtual GatewayAccess GatewayAccess { get; set; }
-
-        /// <summary>The SIP based access methods that can be used to join the conference.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gatewaySipAccess")]
-        public virtual System.Collections.Generic.IList<GatewaySipAccess> GatewaySipAccess { get; set; }
-
-        /// <summary>
-        /// An optional alias for the meeting space. The alias can in some cases be resolved to the meeting space,
-        /// similar to the meeting code. The limitation is that the user needs to be in the same meeting domain as the
-        /// meeting space.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("meetingAlias")]
-        public virtual string MeetingAlias { get; set; }
-
-        /// <summary>
-        /// A meeting code is a globally unique code which points to a meeting space. Note: Meeting codes may be
-        /// regenerated, which will cause old meeting codes to become invalid.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("meetingCode")]
-        public virtual string MeetingCode { get; set; }
-
-        /// <summary>
-        /// A unique server-generated ID for the meeting space. This is the resource name of the meeting space resource
-        /// and has the form `spaces/`, where is a sequence of characters in the [base64url
-        /// set](https://tools.ietf.org/html/rfc4648#section-5), without any `=` characters.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("meetingSpaceId")]
-        public virtual string MeetingSpaceId { get; set; }
-
-        /// <summary>A URL to identify and access the meeting space. Output only.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("meetingUrl")]
-        public virtual string MeetingUrl { get; set; }
-
-        /// <summary>
-        /// Output only. A URL that clients (e.g. Calendar) can use to show the web page with all join methods available
-        /// for this meeting space. This link is also used in iOS universal links and Android intents, used for opening
-        /// the "More ways to join" view in the Meet mobile apps. Example:
-        /// https://tel.meet/mee-ting-cod?pin=1234567891011 Here, "pin" is the universal phone PIN. We include it
-        /// explicitly to better support the offline case on the mobile. This is set when the meeting space has either a
-        /// universal PIN or an interop PIN and clients who can show a "more ways to join" button should show it
-        /// whenever this field is set.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("moreJoinUrl")]
-        public virtual string MoreJoinUrl { get; set; }
-
-        /// <summary>All regional phone access methods for this meeting space. Can be empty.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("phoneAccess")]
-        public virtual System.Collections.Generic.IList<PhoneAccess> PhoneAccess { get; set; }
-
-        /// <summary>Settings of the meeting space.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("settings")]
-        public virtual Settings Settings { get; set; }
-
-        /// <summary>A universal phone access method for this meeting space. Can be unset.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("universalPhoneAccess")]
-        public virtual UniversalPhoneAccess UniversalPhoneAccess { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class Member : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("roster")]
-        public virtual Roster Roster { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("user")]
-        public virtual User User { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Eventually this can be updated to a oneOf User, Space (for nested spaces), Bots or Service, as and when these
-    /// use cases come up.
-    /// </summary>
-    public class MemberId : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Unique, immutable ID of the Roster.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rosterId")]
-        public virtual RosterId RosterId { get; set; }
-
-        /// <summary>Unique, immutable ID of the User.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
-        public virtual UserId UserId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class MembershipChangeEvent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>This should only be set when MembershipChange type is LEAVE.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("leaveReason")]
-        public virtual string LeaveReason { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("participantId")]
-        public virtual System.Collections.Generic.IList<StoredParticipantId> ParticipantId { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Annotation metadata to display system messages for membership changes. Next Tag: 13</summary>
-    public class MembershipChangedMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("affectedMemberProfiles")]
-        public virtual System.Collections.Generic.IList<Member> AffectedMemberProfiles { get; set; }
-
-        /// <summary>List of users and rosters whose membership status changed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("affectedMembers")]
-        public virtual System.Collections.Generic.IList<MemberId> AffectedMembers { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("affectedMemberships")]
-        public virtual System.Collections.Generic.IList<AffectedMembership> AffectedMemberships { get; set; }
-
-        /// <summary>The user whose action triggered this system message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("initiator")]
-        public virtual UserId Initiator { get; set; }
-
-        /// <summary>
-        /// Complete member profiles, when ListTopicsRequest FetchOptions.USER is set. Otherwise, only the id will be
-        /// filled in.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("initiatorProfile")]
-        public virtual User InitiatorProfile { get; set; }
-
-        /// <summary>The type of the user who initiated this membership change.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("initiatorType")]
-        public virtual string InitiatorType { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>This is deprecated and please use SelectionControl by setting type to DROPDOWN.</summary>
-    public class Menu : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<MenuItem> Items { get; set; }
-
-        /// <summary>Label used to be displayed ahead of the menu. It is optional.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual string Label { get; set; }
-
-        /// <summary>The name of the text field which is will be used in FormInput.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// If specified, form is submitted when selection changed. If not specified, developer will need to specify a
-        /// separate button.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onChange")]
-        public virtual FormAction OnChange { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class MenuItem : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("selected")]
-        public virtual System.Nullable<bool> Selected { get; set; }
-
-        /// <summary>The text to be displayed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; }
-
-        /// <summary>
-        /// The value associated with this item which will be sent back to app scripts. Client should use as a form
-        /// input value.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Message posted to a Space.</summary>
-    public class Message : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Annotations parsed and extracted from the text body.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
-        public virtual System.Collections.Generic.IList<Annotation> Annotations { get; set; }
-
-        /// <summary>Custom display profile info for apps. Leave the field empty for real users.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("appProfile")]
-        public virtual AppsDynamiteSharedAppProfile AppProfile { get; set; }
-
-        /// <summary>Attachments parsed from incoming webhooks</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("attachments")]
-        public virtual System.Collections.Generic.IList<Attachment> Attachments { get; set; }
-
-        /// <summary>Lightweight message attributes which values are calculated and set in the servers.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
-        public virtual MessageAttributes Attributes { get; set; }
-
-        /// <summary>Responses from bots indicating if extra auth/config is needed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("botResponses")]
-        public virtual System.Collections.Generic.IList<BotResponse> BotResponses { get; set; }
-
-        /// <summary>
-        /// Communal labels associated with a message. These exist on the message itself regardless of which user
-        /// fetches them. Order of entries is arbitrary and will not list duplicates of the same label_id. See
-        /// go/chat-labels-design for details.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("communalLabels")]
-        public virtual System.Collections.Generic.IList<CommunalLabelTag> CommunalLabels { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("contentReportSummary")]
-        public virtual ContentReportSummary ContentReportSummary { get; set; }
-
-        /// <summary>Time when the Message was posted in microseconds.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual System.Nullable<long> CreateTime { get; set; }
-
-        /// <summary>
-        /// ID of the User who posted the Message. This includes information to identify if this was posted by an App on
-        /// behalf of a user.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("creatorId")]
-        public virtual UserId CreatorId { get; set; }
-
-        /// <summary>
-        /// Indicates who can delete the message. This field is set on the read path (e.g. ListTopics) but doesn’t have
-        /// any effect on the write path (e.g. CreateMessageRequest).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deletableBy")]
-        public virtual string DeletableBy { get; set; }
-
-        /// <summary>
-        /// Time when the Message was deleted in microseconds. This field is set to nonzero value only for Messages
-        /// deleted globally.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
-        public virtual System.Nullable<long> DeleteTime { get; set; }
-
-        /// <summary>
-        /// Time when the Message was per-user deleted by the message requester in microseconds. This field is set to
-        /// nonzero value only for Message per-user deleted by the requester.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deleteTimeForRequester")]
-        public virtual System.Nullable<long> DeleteTimeForRequester { get; set; }
-
-        /// <summary>
-        /// Was this message deleted by Vault (Only used for Vault support) This is false if message is live or message
-        /// was deleted by user.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deletedByVault")]
-        public virtual System.Nullable<bool> DeletedByVault { get; set; }
-
-        /// <summary>
-        /// Data Loss Prevention scan information for this message. Messages are evaluated in the backend on create
-        /// message/topic and edit message actions. DEPRECATED: Use DATA_LOSS_PREVENTION Annotation.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dlpScanSummary")]
-        public virtual DlpScanSummary DlpScanSummary { get; set; }
-
-        /// <summary>
-        /// Indicates who can edit the message. This field is set on the read path (e.g. ListTopics) but doesn’t have
-        /// any effect on the write path (e.g. CreateMessageRequest).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("editableBy")]
-        public virtual string EditableBy { get; set; }
-
-        /// <summary>
-        /// A plain-text description of the attachment, used when clients cannot display formatted attachment (e.g.
-        /// mobile push notifications).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fallbackText")]
-        public virtual string FallbackText { get; set; }
-
-        /// <summary>ID of the resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual MessageId Id { get; set; }
-
-        /// <summary>
-        /// Whether the message is content purged. Content purged messages contain only data required for tombstone (see
-        /// go/chat-infinite-tombstone). This field is only used by Vault to display tombstone and should only be set to
-        /// true if the message is a tombstone.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("isContentPurged")]
-        public virtual System.Nullable<bool> IsContentPurged { get; set; }
-
-        /// <summary>
-        /// Output only. Indicates if the message is an inline reply. Set to true only if the message's ParentPath is
-        /// non-NULL. Currently, only inline replies have non-NULL ParentPath. See go/chat-be-inline-reply-indicator.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("isInlineReply")]
-        public virtual System.Nullable<bool> IsInlineReply { get; set; }
-
-        /// <summary>If the message was edited by a user, timestamp of the last edit, in microseconds.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastEditTime")]
-        public virtual System.Nullable<long> LastEditTime { get; set; }
-
-        /// <summary>Time when the Message text was last updated in microseconds.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTime")]
-        public virtual System.Nullable<long> LastUpdateTime { get; set; }
-
-        /// <summary>A unique id specified on the client side.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("localId")]
-        public virtual string LocalId { get; set; }
-
-        /// <summary>
-        /// An optional payload (restricted to 1P applications) that will be stored with this message. This can only be
-        /// set by the 1P API and should be used to deliver additional data such a 1P sync version, 1P entity ID to the
-        /// client for more advanced functionality [Eg. inform Group Tasks tab of new version while linking, fetch
-        /// &amp;amp; render a live Task/Meet call tile].
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("messageIntegrationPayload")]
-        public virtual AppsDynamiteSharedMessageIntegrationPayload MessageIntegrationPayload { get; set; }
-
-        /// <summary>Where the message was posted from</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("messageOrigin")]
-        public virtual string MessageOrigin { get; set; }
-
-        /// <summary>
-        /// Contains reference to another message. It is used in shortcuts which are used to collect messages from
-        /// different spaces with a certain common property into another space. For example, all @mentions of a user are
-        /// collected into a mention shortcut space (go/chat-shortcuts-backend-design for more details). Most
-        /// information from the source message (like text) are copied onto top-level Message fields of shortcut
-        /// messages by the server. The MessageReference is helpful for clients to enable things like click navigation
-        /// to source message.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("messageReference")]
-        public virtual MessageReference MessageReference { get; set; }
-
-        /// <summary>
-        /// Contains additional metadata that further annotates this message when returned as a search response. For
-        /// example, this field can be used to highlight messages during search results rendering. In this case, clients
-        /// can use this field to highlight matched segments in the message text_body (defined with tag 6).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("messageSearchInfo")]
-        public virtual AppsDynamiteSharedMessageSearchInfo MessageSearchInfo { get; set; }
-
-        /// <summary>
-        /// State of the message, indicating whether the message is visible to all members in the group or is only
-        /// visible to the sender only, or the private_message_viewer if it is set.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("messageState")]
-        public virtual string MessageState { get; set; }
-
-        /// <summary>Indicates the number of unicode emojis in the message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("numberOfUnicodeEmojis")]
-        public virtual System.Nullable<int> NumberOfUnicodeEmojis { get; set; }
-
-        /// <summary>Indicates if this message contains any suggestions that were provided by any Apps.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("originAppSuggestions")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteSharedOriginAppSuggestion> OriginAppSuggestions { get; set; }
-
-        /// <summary>
-        /// Personal labels associated with a message for the viewing user. Order of entries is arbitrary and will not
-        /// list duplicates of the same label_id. See go/chat-labels-design for details. NOTE: This will be unpopulated
-        /// in the case of SpaceChangelog events.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("personalLabels")]
-        public virtual System.Collections.Generic.IList<PersonalLabelTag> PersonalLabels { get; set; }
-
-        /// <summary>
-        /// A list of per-user private information. This is deprecated, because we no longer plan to support partially
-        /// private messages or private messages for multiple users. The message_state and private_message_viewer fields
-        /// should be sufficient for this infrastructure.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("privateMessageInfos")]
-        public virtual System.Collections.Generic.IList<PrivateMessageInfo> PrivateMessageInfos { get; set; }
-
-        /// <summary>
-        /// Should only be set if the Message State is PRIVATE. If set, the message content is only visible to this user
-        /// (and any apps associated with the message), as well as the message creator. If unset, a private message is
-        /// visible to the message creator only.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("privateMessageViewer")]
-        public virtual UserId PrivateMessageViewer { get; set; }
-
-        /// <summary>
-        /// Contains additional (currently Hangouts Classic only) properties applicable to this message.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("props")]
-        public virtual MessageProps Props { get; set; }
-
-        /// <summary>
-        /// Output only. Whether this message has been quoted by another message or not. Used by clients to handle
-        /// message edit flows for messages that have been quoted.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("quotedByState")]
-        public virtual string QuotedByState { get; set; }
-
-        /// <summary>Output only. Metadata for a message that is quoted by this message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("quotedMessageMetadata")]
-        public virtual QuotedMessageMetadata QuotedMessageMetadata { get; set; }
-
-        /// <summary>
-        /// A list of user reactions to this message. Ordered by the timestamp of the first reaction, ascending (oldest
-        /// to newest).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reactions")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteSharedReaction> Reactions { get; set; }
-
-        /// <summary>Output only. Details of content reports. Set only when the request asks for it.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reports")]
-        public virtual System.Collections.Generic.IList<ContentReport> Reports { get; set; }
-
-        /// <summary>The retention settings of the message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("retentionSettings")]
-        public virtual AppsDynamiteSharedRetentionSettings RetentionSettings { get; set; }
-
-        /// <summary>
-        /// Used by clients to correctly log format type for message creation due to complexity with client side
-        /// optimistic update (see go/content-metric-post-send-logging for details). Currently, only set by server in
-        /// the message or topic creation path.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("richTextFormattingType")]
-        public virtual string RichTextFormattingType { get; set; }
-
-        /// <summary>
-        /// A client-specified string that can be used to uniquely identify a message in a space, in lieu of
-        /// `id.message_id`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("secondaryMessageKey")]
-        public virtual string SecondaryMessageKey { get; set; }
-
-        /// <summary>Plaintext body of the Message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("textBody")]
-        public virtual string TextBody { get; set; }
-
-        /// <summary>Information for the stoning of a Message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tombstoneMetadata")]
-        public virtual TombstoneMetadata TombstoneMetadata { get; set; }
-
-        /// <summary>
-        /// ID of the User who last updated (created/edited/deleted) the Message. This includes information to identify
-        /// if this was updated by an App on behalf of a user.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updaterId")]
-        public virtual UserId UpdaterId { get; set; }
-
-        /// <summary>
-        /// UploadMetadata b/36864213 is an ongoing effort to move UploadMetadata out of annotations field and save it
-        /// to upload_metadata field only. After the migration, UploadMetadata will only be saved in this field.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uploadMetadata")]
-        public virtual System.Collections.Generic.IList<UploadMetadata> UploadMetadata { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A message was added. Specifying id and initial labels.</summary>
-    public class MessageAdded : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("attributeIds")]
-        public virtual System.Collections.Generic.IList<string> AttributeIds { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("labelIds")]
-        public virtual System.Collections.Generic.IList<string> LabelIds { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("messageKey")]
-        public virtual MultiKey MessageKey { get; set; }
-
-        /// <summary>Note that there can be fewer sync ids than label ids.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("syncIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> SyncIds { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Stores tombstone message attributes: go/tombstone-message-attributes-overview</summary>
-    public class MessageAttributes : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>If true: message is a tombstone in the client. Default false.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("isTombstone")]
-        public virtual System.Nullable<bool> IsTombstone { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Some (subset of the) messages in this thread were deleted.</summary>
-    public class MessageDeleted : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Value of coproc's message delete history record extension that exports /imapsync/folder attribute of deleted
-        /// messages which have ^is label.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imapSyncMappings")]
-        public virtual System.Collections.Generic.IList<ImapSyncDelete> ImapSyncMappings { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("messageKeys")]
-        public virtual System.Collections.Generic.IList<MultiKey> MessageKeys { get; set; }
-
-        /// <summary>
-        /// Value of coproc's message delete history record extension that exports /wonder/message_mapping/{vertical}
-        /// attribute of deleted messages which have smartmail label (eg. ^cob_sm_invoice, etc).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("wonderCardMappings")]
-        public virtual System.Collections.Generic.IList<WonderCardDelete> WonderCardMappings { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Primary key for Message resource.</summary>
-    public class MessageId : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Opaque, server-assigned ID of the Message. While this ID is guaranteed to be unique within the Space, it's
-        /// not guaranteed to be globally unique.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
-        public virtual string MessageIdValue { get; set; }
-
-        /// <summary>ID of the Message's immediate parent.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("parentId")]
-        public virtual MessageParentId ParentId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class MessageInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Message author’s user type (human/bot).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("authorUserType")]
-        public virtual string AuthorUserType { get; set; }
-
-        /// <summary>The content of a matching message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual Message Message { get; set; }
-
-        /// <summary>Searcher's membership state in the space where the message is posted.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("searcherMembershipState")]
-        public virtual string SearcherMembershipState { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Primary key identifying Message resource's immediate parent. For top-level Messages, either topic_id or chat_id
-    /// is populated. For replies, message_id is populated with the topic Message's ID.
-    /// </summary>
-    public class MessageParentId : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>ID of the Topic this Message is posted to. NEXT TAG : 5</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("topicId")]
-        public virtual TopicId TopicId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Container for storing properties applicable to messages. For now (until storage consolidation is complete), it
-    /// will only be used for babel props. In the future it could be used to house Dynamite properties for
-    /// experimenting/rapid prototyping.
-    /// </summary>
-    public class MessageProps : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("babelProps")]
-        public virtual BabelMessageProps BabelProps { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Contains reference to another message. It is used in shortcuts which are used to collect messages from different
-    /// spaces with a certain common property into another space. For example, all @mentions of a user are collected
-    /// into a mention shortcut space (go/chat-shortcuts-backend-design for more details). Clients can use this
-    /// reference to enable navigation to the source message when the shortcut message is clicked and also to identify a
-    /// few other details about the source message. Other fields (like text) from the source message are copied on to
-    /// the top-level fields in the Message proto by the server (More details in
-    /// go/chat-shortcuts-client-server-design).
-    /// </summary>
-    public class MessageReference : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("sourceInfo")]
-        public virtual SourceMessageInfo SourceInfo { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>This is proto2's version of MessageSet.</summary>
-    public class MessageSet : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -14228,44 +8200,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// A union-like type for identifiying an object in storage. MultiKeys contain multiple key fields, each in a
-    /// separate key space. At least one key field must be set. More than one key field may be set as long as all key
-    /// values refer to the same object. All objects in storage have unique server_id keys. All MultiKeys returned from
-    /// storage to storage clients will always have the server_id field set. When creating an object, if a MultiKey
-    /// without a server_id is supplied to storage, the storage system will auto-assign a server ID to the new object.
-    /// For all other storage requests (i.e. those not creating new objects), clients may omit server_id (as long as
-    /// they supply another key). Instead of server ids, clients can specify string based client_assigned_perm_id keys.
-    /// Mail message drafts are a prime example of these kinds of objects. Each time a user saves a new version of a
-    /// draft, the storage system needs to create a new object with the updated draft content and needs to delete the
-    /// object containing the old content. The new object gets a new SERVER_ID but should get the same
-    /// CLIENT_ASSIGNED_PERM_ID as the now-deleted object containing the old content. Carrying forward the perm ID
-    /// allows it to be used to consistently refer to the same logical object across revisions. These perm IDs save sync
-    /// clients from having to deal with changing object IDs. For example, assume there's a mail message in storage with
-    /// SERVER_ID = 123 and CLIENT_ASSIGNED_PERM_ID = "foo". The following are all valid ways of addressing the object
-    /// using MultiKeys: 1) MultiKey { server_id = 123 } 2) MultiKey { server_id = 123, client_assigned_perm_id = "foo"
-    /// } 3) MultiKey { client_assigned_perm_id = "foo" } Multikeys are never serialized in the storage. The individual
-    /// keys are extracted and processed separately. Both the integer ids as well as string ids are indexed for
-    /// efficient retrieval using the same fields in the backend. See go/tingle-multikeys for more information on
-    /// background and motivation.
-    /// </summary>
-    public class MultiKey : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A client-assigned string based key.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clientAssignedPermId")]
-        public virtual string ClientAssignedPermId { get; set; }
-
-        /// <summary>
-        /// A server-assigned ID. This ID must be used only by Gmail and is constructed using millesecond ts
-        /// &amp;lt;&amp;lt; 20 + randomness. The ID affects the sort order of the index.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serverId")]
-        public virtual System.Nullable<ulong> ServerId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>A person's name.</summary>
     public class Name : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14319,20 +8253,6 @@ namespace Google.Apis.CloudSearch.v1.Data
 
         [Newtonsoft.Json.JsonPropertyAttribute("timestampValues")]
         public virtual TimestampValues TimestampValues { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Represents an OAuth consumer, a/k/a AuthSub target. These principals are identified by domain name (e.g.,
-    /// example.com). Historically, Dasher domain GAIA group IDs have been used instead, but that doesn't work:
-    /// http://go/tricky-gaia-ids
-    /// </summary>
-    public class OAuthConsumerProto : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
-        public virtual string Domain { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14439,77 +8359,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class OnClick : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual FormAction Action { get; set; }
-
-        /// <summary>
-        /// This can be used as a short form for OpenLink with the default OpenAs and OnClose. It may be undeprecated if
-        /// this proves to be handy for developers.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("link")]
-        public virtual string Link { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("openLink")]
-        public virtual OpenLink OpenLink { get; set; }
-
-        /// <summary>
-        /// An add-on triggers this action when the form action needs to open a link. This differs from the open_link
-        /// above in that this needs to talk to server to get the link. Thus some preparation work is required for web
-        /// client to do before the open link action response comes back.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("openLinkAction")]
-        public virtual FormAction OpenLinkAction { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class OpenCreatedDraftActionMarkup : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ID of the newly created draft in the form "r123".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("draftId")]
-        public virtual string DraftId { get; set; }
-
-        /// <summary>The server storage ID in hex format, for example,"15e9fa622ce1029d".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("draftStorageId")]
-        public virtual string DraftStorageId { get; set; }
-
-        /// <summary>The ID of the thread containing the newly created draft, for example, "15e9fa622ce1029d".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("draftThreadId")]
-        public virtual string DraftThreadId { get; set; }
-
-        /// <summary>
-        /// The server permanent ID for the draft's thread. This field isn't set anywhere, and it's ignored when
-        /// processing OpenCreatedDraftActionMarkup. Supply and use draftThreadStorageId instead.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("draftThreadServerPermId")]
-        public virtual string DraftThreadServerPermId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class OpenLink : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Next available ID: 5</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("loadIndicator")]
-        public virtual string LoadIndicator { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("onClose")]
-        public virtual string OnClose { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("openAs")]
-        public virtual string OpenAs { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual string Url { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14553,105 +8402,10 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class OsVersion : Google.Apis.Requests.IDirectResponseSchema
+    public class PeoplePromotionCard : Google.Apis.Requests.IDirectResponseSchema
     {
-        [Newtonsoft.Json.JsonPropertyAttribute("majorVersion")]
-        public virtual System.Nullable<int> MajorVersion { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("minorVersion")]
-        public virtual System.Nullable<int> MinorVersion { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("tertiaryVersion")]
-        public virtual System.Nullable<int> TertiaryVersion { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class OtrChatMessageEvent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("expirationTimestampUsec")]
-        public virtual System.Nullable<long> ExpirationTimestampUsec { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("kansasRowId")]
-        public virtual string KansasRowId { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("kansasVersionInfo")]
-        public virtual string KansasVersionInfo { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("messageOtrStatus")]
-        public virtual string MessageOtrStatus { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class OtrModificationEvent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("newOtrStatus")]
-        public virtual string NewOtrStatus { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("newOtrToggle")]
-        public virtual string NewOtrToggle { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("oldOtrStatus")]
-        public virtual string OldOtrStatus { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("oldOtrToggle")]
-        public virtual string OldOtrToggle { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Developers register a client in Google API Console to get the deep-linking feature on Google+ posts or frames
-    /// about their apps. The client data is stored in this proto.
-    /// </summary>
-    public class PackagingServiceClient : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Android app's package name to generate the deep-link URI.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("androidPackageName")]
-        public virtual string AndroidPackageName { get; set; }
-
-        /// <summary>iOS app's App Store ID to generate the App Store URL when app is not installed on device.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("iosAppStoreId")]
-        public virtual string IosAppStoreId { get; set; }
-
-        /// <summary>iOS app's bundle ID to generate the deep-link URI.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("iosBundleId")]
-        public virtual string IosBundleId { get; set; }
-
-        /// <summary>Type of Google API Console client.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Information provided to clients so that they can show upgrade promos and warnings on call ending early (for
-    /// non-paying users).
-    /// </summary>
-    public class PaygateInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Time when client should show message that the call is ending soon.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("callEndingSoonWarningTime")]
-        public virtual object CallEndingSoonWarningTime { get; set; }
-
-        /// <summary>
-        /// Time when the call will end if the user does not upgrade (after in-call upgrade support check has been
-        /// implemented).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("callEndingTime")]
-        public virtual object CallEndingTime { get; set; }
-
-        /// <summary>
-        /// This boolean is used by clients to decide whether the user should be shown promos to upgrade.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("showUpgradePromos")]
-        public virtual System.Nullable<bool> ShowUpgradePromos { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("people")]
+        public virtual System.Collections.Generic.IList<PersonCore> People { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14705,62 +8459,194 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// An individual instance (or "tag") of a label configured as a personal type that's associated with a message.
-    /// </summary>
-    public class PersonalLabelTag : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Information for rendering a person. NEXT ID: 37</summary>
+    public class PersonCore : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A string ID representing the label. Possible ID values are documented at go/chat-labels-howto:ids. Examples:
-        /// "^t" for "Starred", "^nu" for "Nudged".
+        /// Instructions for how to address this person (e.g. custom pronouns). For google.com this is a set of pronouns
+        /// from a defined list of options.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labelId")]
-        public virtual string LabelId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Phone access contains information required to dial into a conference using a regional phone number and a PIN
-    /// that is specific to that phone number.
-    /// </summary>
-    public class PhoneAccess : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The phone number to dial for this meeting space in INTERNATIONAL format. Full phone number with a leading
-        /// '+' character and whitespace separations.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("formattedPhoneNumber")]
-        public virtual string FormattedPhoneNumber { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("addressMeAs")]
+        public virtual string AddressMeAs { get; set; }
 
         /// <summary>
-        /// The BCP 47/LDML language code for the language associated with this phone access. To be parsed by the i18n
-        /// LanguageCode utility. Examples: "es-419" for Latin American Spanish, "fr-CA" for Canadian French.
+        /// People the profile owner is an admin to. Note that not all fields of these PersonCores will be set, in
+        /// particular, relationships will be empty.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
-        public virtual string LanguageCode { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("adminTo")]
+        public virtual System.Collections.Generic.IList<PersonCore> AdminTo { get; set; }
 
         /// <summary>
-        /// The phone number to dial for this meeting space in E.164 format. Full phone number with a leading '+'
-        /// character.
+        /// The profile owner's admins in no particular order. Note that not all fields of these PersonCores will be
+        /// set, in particular, relationships will be empty.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
-        public virtual string PhoneNumber { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("admins")]
+        public virtual System.Collections.Generic.IList<PersonCore> Admins { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("availabilityStatus")]
+        public virtual string AvailabilityStatus { get; set; }
+
+        /// <summary>Person birthday.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("birthday")]
+        public virtual Date Birthday { get; set; }
+
+        /// <summary>The URL to open the profile owner's primary calendar.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("calendarUrl")]
+        public virtual SafeUrlProto CalendarUrl { get; set; }
 
         /// <summary>
-        /// The PIN that users must enter after dialing the given number. The PIN consists of only decimal digits and
-        /// the length may vary.
+        /// The URL to start a chat conversation with the profile owner. For google.com this is a Hangouts URL.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pin")]
-        public virtual string Pin { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("chatUrl")]
+        public virtual SafeUrlProto ChatUrl { get; set; }
+
+        /// <summary>Person's cost center as a string, e.g. "926: Googler Apps".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("costCenter")]
+        public virtual string CostCenter { get; set; }
 
         /// <summary>
-        /// The CLDR/ISO 3166 region code for the country associated with this phone access. To be parsed by the i18n
-        /// RegionCode utility. Example: "SE" for Sweden.
+        /// The person's Organization department, e.g. "People Operations". For google.com this is usually called
+        /// "area".
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
-        public virtual string RegionCode { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("department")]
+        public virtual string Department { get; set; }
+
+        /// <summary>
+        /// A subset of the profile owner's direct reports. The number of entities here may be less than
+        /// total_direct_reports_count, because typically ProfileResponse does not include all the person's reports, if
+        /// there are too many to retrieve efficiently. Note that not all fields of these PersonCores will be set, in
+        /// particular, relationships will be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("directReports")]
+        public virtual System.Collections.Generic.IList<PersonCore> DirectReports { get; set; }
+
+        /// <summary>
+        /// The profile owner's direct dotted line managers in no particular order. Note that not all fields of these
+        /// PersonCores will be set, in particular, relationships will be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dottedLineManagers")]
+        public virtual System.Collections.Generic.IList<PersonCore> DottedLineManagers { get; set; }
+
+        /// <summary>
+        /// A subset of the profile owner's dotted-line reports. The number of entities here may be less than
+        /// total_dlr_count. Note that not all fields of these PersonCores will be set, in particular, relationships
+        /// will be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dottedLineReports")]
+        public virtual System.Collections.Generic.IList<PersonCore> DottedLineReports { get; set; }
+
+        /// <summary>E-mail addresses of the person. The primary or preferred email should be first.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emails")]
+        public virtual System.Collections.Generic.IList<string> Emails { get; set; }
+
+        /// <summary>
+        /// Person's employee number (external ID of type "organization") For google.com this is the badge number (e.g.
+        /// 2 for Larry Page).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("employeeId")]
+        public virtual string EmployeeId { get; set; }
+
+        /// <summary>
+        /// A fingerprint used by PAPI to reliably determine if a resource has changed Externally it is used as part of
+        /// the etag.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
+        public virtual string Fingerprint { get; set; }
+
+        /// <summary>Full-time equivalent (in ‰) (e.g. 800 for a person who's working 80%).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ftePermille")]
+        public virtual System.Nullable<long> FtePermille { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("geoLocation")]
+        public virtual MapInfo GeoLocation { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("gmailUrl")]
+        public virtual string GmailUrl { get; set; }
+
+        /// <summary>
+        /// Profile owner's job title (e.g. "Software Engineer"). For google.com this is the Workday preferred job
+        /// title.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobTitle")]
+        public virtual string JobTitle { get; set; }
+
+        /// <summary>List of keys to use from the map 'keywords'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keywordTypes")]
+        public virtual System.Collections.Generic.IList<string> KeywordTypes { get; set; }
+
+        /// <summary>Custom keywords the domain admin has added.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keywords")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Keywords { get; set; }
+
+        /// <summary>Custom links the profile owner has added.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("links")]
+        public virtual System.Collections.Generic.IList<EnterpriseTopazFrontendTeamsLink> Links { get; set; }
+
+        /// <summary>
+        /// Detailed desk location within the company. For google.com this is the desk location code (e.g.
+        /// "DE-MUC-ARP-6T2-6T2C0C") if the person has a desk.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>
+        /// The profile owner's management chain from top to bottom, where managers[0] is the CEO, manager[N-2] is the
+        /// person's manager's manager and managers[N-1] is the person's direct manager. Note that not all fields of
+        /// these PersonCores will be set, in particular, relationships will be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managers")]
+        public virtual System.Collections.Generic.IList<PersonCore> Managers { get; set; }
+
+        /// <summary>Custom mission statement the profile owner has added.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mission")]
+        public virtual string Mission { get; set; }
+
+        /// <summary>Human-readable Unicode display name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Office/building identifier within the company. For google.com this is the office code (e.g. "DE-MUC-ARP").
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("officeLocation")]
+        public virtual string OfficeLocation { get; set; }
+
+        /// <summary>The person's obfuscated Gaia ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("personId")]
+        public virtual string PersonId { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumbers")]
+        public virtual System.Collections.Generic.IList<EnterpriseTopazFrontendTeamsPersonCorePhoneNumber> PhoneNumbers { get; set; }
+
+        /// <summary>Person photo.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("photoUrl")]
+        public virtual SafeUrlProto PhotoUrl { get; set; }
+
+        /// <summary>Postal address of office/building.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postalAddress")]
+        public virtual string PostalAddress { get; set; }
+
+        /// <summary>Total count of the profile owner's direct reports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalDirectReportsCount")]
+        public virtual System.Nullable<int> TotalDirectReportsCount { get; set; }
+
+        /// <summary>Total count of the profile owner's dotted-line reports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalDlrCount")]
+        public virtual System.Nullable<int> TotalDlrCount { get; set; }
+
+        /// <summary>
+        /// The sum of all profile owner's reports and their own full-time-equivalents in ‰ (e.g. 1800 if one report is
+        /// working 80% and profile owner 100%).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalFteCount")]
+        public virtual System.Nullable<long> TotalFteCount { get; set; }
+
+        /// <summary>External ID of type "login_id" for the profile. For google.com this is the username/LDAP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("waldoComeBackTime")]
+        public virtual object WaldoComeBackTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14786,16 +8672,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>The URL of the photo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class PinnedItemId : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Identifier for a Drive file (e.g. Docs, Sheets, Slides).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("driveId")]
-        public virtual string DriveId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14843,121 +8719,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// This message contains either the device model, or a prefix of the device model (AKA a trimmed device model). The
-    /// "is_trimmed" field indicates which one it is.
-    /// </summary>
-    public class PossiblyTrimmedModel : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("isTrimmed")]
-        public virtual System.Nullable<bool> IsTrimmed { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("model")]
-        public virtual string Model { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>See http://s/?fileprint=//depot/google3/security/authentication/postini/auth_token.proto</summary>
-    public class PostiniUserProto : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("postiniUserId")]
-        public virtual System.Nullable<long> PostiniUserId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// State of the thread previous to the update. This really just describes the label state of all messages before
-    /// the update.
-    /// </summary>
-    public class PreState : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("labelIds")]
-        public virtual System.Collections.Generic.IList<string> LabelIds { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("messageKey")]
-        public virtual MultiKey MessageKey { get; set; }
-
-        /// <summary>Note that there can be fewer sync ids than label ids.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("syncIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> SyncIds { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("threadKey")]
-        public virtual MultiKey ThreadKey { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>PREF_DELETED</summary>
-    public class PrefDeleted : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>HistoryRecord for changes associated with prefs, namely: PREF_WRITTEN PREF_DELETED</summary>
-    public class PrefUpdate : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Name of the affected preference.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("preState")]
-        public virtual FuseboxPrefUpdatePreState PreState { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("prefDeleted")]
-        public virtual PrefDeleted PrefDeleted { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("prefWritten")]
-        public virtual PrefWritten PrefWritten { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>PREF_WRITTEN</summary>
-    public class PrefWritten : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Presenter contains information about which device is currently presenting as well as which device requested the
-    /// presenter to be set.
-    /// </summary>
-    public class Presenter : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Screen annotation information associated with this presentation session.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("annotationInfo")]
-        public virtual AnnotationInfo AnnotationInfo { get; set; }
-
-        /// <summary>
-        /// The device resource name of the device which requested the current presenter to be set. This field can not
-        /// be modified by clients.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("byDeviceId")]
-        public virtual string ByDeviceId { get; set; }
-
-        /// <summary>The device resource names of other devices which can control the current presentation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("copresenterDeviceIds")]
-        public virtual System.Collections.Generic.IList<string> CopresenterDeviceIds { get; set; }
-
-        /// <summary>The device resource name of the currently presenting device.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("presenterDeviceId")]
-        public virtual string PresenterDeviceId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Reference to a user, group, or domain.</summary>
     public class Principal : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14978,163 +8739,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userResourceName")]
         public virtual string UserResourceName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A Principal represents something to which permissions are assigned, often but not always a user or group of some
-    /// kind. It is most appropriate for use in ACLs and authorization checks. Callers should prefer to use the wrapper
-    /// classes in google3/security/credentials/public/principal.h
-    /// google3/java/com/google/security/credentials/Principal.java google3/security/credentials/go/principal.go unless
-    /// direct proto access is essential. If you update this protocol buffer, please update the wrapper classes as well.
-    /// LINT.IfChange
-    /// </summary>
-    public class PrincipalProto : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>scope = ALL_AUTHENTICATED_USERS</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allAuthenticatedUsers")]
-        public virtual AllAuthenticatedUsersProto AllAuthenticatedUsers { get; set; }
-
-        /// <summary>scope = CAP_TOKEN_HOLDER</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("capTokenHolder")]
-        public virtual CapTokenHolderProto CapTokenHolder { get; set; }
-
-        /// <summary>scope = CHAT</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("chat")]
-        public virtual ChatProto Chat { get; set; }
-
-        /// <summary>scope = CIRCLE</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("circle")]
-        public virtual CircleProto Circle { get; set; }
-
-        /// <summary>scope = CLOUD_PRINCIPAL</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cloudPrincipal")]
-        public virtual CloudPrincipalProto CloudPrincipal { get; set; }
-
-        /// <summary>scope = CONTACT_GROUP</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contactGroup")]
-        public virtual ContactGroupProto ContactGroup { get; set; }
-
-        /// <summary>scope = EMAIL_OWNER</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("emailOwner")]
-        public virtual EmailOwnerProto EmailOwner { get; set; }
-
-        /// <summary>scope = EVENT</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("event")]
-        public virtual EventProto Event__ { get; set; }
-
-        /// <summary>scope = GAIA_GROUP</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gaiaGroup")]
-        public virtual GaiaGroupProto GaiaGroup { get; set; }
-
-        /// <summary>scope = GAIA_USER</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gaiaUser")]
-        public virtual GaiaUserProto GaiaUser { get; set; }
-
-        /// <summary>scope = HOST</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("host")]
-        public virtual HostProto Host { get; set; }
-
-        /// <summary>scope = LDAP_GROUP</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ldapGroup")]
-        public virtual LdapGroupProto LdapGroup { get; set; }
-
-        /// <summary>scope = LDAP_USER</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ldapUser")]
-        public virtual LdapUserProto LdapUser { get; set; }
-
-        /// <summary>scope = MDB_GROUP</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mdbGroup")]
-        public virtual MdbGroupProto MdbGroup { get; set; }
-
-        /// <summary>scope = MDB_USER</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mdbUser")]
-        public virtual MdbUserProto MdbUser { get; set; }
-
-        /// <summary>scope = OAUTH_CONSUMER;</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("oauthConsumer")]
-        public virtual OAuthConsumerProto OauthConsumer { get; set; }
-
-        /// <summary>scope = POSTINI_USER</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("postiniUser")]
-        public virtual PostiniUserProto PostiniUser { get; set; }
-
-        /// <summary>scope = RBAC_ROLE</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rbacRole")]
-        public virtual RbacRoleProto RbacRole { get; set; }
-
-        /// <summary>scope = RBAC_SUBJECT</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rbacSubject")]
-        public virtual RbacSubjectProto RbacSubject { get; set; }
-
-        /// <summary>scope = RESOURCE_ROLE</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceRole")]
-        public virtual ResourceRoleProto ResourceRole { get; set; }
-
-        /// <summary>This is only optional because required enums cannot be extended. Currently required.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
-        public virtual string Scope { get; set; }
-
-        /// <summary>scope = SIGNING_KEY_POSSESSOR</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("signingKeyPossessor")]
-        public virtual SigningKeyPossessorProto SigningKeyPossessor { get; set; }
-
-        /// <summary>scope = SIMPLE_SECRET_HOLDER</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("simpleSecretHolder")]
-        public virtual SimpleSecretHolderProto SimpleSecretHolder { get; set; }
-
-        /// <summary>scope = SOCIAL_GRAPH_NODE</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("socialGraphNode")]
-        public virtual SocialGraphNodeProto SocialGraphNode { get; set; }
-
-        /// <summary>scope = SQUARE</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("square")]
-        public virtual SquareProto Square { get; set; }
-
-        /// <summary>scope = YOUTUBE_USER</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("youtubeUser")]
-        public virtual YoutubeUserProto YoutubeUser { get; set; }
-
-        /// <summary>scope = ZWIEBACK_SESSION</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("zwiebackSession")]
-        public virtual ZwiebackSessionProto ZwiebackSession { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Private message information specific to a given user. DEPRECATED: Use the privateMessageViewer field in
-    /// CreateMessageInfo instead.
-    /// </summary>
-    public class PrivateMessageInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Annotations private to {@code userId}.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
-        public virtual System.Collections.Generic.IList<Annotation> Annotations { get; set; }
-
-        /// <summary>Attachments private to {@code userId}.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("attachments")]
-        public virtual System.Collections.Generic.IList<Attachment> Attachments { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("contextualAddOnMarkup")]
-        public virtual System.Collections.Generic.IList<GoogleChatV1ContextualAddOnMarkup> ContextualAddOnMarkup { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("gsuiteIntegrationMetadata")]
-        public virtual System.Collections.Generic.IList<GsuiteIntegrationMetadata> GsuiteIntegrationMetadata { get; set; }
-
-        /// <summary>
-        /// Text private to {@code user_id}. Initial restriction: Only one of public text or private text is rendered on
-        /// the client. So if public text is set, private text is ignored.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; }
-
-        /// <summary>Required. The elements in this struct are visible to this user.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
-        public virtual UserId UserId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15272,49 +8876,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayLabel")]
         public virtual string DisplayLabel { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>This field records where the ItemScope was retrieved, if it was created via a web fetch.</summary>
-    public class Provenance : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Annotation blob from Annotation Service.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("annotationBlob")]
-        public virtual string AnnotationBlob { get; set; }
-
-        /// <summary>
-        /// Canonical url of the retrieved_url, if one was resolved during retrieval, for example, if a rel="canonical"
-        /// link tag was provided in the retrieved web page.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("canonicalUrl")]
-        public virtual string CanonicalUrl { get; set; }
-
-        /// <summary>
-        /// The url originally passed in the PRS request, which should be used to re-discover the content. Note that
-        /// this URL may be a forwarding service or link shortener (bit.ly), so it should not be assumed to be
-        /// canonical, but should be used for navigation back to the original source of the itemscope.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inputUrl")]
-        public virtual string InputUrl { get; set; }
-
-        /// <summary>
-        /// Contains exact types as parsed, whether or not we recognized that type at parse time. If an itemscope is
-        /// created by merging SchemaOrg markup and open graph markup then the first itemtype would be schemaorg type,
-        /// the second would be open graph and so on. example: http://schema.org/VideoObject, og:video.movie Plain text;
-        /// usually a URL
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("itemtype")]
-        public virtual System.Collections.Generic.IList<string> Itemtype { get; set; }
-
-        /// <summary>The server retrieved timestamp (in msec).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("retrievedTimestampMsec")]
-        public virtual System.Nullable<ulong> RetrievedTimestampMsec { get; set; }
-
-        /// <summary>The final URL that was the actual source of the itemscope, after any redirects.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("retrievedUrl")]
-        public virtual string RetrievedUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15605,324 +9166,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Quote metadata: go/message-quoting-be-dd-v2. This proto is only used on the read path. For the request proto,
-    /// refer to `QuotedMessagePayload`. Fields are either derived from storage directly from the Item this metadata
-    /// belongs to, or is hydrated at read time from another Item read. Note: QuotedMessageMetadata proto is similar to
-    /// Message proto with less field. Reasons to differtiate QuotedMessageMetadata from Message are: 1. Not all fields
-    /// for original message is applicable for quoted message. (E.g. reactions, is_inline_reply, etc.), thus separting
-    /// out for confusion. 2. We don't support nested message quoting. For more detailed discussion, please see
-    /// http://shortn/_VsSXQb2C7P. For future reference: if your new feature/field will be supported in message quoting
-    /// feature (go/chat-quoting-prd), you will need to add that field within QuotedMessageMetadata
-    /// </summary>
-    public class QuotedMessageMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. Snapshot of the annotations of the quoted message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
-        public virtual System.Collections.Generic.IList<Annotation> Annotations { get; set; }
-
-        /// <summary>Output only. Custom display profile info for apps. Will be empty for real users.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("appProfile")]
-        public virtual AppsDynamiteSharedAppProfile AppProfile { get; set; }
-
-        /// <summary>
-        /// Output only. The bot attachment state of the quoted message. Used by clients to display a bot attachment
-        /// indicator in the UI.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("botAttachmentState")]
-        public virtual string BotAttachmentState { get; set; }
-
-        /// <summary>Output only. Time when the quoted message was posted in microseconds.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTimeMicros")]
-        public virtual System.Nullable<long> CreateTimeMicros { get; set; }
-
-        /// <summary>
-        /// Output only. ID of the User who posted the quoted message. This includes information to identify if the
-        /// quoted message was posted by an App on behalf of a user.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("creatorId")]
-        public virtual UserId CreatorId { get; set; }
-
-        /// <summary>
-        /// Output only. Time when the quoted message was last edited by a user at the time when quoting action happens.
-        /// Time is in microseconds.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastEditTimeMicros")]
-        public virtual System.Nullable<long> LastEditTimeMicros { get; set; }
-
-        /// <summary>
-        /// The `last_update_time` of the original message when the client initiated the quote creation. This is derived
-        /// from the request payload passed from clients. Used to fetch the quoted message contents at a specific time
-        /// on the read path. This field is populated from storage directly.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTimeWhenQuotedMicros")]
-        public virtual System.Nullable<long> LastUpdateTimeWhenQuotedMicros { get; set; }
-
-        /// <summary>
-        /// MessageId of the original message that is being quoted. This is derived from the request payload passed from
-        /// clients. This field is populated from storage directly.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
-        public virtual MessageId MessageId { get; set; }
-
-        /// <summary>
-        /// Output only. The state of the quoted message. Used by clients to display tombstones for quotes that
-        /// reference a deleted message.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("messageState")]
-        public virtual string MessageState { get; set; }
-
-        /// <summary>Output only. The retention (OTR) settings of the quoted message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("retentionSettings")]
-        public virtual AppsDynamiteSharedRetentionSettings RetentionSettings { get; set; }
-
-        /// <summary>Output only. Snapshot of the text body of the quoted message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("textBody")]
-        public virtual string TextBody { get; set; }
-
-        /// <summary>
-        /// Output only. ID of the User who last updated (created/edited/deleted) the quoted message at the time when
-        /// quoting action happens. This includes information to identify if the quoted message was posted by an App on
-        /// behalf of a user.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updaterId")]
-        public virtual UserId UpdaterId { get; set; }
-
-        /// <summary>Output only. Upload metadata of the quoted message.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uploadMetadata")]
-        public virtual System.Collections.Generic.IList<UploadMetadata> UploadMetadata { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// The rank contains a tuple of numbers which may be used as a general sort order. The rank should be treated as an
-    /// ordered set of numbers, where the ordering is done in descending order of the most significant rank member. For
-    /// example, given the following ranks described as (primary, secondary): (1,1), (1,2), (2,2) (2,1) The descending
-    /// rank-order is: (2,2) &amp;gt; (2,1) &amp;gt; (1,2) &amp;gt; (1,1)
-    /// </summary>
-    public class Rank : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The primary rank is the most significant rank member. This rank element should always be present. Items with
-        /// higher primary rank are always considered of higher rank than those of lower primary rank.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("primary")]
-        public virtual System.Nullable<long> Primary { get; set; }
-
-        /// <summary>
-        /// The secondary rank may be used to rank items of identical primary rank. This rank element should always be
-        /// present.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("secondary")]
-        public virtual System.Nullable<long> Secondary { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Principal associated with a given RBAC role. This principal is used by Sphinx Provisioning Service for RBAC
-    /// provisionable (go/sphinx-rbacz).
-    /// </summary>
-    public class RbacRoleProto : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
-        public virtual string ObjectId { get; set; }
-
-        /// <summary>DEPRECATED as of 01.11.2019</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rbacNamespace")]
-        public virtual string RbacNamespace { get; set; }
-
-        /// <summary>
-        /// Format: "role/z?" - "role" is the Sphinx globally unique name of the Sphinx role that provisions the RBAC
-        /// role. - "/z?" suffix indicates which Zanzibar environment stores the role membership data ("/zd": dev,
-        /// "/zs": staging, "/zp": prod, "/zt": local test instance). Example: "mysystem_myrole/zp"
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rbacRoleName")]
-        public virtual string RbacRoleName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Principal associated with a given RBAC subject. This principal is used by Sphinx Provisioning Service for RBAC
-    /// provisionable (go/sphinx-rbacz).
-    /// </summary>
-    public class RbacSubjectProto : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Format "username" without "@domain", e.g., "bogdand".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("username")]
-        public virtual string Username { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Contains information about an emoji reaction.</summary>
-    public class ReactionInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Unicode string representing a single emoji.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("emoji")]
-        public virtual string Emoji { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class ReadReceiptsSettingsUpdatedMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The new read receipts state.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("readReceiptsEnabled")]
-        public virtual System.Nullable<bool> ReadReceiptsEnabled { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class Recipient : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A recording event is something that happens to the recording in a conference.</summary>
-    public class RecordingEvent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The initiator of the latest event of the recording. It will be set for all user events (`type` is 100-199)
-        /// and unset for all server events (`type` is 200-299).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
-        public virtual string DeviceId { get; set; }
-
-        /// <summary>The type of event.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// This message is deprecated, please use RecordingSessionInfo instead. Information about recording in the current
-    /// conference.
-    /// </summary>
-    public class RecordingInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The latest recording event. This can be used by clients to help explain what is going on, why recording
-        /// stopped, etc. This will always be set if there is or was an active recording, which means there can be
-        /// latest event when recording is INACTIVE.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("latestRecordingEvent")]
-        public virtual RecordingEvent LatestRecordingEvent { get; set; }
-
-        /// <summary>
-        /// The display name of the owner of the recording output. Email notifications about uploaded recordings will
-        /// also be sent to this owner.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ownerDisplayName")]
-        public virtual string OwnerDisplayName { get; set; }
-
-        /// <summary>
-        /// The device resource name of the producer device for the currently active recording. Note that, after the
-        /// producer drops/leaves the conference, this field will be cleaned up by the server after a delay.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("producerDeviceId")]
-        public virtual string ProducerDeviceId { get; set; }
-
-        /// <summary>
-        /// The application type of the current active recording. `RECORDING_APPLICATION_TYPE_UNSPECIFIED` if
-        /// `recording_status` is inactive.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("recordingApplicationType")]
-        public virtual string RecordingApplicationType { get; set; }
-
-        /// <summary>
-        /// An identifier for the current recording, if any. This is returned whenever recording_status is either
-        /// `RECORDING_STARTING` or `RECORDING_STARTED`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("recordingId")]
-        public virtual string RecordingId { get; set; }
-
-        /// <summary>
-        /// The current status of the recording. This can be used by clients to show a recording dot or similar to
-        /// indicated to the user that a recording is taking place.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("recordingStatus")]
-        public virtual string RecordingStatus { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Information about a recording session.</summary>
-    public class RecordingSessionInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Input only. Deprecated field, should not be used.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ownerEmail")]
-        public virtual string OwnerEmail { get; set; }
-
-        /// <summary>A unique server-generated ID for the recording session.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("recordingSessionId")]
-        public virtual string RecordingSessionId { get; set; }
-
-        /// <summary>Recording session's state information.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sessionStateInfo")]
-        public virtual SessionStateInfo SessionStateInfo { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// All fields in this proto are now columns in spanner see
-    /// google3/storage/slice/production/gmail/user_data_tables.pi for documentation.
-    /// </summary>
-    public class Reference : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("blobId")]
-        public virtual string BlobId { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
-        public virtual string ContentType { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("hash")]
-        public virtual string Hash { get; set; }
-
-        /// <summary>LINT.IfChange</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; }
-
-        /// <summary>LINT.ThenChange(//depot/google3/storage/slice/production/gmail/ user_data_tables.pi)</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("size")]
-        public virtual System.Nullable<long> Size { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class References : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("references")]
-        public virtual System.Collections.Generic.IList<Reference> ReferencesValue { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Remove Logged Activity Request.</summary>
     public class RemoveActivityRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15947,18 +9190,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class RenameEvent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("newName")]
-        public virtual string NewName { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("originalName")]
-        public virtual string OriginalName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Errors when the connector is communicating to the source repository.</summary>
     public class RepositoryError : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15976,21 +9207,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class RequestFileScope : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
-        public virtual string ItemId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class RequestFileScopeForActiveDocument : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -16034,45 +9250,11 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A list of capabilities that are used in this message.</summary>
-    public class RequiredMessageFeaturesMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("requiredFeatures")]
-        public virtual System.Collections.Generic.IList<string> RequiredFeatures { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     public class ResetSearchApplicationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Common debug options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("debugOptions")]
         public virtual DebugOptions DebugOptions { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A type of sharing target that points to some resource's ACL. Used to refer to the set of Principals that have
-    /// the given privilege ('role_id') for the given resource ('application_id', 'object_id', 'object_part'). The
-    /// meaning of 'role_id' is interpreted only by implementations of AclRpcService and is usually dependent on
-    /// 'application_id' All fields except object_part are required. If present, object_part must be non-empty.
-    /// </summary>
-    public class ResourceRoleProto : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("applicationId")]
-        public virtual string ApplicationId { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("objectId")]
-        public virtual string ObjectId { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("objectPart")]
-        public virtual string ObjectPart { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("roleId")]
-        public virtual System.Nullable<int> RoleId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16186,118 +9368,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importance")]
         public virtual string Importance { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class RoomRenameMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("newName")]
-        public virtual string NewName { get; set; }
-
-        /// <summary>NEXT_TAG: 3</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("prevName")]
-        public virtual string PrevName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class RoomUpdatedMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("groupDetailsMetadata")]
-        public virtual GroupDetailsUpdatedMetadata GroupDetailsMetadata { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("groupLinkSharingEnabled")]
-        public virtual System.Nullable<bool> GroupLinkSharingEnabled { get; set; }
-
-        /// <summary>
-        /// The user who initiated this room update. Complete member profiles, when ListTopicsRequest FetchOptions.USER
-        /// is set. Otherwise, only the id will be filled in.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("initiator")]
-        public virtual User Initiator { get; set; }
-
-        /// <summary>The type of the user who initiated this room update.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("initiatorType")]
-        public virtual string InitiatorType { get; set; }
-
-        /// <summary>What was updated in the room.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("renameMetadata")]
-        public virtual RoomRenameMetadata RenameMetadata { get; set; }
-
-        /// <summary>DEPRECATED: See GroupVisibility proto definition.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
-        public virtual AppsDynamiteSharedGroupVisibility Visibility { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Roster profile information.</summary>
-    public class Roster : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("avatarUrl")]
-        public virtual string AvatarUrl { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual RosterId Id { get; set; }
-
-        /// <summary>Whether caller has visibility into members of the roster.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("isMembershipVisibleToCaller")]
-        public virtual System.Nullable<bool> IsMembershipVisibleToCaller { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("membershipCount")]
-        public virtual System.Nullable<int> MembershipCount { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Roster gaia key, usually an email address. Set in looking up rosters response.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rosterGaiaKey")]
-        public virtual string RosterGaiaKey { get; set; }
-
-        /// <summary>Roster deletion state - considered active unless set to deleted</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rosterState")]
-        public virtual string RosterState { get; set; }
-
-        /// <summary>Roster membership count. May contain counts based on member type and membership state.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("segmentedMembershipCounts")]
-        public virtual AppsDynamiteSharedSegmentedMembershipCounts SegmentedMembershipCounts { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Primary key for Roster resource.</summary>
-    public class RosterId : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Opaque, server-assigned ID of the Roster.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Options for Triggers dispatched via RPC.</summary>
-    public class RpcOptions : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The RPC's request extensions (i.e. RPC::request_extensions(), a.k.a. the Stubby side channel) will be merged
-        /// with the specified [request_extensions]. When Triggers are batched, the RPC's request extensions will be
-        /// merged with all of the [request_extensions] of the Triggers in the batch. Note that merging of request
-        /// extensions follows standard protocol buffer semantics; values of singular fields override previous values,
-        /// and values of repeated fields are appended (In the case of Triggers, Triggers with later fire times will be
-        /// merged after Triggers with earlier fire times in the same batch). It is not advised to specify extensions
-        /// with repeated fields on batchable Triggers.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestExtensions")]
-        public virtual MessageSet RequestExtensions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16530,27 +9600,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// SearchLink metadata, for SEARCH_LINK segments. For a search link, the "text" field should contain the display
-    /// text. This is currently not indexed.
-    /// </summary>
-    public class SearchLinkData : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>For lightweight scoring in serving time.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kgEntityConfidence")]
-        public virtual System.Nullable<float> KgEntityConfidence { get; set; }
-
-        /// <summary>MID of the KG entity being linked.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mid")]
-        public virtual string Mid { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("queryBroadnessScore")]
-        public virtual System.Nullable<float> QueryBroadnessScore { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Additional search quality metadata of the item.</summary>
     public class SearchQualityMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -16709,303 +9758,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Sections are separated by a line divider. They contain a collection of widgets that are rendered (vertically) in
-    /// the order that they are specified. Across all platforms, AddOns have a narrow fixed width, so there is currently
-    /// no need for layout properties (e.g. float).
-    /// </summary>
-    public class Section : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Indicating whether this section is collapsable. If a section is collapsable, the description must be given.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("collapsable")]
-        public virtual System.Nullable<bool> Collapsable { get; set; }
-
-        /// <summary>The header of the section, text formatted supported.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>
-        /// The number of uncollapsable widgets. For example, when a section contains 5 widgets and the
-        /// num_uncollapsable_widget are set to be 2, The first 2 widgets will always shown and the last 3 is collapsed
-        /// as default. Only when collapsable is set to be true, the num_uncollapsable_widget will be taken into
-        /// account.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("numUncollapsableWidgets")]
-        public virtual System.Nullable<int> NumUncollapsableWidgets { get; set; }
-
-        /// <summary>A section must contain at least 1 widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("widgets")]
-        public virtual System.Collections.Generic.IList<WidgetMarkup> Widgets { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class Segment : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Formatting to be applied when rendering the Segment. For all segment types, this is the standard way of
-        /// representing that the Segment should be rendered in bold, italics, etc.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("formatting")]
-        public virtual Formatting Formatting { get; set; }
-
-        /// <summary>For HASHTAG type:</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("hashtagData")]
-        public virtual HashtagData HashtagData { get; set; }
-
-        /// <summary>
-        /// Type-specific metadata. At most one of these should be populated, and the one that is populated should
-        /// correspond to the type of the Segment. For LINK type:
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("linkData")]
-        public virtual LinkData LinkData { get; set; }
-
-        /// <summary>For SEARCH_LINK type:</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("searchLinkData")]
-        public virtual SearchLinkData SearchLinkData { get; set; }
-
-        /// <summary>
-        /// Text content of the Segment. As a general rule, this field should contain the actual text that should be
-        /// rendered in the UI. Thus, for a hashtag, it should be "#Foo", and for a link, it should be the display text.
-        /// Clients that do not understand a particular segment type may use this text, along with the Formatting info
-        /// below, as a fallback for display. The field is not required -- if all relevant information is carried in
-        /// other metadata fields and there is no need for a fallback, or it is not practical for a fallback to be
-        /// provided for any other reason, the field may be left blank. A standard example would be a user reference
-        /// being transmitted between server layers, where a gaia-ID representation may be sufficient and there is no
-        /// need for a textual fallback. In such a case, it would be valid and useful - though not required - for
-        /// servers to compute and populate a fallback on the serving path.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; }
-
-        /// <summary>Type of Segment.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>For USER_MENTION type:</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userMentionData")]
-        public virtual UserMentionData UserMentionData { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class SelectionControl : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>For radio button, at most one of the items will be selected.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("items")]
-        public virtual System.Collections.Generic.IList<SelectionItem> Items { get; set; }
-
-        /// <summary>Label used to be displayed ahead of the selection control. It is optional.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual string Label { get; set; }
-
-        /// <summary>The name of the text field which is will be used in FormInput.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// If specified, form is submitted when selection changed. If not specified, developer will need to specify a
-        /// separate button.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onChange")]
-        public virtual FormAction OnChange { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class SelectionItem : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// If more than one items are selected for RADIO_BUTTON and DROPDOWN, the first selected item is treated as
-        /// sElected and the after ones are all ignored.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("selected")]
-        public virtual System.Nullable<bool> Selected { get; set; }
-
-        /// <summary>The text to be displayed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; }
-
-        /// <summary>
-        /// The value associated with this item which will be sent back to app scripts. Client should use as a form
-        /// input value.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class SessionContext : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Time at which this activity's session was authenticated, in seconds since the epoch.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("authTime")]
-        public virtual System.Nullable<long> AuthTime { get; set; }
-
-        /// <summary>
-        /// Gaia ID of the authenticated user when delegate access is active. In such sessions the main gaia ID is that
-        /// of the delegator, i.e. the account being accessed.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("delegateUserId")]
-        public virtual System.Nullable<long> DelegateUserId { get; set; }
-
-        /// <summary>Device User Session ID, see go/dusi.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dusi")]
-        public virtual string Dusi { get; set; }
-
-        /// <summary>Imap session context for Bond/Gmail integration</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imapSessionContext")]
-        public virtual ImapSessionContext ImapSessionContext { get; set; }
-
-        /// <summary>OAuth login ID.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("oauthLoginId")]
-        public virtual System.Nullable<int> OauthLoginId { get; set; }
-
-        /// <summary>The devconsole project ID of the developer who authenticated with OAuth.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("oauthProjectId")]
-        public virtual System.Nullable<long> OauthProjectId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A session event is something that happens to the streaming session in a conference.</summary>
-    public class SessionEvent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The initiator of the latest event of the streaming session. It will be set for all user events (`type` is
-        /// 100-199) and unset for all server events(`type` is 200-299).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
-        public virtual string DeviceId { get; set; }
-
-        /// <summary>The type of event.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Information about the state of a (recording, broadcast, transcription...) session in a conference.
-    /// </summary>
-    public class SessionStateInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. The ack info of the session.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ackInfo")]
-        public virtual AckInfo AckInfo { get; set; }
-
-        /// <summary>
-        /// Immutable. The language configuration used by this session. When empty, captions will be disabled. It's a
-        /// required field for transcription sessions.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("languageConfig")]
-        public virtual LanguageConfig LanguageConfig { get; set; }
-
-        /// <summary>
-        /// Output only. The device id of the actor is set if the current state is a result of a user action, is empty
-        /// otherwise.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastActorDeviceId")]
-        public virtual string LastActorDeviceId { get; set; }
-
-        /// <summary>
-        /// Output only. The max end time of the session, at this time the session will be force stopped/terminated.
-        /// Clients are expected to use this timestamp to warn users about the force stop.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maxEndTime")]
-        public virtual object MaxEndTime { get; set; }
-
-        /// <summary>State of the session.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sessionState")]
-        public virtual string SessionState { get; set; }
-
-        /// <summary>Output only. The reason the session was transitioned to STOPPED state.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sessionStopReason")]
-        public virtual string SessionStopReason { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Settings of a meeting space that can be edited by users with corresponding manage privilege. These settings are
-    /// always populated in responses.
-    /// </summary>
-    public class Settings : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The access lock of the meeting space that lets hosts control who can join the meeting.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("accessLock")]
-        public virtual System.Nullable<bool> AccessLock { get; set; }
-
-        /// <summary>The access type of the meeting space.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("accessType")]
-        public virtual string AccessType { get; set; }
-
-        /// <summary>Whether users can join before host in the conferences of this meeting space.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allowJoiningBeforeHost")]
-        public virtual System.Nullable<bool> AllowJoiningBeforeHost { get; set; }
-
-        /// <summary>Whether attendance report is enabled for the meeting space.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("attendanceReportEnabled")]
-        public virtual System.Nullable<bool> AttendanceReportEnabled { get; set; }
-
-        /// <summary>
-        /// The chat lock of the meeting space that lets owner control whether the participants can send chat messages.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("chatLock")]
-        public virtual System.Nullable<bool> ChatLock { get; set; }
-
-        /// <summary>
-        /// The co-activity lock of the meeting space that lets owner control whether the participants can start/stop or
-        /// update the state of co-activity.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("coActivityLock")]
-        public virtual System.Nullable<bool> CoActivityLock { get; set; }
-
-        /// <summary>Whether meeting artifacts will be shared with cohosts.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cohostArtifactSharingEnabled")]
-        public virtual System.Nullable<bool> CohostArtifactSharingEnabled { get; set; }
-
-        /// <summary>Whether Client-side Encryption is enabled for the meeting space.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cseEnabled")]
-        public virtual System.Nullable<bool> CseEnabled { get; set; }
-
-        /// <summary>Whether the default role is viewer or not.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("defaultAsViewer")]
-        public virtual System.Nullable<bool> DefaultAsViewer { get; set; }
-
-        /// <summary>Indicates whether the meeting space is moderated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("moderationEnabled")]
-        public virtual System.Nullable<bool> ModerationEnabled { get; set; }
-
-        /// <summary>
-        /// The present lock of the meeting space that lets owner control whether the participants can present their
-        /// screen.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("presentLock")]
-        public virtual System.Nullable<bool> PresentLock { get; set; }
-
-        /// <summary>
-        /// The reactions lock of the meeting space that lets owner control whether the participants can send reactions.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reactionsLock")]
-        public virtual System.Nullable<bool> ReactionsLock { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     public class ShareScope : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>If scope is DOMAIN, this field contains the dasher domain, for example "google.com".</summary>
@@ -17015,132 +9767,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>The scope to which the content was shared.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual string Scope { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class SheetsClientActionMarkup : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("customFunctionReturnValueMarkup")]
-        public virtual CustomFunctionReturnValueMarkup CustomFunctionReturnValueMarkup { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Represents a principal who possesses a signing key corresponding to the verification key or keyset described
-    /// here.
-    /// </summary>
-    public class SigningKeyPossessorProto : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>This value must be from the KeyMetadata.Type enum in keymaster.proto.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("keymasterKeyType")]
-        public virtual System.Nullable<int> KeymasterKeyType { get; set; }
-
-        /// <summary>The actual verification key bytes corresponding to the above type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serializedVerificationKey")]
-        public virtual string SerializedVerificationKey { get; set; }
-
-        /// <summary>
-        /// The binary serialized Keymaster SerializedReader of a public keyset. The keyset must contain exactly one
-        /// key. N.B.: If this field is populated, serialized_verification_key should be set to the empty string and
-        /// keymaster_key_type should be set to zero.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serializedVerificationKeyset")]
-        public virtual string SerializedVerificationKeyset { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Represents a principal which possesses a particular, presumably secret, string. Useful for things like "auth
-    /// keys," used for anonymous sharing. Since representing this principal with the actual secret included reveals the
-    /// secret, it's best if the requisite condition is enforced in some other way, for example via Keystore wrapping
-    /// attributes (Keystore will unwrap only if the specified secret, aka "attribute", is presented). All that's stored
-    /// here is an identifying label.
-    /// </summary>
-    public class SimpleSecretHolderProto : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// A descriptive label to help identify a relevant ACL entry or otherwise disambiguate this instance.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual SimpleSecretLabelProto Label { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// SimpleSecretProto (in authenticator.proto) and SimpleSecretHolderProto (below) share the notion of a "label",
-    /// which identifies a particular secret without (hopefully) revealing the secret. Note that a SimpleSecretLabel
-    /// only disambiguates between secrets used to get access to some particular object. Two different secrets that
-    /// apply to two different objects could have the same label. For example, in the common sharing model, each object
-    /// has no more than one "auth key". Therefore, the label for an auth key simply has type = AUTH_KEY with no
-    /// additional information. In theory, we could add some sort of resource ID to SimpleSecretLabel to make it more
-    /// explicit. However, in practice, this is never really needed. A SimpleSecret for one object is never used to
-    /// authorize a request on some other object, so there is no ambiguity. Also, since SimpleSecrets must obviously be
-    /// unguessable, there is no risk that a SimpleSecret intended for one object will accidentally grant access to
-    /// another.
-    /// </summary>
-    public class SimpleSecretLabelProto : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// ***DEPRECATED (3-Oct-2011) *** This field should be deleted when code stops using CAP_TOKEN labels. Used
-        /// when type = CAP_TOKEN. When a CAP_TOKEN label appears in a SimpleSecretHolder Principal, |capability_id|
-        /// must be filled in to identify one of the capabilities on the ACL. When a CAP_TOKEN label appears in a
-        /// SimpleSecret Authenticator, it is NOT necessary to fill in |capability_id| -- ACL Service will find the ID
-        /// by searching all capabilities on the ACL for one associated with the token given by the SimpleSecret's
-        /// secret data. If |capability_id| is specified, though, then the Authenticator will only be accepted if it
-        /// actually matches that particular token ID.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("capabilityId")]
-        public virtual System.Nullable<int> CapabilityId { get; set; }
-
-        /// <summary>Used when type = GENERIC_SECRET</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("genericLabel")]
-        public virtual string GenericLabel { get; set; }
-
-        /// <summary>Used when type == INVITE.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inviteId")]
-        public virtual System.Nullable<long> InviteId { get; set; }
-
-        /// <summary>This is optional because required enums cannot be extended.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Annotation metadata for slash commands (/).</summary>
-    public class SlashCommandMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Hint string for the arguments expected by the slash command.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("argumentsHint")]
-        public virtual string ArgumentsHint { get; set; }
-
-        /// <summary>Unique id for the slash command.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("commandId")]
-        public virtual System.Nullable<long> CommandId { get; set; }
-
-        /// <summary>Name of the slash command.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("commandName")]
-        public virtual string CommandName { get; set; }
-
-        /// <summary>ID of the bot which owns the slash command.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual UserId Id { get; set; }
-
-        /// <summary>Whether or not this slash command should trigger a dialog.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("triggersDialog")]
-        public virtual System.Nullable<bool> TriggersDialog { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17159,48 +9785,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
         public virtual string SnippetValue { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// An Attachment represents a linked entity associated with a piece of social content. This may be a 1st-party or
-    /// 3rd-party entity. In the Papyrus context, an Attachment is part of a Cent, and sits alongside the main content
-    /// of the cent, which is represented as a sequence of Segments. Right now an Attachment is just a wrapper around an
-    /// Embed, but we provide the extra layer of abstraction since, as Embeds move to separate storage in Briefcase, we
-    /// may want to add additional fields that are not part of the Embed proper, but that (for example) relate to the
-    /// usage of the linked content within the particular post/cent.
-    /// </summary>
-    public class SocialCommonAttachmentAttachment : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>An embed represents an external entity. See go/es-embeds.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("embedItem")]
-        public virtual EmbedClientItem EmbedItem { get; set; }
-
-        /// <summary>An id to uniquely identify an attachment when several attachments are in a collection.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Represents a user pseudonym. Pseudonyms are linked accounts on Google and third-party services (e.g. YouTube or
-    /// Twitter) and are described by a Social Graph Node.
-    /// </summary>
-    public class SocialGraphNodeProto : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The fields from ccc/socialgraph/socialgraphnode.proto:SgnNode that uniquely identify a social graph node.
-        /// The 'ident' field is not included here because its value can be changed.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sgnDomain")]
-        public virtual string SgnDomain { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("sgnPk")]
-        public virtual string SgnPk { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17283,19 +9867,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class SourceMessageInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Source message ID</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
-        public virtual MessageId MessageId { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("messageType")]
-        public virtual string MessageType { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Per source result count information.</summary>
     public class SourceResultCount : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -17330,17 +9901,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Primary key for Space resource.</summary>
-    public class SpaceId : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Unique, immutable ID of the Space</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("spaceId")]
-        public virtual string SpaceIdValue { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     public class SpellResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The suggested spelling of the query.</summary>
@@ -17357,32 +9917,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>Suggestion triggered for the current query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestionType")]
         public virtual string SuggestionType { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Represents the set of members (of a given type) in a Google+ Square (see http://go/squares). A Square with
-    /// default member_type is currently (1/2012) identical to the GaiaGroup with the same ID, but that is expected to
-    /// change soon (see http://go/superglue). Support for this principal type is currently (1/2012) incomplete -- e.g.,
-    /// Keystore does not support it yet (see b/5703421).
-    /// </summary>
-    public class SquareProto : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The type of Square members to consider, e.g. "all members" vs. "owners" vs. "admins". These are defined by
-        /// legacy_relation_id values in social.graph.storage.EdgeTypeEnum.EdgeType enum options in
-        /// social/graph/storage/proto/id.proto. See square.pb (defined in
-        /// production/config/cdd/socialgraph/mixer_config/prod/node_type_config) for all valid edge types associated
-        /// with square. Currently required.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("memberType")]
-        public virtual System.Nullable<int> MemberType { get; set; }
-
-        /// <summary>Currently required.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("squareId")]
-        public virtual System.Nullable<long> SquareId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17427,82 +9961,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class StoredParticipantId : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("gaiaId")]
-        public virtual System.Nullable<long> GaiaId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Information about viewers of the stream.</summary>
-    public class StreamViewerStats : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The estimate of the current viewer count.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("estimatedViewerCount")]
-        public virtual System.Nullable<long> EstimatedViewerCount { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Information about a streaming session in conference.</summary>
-    public class StreamingSessionInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The application type of the current streaming session.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("applicationType")]
-        public virtual string ApplicationType { get; set; }
-
-        /// <summary>
-        /// The latest streaming session event. This can be used by clients to help explain what is going on, why
-        /// recording stopped, etc. This will always be set to a valid event and consistent with the status. It can be
-        /// set when current session is inactive to indicate latest event that makes current session to become inactive.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("latestSessionEvent")]
-        public virtual SessionEvent LatestSessionEvent { get; set; }
-
-        /// <summary>
-        /// The display name of the owner of the recording output. It's only set when there will be uploaded recordings.
-        /// Currently, it's only set when application type is RECORDING or GLIVE_STREAM.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ownerDisplayName")]
-        public virtual string OwnerDisplayName { get; set; }
-
-        /// <summary>
-        /// This is the REST name and unique identifier of this streaming session and has the form `spaces//recordings/`
-        /// This is returned whenever status is either `STARTING` or `STARTED`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sessionId")]
-        public virtual string SessionId { get; set; }
-
-        /// <summary>
-        /// The current status of this streaming session. This can be used by clients to show session status indicator
-        /// and/or notification.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("status")]
-        public virtual string Status { get; set; }
-
-        /// <summary>When true, this recording may be used for training new transcription models.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("trainingEnabled")]
-        public virtual System.Nullable<bool> TrainingEnabled { get; set; }
-
-        /// <summary>
-        /// The policy that controls who can view the broadcast. This setting applies for broadcast session.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("viewerAccessPolicy")]
-        public virtual string ViewerAccessPolicy { get; set; }
-
-        /// <summary>
-        /// Contains information about viewers of the livestream. It is only set when application type is BROADCAST.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("viewerStats")]
-        public virtual StreamViewerStats ViewerStats { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17593,166 +10051,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Urls with additional bot related information.</summary>
-    public class SupportUrls : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Link to the admin configuration webpage for the bot. Configured by Pantheon, may be empty.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("adminConfigUrl")]
-        public virtual string AdminConfigUrl { get; set; }
-
-        /// <summary>Link to the deletion policy webpage for the bot. Configured by Pantheon, may be empty.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deletionPolicyUrl")]
-        public virtual string DeletionPolicyUrl { get; set; }
-
-        /// <summary>Link to GWM page of the app. May be empty.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gwmUrl")]
-        public virtual string GwmUrl { get; set; }
-
-        /// <summary>Link to the privacy policy webpage for the bot. May be empty.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("privacyPolicyUrl")]
-        public virtual string PrivacyPolicyUrl { get; set; }
-
-        /// <summary>Link to the setup webpage for the bot. Configured by Pantheon, may be empty.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("setupUrl")]
-        public virtual string SetupUrl { get; set; }
-
-        /// <summary>Link to the support webpage for the developer of the bot. May be empty.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("supportUrl")]
-        public virtual string SupportUrl { get; set; }
-
-        /// <summary>Link to the terms of service webpage for the bot. May be empty.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tosUrl")]
-        public virtual string TosUrl { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class SwitchWidget : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("controlType")]
-        public virtual string ControlType { get; set; }
-
-        /// <summary>The name of the switch widget which is will be used in FormInput.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("onChange")]
-        public virtual FormAction OnChange { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("selected")]
-        public virtual System.Nullable<bool> Selected { get; set; }
-
-        /// <summary>The value is what is passed back in apps script callback.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class TaskActionMarkup : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("reloadTasks")]
-        public virtual System.Nullable<bool> ReloadTasks { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class TextButton : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The alternative text used for accessibility Next field number: 7.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("altText")]
-        public virtual string AltText { get; set; }
-
-        /// <summary>
-        /// Optional color of the button's background in RAISE mode. The default is the secondary color from addon's
-        /// manifest.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("backgroundColor")]
-        public virtual string BackgroundColor { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("disabled")]
-        public virtual System.Nullable<bool> Disabled { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
-        public virtual OnClick OnClick { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("style")]
-        public virtual string Style { get; set; }
-
-        /// <summary>Text color can be set via HTML markup.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class TextField : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The initial set of auto complete items without any user input.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("autoComplete")]
-        public virtual AutoComplete AutoComplete { get; set; }
-
-        /// <summary>
-        /// The refresh function which returns AutoComplete based on the user's input text. If the callback is not
-        /// specified, auto complete will be purely done in client side based on the auto_complete items.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("autoCompleteCallback")]
-        public virtual FormAction AutoCompleteCallback { get; set; }
-
-        /// <summary>When set to true, a user can input multiple auto-complet items.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("autoCompleteMultipleSelections")]
-        public virtual System.Nullable<bool> AutoCompleteMultipleSelections { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("hintText")]
-        public virtual string HintText { get; set; }
-
-        /// <summary>One of label or hint_text is required to be specified by the developers.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual string Label { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("maxLines")]
-        public virtual System.Nullable<int> MaxLines { get; set; }
-
-        /// <summary>The name of the text field which is will be used in FormInput.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("onChange")]
-        public virtual FormAction OnChange { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The default value when no input from user.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>This is deprecated and please use KeyValue.</summary>
-    public class TextKeyValue : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("onClick")]
-        public virtual OnClick OnClick { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Used to provide a search operator for text properties. This is optional. Search operators let users restrict the
     /// query to specific fields relevant to the type of item being searched.
@@ -17780,15 +10078,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operatorName")]
         public virtual string OperatorName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class TextParagraph : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("text")]
-        public virtual string Text { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17822,77 +10111,31 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The ThreadKey was set on some (subset of the) messages in this thread.</summary>
-    public class ThreadKeySet : Google.Apis.Requests.IDirectResponseSchema
+    public class ThirdPartyGenericCard : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Messages on which the thread_key was changed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("messageKeys")]
-        public virtual System.Collections.Generic.IList<MultiKey> MessageKeys { get; set; }
+        /// <summary>Unique identifier for the card.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cardId")]
+        public virtual string CardId { get; set; }
 
-        /// <summary>The new thread_key for this thread</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("newThreadKey")]
-        public virtual MultiKey NewThreadKey { get; set; }
+        /// <summary>Category that the card belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("category")]
+        public virtual string Category { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
+        /// <summary>[Required] Card content.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual Content Content { get; set; }
 
-    /// <summary>
-    /// HistoryRecord for changes associated with a thread, namely: MESSAGE_ADDED MESSAGE_DELETED LABEL_ADDED
-    /// LABEL_REMOVED ATTRIBUTE_SET ATTRIBUTE_REMOVED THREAD_KEY_SET All label_ids refer to the (unchanging) value as
-    /// defined by the Label.id field in labels.proto. In particular, it is *not* the canonical_name.
-    /// </summary>
-    public class ThreadUpdate : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("attributeRemoved")]
-        public virtual AttributeRemoved AttributeRemoved { get; set; }
+        /// <summary>[Required] Context where the card should be triggered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("context")]
+        public virtual Context Context { get; set; }
 
-        [Newtonsoft.Json.JsonPropertyAttribute("attributeSet")]
-        public virtual AttributeSet AttributeSet { get; set; }
+        /// <summary>Whether the card can be dismissed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDismissible")]
+        public virtual System.Nullable<bool> IsDismissible { get; set; }
 
-        [Newtonsoft.Json.JsonPropertyAttribute("labelAdded")]
-        public virtual LabelAdded LabelAdded { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("labelRemoved")]
-        public virtual LabelRemoved LabelRemoved { get; set; }
-
-        /// <summary>Indicates the record id of the last operation that modified this thread.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastHistoryRecordId")]
-        public virtual System.Nullable<ulong> LastHistoryRecordId { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("messageAdded")]
-        public virtual MessageAdded MessageAdded { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("messageDeleted")]
-        public virtual MessageDeleted MessageDeleted { get; set; }
-
-        /// <summary>
-        /// The first non-empty thread-key on any message in the thread (including deleted messages). This field has
-        /// been introduced to maintain backward compatibility for clients that are not subthread aware.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("originalThreadKey")]
-        public virtual MultiKey OriginalThreadKey { get; set; }
-
-        /// <summary>
-        /// The PreStates of all messages before the transaction. These are suppressed if the client requested that
-        /// prestates not be included in the output of the GetHistoryRequest.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("preState")]
-        public virtual System.Collections.Generic.IList<PreState> PreState { get; set; }
-
-        /// <summary>Affected thread</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("threadKey")]
-        public virtual MultiKey ThreadKey { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("threadKeySet")]
-        public virtual ThreadKeySet ThreadKeySet { get; set; }
-
-        /// <summary>Thread PLID</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("threadLocator")]
-        public virtual string ThreadLocator { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("topicStateUpdate")]
-        public virtual TopicStateUpdate TopicStateUpdate { get; set; }
+        /// <summary>Priority of the card, where 0 is the highest priority.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual System.Nullable<int> Priority { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17961,306 +10204,12 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Tombstoning is the act of leaving a contextual trace when deleting a message. See more: go/tombstone-prd,
-    /// go/hub-dynamite-tombstones-server-design-v2.
-    /// </summary>
-    public class TombstoneMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Indicates the type of Tombstone.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("tombstoneType")]
-        public virtual string TombstoneType { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The Toolbar markup has been deprecated. The information is now specified in the manifest.</summary>
-    public class Toolbar : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Background color of the toolbar in RBG hex representation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("color")]
-        public virtual string Color { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
-        public virtual string IconUrl { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class TopicId : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The Space or DM that the topic belongs to.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
-        public virtual GroupId GroupId { get; set; }
-
-        /// <summary>
-        /// Opaque, server-assigned ID of the Topic. While this ID is guaranteed to be unique within the Space, it's not
-        /// guaranteed to be globally unique. Internal usage: this field can be empty in the following cases: 1. To
-        /// create the first message in a topic. 2. To list last N messages of a Space (regardless of topic).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("topicId")]
-        public virtual string TopicIdValue { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>State of an topic thread as maintained within Tingle.</summary>
-    public class TopicState : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Map of label =&amp;gt; count of topic constituent messages with label These only contain counts of labels
-        /// that are relevant for topic normalization/denormalization. Eg. If a topic thread has 5 constituents, 4 of
-        /// which are in inbox, this will contain ^i =&amp;gt; 4. Some labels of interest are archive, inbox, trash,
-        /// spam, etc.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("labelIdMessageCount")]
-        public virtual System.Collections.Generic.IDictionary<string, System.Nullable<int>> LabelIdMessageCount { get; set; }
-
-        /// <summary>Number of constituents for this entity.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("numConstituents")]
-        public virtual System.Nullable<int> NumConstituents { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class TopicStateUpdate : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("topicState")]
-        public virtual TopicState TopicState { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Storage information pertaining to the transaction with which a HistoryRecord is associated.</summary>
-    public class TransactionContext : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The last HistoryRecord of the transaction. Note that this may correspond to a record that is filtered by
-        /// Tingle (and thus not returned to the client). See http://b/9513464.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endingRecordId")]
-        public virtual System.Nullable<ulong> EndingRecordId { get; set; }
-
-        /// <summary>
-        /// The first HistoryRecord of the transaction. Note that this may be a record of type INTERNAL.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startingRecordId")]
-        public virtual System.Nullable<ulong> StartingRecordId { get; set; }
-
-        /// <summary>The microsecond timestamp of the transaction.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("writeTimestampUs")]
-        public virtual System.Nullable<long> WriteTimestampUs { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// HistoryRecord for debug info associated with the transaction, namely: TXN_DEBUG_INFO TODO(b/143845917) This is a
-    /// short-term workaround for unblocking fusebox writes migration. Clean up the code or land a long-term solution
-    /// after the rollout. go/diff-to-historyrecord
-    /// </summary>
-    public class TransactionDebugInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Information about a transcription session.</summary>
-    public class TranscriptionSessionInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Transcription session's state information.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sessionStateInfo")]
-        public virtual SessionStateInfo SessionStateInfo { get; set; }
-
-        /// <summary>A unique server-generated ID for the transcription session.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("transcriptionSessionId")]
-        public virtual string TranscriptionSessionId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Transient generic data that will not be saved on the server.</summary>
-    public class TransientData : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class Trigger : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Each dispatcher should use an enum to for the actions that it supports. If a dispatcher has only one action,
-        /// this does not need to be set. (It can be expanded later, defining the default behaviour as type 0.) For
-        /// purposes such as batching, the type of a trigger is (dispatcher, action_type).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("actionType")]
-        public virtual System.Nullable<long> ActionType { get; set; }
-
-        /// <summary>
-        /// Maximum possible delay in micros that can be tolerated so triggers can be batched, which makes processing
-        /// more efficient compared to firing triggers individually. Note that the actual fire time will be somewhere in
-        /// the timerange interval [fire_time_us, fire_time_us + batch_time_us).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("batchTimeUs")]
-        public virtual System.Nullable<long> BatchTimeUs { get; set; }
-
-        /// <summary>Must be set for DISPATCHER_STUBBY_DISPATCHER.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dispatchId")]
-        public virtual System.Nullable<long> DispatchId { get; set; }
-
-        /// <summary>Which server should interpret action_type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dispatcher")]
-        public virtual string Dispatcher { get; set; }
-
-        /// <summary>
-        /// Earliest time to fire at in microseconds. The actual time that the trigger will fire will be in the
-        /// timerange: [fire_time_us, fire_time_us + batch_time_us).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fireTimeUs")]
-        public virtual System.Nullable<long> FireTimeUs { get; set; }
-
-        /// <summary>Must be set for DISPATCHER_JOBSETTED_PRIMARY.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("jobsettedServerSpec")]
-        public virtual JobsettedServerSpec JobsettedServerSpec { get; set; }
-
-        /// <summary>The trigger key, if applicable.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("key")]
-        public virtual string Key { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("rpcOptions")]
-        public virtual RpcOptions RpcOptions { get; set; }
-
-        /// <summary>
-        /// The slice_fire_time_us is automatically computed and stored as part of the trigger write. It represents the
-        /// exact fire time at which the trigger will be queued to fire and will satisfy fire_time_us &amp;lt;
-        /// slice_fire_time_us &amp;lt;= fire_time_us + batch_time_us Triggers have an index row in the slice trigger
-        /// index with the row prefix matching this time. Note that this field is internal to gmail_cp and is ignored if
-        /// set by external clients when adding / updating triggers.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sliceFireTimeUs")]
-        public virtual System.Nullable<long> SliceFireTimeUs { get; set; }
-
-        /// <summary>Trigger action to perform. This should always be set.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("triggerAction")]
-        public virtual TriggerAction TriggerAction { get; set; }
-
-        /// <summary>
-        /// The TriggerKey will uniquely determine a trigger within a given context. A context is a single message for
-        /// message triggers or a single account for account triggers.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("triggerKey")]
-        public virtual TriggerKey TriggerKey { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class TriggerAction : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("action")]
-        public virtual string Action { get; set; }
-
-        /// <summary>Clients should use extensions on the Trigger message instead.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("data")]
-        public virtual string Data { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("dataInt")]
-        public virtual System.Nullable<long> DataInt { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A TriggerKey (type + instance_id) uniquely identifies a trigger within a message for a message-trigger and
-    /// within an account for an account-trigger.
-    /// </summary>
-    public class TriggerKey : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Identifier to distinguish multiple Triggers of the same type (per message or per account).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("instanceId")]
-        public virtual string InstanceId { get; set; }
-
-        /// <summary>
-        /// A non-empty string that identifies the type of Trigger. Triggers of the same type may be batched together.
-        /// The universe of values for the type field should be finite as it is used as a stats key.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class Triggers : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A list of triggers.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("triggers")]
-        public virtual System.Collections.Generic.IList<Trigger> TriggersValue { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Message containing a string that is safe to use in all URL contexts in DOM APIs and HTML documents; even where
-    /// the referred-to resource is interpreted as code, e.g., as the src of a script element.
-    /// </summary>
-    public class TrustedResourceUrlProto : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// IMPORTANT: Never set or read this field, even from tests, it is private. See documentation at the top of
-        /// .proto file for programming language packages with which to create or read this message.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("privateDoNotAccessOrElseTrustedResourceUrlWrappedValue")]
-        public virtual string PrivateDoNotAccessOrElseTrustedResourceUrlWrappedValue { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Next tag: 2</summary>
     public class TypeInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Contains additional video information only if document_type is VIDEO.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoInfo")]
         public virtual VideoInfo VideoInfo { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Universal phone access contains information required to dial into a conference using one of a static list of
-    /// phone numbers and a universal PIN. The phone number list is distributed separately.
-    /// </summary>
-    public class UniversalPhoneAccess : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The PIN that users must enter after dialing a universal number. The pin consists of only decimal digits and
-        /// the length may vary, though it generally is longer than a PhoneAccess.pin.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pin")]
-        public virtual string Pin { get; set; }
-
-        /// <summary>
-        /// This field has the same contents as the MeetingSpace.more_join_url field, and is included for compatibility
-        /// reasons. Clients should use the other field instead. This field is deprecated and will be removed.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pstnInfoUrl")]
-        public virtual string PstnInfoUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18298,40 +10247,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class UpdateBccRecipients : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("bccRecipients")]
-        public virtual System.Collections.Generic.IList<Recipient> BccRecipients { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class UpdateBody : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// A repeated field that contains a series of content to insert into the draft that the user is currently
-        /// editing. The content can contain HTML content or plain text content.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("insertContents")]
-        public virtual System.Collections.Generic.IList<InsertContent> InsertContents { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class UpdateCcRecipients : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("ccRecipients")]
-        public virtual System.Collections.Generic.IList<Recipient> CcRecipients { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     public class UpdateDataSourceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Common debug options.</summary>
@@ -18351,35 +10266,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class UpdateDraftActionMarkup : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>If set, replaces the existing Bcc recipients of the draft the user is currently editing.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateBccRecipients")]
-        public virtual UpdateBccRecipients UpdateBccRecipients { get; set; }
-
-        /// <summary>
-        /// A field that contains a series of update actions to perform on the draft body that the user is currently
-        /// editing.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateBody")]
-        public virtual UpdateBody UpdateBody { get; set; }
-
-        /// <summary>If set, replaces the existing Cc recipients of the draft the user is currently editing.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateCcRecipients")]
-        public virtual UpdateCcRecipients UpdateCcRecipients { get; set; }
-
-        /// <summary>If set, replaces the existing subject of the draft the user is currently editing.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateSubject")]
-        public virtual UpdateSubject UpdateSubject { get; set; }
-
-        /// <summary>If set, replaces the existing To recipients of the draft the user is currently editing.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateToRecipients")]
-        public virtual UpdateToRecipients UpdateToRecipients { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18406,24 +10292,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class UpdateSubject : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("subject")]
-        public virtual string Subject { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class UpdateToRecipients : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("toRecipients")]
-        public virtual System.Collections.Generic.IList<Recipient> ToRecipients { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Represents an upload session reference. This reference is created via upload method. This reference is valid for
     /// 30 days after its creation. Updating of item content may refer to this uploaded content via contentDataRef.
@@ -18438,447 +10306,12 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Annotation metadata for user Upload artifacts.</summary>
-    public class UploadMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Opaque token. Clients shall simply pass it back to the Backend. There is no guarantee the attachment_token
-        /// returned on subsequent reads is the same even if nothing has changed. This field will NOT be saved into
-        /// storage.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("attachmentToken")]
-        public virtual string AttachmentToken { get; set; }
-
-        /// <summary>
-        /// Information about the uploaded attachment that is only used in Backend. This field will NOT be sent out of
-        /// Google.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("backendUploadMetadata")]
-        public virtual AppsDynamiteSharedBackendUploadMetadata BackendUploadMetadata { get; set; }
-
-        /// <summary>
-        /// The "new" secure identifier for Drive files. Should be used instead of the deprecated string drive_id field
-        /// above. This should only be set if the upload file has been added to Drive. Note that older Drive files that
-        /// do not have a ResourceKey should still use this field, with the resource_key field unset.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clonedAuthorizedItemId")]
-        public virtual AuthorizedItemId ClonedAuthorizedItemId { get; set; }
-
-        /// <summary>
-        /// DriveAction for organizing the cloned version of this upload in Drive, if the file has been added to Drive.
-        /// This field is not set if the file has not been added to Drive. Additionally, this field is only set when
-        /// part of a FileResult in a ListFilesResponse.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clonedDriveAction")]
-        public virtual string ClonedDriveAction { get; set; }
-
-        /// <summary>
-        /// Reference to a Drive ID, if this upload file has been previously cloned to Drive. Note: this is deprecated
-        /// in favor of the AuthorizedItemId below.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clonedDriveId")]
-        public virtual string ClonedDriveId { get; set; }
-
-        /// <summary>The original file name for the content, not the full path.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contentName")]
-        public virtual string ContentName { get; set; }
-
-        /// <summary>
-        /// Type is from Scotty's best_guess by default:
-        /// http://google3/uploader/agent/scotty_agent.proto?l=51&amp;amp;rcl=140889785
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
-        public virtual string ContentType { get; set; }
-
-        /// <summary>The metrics metadata of the Data Loss Prevention attachment scan.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dlpMetricsMetadata")]
-        public virtual AppsDynamiteSharedDlpMetricsMetadata DlpMetricsMetadata { get; set; }
-
-        /// <summary>
-        /// Message component search metadata for this upload_metadata (currently used for message highlighting and
-        /// snippeting). For use by Search backend only; clients should get upload_metadata search info from
-        /// Annotation.component_search_info. This field is necessary because backend Message keeps UploadMetadata in a
-        /// separate field. Upon converting from backend message to frontend message, this field will be copied to
-        /// Annotation.component_search_info while the corresponding UploadMetadata is converted into an Annotation.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("internalOnlyComponentSearchInfo")]
-        public virtual AppsDynamiteSharedMessageComponentSearchInfo InternalOnlyComponentSearchInfo { get; set; }
-
-        /// <summary>The timestamp of the most recent virus scan completed (in microseconds).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("latestVirusScanTimestamp")]
-        public virtual System.Nullable<long> LatestVirusScanTimestamp { get; set; }
-
-        /// <summary>A copy of the LocalId in Annotation. This field is supposed to be filled by server only.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("localId")]
-        public virtual string LocalId { get; set; }
-
-        /// <summary>Original dimension of the content. Only set for image attachments.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("originalDimension")]
-        public virtual AppsDynamiteSharedDimension OriginalDimension { get; set; }
-
-        /// <summary>Reference to a transcoded video attachment. Only set for video attachments.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("videoReference")]
-        public virtual AppsDynamiteSharedVideoReference VideoReference { get; set; }
-
-        /// <summary>
-        /// Result for a virus scan. It's duplicated in the above field apps.dynamite.shared.BackendUploadMetadata
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("virusScanResult")]
-        public virtual string VirusScanResult { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Annotation metadata for a Weblink. In case of pasted link it can qualify to be other types in addition to being
-    /// a URL - like DRIVE_DOC/DRIVE_SHEET and so on. The URL metadata will also be present and it's up to the client to
-    /// decide which metadata to render it with. These fields are filled in using page render service.
-    /// </summary>
-    public class UrlMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Domain for this url. If it's an IP address the address is returned.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
-        public virtual string Domain { get; set; }
-
-        /// <summary>The signed GWS URL.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gwsUrl")]
-        public virtual SafeUrlProto GwsUrl { get; set; }
-
-        /// <summary>The expiration timestamp for GWS URL, only set when gws_url is set.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gwsUrlExpirationTimestamp")]
-        public virtual System.Nullable<long> GwsUrlExpirationTimestamp { get; set; }
-
-        /// <summary>
-        /// Dimensions of the image: height. This field is string to match with page render service response.
-        /// Deprecated. Use int_image_height instead.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageHeight")]
-        public virtual string ImageHeight { get; set; }
-
-        /// <summary>Representative image of the website.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
-        public virtual string ImageUrl { get; set; }
-
-        /// <summary>
-        /// Dimensions of the image: width. This field is string to match with page render service response. Deprecated.
-        /// Use int_image_height instead.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("imageWidth")]
-        public virtual string ImageWidth { get; set; }
-
-        /// <summary>Dimensions of the image: height.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("intImageHeight")]
-        public virtual System.Nullable<int> IntImageHeight { get; set; }
-
-        /// <summary>Dimensions of the image: width.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("intImageWidth")]
-        public virtual System.Nullable<int> IntImageWidth { get; set; }
-
-        /// <summary>
-        /// Mime type of the content (Currently mapped from Page Render Service ItemType) Note that this is not
-        /// necessarily the mime type of the http resource. For example a text/html from youtube or vimeo may actually
-        /// be classified as a video type. Then we shall mark it as video/* since we don't know exactly what type of
-        /// video it is.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-        public virtual string MimeType { get; set; }
-
-        /// <summary>The stable redirect URL pointing to frontend server.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("redirectUrl")]
-        public virtual SafeUrlProto RedirectUrl { get; set; }
-
-        /// <summary>
-        /// If the UrlMetadata is missing data for rendering a chip. Deprecated. Use Annotation.ChipRenderType instead.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("shouldNotRender")]
-        public virtual System.Nullable<bool> ShouldNotRender { get; set; }
-
-        /// <summary>Snippet/small description of the weblink.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
-        public virtual string Snippet { get; set; }
-
-        /// <summary>Title of the Weblink.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>The original URL.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("url")]
-        public virtual SafeUrlProto Url { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("urlSource")]
-        public virtual string UrlSource { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>User profile information. This user is not necessarily member of a space.</summary>
-    public class User : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>URL for the avatar picture of the User in dynamite</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("avatarUrl")]
-        public virtual string AvatarUrl { get; set; }
-
-        /// <summary>Information about whether the user is blocked by requester and/or has blocked requester.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("blockRelationship")]
-        public virtual AppsDynamiteSharedUserBlockRelationship BlockRelationship { get; set; }
-
-        /// <summary>Bot-specific profile information. Leave it empty for human users.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("botInfo")]
-        public virtual BotInfo BotInfo { get; set; }
-
-        /// <summary>
-        /// Deleted flag, if true, means User has been soft-deleted/purged Deprecated. Use user_account_state field
-        /// instead.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deleted")]
-        public virtual System.Nullable<bool> Deleted { get; set; }
-
-        /// <summary>Email ID of the user</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; }
-
-        /// <summary>First or given name of the user</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("firstName")]
-        public virtual string FirstName { get; set; }
-
-        /// <summary>Gender of the user</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gender")]
-        public virtual string Gender { get; set; }
-
-        /// <summary>UserId</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual UserId Id { get; set; }
-
-        /// <summary>
-        /// Set to true if none of the depending services (Gaia, PeopleApi) returns any info for this user.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("isAnonymous")]
-        public virtual System.Nullable<bool> IsAnonymous { get; set; }
-
-        /// <summary>Last or family name of the user</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastName")]
-        public virtual string LastName { get; set; }
-
-        /// <summary>Non-unique, user-defined display name of the User</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// Information about whether the user is a consumer user, or the GSuite customer that they belong to.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("organizationInfo")]
-        public virtual AppsDynamiteSharedOrganizationInfo OrganizationInfo { get; set; }
-
-        /// <summary>Phone number(s) of the user</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
-        public virtual System.Collections.Generic.IList<AppsDynamiteSharedPhoneNumber> PhoneNumber { get; set; }
-
-        /// <summary>State of user's Gaia Account</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userAccountState")]
-        public virtual string UserAccountState { get; set; }
-
-        /// <summary>Visibility of user's Profile</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userProfileVisibility")]
-        public virtual string UserProfileVisibility { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>User's single or bulk query activity. This can be a logging query or deletion query.</summary>
     public class UserActivity : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Contains data which needs to be logged/removed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryActivity")]
         public virtual QueryActivity QueryActivity { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Resource for displaying user info</summary>
-    public class UserDisplayInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The avatar to show for this user</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("avatarUrl")]
-        public virtual string AvatarUrl { get; set; }
-
-        /// <summary>The name to show for this user</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Primary key for User resource.</summary>
-    public class UserId : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. Opaque, server-assigned ID of the user profile associated with App/user acting on behalf of the
-        /// human user. This is currently only set when a 3P application is acting on the user's behalf.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("actingUserId")]
-        public virtual string ActingUserId { get; set; }
-
-        /// <summary>Opaque, server-assigned ID of the User.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
-
-        /// <summary>
-        /// Optional. Identifier of the App involved (directly or on behalf of a human creator) in creating this
-        /// message. This is not set if the user posted a message directly, but is used in the case of, for example, a
-        /// message being generated by a 1P integration based on a user action (creating an event, creating a task etc).
-        /// This should only be used on the BE. For clients, please use the field in the FE message proto instead
-        /// (google3/apps/dynamite/v1/frontend/api/message.proto?q=origin_app_id).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("originAppId")]
-        public virtual AppId OriginAppId { get; set; }
-
-        /// <summary>
-        /// Clients do not need to send UserType to Backend, but Backend will always send this field to clients per the
-        /// following rule: 1. For HUMAN Ids, the field is empty but by default .getType() will return HUMAN. 2. For BOT
-        /// Ids, the field is ALWAYS set to BOT.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Contains info regarding the updater of an Activity Feed item. Next Id: 8</summary>
-    public class UserInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Avatar url of the user who triggered the Drive Notification email. This field will be populated if we can
-        /// extract such information from the Drive Notification email. This should only be used to fetch user avatars
-        /// when updater_to_show_email is not populated. This field is not set for non-Drive Notification items.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("driveNotificationAvatarUrl")]
-        public virtual string DriveNotificationAvatarUrl { get; set; }
-
-        /// <summary>Describes how updater_count_to_show should be used.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updaterCountDisplayType")]
-        public virtual string UpdaterCountDisplayType { get; set; }
-
-        /// <summary>The number of updaters for clients to show depending on UpdaterCountDisplayType.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updaterCountToShow")]
-        public virtual System.Nullable<int> UpdaterCountToShow { get; set; }
-
-        /// <summary>
-        /// The email of the updater for clients to show used for Gmail items. For Drive Notifications, this is the
-        /// email of the user who triggered the Drive Notification email. This field will be populated if we can extract
-        /// such information from the Drive Notification email. This is not the actual sender of the email, as the
-        /// sender is always comments-noreply@docs.google.com.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updaterToShowEmail")]
-        public virtual string UpdaterToShowEmail { get; set; }
-
-        /// <summary>
-        /// The gaia id of the updater for clients to show used for Gmail items. If the updater is an external user, the
-        /// email field below should be populated.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updaterToShowGaiaId")]
-        public virtual System.Nullable<long> UpdaterToShowGaiaId { get; set; }
-
-        /// <summary>
-        /// The display name of the updater for clients to show used for Gmail items. For non-Drive Notification items,
-        /// this field will always be populated. If the display name cannot be found for the user, the fallback string
-        /// will be the email address. For Drive Notification items, this is the name of the user who triggered the
-        /// Drive notification email. This field will be populated if we can extract such information from the Drive
-        /// Notification email. If the name cannot be extracted, then the email will be the fallback string, which is
-        /// used as the display name text in the UI when needed. This is not the actual sender of the email, as the
-        /// sender is always comments-noreply@docs.google.com.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updaterToShowName")]
-        public virtual string UpdaterToShowName { get; set; }
-
-        /// <summary>The updater for clients to show used for Dynamite Chat items.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updaterToShowUserId")]
-        public virtual UserId UpdaterToShowUserId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Person metadata, for USER_MENTION segments. Should always contain at least one of user_gaia_id, user_id, email
-    /// or user. The exact set of populated fields may differ depending on the context and the level in the serving
-    /// stack; for example, emails will be elided on the viewing path. But as a general rule, a proto having any one of
-    /// the four is valid, subject to the standard constraints of the applied annotations -- that is, communication
-    /// between servers and clients will ignore jspb.ignore fields, and communication between servers and other servers
-    /// (or between servers and storage) will ignore client_only fields. For more on the annotations, see the comments
-    /// in social/common/segment_annotations.proto
-    /// </summary>
-    public class UserMentionData : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("email")]
-        public virtual string Email { get; set; }
-
-        /// <summary>
-        /// If the principal is backed by a gaia id, DO NOT use this field. Use user_gaia_id/user_id fields instead.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("user")]
-        public virtual PrincipalProto User { get; set; }
-
-        /// <summary>An unobfuscated gaia ID:</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userGaiaId")]
-        public virtual System.Nullable<long> UserGaiaId { get; set; }
-
-        /// <summary>An obfuscated gaia ID:</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userId")]
-        public virtual string UserId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Annotation metadata for user mentions (+/@/-).</summary>
-    public class UserMentionMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Display name of the mentioned user. This field should remain empty when clients resolve a UserMention
-        /// annotation. It will be filled in when a UserMention is generated by the Integration Server.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>
-        /// Gender of the mentioned user. One of "female", "male" or "other". Used for choosing accurate translations
-        /// for strings that contain the UserMention, when these need to be constructed (e.g. task assignment update
-        /// message). This field should remain empty when clients resolve a UserMention. It will be filled in when a
-        /// UserMention is generated by the Integration Server.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("gender")]
-        public virtual string Gender { get; set; }
-
-        /// <summary>
-        /// To be deprecated. Use invitee_info field instead. ID of the User mentioned. This field should remain empty
-        /// when type == MENTION_ALL.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual UserId Id { get; set; }
-
-        /// <summary>
-        /// Invitee UserId and email used when mentioned. This field should remain empty when type == MENTION_ALL.
-        /// Invitee_info.email is only used when a user is @-mentioned with an email address, and it will be empty when
-        /// clients get messages from Backend.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("inviteeInfo")]
-        public virtual InviteeInfo InviteeInfo { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>
-        /// Specific reason for the user mention failing, for fine-grained processing by clients (i.e. specific error
-        /// message for space limit exceeded case) IMPORTANT: Set this only for FAILED_TO_ADD case.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userMentionError")]
-        public virtual string UserMentionError { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18943,27 +10376,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class VideoCallMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Thor meeting space.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("meetingSpace")]
-        public virtual MeetingSpace MeetingSpace { get; set; }
-
-        /// <summary>
-        /// If this field is set to true, server should still contact external backends to get metadata for search but
-        /// clients should not render this chip.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("shouldNotRender")]
-        public virtual System.Nullable<bool> ShouldNotRender { get; set; }
-
-        /// <summary>Whether this meeting space was created via Dynamite in this Dynamite group.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("wasCreatedInCurrentGroup")]
-        public virtual System.Nullable<bool> WasCreatedInCurrentGroup { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Next tag: 2</summary>
     public class VideoInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -18973,300 +10385,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
         public virtual System.Nullable<int> Duration { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Represents both long and short phone number that can be called or texted. Short telephone numbers are used to
-    /// reach local services. Short numbers and their purpose differ from country to country. These numbers in US are in
-    /// the form of N11 which is a three-digit abbreviated dialing telephone number.
-    /// </summary>
-    public class VoicePhoneNumber : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// E.164 formatted full phone number with leading +. This field also represents encoded form of short telephone
-        /// numbers in E.164 format. e.g. "911" is encoded as "+1911".
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("e164")]
-        public virtual string E164 { get; set; }
-
-        /// <summary>Additional data that could be added using the libphonenumber API.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("i18nData")]
-        public virtual VoicePhoneNumberI18nData I18nData { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class VoicePhoneNumberI18nData : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The country calling code for this number, as defined by the ITU. For example, this would be 1 for NANPA
-        /// countries, and 33 for France (for more info see i18n.phonenumbers.PhoneNumber.country_code).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
-        public virtual System.Nullable<int> CountryCode { get; set; }
-
-        /// <summary>Display number formatted using the INTERNATIONAL format.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("internationalNumber")]
-        public virtual string InternationalNumber { get; set; }
-
-        /// <summary>
-        /// When present, indicates the number is valid according to the libphonenumber's isValidNumber API (see
-        /// https://code.google.com/p/libphonenumber/).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("isValid")]
-        public virtual System.Nullable<bool> IsValid { get; set; }
-
-        /// <summary>Display number formatted using the NATIONAL format.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nationalNumber")]
-        public virtual string NationalNumber { get; set; }
-
-        /// <summary>
-        /// A region (country, territory, continent, etc), as defined by Unicode's "CLDR", itself based on ISO 3166 (UN
-        /// country codes). For details, see
-        /// https://www.corp.google.com/~engdocs/java/com/google/i18n/identifiers/RegionCode.html
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
-        public virtual string RegionCode { get; set; }
-
-        /// <summary>
-        /// When set to a non-default value, indicates the validation reason that is set when phone number is invalid
-        /// (is_valid is false).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("validationResult")]
-        public virtual string ValidationResult { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Information on a whiteboard attached to an active conference. A whiteboard is a Jam document.</summary>
-    public class WhiteboardInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The Cosmo Id of the whiteboard document (Jam).</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
-
-        /// <summary>Title of the whiteboard document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>The uri for whiteboard document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
-        public virtual string Uri { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class WidgetMarkup : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>buttons is also oneof data and only one of these fields should be set.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("buttons")]
-        public virtual System.Collections.Generic.IList<Button> Buttons { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("dateTimePicker")]
-        public virtual DateTimePicker DateTimePicker { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("divider")]
-        public virtual Divider Divider { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("grid")]
-        public virtual Grid Grid { get; set; }
-
-        /// <summary>The horizontal alignment of this widget.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("horizontalAlignment")]
-        public virtual string HorizontalAlignment { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("image")]
-        public virtual Image Image { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("imageKeyValue")]
-        public virtual ImageKeyValue ImageKeyValue { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("keyValue")]
-        public virtual KeyValue KeyValue { get; set; }
-
-        /// <summary>Input Widgets</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("menu")]
-        public virtual Menu Menu { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("selectionControl")]
-        public virtual SelectionControl SelectionControl { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("textField")]
-        public virtual TextField TextField { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("textKeyValue")]
-        public virtual TextKeyValue TextKeyValue { get; set; }
-
-        /// <summary>Read-only Widgets</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("textParagraph")]
-        public virtual TextParagraph TextParagraph { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Message delete history record extension that exports /wonder/message_mapping/{vertical} attribute of deleted
-    /// messages which have any smartmail label (eg. ^cob_sm_invoice). go/how-dd-card-deletion
-    /// </summary>
-    public class WonderCardDelete : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Contains &amp;lt;{@code WonderCardType} enum value, value of /wonder/message_mapping/{vertical} attribute of
-        /// deleted message&amp;gt; pairs.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("messageMappings")]
-        public virtual System.Collections.Generic.IDictionary<string, WonderMessageMapping> MessageMappings { get; set; }
-
-        /// <summary>Message ID of the original deleted message</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("msgId")]
-        public virtual System.Nullable<ulong> MsgId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Card mapping attached to original message as an attribute stored at /wonder/message_mapping/{vertical} Next ID:
-    /// 2
-    /// </summary>
-    public class WonderMessageMapping : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// List of wonder card (client-generated) message IDs generated based on the original message.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("wonderCardMessageId")]
-        public virtual System.Collections.Generic.IList<string> WonderCardMessageId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A wrapper around a raw resource key. The secret should never be logged, and this proto annotates those secret
-    /// fields to ensure that they are not. Clients are encouraged to use this proto rather than defining their own, to
-    /// ensure that secrets are correctly annotated.
-    /// </summary>
-    public class WrappedResourceKey : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Resource key of the Drive item. This field should be unset if, depending on the context, the item does not
-        /// have a resource key, or if none was specified. This must never be logged.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resourceKey")]
-        public virtual string ResourceKey { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Information about a YouTube broadcast session.</summary>
-    public class YouTubeBroadcastSessionInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Current broadcast session's statistics.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("broadcastStats")]
-        public virtual YouTubeBroadcastStats BroadcastStats { get; set; }
-
-        /// <summary>YouTube broadcast session's state information.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sessionStateInfo")]
-        public virtual SessionStateInfo SessionStateInfo { get; set; }
-
-        /// <summary>A unique server-generated ID for the broadcast session.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("youTubeBroadcastSessionId")]
-        public virtual string YouTubeBroadcastSessionId { get; set; }
-
-        /// <summary>The YouTube Live broadcast event that is being streamed to.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("youTubeLiveBroadcastEvent")]
-        public virtual YouTubeLiveBroadcastEvent YouTubeLiveBroadcastEvent { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Statistics of the YouTube broadcast session.</summary>
-    public class YouTubeBroadcastStats : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Estimated concurrent viewer count.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("estimatedViewerCount")]
-        public virtual System.Nullable<long> EstimatedViewerCount { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Information about the broadcast to YouTube.</summary>
-    public class YouTubeLiveBroadcastEvent : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Input only. If the channel_id is for a YouTube Channel owned by a Brand Account, client is required to
-        /// populate this field with the obfuscated gaia id of the Brand account when starting the broadcast.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("brandAccountGaiaId")]
-        public virtual string BrandAccountGaiaId { get; set; }
-
-        /// <summary>Input only. The broadcast id, used to control the lifecycle of the event on YouTube</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("broadcastId")]
-        public virtual string BroadcastId { get; set; }
-
-        /// <summary>YouTube Channel associated with the broadcast.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("channelId")]
-        public virtual string ChannelId { get; set; }
-
-        /// <summary>
-        /// Output only. A URL that can be used to watch the meeting broadcast. Will be populated by the backend.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("viewUrl")]
-        public virtual string ViewUrl { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Annotation metadata for YouTube artifact.</summary>
-    public class YoutubeMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>YouTube resource ID of the artifact.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
-
-        /// <summary>
-        /// If this field is set to true, server should still contact external backends to get metadata for search but
-        /// clients should not render this chip.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("shouldNotRender")]
-        public virtual System.Nullable<bool> ShouldNotRender { get; set; }
-
-        /// <summary>
-        /// YouTube query parameter for timestamp. YouTube specific flag that allows users to embed time token when
-        /// sharing a link. This property contains parsed time token in seconds.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual System.Nullable<int> StartTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class YoutubeUserProto : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("youtubeUserId")]
-        public virtual System.Nullable<long> YoutubeUserId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>See go/zwieback. New uses of Zwieback sessions must be approved via go/zwieback-request.</summary>
-    public class ZwiebackSessionProto : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("zwiebackSessionId")]
-        public virtual System.Nullable<ulong> ZwiebackSessionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -763,7 +763,7 @@ namespace Google.Apis.OSConfig.v1alpha
                         }
 
                         /// <summary>
-                        /// Get the OS policy asssignment report for the specified Compute Engine VM instance.
+                        /// Get the OS policy assignment report for the specified Compute Engine VM instance.
                         /// </summary>
                         /// <param name="name">
                         /// Required. API resource name for OS policy assignment report. Format:
@@ -778,7 +778,7 @@ namespace Google.Apis.OSConfig.v1alpha
                         }
 
                         /// <summary>
-                        /// Get the OS policy asssignment report for the specified Compute Engine VM instance.
+                        /// Get the OS policy assignment report for the specified Compute Engine VM instance.
                         /// </summary>
                         public class GetRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1alpha.Data.OSPolicyAssignmentReport>
                         {
@@ -824,8 +824,7 @@ namespace Google.Apis.OSConfig.v1alpha
                         }
 
                         /// <summary>
-                        /// List OS policy asssignment reports for all Compute Engine VM instances in the specified
-                        /// zone.
+                        /// List OS policy assignment reports for all Compute Engine VM instances in the specified zone.
                         /// </summary>
                         /// <param name="parent">
                         /// Required. The parent resource name. Format:
@@ -849,8 +848,7 @@ namespace Google.Apis.OSConfig.v1alpha
                         }
 
                         /// <summary>
-                        /// List OS policy asssignment reports for all Compute Engine VM instances in the specified
-                        /// zone.
+                        /// List OS policy assignment reports for all Compute Engine VM instances in the specified zone.
                         /// </summary>
                         public class ListRequest : OSConfigBaseServiceRequest<Google.Apis.OSConfig.v1alpha.Data.ListOSPolicyAssignmentReportsResponse>
                         {

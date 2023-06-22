@@ -12550,56 +12550,6 @@
       "https://www.googleapis.com/auth/compute"
      ]
     },
-    "export": {
-     "description": "Export the changed blocks between two instant snapshots to a customer's bucket in the user specified format.",
-     "flatPath": "projects/{project}/zones/{zone}/instantSnapshots/{instantSnapshot}/export",
-     "httpMethod": "POST",
-     "id": "compute.instantSnapshots.export",
-     "parameterOrder": [
-      "project",
-      "zone",
-      "instantSnapshot"
-     ],
-     "parameters": {
-      "instantSnapshot": {
-       "description": "Name of the instant snapshot to export.",
-       "location": "path",
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
-       "required": true,
-       "type": "string"
-      },
-      "project": {
-       "description": "Project ID for this request.",
-       "location": "path",
-       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-       "required": true,
-       "type": "string"
-      },
-      "requestId": {
-       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
-       "location": "query",
-       "type": "string"
-      },
-      "zone": {
-       "description": "The name of the zone for this request.",
-       "location": "path",
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-       "required": true,
-       "type": "string"
-      }
-     },
-     "path": "projects/{project}/zones/{zone}/instantSnapshots/{instantSnapshot}/export",
-     "request": {
-      "$ref": "InstantSnapshotsExportRequest"
-     },
-     "response": {
-      "$ref": "Operation"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/cloud-platform",
-      "https://www.googleapis.com/auth/compute"
-     ]
-    },
     "get": {
      "description": "Returns the specified InstantSnapshot resource in the specified zone.",
      "flatPath": "projects/{project}/zones/{zone}/instantSnapshots/{instantSnapshot}",
@@ -24743,56 +24693,6 @@
       "https://www.googleapis.com/auth/compute"
      ]
     },
-    "export": {
-     "description": "Export the changed blocks between two instant snapshots to a customer's bucket in the user specified format.",
-     "flatPath": "projects/{project}/regions/{region}/instantSnapshots/{instantSnapshot}/export",
-     "httpMethod": "POST",
-     "id": "compute.regionInstantSnapshots.export",
-     "parameterOrder": [
-      "project",
-      "region",
-      "instantSnapshot"
-     ],
-     "parameters": {
-      "instantSnapshot": {
-       "description": "Name of the instant snapshot to export.",
-       "location": "path",
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
-       "required": true,
-       "type": "string"
-      },
-      "project": {
-       "description": "Project ID for this request.",
-       "location": "path",
-       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
-       "required": true,
-       "type": "string"
-      },
-      "region": {
-       "description": "The name of the zone for this request.",
-       "location": "path",
-       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
-       "required": true,
-       "type": "string"
-      },
-      "requestId": {
-       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
-       "location": "query",
-       "type": "string"
-      }
-     },
-     "path": "projects/{project}/regions/{region}/instantSnapshots/{instantSnapshot}/export",
-     "request": {
-      "$ref": "RegionInstantSnapshotsExportRequest"
-     },
-     "response": {
-      "$ref": "Operation"
-     },
-     "scopes": [
-      "https://www.googleapis.com/auth/cloud-platform",
-      "https://www.googleapis.com/auth/compute"
-     ]
-    },
     "get": {
      "description": "Returns the specified InstantSnapshot resource in the specified region.",
      "flatPath": "projects/{project}/regions/{region}/instantSnapshots/{instantSnapshot}",
@@ -26958,6 +26858,12 @@
        "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "required": true,
        "type": "string"
+      },
+      "updateMask": {
+       "description": "Indicates fields to be cleared as part of this request.",
+       "format": "google-fieldmask",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}",
@@ -27008,6 +26914,12 @@
        "location": "path",
        "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "required": true,
+       "type": "string"
+      },
+      "updateMask": {
+       "description": "Indicates fields to be cleared as part of this request.",
+       "format": "google-fieldmask",
+       "location": "query",
        "type": "string"
       },
       "validateOnly": {
@@ -31282,6 +31194,12 @@
        "location": "path",
        "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "required": true,
+       "type": "string"
+      },
+      "updateMask": {
+       "description": "Indicates fields to be cleared as part of this request.",
+       "format": "google-fieldmask",
+       "location": "query",
        "type": "string"
       }
      },
@@ -38179,7 +38097,7 @@
    }
   }
  },
- "revision": "20230606",
+ "revision": "20230610",
  "rootUrl": "https://compute.googleapis.com/",
  "schemas": {
   "AWSV4Signature": {
@@ -38728,7 +38646,7 @@
      "type": "string"
     },
     "ipVersion": {
-     "description": "The IP version that will be used by this address. Valid options are IPV4 or IPV6. This can only be specified for a global address.",
+     "description": "The IP version that will be used by this address. Valid options are IPV4 or IPV6.",
      "enum": [
       "IPV4",
       "IPV6",
@@ -39636,6 +39554,10 @@
     "sourceImageEncryptionKey": {
      "$ref": "CustomerEncryptionKey",
      "description": "The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. InstanceTemplate and InstancePropertiesPatch do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys."
+    },
+    "sourceInstantSnapshot": {
+     "description": "The source instant-snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or initializeParams.sourceInstantSnapshot initializeParams.sourceImage or disks.source is required except for local SSD. To create a disk with a snapshot that you created, specify the snapshot name in the following format: us-central1-a/instantSnapshots/my-backup If the source instant-snapshot is deleted later, this field will not be set.",
+     "type": "string"
     },
     "sourceSnapshot": {
      "description": "The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.source is required except for local SSD. To create a disk with a snapshot that you created, specify the snapshot name in the following format: global/snapshots/my-backup If the source snapshot is deleted later, this field will not be set.",
@@ -49851,6 +49773,18 @@
   "InstanceGroupManagerInstanceLifecyclePolicy": {
    "id": "InstanceGroupManagerInstanceLifecyclePolicy",
    "properties": {
+    "defaultActionOnFailure": {
+     "description": "The action that a MIG performs on a failed or an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are - REPAIR (default): MIG automatically repairs a failed or an unhealthy VM by recreating it. For more information, see About repairing VMs in a MIG. - DO_NOTHING: MIG does not repair a failed or an unhealthy VM. ",
+     "enum": [
+      "DO_NOTHING",
+      "REPAIR"
+     ],
+     "enumDescriptions": [
+      "MIG does not repair a failed or an unhealthy VM.",
+      "(Default) MIG automatically repairs a failed or an unhealthy VM by recreating it. For more information, see About repairing VMs in a MIG."
+     ],
+     "type": "string"
+    },
     "forceUpdateOnRepair": {
      "description": "A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. Instead, configuration updates are applied according to the group's update policy. - YES: If configuration updates are available, they are applied during repair. ",
      "enum": [
@@ -50104,14 +50038,14 @@
      ],
      "enumDescriptions": [
       "Do not perform any action.",
-      "Updates applied in runtime, instances will not be disrupted.",
-      "Old instances will be deleted. New instances will be created from the target template.",
-      "Every instance will be restarted."
+      "Do not stop the instance.",
+      "(Default.) Replace the instance according to the replacement method option.",
+      "Stop the instance and start it again."
      ],
      "type": "string"
     },
     "mostDisruptiveAllowedAction": {
-     "description": "Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.",
+     "description": "Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to avoid restarting the VM and to limit disruption as much as possible. RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.",
      "enum": [
       "NONE",
       "REFRESH",
@@ -50120,9 +50054,9 @@
      ],
      "enumDescriptions": [
       "Do not perform any action.",
-      "Updates applied in runtime, instances will not be disrupted.",
-      "Old instances will be deleted. New instances will be created from the target template.",
-      "Every instance will be restarted."
+      "Do not stop the instance.",
+      "(Default.) Replace the instance according to the replacement method option.",
+      "Stop the instance and start it again."
      ],
      "type": "string"
     },
@@ -50200,7 +50134,7 @@
      "type": "array"
     },
     "minimalAction": {
-     "description": "The minimal action that you want to perform on each instance during the update: - REPLACE: At minimum, delete the instance and create it again. - RESTART: Stop the instance and start it again. - REFRESH: Do not stop the instance. - NONE: Do not disrupt the instance at all. By default, the minimum action is NONE. If your update requires a more disruptive action than you set with this flag, the necessary action is performed to execute the update.",
+     "description": "The minimal action that you want to perform on each instance during the update: - REPLACE: At minimum, delete the instance and create it again. - RESTART: Stop the instance and start it again. - REFRESH: Do not stop the instance and limit disruption as much as possible. - NONE: Do not disrupt the instance at all. By default, the minimum action is NONE. If your update requires a more disruptive action than you set with this flag, the necessary action is performed to execute the update.",
      "enum": [
       "NONE",
       "REFRESH",
@@ -50209,14 +50143,14 @@
      ],
      "enumDescriptions": [
       "Do not perform any action.",
-      "Updates applied in runtime, instances will not be disrupted.",
-      "Old instances will be deleted. New instances will be created from the target template.",
-      "Every instance will be restarted."
+      "Do not stop the instance.",
+      "(Default.) Replace the instance according to the replacement method option.",
+      "Stop the instance and start it again."
      ],
      "type": "string"
     },
     "mostDisruptiveAllowedAction": {
-     "description": "The most disruptive action that you want to perform on each instance during the update: - REPLACE: Delete the instance and create it again. - RESTART: Stop the instance and start it again. - REFRESH: Do not stop the instance. - NONE: Do not disrupt the instance at all. By default, the most disruptive allowed action is REPLACE. If your update requires a more disruptive action than you set with this flag, the update request will fail.",
+     "description": "The most disruptive action that you want to perform on each instance during the update: - REPLACE: Delete the instance and create it again. - RESTART: Stop the instance and start it again. - REFRESH: Do not stop the instance and limit disruption as much as possible. - NONE: Do not disrupt the instance at all. By default, the most disruptive allowed action is REPLACE. If your update requires a more disruptive action than you set with this flag, the update request will fail.",
      "enum": [
       "NONE",
       "REFRESH",
@@ -50225,9 +50159,9 @@
      ],
      "enumDescriptions": [
       "Do not perform any action.",
-      "Updates applied in runtime, instances will not be disrupted.",
-      "Old instances will be deleted. New instances will be created from the target template.",
-      "Every instance will be restarted."
+      "Do not stop the instance.",
+      "(Default.) Replace the instance according to the replacement method option.",
+      "Stop the instance and start it again."
      ],
      "type": "string"
     }
@@ -52481,42 +52415,6 @@
    },
    "type": "object"
   },
-  "InstantSnapshotExportParams": {
-   "id": "InstantSnapshotExportParams",
-   "properties": {
-    "baseInstantSnapshot": {
-     "description": "An optional base instant snapshot that this resource is compared against. If not specified, all blocks of this resource are exported. The base instant snapshot and this resource must be created from the same disk. The base instant snapshot must be created earlier in time than this resource.",
-     "type": "string"
-    },
-    "bucketName": {
-     "description": "The name of an existing bucket in Cloud Storage where the changed blocks will be stored. The Google Service Account must have read and write access to this bucket. The bucket has to be in the same region as this resource.",
-     "type": "string"
-    },
-    "encryptionKey": {
-     "$ref": "CustomerEncryptionKey",
-     "description": "Encryption key used to encrypt the instant snapshot."
-    },
-    "objectName": {
-     "description": "Name of the output Bigstore object storing the changed blocks. Object name must be less than 1024 bytes in length.",
-     "type": "string"
-    },
-    "outputType": {
-     "description": "The format of the output file.",
-     "enum": [
-      "INVALID",
-      "METADATA_AND_DATA",
-      "METADATA_ONLY"
-     ],
-     "enumDescriptions": [
-      "",
-      "",
-      ""
-     ],
-     "type": "string"
-    }
-   },
-   "type": "object"
-  },
   "InstantSnapshotList": {
    "description": "Contains a list of InstantSnapshot resources.",
    "id": "InstantSnapshotList",
@@ -52646,16 +52544,6 @@
      "description": "[Output Only] The storage size of this instant snapshot.",
      "format": "int64",
      "type": "string"
-    }
-   },
-   "type": "object"
-  },
-  "InstantSnapshotsExportRequest": {
-   "id": "InstantSnapshotsExportRequest",
-   "properties": {
-    "exportParams": {
-     "$ref": "InstantSnapshotExportParams",
-     "description": "Parameters to export the changed blocks."
     }
    },
    "type": "object"
@@ -61875,7 +61763,7 @@
      "type": "string"
     },
     "dnsVerificationIp": {
-     "description": "The IPv4 address to be used for reverse DNS verification.",
+     "description": "The address to be used for reverse DNS verification.",
      "type": "string"
     },
     "fingerprint": {
@@ -61889,7 +61777,7 @@
      "type": "string"
     },
     "ipCidrRange": {
-     "description": "The IPv4 address range, in CIDR format, represented by this public advertised prefix.",
+     "description": "The address range, in CIDR format, represented by this public advertised prefix.",
      "type": "string"
     },
     "kind": {
@@ -63654,7 +63542,7 @@
      "type": "array"
     },
     "minimalAction": {
-     "description": "The minimal action that you want to perform on each instance during the update: - REPLACE: At minimum, delete the instance and create it again. - RESTART: Stop the instance and start it again. - REFRESH: Do not stop the instance. - NONE: Do not disrupt the instance at all. By default, the minimum action is NONE. If your update requires a more disruptive action than you set with this flag, the necessary action is performed to execute the update.",
+     "description": "The minimal action that you want to perform on each instance during the update: - REPLACE: At minimum, delete the instance and create it again. - RESTART: Stop the instance and start it again. - REFRESH: Do not stop the instance and limit disruption as much as possible. - NONE: Do not disrupt the instance at all. By default, the minimum action is NONE. If your update requires a more disruptive action than you set with this flag, the necessary action is performed to execute the update.",
      "enum": [
       "NONE",
       "REFRESH",
@@ -63663,14 +63551,14 @@
      ],
      "enumDescriptions": [
       "Do not perform any action.",
-      "Updates applied in runtime, instances will not be disrupted.",
-      "Old instances will be deleted. New instances will be created from the target template.",
-      "Every instance will be restarted."
+      "Do not stop the instance.",
+      "(Default.) Replace the instance according to the replacement method option.",
+      "Stop the instance and start it again."
      ],
      "type": "string"
     },
     "mostDisruptiveAllowedAction": {
-     "description": "The most disruptive action that you want to perform on each instance during the update: - REPLACE: Delete the instance and create it again. - RESTART: Stop the instance and start it again. - REFRESH: Do not stop the instance. - NONE: Do not disrupt the instance at all. By default, the most disruptive allowed action is REPLACE. If your update requires a more disruptive action than you set with this flag, the update request will fail.",
+     "description": "The most disruptive action that you want to perform on each instance during the update: - REPLACE: Delete the instance and create it again. - RESTART: Stop the instance and start it again. - REFRESH: Do not stop the instance and limit disruption as much as possible. - NONE: Do not disrupt the instance at all. By default, the most disruptive allowed action is REPLACE. If your update requires a more disruptive action than you set with this flag, the update request will fail.",
      "enum": [
       "NONE",
       "REFRESH",
@@ -63679,9 +63567,9 @@
      ],
      "enumDescriptions": [
       "Do not perform any action.",
-      "Updates applied in runtime, instances will not be disrupted.",
-      "Old instances will be deleted. New instances will be created from the target template.",
-      "Every instance will be restarted."
+      "Do not stop the instance.",
+      "(Default.) Replace the instance according to the replacement method option.",
+      "Stop the instance and start it again."
      ],
      "type": "string"
     }
@@ -64087,16 +63975,6 @@
       "$ref": "NamedPort"
      },
      "type": "array"
-    }
-   },
-   "type": "object"
-  },
-  "RegionInstantSnapshotsExportRequest": {
-   "id": "RegionInstantSnapshotsExportRequest",
-   "properties": {
-    "exportParams": {
-     "$ref": "InstantSnapshotExportParams",
-     "description": "Parameters to export the changed blocks."
     }
    },
    "type": "object"
@@ -69880,6 +69758,13 @@
     "guestFlush": {
      "description": "[Input Only] Whether to attempt an application consistent snapshot by informing the OS to prepare for the snapshot process.",
      "type": "boolean"
+    },
+    "guestOsFeatures": {
+     "description": "[Output Only] A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.",
+     "items": {
+      "$ref": "GuestOsFeature"
+     },
+     "type": "array"
     },
     "id": {
      "description": "[Output Only] The unique identifier for the resource. This identifier is defined by the server.",

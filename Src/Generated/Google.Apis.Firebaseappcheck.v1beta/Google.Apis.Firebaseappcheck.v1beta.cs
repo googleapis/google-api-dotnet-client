@@ -3485,7 +3485,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// projects/{project_number}/services/{service_id} ``` Note that the `service_id` element must be a
             /// supported service ID. Currently, the following service IDs are supported: *
             /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com`
-            /// (Firebase Realtime Database) * `firestore.googleapis.com` (Cloud Firestore)
+            /// (Firebase Realtime Database) * `firestore.googleapis.com` (Cloud Firestore) *
+            /// `identitytoolkit.googleapis.com` (Firebase Authentication with Identity Platform)
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -3507,7 +3508,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// projects/{project_number}/services/{service_id} ``` Note that the `service_id` element must be a
                 /// supported service ID. Currently, the following service IDs are supported: *
                 /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com`
-                /// (Firebase Realtime Database) * `firestore.googleapis.com` (Cloud Firestore)
+                /// (Firebase Realtime Database) * `firestore.googleapis.com` (Cloud Firestore) *
+                /// `identitytoolkit.googleapis.com` (Firebase Authentication with Identity Platform)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3633,7 +3635,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta
             /// projects/{project_number}/services/{service_id} ``` Note that the `service_id` element must be a
             /// supported service ID. Currently, the following service IDs are supported: *
             /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com`
-            /// (Firebase Realtime Database) * `firestore.googleapis.com` (Cloud Firestore)
+            /// (Firebase Realtime Database) * `firestore.googleapis.com` (Cloud Firestore) *
+            /// `identitytoolkit.googleapis.com` (Firebase Authentication with Identity Platform)
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1beta.Data.GoogleFirebaseAppcheckV1betaService body, string name)
             {
@@ -3656,7 +3659,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta
                 /// projects/{project_number}/services/{service_id} ``` Note that the `service_id` element must be a
                 /// supported service ID. Currently, the following service IDs are supported: *
                 /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com`
-                /// (Firebase Realtime Database) * `firestore.googleapis.com` (Cloud Firestore)
+                /// (Firebase Realtime Database) * `firestore.googleapis.com` (Cloud Firestore) *
+                /// `identitytoolkit.googleapis.com` (Firebase Authentication with Identity Platform)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -4639,7 +4643,8 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         /// projects/{project_number}/services/{service_id} ``` Note that the `service_id` element must be a supported
         /// service ID. Currently, the following service IDs are supported: * `firebasestorage.googleapis.com` (Cloud
         /// Storage for Firebase) * `firebasedatabase.googleapis.com` (Firebase Realtime Database) *
-        /// `firestore.googleapis.com` (Cloud Firestore)
+        /// `firestore.googleapis.com` (Cloud Firestore) * `identitytoolkit.googleapis.com` (Firebase Authentication
+        /// with Identity Platform)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4659,7 +4664,10 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         /// in the format: ``` projects/{project_number}/services/{service_id} ``` Note that the `service_id` element
         /// must be a supported service ID. Currently, the following service IDs are supported: *
         /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com` (Firebase
-        /// Realtime Database) * `firestore.googleapis.com` (Cloud Firestore)
+        /// Realtime Database) * `firestore.googleapis.com` (Cloud Firestore) * `identitytoolkit.googleapis.com`
+        /// (Firebase Authentication with Identity Platform) For Firebase Authentication to work with App Check, you
+        /// must first upgrade to [Firebase Authentication with Identity
+        /// Platform](https://firebase.google.com/docs/auth#identity-platform).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual GoogleFirebaseAppcheckV1betaService Service { get; set; }

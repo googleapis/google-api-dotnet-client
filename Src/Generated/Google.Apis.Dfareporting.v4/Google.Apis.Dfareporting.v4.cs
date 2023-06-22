@@ -76,7 +76,6 @@ namespace Google.Apis.Dfareporting.v4
             MobileCarriers = new MobileCarriersResource(this);
             OperatingSystemVersions = new OperatingSystemVersionsResource(this);
             OperatingSystems = new OperatingSystemsResource(this);
-            OrderDocuments = new OrderDocumentsResource(this);
             Orders = new OrdersResource(this);
             PlacementGroups = new PlacementGroupsResource(this);
             PlacementStrategies = new PlacementStrategiesResource(this);
@@ -269,9 +268,6 @@ namespace Google.Apis.Dfareporting.v4
 
         /// <summary>Gets the OperatingSystems resource.</summary>
         public virtual OperatingSystemsResource OperatingSystems { get; }
-
-        /// <summary>Gets the OrderDocuments resource.</summary>
-        public virtual OrderDocumentsResource OrderDocuments { get; }
 
         /// <summary>Gets the Orders resource.</summary>
         public virtual OrdersResource Orders { get; }
@@ -566,7 +562,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/accountActiveAdSummaries/{summaryAccountId}";
+            public override string RestPath => "userprofiles/{+profileId}/accountActiveAdSummaries/{+summaryAccountId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -578,7 +574,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("summaryAccountId", new Google.Apis.Discovery.Parameter
                 {
@@ -586,7 +582,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -640,7 +636,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/accountPermissionGroups/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/accountPermissionGroups/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -652,7 +648,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -660,7 +656,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -693,7 +689,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/accountPermissionGroups";
+            public override string RestPath => "userprofiles/{+profileId}/accountPermissionGroups";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -705,7 +701,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -759,7 +755,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/accountPermissions/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/accountPermissions/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -771,7 +767,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -779,7 +775,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -812,7 +808,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/accountPermissions";
+            public override string RestPath => "userprofiles/{+profileId}/accountPermissions";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -824,7 +820,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -878,7 +874,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/accountUserProfiles/{id}";
+            public override string RestPath => "userprofiles/{profileId}/accountUserProfiles/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -898,7 +894,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -939,7 +935,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/accountUserProfiles";
+            public override string RestPath => "userprofiles/{+profileId}/accountUserProfiles";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -951,7 +947,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -1030,11 +1026,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -1054,7 +1050,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/accountUserProfiles";
+            public override string RestPath => "userprofiles/{+profileId}/accountUserProfiles";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -1066,7 +1062,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("active", new Google.Apis.Discovery.Parameter
                 {
@@ -1143,16 +1139,16 @@ namespace Google.Apis.Dfareporting.v4
             }
         }
 
-        /// <summary>Updates an existing account user profile. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing user role. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">AccountUserProfile ID.</param>
+        /// <param name="id">Required. AccountUserProfile ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.AccountUserProfile body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
-        /// <summary>Updates an existing account user profile. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing user role. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.AccountUserProfile>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -1168,7 +1164,7 @@ namespace Google.Apis.Dfareporting.v4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>AccountUserProfile ID.</summary>
+            /// <summary>Required. AccountUserProfile ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long Id { get; private set; }
 
@@ -1185,7 +1181,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/accountUserProfiles";
+            public override string RestPath => "userprofiles/{+profileId}/accountUserProfiles";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -1197,7 +1193,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -1246,7 +1242,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/accountUserProfiles";
+            public override string RestPath => "userprofiles/{+profileId}/accountUserProfiles";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -1258,7 +1254,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -1312,7 +1308,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/accounts/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/accounts/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -1324,7 +1320,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -1332,7 +1328,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -1409,11 +1405,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -1425,7 +1421,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/accounts";
+            public override string RestPath => "userprofiles/{+profileId}/accounts";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -1437,7 +1433,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("active", new Google.Apis.Discovery.Parameter
                 {
@@ -1501,7 +1497,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <summary>Updates an existing account. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Account ID.</param>
+        /// <param name="id">Required. Account ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.Account body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
@@ -1523,7 +1519,7 @@ namespace Google.Apis.Dfareporting.v4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>Account ID.</summary>
+            /// <summary>Required. Account ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long Id { get; private set; }
 
@@ -1540,7 +1536,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/accounts";
+            public override string RestPath => "userprofiles/{+profileId}/accounts";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -1552,7 +1548,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -1601,7 +1597,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/accounts";
+            public override string RestPath => "userprofiles/{+profileId}/accounts";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -1613,7 +1609,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -1667,7 +1663,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/ads/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/ads/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -1679,7 +1675,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -1687,7 +1683,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -1728,7 +1724,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/ads";
+            public override string RestPath => "userprofiles/{+profileId}/ads";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -1740,7 +1736,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -1811,11 +1807,11 @@ namespace Google.Apis.Dfareporting.v4
                 [Google.Apis.Util.StringValueAttribute("DISPLAY_INTERSTITIAL")]
                 DISPLAYINTERSTITIAL = 1,
 
-                /// <summary></summary>
+                /// <summary>Deprecated enum value. No longer supported.</summary>
                 [Google.Apis.Util.StringValueAttribute("APP")]
                 APP = 2,
 
-                /// <summary></summary>
+                /// <summary>Deprecated enum value. No longer supported.</summary>
                 [Google.Apis.Util.StringValueAttribute("APP_INTERSTITIAL")]
                 APPINTERSTITIAL = 3,
 
@@ -1907,11 +1903,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -1971,7 +1967,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/ads";
+            public override string RestPath => "userprofiles/{+profileId}/ads";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -1983,7 +1979,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("active", new Google.Apis.Discovery.Parameter
                 {
@@ -2172,16 +2168,16 @@ namespace Google.Apis.Dfareporting.v4
             }
         }
 
-        /// <summary>Updates an existing ad. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing event tag. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Ad ID.</param>
+        /// <param name="id">Required. RemarketingList ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.Ad body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
-        /// <summary>Updates an existing ad. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing event tag. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Ad>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -2197,7 +2193,7 @@ namespace Google.Apis.Dfareporting.v4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>Ad ID.</summary>
+            /// <summary>Required. RemarketingList ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long Id { get; private set; }
 
@@ -2214,7 +2210,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/ads";
+            public override string RestPath => "userprofiles/{+profileId}/ads";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -2226,7 +2222,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -2275,7 +2271,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/ads";
+            public override string RestPath => "userprofiles/{+profileId}/ads";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -2287,7 +2283,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -2341,7 +2337,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/advertiserGroups/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/advertiserGroups/{+id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -2353,7 +2349,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -2361,7 +2357,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -2400,7 +2396,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/advertiserGroups/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/advertiserGroups/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -2412,7 +2408,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -2420,7 +2416,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -2461,7 +2457,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/advertiserGroups";
+            public override string RestPath => "userprofiles/{+profileId}/advertiserGroups";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -2473,7 +2469,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -2544,11 +2540,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -2560,7 +2556,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/advertiserGroups";
+            public override string RestPath => "userprofiles/{+profileId}/advertiserGroups";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -2572,7 +2568,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
                 {
@@ -2628,7 +2624,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <summary>Updates an existing advertiser group. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">AdvertiserGroup ID.</param>
+        /// <param name="id">Required. Advertiser Group ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.AdvertiserGroup body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
@@ -2650,7 +2646,7 @@ namespace Google.Apis.Dfareporting.v4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>AdvertiserGroup ID.</summary>
+            /// <summary>Required. Advertiser Group ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long Id { get; private set; }
 
@@ -2667,7 +2663,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/advertiserGroups";
+            public override string RestPath => "userprofiles/{+profileId}/advertiserGroups";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -2679,7 +2675,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -2728,7 +2724,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/advertiserGroups";
+            public override string RestPath => "userprofiles/{+profileId}/advertiserGroups";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -2740,7 +2736,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -2812,7 +2808,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/advertisers/{advertiserId}/invoices";
+            public override string RestPath => "userprofiles/{+profileId}/advertisers/{+advertiserId}/invoices";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -2824,7 +2820,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
                 {
@@ -2832,7 +2828,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("issueMonth", new Google.Apis.Discovery.Parameter
                 {
@@ -2910,7 +2906,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/advertiserLandingPages/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/advertiserLandingPages/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -2922,7 +2918,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -2930,7 +2926,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -2971,7 +2967,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/advertiserLandingPages";
+            public override string RestPath => "userprofiles/{+profileId}/advertiserLandingPages";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -2983,7 +2979,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -3069,11 +3065,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -3089,7 +3085,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/advertiserLandingPages";
+            public override string RestPath => "userprofiles/{+profileId}/advertiserLandingPages";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -3101,7 +3097,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("advertiserIds", new Google.Apis.Discovery.Parameter
                 {
@@ -3186,16 +3182,16 @@ namespace Google.Apis.Dfareporting.v4
             }
         }
 
-        /// <summary>Updates an existing advertiser landing page. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing advertiser. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">LandingPage ID.</param>
+        /// <param name="id">Required. Landing Page ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.LandingPage body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
-        /// <summary>Updates an existing advertiser landing page. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing advertiser. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.LandingPage>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -3211,7 +3207,7 @@ namespace Google.Apis.Dfareporting.v4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>LandingPage ID.</summary>
+            /// <summary>Required. Landing Page ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long Id { get; private set; }
 
@@ -3228,7 +3224,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/advertiserLandingPages";
+            public override string RestPath => "userprofiles/{+profileId}/advertiserLandingPages";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -3240,7 +3236,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -3289,7 +3285,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/advertiserLandingPages";
+            public override string RestPath => "userprofiles/{+profileId}/advertiserLandingPages";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -3301,7 +3297,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -3355,7 +3351,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/advertisers/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/advertisers/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -3367,7 +3363,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -3375,7 +3371,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -3416,7 +3412,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/advertisers";
+            public override string RestPath => "userprofiles/{+profileId}/advertisers";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -3428,7 +3424,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -3515,11 +3511,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -3531,11 +3527,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Select only advertisers with the specified status.</summary>
             public enum StatusEnum
             {
-                /// <summary></summary>
+                /// <summary>Approved (ads can deliver)</summary>
                 [Google.Apis.Util.StringValueAttribute("APPROVED")]
                 APPROVED = 0,
 
-                /// <summary></summary>
+                /// <summary>On-hold (all ads are stopped)</summary>
                 [Google.Apis.Util.StringValueAttribute("ON_HOLD")]
                 ONHOLD = 1,
             }
@@ -3551,7 +3547,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/advertisers";
+            public override string RestPath => "userprofiles/{+profileId}/advertisers";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -3563,7 +3559,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("advertiserGroupIds", new Google.Apis.Discovery.Parameter
                 {
@@ -3667,7 +3663,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <summary>Updates an existing advertiser. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Advertiser ID.</param>
+        /// <param name="id">Required. Advertiser ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.Advertiser body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
@@ -3689,7 +3685,7 @@ namespace Google.Apis.Dfareporting.v4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>Advertiser ID.</summary>
+            /// <summary>Required. Advertiser ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long Id { get; private set; }
 
@@ -3706,7 +3702,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/advertisers";
+            public override string RestPath => "userprofiles/{+profileId}/advertisers";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -3718,7 +3714,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -3767,7 +3763,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/advertisers";
+            public override string RestPath => "userprofiles/{+profileId}/advertisers";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -3779,7 +3775,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -3849,7 +3845,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/billingProfiles/{billingProfileId}/billingAssignments";
+            public override string RestPath => "userprofiles/{+profileId}/billingProfiles/{+billingProfileId}/billingAssignments";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -3861,7 +3857,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("billingProfileId", new Google.Apis.Discovery.Parameter
                 {
@@ -3869,7 +3865,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -3908,7 +3904,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/billingProfiles/{billingProfileId}/billingAssignments";
+            public override string RestPath => "userprofiles/{+profileId}/billingProfiles/{+billingProfileId}/billingAssignments";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -3920,7 +3916,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("billingProfileId", new Google.Apis.Discovery.Parameter
                 {
@@ -3928,7 +3924,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -3982,7 +3978,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/billingProfiles/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/billingProfiles/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -3994,7 +3990,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -4002,7 +3998,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -4084,11 +4080,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -4139,7 +4135,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/billingProfiles";
+            public override string RestPath => "userprofiles/{+profileId}/billingProfiles";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -4151,7 +4147,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("currency_code", new Google.Apis.Discovery.Parameter
                 {
@@ -4272,7 +4268,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/billingProfiles";
+            public override string RestPath => "userprofiles/{+profileId}/billingProfiles";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -4284,7 +4280,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -4338,7 +4334,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/billingProfiles/{billingProfileId}/billingRates";
+            public override string RestPath => "userprofiles/{+profileId}/billingProfiles/{+billingProfileId}/billingRates";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -4350,7 +4346,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("billingProfileId", new Google.Apis.Discovery.Parameter
                 {
@@ -4358,7 +4354,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -4406,7 +4402,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/browsers";
+            public override string RestPath => "userprofiles/{+profileId}/browsers";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -4418,7 +4414,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -4486,7 +4482,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/campaigns/{campaignId}/campaignCreativeAssociations";
+            public override string RestPath => "userprofiles/{+profileId}/campaigns/{+campaignId}/campaignCreativeAssociations";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -4498,7 +4494,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("campaignId", new Google.Apis.Discovery.Parameter
                 {
@@ -4506,7 +4502,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -4557,11 +4553,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -4573,7 +4569,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/campaigns/{campaignId}/campaignCreativeAssociations";
+            public override string RestPath => "userprofiles/{+profileId}/campaigns/{+campaignId}/campaignCreativeAssociations";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -4585,7 +4581,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("campaignId", new Google.Apis.Discovery.Parameter
                 {
@@ -4593,7 +4589,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
                 {
@@ -4671,7 +4667,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/campaigns/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/campaigns/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -4683,7 +4679,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -4691,7 +4687,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -4732,7 +4728,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/campaigns";
+            public override string RestPath => "userprofiles/{+profileId}/campaigns";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -4744,7 +4740,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -4841,11 +4837,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -4861,7 +4857,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/campaigns";
+            public override string RestPath => "userprofiles/{+profileId}/campaigns";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -4873,7 +4869,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("advertiserGroupIds", new Google.Apis.Discovery.Parameter
                 {
@@ -4982,16 +4978,16 @@ namespace Google.Apis.Dfareporting.v4
             }
         }
 
-        /// <summary>Updates an existing campaign. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing creative. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Campaign ID.</param>
+        /// <param name="id">Required. Campaign ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.Campaign body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
-        /// <summary>Updates an existing campaign. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing creative. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.Campaign>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -5007,7 +5003,7 @@ namespace Google.Apis.Dfareporting.v4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>Campaign ID.</summary>
+            /// <summary>Required. Campaign ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long Id { get; private set; }
 
@@ -5024,7 +5020,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/campaigns";
+            public override string RestPath => "userprofiles/{+profileId}/campaigns";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -5036,7 +5032,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -5085,7 +5081,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/campaigns";
+            public override string RestPath => "userprofiles/{+profileId}/campaigns";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -5097,7 +5093,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -5151,7 +5147,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/changeLogs/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/changeLogs/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -5163,7 +5159,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -5171,7 +5167,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -5496,7 +5492,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/changeLogs";
+            public override string RestPath => "userprofiles/{+profileId}/changeLogs";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -5508,7 +5504,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("action", new Google.Apis.Discovery.Parameter
                 {
@@ -5652,7 +5648,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/cities";
+            public override string RestPath => "userprofiles/{+profileId}/cities";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -5664,7 +5660,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("countryDartIds", new Google.Apis.Discovery.Parameter
                 {
@@ -5750,7 +5746,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/connectionTypes/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/connectionTypes/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -5762,7 +5758,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -5770,7 +5766,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -5803,7 +5799,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/connectionTypes";
+            public override string RestPath => "userprofiles/{+profileId}/connectionTypes";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -5815,7 +5811,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -5869,7 +5865,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/contentCategories/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/contentCategories/{+id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -5881,7 +5877,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -5889,7 +5885,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -5928,7 +5924,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/contentCategories/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/contentCategories/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -5940,7 +5936,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -5948,7 +5944,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -5989,7 +5985,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/contentCategories";
+            public override string RestPath => "userprofiles/{+profileId}/contentCategories";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -6001,7 +5997,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -6072,11 +6068,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -6088,7 +6084,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/contentCategories";
+            public override string RestPath => "userprofiles/{+profileId}/contentCategories";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -6100,7 +6096,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
                 {
@@ -6156,7 +6152,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <summary>Updates an existing content category. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">ContentCategory ID.</param>
+        /// <param name="id">Required. ContentCategory ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.ContentCategory body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
@@ -6178,7 +6174,7 @@ namespace Google.Apis.Dfareporting.v4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>ContentCategory ID.</summary>
+            /// <summary>Required. ContentCategory ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long Id { get; private set; }
 
@@ -6195,7 +6191,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/contentCategories";
+            public override string RestPath => "userprofiles/{+profileId}/contentCategories";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -6207,7 +6203,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -6256,7 +6252,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/contentCategories";
+            public override string RestPath => "userprofiles/{+profileId}/contentCategories";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -6268,7 +6264,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -6443,7 +6439,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/countries/{dartId}";
+            public override string RestPath => "userprofiles/{+profileId}/countries/{+dartId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -6455,7 +6451,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("dartId", new Google.Apis.Discovery.Parameter
                 {
@@ -6463,7 +6459,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -6496,7 +6492,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/countries";
+            public override string RestPath => "userprofiles/{+profileId}/countries";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -6508,7 +6504,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -6570,7 +6566,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets";
+            public override string RestPath => "userprofiles/{+profileId}/creativeAssets/{+advertiserId}/creativeAssets";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -6582,7 +6578,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
                 {
@@ -6590,7 +6586,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -6732,7 +6728,7 @@ namespace Google.Apis.Dfareporting.v4
             /// </list>
             /// </remarks>
             public InsertMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.Dfareporting.v4.Data.CreativeAssetMetadata body, long profileId, long advertiserId, System.IO.Stream stream, string contentType)
-                : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "userprofiles/{profileId}/creativeAssets/{advertiserId}/creativeAssets"), "POST", stream, contentType)
+                : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "userprofiles/{+profileId}/creativeAssets/{+advertiserId}/creativeAssets"), "POST", stream, contentType)
             {
                 ProfileId = profileId;
                 AdvertiserId = advertiserId;
@@ -6795,7 +6791,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/creativeFields/{+creativeFieldId}/creativeFieldValues/{+id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -6807,7 +6803,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("creativeFieldId", new Google.Apis.Discovery.Parameter
                 {
@@ -6815,7 +6811,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -6823,7 +6819,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -6868,7 +6864,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/creativeFields/{+creativeFieldId}/creativeFieldValues/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -6880,7 +6876,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("creativeFieldId", new Google.Apis.Discovery.Parameter
                 {
@@ -6888,7 +6884,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -6896,7 +6892,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -6943,7 +6939,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues";
+            public override string RestPath => "userprofiles/{+profileId}/creativeFields/{+creativeFieldId}/creativeFieldValues";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -6955,7 +6951,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("creativeFieldId", new Google.Apis.Discovery.Parameter
                 {
@@ -6963,7 +6959,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -7040,11 +7036,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -7056,7 +7052,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues";
+            public override string RestPath => "userprofiles/{+profileId}/creativeFields/{+creativeFieldId}/creativeFieldValues";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -7068,7 +7064,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("creativeFieldId", new Google.Apis.Discovery.Parameter
                 {
@@ -7076,7 +7072,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
                 {
@@ -7177,7 +7173,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues";
+            public override string RestPath => "userprofiles/{+profileId}/creativeFields/{+creativeFieldId}/creativeFieldValues";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -7189,7 +7185,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("creativeFieldId", new Google.Apis.Discovery.Parameter
                 {
@@ -7197,7 +7193,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -7252,7 +7248,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/creativeFields/{creativeFieldId}/creativeFieldValues";
+            public override string RestPath => "userprofiles/{+profileId}/creativeFields/{+creativeFieldId}/creativeFieldValues";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -7264,7 +7260,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("creativeFieldId", new Google.Apis.Discovery.Parameter
                 {
@@ -7272,7 +7268,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -7326,7 +7322,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/creativeFields/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/creativeFields/{+id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -7338,7 +7334,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -7346,7 +7342,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -7385,7 +7381,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/creativeFields/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/creativeFields/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -7397,7 +7393,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -7405,7 +7401,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -7446,7 +7442,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/creativeFields";
+            public override string RestPath => "userprofiles/{+profileId}/creativeFields";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -7458,7 +7454,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -7534,11 +7530,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -7550,7 +7546,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/creativeFields";
+            public override string RestPath => "userprofiles/{+profileId}/creativeFields";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -7562,7 +7558,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("advertiserIds", new Google.Apis.Discovery.Parameter
                 {
@@ -7665,7 +7661,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/creativeFields";
+            public override string RestPath => "userprofiles/{+profileId}/creativeFields";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -7677,7 +7673,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -7726,7 +7722,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/creativeFields";
+            public override string RestPath => "userprofiles/{+profileId}/creativeFields";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -7738,7 +7734,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -7792,7 +7788,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/creativeGroups/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/creativeGroups/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -7804,7 +7800,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -7812,7 +7808,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -7853,7 +7849,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/creativeGroups";
+            public override string RestPath => "userprofiles/{+profileId}/creativeGroups";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -7865,7 +7861,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -7945,11 +7941,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -7961,7 +7957,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/creativeGroups";
+            public override string RestPath => "userprofiles/{+profileId}/creativeGroups";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -7973,7 +7969,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("advertiserIds", new Google.Apis.Discovery.Parameter
                 {
@@ -8045,7 +8041,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <summary>Updates an existing creative group. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">CreativeGroup ID.</param>
+        /// <param name="id">Required. Creative Group ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.CreativeGroup body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
@@ -8067,7 +8063,7 @@ namespace Google.Apis.Dfareporting.v4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>CreativeGroup ID.</summary>
+            /// <summary>Required. Creative Group ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long Id { get; private set; }
 
@@ -8084,7 +8080,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/creativeGroups";
+            public override string RestPath => "userprofiles/{+profileId}/creativeGroups";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -8096,7 +8092,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -8145,7 +8141,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/creativeGroups";
+            public override string RestPath => "userprofiles/{+profileId}/creativeGroups";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -8157,7 +8153,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -8211,7 +8207,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/creatives/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/creatives/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -8223,7 +8219,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -8231,7 +8227,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -8272,7 +8268,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/creatives";
+            public override string RestPath => "userprofiles/{+profileId}/creatives";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -8284,7 +8280,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -8389,11 +8385,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -8529,7 +8525,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/creatives";
+            public override string RestPath => "userprofiles/{+profileId}/creatives";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -8541,7 +8537,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("active", new Google.Apis.Discovery.Parameter
                 {
@@ -8677,7 +8673,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <summary>Updates an existing creative. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Creative ID.</param>
+        /// <param name="id">Required. Creative ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.Creative body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
@@ -8699,7 +8695,7 @@ namespace Google.Apis.Dfareporting.v4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>Creative ID.</summary>
+            /// <summary>Required. Creative ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long Id { get; private set; }
 
@@ -8716,7 +8712,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/creatives";
+            public override string RestPath => "userprofiles/{+profileId}/creatives";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -8728,7 +8724,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -8777,7 +8773,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/creatives";
+            public override string RestPath => "userprofiles/{+profileId}/creatives";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -8789,7 +8785,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -8935,7 +8931,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/directorySites/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/directorySites/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -8947,7 +8943,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -8955,7 +8951,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -8996,7 +8992,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/directorySites";
+            public override string RestPath => "userprofiles/{+profileId}/directorySites";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -9008,7 +9004,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -9107,11 +9103,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -9123,7 +9119,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/directorySites";
+            public override string RestPath => "userprofiles/{+profileId}/directorySites";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -9135,7 +9131,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("acceptsInStreamVideoPlacements", new Google.Apis.Discovery.Parameter
                 {
@@ -9247,10 +9243,12 @@ namespace Google.Apis.Dfareporting.v4
         /// <param name="profileId">User profile ID associated with this request.</param>
         /// <param name="objectId">ID of the object of this dynamic targeting key. This is a required field.</param>
         /// <param name="name">
-        /// Name of this dynamic targeting key. This is a required field. Must be less than 256 characters long and
-        /// cannot contain commas. All characters are converted to lowercase.
+        /// Required. Name of this dynamic targeting key. This is a required field. Must be less than 256 characters
+        /// long and cannot contain commas. All characters are converted to lowercase.
         /// </param>
-        /// <param name="objectType">Type of the object of this dynamic targeting key. This is a required field.</param>
+        /// <param name="objectType">
+        /// Required. Type of the object of this dynamic targeting key. This is a required field.
+        /// </param>
         public virtual DeleteRequest Delete(long profileId, long objectId, string name, DeleteRequest.ObjectTypeEnum objectType)
         {
             return new DeleteRequest(service, profileId, objectId, name, objectType);
@@ -9278,17 +9276,17 @@ namespace Google.Apis.Dfareporting.v4
             public virtual long ObjectId { get; private set; }
 
             /// <summary>
-            /// Name of this dynamic targeting key. This is a required field. Must be less than 256 characters long and
-            /// cannot contain commas. All characters are converted to lowercase.
+            /// Required. Name of this dynamic targeting key. This is a required field. Must be less than 256 characters
+            /// long and cannot contain commas. All characters are converted to lowercase.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; private set; }
 
-            /// <summary>Type of the object of this dynamic targeting key. This is a required field.</summary>
+            /// <summary>Required. Type of the object of this dynamic targeting key. This is a required field.</summary>
             [Google.Apis.Util.RequestParameterAttribute("objectType", Google.Apis.Util.RequestParameterType.Query)]
             public virtual ObjectTypeEnum ObjectType { get; private set; }
 
-            /// <summary>Type of the object of this dynamic targeting key. This is a required field.</summary>
+            /// <summary>Required. Type of the object of this dynamic targeting key. This is a required field.</summary>
             public enum ObjectTypeEnum
             {
                 /// <summary></summary>
@@ -9315,7 +9313,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/dynamicTargetingKeys/{objectId}";
+            public override string RestPath => "userprofiles/{+profileId}/dynamicTargetingKeys/{+objectId}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -9327,7 +9325,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("objectId", new Google.Apis.Discovery.Parameter
                 {
@@ -9335,7 +9333,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
                 {
@@ -9400,7 +9398,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/dynamicTargetingKeys";
+            public override string RestPath => "userprofiles/{+profileId}/dynamicTargetingKeys";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -9412,7 +9410,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -9481,7 +9479,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/dynamicTargetingKeys";
+            public override string RestPath => "userprofiles/{+profileId}/dynamicTargetingKeys";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -9493,7 +9491,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
                 {
@@ -9579,7 +9577,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/eventTags/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/eventTags/{+id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -9591,7 +9589,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -9599,7 +9597,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -9638,7 +9636,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/eventTags/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/eventTags/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -9650,7 +9648,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -9658,7 +9656,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -9699,7 +9697,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/eventTags";
+            public override string RestPath => "userprofiles/{+profileId}/eventTags";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -9711,7 +9709,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -9800,15 +9798,15 @@ namespace Google.Apis.Dfareporting.v4
             /// </summary>
             public enum EventTagTypesEnum
             {
-                /// <summary></summary>
+                /// <summary>A third-party pixel for impression tracking.</summary>
                 [Google.Apis.Util.StringValueAttribute("IMPRESSION_IMAGE_EVENT_TAG")]
                 IMPRESSIONIMAGEEVENTTAG = 0,
 
-                /// <summary></summary>
+                /// <summary>A third-party JavaScript URL for impression tracking.</summary>
                 [Google.Apis.Util.StringValueAttribute("IMPRESSION_JAVASCRIPT_EVENT_TAG")]
                 IMPRESSIONJAVASCRIPTEVENTTAG = 1,
 
-                /// <summary></summary>
+                /// <summary>A third-party URL for click tracking that redirects to the landing page.</summary>
                 [Google.Apis.Util.StringValueAttribute("CLICK_THROUGH_EVENT_TAG")]
                 CLICKTHROUGHEVENTTAG = 2,
             }
@@ -9850,11 +9848,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -9866,7 +9864,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/eventTags";
+            public override string RestPath => "userprofiles/{+profileId}/eventTags";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -9878,7 +9876,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("adId", new Google.Apis.Discovery.Parameter
                 {
@@ -9966,7 +9964,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <summary>Updates an existing event tag. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">EventTag ID.</param>
+        /// <param name="id">Required. EventTag ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.EventTag body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
@@ -9988,7 +9986,7 @@ namespace Google.Apis.Dfareporting.v4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>EventTag ID.</summary>
+            /// <summary>Required. EventTag ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long Id { get; private set; }
 
@@ -10005,7 +10003,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/eventTags";
+            public override string RestPath => "userprofiles/{+profileId}/eventTags";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -10017,7 +10015,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -10066,7 +10064,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/eventTags";
+            public override string RestPath => "userprofiles/{+profileId}/eventTags";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -10078,7 +10076,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -10441,7 +10439,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/floodlightActivities/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/floodlightActivities/{+id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -10453,7 +10451,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -10461,7 +10459,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -10498,7 +10496,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/floodlightActivities/generatetag";
+            public override string RestPath => "userprofiles/{+profileId}/floodlightActivities/generatetag";
 
             /// <summary>Initializes Generatetag parameter list.</summary>
             protected override void InitParameters()
@@ -10510,7 +10508,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("floodlightActivityId", new Google.Apis.Discovery.Parameter
                 {
@@ -10557,7 +10555,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/floodlightActivities/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/floodlightActivities/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -10569,7 +10567,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -10577,7 +10575,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -10618,7 +10616,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/floodlightActivities";
+            public override string RestPath => "userprofiles/{+profileId}/floodlightActivities";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -10630,7 +10628,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -10753,11 +10751,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -10773,7 +10771,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/floodlightActivities";
+            public override string RestPath => "userprofiles/{+profileId}/floodlightActivities";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -10785,7 +10783,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
                 {
@@ -10894,16 +10892,16 @@ namespace Google.Apis.Dfareporting.v4
             }
         }
 
-        /// <summary>Updates an existing floodlight activity. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing event tag. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">FloodlightActivity ID.</param>
+        /// <param name="id">Required. EventTag ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.FloodlightActivity body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
-        /// <summary>Updates an existing floodlight activity. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing event tag. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.FloodlightActivity>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -10919,7 +10917,7 @@ namespace Google.Apis.Dfareporting.v4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>FloodlightActivity ID.</summary>
+            /// <summary>Required. EventTag ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long Id { get; private set; }
 
@@ -10936,7 +10934,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/floodlightActivities";
+            public override string RestPath => "userprofiles/{+profileId}/floodlightActivities";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -10948,7 +10946,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -10997,7 +10995,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/floodlightActivities";
+            public override string RestPath => "userprofiles/{+profileId}/floodlightActivities";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -11009,7 +11007,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -11063,7 +11061,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/floodlightActivityGroups/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/floodlightActivityGroups/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -11075,7 +11073,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -11083,7 +11081,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -11124,7 +11122,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/floodlightActivityGroups";
+            public override string RestPath => "userprofiles/{+profileId}/floodlightActivityGroups";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -11136,7 +11134,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -11229,11 +11227,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -11265,7 +11263,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/floodlightActivityGroups";
+            public override string RestPath => "userprofiles/{+profileId}/floodlightActivityGroups";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -11277,7 +11275,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
                 {
@@ -11354,16 +11352,16 @@ namespace Google.Apis.Dfareporting.v4
             }
         }
 
-        /// <summary>Updates an existing floodlight activity group. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing event tag. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">FloodlightActivityGroup ID.</param>
+        /// <param name="id">Required. EventTag ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.FloodlightActivityGroup body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
-        /// <summary>Updates an existing floodlight activity group. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing event tag. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.FloodlightActivityGroup>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -11379,7 +11377,7 @@ namespace Google.Apis.Dfareporting.v4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>FloodlightActivityGroup ID.</summary>
+            /// <summary>Required. EventTag ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long Id { get; private set; }
 
@@ -11396,7 +11394,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/floodlightActivityGroups";
+            public override string RestPath => "userprofiles/{+profileId}/floodlightActivityGroups";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -11408,7 +11406,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -11457,7 +11455,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/floodlightActivityGroups";
+            public override string RestPath => "userprofiles/{+profileId}/floodlightActivityGroups";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -11469,7 +11467,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -11523,7 +11521,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/floodlightConfigurations/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/floodlightConfigurations/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -11535,7 +11533,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -11543,7 +11541,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -11583,7 +11581,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/floodlightConfigurations";
+            public override string RestPath => "userprofiles/{+profileId}/floodlightConfigurations";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -11595,7 +11593,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
                 {
@@ -11608,16 +11606,16 @@ namespace Google.Apis.Dfareporting.v4
             }
         }
 
-        /// <summary>Updates an existing floodlight configuration. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing event tag. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">FloodlightConfiguration ID.</param>
+        /// <param name="id">Required. EventTag ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.FloodlightConfiguration body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
-        /// <summary>Updates an existing floodlight configuration. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing event tag. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.FloodlightConfiguration>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -11633,7 +11631,7 @@ namespace Google.Apis.Dfareporting.v4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>FloodlightConfiguration ID.</summary>
+            /// <summary>Required. EventTag ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long Id { get; private set; }
 
@@ -11650,7 +11648,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/floodlightConfigurations";
+            public override string RestPath => "userprofiles/{+profileId}/floodlightConfigurations";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -11662,7 +11660,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -11711,7 +11709,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/floodlightConfigurations";
+            public override string RestPath => "userprofiles/{+profileId}/floodlightConfigurations";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -11723,7 +11721,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -11783,7 +11781,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/projects/{projectId}/inventoryItems/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/projects/{projectId}/inventoryItems/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -11795,7 +11793,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
@@ -11811,7 +11809,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -11890,11 +11888,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -11922,7 +11920,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/projects/{projectId}/inventoryItems";
+            public override string RestPath => "userprofiles/{+profileId}/projects/{projectId}/inventoryItems";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -11934,7 +11932,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
@@ -12062,7 +12060,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/languages";
+            public override string RestPath => "userprofiles/{+profileId}/languages";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -12074,7 +12072,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -12122,7 +12120,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/metros";
+            public override string RestPath => "userprofiles/{+profileId}/metros";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -12134,7 +12132,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -12188,7 +12186,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/mobileApps/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/mobileApps/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -12200,7 +12198,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -12208,7 +12206,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -12326,7 +12324,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/mobileApps";
+            public override string RestPath => "userprofiles/{+profileId}/mobileApps";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -12338,7 +12336,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("directories", new Google.Apis.Discovery.Parameter
                 {
@@ -12432,7 +12430,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/mobileCarriers/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/mobileCarriers/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -12444,7 +12442,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -12452,7 +12450,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -12485,7 +12483,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/mobileCarriers";
+            public override string RestPath => "userprofiles/{+profileId}/mobileCarriers";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -12497,7 +12495,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -12551,7 +12549,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/operatingSystemVersions/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/operatingSystemVersions/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -12563,7 +12561,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -12571,7 +12569,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -12604,7 +12602,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/operatingSystemVersions";
+            public override string RestPath => "userprofiles/{+profileId}/operatingSystemVersions";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -12616,7 +12614,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -12670,7 +12668,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/operatingSystems/{dartId}";
+            public override string RestPath => "userprofiles/{+profileId}/operatingSystems/{+dartId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -12682,7 +12680,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("dartId", new Google.Apis.Discovery.Parameter
                 {
@@ -12690,7 +12688,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -12723,7 +12721,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/operatingSystems";
+            public override string RestPath => "userprofiles/{+profileId}/operatingSystems";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -12735,293 +12733,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-    }
-
-    /// <summary>The "orderDocuments" collection of methods.</summary>
-    public class OrderDocumentsResource
-    {
-        private const string Resource = "orderDocuments";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public OrderDocumentsResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-        }
-
-        /// <summary>Gets one order document by ID.</summary>
-        /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="projectId">Project ID for order documents.</param>
-        /// <param name="id">Order document ID.</param>
-        public virtual GetRequest Get(long profileId, long projectId, long id)
-        {
-            return new GetRequest(service, profileId, projectId, id);
-        }
-
-        /// <summary>Gets one order document by ID.</summary>
-        public class GetRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.OrderDocument>
-        {
-            /// <summary>Constructs a new Get request.</summary>
-            public GetRequest(Google.Apis.Services.IClientService service, long profileId, long projectId, long id) : base(service)
-            {
-                ProfileId = profileId;
-                ProjectId = projectId;
-                Id = id;
-                InitParameters();
-            }
-
-            /// <summary>User profile ID associated with this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual long ProfileId { get; private set; }
-
-            /// <summary>Project ID for order documents.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual long ProjectId { get; private set; }
-
-            /// <summary>Order document ID.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual long Id { get; private set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "get";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/projects/{projectId}/orderDocuments/{id}";
-
-            /// <summary>Initializes Get parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "profileId",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "projectId",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "id",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-            }
-        }
-
-        /// <summary>Retrieves a list of order documents, possibly filtered. This method supports paging.</summary>
-        /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="projectId">Project ID for order documents.</param>
-        public virtual ListRequest List(long profileId, long projectId)
-        {
-            return new ListRequest(service, profileId, projectId);
-        }
-
-        /// <summary>Retrieves a list of order documents, possibly filtered. This method supports paging.</summary>
-        public class ListRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.OrderDocumentsListResponse>
-        {
-            /// <summary>Constructs a new List request.</summary>
-            public ListRequest(Google.Apis.Services.IClientService service, long profileId, long projectId) : base(service)
-            {
-                ProfileId = profileId;
-                ProjectId = projectId;
-                InitParameters();
-            }
-
-            /// <summary>User profile ID associated with this request.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual long ProfileId { get; private set; }
-
-            /// <summary>Project ID for order documents.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("projectId", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual long ProjectId { get; private set; }
-
-            /// <summary>Select only order documents that have been approved by at least one user.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("approved", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<bool> Approved { get; set; }
-
-            /// <summary>Select only order documents with these IDs.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("ids", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> Ids { get; set; }
-
-            /// <summary>Maximum number of results to return.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<int> MaxResults { get; set; }
-
-            /// <summary>Select only order documents for specified orders.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("orderId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> OrderId { get; set; }
-
-            /// <summary>Value of the nextPageToken from the previous result page.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string PageToken { get; set; }
-
-            /// <summary>
-            /// Allows searching for order documents by name or ID. Wildcards (*) are allowed. For example,
-            /// "orderdocument*2015" will return order documents with names like "orderdocument June 2015",
-            /// "orderdocument April 2015", or simply "orderdocument 2015". Most of the searches also add wildcards
-            /// implicitly at the start and the end of the search string. For example, a search string of
-            /// "orderdocument" will match order documents with name "my orderdocument", "orderdocument 2015", or simply
-            /// "orderdocument".
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("searchString", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string SearchString { get; set; }
-
-            /// <summary>Select only order documents that are associated with these sites.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("siteId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual Google.Apis.Util.Repeatable<string> SiteId { get; set; }
-
-            /// <summary>Field by which to sort the list.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("sortField", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<SortFieldEnum> SortField { get; set; }
-
-            /// <summary>Field by which to sort the list.</summary>
-            public enum SortFieldEnum
-            {
-                /// <summary></summary>
-                [Google.Apis.Util.StringValueAttribute("ID")]
-                ID = 0,
-
-                /// <summary></summary>
-                [Google.Apis.Util.StringValueAttribute("NAME")]
-                NAME = 1,
-            }
-
-            /// <summary>Order of sorted results.</summary>
-            [Google.Apis.Util.RequestParameterAttribute("sortOrder", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<SortOrderEnum> SortOrder { get; set; }
-
-            /// <summary>Order of sorted results.</summary>
-            public enum SortOrderEnum
-            {
-                /// <summary></summary>
-                [Google.Apis.Util.StringValueAttribute("ASCENDING")]
-                ASCENDING = 0,
-
-                /// <summary></summary>
-                [Google.Apis.Util.StringValueAttribute("DESCENDING")]
-                DESCENDING = 1,
-            }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "list";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/projects/{projectId}/orderDocuments";
-
-            /// <summary>Initializes List parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("profileId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "profileId",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "projectId",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("approved", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "approved",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "ids",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("maxResults", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "maxResults",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "1000",
-                    Pattern = null,
-                });
-                RequestParameters.Add("orderId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "orderId",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "pageToken",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("searchString", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "searchString",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("siteId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "siteId",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("sortField", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "sortField",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "ID",
-                    Pattern = null,
-                });
-                RequestParameters.Add("sortOrder", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "sortOrder",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = "ASCENDING",
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -13081,7 +12793,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/projects/{projectId}/orders/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/projects/{projectId}/orders/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -13093,7 +12805,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
@@ -13109,7 +12821,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -13189,11 +12901,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -13205,7 +12917,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/projects/{projectId}/orders";
+            public override string RestPath => "userprofiles/{+profileId}/projects/{projectId}/orders";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -13217,7 +12929,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("projectId", new Google.Apis.Discovery.Parameter
                 {
@@ -13335,7 +13047,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/placementGroups/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/placementGroups/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -13347,7 +13059,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -13355,7 +13067,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -13396,7 +13108,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/placementGroups";
+            public override string RestPath => "userprofiles/{+profileId}/placementGroups";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -13408,7 +13120,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -13547,11 +13259,18 @@ namespace Google.Apis.Dfareporting.v4
             /// </summary>
             public enum PlacementGroupTypeEnum
             {
-                /// <summary></summary>
+                /// <summary>
+                /// A simple group of site-placements (tags). Basically acts as a single pricing point for a group of
+                /// tags.
+                /// </summary>
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_PACKAGE")]
                 PLACEMENTPACKAGE = 0,
 
-                /// <summary></summary>
+                /// <summary>
+                /// A group of site-placements (tags) that not only acts as a single pricing point but also assumes that
+                /// all the tags in it will be served at the same time. This kind of group requires one of its assigned
+                /// site-placements to be marked as primary for reporting purposes.
+                /// </summary>
                 [Google.Apis.Util.StringValueAttribute("PLACEMENT_ROADBLOCK")]
                 PLACEMENTROADBLOCK = 1,
             }
@@ -13641,11 +13360,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -13657,7 +13376,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/placementGroups";
+            public override string RestPath => "userprofiles/{+profileId}/placementGroups";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -13669,7 +13388,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("activeStatus", new Google.Apis.Discovery.Parameter
                 {
@@ -13829,7 +13548,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <summary>Updates an existing placement group. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">PlacementGroup ID.</param>
+        /// <param name="id">Required. Placement ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.PlacementGroup body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
@@ -13851,7 +13570,7 @@ namespace Google.Apis.Dfareporting.v4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>PlacementGroup ID.</summary>
+            /// <summary>Required. Placement ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long Id { get; private set; }
 
@@ -13868,7 +13587,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/placementGroups";
+            public override string RestPath => "userprofiles/{+profileId}/placementGroups";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -13880,7 +13599,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -13929,7 +13648,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/placementGroups";
+            public override string RestPath => "userprofiles/{+profileId}/placementGroups";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -13941,7 +13660,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -13995,7 +13714,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/placementStrategies/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/placementStrategies/{+id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -14007,7 +13726,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -14015,7 +13734,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -14054,7 +13773,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/placementStrategies/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/placementStrategies/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -14066,7 +13785,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -14074,7 +13793,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -14115,7 +13834,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/placementStrategies";
+            public override string RestPath => "userprofiles/{+profileId}/placementStrategies";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -14127,7 +13846,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -14199,11 +13918,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -14215,7 +13934,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/placementStrategies";
+            public override string RestPath => "userprofiles/{+profileId}/placementStrategies";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -14227,7 +13946,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
                 {
@@ -14283,7 +14002,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <summary>Updates an existing placement strategy. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">PlacementStrategy ID.</param>
+        /// <param name="id">Required. PlacementStrategy ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.PlacementStrategy body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
@@ -14305,7 +14024,7 @@ namespace Google.Apis.Dfareporting.v4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>PlacementStrategy ID.</summary>
+            /// <summary>Required. PlacementStrategy ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long Id { get; private set; }
 
@@ -14322,7 +14041,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/placementStrategies";
+            public override string RestPath => "userprofiles/{+profileId}/placementStrategies";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -14334,7 +14053,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -14383,7 +14102,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/placementStrategies";
+            public override string RestPath => "userprofiles/{+profileId}/placementStrategies";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -14395,7 +14114,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -14560,7 +14279,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/placements/generatetags";
+            public override string RestPath => "userprofiles/{+profileId}/placements/generatetags";
 
             /// <summary>Initializes Generatetags parameter list.</summary>
             protected override void InitParameters()
@@ -14572,7 +14291,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("campaignId", new Google.Apis.Discovery.Parameter
                 {
@@ -14635,7 +14354,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/placements/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/placements/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -14647,7 +14366,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -14655,7 +14374,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -14696,7 +14415,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/placements";
+            public override string RestPath => "userprofiles/{+profileId}/placements";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -14708,7 +14427,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -14824,11 +14543,11 @@ namespace Google.Apis.Dfareporting.v4
                 [Google.Apis.Util.StringValueAttribute("DISPLAY_INTERSTITIAL")]
                 DISPLAYINTERSTITIAL = 1,
 
-                /// <summary></summary>
+                /// <summary>Deprecated enum value. No longer supported.</summary>
                 [Google.Apis.Util.StringValueAttribute("APP")]
                 APP = 2,
 
-                /// <summary></summary>
+                /// <summary>Deprecated enum value. No longer supported.</summary>
                 [Google.Apis.Util.StringValueAttribute("APP_INTERSTITIAL")]
                 APPINTERSTITIAL = 3,
 
@@ -14998,11 +14717,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -15014,7 +14733,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/placements";
+            public override string RestPath => "userprofiles/{+profileId}/placements";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -15026,7 +14745,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("activeStatus", new Google.Apis.Discovery.Parameter
                 {
@@ -15210,7 +14929,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <summary>Updates an existing placement. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Placement ID.</param>
+        /// <param name="id">Required. Placement ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.Placement body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
@@ -15232,7 +14951,7 @@ namespace Google.Apis.Dfareporting.v4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>Placement ID.</summary>
+            /// <summary>Required. Placement ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long Id { get; private set; }
 
@@ -15249,7 +14968,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/placements";
+            public override string RestPath => "userprofiles/{+profileId}/placements";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -15261,7 +14980,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -15310,7 +15029,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/placements";
+            public override string RestPath => "userprofiles/{+profileId}/placements";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -15322,7 +15041,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -15376,7 +15095,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/platformTypes/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/platformTypes/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -15388,7 +15107,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -15396,7 +15115,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -15429,7 +15148,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/platformTypes";
+            public override string RestPath => "userprofiles/{+profileId}/platformTypes";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -15441,7 +15160,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -15495,7 +15214,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/postalCodes/{code}";
+            public override string RestPath => "userprofiles/{+profileId}/postalCodes/{+code}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -15507,7 +15226,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("code", new Google.Apis.Discovery.Parameter
                 {
@@ -15515,7 +15234,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -15548,7 +15267,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/postalCodes";
+            public override string RestPath => "userprofiles/{+profileId}/postalCodes";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -15560,7 +15279,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -15614,7 +15333,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/projects/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/projects/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -15626,7 +15345,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -15634,7 +15353,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -15709,11 +15428,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -15725,7 +15444,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/projects";
+            public override string RestPath => "userprofiles/{+profileId}/projects";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -15737,7 +15456,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("advertiserIds", new Google.Apis.Discovery.Parameter
                 {
@@ -15841,7 +15560,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/regions";
+            public override string RestPath => "userprofiles/{+profileId}/regions";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -15853,7 +15572,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -15907,7 +15626,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/remarketingListShares/{remarketingListId}";
+            public override string RestPath => "userprofiles/{+profileId}/remarketingListShares/{+remarketingListId}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -15919,7 +15638,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("remarketingListId", new Google.Apis.Discovery.Parameter
                 {
@@ -15927,21 +15646,21 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
 
-        /// <summary>Updates an existing remarketing list share. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing RemarketingListShare. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">RemarketingList ID.</param>
+        /// <param name="id">Required. RemarketingList ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.RemarketingListShare body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
-        /// <summary>Updates an existing remarketing list share. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing RemarketingListShare. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.RemarketingListShare>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -15957,7 +15676,7 @@ namespace Google.Apis.Dfareporting.v4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>RemarketingList ID.</summary>
+            /// <summary>Required. RemarketingList ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long Id { get; private set; }
 
@@ -15974,7 +15693,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/remarketingListShares";
+            public override string RestPath => "userprofiles/{+profileId}/remarketingListShares";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -15986,7 +15705,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -16035,7 +15754,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/remarketingListShares";
+            public override string RestPath => "userprofiles/{+profileId}/remarketingListShares";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -16047,7 +15766,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -16101,7 +15820,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/remarketingLists/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/remarketingLists/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -16113,7 +15832,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -16121,7 +15840,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -16162,7 +15881,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/remarketingLists";
+            public override string RestPath => "userprofiles/{+profileId}/remarketingLists";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -16174,14 +15893,14 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
 
         /// <summary>Retrieves a list of remarketing lists, possibly filtered. This method supports paging.</summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="advertiserId">Select only remarketing lists owned by this advertiser.</param>
+        /// <param name="advertiserId">Required. Select only remarketing lists owned by this advertiser.</param>
         public virtual ListRequest List(long profileId, long advertiserId)
         {
             return new ListRequest(service, profileId, advertiserId);
@@ -16202,7 +15921,7 @@ namespace Google.Apis.Dfareporting.v4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>Select only remarketing lists owned by this advertiser.</summary>
+            /// <summary>Required. Select only remarketing lists owned by this advertiser.</summary>
             [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long AdvertiserId { get; private set; }
 
@@ -16255,11 +15974,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -16271,7 +15990,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/remarketingLists";
+            public override string RestPath => "userprofiles/{+profileId}/remarketingLists";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -16283,7 +16002,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
                 {
@@ -16352,16 +16071,16 @@ namespace Google.Apis.Dfareporting.v4
             }
         }
 
-        /// <summary>Updates an existing remarketing list. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing RemarketingList. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">RemarketingList ID.</param>
+        /// <param name="id">Required. RemarketingList ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.RemarketingList body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
         }
 
-        /// <summary>Updates an existing remarketing list. This method supports patch semantics.</summary>
+        /// <summary>Updates an existing RemarketingList. This method supports patch semantics.</summary>
         public class PatchRequest : DfareportingBaseServiceRequest<Google.Apis.Dfareporting.v4.Data.RemarketingList>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -16377,7 +16096,7 @@ namespace Google.Apis.Dfareporting.v4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>RemarketingList ID.</summary>
+            /// <summary>Required. RemarketingList ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long Id { get; private set; }
 
@@ -16394,7 +16113,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/remarketingLists";
+            public override string RestPath => "userprofiles/{+profileId}/remarketingLists";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -16406,7 +16125,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -16455,7 +16174,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/remarketingLists";
+            public override string RestPath => "userprofiles/{+profileId}/remarketingLists";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -16467,7 +16186,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -17450,7 +17169,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/sites/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/sites/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -17462,7 +17181,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -17470,7 +17189,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -17511,7 +17230,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/sites";
+            public override string RestPath => "userprofiles/{+profileId}/sites";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -17523,7 +17242,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -17625,11 +17344,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -17649,7 +17368,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/sites";
+            public override string RestPath => "userprofiles/{+profileId}/sites";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -17661,7 +17380,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("acceptsInStreamVideoPlacements", new Google.Apis.Discovery.Parameter
                 {
@@ -17789,7 +17508,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <summary>Updates an existing site. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Site ID.</param>
+        /// <param name="id">Required. Site ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.Site body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
@@ -17811,7 +17530,7 @@ namespace Google.Apis.Dfareporting.v4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>Site ID.</summary>
+            /// <summary>Required. Site ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long Id { get; private set; }
 
@@ -17828,7 +17547,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/sites";
+            public override string RestPath => "userprofiles/{+profileId}/sites";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -17840,7 +17559,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -17889,7 +17608,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/sites";
+            public override string RestPath => "userprofiles/{+profileId}/sites";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -17901,7 +17620,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -17955,7 +17674,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/sizes/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/sizes/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -17967,7 +17686,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -17975,7 +17694,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -18016,7 +17735,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/sizes";
+            public override string RestPath => "userprofiles/{+profileId}/sizes";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -18028,7 +17747,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -18085,7 +17804,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/sizes";
+            public override string RestPath => "userprofiles/{+profileId}/sizes";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -18097,7 +17816,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("height", new Google.Apis.Discovery.Parameter
                 {
@@ -18183,7 +17902,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/subaccounts/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/subaccounts/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -18195,7 +17914,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -18203,7 +17922,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -18244,7 +17963,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/subaccounts";
+            public override string RestPath => "userprofiles/{+profileId}/subaccounts";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -18256,7 +17975,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -18327,11 +18046,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -18343,7 +18062,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/subaccounts";
+            public override string RestPath => "userprofiles/{+profileId}/subaccounts";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -18355,7 +18074,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
                 {
@@ -18411,7 +18130,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <summary>Updates an existing subaccount. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">Subaccount ID.</param>
+        /// <param name="id">Required. Subaccount ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.Subaccount body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
@@ -18433,7 +18152,7 @@ namespace Google.Apis.Dfareporting.v4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>Subaccount ID.</summary>
+            /// <summary>Required. Subaccount ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long Id { get; private set; }
 
@@ -18450,7 +18169,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/subaccounts";
+            public override string RestPath => "userprofiles/{+profileId}/subaccounts";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -18462,7 +18181,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -18511,7 +18230,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/subaccounts";
+            public override string RestPath => "userprofiles/{+profileId}/subaccounts";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -18523,7 +18242,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -18577,7 +18296,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/targetableRemarketingLists/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/targetableRemarketingLists/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -18589,7 +18308,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -18597,7 +18316,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -18606,7 +18325,9 @@ namespace Google.Apis.Dfareporting.v4
         /// Retrieves a list of targetable remarketing lists, possibly filtered. This method supports paging.
         /// </summary>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="advertiserId">Select only targetable remarketing lists targetable by these advertisers.</param>
+        /// <param name="advertiserId">
+        /// Required. Select only targetable remarketing lists targetable by these advertisers.
+        /// </param>
         public virtual ListRequest List(long profileId, long advertiserId)
         {
             return new ListRequest(service, profileId, advertiserId);
@@ -18629,7 +18350,7 @@ namespace Google.Apis.Dfareporting.v4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>Select only targetable remarketing lists targetable by these advertisers.</summary>
+            /// <summary>Required. Select only targetable remarketing lists targetable by these advertisers.</summary>
             [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long AdvertiserId { get; private set; }
 
@@ -18678,11 +18399,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -18694,7 +18415,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/targetableRemarketingLists";
+            public override string RestPath => "userprofiles/{+profileId}/targetableRemarketingLists";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -18706,7 +18427,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
                 {
@@ -18816,7 +18537,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/targetingTemplates/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/targetingTemplates/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -18828,7 +18549,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -18836,7 +18557,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -18877,7 +18598,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/targetingTemplates";
+            public override string RestPath => "userprofiles/{+profileId}/targetingTemplates";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -18889,7 +18610,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -18968,11 +18689,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -18984,7 +18705,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/targetingTemplates";
+            public override string RestPath => "userprofiles/{+profileId}/targetingTemplates";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -18996,7 +18717,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
                 {
@@ -19060,7 +18781,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <summary>Updates an existing targeting template. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">TargetingTemplate ID.</param>
+        /// <param name="id">Required. RemarketingList ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.TargetingTemplate body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
@@ -19082,7 +18803,7 @@ namespace Google.Apis.Dfareporting.v4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>TargetingTemplate ID.</summary>
+            /// <summary>Required. RemarketingList ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long Id { get; private set; }
 
@@ -19099,7 +18820,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/targetingTemplates";
+            public override string RestPath => "userprofiles/{+profileId}/targetingTemplates";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -19111,7 +18832,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -19160,7 +18881,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/targetingTemplates";
+            public override string RestPath => "userprofiles/{+profileId}/targetingTemplates";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -19172,7 +18893,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -19317,7 +19038,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/userRolePermissionGroups/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/userRolePermissionGroups/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -19329,7 +19050,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -19337,7 +19058,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -19370,7 +19091,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/userRolePermissionGroups";
+            public override string RestPath => "userprofiles/{+profileId}/userRolePermissionGroups";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -19382,7 +19103,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -19436,7 +19157,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/userRolePermissions/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/userRolePermissions/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -19448,7 +19169,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -19456,7 +19177,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -19493,7 +19214,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/userRolePermissions";
+            public override string RestPath => "userprofiles/{+profileId}/userRolePermissions";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -19505,7 +19226,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("ids", new Google.Apis.Discovery.Parameter
                 {
@@ -19567,7 +19288,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "DELETE";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/userRoles/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/userRoles/{+id}";
 
             /// <summary>Initializes Delete parameter list.</summary>
             protected override void InitParameters()
@@ -19579,7 +19300,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -19587,7 +19308,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -19626,7 +19347,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/userRoles/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/userRoles/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -19638,7 +19359,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -19646,7 +19367,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -19687,7 +19408,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "POST";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/userRoles";
+            public override string RestPath => "userprofiles/{+profileId}/userRoles";
 
             /// <summary>Initializes Insert parameter list.</summary>
             protected override void InitParameters()
@@ -19699,7 +19420,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -19774,11 +19495,11 @@ namespace Google.Apis.Dfareporting.v4
             /// <summary>Order of sorted results.</summary>
             public enum SortOrderEnum
             {
-                /// <summary></summary>
+                /// <summary>Ascending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("ASCENDING")]
                 ASCENDING = 0,
 
-                /// <summary></summary>
+                /// <summary>Descending order.</summary>
                 [Google.Apis.Util.StringValueAttribute("DESCENDING")]
                 DESCENDING = 1,
             }
@@ -19794,7 +19515,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/userRoles";
+            public override string RestPath => "userprofiles/{+profileId}/userRoles";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -19806,7 +19527,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("accountUserRoleOnly", new Google.Apis.Discovery.Parameter
                 {
@@ -19878,7 +19599,7 @@ namespace Google.Apis.Dfareporting.v4
         /// <summary>Updates an existing user role. This method supports patch semantics.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="profileId">User profile ID associated with this request.</param>
-        /// <param name="id">UserRole ID.</param>
+        /// <param name="id">Required. UserRole ID.</param>
         public virtual PatchRequest Patch(Google.Apis.Dfareporting.v4.Data.UserRole body, long profileId, long id)
         {
             return new PatchRequest(service, body, profileId, id);
@@ -19900,7 +19621,7 @@ namespace Google.Apis.Dfareporting.v4
             [Google.Apis.Util.RequestParameterAttribute("profileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual long ProfileId { get; private set; }
 
-            /// <summary>UserRole ID.</summary>
+            /// <summary>Required. UserRole ID.</summary>
             [Google.Apis.Util.RequestParameterAttribute("id", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long Id { get; private set; }
 
@@ -19917,7 +19638,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PATCH";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/userRoles";
+            public override string RestPath => "userprofiles/{+profileId}/userRoles";
 
             /// <summary>Initializes Patch parameter list.</summary>
             protected override void InitParameters()
@@ -19929,7 +19650,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -19978,7 +19699,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "PUT";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/userRoles";
+            public override string RestPath => "userprofiles/{+profileId}/userRoles";
 
             /// <summary>Initializes Update parameter list.</summary>
             protected override void InitParameters()
@@ -19990,7 +19711,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -20044,7 +19765,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/videoFormats/{id}";
+            public override string RestPath => "userprofiles/{+profileId}/videoFormats/{+id}";
 
             /// <summary>Initializes Get parameter list.</summary>
             protected override void InitParameters()
@@ -20056,7 +19777,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
                 RequestParameters.Add("id", new Google.Apis.Discovery.Parameter
                 {
@@ -20064,7 +19785,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -20097,7 +19818,7 @@ namespace Google.Apis.Dfareporting.v4
             public override string HttpMethod => "GET";
 
             /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "userprofiles/{profileId}/videoFormats";
+            public override string RestPath => "userprofiles/{+profileId}/videoFormats";
 
             /// <summary>Initializes List parameter list.</summary>
             protected override void InitParameters()
@@ -20109,7 +19830,7 @@ namespace Google.Apis.Dfareporting.v4
                     IsRequired = true,
                     ParameterType = "path",
                     DefaultValue = null,
-                    Pattern = null,
+                    Pattern = @"^[^/]+$",
                 });
             }
         }
@@ -20327,7 +20048,7 @@ namespace Google.Apis.Dfareporting.v4.Data
 
         /// <summary>
         /// Identifies what kind of resource this is. Value: the fixed string
-        /// "dfareporting#accountPermissionGroupsListResponse".
+        /// "dfareporting#accountPermissionGroupGroupsListResponse".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -22029,7 +21750,6 @@ namespace Google.Apis.Dfareporting.v4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Organizes placements according to the contents of their associated webpages.</summary>
     public class ContentCategory : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Account ID of this content category. This is a read-only field that can be left blank.</summary>
@@ -22167,7 +21887,7 @@ namespace Google.Apis.Dfareporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ordinal")]
         public virtual string Ordinal { get; set; }
 
-        /// <summary>The quantity of the conversion.</summary>
+        /// <summary>The quantity of the conversion. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<long> Quantity { get; set; }
 
@@ -22189,7 +21909,7 @@ namespace Google.Apis.Dfareporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("userIdentifiers")]
         public virtual System.Collections.Generic.IList<UserIdentifier> UserIdentifiers { get; set; }
 
-        /// <summary>The value of the conversion.</summary>
+        /// <summary>The value of the conversion. This is a required field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Nullable<double> Value { get; set; }
 
@@ -22419,7 +22139,7 @@ namespace Google.Apis.Dfareporting.v4.Data
         public virtual System.Collections.Generic.IList<Size> AdditionalSizes { get; set; }
 
         /// <summary>
-        /// Advertiser ID of this creative. This is a required field. Applicable to all creative types.
+        /// Required. Advertiser ID of this creative. This is a required field. Applicable to all creative types.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
         public virtual System.Nullable<long> AdvertiserId { get; set; }
@@ -22670,8 +22390,8 @@ namespace Google.Apis.Dfareporting.v4.Data
         public virtual System.Nullable<float> MediaDuration { get; set; }
 
         /// <summary>
-        /// Name of the creative. This is a required field and must be less than 256 characters long. Applicable to all
-        /// creative types.
+        /// Required. Name of the creative. This must be less than 256 characters long. Applicable to all creative
+        /// types.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -22837,9 +22557,9 @@ namespace Google.Apis.Dfareporting.v4.Data
         public virtual System.Nullable<long> TotalFileSize { get; set; }
 
         /// <summary>
-        /// Type of this creative. This is a required field. Applicable to all creative types. *Note:* FLASH_INPAGE,
-        /// HTML5_BANNER, and IMAGE are only used for existing creatives. New creatives should use DISPLAY as a
-        /// replacement for these types.
+        /// Required. Type of this creative. Applicable to all creative types. *Note:* FLASH_INPAGE, HTML5_BANNER, and
+        /// IMAGE are only used for existing creatives. New creatives should use DISPLAY as a replacement for these
+        /// types.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -25099,9 +24819,6 @@ namespace Google.Apis.Dfareporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exposureToConversionEnabled")]
         public virtual System.Nullable<bool> ExposureToConversionEnabled { get; set; }
 
-        /// <summary>
-        /// Day that will be counted as the first day of the week in reports. This is a required field.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstDayOfWeek")]
         public virtual string FirstDayOfWeek { get; set; }
 
@@ -25779,7 +25496,7 @@ namespace Google.Apis.Dfareporting.v4.Data
 
     public class MeasurementPartnerAdvertiserLink : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>.</summary>
+        /// <summary>Status of the partner link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkStatus")]
         public virtual string LinkStatus { get; set; }
 
@@ -25787,7 +25504,7 @@ namespace Google.Apis.Dfareporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("measurementPartner")]
         public virtual string MeasurementPartner { get; set; }
 
-        /// <summary>.</summary>
+        /// <summary>partner Advertiser Id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerAdvertiserId")]
         public virtual string PartnerAdvertiserId { get; set; }
 
@@ -25843,7 +25560,7 @@ namespace Google.Apis.Dfareporting.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        /// <summary>The metric name, e.g. dfa:impressions</summary>
+        /// <summary>The metric name, e.g. impressions</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -26383,113 +26100,6 @@ namespace Google.Apis.Dfareporting.v4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signatureUserProfileId")]
         public virtual System.Nullable<long> SignatureUserProfileId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Contains properties of a Planning order document.</summary>
-    public class OrderDocument : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Account ID of this order document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("accountId")]
-        public virtual System.Nullable<long> AccountId { get; set; }
-
-        /// <summary>Advertiser ID of this order document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("advertiserId")]
-        public virtual System.Nullable<long> AdvertiserId { get; set; }
-
-        /// <summary>
-        /// The amended order document ID of this order document. An order document can be created by optionally
-        /// amending another order document so that the change history can be preserved.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("amendedOrderDocumentId")]
-        public virtual System.Nullable<long> AmendedOrderDocumentId { get; set; }
-
-        /// <summary>IDs of users who have approved this order document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("approvedByUserProfileIds")]
-        public virtual System.Collections.Generic.IList<System.Nullable<long>> ApprovedByUserProfileIds { get; set; }
-
-        /// <summary>Whether this order document is cancelled.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cancelled")]
-        public virtual System.Nullable<bool> Cancelled { get; set; }
-
-        /// <summary>Information about the creation of this order document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createdInfo")]
-        public virtual LastModifiedInfo CreatedInfo { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("effectiveDate")]
-        public virtual string EffectiveDate { get; set; }
-
-        /// <summary>ID of this order document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual System.Nullable<long> Id { get; set; }
-
-        /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "dfareporting#orderDocument".
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; }
-
-        /// <summary>List of email addresses that received the last sent document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastSentRecipients")]
-        public virtual System.Collections.Generic.IList<string> LastSentRecipients { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("lastSentTime")]
-        public virtual string LastSentTimeRaw { get; set; }
-
-        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="LastSentTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> LastSentTime
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeFromString(LastSentTimeRaw);
-            set => LastSentTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
-        }
-
-        /// <summary>ID of the order from which this order document is created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("orderId")]
-        public virtual System.Nullable<long> OrderId { get; set; }
-
-        /// <summary>Project ID of this order document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
-        public virtual System.Nullable<long> ProjectId { get; set; }
-
-        /// <summary>Whether this order document has been signed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("signed")]
-        public virtual System.Nullable<bool> Signed { get; set; }
-
-        /// <summary>Subaccount ID of this order document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("subaccountId")]
-        public virtual System.Nullable<long> SubaccountId { get; set; }
-
-        /// <summary>Title of this order document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("title")]
-        public virtual string Title { get; set; }
-
-        /// <summary>Type of this order document</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Order document List Response</summary>
-    public class OrderDocumentsListResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Identifies what kind of resource this is. Value: the fixed string "dfareporting#orderDocumentsListResponse".
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
-        public virtual string Kind { get; set; }
-
-        /// <summary>Pagination token to be used for the next list operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>Order document collection</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("orderDocuments")]
-        public virtual System.Collections.Generic.IList<OrderDocument> OrderDocuments { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27315,7 +26925,6 @@ namespace Google.Apis.Dfareporting.v4.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Pricing Information</summary>
     public class Pricing : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Cap cost type of this inventory item.</summary>
@@ -27405,7 +27014,7 @@ namespace Google.Apis.Dfareporting.v4.Data
         public virtual string PricingComment { get; set; }
 
         /// <summary>
-        /// Rate or cost of this pricing period in nanos (i.e., multipled by 1000000000). Acceptable values are 0 to
+        /// Rate or cost of this pricing period in nanos (i.e., multiplied by 1000000000). Acceptable values are 0 to
         /// 1000000000000000000, inclusive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rateOrCostNanos")]
@@ -28981,7 +28590,7 @@ namespace Google.Apis.Dfareporting.v4.Data
     /// <summary>
     /// Contains properties of a targetable remarketing list. Remarketing enables you to create lists of users who have
     /// performed specific actions on a site, then target ads to members of those lists. This resource is a read-only
-    /// view of a remarketing list to be used to faciliate targeting ads to specific lists. Remarketing lists that are
+    /// view of a remarketing list to be used to facilitate targeting ads to specific lists. Remarketing lists that are
     /// owned by your advertisers and those that are shared to your advertisers or account are accessible via this
     /// resource. To manage remarketing lists that are owned by your advertisers, use the RemarketingLists resource.
     /// </summary>

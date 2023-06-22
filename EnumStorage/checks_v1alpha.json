@@ -1,0 +1,11 @@
+{
+  "Google.Apis.ChecksService.v1alpha.ChecksServiceBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.ChecksService.v1alpha.ChecksServiceBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}
