@@ -5174,7 +5174,7 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A resource that represents Google Cloud location.</summary>
+    /// <summary>A resource that represents a Google Cloud location.</summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
@@ -5237,6 +5237,10 @@ namespace Google.Apis.BigtableAdmin.v2.Data
     /// <summary>Request message for google.bigtable.admin.v2.BigtableTableAdmin.ModifyColumnFamilies</summary>
     public class ModifyColumnFamiliesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>If true, ignore safety checks when modifying the column families.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreWarnings")]
+        public virtual System.Nullable<bool> IgnoreWarnings { get; set; }
+
         /// <summary>
         /// Required. Modifications to be atomically applied to the specified table's families. Entries are applied in
         /// order, meaning that earlier modifications can be masked by later ones (in the case of repeated updates to

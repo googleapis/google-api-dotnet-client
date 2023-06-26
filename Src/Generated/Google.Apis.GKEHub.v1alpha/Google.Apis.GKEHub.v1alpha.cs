@@ -1460,6 +1460,7 @@ namespace Google.Apis.GKEHub.v1alpha
                 {
                     this.service = service;
                     Bindings = new BindingsResource(service);
+                    Rbacrolebindings = new RbacrolebindingsResource(service);
                 }
 
                 /// <summary>Gets the Bindings resource.</summary>
@@ -1807,6 +1808,442 @@ namespace Google.Apis.GKEHub.v1alpha
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/memberships/[^/]+/bindings/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Rbacrolebindings resource.</summary>
+                public virtual RbacrolebindingsResource Rbacrolebindings { get; }
+
+                /// <summary>The "rbacrolebindings" collection of methods.</summary>
+                public class RbacrolebindingsResource
+                {
+                    private const string Resource = "rbacrolebindings";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public RbacrolebindingsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Creates a Membership RBACRoleBinding.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent (project and location) where the RBACRoleBinding will be created. Specified
+                    /// in the format `projects/*/locations/*/memberships/*`.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.GKEHub.v1alpha.Data.RBACRoleBinding body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a Membership RBACRoleBinding.</summary>
+                    public class CreateRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GKEHub.v1alpha.Data.RBACRoleBinding body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent (project and location) where the RBACRoleBinding will be created.
+                        /// Specified in the format `projects/*/locations/*/memberships/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. Client chosen ID for the RBACRoleBinding. `rbacrolebinding_id` must be a valid RFC
+                        /// 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower
+                        /// case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character
+                        /// Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length
+                        /// of 63 characters.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("rbacrolebindingId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RbacrolebindingId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.GKEHub.v1alpha.Data.RBACRoleBinding Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+parent}/rbacrolebindings";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/memberships/[^/]+$",
+                            });
+                            RequestParameters.Add("rbacrolebindingId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "rbacrolebindingId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a Membership RBACRoleBinding.</summary>
+                    /// <param name="name">
+                    /// Required. The RBACRoleBinding resource name in the format
+                    /// `projects/*/locations/*/memberships/*/rbacrolebindings/*`.
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes a Membership RBACRoleBinding.</summary>
+                    public class DeleteRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The RBACRoleBinding resource name in the format
+                        /// `projects/*/locations/*/memberships/*/rbacrolebindings/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/memberships/[^/]+/rbacrolebindings/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Generates a YAML of the RBAC policies for the specified RoleBinding and its associated
+                    /// impersonation resources.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The parent (project and location) where the RBACRoleBinding will be created. Specified
+                    /// in the format `projects/*/locations/*/memberships/*`.
+                    /// </param>
+                    public virtual GenerateMembershipRBACRoleBindingYAMLRequest GenerateMembershipRBACRoleBindingYAML(Google.Apis.GKEHub.v1alpha.Data.RBACRoleBinding body, string parent)
+                    {
+                        return new GenerateMembershipRBACRoleBindingYAMLRequest(service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Generates a YAML of the RBAC policies for the specified RoleBinding and its associated
+                    /// impersonation resources.
+                    /// </summary>
+                    public class GenerateMembershipRBACRoleBindingYAMLRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.GenerateMembershipRBACRoleBindingYAMLResponse>
+                    {
+                        /// <summary>Constructs a new GenerateMembershipRBACRoleBindingYAML request.</summary>
+                        public GenerateMembershipRBACRoleBindingYAMLRequest(Google.Apis.Services.IClientService service, Google.Apis.GKEHub.v1alpha.Data.RBACRoleBinding body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent (project and location) where the RBACRoleBinding will be created.
+                        /// Specified in the format `projects/*/locations/*/memberships/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. Client chosen ID for the RBACRoleBinding. `rbacrolebinding_id` must be a valid RFC
+                        /// 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower
+                        /// case alphanumeric characters or `-` 3. It must start and end with an alphanumeric character
+                        /// Which can be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length
+                        /// of 63 characters.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("rbacrolebindingId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RbacrolebindingId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.GKEHub.v1alpha.Data.RBACRoleBinding Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "generateMembershipRBACRoleBindingYAML";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+parent}/rbacrolebindings:generateMembershipRBACRoleBindingYAML";
+
+                        /// <summary>Initializes GenerateMembershipRBACRoleBindingYAML parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/memberships/[^/]+$",
+                            });
+                            RequestParameters.Add("rbacrolebindingId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "rbacrolebindingId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Returns the details of a Membership RBACRoleBinding.</summary>
+                    /// <param name="name">
+                    /// Required. The RBACRoleBinding resource name in the format
+                    /// `projects/*/locations/*/memberships/*/rbacrolebindings/*`.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Returns the details of a Membership RBACRoleBinding.</summary>
+                    public class GetRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.RBACRoleBinding>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The RBACRoleBinding resource name in the format
+                        /// `projects/*/locations/*/memberships/*/rbacrolebindings/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/memberships/[^/]+/rbacrolebindings/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all Membership RBACRoleBindings.</summary>
+                    /// <param name="parent">
+                    /// Required. The parent (project and location) where the Features will be listed. Specified in the
+                    /// format `projects/*/locations/*/memberships/*`.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists all Membership RBACRoleBindings.</summary>
+                    public class ListRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.ListMembershipRBACRoleBindingsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The parent (project and location) where the Features will be listed. Specified in
+                        /// the format `projects/*/locations/*/memberships/*`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Optional. When requesting a 'page' of resources, `page_size` specifies number of resources
+                        /// to return. If unspecified or set to 0, all resources will be returned.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. Token returned by previous call to `ListMembershipRBACRoleBindings` which
+                        /// specifies the position in the list from where to continue listing the resources.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+parent}/rbacrolebindings";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/memberships/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Updates a Membership RBACRoleBinding.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// The resource name for the rbacrolebinding
+                    /// `projects/{project}/locations/{location}/namespaces/{namespace}/rbacrolebindings/{rbacrolebinding}`
+                    /// or
+                    /// `projects/{project}/locations/{location}/memberships/{membership}/rbacrolebindings/{rbacrolebinding}`
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.GKEHub.v1alpha.Data.RBACRoleBinding body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>Updates a Membership RBACRoleBinding.</summary>
+                    public class PatchRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1alpha.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.GKEHub.v1alpha.Data.RBACRoleBinding body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The resource name for the rbacrolebinding
+                        /// `projects/{project}/locations/{location}/namespaces/{namespace}/rbacrolebindings/{rbacrolebinding}`
+                        /// or
+                        /// `projects/{project}/locations/{location}/memberships/{membership}/rbacrolebindings/{rbacrolebinding}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Required. The fields to be updated.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.GKEHub.v1alpha.Data.RBACRoleBinding Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/memberships/[^/]+/rbacrolebindings/[^/]+$",
                             });
                             RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                             {
@@ -5094,10 +5531,9 @@ namespace Google.Apis.GKEHub.v1alpha.Data
 
         /// <summary>
         /// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other
-        /// ConfigSync fields will be applied if exist. If set to false and Managed Config Sync is disabled, all other
-        /// ConfigSync fields will be ignored, ConfigSync resources will be deleted. Setting this field to false while
-        /// enabling Managed Config Sync is invalid. If omitted, ConfigSync resources will be managed if: * the git or
-        /// oci field is present; or * Managed Config Sync is enabled (i.e., managed.enabled is true).
+        /// ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored,
+        /// ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the
+        /// presence of the git or oci field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
@@ -5106,16 +5542,12 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("git")]
         public virtual ConfigManagementGitConfig Git { get; set; }
 
-        /// <summary>Configuration for Managed Config Sync.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("managed")]
-        public virtual ConfigManagementManaged Managed { get; set; }
-
         /// <summary>
-        /// The Email of the GCP Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and
-        /// Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer
-        /// (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace
-        /// `config-management-monitoring` should be binded to the GSA. This field is required when Managed Config Sync
-        /// is enabled.
+        /// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud
+        /// Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric
+        /// Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace
+        /// `config-management-monitoring` should be binded to the GSA. This field is required when automatic Feature
+        /// management is enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricsGcpServiceAccountEmail")]
         public virtual string MetricsGcpServiceAccountEmail { get; set; }
@@ -5134,6 +5566,13 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceFormat")]
         public virtual string SourceFormat { get; set; }
+
+        /// <summary>
+        /// Set to true to stop syncing configs for a single cluster when automatic Feature management is enabled.
+        /// Default to false. The field will be ignored when automatic Feature management is disabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stopSyncing")]
+        public virtual System.Nullable<bool> StopSyncing { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5290,7 +5729,9 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>Git repo configuration for a single cluster.</summary>
     public class ConfigManagementGitConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The GCP Service Account Email used for auth when secret_type is gcpServiceAccount.</summary>
+        /// <summary>
+        /// The Google Cloud Service Account Email used for auth when secret_type is gcpServiceAccount.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpServiceAccountEmail")]
         public virtual string GcpServiceAccountEmail { get; set; }
 
@@ -5426,27 +5867,6 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration for Managed Config Sync.</summary>
-    public class ConfigManagementManaged : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Set to true to enable Managed Config Sync. Defaults to false which disables Managed Config Sync. Setting
-        /// this field to true when configSync.enabled is false is invalid.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; }
-
-        /// <summary>
-        /// Set to true to stop syncing configs for a single cluster. Default to false. If set to true, Managed Config
-        /// Sync will not upgrade Config Sync.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("stopSyncing")]
-        public virtual System.Nullable<bool> StopSyncing { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// **Anthos Config Management**: Configuration for a single cluster. Intended to parallel the ConfigManagement CR.
     /// </summary>
@@ -5473,6 +5893,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Hierarchy Controller configuration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hierarchyController")]
         public virtual ConfigManagementHierarchyControllerConfig HierarchyController { get; set; }
+
+        /// <summary>Enables automatic Feature management.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("management")]
+        public virtual string Management { get; set; }
 
         /// <summary>Policy Controller configuration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyController")]
@@ -5530,7 +5954,9 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>OCI repo configuration for a single cluster</summary>
     public class ConfigManagementOciConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The GCP Service Account Email used for auth when secret_type is gcpServiceAccount.</summary>
+        /// <summary>
+        /// The Google Cloud Service Account Email used for auth when secret_type is gcpServiceAccount.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpServiceAccountEmail")]
         public virtual string GcpServiceAccountEmail { get; set; }
 
@@ -6122,6 +6548,17 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for GenerateRBACRoleBindingYAML.</summary>
+    public class GenerateMembershipRBACRoleBindingYAMLResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>a yaml text blob including the RBAC policies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("roleBindingsYaml")]
+        public virtual string RoleBindingsYaml { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>GkeCluster contains information specific to GKE clusters.</summary>
     public class GkeCluster : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6528,6 +6965,24 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>List of Membership RBACRoleBindings.</summary>
+    public class ListMembershipRBACRoleBindingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token to request the next page of resources from the `ListMembershipRBACRoleBindings` method. The value of
+        /// an empty string means that there are no more resources to return.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of Membership RBACRoleBindings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rbacrolebindings")]
+        public virtual System.Collections.Generic.IList<RBACRoleBinding> Rbacrolebindings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for the `GkeHub.ListMemberships` method.</summary>
     public class ListMembershipsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6867,10 +7322,6 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configmanagement")]
         public virtual ConfigManagementMembershipSpec Configmanagement { get; set; }
 
-        /// <summary>True if value of `feature_spec` was inherited from a fleet-level default.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fleetInherited")]
-        public virtual System.Nullable<bool> FleetInherited { get; set; }
-
         /// <summary>Fleet observability membership spec</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fleetobservability")]
         public virtual FleetObservabilityMembershipSpec Fleetobservability { get; set; }
@@ -6882,6 +7333,13 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Anthos Service Mesh-specific spec</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mesh")]
         public virtual ServiceMeshMembershipSpec Mesh { get; set; }
+
+        /// <summary>
+        /// Whether this per-Membership spec was inherited from a fleet-level default. This field can be updated by
+        /// users by either overriding a Membership config (updated to USER implicitly) or setting to FLEET explicitly.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("origin")]
+        public virtual Origin Origin { get; set; }
 
         /// <summary>Policy Controller spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policycontroller")]
@@ -7220,6 +7678,17 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Origin defines where this MembershipFeatureSpec originated from.</summary>
+    public class Origin : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Type specifies which type of origin is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

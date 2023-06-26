@@ -3113,7 +3113,7 @@ namespace Google.Apis.Classroom.v1
                     PUBLISHED = 1,
 
                     /// <summary>
-                    /// Status for an course work material that is not yet published. Course work material in this state
+                    /// Status for a course work material that is not yet published. Course work material in this state
                     /// is visible only to course teachers and domain administrators.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("DRAFT")]

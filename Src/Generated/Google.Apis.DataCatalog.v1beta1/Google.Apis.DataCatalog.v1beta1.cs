@@ -5183,11 +5183,7 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sqlDatabaseSystemSpec")]
         public virtual GoogleCloudDatacatalogV1SqlDatabaseSystemSpec SqlDatabaseSystemSpec { get; set; }
 
-        /// <summary>
-        /// The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only
-        /// `FILESET` enum value is allowed. All other entries created in Data Catalog must use the
-        /// `user_specified_type`.
-        /// </summary>
+        /// <summary>The type of the entry. For details, see [`EntryType`](#entrytype).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 

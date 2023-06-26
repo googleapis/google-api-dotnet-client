@@ -4088,7 +4088,10 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>A single target dataset to which all data will be streamed.</summary>
     public class SingleTargetDataset : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The dataset ID of the target dataset.</summary>
+        /// <summary>
+        /// The dataset ID of the target dataset. DatasetIds allowed characters:
+        /// https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets#datasetreference.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
         public virtual string DatasetId { get; set; }
 

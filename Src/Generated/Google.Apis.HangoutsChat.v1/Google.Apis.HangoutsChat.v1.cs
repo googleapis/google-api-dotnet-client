@@ -67,6 +67,9 @@ namespace Google.Apis.HangoutsChat.v1
             /// </summary>
             public static string ChatDelete = "https://www.googleapis.com/auth/chat.delete";
 
+            /// <summary>Import spaces, messages, and memberships into Google Chat.</summary>
+            public static string ChatImport = "https://www.googleapis.com/auth/chat.import";
+
             /// <summary>View, add, and remove members from conversations in Google Chat</summary>
             public static string ChatMemberships = "https://www.googleapis.com/auth/chat.memberships";
 
@@ -118,6 +121,9 @@ namespace Google.Apis.HangoutsChat.v1
             /// Delete conversations and spaces &amp;amp; remove access to associated files in Google Chat
             /// </summary>
             public const string ChatDelete = "https://www.googleapis.com/auth/chat.delete";
+
+            /// <summary>Import spaces, messages, and memberships into Google Chat.</summary>
+            public const string ChatImport = "https://www.googleapis.com/auth/chat.import";
 
             /// <summary>View, add, and remove members from conversations in Google Chat</summary>
             public const string ChatMemberships = "https://www.googleapis.com/auth/chat.memberships";
@@ -2840,6 +2846,17 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A GIF image that's specified by a URL.</summary>
+    public class AttachedGif : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The URL that hosts the GIF image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An attachment in Google Chat.</summary>
     public class Attachment : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4841,6 +4858,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>Output only. Plain-text body of the message with all Chat app mentions stripped out.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("argumentText")]
         public virtual string ArgumentText { get; set; }
+
+        /// <summary>Output only. GIF images that are attached to the message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachedGifs")]
+        public virtual System.Collections.Generic.IList<AttachedGif> AttachedGifs { get; set; }
 
         /// <summary>User-uploaded attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachment")]

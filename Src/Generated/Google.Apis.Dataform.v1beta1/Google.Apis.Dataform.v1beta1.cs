@@ -4380,7 +4380,10 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultBranch")]
         public virtual string DefaultBranch { get; set; }
 
-        /// <summary>Output only. Indicates the status of the Git access token.</summary>
+        /// <summary>
+        /// Output only. Deprecated: The field does not contain any token status information. Instead use
+        /// https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories/computeAccessTokenStatus
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tokenStatus")]
         public virtual string TokenStatus { get; set; }
 
@@ -5409,7 +5412,7 @@ namespace Google.Apis.Dataform.v1beta1.Data
     public class WorkflowInvocation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Immutable. The name of the compilation result to compile. Must be in the format
+        /// Immutable. The name of the compilation result to use for this invocation. Must be in the format
         /// `projects/*/locations/*/repositories/*/compilationResults/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("compilationResult")]

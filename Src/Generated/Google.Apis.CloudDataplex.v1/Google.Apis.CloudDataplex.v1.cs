@@ -10945,9 +10945,9 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo StringProfile { get; set; }
 
         /// <summary>
-        /// The list of top N non-null values and number of times they occur in the scanned data. N is 10 or equal to
-        /// the number of distinct values in the field, whichever is smaller. Not available for complex non-groupable
-        /// field type RECORD and fields with REPEATABLE mode.
+        /// The list of top N non-null values, frequency and ratio with which they occur in the scanned data. N is 10 or
+        /// equal to the number of distinct values in the field, whichever is smaller. Not available for complex
+        /// non-groupable field type RECORD and fields with REPEATABLE mode.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topNValues")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue> TopNValues { get; set; }
@@ -11051,6 +11051,12 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>Count of the corresponding value in the scanned data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<long> Count { get; set; }
+
+        /// <summary>
+        /// Ratio of the corresponding value in the field against the total number of rows in the scanned data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ratio")]
+        public virtual System.Nullable<double> Ratio { get; set; }
 
         /// <summary>String value of a top N non-null value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
@@ -11157,6 +11163,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("column")]
         public virtual string Column { get; set; }
 
+        /// <summary>Optional. Description of the rule. The maximum length is 1,024 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
         /// <summary>
         /// Required. The dimension a rule belongs to. Results are also aggregated at the dimension level. Supported
         /// dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
@@ -11166,49 +11176,59 @@ namespace Google.Apis.CloudDataplex.v1.Data
 
         /// <summary>
         /// Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case,
-        /// such null rows are trivially considered passing.Only applicable to ColumnMap rules.
+        /// such null rows are trivially considered passing.This field is only valid for row-level type rules.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreNull")]
         public virtual System.Nullable<bool> IgnoreNull { get; set; }
 
-        /// <summary>ColumnMap rule which evaluates whether each column value is null.</summary>
+        /// <summary>
+        /// Optional. A mutable name for the rule. The name must contain only letters (a-z, A-Z), numbers (0-9), or
+        /// hyphens (-). The maximum length is 63 characters. Must start with a letter. Must end with a number or a
+        /// letter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Row-level rule which evaluates whether each column value is null.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nonNullExpectation")]
         public virtual GoogleCloudDataplexV1DataQualityRuleNonNullExpectation NonNullExpectation { get; set; }
 
-        /// <summary>ColumnMap rule which evaluates whether each column value lies between a specified range.</summary>
+        /// <summary>Row-level rule which evaluates whether each column value lies between a specified range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rangeExpectation")]
         public virtual GoogleCloudDataplexV1DataQualityRuleRangeExpectation RangeExpectation { get; set; }
 
-        /// <summary>ColumnMap rule which evaluates whether each column value matches a specified regex.</summary>
+        /// <summary>Row-level rule which evaluates whether each column value matches a specified regex.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regexExpectation")]
         public virtual GoogleCloudDataplexV1DataQualityRuleRegexExpectation RegexExpectation { get; set; }
 
-        /// <summary>Table rule which evaluates whether each row passes the specified condition.</summary>
+        /// <summary>
+        /// Row-level rule which evaluates whether each row in a table passes the specified condition.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowConditionExpectation")]
         public virtual GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation RowConditionExpectation { get; set; }
 
-        /// <summary>ColumnMap rule which evaluates whether each column value is contained by a specified set.</summary>
+        /// <summary>Row-level rule which evaluates whether each column value is contained by a specified set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("setExpectation")]
         public virtual GoogleCloudDataplexV1DataQualityRuleSetExpectation SetExpectation { get; set; }
 
         /// <summary>
-        /// ColumnAggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
+        /// Aggregate rule which evaluates whether the column aggregate statistic lies between a specified range.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statisticRangeExpectation")]
         public virtual GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation StatisticRangeExpectation { get; set; }
 
-        /// <summary>Table rule which evaluates whether the provided expression is true.</summary>
+        /// <summary>Aggregate rule which evaluates whether the provided expression is true for a table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tableConditionExpectation")]
         public virtual GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation TableConditionExpectation { get; set; }
 
         /// <summary>
         /// Optional. The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of 0.0,
-        /// 1.0.0 indicates default value (i.e. 1.0).
+        /// 1.0.0 indicates default value (i.e. 1.0).This field is only valid for row-level type rules.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
         public virtual System.Nullable<double> Threshold { get; set; }
 
-        /// <summary>ColumnAggregate rule which evaluates whether the column has duplicates.</summary>
+        /// <summary>Aggregate rule which evaluates whether the column has duplicates.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uniquenessExpectation")]
         public virtual GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation UniquenessExpectation { get; set; }
 
@@ -11273,7 +11293,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     public class GoogleCloudDataplexV1DataQualityRuleResult : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The number of rows a rule was evaluated against. This field is only valid for ColumnMap type rules.Evaluated
+        /// The number of rows a rule was evaluated against.This field is only valid for row-level type rules.Evaluated
         /// count can be configured to either include all rows (default) - with null rows automatically failing rule
         /// evaluation, or exclude null rows from the evaluated_count, by setting ignore_nulls = true.
         /// </summary>
@@ -11281,7 +11301,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual System.Nullable<long> EvaluatedCount { get; set; }
 
         /// <summary>
-        /// The query to find rows that did not pass this rule. Only applies to ColumnMap and RowCondition rules.
+        /// The query to find rows that did not pass this rule.This field is only valid for row-level type rules.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("failingRowsQuery")]
         public virtual string FailingRowsQuery { get; set; }
@@ -11291,7 +11311,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual System.Nullable<long> NullCount { get; set; }
 
         /// <summary>
-        /// The ratio of passed_count / evaluated_count. This field is only valid for ColumnMap type rules.
+        /// The ratio of passed_count / evaluated_count.This field is only valid for row-level type rules.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passRatio")]
         public virtual System.Nullable<double> PassRatio { get; set; }
@@ -11301,7 +11321,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual System.Nullable<bool> Passed { get; set; }
 
         /// <summary>
-        /// The number of rows which passed a rule evaluation. This field is only valid for ColumnMap type rules.
+        /// The number of rows which passed a rule evaluation.This field is only valid for row-level type rules.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passedCount")]
         public virtual System.Nullable<long> PassedCount { get; set; }

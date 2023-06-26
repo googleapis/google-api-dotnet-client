@@ -4711,7 +4711,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
 
         /// <summary>
         /// The fully-qualified DLP inspect template resource name. Format:
-        /// `projects/{project}/inspectTemplates/{template}`
+        /// `projects/{project}/locations/{location}/inspectTemplates/{template}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplate")]
         public virtual string InspectTemplate { get; set; }
@@ -6509,7 +6509,7 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
 
         /// <summary>
         /// The fully-qualified DLP inspect template resource name. Format:
-        /// `projects/{project}/inspectTemplates/{template}`
+        /// `projects/{project}/locations/{location}/inspectTemplates/{template}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inspectTemplate")]
         public virtual string InspectTemplate { get; set; }

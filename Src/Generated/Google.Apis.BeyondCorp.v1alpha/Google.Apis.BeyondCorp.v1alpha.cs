@@ -296,6 +296,7 @@ namespace Google.Apis.BeyondCorp.v1alpha
                 this.service = service;
                 Global = new GlobalResource(service);
                 Insights = new InsightsResource(service);
+                Operations = new OperationsResource(service);
                 Subscriptions = new SubscriptionsResource(service);
             }
 
@@ -2971,6 +2972,282 @@ namespace Google.Apis.BeyondCorp.v1alpha
                         RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
                         {
                             Name = "view",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Operations resource.</summary>
+            public virtual OperationsResource Operations { get; }
+
+            /// <summary>The "operations" collection of methods.</summary>
+            public class OperationsResource
+            {
+                private const string Resource = "operations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public OperationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+                /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it
+                /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
+                /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
+                /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
+                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">The name of the operation resource to be cancelled.</param>
+                public virtual CancelRequest Cancel(Google.Apis.BeyondCorp.v1alpha.Data.GoogleLongrunningCancelOperationRequest body, string name)
+                {
+                    return new CancelRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+                /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it
+                /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
+                /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
+                /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
+                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// </summary>
+                public class CancelRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.Empty>
+                {
+                    /// <summary>Constructs a new Cancel request.</summary>
+                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.BeyondCorp.v1alpha.Data.GoogleLongrunningCancelOperationRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation resource to be cancelled.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.BeyondCorp.v1alpha.Data.GoogleLongrunningCancelOperationRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "cancel";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}:cancel";
+
+                    /// <summary>Initializes Cancel parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes a long-running operation. This method indicates that the client is no longer interested in
+                /// the operation result. It does not cancel the operation. If the server doesn't support this method,
+                /// it returns `google.rpc.Code.UNIMPLEMENTED`.
+                /// </summary>
+                /// <param name="name">The name of the operation resource to be deleted.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>
+                /// Deletes a long-running operation. This method indicates that the client is no longer interested in
+                /// the operation result. It does not cancel the operation. If the server doesn't support this method,
+                /// it returns `google.rpc.Code.UNIMPLEMENTED`.
+                /// </summary>
+                public class DeleteRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation resource to be deleted.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
+                /// <param name="name">The name of the operation resource.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
+                public class GetRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Lists operations that match the specified filter in the request. If the server doesn't support this
+                /// method, it returns `UNIMPLEMENTED`.
+                /// </summary>
+                /// <param name="name">The name of the operation's parent resource.</param>
+                public virtual ListRequest List(string name)
+                {
+                    return new ListRequest(service, name);
+                }
+
+                /// <summary>
+                /// Lists operations that match the specified filter in the request. If the server doesn't support this
+                /// method, it returns `UNIMPLEMENTED`.
+                /// </summary>
+                public class ListRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleLongrunningListOperationsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation's parent resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The standard list page token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}/operations";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -5727,237 +6004,6 @@ namespace Google.Apis.BeyondCorp.v1alpha
                     this.service = service;
                 }
 
-                /// <summary>Creates a new ClientConnectorService in a given project and location.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. Value for parent.</param>
-                public virtual CreateRequest Create(Google.Apis.BeyondCorp.v1alpha.Data.ClientConnectorService body, string parent)
-                {
-                    return new CreateRequest(service, body, parent);
-                }
-
-                /// <summary>Creates a new ClientConnectorService in a given project and location.</summary>
-                public class CreateRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleLongrunningOperation>
-                {
-                    /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.BeyondCorp.v1alpha.Data.ClientConnectorService body, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. Value for parent.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>
-                    /// Optional. User-settable client connector service resource ID. * Must start with a letter. * Must
-                    /// contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter. A random
-                    /// system generated name will be assigned if not specified by the user.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clientConnectorServiceId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClientConnectorServiceId { get; set; }
-
-                    /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string RequestId { get; set; }
-
-                    /// <summary>
-                    /// Optional. If set, validates request by executing a dry-run which would not alter the resource in
-                    /// any way.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.BeyondCorp.v1alpha.Data.ClientConnectorService Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "create";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1alpha/{+parent}/clientConnectorServices";
-
-                    /// <summary>Initializes Create parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                        RequestParameters.Add("clientConnectorServiceId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "clientConnectorServiceId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "validateOnly",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Deletes a single ClientConnectorService.</summary>
-                /// <param name="name">Required. Name of the resource.</param>
-                public virtual DeleteRequest Delete(string name)
-                {
-                    return new DeleteRequest(service, name);
-                }
-
-                /// <summary>Deletes a single ClientConnectorService.</summary>
-                public class DeleteRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleLongrunningOperation>
-                {
-                    /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. Name of the resource.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string RequestId { get; set; }
-
-                    /// <summary>
-                    /// Optional. If set, validates request by executing a dry-run which would not alter the resource in
-                    /// any way.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "delete";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "DELETE";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1alpha/{+name}";
-
-                    /// <summary>Initializes Delete parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/clientConnectorServices/[^/]+$",
-                        });
-                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "validateOnly",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Gets details of a single ClientConnectorService.</summary>
-                /// <param name="name">Required. Name of the resource.</param>
-                public virtual GetRequest Get(string name)
-                {
-                    return new GetRequest(service, name);
-                }
-
-                /// <summary>Gets details of a single ClientConnectorService.</summary>
-                public class GetRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.ClientConnectorService>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. Name of the resource.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "get";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1alpha/{+name}";
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/clientConnectorServices/[^/]+$",
-                        });
-                    }
-                }
-
                 /// <summary>
                 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
                 /// does not have a policy set.
@@ -6030,221 +6076,6 @@ namespace Google.Apis.BeyondCorp.v1alpha
                         RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
                         {
                             Name = "options.requestedPolicyVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Lists ClientConnectorServices in a given project and location.</summary>
-                /// <param name="parent">Required. Parent value for ListClientConnectorServicesRequest.</param>
-                public virtual ListRequest List(string parent)
-                {
-                    return new ListRequest(service, parent);
-                }
-
-                /// <summary>Lists ClientConnectorServices in a given project and location.</summary>
-                public class ListRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.ListClientConnectorServicesResponse>
-                {
-                    /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. Parent value for ListClientConnectorServicesRequest.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Optional. Filtering results.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
-                    /// <summary>Optional. Hint for how to order the results.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string OrderBy { get; set; }
-
-                    /// <summary>
-                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-                    /// server will pick an appropriate default.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "list";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1alpha/{+parent}/clientConnectorServices";
-
-                    /// <summary>Initializes List parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Updates the parameters of a single ClientConnectorService.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">Required. Name of resource. The name is ignored during creation.</param>
-                public virtual PatchRequest Patch(Google.Apis.BeyondCorp.v1alpha.Data.ClientConnectorService body, string name)
-                {
-                    return new PatchRequest(service, body, name);
-                }
-
-                /// <summary>Updates the parameters of a single ClientConnectorService.</summary>
-                public class PatchRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleLongrunningOperation>
-                {
-                    /// <summary>Constructs a new Patch request.</summary>
-                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.BeyondCorp.v1alpha.Data.ClientConnectorService body, string name) : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. Name of resource. The name is ignored during creation.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Optional. If set as true, will create the resource if it is not found.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> AllowMissing { get; set; }
-
-                    /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string RequestId { get; set; }
-
-                    /// <summary>
-                    /// Required. Field mask is used to specify the fields to be overwritten in the
-                    /// ClientConnectorService resource by the update. The fields specified in the update_mask are
-                    /// relative to the resource, not the full request. A field will be overwritten if it is in the
-                    /// mask. If the user does not provide a mask then all fields will be overwritten. Mutable fields:
-                    /// display_name, ingress.config.destination_routes.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object UpdateMask { get; set; }
-
-                    /// <summary>
-                    /// Optional. If set, validates request by executing a dry-run which would not alter the resource in
-                    /// any way.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.BeyondCorp.v1alpha.Data.ClientConnectorService Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "patch";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "PATCH";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1alpha/{+name}";
-
-                    /// <summary>Initializes Patch parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/clientConnectorServices/[^/]+$",
-                        });
-                        RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "allowMissing",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "validateOnly",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -6409,236 +6240,6 @@ namespace Google.Apis.BeyondCorp.v1alpha
                     this.service = service;
                 }
 
-                /// <summary>Creates a new ClientGateway in a given project and location.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. Value for parent.</param>
-                public virtual CreateRequest Create(Google.Apis.BeyondCorp.v1alpha.Data.ClientGateway body, string parent)
-                {
-                    return new CreateRequest(service, body, parent);
-                }
-
-                /// <summary>Creates a new ClientGateway in a given project and location.</summary>
-                public class CreateRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleLongrunningOperation>
-                {
-                    /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.BeyondCorp.v1alpha.Data.ClientGateway body, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. Value for parent.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>
-                    /// Optional. User-settable client gateway resource ID. * Must start with a letter. * Must contain
-                    /// between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("clientGatewayId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string ClientGatewayId { get; set; }
-
-                    /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes since the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string RequestId { get; set; }
-
-                    /// <summary>
-                    /// Optional. If set, validates request by executing a dry-run which would not alter the resource in
-                    /// any way.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.BeyondCorp.v1alpha.Data.ClientGateway Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "create";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1alpha/{+parent}/clientGateways";
-
-                    /// <summary>Initializes Create parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                        RequestParameters.Add("clientGatewayId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "clientGatewayId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "validateOnly",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Deletes a single ClientGateway.</summary>
-                /// <param name="name">Required. Name of the resource</param>
-                public virtual DeleteRequest Delete(string name)
-                {
-                    return new DeleteRequest(service, name);
-                }
-
-                /// <summary>Deletes a single ClientGateway.</summary>
-                public class DeleteRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleLongrunningOperation>
-                {
-                    /// <summary>Constructs a new Delete request.</summary>
-                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. Name of the resource</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>
-                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
-                    /// you must retry your request, the server will know to ignore the request if it has already been
-                    /// completed. The server will guarantee that for at least 60 minutes after the first request. For
-                    /// example, consider a situation where you make an initial request and the request times out. If
-                    /// you make the request again with the same request ID, the server can check if original operation
-                    /// with the same request ID was received, and if so, will ignore the second request. This prevents
-                    /// clients from accidentally creating duplicate commitments. The request ID must be a valid UUID
-                    /// with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string RequestId { get; set; }
-
-                    /// <summary>
-                    /// Optional. If set, validates request by executing a dry-run which would not alter the resource in
-                    /// any way.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "delete";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "DELETE";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1alpha/{+name}";
-
-                    /// <summary>Initializes Delete parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/clientGateways/[^/]+$",
-                        });
-                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "requestId",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "validateOnly",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Gets details of a single ClientGateway.</summary>
-                /// <param name="name">Required. Name of the resource</param>
-                public virtual GetRequest Get(string name)
-                {
-                    return new GetRequest(service, name);
-                }
-
-                /// <summary>Gets details of a single ClientGateway.</summary>
-                public class GetRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.ClientGateway>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. Name of the resource</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "get";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1alpha/{+name}";
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/clientGateways/[^/]+$",
-                        });
-                    }
-                }
-
                 /// <summary>
                 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
                 /// does not have a policy set.
@@ -6711,102 +6312,6 @@ namespace Google.Apis.BeyondCorp.v1alpha
                         RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
                         {
                             Name = "options.requestedPolicyVersion",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Lists ClientGateways in a given project and location.</summary>
-                /// <param name="parent">Required. Parent value for ListClientGatewaysRequest.</param>
-                public virtual ListRequest List(string parent)
-                {
-                    return new ListRequest(service, parent);
-                }
-
-                /// <summary>Lists ClientGateways in a given project and location.</summary>
-                public class ListRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.ListClientGatewaysResponse>
-                {
-                    /// <summary>Constructs a new List request.</summary>
-                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                    {
-                        Parent = parent;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. Parent value for ListClientGatewaysRequest.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Parent { get; private set; }
-
-                    /// <summary>Optional. Filtering results.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Filter { get; set; }
-
-                    /// <summary>Optional. Hint for how to order the results.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string OrderBy { get; set; }
-
-                    /// <summary>
-                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
-                    /// server will pick an appropriate default.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>Optional. A token identifying a page of results the server should return.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "list";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1alpha/{+parent}/clientGateways";
-
-                    /// <summary>Initializes List parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "parent",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "filter",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "orderBy",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -9867,157 +9372,6 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Message describing ClientConnectorService object.</summary>
-    public class ClientConnectorService : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. [Output only] Create time stamp.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>
-        /// Optional. User-provided name. The display name should follow certain format. * Must be 6 to 30 characters in
-        /// length. * Can only contain lowercase letters, numbers, and hyphens. * Must start with a letter.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>Required. The details of the egress settings.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("egress")]
-        public virtual Egress Egress { get; set; }
-
-        /// <summary>Required. The details of the ingress settings.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("ingress")]
-        public virtual Ingress Ingress { get; set; }
-
-        /// <summary>Required. Name of resource. The name is ignored during creation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Output only. The operational state of the ClientConnectorService.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>Output only. [Output only] Update time stamp.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents the metadata of the long-running operation.</summary>
-    public class ClientConnectorServiceOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. API version used to start the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; }
-
-        /// <summary>Output only. The time the operation was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>Output only. The time the operation finished running.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
-
-        /// <summary>
-        /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
-        /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// `Code.CANCELLED`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
-        public virtual System.Nullable<bool> RequestedCancellation { get; set; }
-
-        /// <summary>Output only. Human-readable status of the operation, if any.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
-        public virtual string StatusMessage { get; set; }
-
-        /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; }
-
-        /// <summary>Output only. Name of the verb executed by the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("verb")]
-        public virtual string Verb { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Message describing ClientGateway object.</summary>
-    public class ClientGateway : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Output only. The client connector service name that the client gateway is associated to. Client Connector
-        /// Services, named as follows:
-        /// `projects/{project_id}/locations/{location_id}/client_connector_services/{client_connector_service_id}`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clientConnectorService")]
-        public virtual string ClientConnectorService { get; set; }
-
-        /// <summary>Output only. [Output only] Create time stamp.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>Output only. A unique identifier for the instance generated by the system.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("id")]
-        public virtual string Id { get; set; }
-
-        /// <summary>Required. name of resource. The name is ignored during creation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Output only. The operational state of the gateway.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("state")]
-        public virtual string State { get; set; }
-
-        /// <summary>Output only. [Output only] Update time stamp.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Represents the metadata of the long-running operation.</summary>
-    public class ClientGatewayOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. API version used to start the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
-        public virtual string ApiVersion { get; set; }
-
-        /// <summary>Output only. The time the operation was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
-
-        /// <summary>Output only. The time the operation finished running.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
-
-        /// <summary>
-        /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
-        /// been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// `Code.CANCELLED`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
-        public virtual System.Nullable<bool> RequestedCancellation { get; set; }
-
-        /// <summary>Output only. Human-readable status of the operation, if any.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
-        public virtual string StatusMessage { get; set; }
-
-        /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("target")]
-        public virtual string Target { get; set; }
-
-        /// <summary>Output only. Name of the verb executed by the operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("verb")]
-        public virtual string Verb { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>The configuration for Pub/Sub messaging for the connector.</summary>
     public class CloudPubSubNotificationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10132,21 +9486,6 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
     /// <summary>LogAgentDetails reflects the details of a log agent.</summary>
     public class CloudSecurityZerotrustApplinkLogagentProtoLogAgentDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The basic ingress config for ClientGateways.</summary>
-    public class Config : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The settings used to configure basic ClientGateways.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("destinationRoutes")]
-        public virtual System.Collections.Generic.IList<DestinationRoute> DestinationRoutes { get; set; }
-
-        /// <summary>Required. Immutable. The transport protocol used between the client and the server.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("transportProtocol")]
-        public virtual string TransportProtocol { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10406,39 +9745,6 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         /// <summary>The extended status. Such as ExitCode, StartedAt, FinishedAt, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("extendedStatus")]
         public virtual System.Collections.Generic.IDictionary<string, string> ExtendedStatus { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// The setting used to configure ClientGateways. It is adding routes to the client's routing table after the
-    /// connection is established.
-    /// </summary>
-    public class DestinationRoute : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The network address of the subnet for which the packet is routed to the ClientGateway.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("address")]
-        public virtual string Address { get; set; }
-
-        /// <summary>
-        /// Required. The network mask of the subnet for which the packet is routed to the ClientGateway.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("netmask")]
-        public virtual string Netmask { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The details of the egress info. One of the following options should be set.</summary>
-    public class Egress : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A VPC from the consumer project.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("peeredVpc")]
-        public virtual PeeredVpc PeeredVpc { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11217,6 +10523,12 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
     /// <summary>Metadata associated with PartnerTenant and is provided by the Partner.</summary>
     public class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalTenantId")]
+        public virtual string InternalTenantId { get; set; }
+
         /// <summary>
         /// Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
         /// </summary>
@@ -12196,17 +11508,6 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Settings of how to connect to the ClientGateway. One of the following options should be set.</summary>
-    public class Ingress : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The basic ingress config for ClientGateways.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("config")]
-        public virtual Config Config { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Response message for BeyondCorp.ListAppGateways.</summary>
     public class ListAppGatewaysResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12221,44 +11522,6 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         public virtual string NextPageToken { get; set; }
 
         /// <summary>A list of locations that could not be reached.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Message for response to listing ClientConnectorServices.</summary>
-    public class ListClientConnectorServicesResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The list of ClientConnectorService.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clientConnectorServices")]
-        public virtual System.Collections.Generic.IList<ClientConnectorService> ClientConnectorServices { get; set; }
-
-        /// <summary>A token identifying a page of results the server should return.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>Locations that could not be reached.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
-        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Message for response to listing ClientGateways.</summary>
-    public class ListClientGatewaysResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The list of ClientGateway.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("clientGateways")]
-        public virtual System.Collections.Generic.IList<ClientGateway> ClientGateways { get; set; }
-
-        /// <summary>A token identifying a page of results the server should return.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
@@ -12317,17 +11580,6 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubNotification")]
         public virtual CloudPubSubNotificationConfig PubsubNotification { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The peered VPC owned by the consumer project.</summary>
-    public class PeeredVpc : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The name of the peered VPC owned by the consumer project.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("networkVpc")]
-        public virtual string NetworkVpc { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

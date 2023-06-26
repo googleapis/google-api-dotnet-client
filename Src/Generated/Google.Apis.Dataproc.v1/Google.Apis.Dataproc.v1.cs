@@ -7360,9 +7360,8 @@ namespace Google.Apis.Dataproc.v1.Data
         /// session to terminate. This field cannot be set on a batch workload. Minimum value is 10 minutes; maximum
         /// value is 14 days (see JSON representation of Duration
         /// (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 4 hours if not set. If both
-        /// ttl and idle_ttl are specified for an interactive session, the conditions are treated as OR conditions: the
-        /// workload will be terminated when it has been idle for idle_ttl or when ttl has been exceeded, whichever
-        /// occurs first.
+        /// ttl and idle_ttl are specified, the conditions are treated as OR conditions: the workload will be terminated
+        /// when it has been idle for idle_ttl or when ttl has been exceed, whichever occurs first.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idleTtl")]
         public virtual object IdleTtl { get; set; }
@@ -7401,9 +7400,8 @@ namespace Google.Apis.Dataproc.v1.Data
         /// Optional. The duration after which the workload will be terminated. When the workload exceeds this duration,
         /// it will be unconditionally terminated without waiting for ongoing work to finish. If ttl is not specified
         /// for a batch workload, the workload will be allowed to run until it exits naturally (or runs forever without
-        /// exiting). If ttl is not specified for an interactive session, it defaults to 24h. If ttl is not specified
-        /// for a batch that uses 2.1+ runtime version, it defaults to 4h. Minimum value is 10 minutes; maximum value is
-        /// 14 days (see JSON representation of Duration
+        /// exiting). If ttl is not specified for an interactive session, it defaults to 24h. Minimum value is 10
+        /// minutes; maximum value is 14 days (see JSON representation of Duration
         /// (https://developers.google.com/protocol-buffers/docs/proto3#json)). If both ttl and idle_ttl are specified
         /// (for an interactive session), the conditions are treated as OR conditions: the workload will be terminated
         /// when it has been idle for idle_ttl or when ttl has been exceeded, whichever occurs first.
@@ -8578,7 +8576,7 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>A list of batch workloads.</summary>
     public class ListBatchesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The batches from the specified collection.</summary>
+        /// <summary>The batches from the specified collection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batches")]
         public virtual System.Collections.Generic.IList<Batch> Batches { get; set; }
 

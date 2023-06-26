@@ -8620,7 +8620,7 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// <summary>
         /// User provided OnePlatform identifier that is used as part of the resource name. This must be unique among
         /// all GKE on-prem clusters within a project and location and will return a 409 if the cluster already exists.
-        /// This value must be up to 40 characters and follow RFC-1123 (https://tools.ietf.org/html/rfc1123) format.
+        /// (https://tools.ietf.org/html/rfc1123) format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bareMetalAdminClusterId")]
         public virtual string BareMetalAdminClusterId { get; set; }
@@ -8647,16 +8647,16 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// <summary>
         /// User provided OnePlatform identifier that is used as part of the resource name. This must be unique among
         /// all bare metal clusters within a project and location and will return a 409 if the cluster already exists.
-        /// This value must be up to 40 characters and follow RFC-1123 (https://tools.ietf.org/html/rfc1123) format.
+        /// (https://tools.ietf.org/html/rfc1123) format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bareMetalClusterId")]
         public virtual string BareMetalClusterId { get; set; }
 
         /// <summary>
-        /// The object name of the bare metal cluster custom resource on the associated admin cluster. This field is
-        /// used to support conflicting resource names when enrolling existing clusters to the API. When not provided,
-        /// this field will resolve to the bare_metal_cluster_id. Otherwise, it must match the object name of the bare
-        /// metal cluster custom resource. It is not modifiable outside / beyond the enrollment operation.
+        /// Optional. The object name of the bare metal cluster custom resource on the associated admin cluster. This
+        /// field is used to support conflicting resource names when enrolling existing clusters to the API. When not
+        /// provided, this field will resolve to the bare_metal_cluster_id. Otherwise, it must match the object name of
+        /// the bare metal cluster custom resource. It is not modifiable outside / beyond the enrollment operation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localName")]
         public virtual string LocalName { get; set; }
@@ -8669,8 +8669,8 @@ namespace Google.Apis.GKEOnPrem.v1.Data
     public class EnrollBareMetalNodePoolRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// User provided OnePlatform identifier that is used as part of the resource name. This value must be up to 40
-        /// characters and follow RFC-1123 (https://tools.ietf.org/html/rfc1123) format.
+        /// User provided OnePlatform identifier that is used as part of the resource name.
+        /// (https://tools.ietf.org/html/rfc1123) format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bareMetalNodePoolId")]
         public virtual string BareMetalNodePoolId { get; set; }
@@ -8693,7 +8693,7 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// <summary>
         /// User provided OnePlatform identifier that is used as part of the resource name. This must be unique among
         /// all GKE on-prem clusters within a project and location and will return a 409 if the cluster already exists.
-        /// This value must be up to 40 characters and follow RFC-1123 (https://tools.ietf.org/html/rfc1123) format.
+        /// (https://tools.ietf.org/html/rfc1123) format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmwareAdminClusterId")]
         public virtual string VmwareAdminClusterId { get; set; }
@@ -8714,10 +8714,11 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         public virtual string AdminClusterMembership { get; set; }
 
         /// <summary>
-        /// The object name of the VMware OnPremUserCluster custom resource on the associated admin cluster. This field
-        /// is used to support conflicting resource names when enrolling existing clusters to the API. When not
-        /// provided, this field will resolve to the vmware_cluster_id. Otherwise, it must match the object name of the
-        /// VMware OnPremUserCluster custom resource. It is not modifiable outside / beyond the enrollment operation.
+        /// Optional. The object name of the VMware OnPremUserCluster custom resource on the associated admin cluster.
+        /// This field is used to support conflicting resource names when enrolling existing clusters to the API. When
+        /// not provided, this field will resolve to the vmware_cluster_id. Otherwise, it must match the object name of
+        /// the VMware OnPremUserCluster custom resource. It is not modifiable outside / beyond the enrollment
+        /// operation.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("localName")]
         public virtual string LocalName { get; set; }
@@ -8729,7 +8730,7 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// <summary>
         /// User provided OnePlatform identifier that is used as part of the resource name. This must be unique among
         /// all GKE on-prem clusters within a project and location and will return a 409 if the cluster already exists.
-        /// This value must be up to 40 characters and follow RFC-1123 (https://tools.ietf.org/html/rfc1123) format.
+        /// (https://tools.ietf.org/html/rfc1123) format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmwareClusterId")]
         public virtual string VmwareClusterId { get; set; }
@@ -10034,6 +10035,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("datastore")]
         public virtual string Datastore { get; set; }
 
+        /// <summary>The Vsphere storage policy used by the control plane Node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storagePolicyName")]
+        public virtual string StoragePolicyName { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10496,6 +10501,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourcePool")]
         public virtual string ResourcePool { get; set; }
 
+        /// <summary>The name of the vCenter storage policy for the user cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storagePolicyName")]
+        public virtual string StoragePolicyName { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10546,6 +10555,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// <summary>The name of the vCenter datastore. Inherited from the user cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datastore")]
         public virtual string Datastore { get; set; }
+
+        /// <summary>The name of the vCenter storage policy. Inherited from the user cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storagePolicyName")]
+        public virtual string StoragePolicyName { get; set; }
 
         /// <summary>Tags to apply to VMs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]

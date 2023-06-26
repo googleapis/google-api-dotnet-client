@@ -7,5 +7,10 @@
   "Google.Apis.Networkconnectivity.v1.NetworkconnectivityBaseServiceRequest<<TResponse>>.XgafvEnum": [
     "1",
     "2"
+  ],
+  "Google.Apis.Networkconnectivity.v1.ProjectsResource+LocationsResource+GlobalResource+HubsResource+ListSpokesRequest.ViewEnum": [
+    "SPOKE_VIEW_UNSPECIFIED",
+    "BASIC",
+    "DETAILED"
   ]
 }

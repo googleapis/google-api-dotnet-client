@@ -1739,6 +1739,10 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>
         /// Describes the Service being deployed. Currently deploys services to Cloud Run (fully managed).
         /// </summary>

@@ -5119,6 +5119,25 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("series")]
         public virtual string Series { get; set; }
 
+        /// <summary>Compute Engine storage. Never empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storage")]
+        public virtual System.Collections.Generic.IList<ComputeStorageDescriptor> Storage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Compute Engine storage option descriptor.</summary>
+    public class ComputeStorageDescriptor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Disk size in GiB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
+        public virtual System.Nullable<int> SizeGb { get; set; }
+
+        /// <summary>Disk type backing the storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

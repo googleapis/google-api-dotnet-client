@@ -3850,10 +3850,9 @@ namespace Google.Apis.GKEHub.v1.Data
 
         /// <summary>
         /// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other
-        /// ConfigSync fields will be applied if exist. If set to false and Managed Config Sync is disabled, all other
-        /// ConfigSync fields will be ignored, ConfigSync resources will be deleted. Setting this field to false while
-        /// enabling Managed Config Sync is invalid. If omitted, ConfigSync resources will be managed if: * the git or
-        /// oci field is present; or * Managed Config Sync is enabled (i.e., managed.enabled is true).
+        /// ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored,
+        /// ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the
+        /// presence of the git or oci field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
@@ -3862,16 +3861,12 @@ namespace Google.Apis.GKEHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("git")]
         public virtual ConfigManagementGitConfig Git { get; set; }
 
-        /// <summary>Configuration for Managed Config Sync.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("managed")]
-        public virtual ConfigManagementManaged Managed { get; set; }
-
         /// <summary>
-        /// The Email of the GCP Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring and
-        /// Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric Writer
-        /// (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace
-        /// `config-management-monitoring` should be binded to the GSA. This field is required when Managed Config Sync
-        /// is enabled.
+        /// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud
+        /// Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric
+        /// Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace
+        /// `config-management-monitoring` should be binded to the GSA. This field is required when automatic Feature
+        /// management is enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricsGcpServiceAccountEmail")]
         public virtual string MetricsGcpServiceAccountEmail { get; set; }
@@ -3890,6 +3885,13 @@ namespace Google.Apis.GKEHub.v1.Data
         /// <summary>Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceFormat")]
         public virtual string SourceFormat { get; set; }
+
+        /// <summary>
+        /// Set to true to stop syncing configs for a single cluster when automatic Feature management is enabled.
+        /// Default to false. The field will be ignored when automatic Feature management is disabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stopSyncing")]
+        public virtual System.Nullable<bool> StopSyncing { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4046,7 +4048,9 @@ namespace Google.Apis.GKEHub.v1.Data
     /// <summary>Git repo configuration for a single cluster.</summary>
     public class ConfigManagementGitConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The GCP Service Account Email used for auth when secret_type is gcpServiceAccount.</summary>
+        /// <summary>
+        /// The Google Cloud Service Account Email used for auth when secret_type is gcpServiceAccount.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpServiceAccountEmail")]
         public virtual string GcpServiceAccountEmail { get; set; }
 
@@ -4182,27 +4186,6 @@ namespace Google.Apis.GKEHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Configuration for Managed Config Sync.</summary>
-    public class ConfigManagementManaged : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Set to true to enable Managed Config Sync. Defaults to false which disables Managed Config Sync. Setting
-        /// this field to true when configSync.enabled is false is invalid.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; }
-
-        /// <summary>
-        /// Set to true to stop syncing configs for a single cluster. Default to false. If set to true, Managed Config
-        /// Sync will not upgrade Config Sync.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("stopSyncing")]
-        public virtual System.Nullable<bool> StopSyncing { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// **Anthos Config Management**: Configuration for a single cluster. Intended to parallel the ConfigManagement CR.
     /// </summary>
@@ -4225,6 +4208,10 @@ namespace Google.Apis.GKEHub.v1.Data
         /// <summary>Hierarchy Controller configuration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hierarchyController")]
         public virtual ConfigManagementHierarchyControllerConfig HierarchyController { get; set; }
+
+        /// <summary>Enables automatic Feature management.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("management")]
+        public virtual string Management { get; set; }
 
         /// <summary>Policy Controller configuration for the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyController")]
@@ -4278,7 +4265,9 @@ namespace Google.Apis.GKEHub.v1.Data
     /// <summary>OCI repo configuration for a single cluster</summary>
     public class ConfigManagementOciConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The GCP Service Account Email used for auth when secret_type is gcpServiceAccount.</summary>
+        /// <summary>
+        /// The Google Cloud Service Account Email used for auth when secret_type is gcpServiceAccount.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpServiceAccountEmail")]
         public virtual string GcpServiceAccountEmail { get; set; }
 
@@ -5499,10 +5488,6 @@ namespace Google.Apis.GKEHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configmanagement")]
         public virtual ConfigManagementMembershipSpec Configmanagement { get; set; }
 
-        /// <summary>True if value of `feature_spec` was inherited from a fleet-level default.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fleetInherited")]
-        public virtual System.Nullable<bool> FleetInherited { get; set; }
-
         /// <summary>Fleet observability membership spec</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fleetobservability")]
         public virtual FleetObservabilityMembershipSpec Fleetobservability { get; set; }
@@ -5514,6 +5499,13 @@ namespace Google.Apis.GKEHub.v1.Data
         /// <summary>Anthos Service Mesh-specific spec</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mesh")]
         public virtual ServiceMeshMembershipSpec Mesh { get; set; }
+
+        /// <summary>
+        /// Whether this per-Membership spec was inherited from a fleet-level default. This field can be updated by
+        /// users by either overriding a Membership config (updated to USER implicitly) or setting to FLEET explicitly.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("origin")]
+        public virtual Origin Origin { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5747,6 +5739,17 @@ namespace Google.Apis.GKEHub.v1.Data
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Origin defines where this MembershipFeatureSpec originated from.</summary>
+    public class Origin : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Type specifies which type of origin is set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
