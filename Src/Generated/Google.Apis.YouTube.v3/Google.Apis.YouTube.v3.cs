@@ -10361,9 +10361,18 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
         public virtual string PublishedAtRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PublishedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PublishedAtDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> PublishedAt
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PublishedAtDateTimeOffset instead.")]
+        public virtual System.DateTime? PublishedAt
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(PublishedAtRaw);
             set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -10496,9 +10505,18 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdated")]
         public virtual string LastUpdatedRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastUpdatedRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastUpdatedDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdatedRaw);
+            set => LastUpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="LastUpdatedRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> LastUpdated
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastUpdatedDateTimeOffset instead.")]
+        public virtual System.DateTime? LastUpdated
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(LastUpdatedRaw);
             set => LastUpdatedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -10753,9 +10771,18 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timeLinked")]
         public virtual string TimeLinkedRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimeLinkedRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimeLinkedDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeLinkedRaw);
+            set => TimeLinkedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="TimeLinkedRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> TimeLinked
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimeLinkedDateTimeOffset instead.")]
+        public virtual System.DateTime? TimeLinked
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(TimeLinkedRaw);
             set => TimeLinkedRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -11128,9 +11155,18 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
         public virtual string PublishedAtRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PublishedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PublishedAtDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> PublishedAt
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PublishedAtDateTimeOffset instead.")]
+        public virtual System.DateTime? PublishedAt
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(PublishedAtRaw);
             set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -11358,9 +11394,18 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
         public virtual string PublishedAtRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PublishedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PublishedAtDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> PublishedAt
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PublishedAtDateTimeOffset instead.")]
+        public virtual System.DateTime? PublishedAt
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(PublishedAtRaw);
             set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -11385,9 +11430,18 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updatedAt")]
         public virtual string UpdatedAtRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdatedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdatedAtDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdatedAtRaw);
+            set => UpdatedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="UpdatedAtRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> UpdatedAt
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdatedAtDateTimeOffset instead.")]
+        public virtual System.DateTime? UpdatedAt
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(UpdatedAtRaw);
             set => UpdatedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -12396,10 +12450,21 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string BoundStreamLastUpdateTimeMsRaw { get; set; }
 
         /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="BoundStreamLastUpdateTimeMsRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? BoundStreamLastUpdateTimeMsDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(BoundStreamLastUpdateTimeMsRaw);
+            set => BoundStreamLastUpdateTimeMsRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
         /// <seealso cref="System.DateTime"/> representation of <see cref="BoundStreamLastUpdateTimeMsRaw"/>.
         /// </summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> BoundStreamLastUpdateTimeMs
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use BoundStreamLastUpdateTimeMsDateTimeOffset instead.")]
+        public virtual System.DateTime? BoundStreamLastUpdateTimeMs
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(BoundStreamLastUpdateTimeMsRaw);
             set => BoundStreamLastUpdateTimeMsRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -12569,9 +12634,18 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("actualEndTime")]
         public virtual string ActualEndTimeRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ActualEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ActualEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ActualEndTimeRaw);
+            set => ActualEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ActualEndTimeRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> ActualEndTime
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ActualEndTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? ActualEndTime
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(ActualEndTimeRaw);
             set => ActualEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -12584,9 +12658,20 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("actualStartTime")]
         public virtual string ActualStartTimeRaw { get; set; }
 
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ActualStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ActualStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ActualStartTimeRaw);
+            set => ActualStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ActualStartTimeRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> ActualStartTime
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ActualStartTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? ActualStartTime
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(ActualStartTimeRaw);
             set => ActualStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -12617,9 +12702,18 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
         public virtual string PublishedAtRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PublishedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PublishedAtDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> PublishedAt
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PublishedAtDateTimeOffset instead.")]
+        public virtual System.DateTime? PublishedAt
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(PublishedAtRaw);
             set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -12629,9 +12723,20 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scheduledEndTime")]
         public virtual string ScheduledEndTimeRaw { get; set; }
 
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ScheduledEndTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ScheduledEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduledEndTimeRaw);
+            set => ScheduledEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ScheduledEndTimeRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> ScheduledEndTime
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ScheduledEndTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? ScheduledEndTime
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(ScheduledEndTimeRaw);
             set => ScheduledEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -12641,9 +12746,20 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scheduledStartTime")]
         public virtual string ScheduledStartTimeRaw { get; set; }
 
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ScheduledStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ScheduledStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduledStartTimeRaw);
+            set => ScheduledStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ScheduledStartTimeRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> ScheduledStartTime
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ScheduledStartTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? ScheduledStartTime
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(ScheduledStartTimeRaw);
             set => ScheduledStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -12967,9 +13083,18 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("offlineAt")]
         public virtual string OfflineAtRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="OfflineAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? OfflineAtDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(OfflineAtRaw);
+            set => OfflineAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="OfflineAtRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> OfflineAt
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use OfflineAtDateTimeOffset instead.")]
+        public virtual System.DateTime? OfflineAt
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(OfflineAtRaw);
             set => OfflineAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -13069,9 +13194,18 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
         public virtual string PublishedAtRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PublishedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PublishedAtDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> PublishedAt
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PublishedAtDateTimeOffset instead.")]
+        public virtual System.DateTime? PublishedAt
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(PublishedAtRaw);
             set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -13462,9 +13596,18 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
         public virtual string PublishedAtRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PublishedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PublishedAtDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> PublishedAt
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PublishedAtDateTimeOffset instead.")]
+        public virtual System.DateTime? PublishedAt
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(PublishedAtRaw);
             set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -13913,9 +14056,20 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("videoPublishedAt")]
         public virtual string VideoPublishedAtRaw { get; set; }
 
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="VideoPublishedAtRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? VideoPublishedAtDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(VideoPublishedAtRaw);
+            set => VideoPublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="VideoPublishedAtRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> VideoPublishedAt
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use VideoPublishedAtDateTimeOffset instead.")]
+        public virtual System.DateTime? VideoPublishedAt
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(VideoPublishedAtRaw);
             set => VideoPublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -14006,9 +14160,18 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
         public virtual string PublishedAtRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PublishedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PublishedAtDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> PublishedAt
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PublishedAtDateTimeOffset instead.")]
+        public virtual System.DateTime? PublishedAt
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(PublishedAtRaw);
             set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -14153,9 +14316,18 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
         public virtual string PublishedAtRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PublishedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PublishedAtDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> PublishedAt
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PublishedAtDateTimeOffset instead.")]
+        public virtual System.DateTime? PublishedAt
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(PublishedAtRaw);
             set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -14368,9 +14540,18 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
         public virtual string PublishedAtRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PublishedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PublishedAtDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> PublishedAt
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PublishedAtDateTimeOffset instead.")]
+        public virtual System.DateTime? PublishedAt
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(PublishedAtRaw);
             set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -14511,9 +14692,18 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
         public virtual string PublishedAtRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PublishedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PublishedAtDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> PublishedAt
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PublishedAtDateTimeOffset instead.")]
+        public virtual System.DateTime? PublishedAt
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(PublishedAtRaw);
             set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -14643,9 +14833,18 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createdAt")]
         public virtual string CreatedAtRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreatedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreatedAtDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreatedAtRaw);
+            set => CreatedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedAtRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> CreatedAt
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreatedAtDateTimeOffset instead.")]
+        public virtual System.DateTime? CreatedAt
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(CreatedAtRaw);
             set => CreatedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -15550,9 +15749,18 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("actualEndTime")]
         public virtual string ActualEndTimeRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ActualEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ActualEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ActualEndTimeRaw);
+            set => ActualEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ActualEndTimeRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> ActualEndTime
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ActualEndTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? ActualEndTime
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(ActualEndTimeRaw);
             set => ActualEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -15564,9 +15772,20 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("actualStartTime")]
         public virtual string ActualStartTimeRaw { get; set; }
 
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ActualStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ActualStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ActualStartTimeRaw);
+            set => ActualStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ActualStartTimeRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> ActualStartTime
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ActualStartTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? ActualStartTime
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(ActualStartTimeRaw);
             set => ActualStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -15589,9 +15808,20 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scheduledEndTime")]
         public virtual string ScheduledEndTimeRaw { get; set; }
 
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ScheduledEndTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ScheduledEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduledEndTimeRaw);
+            set => ScheduledEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ScheduledEndTimeRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> ScheduledEndTime
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ScheduledEndTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? ScheduledEndTime
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(ScheduledEndTimeRaw);
             set => ScheduledEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -15601,9 +15831,20 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scheduledStartTime")]
         public virtual string ScheduledStartTimeRaw { get; set; }
 
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ScheduledStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ScheduledStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduledStartTimeRaw);
+            set => ScheduledStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ScheduledStartTimeRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> ScheduledStartTime
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ScheduledStartTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? ScheduledStartTime
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(ScheduledStartTimeRaw);
             set => ScheduledStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -15794,9 +16035,18 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("recordingDate")]
         public virtual string RecordingDateRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="RecordingDateRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RecordingDateDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RecordingDateRaw);
+            set => RecordingDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="RecordingDateRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> RecordingDate
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RecordingDateDateTimeOffset instead.")]
+        public virtual System.DateTime? RecordingDate
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(RecordingDateRaw);
             set => RecordingDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -15853,9 +16103,18 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
         public virtual string PublishedAtRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PublishedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PublishedAtDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishedAtRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> PublishedAt
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PublishedAtDateTimeOffset instead.")]
+        public virtual System.DateTime? PublishedAt
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(PublishedAtRaw);
             set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -15954,9 +16213,18 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publishAt")]
         public virtual string PublishAtRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PublishAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PublishAtDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishAtRaw);
+            set => PublishAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="PublishAtRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> PublishAt
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PublishAtDateTimeOffset instead.")]
+        public virtual System.DateTime? PublishAt
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(PublishAtRaw);
             set => PublishAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);

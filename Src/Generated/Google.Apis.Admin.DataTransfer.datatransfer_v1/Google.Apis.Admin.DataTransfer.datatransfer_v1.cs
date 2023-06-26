@@ -737,9 +737,18 @@ namespace Google.Apis.Admin.DataTransfer.datatransfer_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestTime")]
         public virtual string RequestTimeRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="RequestTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RequestTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RequestTimeRaw);
+            set => RequestTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="RequestTimeRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> RequestTime
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RequestTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? RequestTime
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(RequestTimeRaw);
             set => RequestTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
