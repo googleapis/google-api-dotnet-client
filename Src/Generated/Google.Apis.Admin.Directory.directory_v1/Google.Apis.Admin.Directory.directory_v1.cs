@@ -11072,9 +11072,20 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastEnrollmentTime")]
         public virtual string LastEnrollmentTimeRaw { get; set; }
 
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastEnrollmentTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastEnrollmentTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastEnrollmentTimeRaw);
+            set => LastEnrollmentTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="LastEnrollmentTimeRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> LastEnrollmentTime
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastEnrollmentTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? LastEnrollmentTime
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(LastEnrollmentTimeRaw);
             set => LastEnrollmentTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -11091,9 +11102,18 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastSync")]
         public virtual string LastSyncRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastSyncRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastSyncDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastSyncRaw);
+            set => LastSyncRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="LastSyncRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> LastSync
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastSyncDateTimeOffset instead.")]
+        public virtual System.DateTime? LastSync
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(LastSyncRaw);
             set => LastSyncRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -11199,9 +11219,20 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("supportEndDate")]
         public virtual string SupportEndDateRaw { get; set; }
 
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SupportEndDateRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SupportEndDateDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SupportEndDateRaw);
+            set => SupportEndDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="SupportEndDateRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> SupportEndDate
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SupportEndDateDateTimeOffset instead.")]
+        public virtual System.DateTime? SupportEndDate
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(SupportEndDateRaw);
             set => SupportEndDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -11310,9 +11341,20 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
             public virtual string ReportTimeRaw { get; set; }
 
+            /// <summary>
+            /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ReportTimeRaw"/>.
+            /// </summary>
+            [Newtonsoft.Json.JsonIgnoreAttribute]
+            public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
+            {
+                get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
+                set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            }
+
             /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ReportTimeRaw"/>.</summary>
             [Newtonsoft.Json.JsonIgnoreAttribute]
-            public virtual System.Nullable<System.DateTime> ReportTime
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReportTimeDateTimeOffset instead.")]
+            public virtual System.DateTime? ReportTime
             {
                 get => Google.Apis.Util.Utilities.GetDateTimeFromString(ReportTimeRaw);
                 set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -11338,9 +11380,20 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
             public virtual string CreateTimeRaw { get; set; }
 
+            /// <summary>
+            /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.
+            /// </summary>
+            [Newtonsoft.Json.JsonIgnoreAttribute]
+            public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+            {
+                get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+                set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            }
+
             /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreateTimeRaw"/>.</summary>
             [Newtonsoft.Json.JsonIgnoreAttribute]
-            public virtual System.Nullable<System.DateTime> CreateTime
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+            public virtual System.DateTime? CreateTime
             {
                 get => Google.Apis.Util.Utilities.GetDateTimeFromString(CreateTimeRaw);
                 set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -11416,9 +11469,20 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
             public virtual string CreateTimeRaw { get; set; }
 
+            /// <summary>
+            /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.
+            /// </summary>
+            [Newtonsoft.Json.JsonIgnoreAttribute]
+            public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+            {
+                get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+                set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            }
+
             /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreateTimeRaw"/>.</summary>
             [Newtonsoft.Json.JsonIgnoreAttribute]
-            public virtual System.Nullable<System.DateTime> CreateTime
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+            public virtual System.DateTime? CreateTime
             {
                 get => Google.Apis.Util.Utilities.GetDateTimeFromString(CreateTimeRaw);
                 set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -11444,9 +11508,20 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
             public virtual string ReportTimeRaw { get; set; }
 
+            /// <summary>
+            /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ReportTimeRaw"/>.
+            /// </summary>
+            [Newtonsoft.Json.JsonIgnoreAttribute]
+            public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
+            {
+                get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
+                set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            }
+
             /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ReportTimeRaw"/>.</summary>
             [Newtonsoft.Json.JsonIgnoreAttribute]
-            public virtual System.Nullable<System.DateTime> ReportTime
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReportTimeDateTimeOffset instead.")]
+            public virtual System.DateTime? ReportTime
             {
                 get => Google.Apis.Util.Utilities.GetDateTimeFromString(ReportTimeRaw);
                 set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -11596,10 +11671,21 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         public virtual string CustomerCreationTimeRaw { get; set; }
 
         /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="CustomerCreationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CustomerCreationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CustomerCreationTimeRaw);
+            set => CustomerCreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
         /// <seealso cref="System.DateTime"/> representation of <see cref="CustomerCreationTimeRaw"/>.
         /// </summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> CustomerCreationTime
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CustomerCreationTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? CustomerCreationTime
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(CustomerCreationTimeRaw);
             set => CustomerCreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -12333,9 +12419,18 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("firstSync")]
         public virtual string FirstSyncRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="FirstSyncRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FirstSyncDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FirstSyncRaw);
+            set => FirstSyncRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="FirstSyncRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> FirstSync
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FirstSyncDateTimeOffset instead.")]
+        public virtual System.DateTime? FirstSync
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(FirstSyncRaw);
             set => FirstSyncRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -12374,9 +12469,18 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastSync")]
         public virtual string LastSyncRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastSyncRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastSyncDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastSyncRaw);
+            set => LastSyncRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="LastSyncRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> LastSync
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastSyncDateTimeOffset instead.")]
+        public virtual System.DateTime? LastSync
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(LastSyncRaw);
             set => LastSyncRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -13206,9 +13310,18 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual string CreationTimeRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreationTimeRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> CreationTime
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreationTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? CreationTime
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(CreationTimeRaw);
             set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -13233,9 +13346,18 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deletionTime")]
         public virtual string DeletionTimeRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeletionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeletionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeletionTimeRaw);
+            set => DeletionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="DeletionTimeRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> DeletionTime
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeletionTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? DeletionTime
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(DeletionTimeRaw);
             set => DeletionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -13352,9 +13474,18 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastLoginTime")]
         public virtual string LastLoginTimeRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastLoginTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastLoginTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastLoginTimeRaw);
+            set => LastLoginTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="LastLoginTimeRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> LastLoginTime
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastLoginTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? LastLoginTime
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(LastLoginTimeRaw);
             set => LastLoginTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);

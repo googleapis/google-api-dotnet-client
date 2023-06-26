@@ -8903,9 +8903,20 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("modificationDate")]
         public virtual string ModificationDateRaw { get; set; }
 
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ModificationDateRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ModificationDateDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ModificationDateRaw);
+            set => ModificationDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ModificationDateRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> ModificationDate
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ModificationDateDateTimeOffset instead.")]
+        public virtual System.DateTime? ModificationDate
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(ModificationDateRaw);
             set => ModificationDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -9127,9 +9138,18 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createdDate")]
         public virtual string CreatedDateRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreatedDateRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreatedDateDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreatedDateRaw);
+            set => CreatedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedDateRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> CreatedDate
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreatedDateDateTimeOffset instead.")]
+        public virtual System.DateTime? CreatedDate
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(CreatedDateRaw);
             set => CreatedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -9162,9 +9182,18 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("modifiedDate")]
         public virtual string ModifiedDateRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ModifiedDateRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ModifiedDateDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ModifiedDateRaw);
+            set => ModifiedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ModifiedDateRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> ModifiedDate
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ModifiedDateDateTimeOffset instead.")]
+        public virtual System.DateTime? ModifiedDate
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(ModifiedDateRaw);
             set => ModifiedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -9260,9 +9289,18 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createdDate")]
         public virtual string CreatedDateRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreatedDateRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreatedDateDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreatedDateRaw);
+            set => CreatedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedDateRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> CreatedDate
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreatedDateDateTimeOffset instead.")]
+        public virtual System.DateTime? CreatedDate
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(CreatedDateRaw);
             set => CreatedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -9287,9 +9325,18 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("modifiedDate")]
         public virtual string ModifiedDateRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ModifiedDateRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ModifiedDateDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ModifiedDateRaw);
+            set => ModifiedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ModifiedDateRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> ModifiedDate
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ModifiedDateDateTimeOffset instead.")]
+        public virtual System.DateTime? ModifiedDate
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(ModifiedDateRaw);
             set => ModifiedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -9375,9 +9422,20 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("restrictionDate")]
         public virtual string RestrictionDateRaw { get; set; }
 
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="RestrictionDateRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RestrictionDateDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RestrictionDateRaw);
+            set => RestrictionDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="RestrictionDateRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> RestrictionDate
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RestrictionDateDateTimeOffset instead.")]
+        public virtual System.DateTime? RestrictionDate
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(RestrictionDateRaw);
             set => RestrictionDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -9424,9 +9482,18 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createdDate")]
         public virtual string CreatedDateRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreatedDateRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreatedDateDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreatedDateRaw);
+            set => CreatedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedDateRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> CreatedDate
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreatedDateDateTimeOffset instead.")]
+        public virtual System.DateTime? CreatedDate
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(CreatedDateRaw);
             set => CreatedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -9737,9 +9804,18 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createdDate")]
         public virtual string CreatedDateRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreatedDateRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreatedDateDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreatedDateRaw);
+            set => CreatedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedDateRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> CreatedDate
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreatedDateDateTimeOffset instead.")]
+        public virtual System.DateTime? CreatedDate
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(CreatedDateRaw);
             set => CreatedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -9891,9 +9967,20 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastViewedByMeDate")]
         public virtual string LastViewedByMeDateRaw { get; set; }
 
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastViewedByMeDateRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastViewedByMeDateDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastViewedByMeDateRaw);
+            set => LastViewedByMeDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="LastViewedByMeDateRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> LastViewedByMeDate
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastViewedByMeDateDateTimeOffset instead.")]
+        public virtual System.DateTime? LastViewedByMeDate
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(LastViewedByMeDateRaw);
             set => LastViewedByMeDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -9908,10 +9995,21 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string MarkedViewedByMeDateRaw { get; set; }
 
         /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="MarkedViewedByMeDateRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? MarkedViewedByMeDateDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(MarkedViewedByMeDateRaw);
+            set => MarkedViewedByMeDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
         /// <seealso cref="System.DateTime"/> representation of <see cref="MarkedViewedByMeDateRaw"/>.
         /// </summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> MarkedViewedByMeDate
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use MarkedViewedByMeDateDateTimeOffset instead.")]
+        public virtual System.DateTime? MarkedViewedByMeDate
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(MarkedViewedByMeDateRaw);
             set => MarkedViewedByMeDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -9938,9 +10036,20 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("modifiedByMeDate")]
         public virtual string ModifiedByMeDateRaw { get; set; }
 
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ModifiedByMeDateRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ModifiedByMeDateDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ModifiedByMeDateRaw);
+            set => ModifiedByMeDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ModifiedByMeDateRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> ModifiedByMeDate
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ModifiedByMeDateDateTimeOffset instead.")]
+        public virtual System.DateTime? ModifiedByMeDate
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(ModifiedByMeDateRaw);
             set => ModifiedByMeDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -9953,9 +10062,18 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("modifiedDate")]
         public virtual string ModifiedDateRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ModifiedDateRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ModifiedDateDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ModifiedDateRaw);
+            set => ModifiedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ModifiedDateRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> ModifiedDate
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ModifiedDateDateTimeOffset instead.")]
+        public virtual System.DateTime? ModifiedDate
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(ModifiedDateRaw);
             set => ModifiedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -10056,9 +10174,20 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sharedWithMeDate")]
         public virtual string SharedWithMeDateRaw { get; set; }
 
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SharedWithMeDateRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SharedWithMeDateDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SharedWithMeDateRaw);
+            set => SharedWithMeDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="SharedWithMeDateRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> SharedWithMeDate
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SharedWithMeDateDateTimeOffset instead.")]
+        public virtual System.DateTime? SharedWithMeDate
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(SharedWithMeDateRaw);
             set => SharedWithMeDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -10118,9 +10247,18 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("trashedDate")]
         public virtual string TrashedDateRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TrashedDateRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TrashedDateDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TrashedDateRaw);
+            set => TrashedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="TrashedDateRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> TrashedDate
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TrashedDateDateTimeOffset instead.")]
+        public virtual System.DateTime? TrashedDate
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(TrashedDateRaw);
             set => TrashedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -10971,9 +11109,20 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expirationDate")]
         public virtual string ExpirationDateRaw { get; set; }
 
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpirationDateRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpirationDateDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpirationDateRaw);
+            set => ExpirationDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ExpirationDateRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> ExpirationDate
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpirationDateDateTimeOffset instead.")]
+        public virtual System.DateTime? ExpirationDate
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(ExpirationDateRaw);
             set => ExpirationDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -11275,9 +11424,18 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("modifiedDate")]
         public virtual string ModifiedDateRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ModifiedDateRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ModifiedDateDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ModifiedDateRaw);
+            set => ModifiedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ModifiedDateRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> ModifiedDate
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ModifiedDateDateTimeOffset instead.")]
+        public virtual System.DateTime? ModifiedDate
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(ModifiedDateRaw);
             set => ModifiedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -11408,9 +11566,18 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createdDate")]
         public virtual string CreatedDateRaw { get; set; }
 
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreatedDateRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreatedDateDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreatedDateRaw);
+            set => CreatedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CreatedDateRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.Nullable<System.DateTime> CreatedDate
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreatedDateDateTimeOffset instead.")]
+        public virtual System.DateTime? CreatedDate
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(CreatedDateRaw);
             set => CreatedDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);

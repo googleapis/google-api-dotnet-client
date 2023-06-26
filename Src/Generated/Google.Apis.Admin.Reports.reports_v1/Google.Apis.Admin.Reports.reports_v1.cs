@@ -1942,9 +1942,18 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("time")]
             public virtual string TimeRaw { get; set; }
 
+            /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimeRaw"/>.</summary>
+            [Newtonsoft.Json.JsonIgnoreAttribute]
+            public virtual System.DateTimeOffset? TimeDateTimeOffset
+            {
+                get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeRaw);
+                set => TimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            }
+
             /// <summary><seealso cref="System.DateTime"/> representation of <see cref="TimeRaw"/>.</summary>
             [Newtonsoft.Json.JsonIgnoreAttribute]
-            public virtual System.Nullable<System.DateTime> Time
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimeDateTimeOffset instead.")]
+            public virtual System.DateTime? Time
             {
                 get => Google.Apis.Util.Utilities.GetDateTimeFromString(TimeRaw);
                 set => TimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -2122,9 +2131,20 @@ namespace Google.Apis.Admin.Reports.reports_v1.Data
             [Newtonsoft.Json.JsonPropertyAttribute("datetimeValue")]
             public virtual string DatetimeValueRaw { get; set; }
 
+            /// <summary>
+            /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="DatetimeValueRaw"/>.
+            /// </summary>
+            [Newtonsoft.Json.JsonIgnoreAttribute]
+            public virtual System.DateTimeOffset? DatetimeValueDateTimeOffset
+            {
+                get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DatetimeValueRaw);
+                set => DatetimeValueRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            }
+
             /// <summary><seealso cref="System.DateTime"/> representation of <see cref="DatetimeValueRaw"/>.</summary>
             [Newtonsoft.Json.JsonIgnoreAttribute]
-            public virtual System.Nullable<System.DateTime> DatetimeValue
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DatetimeValueDateTimeOffset instead.")]
+            public virtual System.DateTime? DatetimeValue
             {
                 get => Google.Apis.Util.Utilities.GetDateTimeFromString(DatetimeValueRaw);
                 set => DatetimeValueRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
