@@ -391,6 +391,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     AptArtifacts = new AptArtifactsResource(service);
                     DockerImages = new DockerImagesResource(service);
                     Files = new FilesResource(service);
+                    GoModules = new GoModulesResource(service);
                     GoogetArtifacts = new GoogetArtifactsResource(service);
                     KfpArtifacts = new KfpArtifactsResource(service);
                     MavenArtifacts = new MavenArtifactsResource(service);
@@ -1009,6 +1010,236 @@ namespace Google.Apis.ArtifactRegistry.v1
                                 DefaultValue = null,
                                 Pattern = null,
                             });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the GoModules resource.</summary>
+                public virtual GoModulesResource GoModules { get; }
+
+                /// <summary>The "goModules" collection of methods.</summary>
+                public class GoModulesResource
+                {
+                    private const string Resource = "goModules";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public GoModulesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Directly uploads a Go module. The returned Operation will complete once the Go module is
+                    /// uploaded. Package, Version, and File resources are created based on the uploaded Go module.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// The resource name of the repository where the Go module will be uploaded.
+                    /// </param>
+                    public virtual UploadRequest Upload(Google.Apis.ArtifactRegistry.v1.Data.UploadGoModuleRequest body, string parent)
+                    {
+                        return new UploadRequest(service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Directly uploads a Go module. The returned Operation will complete once the Go module is
+                    /// uploaded. Package, Version, and File resources are created based on the uploaded Go module.
+                    /// </summary>
+                    public class UploadRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.UploadGoModuleMediaResponse>
+                    {
+                        /// <summary>Constructs a new Upload request.</summary>
+                        public UploadRequest(Google.Apis.Services.IClientService service, Google.Apis.ArtifactRegistry.v1.Data.UploadGoModuleRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>The resource name of the repository where the Go module will be uploaded.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.ArtifactRegistry.v1.Data.UploadGoModuleRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "upload";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/goModules:create";
+
+                        /// <summary>Initializes Upload parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Directly uploads a Go module. The returned Operation will complete once the Go module is
+                    /// uploaded. Package, Version, and File resources are created based on the uploaded Go module.
+                    /// </summary>
+                    /// <remarks>
+                    /// Considerations regarding <paramref name="stream"/>:
+                    /// <list type="bullet">
+                    /// <item>
+                    /// <description>
+                    /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c>
+                    /// before reading commences. If <paramref name="stream"/> is not seekable, then it will be read
+                    /// from its current position
+                    /// </description>
+                    /// </item>
+                    /// <item>
+                    /// <description>
+                    /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is
+                    /// completed
+                    /// </description>
+                    /// </item>
+                    /// <item>
+                    /// <description>Caller is responsible for closing the <paramref name="stream"/></description>
+                    /// </item>
+                    /// </list>
+                    /// </remarks>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// The resource name of the repository where the Go module will be uploaded.
+                    /// </param>
+                    /// <param name="stream">The stream to upload. See remarks for further information.</param>
+                    /// <param name="contentType">The content type of the stream to upload.</param>
+                    public virtual UploadMediaUpload Upload(Google.Apis.ArtifactRegistry.v1.Data.UploadGoModuleRequest body, string parent, System.IO.Stream stream, string contentType)
+                    {
+                        return new UploadMediaUpload(service, body, parent, stream, contentType);
+                    }
+
+                    /// <summary>Upload media upload which supports resumable upload.</summary>
+                    public class UploadMediaUpload : Google.Apis.Upload.ResumableUpload<Google.Apis.ArtifactRegistry.v1.Data.UploadGoModuleRequest, Google.Apis.ArtifactRegistry.v1.Data.UploadGoModuleMediaResponse>
+                    {
+                        /// <summary>V1 error format.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+                        /// <summary>V1 error format.</summary>
+                        public enum XgafvEnum
+                        {
+                            /// <summary>v1 error format</summary>
+                            [Google.Apis.Util.StringValueAttribute("1")]
+                            Value1 = 0,
+
+                            /// <summary>v2 error format</summary>
+                            [Google.Apis.Util.StringValueAttribute("2")]
+                            Value2 = 1,
+                        }
+
+                        /// <summary>OAuth access token.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string AccessToken { get; set; }
+
+                        /// <summary>Data format for response.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+                        /// <summary>Data format for response.</summary>
+                        public enum AltEnum
+                        {
+                            /// <summary>Responses with Content-Type of application/json</summary>
+                            [Google.Apis.Util.StringValueAttribute("json")]
+                            Json = 0,
+
+                            /// <summary>Media download with context-dependent Content-Type</summary>
+                            [Google.Apis.Util.StringValueAttribute("media")]
+                            Media = 1,
+
+                            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+                            [Google.Apis.Util.StringValueAttribute("proto")]
+                            Proto = 2,
+                        }
+
+                        /// <summary>JSONP</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Callback { get; set; }
+
+                        /// <summary>Selector specifying which fields to include in a partial response.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Fields { get; set; }
+
+                        /// <summary>
+                        /// API key. Your API key identifies your project and provides you with API access, quota, and
+                        /// reports. Required unless you provide an OAuth 2.0 token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Key { get; set; }
+
+                        /// <summary>OAuth 2.0 token for the current user.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("oauth_token", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OauthToken { get; set; }
+
+                        /// <summary>Returns response with indentations and line breaks.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> PrettyPrint { get; set; }
+
+                        /// <summary>
+                        /// Available to use for quota purposes for server-side applications. Can be any arbitrary
+                        /// string assigned to a user, but should not exceed 40 characters.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string QuotaUser { get; set; }
+
+                        /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string UploadType { get; set; }
+
+                        /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string UploadProtocol { get; set; }
+
+                        /// <summary>The resource name of the repository where the Go module will be uploaded.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Constructs a new Upload media upload instance.</summary>
+                        /// <remarks>
+                        /// Considerations regarding <paramref name="stream"/>:
+                        /// <list type="bullet">
+                        /// <item>
+                        /// <description>
+                        /// If <paramref name="stream"/> is seekable, then the stream position will be reset to <c>0</c>
+                        /// before reading commences. If <paramref name="stream"/> is not seekable, then it will be read
+                        /// from its current position
+                        /// </description>
+                        /// </item>
+                        /// <item>
+                        /// <description>
+                        /// Caller is responsible for maintaining the <paramref name="stream"/> open until the upload is
+                        /// completed
+                        /// </description>
+                        /// </item>
+                        /// <item>
+                        /// <description>Caller is responsible for closing the <paramref name="stream"/></description>
+                        /// </item>
+                        /// </list>
+                        /// </remarks>
+                        public UploadMediaUpload(Google.Apis.Services.IClientService service, Google.Apis.ArtifactRegistry.v1.Data.UploadGoModuleRequest body, string parent, System.IO.Stream stream, string contentType)
+                            : base(service, string.Format("/{0}/{1}{2}", "upload", service.BasePath, "v1/{+parent}/goModules:create"), "POST", stream, contentType)
+                        {
+                            Parent = parent;
+                            Body = body;
                         }
                     }
                 }
@@ -4186,6 +4417,32 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>GoModule represents a Go module.</summary>
+    public class GoModule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The time when the Go module is created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>The resource name of a Go module.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The time when the Go module is updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>
+        /// The version of the Go module. Must be a valid canonical version as defined in
+        /// https://go.dev/ref/mod#glos-canonical-version.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A detailed representation of a GooGet artifact.</summary>
     public class GoogetArtifact : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5241,6 +5498,31 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("aptArtifacts")]
         public virtual System.Collections.Generic.IList<AptArtifact> AptArtifacts { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response to upload a Go module.</summary>
+    public class UploadGoModuleMediaResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation to be returned to the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operation")]
+        public virtual Operation Operation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The operation metadata for uploading go modules.</summary>
+    public class UploadGoModuleMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to upload a Go module.</summary>
+    public class UploadGoModuleRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -4418,6 +4418,46 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata related to the progress of the PurgeUserEvents operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaPurgeUserEventsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Count of entries that encountered errors while processing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
+        public virtual System.Nullable<long> FailureCount { get; set; }
+
+        /// <summary>Count of entries that were deleted successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<long> SuccessCount { get; set; }
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the PurgeUserEventsRequest. If the long running operation is successfully done, then this message is
+    /// returned by the google.longrunning.Operations.response field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaPurgeUserEventsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The total count of events purged as a result of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeCount")]
+        public virtual System.Nullable<long> PurgeCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines the structure and layout of a type of document data.</summary>
     public class GoogleCloudDiscoveryengineV1alphaSchema : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4623,12 +4663,12 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Detailed document information associated with a user event.</summary>
     public class GoogleCloudDiscoveryengineV1betaDocumentInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The Document resource ID.</summary>
+        /// <summary>The Document resource ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
         /// <summary>
-        /// Required. The Document resource full name, of the form:
+        /// The Document resource full name, of the form:
         /// `projects/{project_id}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/branches/{branch_id}/documents/{document_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -4648,9 +4688,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<int> Quantity { get; set; }
 
-        /// <summary>
-        /// Required. The Document url - only allowed for DataStores with content_config PUBLIC_WEBSITE.
-        /// </summary>
+        /// <summary>The Document url - only allowed for DataStores with content_config PUBLIC_WEBSITE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -4667,8 +4705,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// Unstructured data (e.g. PDF, HTML). Each file matched by `input_uris` will become a document, with the ID
         /// set to the first 128 bits of SHA256(URI) encoded as a hex string. * `custom`: One custom data JSON per row
         /// in arbitrary format that conforms the defined Schema of the data store. This can only be used by the GENERIC
-        /// Data Store vertical. Supported values for user even imports: * `user_event` (default): One JSON UserEvent
-        /// per line.
+        /// Data Store vertical. * `csv`: A CSV file with header conforming the defined Schema of the data store. Each
+        /// entry after the header will be imported as a Document. This can only be used by the GENERIC Data Store
+        /// vertical. Supported values for user even imports: * `user_event` (default): One JSON UserEvent per line.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSchema")]
         public virtual string DataSchema { get; set; }
@@ -4721,8 +4760,8 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// imports. In which case ReconciliationMode.FULL is highly recommended to avoid duplicate contents. If unset
         /// or set to `false`, Document.ids have to be specified using id_field, otherwises, documents without IDs will
         /// fail to be imported. Only set this field when using GcsSource or BigQuerySource, and when
-        /// GcsSource.data_schema or BigQuerySource.data_schema is `custom`. Otherwise, an INVALID_ARGUMENT error is
-        /// thrown.
+        /// GcsSource.data_schema or BigQuerySource.data_schema is `custom` or `csv`. Otherwise, an INVALID_ARGUMENT
+        /// error is thrown.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoGenerateIds")]
         public virtual System.Nullable<bool> AutoGenerateIds { get; set; }
@@ -4845,7 +4884,7 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
     /// <summary>Request message for the ImportUserEvents request.</summary>
     public class GoogleCloudDiscoveryengineV1betaImportUserEventsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. BigQuery input source.</summary>
+        /// <summary>BigQuery input source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigquerySource")]
         public virtual GoogleCloudDiscoveryengineV1betaBigQuerySource BigquerySource { get; set; }
 
@@ -4855,11 +4894,11 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorConfig")]
         public virtual GoogleCloudDiscoveryengineV1betaImportErrorConfig ErrorConfig { get; set; }
 
-        /// <summary>Required. Cloud Storage location for the input content.</summary>
+        /// <summary>Cloud Storage location for the input content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GoogleCloudDiscoveryengineV1betaGcsSource GcsSource { get; set; }
 
-        /// <summary>Required. The Inline source for the input content for UserEvents.</summary>
+        /// <summary>The Inline source for the input content for UserEvents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inlineSource")]
         public virtual GoogleCloudDiscoveryengineV1betaImportUserEventsRequestInlineSource InlineSource { get; set; }
 

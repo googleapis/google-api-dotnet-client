@@ -9874,6 +9874,10 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string Environment { get; set; }
 
+        /// <summary>Optional. Whether to include BigQuery Export setting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeBigqueryExportSettings")]
+        public virtual System.Nullable<bool> IncludeBigqueryExportSettings { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -11526,6 +11530,14 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionEntityTypes")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3SessionEntityType> SessionEntityTypes { get; set; }
+
+        /// <summary>
+        /// Optional. Sets Dialogflow session life time. By default, a Dialogflow session remains active and its data is
+        /// stored for 30 minutes after the last request is sent for the session. This value should be no longer than 1
+        /// day.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionTtl")]
+        public virtual object SessionTtl { get; set; }
 
         /// <summary>
         /// The time zone of this conversational query from the [time zone database](https://www.iana.org/time-zones),

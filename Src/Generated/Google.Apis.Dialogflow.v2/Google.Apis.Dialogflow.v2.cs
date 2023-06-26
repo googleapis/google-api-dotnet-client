@@ -23837,6 +23837,14 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("agent")]
         public virtual string Agent { get; set; }
 
+        /// <summary>
+        /// Optional. Sets Dialogflow CX session life time. By default, a Dialogflow CX session remains active and its
+        /// data is stored for 30 minutes after the last request is sent for the session. This value should be no longer
+        /// than 1 day.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionTtl")]
+        public virtual object SessionTtl { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -28010,6 +28018,10 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>The request message for Conversations.SuggestConversationSummary.</summary>
     public class GoogleCloudDialogflowV2SuggestConversationSummaryRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Parameters for a human assist query. Only used for POC/demo purpose.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assistQueryParams")]
+        public virtual GoogleCloudDialogflowV2AssistQueryParameters AssistQueryParams { get; set; }
+
         /// <summary>
         /// Max number of messages prior to and including [latest_message] to use as context when compiling the
         /// suggestion. By default 500 and at most 1000.

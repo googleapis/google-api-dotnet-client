@@ -26,6 +26,15 @@
     "1",
     "2"
   ],
+  "Google.Apis.ArtifactRegistry.v1.ProjectsResource+LocationsResource+RepositoriesResource+GoModulesResource+UploadMediaUpload.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.ArtifactRegistry.v1.ProjectsResource+LocationsResource+RepositoriesResource+GoModulesResource+UploadMediaUpload.XgafvEnum": [
+    "1",
+    "2"
+  ],
   "Google.Apis.ArtifactRegistry.v1.ProjectsResource+LocationsResource+RepositoriesResource+GoogetartifactsResource+UploadMediaUpload.AltEnum": [
     "json",
     "media",

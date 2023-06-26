@@ -8,6 +8,9 @@
     "https://www.googleapis.com/auth/chat.delete": {
      "description": "Delete conversations and spaces & remove access to associated files in Google Chat"
     },
+    "https://www.googleapis.com/auth/chat.import": {
+     "description": "Import spaces, messages, and memberships into Google Chat."
+    },
     "https://www.googleapis.com/auth/chat.memberships": {
      "description": "View, add, and remove members from conversations in Google Chat"
     },
@@ -215,6 +218,7 @@
       "$ref": "UploadAttachmentResponse"
      },
      "scopes": [
+      "https://www.googleapis.com/auth/chat.import",
       "https://www.googleapis.com/auth/chat.messages",
       "https://www.googleapis.com/auth/chat.messages.create"
      ],
@@ -245,6 +249,7 @@
       "$ref": "Space"
      },
      "scopes": [
+      "https://www.googleapis.com/auth/chat.import",
       "https://www.googleapis.com/auth/chat.spaces",
       "https://www.googleapis.com/auth/chat.spaces.create"
      ]
@@ -271,7 +276,8 @@
       "$ref": "Empty"
      },
      "scopes": [
-      "https://www.googleapis.com/auth/chat.delete"
+      "https://www.googleapis.com/auth/chat.delete",
+      "https://www.googleapis.com/auth/chat.import"
      ]
     },
     "findDirectMessage": {
@@ -389,6 +395,7 @@
       "$ref": "Space"
      },
      "scopes": [
+      "https://www.googleapis.com/auth/chat.import",
       "https://www.googleapis.com/auth/chat.spaces"
      ]
     },
@@ -606,6 +613,7 @@
        },
        "scopes": [
         "https://www.googleapis.com/auth/chat.bot",
+        "https://www.googleapis.com/auth/chat.import",
         "https://www.googleapis.com/auth/chat.messages",
         "https://www.googleapis.com/auth/chat.messages.create"
        ]
@@ -638,6 +646,7 @@
        },
        "scopes": [
         "https://www.googleapis.com/auth/chat.bot",
+        "https://www.googleapis.com/auth/chat.import",
         "https://www.googleapis.com/auth/chat.messages"
        ]
       },
@@ -716,6 +725,7 @@
         "$ref": "ListMessagesResponse"
        },
        "scopes": [
+        "https://www.googleapis.com/auth/chat.import",
         "https://www.googleapis.com/auth/chat.messages",
         "https://www.googleapis.com/auth/chat.messages.readonly"
        ]
@@ -757,6 +767,7 @@
        },
        "scopes": [
         "https://www.googleapis.com/auth/chat.bot",
+        "https://www.googleapis.com/auth/chat.import",
         "https://www.googleapis.com/auth/chat.messages"
        ]
       },
@@ -797,6 +808,7 @@
        },
        "scopes": [
         "https://www.googleapis.com/auth/chat.bot",
+        "https://www.googleapis.com/auth/chat.import",
         "https://www.googleapis.com/auth/chat.messages"
        ]
       }
@@ -858,6 +870,7 @@
           "$ref": "Reaction"
          },
          "scopes": [
+          "https://www.googleapis.com/auth/chat.import",
           "https://www.googleapis.com/auth/chat.messages",
           "https://www.googleapis.com/auth/chat.messages.reactions",
           "https://www.googleapis.com/auth/chat.messages.reactions.create"
@@ -885,6 +898,7 @@
           "$ref": "Empty"
          },
          "scopes": [
+          "https://www.googleapis.com/auth/chat.import",
           "https://www.googleapis.com/auth/chat.messages",
           "https://www.googleapis.com/auth/chat.messages.reactions"
          ]
@@ -940,7 +954,7 @@
    }
   }
  },
- "revision": "20230611",
+ "revision": "20230618",
  "rootUrl": "https://chat.googleapis.com/",
  "schemas": {
   "ActionParameter": {
@@ -1081,6 +1095,18 @@
     "userMention": {
      "$ref": "UserMentionMetadata",
      "description": "The metadata of user mention."
+    }
+   },
+   "type": "object"
+  },
+  "AttachedGif": {
+   "description": "A GIF image that's specified by a URL.",
+   "id": "AttachedGif",
+   "properties": {
+    "uri": {
+     "description": "Output only. The URL that hosts the GIF image.",
+     "readOnly": true,
+     "type": "string"
     }
    },
    "type": "object"
@@ -2986,6 +3012,14 @@
      "description": "Output only. Plain-text body of the message with all Chat app mentions stripped out.",
      "readOnly": true,
      "type": "string"
+    },
+    "attachedGifs": {
+     "description": "Output only. GIF images that are attached to the message.",
+     "items": {
+      "$ref": "AttachedGif"
+     },
+     "readOnly": true,
+     "type": "array"
     },
     "attachment": {
      "description": "User-uploaded attachment.",

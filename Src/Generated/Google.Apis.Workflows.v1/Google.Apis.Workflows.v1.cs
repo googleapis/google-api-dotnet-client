@@ -1358,6 +1358,14 @@ namespace Google.Apis.Workflows.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
 
+        /// <summary>
+        /// Optional. User-defined environment variables associated with this workflow revision. This map has a maximum
+        /// length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE”
+        /// or “WORKFLOWS".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userEnvVars")]
+        public virtual System.Collections.Generic.IDictionary<string, string> UserEnvVars { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

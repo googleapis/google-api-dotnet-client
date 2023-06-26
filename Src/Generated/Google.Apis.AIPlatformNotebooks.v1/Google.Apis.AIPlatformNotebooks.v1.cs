@@ -4927,6 +4927,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("postStartupScript")]
         public virtual string PostStartupScript { get; set; }
 
+        /// <summary>Output only. Check how possible a migration from UmN to WbI is.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("preMigrationCheck")]
+        public virtual PreMigrationCheck PreMigrationCheck { get; set; }
+
         /// <summary>Output only. The proxy endpoint that is used to access the Jupyter notebook.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proxyUri")]
         public virtual string ProxyUri { get; set; }
@@ -5507,6 +5511,21 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>PreMigrationCheck checks how feasible a migration from UmN is.</summary>
+    public class PreMigrationCheck : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Message provides a summary or workaround.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Result returns the result of the check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual string Result { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Request for getting a new access token.</summary>

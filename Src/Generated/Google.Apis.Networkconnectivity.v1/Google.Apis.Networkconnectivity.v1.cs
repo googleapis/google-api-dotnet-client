@@ -335,6 +335,7 @@ namespace Google.Apis.Networkconnectivity.v1
                     {
                         this.service = service;
                         Groups = new GroupsResource(service);
+                        RouteTables = new RouteTablesResource(service);
                     }
 
                     /// <summary>Gets the Groups resource.</summary>
@@ -569,6 +570,319 @@ namespace Google.Apis.Networkconnectivity.v1
                                     ParameterType = "path",
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/global/hubs/[^/]+/groups/[^/]+$",
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the RouteTables resource.</summary>
+                    public virtual RouteTablesResource RouteTables { get; }
+
+                    /// <summary>The "routeTables" collection of methods.</summary>
+                    public class RouteTablesResource
+                    {
+                        private const string Resource = "routeTables";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public RouteTablesResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                            Routes = new RoutesResource(service);
+                        }
+
+                        /// <summary>Gets the Routes resource.</summary>
+                        public virtual RoutesResource Routes { get; }
+
+                        /// <summary>The "routes" collection of methods.</summary>
+                        public class RoutesResource
+                        {
+                            private const string Resource = "routes";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public RoutesResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+                            }
+
+                            /// <summary>Gets details about the specified route.</summary>
+                            /// <param name="name">Required. The name of the route resource.</param>
+                            public virtual GetRequest Get(string name)
+                            {
+                                return new GetRequest(service, name);
+                            }
+
+                            /// <summary>Gets details about the specified route.</summary>
+                            public class GetRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.Route>
+                            {
+                                /// <summary>Constructs a new Get request.</summary>
+                                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>Required. The name of the route resource.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "get";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+name}";
+
+                                /// <summary>Initializes Get parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/global/hubs/[^/]+/routeTables/[^/]+/routes/[^/]+$",
+                                    });
+                                }
+                            }
+
+                            /// <summary>Lists routes in a given project.</summary>
+                            /// <param name="parent">Required. The parent resource's name.</param>
+                            public virtual ListRequest List(string parent)
+                            {
+                                return new ListRequest(service, parent);
+                            }
+
+                            /// <summary>Lists routes in a given project.</summary>
+                            public class ListRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.ListRoutesResponse>
+                            {
+                                /// <summary>Constructs a new List request.</summary>
+                                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                                {
+                                    Parent = parent;
+                                    InitParameters();
+                                }
+
+                                /// <summary>Required. The parent resource's name.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Parent { get; private set; }
+
+                                /// <summary>An expression that filters the list of results.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string Filter { get; set; }
+
+                                /// <summary>Sort the results by a certain order.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string OrderBy { get; set; }
+
+                                /// <summary>The maximum number of results to return per page.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual System.Nullable<int> PageSize { get; set; }
+
+                                /// <summary>The page token.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                                public virtual string PageToken { get; set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "list";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+parent}/routes";
+
+                                /// <summary>Initializes List parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "parent",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/global/hubs/[^/]+/routeTables/[^/]+$",
+                                    });
+                                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "filter",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "orderBy",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageSize",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "pageToken",
+                                        IsRequired = false,
+                                        ParameterType = "query",
+                                        DefaultValue = null,
+                                        Pattern = null,
+                                    });
+                                }
+                            }
+                        }
+
+                        /// <summary>Gets details about a Network Connectivity Center route table.</summary>
+                        /// <param name="name">Required. The name of the route table resource.</param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>Gets details about a Network Connectivity Center route table.</summary>
+                        public class GetRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.RouteTable>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The name of the route table resource.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/global/hubs/[^/]+/routeTables/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>Lists route tables in a given project.</summary>
+                        /// <param name="parent">Required. The parent resource's name.</param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>Lists route tables in a given project.</summary>
+                        public class ListRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.ListRouteTablesResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The parent resource's name.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>An expression that filters the list of results.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>Sort the results by a certain order.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string OrderBy { get; set; }
+
+                            /// <summary>The maximum number of results to return per page.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>The page token.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/routeTables";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/global/hubs/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "orderBy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
                                 });
                             }
                         }
@@ -939,6 +1253,168 @@ namespace Google.Apis.Networkconnectivity.v1
                             RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Lists the Network Connectivity Center spokes associated with a specified hub and location. The
+                    /// list includes both spokes that are attached to the hub and spokes that have been proposed but
+                    /// not yet accepted.
+                    /// </summary>
+                    /// <param name="name">Required. The name of the hub.</param>
+                    public virtual ListSpokesRequest ListSpokes(string name)
+                    {
+                        return new ListSpokesRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Lists the Network Connectivity Center spokes associated with a specified hub and location. The
+                    /// list includes both spokes that are attached to the hub and spokes that have been proposed but
+                    /// not yet accepted.
+                    /// </summary>
+                    public class ListSpokesRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.ListHubSpokesResponse>
+                    {
+                        /// <summary>Constructs a new ListSpokes request.</summary>
+                        public ListSpokesRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The name of the hub.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>An expression that filters the list of results.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>Sort the results by name or create_time.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>The maximum number of results to return per page.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>The page token.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>
+                        /// A list of locations. Specify one of the following: `[global]`, a single region (for example,
+                        /// `[us-central1]`), or a combination of values (for example, `[global, us-central1,
+                        /// us-west1]`). If the spoke_locations field is populated, the list of results includes only
+                        /// spokes in the specified location. If the spoke_locations field is not populated, the list of
+                        /// results includes spokes in all locations.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("spokeLocations", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual Google.Apis.Util.Repeatable<string> SpokeLocations { get; set; }
+
+                        /// <summary>
+                        /// The view of the spoke to return. The view you use determines which spoke fields are included
+                        /// in the response.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>
+                        /// The view of the spoke to return. The view you use determines which spoke fields are included
+                        /// in the response.
+                        /// </summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>
+                            /// The spoke view is unspecified. When the spoke view is unspecified, the API returns the
+                            /// same fields as the `BASIC` view.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("SPOKE_VIEW_UNSPECIFIED")]
+                            SPOKEVIEWUNSPECIFIED = 0,
+
+                            /// <summary>
+                            /// Includes `name`, `create_time`, `hub`, `unique_id`, `state`, `reasons`, and
+                            /// `spoke_type`. This is the default value.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("BASIC")]
+                            BASIC = 1,
+
+                            /// <summary>
+                            /// Includes all spoke fields except `labels`. You can use the `DETAILED` view only when you
+                            /// set the `spoke_locations` field to `[global]`.
+                            /// </summary>
+                            [Google.Apis.Util.StringValueAttribute("DETAILED")]
+                            DETAILED = 2,
+                        }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "listSpokes";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:listSpokes";
+
+                        /// <summary>Initializes ListSpokes parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/global/hubs/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("spokeLocations", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "spokeLocations",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -2147,6 +2623,13 @@ namespace Google.Apis.Networkconnectivity.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
+                    /// Optional. The etag is computed by the server, and may be sent on update and delete requests to
+                    /// ensure the client has an up-to-date value before proceeding.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes after the first request. For
@@ -2179,6 +2662,14 @@ namespace Google.Apis.Networkconnectivity.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/serviceClasses/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                         {
@@ -2776,6 +3267,13 @@ namespace Google.Apis.Networkconnectivity.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
+                    /// Optional. The etag is computed by the server, and may be sent on update and delete requests to
+                    /// ensure the client has an up-to-date value before proceeding.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes after the first request. For
@@ -2808,6 +3306,14 @@ namespace Google.Apis.Networkconnectivity.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/serviceConnectionMaps/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                         {
@@ -3405,6 +3911,13 @@ namespace Google.Apis.Networkconnectivity.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
+                    /// Optional. The etag is computed by the server, and may be sent on update and delete requests to
+                    /// ensure the client has an up-to-date value before proceeding.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes after the first request. For
@@ -3437,6 +3950,14 @@ namespace Google.Apis.Networkconnectivity.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/serviceConnectionPolicies/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                         {
@@ -4034,6 +4555,13 @@ namespace Google.Apis.Networkconnectivity.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
+                    /// Optional. The etag is computed by the server, and may be sent on update and delete requests to
+                    /// ensure the client has an up-to-date value before proceeding.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>
                     /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
                     /// you must retry your request, the server will know to ignore the request if it has already been
                     /// completed. The server will guarantee that for at least 60 minutes after the first request. For
@@ -4066,6 +4594,14 @@ namespace Google.Apis.Networkconnectivity.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/serviceConnectionTokens/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
                         {
@@ -4232,6 +4768,59 @@ namespace Google.Apis.Networkconnectivity.v1
                 public SpokesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                }
+
+                /// <summary>Accepts a proposal to attach a Network Connectivity Center spoke to the hub.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The name of the spoke to accept.</param>
+                public virtual AcceptRequest Accept(Google.Apis.Networkconnectivity.v1.Data.AcceptSpokeRequest body, string name)
+                {
+                    return new AcceptRequest(service, body, name);
+                }
+
+                /// <summary>Accepts a proposal to attach a Network Connectivity Center spoke to the hub.</summary>
+                public class AcceptRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Accept request.</summary>
+                    public AcceptRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1.Data.AcceptSpokeRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the spoke to accept.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Networkconnectivity.v1.Data.AcceptSpokeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "accept";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:accept";
+
+                    /// <summary>Initializes Accept parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/spokes/[^/]+$",
+                        });
+                    }
                 }
 
                 /// <summary>Creates a Network Connectivity Center spoke.</summary>
@@ -4705,6 +5294,65 @@ namespace Google.Apis.Networkconnectivity.v1
                 }
 
                 /// <summary>
+                /// Does one of the following: * Rejects a proposal to attach a Network Connectivity Center spoke to the
+                /// hub. * Rejects and removes a previously attached spoke from the hub.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The name of the spoke to reject.</param>
+                public virtual RejectRequest Reject(Google.Apis.Networkconnectivity.v1.Data.RejectSpokeRequest body, string name)
+                {
+                    return new RejectRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Does one of the following: * Rejects a proposal to attach a Network Connectivity Center spoke to the
+                /// hub. * Rejects and removes a previously attached spoke from the hub.
+                /// </summary>
+                public class RejectRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Reject request.</summary>
+                    public RejectRequest(Google.Apis.Services.IClientService service, Google.Apis.Networkconnectivity.v1.Data.RejectSpokeRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the spoke to reject.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Networkconnectivity.v1.Data.RejectSpokeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "reject";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:reject";
+
+                    /// <summary>Initializes Reject parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/spokes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
                 /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
                 /// </summary>
@@ -4981,6 +5629,26 @@ namespace Google.Apis.Networkconnectivity.v1
 }
 namespace Google.Apis.Networkconnectivity.v1.Data
 {
+    /// <summary>The request for HubService.AcceptSpoke.</summary>
+    public class AcceptSpokeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to
+        /// retry your request. When you need to retry, this ID lets the server know that it can ignore the request if
+        /// it has already been completed. The server guarantees that for at least 60 minutes after the first request.
+        /// For example, consider a situation where you make an initial request and the request times out. If you make
+        /// the request again with the same request ID, the server can check to see whether the original operation was
+        /// received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly
+        /// creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is
+        /// not supported (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
@@ -5359,11 +6027,28 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// Output only. The route tables that belong to this hub. They use the following form:
+        /// `projects/{project_number}/locations/global/hubs/{hub_id}/routeTables/{route_table_id}` This field is
+        /// read-only. Network Connectivity Center automatically populates it based on the route tables nested under the
+        /// hub.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routeTables")]
+        public virtual System.Collections.Generic.IList<string> RouteTables { get; set; }
+
+        /// <summary>
         /// The VPC networks associated with this hub's spokes. This field is read-only. Network Connectivity Center
         /// automatically populates it based on the set of spokes attached to the hub.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routingVpcs")]
         public virtual System.Collections.Generic.IList<RoutingVPC> RoutingVpcs { get; set; }
+
+        /// <summary>
+        /// Output only. A summary of the spokes associated with a hub. The summary includes a count of spokes according
+        /// to type and according to state. If any spokes are inactive, the summary also lists the reasons they are
+        /// inactive, including a count for each reason.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spokeSummary")]
+        public virtual SpokeSummary SpokeSummary { get; set; }
 
         /// <summary>Output only. The current lifecycle state of this hub.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -5523,6 +6208,21 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An existing VPC network.</summary>
+    public class LinkedVpcNetwork : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. IP Ranges encompassing the subnets to be excluded from peering.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeExportRanges")]
+        public virtual System.Collections.Generic.IList<string> ExcludeExportRanges { get; set; }
+
+        /// <summary>Required. The URI of the VPC network resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A collection of Cloud VPN tunnel resources. These resources should be redundant HA VPN tunnels that all
     /// advertise the same prefixes to Google Cloud. Alternatively, in a passive/active configuration, all tunnels
@@ -5545,6 +6245,31 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>Output only. The VPC network where these VPN tunnels are located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcNetwork")]
         public virtual string VpcNetwork { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for HubService.ListHubSpokes.</summary>
+    public class ListHubSpokesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The token for the next page of the response. To see more results, use this value as the page_token for your
+        /// next request. If this value is empty, there are no more results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// The requested spokes. The spoke fields can be partially populated based on the `view` field in the request
+        /// message.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spokes")]
+        public virtual System.Collections.Generic.IList<Spoke> Spokes { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5604,6 +6329,50 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for HubService.ListRouteTables method.</summary>
+    public class ListRouteTablesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The token for the next page of the response. To see more results, use this value as the page_token for your
+        /// next request. If this value is empty, there are no more results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The requested route tables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routeTables")]
+        public virtual System.Collections.Generic.IList<RouteTable> RouteTables { get; set; }
+
+        /// <summary>Hubs that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for HubService.ListRoutes method.</summary>
+    public class ListRoutesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The token for the next page of the response. To see more results, use this value as the page_token for your
+        /// next request. If this value is empty, there are no more results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The requested routes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routes")]
+        public virtual System.Collections.Generic.IList<Route> Routes { get; set; }
+
+        /// <summary>RouteTables that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5762,6 +6531,16 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class NextHopVpcNetwork : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The URI of the VPC network resource</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents the metadata of the long-running operation.</summary>
     public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5887,7 +6666,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     /// <summary>Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.</summary>
     public class PscConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Max number of PSC connections for this policy.</summary>
+        /// <summary>Optional. Max number of PSC connections for this policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("limit")]
         public virtual System.Nullable<long> Limit { get; set; }
 
@@ -5943,6 +6722,149 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request for HubService.RejectSpoke.</summary>
+    public class RejectSpokeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Additional Details behind the rejection</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual string Details { get; set; }
+
+        /// <summary>
+        /// Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to
+        /// retry your request. When you need to retry, this ID lets the server know that it can ignore the request if
+        /// it has already been completed. The server guarantees that for at least 60 minutes after the first request.
+        /// For example, consider a situation where you make an initial request and the request times out. If you make
+        /// the request again with the same request ID, the server can check to see whether the original operation was
+        /// received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly
+        /// creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is
+        /// not supported (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A route defines a path from VM instances within a spoke to a specific destination resource. Only VPC spokes have
+    /// routes.
+    /// </summary>
+    public class Route : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The time the route was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>An optional description of the route.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The destination IP address range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
+        public virtual string IpCidrRange { get; set; }
+
+        /// <summary>
+        /// Optional labels in key:value format. For more information about labels, see [Requirements for
+        /// labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Output only. The location of the route. Uses the following form: "projects/{project}/locations/{location}"
+        /// Example: projects/1234/locations/us-central1
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>
+        /// Immutable. The name of the route. Route names must be unique. They use the following form:
+        /// `projects/{project_number}/locations/global/hubs/{hub}/routeTables/{route_table_id}/routes/{route_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Immutable. The destination VPC network for packets on this route.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextHopVpcNetwork")]
+        public virtual NextHopVpcNetwork NextHopVpcNetwork { get; set; }
+
+        /// <summary>
+        /// Immutable. The spoke that this route leads to. Example: projects/12345/locations/global/spokes/SPOKE
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spoke")]
+        public virtual string Spoke { get; set; }
+
+        /// <summary>Output only. The current lifecycle state of the route.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. The route's type. Its type is determined by the properties of its IP address range.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>
+        /// Output only. The Google-generated UUID for the route. This value is unique across all Network Connectivity
+        /// Center route resources. If a route is deleted and another with the same name is created, the new route is
+        /// assigned a different unique_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        /// <summary>Output only. The time the route was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class RouteTable : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The time the route table was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>An optional description of the route table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional labels in key:value format. For more information about labels, see [Requirements for
+        /// labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Immutable. The name of the route table. Route Table names must be unique. They use the following form:
+        /// `projects/{project_number}/locations/global/hubs/{hub}/routeTables/{route_table_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The current lifecycle state of this route table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. The Google-generated UUID for the route table. This value is unique across all route table
+        /// resources. If a route table is deleted and another with the same name is created, the new route table is
+        /// assigned a different unique_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        /// <summary>Output only. The time the route table was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A router appliance instance is a Compute Engine virtual machine (VM) instance that acts as a BGP speaker. A
     /// router appliance instance is specified by the URI of the VM and the internal IP address of one of the VM's
@@ -5985,7 +6907,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The ServiceClass resource. Next id: 8</summary>
+    /// <summary>The ServiceClass resource. Next id: 9</summary>
     public class ServiceClass : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Time when the ServiceClass was created.</summary>
@@ -5995,6 +6917,13 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>A description of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the
+        /// client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
 
         /// <summary>User-defined labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
@@ -6022,12 +6951,9 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>Output only. Time when the ServiceClass was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
-    /// <summary>The ServiceConnectionMap resource. Next id: 14</summary>
+    /// <summary>The ServiceConnectionMap resource. Next id: 15</summary>
     public class ServiceConnectionMap : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The PSC configurations on consumer side.</summary>
@@ -6045,6 +6971,13 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>A description of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the
+        /// client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
 
         /// <summary>Output only. The infrastructure used for connections between consumers/producers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infrastructure")]
@@ -6087,12 +7020,9 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>Output only. Time when the ServiceConnectionMap was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
-    /// <summary>The ServiceConnectionPolicy resource. Next id: 11</summary>
+    /// <summary>The ServiceConnectionPolicy resource. Next id: 12</summary>
     public class ServiceConnectionPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Time when the ServiceConnectionMap was created.</summary>
@@ -6102,6 +7032,13 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>A description of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the
+        /// client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
 
         /// <summary>Output only. The type of underlying resources used to create the connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("infrastructure")]
@@ -6148,12 +7085,9 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>Output only. Time when the ServiceConnectionMap was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
-    /// <summary>The ServiceConnectionToken resource. Next id: 9</summary>
+    /// <summary>The ServiceConnectionToken resource. Next id: 10</summary>
     public class ServiceConnectionToken : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Time when the ServiceConnectionToken was created.</summary>
@@ -6163,6 +7097,13 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>A description of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the
+        /// client has an up-to-date value before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
 
         /// <summary>Output only. The time to which this token is valid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
@@ -6194,9 +7135,6 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>Output only. Time when the ServiceConnectionToken was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>Request message for `SetIamPolicy` method.</summary>
@@ -6255,6 +7193,10 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("linkedRouterApplianceInstances")]
         public virtual LinkedRouterApplianceInstances LinkedRouterApplianceInstances { get; set; }
 
+        /// <summary>Optional. VPC network that is associated with the spoke.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedVpcNetwork")]
+        public virtual LinkedVpcNetwork LinkedVpcNetwork { get; set; }
+
         /// <summary>VPN tunnels that are associated with the spoke.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("linkedVpnTunnels")]
         public virtual LinkedVpnTunnels LinkedVpnTunnels { get; set; }
@@ -6265,6 +7207,14 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>Output only. The reasons for current state of the spoke.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reasons")]
+        public virtual System.Collections.Generic.IList<StateReason> Reasons { get; set; }
+
+        /// <summary>Output only. The type of resource associated with the spoke.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spokeType")]
+        public virtual string SpokeType { get; set; }
 
         /// <summary>Output only. The current lifecycle state of this spoke.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -6280,6 +7230,108 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>Output only. The time the spoke was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The number of spokes that are in a particular state and associated with a given hub.</summary>
+    public class SpokeStateCount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The total number of spokes that are in this state and associated with a given hub.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; }
+
+        /// <summary>Output only. The state of the spokes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The number of spokes in the hub that are inactive for this reason.</summary>
+    public class SpokeStateReasonCount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The total number of spokes that are inactive for a particular reason and associated with a
+        /// given hub.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; }
+
+        /// <summary>Output only. The reason that a spoke is inactive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateReasonCode")]
+        public virtual string StateReasonCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Summarizes information about the spokes associated with a hub. The summary includes a count of spokes according
+    /// to type and according to state. If any spokes are inactive, the summary also lists the reasons they are
+    /// inactive, including a count for each reason.
+    /// </summary>
+    public class SpokeSummary : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Counts the number of spokes that are in each state and associated with a given hub.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spokeStateCounts")]
+        public virtual System.Collections.Generic.IList<SpokeStateCount> SpokeStateCounts { get; set; }
+
+        /// <summary>
+        /// Output only. Counts the number of spokes that are inactive for each possible reason and associated with a
+        /// given hub.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spokeStateReasonCounts")]
+        public virtual System.Collections.Generic.IList<SpokeStateReasonCount> SpokeStateReasonCounts { get; set; }
+
+        /// <summary>
+        /// Output only. Counts the number of spokes of each type that are associated with a specific hub.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spokeTypeCounts")]
+        public virtual System.Collections.Generic.IList<SpokeTypeCount> SpokeTypeCounts { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The number of spokes of a given type that are associated with a specific hub. The type indicates what kind of
+    /// resource is associated with the spoke.
+    /// </summary>
+    public class SpokeTypeCount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The total number of spokes of this type that are associated with the hub.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<long> Count { get; set; }
+
+        /// <summary>Output only. The type of the spokes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spokeType")]
+        public virtual string SpokeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The reason a spoke is inactive.</summary>
+    public class StateReason : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The code associated with this reason.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>Human-readable details about this reason.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Additional information provided by the user in the RejectSpoke call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userDetails")]
+        public virtual string UserDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

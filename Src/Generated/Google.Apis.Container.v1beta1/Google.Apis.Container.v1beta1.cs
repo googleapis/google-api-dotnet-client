@@ -7285,6 +7285,17 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration of all network bandwidth tiers</summary>
+    public class ClusterNetworkPerformanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the total network bandwidth tier for the NodePool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalEgressBandwidthTier")]
+        public virtual string TotalEgressBandwidthTier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Telemetry integration for the cluster.</summary>
     public class ClusterTelemetry : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7454,6 +7465,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredMonitoringService")]
         public virtual string DesiredMonitoringService { get; set; }
+
+        /// <summary>The desired network performance config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredNetworkPerformanceConfig")]
+        public virtual ClusterNetworkPerformanceConfig DesiredNetworkPerformanceConfig { get; set; }
 
         /// <summary>
         /// The desired network tags that apply to all auto-provisioned node pools in autopilot clusters and node
@@ -8914,6 +8929,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
+        /// <summary>Network bandwidth tier configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkPerformanceConfig")]
+        public virtual ClusterNetworkPerformanceConfig NetworkPerformanceConfig { get; set; }
+
         /// <summary>
         /// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from
         /// Google Services (all access will be via IPv4)
@@ -9190,7 +9209,7 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>
         /// Whether the nodes are created as preemptible VM instances. See:
-        /// https://cloud.google.com/compute/docs/instances/preemptible for more inforamtion about preemptible VM
+        /// https://cloud.google.com/compute/docs/instances/preemptible for more information about preemptible VM
         /// instances.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preemptible")]

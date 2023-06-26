@@ -2653,7 +2653,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// create your own [custom container
         /// images](https://cloud.google.com/workstations/docs/custom-container-images). If using a private image, the
         /// `host.gceInstance.serviceAccount` field must be specified in the workstation configuration and must have
-        /// permission to pull the specified image. Otherwise, the image must be publicly accessible.s
+        /// permission to pull the specified image. Otherwise, the image must be publicly accessible.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual string Image { get; set; }
@@ -2781,6 +2781,10 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disablePublicIpAddresses")]
         public virtual System.Nullable<bool> DisablePublicIpAddresses { get; set; }
+
+        /// <summary>Whether to enable nested virtualization on instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableNestedVirtualization")]
+        public virtual System.Nullable<bool> EnableNestedVirtualization { get; set; }
 
         /// <summary>
         /// The type of machine to use for VM instances—for example, `e2-standard-4`. For more information about machine
@@ -3582,8 +3586,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual object CreateTime { get; set; }
 
         /// <summary>
-        /// Output only. Whether this resource is in degraded mode, in which case it may require user action to restore
-        /// full functionality. Details can be found in the `conditions` field.
+        /// Output only. Whether this resource is degraded, in which case it may require user action to restore full
+        /// functionality. See also the `conditions` field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("degraded")]
         public virtual System.Nullable<bool> Degraded { get; set; }

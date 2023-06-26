@@ -9488,6 +9488,105 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The profile for a scanned column within a table.</summary>
+    public class GooglePrivacyDlpV2ColumnDataProfile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("column")]
+        public virtual string Column { get; set; }
+
+        /// <summary>
+        /// If it's been determined this column can be identified as a single type, this will be set. Otherwise the
+        /// column either has unidentifiable content or mixed types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnInfoType")]
+        public virtual GooglePrivacyDlpV2InfoTypeSummary ColumnInfoType { get; set; }
+
+        /// <summary>The data type of a given column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnType")]
+        public virtual string ColumnType { get; set; }
+
+        /// <summary>The data risk level for this column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataRiskLevel")]
+        public virtual GooglePrivacyDlpV2DataRiskLevel DataRiskLevel { get; set; }
+
+        /// <summary>The BigQuery dataset ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetId")]
+        public virtual string DatasetId { get; set; }
+
+        /// <summary>
+        /// The BigQuery location where the dataset's data is stored. See
+        /// https://cloud.google.com/bigquery/docs/locations for supported locations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetLocation")]
+        public virtual string DatasetLocation { get; set; }
+
+        /// <summary>The Google Cloud project ID that owns the BigQuery dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetProjectId")]
+        public virtual string DatasetProjectId { get; set; }
+
+        /// <summary>Approximate percentage of entries being null in the column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedNullPercentage")]
+        public virtual string EstimatedNullPercentage { get; set; }
+
+        /// <summary>Approximate uniqueness of the column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedUniquenessScore")]
+        public virtual string EstimatedUniquenessScore { get; set; }
+
+        /// <summary>
+        /// The likelihood that this column contains free-form text. A value close to 1 may indicate the column is
+        /// likely to contain free-form or natural language text. Range in 0-1.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freeTextScore")]
+        public virtual System.Nullable<double> FreeTextScore { get; set; }
+
+        /// <summary>The name of the profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Other types found within this column. List will be un-ordered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("otherMatches")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2OtherInfoTypeSummary> OtherMatches { get; set; }
+
+        /// <summary>Indicates if a policy tag has been applied to the column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyState")]
+        public virtual string PolicyState { get; set; }
+
+        /// <summary>The last time the profile was generated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileLastGenerated")]
+        public virtual object ProfileLastGenerated { get; set; }
+
+        /// <summary>
+        /// Success or error status from the most recent profile generation attempt. May be empty if the profile is
+        /// still being generated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("profileStatus")]
+        public virtual GooglePrivacyDlpV2ProfileStatus ProfileStatus { get; set; }
+
+        /// <summary>The sensitivity of this column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sensitivityScore")]
+        public virtual GooglePrivacyDlpV2SensitivityScore SensitivityScore { get; set; }
+
+        /// <summary>State of a profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The resource name to the table data profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableDataProfile")]
+        public virtual string TableDataProfile { get; set; }
+
+        /// <summary>The resource name of the table this column is within.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableFullResource")]
+        public virtual string TableFullResource { get; set; }
+
+        /// <summary>The BigQuery table ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableId")]
+        public virtual string TableId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The field type of `value` and `field` do not need to match to be considered equal, but not all comparisons are
     /// possible. EQUAL_TO and NOT_EQUAL_TO attempt to compare even with incompatible types, but all other comparisons
@@ -10009,6 +10108,21 @@ namespace Google.Apis.DLP.v2.Data
         /// <summary>Publish a message into the Pub/Sub topic.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubSubNotification")]
         public virtual GooglePrivacyDlpV2PubSubNotification PubSubNotification { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The schema of data to be saved to the BigQuery when the `DataProfileAction` is enabled.</summary>
+    public class GooglePrivacyDlpV2DataProfileBigQueryRowSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Column data profile column</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnProfile")]
+        public virtual GooglePrivacyDlpV2ColumnDataProfile ColumnProfile { get; set; }
+
+        /// <summary>Table data profile column</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableProfile")]
+        public virtual GooglePrivacyDlpV2TableDataProfile TableProfile { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12523,7 +12637,9 @@ namespace Google.Apis.DLP.v2.Data
 
     public class GooglePrivacyDlpV2ProfileStatus : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Profiling status code and optional message. status.code will be 0 (default value) for OK.</summary>
+        /// <summary>
+        /// Profiling status code and optional message. The `status.code` value is 0 (default value) for OK.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual GoogleRpcStatus Status { get; set; }
 

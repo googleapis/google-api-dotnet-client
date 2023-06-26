@@ -1811,6 +1811,74 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                             }
                         }
 
+                        /// <summary>
+                        /// Deletes permanently all user events specified by the filter provided. Depending on the
+                        /// number of events specified by the filter, this operation could take hours or days to
+                        /// complete. To test a filter, use the list command first.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">
+                        /// Required. The resource name of the catalog under which the events are created. The format is
+                        /// `projects/${projectId}/locations/global/collections/{$collectionId}/dataStores/${dataStoreId}`
+                        /// </param>
+                        public virtual PurgeRequest Purge(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaPurgeUserEventsRequest body, string parent)
+                        {
+                            return new PurgeRequest(service, body, parent);
+                        }
+
+                        /// <summary>
+                        /// Deletes permanently all user events specified by the filter provided. Depending on the
+                        /// number of events specified by the filter, this operation could take hours or days to
+                        /// complete. To test a filter, use the list command first.
+                        /// </summary>
+                        public class PurgeRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new Purge request.</summary>
+                            public PurgeRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaPurgeUserEventsRequest body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the catalog under which the events are created. The
+                            /// format is
+                            /// `projects/${projectId}/locations/global/collections/{$collectionId}/dataStores/${dataStoreId}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaPurgeUserEventsRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "purge";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+parent}/userEvents:purge";
+
+                            /// <summary>Initializes Purge parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+$",
+                                });
+                            }
+                        }
+
                         /// <summary>Writes a single user event.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
@@ -3519,6 +3587,73 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         }
                     }
 
+                    /// <summary>
+                    /// Deletes permanently all user events specified by the filter provided. Depending on the number of
+                    /// events specified by the filter, this operation could take hours or days to complete. To test a
+                    /// filter, use the list command first.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The resource name of the catalog under which the events are created. The format is
+                    /// `projects/${projectId}/locations/global/collections/{$collectionId}/dataStores/${dataStoreId}`
+                    /// </param>
+                    public virtual PurgeRequest Purge(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaPurgeUserEventsRequest body, string parent)
+                    {
+                        return new PurgeRequest(service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Deletes permanently all user events specified by the filter provided. Depending on the number of
+                    /// events specified by the filter, this operation could take hours or days to complete. To test a
+                    /// filter, use the list command first.
+                    /// </summary>
+                    public class PurgeRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Purge request.</summary>
+                        public PurgeRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaPurgeUserEventsRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the catalog under which the events are created. The format is
+                        /// `projects/${projectId}/locations/global/collections/{$collectionId}/dataStores/${dataStoreId}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaPurgeUserEventsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "purge";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+parent}/userEvents:purge";
+
+                        /// <summary>Initializes Purge parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Writes a single user event.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">
@@ -4398,12 +4533,12 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Detailed document information associated with a user event.</summary>
     public class GoogleCloudDiscoveryengineV1alphaDocumentInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The Document resource ID.</summary>
+        /// <summary>The Document resource ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
         /// <summary>
-        /// Required. The Document resource full name, of the form:
+        /// The Document resource full name, of the form:
         /// `projects/{project_id}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}/branches/{branch_id}/documents/{document_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -4423,9 +4558,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("quantity")]
         public virtual System.Nullable<int> Quantity { get; set; }
 
-        /// <summary>
-        /// Required. The Document url - only allowed for DataStores with content_config PUBLIC_WEBSITE.
-        /// </summary>
+        /// <summary>The Document url - only allowed for DataStores with content_config PUBLIC_WEBSITE.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -4442,8 +4575,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// Unstructured data (e.g. PDF, HTML). Each file matched by `input_uris` will become a document, with the ID
         /// set to the first 128 bits of SHA256(URI) encoded as a hex string. * `custom`: One custom data JSON per row
         /// in arbitrary format that conforms the defined Schema of the data store. This can only be used by the GENERIC
-        /// Data Store vertical. Supported values for user even imports: * `user_event` (default): One JSON UserEvent
-        /// per line.
+        /// Data Store vertical. * `csv`: A CSV file with header conforming the defined Schema of the data store. Each
+        /// entry after the header will be imported as a Document. This can only be used by the GENERIC Data Store
+        /// vertical. Supported values for user even imports: * `user_event` (default): One JSON UserEvent per line.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataSchema")]
         public virtual string DataSchema { get; set; }
@@ -4496,8 +4630,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// imports. In which case ReconciliationMode.FULL is highly recommended to avoid duplicate contents. If unset
         /// or set to `false`, Document.ids have to be specified using id_field, otherwises, documents without IDs will
         /// fail to be imported. Only set this field when using GcsSource or BigQuerySource, and when
-        /// GcsSource.data_schema or BigQuerySource.data_schema is `custom`. Otherwise, an INVALID_ARGUMENT error is
-        /// thrown.
+        /// GcsSource.data_schema or BigQuerySource.data_schema is `custom` or `csv`. Otherwise, an INVALID_ARGUMENT
+        /// error is thrown.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoGenerateIds")]
         public virtual System.Nullable<bool> AutoGenerateIds { get; set; }
@@ -4620,7 +4754,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Request message for the ImportUserEvents request.</summary>
     public class GoogleCloudDiscoveryengineV1alphaImportUserEventsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. BigQuery input source.</summary>
+        /// <summary>BigQuery input source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bigquerySource")]
         public virtual GoogleCloudDiscoveryengineV1alphaBigQuerySource BigquerySource { get; set; }
 
@@ -4630,11 +4764,11 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorConfig")]
         public virtual GoogleCloudDiscoveryengineV1alphaImportErrorConfig ErrorConfig { get; set; }
 
-        /// <summary>Required. Cloud Storage location for the input content.</summary>
+        /// <summary>Cloud Storage location for the input content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GoogleCloudDiscoveryengineV1alphaGcsSource GcsSource { get; set; }
 
-        /// <summary>Required. The Inline source for the input content for UserEvents.</summary>
+        /// <summary>The Inline source for the input content for UserEvents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inlineSource")]
         public virtual GoogleCloudDiscoveryengineV1alphaImportUserEventsRequestInlineSource InlineSource { get; set; }
 
@@ -4855,6 +4989,75 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purgeSample")]
         public virtual System.Collections.Generic.IList<string> PurgeSample { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the PurgeUserEvents operation. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaPurgeUserEventsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual object CreateTime { get; set; }
+
+        /// <summary>Count of entries that encountered errors while processing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCount")]
+        public virtual System.Nullable<long> FailureCount { get; set; }
+
+        /// <summary>Count of entries that were deleted successfully.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<long> SuccessCount { get; set; }
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for PurgeUserEvents method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaPurgeUserEventsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The filter string to specify the events to be deleted with a length limit of 5,000 characters. The
+        /// eligible fields for filtering are: * `eventType`: Double quoted UserEvent.event_type string. * `eventTime`:
+        /// in ISO 8601 "zulu" format. * `userPseudoId`: Double quoted string. Specifying this will delete all events
+        /// associated with a visitor. * `userId`: Double quoted string. Specifying this will delete all events
+        /// associated with a user. Examples: * Deleting all events in a time range: `eventTime &amp;gt;
+        /// "2012-04-23T18:25:43.511Z" eventTime &amp;lt; "2012-04-23T18:30:43.511Z"` * Deleting specific eventType:
+        /// `eventType = "search"` * Deleting all events for a specific visitor: `userPseudoId = "visitor1024"` *
+        /// Deleting all events inside a DataStore: `*` The filtering fields are assumed to have an implicit AND.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// The `force` field is currently not supported. Purge user event requests will permanently delete all
+        /// purgeable events. Once the development is complete: If `force` is set to false, the method will return the
+        /// expected purge count without deleting any user events. This field will default to false if not included in
+        /// the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("force")]
+        public virtual System.Nullable<bool> Force { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Response of the PurgeUserEventsRequest. If the long running operation is successfully done, then this message is
+    /// returned by the google.longrunning.Operations.response field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaPurgeUserEventsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The total count of events purged as a result of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("purgeCount")]
+        public virtual System.Nullable<long> PurgeCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
