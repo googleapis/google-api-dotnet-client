@@ -4618,7 +4618,9 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         /// <summary>
         /// Required. Role to apply. Only allowlisted roles can be used at the specified granularity. The role must be
         /// one of the following: - 'roles/container.hostServiceAgentUser' applied on the shared VPC host project -
-        /// 'roles/compute.securityAdmin' applied on the shared VPC host project
+        /// 'roles/compute.securityAdmin' applied on the shared VPC host project - 'roles/compute.networkAdmin' applied
+        /// on the shared VPC host project - 'roles/compute.xpnAdmin' applied on the shared VPC host project -
+        /// 'roles/dns.admin' applied on the shared VPC host project
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }

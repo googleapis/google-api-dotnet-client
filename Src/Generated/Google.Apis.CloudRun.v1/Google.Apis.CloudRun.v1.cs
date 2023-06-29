@@ -6195,13 +6195,83 @@ namespace Google.Apis.CloudRun.v1.Data
     /// </summary>
     public class ExecutionReference : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _completionTimestampRaw;
+
+        private object _completionTimestamp;
+
         /// <summary>Optional. Completion timestamp of the execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completionTimestamp")]
-        public virtual object CompletionTimestamp { get; set; }
+        public virtual string CompletionTimestampRaw
+        {
+            get => _completionTimestampRaw;
+            set
+            {
+                _completionTimestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _completionTimestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CompletionTimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CompletionTimestampDateTimeOffset instead.")]
+        public virtual object CompletionTimestamp
+        {
+            get => _completionTimestamp;
+            set
+            {
+                _completionTimestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _completionTimestamp = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="CompletionTimestampRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CompletionTimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CompletionTimestampRaw);
+            set => CompletionTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _creationTimestampRaw;
+
+        private object _creationTimestamp;
 
         /// <summary>Optional. Creation timestamp of the execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
-        public virtual object CreationTimestamp { get; set; }
+        public virtual string CreationTimestampRaw
+        {
+            get => _creationTimestampRaw;
+            set
+            {
+                _creationTimestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _creationTimestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreationTimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreationTimestampDateTimeOffset instead.")]
+        public virtual object CreationTimestamp
+        {
+            get => _creationTimestamp;
+            set
+            {
+                _creationTimestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _creationTimestamp = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="CreationTimestampRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreationTimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimestampRaw);
+            set => CreationTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Optional. Name of the execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -6247,12 +6317,47 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cancelledCount")]
         public virtual System.Nullable<int> CancelledCount { get; set; }
 
+        private string _completionTimeRaw;
+
+        private object _completionTime;
+
         /// <summary>
         /// Optional. Represents the time that the execution was completed. It is not guaranteed to be set in
         /// happens-before order across separate operations. It is represented in RFC3339 form and is in UTC. +optional
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completionTime")]
-        public virtual object CompletionTime { get; set; }
+        public virtual string CompletionTimeRaw
+        {
+            get => _completionTimeRaw;
+            set
+            {
+                _completionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _completionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CompletionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CompletionTimeDateTimeOffset instead.")]
+        public virtual object CompletionTime
+        {
+            get => _completionTime;
+            set
+            {
+                _completionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _completionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="CompletionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CompletionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CompletionTimeRaw);
+            set => CompletionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Optional. Conditions communicate information about ongoing/complete reconciliation processes that bring the
@@ -6284,12 +6389,45 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("runningCount")]
         public virtual System.Nullable<int> RunningCount { get; set; }
 
+        private string _startTimeRaw;
+
+        private object _startTime;
+
         /// <summary>
         /// Optional. Represents the time that the execution started to run. It is not guaranteed to be set in
         /// happens-before order across separate operations. It is represented in RFC3339 form and is in UTC.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Optional. The number of tasks which reached phase Succeeded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("succeededCount")]
@@ -6393,9 +6531,44 @@ namespace Google.Apis.CloudRun.v1.Data
     /// </summary>
     public class GoogleCloudRunV1Condition : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _lastTransitionTimeRaw;
+
+        private object _lastTransitionTime;
+
         /// <summary>Optional. Last time the condition transitioned from one status to another.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastTransitionTime")]
-        public virtual object LastTransitionTime { get; set; }
+        public virtual string LastTransitionTimeRaw
+        {
+            get => _lastTransitionTimeRaw;
+            set
+            {
+                _lastTransitionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastTransitionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastTransitionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastTransitionTimeDateTimeOffset instead.")]
+        public virtual object LastTransitionTime
+        {
+            get => _lastTransitionTime;
+            set
+            {
+                _lastTransitionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastTransitionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastTransitionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastTransitionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastTransitionTimeRaw);
+            set => LastTransitionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Optional. Human readable message indicating details about the current status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -6969,20 +7142,90 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clusterName")]
         public virtual string ClusterName { get; set; }
 
+        private string _creationTimestampRaw;
+
+        private object _creationTimestamp;
+
         /// <summary>UTC timestamp representing the server time when this object was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTimestamp")]
-        public virtual object CreationTimestamp { get; set; }
+        public virtual string CreationTimestampRaw
+        {
+            get => _creationTimestampRaw;
+            set
+            {
+                _creationTimestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _creationTimestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreationTimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreationTimestampDateTimeOffset instead.")]
+        public virtual object CreationTimestamp
+        {
+            get => _creationTimestamp;
+            set
+            {
+                _creationTimestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _creationTimestamp = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="CreationTimestampRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreationTimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimestampRaw);
+            set => CreationTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Not supported by Cloud Run</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletionGracePeriodSeconds")]
         public virtual System.Nullable<int> DeletionGracePeriodSeconds { get; set; }
+
+        private string _deletionTimestampRaw;
+
+        private object _deletionTimestamp;
 
         /// <summary>
         /// The read-only soft deletion timestamp for this resource. In Cloud Run, users are not able to set this field.
         /// Instead, they must call the corresponding Delete API.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletionTimestamp")]
-        public virtual object DeletionTimestamp { get; set; }
+        public virtual string DeletionTimestampRaw
+        {
+            get => _deletionTimestampRaw;
+            set
+            {
+                _deletionTimestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deletionTimestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeletionTimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeletionTimestampDateTimeOffset instead.")]
+        public virtual object DeletionTimestamp
+        {
+            get => _deletionTimestamp;
+            set
+            {
+                _deletionTimestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deletionTimestamp = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="DeletionTimestampRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeletionTimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeletionTimestampRaw);
+            set => DeletionTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Not supported by Cloud Run</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalizers")]
@@ -8038,12 +8281,47 @@ namespace Google.Apis.CloudRun.v1.Data
     /// <summary>TaskStatus represents the status of a task.</summary>
     public class TaskStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _completionTimeRaw;
+
+        private object _completionTime;
+
         /// <summary>
         /// Optional. Represents time when the task was completed. It is not guaranteed to be set in happens-before
         /// order across separate operations. It is represented in RFC3339 form and is in UTC.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completionTime")]
-        public virtual object CompletionTime { get; set; }
+        public virtual string CompletionTimeRaw
+        {
+            get => _completionTimeRaw;
+            set
+            {
+                _completionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _completionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CompletionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CompletionTimeDateTimeOffset instead.")]
+        public virtual object CompletionTime
+        {
+            get => _completionTime;
+            set
+            {
+                _completionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _completionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="CompletionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CompletionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CompletionTimeRaw);
+            set => CompletionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Optional. Conditions communicate information about ongoing/complete reconciliation processes that bring the
@@ -8077,12 +8355,45 @@ namespace Google.Apis.CloudRun.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("retried")]
         public virtual System.Nullable<int> Retried { get; set; }
 
+        private string _startTimeRaw;
+
+        private object _startTime;
+
         /// <summary>
         /// Optional. Represents time when the task started to run. It is not guaranteed to be set in happens-before
         /// order across separate operations. It is represented in RFC3339 form and is in UTC.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

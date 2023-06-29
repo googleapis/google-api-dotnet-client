@@ -980,10 +980,9 @@ namespace Google.Apis.StreetViewPublish.v1
             /// <summary>
             /// Optional. The filter expression. For example: `imagery_type=SPHERICAL`. The filters supported are:
             /// `imagery_type`, `processing_state`, `min_latitude`, `max_latitude`, `min_longitude`, `max_longitude`,
-            /// `filename_query`, `min_capture_time_seconds`, `max_capture_time_seconds`, and `takedown`. See
-            /// https://google.aip.dev/160 for more information. Filename queries should sent as a Phrase in order to
-            /// support multiple words and special characters by adding escaped quotes. Ex: filename_query="example of a
-            /// phrase.mp4"
+            /// `filename_query`, `min_capture_time_seconds`, `max_capture_time_seconds. See https://google.aip.dev/160
+            /// for more information. Filename queries should sent as a Phrase in order to support multiple words and
+            /// special characters by adding escaped quotes. Ex: filename_query="example of a phrase.mp4"
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Filter { get; set; }
@@ -1649,9 +1648,42 @@ namespace Google.Apis.StreetViewPublish.v1.Data
     /// <summary>A Generic 3d measurement sample.</summary>
     public class Measurement3d : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _captureTimeRaw;
+
+        private object _captureTime;
+
         /// <summary>The timestamp of the IMU measurement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("captureTime")]
-        public virtual object CaptureTime { get; set; }
+        public virtual string CaptureTimeRaw
+        {
+            get => _captureTimeRaw;
+            set
+            {
+                _captureTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _captureTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CaptureTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CaptureTimeDateTimeOffset instead.")]
+        public virtual object CaptureTime
+        {
+            get => _captureTime;
+            set
+            {
+                _captureTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _captureTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CaptureTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CaptureTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CaptureTimeRaw);
+            set => CaptureTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The sensor measurement in the x axis.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("x")]
@@ -1672,21 +1704,155 @@ namespace Google.Apis.StreetViewPublish.v1.Data
     /// <summary>Details related to PhotoSequenceProcessingFailureReason#NO_OVERLAP_GPS.</summary>
     public class NoOverlapGpsFailureDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _gpsEndTimeRaw;
+
+        private object _gpsEndTime;
+
         /// <summary>Time of last recorded GPS point.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gpsEndTime")]
-        public virtual object GpsEndTime { get; set; }
+        public virtual string GpsEndTimeRaw
+        {
+            get => _gpsEndTimeRaw;
+            set
+            {
+                _gpsEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _gpsEndTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="GpsEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use GpsEndTimeDateTimeOffset instead.")]
+        public virtual object GpsEndTime
+        {
+            get => _gpsEndTime;
+            set
+            {
+                _gpsEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _gpsEndTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="GpsEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? GpsEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(GpsEndTimeRaw);
+            set => GpsEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _gpsStartTimeRaw;
+
+        private object _gpsStartTime;
 
         /// <summary>Time of first recorded GPS point.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gpsStartTime")]
-        public virtual object GpsStartTime { get; set; }
+        public virtual string GpsStartTimeRaw
+        {
+            get => _gpsStartTimeRaw;
+            set
+            {
+                _gpsStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _gpsStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="GpsStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use GpsStartTimeDateTimeOffset instead.")]
+        public virtual object GpsStartTime
+        {
+            get => _gpsStartTime;
+            set
+            {
+                _gpsStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _gpsStartTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="GpsStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? GpsStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(GpsStartTimeRaw);
+            set => GpsStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _videoEndTimeRaw;
+
+        private object _videoEndTime;
 
         /// <summary>End time of video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoEndTime")]
-        public virtual object VideoEndTime { get; set; }
+        public virtual string VideoEndTimeRaw
+        {
+            get => _videoEndTimeRaw;
+            set
+            {
+                _videoEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _videoEndTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="VideoEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use VideoEndTimeDateTimeOffset instead.")]
+        public virtual object VideoEndTime
+        {
+            get => _videoEndTime;
+            set
+            {
+                _videoEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _videoEndTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="VideoEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? VideoEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(VideoEndTimeRaw);
+            set => VideoEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _videoStartTimeRaw;
+
+        private object _videoStartTime;
 
         /// <summary>Start time of video.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("videoStartTime")]
-        public virtual object VideoStartTime { get; set; }
+        public virtual string VideoStartTimeRaw
+        {
+            get => _videoStartTimeRaw;
+            set
+            {
+                _videoStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _videoStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="VideoStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use VideoStartTimeDateTimeOffset instead.")]
+        public virtual object VideoStartTime
+        {
+            get => _videoStartTime;
+            set
+            {
+                _videoStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _videoStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="VideoStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? VideoStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(VideoStartTimeRaw);
+            set => VideoStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1752,12 +1918,45 @@ namespace Google.Apis.StreetViewPublish.v1.Data
     /// <summary>Photo is used to store 360 photos along with photo metadata.</summary>
     public class Photo : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _captureTimeRaw;
+
+        private object _captureTime;
+
         /// <summary>
         /// Optional. Absolute time when the photo was captured. When the photo has no exif timestamp, this is used to
         /// set a timestamp in the photo metadata.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("captureTime")]
-        public virtual object CaptureTime { get; set; }
+        public virtual string CaptureTimeRaw
+        {
+            get => _captureTimeRaw;
+            set
+            {
+                _captureTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _captureTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CaptureTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CaptureTimeDateTimeOffset instead.")]
+        public virtual object CaptureTime
+        {
+            get => _captureTime;
+            set
+            {
+                _captureTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _captureTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CaptureTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CaptureTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CaptureTimeRaw);
+            set => CaptureTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Optional. Connections to other photos. A connection represents the link from this photo to another photo.
@@ -1810,9 +2009,42 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uploadReference")]
         public virtual UploadRef UploadReference { get; set; }
 
+        private string _uploadTimeRaw;
+
+        private object _uploadTime;
+
         /// <summary>Output only. Time when the image was uploaded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadTime")]
-        public virtual object UploadTime { get; set; }
+        public virtual string UploadTimeRaw
+        {
+            get => _uploadTimeRaw;
+            set
+            {
+                _uploadTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _uploadTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UploadTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UploadTimeDateTimeOffset instead.")]
+        public virtual object UploadTime
+        {
+            get => _uploadTime;
+            set
+            {
+                _uploadTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _uploadTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UploadTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UploadTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UploadTimeRaw);
+            set => UploadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. View count of the photo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("viewCount")]
@@ -1853,13 +2085,48 @@ namespace Google.Apis.StreetViewPublish.v1.Data
     /// <summary>A sequence of 360 photos along with metadata.</summary>
     public class PhotoSequence : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _captureTimeOverrideRaw;
+
+        private object _captureTimeOverride;
+
         /// <summary>
         /// Optional. Absolute time when the photo sequence starts to be captured. If the photo sequence is a video,
         /// this is the start time of the video. If this field is populated in input, it overrides the capture time in
         /// the video or XDM file.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("captureTimeOverride")]
-        public virtual object CaptureTimeOverride { get; set; }
+        public virtual string CaptureTimeOverrideRaw
+        {
+            get => _captureTimeOverrideRaw;
+            set
+            {
+                _captureTimeOverride = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _captureTimeOverrideRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CaptureTimeOverrideRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CaptureTimeOverrideDateTimeOffset instead.")]
+        public virtual object CaptureTimeOverride
+        {
+            get => _captureTimeOverride;
+            set
+            {
+                _captureTimeOverrideRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _captureTimeOverride = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="CaptureTimeOverrideRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CaptureTimeOverrideDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CaptureTimeOverrideRaw);
+            set => CaptureTimeOverrideRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. The computed distance of the photo sequence in meters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("distanceMeters")]
@@ -1941,9 +2208,42 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uploadReference")]
         public virtual UploadRef UploadReference { get; set; }
 
+        private string _uploadTimeRaw;
+
+        private object _uploadTime;
+
         /// <summary>Output only. The time this photo sequence was created in uSV Store service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uploadTime")]
-        public virtual object UploadTime { get; set; }
+        public virtual string UploadTimeRaw
+        {
+            get => _uploadTimeRaw;
+            set
+            {
+                _uploadTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _uploadTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UploadTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UploadTimeDateTimeOffset instead.")]
+        public virtual object UploadTime
+        {
+            get => _uploadTime;
+            set
+            {
+                _uploadTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _uploadTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UploadTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UploadTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UploadTimeRaw);
+            set => UploadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. The total number of views that all the published images in this PhotoSequence have received.
@@ -1995,9 +2295,44 @@ namespace Google.Apis.StreetViewPublish.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("altitude")]
         public virtual System.Nullable<double> Altitude { get; set; }
 
+        private string _gpsRecordTimestampUnixEpochRaw;
+
+        private object _gpsRecordTimestampUnixEpoch;
+
         /// <summary>Time of the GPS record since UTC epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gpsRecordTimestampUnixEpoch")]
-        public virtual object GpsRecordTimestampUnixEpoch { get; set; }
+        public virtual string GpsRecordTimestampUnixEpochRaw
+        {
+            get => _gpsRecordTimestampUnixEpochRaw;
+            set
+            {
+                _gpsRecordTimestampUnixEpoch = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _gpsRecordTimestampUnixEpochRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="GpsRecordTimestampUnixEpochRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use GpsRecordTimestampUnixEpochDateTimeOffset instead.")]
+        public virtual object GpsRecordTimestampUnixEpoch
+        {
+            get => _gpsRecordTimestampUnixEpoch;
+            set
+            {
+                _gpsRecordTimestampUnixEpochRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _gpsRecordTimestampUnixEpoch = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="GpsRecordTimestampUnixEpochRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? GpsRecordTimestampUnixEpochDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(GpsRecordTimestampUnixEpochRaw);
+            set => GpsRecordTimestampUnixEpochRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// The following pose parameters pertain to the center of the photo. They match

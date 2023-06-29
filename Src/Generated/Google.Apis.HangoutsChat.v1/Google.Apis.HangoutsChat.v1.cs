@@ -1564,7 +1564,7 @@ namespace Google.Apis.HangoutsChat.v1
                 /// name. Instead, it sets the custom name as the `clientAssignedMessageId` field, which you can
                 /// reference while processing later operations, like updating or deleting the message. For example
                 /// usage, see [Name a created
-                /// message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
+                /// message](https://developers.google.com/chat/api/guides/v1/messages/create#name_a_created_message).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("messageId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string MessageId { get; set; }
@@ -1778,7 +1778,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// message begins with `client-`, then it has a custom name assigned by a Chat app that created it with the
             /// Chat REST API. That Chat app (but not others) can pass the custom name to get, update, or delete the
             /// message. To learn more, see [create and name a message]
-            /// (https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
+            /// (https://developers.google.com/chat/api/guides/v1/messages/create#name_a_created_message).
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -1809,7 +1809,7 @@ namespace Google.Apis.HangoutsChat.v1
                 /// the message begins with `client-`, then it has a custom name assigned by a Chat app that created it
                 /// with the Chat REST API. That Chat app (but not others) can pass the custom name to get, update, or
                 /// delete the message. To learn more, see [create and name a message]
-                /// (https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
+                /// (https://developers.google.com/chat/api/guides/v1/messages/create#name_a_created_message).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2042,7 +2042,7 @@ namespace Google.Apis.HangoutsChat.v1
                 /// <summary>
                 /// Optional. If `true` and the message isn't found, a new message is created and `updateMask` is
                 /// ignored. The specified message ID must be
-                /// [client-assigned](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message)
+                /// [client-assigned](https://developers.google.com/chat/api/guides/v1/messages/create#name_a_created_message)
                 /// or the request fails.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
@@ -2155,7 +2155,7 @@ namespace Google.Apis.HangoutsChat.v1
                 /// <summary>
                 /// Optional. If `true` and the message isn't found, a new message is created and `updateMask` is
                 /// ignored. The specified message ID must be
-                /// [client-assigned](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message)
+                /// [client-assigned](https://developers.google.com/chat/api/guides/v1/messages/create#name_a_created_message)
                 /// or the request fails.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
@@ -3261,9 +3261,42 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dialogEventType")]
         public virtual string DialogEventType { get; set; }
 
+        private string _eventTimeRaw;
+
+        private object _eventTime;
+
         /// <summary>The timestamp indicating when the event occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
-        public virtual object EventTime { get; set; }
+        public virtual string EventTimeRaw
+        {
+            get => _eventTimeRaw;
+            set
+            {
+                _eventTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _eventTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EventTimeDateTimeOffset instead.")]
+        public virtual object EventTime
+        {
+            get => _eventTime;
+            set
+            {
+                _eventTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _eventTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EventTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// True when the event is related to [dialogs](https://developers.google.com/chat/how-tos/dialogs).
@@ -4809,12 +4842,45 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// </summary>
     public class Membership : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>
         /// Output only. The creation time of the membership, such as when a member joined or was invited to join a
         /// space.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// The Google Chat user or app the membership corresponds to. If your Chat app [authenticates as a
@@ -4896,10 +4962,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// Assigning a custom name doesn't replace the generated `name` field, the message's resource name. Instead, it
         /// sets the custom name as the `clientAssignedMessageId` field, which you can reference while processing later
         /// operations, like updating or deleting the message. For example usage, see [Name a created
-        /// message](https://developers.google.com/chat/api/guides/crudl/messages#name_a_created_message).
+        /// message](https://developers.google.com/chat/api/guides/v1/messages/create#name_a_created_message).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientAssignedMessageId")]
         public virtual string ClientAssignedMessageId { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
 
         /// <summary>
         /// For spaces created in Chat, the time at which the message was created. This field is output only, except
@@ -4908,14 +4978,76 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// in order to preserve the original creation time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _deleteTimeRaw;
+
+        private object _deleteTime;
 
         /// <summary>
         /// Output only. The time at which the message was deleted in Google Chat. If the message is never deleted, this
         /// field is empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
-        public virtual object DeleteTime { get; set; }
+        public virtual string DeleteTimeRaw
+        {
+            get => _deleteTimeRaw;
+            set
+            {
+                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deleteTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
+        public virtual object DeleteTime
+        {
+            get => _deleteTime;
+            set
+            {
+                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deleteTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. Information about a deleted message. A message is deleted when `delete_time` is set.
@@ -4934,12 +5066,47 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fallbackText")]
         public virtual string FallbackText { get; set; }
 
+        private string _lastUpdateTimeRaw;
+
+        private object _lastUpdateTime;
+
         /// <summary>
         /// Output only. The time at which the message was last edited by a user. If the message has never been edited,
         /// this field is empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTime")]
-        public virtual object LastUpdateTime { get; set; }
+        public virtual string LastUpdateTimeRaw
+        {
+            get => _lastUpdateTimeRaw;
+            set
+            {
+                _lastUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastUpdateTimeDateTimeOffset instead.")]
+        public virtual object LastUpdateTime
+        {
+            get => _lastUpdateTime;
+            set
+            {
+                _lastUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdateTimeRaw);
+            set => LastUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. A URL in `spaces.messages.text` that matches a link preview pattern. For more information, see

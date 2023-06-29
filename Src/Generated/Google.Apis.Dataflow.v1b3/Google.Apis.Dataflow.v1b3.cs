@@ -1723,7 +1723,7 @@ namespace Google.Apis.Dataflow.v1b3
                 /// The list of fields to update relative to Job. If empty, only RequestedJobState will be considered
                 /// for update. If the FieldMask is not empty and RequestedJobState is none/empty, The fields specified
                 /// in the update mask will be the only ones considered for update. If both RequestedJobState and
-                /// update_mask are specified, we will first handle RequestedJobState and then the update_mask fields.
+                /// update_mask are specified, an error will be returned as we cannot update both state and mask.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -3647,8 +3647,8 @@ namespace Google.Apis.Dataflow.v1b3
                     /// The list of fields to update relative to Job. If empty, only RequestedJobState will be
                     /// considered for update. If the FieldMask is not empty and RequestedJobState is none/empty, The
                     /// fields specified in the update mask will be the only ones considered for update. If both
-                    /// RequestedJobState and update_mask are specified, we will first handle RequestedJobState and then
-                    /// the update_mask fields.
+                    /// RequestedJobState and update_mask are specified, an error will be returned as we cannot update
+                    /// both state and mask.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -5044,9 +5044,42 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetNumWorkers")]
         public virtual System.Nullable<long> TargetNumWorkers { get; set; }
 
+        private string _timeRaw;
+
+        private object _time;
+
         /// <summary>The time this event was emitted to indicate a new target or current num_workers value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("time")]
-        public virtual object Time { get; set; }
+        public virtual string TimeRaw
+        {
+            get => _timeRaw;
+            set
+            {
+                _time = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimeDateTimeOffset instead.")]
+        public virtual object Time
+        {
+            get => _time;
+            set
+            {
+                _timeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _time = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeRaw);
+            set => TimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>A short and friendly name for the worker pool this event refers to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerPool")]
@@ -5120,9 +5153,42 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rate")]
         public virtual System.Nullable<double> Rate { get; set; }
 
+        private string _timestampRaw;
+
+        private object _timestamp;
+
         /// <summary>Timestamp of the measurement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
-        public virtual object Timestamp { get; set; }
+        public virtual string TimestampRaw
+        {
+            get => _timestampRaw;
+            set
+            {
+                _timestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimestampDateTimeOffset instead.")]
+        public virtual object Timestamp
+        {
+            get => _timestamp;
+            set
+            {
+                _timestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _timestamp = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimestampRaw);
+            set => TimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Total active CPU time across all cores (ie., non-idle) in milliseconds since start-up.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalMs")]
@@ -5632,9 +5698,44 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("strValue")]
         public virtual string StrValue { get; set; }
 
+        private string _timestampValueRaw;
+
+        private object _timestampValue;
+
         /// <summary>Contains value if the data is of timestamp type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestampValue")]
-        public virtual object TimestampValue { get; set; }
+        public virtual string TimestampValueRaw
+        {
+            get => _timestampValueRaw;
+            set
+            {
+                _timestampValue = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timestampValueRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimestampValueRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimestampValueDateTimeOffset instead.")]
+        public virtual object TimestampValue
+        {
+            get => _timestampValue;
+            set
+            {
+                _timestampValueRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _timestampValue = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="TimestampValueRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimestampValueDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimestampValueRaw);
+            set => TimestampValueRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>An optional full URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
@@ -5818,9 +5919,44 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>A message describing the state of a particular execution stage.</summary>
     public class ExecutionStageState : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _currentStateTimeRaw;
+
+        private object _currentStateTime;
+
         /// <summary>The time at which the stage transitioned to this state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentStateTime")]
-        public virtual object CurrentStateTime { get; set; }
+        public virtual string CurrentStateTimeRaw
+        {
+            get => _currentStateTimeRaw;
+            set
+            {
+                _currentStateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _currentStateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CurrentStateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CurrentStateTimeDateTimeOffset instead.")]
+        public virtual object CurrentStateTime
+        {
+            get => _currentStateTime;
+            set
+            {
+                _currentStateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _currentStateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="CurrentStateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CurrentStateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CurrentStateTimeRaw);
+            set => CurrentStateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The name of the execution stage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("executionStageName")]
@@ -6293,9 +6429,42 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>A metric value representing temporal values of a variable.</summary>
     public class IntegerGauge : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _timestampRaw;
+
+        private object _timestamp;
+
         /// <summary>The time at which this value was measured. Measured as msecs from epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
-        public virtual object Timestamp { get; set; }
+        public virtual string TimestampRaw
+        {
+            get => _timestampRaw;
+            set
+            {
+                _timestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimestampDateTimeOffset instead.")]
+        public virtual object Timestamp
+        {
+            get => _timestamp;
+            set
+            {
+                _timestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _timestamp = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimestampRaw);
+            set => TimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The value of the variable represented by this gauge.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
@@ -6347,11 +6516,44 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientRequestId")]
         public virtual string ClientRequestId { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>
         /// The timestamp when the job was initially created. Immutable and set by the Cloud Dataflow service.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>If this is specified, the job's initial state is populated from the given snapshot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdFromSnapshotId")]
@@ -6366,9 +6568,44 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentState")]
         public virtual string CurrentState { get; set; }
 
+        private string _currentStateTimeRaw;
+
+        private object _currentStateTime;
+
         /// <summary>The timestamp associated with the current state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentStateTime")]
-        public virtual object CurrentStateTime { get; set; }
+        public virtual string CurrentStateTimeRaw
+        {
+            get => _currentStateTimeRaw;
+            set
+            {
+                _currentStateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _currentStateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CurrentStateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CurrentStateTimeDateTimeOffset instead.")]
+        public virtual object CurrentStateTime
+        {
+            get => _currentStateTime;
+            set
+            {
+                _currentStateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _currentStateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="CurrentStateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CurrentStateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CurrentStateTimeRaw);
+            set => CurrentStateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The environment for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
@@ -6471,6 +6708,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stageStates")]
         public virtual System.Collections.Generic.IList<ExecutionStageState> StageStates { get; set; }
 
+        private string _startTimeRaw;
+
+        private object _startTime;
+
         /// <summary>
         /// The timestamp when the job was started (transitioned to JOB_STATE_PENDING). Flexible resource scheduling
         /// jobs are started with some delay after job creation, so start_time is unset before start and is updated when
@@ -6478,7 +6719,36 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// and is immutable and set by the Cloud Dataflow service.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Exactly one of step or steps_location should be specified. The top-level steps that constitute the entire
@@ -6575,9 +6845,42 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("messageText")]
         public virtual string MessageText { get; set; }
 
+        private string _timeRaw;
+
+        private object _time;
+
         /// <summary>The timestamp of the message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("time")]
-        public virtual object Time { get; set; }
+        public virtual string TimeRaw
+        {
+            get => _timeRaw;
+            set
+            {
+                _time = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimeDateTimeOffset instead.")]
+        public virtual object Time
+        {
+            get => _time;
+            set
+            {
+                _timeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _time = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeRaw);
+            set => TimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6633,9 +6936,42 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// </summary>
     public class JobMetrics : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _metricTimeRaw;
+
+        private object _metricTime;
+
         /// <summary>Timestamp as of which metric values are current.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricTime")]
-        public virtual object MetricTime { get; set; }
+        public virtual string MetricTimeRaw
+        {
+            get => _metricTimeRaw;
+            set
+            {
+                _metricTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _metricTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="MetricTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use MetricTimeDateTimeOffset instead.")]
+        public virtual object MetricTime
+        {
+            get => _metricTime;
+            set
+            {
+                _metricTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _metricTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="MetricTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? MetricTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(MetricTimeRaw);
+            set => MetricTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>All metrics for this job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
@@ -6846,9 +7182,44 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>Request to lease WorkItems.</summary>
     public class LeaseWorkItemRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _currentWorkerTimeRaw;
+
+        private object _currentWorkerTime;
+
         /// <summary>The current timestamp at the worker.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentWorkerTime")]
-        public virtual object CurrentWorkerTime { get; set; }
+        public virtual string CurrentWorkerTimeRaw
+        {
+            get => _currentWorkerTimeRaw;
+            set
+            {
+                _currentWorkerTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _currentWorkerTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CurrentWorkerTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CurrentWorkerTimeDateTimeOffset instead.")]
+        public virtual object CurrentWorkerTime
+        {
+            get => _currentWorkerTime;
+            set
+            {
+                _currentWorkerTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _currentWorkerTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="CurrentWorkerTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CurrentWorkerTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CurrentWorkerTimeRaw);
+            set => CurrentWorkerTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains
@@ -6996,9 +7367,42 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentRssBytes")]
         public virtual System.Nullable<ulong> CurrentRssBytes { get; set; }
 
+        private string _timestampRaw;
+
+        private object _timestamp;
+
         /// <summary>Timestamp of the measurement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
-        public virtual object Timestamp { get; set; }
+        public virtual string TimestampRaw
+        {
+            get => _timestampRaw;
+            set
+            {
+                _timestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimestampDateTimeOffset instead.")]
+        public virtual object Timestamp
+        {
+            get => _timestamp;
+            set
+            {
+                _timestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _timestamp = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimestampRaw);
+            set => TimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Total memory (RSS) usage since start up in GB * ms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalGbMs")]
@@ -7120,12 +7524,45 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("set")]
         public virtual object Set { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>
         /// Timestamp associated with the metric value. Optional when workers are reporting work progress; it will be
         /// filled in responses from the metrics API.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7292,6 +7729,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customMetadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> CustomMetadata { get; set; }
 
+        /// <summary>Optional. The options shown when ENUM ParameterType is specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enumOptions")]
+        public virtual System.Collections.Generic.IList<ParameterMetadataEnumOption> EnumOptions { get; set; }
+
         /// <summary>
         /// Optional. Specifies a group name for this parameter to be rendered under. Group header text will be rendered
         /// exactly as specified in this field. Only considered when parent_name is NOT provided.
@@ -7338,6 +7779,25 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>Optional. Regexes that the parameter must match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regexes")]
         public virtual System.Collections.Generic.IList<string> Regexes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ParameterMetadataEnumOption specifies the option shown in the enum form.</summary>
+    public class ParameterMetadataEnumOption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The description to display for the enum option.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. The label to display for the enum option.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>Required. The value of the enum option.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7409,9 +7869,42 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>A point in the timeseries.</summary>
     public class Point : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _timeRaw;
+
+        private object _time;
+
         /// <summary>The timestamp of the point.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("time")]
-        public virtual object Time { get; set; }
+        public virtual string TimeRaw
+        {
+            get => _timeRaw;
+            set
+            {
+                _time = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimeDateTimeOffset instead.")]
+        public virtual object Time
+        {
+            get => _time;
+            set
+            {
+                _timeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _time = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeRaw);
+            set => TimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The value of the point.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
@@ -7540,9 +8033,42 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>Represents a Pubsub snapshot.</summary>
     public class PubsubSnapshotMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
         /// <summary>The expire time of the Pubsub snapshot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; }
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The name of the Pubsub snapshot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotName")]
@@ -7570,9 +8096,44 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>Request to report the status of WorkItems.</summary>
     public class ReportWorkItemStatusRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _currentWorkerTimeRaw;
+
+        private object _currentWorkerTime;
+
         /// <summary>The current timestamp at the worker.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currentWorkerTime")]
-        public virtual object CurrentWorkerTime { get; set; }
+        public virtual string CurrentWorkerTimeRaw
+        {
+            get => _currentWorkerTimeRaw;
+            set
+            {
+                _currentWorkerTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _currentWorkerTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CurrentWorkerTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CurrentWorkerTimeDateTimeOffset instead.")]
+        public virtual object CurrentWorkerTime
+        {
+            get => _currentWorkerTime;
+            set
+            {
+                _currentWorkerTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _currentWorkerTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="CurrentWorkerTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CurrentWorkerTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CurrentWorkerTimeRaw);
+            set => CurrentWorkerTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains
@@ -8062,9 +8623,42 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>Represents a snapshot of a job.</summary>
     public class Snapshot : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _creationTimeRaw;
+
+        private object _creationTime;
+
         /// <summary>The time this snapshot was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual object CreationTime { get; set; }
+        public virtual string CreationTimeRaw
+        {
+            get => _creationTimeRaw;
+            set
+            {
+                _creationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _creationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreationTimeDateTimeOffset instead.")]
+        public virtual object CreationTime
+        {
+            get => _creationTime;
+            set
+            {
+                _creationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _creationTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>User specified description of the snapshot. Maybe empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -8468,12 +9062,45 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>Information about a particular execution stage of a job.</summary>
     public class StageSummary : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
         /// <summary>
         /// End time of this stage. If the work item is completed, this is the actual end time of the stage. Otherwise,
         /// it is the predicted end time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Metrics for this stage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
@@ -8487,9 +9114,42 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stageId")]
         public virtual string StageId { get; set; }
 
+        private string _startTimeRaw;
+
+        private object _startTime;
+
         /// <summary>Start time of this stage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>State of this stage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -8621,9 +9281,42 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("causes")]
         public virtual System.Collections.Generic.IDictionary<string, StragglerDebuggingInfo> Causes { get; set; }
 
+        private string _startTimeRaw;
+
+        private object _startTime;
+
         /// <summary>The time when the work item attempt became a straggler.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8856,13 +9549,79 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dataWatermarkLag")]
         public virtual object DataWatermarkLag { get; set; }
 
+        private string _endTimeRaw;
+
+        private object _endTime;
+
         /// <summary>End time of this straggler.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
 
         /// <summary>Start time of this straggler.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The system watermark lag at the time of the straggler detection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("systemWatermarkLag")]
@@ -9106,9 +9865,44 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
         public virtual string JobId { get; set; }
 
+        private string _leaseExpireTimeRaw;
+
+        private object _leaseExpireTime;
+
         /// <summary>Time when the lease on this Work will expire.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("leaseExpireTime")]
-        public virtual object LeaseExpireTime { get; set; }
+        public virtual string LeaseExpireTimeRaw
+        {
+            get => _leaseExpireTimeRaw;
+            set
+            {
+                _leaseExpireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _leaseExpireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LeaseExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LeaseExpireTimeDateTimeOffset instead.")]
+        public virtual object LeaseExpireTime
+        {
+            get => _leaseExpireTime;
+            set
+            {
+                _leaseExpireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _leaseExpireTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LeaseExpireTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LeaseExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LeaseExpireTimeRaw);
+            set => LeaseExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Additional information for MapTask WorkItems.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mapTask")]
@@ -9161,12 +9955,45 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attemptId")]
         public virtual string AttemptId { get; set; }
 
+        private string _endTimeRaw;
+
+        private object _endTime;
+
         /// <summary>
         /// End time of this work item attempt. If the work item is completed, this is the actual end time of the work
         /// item. Otherwise, it is the predicted end time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Metrics for this work item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
@@ -9176,9 +10003,42 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
         public virtual ProgressTimeseries Progress { get; set; }
 
+        private string _startTimeRaw;
+
+        private object _startTime;
+
         /// <summary>Start time of this work item attempt.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>State of this work item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -9218,9 +10078,44 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hotKeyDetection")]
         public virtual HotKeyDetection HotKeyDetection { get; set; }
 
+        private string _leaseExpireTimeRaw;
+
+        private object _leaseExpireTime;
+
         /// <summary>Time at which the current lease will expire.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("leaseExpireTime")]
-        public virtual object LeaseExpireTime { get; set; }
+        public virtual string LeaseExpireTimeRaw
+        {
+            get => _leaseExpireTimeRaw;
+            set
+            {
+                _leaseExpireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _leaseExpireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LeaseExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LeaseExpireTimeDateTimeOffset instead.")]
+        public virtual object LeaseExpireTime
+        {
+            get => _leaseExpireTime;
+            set
+            {
+                _leaseExpireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _leaseExpireTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LeaseExpireTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LeaseExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LeaseExpireTimeRaw);
+            set => LeaseExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// The short ids that workers should use in subsequent metric updates. Workers should strive to use short ids
@@ -9409,9 +10304,42 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("vmIsHealthy")]
         public virtual System.Nullable<bool> VmIsHealthy { get; set; }
 
+        private string _vmStartupTimeRaw;
+
+        private object _vmStartupTime;
+
         /// <summary>The time the VM was booted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmStartupTime")]
-        public virtual object VmStartupTime { get; set; }
+        public virtual string VmStartupTimeRaw
+        {
+            get => _vmStartupTimeRaw;
+            set
+            {
+                _vmStartupTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _vmStartupTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="VmStartupTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use VmStartupTimeDateTimeOffset instead.")]
+        public virtual object VmStartupTime
+        {
+            get => _vmStartupTime;
+            set
+            {
+                _vmStartupTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _vmStartupTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="VmStartupTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? VmStartupTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(VmStartupTimeRaw);
+            set => VmStartupTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9441,12 +10369,47 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// </summary>
     public class WorkerLifecycleEvent : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _containerStartTimeRaw;
+
+        private object _containerStartTime;
+
         /// <summary>
         /// The start time of this container. All events will report this so that events can be grouped together across
         /// container/VM restarts.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerStartTime")]
-        public virtual object ContainerStartTime { get; set; }
+        public virtual string ContainerStartTimeRaw
+        {
+            get => _containerStartTimeRaw;
+            set
+            {
+                _containerStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _containerStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ContainerStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ContainerStartTimeDateTimeOffset instead.")]
+        public virtual object ContainerStartTime
+        {
+            get => _containerStartTime;
+            set
+            {
+                _containerStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _containerStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ContainerStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ContainerStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ContainerStartTimeRaw);
+            set => ContainerStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The event being reported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("event")]
@@ -9472,9 +10435,42 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
+        private string _timeRaw;
+
+        private object _time;
+
         /// <summary>The timestamp of the worker_message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("time")]
-        public virtual object Time { get; set; }
+        public virtual string TimeRaw
+        {
+            get => _timeRaw;
+            set
+            {
+                _time = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimeDateTimeOffset instead.")]
+        public virtual object Time
+        {
+            get => _time;
+            set
+            {
+                _timeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _time = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeRaw);
+            set => TimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The health of a worker.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workerHealthReport")]

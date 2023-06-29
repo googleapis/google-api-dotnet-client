@@ -7372,12 +7372,45 @@ namespace Google.Apis.Gmail.v1.Data
     /// </summary>
     public class CseKeyPair : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _disableTimeRaw;
+
+        private object _disableTime;
+
         /// <summary>
         /// Output only. If a key pair is set to `DISABLED`, the time that the key pair's state changed from `ENABLED`
         /// to `DISABLED`. This field is present only when the key pair is in state `DISABLED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableTime")]
-        public virtual object DisableTime { get; set; }
+        public virtual string DisableTimeRaw
+        {
+            get => _disableTimeRaw;
+            set
+            {
+                _disableTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _disableTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DisableTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DisableTimeDateTimeOffset instead.")]
+        public virtual object DisableTime
+        {
+            get => _disableTime;
+            set
+            {
+                _disableTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _disableTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DisableTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DisableTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DisableTimeRaw);
+            set => DisableTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. The current state of the key pair.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablementState")]
@@ -8496,13 +8529,16 @@ namespace Google.Apis.Gmail.v1.Data
     /// <summary>Set up or update a new push notification watch on this user's mailbox.</summary>
     public class WatchRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Filtering behavior of labelIds list specified.</summary>
+        /// <summary>
+        /// Filtering behavior of `labelIds list` specified. This field is deprecated because it caused incorrect
+        /// behavior in some cases; use `label_filter_behavior` instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelFilterAction")]
         public virtual string LabelFilterAction { get; set; }
 
         /// <summary>
-        /// Filtering behavior of labelIds list specified. This field replaces label_filter_action; if set,
-        /// label_filter_action is ignored.
+        /// Filtering behavior of `labelIds list` specified. This field replaces `label_filter_action`; if set,
+        /// `label_filter_action` is ignored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labelFilterBehavior")]
         public virtual string LabelFilterBehavior { get; set; }

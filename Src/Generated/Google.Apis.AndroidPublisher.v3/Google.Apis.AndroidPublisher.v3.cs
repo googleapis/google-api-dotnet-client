@@ -10072,6 +10072,35 @@ namespace Google.Apis.AndroidPublisher.v3
 }
 namespace Google.Apis.AndroidPublisher.v3.Data
 {
+    /// <summary>Represents an Abi.</summary>
+    public class Abi : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Alias for an abi.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alias")]
+        public virtual string Alias { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Targeting based on Abi.</summary>
+    public class AbiTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Targeting of other sibling directories that were in the Bundle. For main splits this is targeting of other
+        /// main splits.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternatives")]
+        public virtual System.Collections.Generic.IList<Abi> Alternatives { get; set; }
+
+        /// <summary>Value of an abi.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Collections.Generic.IList<Abi> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a targeting rule of the form: User never had {scope} before.</summary>
     public class AcquisitionTargetingRule : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10129,6 +10158,86 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sha256")]
         public virtual string Sha256 { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Description of the created apks.</summary>
+    public class ApkDescription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Set only for asset slices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetSliceMetadata")]
+        public virtual SplitApkMetadata AssetSliceMetadata { get; set; }
+
+        /// <summary>Set only for Instant split APKs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instantApkMetadata")]
+        public virtual SplitApkMetadata InstantApkMetadata { get; set; }
+
+        /// <summary>
+        /// Path of the Apk, will be in the following format: .apk where DownloadId is the ID used to download the apk
+        /// using GeneratedApks.Download API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("path")]
+        public virtual string Path { get; set; }
+
+        /// <summary>Set only for Split APKs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("splitApkMetadata")]
+        public virtual SplitApkMetadata SplitApkMetadata { get; set; }
+
+        /// <summary>Set only for standalone APKs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("standaloneApkMetadata")]
+        public virtual StandaloneApkMetadata StandaloneApkMetadata { get; set; }
+
+        /// <summary>Apk-level targeting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targeting")]
+        public virtual ApkTargeting Targeting { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A set of apks representing a module.</summary>
+    public class ApkSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description of the generated apks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apkDescription")]
+        public virtual System.Collections.Generic.IList<ApkDescription> ApkDescription { get; set; }
+
+        /// <summary>Metadata about the module represented by this ApkSet</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("moduleMetadata")]
+        public virtual ModuleMetadata ModuleMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a set of apk-level targetings.</summary>
+    public class ApkTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The abi that the apk targets</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("abiTargeting")]
+        public virtual AbiTargeting AbiTargeting { get; set; }
+
+        /// <summary>The language that the apk targets</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageTargeting")]
+        public virtual LanguageTargeting LanguageTargeting { get; set; }
+
+        /// <summary>Multi-api-level targeting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiAbiTargeting")]
+        public virtual MultiAbiTargeting MultiAbiTargeting { get; set; }
+
+        /// <summary>The screen density that this apk supports.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenDensityTargeting")]
+        public virtual ScreenDensityTargeting ScreenDensityTargeting { get; set; }
+
+        /// <summary>The sdk version that the apk targets</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sdkVersionTargeting")]
+        public virtual SdkVersionTargeting SdkVersionTargeting { get; set; }
+
+        /// <summary>Texture-compression-format-level targeting</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textureCompressionFormatTargeting")]
+        public virtual TextureCompressionFormatTargeting TextureCompressionFormatTargeting { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10215,6 +10324,36 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>Request message for ArchiveSubscription.</summary>
     public class ArchiveSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata of an asset module.</summary>
+    public class AssetModuleMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates the delivery type for persistent install.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deliveryType")]
+        public virtual string DeliveryType { get; set; }
+
+        /// <summary>Module name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Set of asset slices belonging to a single asset module.</summary>
+    public class AssetSliceSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Asset slices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apkDescription")]
+        public virtual System.Collections.Generic.IList<ApkDescription> ApkDescription { get; set; }
+
+        /// <summary>Module level metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetModuleMetadata")]
+        public virtual AssetModuleMetadata AssetModuleMetadata { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10585,6 +10724,34 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a device feature.</summary>
+    public class DeviceFeature : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureName")]
+        public virtual string FeatureName { get; set; }
+
+        /// <summary>
+        /// The feature version specified by android:glEsVersion or android:version in in the AndroidManifest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("featureVersion")]
+        public virtual System.Nullable<int> FeatureVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Targeting for a device feature.</summary>
+    public class DeviceFeatureTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Feature of the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredFeature")]
+        public virtual DeviceFeature RequiredFeature { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A group of devices. A group is defined by a set of device selectors. A device belongs to the group if it matches
     /// any selector (logical OR).
@@ -10889,12 +11056,45 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>The details of an external transaction.</summary>
     public class ExternalTransaction : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>
         /// Output only. The time when this transaction was created. This is the time when Google was notified of the
         /// transaction.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. The current transaction amount before tax. This represents the current pre-tax amount including
@@ -10956,9 +11156,44 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transactionState")]
         public virtual string TransactionState { get; set; }
 
+        private string _transactionTimeRaw;
+
+        private object _transactionTime;
+
         /// <summary>Required. The time when the transaction was completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionTime")]
-        public virtual object TransactionTime { get; set; }
+        public virtual string TransactionTimeRaw
+        {
+            get => _transactionTimeRaw;
+            set
+            {
+                _transactionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _transactionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TransactionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TransactionTimeDateTimeOffset instead.")]
+        public virtual object TransactionTime
+        {
+            get => _transactionTime;
+            set
+            {
+                _transactionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _transactionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="TransactionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TransactionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TransactionTimeRaw);
+            set => TransactionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Required. User address for tax computation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userTaxAddress")]
@@ -11113,6 +11348,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generatedUniversalApk")]
         public virtual GeneratedUniversalApk GeneratedUniversalApk { get; set; }
+
+        /// <summary>Contains targeting information about the generated apks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetingInfo")]
+        public virtual TargetingInfo TargetingInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11462,6 +11701,21 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Targeting based on language.</summary>
+    public class LanguageTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Alternative languages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternatives")]
+        public virtual System.Collections.Generic.IList<string> Alternatives { get; set; }
+
+        /// <summary>ISO-639: 2 or 3 letter language code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Collections.Generic.IList<string> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response listing existing device tier configs.</summary>
     public class ListDeviceTierConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11641,6 +11895,55 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata of a module.</summary>
+    public class ModuleMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates the delivery type (e.g. on-demand) of the module.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deliveryType")]
+        public virtual string DeliveryType { get; set; }
+
+        /// <summary>
+        /// Names of the modules that this module directly depends on. Each module implicitly depends on the base
+        /// module.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dependencies")]
+        public virtual System.Collections.Generic.IList<string> Dependencies { get; set; }
+
+        /// <summary>Indicates the type of this feature module.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("moduleType")]
+        public virtual string ModuleType { get; set; }
+
+        /// <summary>Module name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The targeting that makes a conditional module installed. Relevant only for Split APKs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targeting")]
+        public virtual ModuleTargeting Targeting { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Targeting on the module level.</summary>
+    public class ModuleTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Targeting for device features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceFeatureTargeting")]
+        public virtual System.Collections.Generic.IList<DeviceFeatureTargeting> DeviceFeatureTargeting { get; set; }
+
+        /// <summary>The sdk version that the variant targets</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sdkVersionTargeting")]
+        public virtual SdkVersionTargeting SdkVersionTargeting { get; set; }
+
+        /// <summary>Countries-level targeting</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userCountriesTargeting")]
+        public virtual UserCountriesTargeting UserCountriesTargeting { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents an amount of money with its currency type.</summary>
     public class Money : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11662,6 +11965,35 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("units")]
         public virtual System.Nullable<long> Units { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a list of apis.</summary>
+    public class MultiAbi : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of targeted ABIs, as represented by the Android Platform</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("abi")]
+        public virtual System.Collections.Generic.IList<Abi> Abi { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Targeting based on multiple abis.</summary>
+    public class MultiAbiTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Targeting of other sibling directories that were in the Bundle. For main splits this is targeting of other
+        /// main splits.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternatives")]
+        public virtual System.Collections.Generic.IList<MultiAbi> Alternatives { get; set; }
+
+        /// <summary>Value of a multi abi.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Collections.Generic.IList<MultiAbi> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11853,9 +12185,44 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>Information specific to a subscription in paused state.</summary>
     public class PausedStateContext : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _autoResumeTimeRaw;
+
+        private object _autoResumeTime;
+
         /// <summary>Time at which the subscription will be automatically resumed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoResumeTime")]
-        public virtual object AutoResumeTime { get; set; }
+        public virtual string AutoResumeTimeRaw
+        {
+            get => _autoResumeTimeRaw;
+            set
+            {
+                _autoResumeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _autoResumeTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="AutoResumeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use AutoResumeTimeDateTimeOffset instead.")]
+        public virtual object AutoResumeTime
+        {
+            get => _autoResumeTime;
+            set
+            {
+                _autoResumeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _autoResumeTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="AutoResumeTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? AutoResumeTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(AutoResumeTimeRaw);
+            set => AutoResumeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11888,12 +12255,47 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>Information related to a prepaid plan.</summary>
     public class PrepaidPlan : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _allowExtendAfterTimeRaw;
+
+        private object _allowExtendAfterTime;
+
         /// <summary>
         /// If present, this is the time after which top up purchases are allowed for the prepaid plan. Will not be
         /// present for expired prepaid plans.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowExtendAfterTime")]
-        public virtual object AllowExtendAfterTime { get; set; }
+        public virtual string AllowExtendAfterTimeRaw
+        {
+            get => _allowExtendAfterTimeRaw;
+            set
+            {
+                _allowExtendAfterTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _allowExtendAfterTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="AllowExtendAfterTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use AllowExtendAfterTimeDateTimeOffset instead.")]
+        public virtual object AllowExtendAfterTime
+        {
+            get => _allowExtendAfterTime;
+            set
+            {
+                _allowExtendAfterTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _allowExtendAfterTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="AllowExtendAfterTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? AllowExtendAfterTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(AllowExtendAfterTimeRaw);
+            set => AllowExtendAfterTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12051,9 +12453,42 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("partialRefund")]
         public virtual PartialRefund PartialRefund { get; set; }
 
+        private string _refundTimeRaw;
+
+        private object _refundTime;
+
         /// <summary>Required. The time that the transaction was refunded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refundTime")]
-        public virtual object RefundTime { get; set; }
+        public virtual string RefundTimeRaw
+        {
+            get => _refundTimeRaw;
+            set
+            {
+                _refundTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _refundTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RefundTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RefundTimeDateTimeOffset instead.")]
+        public virtual object RefundTime
+        {
+            get => _refundTime;
+            set
+            {
+                _refundTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _refundTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="RefundTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RefundTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RefundTimeRaw);
+            set => RefundTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12088,6 +12523,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>Configuration for a price migration.</summary>
     public class RegionalPriceMigrationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _oldestAllowedPriceVersionTimeRaw;
+
+        private object _oldestAllowedPriceVersionTime;
+
         /// <summary>
         /// Required. The cutoff time for historical prices that subscribers can remain paying. Subscribers who are on a
         /// price that was created before this cutoff time will be migrated to the currently-offered price. These
@@ -12095,7 +12534,40 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// agree to the new price will have their subscription ended at the next renewal.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oldestAllowedPriceVersionTime")]
-        public virtual object OldestAllowedPriceVersionTime { get; set; }
+        public virtual string OldestAllowedPriceVersionTimeRaw
+        {
+            get => _oldestAllowedPriceVersionTimeRaw;
+            set
+            {
+                _oldestAllowedPriceVersionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _oldestAllowedPriceVersionTimeRaw = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="object"/> representation of <see cref="OldestAllowedPriceVersionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use OldestAllowedPriceVersionTimeDateTimeOffset instead.")]
+        public virtual object OldestAllowedPriceVersionTime
+        {
+            get => _oldestAllowedPriceVersionTime;
+            set
+            {
+                _oldestAllowedPriceVersionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _oldestAllowedPriceVersionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="OldestAllowedPriceVersionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? OldestAllowedPriceVersionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(OldestAllowedPriceVersionTimeRaw);
+            set => OldestAllowedPriceVersionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Required. Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
@@ -12294,6 +12766,120 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a screen density.</summary>
+    public class ScreenDensity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Alias for a screen density.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("densityAlias")]
+        public virtual string DensityAlias { get; set; }
+
+        /// <summary>Value for density dpi.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("densityDpi")]
+        public virtual System.Nullable<int> DensityDpi { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Targeting based on screen density.</summary>
+    public class ScreenDensityTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Targeting of other sibling directories that were in the Bundle. For main splits this is targeting of other
+        /// main splits.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternatives")]
+        public virtual System.Collections.Generic.IList<ScreenDensity> Alternatives { get; set; }
+
+        /// <summary>Value of a screen density.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Collections.Generic.IList<ScreenDensity> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an sdk version.</summary>
+    public class SdkVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Inclusive minimum value of an sdk version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("min")]
+        public virtual System.Nullable<int> Min { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Targeting based on sdk version.</summary>
+    public class SdkVersionTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Targeting of other sibling directories that were in the Bundle. For main splits this is targeting of other
+        /// main splits.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternatives")]
+        public virtual System.Collections.Generic.IList<SdkVersion> Alternatives { get; set; }
+
+        /// <summary>Value of an sdk version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Collections.Generic.IList<SdkVersion> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Holds data specific to Split APKs.</summary>
+    public class SplitApkMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Indicates whether this APK is the main split of the module.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isMasterSplit")]
+        public virtual System.Nullable<bool> IsMasterSplit { get; set; }
+
+        /// <summary>Id of the split.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("splitId")]
+        public virtual string SplitId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Variant is a group of APKs that covers a part of the device configuration space. APKs from multiple variants are
+    /// never combined on one device.
+    /// </summary>
+    public class SplitApkVariant : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Set of APKs, one set per module.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apkSet")]
+        public virtual System.Collections.Generic.IList<ApkSet> ApkSet { get; set; }
+
+        /// <summary>Variant-level targeting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targeting")]
+        public virtual VariantTargeting Targeting { get; set; }
+
+        /// <summary>
+        /// Number of the variant, starting at 0 (unless overridden). A device will receive APKs from the first variant
+        /// that matches the device configuration, with higher variant numbers having priority over lower variant
+        /// numbers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variantNumber")]
+        public virtual System.Nullable<int> VariantNumber { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Holds data specific to Standalone APKs.</summary>
+    public class StandaloneApkMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Names of the modules fused in this standalone APK.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fusedModuleName")]
+        public virtual System.Collections.Generic.IList<string> FusedModuleName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information associated with purchases made with 'Subscribe with Google'.</summary>
     public class SubscribeWithGoogleInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12413,12 +12999,47 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>Price change related information of a subscription item.</summary>
     public class SubscriptionItemPriceChangeDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _expectedNewPriceChargeTimeRaw;
+
+        private object _expectedNewPriceChargeTime;
+
         /// <summary>
         /// The renewal time at which the price change will become effective for the user. This is subject to change(to
         /// a future time) due to cases where the renewal time shifts like pause.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expectedNewPriceChargeTime")]
-        public virtual object ExpectedNewPriceChargeTime { get; set; }
+        public virtual string ExpectedNewPriceChargeTimeRaw
+        {
+            get => _expectedNewPriceChargeTimeRaw;
+            set
+            {
+                _expectedNewPriceChargeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expectedNewPriceChargeTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpectedNewPriceChargeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpectedNewPriceChargeTimeDateTimeOffset instead.")]
+        public virtual object ExpectedNewPriceChargeTime
+        {
+            get => _expectedNewPriceChargeTime;
+            set
+            {
+                _expectedNewPriceChargeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expectedNewPriceChargeTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpectedNewPriceChargeTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpectedNewPriceChargeTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpectedNewPriceChargeTimeRaw);
+            set => ExpectedNewPriceChargeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>New recurring price for the subscription item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newPrice")]
@@ -12826,11 +13447,44 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deferredItemReplacement")]
         public virtual DeferredItemReplacement DeferredItemReplacement { get; set; }
 
+        private string _expiryTimeRaw;
+
+        private object _expiryTime;
+
         /// <summary>
         /// Time at which the subscription expired or will expire unless the access is extended (ex. renews).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expiryTime")]
-        public virtual object ExpiryTime { get; set; }
+        public virtual string ExpiryTimeRaw
+        {
+            get => _expiryTimeRaw;
+            set
+            {
+                _expiryTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expiryTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpiryTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpiryTimeDateTimeOffset instead.")]
+        public virtual object ExpiryTime
+        {
+            get => _expiryTime;
+            set
+            {
+                _expiryTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expiryTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpiryTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpiryTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpiryTimeRaw);
+            set => ExpiryTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The offer details for this item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offerDetails")]
@@ -12908,12 +13562,45 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
 
+        private string _startTimeRaw;
+
+        private object _startTime;
+
         /// <summary>
         /// Time at which the subscription was granted. Not set for pending subscriptions (subscription was created but
         /// awaiting payment during signup).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>User profile associated with purchases made with 'Subscribe with Google'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscribeWithGoogleInfo")]
@@ -13015,6 +13702,25 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Targeting information about the generated apks.</summary>
+    public class TargetingInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of created asset slices.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetSliceSet")]
+        public virtual System.Collections.Generic.IList<AssetSliceSet> AssetSliceSet { get; set; }
+
+        /// <summary>The package name of this app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageName")]
+        public virtual string PackageName { get; set; }
+
+        /// <summary>List of the created variants.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variant")]
+        public virtual System.Collections.Generic.IList<SplitApkVariant> Variant { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Defines the scope of subscriptions which a targeting rule can match to target offers to users based on past or
     /// current entitlement.
@@ -13048,6 +13754,32 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>All testing Google Groups, as email addresses.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleGroups")]
         public virtual System.Collections.Generic.IList<string> GoogleGroups { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents texture compression format.</summary>
+    public class TextureCompressionFormat : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Alias for texture compression format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alias")]
+        public virtual string Alias { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Targeting by a texture compression format.</summary>
+    public class TextureCompressionFormatTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of alternative TCFs (TCFs targeted by the sibling splits).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternatives")]
+        public virtual System.Collections.Generic.IList<TextureCompressionFormat> Alternatives { get; set; }
+
+        /// <summary>The list of targeted TCFs. Should not be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Collections.Generic.IList<TextureCompressionFormat> Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13266,12 +13998,47 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
 
+        private string _expirationTimeRaw;
+
+        private object _expirationTime;
+
         /// <summary>
         /// The time at which the user's access expires, if set. When setting this value, it must always be in the
         /// future.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
-        public virtual object ExpirationTime { get; set; }
+        public virtual string ExpirationTimeRaw
+        {
+            get => _expirationTimeRaw;
+            set
+            {
+                _expirationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expirationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpirationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpirationTimeDateTimeOffset instead.")]
+        public virtual object ExpirationTime
+        {
+            get => _expirationTime;
+            set
+            {
+                _expirationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expirationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpirationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpirationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpirationTimeRaw);
+            set => ExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. Per-app permissions for the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("grants")]
@@ -13369,6 +14136,21 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Describes an inclusive/exclusive list of country codes that module targets.</summary>
+    public class UserCountriesTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of country codes in the two-letter CLDR territory format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryCodes")]
+        public virtual System.Collections.Generic.IList<string> CountryCodes { get; set; }
+
+        /// <summary>Indicates if the list above is exclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exclude")]
+        public virtual System.Nullable<bool> Exclude { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A set of user countries. A country set determines what variation of app content gets served to a specific
     /// location.
@@ -13400,12 +14182,45 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cancelSurveyResult")]
         public virtual CancelSurveyResult CancelSurveyResult { get; set; }
 
+        private string _cancelTimeRaw;
+
+        private object _cancelTime;
+
         /// <summary>
         /// The time at which the subscription was canceled by the user. The user might still have access to the
         /// subscription after this time. Use line_items.expiry_time to determine if a user still has access.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelTime")]
-        public virtual object CancelTime { get; set; }
+        public virtual string CancelTimeRaw
+        {
+            get => _cancelTimeRaw;
+            set
+            {
+                _cancelTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _cancelTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CancelTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CancelTimeDateTimeOffset instead.")]
+        public virtual object CancelTime
+        {
+            get => _cancelTime;
+            set
+            {
+                _cancelTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _cancelTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CancelTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CancelTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CancelTimeRaw);
+            set => CancelTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13436,6 +14251,33 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>Output only. The ID of a previously created system APK variant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variantId")]
         public virtual System.Nullable<long> VariantId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Targeting on the level of variants.</summary>
+    public class VariantTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The abi that the variant targets</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("abiTargeting")]
+        public virtual AbiTargeting AbiTargeting { get; set; }
+
+        /// <summary>Multi-api-level targeting</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiAbiTargeting")]
+        public virtual MultiAbiTargeting MultiAbiTargeting { get; set; }
+
+        /// <summary>The screen densities that this variant supports</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("screenDensityTargeting")]
+        public virtual ScreenDensityTargeting ScreenDensityTargeting { get; set; }
+
+        /// <summary>The sdk version that the variant targets</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sdkVersionTargeting")]
+        public virtual SdkVersionTargeting SdkVersionTargeting { get; set; }
+
+        /// <summary>Texture-compression-format-level targeting</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("textureCompressionFormatTargeting")]
+        public virtual TextureCompressionFormatTargeting TextureCompressionFormatTargeting { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

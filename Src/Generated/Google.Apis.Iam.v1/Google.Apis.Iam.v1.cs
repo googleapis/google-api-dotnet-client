@@ -3010,8 +3010,364 @@ namespace Google.Apis.Iam.v1
                 public WorkloadIdentityPoolsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                    Namespaces = new NamespacesResource(service);
                     Operations = new OperationsResource(service);
                     Providers = new ProvidersResource(service);
+                }
+
+                /// <summary>Gets the Namespaces resource.</summary>
+                public virtual NamespacesResource Namespaces { get; }
+
+                /// <summary>The "namespaces" collection of methods.</summary>
+                public class NamespacesResource
+                {
+                    private const string Resource = "namespaces";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public NamespacesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                        ManagedIdentities = new ManagedIdentitiesResource(service);
+                        Operations = new OperationsResource(service);
+                        WorkloadSources = new WorkloadSourcesResource(service);
+                    }
+
+                    /// <summary>Gets the ManagedIdentities resource.</summary>
+                    public virtual ManagedIdentitiesResource ManagedIdentities { get; }
+
+                    /// <summary>The "managedIdentities" collection of methods.</summary>
+                    public class ManagedIdentitiesResource
+                    {
+                        private const string Resource = "managedIdentities";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public ManagedIdentitiesResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                            Operations = new OperationsResource(service);
+                            WorkloadSources = new WorkloadSourcesResource(service);
+                        }
+
+                        /// <summary>Gets the Operations resource.</summary>
+                        public virtual OperationsResource Operations { get; }
+
+                        /// <summary>The "operations" collection of methods.</summary>
+                        public class OperationsResource
+                        {
+                            private const string Resource = "operations";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public OperationsResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+                            }
+
+                            /// <summary>
+                            /// Gets the latest state of a long-running operation. Clients can use this method to poll
+                            /// the operation result at intervals as recommended by the API service.
+                            /// </summary>
+                            /// <param name="name">The name of the operation resource.</param>
+                            public virtual GetRequest Get(string name)
+                            {
+                                return new GetRequest(service, name);
+                            }
+
+                            /// <summary>
+                            /// Gets the latest state of a long-running operation. Clients can use this method to poll
+                            /// the operation result at intervals as recommended by the API service.
+                            /// </summary>
+                            public class GetRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Operation>
+                            {
+                                /// <summary>Constructs a new Get request.</summary>
+                                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>The name of the operation resource.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "get";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+name}";
+
+                                /// <summary>Initializes Get parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/namespaces/[^/]+/managedIdentities/[^/]+/operations/[^/]+$",
+                                    });
+                                }
+                            }
+                        }
+
+                        /// <summary>Gets the WorkloadSources resource.</summary>
+                        public virtual WorkloadSourcesResource WorkloadSources { get; }
+
+                        /// <summary>The "workloadSources" collection of methods.</summary>
+                        public class WorkloadSourcesResource
+                        {
+                            private const string Resource = "workloadSources";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public WorkloadSourcesResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+                                Operations = new OperationsResource(service);
+                            }
+
+                            /// <summary>Gets the Operations resource.</summary>
+                            public virtual OperationsResource Operations { get; }
+
+                            /// <summary>The "operations" collection of methods.</summary>
+                            public class OperationsResource
+                            {
+                                private const string Resource = "operations";
+
+                                /// <summary>The service which this resource belongs to.</summary>
+                                private readonly Google.Apis.Services.IClientService service;
+
+                                /// <summary>Constructs a new resource.</summary>
+                                public OperationsResource(Google.Apis.Services.IClientService service)
+                                {
+                                    this.service = service;
+                                }
+
+                                /// <summary>
+                                /// Gets the latest state of a long-running operation. Clients can use this method to
+                                /// poll the operation result at intervals as recommended by the API service.
+                                /// </summary>
+                                /// <param name="name">The name of the operation resource.</param>
+                                public virtual GetRequest Get(string name)
+                                {
+                                    return new GetRequest(service, name);
+                                }
+
+                                /// <summary>
+                                /// Gets the latest state of a long-running operation. Clients can use this method to
+                                /// poll the operation result at intervals as recommended by the API service.
+                                /// </summary>
+                                public class GetRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Operation>
+                                {
+                                    /// <summary>Constructs a new Get request.</summary>
+                                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                    {
+                                        Name = name;
+                                        InitParameters();
+                                    }
+
+                                    /// <summary>The name of the operation resource.</summary>
+                                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                    public virtual string Name { get; private set; }
+
+                                    /// <summary>Gets the method name.</summary>
+                                    public override string MethodName => "get";
+
+                                    /// <summary>Gets the HTTP method.</summary>
+                                    public override string HttpMethod => "GET";
+
+                                    /// <summary>Gets the REST path.</summary>
+                                    public override string RestPath => "v1/{+name}";
+
+                                    /// <summary>Initializes Get parameter list.</summary>
+                                    protected override void InitParameters()
+                                    {
+                                        base.InitParameters();
+                                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                        {
+                                            Name = "name",
+                                            IsRequired = true,
+                                            ParameterType = "path",
+                                            DefaultValue = null,
+                                            Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/namespaces/[^/]+/managedIdentities/[^/]+/workloadSources/[^/]+/operations/[^/]+$",
+                                        });
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the Operations resource.</summary>
+                    public virtual OperationsResource Operations { get; }
+
+                    /// <summary>The "operations" collection of methods.</summary>
+                    public class OperationsResource
+                    {
+                        private const string Resource = "operations";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public OperationsResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>
+                        /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                        /// operation result at intervals as recommended by the API service.
+                        /// </summary>
+                        /// <param name="name">The name of the operation resource.</param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>
+                        /// Gets the latest state of a long-running operation. Clients can use this method to poll the
+                        /// operation result at intervals as recommended by the API service.
+                        /// </summary>
+                        public class GetRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the operation resource.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/namespaces/[^/]+/operations/[^/]+$",
+                                });
+                            }
+                        }
+                    }
+
+                    /// <summary>Gets the WorkloadSources resource.</summary>
+                    public virtual WorkloadSourcesResource WorkloadSources { get; }
+
+                    /// <summary>The "workloadSources" collection of methods.</summary>
+                    public class WorkloadSourcesResource
+                    {
+                        private const string Resource = "workloadSources";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public WorkloadSourcesResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                            Operations = new OperationsResource(service);
+                        }
+
+                        /// <summary>Gets the Operations resource.</summary>
+                        public virtual OperationsResource Operations { get; }
+
+                        /// <summary>The "operations" collection of methods.</summary>
+                        public class OperationsResource
+                        {
+                            private const string Resource = "operations";
+
+                            /// <summary>The service which this resource belongs to.</summary>
+                            private readonly Google.Apis.Services.IClientService service;
+
+                            /// <summary>Constructs a new resource.</summary>
+                            public OperationsResource(Google.Apis.Services.IClientService service)
+                            {
+                                this.service = service;
+                            }
+
+                            /// <summary>
+                            /// Gets the latest state of a long-running operation. Clients can use this method to poll
+                            /// the operation result at intervals as recommended by the API service.
+                            /// </summary>
+                            /// <param name="name">The name of the operation resource.</param>
+                            public virtual GetRequest Get(string name)
+                            {
+                                return new GetRequest(service, name);
+                            }
+
+                            /// <summary>
+                            /// Gets the latest state of a long-running operation. Clients can use this method to poll
+                            /// the operation result at intervals as recommended by the API service.
+                            /// </summary>
+                            public class GetRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Operation>
+                            {
+                                /// <summary>Constructs a new Get request.</summary>
+                                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                                {
+                                    Name = name;
+                                    InitParameters();
+                                }
+
+                                /// <summary>The name of the operation resource.</summary>
+                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                                public virtual string Name { get; private set; }
+
+                                /// <summary>Gets the method name.</summary>
+                                public override string MethodName => "get";
+
+                                /// <summary>Gets the HTTP method.</summary>
+                                public override string HttpMethod => "GET";
+
+                                /// <summary>Gets the REST path.</summary>
+                                public override string RestPath => "v1/{+name}";
+
+                                /// <summary>Initializes Get parameter list.</summary>
+                                protected override void InitParameters()
+                                {
+                                    base.InitParameters();
+                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                    {
+                                        Name = "name",
+                                        IsRequired = true,
+                                        ParameterType = "path",
+                                        DefaultValue = null,
+                                        Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/namespaces/[^/]+/workloadSources/[^/]+/operations/[^/]+$",
+                                    });
+                                }
+                            }
+                        }
+                    }
                 }
 
                 /// <summary>Gets the Operations resource.</summary>
@@ -7375,6 +7731,10 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; }
 
+        /// <summary>The optional client secret. Required to enable Authorization Code flow for web sign-in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
+        public virtual GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret ClientSecret { get; set; }
+
         /// <summary>Required. The OIDC issuer URI. Must be a valid URI using the 'https' scheme.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issuerUri")]
         public virtual string IssuerUri { get; set; }
@@ -7390,9 +7750,47 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Representation of a client secret configured for the OIDC provider.</summary>
+    public class GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The value of the client secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Representation of the value of the client secret.</summary>
+    public class GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Input only. The plain text of the client secret value. For security reasons, this field is only used for
+        /// input and will never be populated in any response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plainText")]
+        public virtual string PlainText { get; set; }
+
+        /// <summary>Output only. A thumbprint to represent the current client secret value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thumbprint")]
+        public virtual string Thumbprint { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration for web single sign-on for the OIDC provider.</summary>
     public class GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Additional scopes to request for in the OIDC authentication request on top of scopes requested by default.
+        /// By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are
+        /// requested. Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be
+        /// configured.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalScopes")]
+        public virtual System.Collections.Generic.IList<string> AdditionalScopes { get; set; }
+
         /// <summary>
         /// Required. The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping
         /// and attribute condition.
@@ -7446,19 +7844,85 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("keySpec")]
         public virtual string KeySpec { get; set; }
 
+        private string _notAfterTimeRaw;
+
+        private object _notAfterTime;
+
         /// <summary>
         /// Output only. Latest timestamp when this key is valid. Attempts to use this key after this time will fail.
         /// Only present if the key data represents a X.509 certificate.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notAfterTime")]
-        public virtual object NotAfterTime { get; set; }
+        public virtual string NotAfterTimeRaw
+        {
+            get => _notAfterTimeRaw;
+            set
+            {
+                _notAfterTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _notAfterTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="NotAfterTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use NotAfterTimeDateTimeOffset instead.")]
+        public virtual object NotAfterTime
+        {
+            get => _notAfterTime;
+            set
+            {
+                _notAfterTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _notAfterTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="NotAfterTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? NotAfterTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(NotAfterTimeRaw);
+            set => NotAfterTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _notBeforeTimeRaw;
+
+        private object _notBeforeTime;
 
         /// <summary>
         /// Output only. Earliest timestamp when this key is valid. Attempts to use this key before this time will fail.
         /// Only present if the key data represents a X.509 certificate.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notBeforeTime")]
-        public virtual object NotBeforeTime { get; set; }
+        public virtual string NotBeforeTimeRaw
+        {
+            get => _notBeforeTimeRaw;
+            set
+            {
+                _notBeforeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _notBeforeTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="NotBeforeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use NotBeforeTimeDateTimeOffset instead.")]
+        public virtual object NotBeforeTime
+        {
+            get => _notBeforeTime;
+            set
+            {
+                _notBeforeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _notBeforeTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="NotBeforeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? NotBeforeTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(NotBeforeTimeRaw);
+            set => NotBeforeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8059,9 +8523,10 @@ namespace Google.Apis.Iam.v1.Data
         public virtual System.Collections.Generic.IList<string> IncludedPermissions { get; set; }
 
         /// <summary>
-        /// The name of the role. When Role is used in CreateRole, the role name must not be set. When Role is used in
-        /// output and other input such as UpdateRole, the role name is the complete path, e.g., roles/logging.viewer
-        /// for predefined roles and organizations/{ORGANIZATION_ID}/roles/logging.viewer for custom roles.
+        /// The name of the role. When `Role` is used in `CreateRole`, the role name must not be set. When `Role` is
+        /// used in output and other input such as `UpdateRole`, the role name is the complete path. For example,
+        /// `roles/logging.viewer` for predefined roles, `organizations/{ORGANIZATION_ID}/roles/my-role` for
+        /// organization-level custom roles, and `projects/{PROJECT_ID}/roles/my-role` for project-level custom roles.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -8226,9 +8691,48 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publicKeyData")]
         public virtual string PublicKeyData { get; set; }
 
+        private string _validAfterTimeRaw;
+
+        private object _validAfterTime;
+
         /// <summary>The key can be used after this timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validAfterTime")]
-        public virtual object ValidAfterTime { get; set; }
+        public virtual string ValidAfterTimeRaw
+        {
+            get => _validAfterTimeRaw;
+            set
+            {
+                _validAfterTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _validAfterTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ValidAfterTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ValidAfterTimeDateTimeOffset instead.")]
+        public virtual object ValidAfterTime
+        {
+            get => _validAfterTime;
+            set
+            {
+                _validAfterTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _validAfterTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ValidAfterTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ValidAfterTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ValidAfterTimeRaw);
+            set => ValidAfterTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _validBeforeTimeRaw;
+
+        private object _validBeforeTime;
 
         /// <summary>
         /// The key can be used before this timestamp. For system-managed key pairs, this timestamp is the end time for
@@ -8236,7 +8740,38 @@ namespace Google.Apis.Iam.v1.Data
         /// this time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validBeforeTime")]
-        public virtual object ValidBeforeTime { get; set; }
+        public virtual string ValidBeforeTimeRaw
+        {
+            get => _validBeforeTimeRaw;
+            set
+            {
+                _validBeforeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _validBeforeTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ValidBeforeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ValidBeforeTimeDateTimeOffset instead.")]
+        public virtual object ValidBeforeTime
+        {
+            get => _validBeforeTime;
+            set
+            {
+                _validBeforeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _validBeforeTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ValidBeforeTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ValidBeforeTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ValidBeforeTimeRaw);
+            set => ValidBeforeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8644,12 +9179,45 @@ namespace Google.Apis.Iam.v1.Data
     /// </summary>
     public class WorkforcePoolProviderKey : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
         /// <summary>
         /// Output only. The time after which the key will be permanently deleted and cannot be recovered. Note that the
         /// key may get purged before this time if the total limit of keys per provider is exceeded.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; }
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Immutable. Public half of the asymmetric key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyData")]
@@ -8691,6 +9259,10 @@ namespace Google.Apis.Iam.v1.Data
         /// <summary>A display name for the pool. Cannot exceed 32 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>Immutable. The identity mode of the pool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityMode")]
+        public virtual string IdentityMode { get; set; }
 
         /// <summary>Output only. The resource name of the pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -8808,12 +9380,45 @@ namespace Google.Apis.Iam.v1.Data
     /// </summary>
     public class WorkloadIdentityPoolProviderKey : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
         /// <summary>
         /// Output only. Time after which the key will be permanently purged and cannot be recovered. Note that the key
         /// may get purged before this timestamp if the total limit of keys per provider is crossed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; }
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Immutable. Public half of the asymmetric key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyData")]
