@@ -5188,7 +5188,7 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
         public virtual string Visibility { get; set; }
 
-        /// <summary>Working Location event data. Read-only. Developer Preview.</summary>
+        /// <summary>Working Location event data. Developer Preview.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workingLocationProperties")]
         public virtual EventWorkingLocationProperties WorkingLocationProperties { get; set; }
 

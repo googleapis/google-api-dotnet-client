@@ -1,0 +1,11 @@
+{
+  "Google.Apis.BlockchainNodeEngine.v1.BlockchainNodeEngineBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.BlockchainNodeEngine.v1.BlockchainNodeEngineBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

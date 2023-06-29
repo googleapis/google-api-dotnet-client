@@ -678,9 +678,10 @@ namespace Google.Apis.Sheets.v4
                 public enum ResponseValueRenderOptionEnum
                 {
                     /// <summary>
-                    /// Values will be calculated &amp;amp; formatted in the reply according to the cell's formatting.
-                    /// Formatting is based on the spreadsheet's locale, not the requesting user's locale. For example,
-                    /// if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2` would return `"$1.23"`.
+                    /// Values will be calculated &amp;amp; formatted in the response according to the cell's
+                    /// formatting. Formatting is based on the spreadsheet's locale, not the requesting user's locale.
+                    /// For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2` would
+                    /// return `"$1.23"`.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORMATTED_VALUE")]
                     FORMATTEDVALUE = 0,
@@ -694,7 +695,10 @@ namespace Google.Apis.Sheets.v4
 
                     /// <summary>
                     /// Values will not be calculated. The reply will include the formulas. For example, if `A1` is
-                    /// `1.23` and `A2` is `=A1` and formatted as currency, then A2 would return `"=A1"`.
+                    /// `1.23` and `A2` is `=A1` and formatted as currency, then A2 would return `"=A1"`. Sheets treats
+                    /// date and time values as decimal values. This lets you perform arithmetic on them in formulas.
+                    /// For more information on interpreting date and time values, see [About date &amp;amp; time
+                    /// values](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORMULA")]
                     FORMULA = 2,
@@ -1034,9 +1038,10 @@ namespace Google.Apis.Sheets.v4
                 public enum ValueRenderOptionEnum
                 {
                     /// <summary>
-                    /// Values will be calculated &amp;amp; formatted in the reply according to the cell's formatting.
-                    /// Formatting is based on the spreadsheet's locale, not the requesting user's locale. For example,
-                    /// if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2` would return `"$1.23"`.
+                    /// Values will be calculated &amp;amp; formatted in the response according to the cell's
+                    /// formatting. Formatting is based on the spreadsheet's locale, not the requesting user's locale.
+                    /// For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2` would
+                    /// return `"$1.23"`.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORMATTED_VALUE")]
                     FORMATTEDVALUE = 0,
@@ -1050,7 +1055,10 @@ namespace Google.Apis.Sheets.v4
 
                     /// <summary>
                     /// Values will not be calculated. The reply will include the formulas. For example, if `A1` is
-                    /// `1.23` and `A2` is `=A1` and formatted as currency, then A2 would return `"=A1"`.
+                    /// `1.23` and `A2` is `=A1` and formatted as currency, then A2 would return `"=A1"`. Sheets treats
+                    /// date and time values as decimal values. This lets you perform arithmetic on them in formulas.
+                    /// For more information on interpreting date and time values, see [About date &amp;amp; time
+                    /// values](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORMULA")]
                     FORMULA = 2,
@@ -1479,9 +1487,10 @@ namespace Google.Apis.Sheets.v4
                 public enum ValueRenderOptionEnum
                 {
                     /// <summary>
-                    /// Values will be calculated &amp;amp; formatted in the reply according to the cell's formatting.
-                    /// Formatting is based on the spreadsheet's locale, not the requesting user's locale. For example,
-                    /// if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2` would return `"$1.23"`.
+                    /// Values will be calculated &amp;amp; formatted in the response according to the cell's
+                    /// formatting. Formatting is based on the spreadsheet's locale, not the requesting user's locale.
+                    /// For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2` would
+                    /// return `"$1.23"`.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORMATTED_VALUE")]
                     FORMATTEDVALUE = 0,
@@ -1495,7 +1504,10 @@ namespace Google.Apis.Sheets.v4
 
                     /// <summary>
                     /// Values will not be calculated. The reply will include the formulas. For example, if `A1` is
-                    /// `1.23` and `A2` is `=A1` and formatted as currency, then A2 would return `"=A1"`.
+                    /// `1.23` and `A2` is `=A1` and formatted as currency, then A2 would return `"=A1"`. Sheets treats
+                    /// date and time values as decimal values. This lets you perform arithmetic on them in formulas.
+                    /// For more information on interpreting date and time values, see [About date &amp;amp; time
+                    /// values](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORMULA")]
                     FORMULA = 2,
@@ -1649,9 +1661,10 @@ namespace Google.Apis.Sheets.v4
                 public enum ResponseValueRenderOptionEnum
                 {
                     /// <summary>
-                    /// Values will be calculated &amp;amp; formatted in the reply according to the cell's formatting.
-                    /// Formatting is based on the spreadsheet's locale, not the requesting user's locale. For example,
-                    /// if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2` would return `"$1.23"`.
+                    /// Values will be calculated &amp;amp; formatted in the response according to the cell's
+                    /// formatting. Formatting is based on the spreadsheet's locale, not the requesting user's locale.
+                    /// For example, if `A1` is `1.23` and `A2` is `=A1` and formatted as currency, then `A2` would
+                    /// return `"$1.23"`.
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORMATTED_VALUE")]
                     FORMATTEDVALUE = 0,
@@ -1665,7 +1678,10 @@ namespace Google.Apis.Sheets.v4
 
                     /// <summary>
                     /// Values will not be calculated. The reply will include the formulas. For example, if `A1` is
-                    /// `1.23` and `A2` is `=A1` and formatted as currency, then A2 would return `"=A1"`.
+                    /// `1.23` and `A2` is `=A1` and formatted as currency, then A2 would return `"=A1"`. Sheets treats
+                    /// date and time values as decimal values. This lets you perform arithmetic on them in formulas.
+                    /// For more information on interpreting date and time values, see [About date &amp;amp; time
+                    /// values](https://developers.google.com/sheets/api/guides/formats#about_date_time_values).
                     /// </summary>
                     [Google.Apis.Util.StringValueAttribute("FORMULA")]
                     FORMULA = 2,
@@ -4145,9 +4161,44 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
         public virtual string ErrorMessage { get; set; }
 
+        private string _lastRefreshTimeRaw;
+
+        private object _lastRefreshTime;
+
         /// <summary>Gets the time the data last successfully refreshed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastRefreshTime")]
-        public virtual object LastRefreshTime { get; set; }
+        public virtual string LastRefreshTimeRaw
+        {
+            get => _lastRefreshTimeRaw;
+            set
+            {
+                _lastRefreshTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastRefreshTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastRefreshTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastRefreshTimeDateTimeOffset instead.")]
+        public virtual object LastRefreshTime
+        {
+            get => _lastRefreshTime;
+            set
+            {
+                _lastRefreshTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastRefreshTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastRefreshTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastRefreshTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastRefreshTimeRaw);
+            set => LastRefreshTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The state of the data execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -5793,19 +5844,85 @@ namespace Google.Apis.Sheets.v4.Data
     /// </summary>
     public class Interval : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
         /// <summary>
         /// Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be
         /// before the end.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
 
         /// <summary>
         /// Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be
         /// the same or after the start.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6831,7 +6948,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("randomizeRange")]
         public virtual RandomizeRangeRequest RandomizeRange { get; set; }
 
-        /// <summary>Refreshs one or multiple data sources and associated dbobjects.</summary>
+        /// <summary>Refreshes one or multiple data sources and associated dbobjects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refreshDataSource")]
         public virtual RefreshDataSourceRequest RefreshDataSource { get; set; }
 

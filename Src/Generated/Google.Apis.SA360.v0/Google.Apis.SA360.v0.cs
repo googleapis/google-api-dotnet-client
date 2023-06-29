@@ -460,6 +460,45 @@ namespace Google.Apis.SA360.v0
                 }
             }
         }
+
+        /// <summary>
+        /// Returns resource names of customers directly accessible by the user authenticating the call. List of thrown
+        /// errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QuotaError]()
+        /// [RequestError]()
+        /// </summary>
+        public virtual ListAccessibleCustomersRequest ListAccessibleCustomers()
+        {
+            return new ListAccessibleCustomersRequest(service);
+        }
+
+        /// <summary>
+        /// Returns resource names of customers directly accessible by the user authenticating the call. List of thrown
+        /// errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QuotaError]()
+        /// [RequestError]()
+        /// </summary>
+        public class ListAccessibleCustomersRequest : SA360BaseServiceRequest<Google.Apis.SA360.v0.Data.GoogleAdsSearchads360V0ServicesListAccessibleCustomersResponse>
+        {
+            /// <summary>Constructs a new ListAccessibleCustomers request.</summary>
+            public ListAccessibleCustomersRequest(Google.Apis.Services.IClientService service) : base(service)
+            {
+                InitParameters();
+            }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "listAccessibleCustomers";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v0/customers:listAccessibleCustomers";
+
+            /// <summary>Initializes ListAccessibleCustomers parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
     }
 
     /// <summary>The "searchAds360Fields" collection of methods.</summary>
@@ -1290,6 +1329,24 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An asset representing a mobile app.</summary>
+    public class GoogleAdsSearchads360V0CommonMobileAppAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A string that uniquely identifies a mobile application. It should just contain the platform native
+        /// id, like "com.android.ebay" for Android or "12345689" for iOS.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appId")]
+        public virtual string AppId { get; set; }
+
+        /// <summary>Required. The application store that distributes this specific app.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appStore")]
+        public virtual string AppStore { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A bidding strategy where bids are a fraction of the advertised price for some good or service.
     /// </summary>
@@ -1445,6 +1502,10 @@ namespace Google.Apis.SA360.v0.Data
     /// <summary>Segment only fields.</summary>
     public class GoogleAdsSearchads360V0CommonSegments : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Ad network type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adNetworkType")]
+        public virtual string AdNetworkType { get; set; }
+
         /// <summary>Resource name of the conversion action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionAction")]
         public virtual string ConversionAction { get; set; }
@@ -1793,6 +1854,10 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>An error encountered when trying to authorize a user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizationError")]
         public virtual string AuthorizationError { get; set; }
+
+        /// <summary>The reasons for the custom column error</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customColumnError")]
+        public virtual string CustomColumnError { get; set; }
 
         /// <summary>The reasons for the date error</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateError")]
@@ -2428,6 +2493,86 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>
         /// Output only. The resource name of the age range view. Age range view resource names have the form:
         /// `customers/{customer_id}/ageRangeViews/{ad_group_id}~{criterion_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Asset is a part of an ad which can be shared across multiple ads. It can be an image (ImageAsset), a video
+    /// (YoutubeVideoAsset), etc. Assets are immutable and cannot be removed. To stop an asset from serving, remove the
+    /// asset from the entity that is using it.
+    /// </summary>
+    public class GoogleAdsSearchads360V0ResourcesAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The timestamp when this asset was created. The timestamp is in the customer's time zone and in
+        /// "yyyy-MM-dd HH:mm:ss" format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
+        public virtual string CreationTime { get; set; }
+
+        /// <summary>Output only. The Engine Status for an asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("engineStatus")]
+        public virtual string EngineStatus { get; set; }
+
+        /// <summary>A list of possible final URLs after all cross domain redirects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finalUrls")]
+        public virtual System.Collections.Generic.IList<string> FinalUrls { get; set; }
+
+        /// <summary>Output only. The ID of the asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; }
+
+        /// <summary>
+        /// Output only. The datetime when this asset was last modified. The datetime is in the customer's time zone and
+        /// in "yyyy-MM-dd HH:mm:ss.ssssss" format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
+        public virtual string LastModifiedTime { get; set; }
+
+        /// <summary>A mobile app asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mobileAppAsset")]
+        public virtual GoogleAdsSearchads360V0CommonMobileAppAsset MobileAppAsset { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the asset. Asset resource names have the form:
+        /// `customers/{customer_id}/assets/{asset_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>Output only. The status of the asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>URL template for constructing a tracking URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackingUrlTemplate")]
+        public virtual string TrackingUrlTemplate { get; set; }
+
+        /// <summary>Output only. Type of the asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An asset set representing a collection of assets. Use AssetSetAsset to link an asset to the asset set.
+    /// </summary>
+    public class GoogleAdsSearchads360V0ResourcesAssetSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The ID of the asset set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the asset set. Asset set resource names have the form:
+        /// `customers/{customer_id}/assetSets/{asset_set_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
@@ -3874,6 +4019,17 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for CustomerService.ListAccessibleCustomers.</summary>
+    public class GoogleAdsSearchads360V0ServicesListAccessibleCustomersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resource name of customers directly accessible by the user authenticating the call.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceNames")]
+        public virtual System.Collections.Generic.IList<string> ResourceNames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for fetching all custom columns associated with a customer.</summary>
     public class GoogleAdsSearchads360V0ServicesListCustomColumnsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3923,6 +4079,14 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>The age range view referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ageRangeView")]
         public virtual GoogleAdsSearchads360V0ResourcesAgeRangeView AgeRangeView { get; set; }
+
+        /// <summary>The asset referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asset")]
+        public virtual GoogleAdsSearchads360V0ResourcesAsset Asset { get; set; }
+
+        /// <summary>The asset set referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetSet")]
+        public virtual GoogleAdsSearchads360V0ResourcesAssetSet AssetSet { get; set; }
 
         /// <summary>The bidding strategy referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("biddingStrategy")]

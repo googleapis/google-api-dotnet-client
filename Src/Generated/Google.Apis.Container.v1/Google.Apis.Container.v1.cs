@@ -6427,9 +6427,44 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("incompatibilityType")]
         public virtual string IncompatibilityType { get; set; }
 
+        private string _lastObservationRaw;
+
+        private object _lastObservation;
+
         /// <summary>The last time when this issue was observed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastObservation")]
-        public virtual object LastObservation { get; set; }
+        public virtual string LastObservationRaw
+        {
+            get => _lastObservationRaw;
+            set
+            {
+                _lastObservation = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastObservationRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastObservationRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastObservationDateTimeOffset instead.")]
+        public virtual object LastObservation
+        {
+            get => _lastObservation;
+            set
+            {
+                _lastObservationRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastObservation = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastObservationRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastObservationDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastObservationRaw);
+            set => LastObservationRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The name of the resources which are subject to this issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subjects")]
@@ -7142,6 +7177,17 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration of network bandwidth tiers</summary>
+    public class ClusterNetworkPerformanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the total network bandwidth tier for NodePools in the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalEgressBandwidthTier")]
+        public virtual string TotalEgressBandwidthTier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// ClusterUpdate describes an update to the cluster. Exactly one update can be applied to a cluster with each
     /// request, so at most one field can be provided.
@@ -7292,6 +7338,10 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredMonitoringService")]
         public virtual string DesiredMonitoringService { get; set; }
+
+        /// <summary>The desired network performance config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredNetworkPerformanceConfig")]
+        public virtual ClusterNetworkPerformanceConfig DesiredNetworkPerformanceConfig { get; set; }
 
         /// <summary>
         /// The desired network tags that apply to all auto-provisioned node pools in autopilot clusters and node
@@ -8590,6 +8640,10 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
+
+        /// <summary>Network bandwidth tier configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkPerformanceConfig")]
+        public virtual ClusterNetworkPerformanceConfig NetworkPerformanceConfig { get; set; }
 
         /// <summary>
         /// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from
@@ -10611,17 +10665,83 @@ namespace Google.Apis.Container.v1.Data
     /// <summary>Represents an arbitrary window of time.</summary>
     public class TimeWindow : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
         /// <summary>The time that the window ends. The end time should take place after the start time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>MaintenanceExclusionOptions provides maintenance exclusion related options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceExclusionOptions")]
         public virtual MaintenanceExclusionOptions MaintenanceExclusionOptions { get; set; }
 
+        private string _startTimeRaw;
+
+        private object _startTime;
+
         /// <summary>The time that the window first starts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10914,9 +11034,44 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
         public virtual string Operation { get; set; }
 
+        private string _operationStartTimeRaw;
+
+        private object _operationStartTime;
+
         /// <summary>The time when the operation was started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationStartTime")]
-        public virtual object OperationStartTime { get; set; }
+        public virtual string OperationStartTimeRaw
+        {
+            get => _operationStartTimeRaw;
+            set
+            {
+                _operationStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _operationStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="OperationStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use OperationStartTimeDateTimeOffset instead.")]
+        public virtual object OperationStartTime
+        {
+            get => _operationStartTime;
+            set
+            {
+                _operationStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _operationStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="OperationStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? OperationStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(OperationStartTimeRaw);
+            set => OperationStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Optional relative path to the resource. For example in node pool upgrades, the relative path of the node
