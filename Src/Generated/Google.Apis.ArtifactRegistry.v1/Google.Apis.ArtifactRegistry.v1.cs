@@ -2432,6 +2432,65 @@ namespace Google.Apis.ArtifactRegistry.v1
                         }
 
                         /// <summary>
+                        /// Deletes multiple versions across a repository. The returned operation will complete once the
+                        /// versions have been deleted.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="parent">The name of the repository holding all requested versions.</param>
+                        public virtual BatchDeleteRequest BatchDelete(Google.Apis.ArtifactRegistry.v1.Data.BatchDeleteVersionsRequest body, string parent)
+                        {
+                            return new BatchDeleteRequest(service, body, parent);
+                        }
+
+                        /// <summary>
+                        /// Deletes multiple versions across a repository. The returned operation will complete once the
+                        /// versions have been deleted.
+                        /// </summary>
+                        public class BatchDeleteRequest : ArtifactRegistryBaseServiceRequest<Google.Apis.ArtifactRegistry.v1.Data.Operation>
+                        {
+                            /// <summary>Constructs a new BatchDelete request.</summary>
+                            public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.ArtifactRegistry.v1.Data.BatchDeleteVersionsRequest body, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>The name of the repository holding all requested versions.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.ArtifactRegistry.v1.Data.BatchDeleteVersionsRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "batchDelete";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/versions:batchDelete";
+
+                            /// <summary>Initializes BatchDelete parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+/packages/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
                         /// Deletes a version and all of its content. The returned operation will complete once the
                         /// version has been deleted.
                         /// </summary>
@@ -4220,6 +4279,23 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request to delete multiple versions across a repository.</summary>
+    public class BatchDeleteVersionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The names of the versions to delete. A maximum of 10000 versions can be deleted in a batch.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("names")]
+        public virtual System.Collections.Generic.IList<string> Names { get; set; }
+
+        /// <summary>If true, the request is performed without deleting data, following AIP-163.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Associates `members`, or principals, with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4267,6 +4343,87 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Artifact policy configuration for repository cleanup policies.</summary>
+    public class CleanupPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Policy action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>Policy condition for matching versions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual CleanupPolicyCondition Condition { get; set; }
+
+        /// <summary>The user-provided ID of the cleanup policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Policy condition for retaining a minimum number of versions. May only be specified with a Keep action.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mostRecentVersions")]
+        public virtual CleanupPolicyMostRecentVersions MostRecentVersions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// CleanupPolicyCondition is a set of conditions attached to a CleanupPolicy. If multiple entries are set, all must
+    /// be satisfied for the condition to be satisfied.
+    /// </summary>
+    public class CleanupPolicyCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Match versions newer than a duration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newerThan")]
+        public virtual object NewerThan { get; set; }
+
+        /// <summary>Match versions older than a duration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("olderThan")]
+        public virtual object OlderThan { get; set; }
+
+        /// <summary>Match versions by package prefix. Applied on any prefix match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageNamePrefixes")]
+        public virtual System.Collections.Generic.IList<string> PackageNamePrefixes { get; set; }
+
+        /// <summary>Match versions by tag prefix. Applied on any prefix match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagPrefixes")]
+        public virtual System.Collections.Generic.IList<string> TagPrefixes { get; set; }
+
+        /// <summary>Match versions by tag status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagState")]
+        public virtual string TagState { get; set; }
+
+        /// <summary>DEPRECATED: Use older_than.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionAge")]
+        public virtual object VersionAge { get; set; }
+
+        /// <summary>Match versions by version name prefix. Applied on any prefix match.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionNamePrefixes")]
+        public virtual System.Collections.Generic.IList<string> VersionNamePrefixes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// CleanupPolicyMostRecentVersions is an alternate condition of a CleanupPolicy for retaining a minimum number of
+    /// versions.
+    /// </summary>
+    public class CleanupPolicyMostRecentVersions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Minimum number of versions to keep.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("keepCount")]
+        public virtual System.Nullable<int> KeepCount { get; set; }
+
+        /// <summary>List of package name prefixes that will apply this rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageNamePrefixes")]
+        public virtual System.Collections.Generic.IList<string> PackageNamePrefixes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5818,6 +5975,20 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     /// <summary>A Repository for storing artifacts with a specific format.</summary>
     public class Repository : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Cleanup policies for this repository. Cleanup policies indicate when certain package versions can
+        /// be automatically deleted. Map keys are policy IDs supplied by users during policy creation. They must unique
+        /// within a repository and be under 128 characters in length.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cleanupPolicies")]
+        public virtual System.Collections.Generic.IDictionary<string, CleanupPolicy> CleanupPolicies { get; set; }
+
+        /// <summary>
+        /// Optional. If true, the cleanup pipeline is prevented from deleting versions in this repository.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cleanupPolicyDryRun")]
+        public virtual System.Nullable<bool> CleanupPolicyDryRun { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;

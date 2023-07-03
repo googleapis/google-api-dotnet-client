@@ -2566,65 +2566,6 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     }
                 }
 
-                /// <summary>
-                /// Generate a TCP Proxy configuration script to configure a cloud-hosted VM running a TCP Proxy.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="migrationJob">
-                /// Name of the migration job resource to generate the TCP Proxy script.
-                /// </param>
-                public virtual GenerateTcpProxyScriptRequest GenerateTcpProxyScript(Google.Apis.DatabaseMigrationService.v1.Data.GenerateTcpProxyScriptRequest body, string migrationJob)
-                {
-                    return new GenerateTcpProxyScriptRequest(service, body, migrationJob);
-                }
-
-                /// <summary>
-                /// Generate a TCP Proxy configuration script to configure a cloud-hosted VM running a TCP Proxy.
-                /// </summary>
-                public class GenerateTcpProxyScriptRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1.Data.TcpProxyScript>
-                {
-                    /// <summary>Constructs a new GenerateTcpProxyScript request.</summary>
-                    public GenerateTcpProxyScriptRequest(Google.Apis.Services.IClientService service, Google.Apis.DatabaseMigrationService.v1.Data.GenerateTcpProxyScriptRequest body, string migrationJob) : base(service)
-                    {
-                        MigrationJob = migrationJob;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>Name of the migration job resource to generate the TCP Proxy script.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("migrationJob", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string MigrationJob { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.DatabaseMigrationService.v1.Data.GenerateTcpProxyScriptRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "generateTcpProxyScript";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+migrationJob}:generateTcpProxyScript";
-
-                    /// <summary>Initializes GenerateTcpProxyScript parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("migrationJob", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "migrationJob",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/migrationJobs/[^/]+$",
-                        });
-                    }
-                }
-
                 /// <summary>Gets details of a single migration job.</summary>
                 /// <param name="name">Required. Name of the migration job resource to get.</param>
                 public virtual GetRequest Get(string name)
@@ -5793,37 +5734,6 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for 'GenerateTcpProxyScript' request.</summary>
-    public class GenerateTcpProxyScriptRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The type of the Compute instance that will host the proxy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("vmMachineType")]
-        public virtual string VmMachineType { get; set; }
-
-        /// <summary>Required. The name of the Compute instance that will host the proxy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("vmName")]
-        public virtual string VmName { get; set; }
-
-        /// <summary>
-        /// Required. The name of the subnet the Compute instance will use for private connectivity. Must be supplied in
-        /// the form of projects/{project}/regions/{region}/subnetworks/{subnetwork}. Note: the region for the subnet
-        /// must match the Compute instance region.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("vmSubnet")]
-        public virtual string VmSubnet { get; set; }
-
-        /// <summary>
-        /// Optional. The Google Cloud Platform zone to create the VM in. The fully qualified name of the zone must be
-        /// specified, including the region name, for example "us-central1-b". If not specified, uses the "-b" zone of
-        /// the destination Connection Profile's region.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("vmZone")]
-        public virtual string VmZone { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Represents the metadata of the long-running operation.</summary>
     public class GoogleCloudClouddmsV1OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7334,17 +7244,6 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// <summary>Table triggers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("triggers")]
         public virtual System.Collections.Generic.IList<TriggerEntity> Triggers { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for 'GenerateTcpProxyScript' request.</summary>
-    public class TcpProxyScript : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The TCP Proxy configuration script.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("script")]
-        public virtual string Script { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

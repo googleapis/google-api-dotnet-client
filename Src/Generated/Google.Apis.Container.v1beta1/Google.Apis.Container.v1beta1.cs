@@ -6318,6 +6318,10 @@ namespace Google.Apis.Container.v1beta1.Data
     /// </summary>
     public class AdditionalPodRangesConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. [Output only] Information for additional pod range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("podRangeInfo")]
+        public virtual System.Collections.Generic.IList<RangeInfo> PodRangeInfo { get; set; }
+
         /// <summary>Name for pod secondary ipv4 range which has the actual range defined ahead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("podRangeNames")]
         public virtual System.Collections.Generic.IList<string> PodRangeNames { get; set; }
@@ -6497,9 +6501,44 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("incompatibilityType")]
         public virtual string IncompatibilityType { get; set; }
 
+        private string _lastObservationRaw;
+
+        private object _lastObservation;
+
         /// <summary>The last time when this issue was observed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastObservation")]
-        public virtual object LastObservation { get; set; }
+        public virtual string LastObservationRaw
+        {
+            get => _lastObservationRaw;
+            set
+            {
+                _lastObservation = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastObservationRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastObservationRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastObservationDateTimeOffset instead.")]
+        public virtual object LastObservation
+        {
+            get => _lastObservation;
+            set
+            {
+                _lastObservationRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastObservation = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastObservationRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastObservationDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastObservationRaw);
+            set => LastObservationRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The name of the resources which are subject to this issue.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subjects")]
@@ -6542,6 +6581,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
         public virtual string ImageType { get; set; }
+
+        /// <summary>Enable or disable Kubelet read only port.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insecureKubeletReadonlyPortEnabled")]
+        public virtual System.Nullable<bool> InsecureKubeletReadonlyPortEnabled { get; set; }
 
         /// <summary>NodeManagement configuration for this NodePool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("management")]
@@ -7285,6 +7328,17 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration of all network bandwidth tiers</summary>
+    public class ClusterNetworkPerformanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies the total network bandwidth tier for the NodePool.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalEgressBandwidthTier")]
+        public virtual string TotalEgressBandwidthTier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Telemetry integration for the cluster.</summary>
     public class ClusterTelemetry : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7454,6 +7508,10 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("desiredMonitoringService")]
         public virtual string DesiredMonitoringService { get; set; }
+
+        /// <summary>The desired network performance config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("desiredNetworkPerformanceConfig")]
+        public virtual ClusterNetworkPerformanceConfig DesiredNetworkPerformanceConfig { get; set; }
 
         /// <summary>
         /// The desired network tags that apply to all auto-provisioned node pools in autopilot clusters and node
@@ -8228,6 +8286,13 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createSubnetwork")]
         public virtual System.Nullable<bool> CreateSubnetwork { get; set; }
 
+        /// <summary>
+        /// Output only. [Output only] The utilization of the cluster default IPv4 range for pod. The ratio is
+        /// Usage/[Total number of IPs in the secondary range], Usage=numNodes*numZones*podIPsPerNode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultPodIpv4RangeUtilization")]
+        public virtual System.Nullable<double> DefaultPodIpv4RangeUtilization { get; set; }
+
         /// <summary>The ipv6 access type (internal or external) when create_subnetwork is true</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipv6AccessType")]
         public virtual string Ipv6AccessType { get; set; }
@@ -8914,6 +8979,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
+        /// <summary>Network bandwidth tier configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkPerformanceConfig")]
+        public virtual ClusterNetworkPerformanceConfig NetworkPerformanceConfig { get; set; }
+
         /// <summary>
         /// The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from
         /// Google Services (all access will be via IPv4)
@@ -9190,7 +9259,7 @@ namespace Google.Apis.Container.v1beta1.Data
 
         /// <summary>
         /// Whether the nodes are created as preemptible VM instances. See:
-        /// https://cloud.google.com/compute/docs/instances/preemptible for more inforamtion about preemptible VM
+        /// https://cloud.google.com/compute/docs/instances/preemptible for more information about preemptible VM
         /// instances.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preemptible")]
@@ -9305,6 +9374,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cpuManagerPolicy")]
         public virtual string CpuManagerPolicy { get; set; }
 
+        /// <summary>Enable or disable Kubelet read only port.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insecureKubeletReadonlyPortEnabled")]
+        public virtual System.Nullable<bool> InsecureKubeletReadonlyPortEnabled { get; set; }
+
         /// <summary>
         /// Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-limiting/#pod-pid-limits Controls
         /// the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and
@@ -9394,6 +9467,13 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("podIpv4CidrBlock")]
         public virtual string PodIpv4CidrBlock { get; set; }
+
+        /// <summary>
+        /// Output only. [Output only] The utilization of the IPv4 range for pod. The ratio is Usage/[Total number of
+        /// IPs in the secondary range], Usage=numNodes*numZones*podIPsPerNode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("podIpv4RangeUtilization")]
+        public virtual System.Nullable<double> PodIpv4RangeUtilization { get; set; }
 
         /// <summary>
         /// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range.
@@ -9805,6 +9885,13 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>PlacementPolicy defines the placement policy used by the node pool.</summary>
     public class PlacementPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// TPU placement topology for pod slice node pool.
+        /// https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tpuTopology")]
+        public virtual string TpuTopology { get; set; }
+
         /// <summary>The type of placement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -9935,6 +10022,21 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topic")]
         public virtual string Topic { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RangeInfo contains the range name and the range utilization by this cluster.</summary>
+    public class RangeInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. [Output only] Name of a range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rangeName")]
+        public virtual string RangeName { get; set; }
+
+        /// <summary>Output only. [Output only] The utilization of the range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("utilization")]
+        public virtual System.Nullable<double> Utilization { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10994,17 +11096,83 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>Represents an arbitrary window of time.</summary>
     public class TimeWindow : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
         /// <summary>The time that the window ends. The end time should take place after the start time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>MaintenanceExclusionOptions provides maintenance exclusion related options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceExclusionOptions")]
         public virtual MaintenanceExclusionOptions MaintenanceExclusionOptions { get; set; }
 
+        private string _startTimeRaw;
+
+        private object _startTime;
+
         /// <summary>The time that the window first starts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11320,9 +11488,44 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
         public virtual string Operation { get; set; }
 
+        private string _operationStartTimeRaw;
+
+        private object _operationStartTime;
+
         /// <summary>The time when the operation was started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationStartTime")]
-        public virtual object OperationStartTime { get; set; }
+        public virtual string OperationStartTimeRaw
+        {
+            get => _operationStartTimeRaw;
+            set
+            {
+                _operationStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _operationStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="OperationStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use OperationStartTimeDateTimeOffset instead.")]
+        public virtual object OperationStartTime
+        {
+            get => _operationStartTime;
+            set
+            {
+                _operationStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _operationStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="OperationStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? OperationStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(OperationStartTimeRaw);
+            set => OperationStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Optional relative path to the resource. For example in node pool upgrades, the relative path of the node

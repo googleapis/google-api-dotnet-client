@@ -989,11 +989,44 @@ namespace Google.Apis.SearchConsole.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("issues")]
         public virtual System.Collections.Generic.IList<AmpIssue> Issues { get; set; }
 
+        private string _lastCrawlTimeRaw;
+
+        private object _lastCrawlTime;
+
         /// <summary>
         /// Last time this AMP version was crawled by Google. Absent if the URL was never crawled successfully.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastCrawlTime")]
-        public virtual object LastCrawlTime { get; set; }
+        public virtual string LastCrawlTimeRaw
+        {
+            get => _lastCrawlTimeRaw;
+            set
+            {
+                _lastCrawlTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastCrawlTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastCrawlTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastCrawlTimeDateTimeOffset instead.")]
+        public virtual object LastCrawlTime
+        {
+            get => _lastCrawlTime;
+            set
+            {
+                _lastCrawlTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastCrawlTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastCrawlTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastCrawlTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastCrawlTimeRaw);
+            set => LastCrawlTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Whether or not Google could fetch the AMP.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageFetchState")]
@@ -1159,13 +1192,46 @@ namespace Google.Apis.SearchConsole.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("indexingState")]
         public virtual string IndexingState { get; set; }
 
+        private string _lastCrawlTimeRaw;
+
+        private object _lastCrawlTime;
+
         /// <summary>
         /// Last time this URL was crawled by Google using the [primary
         /// crawler](https://support.google.com/webmasters/answer/7440203#primary_crawler). Absent if the URL was never
         /// crawled successfully.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastCrawlTime")]
-        public virtual object LastCrawlTime { get; set; }
+        public virtual string LastCrawlTimeRaw
+        {
+            get => _lastCrawlTimeRaw;
+            set
+            {
+                _lastCrawlTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastCrawlTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastCrawlTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastCrawlTimeDateTimeOffset instead.")]
+        public virtual object LastCrawlTime
+        {
+            get => _lastCrawlTime;
+            set
+            {
+                _lastCrawlTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastCrawlTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastCrawlTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastCrawlTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastCrawlTimeRaw);
+            set => LastCrawlTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Whether or not Google could retrieve the page from your server. Equivalent to ["page
@@ -1602,18 +1668,86 @@ namespace Google.Apis.SearchConsole.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isSitemapsIndex")]
         public virtual System.Nullable<bool> IsSitemapsIndex { get; set; }
 
+        private string _lastDownloadedRaw;
+
+        private object _lastDownloaded;
+
         /// <summary>
         /// Date &amp;amp; time in which this sitemap was last downloaded. Date format is in RFC 3339 format
         /// (yyyy-mm-dd).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastDownloaded")]
-        public virtual object LastDownloaded { get; set; }
+        public virtual string LastDownloadedRaw
+        {
+            get => _lastDownloadedRaw;
+            set
+            {
+                _lastDownloaded = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastDownloadedRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastDownloadedRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastDownloadedDateTimeOffset instead.")]
+        public virtual object LastDownloaded
+        {
+            get => _lastDownloaded;
+            set
+            {
+                _lastDownloadedRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastDownloaded = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastDownloadedRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastDownloadedDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastDownloadedRaw);
+            set => LastDownloadedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _lastSubmittedRaw;
+
+        private object _lastSubmitted;
 
         /// <summary>
         /// Date &amp;amp; time in which this sitemap was submitted. Date format is in RFC 3339 format (yyyy-mm-dd).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastSubmitted")]
-        public virtual object LastSubmitted { get; set; }
+        public virtual string LastSubmittedRaw
+        {
+            get => _lastSubmittedRaw;
+            set
+            {
+                _lastSubmitted = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastSubmittedRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastSubmittedRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastSubmittedDateTimeOffset instead.")]
+        public virtual object LastSubmitted
+        {
+            get => _lastSubmitted;
+            set
+            {
+                _lastSubmittedRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastSubmitted = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastSubmittedRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastSubmittedDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastSubmittedRaw);
+            set => LastSubmittedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The url of the sitemap.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]

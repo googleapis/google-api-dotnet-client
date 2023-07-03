@@ -917,6 +917,13 @@ namespace Google.Apis.Transcoder.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for AES-128 encryption.</summary>
+    public class Aes128Encryption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Animation types.</summary>
     public class Animation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1141,6 +1148,13 @@ namespace Google.Apis.Transcoder.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Clearkey configuration.</summary>
+    public class Clearkey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Color preprocessing configuration. **Note:** This configuration is not supported.</summary>
     public class Color : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1259,6 +1273,29 @@ namespace Google.Apis.Transcoder.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Defines configuration for DRM systems in use.</summary>
+    public class DrmSystems : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Clearkey configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clearkey")]
+        public virtual Clearkey Clearkey { get; set; }
+
+        /// <summary>Fairplay configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fairplay")]
+        public virtual Fairplay Fairplay { get; set; }
+
+        /// <summary>Playready configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("playready")]
+        public virtual Playready Playready { get; set; }
+
+        /// <summary>Widevine configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("widevine")]
+        public virtual Widevine Widevine { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Edit atom.</summary>
     public class EditAtom : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1322,6 +1359,47 @@ namespace Google.Apis.Transcoder.v1.Data
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Encryption settings.</summary>
+    public class Encryption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Configuration for AES-128 encryption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aes128")]
+        public virtual Aes128Encryption Aes128 { get; set; }
+
+        /// <summary>
+        /// Required. DRM system(s) to use; at least one must be specified. If a DRM system is omitted, it is considered
+        /// disabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("drmSystems")]
+        public virtual DrmSystems DrmSystems { get; set; }
+
+        /// <summary>Required. Identifier for this set of encryption options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Configuration for MPEG Common Encryption (MPEG-CENC).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mpegCenc")]
+        public virtual MpegCommonEncryption MpegCenc { get; set; }
+
+        /// <summary>Configuration for SAMPLE-AES encryption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleAes")]
+        public virtual SampleAesEncryption SampleAes { get; set; }
+
+        /// <summary>Keys are stored in Google Secret Manager.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretManagerKeySource")]
+        public virtual SecretManagerSource SecretManagerKeySource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Fairplay configuration.</summary>
+    public class Fairplay : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1699,17 +1777,90 @@ namespace Google.Apis.Transcoder.v1.Data
     /// <summary>Transcoding job resource.</summary>
     public class Job : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The processing priority of a batch job. This field can only be set for batch mode jobs, and the default
+        /// value is 0. This value cannot be negative. Higher values correspond to higher priorities for the job.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchModePriority")]
+        public virtual System.Nullable<int> BatchModePriority { get; set; }
+
         /// <summary>The configuration for this job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("config")]
         public virtual JobConfig Config { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. The time the job was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
 
         /// <summary>Output only. The time the transcoding finished.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. An error object that describes the reason for the failure. This property is always present when
@@ -1741,6 +1892,10 @@ namespace Google.Apis.Transcoder.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. The optimization strategy of the job. The default is `AUTODETECT`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optimization")]
+        public virtual string Optimization { get; set; }
+
         /// <summary>
         /// Input only. Specify the `output_uri` to populate an empty `Job.config.output.uri` or
         /// `JobTemplate.config.output.uri` when using template. URI for the output file(s). For example,
@@ -1750,9 +1905,42 @@ namespace Google.Apis.Transcoder.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outputUri")]
         public virtual string OutputUri { get; set; }
 
+        private string _startTimeRaw;
+
+        private object _startTime;
+
         /// <summary>Output only. The time the transcoding started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. The current state of the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -1790,6 +1978,13 @@ namespace Google.Apis.Transcoder.v1.Data
         /// <summary>List of elementary streams.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("elementaryStreams")]
         public virtual System.Collections.Generic.IList<ElementaryStream> ElementaryStreams { get; set; }
+
+        /// <summary>
+        /// List of encryption configurations for the content. Each configuration has an ID. Specify this ID in the
+        /// MuxStream.encryption_id field to indicate the configuration to use for that `MuxStream` output.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptions")]
+        public virtual System.Collections.Generic.IList<Encryption> Encryptions { get; set; }
 
         /// <summary>List of input assets stored in Cloud Storage.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputs")]
@@ -1917,6 +2112,17 @@ namespace Google.Apis.Transcoder.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for MPEG Common Encryption (MPEG-CENC).</summary>
+    public class MpegCommonEncryption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Specify the encryption scheme. Supported encryption schemes: - `cenc` - `cbcs`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheme")]
+        public virtual string Scheme { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Multiplexing settings for output stream.</summary>
     public class MuxStream : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1931,6 +2137,12 @@ namespace Google.Apis.Transcoder.v1.Data
         /// <summary>List of `ElementaryStream.key`s multiplexed in this stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("elementaryStreams")]
         public virtual System.Collections.Generic.IList<string> ElementaryStreams { get; set; }
+
+        /// <summary>
+        /// Identifier of the encryption configuration to use. If omitted, output will be unencrypted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionId")]
+        public virtual string EncryptionId { get; set; }
 
         /// <summary>
         /// The name of the generated file. The default is `MuxStream.key` with the extension suffix corresponding to
@@ -2026,6 +2238,13 @@ namespace Google.Apis.Transcoder.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Playready configuration.</summary>
+    public class Playready : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Preprocessing configurations.</summary>
     public class PreprocessingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2070,6 +2289,28 @@ namespace Google.Apis.Transcoder.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topic")]
         public virtual string Topic { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for SAMPLE-AES encryption.</summary>
+    public class SampleAesEncryption : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for secrets stored in Google Secret Manager.</summary>
+    public class SecretManagerSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the Secret Version containing the encryption key in the following format:
+        /// `projects/{project}/secrets/{secret_id}/versions/{version_number}` Note that only numbered versions are
+        /// supported. Aliases like "latest" are not supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secretVersion")]
+        public virtual string SecretVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2366,6 +2607,13 @@ namespace Google.Apis.Transcoder.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("widthPixels")]
         public virtual System.Nullable<int> WidthPixels { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Widevine configuration.</summary>
+    public class Widevine : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
