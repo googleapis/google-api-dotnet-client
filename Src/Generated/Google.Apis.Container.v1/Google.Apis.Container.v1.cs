@@ -6261,6 +6261,10 @@ namespace Google.Apis.Container.v1.Data
     /// </summary>
     public class AdditionalPodRangesConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. [Output only] Information for additional pod range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("podRangeInfo")]
+        public virtual System.Collections.Generic.IList<RangeInfo> PodRangeInfo { get; set; }
+
         /// <summary>Name for pod secondary ipv4 range which has the actual range defined ahead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("podRangeNames")]
         public virtual System.Collections.Generic.IList<string> PodRangeNames { get; set; }
@@ -6299,6 +6303,10 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Configuration for the GCP Filestore CSI driver.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpFilestoreCsiDriverConfig")]
         public virtual GcpFilestoreCsiDriverConfig GcpFilestoreCsiDriverConfig { get; set; }
+
+        /// <summary>Configuration for the Cloud Storage Fuse CSI driver.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsFuseCsiDriverConfig")]
+        public virtual GcsFuseCsiDriverConfig GcsFuseCsiDriverConfig { get; set; }
 
         /// <summary>Configuration for the Backup for GKE agent addon.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeBackupAgentConfig")]
@@ -6507,6 +6515,10 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageType")]
         public virtual string ImageType { get; set; }
+
+        /// <summary>Enable or disable Kubelet read only port.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insecureKubeletReadonlyPortEnabled")]
+        public virtual System.Nullable<bool> InsecureKubeletReadonlyPortEnabled { get; set; }
 
         /// <summary>Specifies the node management options for NAP created node-pools.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("management")]
@@ -7848,6 +7860,17 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for the Cloud Storage Fuse CSI driver.</summary>
+    public class GcsFuseCsiDriverConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether the Cloud Storage Fuse CSI driver is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>GetJSONWebKeysResponse is a valid JSON Web Key Set as specififed in rfc 7517</summary>
     public class GetJSONWebKeysResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8026,6 +8049,13 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createSubnetwork")]
         public virtual System.Nullable<bool> CreateSubnetwork { get; set; }
+
+        /// <summary>
+        /// Output only. [Output only] The utilization of the cluster default IPv4 range for pod. The ratio is
+        /// Usage/[Total number of IPs in the secondary range], Usage=numNodes*numZones*podIPsPerNode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultPodIpv4RangeUtilization")]
+        public virtual System.Nullable<double> DefaultPodIpv4RangeUtilization { get; set; }
 
         /// <summary>The ipv6 access type (internal or external) when create_subnetwork is true</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipv6AccessType")]
@@ -9022,6 +9052,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cpuManagerPolicy")]
         public virtual string CpuManagerPolicy { get; set; }
 
+        /// <summary>Enable or disable Kubelet read only port.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("insecureKubeletReadonlyPortEnabled")]
+        public virtual System.Nullable<bool> InsecureKubeletReadonlyPortEnabled { get; set; }
+
         /// <summary>
         /// Set the Pod PID limits. See https://kubernetes.io/docs/concepts/policy/pid-limiting/#pod-pid-limits Controls
         /// the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and
@@ -9118,6 +9152,13 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("podIpv4CidrBlock")]
         public virtual string PodIpv4CidrBlock { get; set; }
+
+        /// <summary>
+        /// Output only. [Output only] The utilization of the IPv4 range for pod. The ratio is Usage/[Total number of
+        /// IPs in the secondary range], Usage=numNodes*numZones*podIPsPerNode.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("podIpv4RangeUtilization")]
+        public virtual System.Nullable<double> PodIpv4RangeUtilization { get; set; }
 
         /// <summary>
         /// The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range.
@@ -9621,6 +9662,21 @@ namespace Google.Apis.Container.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topic")]
         public virtual string Topic { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RangeInfo contains the range name and the range utilization by this cluster.</summary>
+    public class RangeInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. [Output only] Name of a range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rangeName")]
+        public virtual string RangeName { get; set; }
+
+        /// <summary>Output only. [Output only] The utilization of the range.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("utilization")]
+        public virtual System.Nullable<double> Utilization { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

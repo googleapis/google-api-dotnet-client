@@ -774,9 +774,10 @@ namespace Google.Apis.Cloudchannel.v1
                 /// <summary>
                 /// Creates a new Customer resource under the reseller or distributor account. Possible error codes: *
                 /// PERMISSION_DENIED: The reseller account making the request is different from the reseller account in
-                /// the API request. * INVALID_ARGUMENT: * Required request parameters are missing or invalid. * Domain
-                /// field value doesn't match the primary email domain. Return value: The newly created Customer
-                /// resource.
+                /// the API request. * PERMISSION_DENIED: You are not authorized to create a customer. See
+                /// https://support.google.com/channelservices/answer/9759265 * INVALID_ARGUMENT: * Required request
+                /// parameters are missing or invalid. * Domain field value doesn't match the primary email domain.
+                /// Return value: The newly created Customer resource.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -791,9 +792,10 @@ namespace Google.Apis.Cloudchannel.v1
                 /// <summary>
                 /// Creates a new Customer resource under the reseller or distributor account. Possible error codes: *
                 /// PERMISSION_DENIED: The reseller account making the request is different from the reseller account in
-                /// the API request. * INVALID_ARGUMENT: * Required request parameters are missing or invalid. * Domain
-                /// field value doesn't match the primary email domain. Return value: The newly created Customer
-                /// resource.
+                /// the API request. * PERMISSION_DENIED: You are not authorized to create a customer. See
+                /// https://support.google.com/channelservices/answer/9759265 * INVALID_ARGUMENT: * Required request
+                /// parameters are missing or invalid. * Domain field value doesn't match the primary email domain.
+                /// Return value: The newly created Customer resource.
                 /// </summary>
                 public class CreateRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1Customer>
                 {
@@ -964,10 +966,12 @@ namespace Google.Apis.Cloudchannel.v1
                 /// Imports a Customer from the Cloud Identity associated with the provided Cloud Identity ID or domain
                 /// before a TransferEntitlements call. If a linked Customer already exists and overwrite_if_exists is
                 /// true, it will update that Customer's data. Possible error codes: * PERMISSION_DENIED: The reseller
-                /// account making the request is different from the reseller account in the API request. * NOT_FOUND:
-                /// Cloud Identity doesn't exist or was deleted. * INVALID_ARGUMENT: Required parameters are missing, or
-                /// the auth_token is expired or invalid. * ALREADY_EXISTS: A customer already exists and has
-                /// conflicting critical fields. Requires an overwrite. Return value: The Customer.
+                /// account making the request is different from the reseller account in the API request. *
+                /// PERMISSION_DENIED: You are not authorized to import the customer. See
+                /// https://support.google.com/channelservices/answer/9759265 * NOT_FOUND: Cloud Identity doesn't exist
+                /// or was deleted. * INVALID_ARGUMENT: Required parameters are missing, or the auth_token is expired or
+                /// invalid. * ALREADY_EXISTS: A customer already exists and has conflicting critical fields. Requires
+                /// an overwrite. Return value: The Customer.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -983,10 +987,12 @@ namespace Google.Apis.Cloudchannel.v1
                 /// Imports a Customer from the Cloud Identity associated with the provided Cloud Identity ID or domain
                 /// before a TransferEntitlements call. If a linked Customer already exists and overwrite_if_exists is
                 /// true, it will update that Customer's data. Possible error codes: * PERMISSION_DENIED: The reseller
-                /// account making the request is different from the reseller account in the API request. * NOT_FOUND:
-                /// Cloud Identity doesn't exist or was deleted. * INVALID_ARGUMENT: Required parameters are missing, or
-                /// the auth_token is expired or invalid. * ALREADY_EXISTS: A customer already exists and has
-                /// conflicting critical fields. Requires an overwrite. Return value: The Customer.
+                /// account making the request is different from the reseller account in the API request. *
+                /// PERMISSION_DENIED: You are not authorized to import the customer. See
+                /// https://support.google.com/channelservices/answer/9759265 * NOT_FOUND: Cloud Identity doesn't exist
+                /// or was deleted. * INVALID_ARGUMENT: Required parameters are missing, or the auth_token is expired or
+                /// invalid. * ALREADY_EXISTS: A customer already exists and has conflicting critical fields. Requires
+                /// an overwrite. Return value: The Customer.
                 /// </summary>
                 public class ImportRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1Customer>
                 {
@@ -3081,8 +3087,10 @@ namespace Google.Apis.Cloudchannel.v1
             /// <summary>
             /// Creates a new Customer resource under the reseller or distributor account. Possible error codes: *
             /// PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the
-            /// API request. * INVALID_ARGUMENT: * Required request parameters are missing or invalid. * Domain field
-            /// value doesn't match the primary email domain. Return value: The newly created Customer resource.
+            /// API request. * PERMISSION_DENIED: You are not authorized to create a customer. See
+            /// https://support.google.com/channelservices/answer/9759265 * INVALID_ARGUMENT: * Required request
+            /// parameters are missing or invalid. * Domain field value doesn't match the primary email domain. Return
+            /// value: The newly created Customer resource.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -3097,8 +3105,10 @@ namespace Google.Apis.Cloudchannel.v1
             /// <summary>
             /// Creates a new Customer resource under the reseller or distributor account. Possible error codes: *
             /// PERMISSION_DENIED: The reseller account making the request is different from the reseller account in the
-            /// API request. * INVALID_ARGUMENT: * Required request parameters are missing or invalid. * Domain field
-            /// value doesn't match the primary email domain. Return value: The newly created Customer resource.
+            /// API request. * PERMISSION_DENIED: You are not authorized to create a customer. See
+            /// https://support.google.com/channelservices/answer/9759265 * INVALID_ARGUMENT: * Required request
+            /// parameters are missing or invalid. * Domain field value doesn't match the primary email domain. Return
+            /// value: The newly created Customer resource.
             /// </summary>
             public class CreateRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1Customer>
             {
@@ -3267,10 +3277,11 @@ namespace Google.Apis.Cloudchannel.v1
             /// Imports a Customer from the Cloud Identity associated with the provided Cloud Identity ID or domain
             /// before a TransferEntitlements call. If a linked Customer already exists and overwrite_if_exists is true,
             /// it will update that Customer's data. Possible error codes: * PERMISSION_DENIED: The reseller account
-            /// making the request is different from the reseller account in the API request. * NOT_FOUND: Cloud
-            /// Identity doesn't exist or was deleted. * INVALID_ARGUMENT: Required parameters are missing, or the
-            /// auth_token is expired or invalid. * ALREADY_EXISTS: A customer already exists and has conflicting
-            /// critical fields. Requires an overwrite. Return value: The Customer.
+            /// making the request is different from the reseller account in the API request. * PERMISSION_DENIED: You
+            /// are not authorized to import the customer. See https://support.google.com/channelservices/answer/9759265
+            /// * NOT_FOUND: Cloud Identity doesn't exist or was deleted. * INVALID_ARGUMENT: Required parameters are
+            /// missing, or the auth_token is expired or invalid. * ALREADY_EXISTS: A customer already exists and has
+            /// conflicting critical fields. Requires an overwrite. Return value: The Customer.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -3286,10 +3297,11 @@ namespace Google.Apis.Cloudchannel.v1
             /// Imports a Customer from the Cloud Identity associated with the provided Cloud Identity ID or domain
             /// before a TransferEntitlements call. If a linked Customer already exists and overwrite_if_exists is true,
             /// it will update that Customer's data. Possible error codes: * PERMISSION_DENIED: The reseller account
-            /// making the request is different from the reseller account in the API request. * NOT_FOUND: Cloud
-            /// Identity doesn't exist or was deleted. * INVALID_ARGUMENT: Required parameters are missing, or the
-            /// auth_token is expired or invalid. * ALREADY_EXISTS: A customer already exists and has conflicting
-            /// critical fields. Requires an overwrite. Return value: The Customer.
+            /// making the request is different from the reseller account in the API request. * PERMISSION_DENIED: You
+            /// are not authorized to import the customer. See https://support.google.com/channelservices/answer/9759265
+            /// * NOT_FOUND: Cloud Identity doesn't exist or was deleted. * INVALID_ARGUMENT: Required parameters are
+            /// missing, or the auth_token is expired or invalid. * ALREADY_EXISTS: A customer already exists and has
+            /// conflicting critical fields. Requires an overwrite. Return value: The Customer.
             /// </summary>
             public class ImportRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleCloudChannelV1Customer>
             {
@@ -3860,13 +3872,15 @@ namespace Google.Apis.Cloudchannel.v1
             /// <summary>
             /// Creates a Cloud Identity for the given customer using the customer's information, or the information
             /// provided here. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. *
-            /// INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer was not
-            /// found. * ALREADY_EXISTS: The customer's primary email already exists. Retry after changing the
-            /// customer's primary contact email. * INTERNAL: Any non-user error related to a technical issue in the
-            /// backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in
-            /// the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the
-            /// results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation
-            /// metadata contains an instance of OperationMetadata.
+            /// PERMISSION_DENIED: You are not authorized to provision cloud identity id. See
+            /// https://support.google.com/channelservices/answer/9759265 * INVALID_ARGUMENT: Required request
+            /// parameters are missing or invalid. * NOT_FOUND: The customer was not found. * ALREADY_EXISTS: The
+            /// customer's primary email already exists. Retry after changing the customer's primary contact email. *
+            /// INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support.
+            /// * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel
+            /// support. Return value: The ID of a long-running operation. To get the results of the operation, call the
+            /// GetOperation method of CloudChannelOperationsService. The Operation metadata contains an instance of
+            /// OperationMetadata.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="customer">
@@ -3880,13 +3894,15 @@ namespace Google.Apis.Cloudchannel.v1
             /// <summary>
             /// Creates a Cloud Identity for the given customer using the customer's information, or the information
             /// provided here. Possible error codes: * PERMISSION_DENIED: The customer doesn't belong to the reseller. *
-            /// INVALID_ARGUMENT: Required request parameters are missing or invalid. * NOT_FOUND: The customer was not
-            /// found. * ALREADY_EXISTS: The customer's primary email already exists. Retry after changing the
-            /// customer's primary contact email. * INTERNAL: Any non-user error related to a technical issue in the
-            /// backend. Contact Cloud Channel support. * UNKNOWN: Any non-user error related to a technical issue in
-            /// the backend. Contact Cloud Channel support. Return value: The ID of a long-running operation. To get the
-            /// results of the operation, call the GetOperation method of CloudChannelOperationsService. The Operation
-            /// metadata contains an instance of OperationMetadata.
+            /// PERMISSION_DENIED: You are not authorized to provision cloud identity id. See
+            /// https://support.google.com/channelservices/answer/9759265 * INVALID_ARGUMENT: Required request
+            /// parameters are missing or invalid. * NOT_FOUND: The customer was not found. * ALREADY_EXISTS: The
+            /// customer's primary email already exists. Retry after changing the customer's primary contact email. *
+            /// INTERNAL: Any non-user error related to a technical issue in the backend. Contact Cloud Channel support.
+            /// * UNKNOWN: Any non-user error related to a technical issue in the backend. Contact Cloud Channel
+            /// support. Return value: The ID of a long-running operation. To get the results of the operation, call the
+            /// GetOperation method of CloudChannelOperationsService. The Operation metadata contains an instance of
+            /// OperationMetadata.
             /// </summary>
             public class ProvisionCloudIdentityRequest : CloudchannelBaseServiceRequest<Google.Apis.Cloudchannel.v1.Data.GoogleLongrunningOperation>
             {
@@ -5883,9 +5899,42 @@ namespace Google.Apis.Cloudchannel.v1.Data
     /// <summary>Represents a billing account.</summary>
     public class GoogleCloudChannelV1BillingAccount : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. The time when this billing account was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. The 3-letter currency code defined in ISO 4217.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("currencyCode")]
@@ -6040,9 +6089,42 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("channelPartnerCloudIdentityInfo")]
         public virtual GoogleCloudChannelV1CloudIdentityInfo ChannelPartnerCloudIdentityInfo { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. Timestamp of when the channel partner link is created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. URI of the web page where partner accepts the link invitation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inviteLinkUri")]
@@ -6070,9 +6152,42 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resellerCloudIdentityId")]
         public virtual string ResellerCloudIdentityId { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>Output only. Timestamp of when the channel partner link is updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6097,12 +6212,45 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("repricingConfig")]
         public virtual GoogleCloudChannelV1RepricingConfig RepricingConfig { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>
         /// Output only. Timestamp of an update to the repricing rule. If `update_time` is after
         /// RepricingConfig.effective_invoice_month then it indicates this was set mid-month.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6232,17 +6380,83 @@ namespace Google.Apis.Cloudchannel.v1.Data
     /// <summary>Commitment settings for commitment-based offers.</summary>
     public class GoogleCloudChannelV1CommitmentSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
         /// <summary>Output only. Commitment end timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Optional. Renewal settings applicable for a commitment-based Offer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("renewalSettings")]
         public virtual GoogleCloudChannelV1RenewalSettings RenewalSettings { get; set; }
 
+        private string _startTimeRaw;
+
+        private object _startTime;
+
         /// <summary>Output only. Commitment start timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6378,9 +6592,42 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("correlationId")]
         public virtual string CorrelationId { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. Time when the customer was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Required. The customer's primary domain. Must match the primary contact email's domain.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
@@ -6415,9 +6662,42 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("primaryContactInfo")]
         public virtual GoogleCloudChannelV1ContactInfo PrimaryContactInfo { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>Output only. Time when the customer was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6473,12 +6753,45 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("repricingConfig")]
         public virtual GoogleCloudChannelV1RepricingConfig RepricingConfig { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>
         /// Output only. Timestamp of an update to the repricing rule. If `update_time` is after
         /// RepricingConfig.effective_invoice_month then it indicates this was set mid-month.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6555,9 +6868,42 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commitmentSettings")]
         public virtual GoogleCloudChannelV1CommitmentSettings CommitmentSettings { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. The time at which the entitlement is created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. Resource name of an entitlement in the form:
@@ -6608,9 +6954,42 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("trialSettings")]
         public virtual GoogleCloudChannelV1TrialSettings TrialSettings { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>Output only. The time at which the entitlement is updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6631,9 +7010,42 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("changeType")]
         public virtual string ChangeType { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>The submitted time of the change.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Required. Resource name of an entitlement in the form:
@@ -7239,9 +7651,42 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dealCode")]
         public virtual string DealCode { get; set; }
 
+        private string _endTimeRaw;
+
+        private object _endTime;
+
         /// <summary>Output only. End of the Offer validity time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Marketing information for the Offer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marketingInfo")]
@@ -7267,9 +7712,42 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sku")]
         public virtual GoogleCloudChannelV1Sku Sku { get; set; }
 
+        private string _startTimeRaw;
+
+        private object _startTime;
+
         /// <summary>Start of the Offer validity time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7745,13 +8223,79 @@ namespace Google.Apis.Cloudchannel.v1.Data
     /// <summary>Status of a report generation process.</summary>
     public class GoogleCloudChannelV1ReportStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
         /// <summary>The report generation's completion time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
 
         /// <summary>The report generation's start time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The current state of the report generation process.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -8197,12 +8741,45 @@ namespace Google.Apis.Cloudchannel.v1.Data
     /// <summary>Settings for trial offers.</summary>
     public class GoogleCloudChannelV1TrialSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
         /// <summary>
         /// Date when the trial ends. The value is in milliseconds using the UNIX Epoch format. See an example [Epoch
         /// converter](https://www.epochconverter.com).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Determines if the entitlement is in a trial or not: * `true` - The entitlement is in trial. * `false` - The
@@ -8345,17 +8922,83 @@ namespace Google.Apis.Cloudchannel.v1.Data
     /// <summary>Commitment settings for commitment-based offers.</summary>
     public class GoogleCloudChannelV1alpha1CommitmentSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
         /// <summary>Output only. Commitment end timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Optional. Renewal settings applicable for a commitment-based Offer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("renewalSettings")]
         public virtual GoogleCloudChannelV1alpha1RenewalSettings RenewalSettings { get; set; }
 
+        private string _startTimeRaw;
+
+        private object _startTime;
+
         /// <summary>Output only. Commitment start timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8444,9 +9087,42 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commitmentSettings")]
         public virtual GoogleCloudChannelV1alpha1CommitmentSettings CommitmentSettings { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. The time at which the entitlement is created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Maximum number of units for a non commitment-based Offer, such as Flexible, Trial or Free entitlements. For
@@ -8513,9 +9189,42 @@ namespace Google.Apis.Cloudchannel.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("trialSettings")]
         public virtual GoogleCloudChannelV1alpha1TrialSettings TrialSettings { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>Output only. The time at which the entitlement is updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8741,13 +9450,79 @@ namespace Google.Apis.Cloudchannel.v1.Data
     /// <summary>Status of a report generation process.</summary>
     public class GoogleCloudChannelV1alpha1ReportStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
         /// <summary>The report generation's completion time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
 
         /// <summary>The report generation's start time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The current state of the report generation process.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -8813,12 +9588,45 @@ namespace Google.Apis.Cloudchannel.v1.Data
     /// <summary>Settings for trial offers.</summary>
     public class GoogleCloudChannelV1alpha1TrialSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
         /// <summary>
         /// Date when the trial ends. The value is in milliseconds using the UNIX Epoch format. See an example [Epoch
         /// converter](https://www.epochconverter.com).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Determines if the entitlement is in a trial or not: * `true` - The entitlement is in trial. * `false` - The

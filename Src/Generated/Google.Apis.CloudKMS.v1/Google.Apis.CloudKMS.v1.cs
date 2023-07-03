@@ -1957,6 +1957,134 @@ namespace Google.Apis.CloudKMS.v1
                         }
 
                         /// <summary>
+                        /// Decrypts data that was originally encrypted using a raw cryptographic mechanism. The
+                        /// CryptoKey.purpose must be RAW_ENCRYPT_DECRYPT.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Required. The resource name of the CryptoKeyVersion to use for decryption.
+                        /// </param>
+                        public virtual RawDecryptRequest RawDecrypt(Google.Apis.CloudKMS.v1.Data.RawDecryptRequest body, string name)
+                        {
+                            return new RawDecryptRequest(service, body, name);
+                        }
+
+                        /// <summary>
+                        /// Decrypts data that was originally encrypted using a raw cryptographic mechanism. The
+                        /// CryptoKey.purpose must be RAW_ENCRYPT_DECRYPT.
+                        /// </summary>
+                        public class RawDecryptRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.RawDecryptResponse>
+                        {
+                            /// <summary>Constructs a new RawDecrypt request.</summary>
+                            public RawDecryptRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudKMS.v1.Data.RawDecryptRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the CryptoKeyVersion to use for decryption.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudKMS.v1.Data.RawDecryptRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "rawDecrypt";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}:rawDecrypt";
+
+                            /// <summary>Initializes RawDecrypt parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+/cryptoKeyVersions/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// Encrypts data using portable cryptographic primitives. Most users should choose Encrypt and
+                        /// Decrypt rather than their raw counterparts. The CryptoKey.purpose must be
+                        /// RAW_ENCRYPT_DECRYPT.
+                        /// </summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="name">
+                        /// Required. The resource name of the CryptoKeyVersion to use for encryption.
+                        /// </param>
+                        public virtual RawEncryptRequest RawEncrypt(Google.Apis.CloudKMS.v1.Data.RawEncryptRequest body, string name)
+                        {
+                            return new RawEncryptRequest(service, body, name);
+                        }
+
+                        /// <summary>
+                        /// Encrypts data using portable cryptographic primitives. Most users should choose Encrypt and
+                        /// Decrypt rather than their raw counterparts. The CryptoKey.purpose must be
+                        /// RAW_ENCRYPT_DECRYPT.
+                        /// </summary>
+                        public class RawEncryptRequest : CloudKMSBaseServiceRequest<Google.Apis.CloudKMS.v1.Data.RawEncryptResponse>
+                        {
+                            /// <summary>Constructs a new RawEncrypt request.</summary>
+                            public RawEncryptRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudKMS.v1.Data.RawEncryptRequest body, string name) : base(service)
+                            {
+                                Name = name;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The resource name of the CryptoKeyVersion to use for encryption.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.CloudKMS.v1.Data.RawEncryptRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "rawEncrypt";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}:rawEncrypt";
+
+                            /// <summary>Initializes RawEncrypt parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/keyRings/[^/]+/cryptoKeys/[^/]+/cryptoKeyVersions/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
                         /// Restore a CryptoKeyVersion in the DESTROY_SCHEDULED state. Upon restoration of the
                         /// CryptoKeyVersion, state will be set to DISABLED, and destroy_time will be cleared.
                         /// </summary>
@@ -4280,17 +4408,83 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("issuer")]
         public virtual string Issuer { get; set; }
 
+        private string _notAfterTimeRaw;
+
+        private object _notAfterTime;
+
         /// <summary>
         /// Output only. The certificate is not valid after this time. Only present if parsed is true.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notAfterTime")]
-        public virtual object NotAfterTime { get; set; }
+        public virtual string NotAfterTimeRaw
+        {
+            get => _notAfterTimeRaw;
+            set
+            {
+                _notAfterTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _notAfterTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="NotAfterTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use NotAfterTimeDateTimeOffset instead.")]
+        public virtual object NotAfterTime
+        {
+            get => _notAfterTime;
+            set
+            {
+                _notAfterTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _notAfterTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="NotAfterTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? NotAfterTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(NotAfterTimeRaw);
+            set => NotAfterTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _notBeforeTimeRaw;
+
+        private object _notBeforeTime;
 
         /// <summary>
         /// Output only. The certificate is not valid before this time. Only present if parsed is true.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notBeforeTime")]
-        public virtual object NotBeforeTime { get; set; }
+        public virtual string NotBeforeTimeRaw
+        {
+            get => _notBeforeTimeRaw;
+            set
+            {
+                _notBeforeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _notBeforeTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="NotBeforeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use NotBeforeTimeDateTimeOffset instead.")]
+        public virtual object NotBeforeTime
+        {
+            get => _notBeforeTime;
+            set
+            {
+                _notBeforeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _notBeforeTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="NotBeforeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? NotBeforeTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(NotBeforeTimeRaw);
+            set => NotBeforeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. True if the certificate was parsed successfully.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parsed")]
@@ -4354,9 +4548,42 @@ namespace Google.Apis.CloudKMS.v1.Data
     /// </summary>
     public class CryptoKey : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. The time at which this CryptoKey was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Immutable. The resource name of the backend environment where the key material for all CryptoKeyVersions
@@ -4393,6 +4620,10 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        private string _nextRotationTimeRaw;
+
+        private object _nextRotationTime;
+
         /// <summary>
         /// At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this
         /// CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion
@@ -4400,7 +4631,38 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// support automatic rotation. For other keys, this field must be omitted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextRotationTime")]
-        public virtual object NextRotationTime { get; set; }
+        public virtual string NextRotationTimeRaw
+        {
+            get => _nextRotationTimeRaw;
+            set
+            {
+                _nextRotationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _nextRotationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="NextRotationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use NextRotationTimeDateTimeOffset instead.")]
+        public virtual object NextRotationTime
+        {
+            get => _nextRotationTime;
+            set
+            {
+                _nextRotationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _nextRotationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="NextRotationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? NextRotationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(NextRotationTimeRaw);
+            set => NextRotationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. A copy of the "primary" CryptoKeyVersion that will be used by Encrypt when this CryptoKey is
@@ -4454,23 +4716,124 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attestation")]
         public virtual KeyOperationAttestation Attestation { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. The time at which this CryptoKeyVersion was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _destroyEventTimeRaw;
+
+        private object _destroyEventTime;
 
         /// <summary>
         /// Output only. The time this CryptoKeyVersion's key material was destroyed. Only present if state is
         /// DESTROYED.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destroyEventTime")]
-        public virtual object DestroyEventTime { get; set; }
+        public virtual string DestroyEventTimeRaw
+        {
+            get => _destroyEventTimeRaw;
+            set
+            {
+                _destroyEventTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _destroyEventTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DestroyEventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DestroyEventTimeDateTimeOffset instead.")]
+        public virtual object DestroyEventTime
+        {
+            get => _destroyEventTime;
+            set
+            {
+                _destroyEventTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _destroyEventTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="DestroyEventTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DestroyEventTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DestroyEventTimeRaw);
+            set => DestroyEventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _destroyTimeRaw;
+
+        private object _destroyTime;
 
         /// <summary>
         /// Output only. The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if
         /// state is DESTROY_SCHEDULED.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destroyTime")]
-        public virtual object DestroyTime { get; set; }
+        public virtual string DestroyTimeRaw
+        {
+            get => _destroyTimeRaw;
+            set
+            {
+                _destroyTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _destroyTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DestroyTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DestroyTimeDateTimeOffset instead.")]
+        public virtual object DestroyTime
+        {
+            get => _destroyTime;
+            set
+            {
+                _destroyTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _destroyTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DestroyTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DestroyTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DestroyTimeRaw);
+            set => DestroyTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. The root cause of the most recent external destruction failure. Only present if state is
@@ -4486,9 +4849,42 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("externalProtectionLevelOptions")]
         public virtual ExternalProtectionLevelOptions ExternalProtectionLevelOptions { get; set; }
 
+        private string _generateTimeRaw;
+
+        private object _generateTime;
+
         /// <summary>Output only. The time this CryptoKeyVersion's key material was generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generateTime")]
-        public virtual object GenerateTime { get; set; }
+        public virtual string GenerateTimeRaw
+        {
+            get => _generateTimeRaw;
+            set
+            {
+                _generateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _generateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="GenerateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use GenerateTimeDateTimeOffset instead.")]
+        public virtual object GenerateTime
+        {
+            get => _generateTime;
+            set
+            {
+                _generateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _generateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="GenerateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? GenerateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(GenerateTimeRaw);
+            set => GenerateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. The root cause of the most recent generation failure. Only present if state is
@@ -4510,11 +4906,44 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("importJob")]
         public virtual string ImportJob { get; set; }
 
+        private string _importTimeRaw;
+
+        private object _importTime;
+
         /// <summary>
         /// Output only. The time at which this CryptoKeyVersion's key material was most recently imported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importTime")]
-        public virtual object ImportTime { get; set; }
+        public virtual string ImportTimeRaw
+        {
+            get => _importTimeRaw;
+            set
+            {
+                _importTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _importTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ImportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ImportTimeDateTimeOffset instead.")]
+        public virtual object ImportTime
+        {
+            get => _importTime;
+            set
+            {
+                _importTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _importTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ImportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ImportTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ImportTimeRaw);
+            set => ImportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. The resource name for this CryptoKeyVersion in the format
@@ -4703,9 +5132,42 @@ namespace Google.Apis.CloudKMS.v1.Data
     /// </summary>
     public class EkmConnection : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. The time at which the EkmConnection was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Optional. Identifies the EKM Crypto Space that this EkmConnection maps to. Note: This field is required if
@@ -5033,24 +5495,158 @@ namespace Google.Apis.CloudKMS.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attestation")]
         public virtual KeyOperationAttestation Attestation { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. The time at which this ImportJob was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _expireEventTimeRaw;
+
+        private object _expireEventTime;
 
         /// <summary>Output only. The time this ImportJob expired. Only present if state is EXPIRED.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireEventTime")]
-        public virtual object ExpireEventTime { get; set; }
+        public virtual string ExpireEventTimeRaw
+        {
+            get => _expireEventTimeRaw;
+            set
+            {
+                _expireEventTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireEventTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireEventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireEventTimeDateTimeOffset instead.")]
+        public virtual object ExpireEventTime
+        {
+            get => _expireEventTime;
+            set
+            {
+                _expireEventTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireEventTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireEventTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireEventTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireEventTimeRaw);
+            set => ExpireEventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _expireTimeRaw;
+
+        private object _expireTime;
 
         /// <summary>
         /// Output only. The time at which this ImportJob is scheduled for expiration and can no longer be used to
         /// import key material.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; }
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _generateTimeRaw;
+
+        private object _generateTime;
 
         /// <summary>Output only. The time this ImportJob's key material was generated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("generateTime")]
-        public virtual object GenerateTime { get; set; }
+        public virtual string GenerateTimeRaw
+        {
+            get => _generateTimeRaw;
+            set
+            {
+                _generateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _generateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="GenerateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use GenerateTimeDateTimeOffset instead.")]
+        public virtual object GenerateTime
+        {
+            get => _generateTime;
+            set
+            {
+                _generateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _generateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="GenerateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? GenerateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(GenerateTimeRaw);
+            set => GenerateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Required. Immutable. The wrapping method to be used for incoming key material.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importMethod")]
@@ -5112,9 +5708,42 @@ namespace Google.Apis.CloudKMS.v1.Data
     /// <summary>A KeyRing is a toplevel logical grouping of CryptoKeys.</summary>
     public class KeyRing : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. The time at which this KeyRing was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. The resource name for the KeyRing in the format `projects/*/locations/*/keyRings/*`.
@@ -5570,6 +6199,300 @@ namespace Google.Apis.CloudKMS.v1.Data
         /// <summary>The ProtectionLevel of the CryptoKeyVersion public key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protectionLevel")]
         public virtual string ProtectionLevel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for KeyManagementService.RawDecrypt.</summary>
+    public class RawDecryptRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Optional data that must match the data originally supplied in
+        /// RawEncryptRequest.additional_authenticated_data.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalAuthenticatedData")]
+        public virtual string AdditionalAuthenticatedData { get; set; }
+
+        /// <summary>
+        /// Optional. An optional CRC32C checksum of the RawDecryptRequest.additional_authenticated_data. If specified,
+        /// KeyManagementService will verify the integrity of the received additional_authenticated_data using this
+        /// checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a
+        /// checksum error, your client should verify that CRC32C(additional_authenticated_data) is equal to
+        /// additional_authenticated_data_crc32c, and if so, perform a limited number of retries. A persistent mismatch
+        /// may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for
+        /// reasons of compatibility across different languages. However, it is a non-negative integer, which will never
+        /// exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalAuthenticatedDataCrc32c")]
+        public virtual System.Nullable<long> AdditionalAuthenticatedDataCrc32c { get; set; }
+
+        /// <summary>Required. The encrypted data originally returned in RawEncryptResponse.ciphertext.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ciphertext")]
+        public virtual string Ciphertext { get; set; }
+
+        /// <summary>
+        /// Optional. An optional CRC32C checksum of the RawDecryptRequest.ciphertext. If specified,
+        /// KeyManagementService will verify the integrity of the received ciphertext using this checksum.
+        /// KeyManagementService will report an error if the checksum verification fails. If you receive a checksum
+        /// error, your client should verify that CRC32C(ciphertext) is equal to ciphertext_crc32c, and if so, perform a
+        /// limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C
+        /// checksum. Note: This field is defined as int64 for reasons of compatibility across different languages.
+        /// However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to
+        /// uint32 in languages that support this type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ciphertextCrc32c")]
+        public virtual System.Nullable<long> CiphertextCrc32c { get; set; }
+
+        /// <summary>
+        /// Required. The initialization vector (IV) used during encryption, which must match the data originally
+        /// provided in RawEncryptResponse.initialization_vector.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initializationVector")]
+        public virtual string InitializationVector { get; set; }
+
+        /// <summary>
+        /// Optional. An optional CRC32C checksum of the RawDecryptRequest.initialization_vector. If specified,
+        /// KeyManagementService will verify the integrity of the received initialization_vector using this checksum.
+        /// KeyManagementService will report an error if the checksum verification fails. If you receive a checksum
+        /// error, your client should verify that CRC32C(initialization_vector) is equal to
+        /// initialization_vector_crc32c, and if so, perform a limited number of retries. A persistent mismatch may
+        /// indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for
+        /// reasons of compatibility across different languages. However, it is a non-negative integer, which will never
+        /// exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initializationVectorCrc32c")]
+        public virtual System.Nullable<long> InitializationVectorCrc32c { get; set; }
+
+        /// <summary>
+        /// The length of the authentication tag that is appended to the end of the ciphertext. If unspecified (0), the
+        /// default value for the key's algorithm will be used (for AES-GCM, the default value is 16).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagLength")]
+        public virtual System.Nullable<int> TagLength { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for KeyManagementService.RawDecrypt.</summary>
+    public class RawDecryptResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The decrypted data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plaintext")]
+        public virtual string Plaintext { get; set; }
+
+        /// <summary>
+        /// Integrity verification field. A CRC32C checksum of the returned RawDecryptResponse.plaintext. An integrity
+        /// check of plaintext can be performed by computing the CRC32C checksum of plaintext and comparing your results
+        /// to this field. Discard the response in case of non-matching checksum values, and perform a limited number of
+        /// retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note:
+        /// receiving this response message indicates that KeyManagementService is able to successfully decrypt the
+        /// ciphertext. Note: This field is defined as int64 for reasons of compatibility across different languages.
+        /// However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to
+        /// uint32 in languages that support this type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plaintextCrc32c")]
+        public virtual System.Nullable<long> PlaintextCrc32c { get; set; }
+
+        /// <summary>The ProtectionLevel of the CryptoKeyVersion used in decryption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectionLevel")]
+        public virtual string ProtectionLevel { get; set; }
+
+        /// <summary>
+        /// Integrity verification field. A flag indicating whether
+        /// RawDecryptRequest.additional_authenticated_data_crc32c was received by KeyManagementService and used for the
+        /// integrity verification of additional_authenticated_data. A false value of this field indicates either that
+        /// // RawDecryptRequest.additional_authenticated_data_crc32c was left unset or that it was not delivered to
+        /// KeyManagementService. If you've set RawDecryptRequest.additional_authenticated_data_crc32c but this field is
+        /// still false, discard the response and perform a limited number of retries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifiedAdditionalAuthenticatedDataCrc32c")]
+        public virtual System.Nullable<bool> VerifiedAdditionalAuthenticatedDataCrc32c { get; set; }
+
+        /// <summary>
+        /// Integrity verification field. A flag indicating whether RawDecryptRequest.ciphertext_crc32c was received by
+        /// KeyManagementService and used for the integrity verification of the ciphertext. A false value of this field
+        /// indicates either that RawDecryptRequest.ciphertext_crc32c was left unset or that it was not delivered to
+        /// KeyManagementService. If you've set RawDecryptRequest.ciphertext_crc32c but this field is still false,
+        /// discard the response and perform a limited number of retries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifiedCiphertextCrc32c")]
+        public virtual System.Nullable<bool> VerifiedCiphertextCrc32c { get; set; }
+
+        /// <summary>
+        /// Integrity verification field. A flag indicating whether RawDecryptRequest.initialization_vector_crc32c was
+        /// received by KeyManagementService and used for the integrity verification of initialization_vector. A false
+        /// value of this field indicates either that RawDecryptRequest.initialization_vector_crc32c was left unset or
+        /// that it was not delivered to KeyManagementService. If you've set
+        /// RawDecryptRequest.initialization_vector_crc32c but this field is still false, discard the response and
+        /// perform a limited number of retries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifiedInitializationVectorCrc32c")]
+        public virtual System.Nullable<bool> VerifiedInitializationVectorCrc32c { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for KeyManagementService.RawEncrypt.</summary>
+    public class RawEncryptRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Optional data that, if specified, must also be provided during decryption through
+        /// RawDecryptRequest.additional_authenticated_data. This field may only be used in conjunction with an
+        /// algorithm that accepts additional authenticated data (for example, AES-GCM). The maximum size depends on the
+        /// key version's protection_level. For SOFTWARE keys, the plaintext must be no larger than 64KiB. For HSM keys,
+        /// the combined length of the plaintext and additional_authenticated_data fields must be no larger than 8KiB.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalAuthenticatedData")]
+        public virtual string AdditionalAuthenticatedData { get; set; }
+
+        /// <summary>
+        /// Optional. An optional CRC32C checksum of the RawEncryptRequest.additional_authenticated_data. If specified,
+        /// KeyManagementService will verify the integrity of the received additional_authenticated_data using this
+        /// checksum. KeyManagementService will report an error if the checksum verification fails. If you receive a
+        /// checksum error, your client should verify that CRC32C(additional_authenticated_data) is equal to
+        /// additional_authenticated_data_crc32c, and if so, perform a limited number of retries. A persistent mismatch
+        /// may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for
+        /// reasons of compatibility across different languages. However, it is a non-negative integer, which will never
+        /// exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalAuthenticatedDataCrc32c")]
+        public virtual System.Nullable<long> AdditionalAuthenticatedDataCrc32c { get; set; }
+
+        /// <summary>
+        /// Optional. A customer-supplied initialization vector that will be used for encryption. If it is not provided
+        /// for AES-CBC and AES-CTR, one will be generated. It will be returned in
+        /// RawEncryptResponse.initialization_vector.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initializationVector")]
+        public virtual string InitializationVector { get; set; }
+
+        /// <summary>
+        /// Optional. An optional CRC32C checksum of the RawEncryptRequest.initialization_vector. If specified,
+        /// KeyManagementService will verify the integrity of the received initialization_vector using this checksum.
+        /// KeyManagementService will report an error if the checksum verification fails. If you receive a checksum
+        /// error, your client should verify that CRC32C(initialization_vector) is equal to
+        /// initialization_vector_crc32c, and if so, perform a limited number of retries. A persistent mismatch may
+        /// indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for
+        /// reasons of compatibility across different languages. However, it is a non-negative integer, which will never
+        /// exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initializationVectorCrc32c")]
+        public virtual System.Nullable<long> InitializationVectorCrc32c { get; set; }
+
+        /// <summary>
+        /// Required. The data to encrypt. Must be no larger than 64KiB. The maximum size depends on the key version's
+        /// protection_level. For SOFTWARE keys, the plaintext must be no larger than 64KiB. For HSM keys, the combined
+        /// length of the plaintext and additional_authenticated_data fields must be no larger than 8KiB.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plaintext")]
+        public virtual string Plaintext { get; set; }
+
+        /// <summary>
+        /// Optional. An optional CRC32C checksum of the RawEncryptRequest.plaintext. If specified, KeyManagementService
+        /// will verify the integrity of the received plaintext using this checksum. KeyManagementService will report an
+        /// error if the checksum verification fails. If you receive a checksum error, your client should verify that
+        /// CRC32C(plaintext) is equal to plaintext_crc32c, and if so, perform a limited number of retries. A persistent
+        /// mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as
+        /// int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which
+        /// will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plaintextCrc32c")]
+        public virtual System.Nullable<long> PlaintextCrc32c { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for KeyManagementService.RawEncrypt.</summary>
+    public class RawEncryptResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The encrypted data. In the case of AES-GCM, the authentication tag is the tag_length bytes at the end of
+        /// this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ciphertext")]
+        public virtual string Ciphertext { get; set; }
+
+        /// <summary>
+        /// Integrity verification field. A CRC32C checksum of the returned RawEncryptResponse.ciphertext. An integrity
+        /// check of ciphertext can be performed by computing the CRC32C checksum of ciphertext and comparing your
+        /// results to this field. Discard the response in case of non-matching checksum values, and perform a limited
+        /// number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum.
+        /// Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is
+        /// a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in
+        /// languages that support this type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ciphertextCrc32c")]
+        public virtual System.Nullable<long> CiphertextCrc32c { get; set; }
+
+        /// <summary>
+        /// The initialization vector (IV) generated by the service during encryption. This value must be stored and
+        /// provided in RawDecryptRequest.initialization_vector at decryption time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initializationVector")]
+        public virtual string InitializationVector { get; set; }
+
+        /// <summary>
+        /// Integrity verification field. A CRC32C checksum of the returned RawEncryptResponse.initialization_vector. An
+        /// integrity check of initialization_vector can be performed by computing the CRC32C checksum of
+        /// initialization_vector and comparing your results to this field. Discard the response in case of non-matching
+        /// checksum values, and perform a limited number of retries. A persistent mismatch may indicate an issue in
+        /// your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility
+        /// across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can
+        /// be safely downconverted to uint32 in languages that support this type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("initializationVectorCrc32c")]
+        public virtual System.Nullable<long> InitializationVectorCrc32c { get; set; }
+
+        /// <summary>
+        /// The resource name of the CryptoKeyVersion used in encryption. Check this field to verify that the intended
+        /// resource was used for encryption.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ProtectionLevel of the CryptoKeyVersion used in encryption.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("protectionLevel")]
+        public virtual string ProtectionLevel { get; set; }
+
+        /// <summary>The length of the authentication tag that is appended to the end of the ciphertext.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagLength")]
+        public virtual System.Nullable<int> TagLength { get; set; }
+
+        /// <summary>
+        /// Integrity verification field. A flag indicating whether
+        /// RawEncryptRequest.additional_authenticated_data_crc32c was received by KeyManagementService and used for the
+        /// integrity verification of additional_authenticated_data. A false value of this field indicates either that
+        /// // RawEncryptRequest.additional_authenticated_data_crc32c was left unset or that it was not delivered to
+        /// KeyManagementService. If you've set RawEncryptRequest.additional_authenticated_data_crc32c but this field is
+        /// still false, discard the response and perform a limited number of retries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifiedAdditionalAuthenticatedDataCrc32c")]
+        public virtual System.Nullable<bool> VerifiedAdditionalAuthenticatedDataCrc32c { get; set; }
+
+        /// <summary>
+        /// Integrity verification field. A flag indicating whether RawEncryptRequest.initialization_vector_crc32c was
+        /// received by KeyManagementService and used for the integrity verification of initialization_vector. A false
+        /// value of this field indicates either that RawEncryptRequest.initialization_vector_crc32c was left unset or
+        /// that it was not delivered to KeyManagementService. If you've set
+        /// RawEncryptRequest.initialization_vector_crc32c but this field is still false, discard the response and
+        /// perform a limited number of retries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifiedInitializationVectorCrc32c")]
+        public virtual System.Nullable<bool> VerifiedInitializationVectorCrc32c { get; set; }
+
+        /// <summary>
+        /// Integrity verification field. A flag indicating whether RawEncryptRequest.plaintext_crc32c was received by
+        /// KeyManagementService and used for the integrity verification of the plaintext. A false value of this field
+        /// indicates either that RawEncryptRequest.plaintext_crc32c was left unset or that it was not delivered to
+        /// KeyManagementService. If you've set RawEncryptRequest.plaintext_crc32c but this field is still false,
+        /// discard the response and perform a limited number of retries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifiedPlaintextCrc32c")]
+        public virtual System.Nullable<bool> VerifiedPlaintextCrc32c { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

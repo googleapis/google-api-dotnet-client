@@ -1767,6 +1767,10 @@ namespace Google.Apis.Cloudbilling.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currencyConversionRate")]
         public virtual System.Nullable<double> CurrencyConversionRate { get; set; }
 
+        private string _effectiveTimeRaw;
+
+        private object _effectiveTime;
+
         /// <summary>
         /// The timestamp from which this pricing was effective within the requested time range. This is guaranteed to
         /// be greater than or equal to the start_time field in the request and less than the end_time field in the
@@ -1774,7 +1778,36 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// last 12 hours, indicating the latest pricing info.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveTime")]
-        public virtual object EffectiveTime { get; set; }
+        public virtual string EffectiveTimeRaw
+        {
+            get => _effectiveTimeRaw;
+            set
+            {
+                _effectiveTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _effectiveTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EffectiveTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EffectiveTimeDateTimeOffset instead.")]
+        public virtual object EffectiveTime
+        {
+            get => _effectiveTime;
+            set
+            {
+                _effectiveTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _effectiveTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EffectiveTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EffectiveTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EffectiveTimeRaw);
+            set => EffectiveTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Expresses the pricing formula. See `PricingExpression` for an example.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pricingExpression")]
@@ -1806,7 +1839,7 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// <summary>
         /// Output only. True if the project is associated with an open billing account, to which usage on the project
         /// is charged. False if the project is associated with a closed billing account, or no billing account at all,
-        /// and therefore cannot use paid services. This field is read-only.
+        /// and therefore cannot use paid services.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billingEnabled")]
         public virtual System.Nullable<bool> BillingEnabled { get; set; }
@@ -1814,15 +1847,14 @@ namespace Google.Apis.Cloudbilling.v1.Data
         /// <summary>
         /// Output only. The resource name for the `ProjectBillingInfo`; has the form
         /// `projects/{project_id}/billingInfo`. For example, the resource name for the billing information for project
-        /// `tokyo-rain-123` would be `projects/tokyo-rain-123/billingInfo`. This field is read-only.
+        /// `tokyo-rain-123` would be `projects/tokyo-rain-123/billingInfo`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
         /// Output only. The ID of the project that this `ProjectBillingInfo` represents, such as `tokyo-rain-123`. This
-        /// is a convenience field so that you don't need to parse the `name` field to obtain a project ID. This field
-        /// is read-only.
+        /// is a convenience field so that you don't need to parse the `name` field to obtain a project ID.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }

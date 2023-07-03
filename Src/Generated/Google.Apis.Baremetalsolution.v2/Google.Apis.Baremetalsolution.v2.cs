@@ -290,7 +290,6 @@ namespace Google.Apis.Baremetalsolution.v2
             public LocationsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
-                InstanceProvisioningSettings = new InstanceProvisioningSettingsResource(service);
                 Instances = new InstancesResource(service);
                 Networks = new NetworksResource(service);
                 NfsShares = new NfsSharesResource(service);
@@ -299,77 +298,6 @@ namespace Google.Apis.Baremetalsolution.v2
                 ProvisioningQuotas = new ProvisioningQuotasResource(service);
                 SshKeys = new SshKeysResource(service);
                 Volumes = new VolumesResource(service);
-            }
-
-            /// <summary>Gets the InstanceProvisioningSettings resource.</summary>
-            public virtual InstanceProvisioningSettingsResource InstanceProvisioningSettings { get; }
-
-            /// <summary>The "instanceProvisioningSettings" collection of methods.</summary>
-            public class InstanceProvisioningSettingsResource
-            {
-                private const string Resource = "instanceProvisioningSettings";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public InstanceProvisioningSettingsResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                }
-
-                /// <summary>
-                /// Get instance provisioning settings for a given project. This is hidden method used by UI only.
-                /// </summary>
-                /// <param name="location">
-                /// Required. The parent project and location containing the ProvisioningSettings.
-                /// </param>
-                public virtual FetchRequest Fetch(string location)
-                {
-                    return new FetchRequest(service, location);
-                }
-
-                /// <summary>
-                /// Get instance provisioning settings for a given project. This is hidden method used by UI only.
-                /// </summary>
-                public class FetchRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.FetchInstanceProvisioningSettingsResponse>
-                {
-                    /// <summary>Constructs a new Fetch request.</summary>
-                    public FetchRequest(Google.Apis.Services.IClientService service, string location) : base(service)
-                    {
-                        Location = location;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The parent project and location containing the ProvisioningSettings.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("location", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Location { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "fetch";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v2/{+location}/instanceProvisioningSettings:fetch";
-
-                    /// <summary>Initializes Fetch parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("location", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "location",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                        });
-                    }
-                }
             }
 
             /// <summary>Gets the Instances resource.</summary>
@@ -3484,17 +3412,6 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response with all provisioning settings.</summary>
-    public class FetchInstanceProvisioningSettingsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The OS images available.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("images")]
-        public virtual System.Collections.Generic.IList<OSImage> Images { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>
     /// Each logical interface represents a logical abstraction of the underlying physical interface (for eg. bond, nic)
     /// of the instance. Each logical interface can effectively map to multiple network-IP pairs and still be mapped to
@@ -3521,34 +3438,45 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Logical interface.</summary>
-    public class GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Interface name. This is not a globally unique identifier. Name is unique only inside the
-        /// ServerNetworkTemplate. This is of syntax or and forms part of the network template name.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>If true, interface must have network connected.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("required")]
-        public virtual System.Nullable<bool> Required { get; set; }
-
-        /// <summary>Interface type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>A server.</summary>
     public class Instance : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. Create a time stamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. The firmware version for the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firmwareVersion")]
@@ -3634,9 +3562,42 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>Output only. Update a time stamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Input only. List of Volumes to attach to this Instance on creation. This field won't be populated in
@@ -4010,11 +3971,44 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bootLun")]
         public virtual System.Nullable<bool> BootLun { get; set; }
 
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
         /// <summary>
         /// Output only. Time after which LUN will be fully deleted. It is filled only for LUNs in COOL_OFF state.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; }
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>An identifier for the LUN, generated by the backend.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -4385,36 +4379,6 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Operation System image.</summary>
-    public class OSImage : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Instance types this image is applicable to. [Available
-        /// types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("applicableInstanceTypes")]
-        public virtual System.Collections.Generic.IList<string> ApplicableInstanceTypes { get; set; }
-
-        /// <summary>OS Image code.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("code")]
-        public virtual string Code { get; set; }
-
-        /// <summary>OS Image description.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>Output only. OS Image's unique name.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>Network templates that can be used with this OS Image.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("supportedNetworkTemplates")]
-        public virtual System.Collections.Generic.IList<ServerNetworkTemplate> SupportedNetworkTemplates { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4512,9 +4476,42 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ticketId")]
         public virtual string TicketId { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>Output only. Last update timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Volumes to be created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
@@ -4670,29 +4667,6 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// <summary>The public SSH key. This must be in OpenSSH .authorized_keys format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicKey")]
         public virtual string PublicKey { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Network template.</summary>
-    public class ServerNetworkTemplate : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Instance types this template is applicable to.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("applicableInstanceTypes")]
-        public virtual System.Collections.Generic.IList<string> ApplicableInstanceTypes { get; set; }
-
-        /// <summary>Logical interfaces.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("logicalInterfaces")]
-        public virtual System.Collections.Generic.IList<GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface> LogicalInterfaces { get; set; }
-
-        /// <summary>
-        /// Output only. Template's unique name. The full resource name follows the pattern:
-        /// `projects/{project}/locations/{location}/serverNetworkTemplate/{server_network_template}` Generally, the
-        /// {server_network_template} follows the syntax of "bond" or "nic".
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4908,11 +4882,44 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("emergencySizeGib")]
         public virtual System.Nullable<long> EmergencySizeGib { get; set; }
 
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
         /// <summary>
         /// Output only. Time after which volume will be fully deleted. It is filled only for volumes in COOLOFF state.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; }
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>An identifier for the `Volume`, generated by the backend.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -5081,9 +5088,42 @@ namespace Google.Apis.Baremetalsolution.v2.Data
     /// <summary>A snapshot of a volume. Only boot volumes can have snapshots.</summary>
     public class VolumeSnapshot : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. The creation time of the snapshot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The description of the snapshot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
