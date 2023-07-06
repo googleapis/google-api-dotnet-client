@@ -10466,9 +10466,42 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("consentArtifact")]
         public virtual string ConsentArtifact { get; set; }
 
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
         /// <summary>Timestamp in UTC of when this Consent is considered expired.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; }
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The time to live for this Consent from when it is marked as active.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
@@ -10792,9 +10825,42 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("consentArtifact")]
         public virtual string ConsentArtifact { get; set; }
 
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
         /// <summary>Timestamp in UTC of when this Consent is considered expired.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; }
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Optional. User-supplied key-value pairs used to organize Consent resources. Metadata keys must: - be between
@@ -10822,9 +10888,44 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("policies")]
         public virtual System.Collections.Generic.IList<GoogleCloudHealthcareV1ConsentPolicy> Policies { get; set; }
 
+        private string _revisionCreateTimeRaw;
+
+        private object _revisionCreateTime;
+
         /// <summary>Output only. The timestamp that the revision was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionCreateTime")]
-        public virtual object RevisionCreateTime { get; set; }
+        public virtual string RevisionCreateTimeRaw
+        {
+            get => _revisionCreateTimeRaw;
+            set
+            {
+                _revisionCreateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _revisionCreateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RevisionCreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RevisionCreateTimeDateTimeOffset instead.")]
+        public virtual object RevisionCreateTime
+        {
+            get => _revisionCreateTime;
+            set
+            {
+                _revisionCreateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _revisionCreateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="RevisionCreateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RevisionCreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RevisionCreateTimeRaw);
+            set => RevisionCreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. The revision ID of the Consent. The format is an 8-character hexadecimal string. Refer to a
@@ -11286,6 +11387,15 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notificationConfig")]
         public virtual NotificationConfig NotificationConfig { get; set; }
 
+        /// <summary>
+        /// Optional. A list of streaming configs used to configure the destination of streaming exports for every DICOM
+        /// instance insertion in this DICOM store. After a new config is added to `stream_configs`, DICOM instance
+        /// insertions are streamed to the new destination. When a config is removed from `stream_configs`, the server
+        /// stops streaming to that destination. Each config must contain a unique destination.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("streamConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudHealthcareV1DicomStreamConfig> StreamConfigs { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -11513,6 +11623,10 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     /// <summary>Request to schedule an export.</summary>
     public class ExportMessagesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
         /// <summary>
         /// The end of the range in `send_time` (MSH.7,
         /// https://www.hl7.org/documentcenter/public_temp_2E58C1F9-1C23-BA17-0C6126475344DA9D/wg/conf/HL7MSH.htm) to
@@ -11521,11 +11635,81 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// `end_time` (exclusive) are exported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Restricts messages exported to those matching a filter, only applicable to PubsubDestination and
+        /// GcsDestination. The following syntax is available: * A string field value can be written as text inside
+        /// quotation marks, for example `"query text"`. The only valid relational operation for text fields is equality
+        /// (`=`), where text is searched within the field, rather than having the field be equal to the text. For
+        /// example, `"Comment = great"` returns messages with `great` in the comment field. * A number field value can
+        /// be written as an integer, a decimal, or an exponential. The valid relational operators for number fields are
+        /// the equality operator (`=`), along with the less than/greater than operators (`&amp;lt;`, `&amp;lt;=`,
+        /// `&amp;gt;`, `&amp;gt;=`). Note that there is no inequality (`!=`) operator. You can prepend the `NOT`
+        /// operator to an expression to negate it. * A date field value must be written in the `yyyy-mm-dd` format.
+        /// Fields with date and time use the RFC3339 time format. Leading zeros are required for one-digit months and
+        /// days. The valid relational operators for date fields are the equality operator (`=`) , along with the less
+        /// than/greater than operators (`&amp;lt;`, `&amp;lt;=`, `&amp;gt;`, `&amp;gt;=`). Note that there is no
+        /// inequality (`!=`) operator. You can prepend the `NOT` operator to an expression to negate it. * Multiple
+        /// field query expressions can be combined in one query by adding `AND` or `OR` operators between the
+        /// expressions. If a boolean operator appears within a quoted string, it is not treated as special, and is just
+        /// another part of the character string to be matched. You can prepend the `NOT` operator to an expression to
+        /// negate it. The following fields and functions are available for filtering: * `message_type`, from the
+        /// MSH-9.1 field. For example, `NOT message_type = "ADT"`. * `send_date` or `sendDate`, the `yyyy-mm-dd` date
+        /// the message was sent in the dataset's time_zone, from the MSH-7 segment. For example, `send_date &amp;lt;
+        /// "2017-01-02"`. * `send_time`, the timestamp when the message was sent, using the RFC3339 time format for
+        /// comparisons, from the MSH-7 segment. For example, `send_time &amp;lt; "2017-01-02T00:00:00-05:00"`. *
+        /// `create_time`, the timestamp when the message was created in the HL7v2 store. Use the RFC3339 time format
+        /// for comparisons. For example, `create_time &amp;lt; "2017-01-02T00:00:00-05:00"`. * `send_facility`, the
+        /// care center that the message came from, from the MSH-4 segment. For example, `send_facility = "ABC"`. Note:
+        /// The filter will be applied to every message in the HL7v2 store whose `send_time` lies in the range defined
+        /// by the `start_time` and the `end_time`. Even if the filter only matches a small set of messages, the export
+        /// operation can still take a long time to finish when a lot of messages are between the specified `start_time`
+        /// and `end_time` range.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
 
         /// <summary>Export to a Cloud Storage destination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsDestination")]
         public virtual GcsDestination GcsDestination { get; set; }
+
+        /// <summary>Export messages to a Pub/Sub topic.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubsubDestination")]
+        public virtual PubsubDestination PubsubDestination { get; set; }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
 
         /// <summary>
         /// The start of the range in `send_time` (MSH.7,
@@ -11535,7 +11719,36 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// `end_time` (exclusive) are exported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12123,6 +12336,33 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>StreamConfig specifies configuration for a streaming DICOM export.</summary>
+    public class GoogleCloudHealthcareV1DicomStreamConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Results are appended to this table. The server creates a new table in the given BigQuery dataset if the
+        /// specified table does not exist. To enable the Cloud Healthcare API to write to your BigQuery table, you must
+        /// give the Cloud Healthcare API service account the bigquery.dataEditor role. The service account is:
+        /// `service-{PROJECT_NUMBER}@gcp-sa-healthcare.iam.gserviceaccount.com`. The PROJECT_NUMBER identifies the
+        /// project that the DICOM store resides in. To get the project number, go to the Cloud Console Dashboard. It is
+        /// recommended to not have a custom schema in the destination table which could conflict with the schema
+        /// created by the Cloud Healthcare API. Instance deletions are not applied to the destination table. The
+        /// destination's table schema will be automatically updated in case a new instance's data is incompatible with
+        /// the current schema. The schema should not be updated manually as this can cause incompatibilies that cannot
+        /// be resolved automatically. One resolution in this case is to delete the incompatible table and let the
+        /// server recreate one, though the newly created table only contains data after the table recreation. BigQuery
+        /// imposes a 1 MB limit on streaming insert row size, therefore any instance that generates more than 1 MB of
+        /// BigQuery data will not be streamed. If an instance cannot be streamed to BigQuery, errors will be logged to
+        /// Cloud Logging (see [Viewing error logs in Cloud
+        /// Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDestination")]
+        public virtual GoogleCloudHealthcareV1DicomBigQueryDestination BigqueryDestination { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12878,9 +13118,42 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     /// </summary>
     public class Message : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. The datetime when the message was created. Set by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Raw message bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
@@ -12927,9 +13200,42 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sendFacility")]
         public virtual string SendFacility { get; set; }
 
+        private string _sendTimeRaw;
+
+        private object _sendTime;
+
         /// <summary>The datetime the sending application sent this message. MSH-7.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sendTime")]
-        public virtual object SendTime { get; set; }
+        public virtual string SendTimeRaw
+        {
+            get => _sendTimeRaw;
+            set
+            {
+                _sendTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _sendTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="SendTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SendTimeDateTimeOffset instead.")]
+        public virtual object SendTime
+        {
+            get => _sendTime;
+            set
+            {
+                _sendTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _sendTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="SendTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SendTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SendTimeRaw);
+            set => SendTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12953,6 +13259,12 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
         public virtual string PubsubTopic { get; set; }
+
+        /// <summary>
+        /// Indicates whether or not to send Pub/Sub notifications on bulk import. Only supported for DICOM imports.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sendForBulkImport")]
+        public virtual System.Nullable<bool> SendForBulkImport { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13018,13 +13330,79 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("counter")]
         public virtual ProgressCounter Counter { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>The time at which the operation was created by the API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
 
         /// <summary>The time at which execution was completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// A link to audit and error logs in the log viewer. Error logs are generated only by some operations, listed
@@ -13175,6 +13553,29 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// <summary>The number of units that succeeded in the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("success")]
         public virtual System.Nullable<long> Success { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The Pub/Sub output destination. The Cloud Healthcare Service Agent requires the `roles/pubsub.publisher` Cloud
+    /// IAM role on the Pub/Sub topic.
+    /// </summary>
+    public class PubsubDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that Pub/Sub messages are published on. Supplied
+        /// by the client. The `PubsubMessage` contains the following fields: * `PubsubMessage.Data` contains the
+        /// resource name. * `PubsubMessage.MessageId` is the ID of this notification. It is guaranteed to be unique
+        /// within the topic. * `PubsubMessage.PublishTime` is the time when the message was published. [Topic
+        /// names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. The Cloud
+        /// Healthcare API service account, service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com, must have
+        /// publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send
+        /// notifications to fail.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pubsubTopic")]
+        public virtual string PubsubTopic { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13526,9 +13927,42 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
+        private string _signatureTimeRaw;
+
+        private object _signatureTime;
+
         /// <summary>Optional. Timestamp of the signature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signatureTime")]
-        public virtual object SignatureTime { get; set; }
+        public virtual string SignatureTimeRaw
+        {
+            get => _signatureTimeRaw;
+            set
+            {
+                _signatureTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _signatureTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="SignatureTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SignatureTimeDateTimeOffset instead.")]
+        public virtual object SignatureTime
+        {
+            get => _signatureTime;
+            set
+            {
+                _signatureTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _signatureTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="SignatureTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SignatureTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SignatureTimeRaw);
+            set => SignatureTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Required. User's UUID provided by the client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
@@ -13742,9 +14176,42 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     /// <summary>Maps a resource to the associated user and Attributes.</summary>
     public class UserDataMapping : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _archiveTimeRaw;
+
+        private object _archiveTime;
+
         /// <summary>Output only. Indicates the time when this mapping was archived.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archiveTime")]
-        public virtual object ArchiveTime { get; set; }
+        public virtual string ArchiveTimeRaw
+        {
+            get => _archiveTimeRaw;
+            set
+            {
+                _archiveTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _archiveTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ArchiveTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ArchiveTimeDateTimeOffset instead.")]
+        public virtual object ArchiveTime
+        {
+            get => _archiveTime;
+            set
+            {
+                _archiveTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _archiveTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ArchiveTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ArchiveTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ArchiveTimeRaw);
+            set => ArchiveTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. Indicates whether this mapping is archived.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("archived")]

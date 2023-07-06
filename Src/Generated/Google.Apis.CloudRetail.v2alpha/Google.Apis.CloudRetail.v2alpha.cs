@@ -274,6 +274,7 @@ namespace Google.Apis.CloudRetail.v2alpha
             this.service = service;
             Locations = new LocationsResource(service);
             Operations = new OperationsResource(service);
+            RetailProject = new RetailProjectResource(service);
         }
 
         /// <summary>Gets the Locations resource.</summary>
@@ -5487,6 +5488,248 @@ namespace Google.Apis.CloudRetail.v2alpha
                 }
             }
         }
+
+        /// <summary>Gets the RetailProject resource.</summary>
+        public virtual RetailProjectResource RetailProject { get; }
+
+        /// <summary>The "retailProject" collection of methods.</summary>
+        public class RetailProjectResource
+        {
+            private const string Resource = "retailProject";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public RetailProjectResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Accepts service terms for this project. By making requests to this API, you agree to the terms of
+            /// service linked below. https://cloud.google.com/retail/data-use-terms
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="project">
+            /// Required. Full resource name of the project. Format: `projects/{project_number_or_id}/retailProject`
+            /// </param>
+            public virtual AcceptTermsRequest AcceptTerms(Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaAcceptTermsRequest body, string project)
+            {
+                return new AcceptTermsRequest(service, body, project);
+            }
+
+            /// <summary>
+            /// Accepts service terms for this project. By making requests to this API, you agree to the terms of
+            /// service linked below. https://cloud.google.com/retail/data-use-terms
+            /// </summary>
+            public class AcceptTermsRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaProject>
+            {
+                /// <summary>Constructs a new AcceptTerms request.</summary>
+                public AcceptTermsRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaAcceptTermsRequest body, string project) : base(service)
+                {
+                    Project = project;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Full resource name of the project. Format: `projects/{project_number_or_id}/retailProject`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Project { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaAcceptTermsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "acceptTerms";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2alpha/{+project}:acceptTerms";
+
+                /// <summary>Initializes AcceptTerms parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "project",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/retailProject$",
+                    });
+                }
+            }
+        }
+
+        /// <summary>
+        /// Enrolls retail API solution for the project. Recommendation solution is enrolled by default when your
+        /// project enables Retail API. You don't need to call this API for the recommendation solution.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="project">
+        /// Required. Full resource name of parent. Format: `projects/{project_number_or_id}`
+        /// </param>
+        public virtual EnrollSolutionRequest EnrollSolution(Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaEnrollSolutionRequest body, string project)
+        {
+            return new EnrollSolutionRequest(service, body, project);
+        }
+
+        /// <summary>
+        /// Enrolls retail API solution for the project. Recommendation solution is enrolled by default when your
+        /// project enables Retail API. You don't need to call this API for the recommendation solution.
+        /// </summary>
+        public class EnrollSolutionRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2alpha.Data.GoogleLongrunningOperation>
+        {
+            /// <summary>Constructs a new EnrollSolution request.</summary>
+            public EnrollSolutionRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaEnrollSolutionRequest body, string project) : base(service)
+            {
+                Project = project;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. Full resource name of parent. Format: `projects/{project_number_or_id}`</summary>
+            [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Project { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaEnrollSolutionRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "enrollSolution";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v2alpha/{+project}:enrollSolution";
+
+            /// <summary>Initializes EnrollSolution parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "project",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
+            }
+        }
+
+        /// <summary>
+        /// Gets the project. Throws NOT_FOUND if the project wasn't initialized for Retail API Service.
+        /// </summary>
+        /// <param name="name">
+        /// Required. Full resource name of the project. Format: `projects/{project_number_or_id}/retailProject`
+        /// </param>
+        public virtual GetRetailProjectRequest GetRetailProject(string name)
+        {
+            return new GetRetailProjectRequest(service, name);
+        }
+
+        /// <summary>
+        /// Gets the project. Throws NOT_FOUND if the project wasn't initialized for Retail API Service.
+        /// </summary>
+        public class GetRetailProjectRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaProject>
+        {
+            /// <summary>Constructs a new GetRetailProject request.</summary>
+            public GetRetailProjectRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. Full resource name of the project. Format: `projects/{project_number_or_id}/retailProject`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "getRetailProject";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v2alpha/{+name}";
+
+            /// <summary>Initializes GetRetailProject parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+/retailProject$",
+                });
+            }
+        }
+
+        /// <summary>Lists all the retail API solutions the project has enrolled.</summary>
+        /// <param name="parent">
+        /// Required. Full resource name of parent. Format: `projects/{project_number_or_id}`
+        /// </param>
+        public virtual ListEnrolledSolutionsRequest ListEnrolledSolutions(string parent)
+        {
+            return new ListEnrolledSolutionsRequest(service, parent);
+        }
+
+        /// <summary>Lists all the retail API solutions the project has enrolled.</summary>
+        public class ListEnrolledSolutionsRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaListEnrolledSolutionsResponse>
+        {
+            /// <summary>Constructs a new ListEnrolledSolutions request.</summary>
+            public ListEnrolledSolutionsRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+            {
+                Parent = parent;
+                InitParameters();
+            }
+
+            /// <summary>Required. Full resource name of parent. Format: `projects/{project_number_or_id}`</summary>
+            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Parent { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "listEnrolledSolutions";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v2alpha/{+parent}:enrolledSolutions";
+
+            /// <summary>Initializes ListEnrolledSolutions parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "parent",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^projects/[^/]+$",
+                });
+            }
+        }
     }
 }
 namespace Google.Apis.CloudRetail.v2alpha.Data
@@ -6399,6 +6642,13 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("unjoinedEventsCount")]
         public virtual System.Nullable<long> UnjoinedEventsCount { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for AcceptTerms method.</summary>
+    public class GoogleCloudRetailV2alphaAcceptTermsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7464,6 +7714,49 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Metadata related to the EnrollSolution method. This will be returned by the
+    /// google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudRetailV2alphaEnrollSolutionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for EnrollSolution method.</summary>
+    public class GoogleCloudRetailV2alphaEnrollSolutionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Solution use case to enroll. Currently settable for Browse to enroll. It should be only set when [solution]
+        /// is set as SolutionType.SOLUTION_TYPE_SEARCH or an INVALID_ARGUMENT error is thrown.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchSolutionUseCase")]
+        public virtual string SearchSolutionUseCase { get; set; }
+
+        /// <summary>Required. Solution to enroll.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("solution")]
+        public virtual string Solution { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for EnrollSolution method.</summary>
+    public class GoogleCloudRetailV2alphaEnrollSolutionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Retail API solution that the project has enrolled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enrolledSolution")]
+        public virtual string EnrolledSolution { get; set; }
+
+        /// <summary>Search solution use case that the project has enrolled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("searchSolutionUseCase")]
+        public virtual string SearchSolutionUseCase { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for active A/B testing Experiment.</summary>
     public class GoogleCloudRetailV2alphaExperimentInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8121,6 +8414,17 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// <summary>Pagination token, if not returned indicates the last page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for ListEnrolledSolutions method.</summary>
+    public class GoogleCloudRetailV2alphaListEnrolledSolutionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Retail API solutions that the project has enrolled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enrolledSolutions")]
+        public virtual System.Collections.Generic.IList<string> EnrolledSolutions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9592,6 +9896,24 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("merchantCenterProductIdField")]
         public virtual string MerchantCenterProductIdField { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata that describes a Cloud Retail Project.</summary>
+    public class GoogleCloudRetailV2alphaProject : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Retail API solutions that the project has enrolled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enrolledSolutions")]
+        public virtual System.Collections.Generic.IList<string> EnrolledSolutions { get; set; }
+
+        /// <summary>
+        /// Output only. Full resource name of the retail project, such as
+        /// `projects/{project_id_or_number}/retailProject`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

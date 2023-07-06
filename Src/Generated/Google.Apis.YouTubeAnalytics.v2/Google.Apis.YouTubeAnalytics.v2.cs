@@ -1216,12 +1216,45 @@ namespace Google.Apis.YouTubeAnalytics.v2.Data
     /// <summary>A group snippet.</summary>
     public class GroupSnippet : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _publishedAtRaw;
+
+        private object _publishedAt;
+
         /// <summary>
         /// The date and time that the group was created. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sZ)
         /// format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishedAt")]
-        public virtual object PublishedAt { get; set; }
+        public virtual string PublishedAtRaw
+        {
+            get => _publishedAtRaw;
+            set
+            {
+                _publishedAt = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _publishedAtRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="PublishedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PublishedAtDateTimeOffset instead.")]
+        public virtual object PublishedAt
+        {
+            get => _publishedAt;
+            set
+            {
+                _publishedAtRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _publishedAt = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PublishedAtRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PublishedAtDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishedAtRaw);
+            set => PublishedAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The group name. The value must be a non-empty string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
