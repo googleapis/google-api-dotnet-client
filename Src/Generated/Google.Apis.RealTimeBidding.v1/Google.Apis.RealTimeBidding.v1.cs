@@ -3374,9 +3374,42 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("agencyId")]
         public virtual System.Nullable<long> AgencyId { get; set; }
 
+        private string _apiUpdateTimeRaw;
+
+        private object _apiUpdateTime;
+
         /// <summary>Output only. The last update timestamp of the creative through the API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiUpdateTime")]
-        public virtual object ApiUpdateTime { get; set; }
+        public virtual string ApiUpdateTimeRaw
+        {
+            get => _apiUpdateTimeRaw;
+            set
+            {
+                _apiUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _apiUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ApiUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ApiUpdateTimeDateTimeOffset instead.")]
+        public virtual object ApiUpdateTime
+        {
+            get => _apiUpdateTime;
+            set
+            {
+                _apiUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _apiUpdateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ApiUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ApiUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ApiUpdateTimeRaw);
+            set => ApiUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. The format of this creative. Can be used to filter the response of the creatives.list method.
@@ -3585,12 +3618,47 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("detectedVendorIds")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> DetectedVendorIds { get; set; }
 
+        private string _lastStatusUpdateRaw;
+
+        private object _lastStatusUpdate;
+
         /// <summary>
         /// The last time the creative status was updated. Can be used to filter the response of the creatives.list
         /// method.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastStatusUpdate")]
-        public virtual object LastStatusUpdate { get; set; }
+        public virtual string LastStatusUpdateRaw
+        {
+            get => _lastStatusUpdateRaw;
+            set
+            {
+                _lastStatusUpdate = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastStatusUpdateRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastStatusUpdateRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastStatusUpdateDateTimeOffset instead.")]
+        public virtual object LastStatusUpdate
+        {
+            get => _lastStatusUpdate;
+            set
+            {
+                _lastStatusUpdateRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastStatusUpdate = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastStatusUpdateRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastStatusUpdateDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastStatusUpdateRaw);
+            set => LastStatusUpdateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Policy compliance of this creative when bidding in open auction, private auction, or auction packages
@@ -3650,9 +3718,42 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     /// <summary>Evidence that the creative's destination URL was not crawlable by Google.</summary>
     public class DestinationNotCrawlableEvidence : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _crawlTimeRaw;
+
+        private object _crawlTime;
+
         /// <summary>Approximate time of the crawl.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crawlTime")]
-        public virtual object CrawlTime { get; set; }
+        public virtual string CrawlTimeRaw
+        {
+            get => _crawlTimeRaw;
+            set
+            {
+                _crawlTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _crawlTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CrawlTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CrawlTimeDateTimeOffset instead.")]
+        public virtual object CrawlTime
+        {
+            get => _crawlTime;
+            set
+            {
+                _crawlTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _crawlTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CrawlTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CrawlTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CrawlTimeRaw);
+            set => CrawlTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Destination URL that was attempted to be crawled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("crawledUrl")]
@@ -3689,9 +3790,42 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("invalidPage")]
         public virtual string InvalidPage { get; set; }
 
+        private string _lastCheckTimeRaw;
+
+        private object _lastCheckTime;
+
         /// <summary>Approximate time when the ad destination was last checked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastCheckTime")]
-        public virtual object LastCheckTime { get; set; }
+        public virtual string LastCheckTimeRaw
+        {
+            get => _lastCheckTimeRaw;
+            set
+            {
+                _lastCheckTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastCheckTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastCheckTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastCheckTimeDateTimeOffset instead.")]
+        public virtual object LastCheckTime
+        {
+            get => _lastCheckTime;
+            set
+            {
+                _lastCheckTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastCheckTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastCheckTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastCheckTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastCheckTimeRaw);
+            set => LastCheckTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Platform of the non-working URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("platform")]
@@ -4424,13 +4558,46 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("biddingState")]
         public virtual string BiddingState { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>
         /// Output only. The time at which the publisher initiated a connection with the bidder (irrespective of if or
         /// when the bidder approves it). This is subsequently updated if the publisher revokes and re-initiates the
         /// connection.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. Publisher display name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]

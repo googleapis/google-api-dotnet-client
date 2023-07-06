@@ -1521,8 +1521,8 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1
 
                     /// <summary>
                     /// The maximum number of reports to return. The service may return fewer than this value. If
-                    /// unspecified, at most 50 reports will be returned. The maximum value is 1000; values above 1000
-                    /// will be coerced to 1000.
+                    /// unspecified, at most 50 reports will be returned. The maximum value is 100; values above 100
+                    /// will be coerced to 100.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -2593,9 +2593,44 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastAppVersion")]
         public virtual GooglePlayDeveloperReportingV1beta1AppVersion LastAppVersion { get; set; }
 
+        private string _lastErrorReportTimeRaw;
+
+        private object _lastErrorReportTime;
+
         /// <summary>Start of the hour during which the last error report in this issue occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastErrorReportTime")]
-        public virtual object LastErrorReportTime { get; set; }
+        public virtual string LastErrorReportTimeRaw
+        {
+            get => _lastErrorReportTimeRaw;
+            set
+            {
+                _lastErrorReportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastErrorReportTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastErrorReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastErrorReportTimeDateTimeOffset instead.")]
+        public virtual object LastErrorReportTime
+        {
+            get => _lastErrorReportTime;
+            set
+            {
+                _lastErrorReportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastErrorReportTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastErrorReportTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastErrorReportTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastErrorReportTimeRaw);
+            set => LastErrorReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// The latest OS version in which this error cluster has occurred in the requested time period (only
@@ -2636,9 +2671,42 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deviceModel")]
         public virtual GooglePlayDeveloperReportingV1beta1DeviceModelSummary DeviceModel { get; set; }
 
+        private string _eventTimeRaw;
+
+        private object _eventTime;
+
         /// <summary>Start of the hour during which the latest event in this error report occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
-        public virtual object EventTime { get; set; }
+        public virtual string EventTimeRaw
+        {
+            get => _eventTimeRaw;
+            set
+            {
+                _eventTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _eventTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EventTimeDateTimeOffset instead.")]
+        public virtual object EventTime
+        {
+            get => _eventTime;
+            set
+            {
+                _eventTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _eventTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EventTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// The issue this report was associated with. **Please note:** this resource is currently in Alpha. There could
