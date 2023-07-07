@@ -297,7 +297,8 @@ namespace Google.Apis.Tests.Apis.Http
             using (var client = new HttpClient(configurableHandler))
             {
                 var request = new HttpRequestMessage(HttpMethod.Get, "https://test-execute-interceptor");
-                request.Properties.Add(ConfigurableMessageHandler.MaxRetriesKey, perRequestRetries);
+                var properties = TestHelpers.GetRequestProperties(request);
+                properties.Add(ConfigurableMessageHandler.MaxRetriesKey, perRequestRetries);
 
                 HttpResponseMessage response = client.SendAsync(request).Result;
                 Assert.Equal(perRequestRetries, interceptor.Calls);
@@ -1216,7 +1217,8 @@ namespace Google.Apis.Tests.Apis.Http
                 return defaultMaxRetries;
             }
             int configuredRetries = perRequestMaxRetries.Value;
-            requestMessage.Properties.Add(ConfigurableMessageHandler.MaxRetriesKey, configuredRetries);
+            var properties = TestHelpers.GetRequestProperties(requestMessage);
+            properties.Add(ConfigurableMessageHandler.MaxRetriesKey, configuredRetries);
             return configuredRetries;
         }
     }
