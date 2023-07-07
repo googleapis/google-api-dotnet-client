@@ -14,6 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
+using Google.Apis.Core.Http;
 using System.Net;
 using System.Net.Http;
 
@@ -47,5 +48,26 @@ namespace Google.Apis.Http
             request.Content.Headers.ContentLength = 0;
             return request.Content;
         }
+
+        /// <summary>
+        /// Creates a <see cref="DelegatingHandler"/> which applies the execution interceptor
+        /// in <paramref name="interceptor"/> (usually a credential) before delegating onwards.
+        /// </summary>
+        /// <param name="interceptor">The interceptor to execute before the remainder of the handler chain. Must not be null.</param>
+        /// <param name="innerHandler">The initial inner handler.</param>
+        /// <returns>A delegating HTTP message handler.</returns>
+        public static DelegatingHandler ToDelegatingHandler(this IHttpExecuteInterceptor interceptor, HttpMessageHandler innerHandler) =>
+            new InterceptorDelegatingHandler(interceptor, innerHandler);
+
+        /// <summary>
+        /// Creates a <see cref="DelegatingHandler"/> which applies the execution interceptor
+        /// in <paramref name="interceptor"/> (usually a credential) before delegating onwards.
+        /// The <see cref="DelegatingHandler.InnerHandler"/> of the returned handler must be specified before
+        /// the first request is made.
+        /// </summary>
+        /// <param name="interceptor">The interceptor to execute before the remainder of the handler chain. Must not be null.</param>
+        /// <returns>A delegating HTTP message handler.</returns>
+        public static DelegatingHandler ToDelegatingHandler(this IHttpExecuteInterceptor interceptor) =>
+            new InterceptorDelegatingHandler(interceptor);
     }
 }
