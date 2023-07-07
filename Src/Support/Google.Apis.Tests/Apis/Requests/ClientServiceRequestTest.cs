@@ -1407,8 +1407,8 @@ namespace Google.Apis.Tests.Apis.Requests
                 var handler = new TestUnsuccessfulResponseHandler();
                 request.AddUnsuccessfulResponseHandler(handler);
                 var httpRequest = request.CreateRequest();
-                Assert.Equal(handler, ((List<IHttpUnsuccessfulResponseHandler>)httpRequest.Properties
-                    [ConfigurableMessageHandler.UnsuccessfulResponseHandlerKey]).Single());
+                var properties = TestHelpers.GetRequestProperties(httpRequest);
+                Assert.Equal(handler, ((List<IHttpUnsuccessfulResponseHandler>) properties[ConfigurableMessageHandler.UnsuccessfulResponseHandlerKey]).Single());
                 Assert.Throws<GoogleApiException>(() => request.Execute());
                 Assert.True(handler.Count > 0);
             }
@@ -1433,8 +1433,8 @@ namespace Google.Apis.Tests.Apis.Requests
                 var handler = new TestExceptionHandler();
                 request.AddExceptionHandler(handler);
                 var httpRequest = request.CreateRequest();
-                Assert.Equal(handler, ((List<IHttpExceptionHandler>)httpRequest.Properties
-                    [ConfigurableMessageHandler.ExceptionHandlerKey]).Single());
+                var properties = TestHelpers.GetRequestProperties(httpRequest);
+                Assert.Equal(handler, ((List<IHttpExceptionHandler>) properties[ConfigurableMessageHandler.ExceptionHandlerKey]).Single());
                 var ex = Assert.Throws<Exception>(() => request.Execute());
                 Assert.Equal("mymsg", ex.Message);
                 Assert.True(handler.Count > 0);
@@ -1460,8 +1460,8 @@ namespace Google.Apis.Tests.Apis.Requests
                 var interceptor = new TestExecuteInterceptor();
                 request.AddExecuteInterceptor(interceptor);
                 var httpRequest = request.CreateRequest();
-                Assert.Equal(interceptor, ((List<IHttpExecuteInterceptor>)httpRequest.Properties
-                    [ConfigurableMessageHandler.ExecuteInterceptorKey]).Single());
+                var properties = TestHelpers.GetRequestProperties(httpRequest);
+                Assert.Equal(interceptor, ((List<IHttpExecuteInterceptor>) properties[ConfigurableMessageHandler.ExecuteInterceptorKey]).Single());
                 Assert.Throws<Exception>(() => request.Execute());
                 Assert.True(interceptor.Count > 0);
             }
