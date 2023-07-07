@@ -25,7 +25,7 @@ namespace Google.Apis.Auth.OAuth2
     /// credential types that can be used as an underlying credential in <see cref="GoogleCredential"/>
     /// should implement in contrast to <see cref="ICredential"/> that defines public functionality.
     /// </summary>
-    internal interface IGoogleCredential : ICredential, ITokenAccessWithHeaders
+    internal interface IGoogleCredential : ICredential, ITokenAccessWithHeaders, IHttpExecuteInterceptor
     {
         /// <summary>
         /// The ID of the project associated to this credential for the purposes of

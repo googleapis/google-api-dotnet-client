@@ -18,6 +18,7 @@ using Google.Apis.Http;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -32,7 +33,7 @@ namespace Google.Apis.Auth.OAuth2
     /// See <see cref="GetApplicationDefaultAsync(CancellationToken)"/> for the credential retrieval logic.
     /// </para>
     /// </summary>
-    public class GoogleCredential : ICredential, ITokenAccessWithHeaders, IOidcTokenProvider, IBlobSigner
+    public class GoogleCredential : ICredential, ITokenAccessWithHeaders, IOidcTokenProvider, IBlobSigner, IHttpExecuteInterceptor
     {
         /// <summary>Provider implements the logic for creating the application default credential.</summary>
         private static readonly DefaultCredentialProvider defaultCredentialProvider = new DefaultCredentialProvider();
@@ -378,5 +379,9 @@ namespace Google.Apis.Auth.OAuth2
         {
             return new GoogleCredential(credential);
         }
+
+        // Proxy IHttpExecuteInterceptor's only method.
+        Task IHttpExecuteInterceptor.InterceptAsync(HttpRequestMessage request, CancellationToken cancellationToken) =>
+            credential.InterceptAsync(request, cancellationToken);
     }
 }
