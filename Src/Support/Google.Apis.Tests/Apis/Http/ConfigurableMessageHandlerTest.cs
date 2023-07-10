@@ -706,11 +706,11 @@ namespace Google.Apis.Tests.Apis.Http
         [Fact]
         public async Task SendAsync_BackOffUnsuccessfulResponseHandler_Cancel()
         {
-            // test back-off with maximum 30 minutes per single request
+            // Test back-off with maximum 30 minutes per single request
             var initializer = new BackOffHandler.Initializer(new ExponentialBackOff(TimeSpan.Zero))
-                {
-                    MaxTimeSpan = TimeSpan.FromMinutes(30)
-                };
+            {
+                MaxTimeSpan = TimeSpan.FromMinutes(30)
+            };
             await SubtestSendAsync_BackOffUnsuccessfulResponseHandler(HttpStatusCode.ServiceUnavailable, initializer, 2);
             await SubtestSendAsync_BackOffUnsuccessfulResponseHandler(HttpStatusCode.ServiceUnavailable, initializer, 6);
         }
@@ -765,7 +765,7 @@ namespace Google.Apis.Tests.Apis.Http
                     HttpResponseMessage response = await client.SendAsync(request, cancellationToken);
                     Assert.False(cancel);
                 }
-                catch (TaskCanceledException)
+                catch (OperationCanceledException)
                 {
                     // A canceled request should throw an exception
                     Assert.True(cancel);

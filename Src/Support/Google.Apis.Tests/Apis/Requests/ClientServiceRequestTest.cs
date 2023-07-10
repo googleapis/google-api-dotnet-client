@@ -380,7 +380,7 @@ namespace Google.Apis.Tests.Apis.Requests
             {
                 request = new TestClientServiceRequest(service, "POST", new MockRequest());
                 var exception = await Assert.ThrowsAnyAsync<Exception>(() => request.ExecuteAsync(handler.CancellationTokenSource.Token));
-                if (exception is TaskCanceledException)
+                if (exception is OperationCanceledException)
                 {
                     // We expect a task canceled exception in case the canceled request is less or equal total
                     // number of retries.
