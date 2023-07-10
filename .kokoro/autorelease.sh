@@ -14,7 +14,8 @@ branchname="release-$now"
 cd ..
 
 # Create a new branch to push the changes to.
-git switch -c $branchname
+git branch --no-track $branchname
+git checkout $branchname
 
 # Download, generate, build and pack all generated libraries
 # Build support libraries in case the latest support library version isn't yet on nuget.
