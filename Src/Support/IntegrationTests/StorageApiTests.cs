@@ -48,8 +48,7 @@ namespace IntegrationTests
             var req = client.Buckets.List(Helper.GetProjectId()).Configure(req => req.PrettyPrint = true);
                 
             var resp = req.Execute();
-            Assert.Equal(1, memLog.LogEntries.Count);
-            var entry = memLog.LogEntries[0];
+            var entry = Assert.Single(memLog.LogEntries);
             // The JSON is pretty-printed, so contains many space characters
             Assert.Contains("  ", entry.Split(new[] { "Body: " }, StringSplitOptions.None)[1]);
 

@@ -46,17 +46,10 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
         [Fact]
         public void TestConstructor_ArgumentException()
         {
+            var initializer = new AuthorizationCodeFlow.Initializer("https://authorization_code.com", "https://token.com");
             // ClientSecrets are missing.
-            try
-            {
-                new AuthorizationCodeFlow(new AuthorizationCodeFlow.Initializer(
-                    "https://authorization_code.com", "https://token.com"));
-                Assert.True(false, "Exception expected");
-            }
-            catch (ArgumentException ex)
-            {
-                Assert.Contains("You MUST set ClientSecret or ClientSecretStream", ex.Message);
-            }
+            var exception = Assert.Throws<ArgumentException>(() => new AuthorizationCodeFlow(initializer));
+            Assert.Contains("You MUST set ClientSecret or ClientSecretStream", exception.Message);
         }
 
         [Fact]
@@ -103,40 +96,37 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
         #region LoadToken
 
         [Fact]
-        public void LoadTokenAsync_NoDataStore()
+        public async Task LoadTokenAsync_NoDataStore()
         {
             var flow = CreateFlow();
-            Assert.Null(flow.LoadTokenAsync("user", CancellationToken.None).Result);
+            Assert.Null(await flow.LoadTokenAsync("user", default));
         }
 
         [Fact]
-        public void LoadTokenAsync_NullResponse()
+        public async Task LoadTokenAsync_NullResponse()
         {
-            TaskCompletionSource<TokenResponse> tcs = new TaskCompletionSource<TokenResponse>();
-            tcs.SetResult(null);
-            Assert.Null(SubtestLoadTokenAsync(tcs));
+            Assert.Null(await SubtestLoadTokenAsync(null));
         }
 
         [Fact]
-        public void LoadTokenAsync_TokenResponse()
+        public async Task LoadTokenAsync_TokenResponse()
         {
             TokenResponse response = new TokenResponse
             {
                 AccessToken = "access"
             };
 
-            TaskCompletionSource<TokenResponse> tcs = new TaskCompletionSource<TokenResponse>();
-            tcs.SetResult(response);
-            var result = SubtestLoadTokenAsync(tcs);
+            var result = await SubtestLoadTokenAsync(response);
             Assert.Equal(response, result);
         }
 
-        private TokenResponse SubtestLoadTokenAsync(TaskCompletionSource<TokenResponse> tcs)
+        private async Task<TokenResponse> SubtestLoadTokenAsync(TokenResponse response)
         {
+            var task = Task.FromResult(response);
             var mock = new Mock<IDataStore>();
-            mock.Setup(ds => ds.GetAsync<TokenResponse>("user")).Returns(tcs.Task);
+            mock.Setup(ds => ds.GetAsync<TokenResponse>("user")).Returns(task);
             var flow = CreateFlow(dataStore: mock.Object);
-            var result = flow.LoadTokenAsync("user", CancellationToken.None).Result;
+            var result = await flow.LoadTokenAsync("user", default);
             mock.Verify(ds => ds.GetAsync<TokenResponse>("user"));
             return result;
         }
@@ -172,7 +162,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
         #endregion
 
         [Fact]
-        public void TestExchangeCodeForTokenAsync()
+        public async Task TestExchangeCodeForTokenAsync()
         {
             var mock = new Mock<IDataStore>();
             var handler = new FetchTokenMessageHandler();
@@ -189,14 +179,14 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
             mock.Setup(ds => ds.StoreAsync("uSer", It.IsAny<TokenResponse>())).Returns(tcs.Task);
 
             var flow = CreateFlow(httpClientFactory: mockFactory, scopes: new[] { "a" }, dataStore: mock.Object);
-            var response = flow.ExchangeCodeForTokenAsync("uSer", "c0de", "redIrect", CancellationToken.None).Result;
+            var response = await flow.ExchangeCodeForTokenAsync("uSer", "c0de", "redIrect", default);
             SubtestTokenResponse(response);
 
             mock.Verify(ds => ds.StoreAsync("uSer", It.IsAny<TokenResponse>()));
         }
 
         [Fact]
-        public void TestExchangeCodeForTokenAsync_NullScopes()
+        public async Task TestExchangeCodeForTokenAsync_NullScopes()
         {
             var mock = new Mock<IDataStore>();
             var handler = new FetchTokenMessageHandler();
@@ -213,14 +203,14 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
             mock.Setup(ds => ds.StoreAsync("uSer", It.IsAny<TokenResponse>())).Returns(tcs.Task);
 
             var flow = CreateFlow(httpClientFactory: mockFactory, scopes: null, dataStore: mock.Object);
-            var response = flow.ExchangeCodeForTokenAsync("uSer", "c0de", "redIrect", CancellationToken.None).Result;
+            var response = await flow.ExchangeCodeForTokenAsync("uSer", "c0de", "redIrect", default);
             SubtestTokenResponse(response);
 
             mock.Verify(ds => ds.StoreAsync("uSer", It.IsAny<TokenResponse>()));
         }
 
         [Fact]
-        public void TestRefreshTokenAsync()
+        public async Task TestRefreshTokenAsync()
         {
             var mock = new Mock<IDataStore>();
             var handler = new FetchTokenMessageHandler();
@@ -236,7 +226,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
             mock.Setup(ds => ds.StoreAsync("uSer", It.IsAny<TokenResponse>())).Returns(tcs.Task);
 
             var flow = CreateFlow(httpClientFactory: mockFactory, scopes: new[] { "a" }, dataStore: mock.Object);
-            var response = flow.RefreshTokenAsync("uSer", "REFRESH", CancellationToken.None).Result;
+            var response = await flow.RefreshTokenAsync("uSer", "REFRESH", default);
             SubtestTokenResponse(response);
 
 
@@ -352,7 +342,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
         }
 
         [Fact]
-        public void TestFetchTokenAsync_AuthorizationCodeRequest()
+        public async Task TestFetchTokenAsync_AuthorizationCodeRequest()
         {
             var handler = new FetchTokenMessageHandler();
             handler.AuthorizationCodeTokenRequest = new AuthorizationCodeTokenRequest()
@@ -364,44 +354,43 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
             MockHttpClientFactory mockFactory = new MockHttpClientFactory(handler);
 
             var flow = CreateFlow(httpClientFactory: mockFactory);
-            var response = flow.FetchTokenAsync("user", handler.AuthorizationCodeTokenRequest,
-                CancellationToken.None).Result;
+            var response = await flow.FetchTokenAsync("user", handler.AuthorizationCodeTokenRequest, default);
             SubtestTokenResponse(response);
         }
 
         [Fact]
-        public void TestFetchTokenAsync_RefreshTokenRequest()
+        public async Task TestFetchTokenAsync_RefreshTokenRequest()
         {
             var handler = new FetchTokenMessageHandler();
             handler.RefreshTokenRequest = new RefreshTokenRequest()
-                {
-                    RefreshToken = "REFRESH",
-                    Scope = "a"
-                };
+            {
+                RefreshToken = "REFRESH",
+                Scope = "a"
+            };
 
             MockHttpClientFactory mockFactory = new MockHttpClientFactory(handler);
 
             var flow = CreateFlow(httpClientFactory: mockFactory);
-            var response = flow.FetchTokenAsync("user", handler.RefreshTokenRequest, CancellationToken.None).Result;
+            var response = await flow.FetchTokenAsync("user", handler.RefreshTokenRequest, default);
             SubtestTokenResponse(response);
         }
 
         [Fact]
-        public void TestFetchTokenAsync_AuthorizationCodeRequest_Error()
+        public async Task TestFetchTokenAsync_AuthorizationCodeRequest_Error()
         {
             var handler = new FetchTokenMessageHandler();
             handler.AuthorizationCodeTokenRequest = new AuthorizationCodeTokenRequest()
-                {
-                    Code = "c0de",
-                    RedirectUri = "redIrect",
-                    Scope = "a"
-                };
+            {
+                Code = "c0de",
+                RedirectUri = "redIrect",
+                Scope = "a"
+            };
             handler.Error = true;
-            SubtestFetchTokenAsync_Error(handler);
+            await SubtestFetchTokenAsync_Error(handler);
         }
 
         [Fact]
-        public void TestFetchTokenAsync_RefreshTokenRequest_Error()
+        public async Task TestFetchTokenAsync_RefreshTokenRequest_Error()
         {
             var handler = new FetchTokenMessageHandler();
             handler.RefreshTokenRequest = new RefreshTokenRequest()
@@ -410,31 +399,23 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
                     Scope = "a"
                 };
             handler.Error = true;
-            SubtestFetchTokenAsync_Error(handler);
+            await SubtestFetchTokenAsync_Error(handler);
         }
 
+        // TODO: Potentially rewrite these as a Theory with TheoryData. (Hard to do inline.)
         /// <summary>Subtest for receiving an error token response.</summary>
         /// <param name="handler">The message handler.</param>
-        private void SubtestFetchTokenAsync_Error(FetchTokenMessageHandler handler)
+        private async Task SubtestFetchTokenAsync_Error(FetchTokenMessageHandler handler)
         {
             MockHttpClientFactory mockFactory = new MockHttpClientFactory(handler);
             var flow = CreateFlow(httpClientFactory: mockFactory);
-            try
-            {
-                var request =
-                    (TokenRequest)handler.AuthorizationCodeTokenRequest ?? (TokenRequest)handler.RefreshTokenRequest;
-                var result = flow.FetchTokenAsync("user", request, CancellationToken.None).Result;
-                Assert.True(false, "Exception expected");
-            }
-            catch (AggregateException aex)
-            {
-                var ex = aex.InnerException as TokenResponseException;
-                Assert.NotNull(ex);
-                var result = ex.Error;
-                Assert.Equal("error", result.Error);
-                Assert.Equal("desc", result.ErrorDescription);
-                Assert.Equal("uri", result.ErrorUri);
-            }
+            var request = (TokenRequest) handler.AuthorizationCodeTokenRequest ?? handler.RefreshTokenRequest;
+            var exception = await Assert.ThrowsAsync<TokenResponseException>(() => flow.FetchTokenAsync("user", request, default));
+
+            var error = exception.Error;
+            Assert.Equal("error", error.Error);
+            Assert.Equal("desc", error.ErrorDescription);
+            Assert.Equal("uri", error.ErrorUri);
         }
 
         #endregion

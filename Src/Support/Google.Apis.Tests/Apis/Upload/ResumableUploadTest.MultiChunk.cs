@@ -437,7 +437,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 var uploader = new TestResumableUpload(service, "MultiChunk", "POST", content, "text/plain", chunkSize);
                 if (cancelOnCall == 1)
                 {
-                    var progress = uploader.UploadAsync(server.CancellationToken).Result;
+                    var progress = await uploader.UploadAsync(server.CancellationToken);
                     Assert.Equal(UploadStatus.Failed, progress.Status);
                     Assert.IsAssignableFrom<OperationCanceledException>(progress.Exception);
                 }

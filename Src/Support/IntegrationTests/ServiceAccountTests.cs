@@ -34,7 +34,7 @@ namespace IntegrationTests
     public class ServiceAccountTests
     {
         [Fact]
-        public void ServiceCredential()
+        public async Task ServiceCredential()
         {
             // This is testing that a service-credential successfully authenticates to a Cloud Service.
             // If authentication fails, an exception will be thrown, failing the test.
@@ -48,7 +48,7 @@ namespace IntegrationTests
             });
 
             // Check an access token is available.
-            var ok = credential.UnderlyingCredential.GetAccessTokenForRequestAsync().Result;
+            var ok = await credential.UnderlyingCredential.GetAccessTokenForRequestAsync();
             Assert.NotNull(ok);
 
             // Following line will throw if authentication fails.
