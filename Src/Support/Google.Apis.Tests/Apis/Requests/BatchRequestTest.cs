@@ -216,19 +216,19 @@ Content-Length: 202
                 this.successful2ndResponse = successful2ndReponse;
             }
 
-            protected override Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
+            protected override async Task<HttpResponseMessage> SendAsyncCore(HttpRequestMessage request,
                 CancellationToken cancellationToken)
             {
                 // Verify Request Message
                 var contentType = request.Content.Headers.ContentType;
                 Assert.Equal("multipart/mixed", contentType.MediaType.ToString());
-                Assert.Equal(1, contentType.Parameters.Count);
-                Assert.True(contentType.Parameters.First().ToString().StartsWith("boundary="),
+                var parameter = Assert.Single(contentType.Parameters);
+                Assert.True(parameter.ToString().StartsWith("boundary="),
                     "Parameter should start with boundary=");
-                var boundary = contentType.Parameters.First().ToString().Substring("boundary=".Length).
+                var boundary = parameter.ToString().Substring("boundary=".Length).
                     Replace("\"", "");
                 var expectedContent = ExpectedContentMessage.Replace("BOUNDARY", boundary);
-                var actualContent = request.Content.ReadAsStringAsync().Result;
+                var actualContent = await request.Content.ReadAsStringAsync();
                 Assert.Equal(expectedContent, NormalizeLineEndings(actualContent));
 
                 HttpResponseMessage response = new HttpResponseMessage();
@@ -239,9 +239,7 @@ Content-Length: 202
                     Encoding.UTF8, "multipart/mixed");
                 response.Content.Headers.ContentType.Parameters.Add(new NameValueHeaderValue("boundary", boundary));
 
-                TaskCompletionSource<HttpResponseMessage> tcs = new TaskCompletionSource<HttpResponseMessage>();
-                tcs.SetResult(response);
-                return tcs.Task;
+                return response;
             }
         }
 
@@ -318,7 +316,7 @@ Content-Length: 202
                 {
                     Assert.Null(tuple.Item1); // no response
                     RequestError reqError = tuple.Item2; // error
-                    Assert.Equal(1, reqError.Errors.Count);
+                    Assert.Single(reqError.Errors);
                     Assert.Equal(404, reqError.Code);
                     Assert.Equal("Not Found", reqError.Message);
                     Assert.NotNull(reqError.ErrorResponseContent);
@@ -361,7 +359,7 @@ Content-Length: 202
         }
 
         [Fact]
-        public void CreateOuterRequestContent_Test()
+        public async Task CreateOuterRequestContent_Test()
         {
             using (var service = new MockClientService("http://sample.com"))
             {
@@ -376,8 +374,8 @@ Content-Length: 202
                     Name = "Name1-1"
                 });
 
-                var content = BatchRequest.CreateOuterRequestContent(new[] { request1, request2 }).Result;
-                var requestStr = content.ReadAsStringAsync().Result;
+                var content = await BatchRequest.CreateOuterRequestContent(new[] { request1, request2 });
+                var requestStr = await content.ReadAsStringAsync();
 
                 // Read the boundary.
                 string boundary = null;
@@ -392,7 +390,7 @@ Content-Length: 202
         }
 
         [Fact]
-        public void CreateIndividualRequest_Test()
+        public async Task CreateIndividualRequest_Test()
         {
             var expectedMessage = NormalizeLineEndings(@"POST http://sample.com/5?q=20
 If-Match: ""123""
@@ -408,14 +406,14 @@ Content-Length:  40
                         ETag = "\"123\"",
                         Name = "Name"
                     });
-                var content = BatchRequest.CreateIndividualRequest(request).Result;
-                var requestStr = content.ReadAsStringAsync().Result;
+                var content = await BatchRequest.CreateIndividualRequest(request);
+                var requestStr = await content.ReadAsStringAsync();
                 Assert.Equal(expectedMessage, NormalizeLineEndings(requestStr));
             }
         }
 
         [Fact]
-        public void CreateRequestContentString_Test()
+        public async Task CreateRequestContentString_Test()
         {
             var expectedMessage = NormalizeLineEndings(@"GET http://test.com:2020/
 Accept-Encoding: gzip
@@ -429,7 +427,7 @@ hello world
             request.Headers.AcceptEncoding.Add(new StringWithQualityHeaderValue("gzip"));
             request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-            var requestStr = BatchRequest.CreateRequestContentString(request).Result;
+            var requestStr = await BatchRequest.CreateRequestContentString(request);
             Assert.Equal(expectedMessage, NormalizeLineEndings(requestStr));
         }
 
@@ -495,7 +493,7 @@ hello world
                 });
                 
                 batchRequest.Queue<MockResponse>( request, (c, e, i, m) =>
-                    Assert.True(false, "The batch endpoint call should have failed. Callbacks for individual requests shouldn't be called."));
+                    Assert.Fail("The batch endpoint call should have failed. Callbacks for individual requests shouldn't be called."));
 
                 HttpRequestException outerException = await Assert.ThrowsAsync<HttpRequestException>(() => batchRequest.ExecuteAsync());
 
@@ -541,7 +539,7 @@ hello world
                 });
 
                 batchRequest.Queue<MockResponse>(request, (c, e, i, m) =>
-                   Assert.True(false, "The batch endpoint call should have failed. Callbacks for individual requests shouldn't be called."));
+                   Assert.Fail("The batch endpoint call should have failed. Callbacks for individual requests shouldn't be called."));
 
                 HttpRequestException outerException = await Assert.ThrowsAsync<HttpRequestException>(() => batchRequest.ExecuteAsync());
 
@@ -577,7 +575,7 @@ hello world
                 });
 
                 batchRequest.Queue<MockResponse>(request, (c, e, i, m) =>
-                   Assert.True(false, "The batch endpoint call should have failed. Callbacks for individual requests shouldn't be called."));
+                   Assert.Fail("The batch endpoint call should have failed. Callbacks for individual requests shouldn't be called."));
 
                 HttpRequestException outerException = await Assert.ThrowsAsync<HttpRequestException>(() => batchRequest.ExecuteAsync());
 

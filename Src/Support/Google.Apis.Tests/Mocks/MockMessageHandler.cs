@@ -28,6 +28,8 @@ namespace Google.Apis.Tests.Mocks
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request,
             CancellationToken cancellationToken)
         {
+            // TODO: Investigate making this async. The fact that this returns a null *task*
+            // at the moment (not a task with a null result) is alarming.
             RequestContent = request.Content.ReadAsStringAsync().Result;
             return null;
         }

@@ -83,17 +83,7 @@ namespace Google.Apis.Tests.Apis.Requests
             // Delay the resource fetching until we've cancelled the token
             cts.Cancel();
             gatekeeperSource.SetResult(0);
-            // TODO: Move to Assert.ThrowsAsync when we update to an appropriate version of NUnit.
-            // Assert.That is available, but the documentation is unclear how this interacts with await.
-            try
-            {
-                await task;
-                Assert.True(false, "Expected exception");
-            }
-            catch (OperationCanceledException)
-            {
-                // Expected
-            }
+            await Assert.ThrowsAsync< OperationCanceledException>(() => task);
         }
 
         // Has to be public so we can use it as a parameter for test cases

@@ -25,48 +25,26 @@ namespace Google.Apis.Tests.Apis.Utils
     public class ExponentialBackOffTest
     {
         /// <summary>Tests setting invalid value as <c>currentRetry</c> parameter.</summary>
-        [Fact]
-        public void GetNextBackOff_InvalidValue()
+        [Theory]
+        [InlineData(0)]
+        [InlineData(-2)]
+        public void GetNextBackOff_InvalidValue(int value)
         {
             ExponentialBackOff backOff = new ExponentialBackOff();
-            try
-            {
-                backOff.GetNextBackOff(0);
-                Assert.True(false, "Exception expected");
-            }
-            catch (ArgumentOutOfRangeException) { }
-
-            try
-            {
-                backOff.GetNextBackOff(-2);
-                Assert.True(false, "Exception expected");
-            }
-            catch (ArgumentOutOfRangeException) { }
+            Assert.Throws<ArgumentOutOfRangeException>(() => backOff.GetNextBackOff(value));
         }
 
         /// <summary>Tests constructor with invalid time span object (less then 0 or greater than 1sec).</summary>
-        [Fact]
-        public void Constructor_InvalidValue()
+        [Theory]
+        [InlineData(-1, 10)]
+        [InlineData(-1 * TimeSpan.TicksPerDay / TimeSpan.TicksPerMillisecond, 10)]
+        [InlineData(1001, 10)]
+        [InlineData(500, -1)]
+        [InlineData(500, 21)]
+        public void Constructor_InvalidValue(int milliseconds, int max)
         {
-            // Invalid delta.
-            SubtestConstructor_InvalidValue(TimeSpan.FromMilliseconds(-1));
-            SubtestConstructor_InvalidValue(TimeSpan.FromDays(-1));
-            SubtestConstructor_InvalidValue(TimeSpan.FromMilliseconds(1001));
-            // Invalid max.
-            SubtestConstructor_InvalidValue(TimeSpan.FromMilliseconds(500), -1);
-            SubtestConstructor_InvalidValue(TimeSpan.FromMilliseconds(500), 21);
-
-        }
-
-        /// <summary>A helper subtest to test invalid value given to the constructor.</summary>
-        private void SubtestConstructor_InvalidValue(TimeSpan ts, int max = 10)
-        {
-            try
-            {
-                ExponentialBackOff backOff = new ExponentialBackOff(ts, max);
-                Assert.True(false, "Exception expected");
-            }
-            catch (ArgumentOutOfRangeException) { }
+            var deltaBackoff = TimeSpan.FromMilliseconds(milliseconds);
+            Assert.Throws<ArgumentOutOfRangeException>(() => new ExponentialBackOff(deltaBackoff, max));
         }
 
         /// <summary>Tests next back-off time span maximum, minimum and average values for tries 1 to 15.</summary>

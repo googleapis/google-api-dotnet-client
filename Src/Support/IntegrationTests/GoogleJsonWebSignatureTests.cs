@@ -66,7 +66,7 @@ namespace IntegrationTests
             var content = new ByteArrayContent(contentBytes);
             content.Headers.ContentType = MediaTypeHeaderValue.Parse("application/x-www-form-urlencoded");
             var httpClient = new HttpClient();
-            var res = httpClient.PostAsync(codeReq, content).Result;
+            var res = await httpClient.PostAsync(codeReq, content);
             var json = JToken.Parse(Encoding.UTF8.GetString(await res.Content.ReadAsByteArrayAsync()));
             var jwt = (string)json["id_token"];
 

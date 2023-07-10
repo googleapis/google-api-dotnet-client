@@ -350,12 +350,12 @@ namespace Google.Apis.Tests.Apis.Requests
 
         /// <summary>Tests that canceling a outgoing request to the server works as expected.</summary>
         [Fact]
-        public void ExecuteAsync_Cancel()
+        public async Task ExecuteAsync_Cancel()
         {
-            SubtestExecuteAsync_Cancel(1);
-            SubtestExecuteAsync_Cancel(5);
-            SubtestExecuteAsync_Cancel(10);
-            SubtestExecuteAsync_Cancel(11);
+            await SubtestExecuteAsync_Cancel(1);
+            await SubtestExecuteAsync_Cancel(5);
+            await SubtestExecuteAsync_Cancel(10);
+            await SubtestExecuteAsync_Cancel(11);
         }
 
         /// <summary>
@@ -364,7 +364,7 @@ namespace Google.Apis.Tests.Apis.Requests
         /// <param name="cancelRequestNum">
         /// The index of the "server"'s request which a cancel token will be mimic.
         /// </param>
-        private void SubtestExecuteAsync_Cancel(int cancelRequestNum)
+        private async Task SubtestExecuteAsync_Cancel(int cancelRequestNum)
         {
             var handler = new CancelRedirectMessageHandler();
             handler.CancellationTokenSource = new CancellationTokenSource();
@@ -379,25 +379,18 @@ namespace Google.Apis.Tests.Apis.Requests
             using (var service = new MockClientService(initializer))
             {
                 request = new TestClientServiceRequest(service, "POST", new MockRequest());
-                try
+                var exception = await Assert.ThrowsAnyAsync<Exception>(() => request.ExecuteAsync(handler.CancellationTokenSource.Token));
+                if (exception is TaskCanceledException)
                 {
-                    request.ExecuteAsync(handler.CancellationTokenSource.Token).Wait();
-                    Assert.True(false, "Exception expected");
+                    // We expect a task canceled exception in case the canceled request is less or equal total
+                    // number of retries.
+                    Assert.False(cancelRequestNum > service.HttpClient.MessageHandler.NumRedirects + 1);
                 }
-                catch (AggregateException ex)
+                else
                 {
-                    if (ex.InnerException is TaskCanceledException)
-                    {
-                        // We expect a task canceled exception in case the canceled request is less or equal total
-                        // number of retries.
-                        Assert.False(cancelRequestNum > service.HttpClient.MessageHandler.NumRedirects + 1);
-                    }
-                    else
-                    {
-                        // Canceled exception wasn't thrown, in that case the cancel request number is bigger than
-                        // the actual number of tries.
-                        Assert.True(cancelRequestNum > service.HttpClient.MessageHandler.NumTries + 1);
-                    }
+                    // Canceled exception wasn't thrown, in that case the cancel request number is bigger than
+                    // the actual number of tries.
+                    Assert.True(cancelRequestNum > service.HttpClient.MessageHandler.NumTries + 1);
                 }
 
                 var expectedCalls = Math.Min(service.HttpClient.MessageHandler.NumRedirects + 1, cancelRequestNum);
@@ -585,7 +578,8 @@ namespace Google.Apis.Tests.Apis.Requests
         /// operation fails.
         /// </summary>
         /// <param name="backOff">Indicates if back-off handler is attached to the service.</param>
-        private void SubtestExecuteAsync_ThrowException(bool backOff)
+        [Theory, CombinatorialData]            
+        public async Task SubtestExecuteAsync_ThrowException(bool backOff)
         {
             var handler = new MockMessageHandler(true);
             var initializer = new BaseClientService.Initializer()
@@ -600,38 +594,10 @@ namespace Google.Apis.Tests.Apis.Requests
             using (var service = new MockClientService(initializer))
             {
                 var request = new TestClientServiceRequest(service, "GET", null);
-                var task = request.ExecuteAsync();
-                try
-                {
-                    var result = task.Result;
-                    Assert.True(false, "Exception should be thrown");
-                }
-                catch (AggregateException ex)
-                {
-                    Assert.IsAssignableFrom< InvalidOperationMockException>(ex.InnerException);
-                }
-
+                await Assert.ThrowsAnyAsync<InvalidOperationMockException>(() => request.ExecuteAsync());
                 int calls = backOff ? service.HttpClient.MessageHandler.NumTries : 1;
                 Assert.Equal(calls, handler.Calls);
             }
-        }
-
-        /// <summary>
-        /// Tests async execute when an exception is thrown during a request and exponential back-off is enabled.
-        /// </summary>
-        [Fact]
-        public void ExecuteAsync_ThrowException_WithBackOff()
-        {
-            SubtestExecuteAsync_ThrowException(true);
-        }
-
-        /// <summary>
-        /// Tests async execute when an exception is thrown during a request and exponential back-off is disabled.
-        /// </summary>
-        [Fact]
-        public void ExecuteAsync_ThrowException_WithoutBackOff()
-        {
-            SubtestExecuteAsync_ThrowException(false);
         }
 
         /// <summary>Tests execute when server returned an error.</summary>
@@ -882,17 +848,8 @@ namespace Google.Apis.Tests.Apis.Requests
             using (var service = new MockClientService("https://build_request_params"))
             {
                 var request = new ClientServiceRequestWithQueryParameters(service, "GET", null);
-                // request.Required is missing!
-                try
-                {
-                    var httpRequest = request.CreateRequest();
-                    Assert.True(false, "Exception expected");
-                }
-                catch (GoogleApiException ex)
-                {
-                    Assert.True(ex.Message.Contains("Parameter \"required\" is missing"),
-                        "Exception with missing parameter should be thrown");
-                }
+                var exception = Assert.Throws<GoogleApiException>(() => request.CreateRequest());
+                Assert.Contains("Parameter \"required\" is missing", exception.Message);
             }
         }
 

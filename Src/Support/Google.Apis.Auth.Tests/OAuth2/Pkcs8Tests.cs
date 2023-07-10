@@ -123,7 +123,7 @@ lK1DcBvq+IFLucBdi0/9hXE=
                 catch (CryptographicException e)
                 {
                     // Fails in iteration 8 without the Pkcs8 fix in PR#937
-                    Assert.True(false, $"Failed in iteration {i}: {e}");
+                    Assert.Fail($"Failed in iteration {i}: {e}");
                 }
                 // Check that all the parameters exported are equal to the originally created parameters
                 var exportedParams = key.ExportParameters(true);

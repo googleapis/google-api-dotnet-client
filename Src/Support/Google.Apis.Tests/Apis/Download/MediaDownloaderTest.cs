@@ -219,26 +219,26 @@ namespace Google.Apis.Tests.Apis.Download
 
         /// <summary>Tests that download works in case the server returns multiple chunks to the client.</summary>
         [Fact]
-        public void Download_MultipleChunks()
+        public async Task Download_MultipleChunks()
         {
-            Subtest_Download_Chunks(2);
-            Subtest_Download_Chunks(MediaContent.Length - 1);
+            await Subtest_Download_Chunks(2);
+            await Subtest_Download_Chunks(MediaContent.Length - 1);
         }
 
         /// <summary>Tests that download works in case the data is retrieved in multiple chunks and is gzipped.</summary>
         [Fact]
-        public void Download_MultipleChunksGzipped()
+        public async Task Download_MultipleChunksGzipped()
         {
-            Subtest_Download_Chunks(2, true, 0, "GzipContent");
+            await Subtest_Download_Chunks(2, true, 0, "GzipContent");
         }
 
         /// <summary>Tests that download works in case the server returns a single chunk to the client.</summary>
         [Fact]
-        public void Download_SingleChunk()
+        public async Task Download_SingleChunk()
         {
-            Subtest_Download_Chunks(MediaContent.Length);
-            Subtest_Download_Chunks(MediaContent.Length + 1);
-            Subtest_Download_Chunks(100);
+            await Subtest_Download_Chunks(MediaContent.Length);
+            await Subtest_Download_Chunks(MediaContent.Length + 1);
+            await Subtest_Download_Chunks(100);
         }
 
         /// <summary>Tests that download works in case the URI download contains query parameters.</summary>
@@ -269,31 +269,31 @@ namespace Google.Apis.Tests.Apis.Download
         /// Tests that download asynchronously works in case the server returns multiple chunks to the client.
         /// </summary>
         [Fact]
-        public void DownloadAsync_MultipleChunks()
+        public async Task DownloadAsync_MultipleChunks()
         {
-            Subtest_Download_Chunks(2, false);
-            Subtest_Download_Chunks(MediaContent.Length - 1, false);
+            await Subtest_Download_Chunks(2, false);
+            await Subtest_Download_Chunks(MediaContent.Length - 1, false);
         }
 
         /// <summary>
         /// Tests that download asynchronously works in case the server returns a single chunk to the client.
         /// </summary>
         [Fact]
-        public void DownloadAsync_SingleChunk()
+        public async Task DownloadAsync_SingleChunk()
         {
-            Subtest_Download_Chunks(MediaContent.Length, false);
-            Subtest_Download_Chunks(MediaContent.Length + 1, false);
-            Subtest_Download_Chunks(100, false);
+            await Subtest_Download_Chunks(MediaContent.Length, false);
+            await Subtest_Download_Chunks(MediaContent.Length + 1, false);
+            await Subtest_Download_Chunks(100, false);
         }
 
         /// <summary>
         /// Tests that download asynchronously doesn't succeeded in case a download was cancelled "in the middle".
         /// </summary>
         [Fact]
-        public void DownloadAsync_Cancel()
+        public async Task DownloadAsync_Cancel()
         {
-            Subtest_Download_Chunks(2, false, 3);
-            Subtest_Download_Chunks(MediaContent.Length - 1, false, 1);
+            await Subtest_Download_Chunks(2, false, 3);
+            await Subtest_Download_Chunks(MediaContent.Length - 1, false, 1);
         }
 
         [Fact]
@@ -346,7 +346,7 @@ namespace Google.Apis.Tests.Apis.Download
         /// <param name="sync">Indicates if this download should be synchronously or asynchronously.</param>
         /// <param name="cancelChunk">Defines the chunk at which to cancel the download request.</param>
         /// <param name="target">Last component of the Uri to download</param>
-        private void Subtest_Download_Chunks(int chunkSize, bool sync = true, int cancelChunk = 0, string target = "content")
+        private async Task Subtest_Download_Chunks(int chunkSize, bool sync = true, int cancelChunk = 0, string target = "content")
         {
             string downloadUri = _httpPrefix + target;
             var cts = new CancellationTokenSource();
@@ -383,7 +383,7 @@ namespace Google.Apis.Tests.Apis.Download
                 {
                     try
                     {
-                        var result = downloader.DownloadAsync(downloadUri, outputStream, cts.Token).Result;
+                        var result = await downloader.DownloadAsync(downloadUri, outputStream, cts.Token);
                         if (result.Exception == null)
                         {
                             Assert.Equal(0, cancelChunk);
@@ -393,9 +393,9 @@ namespace Google.Apis.Tests.Apis.Download
                             Assert.IsType<OperationCanceledException>(result.Exception);
                         }
                     }
-                    catch (AggregateException ex)
+                    catch (TaskCanceledException)
                     {
-                        Assert.IsType<TaskCanceledException>(ex.InnerException);
+                        // Expected in some cases.
                     }
                 }
 
@@ -440,9 +440,7 @@ namespace Google.Apis.Tests.Apis.Download
                 downloader.Download(_httpPrefix + "NoContent", outputStream);
 
                 // We expect only one event -- "completed".
-                Assert.Equal(1, progressList.Count);
-
-                var progress = progressList[0];
+                var progress = Assert.Single(progressList);
 
                 Assert.Equal(DownloadStatus.Completed, progress.Status);
                 Assert.Equal(0, progress.BytesDownloaded);
