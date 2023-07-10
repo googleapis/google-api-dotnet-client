@@ -3751,7 +3751,7 @@ namespace Google.Apis.Pubsub.v1.Data
 
         /// <summary>
         /// Optional. User-provided suffix for Cloud Storage filename. See the [object naming
-        /// requirements](https://cloud.google.com/storage/docs/objects#naming).
+        /// requirements](https://cloud.google.com/storage/docs/objects#naming). Must not end in "/".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filenameSuffix")]
         public virtual string FilenameSuffix { get; set; }

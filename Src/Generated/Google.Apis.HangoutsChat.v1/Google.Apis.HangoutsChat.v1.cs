@@ -5123,6 +5123,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
+        /// Output only. Information about a message that's quoted by a Google Chat user in a space. Google Chat users
+        /// can quote a message to reply to it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotedMessageMetadata")]
+        public virtual QuotedMessageMetadata QuotedMessageMetadata { get; set; }
+
+        /// <summary>
         /// Output only. The user who created the message. If your Chat app [authenticates as a
         /// user](https://developers.google.com/chat/api/guides/auth/users), the output populates the
         /// [user](https://developers.google.com/chat/api/reference/rest/v1/User) `name` and `type`.
@@ -5188,6 +5195,60 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>The URL to open.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("url")]
         public virtual string Url { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about a quoted message.</summary>
+    public class QuotedMessageMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _lastUpdateTimeRaw;
+
+        private object _lastUpdateTime;
+
+        /// <summary>
+        /// Output only. The timestamp when the quoted message was created or when the quoted message was last updated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTime")]
+        public virtual string LastUpdateTimeRaw
+        {
+            get => _lastUpdateTimeRaw;
+            set
+            {
+                _lastUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastUpdateTimeDateTimeOffset instead.")]
+        public virtual object LastUpdateTime
+        {
+            get => _lastUpdateTime;
+            set
+            {
+                _lastUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdateTimeRaw);
+            set => LastUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Output only. Resource name of the quoted message. Format: `spaces/{space}/messages/{message}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

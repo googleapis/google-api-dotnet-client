@@ -9097,9 +9097,44 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authorizationCode")]
         public virtual string AuthorizationCode { get; set; }
 
+        private string _authorizationTimestampRaw;
+
+        private object _authorizationTimestamp;
+
         /// <summary>The last update time-stamp for the authorization code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorizationTimestamp")]
-        public virtual object AuthorizationTimestamp { get; set; }
+        public virtual string AuthorizationTimestampRaw
+        {
+            get => _authorizationTimestampRaw;
+            set
+            {
+                _authorizationTimestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _authorizationTimestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="AuthorizationTimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use AuthorizationTimestampDateTimeOffset instead.")]
+        public virtual object AuthorizationTimestamp
+        {
+            get => _authorizationTimestamp;
+            set
+            {
+                _authorizationTimestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _authorizationTimestamp = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="AuthorizationTimestampRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? AuthorizationTimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(AuthorizationTimestampRaw);
+            set => AuthorizationTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>GTM Container ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerId")]
