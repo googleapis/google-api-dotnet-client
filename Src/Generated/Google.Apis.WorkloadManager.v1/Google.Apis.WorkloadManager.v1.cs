@@ -2566,11 +2566,11 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("relatedResources")]
         public virtual System.Collections.Generic.IList<string> RelatedResources { get; set; }
 
-        /// <summary>ComputeInstance, ComputeDisk, VPC, Bare Metal server, etc.</summary>
+        /// <summary>Required. ComputeInstance, ComputeDisk, VPC, Bare Metal server, etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceKind")]
         public virtual string ResourceKind { get; set; }
 
-        /// <summary>The type of this resource.</summary>
+        /// <summary>Required. The type of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
 
@@ -2664,6 +2664,18 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// <summary>The agent version collected this data point</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentVersion")]
         public virtual string AgentVersion { get; set; }
+
+        /// <summary>
+        /// Required. The instance_name of the instance that the Insight data comes from. According to
+        /// https://linter.aip.dev/122/name-suffix: field names should not use the _name suffix unless the field would
+        /// be ambiguous without it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instance")]
+        public virtual string Instance { get; set; }
+
+        /// <summary>Required. The project_id of the cloud project that the Insight data comes from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
 
         /// <summary>A list of SqlServer validation metrics data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validationDetails")]

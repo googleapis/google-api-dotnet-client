@@ -2427,8 +2427,8 @@ namespace Google.Apis.CloudSearch.v1
                 /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. For translations. Set this field
                 /// using the language set in browser or for the page. In the event that the user's language preference
                 /// is known, set this field to the known user language. When specified, the documents in search results
-                /// are biased towards the specified language. From Suggest API perspective, for 3p suggest this is used
-                /// as a hint while making predictions to add language boosting.
+                /// are biased towards the specified language. The Suggest API uses this field as a hint to make better
+                /// third-party autocomplete predictions.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("requestOptions.languageCode", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string RequestOptionsLanguageCode { get; set; }
@@ -4939,25 +4939,6 @@ namespace Google.Apis.CloudSearch.v1
 }
 namespace Google.Apis.CloudSearch.v1.Data
 {
-    /// <summary>Next tag: 4</summary>
-    public class AclInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Number of groups which have at least read access to the document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("groupsCount")]
-        public virtual System.Nullable<int> GroupsCount { get; set; }
-
-        /// <summary>The scope to which the content was shared.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
-        public virtual string Scope { get; set; }
-
-        /// <summary>Number of users which have at least read access to the document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("usersCount")]
-        public virtual System.Nullable<int> UsersCount { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     public class Action : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Required] Title of the action.</summary>
@@ -7303,100 +7284,6 @@ namespace Google.Apis.CloudSearch.v1.Data
     }
 
     /// <summary>
-    /// The corpus specific metadata for office-type documents, from Google Docs and other sources. This message is
-    /// passed to the scorer and beyond. Next tag: 9
-    /// </summary>
-    public class GoogleDocsMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Contains number of users and groups which can access the document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("aclInfo")]
-        public virtual AclInfo AclInfo { get; set; }
-
-        /// <summary>The conceptual type (presentation, document, etc.) of this document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("documentType")]
-        public virtual string DocumentType { get; set; }
-
-        /// <summary>
-        /// The file extension of the document. NOTE: As of October 2018 this field is not backfilled for old documents.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fileExtension")]
-        public virtual string FileExtension { get; set; }
-
-        /// <summary>
-        /// The last time this document was modified, in seconds since epoch. Only counts content modifications.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastContentModifiedTimestamp")]
-        public virtual System.Nullable<long> LastContentModifiedTimestamp { get; set; }
-
-        /// <summary>Contains number of subscribers for the document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("numSubscribers")]
-        public virtual System.Nullable<int> NumSubscribers { get; set; }
-
-        /// <summary>Size of untruncated viewers list.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("numViewers")]
-        public virtual System.Nullable<int> NumViewers { get; set; }
-
-        /// <summary>
-        /// Additional per-result information, akin to Gmail's SingleThreadResponse. Note: GWS no longer seems to use
-        /// this field, but there's still one reference to it for Scribe, so we can't remove it.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("resultInfo")]
-        public virtual GoogleDocsResultInfo ResultInfo { get; set; }
-
-        /// <summary>Contains additional information about the document depending on its type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("typeInfo")]
-        public virtual TypeInfo TypeInfo { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A message containing information about a specific result. This information is passed to the scorer and beyond;
-    /// in particular, GWS relies on it to format the result in the UI. Split from GoogleDocsMetadata in case we later
-    /// want to reuse the message.
-    /// </summary>
-    public class GoogleDocsResultInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The SHA1 hash of the object in Drive, if any.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("attachmentSha1")]
-        public virtual string AttachmentSha1 { get; set; }
-
-        /// <summary>
-        /// The storage identifier for the object in Cosmo. This field is intended to used by Stratus/Moonshine
-        /// integration only. It should not be exposed externally (please refer to encrypted_id for that purpose).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cosmoId")]
-        public virtual Id CosmoId { get; set; }
-
-        /// <summary>
-        /// For Cosmo objects, the Cosmo namespace the object was in. This allows downstream clients to identify whether
-        /// a document was created in Writely or Kix, Presently or Punch, or whether it was uploaded from GDrive. See
-        /// storage_cosmo.Id.NAME_SPACE for a list of all Cosmo name spaces.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cosmoNameSpace")]
-        public virtual System.Nullable<int> CosmoNameSpace { get; set; }
-
-        /// <summary>
-        /// The encrypted (user-visible) id of this object. Knowing the id is sufficient to create a canonical URL for
-        /// this document.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("encryptedId")]
-        public virtual string EncryptedId { get; set; }
-
-        /// <summary>The mimetype of the document.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
-        public virtual string MimeType { get; set; }
-
-        /// <summary>The visibility indicator in the UI will be based upon this.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("shareScope")]
-        public virtual ShareScope ShareScope { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
     /// Used to provide a search operator for html properties. This is optional. Search operators let users restrict the
     /// query to specific fields relevant to the type of item being searched.
     /// </summary>
@@ -7442,44 +7329,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>The maximum allowable length for html values is 2048 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Identifies a particular object, including both Users and DirEntries. This Id is unique across the entire server
-    /// instance, such as the production or qa instance.
-    /// </summary>
-    public class Id : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The User account in which the DirEntry was originally created. If name_space==GAIA, then it's the gaia_id of
-        /// the user this id is referring to. This field should really be called the "bucket ID", not the creator ID. In
-        /// some circumstances, such as copying a Google Docs file, a user can create an item in a different user's
-        /// bucket, so it should not be relied upon for anything other than bucket location. To look up the requesting
-        /// user who initially created item, use the `creator_id` DirEntry field instead.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("creatorUserId")]
-        public virtual System.Nullable<ulong> CreatorUserId { get; set; }
-
-        /// <summary>
-        /// The local identifier for the DirEntry (local to the creator's account). local_id + app_name is guaranteed to
-        /// be unique within the creator account, but not across all User accounts. The string is case sensitive. Ignore
-        /// if name_space==GAIA. NB For name_space==COSMO, all local_id's should be defined in
-        /// google3/java/com/google/storage/cosmo/server/api/SpecialObjectIds.java as they have a special predefined
-        /// meaning. See cosmo.client.CosmoIdFactory.createObjectId(long,String) for IMPORTANT recommendations when
-        /// generating IDs.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("localId")]
-        public virtual string LocalId { get; set; }
-
-        /// <summary>
-        /// The name space in which this id is unique (typically the application that created it). Values should be
-        /// drawn from the above enum, but for experimentation, use values greater than 1000.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nameSpace")]
-        public virtual System.Nullable<int> NameSpace__ { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7638,12 +7487,47 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// <summary>Represents an interaction between a user and an item.</summary>
     public class Interaction : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _interactionTimeRaw;
+
+        private object _interactionTime;
+
         /// <summary>
         /// The time when the user acted on the item. If multiple actions of the same type exist for a single user, only
         /// the most recent action is recorded.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interactionTime")]
-        public virtual object InteractionTime { get; set; }
+        public virtual string InteractionTimeRaw
+        {
+            get => _interactionTimeRaw;
+            set
+            {
+                _interactionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _interactionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="InteractionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use InteractionTimeDateTimeOffset instead.")]
+        public virtual object InteractionTime
+        {
+            get => _interactionTime;
+            set
+            {
+                _interactionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _interactionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="InteractionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? InteractionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(InteractionTimeRaw);
+            set => InteractionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The user that acted on the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("principal")]
@@ -7848,9 +7732,42 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contextAttributes")]
         public virtual System.Collections.Generic.IList<ContextAttribute> ContextAttributes { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>The time when the item was created in the source repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Hashing value provided by the API caller. This can be used with the items.push method to calculate modified
@@ -7908,9 +7825,42 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>The time when the item was last modified in the source repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8143,9 +8093,42 @@ namespace Google.Apis.CloudSearch.v1.Data
     /// <summary>Metadata of a matched search result.</summary>
     public class Metadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>The creation time for this document or object in the search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Options that specify how to display a structured data search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayOptions")]
@@ -8175,13 +8158,46 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("thumbnailUrl")]
         public virtual string ThumbnailUrl { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>
         /// The last modified date for the object in the search result. If not set in the item, the value returned here
         /// is empty. When `updateTime` is used for calculating freshness and is not set, this value defaults to 2 years
         /// from the current time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8645,8 +8661,43 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("username")]
         public virtual string Username { get; set; }
 
+        private string _waldoComeBackTimeRaw;
+
+        private object _waldoComeBackTime;
+
         [Newtonsoft.Json.JsonPropertyAttribute("waldoComeBackTime")]
-        public virtual object WaldoComeBackTime { get; set; }
+        public virtual string WaldoComeBackTimeRaw
+        {
+            get => _waldoComeBackTimeRaw;
+            set
+            {
+                _waldoComeBackTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _waldoComeBackTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="WaldoComeBackTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use WaldoComeBackTimeDateTimeOffset instead.")]
+        public virtual object WaldoComeBackTime
+        {
+            get => _waldoComeBackTime;
+            set
+            {
+                _waldoComeBackTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _waldoComeBackTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="WaldoComeBackTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? WaldoComeBackTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(WaldoComeBackTimeRaw);
+            set => WaldoComeBackTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9223,8 +9274,8 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// http://www.unicode.org/reports/tr35/#Unicode_locale_identifier. For translations. Set this field using the
         /// language set in browser or for the page. In the event that the user's language preference is known, set this
         /// field to the known user language. When specified, the documents in search results are biased towards the
-        /// specified language. From Suggest API perspective, for 3p suggest this is used as a hint while making
-        /// predictions to add language boosting.
+        /// specified language. The Suggest API uses this field as a hint to make better third-party autocomplete
+        /// predictions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
@@ -9758,20 +9809,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class ShareScope : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>If scope is DOMAIN, this field contains the dasher domain, for example "google.com".</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
-        public virtual string Domain { get; set; }
-
-        /// <summary>The scope to which the content was shared.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
-        public virtual string Scope { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Snippet of the search result, which summarizes the content of the resulting page.</summary>
     public class Snippet : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10204,17 +10241,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Next tag: 2</summary>
-    public class TypeInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Contains additional video information only if document_type is VIDEO.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("videoInfo")]
-        public virtual VideoInfo VideoInfo { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     public class UnmappedIdentity : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The resource name for an external user.</summary>
@@ -10349,8 +10375,43 @@ namespace Google.Apis.CloudSearch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stringValue")]
         public virtual string StringValue { get; set; }
 
+        private string _timestampValueRaw;
+
+        private object _timestampValue;
+
         [Newtonsoft.Json.JsonPropertyAttribute("timestampValue")]
-        public virtual object TimestampValue { get; set; }
+        public virtual string TimestampValueRaw
+        {
+            get => _timestampValueRaw;
+            set
+            {
+                _timestampValue = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timestampValueRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimestampValueRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimestampValueDateTimeOffset instead.")]
+        public virtual object TimestampValue
+        {
+            get => _timestampValue;
+            set
+            {
+                _timestampValueRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _timestampValue = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="TimestampValueRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimestampValueDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimestampValueRaw);
+            set => TimestampValueRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10371,20 +10432,6 @@ namespace Google.Apis.CloudSearch.v1.Data
         /// <summary>The value to be compared with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual Value Value { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Next tag: 2</summary>
-    public class VideoInfo : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Duration of the video in milliseconds. This field can be absent for recently uploaded video or inaccurate
-        /// sometimes.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("duration")]
-        public virtual System.Nullable<int> Duration { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

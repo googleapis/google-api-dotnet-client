@@ -11881,6 +11881,69 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Information about the result of a data quality rule for data quality scan. The monitored resource is 'DataScan'.
+    /// </summary>
+    public class GoogleCloudDataplexV1DataQualityScanRuleResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The column which this rule is evaluated against.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("column")]
+        public virtual string Column { get; set; }
+
+        /// <summary>The data source of the data scan (e.g. BigQuery table name).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSource")]
+        public virtual string DataSource { get; set; }
+
+        /// <summary>
+        /// The number of rows evaluated against the data quality rule. This field is only valid for rules of PER_ROW
+        /// evaluation type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluatedRowCount")]
+        public virtual System.Nullable<long> EvaluatedRowCount { get; set; }
+
+        /// <summary>The evaluation type of the data quality rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evalutionType")]
+        public virtual string EvalutionType { get; set; }
+
+        /// <summary>Identifier of the specific data scan job this log entry is for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
+        public virtual string JobId { get; set; }
+
+        /// <summary>The number of rows with null values in the specified column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nullRowCount")]
+        public virtual System.Nullable<long> NullRowCount { get; set; }
+
+        /// <summary>
+        /// The number of rows which passed a rule evaluation. This field is only valid for rules of PER_ROW evaluation
+        /// type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("passedRowCount")]
+        public virtual System.Nullable<long> PassedRowCount { get; set; }
+
+        /// <summary>The result of the data quality rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual string Result { get; set; }
+
+        /// <summary>The dimension of the data quality rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleDimension")]
+        public virtual string RuleDimension { get; set; }
+
+        /// <summary>The name of the data quality rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleName")]
+        public virtual string RuleName { get; set; }
+
+        /// <summary>The type of the data quality rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleType")]
+        public virtual string RuleType { get; set; }
+
+        /// <summary>The passing threshold (0.0, 100.0) of the data quality rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("thresholdPercent")]
+        public virtual System.Nullable<double> ThresholdPercent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>DataQualityScan related setting.</summary>
     public class GoogleCloudDataplexV1DataQualitySpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12982,9 +13045,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Environment represents a user-visible compute infrastructure for analytics within a lake. LINT.IfChange
-    /// </summary>
+    /// <summary>Environment represents a user-visible compute infrastructure for analytics within a lake.</summary>
     public class GoogleCloudDataplexV1Environment : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;

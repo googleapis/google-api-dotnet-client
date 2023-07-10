@@ -2018,6 +2018,12 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestAccess")]
         public virtual string RequestAccess { get; set; }
 
+        /// <summary>
+        /// Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictedExportConfig")]
+        public virtual RestrictedExportConfig RestrictedExportConfig { get; set; }
+
         /// <summary>Output only. Current state of the listing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -2041,13 +2047,79 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
         public virtual System.Nullable<bool> CancelRequested { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. The time the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
 
         /// <summary>Output only. The time the operation finished running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. Human-readable status of the operation, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
@@ -2144,6 +2216,29 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
         /// <summary>Optional. Email or URL of the listing publisher. Max Length: 1000 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("primaryContact")]
         public virtual string PrimaryContact { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Restricted export config, used to configure restricted export on linked dataset.</summary>
+    public class RestrictedExportConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. If true, enable restricted export.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>
+        /// Output only. If true, restrict direct table access(read api/tabledata.list) on linked table.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictDirectTableAccess")]
+        public virtual System.Nullable<bool> RestrictDirectTableAccess { get; set; }
+
+        /// <summary>
+        /// Optional. If true, restrict export of query result derived from restricted linked dataset table.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("restrictQueryResult")]
+        public virtual System.Nullable<bool> RestrictQueryResult { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

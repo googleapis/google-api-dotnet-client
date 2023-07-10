@@ -2979,7 +2979,9 @@ namespace Google.Apis.Firestore.v1
 
                 /// <summary>
                 /// Required. The ID to use for the database, which will become the final component of the database's
-                /// resource name. The value must be set to "(default)".
+                /// resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first
+                /// character a letter and the last a letter or a number. Must not be UUID-like
+                /// /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database id is also valid.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("databaseId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string DatabaseId { get; set; }

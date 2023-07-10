@@ -18816,7 +18816,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>The response message for Agents.ExportAgent.</summary>
     public class GoogleCloudDialogflowCxV3ExportAgentResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Uncompressed raw byte content for agent.</summary>
+        /// <summary>
+        /// Uncompressed raw byte content for agent. This field is populated if none of `agent_uri` and
+        /// `git_destination` are specified in ExportAgentRequest.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentContent")]
         public virtual string AgentContent { get; set; }
 
@@ -18826,6 +18829,13 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
         public virtual string AgentUri { get; set; }
+
+        /// <summary>
+        /// Commit SHA of the git push. This field is populated if `git_destination` are specified in
+        /// ExportAgentRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitSha")]
+        public virtual string CommitSha { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -21070,7 +21080,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>The response message for Agents.ExportAgent.</summary>
     public class GoogleCloudDialogflowCxV3beta1ExportAgentResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Uncompressed raw byte content for agent.</summary>
+        /// <summary>
+        /// Uncompressed raw byte content for agent. This field is populated if none of `agent_uri` and
+        /// `git_destination` are specified in ExportAgentRequest.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentContent")]
         public virtual string AgentContent { get; set; }
 
@@ -21080,6 +21093,13 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
         public virtual string AgentUri { get; set; }
+
+        /// <summary>
+        /// Commit SHA of the git push. This field is populated if `git_destination` are specified in
+        /// ExportAgentRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitSha")]
+        public virtual string CommitSha { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

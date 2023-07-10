@@ -8831,6 +8831,10 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverLogging")]
         public virtual System.Nullable<bool> EnableStackdriverLogging { get; set; }
 
+        /// <summary>Git integration settings for this agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitIntegrationSettings")]
+        public virtual GoogleCloudDialogflowCxV3AgentGitIntegrationSettings GitIntegrationSettings { get; set; }
+
         /// <summary>
         /// Indicates whether the agent is locked for changes. If the agent is locked, modifications to the agent will
         /// be rejected except for RestoreAgent.
@@ -8880,6 +8884,44 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for connecting to Git repository for an agent.</summary>
+    public class GoogleCloudDialogflowCxV3AgentGitIntegrationSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>GitHub settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("githubSettings")]
+        public virtual GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings GithubSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings of integration with GitHub.</summary>
+    public class GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsGithubSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The access token used to authenticate the access to the GitHub repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessToken")]
+        public virtual string AccessToken { get; set; }
+
+        /// <summary>A list of branches configured to be used from Dialogflow.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("branches")]
+        public virtual System.Collections.Generic.IList<string> Branches { get; set; }
+
+        /// <summary>The unique repository display name for the GitHub repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The GitHub repository URI related to the agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repositoryUri")]
+        public virtual string RepositoryUri { get; set; }
+
+        /// <summary>The branch of GitHub repository tracked for this agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackingBranch")]
+        public virtual string TrackingBranch { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10247,6 +10289,10 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string Environment { get; set; }
 
+        /// <summary>Optional. The Git branch to export the agent to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitDestination")]
+        public virtual GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination GitDestination { get; set; }
+
         /// <summary>Optional. Whether to include BigQuery Export setting.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeBigqueryExportSettings")]
         public virtual System.Nullable<bool> IncludeBigqueryExportSettings { get; set; }
@@ -10255,10 +10301,28 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Settings for exporting to a git branch.</summary>
+    public class GoogleCloudDialogflowCxV3ExportAgentRequestGitDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Commit message for the git push.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitMessage")]
+        public virtual string CommitMessage { get; set; }
+
+        /// <summary>Tracking branch for the git push.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackingBranch")]
+        public virtual string TrackingBranch { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Agents.ExportAgent.</summary>
     public class GoogleCloudDialogflowCxV3ExportAgentResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Uncompressed raw byte content for agent.</summary>
+        /// <summary>
+        /// Uncompressed raw byte content for agent. This field is populated if none of `agent_uri` and
+        /// `git_destination` are specified in ExportAgentRequest.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentContent")]
         public virtual string AgentContent { get; set; }
 
@@ -10268,6 +10332,13 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
         public virtual string AgentUri { get; set; }
+
+        /// <summary>
+        /// Commit SHA of the git push. This field is populated if `git_destination` are specified in
+        /// ExportAgentRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitSha")]
+        public virtual string CommitSha { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12374,9 +12445,24 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
         public virtual string AgentUri { get; set; }
 
+        /// <summary>Setting for restoring from a git branch</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gitSource")]
+        public virtual GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource GitSource { get; set; }
+
         /// <summary>Agent restore mode. If not specified, `KEEP` is assumed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restoreOption")]
         public virtual string RestoreOption { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for restoring from a git branch</summary>
+    public class GoogleCloudDialogflowCxV3RestoreAgentRequestGitSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>tracking branch for the git pull</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackingBranch")]
+        public virtual string TrackingBranch { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14404,7 +14490,10 @@ namespace Google.Apis.Dialogflow.v3.Data
     /// <summary>The response message for Agents.ExportAgent.</summary>
     public class GoogleCloudDialogflowCxV3beta1ExportAgentResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Uncompressed raw byte content for agent.</summary>
+        /// <summary>
+        /// Uncompressed raw byte content for agent. This field is populated if none of `agent_uri` and
+        /// `git_destination` are specified in ExportAgentRequest.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentContent")]
         public virtual string AgentContent { get; set; }
 
@@ -14414,6 +14503,13 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentUri")]
         public virtual string AgentUri { get; set; }
+
+        /// <summary>
+        /// Commit SHA of the git push. This field is populated if `git_destination` are specified in
+        /// ExportAgentRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitSha")]
+        public virtual string CommitSha { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

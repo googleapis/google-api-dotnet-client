@@ -3847,7 +3847,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// An Execution represents a collection of Steps. For instance, it could represent: - a mobile test executed across
     /// a range of device configurations - a jenkins job with a build step followed by a test step The maximum size of
     /// an execution message is 1 MiB. An Execution can be updated until its state is set to COMPLETE at which point it
-    /// becomes immutable. Next tag: 17
+    /// becomes immutable.
     /// </summary>
     public class Execution : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5154,8 +5154,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
     /// look like: - user creates a Execution with id 1 - user creates a TestExecutionStep with id 100 for Execution 1 -
     /// user update TestExecutionStep with id 100 to add a raw xml log + the service parses the xml logs and returns a
     /// TestExecutionStep with updated TestResult(s). - user update the status of TestExecutionStep with id 100 to
-    /// COMPLETE A Step can be updated until its state is set to COMPLETE at which points it becomes immutable. Next
-    /// tag: 27
+    /// COMPLETE A Step can be updated until its state is set to COMPLETE at which points it becomes immutable.
     /// </summary>
     public class Step : Google.Apis.Requests.IDirectResponseSchema
     {
