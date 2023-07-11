@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -ex
 
 # Make sure secrets are loaded in a well known localtion before running releasetool
 source ./populatesecrets.sh
@@ -79,9 +79,9 @@ for pkg in ./NuPkgs/Generated/*.nupkg; do
 done
 
 # Push changes to git, not to the main branch but to branchname
-git add -A
-git commit -m "Update discovery documents and generated code" -m "automatically_generated_update"
-git push --set-upstream origin $branchname
+git add -v -A
+git commit -v -m "Update discovery documents and generated code" -m "automatically_generated_update"
+git push -v --set-upstream origin $branchname
 
 # Create a PR for the changes in branchname.
 # TODO: Remove the draft flag once everything else is working.
