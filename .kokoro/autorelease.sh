@@ -81,6 +81,8 @@ done
 # Push changes to git, not to the main branch but to branchname
 git add -v -A
 git commit -v -m "Update discovery documents and generated code" -m "automatically_generated_update"
+# We change the origin URL so that we can push with SSH
+git remote set-url origin git@github.com:googleapis/google-api-dotnet-client.git
 git push -v --set-upstream origin $branchname
 
 # Create a PR for the changes in branchname.
