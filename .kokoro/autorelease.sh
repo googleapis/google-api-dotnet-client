@@ -6,6 +6,8 @@ set -ex
 source ./populatesecrets.sh
 populate_all_secrets
 
+declare -r github_user="$(cat "$SECRETS_LOCATION"/google-api-dotnet-client-github-user-name)"
+declare -r github_email="$(cat "$SECRETS_LOCATION"/google-api-dotnet-client-github-user-email)"
 declare -r github_token="$(cat "$SECRETS_LOCATION"/google-api-dotnet-client-github-token)"
 declare -r nuget_token="$(cat "$SECRETS_LOCATION"/google-apis-nuget-api-key)"
 
@@ -16,6 +18,11 @@ cd ..
 # Create a new branch to push the changes to.
 git branch --no-track $branchname
 git checkout $branchname
+# So that chmod changes are ignored.
+git config core.fileMode false
+# Even though we use the token to authenticate, we need the email for the CLA.
+git config user.name "$github_user"
+git config user.email "$github_email"
 
 # Download, generate, build and pack all generated libraries
 # Build support libraries in case the latest support library version isn't yet on nuget.
