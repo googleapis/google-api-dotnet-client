@@ -6,8 +6,8 @@ set -ex
 source ./populatesecrets.sh
 populate_all_secrets
 
-declare -r github_token="$SECRETS_LOCATION/google-api-dotnet-client-github-token"
-declare -r nuget_token="$SECRETS_LOCATION/google-apis-nuget-api-key"
+declare -r github_token="$(cat "$SECRETS_LOCATION"/google-api-dotnet-client-github-token)"
+declare -r nuget_token="$(cat "$SECRETS_LOCATION"/google-apis-nuget-api-key)"
 
 now="$(date +%Y-%m-%d.%H-%M-%S)"
 branchname="release-$now"
