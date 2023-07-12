@@ -311,6 +311,299 @@ namespace Google.Apis.AIPlatformNotebooks.v2
                     this.service = service;
                 }
 
+                /// <summary>Checks whether a notebook instance is upgradable.</summary>
+                /// <param name="notebookInstance">
+                /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                /// </param>
+                public virtual CheckUpgradabilityRequest CheckUpgradability(string notebookInstance)
+                {
+                    return new CheckUpgradabilityRequest(service, notebookInstance);
+                }
+
+                /// <summary>Checks whether a notebook instance is upgradable.</summary>
+                public class CheckUpgradabilityRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v2.Data.CheckInstanceUpgradabilityResponse>
+                {
+                    /// <summary>Constructs a new CheckUpgradability request.</summary>
+                    public CheckUpgradabilityRequest(Google.Apis.Services.IClientService service, string notebookInstance) : base(service)
+                    {
+                        NotebookInstance = notebookInstance;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("notebookInstance", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string NotebookInstance { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "checkUpgradability";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+notebookInstance}:checkUpgradability";
+
+                    /// <summary>Initializes CheckUpgradability parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("notebookInstance", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "notebookInstance",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Creates a new Instance in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">Required. Format: `parent=projects/{project_id}/locations/{location}`</param>
+                public virtual CreateRequest Create(Google.Apis.AIPlatformNotebooks.v2.Data.Instance body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new Instance in a given project and location.</summary>
+                public class CreateRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v2.Data.Instance body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Format: `parent=projects/{project_id}/locations/{location}`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. User-defined unique ID of this instance.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("instanceId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string InstanceId { get; set; }
+
+                    /// <summary>Optional. Idempotent request UUID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v2.Data.Instance Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/instances";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("instanceId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "instanceId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a single Instance.</summary>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a single Instance.</summary>
+                public class DeleteRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. Idempotent request UUID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Creates a Diagnostic File and runs Diagnostic Tool given an Instance.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                /// </param>
+                public virtual DiagnoseRequest Diagnose(Google.Apis.AIPlatformNotebooks.v2.Data.DiagnoseInstanceRequest body, string name)
+                {
+                    return new DiagnoseRequest(service, body, name);
+                }
+
+                /// <summary>Creates a Diagnostic File and runs Diagnostic Tool given an Instance.</summary>
+                public class DiagnoseRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Diagnose request.</summary>
+                    public DiagnoseRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v2.Data.DiagnoseInstanceRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v2.Data.DiagnoseInstanceRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "diagnose";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:diagnose";
+
+                    /// <summary>Initializes Diagnose parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of a single Instance.</summary>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets details of a single Instance.</summary>
+                public class GetRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v2.Data.Instance>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
                 /// does not have a policy set.
@@ -391,6 +684,340 @@ namespace Google.Apis.AIPlatformNotebooks.v2
                     }
                 }
 
+                /// <summary>Lists instances in a given project and location.</summary>
+                /// <param name="parent">Required. Format: `parent=projects/{project_id}/locations/{location}`</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists instances in a given project and location.</summary>
+                public class ListRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v2.Data.ListInstancesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Format: `parent=projects/{project_id}/locations/{location}`</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Maximum return size of the list call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. A previous returned page token that can be used to continue listing from the last
+                    /// result.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/instances";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>UpdateInstance updates an Instance.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. The name of this notebook instance. Format:
+                /// `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.AIPlatformNotebooks.v2.Data.Instance body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>UpdateInstance updates an Instance.</summary>
+                public class PatchRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v2.Data.Instance body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. The name of this notebook instance. Format:
+                    /// `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. Idempotent request UUID.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Required. Mask used to update an instance</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v2.Data.Instance Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Allows notebook instances to report their latest instance information to the Notebooks API server.
+                /// The server will merge the reported information to the instance metadata store. Do not use this
+                /// method directly.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                /// </param>
+                public virtual ReportInfoSystemRequest ReportInfoSystem(Google.Apis.AIPlatformNotebooks.v2.Data.ReportInstanceInfoSystemRequest body, string name)
+                {
+                    return new ReportInfoSystemRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Allows notebook instances to report their latest instance information to the Notebooks API server.
+                /// The server will merge the reported information to the instance metadata store. Do not use this
+                /// method directly.
+                /// </summary>
+                public class ReportInfoSystemRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new ReportInfoSystem request.</summary>
+                    public ReportInfoSystemRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v2.Data.ReportInstanceInfoSystemRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v2.Data.ReportInstanceInfoSystemRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "reportInfoSystem";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:reportInfoSystem";
+
+                    /// <summary>Initializes ReportInfoSystem parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Resets a notebook instance.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                /// </param>
+                public virtual ResetRequest Reset(Google.Apis.AIPlatformNotebooks.v2.Data.ResetInstanceRequest body, string name)
+                {
+                    return new ResetRequest(service, body, name);
+                }
+
+                /// <summary>Resets a notebook instance.</summary>
+                public class ResetRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Reset request.</summary>
+                    public ResetRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v2.Data.ResetInstanceRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v2.Data.ResetInstanceRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "reset";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:reset";
+
+                    /// <summary>Initializes Reset parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Rollbacks a notebook instance to the previous version.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                /// </param>
+                public virtual RollbackRequest Rollback(Google.Apis.AIPlatformNotebooks.v2.Data.RollbackInstanceRequest body, string name)
+                {
+                    return new RollbackRequest(service, body, name);
+                }
+
+                /// <summary>Rollbacks a notebook instance to the previous version.</summary>
+                public class RollbackRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Rollback request.</summary>
+                    public RollbackRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v2.Data.RollbackInstanceRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v2.Data.RollbackInstanceRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "rollback";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:rollback";
+
+                    /// <summary>Initializes Rollback parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
                 /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -450,6 +1077,120 @@ namespace Google.Apis.AIPlatformNotebooks.v2
                         RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
                         {
                             Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Starts a notebook instance.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                /// </param>
+                public virtual StartRequest Start(Google.Apis.AIPlatformNotebooks.v2.Data.StartInstanceRequest body, string name)
+                {
+                    return new StartRequest(service, body, name);
+                }
+
+                /// <summary>Starts a notebook instance.</summary>
+                public class StartRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Start request.</summary>
+                    public StartRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v2.Data.StartInstanceRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v2.Data.StartInstanceRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "start";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:start";
+
+                    /// <summary>Initializes Start parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Stops a notebook instance.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                /// </param>
+                public virtual StopRequest Stop(Google.Apis.AIPlatformNotebooks.v2.Data.StopInstanceRequest body, string name)
+                {
+                    return new StopRequest(service, body, name);
+                }
+
+                /// <summary>Stops a notebook instance.</summary>
+                public class StopRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Stop request.</summary>
+                    public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v2.Data.StopInstanceRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v2.Data.StopInstanceRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "stop";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:stop";
+
+                    /// <summary>Initializes Stop parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
@@ -521,6 +1262,120 @@ namespace Google.Apis.AIPlatformNotebooks.v2
                         RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
                         {
                             Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Upgrades a notebook instance to the latest version.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                /// </param>
+                public virtual UpgradeRequest Upgrade(Google.Apis.AIPlatformNotebooks.v2.Data.UpgradeInstanceRequest body, string name)
+                {
+                    return new UpgradeRequest(service, body, name);
+                }
+
+                /// <summary>Upgrades a notebook instance to the latest version.</summary>
+                public class UpgradeRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Upgrade request.</summary>
+                    public UpgradeRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v2.Data.UpgradeInstanceRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v2.Data.UpgradeInstanceRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "upgrade";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:upgrade";
+
+                    /// <summary>Initializes Upgrade parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Allows notebook instances to upgrade themselves. Do not use this method directly.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                /// </param>
+                public virtual UpgradeSystemRequest UpgradeSystem(Google.Apis.AIPlatformNotebooks.v2.Data.UpgradeInstanceSystemRequest body, string name)
+                {
+                    return new UpgradeSystemRequest(service, body, name);
+                }
+
+                /// <summary>Allows notebook instances to upgrade themselves. Do not use this method directly.</summary>
+                public class UpgradeSystemRequest : AIPlatformNotebooksBaseServiceRequest<Google.Apis.AIPlatformNotebooks.v2.Data.Operation>
+                {
+                    /// <summary>Constructs a new UpgradeSystem request.</summary>
+                    public UpgradeSystemRequest(Google.Apis.Services.IClientService service, Google.Apis.AIPlatformNotebooks.v2.Data.UpgradeInstanceSystemRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AIPlatformNotebooks.v2.Data.UpgradeInstanceSystemRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "upgradeSystem";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}:upgradeSystem";
+
+                    /// <summary>Initializes UpgradeSystem parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
                             IsRequired = true,
                             ParameterType = "path",
                             DefaultValue = null,
@@ -944,6 +1799,25 @@ namespace Google.Apis.AIPlatformNotebooks.v2
 }
 namespace Google.Apis.AIPlatformNotebooks.v2.Data
 {
+    /// <summary>
+    /// An accelerator configuration for a VM instance Definition of a hardware accelerator. Note that there is no check
+    /// on `type` and `core_count` combinations. TPUs are not supported. See [GPUs on Compute
+    /// Engine](https://cloud.google.com/compute/docs/gpus/#gpus-list) to find a valid combination.
+    /// </summary>
+    public class AcceleratorConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Count of cores of this accelerator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coreCount")]
+        public virtual System.Nullable<long> CoreCount { get; set; }
+
+        /// <summary>Optional. Type of this accelerator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Associates `members`, or principals, with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -996,9 +1870,172 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The definition of a boot disk.</summary>
+    public class BootDisk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskEncryption")]
+        public virtual string DiskEncryption { get; set; }
+
+        /// <summary>
+        /// Optional. The size of the boot disk in GB attached to this instance, up to a maximum of 64000 GB (64 TB). If
+        /// not specified, this defaults to the recommended value of 150GB.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
+        public virtual System.Nullable<long> DiskSizeGb { get; set; }
+
+        /// <summary>Optional. Indicates the type of the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
+        public virtual string DiskType { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK.
+        /// Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more
+        /// about using your own encryption keys.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for checking if a notebook instance is upgradeable.</summary>
+    public class CheckInstanceUpgradabilityResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The new image self link this instance will be upgraded to if calling the upgrade endpoint. This field will
+        /// only be populated if field upgradeable is true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeImage")]
+        public virtual string UpgradeImage { get; set; }
+
+        /// <summary>Additional information about upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeInfo")]
+        public virtual string UpgradeInfo { get; set; }
+
+        /// <summary>
+        /// The version this instance will be upgraded to if calling the upgrade endpoint. This field will only be
+        /// populated if field upgradeable is true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeVersion")]
+        public virtual string UpgradeVersion { get; set; }
+
+        /// <summary>If an instance is upgradeable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeable")]
+        public virtual System.Nullable<bool> Upgradeable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Definition of a container image for starting a notebook instance with the environment installed in a container.
+    /// </summary>
+    public class ContainerImage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repository")]
+        public virtual string Repository { get; set; }
+
+        /// <summary>
+        /// Optional. The tag of the container image. If not specified, this defaults to the latest tag.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tag")]
+        public virtual string Tag { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An instance-attached disk resource.</summary>
+    public class DataDisk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Input only. Disk encryption method used on the boot and data disks, defaults to GMEK.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskEncryption")]
+        public virtual string DiskEncryption { get; set; }
+
+        /// <summary>
+        /// Optional. The size of the disk in GB attached to this VM instance, up to a maximum of 64000 GB (64 TB). If
+        /// not specified, this defaults to 100.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
+        public virtual System.Nullable<long> DiskSizeGb { get; set; }
+
+        /// <summary>Optional. Input only. Indicates the type of the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
+        public virtual string DiskType { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The KMS key used to encrypt the disks, only applicable if disk_encryption is CMEK.
+        /// Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}` Learn more
+        /// about using your own encryption keys.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for creating a notebook instance diagnostic file.</summary>
+    public class DiagnoseInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Defines flags that are used to run the diagnostic tool</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diagnosticConfig")]
+        public virtual DiagnosticConfig DiagnosticConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines flags that are used to run the diagnostic tool</summary>
+    public class DiagnosticConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Enables flag to copy all `/home/jupyter` folder contents</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableCopyHomeFilesFlag")]
+        public virtual System.Nullable<bool> EnableCopyHomeFilesFlag { get; set; }
+
+        /// <summary>Optional. Enables flag to capture packets from the instance for 30 seconds</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablePacketCaptureFlag")]
+        public virtual System.Nullable<bool> EnablePacketCaptureFlag { get; set; }
+
+        /// <summary>Optional. Enables flag to repair service for instance</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableRepairFlag")]
+        public virtual System.Nullable<bool> EnableRepairFlag { get; set; }
+
+        /// <summary>
+        /// Required. User Cloud Storage bucket location (REQUIRED). Must be formatted with path prefix
+        /// (`gs://$GCS_BUCKET`). Permissions: User Managed Notebooks: - storage.buckets.writer: Must be given to the
+        /// project's service account attached to VM. Google Managed Notebooks: - storage.buckets.writer: Must be given
+        /// to the project's service account or user credentials attached to VM depending on authentication mode. Cloud
+        /// Storage bucket Log file will be written to `gs://$GCS_BUCKET/$RELATIVE_PATH/$VM_DATE_$TIME.tar.gz`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsBucket")]
+        public virtual string GcsBucket { get; set; }
+
+        /// <summary>
+        /// Optional. Defines the relative storage path in the Cloud Storage bucket where the diagnostic logs will be
+        /// written: Default path will be the root directory of the Cloud Storage bucket
+        /// (`gs://$GCS_BUCKET/$DATE_$TIME.tar.gz`) Example of full path where Log file will be written:
+        /// `gs://$GCS_BUCKET/$RELATIVE_PATH/`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relativePath")]
+        public virtual string RelativePath { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1010,6 +2047,58 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The definition of an Event for a managed / semi-managed notebook instance.</summary>
+    public class Event : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Event details. This field is used to pass event information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Details { get; set; }
+
+        private string _reportTimeRaw;
+
+        private object _reportTime;
+
+        /// <summary>Optional. Event report time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
+        public virtual string ReportTimeRaw
+        {
+            get => _reportTimeRaw;
+            set
+            {
+                _reportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _reportTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReportTimeDateTimeOffset instead.")]
+        public virtual object ReportTime
+        {
+            get => _reportTime;
+            set
+            {
+                _reportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _reportTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Optional. Event type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1053,6 +2142,275 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A GPU driver configuration</summary>
+    public class GPUDriverConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll
+        /// automatically choose from official GPU drivers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customGpuDriverPath")]
+        public virtual string CustomGpuDriverPath { get; set; }
+
+        /// <summary>
+        /// Optional. Whether the end user authorizes Google Cloud to install GPU driver on this VM instance. If this
+        /// field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableGpuDriver")]
+        public virtual System.Nullable<bool> EnableGpuDriver { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The definition of how to configure a VM instance outside of Resources and Identity.</summary>
+    public class GceSetup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The hardware accelerators used on this instance. If you use accelerators, make sure that your
+        /// configuration has [enough vCPUs and memory to support the `machine_type` you have
+        /// selected](https://cloud.google.com/compute/docs/gpus/#gpus-list). Currently supports only one accelerator
+        /// configuration.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acceleratorConfigs")]
+        public virtual System.Collections.Generic.IList<AcceleratorConfig> AcceleratorConfigs { get; set; }
+
+        /// <summary>Optional. The boot disk for the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootDisk")]
+        public virtual BootDisk BootDisk { get; set; }
+
+        /// <summary>Optional. Use a container image to start the notebook instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerImage")]
+        public virtual ContainerImage ContainerImage { get; set; }
+
+        /// <summary>Optional. Data disks attached to the VM instance. Currently supports only one data disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataDisks")]
+        public virtual System.Collections.Generic.IList<DataDisk> DataDisks { get; set; }
+
+        /// <summary>Optional. If true, no external IP will be assigned to this VM instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disablePublicIp")]
+        public virtual System.Nullable<bool> DisablePublicIp { get; set; }
+
+        /// <summary>
+        /// Optional. Flag to enable ip forwarding or not, default false/off.
+        /// https://cloud.google.com/vpc/docs/using-routes#canipforward
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableIpForwarding")]
+        public virtual System.Nullable<bool> EnableIpForwarding { get; set; }
+
+        /// <summary>Optional. Configuration for GPU drivers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gpuDriverConfig")]
+        public virtual GPUDriverConfig GpuDriverConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
+
+        /// <summary>Optional. Custom metadata to apply to this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
+        /// <summary>Optional. The network interfaces for the VM. Supports only one interface.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
+        public virtual System.Collections.Generic.IList<NetworkInterface> NetworkInterfaces { get; set; }
+
+        /// <summary>
+        /// Optional. The service account that serves as an identity for the VM instance. Currently supports only one
+        /// service account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccounts")]
+        public virtual System.Collections.Generic.IList<ServiceAccount> ServiceAccounts { get; set; }
+
+        /// <summary>
+        /// Optional. Shielded VM configuration. [Images using supported Shielded VM
+        /// features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceConfig")]
+        public virtual ShieldedInstanceConfig ShieldedInstanceConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The Compute Engine tags to add to runtime (see [Tagging
+        /// instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
+
+        /// <summary>Optional. Use a Compute Engine VM image to start the notebook instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmImage")]
+        public virtual VmImage VmImage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The definition of a notebook instance.</summary>
+    public class Instance : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Instance creation time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Output only. Email address of entity that sent original CreateInstance request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creator")]
+        public virtual string Creator { get; set; }
+
+        /// <summary>Optional. If true, the notebook instance will not register with the proxy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableProxyAccess")]
+        public virtual System.Nullable<bool> DisableProxyAccess { get; set; }
+
+        /// <summary>Optional. Compute Engine setup for the notebook. Uses notebook-defined fields.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gceSetup")]
+        public virtual GceSetup GceSetup { get; set; }
+
+        /// <summary>
+        /// Output only. Additional information about instance health. Example: healthInfo": {
+        /// "docker_proxy_agent_status": "1", "docker_status": "1", "jupyterlab_api_status": "-1", "jupyterlab_status":
+        /// "-1", "updated": "2020-10-18 09:40:03.573409" }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthInfo")]
+        public virtual System.Collections.Generic.IDictionary<string, string> HealthInfo { get; set; }
+
+        /// <summary>Output only. Instance health_state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthState")]
+        public virtual string HealthState { get; set; }
+
+        /// <summary>Output only. Unique ID of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. The owner of this instance after creation. Format: `alias@example.com` Currently
+        /// supports one owner only. If not specified, all of the service account users of your VM instance's service
+        /// account can use the instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceOwners")]
+        public virtual System.Collections.Generic.IList<string> InstanceOwners { get; set; }
+
+        /// <summary>
+        /// Optional. Labels to apply to this instance. These can be later modified by the UpdateInstance method.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Output only. The name of this notebook instance. Format:
+        /// `projects/{project_id}/locations/{location}/instances/{instance_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The proxy endpoint that is used to access the Jupyter notebook.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxyUri")]
+        public virtual string ProxyUri { get; set; }
+
+        /// <summary>Output only. The state of this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Instance update time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Output only. The upgrade history of this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradeHistory")]
+        public virtual System.Collections.Generic.IList<UpgradeHistoryEntry> UpgradeHistory { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for listing notebook instances.</summary>
+    public class ListInstancesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of returned instances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instances")]
+        public virtual System.Collections.Generic.IList<Instance> Instances { get; set; }
+
+        /// <summary>
+        /// Page token that can be used to continue listing from the last result in the next list call.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>
+        /// Locations that could not be reached. For example, ['us-west1-a', 'us-central1-b']. A ListInstancesResponse
+        /// will only contain either instances or unreachables,
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1120,6 +2478,31 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The definition of a network interface resource attached to a VM.</summary>
+    public class NetworkInterface : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The name of the VPC that this VM instance is in. Format:
+        /// `projects/{project_id}/global/networks/{network_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nicType")]
+        public virtual string NicType { get; set; }
+
+        /// <summary>
+        /// Optional. The name of the subnet that this VM instance is in. Format:
+        /// `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnet")]
+        public virtual string Subnet { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1170,13 +2553,79 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
         public virtual string ApiVersion { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>The time the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
 
         /// <summary>The time the operation finished running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>API endpoint name of this operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
@@ -1271,6 +2720,66 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
+    /// <summary>Request for notebook instances to report information to Notebooks API.</summary>
+    public class ReportInstanceInfoSystemRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Event to be reported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("event")]
+        public virtual Event Event__ { get; set; }
+
+        /// <summary>
+        /// Required. The VM hardware token for authenticating the VM.
+        /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmId")]
+        public virtual string VmId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for resetting a notebook instance</summary>
+    public class ResetInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for rollbacking a notebook instance</summary>
+    public class RollbackInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Output only. Revision Id</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
+        public virtual string RevisionId { get; set; }
+
+        /// <summary>
+        /// Required. The snapshot for rollback. Example: "projects/test-project/global/snapshots/krwlzipynril".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetSnapshot")]
+        public virtual string TargetSnapshot { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A service account that acts as an identity.</summary>
+    public class ServiceAccount : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Email address of the service account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("email")]
+        public virtual string Email { get; set; }
+
+        /// <summary>
+        /// Output only. The list of scopes to be made available for this service account. Set by the CLH to
+        /// https://www.googleapis.com/auth/cloud-platform
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
+        public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for `SetIamPolicy` method.</summary>
     public class SetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1282,6 +2791,45 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual Policy Policy { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A set of Shielded Instance options. See [Images using supported Shielded VM
+    /// features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm). Not all combinations are
+    /// valid.
+    /// </summary>
+    public class ShieldedInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Defines whether the VM instance has integrity monitoring enabled. Enables monitoring and
+        /// attestation of the boot integrity of the VM instance. The attestation is performed against the integrity
+        /// policy baseline. This baseline is initially derived from the implicitly trusted boot image when the VM
+        /// instance is created. Enabled by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableIntegrityMonitoring")]
+        public virtual System.Nullable<bool> EnableIntegrityMonitoring { get; set; }
+
+        /// <summary>
+        /// Optional. Defines whether the VM instance has Secure Boot enabled. Secure Boot helps ensure that the system
+        /// only runs authentic software by verifying the digital signature of all boot components, and halting the boot
+        /// process if signature verification fails. Disabled by default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableSecureBoot")]
+        public virtual System.Nullable<bool> EnableSecureBoot { get; set; }
+
+        /// <summary>Optional. Defines whether the VM instance has the vTPM enabled. Enabled by default.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableVtpm")]
+        public virtual System.Nullable<bool> EnableVtpm { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for starting a notebook instance</summary>
+    public class StartInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1315,6 +2863,13 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request for stopping a notebook instance</summary>
+    public class StopInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for `TestIamPermissions` method.</summary>
     public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1336,6 +2891,129 @@ namespace Google.Apis.AIPlatformNotebooks.v2.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The entry of VM image upgrade history.</summary>
+    public class UpgradeHistoryEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Action. Rolloback or Upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual string Action { get; set; }
+
+        /// <summary>Optional. The container image before this instance upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerImage")]
+        public virtual string ContainerImage { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Immutable. The time that this instance upgrade history entry is created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Optional. The framework of this notebook instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("framework")]
+        public virtual string Framework { get; set; }
+
+        /// <summary>Optional. The snapshot of the boot disk of this notebook instance before upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshot")]
+        public virtual string Snapshot { get; set; }
+
+        /// <summary>Output only. The state of this instance upgrade history entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Optional. Target VM Version, like m63.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetVersion")]
+        public virtual string TargetVersion { get; set; }
+
+        /// <summary>Optional. The version of the notebook instance before this upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>Optional. The VM image before this instance upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmImage")]
+        public virtual string VmImage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for upgrading a notebook instance</summary>
+    public class UpgradeInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for upgrading a notebook instance from within the VM</summary>
+    public class UpgradeInstanceSystemRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The VM hardware token for authenticating the VM.
+        /// https://cloud.google.com/compute/docs/instances/verifying-instance-identity
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmId")]
+        public virtual string VmId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Definition of a custom Compute Engine virtual machine image for starting a notebook instance with the
+    /// environment installed directly on the VM.
+    /// </summary>
+    public class VmImage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Use this VM image family to find the image; the newest image in this family will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("family")]
+        public virtual string Family { get; set; }
+
+        /// <summary>Optional. Use VM image name to find the image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. The name of the Google Cloud project that this VM image belongs to. Format: `{project_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("project")]
+        public virtual string Project { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

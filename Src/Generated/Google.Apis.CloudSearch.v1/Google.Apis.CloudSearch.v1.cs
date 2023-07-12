@@ -2509,9 +2509,9 @@ namespace Google.Apis.CloudSearch.v1
         }
 
         /// <summary>
-        /// Provides functionality to remove logged activity for a user. Currently to be used only for dynamite 1p
-        /// clients **Note:** This API requires a standard end user account to execute. A service account can't perform
-        /// Remove Activity requests directly; to use a service account to perform queries, set up [Google Workspace
+        /// Provides functionality to remove logged activity for a user. Currently to be used only for Chat 1p clients
+        /// **Note:** This API requires a standard end user account to execute. A service account can't perform Remove
+        /// Activity requests directly; to use a service account to perform queries, set up [Google Workspace
         /// domain-wide delegation of authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -2521,9 +2521,9 @@ namespace Google.Apis.CloudSearch.v1
         }
 
         /// <summary>
-        /// Provides functionality to remove logged activity for a user. Currently to be used only for dynamite 1p
-        /// clients **Note:** This API requires a standard end user account to execute. A service account can't perform
-        /// Remove Activity requests directly; to use a service account to perform queries, set up [Google Workspace
+        /// Provides functionality to remove logged activity for a user. Currently to be used only for Chat 1p clients
+        /// **Note:** This API requires a standard end user account to execute. A service account can't perform Remove
+        /// Activity requests directly; to use a service account to perform queries, set up [Google Workspace
         /// domain-wide delegation of authority](https://developers.google.com/cloud-search/docs/guides/delegation/).
         /// </summary>
         public class RemoveActivityRequest : CloudSearchBaseServiceRequest<Google.Apis.CloudSearch.v1.Data.RemoveActivityResponse>

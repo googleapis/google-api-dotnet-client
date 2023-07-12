@@ -339,6 +339,10 @@ namespace Google.Apis.CivicInfo.v2
                 InitParameters();
             }
 
+            /// <summary>Whether to include data that has not been allowlisted yet</summary>
+            [Google.Apis.Util.RequestParameterAttribute("productionDataOnly", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ProductionDataOnly { get; set; }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "electionQuery";
 
@@ -352,6 +356,14 @@ namespace Google.Apis.CivicInfo.v2
             protected override void InitParameters()
             {
                 base.InitParameters();
+                RequestParameters.Add("productionDataOnly", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "productionDataOnly",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "true",
+                    Pattern = null,
+                });
             }
         }
 
@@ -388,6 +400,13 @@ namespace Google.Apis.CivicInfo.v2
             /// <summary>If set to true, only data from official state sources will be returned.</summary>
             [Google.Apis.Util.RequestParameterAttribute("officialOnly", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> OfficialOnly { get; set; }
+
+            /// <summary>
+            /// Whether to include data that has not been vetted yet. Should only be made available to internal IPs or
+            /// trusted partners. This is a non-discoverable parameter in the One Platform API config.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("productionDataOnly", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ProductionDataOnly { get; set; }
 
             /// <summary>
             /// If set to true, the query will return the success code and include any partial information when it is
@@ -431,6 +450,14 @@ namespace Google.Apis.CivicInfo.v2
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = "false",
+                    Pattern = null,
+                });
+                RequestParameters.Add("productionDataOnly", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "productionDataOnly",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "true",
                     Pattern = null,
                 });
                 RequestParameters.Add("returnAllAvailableData", new Google.Apis.Discovery.Parameter
@@ -1769,7 +1796,7 @@ namespace Google.Apis.CivicInfo.v2.Data
 
         /// <summary>
         /// The precincts that match this voter's address. Will only be returned for project IDs which have been
-        /// whitelisted as "partner projects".
+        /// allowlisted as "partner projects".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("precincts")]
         public virtual System.Collections.Generic.IList<Precinct> Precincts { get; set; }

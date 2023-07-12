@@ -801,6 +801,13 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>This metadata is currently blank.</summary>
+    public class AudienceListMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The batch request containing multiple pivot report requests.</summary>
     public class BatchRunPivotReportsRequest : Google.Apis.Requests.IDirectResponseSchema
     {

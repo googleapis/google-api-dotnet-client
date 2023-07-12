@@ -10942,10 +10942,7 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
     /// the case of Cloud SQL instances or Cloud Spanner instances), or the database instance itself. Some database
     /// resources might not have the [full resource name](https://google.aip.dev/122#full-resource-names) populated
     /// because these resource types, such as Cloud SQL databases, are not yet supported by Cloud Asset Inventory. In
-    /// these cases only the display name is provided. Some database resources may not have the [full resource
-    /// name](https://google.aip.dev/122#full-resource-names) populated because these resource types are not yet
-    /// supported by Cloud Asset Inventory (e.g. Cloud SQL databases). In these cases only the display name will be
-    /// provided.
+    /// these cases only the display name is provided.
     /// </summary>
     public class Database : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10960,8 +10957,11 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual System.Collections.Generic.IList<string> Grantees { get; set; }
 
         /// <summary>
-        /// The [full resource name](https://google.aip.dev/122#full-resource-names) of the database that the user
-        /// connected to, if it is supported by Cloud Asset Inventory.
+        /// Some database resources may not have the [full resource
+        /// name](https://google.aip.dev/122#full-resource-names) populated because these resource types are not yet
+        /// supported by Cloud Asset Inventory (e.g. Cloud SQL databases). In these cases only the display name will be
+        /// provided. The [full resource name](https://google.aip.dev/122#full-resource-names) of the database that the
+        /// user connected to, if it is supported by Cloud Asset Inventory.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -10976,6 +10976,13 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userName")]
         public virtual string UserName { get; set; }
+
+        /// <summary>
+        /// The version of the database, for example, POSTGRES_14. See [the complete
+        /// list](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1/SqlDatabaseVersion).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

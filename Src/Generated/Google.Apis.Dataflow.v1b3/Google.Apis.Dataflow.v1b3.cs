@@ -8255,6 +8255,12 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bypassTempDirValidation")]
         public virtual System.Nullable<bool> BypassTempDirValidation { get; set; }
 
+        /// <summary>
+        /// Optional. The disk size, in gigabytes, to use on each remote Compute Engine worker instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
+        public virtual System.Nullable<int> DiskSizeGb { get; set; }
+
         /// <summary>Optional. Whether to enable Streaming Engine for the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableStreamingEngine")]
         public virtual System.Nullable<bool> EnableStreamingEngine { get; set; }

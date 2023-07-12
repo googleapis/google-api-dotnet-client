@@ -343,6 +343,19 @@ namespace Google.Apis.Kmsinventory.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
+                /// <summary>
+                /// Optional. A list of resource types that this request searches for. If empty, it will search all the
+                /// [trackable resource types](https://cloud.google.com/kms/docs/view-key-usage#tracked-resource-types).
+                /// Regular expressions are also supported. For example: * `compute.googleapis.com.*` snapshots
+                /// resources whose type starts with `compute.googleapis.com`. * `.*Image` snapshots resources whose
+                /// type ends with `Image`. * `.*Image.*` snapshots resources whose type contains `Image`. See
+                /// [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular expression syntax. If the
+                /// regular expression does not match any supported resource type, an INVALID_ARGUMENT error will be
+                /// returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("resourceTypes", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual Google.Apis.Util.Repeatable<string> ResourceTypes { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "search";
 
@@ -383,6 +396,14 @@ namespace Google.Apis.Kmsinventory.v1
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("resourceTypes", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "resourceTypes",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

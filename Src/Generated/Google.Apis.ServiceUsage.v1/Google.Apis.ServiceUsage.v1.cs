@@ -4065,6 +4065,13 @@ namespace Google.Apis.ServiceUsage.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for the `UpdateConsumerPolicy` method.</summary>
+    public class UpdateConsumerPolicyMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Configuration controlling usage of a service.</summary>
     public class Usage : Google.Apis.Requests.IDirectResponseSchema
     {
