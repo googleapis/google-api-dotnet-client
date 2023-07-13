@@ -1723,7 +1723,7 @@ namespace Google.Apis.Dataflow.v1b3
                 /// The list of fields to update relative to Job. If empty, only RequestedJobState will be considered
                 /// for update. If the FieldMask is not empty and RequestedJobState is none/empty, The fields specified
                 /// in the update mask will be the only ones considered for update. If both RequestedJobState and
-                /// update_mask are specified, an error will be returned as we cannot update both state and mask.
+                /// update_mask are specified, we will first handle RequestedJobState and then the update_mask fields.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object UpdateMask { get; set; }
@@ -3647,8 +3647,8 @@ namespace Google.Apis.Dataflow.v1b3
                     /// The list of fields to update relative to Job. If empty, only RequestedJobState will be
                     /// considered for update. If the FieldMask is not empty and RequestedJobState is none/empty, The
                     /// fields specified in the update mask will be the only ones considered for update. If both
-                    /// RequestedJobState and update_mask are specified, an error will be returned as we cannot update
-                    /// both state and mask.
+                    /// RequestedJobState and update_mask are specified, we will first handle RequestedJobState and then
+                    /// the update_mask fields.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -7729,10 +7729,6 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customMetadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> CustomMetadata { get; set; }
 
-        /// <summary>Optional. The options shown when ENUM ParameterType is specified.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enumOptions")]
-        public virtual System.Collections.Generic.IList<ParameterMetadataEnumOption> EnumOptions { get; set; }
-
         /// <summary>
         /// Optional. Specifies a group name for this parameter to be rendered under. Group header text will be rendered
         /// exactly as specified in this field. Only considered when parent_name is NOT provided.
@@ -7779,25 +7775,6 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// <summary>Optional. Regexes that the parameter must match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regexes")]
         public virtual System.Collections.Generic.IList<string> Regexes { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>ParameterMetadataEnumOption specifies the option shown in the enum form.</summary>
-    public class ParameterMetadataEnumOption : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. The description to display for the enum option.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>Optional. The label to display for the enum option.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("label")]
-        public virtual string Label { get; set; }
-
-        /// <summary>Required. The value of the enum option.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

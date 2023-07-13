@@ -1115,12 +1115,47 @@ namespace Google.Apis.CloudDebugger.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; }
 
+        private string _canaryExpireTimeRaw;
+
+        private object _canaryExpireTime;
+
         /// <summary>
         /// The deadline for the breakpoint to stay in CANARY_ACTIVE state. The value is meaningless when the breakpoint
         /// is not in CANARY_ACTIVE state.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("canaryExpireTime")]
-        public virtual object CanaryExpireTime { get; set; }
+        public virtual string CanaryExpireTimeRaw
+        {
+            get => _canaryExpireTimeRaw;
+            set
+            {
+                _canaryExpireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _canaryExpireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CanaryExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CanaryExpireTimeDateTimeOffset instead.")]
+        public virtual object CanaryExpireTime
+        {
+            get => _canaryExpireTime;
+            set
+            {
+                _canaryExpireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _canaryExpireTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="CanaryExpireTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CanaryExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CanaryExpireTimeRaw);
+            set => CanaryExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Condition that triggers the breakpoint. The condition is a compound boolean expression composed using
@@ -1129,9 +1164,42 @@ namespace Google.Apis.CloudDebugger.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual string Condition { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Time this breakpoint was created by the server in seconds resolution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Values of evaluated expressions at breakpoint time. The evaluated expressions appear in exactly the same
@@ -1150,9 +1218,42 @@ namespace Google.Apis.CloudDebugger.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expressions")]
         public virtual System.Collections.Generic.IList<string> Expressions { get; set; }
 
+        private string _finalTimeRaw;
+
+        private object _finalTime;
+
         /// <summary>Time this breakpoint was finalized as seen by the server in seconds resolution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finalTime")]
-        public virtual object FinalTime { get; set; }
+        public virtual string FinalTimeRaw
+        {
+            get => _finalTimeRaw;
+            set
+            {
+                _finalTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _finalTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FinalTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FinalTimeDateTimeOffset instead.")]
+        public virtual object FinalTime
+        {
+            get => _finalTime;
+            set
+            {
+                _finalTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _finalTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="FinalTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FinalTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FinalTimeRaw);
+            set => FinalTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Breakpoint identifier, unique in the scope of the debuggee.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]

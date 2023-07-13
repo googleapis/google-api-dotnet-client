@@ -19838,6 +19838,40 @@
       "https://www.googleapis.com/auth/compute"
      ]
     },
+    "setManagedProtectionTier": {
+     "description": "Sets the Cloud Armor Managed Protection (CAMP) tier of the project. To set PLUS or above the billing account of the project must be subscribed to Managed Protection Plus. See Subscribing to Managed Protection Plus for more information.",
+     "flatPath": "projects/{project}/setManagedProtectionTier",
+     "httpMethod": "POST",
+     "id": "compute.projects.setManagedProtectionTier",
+     "parameterOrder": [
+      "project"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/setManagedProtectionTier",
+     "request": {
+      "$ref": "ProjectsSetManagedProtectionTierRequest"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
     "setUsageExportBucket": {
      "description": "Enables the usage export feature and sets the usage export bucket where reports are stored. If you provide an empty request body using this method, the usage export feature will be disabled.",
      "flatPath": "projects/{project}/setUsageExportBucket",
@@ -27245,7 +27279,7 @@
      ]
     },
     "patch": {
-     "description": "Patches the specified policy with the data included in the request. To clear fields in the rule, leave the fields empty and specify them in the updateMask. This cannot be used to be update the rules in the policy. Please use the per rule methods like addRule, patchRule, and removeRule instead.",
+     "description": "Patches the specified policy with the data included in the request. To clear fields in the policy, leave the fields empty and specify them in the updateMask. This cannot be used to be update the rules in the policy. Please use the per rule methods like addRule, patchRule, and removeRule instead.",
      "flatPath": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}",
      "httpMethod": "PATCH",
      "id": "compute.regionSecurityPolicies.patch",
@@ -29383,6 +29417,73 @@
      "scopes": [
       "https://www.googleapis.com/auth/cloud-platform",
       "https://www.googleapis.com/auth/compute"
+     ]
+    }
+   }
+  },
+  "regionZones": {
+   "methods": {
+    "list": {
+     "description": "Retrieves the list of Zone resources under the specific region available to the specified project.",
+     "flatPath": "projects/{project}/regions/{region}/zones",
+     "httpMethod": "GET",
+     "id": "compute.regionZones.list",
+     "parameterOrder": [
+      "project",
+      "region"
+     ],
+     "parameters": {
+      "filter": {
+       "description": "A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:` operator can be used with string fields to match substrings. For non-string fields it is equivalent to the `=` operator. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq \"double quoted literal\"` `(fieldname1 eq literal) (fieldname2 ne \"literal\")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name \"instance\", you would use `name ne .*instance`.",
+       "location": "query",
+       "type": "string"
+      },
+      "maxResults": {
+       "default": "500",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)",
+       "format": "uint32",
+       "location": "query",
+       "minimum": "0",
+       "type": "integer"
+      },
+      "orderBy": {
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy=\"creationTimestamp desc\"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.",
+       "location": "query",
+       "type": "string"
+      },
+      "pageToken": {
+       "description": "Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.",
+       "location": "query",
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "returnPartialSuccess": {
+       "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
+       "location": "query",
+       "type": "boolean"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/zones",
+     "response": {
+      "$ref": "ZoneList"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
      ]
     }
    }
@@ -31590,7 +31691,7 @@
      ]
     },
     "patch": {
-     "description": "Patches the specified policy with the data included in the request. To clear fields in the rule, leave the fields empty and specify them in the updateMask. This cannot be used to be update the rules in the policy. Please use the per rule methods like addRule, patchRule, and removeRule instead.",
+     "description": "Patches the specified policy with the data included in the request. To clear fields in the policy, leave the fields empty and specify them in the updateMask. This cannot be used to be update the rules in the policy. Please use the per rule methods like addRule, patchRule, and removeRule instead.",
      "flatPath": "projects/{project}/global/securityPolicies/{securityPolicy}",
      "httpMethod": "PATCH",
      "id": "compute.securityPolicies.patch",
@@ -31638,7 +31739,7 @@
      ]
     },
     "patchRule": {
-     "description": "Patches a rule at the specified priority.",
+     "description": "Patches a rule at the specified priority. To clear fields in the rule, leave the fields empty and specify them in the updateMask.",
      "flatPath": "projects/{project}/global/securityPolicies/{securityPolicy}/patchRule",
      "httpMethod": "POST",
      "id": "compute.securityPolicies.patchRule",
@@ -38519,7 +38620,7 @@
    }
   }
  },
- "revision": "20230701",
+ "revision": "20230711",
  "rootUrl": "https://compute.googleapis.com/",
  "schemas": {
   "AWSV4Signature": {
@@ -41177,7 +41278,7 @@
      "type": "string"
     },
     "customResponseHeaders": {
-     "description": "Headers that the HTTP/S load balancer should add to proxied responses.",
+     "description": "Headers that the Application Load Balancer should add to proxied responses.",
      "items": {
       "type": "string"
      },
@@ -51704,6 +51805,7 @@
      "description": "[Output only] Current state of the request.",
      "enum": [
       "ACCEPTED",
+      "CANCELLED",
       "CREATING",
       "FAILED",
       "PROVISIONING",
@@ -51711,6 +51813,7 @@
      ],
      "enumDescriptions": [
       "The request was created successfully and was accepted for provisioning when the capacity becomes available.",
+      "The request is cancelled.",
       "resize request is being created and may still fail creation.",
       "The request failed before or during provisioning. If the request fails during provisioning, any VMs that were created during provisioning are rolled back and removed from the MIG.",
       "The target resource(s) are being provisioned.",
@@ -52087,14 +52190,14 @@
      "type": "string"
     },
     "type": {
-     "description": "The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).",
+     "description": "The type of update process. You can specify either PROACTIVE so that the MIG automatically updates VMs to the latest configurations or OPPORTUNISTIC so that you can select the VMs that you want to update.",
      "enum": [
       "OPPORTUNISTIC",
       "PROACTIVE"
      ],
      "enumDescriptions": [
-      "No action is being proactively performed in order to bring this IGM to its target version distribution (regardless of whether this distribution is expressed using instanceTemplate or versions field).",
-      "This IGM will actively converge to its target version distribution (regardless of whether this distribution is expressed using instanceTemplate or versions field)."
+      "MIG will apply new configurations to existing VMs only when you selectively target specific or all VMs to be updated.",
+      "MIG will automatically apply new configurations to all or a subset of existing VMs and also to new VMs that are added to the group."
      ],
      "type": "string"
     }
@@ -65394,6 +65497,20 @@
      "description": "[Output Only] Type of the resource. Always compute#project for projects.",
      "type": "string"
     },
+    "managedProtectionTier": {
+     "description": "[Output Only] The Cloud Armor Managed Protection (CAMP) tier for this project. It can be one of the following values: CA_STANDARD, CAMP_PLUS_MONTHLY. If this field is not specified, it is assumed to be CA_STANDARD.",
+     "enum": [
+      "CAMP_PLUS_ANNUAL",
+      "CAMP_PLUS_MONTHLY",
+      "CA_STANDARD"
+     ],
+     "enumDescriptions": [
+      "Plus tier protection annual.",
+      "Plus tier protection monthly.",
+      "Standard protection."
+     ],
+     "type": "string"
+    },
     "name": {
      "description": "The project ID. For example: my-example-project. Use the project ID to make requests to Compute Engine.",
      "type": "string"
@@ -65512,6 +65629,26 @@
       "High quality, Google-grade network tier, support for all networking products.",
       "Public internet quality, only limited support for other networking products.",
       "(Output only) Temporary tier for FIXED_STANDARD when fixed standard tier is expired or not configured."
+     ],
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "ProjectsSetManagedProtectionTierRequest": {
+   "id": "ProjectsSetManagedProtectionTierRequest",
+   "properties": {
+    "managedProtectionTier": {
+     "description": "Managed protection tier to be set.",
+     "enum": [
+      "CAMP_PLUS_ANNUAL",
+      "CAMP_PLUS_MONTHLY",
+      "CA_STANDARD"
+     ],
+     "enumDescriptions": [
+      "Plus tier protection annual.",
+      "Plus tier protection monthly.",
+      "Standard protection."
      ],
      "type": "string"
     }
@@ -66691,6 +66828,11 @@
      "description": "The map holding related quota dimensions.",
      "type": "object"
     },
+    "futureLimit": {
+     "description": "Future quota limit being rolled out. The limit's unit depends on the quota type or metric.",
+     "format": "double",
+     "type": "number"
+    },
     "limit": {
      "description": "Current effective quota limit. The limit's unit depends on the quota type or metric.",
      "format": "double",
@@ -66702,6 +66844,18 @@
     },
     "metricName": {
      "description": "The Compute Engine quota metric name.",
+     "type": "string"
+    },
+    "rolloutStatus": {
+     "description": "Rollout status of the future quota limit.",
+     "enum": [
+      "IN_PROGRESS",
+      "ROLLOUT_STATUS_UNSPECIFIED"
+     ],
+     "enumDescriptions": [
+      "IN_PROGRESS - A rollout is in process which will change the limit value to future limit.",
+      "ROLLOUT_STATUS_UNSPECIFIED - Rollout status is not specified. The default value."
+     ],
      "type": "string"
     }
    },
@@ -72017,6 +72171,10 @@
      ],
      "type": "string"
     },
+    "localSsdRecoveryTimeout": {
+     "$ref": "Duration",
+     "description": "Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour."
+    },
     "locationHint": {
      "description": "An opaque location hint used to place the instance close to other resources. This field is for use by internal tools that use the public API.",
      "type": "string"
@@ -73898,6 +74056,10 @@
    "description": "[Output Only] A connection connected to this service attachment.",
    "id": "ServiceAttachmentConnectedEndpoint",
    "properties": {
+    "consumerNetwork": {
+     "description": "The url of the consumer network.",
+     "type": "string"
+    },
     "endpoint": {
      "description": "The url of a connected endpoint.",
      "type": "string"

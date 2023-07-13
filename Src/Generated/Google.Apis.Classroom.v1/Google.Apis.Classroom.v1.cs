@@ -6318,9 +6318,42 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("courseId")]
         public virtual string CourseId { get; set; }
 
+        private string _creationTimeRaw;
+
+        private object _creationTime;
+
         /// <summary>Timestamp when this announcement was created. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual object CreationTime { get; set; }
+        public virtual string CreationTimeRaw
+        {
+            get => _creationTimeRaw;
+            set
+            {
+                _creationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _creationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreationTimeDateTimeOffset instead.")]
+        public virtual object CreationTime
+        {
+            get => _creationTime;
+            set
+            {
+                _creationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _creationTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Identifier for the user that created the announcement. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creatorUserId")]
@@ -6342,9 +6375,42 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("materials")]
         public virtual System.Collections.Generic.IList<Material> Materials { get; set; }
 
+        private string _scheduledTimeRaw;
+
+        private object _scheduledTime;
+
         /// <summary>Optional timestamp when this announcement is scheduled to be published.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduledTime")]
-        public virtual object ScheduledTime { get; set; }
+        public virtual string ScheduledTimeRaw
+        {
+            get => _scheduledTimeRaw;
+            set
+            {
+                _scheduledTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _scheduledTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ScheduledTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ScheduledTimeDateTimeOffset instead.")]
+        public virtual object ScheduledTime
+        {
+            get => _scheduledTime;
+            set
+            {
+                _scheduledTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _scheduledTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ScheduledTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ScheduledTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduledTimeRaw);
+            set => ScheduledTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Status of this announcement. If unspecified, the default state is `DRAFT`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -6357,9 +6423,42 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>Timestamp of the most recent change to this announcement. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6470,11 +6569,44 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("courseState")]
         public virtual string CourseState { get; set; }
 
+        private string _creationTimeRaw;
+
+        private object _creationTime;
+
         /// <summary>
         /// Creation time of the course. Specifying this field in a course update mask results in an error. Read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual object CreationTime { get; set; }
+        public virtual string CreationTimeRaw
+        {
+            get => _creationTimeRaw;
+            set
+            {
+                _creationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _creationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreationTimeDateTimeOffset instead.")]
+        public virtual object CreationTime
+        {
+            get => _creationTime;
+            set
+            {
+                _creationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _creationTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Optional description. For example, "We'll be learning about the structure of living creatures from a
@@ -6563,12 +6695,45 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("teacherGroupEmail")]
         public virtual string TeacherGroupEmail { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>
         /// Time of the most recent update to this course. Specifying this field in a course update mask results in an
         /// error. Read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6679,9 +6844,42 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("courseId")]
         public virtual string CourseId { get; set; }
 
+        private string _creationTimeRaw;
+
+        private object _creationTime;
+
         /// <summary>Timestamp when this course work was created. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual object CreationTime { get; set; }
+        public virtual string CreationTimeRaw
+        {
+            get => _creationTimeRaw;
+            set
+            {
+                _creationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _creationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreationTimeDateTimeOffset instead.")]
+        public virtual object CreationTime
+        {
+            get => _creationTime;
+            set
+            {
+                _creationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _creationTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Identifier for the user that created the coursework. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creatorUserId")]
@@ -6746,9 +6944,42 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("multipleChoiceQuestion")]
         public virtual MultipleChoiceQuestion MultipleChoiceQuestion { get; set; }
 
+        private string _scheduledTimeRaw;
+
+        private object _scheduledTime;
+
         /// <summary>Optional timestamp when this course work is scheduled to be published.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduledTime")]
-        public virtual object ScheduledTime { get; set; }
+        public virtual string ScheduledTimeRaw
+        {
+            get => _scheduledTimeRaw;
+            set
+            {
+                _scheduledTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _scheduledTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ScheduledTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ScheduledTimeDateTimeOffset instead.")]
+        public virtual object ScheduledTime
+        {
+            get => _scheduledTime;
+            set
+            {
+                _scheduledTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _scheduledTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ScheduledTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ScheduledTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduledTimeRaw);
+            set => ScheduledTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Status of this course work. If unspecified, the default state is `DRAFT`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -6774,9 +7005,42 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("topicId")]
         public virtual string TopicId { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>Timestamp of the most recent change to this course work. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Type of this course work. The type is set when the course work is created and cannot be changed.
@@ -6819,9 +7083,42 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("courseId")]
         public virtual string CourseId { get; set; }
 
+        private string _creationTimeRaw;
+
+        private object _creationTime;
+
         /// <summary>Timestamp when this course work material was created. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual object CreationTime { get; set; }
+        public virtual string CreationTimeRaw
+        {
+            get => _creationTimeRaw;
+            set
+            {
+                _creationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _creationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreationTimeDateTimeOffset instead.")]
+        public virtual object CreationTime
+        {
+            get => _creationTime;
+            set
+            {
+                _creationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _creationTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Identifier for the user that created the course work material. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creatorUserId")]
@@ -6850,9 +7147,42 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("materials")]
         public virtual System.Collections.Generic.IList<Material> Materials { get; set; }
 
+        private string _scheduledTimeRaw;
+
+        private object _scheduledTime;
+
         /// <summary>Optional timestamp when this course work material is scheduled to be published.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduledTime")]
-        public virtual object ScheduledTime { get; set; }
+        public virtual string ScheduledTimeRaw
+        {
+            get => _scheduledTimeRaw;
+            set
+            {
+                _scheduledTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _scheduledTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ScheduledTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ScheduledTimeDateTimeOffset instead.")]
+        public virtual object ScheduledTime
+        {
+            get => _scheduledTime;
+            set
+            {
+                _scheduledTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _scheduledTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ScheduledTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ScheduledTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduledTimeRaw);
+            set => ScheduledTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Status of this course work material. If unspecified, the default state is `DRAFT`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -6872,9 +7202,42 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("topicId")]
         public virtual string TopicId { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>Timestamp of the most recent change to this course work material. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7071,9 +7434,44 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gradeChangeType")]
         public virtual string GradeChangeType { get; set; }
 
+        private string _gradeTimestampRaw;
+
+        private object _gradeTimestamp;
+
         /// <summary>When the grade of the submission was changed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gradeTimestamp")]
-        public virtual object GradeTimestamp { get; set; }
+        public virtual string GradeTimestampRaw
+        {
+            get => _gradeTimestampRaw;
+            set
+            {
+                _gradeTimestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _gradeTimestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="GradeTimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use GradeTimestampDateTimeOffset instead.")]
+        public virtual object GradeTimestamp
+        {
+            get => _gradeTimestamp;
+            set
+            {
+                _gradeTimestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _gradeTimestamp = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="GradeTimestampRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? GradeTimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(GradeTimestampRaw);
+            set => GradeTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The denominator of the grade at this time in the submission grade history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxPoints")]
@@ -7141,9 +7539,42 @@ namespace Google.Apis.Classroom.v1.Data
     /// <summary>An invitation to become the guardian of a specified user, sent to a specified email address.</summary>
     public class GuardianInvitation : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _creationTimeRaw;
+
+        private object _creationTime;
+
         /// <summary>The time that this invitation was created. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual object CreationTime { get; set; }
+        public virtual string CreationTimeRaw
+        {
+            get => _creationTimeRaw;
+            set
+            {
+                _creationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _creationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreationTimeDateTimeOffset instead.")]
+        public virtual object CreationTime
+        {
+            get => _creationTime;
+            set
+            {
+                _creationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _creationTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Unique identifier for this invitation. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invitationId")]
@@ -7592,11 +8023,44 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cloudPubsubTopic")]
         public virtual CloudPubsubTopic CloudPubsubTopic { get; set; }
 
+        private string _expiryTimeRaw;
+
+        private object _expiryTime;
+
         /// <summary>
         /// The time until which the `Registration` is effective. This is a read-only field assigned by the server.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expiryTime")]
-        public virtual object ExpiryTime { get; set; }
+        public virtual string ExpiryTimeRaw
+        {
+            get => _expiryTimeRaw;
+            set
+            {
+                _expiryTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expiryTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpiryTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpiryTimeDateTimeOffset instead.")]
+        public virtual object ExpiryTime
+        {
+            get => _expiryTime;
+            set
+            {
+                _expiryTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expiryTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpiryTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpiryTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpiryTimeRaw);
+            set => ExpiryTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Specification for the class of notifications that Classroom should deliver to the destination.
@@ -7656,9 +8120,44 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        private string _stateTimestampRaw;
+
+        private object _stateTimestamp;
+
         /// <summary>When the submission entered this state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateTimestamp")]
-        public virtual object StateTimestamp { get; set; }
+        public virtual string StateTimestampRaw
+        {
+            get => _stateTimestampRaw;
+            set
+            {
+                _stateTimestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _stateTimestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StateTimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StateTimestampDateTimeOffset instead.")]
+        public virtual object StateTimestamp
+        {
+            get => _stateTimestamp;
+            set
+            {
+                _stateTimestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _stateTimestamp = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="StateTimestampRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StateTimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StateTimestampRaw);
+            set => StateTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7738,11 +8237,44 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("courseWorkType")]
         public virtual string CourseWorkType { get; set; }
 
+        private string _creationTimeRaw;
+
+        private object _creationTime;
+
         /// <summary>
         /// Creation time of this submission. This may be unset if the student has not accessed this item. Read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual object CreationTime { get; set; }
+        public virtual string CreationTimeRaw
+        {
+            get => _creationTimeRaw;
+            set
+            {
+                _creationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _creationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreationTimeDateTimeOffset instead.")]
+        public virtual object CreationTime
+        {
+            get => _creationTime;
+            set
+            {
+                _creationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _creationTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Optional pending grade. If unset, no grade was set. This value must be non-negative. Decimal (that is,
@@ -7779,11 +8311,44 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("submissionHistory")]
         public virtual System.Collections.Generic.IList<SubmissionHistory> SubmissionHistory { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>
         /// Last update time of this submission. This may be unset if the student has not accessed this item. Read-only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Identifier for the student that owns this submission. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userId")]
@@ -7882,9 +8447,42 @@ namespace Google.Apis.Classroom.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("topicId")]
         public virtual string TopicId { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>The time the topic was last updated by the system. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

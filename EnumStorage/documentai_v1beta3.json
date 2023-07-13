@@ -7,5 +7,11 @@
   "Google.Apis.Document.v1beta3.DocumentBaseServiceRequest<<TResponse>>.XgafvEnum": [
     "1",
     "2"
+  ],
+  "Google.Apis.Document.v1beta3.ProjectsResource+LocationsResource+ProcessorsResource+DatasetResource+GetDocumentRequest.DocumentIdRevisionRefRevisionCaseEnum": [
+    "REVISION_CASE_UNSPECIFIED",
+    "LATEST_HUMAN_REVIEW",
+    "LATEST_TIMESTAMP",
+    "BASE_OCR_REVISION"
   ]
 }

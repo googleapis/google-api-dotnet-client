@@ -688,6 +688,65 @@ namespace Google.Apis.Document.v1beta3
                         this.service = service;
                     }
 
+                    /// <summary>Deletes a set of documents.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="dataset">
+                    /// Required. The dataset resource name. Format:
+                    /// projects/{project}/locations/{location}/processors/{processor}/dataset
+                    /// </param>
+                    public virtual BatchDeleteDocumentsRequest BatchDeleteDocuments(Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsRequest body, string dataset)
+                    {
+                        return new BatchDeleteDocumentsRequest(service, body, dataset);
+                    }
+
+                    /// <summary>Deletes a set of documents.</summary>
+                    public class BatchDeleteDocumentsRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1beta3.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new BatchDeleteDocuments request.</summary>
+                        public BatchDeleteDocumentsRequest(Google.Apis.Services.IClientService service, Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsRequest body, string dataset) : base(service)
+                        {
+                            Dataset = dataset;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The dataset resource name. Format:
+                        /// projects/{project}/locations/{location}/processors/{processor}/dataset
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("dataset", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Dataset { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "batchDeleteDocuments";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta3/{+dataset}:batchDeleteDocuments";
+
+                        /// <summary>Initializes BatchDeleteDocuments parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("dataset", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "dataset",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/processors/[^/]+/dataset$",
+                            });
+                        }
+                    }
+
                     /// <summary>Gets the `DatasetSchema` of a `Dataset`.</summary>
                     /// <param name="name">
                     /// Required. The dataset schema resource name. Format:
@@ -747,6 +806,251 @@ namespace Google.Apis.Document.v1beta3
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Returns relevant fields present in the requested document.</summary>
+                    /// <param name="dataset">
+                    /// Required. The resource name of the dataset that the document belongs to . Format:
+                    /// projects/{project}/locations/{location}/processors/{processor}/dataset
+                    /// </param>
+                    public virtual GetDocumentRequest GetDocument(string dataset)
+                    {
+                        return new GetDocumentRequest(service, dataset);
+                    }
+
+                    /// <summary>Returns relevant fields present in the requested document.</summary>
+                    public class GetDocumentRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3GetDocumentResponse>
+                    {
+                        /// <summary>Constructs a new GetDocument request.</summary>
+                        public GetDocumentRequest(Google.Apis.Services.IClientService service, string dataset) : base(service)
+                        {
+                            Dataset = dataset;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the dataset that the document belongs to . Format:
+                        /// projects/{project}/locations/{location}/processors/{processor}/dataset
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("dataset", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Dataset { get; private set; }
+
+                        /// <summary>Id of the document (indexed) managed by Content Warehouse.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("documentId.gcsManagedDocId.cwDocId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string DocumentIdGcsManagedDocIdCwDocId { get; set; }
+
+                        /// <summary>Required. The Cloud Storage URI where the actual document is stored.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("documentId.gcsManagedDocId.gcsUri", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string DocumentIdGcsManagedDocIdGcsUri { get; set; }
+
+                        /// <summary>
+                        /// Reads the revision generated by the processor version. The format takes the full resource
+                        /// name of processor version.
+                        /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("documentId.revisionRef.latestProcessorVersion", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string DocumentIdRevisionRefLatestProcessorVersion { get; set; }
+
+                        /// <summary>Reads the revision by the predefined case.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("documentId.revisionRef.revisionCase", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<DocumentIdRevisionRefRevisionCaseEnum> DocumentIdRevisionRefRevisionCase { get; set; }
+
+                        /// <summary>Reads the revision by the predefined case.</summary>
+                        public enum DocumentIdRevisionRefRevisionCaseEnum
+                        {
+                            /// <summary>Unspecified case, fallback to read the LATEST_HUMAN_REVIEW.</summary>
+                            [Google.Apis.Util.StringValueAttribute("REVISION_CASE_UNSPECIFIED")]
+                            REVISIONCASEUNSPECIFIED = 0,
+
+                            /// <summary>The latest revision made by a human.</summary>
+                            [Google.Apis.Util.StringValueAttribute("LATEST_HUMAN_REVIEW")]
+                            LATESTHUMANREVIEW = 1,
+
+                            /// <summary>The latest revision based on timestamp.</summary>
+                            [Google.Apis.Util.StringValueAttribute("LATEST_TIMESTAMP")]
+                            LATESTTIMESTAMP = 2,
+
+                            /// <summary>The first (OCR) revision.</summary>
+                            [Google.Apis.Util.StringValueAttribute("BASE_OCR_REVISION")]
+                            BASEOCRREVISION = 3,
+                        }
+
+                        /// <summary>Reads the revision given by the id.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("documentId.revisionRef.revisionId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string DocumentIdRevisionRefRevisionId { get; set; }
+
+                        /// <summary>Required. The id of the document.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("documentId.unmanagedDocId.docId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string DocumentIdUnmanagedDocIdDocId { get; set; }
+
+                        /// <summary>Last page number (one-based index) to be returned.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageRange.end", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageRangeEnd { get; set; }
+
+                        /// <summary>First page number (one-based index) to be returned.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageRange.start", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageRangeStart { get; set; }
+
+                        /// <summary>
+                        /// If set, only fields listed here will be returned. Otherwise, all fields will be returned by
+                        /// default.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object ReadMask { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getDocument";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta3/{+dataset}:getDocument";
+
+                        /// <summary>Initializes GetDocument parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("dataset", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "dataset",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/processors/[^/]+/dataset$",
+                            });
+                            RequestParameters.Add("documentId.gcsManagedDocId.cwDocId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "documentId.gcsManagedDocId.cwDocId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("documentId.gcsManagedDocId.gcsUri", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "documentId.gcsManagedDocId.gcsUri",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("documentId.revisionRef.latestProcessorVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "documentId.revisionRef.latestProcessorVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("documentId.revisionRef.revisionCase", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "documentId.revisionRef.revisionCase",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("documentId.revisionRef.revisionId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "documentId.revisionRef.revisionId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("documentId.unmanagedDocId.docId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "documentId.unmanagedDocId.docId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageRange.end", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageRange.end",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageRange.start", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageRange.start",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "readMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Import documents into a dataset.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="dataset">
+                    /// Required. The dataset resource name. Format:
+                    /// projects/{project}/locations/{location}/processors/{processor}/dataset
+                    /// </param>
+                    public virtual ImportDocumentsRequest ImportDocuments(Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3ImportDocumentsRequest body, string dataset)
+                    {
+                        return new ImportDocumentsRequest(service, body, dataset);
+                    }
+
+                    /// <summary>Import documents into a dataset.</summary>
+                    public class ImportDocumentsRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1beta3.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new ImportDocuments request.</summary>
+                        public ImportDocumentsRequest(Google.Apis.Services.IClientService service, Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3ImportDocumentsRequest body, string dataset) : base(service)
+                        {
+                            Dataset = dataset;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The dataset resource name. Format:
+                        /// projects/{project}/locations/{location}/processors/{processor}/dataset
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("dataset", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Dataset { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3ImportDocumentsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "importDocuments";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta3/{+dataset}:importDocuments";
+
+                        /// <summary>Initializes ImportDocuments parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("dataset", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "dataset",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/processors/[^/]+/dataset$",
                             });
                         }
                     }
@@ -2606,9 +2910,42 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>The common metadata for long running operations.</summary>
     public class GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>The creation time of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>A related resource to this operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
@@ -2622,9 +2959,42 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
         public virtual string StateMessage { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>The last update time of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2933,6 +3303,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inputGcsSource")]
         public virtual string InputGcsSource { get; set; }
 
+        /// <summary>The document id of imported document if it was successful, otherwise empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputDocumentId")]
+        public virtual GoogleCloudDocumentaiUiv1beta3DocumentId OutputDocumentId { get; set; }
+
         /// <summary>
         /// The output_gcs_destination of the processed document if it was successful, otherwise empty.
         /// </summary>
@@ -3084,6 +3458,14 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Response of the sample documents operation.</summary>
     public class GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The status of sampling documents in test split.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleTestStatus")]
+        public virtual GoogleRpcStatus SampleTestStatus { get; set; }
+
+        /// <summary>The status of sampling documents in training split.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sampleTrainingStatus")]
+        public virtual GoogleRpcStatus SampleTrainingStatus { get; set; }
+
         /// <summary>The result of the sampling process.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectedDocuments")]
         public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiUiv1beta3SampleDocumentsResponseSelectedDocument> SelectedDocuments { get; set; }
@@ -3234,9 +3616,42 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>The long-running operation metadata for BatchProcessDocuments.</summary>
     public class GoogleCloudDocumentaiV1BatchProcessMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>The creation time of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The list of response details of each document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("individualProcessStatuses")]
@@ -3253,9 +3668,42 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
         public virtual string StateMessage { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>The last update time of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3300,9 +3748,42 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>The common metadata for long running operations.</summary>
     public class GoogleCloudDocumentaiV1CommonOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>The creation time of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>A related resource to this operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
@@ -3316,9 +3797,42 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
         public virtual string StateMessage { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>The last update time of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4534,11 +5048,44 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("agent")]
         public virtual string Agent { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>
         /// The time that the revision was created, internally generated by doc proto storage at the time of create.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Human Review information of this revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("humanReview")]
@@ -4797,9 +5344,42 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Contains metadata for the BatchProcessDocuments operation.</summary>
     public class GoogleCloudDocumentaiV1beta1OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>The creation time of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The state of the current batch processing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -4809,9 +5389,42 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
         public virtual string StateMessage { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>The last update time of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5865,11 +6478,44 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("agent")]
         public virtual string Agent { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>
         /// The time that the revision was created, internally generated by doc proto storage at the time of create.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Human Review information of this revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("humanReview")]
@@ -6136,9 +6782,42 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Contains metadata for the BatchProcessDocuments operation.</summary>
     public class GoogleCloudDocumentaiV1beta2OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>The creation time of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The state of the current batch processing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -6148,9 +6827,42 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
         public virtual string StateMessage { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>The last update time of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6250,6 +6962,93 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Dataset documents that the batch operation will be applied to.</summary>
+    public class GoogleCloudDocumentaiV1beta3BatchDatasetDocuments : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A filter matching the documents. Follows the same format and restriction as
+        /// [google.cloud.documentai.master.ListDocumentsRequest.filter].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>Document identifiers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("individualDocumentIds")]
+        public virtual GoogleCloudDocumentaiV1beta3BatchDatasetDocumentsIndividualDocumentIds IndividualDocumentIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>List of individual DocumentIds.</summary>
+    public class GoogleCloudDocumentaiV1beta3BatchDatasetDocumentsIndividualDocumentIds : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. List of Document IDs indicating where the actual documents are stored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentIds")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3DocumentId> DocumentIds { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The basic metadata of the long running operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
+        public virtual GoogleCloudDocumentaiV1beta3CommonOperationMetadata CommonMetadata { get; set; }
+
+        /// <summary>Total number of documents that failed to be deleted in storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorDocumentCount")]
+        public virtual System.Nullable<int> ErrorDocumentCount { get; set; }
+
+        /// <summary>The list of response details of each document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("individualBatchDeleteStatuses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus> IndividualBatchDeleteStatuses { get; set; }
+
+        /// <summary>Total number of documents deleting from dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalDocumentCount")]
+        public virtual System.Nullable<int> TotalDocumentCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status of each individual document in the batch delete process.</summary>
+    public class GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsMetadataIndividualBatchDeleteStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The document id of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
+        public virtual GoogleCloudDocumentaiV1beta3DocumentId DocumentId { get; set; }
+
+        /// <summary>The status of deleting the document in storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Dataset documents input. If given `filter`, all documents satisfying the filter will be deleted.
+        /// If given documentIds, a maximum of 50 documents can be deleted in a batch. The request will be rejected if
+        /// more than 50 document_ids are provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetDocuments")]
+        public virtual GoogleCloudDocumentaiV1beta3BatchDatasetDocuments DatasetDocuments { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response of the delete documents operation.</summary>
+    public class GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The common config to specify a set of documents used as input.</summary>
     public class GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6268,9 +7067,42 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>The long-running operation metadata for BatchProcessDocuments.</summary>
     public class GoogleCloudDocumentaiV1beta3BatchProcessMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>The creation time of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The list of response details of each document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("individualProcessStatuses")]
@@ -6287,9 +7119,42 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
         public virtual string StateMessage { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>The last update time of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6419,9 +7284,42 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>The common metadata for long running operations.</summary>
     public class GoogleCloudDocumentaiV1beta3CommonOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>The creation time of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>A related resource to this operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resource")]
@@ -6435,9 +7333,42 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
         public virtual string StateMessage { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>The last update time of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6830,6 +7761,53 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>Subject entity id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subjectId")]
         public virtual string SubjectId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Document Identifier.</summary>
+    public class GoogleCloudDocumentaiV1beta3DocumentId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A document id within user-managed Cloud Storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsManagedDocId")]
+        public virtual GoogleCloudDocumentaiV1beta3DocumentIdGCSManagedDocumentId GcsManagedDocId { get; set; }
+
+        /// <summary>Points to a specific revision of the document if set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionRef")]
+        public virtual GoogleCloudDocumentaiV1beta3RevisionRef RevisionRef { get; set; }
+
+        /// <summary>A document id within unmanaged dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unmanagedDocId")]
+        public virtual GoogleCloudDocumentaiV1beta3DocumentIdUnmanagedDocumentId UnmanagedDocId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Identifies a document uniquely within the scope of a dataset in the user-managed Cloud Storage option.
+    /// </summary>
+    public class GoogleCloudDocumentaiV1beta3DocumentIdGCSManagedDocumentId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Id of the document (indexed) managed by Content Warehouse.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cwDocId")]
+        public virtual string CwDocId { get; set; }
+
+        /// <summary>Required. The Cloud Storage URI where the actual document is stored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
+        public virtual string GcsUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Identifies a document uniquely within the scope of a dataset in unmanaged option.</summary>
+    public class GoogleCloudDocumentaiV1beta3DocumentIdUnmanagedDocumentId : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The id of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("docId")]
+        public virtual string DocId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7559,11 +8537,44 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("agent")]
         public virtual string Agent { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>
         /// The time that the revision was created, internally generated by doc proto storage at the time of create.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Human Review information of this revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("humanReview")]
@@ -7977,9 +8988,42 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allEntitiesMetrics")]
         public virtual GoogleCloudDocumentaiV1beta3EvaluationMultiConfidenceMetrics AllEntitiesMetrics { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>The time that the evaluation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Counters for the documents used in the evaluation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentCounters")]
@@ -8210,6 +9254,15 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
+    public class GoogleCloudDocumentaiV1beta3GetDocumentResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("document")]
+        public virtual GoogleCloudDocumentaiV1beta3Document Document { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The status of human review on a processed document.</summary>
     public class GoogleCloudDocumentaiV1beta3HumanReviewStatus : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8229,6 +9282,116 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
         public virtual string StateMessage { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata of the import document operation.</summary>
+    public class GoogleCloudDocumentaiV1beta3ImportDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The basic metadata of the long running operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
+        public virtual GoogleCloudDocumentaiV1beta3CommonOperationMetadata CommonMetadata { get; set; }
+
+        /// <summary>Validation statuses of the batch documents import config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("importConfigValidationResults")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataImportConfigValidationResult> ImportConfigValidationResults { get; set; }
+
+        /// <summary>The list of response details of each document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("individualImportStatuses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataIndividualImportStatus> IndividualImportStatuses { get; set; }
+
+        /// <summary>Total number of the documents that are qualified for importing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalDocumentCount")]
+        public virtual System.Nullable<int> TotalDocumentCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The validation status of each import config. Status is set to errors if there is no documents to import in the
+    /// import_config, or OK if the operation will try to proceed at least one document.
+    /// </summary>
+    public class GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataImportConfigValidationResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The source Cloud Storage URI specified in the import config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputGcsSource")]
+        public virtual string InputGcsSource { get; set; }
+
+        /// <summary>The validation status of import config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status of each individual document in the import process.</summary>
+    public class GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataIndividualImportStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The source Cloud Storage URI of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputGcsSource")]
+        public virtual string InputGcsSource { get; set; }
+
+        /// <summary>The document id of imported document if it was successful, otherwise empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("outputDocumentId")]
+        public virtual GoogleCloudDocumentaiV1beta3DocumentId OutputDocumentId { get; set; }
+
+        /// <summary>The status of the importing of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual GoogleRpcStatus Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDocumentaiV1beta3ImportDocumentsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Cloud Storage uri containing raw documents that must be imported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchDocumentsImportConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3ImportDocumentsRequestBatchDocumentsImportConfig> BatchDocumentsImportConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Config for importing documents. Each batch can have its own dataset split type.</summary>
+    public class GoogleCloudDocumentaiV1beta3ImportDocumentsRequestBatchDocumentsImportConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If set, documents will be automatically split into training and test split category with the specified
+        /// ratio.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoSplitConfig")]
+        public virtual GoogleCloudDocumentaiV1beta3ImportDocumentsRequestBatchDocumentsImportConfigAutoSplitConfig AutoSplitConfig { get; set; }
+
+        /// <summary>The common config to specify a set of documents used as input.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batchInputConfig")]
+        public virtual GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig BatchInputConfig { get; set; }
+
+        /// <summary>Target dataset split where the documents must be stored.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetSplit")]
+        public virtual string DatasetSplit { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The config for auto-split.</summary>
+    public class GoogleCloudDocumentaiV1beta3ImportDocumentsRequestBatchDocumentsImportConfigAutoSplitConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Ratio of training dataset split.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingSplitRatio")]
+        public virtual System.Nullable<float> TrainingSplitRatio { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response of the import document operation.</summary>
+    public class GoogleCloudDocumentaiV1beta3ImportDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8440,6 +9603,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fieldMask")]
         public virtual object FieldMask { get; set; }
 
+        /// <summary>A raw document on Google Cloud Storage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcsDocument")]
+        public virtual GoogleCloudDocumentaiV1beta3GcsDocument GcsDocument { get; set; }
+
         /// <summary>An inline document proto.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inlineDocument")]
         public virtual GoogleCloudDocumentaiV1beta3Document InlineDocument { get; set; }
@@ -8489,9 +9656,42 @@ namespace Google.Apis.Document.v1beta3.Data
     /// </summary>
     public class GoogleCloudDocumentaiV1beta3Processor : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>The time the processor was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The default processor version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultProcessorVersion")]
@@ -8598,9 +9798,42 @@ namespace Google.Apis.Document.v1beta3.Data
     /// </summary>
     public class GoogleCloudDocumentaiV1beta3ProcessorVersion : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>The time the processor version was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>If set, information about the eventual deprecation of this version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deprecationInfo")]
@@ -8648,9 +9881,44 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Information about the upcoming deprecation of this processor version.</summary>
     public class GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _deprecationTimeRaw;
+
+        private object _deprecationTime;
+
         /// <summary>The time at which this processor version will be deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deprecationTime")]
-        public virtual object DeprecationTime { get; set; }
+        public virtual string DeprecationTimeRaw
+        {
+            get => _deprecationTimeRaw;
+            set
+            {
+                _deprecationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deprecationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeprecationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeprecationTimeDateTimeOffset instead.")]
+        public virtual object DeprecationTime
+        {
+            get => _deprecationTime;
+            set
+            {
+                _deprecationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deprecationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="DeprecationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeprecationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeprecationTimeRaw);
+            set => DeprecationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>If set, the processor version that will be used as a replacement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replacementProcessorVersion")]
@@ -8693,9 +9961,42 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>The creation time of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The Crowd Compute question ID.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("questionId")]
@@ -8712,9 +10013,42 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
         public virtual string StateMessage { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>The last update time of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8761,6 +10095,29 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>The state of the review operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The revision reference specifies which revision on the document to read.</summary>
+    public class GoogleCloudDocumentaiV1beta3RevisionRef : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Reads the revision generated by the processor version. The format takes the full resource name of processor
+        /// version.
+        /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestProcessorVersion")]
+        public virtual string LatestProcessorVersion { get; set; }
+
+        /// <summary>Reads the revision by the predefined case.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionCase")]
+        public virtual string RevisionCase { get; set; }
+
+        /// <summary>Reads the revision given by the id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
+        public virtual string RevisionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8937,6 +10294,16 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Response message for the UndeployProcessorVersion method.</summary>
     public class GoogleCloudDocumentaiV1beta3UndeployProcessorVersionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDocumentaiV1beta3UpdateDatasetOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The basic metadata of the long running operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
+        public virtual GoogleCloudDocumentaiV1beta3CommonOperationMetadata CommonMetadata { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
