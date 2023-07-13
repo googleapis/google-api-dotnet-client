@@ -1785,6 +1785,10 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exceptionAuditLogLink")]
         public virtual string ExceptionAuditLogLink { get; set; }
 
+        /// <summary>Output only. List of all the exception detail added for the violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exceptionContexts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContext> ExceptionContexts { get; set; }
+
         /// <summary>
         /// Output only. Immutable. Name of the Violation. Format:
         /// organizations/{organization}/locations/{location}/workloads/{workload_id}/violations/{violations_id}
@@ -1883,6 +1887,60 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
             get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Violation exception detail. Next Id: 6</summary>
+    public class GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _acknowledgementTimeRaw;
+
+        private object _acknowledgementTime;
+
+        /// <summary>Timestamp when the violation was acknowledged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acknowledgementTime")]
+        public virtual string AcknowledgementTimeRaw
+        {
+            get => _acknowledgementTimeRaw;
+            set
+            {
+                _acknowledgementTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _acknowledgementTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="AcknowledgementTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use AcknowledgementTimeDateTimeOffset instead.")]
+        public virtual object AcknowledgementTime
+        {
+            get => _acknowledgementTime;
+            set
+            {
+                _acknowledgementTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _acknowledgementTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="AcknowledgementTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? AcknowledgementTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(AcknowledgementTimeRaw);
+            set => AcknowledgementTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Business justification provided towards the acknowledgement of the violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comment")]
+        public virtual string Comment { get; set; }
+
+        /// <summary>Name of the user (or service account) who acknowledged the violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userName")]
+        public virtual string UserName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

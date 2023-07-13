@@ -1197,9 +1197,44 @@ namespace Google.Apis.CloudScheduler.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("httpTarget")]
         public virtual HttpTarget HttpTarget { get; set; }
 
+        private string _lastAttemptTimeRaw;
+
+        private object _lastAttemptTime;
+
         /// <summary>Output only. The time the last job attempt started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastAttemptTime")]
-        public virtual object LastAttemptTime { get; set; }
+        public virtual string LastAttemptTimeRaw
+        {
+            get => _lastAttemptTimeRaw;
+            set
+            {
+                _lastAttemptTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastAttemptTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastAttemptTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastAttemptTimeDateTimeOffset instead.")]
+        public virtual object LastAttemptTime
+        {
+            get => _lastAttemptTime;
+            set
+            {
+                _lastAttemptTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastAttemptTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastAttemptTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastAttemptTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastAttemptTimeRaw);
+            set => LastAttemptTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Optionally caller-specified in CreateJob, after which it becomes output only. The job name. For example:
@@ -1236,12 +1271,45 @@ namespace Google.Apis.CloudScheduler.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
         public virtual string Schedule { get; set; }
 
+        private string _scheduleTimeRaw;
+
+        private object _scheduleTime;
+
         /// <summary>
         /// Output only. The next time the job is scheduled. Note that this may be a retry of a previously failed
         /// attempt or the next execution time according to the schedule.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]
-        public virtual object ScheduleTime { get; set; }
+        public virtual string ScheduleTimeRaw
+        {
+            get => _scheduleTimeRaw;
+            set
+            {
+                _scheduleTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _scheduleTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ScheduleTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ScheduleTimeDateTimeOffset instead.")]
+        public virtual object ScheduleTime
+        {
+            get => _scheduleTime;
+            set
+            {
+                _scheduleTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _scheduleTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ScheduleTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ScheduleTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduleTimeRaw);
+            set => ScheduleTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. State of the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -1260,9 +1328,44 @@ namespace Google.Apis.CloudScheduler.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
 
+        private string _userUpdateTimeRaw;
+
+        private object _userUpdateTime;
+
         /// <summary>Output only. The creation time of the job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userUpdateTime")]
-        public virtual object UserUpdateTime { get; set; }
+        public virtual string UserUpdateTimeRaw
+        {
+            get => _userUpdateTimeRaw;
+            set
+            {
+                _userUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _userUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UserUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UserUpdateTimeDateTimeOffset instead.")]
+        public virtual object UserUpdateTime
+        {
+            get => _userUpdateTime;
+            set
+            {
+                _userUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _userUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="UserUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UserUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UserUpdateTimeRaw);
+            set => UserUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1402,42 +1505,75 @@ namespace Google.Apis.CloudScheduler.v1.Data
     public class PubsubMessage : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Attributes for this message. If this field is empty, the message must contain non-empty data. This can be
-        /// used to filter messages on the subscription.
+        /// Optional. Attributes for this message. If this field is empty, the message must contain non-empty data. This
+        /// can be used to filter messages on the subscription.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributes")]
         public virtual System.Collections.Generic.IDictionary<string, string> Attributes { get; set; }
 
         /// <summary>
-        /// The message data field. If this field is empty, the message must contain at least one attribute.
+        /// Optional. The message data field. If this field is empty, the message must contain at least one attribute.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual string Data { get; set; }
 
         /// <summary>
-        /// ID of this message, assigned by the server when the message is published. Guaranteed to be unique within the
-        /// topic. This value may be read by a subscriber that receives a `PubsubMessage` via a `Pull` call or a push
-        /// delivery. It must not be populated by the publisher in a `Publish` call.
+        /// Optional. ID of this message, assigned by the server when the message is published. Guaranteed to be unique
+        /// within the topic. This value may be read by a subscriber that receives a `PubsubMessage` via a `Pull` call
+        /// or a push delivery. It must not be populated by the publisher in a `Publish` call.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
         public virtual string MessageId { get; set; }
 
         /// <summary>
-        /// If non-empty, identifies related messages for which publish order should be respected. If a `Subscription`
-        /// has `enable_message_ordering` set to `true`, messages published with the same non-empty `ordering_key` value
-        /// will be delivered to subscribers in the order in which they are received by the Pub/Sub system. All
-        /// `PubsubMessage`s published in a given `PublishRequest` must specify the same `ordering_key` value. For more
-        /// information, see [ordering messages](https://cloud.google.com/pubsub/docs/ordering).
+        /// Optional. If non-empty, identifies related messages for which publish order should be respected. If a
+        /// `Subscription` has `enable_message_ordering` set to `true`, messages published with the same non-empty
+        /// `ordering_key` value will be delivered to subscribers in the order in which they are received by the Pub/Sub
+        /// system. All `PubsubMessage`s published in a given `PublishRequest` must specify the same `ordering_key`
+        /// value. For more information, see [ordering messages](https://cloud.google.com/pubsub/docs/ordering).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("orderingKey")]
         public virtual string OrderingKey { get; set; }
 
+        private string _publishTimeRaw;
+
+        private object _publishTime;
+
         /// <summary>
-        /// The time at which the message was published, populated by the server when it receives the `Publish` call. It
-        /// must not be populated by the publisher in a `Publish` call.
+        /// Optional. The time at which the message was published, populated by the server when it receives the
+        /// `Publish` call. It must not be populated by the publisher in a `Publish` call.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishTime")]
-        public virtual object PublishTime { get; set; }
+        public virtual string PublishTimeRaw
+        {
+            get => _publishTimeRaw;
+            set
+            {
+                _publishTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _publishTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="PublishTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PublishTimeDateTimeOffset instead.")]
+        public virtual object PublishTime
+        {
+            get => _publishTime;
+            set
+            {
+                _publishTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _publishTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PublishTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PublishTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishTimeRaw);
+            set => PublishTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

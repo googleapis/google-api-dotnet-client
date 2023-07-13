@@ -1038,6 +1038,205 @@ namespace Google.Apis.DatabaseMigrationService.v1
                         this.service = service;
                     }
 
+                    /// <summary>Creates a new mapping rule for a given conversion workspace.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">Required. The parent which owns this collection of mapping rules.</param>
+                    public virtual CreateRequest Create(Google.Apis.DatabaseMigrationService.v1.Data.MappingRule body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a new mapping rule for a given conversion workspace.</summary>
+                    public class CreateRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1.Data.MappingRule>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.DatabaseMigrationService.v1.Data.MappingRule body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The parent which owns this collection of mapping rules.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Required. The ID of the rule to create.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("mappingRuleId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string MappingRuleId { get; set; }
+
+                        /// <summary>
+                        /// A unique ID used to identify the request. If the server receives two requests with the same
+                        /// ID, then the second request is ignored. It is recommended to always set this value to a
+                        /// UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+                        /// hyphens (-). The maximum length is 40 characters.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DatabaseMigrationService.v1.Data.MappingRule Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/mappingRules";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/conversionWorkspaces/[^/]+$",
+                            });
+                            RequestParameters.Add("mappingRuleId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "mappingRuleId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a single mapping rule.</summary>
+                    /// <param name="name">Required. Name of the mapping rule resource to delete.</param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes a single mapping rule.</summary>
+                    public class DeleteRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1.Data.Empty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. Name of the mapping rule resource to delete.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. A unique ID used to identify the request. If the server receives two requests with
+                        /// the same ID, then the second request is ignored. It is recommended to always set this value
+                        /// to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and
+                        /// hyphens (-). The maximum length is 40 characters.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/conversionWorkspaces/[^/]+/mappingRules/[^/]+$",
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets the details of a mapping rule.</summary>
+                    /// <param name="name">
+                    /// Required. Name of the mapping rule resource to get. Example:
+                    /// conversionWorkspaces/123/mappingRules/rule123 In order to retrieve a previous revision of the
+                    /// mapping rule, also provide the revision ID. Example:
+                    /// conversionWorkspace/123/mappingRules/rule123@c7cfa2a8c7cfa2a8c7cfa2a8c7cfa2a8
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets the details of a mapping rule.</summary>
+                    public class GetRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1.Data.MappingRule>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Name of the mapping rule resource to get. Example:
+                        /// conversionWorkspaces/123/mappingRules/rule123 In order to retrieve a previous revision of
+                        /// the mapping rule, also provide the revision ID. Example:
+                        /// conversionWorkspace/123/mappingRules/rule123@c7cfa2a8c7cfa2a8c7cfa2a8c7cfa2a8
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/conversionWorkspaces/[^/]+/mappingRules/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>
                     /// Imports the mapping rules for a given conversion workspace. Supports various formats of external
                     /// rules files.
@@ -1099,6 +1298,89 @@ namespace Google.Apis.DatabaseMigrationService.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/conversionWorkspaces/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists the mapping rules for a specific conversion workspace.</summary>
+                    /// <param name="parent">
+                    /// Required. Name of the conversion workspace resource whose mapping rules are listed in the form
+                    /// of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists the mapping rules for a specific conversion workspace.</summary>
+                    public class ListRequest : DatabaseMigrationServiceBaseServiceRequest<Google.Apis.DatabaseMigrationService.v1.Data.ListMappingRulesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Name of the conversion workspace resource whose mapping rules are listed in the
+                        /// form of:
+                        /// projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// The maximum number of rules to return. The service may return fewer than this value.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// The nextPageToken value received in the previous call to mappingRules.list, used in the
+                        /// subsequent request to retrieve the next page of results. On first call this should be left
+                        /// blank. When paginating, all other parameters provided to mappingRules.list must match the
+                        /// call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/mappingRules";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/conversionWorkspaces/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                         }
                     }
@@ -1539,25 +1821,25 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     public virtual string ConversionWorkspace { get; private set; }
 
                     /// <summary>
-                    /// Request a specific commit ID. If not specified, the entities from the latest commit are
-                    /// returned.
+                    /// Optional. Request a specific commit ID. If not specified, the entities from the latest commit
+                    /// are returned.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("commitId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string CommitId { get; set; }
 
-                    /// <summary>Filter the returned entities based on AIP-160 standard.</summary>
+                    /// <summary>Optional. Filter the returned entities based on AIP-160 standard.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
                     /// <summary>
-                    /// The maximum number of entities to return. The service may return fewer entities than the value
-                    /// specifies.
+                    /// Optional. The maximum number of entities to return. The service may return fewer entities than
+                    /// the value specifies.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// The nextPageToken value received in the previous call to
+                    /// Optional. The nextPageToken value received in the previous call to
                     /// conversionWorkspace.describeDatabaseEntities, used in the subsequent request to retrieve the
                     /// next page of results. On first call this should be left blank. When paginating, all other
                     /// parameters provided to conversionWorkspace.describeDatabaseEntities must match the call that
@@ -1566,11 +1848,11 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
-                    /// <summary>The tree to fetch.</summary>
+                    /// <summary>Required. The tree to fetch.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("tree", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<TreeEnum> Tree { get; set; }
 
-                    /// <summary>The tree to fetch.</summary>
+                    /// <summary>Required. The tree to fetch.</summary>
                     public enum TreeEnum
                     {
                         /// <summary>Unspecified tree type.</summary>
@@ -1591,11 +1873,40 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     }
 
                     /// <summary>
-                    /// Whether to retrieve the latest committed version of the entities or the latest version. This
-                    /// field is ignored if a specific commit_id is specified.
+                    /// Optional. Whether to retrieve the latest committed version of the entities or the latest
+                    /// version. This field is ignored if a specific commit_id is specified.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("uncommitted", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> Uncommitted { get; set; }
+
+                    /// <summary>Optional. Results view based on AIP-157</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                    /// <summary>Optional. Results view based on AIP-157</summary>
+                    public enum ViewEnum
+                    {
+                        /// <summary>Unspecified view. Defaults to basic view.</summary>
+                        [Google.Apis.Util.StringValueAttribute("DATABASE_ENTITY_VIEW_UNSPECIFIED")]
+                        DATABASEENTITYVIEWUNSPECIFIED = 0,
+
+                        /// <summary>Default view. Does not return DDLs or Issues.</summary>
+                        [Google.Apis.Util.StringValueAttribute("DATABASE_ENTITY_VIEW_BASIC")]
+                        DATABASEENTITYVIEWBASIC = 1,
+
+                        /// <summary>Return full entity details including mappings, ddl and issues.</summary>
+                        [Google.Apis.Util.StringValueAttribute("DATABASE_ENTITY_VIEW_FULL")]
+                        DATABASEENTITYVIEWFULL = 2,
+
+                        /// <summary>
+                        /// Top-most (Database, Schema) nodes which are returned contains summary details for their
+                        /// decendents such as the number of entities per type and issues rollups. When this view is
+                        /// used, only a single page of result is returned and the page_size property of the request is
+                        /// ignored. The returned page will only include the top-most node types.
+                        /// </summary>
+                        [Google.Apis.Util.StringValueAttribute("DATABASE_ENTITY_VIEW_ROOT_SUMMARY")]
+                        DATABASEENTITYVIEWROOTSUMMARY = 3,
+                    }
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "describeDatabaseEntities";
@@ -1661,6 +1972,14 @@ namespace Google.Apis.DatabaseMigrationService.v1
                         RequestParameters.Add("uncommitted", new Google.Apis.Discovery.Parameter
                         {
                             Name = "uncommitted",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "view",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -2382,10 +2701,10 @@ namespace Google.Apis.DatabaseMigrationService.v1
                     public virtual string MigrationJobId { get; set; }
 
                     /// <summary>
-                    /// A unique ID used to identify the request. If the server receives two requests with the same ID,
-                    /// then the second request is ignored. It is recommended to always set this value to a UUID. The ID
-                    /// must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The
-                    /// maximum length is 40 characters.
+                    /// Optional. A unique ID used to identify the request. If the server receives two requests with the
+                    /// same ID, then the second request is ignored. It is recommended to always set this value to a
+                    /// UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens
+                    /// (-). The maximum length is 40 characters.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -4527,9 +4846,22 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Request message for 'ApplyConversionWorkspace' request.</summary>
     public class ApplyConversionWorkspaceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Fully qualified (Uri) name of the destination connection profile.</summary>
+        /// <summary>
+        /// Optional. Specifies whether the conversion workspace is to be committed automatically after the apply.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoCommit")]
+        public virtual System.Nullable<bool> AutoCommit { get; set; }
+
+        /// <summary>Optional. Fully qualified (Uri) name of the destination connection profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionProfile")]
         public virtual string ConnectionProfile { get; set; }
+
+        /// <summary>
+        /// Optional. Only validates the apply process, but doesn't change the destination database. Only works for
+        /// PostgreSQL destination connection profile.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dryRun")]
+        public virtual System.Nullable<bool> DryRun { get; set; }
 
         /// <summary>
         /// Filter which entities to apply. Leaving this field empty will apply all of the entities. Supports Google AIP
@@ -4542,16 +4874,38 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Apply a hash function on the value.</summary>
+    public class ApplyHash : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Generate UUID from the data's byte array</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uuidFromBytes")]
+        public virtual Empty UuidFromBytes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details regarding an Apply background job.</summary>
     public class ApplyJobDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The connection profile which was used for the apply job.</summary>
+        /// <summary>Output only. The connection profile which was used for the apply job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionProfile")]
         public virtual string ConnectionProfile { get; set; }
 
-        /// <summary>AIP-160 based filter used to specify the entities to apply</summary>
+        /// <summary>Output only. AIP-160 based filter used to specify the entities to apply</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Set to a specific value (value is converted to fit the target data type)</summary>
+    public class AssignSpecificValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Specific value to be assigned</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4612,22 +4966,22 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Execution log of a background job.</summary>
     public class BackgroundJobLogEntry : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Apply job details.</summary>
+        /// <summary>Output only. Apply job details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applyJobDetails")]
         public virtual ApplyJobDetails ApplyJobDetails { get; set; }
 
         /// <summary>
-        /// Job completion comment, such as how many entities were seeded, how many warnings were found during
-        /// conversion, and similar information.
+        /// Output only. Job completion comment, such as how many entities were seeded, how many warnings were found
+        /// during conversion, and similar information.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completionComment")]
         public virtual string CompletionComment { get; set; }
 
-        /// <summary>Job completion state, i.e. the final state after the job completed.</summary>
+        /// <summary>Output only. Job completion state, i.e. the final state after the job completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completionState")]
         public virtual string CompletionState { get; set; }
 
-        /// <summary>Convert job details.</summary>
+        /// <summary>Output only. Convert job details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("convertJobDetails")]
         public virtual ConvertJobDetails ConvertJobDetails { get; set; }
 
@@ -4672,7 +5026,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
-        /// <summary>Import rules job details.</summary>
+        /// <summary>Output only. Import rules job details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("importRulesJobDetails")]
         public virtual ImportRulesJobDetails ImportRulesJobDetails { get; set; }
 
@@ -4681,13 +5035,13 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string JobType { get; set; }
 
         /// <summary>
-        /// Whether the client requested the conversion workspace to be committed after a successful completion of the
-        /// job.
+        /// Output only. Whether the client requested the conversion workspace to be committed after a successful
+        /// completion of the job.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestAutocommit")]
         public virtual System.Nullable<bool> RequestAutocommit { get; set; }
 
-        /// <summary>Seed job details.</summary>
+        /// <summary>Output only. Seed job details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("seedJobDetails")]
         public virtual SeedJobDetails SeedJobDetails { get; set; }
 
@@ -5036,6 +5390,38 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Options to configure rule type ConditionalColumnSetValue. The rule is used to transform the data which is being
+    /// replicated/migrated. The rule filter field can refer to one or more entities. The rule scope can be one of:
+    /// Column.
+    /// </summary>
+    public class ConditionalColumnSetValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Custom engine specific features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customFeatures")]
+        public virtual System.Collections.Generic.IDictionary<string, object> CustomFeatures { get; set; }
+
+        /// <summary>
+        /// Optional. Optional filter on source column precision and scale. Used for fixed point numbers such as
+        /// NUMERIC/NUMBER data types.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceNumericFilter")]
+        public virtual SourceNumericFilter SourceNumericFilter { get; set; }
+
+        /// <summary>
+        /// Optional. Optional filter on source column length. Used for text based data types like varchar.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceTextFilter")]
+        public virtual SourceTextFilter SourceTextFilter { get; set; }
+
+        /// <summary>Required. Description of data transformation during migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueTransformation")]
+        public virtual ValueTransformation ValueTransformation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A connection profile definition.</summary>
     public class ConnectionProfile : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5271,14 +5657,14 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual DatabaseEngineInfo Destination { get; set; }
 
-        /// <summary>The display name for the workspace.</summary>
+        /// <summary>Optional. The display name for the workspace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// A generic list of settings for the workspace. The settings are database pair dependant and can indicate
-        /// default behavior for the mapping rules engine or turn on or off specific features. Such examples can be:
-        /// convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
+        /// Optional. A generic list of settings for the workspace. The settings are database pair dependant and can
+        /// indicate default behavior for the mapping rules engine or turn on or off specific features. Such examples
+        /// can be: convert_foreign_key_to_interleave=true, skip_triggers=false, ignore_non_table_synonyms=true
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("globalSettings")]
         public virtual System.Collections.Generic.IDictionary<string, string> GlobalSettings { get; set; }
@@ -5404,14 +5790,21 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     public class ConvertConversionWorkspaceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Specifies whether the conversion workspace is to be committed automatically after the conversion.
+        /// Optional. Specifies whether the conversion workspace is to be committed automatically after the conversion.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoCommit")]
         public virtual System.Nullable<bool> AutoCommit { get; set; }
 
         /// <summary>
-        /// Filter the entities to convert. Leaving this field empty will convert all of the entities. Supports Google
-        /// AIP-160 style filtering.
+        /// Optional. Automatically convert the full entity path for each entity specified by the filter. For example,
+        /// if the filter specifies a table, that table schema (and database if there is one) will also be converted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("convertFullPath")]
+        public virtual System.Nullable<bool> ConvertFullPath { get; set; }
+
+        /// <summary>
+        /// Optional. Filter the entities to convert. Leaving this field empty will convert all of the entities.
+        /// Supports Google AIP-160 style filtering.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
@@ -5423,9 +5816,25 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Details regarding a Convert background job.</summary>
     public class ConvertJobDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>AIP-160 based filter used to specify the entities to convert</summary>
+        /// <summary>Output only. AIP-160 based filter used to specify the entities to convert</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual string Filter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Options to configure rule type ConvertROWIDToColumn. The rule is used to add column rowid to destination tables
+    /// based on an Oracle rowid function/property. The rule filter field can refer to one or more entities. The rule
+    /// scope can be one of: Table. This rule requires additional filter to be specified beyond the basic rule filter
+    /// field, which is whether or not to work on tables which already have a primary key defined.
+    /// </summary>
+    public class ConvertRowIdToColumn : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Only work on tables without primary key defined</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onlyIfNoPrimaryKey")]
+        public virtual System.Nullable<bool> OnlyIfNoPrimaryKey { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5452,6 +5861,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// </summary>
     public class DatabaseEntity : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("database")]
+        public virtual DatabaseInstanceEntity Database { get; set; }
+
         /// <summary>Function.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseFunction")]
         public virtual FunctionEntity DatabaseFunction { get; set; }
@@ -5460,9 +5873,20 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("databasePackage")]
         public virtual PackageEntity DatabasePackage { get; set; }
 
+        /// <summary>
+        /// Details about the entity DDL script. Multiple DDL scripts are provided for child entities such as a table
+        /// entity will have one DDL for the table with additional DDLs for each index, constraint and such.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityDdl")]
+        public virtual System.Collections.Generic.IList<EntityDdl> EntityDdl { get; set; }
+
         /// <summary>The type of the database entity (table, view, index, ...).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityType")]
         public virtual string EntityType { get; set; }
+
+        /// <summary>Details about the various issues found for the entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issues")]
+        public virtual System.Collections.Generic.IList<EntityIssue> Issues { get; set; }
 
         /// <summary>
         /// Details about entity mappings. For source tree entities, this holds the draft entities which were generated
@@ -5471,6 +5895,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mappings")]
         public virtual System.Collections.Generic.IList<EntityMapping> Mappings { get; set; }
+
+        /// <summary>Materialized view.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("materializedView")]
+        public virtual MaterializedViewEntity MaterializedView { get; set; }
 
         /// <summary>The full name of the parent entity (e.g. schema name).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentEntity")]
@@ -5504,9 +5932,24 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tree")]
         public virtual string Tree { get; set; }
 
+        /// <summary>UDT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("udt")]
+        public virtual UDTEntity Udt { get; set; }
+
         /// <summary>View.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("view")]
         public virtual ViewEntity View { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>DatabaseInstance acts as a parent entity to other database entities.</summary>
+    public class DatabaseInstanceEntity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Custom engine specific features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customFeatures")]
+        public virtual System.Collections.Generic.IDictionary<string, object> CustomFeatures { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5551,6 +5994,23 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Filter based on relation between source value and compare value of type double in ConditionalColumnSetValue
+    /// </summary>
+    public class DoubleComparisonFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Double compare value to be used</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<double> Value { get; set; }
+
+        /// <summary>Required. Relation between source value and compare value</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueComparison")]
+        public virtual string ValueComparison { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5605,6 +6065,72 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
         public virtual string KmsKeyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single DDL statement for a specific entity</summary>
+    public class EntityDdl : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The actual ddl code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ddl")]
+        public virtual string Ddl { get; set; }
+
+        /// <summary>Type of DDL (Create, Alter).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ddlType")]
+        public virtual string DdlType { get; set; }
+
+        /// <summary>The name of the database entity the ddl refers to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entity")]
+        public virtual string Entity { get; set; }
+
+        /// <summary>The entity type (if the DDL is for a sub entity).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityType")]
+        public virtual string EntityType { get; set; }
+
+        /// <summary>EntityIssues found for this ddl.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issueId")]
+        public virtual System.Collections.Generic.IList<string> IssueId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Issue related to the entity.</summary>
+    public class EntityIssue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Error/Warning code</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>The ddl which caused the issue, if relevant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ddl")]
+        public virtual string Ddl { get; set; }
+
+        /// <summary>The entity type (if the DDL is for a sub entity).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityType")]
+        public virtual string EntityType { get; set; }
+
+        /// <summary>Unique Issue ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>Issue detailed message</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The position of the issue found, if relevant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("position")]
+        public virtual Position Position { get; set; }
+
+        /// <summary>Severity of the issue</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>The type of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5667,6 +6193,21 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     }
 
     /// <summary>
+    /// Options to configure rule type EntityMove. The rule is used to move an entity to a new schema. The rule filter
+    /// field can refer to one or more entities. The rule scope can be one of: Table, Column, Constraint, Index, View,
+    /// Function, Stored Procedure, Materialized View, Sequence, UDT
+    /// </summary>
+    public class EntityMove : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The new schema</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newSchema")]
+        public virtual string NewSchema { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
     /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
     /// (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
@@ -5723,6 +6264,25 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// <summary>List of static IPs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("staticIps")]
         public virtual System.Collections.Generic.IList<string> StaticIps { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Options to configure rule type FilterTableColumns. The rule is used to filter the list of columns to include or
+    /// exclude from a table. The rule filter field can refer to one entity. The rule scope can be: Table Only one of
+    /// the two lists can be specified for the rule.
+    /// </summary>
+    public class FilterTableColumns : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List of columns to be excluded for a particular table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludeColumns")]
+        public virtual System.Collections.Generic.IList<string> ExcludeColumns { get; set; }
+
+        /// <summary>Optional. List of columns to be included for a particular table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("includeColumns")]
+        public virtual System.Collections.Generic.IList<string> IncludeColumns { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5932,15 +6492,17 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Request message for 'ImportMappingRules' request.</summary>
     public class ImportMappingRulesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Should the conversion workspace be committed automatically after the import operation.</summary>
+        /// <summary>
+        /// Required. Should the conversion workspace be committed automatically after the import operation.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoCommit")]
         public virtual System.Nullable<bool> AutoCommit { get; set; }
 
-        /// <summary>One or more rules files.</summary>
+        /// <summary>Required. One or more rules files.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rulesFiles")]
         public virtual System.Collections.Generic.IList<RulesFile> RulesFiles { get; set; }
 
-        /// <summary>The format of the rules content file.</summary>
+        /// <summary>Required. The format of the rules content file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rulesFormat")]
         public virtual string RulesFormat { get; set; }
 
@@ -5951,11 +6513,11 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Details regarding an Import Rules background job.</summary>
     public class ImportRulesJobDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The requested file format.</summary>
+        /// <summary>Output only. The requested file format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileFormat")]
         public virtual string FileFormat { get; set; }
 
-        /// <summary>File names used for the import rules job.</summary>
+        /// <summary>Output only. File names used for the import rules job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("files")]
         public virtual System.Collections.Generic.IList<string> Files { get; set; }
 
@@ -5988,6 +6550,23 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// <summary>Boolean value indicating whether the index is unique.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unique")]
         public virtual System.Nullable<bool> Unique { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Filter based on relation between source value and compare value of type integer in ConditionalColumnSetValue
+    /// </summary>
+    public class IntComparisonFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Integer compare value to be used</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual System.Nullable<long> Value { get; set; }
+
+        /// <summary>Required. Relation between source value and compare value</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueComparison")]
+        public virtual string ValueComparison { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6045,6 +6624,24 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual System.Collections.Generic.IList<Location> Locations { get; set; }
 
         /// <summary>The standard List next-page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for 'ListMappingRulesRequest' request.</summary>
+    public class ListMappingRulesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of conversion workspace mapping rules.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mappingRules")]
+        public virtual System.Collections.Generic.IList<MappingRule> MappingRules { get; set; }
+
+        /// <summary>
+        /// A token which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -6149,6 +6746,204 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// <summary>The number of CPU's in the VM instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cpuCount")]
         public virtual System.Nullable<int> CpuCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Definition of a transformation that is to be applied to a group of entities in the source schema. Several such
+    /// transformations can be applied to an entity sequentially to define the corresponding entity in the target
+    /// schema.
+    /// </summary>
+    public class MappingRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Rule to specify how the data contained in a column should be transformed (such as trimmed,
+        /// rounded, etc) provided that the data meets certain criteria.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conditionalColumnSetValue")]
+        public virtual ConditionalColumnSetValue ConditionalColumnSetValue { get; set; }
+
+        /// <summary>
+        /// Optional. Rule to specify how multiple tables should be converted with an additional rowid column.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("convertRowidColumn")]
+        public virtual ConvertRowIdToColumn ConvertRowidColumn { get; set; }
+
+        /// <summary>Optional. A human readable name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Optional. Rule to specify how multiple entities should be relocated into a different schema.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityMove")]
+        public virtual EntityMove EntityMove { get; set; }
+
+        /// <summary>Required. The rule filter</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual MappingRuleFilter Filter { get; set; }
+
+        /// <summary>Optional. Rule to specify the list of columns to include or exclude from a table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterTableColumns")]
+        public virtual FilterTableColumns FilterTableColumns { get; set; }
+
+        /// <summary>
+        /// Optional. Rule to specify how multiple columns should be converted to a different data type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiColumnDataTypeChange")]
+        public virtual MultiColumnDatatypeChange MultiColumnDataTypeChange { get; set; }
+
+        /// <summary>Optional. Rule to specify how multiple entities should be renamed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiEntityRename")]
+        public virtual MultiEntityRename MultiEntityRename { get; set; }
+
+        /// <summary>
+        /// Full name of the mapping rule resource, in the form of:
+        /// projects/{project}/locations/{location}/conversionWorkspaces/{set}/mappingRule/{rule}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _revisionCreateTimeRaw;
+
+        private object _revisionCreateTime;
+
+        /// <summary>Output only. The timestamp that the revision was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionCreateTime")]
+        public virtual string RevisionCreateTimeRaw
+        {
+            get => _revisionCreateTimeRaw;
+            set
+            {
+                _revisionCreateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _revisionCreateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RevisionCreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RevisionCreateTimeDateTimeOffset instead.")]
+        public virtual object RevisionCreateTime
+        {
+            get => _revisionCreateTime;
+            set
+            {
+                _revisionCreateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _revisionCreateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="RevisionCreateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RevisionCreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RevisionCreateTimeRaw);
+            set => RevisionCreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Output only. The revision ID of the mapping rule. A new revision is committed whenever the mapping rule is
+        /// changed in any way. The format is an 8-character hexadecimal string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
+        public virtual string RevisionId { get; set; }
+
+        /// <summary>
+        /// Required. The order in which the rule is applied. Lower order rules are applied before higher value rules so
+        /// they may end up being overridden.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleOrder")]
+        public virtual System.Nullable<long> RuleOrder { get; set; }
+
+        /// <summary>Required. The rule scope</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleScope")]
+        public virtual string RuleScope { get; set; }
+
+        /// <summary>Optional. Rule to specify the primary key for a table</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setTablePrimaryKey")]
+        public virtual SetTablePrimaryKey SetTablePrimaryKey { get; set; }
+
+        /// <summary>Optional. Rule to specify how a single column is converted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singleColumnChange")]
+        public virtual SingleColumnChange SingleColumnChange { get; set; }
+
+        /// <summary>Optional. Rule to specify how a single entity should be renamed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singleEntityRename")]
+        public virtual SingleEntityRename SingleEntityRename { get; set; }
+
+        /// <summary>Optional. Rule to specify how a single package is converted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("singlePackageChange")]
+        public virtual SinglePackageChange SinglePackageChange { get; set; }
+
+        /// <summary>Optional. Rule to change the sql code for an entity, for example, function, procedure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSqlChange")]
+        public virtual SourceSqlChange SourceSqlChange { get; set; }
+
+        /// <summary>Optional. The mapping rule state</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A filter defining the entities that a mapping rule should be applied to. When more than one field is specified,
+    /// the rule is applied only to entities which match all the fields.
+    /// </summary>
+    public class MappingRuleFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The rule should be applied to specific entities defined by their fully qualified names.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entities")]
+        public virtual System.Collections.Generic.IList<string> Entities { get; set; }
+
+        /// <summary>
+        /// Optional. The rule should be applied to entities whose non-qualified name contains the given string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityNameContains")]
+        public virtual string EntityNameContains { get; set; }
+
+        /// <summary>
+        /// Optional. The rule should be applied to entities whose non-qualified name starts with the given prefix.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityNamePrefix")]
+        public virtual string EntityNamePrefix { get; set; }
+
+        /// <summary>
+        /// Optional. The rule should be applied to entities whose non-qualified name ends with the given suffix.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityNameSuffix")]
+        public virtual string EntityNameSuffix { get; set; }
+
+        /// <summary>
+        /// Optional. The rule should be applied to entities whose parent entity (fully qualified name) matches the
+        /// given value. For example, if the rule applies to a table entity, the expected value should be a schema
+        /// (schema). If the rule applies to a column or index entity, the expected value can be either a schema
+        /// (schema) or a table (schema.table)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentEntity")]
+        public virtual string ParentEntity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MaterializedView's parent is a schema.</summary>
+    public class MaterializedViewEntity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Custom engine specific features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customFeatures")]
+        public virtual System.Collections.Generic.IDictionary<string, object> CustomFeatures { get; set; }
+
+        /// <summary>The SQL code which creates the view.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlCode")]
+        public virtual string SqlCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6401,6 +7196,92 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Options to configure rule type MultiColumnDatatypeChange. The rule is used to change the data type and
+    /// associated properties of multiple columns at once. The rule filter field can refer to one or more entities. The
+    /// rule scope can be one of:Column. This rule requires additional filters to be specified beyond the basic rule
+    /// filter field, which is the source data type, but the rule supports additional filtering capabilities such as the
+    /// minimum and maximum field length. All additional filters which are specified are required to be met in order for
+    /// the rule to be applied (logical AND between the fields).
+    /// </summary>
+    public class MultiColumnDatatypeChange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Custom engine specific features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customFeatures")]
+        public virtual System.Collections.Generic.IDictionary<string, object> CustomFeatures { get; set; }
+
+        /// <summary>Required. New data type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newDataType")]
+        public virtual string NewDataType { get; set; }
+
+        /// <summary>
+        /// Optional. Column fractional seconds precision - used only for timestamp based datatypes - if not specified
+        /// and relevant uses the source column fractional seconds precision.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overrideFractionalSecondsPrecision")]
+        public virtual System.Nullable<int> OverrideFractionalSecondsPrecision { get; set; }
+
+        /// <summary>
+        /// Optional. Column length - e.g. varchar (50) - if not specified and relevant uses the source column length.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overrideLength")]
+        public virtual System.Nullable<long> OverrideLength { get; set; }
+
+        /// <summary>
+        /// Optional. Column precision - when relevant - if not specified and relevant uses the source column precision.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overridePrecision")]
+        public virtual System.Nullable<int> OverridePrecision { get; set; }
+
+        /// <summary>
+        /// Optional. Column scale - when relevant - if not specified and relevant uses the source column scale.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overrideScale")]
+        public virtual System.Nullable<int> OverrideScale { get; set; }
+
+        /// <summary>Required. Filter on source data type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceDataTypeFilter")]
+        public virtual string SourceDataTypeFilter { get; set; }
+
+        /// <summary>Optional. Filter for fixed point number data types such as NUMERIC/NUMBER.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceNumericFilter")]
+        public virtual SourceNumericFilter SourceNumericFilter { get; set; }
+
+        /// <summary>Optional. Filter for text-based data types like varchar.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceTextFilter")]
+        public virtual SourceTextFilter SourceTextFilter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Options to configure rule type MultiEntityRename. The rule is used to rename multiple entities. The rule filter
+    /// field can refer to one or more entities. The rule scope can be one of: Database, Schema, Table, Column,
+    /// Constraint, Index, View, Function, Stored Procedure, Materialized View, Sequence, UDT
+    /// </summary>
+    public class MultiEntityRename : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The pattern used to generate the new entity's name. This pattern must include the characters
+        /// '{name}', which will be replaced with the name of the original entity. For example, the pattern 't_{name}'
+        /// for an entity name jobs would be converted to 't_jobs'. If unspecified, the default value for this field is
+        /// '{name}'
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newNamePattern")]
+        public virtual string NewNamePattern { get; set; }
+
+        /// <summary>
+        /// Optional. Additional transformation that can be done on the source entity name before it is being used by
+        /// the new_name_pattern, for example lower case. If no transformation is desired, use NO_TRANSFORMATION
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceNameTransformation")]
+        public virtual string SourceNameTransformation { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specifies connection parameters required specifically for MySQL databases.</summary>
     public class MySqlConnectionProfile : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6634,6 +7515,29 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>Issue position.</summary>
+    public class Position : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Issue column number</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("column")]
+        public virtual System.Nullable<int> Column { get; set; }
+
+        /// <summary>Issue length</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("length")]
+        public virtual System.Nullable<int> Length { get; set; }
+
+        /// <summary>Issue line number</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("line")]
+        public virtual System.Nullable<int> Line { get; set; }
+
+        /// <summary>Issue offset</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offset")]
+        public virtual System.Nullable<int> Offset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Specifies connection parameters required specifically for PostgreSQL databases.</summary>
@@ -6935,16 +7839,31 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// This allows the data to change scale, for example if the source is 2 digits after the decimal point, specify
+    /// round to scale value = 2. If for example the value needs to be converted to an integer, use round to scale value
+    /// = 0.
+    /// </summary>
+    public class RoundToScale : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Scale value to be used</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scale")]
+        public virtual System.Nullable<int> Scale { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details of a single rules file.</summary>
     public class RulesFile : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The text content of the rules that needs to be converted.</summary>
+        /// <summary>Required. The text content of the rules that needs to be converted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rulesContent")]
         public virtual string RulesContent { get; set; }
 
         /// <summary>
-        /// The filename of the rules that needs to be converted. The filename is used mainly so that future logs of the
-        /// import rules job contain it, and can therefore be searched by it.
+        /// Required. The filename of the rules that needs to be converted. The filename is used mainly so that future
+        /// logs of the import rules job contain it, and can therefore be searched by it.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rulesSourceFilename")]
         public virtual string RulesSourceFilename { get; set; }
@@ -6987,11 +7906,11 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoCommit")]
         public virtual System.Nullable<bool> AutoCommit { get; set; }
 
-        /// <summary>Fully qualified (Uri) name of the destination connection profile.</summary>
+        /// <summary>Optional. Fully qualified (Uri) name of the destination connection profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destinationConnectionProfile")]
         public virtual string DestinationConnectionProfile { get; set; }
 
-        /// <summary>Fully qualified (Uri) name of the source connection profile.</summary>
+        /// <summary>Optional. Fully qualified (Uri) name of the source connection profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceConnectionProfile")]
         public virtual string SourceConnectionProfile { get; set; }
 
@@ -7002,7 +7921,7 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Details regarding a Seed background job.</summary>
     public class SeedJobDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The connection profile which was used for the seed job.</summary>
+        /// <summary>Output only. The connection profile which was used for the seed job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connectionProfile")]
         public virtual string ConnectionProfile { get; set; }
 
@@ -7062,6 +7981,194 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
         public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Options to configure rule type SetTablePrimaryKey. The rule is used to specify the columns and name to
+    /// configure/alter the primary key of a table. The rule filter field can refer to one entity. The rule scope can be
+    /// one of: Table.
+    /// </summary>
+    public class SetTablePrimaryKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Name for the primary key</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryKey")]
+        public virtual string PrimaryKey { get; set; }
+
+        /// <summary>Required. List of column names for the primary key</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryKeyColumns")]
+        public virtual System.Collections.Generic.IList<string> PrimaryKeyColumns { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Options to configure rule type SingleColumnChange. The rule is used to change the properties of a column. The
+    /// rule filter field can refer to one entity. The rule scope can be one of: Column. When using this rule, if a
+    /// field is not specified than the destination column's configuration will be the same as the one in the source
+    /// column..
+    /// </summary>
+    public class SingleColumnChange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Is the column of array type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("array")]
+        public virtual System.Nullable<bool> Array { get; set; }
+
+        /// <summary>Optional. The length of the array, only relevant if the column type is an array.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("arrayLength")]
+        public virtual System.Nullable<int> ArrayLength { get; set; }
+
+        /// <summary>Optional. Is the column auto-generated/identity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoGenerated")]
+        public virtual System.Nullable<bool> AutoGenerated { get; set; }
+
+        /// <summary>Optional. Charset override - instead of table level charset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("charset")]
+        public virtual string Charset { get; set; }
+
+        /// <summary>Optional. Collation override - instead of table level collation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("collation")]
+        public virtual string Collation { get; set; }
+
+        /// <summary>Optional. Comment associated with the column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("comment")]
+        public virtual string Comment { get; set; }
+
+        /// <summary>Optional. Custom engine specific features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customFeatures")]
+        public virtual System.Collections.Generic.IDictionary<string, object> CustomFeatures { get; set; }
+
+        /// <summary>Optional. Column data type name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
+        public virtual string DataType { get; set; }
+
+        /// <summary>
+        /// Optional. Column fractional seconds precision - e.g. 2 as in timestamp (2) - when relevant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fractionalSecondsPrecision")]
+        public virtual System.Nullable<int> FractionalSecondsPrecision { get; set; }
+
+        /// <summary>Optional. Column length - e.g. 50 as in varchar (50) - when relevant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("length")]
+        public virtual System.Nullable<long> Length { get; set; }
+
+        /// <summary>Optional. Is the column nullable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nullable")]
+        public virtual System.Nullable<bool> Nullable { get; set; }
+
+        /// <summary>Optional. Column precision - e.g. 8 as in double (8,2) - when relevant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("precision")]
+        public virtual System.Nullable<int> Precision { get; set; }
+
+        /// <summary>Optional. Column scale - e.g. 2 as in double (8,2) - when relevant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scale")]
+        public virtual System.Nullable<int> Scale { get; set; }
+
+        /// <summary>Optional. Specifies the list of values allowed in the column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setValues")]
+        public virtual System.Collections.Generic.IList<string> SetValues { get; set; }
+
+        /// <summary>Optional. Is the column a UDT (User-defined Type).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("udt")]
+        public virtual System.Nullable<bool> Udt { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Options to configure rule type SingleEntityRename. The rule is used to rename an entity. The rule filter field
+    /// can refer to only one entity. The rule scope can be one of: Database, Schema, Table, Column, Constraint, Index,
+    /// View, Function, Stored Procedure, Materialized View, Sequence, UDT, Synonym
+    /// </summary>
+    public class SingleEntityRename : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The new name of the destination entity</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("newName")]
+        public virtual string NewName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Options to configure rule type SinglePackageChange. The rule is used to alter the sql code for a package
+    /// entities. The rule filter field can refer to one entity. The rule scope can be: Package
+    /// </summary>
+    public class SinglePackageChange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Sql code for package body</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageBody")]
+        public virtual string PackageBody { get; set; }
+
+        /// <summary>Optional. Sql code for package description</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("packageDescription")]
+        public virtual string PackageDescription { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Filter for fixed point number data types such as NUMERIC/NUMBER</summary>
+    public class SourceNumericFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Enum to set the option defining the datatypes numeric filter has to be applied to
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numericFilterOption")]
+        public virtual string NumericFilterOption { get; set; }
+
+        /// <summary>
+        /// Optional. The filter will match columns with precision smaller than or equal to this number.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceMaxPrecisionFilter")]
+        public virtual System.Nullable<int> SourceMaxPrecisionFilter { get; set; }
+
+        /// <summary>Optional. The filter will match columns with scale smaller than or equal to this number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceMaxScaleFilter")]
+        public virtual System.Nullable<int> SourceMaxScaleFilter { get; set; }
+
+        /// <summary>
+        /// Optional. The filter will match columns with precision greater than or equal to this number.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceMinPrecisionFilter")]
+        public virtual System.Nullable<int> SourceMinPrecisionFilter { get; set; }
+
+        /// <summary>Optional. The filter will match columns with scale greater than or equal to this number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceMinScaleFilter")]
+        public virtual System.Nullable<int> SourceMinScaleFilter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Options to configure rule type SourceSqlChange. The rule is used to alter the sql code for database entities.
+    /// The rule filter field can refer to one entity. The rule scope can be: StoredProcedure, Function, Trigger, View
+    /// </summary>
+    public class SourceSqlChange : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Sql code for source (stored procedure, function, trigger or view)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sqlCode")]
+        public virtual string SqlCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Filter for text-based data types like varchar.</summary>
+    public class SourceTextFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The filter will match columns with length smaller than or equal to this number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceMaxLengthFilter")]
+        public virtual System.Nullable<long> SourceMaxLengthFilter { get; set; }
+
+        /// <summary>Optional. The filter will match columns with length greater than or equal to this number.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceMinLengthFilter")]
+        public virtual System.Nullable<long> SourceMinLengthFilter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7214,6 +8321,12 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Request message for 'StartMigrationJob' request.</summary>
     public class StartMigrationJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Start the migration job without running prior configuration verification. Defaults to `false`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipValidation")]
+        public virtual System.Nullable<bool> SkipValidation { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7403,6 +8516,25 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>UDT's parent is a schema.</summary>
+    public class UDTEntity : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Custom engine specific features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customFeatures")]
+        public virtual System.Collections.Generic.IDictionary<string, object> CustomFeatures { get; set; }
+
+        /// <summary>The SQL code which creates the udt body.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("udtBody")]
+        public virtual string UdtBody { get; set; }
+
+        /// <summary>The SQL code which creates the udt.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("udtSqlCode")]
+        public virtual string UdtSqlCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The username/password for a database user. Used for specifying initial users at cluster creation time.
     /// </summary>
@@ -7424,9 +8556,91 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A list of values to filter by in ConditionalColumnSetValue</summary>
+    public class ValueListFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Whether to ignore case when filtering by values. Defaults to false</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoreCase")]
+        public virtual System.Nullable<bool> IgnoreCase { get; set; }
+
+        /// <summary>
+        /// Required. Indicates whether the filter matches rows with values that are present in the list or those with
+        /// values not present in it.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valuePresentList")]
+        public virtual string ValuePresentList { get; set; }
+
+        /// <summary>Required. The list to be used to filter by</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Description of data transformation during migration as part of the ConditionalColumnSetValue.</summary>
+    public class ValueTransformation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Applies a hash function on the data</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applyHash")]
+        public virtual ApplyHash ApplyHash { get; set; }
+
+        /// <summary>Optional. Set to max_value - if integer or numeric, will use int.maxvalue, etc</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignMaxValue")]
+        public virtual Empty AssignMaxValue { get; set; }
+
+        /// <summary>Optional. Set to min_value - if integer or numeric, will use int.minvalue, etc</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignMinValue")]
+        public virtual Empty AssignMinValue { get; set; }
+
+        /// <summary>Optional. Set to null</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignNull")]
+        public virtual Empty AssignNull { get; set; }
+
+        /// <summary>Optional. Set to a specific value (value is converted to fit the target data type)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assignSpecificValue")]
+        public virtual AssignSpecificValue AssignSpecificValue { get; set; }
+
+        /// <summary>Optional. Filter on relation between source value and compare value of type double.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("doubleComparison")]
+        public virtual DoubleComparisonFilter DoubleComparison { get; set; }
+
+        /// <summary>Optional. Filter on relation between source value and compare value of type integer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intComparison")]
+        public virtual IntComparisonFilter IntComparison { get; set; }
+
+        /// <summary>Optional. Value is null</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isNull")]
+        public virtual Empty IsNull { get; set; }
+
+        /// <summary>Optional. Allows the data to change scale</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("roundScale")]
+        public virtual RoundToScale RoundScale { get; set; }
+
+        /// <summary>Optional. Value is found in the specified list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valueList")]
+        public virtual ValueListFilter ValueList { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for 'VerifyMigrationJob' request.</summary>
     public class VerifyMigrationJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The changed migration job parameters to verify. It will not update the migration job.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migrationJob")]
+        public virtual MigrationJob MigrationJob { get; set; }
+
+        /// <summary>
+        /// Optional. Field mask is used to specify the changed fields to be verified. It will not update the migration
+        /// job.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

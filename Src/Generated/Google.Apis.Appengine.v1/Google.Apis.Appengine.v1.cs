@@ -35,7 +35,6 @@ namespace Google.Apis.Appengine.v1
         public AppengineService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Apps = new AppsResource(this);
-            Projects = new ProjectsResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -94,9 +93,6 @@ namespace Google.Apis.Appengine.v1
 
         /// <summary>Gets the Apps resource.</summary>
         public virtual AppsResource Apps { get; }
-
-        /// <summary>Gets the Projects resource.</summary>
-        public virtual ProjectsResource Projects { get; }
     }
 
     /// <summary>A base abstract class for Appengine requests.</summary>
@@ -3398,13 +3394,6 @@ namespace Google.Apis.Appengine.v1
                 InitParameters();
             }
 
-            /// <summary>
-            /// The project and location in which the application should be created, specified in the format
-            /// projects/*/locations/*
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string Parent { get; set; }
-
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Appengine.v1.Data.Application Body { get; set; }
 
@@ -3424,14 +3413,6 @@ namespace Google.Apis.Appengine.v1
             protected override void InitParameters()
             {
                 base.InitParameters();
-                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "parent",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
             }
         }
 
@@ -3624,529 +3605,6 @@ namespace Google.Apis.Appengine.v1
             }
         }
     }
-
-    /// <summary>The "projects" collection of methods.</summary>
-    public class ProjectsResource
-    {
-        private const string Resource = "projects";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public ProjectsResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-            Locations = new LocationsResource(service);
-        }
-
-        /// <summary>Gets the Locations resource.</summary>
-        public virtual LocationsResource Locations { get; }
-
-        /// <summary>The "locations" collection of methods.</summary>
-        public class LocationsResource
-        {
-            private const string Resource = "locations";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public LocationsResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-                Applications = new ApplicationsResource(service);
-            }
-
-            /// <summary>Gets the Applications resource.</summary>
-            public virtual ApplicationsResource Applications { get; }
-
-            /// <summary>The "applications" collection of methods.</summary>
-            public class ApplicationsResource
-            {
-                private const string Resource = "applications";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public ApplicationsResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                    Services = new ServicesResource(service);
-                }
-
-                /// <summary>Gets the Services resource.</summary>
-                public virtual ServicesResource Services { get; }
-
-                /// <summary>The "services" collection of methods.</summary>
-                public class ServicesResource
-                {
-                    private const string Resource = "services";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public ServicesResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-                    }
-
-                    /// <summary>Gets the current configuration of the specified service.</summary>
-                    /// <param name="projectsId">
-                    /// Part of `name`. Name of the resource requested. Example: apps/myapp/services/default.
-                    /// </param>
-                    /// <param name="locationsId">Part of `name`. See documentation of `projectsId`.</param>
-                    /// <param name="applicationsId">Part of `name`. See documentation of `projectsId`.</param>
-                    /// <param name="servicesId">Part of `name`. See documentation of `projectsId`.</param>
-                    public virtual GetRequest Get(string projectsId, string locationsId, string applicationsId, string servicesId)
-                    {
-                        return new GetRequest(service, projectsId, locationsId, applicationsId, servicesId);
-                    }
-
-                    /// <summary>Gets the current configuration of the specified service.</summary>
-                    public class GetRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.Service>
-                    {
-                        /// <summary>Constructs a new Get request.</summary>
-                        public GetRequest(Google.Apis.Services.IClientService service, string projectsId, string locationsId, string applicationsId, string servicesId) : base(service)
-                        {
-                            ProjectsId = projectsId;
-                            LocationsId = locationsId;
-                            ApplicationsId = applicationsId;
-                            ServicesId = servicesId;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Part of `name`. Name of the resource requested. Example: apps/myapp/services/default.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ProjectsId { get; private set; }
-
-                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string LocationsId { get; private set; }
-
-                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("applicationsId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ApplicationsId { get; private set; }
-
-                        /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("servicesId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ServicesId { get; private set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "get";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}";
-
-                        /// <summary>Initializes Get parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectsId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "locationsId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("applicationsId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "applicationsId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("servicesId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "servicesId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        }
-                    }
-
-                    /// <summary>Lists all the services in the application.</summary>
-                    /// <param name="projectsId">
-                    /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
-                    /// </param>
-                    /// <param name="locationsId">Part of `parent`. See documentation of `projectsId`.</param>
-                    /// <param name="applicationsId">Part of `parent`. See documentation of `projectsId`.</param>
-                    public virtual ListRequest List(string projectsId, string locationsId, string applicationsId)
-                    {
-                        return new ListRequest(service, projectsId, locationsId, applicationsId);
-                    }
-
-                    /// <summary>Lists all the services in the application.</summary>
-                    public class ListRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.ListServicesResponse>
-                    {
-                        /// <summary>Constructs a new List request.</summary>
-                        public ListRequest(Google.Apis.Services.IClientService service, string projectsId, string locationsId, string applicationsId) : base(service)
-                        {
-                            ProjectsId = projectsId;
-                            LocationsId = locationsId;
-                            ApplicationsId = applicationsId;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ProjectsId { get; private set; }
-
-                        /// <summary>Part of `parent`. See documentation of `projectsId`.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string LocationsId { get; private set; }
-
-                        /// <summary>Part of `parent`. See documentation of `projectsId`.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("applicationsId", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string ApplicationsId { get; private set; }
-
-                        /// <summary>Maximum results to return per page.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
-                        /// <summary>Continuation token for fetching the next page of results.</summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "list";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services";
-
-                        /// <summary>Initializes List parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "projectsId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "locationsId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("applicationsId", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "applicationsId",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        }
-                    }
-                }
-
-                /// <summary>
-                /// Creates an App Engine application for a Google Cloud Platform project. Required fields: id - The ID
-                /// of the target Cloud Platform project. location - The region
-                /// (https://cloud.google.com/appengine/docs/locations) where you want the App Engine application
-                /// located.For more information about App Engine applications, see Managing Projects, Applications, and
-                /// Billing (https://cloud.google.com/appengine/docs/standard/python/console/).
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="projectsId">
-                /// Part of `parent`. The project and location in which the application should be created, specified in
-                /// the format projects/*/locations/*
-                /// </param>
-                /// <param name="locationsId">Part of `parent`. See documentation of `projectsId`.</param>
-                public virtual CreateRequest Create(Google.Apis.Appengine.v1.Data.Application body, string projectsId, string locationsId)
-                {
-                    return new CreateRequest(service, body, projectsId, locationsId);
-                }
-
-                /// <summary>
-                /// Creates an App Engine application for a Google Cloud Platform project. Required fields: id - The ID
-                /// of the target Cloud Platform project. location - The region
-                /// (https://cloud.google.com/appengine/docs/locations) where you want the App Engine application
-                /// located.For more information about App Engine applications, see Managing Projects, Applications, and
-                /// Billing (https://cloud.google.com/appengine/docs/standard/python/console/).
-                /// </summary>
-                public class CreateRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.Operation>
-                {
-                    /// <summary>Constructs a new Create request.</summary>
-                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1.Data.Application body, string projectsId, string locationsId) : base(service)
-                    {
-                        ProjectsId = projectsId;
-                        LocationsId = locationsId;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Part of `parent`. The project and location in which the application should be created, specified
-                    /// in the format projects/*/locations/*
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string ProjectsId { get; private set; }
-
-                    /// <summary>Part of `parent`. See documentation of `projectsId`.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string LocationsId { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Appengine.v1.Data.Application Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "create";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/projects/{projectsId}/locations/{locationsId}/applications";
-
-                    /// <summary>Initializes Create parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "locationsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>Gets information about an application.</summary>
-                /// <param name="projectsId">
-                /// Part of `name`. Name of the Application resource to get. Example: apps/myapp.
-                /// </param>
-                /// <param name="locationsId">Part of `name`. See documentation of `projectsId`.</param>
-                /// <param name="applicationsId">Part of `name`. See documentation of `projectsId`.</param>
-                public virtual GetRequest Get(string projectsId, string locationsId, string applicationsId)
-                {
-                    return new GetRequest(service, projectsId, locationsId, applicationsId);
-                }
-
-                /// <summary>Gets information about an application.</summary>
-                public class GetRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.Application>
-                {
-                    /// <summary>Constructs a new Get request.</summary>
-                    public GetRequest(Google.Apis.Services.IClientService service, string projectsId, string locationsId, string applicationsId) : base(service)
-                    {
-                        ProjectsId = projectsId;
-                        LocationsId = locationsId;
-                        ApplicationsId = applicationsId;
-                        InitParameters();
-                    }
-
-                    /// <summary>Part of `name`. Name of the Application resource to get. Example: apps/myapp.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string ProjectsId { get; private set; }
-
-                    /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string LocationsId { get; private set; }
-
-                    /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("applicationsId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string ApplicationsId { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "get";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}";
-
-                    /// <summary>Initializes Get parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "locationsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("applicationsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "applicationsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary>
-                /// Recreates the required App Engine features for the specified App Engine application, for example a
-                /// Cloud Storage bucket or App Engine service account. Use this method if you receive an error message
-                /// about a missing feature, for example, Error retrieving the App Engine service account. If you have
-                /// deleted your App Engine service account, this will not be able to recreate it. Instead, you should
-                /// attempt to use the IAM undelete API if possible at
-                /// https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts/undelete?apix_params=%7B"name"%3A"projects%2F-%2FserviceAccounts%2Funique_id"%2C"resource"%3A%7B%7D%7D
-                /// . If the deletion was recent, the numeric ID can be found in the Cloud Console Activity Log.
-                /// </summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="projectsId">
-                /// Part of `name`. Name of the application to repair. Example: apps/myapp
-                /// </param>
-                /// <param name="locationsId">Part of `name`. See documentation of `projectsId`.</param>
-                /// <param name="applicationsId">Part of `name`. See documentation of `projectsId`.</param>
-                public virtual RepairRequest Repair(Google.Apis.Appengine.v1.Data.RepairApplicationRequest body, string projectsId, string locationsId, string applicationsId)
-                {
-                    return new RepairRequest(service, body, projectsId, locationsId, applicationsId);
-                }
-
-                /// <summary>
-                /// Recreates the required App Engine features for the specified App Engine application, for example a
-                /// Cloud Storage bucket or App Engine service account. Use this method if you receive an error message
-                /// about a missing feature, for example, Error retrieving the App Engine service account. If you have
-                /// deleted your App Engine service account, this will not be able to recreate it. Instead, you should
-                /// attempt to use the IAM undelete API if possible at
-                /// https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts/undelete?apix_params=%7B"name"%3A"projects%2F-%2FserviceAccounts%2Funique_id"%2C"resource"%3A%7B%7D%7D
-                /// . If the deletion was recent, the numeric ID can be found in the Cloud Console Activity Log.
-                /// </summary>
-                public class RepairRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1.Data.Operation>
-                {
-                    /// <summary>Constructs a new Repair request.</summary>
-                    public RepairRequest(Google.Apis.Services.IClientService service, Google.Apis.Appengine.v1.Data.RepairApplicationRequest body, string projectsId, string locationsId, string applicationsId) : base(service)
-                    {
-                        ProjectsId = projectsId;
-                        LocationsId = locationsId;
-                        ApplicationsId = applicationsId;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>Part of `name`. Name of the application to repair. Example: apps/myapp</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string ProjectsId { get; private set; }
-
-                    /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string LocationsId { get; private set; }
-
-                    /// <summary>Part of `name`. See documentation of `projectsId`.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("applicationsId", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string ApplicationsId { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Appengine.v1.Data.RepairApplicationRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "repair";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}:repair";
-
-                    /// <summary>Initializes Repair parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "projectsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "locationsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("applicationsId", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "applicationsId",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-            }
-        }
-    }
 }
 namespace Google.Apis.Appengine.v1.Data
 {
@@ -4322,13 +3780,46 @@ namespace Google.Apis.Appengine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("domainNames")]
         public virtual System.Collections.Generic.IList<string> DomainNames { get; set; }
 
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
         /// <summary>
         /// The time when this certificate expires. To update the renewal time on this certificate, upload an SSL
         /// certificate with a different expiration time using
         /// AuthorizedCertificates.UpdateAuthorizedCertificate.@OutputOnly
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; }
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Relative name of the certificate. This is a unique value autogenerated on AuthorizedCertificate resource
@@ -5046,9 +4537,42 @@ namespace Google.Apis.Appengine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requests")]
         public virtual System.Nullable<int> Requests { get; set; }
 
+        private string _startTimeRaw;
+
+        private object _startTime;
+
         /// <summary>Output only. Time that this instance was started.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. Whether this instance is in debug mode. Only applicable for instances in App Engine flexible
@@ -5347,13 +4871,48 @@ namespace Google.Apis.Appengine.v1.Data
     /// <summary>A certificate managed by App Engine.</summary>
     public class ManagedCertificate : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _lastRenewalTimeRaw;
+
+        private object _lastRenewalTime;
+
         /// <summary>
         /// Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal
         /// will automatically occur before the certificate expires. Renewal errors can be tracked via
         /// ManagementStatus.@OutputOnly
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastRenewalTime")]
-        public virtual object LastRenewalTime { get; set; }
+        public virtual string LastRenewalTimeRaw
+        {
+            get => _lastRenewalTimeRaw;
+            set
+            {
+                _lastRenewalTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastRenewalTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastRenewalTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastRenewalTimeDateTimeOffset instead.")]
+        public virtual object LastRenewalTime
+        {
+            get => _lastRenewalTime;
+            set
+            {
+                _lastRenewalTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastRenewalTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastRenewalTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastRenewalTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastRenewalTimeRaw);
+            set => LastRenewalTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Status of certificate management. Refers to the most recent certificate acquisition or renewal
@@ -5515,17 +5074,83 @@ namespace Google.Apis.Appengine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createVersionMetadata")]
         public virtual CreateVersionMetadataV1 CreateVersionMetadata { get; set; }
 
+        private string _endTimeRaw;
+
+        private object _endTime;
+
         /// <summary>Time that this operation completed.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Ephemeral message that may change every time the operation is polled. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ephemeralMessage")]
         public virtual string EphemeralMessage { get; set; }
 
+        private string _insertTimeRaw;
+
+        private object _insertTime;
+
         /// <summary>Time that this operation was created.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
-        public virtual object InsertTime { get; set; }
+        public virtual string InsertTimeRaw
+        {
+            get => _insertTimeRaw;
+            set
+            {
+                _insertTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _insertTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="InsertTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use InsertTimeDateTimeOffset instead.")]
+        public virtual object InsertTime
+        {
+            get => _insertTime;
+            set
+            {
+                _insertTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _insertTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="InsertTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? InsertTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(InsertTimeRaw);
+            set => InsertTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// API method that initiated this operation. Example: google.appengine.v1.Versions.CreateVersion.@OutputOnly
@@ -5557,17 +5182,83 @@ namespace Google.Apis.Appengine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createVersionMetadata")]
         public virtual CreateVersionMetadataV1Alpha CreateVersionMetadata { get; set; }
 
+        private string _endTimeRaw;
+
+        private object _endTime;
+
         /// <summary>Time that this operation completed.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Ephemeral message that may change every time the operation is polled. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ephemeralMessage")]
         public virtual string EphemeralMessage { get; set; }
 
+        private string _insertTimeRaw;
+
+        private object _insertTime;
+
         /// <summary>Time that this operation was created.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
-        public virtual object InsertTime { get; set; }
+        public virtual string InsertTimeRaw
+        {
+            get => _insertTimeRaw;
+            set
+            {
+                _insertTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _insertTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="InsertTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use InsertTimeDateTimeOffset instead.")]
+        public virtual object InsertTime
+        {
+            get => _insertTime;
+            set
+            {
+                _insertTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _insertTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="InsertTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? InsertTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(InsertTimeRaw);
+            set => InsertTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// API method that initiated this operation. Example:
@@ -5600,17 +5291,83 @@ namespace Google.Apis.Appengine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createVersionMetadata")]
         public virtual CreateVersionMetadataV1Beta CreateVersionMetadata { get; set; }
 
+        private string _endTimeRaw;
+
+        private object _endTime;
+
         /// <summary>Time that this operation completed.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Ephemeral message that may change every time the operation is polled. @OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ephemeralMessage")]
         public virtual string EphemeralMessage { get; set; }
 
+        private string _insertTimeRaw;
+
+        private object _insertTime;
+
         /// <summary>Time that this operation was created.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
-        public virtual object InsertTime { get; set; }
+        public virtual string InsertTimeRaw
+        {
+            get => _insertTimeRaw;
+            set
+            {
+                _insertTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _insertTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="InsertTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use InsertTimeDateTimeOffset instead.")]
+        public virtual object InsertTime
+        {
+            get => _insertTime;
+            set
+            {
+                _insertTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _insertTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="InsertTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? InsertTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(InsertTimeRaw);
+            set => InsertTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// API method that initiated this operation. Example:
@@ -6232,9 +5989,42 @@ namespace Google.Apis.Appengine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("buildEnvVariables")]
         public virtual System.Collections.Generic.IDictionary<string, string> BuildEnvVariables { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Time that this version was created.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Email address of the user who created this version.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdBy")]
