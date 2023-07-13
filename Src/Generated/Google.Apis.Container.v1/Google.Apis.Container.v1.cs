@@ -6345,6 +6345,23 @@ namespace Google.Apis.Container.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// AdvancedDatapathObservabilityConfig specifies configuration of observability features of advanced datapath.
+    /// </summary>
+    public class AdvancedDatapathObservabilityConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Expose flow metrics on nodes</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableMetrics")]
+        public virtual System.Nullable<bool> EnableMetrics { get; set; }
+
+        /// <summary>Method used to make Relay available</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relayMode")]
+        public virtual string RelayMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specifies options for controlling advanced machine features.</summary>
     public class AdvancedMachineFeatures : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8051,7 +8068,7 @@ namespace Google.Apis.Container.v1.Data
         public virtual System.Nullable<bool> CreateSubnetwork { get; set; }
 
         /// <summary>
-        /// Output only. [Output only] The utilization of the cluster default IPv4 range for pod. The ratio is
+        /// Output only. [Output only] The utilization of the cluster default IPv4 range for the pod. The ratio is
         /// Usage/[Total number of IPs in the secondary range], Usage=numNodes*numZones*podIPsPerNode.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultPodIpv4RangeUtilization")]
@@ -8610,6 +8627,10 @@ namespace Google.Apis.Container.v1.Data
     /// <summary>MonitoringConfig is cluster monitoring configuration.</summary>
     public class MonitoringConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Configuration of Advanced Datapath Observability features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advancedDatapathObservabilityConfig")]
+        public virtual AdvancedDatapathObservabilityConfig AdvancedDatapathObservabilityConfig { get; set; }
+
         /// <summary>Monitoring components configuration</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("componentConfig")]
         public virtual MonitoringComponentConfig ComponentConfig { get; set; }
@@ -9154,8 +9175,8 @@ namespace Google.Apis.Container.v1.Data
         public virtual string PodIpv4CidrBlock { get; set; }
 
         /// <summary>
-        /// Output only. [Output only] The utilization of the IPv4 range for pod. The ratio is Usage/[Total number of
-        /// IPs in the secondary range], Usage=numNodes*numZones*podIPsPerNode.
+        /// Output only. [Output only] The utilization of the IPv4 range for the pod. The ratio is Usage/[Total number
+        /// of IPs in the secondary range], Usage=numNodes*numZones*podIPsPerNode.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("podIpv4RangeUtilization")]
         public virtual System.Nullable<double> PodIpv4RangeUtilization { get; set; }

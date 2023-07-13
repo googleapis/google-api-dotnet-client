@@ -1756,6 +1756,63 @@ namespace Google.Apis.ContainerAnalysis.v1beta1
                 this.service = service;
             }
 
+            /// <summary>Generates an SBOM and other dependency information for the given resource.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. The name of the resource in the form of `projects/[PROJECT_ID]/resources/[RESOURCE_URL]`.
+            /// </param>
+            public virtual ExportSBOMRequest ExportSBOM(Google.Apis.ContainerAnalysis.v1beta1.Data.ExportSBOMRequest body, string name)
+            {
+                return new ExportSBOMRequest(service, body, name);
+            }
+
+            /// <summary>Generates an SBOM and other dependency information for the given resource.</summary>
+            public class ExportSBOMRequest : ContainerAnalysisBaseServiceRequest<Google.Apis.ContainerAnalysis.v1beta1.Data.ExportSBOMResponse>
+            {
+                /// <summary>Constructs a new ExportSBOM request.</summary>
+                public ExportSBOMRequest(Google.Apis.Services.IClientService service, Google.Apis.ContainerAnalysis.v1beta1.Data.ExportSBOMRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the resource in the form of `projects/[PROJECT_ID]/resources/[RESOURCE_URL]`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ContainerAnalysis.v1beta1.Data.ExportSBOMRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "exportSBOM";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta1/{+name}:exportSBOM";
+
+                /// <summary>Initializes ExportSBOM parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/resources/.*$",
+                    });
+                }
+            }
+
             /// <summary>Gets a summary of the packages within a given resource.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -2113,6 +2170,105 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signature")]
         public virtual BuildSignature Signature { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class BuildDefinition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("buildType")]
+        public virtual string BuildType { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("externalParameters")]
+        public virtual System.Collections.Generic.IDictionary<string, object> ExternalParameters { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("internalParameters")]
+        public virtual System.Collections.Generic.IDictionary<string, object> InternalParameters { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedDependencies")]
+        public virtual System.Collections.Generic.IList<ResourceDescriptor> ResolvedDependencies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class BuildMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _finishedOnRaw;
+
+        private object _finishedOn;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("finishedOn")]
+        public virtual string FinishedOnRaw
+        {
+            get => _finishedOnRaw;
+            set
+            {
+                _finishedOn = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _finishedOnRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FinishedOnRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FinishedOnDateTimeOffset instead.")]
+        public virtual object FinishedOn
+        {
+            get => _finishedOn;
+            set
+            {
+                _finishedOnRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _finishedOn = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="FinishedOnRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FinishedOnDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FinishedOnRaw);
+            set => FinishedOnRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("invocationId")]
+        public virtual string InvocationId { get; set; }
+
+        private string _startedOnRaw;
+
+        private object _startedOn;
+
+        [Newtonsoft.Json.JsonPropertyAttribute("startedOn")]
+        public virtual string StartedOnRaw
+        {
+            get => _startedOnRaw;
+            set
+            {
+                _startedOn = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startedOnRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartedOnRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartedOnDateTimeOffset instead.")]
+        public virtual object StartedOn
+        {
+            get => _startedOn;
+            set
+            {
+                _startedOnRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startedOn = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartedOnRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartedOnDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartedOnRaw);
+            set => StartedOnRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4304,6 +4460,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
             set => LastAnalysisTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
+        /// <summary>The status of an SBOM generation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sbomStatus")]
+        public virtual SBOMStatus SbomStatus { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4531,6 +4691,27 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
     {
         [Newtonsoft.Json.JsonPropertyAttribute("customValues")]
         public virtual System.Collections.Generic.IDictionary<string, string> CustomValues { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request to a call of ExportSBOM</summary>
+    public class ExportSBOMRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response from a call to ExportSBOM</summary>
+    public class ExportSBOMResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the discovery occurrence in the form "projects/{project_id}/occurrences/{OCCURRENCE_ID} It can
+        /// be used to track the progression of the SBOM export.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("discoveryOccurrenceId")]
+        public virtual string DiscoveryOccurrenceId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4953,6 +5134,9 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
     /// <summary>Details of a build occurrence.</summary>
     public class GrafeasV1beta1BuildDetails : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("inTotoSlsaProvenanceV1")]
+        public virtual InTotoSlsaProvenanceV1 InTotoSlsaProvenanceV1 { get; set; }
+
         /// <summary>Required. The actual provenance for the build.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provenance")]
         public virtual BuildProvenance Provenance { get; set; }
@@ -5192,6 +5376,25 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
         public virtual System.Nullable<long> Threshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class InTotoSlsaProvenanceV1 : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>InToto spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("_type")]
+        public virtual string Type { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("predicate")]
+        public virtual SlsaProvenanceV1 Predicate { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("predicateType")]
+        public virtual string PredicateType { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("subject")]
+        public virtual System.Collections.Generic.IList<Subject> Subject { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6245,6 +6448,21 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class ProvenanceBuilder : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("builderDependencies")]
+        public virtual System.Collections.Generic.IList<ResourceDescriptor> BuilderDependencies { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Publisher contains information about the publisher of this Note.</summary>
     public class Publisher : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6390,6 +6608,48 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    public class ResourceDescriptor : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Annotations { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("digest")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Digest { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("downloadLocation")]
+        public virtual string DownloadLocation { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("mediaType")]
+        public virtual string MediaType { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class RunDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("builder")]
+        public virtual ProvenanceBuilder Builder { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("byproducts")]
+        public virtual System.Collections.Generic.IList<ResourceDescriptor> Byproducts { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual BuildMetadata Metadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The note representing an SBOM reference.</summary>
     public class SBOMReferenceNote : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6427,6 +6687,21 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// <summary>The signatures over the payload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signatures")]
         public virtual System.Collections.Generic.IList<EnvelopeSignature> Signatures { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The status of an SBOM generation.</summary>
+    public class SBOMStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If there was an error generating an SBOM, this will indicate what that error was.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual string Error { get; set; }
+
+        /// <summary>The progress of the SBOM generation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sbomState")]
+        public virtual string SbomState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6565,6 +6840,23 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// <summary>This field contains the actual public key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicKeyValue")]
         public virtual string PublicKeyValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Keep in sync with schema at
+    /// https://github.com/slsa-framework/slsa/blob/main/docs/provenance/schema/v1/provenance.proto Builder renamed to
+    /// ProvenanceBuilder because of Java conflicts.
+    /// </summary>
+    public class SlsaProvenanceV1 : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("buildDefinition")]
+        public virtual BuildDefinition BuildDefinition { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("runDetails")]
+        public virtual RunDetails RunDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
