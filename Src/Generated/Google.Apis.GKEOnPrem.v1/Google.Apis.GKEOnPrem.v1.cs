@@ -10729,10 +10729,6 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("datastore")]
         public virtual string Datastore { get; set; }
 
-        /// <summary>The Vsphere storage policy used by the control plane Node.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("storagePolicyName")]
-        public virtual string StoragePolicyName { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -11294,10 +11290,6 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourcePool")]
         public virtual string ResourcePool { get; set; }
 
-        /// <summary>The name of the vCenter storage policy for the user cluster.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("storagePolicyName")]
-        public virtual string StoragePolicyName { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -11348,10 +11340,6 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// <summary>The name of the vCenter datastore. Inherited from the user cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datastore")]
         public virtual string Datastore { get; set; }
-
-        /// <summary>The name of the vCenter storage policy. Inherited from the user cluster.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("storagePolicyName")]
-        public virtual string StoragePolicyName { get; set; }
 
         /// <summary>Tags to apply to VMs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]

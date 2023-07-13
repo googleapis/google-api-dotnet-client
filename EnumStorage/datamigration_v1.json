@@ -13,5 +13,11 @@
     "SOURCE_TREE",
     "DRAFT_TREE",
     "DESTINATION_TREE"
+  ],
+  "Google.Apis.DatabaseMigrationService.v1.ProjectsResource+LocationsResource+ConversionWorkspacesResource+DescribeDatabaseEntitiesRequest.ViewEnum": [
+    "DATABASE_ENTITY_VIEW_UNSPECIFIED",
+    "DATABASE_ENTITY_VIEW_BASIC",
+    "DATABASE_ENTITY_VIEW_FULL",
+    "DATABASE_ENTITY_VIEW_ROOT_SUMMARY"
   ]
 }

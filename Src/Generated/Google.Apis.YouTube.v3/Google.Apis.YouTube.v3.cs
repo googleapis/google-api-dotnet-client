@@ -14364,6 +14364,9 @@ namespace Google.Apis.YouTube.v3.Data
 
     public class PlaylistStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        [Newtonsoft.Json.JsonPropertyAttribute("podcastStatus")]
+        public virtual string PodcastStatus { get; set; }
+
         /// <summary>The playlist's privacy status.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privacyStatus")]
         public virtual string PrivacyStatus { get; set; }

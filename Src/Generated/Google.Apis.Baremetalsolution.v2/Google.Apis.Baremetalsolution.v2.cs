@@ -4820,6 +4820,13 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
 
+        /// <summary>
+        /// Optional. The name of the vlan attachment within vrf. This is of the form
+        /// projects/{project_number}/regions/{region}/interconnectAttachments/{interconnect_attachment}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interconnectAttachment")]
+        public virtual string InterconnectAttachment { get; set; }
+
         /// <summary>Input only. Pairing key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pairingKey")]
         public virtual string PairingKey { get; set; }

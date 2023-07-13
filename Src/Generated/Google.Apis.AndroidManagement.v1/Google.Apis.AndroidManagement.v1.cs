@@ -35,6 +35,7 @@ namespace Google.Apis.AndroidManagement.v1
         public AndroidManagementService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Enterprises = new EnterprisesResource(this);
+            ProvisioningInfo = new ProvisioningInfoResource(this);
             SignupUrls = new SignupUrlsResource(this);
         }
 
@@ -72,6 +73,9 @@ namespace Google.Apis.AndroidManagement.v1
 
         /// <summary>Gets the Enterprises resource.</summary>
         public virtual EnterprisesResource Enterprises { get; }
+
+        /// <summary>Gets the ProvisioningInfo resource.</summary>
+        public virtual ProvisioningInfoResource ProvisioningInfo { get; }
 
         /// <summary>Gets the SignupUrls resource.</summary>
         public virtual SignupUrlsResource SignupUrls { get; }
@@ -2284,6 +2288,72 @@ namespace Google.Apis.AndroidManagement.v1
                     ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "provisioningInfo" collection of methods.</summary>
+    public class ProvisioningInfoResource
+    {
+        private const string Resource = "provisioningInfo";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ProvisioningInfoResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>Get the device provisioning info by the identifier provided via the sign-in url.</summary>
+        /// <param name="name">
+        /// Required. The identifier that Android Device Policy passes to the 3P sign-in page in the form of
+        /// provisioningInfo/{provisioning_info}.
+        /// </param>
+        public virtual GetRequest Get(string name)
+        {
+            return new GetRequest(service, name);
+        }
+
+        /// <summary>Get the device provisioning info by the identifier provided via the sign-in url.</summary>
+        public class GetRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.ProvisioningInfo>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+            {
+                Name = name;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// Required. The identifier that Android Device Policy passes to the 3P sign-in page in the form of
+            /// provisioningInfo/{provisioning_info}.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Name { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1/{+name}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "name",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = @"^provisioningInfo/[^/]+$",
                 });
             }
         }
@@ -6123,6 +6193,47 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Event type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about a device that is available during setup.</summary>
+    public class ProvisioningInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The API level of the Android platform version running on the device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiLevel")]
+        public virtual System.Nullable<int> ApiLevel { get; set; }
+
+        /// <summary>
+        /// The email address of the authenticated user (only present for Google Account provisioning method).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authenticatedUserEmail")]
+        public virtual string AuthenticatedUserEmail { get; set; }
+
+        /// <summary>Brand of the device. For example, Google.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("brand")]
+        public virtual string Brand { get; set; }
+
+        /// <summary>The name of the enterprise in the form enterprises/{enterprise}.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enterprise")]
+        public virtual string Enterprise { get; set; }
+
+        /// <summary>The management mode of the device or profile.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managementMode")]
+        public virtual string ManagementMode { get; set; }
+
+        /// <summary>The model of the device. For example, Asus Nexus 7.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("model")]
+        public virtual string Model { get; set; }
+
+        /// <summary>The name of this resource in the form provisioningInfo/{provisioning_info}.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Ownership of the managed device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownership")]
+        public virtual string Ownership { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
