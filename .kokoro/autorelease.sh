@@ -71,26 +71,22 @@ shopt -s nullglob
 for pkg in ./NuPkgs/Support/*.nupkg; do
   if [[ $pkg != *.symbols.* ]]; then
     # Push is expected to fail often; when a package hasn't been updated.
-    # TODO: uncomment this once everything else is working.
-    # nuget push $pkg $nuget_token -Source nuget.org || true
-    echo "Would have pushed to nuget ""$pkg"
+    nuget push $pkg $nuget_token -Source nuget.org || true
   fi
 done
 for pkg in ./NuPkgs/Generated/*.nupkg; do
   if [[ $pkg != *.symbols.* ]]; then
     # Push is expected to fail often; when a package hasn't been updated.
-    # TODO: uncomment this once everything else is working.
-    # nuget push $pkg $nuget_token -Source nuget.org || true
-    echo "Would have pushed to nuget ""$pkg"
+    nuget push $pkg $nuget_token -Source nuget.org || true
   fi
 done
 
 # Push changes to git, not to the main branch but to branchname
-git add -v -A
-git commit -v -m "Update discovery documents and generated code" -m "automatically_generated_update"
+git add -A
+git commit -m "Update discovery documents and generated code" -m "automatically_generated_update"
 # We change the origin URL so that we can push with SSH
 git remote set-url origin git@github.com:googleapis/google-api-dotnet-client.git
-git push -v --set-upstream origin $branchname
+git push --set-upstream origin $branchname
 
 # Create a PR for the changes in branchname.
 # TODO: Remove the draft flag once everything else is working.
