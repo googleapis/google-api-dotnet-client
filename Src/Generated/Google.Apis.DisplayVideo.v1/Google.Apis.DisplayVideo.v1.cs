@@ -23597,7 +23597,10 @@ namespace Google.Apis.DisplayVideo.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bidStrategy")]
         public virtual BiddingStrategy BidStrategy { get; set; }
 
-        /// <summary>Immutable. The billable outcome of the insertion order.</summary>
+        /// <summary>
+        /// Immutable. The billable outcome of the insertion order. Outcome based buying will be deprecated on **August
+        /// 1, 2023**. Read more on our [Announced Deprecations page](/display-video/api/deprecations#features.obb).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billableOutcome")]
         public virtual string BillableOutcome { get; set; }
 

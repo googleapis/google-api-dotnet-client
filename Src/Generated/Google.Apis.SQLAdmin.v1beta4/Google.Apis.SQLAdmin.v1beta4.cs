@@ -5849,6 +5849,51 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
             [Newtonsoft.Json.JsonPropertyAttribute("recoveryOnly")]
             public virtual System.Nullable<bool> RecoveryOnly { get; set; }
 
+            private string _stopAtRaw;
+
+            private object _stopAt;
+
+            /// <summary>
+            /// Optional. StopAt keyword for transaction log import, Applies to Cloud SQL for SQL Server only
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("stopAt")]
+            public virtual string StopAtRaw
+            {
+                get => _stopAtRaw;
+                set
+                {
+                    _stopAt = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                    _stopAtRaw = value;
+                }
+            }
+
+            /// <summary><seealso cref="object"/> representation of <see cref="StopAtRaw"/>.</summary>
+            [Newtonsoft.Json.JsonIgnoreAttribute]
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StopAtDateTimeOffset instead.")]
+            public virtual object StopAt
+            {
+                get => _stopAt;
+                set
+                {
+                    _stopAtRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                    _stopAt = value;
+                }
+            }
+
+            /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StopAtRaw"/>.</summary>
+            [Newtonsoft.Json.JsonIgnoreAttribute]
+            public virtual System.DateTimeOffset? StopAtDateTimeOffset
+            {
+                get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StopAtRaw);
+                set => StopAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            }
+
+            /// <summary>
+            /// Optional. StopAtMark keyword for transaction log import, Applies to Cloud SQL for SQL Server only
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("stopAtMark")]
+            public virtual string StopAtMark { get; set; }
+
             /// <summary>
             /// Whether or not the backup set being restored is striped. Applies only to Cloud SQL for SQL Server.
             /// </summary>

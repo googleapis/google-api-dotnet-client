@@ -3046,23 +3046,11 @@ namespace Google.Apis.Firestore.v1
                 public virtual string Name { get; private set; }
 
                 /// <summary>
-                /// If set to true and the Database is not found, the request will succeed but no action will be taken.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> AllowMissing { get; set; }
-
-                /// <summary>
                 /// The current etag of the Database. If an etag is provided and does not match the current etag of the
                 /// database, deletion will be blocked and a FAILED_PRECONDITION error will be returned.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Etag { get; set; }
-
-                /// <summary>
-                /// If set, validate the request and preview the response, but do not actually delete the database.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "delete";
@@ -3085,25 +3073,9 @@ namespace Google.Apis.Firestore.v1
                         DefaultValue = null,
                         Pattern = @"^projects/[^/]+/databases/[^/]+$",
                     });
-                    RequestParameters.Add("allowMissing", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "allowMissing",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                     RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
                     {
                         Name = "etag",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "validateOnly",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
