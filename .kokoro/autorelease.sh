@@ -90,7 +90,7 @@ git push --set-upstream origin $branchname
 
 # Create a PR for the changes in branchname.
 # TODO: Remove the draft flag once everything else is working.
-prRequestBody='{"title":"Release PR: '"$branchname"'", "body": "Changes in this PR have already been published to Nuget.", "head": "'"$branchname"'", "base": "main", "draft": true}'
+prRequestBody='{"title":"Release PR: '"$branchname"'", "body": "Changes in this PR have already been published to Nuget.", "head": "'"$branchname"'", "base": "main"}'
 curl -v -i -X POST https://api.github.com/repos/googleapis/google-api-dotnet-client/pulls -H 'Authorization: token '"$github_token" -H "Content-Type:application/json" -H "accept: */*" -d "$prRequestBody"
 
 # All done :)
