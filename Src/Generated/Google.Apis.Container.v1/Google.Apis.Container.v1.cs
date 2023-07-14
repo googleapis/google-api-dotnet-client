@@ -6256,6 +6256,47 @@ namespace Google.Apis.Container.v1.Data
     }
 
     /// <summary>
+    /// AdditionalNodeNetworkConfig is the configuration for additional node networks within the NodeNetworkConfig
+    /// message
+    /// </summary>
+    public class AdditionalNodeNetworkConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the VPC where the additional interface belongs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>Name of the subnetwork where the additional interface belongs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
+        public virtual string Subnetwork { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// AdditionalPodNetworkConfig is the configuration for additional pod networks within the NodeNetworkConfig message
+    /// </summary>
+    public class AdditionalPodNetworkConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The maximum number of pods per node which use this pod network</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxPodsPerNode")]
+        public virtual MaxPodsConstraint MaxPodsPerNode { get; set; }
+
+        /// <summary>
+        /// The name of the secondary range on the subnet which provides IP address for this pod range
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secondaryPodRange")]
+        public virtual string SecondaryPodRange { get; set; }
+
+        /// <summary>Name of the subnetwork where the additional pod network belongs</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
+        public virtual string Subnetwork { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// AdditionalPodRangesConfig is the configuration for additional pod secondary ranges supporting the ClusterUpdate
     /// message.
     /// </summary>
@@ -8680,6 +8721,10 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableL4ilbSubsetting")]
         public virtual System.Nullable<bool> EnableL4ilbSubsetting { get; set; }
 
+        /// <summary>Whether multi-networking is enabled for this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableMultiNetworking")]
+        public virtual System.Nullable<bool> EnableMultiNetworking { get; set; }
+
         /// <summary>GatewayAPIConfig contains the desired config of Gateway API on this cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gatewayApiConfig")]
         public virtual GatewayAPIConfig GatewayApiConfig { get; set; }
@@ -9133,6 +9178,20 @@ namespace Google.Apis.Container.v1.Data
     public class NodeNetworkConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// We specify the additional node networks for this node pool using this list. Each node network corresponds to
+        /// an additional interface
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalNodeNetworkConfigs")]
+        public virtual System.Collections.Generic.IList<AdditionalNodeNetworkConfig> AdditionalNodeNetworkConfigs { get; set; }
+
+        /// <summary>
+        /// We specify the additional pod networks for this node pool using this list. Each pod network corresponds to
+        /// an additional alias IP range for the node
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalPodNetworkConfigs")]
+        public virtual System.Collections.Generic.IList<AdditionalPodNetworkConfig> AdditionalPodNetworkConfigs { get; set; }
+
+        /// <summary>
         /// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for
         /// `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or
         /// `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is
@@ -9582,6 +9641,13 @@ namespace Google.Apis.Container.v1.Data
     /// <summary>PlacementPolicy defines the placement policy used by the node pool.</summary>
     public class PlacementPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// If set, refers to the name of a custom resource policy supplied by the user. The resource policy must be in
+        /// the same project and region as the node pool. If not found, InvalidArgument error is returned.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyName")]
+        public virtual string PolicyName { get; set; }
+
         /// <summary>The type of placement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }

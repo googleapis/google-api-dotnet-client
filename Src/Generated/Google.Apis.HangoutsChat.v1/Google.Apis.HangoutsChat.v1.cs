@@ -3051,6 +3051,24 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
+    /// Chat apps only. For a `SelectionInput` widget that uses a multi-select menu, a data source from Google Chat. For
+    /// example, a list of Google Chat spaces of which the user is a member. [Developer
+    /// Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class ChatClientDataSourceMarkup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A data source representing a Google Chat space. Format: spaces/{space} [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spaceDataSource")]
+        public virtual SpaceDataSource SpaceDataSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents a color in the RGBA color space. This representation is designed for simplicity of conversion to and
     /// from color representations in various languages over compactness. For example, the fields of this representation
     /// can be trivially provided to the constructor of `java.awt.Color` in Java; it can also be trivially provided to
@@ -3681,6 +3699,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("peekCardHeader")]
         public virtual GoogleAppsCardV1CardHeader PeekCardHeader { get; set; }
 
+        /// <summary>The divider style between sections.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sectionDividerStyle")]
+        public virtual string SectionDividerStyle { get; set; }
+
         /// <summary>
         /// Contains a collection of widgets. Each section has its own, optional header. Sections are visually separated
         /// by a line divider.
@@ -4178,6 +4200,32 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
+    /// Chat apps only. For a `SelectionInput` widget that uses a multi-select menu, the data from a [Google Workspace
+    /// host application](https://developers.google.com/chat/api/reference/rest/v1/HostApp). Used to populate the items
+    /// in the multi-select menu. [Developer Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class GoogleAppsCardV1PlatformDataSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// For a `SelectionInput` widget that uses a multi-select menu, a data source shared by all Google Workspace
+        /// host applications, such as users in a Google Workspace organization. [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commonDataSource")]
+        public virtual string CommonDataSource { get; set; }
+
+        /// <summary>
+        /// A data source that's unique to a Google Workspace host application, such as Gmail emails, Google Calendar
+        /// events, or Google Chat messages. [Developer Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostAppDataSource")]
+        public virtual HostAppDataSourceMarkup HostAppDataSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A section contains a collection of widgets that are rendered vertically in the order that they're specified.
     /// </summary>
     public class GoogleAppsCardV1Section : Google.Apis.Requests.IDirectResponseSchema
@@ -4227,6 +4275,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class GoogleAppsCardV1SelectionInput : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// An external data source, such as a relational data base. [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalDataSource")]
+        public virtual GoogleAppsCardV1Action ExternalDataSource { get; set; }
+
+        /// <summary>
         /// An array of selectable items. For example, an array of radio buttons or checkboxes. Supports up to 100
         /// items.
         /// </summary>
@@ -4240,6 +4295,22 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("label")]
         public virtual string Label { get; set; }
+
+        /// <summary>
+        /// For multi-select menus, the maximum number of items that a user can select. Minimum value is 1 item. If
+        /// unspecified, set to 3 items. [Developer Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiSelectMaxSelectedItems")]
+        public virtual System.Nullable<int> MultiSelectMaxSelectedItems { get; set; }
+
+        /// <summary>
+        /// For multi-select menus, the number of text characters that a user inputs before the Chat app queries
+        /// autocomplete and displays suggested items on the card. If unspecified, set to 0 characters for static data
+        /// sources and 3 characters for external data sources. [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiSelectMinQueryLength")]
+        public virtual System.Nullable<int> MultiSelectMinQueryLength { get; set; }
 
         /// <summary>
         /// The name that identifies the selection input in a form input event. For details about working with form
@@ -4258,6 +4329,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual GoogleAppsCardV1Action OnChangeAction { get; set; }
 
         /// <summary>
+        /// A data source from a [Google Workspace host
+        /// application](https://developers.google.com/chat/api/reference/rest/v1/HostApp). [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("platformDataSource")]
+        public virtual GoogleAppsCardV1PlatformDataSource PlatformDataSource { get; set; }
+
+        /// <summary>
         /// The type of items that are displayed to users in a `SelectionInput` widget. Selection types support
         /// different types of interactions. For example, users can select one or more checkboxes, but they can only
         /// select one value from a dropdown menu.
@@ -4273,11 +4352,27 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class GoogleAppsCardV1SelectionItem : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// For multi-select menus, a text description or label that's displayed below the item's `text` field.
+        /// [Developer Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bottomText")]
+        public virtual string BottomText { get; set; }
+
+        /// <summary>
         /// Whether the item is selected by default. If the selection input only accepts one value (such as for radio
         /// buttons or a dropdown menu), only set this field for one item.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selected")]
         public virtual System.Nullable<bool> Selected { get; set; }
+
+        /// <summary>
+        /// For multi-select menus, the URL for the icon displayed next to the item's `text` field. Supports PNG and
+        /// JPEG files. Must be an `HTTPS` URL. For example,
+        /// `https://developers.google.com/chat/images/quickstart-app-avatar.png`. [Developer
+        /// Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startIconUri")]
+        public virtual string StartIconUri { get; set; }
 
         /// <summary>The text that identifies or describes the item to users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
@@ -4604,6 +4699,22 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>TextParagraph widget.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textParagraph")]
         public virtual GoogleAppsCardV1TextParagraph TextParagraph { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Chat apps only. For a `SelectionInput` widget that uses a multi-select menu, a data source from a Google
+    /// Workspace host application. [Developer Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class HostAppDataSourceMarkup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The data source is Google Chat. [Developer Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("chatDataSource")]
+        public virtual ChatClientDataSourceMarkup ChatDataSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5437,6 +5548,23 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>Output only. Deprecated: Use `space_type` instead. The type of a space.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A data source representing a Google Chat space. Format: spaces/{space} [Developer
+    /// Preview](https://developers.google.com/workspace/preview).
+    /// </summary>
+    public class SpaceDataSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// When `true`, uses the card's Google Chat space as the default selection. The default value is `false`.
+        /// [Developer Preview](https://developers.google.com/workspace/preview).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultToCurrentSpace")]
+        public virtual System.Nullable<bool> DefaultToCurrentSpace { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

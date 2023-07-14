@@ -4967,7 +4967,9 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Asset performance data samples. Samples that are older than 40 days are ignored.</summary>
+        /// <summary>
+        /// Asset performance data samples. Samples that are from more than 40 days ago or after tomorrow are ignored.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("performanceSamples")]
         public virtual System.Collections.Generic.IList<PerformanceSample> PerformanceSamples { get; set; }
 
@@ -7079,7 +7081,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
 
         private object _sampleTime;
 
-        /// <summary>Required. Time the sample was collected.</summary>
+        /// <summary>Time the sample was collected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleTime")]
         public virtual string SampleTimeRaw
         {

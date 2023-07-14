@@ -8321,6 +8321,12 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Request message for 'StartMigrationJob' request.</summary>
     public class StartMigrationJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Start the migration job without running prior configuration verification. Defaults to `false`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipValidation")]
+        public virtual System.Nullable<bool> SkipValidation { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

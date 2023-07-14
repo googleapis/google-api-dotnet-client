@@ -6060,7 +6060,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>
         /// The medium on which the data is stored. The default is "" which means to use the node's default medium. Must
         /// be an empty string (default) or Memory. More info:
-        /// https://kubernetes.io/docs/concepts/storage/volumes#emptydir +optional
+        /// https://kubernetes.io/docs/concepts/storage/volumes#emptydir
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("medium")]
         public virtual string Medium { get; set; }

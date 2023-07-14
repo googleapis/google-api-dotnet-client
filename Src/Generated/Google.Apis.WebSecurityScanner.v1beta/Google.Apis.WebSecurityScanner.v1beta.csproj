@@ -3,7 +3,7 @@
   <!-- nupkg information -->
   <PropertyGroup>
     <Title>Google.Apis.WebSecurityScanner.v1beta Client Library</Title>
-    <Version>1.61.0.3103</Version>
+    <Version>1.61.0.3094</Version>
     <Authors>Google LLC</Authors>
     <Copyright>Copyright 2023 Google LLC</Copyright>
     <PackageTags>Google</PackageTags>
