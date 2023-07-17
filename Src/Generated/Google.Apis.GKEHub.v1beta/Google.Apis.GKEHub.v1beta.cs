@@ -5561,6 +5561,10 @@ namespace Google.Apis.GKEHub.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>Optional. Labels for this Fleet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
         /// <summary>
         /// Output only. The full, unique resource name of this fleet in the format of
         /// `projects/{project}/locations/{location}/fleets/{fleet}`. Each Google Cloud project can have at most one
@@ -5807,7 +5811,7 @@ namespace Google.Apis.GKEHub.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("azureadConfig")]
         public virtual IdentityServiceAzureADConfig AzureadConfig { get; set; }
 
-        /// <summary>GoogleConfig specific configuration</summary>
+        /// <summary>GoogleConfig specific configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleConfig")]
         public virtual IdentityServiceGoogleConfig GoogleConfig { get; set; }
 
@@ -5855,6 +5859,10 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tenant")]
         public virtual string Tenant { get; set; }
+
+        /// <summary>Optional. Claim in the AzureAD ID Token that holds the user details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userClaim")]
+        public virtual string UserClaim { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6251,6 +6259,10 @@ namespace Google.Apis.GKEHub.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fleet")]
         public virtual System.Nullable<bool> Fleet { get; set; }
 
+        /// <summary>Optional. Labels for this MembershipBinding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
         /// <summary>
         /// The resource name for the membershipbinding itself
         /// `projects/{project}/locations/{location}/memberships/{membership}/bindings/{membershipbinding}`
@@ -6573,6 +6585,10 @@ namespace Google.Apis.GKEHub.v1beta.Data
             get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
             set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
+
+        /// <summary>Optional. Labels for this Namespace.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
         /// The resource name for the namespace `projects/{project}/locations/{location}/namespaces/{namespace}`
@@ -7236,6 +7252,10 @@ namespace Google.Apis.GKEHub.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
         public virtual string Group { get; set; }
 
+        /// <summary>Optional. Labels for this RBACRolebinding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
         /// <summary>
         /// The resource name for the rbacrolebinding
         /// `projects/{project}/locations/{location}/namespaces/{namespace}/rbacrolebindings/{rbacrolebinding}` or
@@ -7409,6 +7429,10 @@ namespace Google.Apis.GKEHub.v1beta.Data
             get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
             set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
+
+        /// <summary>Optional. Labels for this Scope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>The resource name for the scope `projects/{project}/locations/{location}/scopes/{scope}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

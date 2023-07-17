@@ -3158,8 +3158,8 @@ namespace Google.Apis.Eventarc.v1.Data
 
         /// <summary>
         /// Optional. The operator used for matching the events with the value of the filter. If not specified, only
-        /// events that have an exact key-value pair specified in the filter are matched. The only allowed value is
-        /// `match-path-pattern`.
+        /// events that have an exact key-value pair specified in the filter are matched. The allowed values are
+        /// `path_pattern` and `match-path-pattern`. `path_pattern` is only allowed for GCFv1 triggers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operator")]
         public virtual string Operator__ { get; set; }

@@ -5057,6 +5057,12 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Output only. Bool indicating whether this notebook has been migrated to a Workbench Instance
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migrated")]
+        public virtual System.Nullable<bool> Migrated { get; set; }
+
+        /// <summary>
         /// Output only. The name of this notebook instance. Format:
         /// `projects/{project_id}/locations/{location}/instances/{instance_id}`
         /// </summary>
@@ -6035,6 +6041,12 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// <summary>Output only. Contains Runtime daemon metrics such as Service status and JupyterLab stats.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
         public virtual RuntimeMetrics Metrics { get; set; }
+
+        /// <summary>
+        /// Output only. Bool indicating whether this notebook has been migrated to a Workbench Instance
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migrated")]
+        public virtual System.Nullable<bool> Migrated { get; set; }
 
         /// <summary>
         /// Output only. The resource name of the runtime. Format:

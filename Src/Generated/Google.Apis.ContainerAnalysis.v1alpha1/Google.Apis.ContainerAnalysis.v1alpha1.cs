@@ -5382,10 +5382,6 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("operation")]
         public virtual Operation Operation { get; set; }
 
-        /// <summary>Output only. The status of an SBOM generation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sbomStatus")]
-        public virtual SBOMStatus SbomStatus { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7770,23 +7766,6 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>The signatures over the payload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signatures")]
         public virtual System.Collections.Generic.IList<EnvelopeSignature> Signatures { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The status of an SBOM generation.</summary>
-    public class SBOMStatus : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Output only. If there was an error generating an SBOM, this will indicate what that error was.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("error")]
-        public virtual string Error { get; set; }
-
-        /// <summary>Output only. The progress of the SBOM generation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sbomState")]
-        public virtual string SbomState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

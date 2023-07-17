@@ -1562,7 +1562,7 @@ namespace Google.Apis.TPU.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>the accelerator type.</summary>
+        /// <summary>The accelerator type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -1885,7 +1885,7 @@ namespace Google.Apis.TPU.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorConfig")]
         public virtual AcceleratorConfig AcceleratorConfig { get; set; }
 
-        /// <summary>Required. The type of hardware accelerators associated with this node.</summary>
+        /// <summary>Optional. The type of hardware accelerators associated with this node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acceleratorType")]
         public virtual string AcceleratorType { get; set; }
 
@@ -1970,6 +1970,10 @@ namespace Google.Apis.TPU.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
+        /// <summary>Output only. Whether the Node belongs to a Multislice group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multisliceNode")]
+        public virtual System.Nullable<bool> MultisliceNode { get; set; }
+
         /// <summary>Output only. Immutable. The name of the TPU.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -1984,6 +1988,10 @@ namespace Google.Apis.TPU.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkEndpoints")]
         public virtual System.Collections.Generic.IList<NetworkEndpoint> NetworkEndpoints { get; set; }
+
+        /// <summary>Output only. The qualified name of the QueuedResource that requested this Node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queuedResource")]
+        public virtual string QueuedResource { get; set; }
 
         /// <summary>Required. The runtime version running in the Node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runtimeVersion")]
