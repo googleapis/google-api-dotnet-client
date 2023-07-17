@@ -4559,6 +4559,10 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("includedTargets")]
         public virtual System.Collections.Generic.IList<Target> IncludedTargets { get; set; }
 
+        /// <summary>Optional. The service account to run workflow invocations under.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
         /// <summary>Optional. When set to true, transitive dependencies of included actions will be executed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitiveDependenciesIncluded")]
         public virtual System.Nullable<bool> TransitiveDependenciesIncluded { get; set; }
@@ -5308,6 +5312,10 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("npmrcEnvironmentVariablesSecretVersion")]
         public virtual string NpmrcEnvironmentVariablesSecretVersion { get; set; }
+
+        /// <summary>Optional. The service account to run workflow invocations under.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
 
         /// <summary>
         /// Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that

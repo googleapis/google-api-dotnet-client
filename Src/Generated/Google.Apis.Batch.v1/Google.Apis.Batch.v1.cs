@@ -731,6 +731,13 @@ namespace Google.Apis.Batch.v1
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
+                    /// <summary>
+                    /// Optional. Sort results. Supported are "name", "name desc", "create_time", and "create_time
+                    /// desc".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
                     /// <summary>Page size.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -763,6 +770,14 @@ namespace Google.Apis.Batch.v1
                         RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                         {
                             Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1284,6 +1299,15 @@ namespace Google.Apis.Batch.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<long> Count { get; set; }
 
+        /// <summary>
+        /// Optional. The NVIDIA GPU driver version that should be installed for this type. You can define the specific
+        /// driver version such as "470.103.01", following the driver version requirements in
+        /// https://cloud.google.com/compute/docs/gpus/install-drivers-gpu#minimum-driver. Batch will install the
+        /// specific accelerator driver if qualified.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("driverVersion")]
+        public virtual string DriverVersion { get; set; }
+
         /// <summary>Deprecated: please use instances[0].install_gpu_drivers instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installGpuDrivers")]
         public virtual System.Nullable<bool> InstallGpuDrivers { get; set; }
@@ -1379,7 +1403,7 @@ namespace Google.Apis.Batch.v1.Data
     /// <summary>VM Agent Info.</summary>
     public class AgentInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The assigned Job ID</summary>
+        /// <summary>Optional. The assigned Job ID</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobId")]
         public virtual string JobId { get; set; }
 
@@ -1992,12 +2016,12 @@ namespace Google.Apis.Batch.v1.Data
         public virtual string DiskInterface { get; set; }
 
         /// <summary>
-        /// Name of a public or custom image used as the data source. For example, the following are all valid URLs: *
-        /// Specify the image by its family name: projects/{project}/global/images/family/{image_family} * Specify the
-        /// image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in
-        /// short names. The following image values are supported for a boot disk: * "batch-debian": use Batch Debian
-        /// images. * "batch-centos": use Batch CentOS images. * "batch-cos": use Batch Container-Optimized images. *
-        /// "batch-hpc-centos": use Batch HPC CentOS images.
+        /// Name of an image used as the data source. For example, the following are all valid URLs: * Specify the image
+        /// by its family name: projects/project/global/images/family/image_family * Specify the image version:
+        /// projects/project/global/images/image_version You can also use Batch customized image in short names. The
+        /// following image values are supported for a boot disk: * `batch-debian`: use Batch Debian images. *
+        /// `batch-centos`: use Batch CentOS images. * `batch-cos`: use Batch Container-Optimized images. *
+        /// `batch-hpc-centos`: use Batch HPC CentOS images.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual string Image { get; set; }
@@ -2123,7 +2147,11 @@ namespace Google.Apis.Batch.v1.Data
     {
         /// <summary>
         /// Set this field true if users want Batch to help fetch drivers from a third party location and install them
-        /// for GPUs specified in policy.accelerators or instance_template on their behalf. Default is false.
+        /// for GPUs specified in policy.accelerators or instance_template on their behalf. Default is false. For
+        /// Container-Optimized Image cases, Batch will install the accelerator driver following milestones of
+        /// https://cloud.google.com/container-optimized-os/docs/release-notes. For non Container-Optimized Image cases,
+        /// following
+        /// https://github.com/GoogleCloudPlatform/compute-gpu-installation/blob/main/linux/install_gpu_driver.py.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("installGpuDrivers")]
         public virtual System.Nullable<bool> InstallGpuDrivers { get; set; }
@@ -2547,9 +2575,9 @@ namespace Google.Apis.Batch.v1.Data
     {
         /// <summary>
         /// The URL of an existing network resource. You can specify the network as a full or partial URL. For example,
-        /// the following are all valid URLs: *
-        /// https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} *
-        /// projects/{project}/global/networks/{network} * global/networks/{network}
+        /// the following are all valid URLs:
+        /// https://www.googleapis.com/compute/v1/projects/project/global/networks/network
+        /// projects/project/global/networks/network global/networks/network
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
@@ -2565,9 +2593,9 @@ namespace Google.Apis.Batch.v1.Data
 
         /// <summary>
         /// The URL of an existing subnetwork resource in the network. You can specify the subnetwork as a full or
-        /// partial URL. For example, the following are all valid URLs: *
-        /// https://www.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetwork} *
-        /// projects/{project}/regions/{region}/subnetworks/{subnetwork} * regions/{region}/subnetworks/{subnetwork}
+        /// partial URL. For example, the following are all valid URLs:
+        /// https://www.googleapis.com/compute/v1/projects/project/regions/region/subnetworks/subnetwork
+        /// projects/project/regions/region/subnetworks/subnetwork regions/region/subnetworks/subnetwork
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; }

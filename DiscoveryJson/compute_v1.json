@@ -23681,7 +23681,7 @@
      ]
     },
     "patch": {
-     "description": "Patches the specified policy with the data included in the request. To clear fields in the rule, leave the fields empty and specify them in the updateMask. This cannot be used to be update the rules in the policy. Please use the per rule methods like addRule, patchRule, and removeRule instead.",
+     "description": "Patches the specified policy with the data included in the request. To clear fields in the policy, leave the fields empty and specify them in the updateMask. This cannot be used to be update the rules in the policy. Please use the per rule methods like addRule, patchRule, and removeRule instead.",
      "flatPath": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}",
      "httpMethod": "PATCH",
      "id": "compute.regionSecurityPolicies.patch",
@@ -26291,6 +26291,62 @@
       "https://www.googleapis.com/auth/compute.readonly"
      ]
     },
+    "patch": {
+     "description": "Modify the specified resource policy.",
+     "flatPath": "projects/{project}/regions/{region}/resourcePolicies/{resourcePolicy}",
+     "httpMethod": "PATCH",
+     "id": "compute.resourcePolicies.patch",
+     "parameterOrder": [
+      "project",
+      "region",
+      "resourcePolicy"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      },
+      "resourcePolicy": {
+       "description": "Id of the resource policy to patch.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "updateMask": {
+       "description": "update_mask indicates fields to be updated as part of this request.",
+       "format": "google-fieldmask",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/resourcePolicies/{resourcePolicy}",
+     "request": {
+      "$ref": "ResourcePolicy"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
     "setIamPolicy": {
      "description": "Sets the access control policy on the specified resource. Replaces any existing policy.",
      "flatPath": "projects/{project}/regions/{region}/resourcePolicies/{resource}/setIamPolicy",
@@ -27444,7 +27500,7 @@
      ]
     },
     "patch": {
-     "description": "Patches the specified policy with the data included in the request. To clear fields in the rule, leave the fields empty and specify them in the updateMask. This cannot be used to be update the rules in the policy. Please use the per rule methods like addRule, patchRule, and removeRule instead.",
+     "description": "Patches the specified policy with the data included in the request. To clear fields in the policy, leave the fields empty and specify them in the updateMask. This cannot be used to be update the rules in the policy. Please use the per rule methods like addRule, patchRule, and removeRule instead.",
      "flatPath": "projects/{project}/global/securityPolicies/{securityPolicy}",
      "httpMethod": "PATCH",
      "id": "compute.securityPolicies.patch",
@@ -27486,7 +27542,7 @@
      ]
     },
     "patchRule": {
-     "description": "Patches a rule at the specified priority.",
+     "description": "Patches a rule at the specified priority. To clear fields in the rule, leave the fields empty and specify them in the updateMask.",
      "flatPath": "projects/{project}/global/securityPolicies/{securityPolicy}/patchRule",
      "httpMethod": "POST",
      "id": "compute.securityPolicies.patchRule",
@@ -33732,7 +33788,7 @@
    }
   }
  },
- "revision": "20230701",
+ "revision": "20230711",
  "rootUrl": "https://compute.googleapis.com/",
  "schemas": {
   "AcceleratorConfig": {
@@ -36283,7 +36339,7 @@
      "type": "string"
     },
     "customResponseHeaders": {
-     "description": "Headers that the HTTP/S load balancer should add to proxied responses.",
+     "description": "Headers that the Application Load Balancer should add to proxied responses.",
      "items": {
       "type": "string"
      },
@@ -40368,11 +40424,13 @@
      "description": "The distribution shape to which the group converges either proactively or on resize events (depending on the value set in updatePolicy.instanceRedistributionType).",
      "enum": [
       "ANY",
+      "ANY_SINGLE_ZONE",
       "BALANCED",
       "EVEN"
      ],
      "enumDescriptions": [
       "The group picks zones for creating VM instances to fulfill the requested number of VMs within present resource constraints and to maximize utilization of unused zonal reservations. Recommended for batch workloads that do not require high availability.",
+      "The group creates all VM instances within a single zone. The zone is selected based on the present resource constraints and to maximize utilization of unused zonal reservations. Recommended for batch workloads with heavy interprocess communication.",
       "The group prioritizes acquisition of resources, scheduling VMs in zones where resources are available while distributing VMs as evenly as possible across selected zones to minimize the impact of zonal failure. Recommended for highly available serving workloads.",
       "The group schedules VM instance creation and deletion to achieve and maintain an even number of managed instances across the selected zones. The distribution is even when the number of managed instances does not differ by more than 1 between any two zones. Recommended for highly available serving workloads."
      ],
@@ -46538,14 +46596,14 @@
      "type": "string"
     },
     "type": {
-     "description": "The type of update process. You can specify either PROACTIVE so that the instance group manager proactively executes actions in order to bring instances to their target versions or OPPORTUNISTIC so that no action is proactively executed but the update will be performed as part of other actions (for example, resizes or recreateInstances calls).",
+     "description": "The type of update process. You can specify either PROACTIVE so that the MIG automatically updates VMs to the latest configurations or OPPORTUNISTIC so that you can select the VMs that you want to update.",
      "enum": [
       "OPPORTUNISTIC",
       "PROACTIVE"
      ],
      "enumDescriptions": [
-      "No action is being proactively performed in order to bring this IGM to its target version distribution (regardless of whether this distribution is expressed using instanceTemplate or versions field).",
-      "This IGM will actively converge to its target version distribution (regardless of whether this distribution is expressed using instanceTemplate or versions field)."
+      "MIG will apply new configurations to existing VMs only when you selectively target specific or all VMs to be updated.",
+      "MIG will automatically apply new configurations to all or a subset of existing VMs and also to new VMs that are added to the group."
      ],
      "type": "string"
     }
@@ -60079,6 +60137,11 @@
      "description": "The map holding related quota dimensions.",
      "type": "object"
     },
+    "futureLimit": {
+     "description": "Future quota limit being rolled out. The limit's unit depends on the quota type or metric.",
+     "format": "double",
+     "type": "number"
+    },
     "limit": {
      "description": "Current effective quota limit. The limit's unit depends on the quota type or metric.",
      "format": "double",
@@ -60090,6 +60153,18 @@
     },
     "metricName": {
      "description": "The Compute Engine quota metric name.",
+     "type": "string"
+    },
+    "rolloutStatus": {
+     "description": "Rollout status of the future quota limit.",
+     "enum": [
+      "IN_PROGRESS",
+      "ROLLOUT_STATUS_UNSPECIFIED"
+     ],
+     "enumDescriptions": [
+      "IN_PROGRESS - A rollout is in process which will change the limit value to future limit.",
+      "ROLLOUT_STATUS_UNSPECIFIED - Rollout status is not specified. The default value."
+     ],
      "type": "string"
     }
    },
@@ -65264,6 +65339,10 @@
      ],
      "type": "string"
     },
+    "localSsdRecoveryTimeout": {
+     "$ref": "Duration",
+     "description": "Specifies the maximum amount of time a Local Ssd Vm should wait while recovery of the Local Ssd state is attempted. Its value should be in between 0 and 168 hours with hour granularity and the default value being 1 hour."
+    },
     "locationHint": {
      "description": "An opaque location hint used to place the instance close to other resources. This field is for use by internal tools that use the public API.",
      "type": "string"
@@ -66728,6 +66807,10 @@
    "description": "[Output Only] A connection connected to this service attachment.",
    "id": "ServiceAttachmentConnectedEndpoint",
    "properties": {
+    "consumerNetwork": {
+     "description": "The url of the consumer network.",
+     "type": "string"
+    },
     "endpoint": {
      "description": "The url of a connected endpoint.",
      "type": "string"

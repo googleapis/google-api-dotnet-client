@@ -1947,9 +1947,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string CloudSqlInstance { get; set; }
 
         /// <summary>
-        /// Forwarding rule URI. Forwarding rules are frontends for load balancers, PSC endpoints and Protocol
-        /// Forwarding. Format: projects/{project}/global/forwardingRules/{id} or
-        /// projects/{project}/regions/{region}/forwardingRules/{id}
+        /// A forwarding rule and its corresponding IP address represent the frontend configuration of a Google Cloud
+        /// load balancer. Forwarding rules are also used for protocol forwarding, Private Service Connect and other
+        /// network services to provide forwarding information in the control plane. Format:
+        /// projects/{project}/global/forwardingRules/{id} or projects/{project}/regions/{region}/forwardingRules/{id}
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingRule")]
         public virtual string ForwardingRule { get; set; }

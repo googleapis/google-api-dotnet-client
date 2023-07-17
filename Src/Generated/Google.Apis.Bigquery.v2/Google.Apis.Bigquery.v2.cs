@@ -7566,7 +7566,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
         public virtual System.Nullable<long> ExpirationTime { get; set; }
 
-        /// <summary>Output only. Input feature columns that were used to train this model.</summary>
+        /// <summary>
+        /// Output only. Input feature columns for the model inference. If the model is trained with TRANSFORM clause,
+        /// these are the input of the TRANSFORM clause.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("featureColumns")]
         public virtual System.Collections.Generic.IList<StandardSqlField> FeatureColumns { get; set; }
 
@@ -9722,6 +9725,10 @@ namespace Google.Apis.Bigquery.v2.Data
     /// <summary>Options used in model training.</summary>
     public class TrainingOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Activation function of the neural nets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activationFn")]
+        public virtual string ActivationFn { get; set; }
+
         /// <summary>If true, detect step changes and make data adjustment in the input time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adjustStepChanges")]
         public virtual System.Nullable<bool> AdjustStepChanges { get; set; }
@@ -9744,6 +9751,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("autoArimaMinOrder")]
         public virtual System.Nullable<long> AutoArimaMinOrder { get; set; }
 
+        /// <summary>Whether to calculate class weights automatically based on the popularity of each label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoClassWeights")]
+        public virtual System.Nullable<bool> AutoClassWeights { get; set; }
+
         /// <summary>Batch size for dnn models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchSize")]
         public virtual System.Nullable<long> BatchSize { get; set; }
@@ -9751,6 +9762,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Booster type for boosted tree models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("boosterType")]
         public virtual string BoosterType { get; set; }
+
+        /// <summary>Budget in hours for AutoML training.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("budgetHours")]
+        public virtual System.Nullable<double> BudgetHours { get; set; }
 
         /// <summary>
         /// Whether or not p-value test should be computed for this model. Only available for linear and logistic
@@ -9839,6 +9854,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("feedbackType")]
         public virtual string FeedbackType { get; set; }
 
+        /// <summary>Whether the model should include intercept during model training.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fitIntercept")]
+        public virtual System.Nullable<bool> FitIntercept { get; set; }
+
         /// <summary>Hidden units for dnn models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hiddenUnits")]
         public virtual System.Collections.Generic.IList<System.Nullable<long>> HiddenUnits { get; set; }
@@ -9894,6 +9913,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>The method used to initialize the centroids for kmeans algorithm.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmeansInitializationMethod")]
         public virtual string KmeansInitializationMethod { get; set; }
+
+        /// <summary>L1 regularization coefficient to activations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("l1RegActivation")]
+        public virtual System.Nullable<double> L1RegActivation { get; set; }
 
         /// <summary>L1 regularization coefficient.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("l1Regularization")]
@@ -9964,6 +9987,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minTreeChildWeight")]
         public virtual System.Nullable<long> MinTreeChildWeight { get; set; }
 
+        /// <summary>The model registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelRegistry")]
+        public virtual string ModelRegistry { get; set; }
+
         /// <summary>
         /// Google Cloud Storage URI from which the model was imported. Only applicable for imported models.
         /// </summary>
@@ -9989,6 +10016,12 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("numParallelTree")]
         public virtual System.Nullable<long> NumParallelTree { get; set; }
 
+        /// <summary>
+        /// Number of principal components to keep in the PCA model. Must be &amp;lt;= the number of features.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numPrincipalComponents")]
+        public virtual System.Nullable<long> NumPrincipalComponents { get; set; }
+
         /// <summary>Number of trials to run this hyperparameter tuning job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numTrials")]
         public virtual System.Nullable<long> NumTrials { get; set; }
@@ -9997,9 +10030,33 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("optimizationStrategy")]
         public virtual string OptimizationStrategy { get; set; }
 
+        /// <summary>Optimizer used for training the neural nets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("optimizer")]
+        public virtual string Optimizer { get; set; }
+
+        /// <summary>
+        /// The minimum ratio of cumulative explained variance that needs to be given by the PCA model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pcaExplainedVarianceRatio")]
+        public virtual System.Nullable<double> PcaExplainedVarianceRatio { get; set; }
+
+        /// <summary>The solver for PCA.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pcaSolver")]
+        public virtual string PcaSolver { get; set; }
+
         /// <summary>Number of paths for the sampled Shapley explain method.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampledShapleyNumPaths")]
         public virtual System.Nullable<long> SampledShapleyNumPaths { get; set; }
+
+        /// <summary>
+        /// If true, scale the feature values by dividing the feature standard deviation. Currently only apply to PCA.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scaleFeatures")]
+        public virtual System.Nullable<bool> ScaleFeatures { get; set; }
+
+        /// <summary>Whether to standardize numerical features. Default to true.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("standardizeFeatures")]
+        public virtual System.Nullable<bool> StandardizeFeatures { get; set; }
 
         /// <summary>
         /// Subsample fraction of the training data to grow tree to prevent overfitting for boosted tree models.
@@ -10044,6 +10101,13 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>User column specified for matrix factorization models.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userColumn")]
         public virtual string UserColumn { get; set; }
+
+        /// <summary>
+        /// The version aliases to apply in Vertex AI model registry. Always overwrite if the version aliases exists in
+        /// a existing model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertexAiModelVersionAliases")]
+        public virtual System.Collections.Generic.IList<string> VertexAiModelVersionAliases { get; set; }
 
         /// <summary>Hyperparameter for matrix factoration when implicit feedback type is specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("walsAlpha")]
