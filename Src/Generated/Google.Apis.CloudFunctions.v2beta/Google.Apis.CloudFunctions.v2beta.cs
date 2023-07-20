@@ -1552,6 +1552,13 @@ namespace Google.Apis.CloudFunctions.v2beta.Data
         public virtual SourceProvenance SourceProvenance { get; set; }
 
         /// <summary>
+        /// An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function
+        /// deployments.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceToken")]
+        public virtual string SourceToken { get; set; }
+
+        /// <summary>
         /// Name of the Cloud Build Custom Worker Pool that should be used to build the function. The format of this
         /// field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are
         /// the project id and region respectively where the worker pool is defined and {workerPool} is the short name
@@ -1969,6 +1976,13 @@ namespace Google.Apis.CloudFunctions.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestResource")]
         public virtual System.Collections.Generic.IDictionary<string, object> RequestResource { get; set; }
 
+        /// <summary>
+        /// An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function
+        /// deployments.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceToken")]
+        public virtual string SourceToken { get; set; }
+
         /// <summary>Mechanism for reporting in-progress stages</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stages")]
         public virtual System.Collections.Generic.IList<GoogleCloudFunctionsV2Stage> Stages { get; set; }
@@ -2143,6 +2157,13 @@ namespace Google.Apis.CloudFunctions.v2beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requestResource")]
         public virtual System.Collections.Generic.IDictionary<string, object> RequestResource { get; set; }
 
+        /// <summary>
+        /// An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function
+        /// deployments.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceToken")]
+        public virtual string SourceToken { get; set; }
+
         /// <summary>Mechanism for reporting in-progress stages</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stages")]
         public virtual System.Collections.Generic.IList<GoogleCloudFunctionsV2alphaStage> Stages { get; set; }
@@ -2316,6 +2337,13 @@ namespace Google.Apis.CloudFunctions.v2beta.Data
         /// <summary>The original request that started the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestResource")]
         public virtual System.Collections.Generic.IDictionary<string, object> RequestResource { get; set; }
+
+        /// <summary>
+        /// An identifier for Firebase function sources. Disclaimer: This field is only supported for Firebase function
+        /// deployments.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceToken")]
+        public virtual string SourceToken { get; set; }
 
         /// <summary>Mechanism for reporting in-progress stages</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stages")]

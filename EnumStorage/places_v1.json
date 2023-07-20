@@ -1,0 +1,11 @@
+{
+  "Google.Apis.PlacesAPINew.v1.PlacesAPINewBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.PlacesAPINew.v1.PlacesAPINewBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

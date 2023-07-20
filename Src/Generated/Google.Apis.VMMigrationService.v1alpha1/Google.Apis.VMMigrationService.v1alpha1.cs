@@ -4739,6 +4739,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// </summary>
     public class CloneJob : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Details of the target Persistent Disks in Compute Engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computeEngineDisksTargetDetails")]
+        public virtual ComputeEngineDisksTargetDetails ComputeEngineDisksTargetDetails { get; set; }
+
         /// <summary>Output only. Details of the target VM in Compute Engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeEngineTargetDetails")]
         public virtual ComputeEngineTargetDetails ComputeEngineTargetDetails { get; set; }
@@ -4984,6 +4988,42 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     }
 
     /// <summary>
+    /// ComputeEngineDisksTargetDefaults is a collection of details for creating Persistent Disks in a target Compute
+    /// Engine project.
+    /// </summary>
+    public class ComputeEngineDisksTargetDefaults : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The details of each Persistent Disk to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disks")]
+        public virtual System.Collections.Generic.IList<PersistentDiskDefaults> Disks { get; set; }
+
+        /// <summary>
+        /// The full path of the resource of type TargetProject which represents the Compute Engine project in which to
+        /// create the Persistent Disks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetProject")]
+        public virtual string TargetProject { get; set; }
+
+        /// <summary>The zone in which to create the Persistent Disks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ComputeEngineDisksTargetDetails is a collection of created Persistent Disks details.</summary>
+    public class ComputeEngineDisksTargetDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The details of each created Persistent Disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disks")]
+        public virtual System.Collections.Generic.IList<PersistentDisk> Disks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// ComputeEngineTargetDefaults is a collection of details for creating a VM in a target Compute Engine project.
     /// </summary>
     public class ComputeEngineTargetDefaults : Google.Apis.Requests.IDirectResponseSchema
@@ -5210,6 +5250,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// </summary>
     public class CutoverJob : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Details of the target Persistent Disks in Compute Engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computeEngineDisksTargetDetails")]
+        public virtual ComputeEngineDisksTargetDetails ComputeEngineDisksTargetDetails { get; set; }
+
         /// <summary>Output only. Details of the target VM in Compute Engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeEngineTargetDetails")]
         public virtual ComputeEngineTargetDetails ComputeEngineTargetDetails { get; set; }
@@ -5876,6 +5920,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        /// <summary>Immutable. The target type of this group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migrationTargetType")]
+        public virtual string MigrationTargetType { get; set; }
+
         /// <summary>Output only. The Group name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -6238,6 +6286,10 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         /// <summary>Output only. Details of the VM from an AWS source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsSourceVmDetails")]
         public virtual AwsSourceVmDetails AwsSourceVmDetails { get; set; }
+
+        /// <summary>Details of the target Persistent Disks in Compute Engine.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computeEngineDisksTargetDefaults")]
+        public virtual ComputeEngineDisksTargetDefaults ComputeEngineDisksTargetDefaults { get; set; }
 
         /// <summary>Details of the target VM in Compute Engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeEngineTargetDefaults")]
@@ -6761,6 +6813,44 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
     /// <summary>Request message for 'PauseMigration' request.</summary>
     public class PauseMigrationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details of a created Persistent Disk.</summary>
+    public class PersistentDisk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The URI of the Persistent Disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskUri")]
+        public virtual string DiskUri { get; set; }
+
+        /// <summary>The ordinal number of the source VM disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceDiskNumber")]
+        public virtual System.Nullable<int> SourceDiskNumber { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details for creation of a Persistent Disk.</summary>
+    public class PersistentDiskDefaults : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A map of labels to associate with the Persistent Disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalLabels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> AdditionalLabels { get; set; }
+
+        /// <summary>Optional. The name of the Persistent Disk to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskName")]
+        public virtual string DiskName { get; set; }
+
+        /// <summary>The disk type to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
+        public virtual string DiskType { get; set; }
+
+        /// <summary>The ordinal number of the source VM disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceDiskNumber")]
+        public virtual System.Nullable<int> SourceDiskNumber { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

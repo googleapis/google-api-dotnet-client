@@ -7081,7 +7081,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
 
         private object _sampleTime;
 
-        /// <summary>Time the sample was collected.</summary>
+        /// <summary>Time the sample was collected. If omitted, the frame report time will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleTime")]
         public virtual string SampleTimeRaw
         {

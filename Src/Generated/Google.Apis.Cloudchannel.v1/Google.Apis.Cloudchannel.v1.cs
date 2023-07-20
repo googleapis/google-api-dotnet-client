@@ -333,8 +333,9 @@ namespace Google.Apis.Cloudchannel.v1
                 /// current month. * This functionality is reserved for recovering from an erroneous config, and should
                 /// not be used for regular business cases. * The new config will not modify exports used with other
                 /// configs. Changes to the config may be immediate, but may take up to 24 hours. * There is a limit of
-                /// ten configs for any ChannelPartner or RepricingConfig.effective_invoice_month. * The contained
-                /// ChannelPartnerRepricingConfig.repricing_config vaule must be different from the value used in the
+                /// ten configs for any ChannelPartner or RepricingConfig.EntitlementGranularity.entitlement, for any
+                /// RepricingConfig.effective_invoice_month. * The contained
+                /// ChannelPartnerRepricingConfig.repricing_config value must be different from the value used in the
                 /// current config for a ChannelPartner. Possible Error Codes: * PERMISSION_DENIED: If the account
                 /// making the request and the account being queried are different. * INVALID_ARGUMENT: Missing or
                 /// invalid required parameters in the request. Also displays if the updated config is for the current
@@ -362,8 +363,9 @@ namespace Google.Apis.Cloudchannel.v1
                 /// current month. * This functionality is reserved for recovering from an erroneous config, and should
                 /// not be used for regular business cases. * The new config will not modify exports used with other
                 /// configs. Changes to the config may be immediate, but may take up to 24 hours. * There is a limit of
-                /// ten configs for any ChannelPartner or RepricingConfig.effective_invoice_month. * The contained
-                /// ChannelPartnerRepricingConfig.repricing_config vaule must be different from the value used in the
+                /// ten configs for any ChannelPartner or RepricingConfig.EntitlementGranularity.entitlement, for any
+                /// RepricingConfig.effective_invoice_month. * The contained
+                /// ChannelPartnerRepricingConfig.repricing_config value must be different from the value used in the
                 /// current config for a ChannelPartner. Possible Error Codes: * PERMISSION_DENIED: If the account
                 /// making the request and the account being queried are different. * INVALID_ARGUMENT: Missing or
                 /// invalid required parameters in the request. Also displays if the updated config is for the current
@@ -1647,9 +1649,9 @@ namespace Google.Apis.Cloudchannel.v1
                 /// current month. * This functionality is reserved for recovering from an erroneous config, and should
                 /// not be used for regular business cases. * The new config will not modify exports used with other
                 /// configs. Changes to the config may be immediate, but may take up to 24 hours. * There is a limit of
-                /// ten configs for any RepricingConfig.EntitlementGranularity.entitlement or
+                /// ten configs for any RepricingConfig.EntitlementGranularity.entitlement, for any
                 /// RepricingConfig.effective_invoice_month. * The contained CustomerRepricingConfig.repricing_config
-                /// vaule must be different from the value used in the current config for a
+                /// value must be different from the value used in the current config for a
                 /// RepricingConfig.EntitlementGranularity.entitlement. Possible Error Codes: * PERMISSION_DENIED: If
                 /// the account making the request and the account being queried are different. * INVALID_ARGUMENT:
                 /// Missing or invalid required parameters in the request. Also displays if the updated config is for
@@ -1677,9 +1679,9 @@ namespace Google.Apis.Cloudchannel.v1
                 /// current month. * This functionality is reserved for recovering from an erroneous config, and should
                 /// not be used for regular business cases. * The new config will not modify exports used with other
                 /// configs. Changes to the config may be immediate, but may take up to 24 hours. * There is a limit of
-                /// ten configs for any RepricingConfig.EntitlementGranularity.entitlement or
+                /// ten configs for any RepricingConfig.EntitlementGranularity.entitlement, for any
                 /// RepricingConfig.effective_invoice_month. * The contained CustomerRepricingConfig.repricing_config
-                /// vaule must be different from the value used in the current config for a
+                /// value must be different from the value used in the current config for a
                 /// RepricingConfig.EntitlementGranularity.entitlement. Possible Error Codes: * PERMISSION_DENIED: If
                 /// the account making the request and the account being queried are different. * INVALID_ARGUMENT:
                 /// Missing or invalid required parameters in the request. Also displays if the updated config is for
@@ -8352,8 +8354,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
         public virtual GoogleCloudChannelV1RepricingAdjustment Adjustment { get; set; }
 
         /// <summary>
-        /// Applies the repricing configuration at the channel partner level. This is the only supported value for
-        /// ChannelPartnerRepricingConfig.
+        /// Applies the repricing configuration at the channel partner level. Only ChannelPartnerRepricingConfig
+        /// supports this value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelPartnerGranularity")]
         public virtual GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity ChannelPartnerGranularity { get; set; }
@@ -8374,8 +8376,11 @@ namespace Google.Apis.Cloudchannel.v1.Data
         public virtual GoogleTypeDate EffectiveInvoiceMonth { get; set; }
 
         /// <summary>
-        /// Applies the repricing configuration at the entitlement level. This is the only supported value for
-        /// CustomerRepricingConfig.
+        /// Applies the repricing configuration at the entitlement level. Note: If a ChannelPartnerRepricingConfig using
+        /// RepricingConfig.EntitlementGranularity becomes effective, then no existing or future
+        /// RepricingConfig.ChannelPartnerGranularity will apply to the
+        /// RepricingConfig.EntitlementGranularity.entitlement. This is the recommended value for both
+        /// CustomerRepricingConfig and ChannelPartnerRepricingConfig.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entitlementGranularity")]
         public virtual GoogleCloudChannelV1RepricingConfigEntitlementGranularity EntitlementGranularity { get; set; }

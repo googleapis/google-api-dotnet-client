@@ -5571,8 +5571,9 @@ namespace Google.Apis.CloudRetail.v2alpha
         }
 
         /// <summary>
-        /// Enrolls retail API solution for the project. Recommendation solution is enrolled by default when your
-        /// project enables Retail API. You don't need to call this API for the recommendation solution.
+        /// The method enrolls a solution of type Retail Search into a project. The Recommendations AI solution type is
+        /// enrolled by default when your project enables Retail API, so you don't need to call the enrollSolution
+        /// method for recommendations.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="project">
@@ -5584,8 +5585,9 @@ namespace Google.Apis.CloudRetail.v2alpha
         }
 
         /// <summary>
-        /// Enrolls retail API solution for the project. Recommendation solution is enrolled by default when your
-        /// project enables Retail API. You don't need to call this API for the recommendation solution.
+        /// The method enrolls a solution of type Retail Search into a project. The Recommendations AI solution type is
+        /// enrolled by default when your project enables Retail API, so you don't need to call the enrollSolution
+        /// method for recommendations.
         /// </summary>
         public class EnrollSolutionRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2alpha.Data.GoogleLongrunningOperation>
         {
@@ -5632,7 +5634,7 @@ namespace Google.Apis.CloudRetail.v2alpha
         }
 
         /// <summary>
-        /// Gets the project. Throws NOT_FOUND if the project wasn't initialized for Retail API Service.
+        /// Gets the project. Throws `NOT_FOUND` if the project wasn't initialized for the Retail API service.
         /// </summary>
         /// <param name="name">
         /// Required. Full resource name of the project. Format: `projects/{project_number_or_id}/retailProject`
@@ -5643,7 +5645,7 @@ namespace Google.Apis.CloudRetail.v2alpha
         }
 
         /// <summary>
-        /// Gets the project. Throws NOT_FOUND if the project wasn't initialized for Retail API Service.
+        /// Gets the project. Throws `NOT_FOUND` if the project wasn't initialized for the Retail API service.
         /// </summary>
         public class GetRetailProjectRequest : CloudRetailBaseServiceRequest<Google.Apis.CloudRetail.v2alpha.Data.GoogleCloudRetailV2alphaProject>
         {
@@ -7727,13 +7729,6 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
     /// <summary>Request for EnrollSolution method.</summary>
     public class GoogleCloudRetailV2alphaEnrollSolutionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Solution use case to enroll. Currently settable for Browse to enroll. It should be only set when [solution]
-        /// is set as SolutionType.SOLUTION_TYPE_SEARCH or an INVALID_ARGUMENT error is thrown.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("searchSolutionUseCase")]
-        public virtual string SearchSolutionUseCase { get; set; }
-
         /// <summary>Required. Solution to enroll.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("solution")]
         public virtual string Solution { get; set; }
@@ -9453,9 +9448,9 @@ namespace Google.Apis.CloudRetail.v2alpha.Data
         }
 
         /// <summary>
-        /// The brands of the product. A maximum of 30 brands are allowed unless overridden via pantheon UI. Each brand
-        /// must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error
-        /// is returned. Corresponding properties: Google Merchant Center property
+        /// The brands of the product. A maximum of 30 brands are allowed unless overridden through the Google Cloud
+        /// console. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an
+        /// INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property
         /// [brand](https://support.google.com/merchants/answer/6324351). Schema.org property
         /// [Product.brand](https://schema.org/brand).
         /// </summary>

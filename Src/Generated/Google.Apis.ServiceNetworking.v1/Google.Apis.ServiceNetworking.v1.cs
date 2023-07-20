@@ -1185,6 +1185,69 @@ namespace Google.Apis.ServiceNetworking.v1
             }
 
             /// <summary>
+            /// * Service producers can use this method to retrieve a list of available DNS zones in the shared producer
+            /// host project and the matching peering zones in the consumer project. *
+            /// </summary>
+            /// <param name="parent">
+            /// Required. Parent resource identifying the connection which owns this collection of DNS zones in the
+            /// format services/{service}/projects/{project}/global/networks/{network} Service: The service that is
+            /// managing connectivity for the service producer's organization. For Google services that support this
+            /// functionality, this value is `servicenetworking.googleapis.com`. Projects: the consumer project
+            /// containing the consumer network. Network: The consumer network accessible from the tenant project.
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>
+            /// * Service producers can use this method to retrieve a list of available DNS zones in the shared producer
+            /// host project and the matching peering zones in the consumer project. *
+            /// </summary>
+            public class ListRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1.Data.ListDnsZonesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Parent resource identifying the connection which owns this collection of DNS zones in the
+                /// format services/{service}/projects/{project}/global/networks/{network} Service: The service that is
+                /// managing connectivity for the service producer's organization. For Google services that support this
+                /// functionality, this value is `servicenetworking.googleapis.com`. Projects: the consumer project
+                /// containing the consumer network. Network: The consumer network accessible from the tenant project.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/dnsZones:list";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^services/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
             /// Service producers can use this method to remove private DNS zones in the shared producer host project
             /// and matching peering zones in the consumer project.
             /// </summary>
@@ -3187,6 +3250,21 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>* Represents a pair of private and peering DNS zone resources. *</summary>
+    public class DnsZonePair : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The DNS peering zone in the consumer project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("consumerPeeringZone")]
+        public virtual DnsZone ConsumerPeeringZone { get; set; }
+
+        /// <summary>The private DNS zone in the shared producer host project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerPrivateZone")]
+        public virtual DnsZone ProducerPrivateZone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// `Documentation` provides the information for describing a service. Example: documentation: summary: &amp;gt; The
     /// Google Calendar API gives access to most calendar features. pages: - name: Overview content: (== include
@@ -3885,6 +3963,23 @@ namespace Google.Apis.ServiceNetworking.v1.Data
         /// <summary>The list of Connections.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connections")]
         public virtual System.Collections.Generic.IList<Connection> Connections { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents all DNS zones in the shared producer host project and the matching peering zones in the consumer
+    /// project.
+    /// </summary>
+    public class ListDnsZonesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// All pairs of private DNS zones in the shared producer host project and the matching peering zones in the
+        /// consumer project..
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsZonePairs")]
+        public virtual System.Collections.Generic.IList<DnsZonePair> DnsZonePairs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
