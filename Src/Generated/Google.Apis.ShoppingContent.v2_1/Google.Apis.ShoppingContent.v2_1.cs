@@ -15493,6 +15493,108 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     }
 
     /// <summary>
+    /// Fields related to [competitive visibility reports] (https://support.google.com/merchants/answer/11366442).
+    /// </summary>
+    public class CompetitiveVisibility : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// [Ads / organic ratio] (https://support.google.com/merchants/answer/11366442#zippy=%2Cadsfree-ratio) shows
+        /// how often a merchant receives impressions from Shopping ads compared to organic traffic. The number is
+        /// rounded and bucketed. Available only in `CompetitiveVisibilityTopMerchantView`. Cannot be filtered on in the
+        /// 'WHERE' clause.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adsOrganicRatio")]
+        public virtual System.Nullable<double> AdsOrganicRatio { get; set; }
+
+        /// <summary>
+        /// Change in visibility based on impressions with respect to the start of the selected time range (or first day
+        /// with non-zero impressions) for a combined set of merchants with highest visibility approximating the market.
+        /// Available only in `CompetitiveVisibilityBenchmarkView`. Cannot be filtered on in the 'WHERE' clause.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryBenchmarkVisibilityTrend")]
+        public virtual System.Nullable<double> CategoryBenchmarkVisibilityTrend { get; set; }
+
+        /// <summary>
+        /// Google product category ID to calculate the report for, represented in [Google's product
+        /// taxonomy](https://support.google.com/merchants/answer/6324436). Required in the `SELECT` clause. A `WHERE`
+        /// condition on `competitive_visibility.category_id` is required in the query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryId")]
+        public virtual System.Nullable<long> CategoryId { get; set; }
+
+        /// <summary>
+        /// The country where impression appeared. Required in the `SELECT` clause. A `WHERE` condition on
+        /// `competitive_visibility.country_code` is required in the query.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
+        public virtual string CountryCode { get; set; }
+
+        /// <summary>
+        /// Date of this row. Available only in `CompetitiveVisibilityBenchmarkView`. Required in the `SELECT` clause
+        /// for `CompetitiveVisibilityMarketBenchmarkView`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("date")]
+        public virtual Date Date { get; set; }
+
+        /// <summary>
+        /// Domain of your competitor or your domain, if 'is_your_domain' is true. Available only in
+        /// `CompetitiveVisibilityTopMerchantView`. Required in the `SELECT` clause for
+        /// `CompetitiveVisibilityTopMerchantView`. Cannot be filtered on in the 'WHERE' clause.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>
+        /// Higher position rate shows how often a competitor’s offer got placed in a higher position on the page than
+        /// your offer. Available only in `CompetitiveVisibilityTopMerchantView`. Cannot be filtered on in the 'WHERE'
+        /// clause.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("higherPositionRate")]
+        public virtual System.Nullable<double> HigherPositionRate { get; set; }
+
+        /// <summary>
+        /// True if this row contains data for your domain. Available only in `CompetitiveVisibilityTopMerchantView`.
+        /// Cannot be filtered on in the 'WHERE' clause.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isYourDomain")]
+        public virtual System.Nullable<bool> IsYourDomain { get; set; }
+
+        /// <summary>
+        /// Page overlap rate describes how frequently competing retailers’ offers are shown together with your offers
+        /// on the same page. Available only in `CompetitiveVisibilityTopMerchantView`. Cannot be filtered on in the
+        /// 'WHERE' clause.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageOverlapRate")]
+        public virtual System.Nullable<double> PageOverlapRate { get; set; }
+
+        /// <summary>
+        /// Position of the domain in the top merchants ranking for the selected keys (`date`, `category_id`,
+        /// `country_code`, `listing_type`) based on impressions. 1 is the highest. Available only in
+        /// `CompetitiveVisibilityTopMerchantView`. Cannot be filtered on in the 'WHERE' clause.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rank")]
+        public virtual System.Nullable<ulong> Rank { get; set; }
+
+        /// <summary>
+        /// Type of impression listing. Required in the `SELECT` clause for `CompetitiveVisibilityTopMerchantView` and
+        /// `CompetitiveVisibilityMarketBenchmarkView`. Cannot be filtered on in the 'WHERE' clause.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trafficSource")]
+        public virtual string TrafficSource { get; set; }
+
+        /// <summary>
+        /// Change in visibility based on impressions for your domain with respect to the start of the selected time
+        /// range (or first day with non-zero impressions). Available only in `CompetitiveVisibilityBenchmarkView`.
+        /// Cannot be filtered on in the 'WHERE' clause.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("yourDomainVisibilityTrend")]
+        public virtual System.Nullable<double> YourDomainVisibilityTrend { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents a conversion source owned by a Merchant account. A merchant account can have up to 200 conversion
     /// sources.
     /// </summary>
@@ -15601,6 +15703,11 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A message that represents custom attributes. Exactly one of `value` or `groupValues` must be provided. Maximum
+    /// allowed number of characters for each custom attribute is 10240 (represents sum of characters for name and
+    /// value). Maximum 2500 custom attributes can be set per merchant, with total size of 102.4kB.
+    /// </summary>
     public class CustomAttribute : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -21790,6 +21897,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("unitPricingMeasure")]
         public virtual ProductUnitPricingMeasure UnitPricingMeasure { get; set; }
 
+        /// <summary>URL of the 3D model of the item to provide more visuals.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("virtualModelLink")]
+        public virtual string VirtualModelLink { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -23602,6 +23713,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brand")]
         public virtual Brand Brand { get; set; }
+
+        /// <summary>
+        /// Competitive visibility fields requested by the merchant in the query. Field values are only set if the
+        /// merchant queries `CompetitiveVisibilityTopMerchantView` or `CompetitiveVisibilityBenchmarkView`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("competitiveVisibility")]
+        public virtual CompetitiveVisibility CompetitiveVisibility { get; set; }
 
         /// <summary>
         /// Metrics requested by the merchant in the query. Metric values are only set for metrics requested explicitly

@@ -6160,6 +6160,13 @@ namespace Google.Apis.AndroidEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isProduction")]
         public virtual System.Nullable<bool> IsProduction { get; set; }
 
+        /// <summary>
+        /// The SDK version this app targets, as specified in the manifest of the APK. See
+        /// http://developer.android.com/guide/topics/manifest/uses-sdk-element.html
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetSdkVersion")]
+        public virtual System.Nullable<int> TargetSdkVersion { get; set; }
+
         /// <summary>Deprecated, use trackId instead.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("track")]
         public virtual string Track { get; set; }

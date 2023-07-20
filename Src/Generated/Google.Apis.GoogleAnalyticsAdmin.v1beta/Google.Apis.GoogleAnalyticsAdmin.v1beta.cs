@@ -2110,7 +2110,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The list of fields to be updated. Omitted fields will not be updated.</summary>
+                    /// <summary>
+                    /// Required. The list of fields to be updated. Omitted fields will not be updated.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
 

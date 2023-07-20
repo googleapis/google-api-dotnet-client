@@ -1684,7 +1684,9 @@ namespace Google.Apis.Firestore.v1
                     public virtual Google.Apis.Util.Repeatable<string> MaskFieldPaths { get; set; }
 
                     /// <summary>
-                    /// Reads the version of the document at the given time. This may not be older than 270 seconds.
+                    /// Reads the version of the document at the given time. This must be a microsecond precision
+                    /// timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be
+                    /// a whole minute timestamp within the past 7 days.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object ReadTime { get; set; }
@@ -1818,7 +1820,9 @@ namespace Google.Apis.Firestore.v1
                     public virtual string PageToken { get; set; }
 
                     /// <summary>
-                    /// Perform the read at the provided time. This may not be older than 270 seconds.
+                    /// Perform the read at the provided time. This must be a microsecond precision timestamp within the
+                    /// past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute
+                    /// timestamp within the past 7 days.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object ReadTime { get; set; }
@@ -2062,7 +2066,9 @@ namespace Google.Apis.Firestore.v1
                     public virtual string PageToken { get; set; }
 
                     /// <summary>
-                    /// Perform the read at the provided time. This may not be older than 270 seconds.
+                    /// Perform the read at the provided time. This must be a microsecond precision timestamp within the
+                    /// past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute
+                    /// timestamp within the past 7 days.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("readTime", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object ReadTime { get; set; }
@@ -3873,7 +3879,11 @@ namespace Google.Apis.Firestore.v1.Data
 
         private object _readTime;
 
-        /// <summary>Reads documents as they were at the given time. This may not be older than 270 seconds.</summary>
+        /// <summary>
+        /// Reads documents as they were at the given time. This must be a microsecond precision timestamp within the
+        /// past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within
+        /// the past 7 days.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
         public virtual string ReadTimeRaw
         {
@@ -5191,6 +5201,46 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("progressDocuments")]
         public virtual GoogleFirestoreAdminV1Progress ProgressDocuments { get; set; }
 
+        private string _snapshotTimeRaw;
+
+        private object _snapshotTime;
+
+        /// <summary>
+        /// The timestamp that corresponds to the version of the database that is being exported. If unspecified, there
+        /// are no guarantees about the consistency of the documents being exported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snapshotTime")]
+        public virtual string SnapshotTimeRaw
+        {
+            get => _snapshotTimeRaw;
+            set
+            {
+                _snapshotTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _snapshotTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="SnapshotTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SnapshotTimeDateTimeOffset instead.")]
+        public virtual object SnapshotTime
+        {
+            get => _snapshotTime;
+            set
+            {
+                _snapshotTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _snapshotTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="SnapshotTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SnapshotTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SnapshotTimeRaw);
+            set => SnapshotTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         private string _startTimeRaw;
 
         private object _startTime;
@@ -6207,7 +6257,11 @@ namespace Google.Apis.Firestore.v1.Data
 
         private object _readTime;
 
-        /// <summary>Reads documents as they were at the given time. This may not be older than 270 seconds.</summary>
+        /// <summary>
+        /// Reads documents as they were at the given time. This must be a microsecond precision timestamp within the
+        /// past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within
+        /// the past 7 days.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
         public virtual string ReadTimeRaw
         {
@@ -6440,7 +6494,11 @@ namespace Google.Apis.Firestore.v1.Data
 
         private object _readTime;
 
-        /// <summary>Reads documents as they were at the given time. This may not be older than 270 seconds.</summary>
+        /// <summary>
+        /// Reads documents as they were at the given time. This must be a microsecond precision timestamp within the
+        /// past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within
+        /// the past 7 days.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
         public virtual string ReadTimeRaw
         {
@@ -6604,7 +6662,11 @@ namespace Google.Apis.Firestore.v1.Data
 
         private object _readTime;
 
-        /// <summary>Reads documents at the given time. This may not be older than 60 seconds.</summary>
+        /// <summary>
+        /// Reads documents at the given time. This must be a microsecond precision timestamp within the past one hour,
+        /// or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7
+        /// days.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
         public virtual string ReadTimeRaw
         {
@@ -6681,7 +6743,9 @@ namespace Google.Apis.Firestore.v1.Data
         private object _readTime;
 
         /// <summary>
-        /// Executes the query at the given timestamp. Requires: * Cannot be more than 270 seconds in the past.
+        /// Executes the query at the given timestamp. This must be a microsecond precision timestamp within the past
+        /// one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the
+        /// past 7 days.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
         public virtual string ReadTimeRaw
@@ -6804,7 +6868,11 @@ namespace Google.Apis.Firestore.v1.Data
 
         private object _readTime;
 
-        /// <summary>Reads documents as they were at the given time. This may not be older than 270 seconds.</summary>
+        /// <summary>
+        /// Reads documents as they were at the given time. This must be a microsecond precision timestamp within the
+        /// past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within
+        /// the past 7 days.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
         public virtual string ReadTimeRaw
         {

@@ -8919,7 +8919,7 @@ namespace Google.Apis.Dialogflow.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("repositoryUri")]
         public virtual string RepositoryUri { get; set; }
 
-        /// <summary>The branch of GitHub repository tracked for this agent.</summary>
+        /// <summary>The branch of the GitHub repository tracked for this agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trackingBranch")]
         public virtual string TrackingBranch { get; set; }
 
@@ -10334,8 +10334,7 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string AgentUri { get; set; }
 
         /// <summary>
-        /// Commit SHA of the git push. This field is populated if `git_destination` are specified in
-        /// ExportAgentRequest.
+        /// Commit SHA of the git push. This field is populated if `git_destination` is specified in ExportAgentRequest.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commitSha")]
         public virtual string CommitSha { get; set; }
@@ -12243,6 +12242,10 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("playAudio")]
         public virtual GoogleCloudDialogflowCxV3ResponseMessagePlayAudio PlayAudio { get; set; }
+
+        /// <summary>Response type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("responseType")]
+        public virtual string ResponseType { get; set; }
 
         /// <summary>
         /// A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
@@ -14505,8 +14508,7 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string AgentUri { get; set; }
 
         /// <summary>
-        /// Commit SHA of the git push. This field is populated if `git_destination` are specified in
-        /// ExportAgentRequest.
+        /// Commit SHA of the git push. This field is populated if `git_destination` is specified in ExportAgentRequest.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commitSha")]
         public virtual string CommitSha { get; set; }
@@ -16471,7 +16473,7 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>
         /// Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or
         /// `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to
-        /// lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment
+        /// lowercase, may only contain characters in `a-zA-Z0-9_-%` and may be at most 250 bytes long. If `Environment
         /// ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume
         /// default '-' user. The following context names are reserved for internal use by Dialogflow. You should not
         /// use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` *
@@ -16483,10 +16485,11 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>
         /// Optional. The collection of parameters associated with this context. Depending on your protocol or client
         /// library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a
-        /// collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue
-        /// type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type,
-        /// could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is
-        /// a composite entity: map from composite entity property names to property values - Else: parameter value
+        /// collection of (MapKey, MapValue) pairs: * MapKey type: string * MapKey value: parameter name * MapValue
+        /// type: If parameter's entity type is a composite entity then use map, otherwise, depending on the parameter
+        /// value type, it could be one of string, number, boolean, null, list or map. * MapValue value: If parameter's
+        /// entity type is a composite entity then use map from composite entity property names to property values,
+        /// otherwise, use parameter value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
@@ -16926,10 +16929,11 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>
         /// The collection of parameters associated with the event. Depending on your protocol or client library
         /// language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a
-        /// collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue
-        /// type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type,
-        /// could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is
-        /// a composite entity: map from composite entity property names to property values - Else: parameter value
+        /// collection of (MapKey, MapValue) pairs: * MapKey type: string * MapKey value: parameter name * MapValue
+        /// type: If parameter's entity type is a composite entity then use map, otherwise, depending on the parameter
+        /// value type, it could be one of string, number, boolean, null, list or map. * MapValue value: If parameter's
+        /// entity type is a composite entity then use map from composite entity property names to property values,
+        /// otherwise, use parameter value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
@@ -17008,7 +17012,7 @@ namespace Google.Apis.Dialogflow.v3.Data
     public class GoogleCloudDialogflowV2GcsDestination : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The Google Cloud Storage URIs for the output. A URI is of the form: gs://bucket/object-prefix-or-name
+        /// The Google Cloud Storage URIs for the output. A URI is of the form: `gs://bucket/object-prefix-or-name`
         /// Whether a prefix or name is used depends on the use case. The requesting user must have "write-permission"
         /// to the bucket.
         /// </summary>
@@ -18243,10 +18247,10 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>
         /// The collection of extracted parameters. Depending on your protocol or client library language, this is a
         /// map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey,
-        /// MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's
-        /// entity type is a composite entity: map - Else: depending on parameter value type, could be one of string,
-        /// number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map
-        /// from composite entity property names to property values - Else: parameter value
+        /// MapValue) pairs: * MapKey type: string * MapKey value: parameter name * MapValue type: If parameter's entity
+        /// type is a composite entity then use map, otherwise, depending on the parameter value type, it could be one
+        /// of string, number, boolean, null, list or map. * MapValue value: If parameter's entity type is a composite
+        /// entity then use map from composite entity property names to property values, otherwise, use parameter value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
@@ -18892,11 +18896,11 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// - `projects//locations//agent/sessions//contexts/`, -
         /// `projects//agent/environments//users//sessions//contexts/`, -
         /// `projects//locations//agent/environments//users//sessions//contexts/`, The `Context ID` is always converted
-        /// to lowercase, may only contain characters in a-zA-Z0-9_-% and may be at most 250 bytes long. If `Environment
-        /// ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume
-        /// default '-' user. The following context names are reserved for internal use by Dialogflow. You should not
-        /// use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` *
-        /// `*_dialog_params_size`
+        /// to lowercase, may only contain characters in `a-zA-Z0-9_-%` and may be at most 250 bytes long. If
+        /// `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we
+        /// assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should
+        /// not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context`
+        /// * `*_dialog_params_size`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -18904,10 +18908,11 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>
         /// Optional. The collection of parameters associated with this context. Depending on your protocol or client
         /// library language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a
-        /// collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue
-        /// type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type,
-        /// could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is
-        /// a composite entity: map from composite entity property names to property values - Else: parameter value
+        /// collection of (MapKey, MapValue) pairs: * MapKey type: string * MapKey value: parameter name * MapValue
+        /// type: If parameter's entity type is a composite entity then use map, otherwise, depending on the parameter
+        /// value type, it could be one of string, number, boolean, null, list or map. * MapValue value: If parameter's
+        /// entity type is a composite entity then use map from composite entity property names to property values,
+        /// otherwise, use parameter value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
@@ -19053,10 +19058,11 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>
         /// The collection of parameters associated with the event. Depending on your protocol or client library
         /// language, this is a map, associative array, symbol table, dictionary, or JSON object composed of a
-        /// collection of (MapKey, MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue
-        /// type: - If parameter's entity type is a composite entity: map - Else: depending on parameter value type,
-        /// could be one of string, number, boolean, null, list or map - MapValue value: - If parameter's entity type is
-        /// a composite entity: map from composite entity property names to property values - Else: parameter value
+        /// collection of (MapKey, MapValue) pairs: * MapKey type: string * MapKey value: parameter name * MapValue
+        /// type: If parameter's entity type is a composite entity then use map, otherwise, depending on the parameter
+        /// value type, it could be one of string, number, boolean, null, list or map. * MapValue value: If parameter's
+        /// entity type is a composite entity then use map from composite entity property names to property values,
+        /// otherwise, use parameter value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }
@@ -19136,7 +19142,7 @@ namespace Google.Apis.Dialogflow.v3.Data
     {
         /// <summary>
         /// Required. The Google Cloud Storage URIs for the output. A URI is of the form:
-        /// gs://bucket/object-prefix-or-name Whether a prefix or name is used depends on the use case. The requesting
+        /// `gs://bucket/object-prefix-or-name` Whether a prefix or name is used depends on the use case. The requesting
         /// user must have "write-permission" to the bucket.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
@@ -20697,10 +20703,10 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>
         /// The collection of extracted parameters. Depending on your protocol or client library language, this is a
         /// map, associative array, symbol table, dictionary, or JSON object composed of a collection of (MapKey,
-        /// MapValue) pairs: - MapKey type: string - MapKey value: parameter name - MapValue type: - If parameter's
-        /// entity type is a composite entity: map - Else: depending on parameter value type, could be one of string,
-        /// number, boolean, null, list or map - MapValue value: - If parameter's entity type is a composite entity: map
-        /// from composite entity property names to property values - Else: parameter value
+        /// MapValue) pairs: * MapKey type: string * MapKey value: parameter name * MapValue type: If parameter's entity
+        /// type is a composite entity then use map, otherwise, depending on the parameter value type, it could be one
+        /// of string, number, boolean, null, list or map. * MapValue value: If parameter's entity type is a composite
+        /// entity then use map from composite entity property names to property values, otherwise, use parameter value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
         public virtual System.Collections.Generic.IDictionary<string, object> Parameters { get; set; }

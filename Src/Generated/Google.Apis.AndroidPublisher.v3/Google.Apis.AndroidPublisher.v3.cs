@@ -12569,6 +12569,13 @@ namespace Google.Apis.AndroidPublisher.v3.Data
             set => OldestAllowedPriceVersionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
+        /// <summary>
+        /// Optional. The behavior the caller wants users to see if there is a price increase during migration. If left
+        /// unset, the behavior defaults to PRICE_INCREASE_TYPE_OPT_IN.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priceIncreaseType")]
+        public virtual string PriceIncreaseType { get; set; }
+
         /// <summary>Required. Region code this configuration applies to, as defined by ISO 3166-2, e.g. "US".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }

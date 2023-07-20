@@ -3711,6 +3711,7 @@ namespace Google.Apis.OnDemandScanning.v1.Data
     {
         /// <summary>
         /// Holds the MITRE standard Common Vulnerabilities and Exposures (CVE) tracking number for the vulnerability.
+        /// Deprecated: Use vulnerability_id instead to denote CVEs.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cve")]
         public virtual string Cve { get; set; }
@@ -3743,6 +3744,12 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         /// <summary>Provides the state of this Vulnerability assessment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>
+        /// The vulnerability identifier for this Assessment. Will hold one of common identifiers e.g. CVE, GHSA etc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vulnerabilityId")]
+        public virtual string VulnerabilityId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
