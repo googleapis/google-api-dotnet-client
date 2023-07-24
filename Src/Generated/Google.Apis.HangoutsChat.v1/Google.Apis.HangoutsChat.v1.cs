@@ -1049,19 +1049,19 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string Filter { get; set; }
 
                 /// <summary>
-                /// The maximum number of memberships to return. The service might return fewer than this value. If
-                /// unspecified, at most 100 memberships are returned. The maximum value is 1,000. If you use a value
-                /// more than 1,000, it's automatically changed to 1,000. Negative values return an `INVALID_ARGUMENT`
-                /// error.
+                /// Optional. The maximum number of memberships to return. The service might return fewer than this
+                /// value. If unspecified, at most 100 memberships are returned. The maximum value is 1,000. If you use
+                /// a value more than 1,000, it's automatically changed to 1,000. Negative values return an
+                /// `INVALID_ARGUMENT` error.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// A page token, received from a previous call to list memberships. Provide this parameter to retrieve
-                /// the subsequent page. When paginating, all other parameters provided should match the call that
-                /// provided the page token. Passing different values to the other parameters might lead to unexpected
-                /// results.
+                /// Optional. A page token, received from a previous call to list memberships. Provide this parameter to
+                /// retrieve the subsequent page. When paginating, all other parameters provided should match the call
+                /// that provided the page token. Passing different values to the other parameters might lead to
+                /// unexpected results.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }

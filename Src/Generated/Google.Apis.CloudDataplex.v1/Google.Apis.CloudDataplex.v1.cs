@@ -11690,7 +11690,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("threshold")]
         public virtual System.Nullable<double> Threshold { get; set; }
 
-        /// <summary>Aggregate rule which evaluates whether the column has duplicates.</summary>
+        /// <summary>Row-level rule which evaluates whether each column value is unique.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uniquenessExpectation")]
         public virtual GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation UniquenessExpectation { get; set; }
 
@@ -12123,10 +12123,48 @@ namespace Google.Apis.CloudDataplex.v1.Data
     }
 
     /// <summary>
-    /// These messages contain information about the execution of a datascan. The monitored resource is 'DataScan'
+    /// These messages contain information about the execution of a datascan. The monitored resource is 'DataScan' Next
+    /// ID: 13
     /// </summary>
     public class GoogleCloudDataplexV1DataScanEvent : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>The time when the data scan job was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary>Data profile result for data profile type data scan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataProfile")]
         public virtual GoogleCloudDataplexV1DataScanEventDataProfileResult DataProfile { get; set; }

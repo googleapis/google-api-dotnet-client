@@ -916,15 +916,15 @@ namespace Google.Apis.Networkconnectivity.v1
                         public virtual string HubId { get; set; }
 
                         /// <summary>
-                        /// Optional. A unique request ID (optional). If you specify this ID, you can use it in cases
-                        /// when you need to retry your request. When you need to retry, this ID lets the server know
-                        /// that it can ignore the request if it has already been completed. The server guarantees that
-                        /// for at least 60 minutes after the first request. For example, consider a situation where you
-                        /// make an initial request and the request times out. If you make the request again with the
-                        /// same request ID, the server can check to see whether the original operation was received. If
-                        /// it was, the server ignores the second request. This behavior prevents clients from
-                        /// mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the
-                        /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                        /// retry your request, the server will know to ignore the request if it has already been
+                        /// completed. The server guarantees that a request doesn't result in creation of duplicate
+                        /// commitments for at least 60 minutes. For example, consider a situation where you make an
+                        /// initial request and the request times out. If you make the request again with the same
+                        /// request ID, the server can check to see whether the original operation was received. If it
+                        /// was, the server ignores the second request. This behavior prevents clients from mistakenly
+                        /// creating duplicate commitments. The request ID must be a valid UUID, with the exception that
+                        /// zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RequestId { get; set; }
@@ -997,15 +997,15 @@ namespace Google.Apis.Networkconnectivity.v1
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// Optional. A unique request ID (optional). If you specify this ID, you can use it in cases
-                        /// when you need to retry your request. When you need to retry, this ID lets the server know
-                        /// that it can ignore the request if it has already been completed. The server guarantees that
-                        /// for at least 60 minutes after the first request. For example, consider a situation where you
-                        /// make an initial request and the request times out. If you make the request again with the
-                        /// same request ID, the server can check to see whether the original operation was received. If
-                        /// it was, the server ignores the second request. This behavior prevents clients from
-                        /// mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the
-                        /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                        /// retry your request, the server will know to ignore the request if it has already been
+                        /// completed. The server guarantees that a request doesn't result in creation of duplicate
+                        /// commitments for at least 60 minutes. For example, consider a situation where you make an
+                        /// initial request and the request times out. If you make the request again with the same
+                        /// request ID, the server can check to see whether the original operation was received. If it
+                        /// was, the server ignores the second request. This behavior prevents clients from mistakenly
+                        /// creating duplicate commitments. The request ID must be a valid UUID, with the exception that
+                        /// zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RequestId { get; set; }
@@ -1317,15 +1317,15 @@ namespace Google.Apis.Networkconnectivity.v1
                         public virtual Google.Apis.Util.Repeatable<string> SpokeLocations { get; set; }
 
                         /// <summary>
-                        /// The view of the spoke to return. The view you use determines which spoke fields are included
-                        /// in the response.
+                        /// The view of the spoke to return. The view that you use determines which spoke fields are
+                        /// included in the response.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<ViewEnum> View { get; set; }
 
                         /// <summary>
-                        /// The view of the spoke to return. The view you use determines which spoke fields are included
-                        /// in the response.
+                        /// The view of the spoke to return. The view that you use determines which spoke fields are
+                        /// included in the response.
                         /// </summary>
                         public enum ViewEnum
                         {
@@ -1453,15 +1453,15 @@ namespace Google.Apis.Networkconnectivity.v1
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// Optional. A unique request ID (optional). If you specify this ID, you can use it in cases
-                        /// when you need to retry your request. When you need to retry, this ID lets the server know
-                        /// that it can ignore the request if it has already been completed. The server guarantees that
-                        /// for at least 60 minutes after the first request. For example, consider a situation where you
-                        /// make an initial request and the request times out. If you make the request again with the
-                        /// same request ID, the server can check to see whether the original operation was received. If
-                        /// it was, the server ignores the second request. This behavior prevents clients from
-                        /// mistakenly creating duplicate commitments. The request ID must be a valid UUID, with the
-                        /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                        /// retry your request, the server will know to ignore the request if it has already been
+                        /// completed. The server guarantees that a request doesn't result in creation of duplicate
+                        /// commitments for at least 60 minutes. For example, consider a situation where you make an
+                        /// initial request and the request times out. If you make the request again with the same
+                        /// request ID, the server can check to see whether the original operation was received. If it
+                        /// was, the server ignores the second request. This behavior prevents clients from mistakenly
+                        /// creating duplicate commitments. The request ID must be a valid UUID, with the exception that
+                        /// zero UUID is not supported (00000000-0000-0000-0000-000000000000).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RequestId { get; set; }
@@ -4847,15 +4847,15 @@ namespace Google.Apis.Networkconnectivity.v1
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when
-                    /// you need to retry your request. When you need to retry, this ID lets the server know that it can
-                    /// ignore the request if it has already been completed. The server guarantees that for at least 60
-                    /// minutes after the first request. For example, consider a situation where you make an initial
-                    /// request and the request times out. If you make the request again with the same request ID, the
-                    /// server can check to see whether the original operation was received. If it was, the server
-                    /// ignores the second request. This behavior prevents clients from mistakenly creating duplicate
-                    /// commitments. The request ID must be a valid UUID, with the exception that zero UUID is not
-                    /// supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server guarantees that a request doesn't result in creation of duplicate commitments for at
+                    /// least 60 minutes. For example, consider a situation where you make an initial request and the
+                    /// request times out. If you make the request again with the same request ID, the server can check
+                    /// to see whether the original operation was received. If it was, the server ignores the second
+                    /// request. This behavior prevents clients from mistakenly creating duplicate commitments. The
+                    /// request ID must be a valid UUID, with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -4932,15 +4932,15 @@ namespace Google.Apis.Networkconnectivity.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when
-                    /// you need to retry your request. When you need to retry, this ID lets the server know that it can
-                    /// ignore the request if it has already been completed. The server guarantees that for at least 60
-                    /// minutes after the first request. For example, consider a situation where you make an initial
-                    /// request and the request times out. If you make the request again with the same request ID, the
-                    /// server can check to see whether the original operation was received. If it was, the server
-                    /// ignores the second request. This behavior prevents clients from mistakenly creating duplicate
-                    /// commitments. The request ID must be a valid UUID, with the exception that zero UUID is not
-                    /// supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server guarantees that a request doesn't result in creation of duplicate commitments for at
+                    /// least 60 minutes. For example, consider a situation where you make an initial request and the
+                    /// request times out. If you make the request again with the same request ID, the server can check
+                    /// to see whether the original operation was received. If it was, the server ignores the second
+                    /// request. This behavior prevents clients from mistakenly creating duplicate commitments. The
+                    /// request ID must be a valid UUID, with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -5225,15 +5225,15 @@ namespace Google.Apis.Networkconnectivity.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when
-                    /// you need to retry your request. When you need to retry, this ID lets the server know that it can
-                    /// ignore the request if it has already been completed. The server guarantees that for at least 60
-                    /// minutes after the first request. For example, consider a situation where you make an initial
-                    /// request and the request times out. If you make the request again with the same request ID, the
-                    /// server can check to see whether the original operation was received. If it was, the server
-                    /// ignores the second request. This behavior prevents clients from mistakenly creating duplicate
-                    /// commitments. The request ID must be a valid UUID, with the exception that zero UUID is not
-                    /// supported (00000000-0000-0000-0000-000000000000).
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server guarantees that a request doesn't result in creation of duplicate commitments for at
+                    /// least 60 minutes. For example, consider a situation where you make an initial request and the
+                    /// request times out. If you make the request again with the same request ID, the server can check
+                    /// to see whether the original operation was received. If it was, the server ignores the second
+                    /// request. This behavior prevents clients from mistakenly creating duplicate commitments. The
+                    /// request ID must be a valid UUID, with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RequestId { get; set; }
@@ -5294,8 +5294,9 @@ namespace Google.Apis.Networkconnectivity.v1
                 }
 
                 /// <summary>
-                /// Does one of the following: * Rejects a proposal to attach a Network Connectivity Center spoke to the
-                /// hub. * Rejects and removes a previously attached spoke from the hub.
+                /// Rejects a Network Connectivity Center spoke from being attached to the hub. If the spoke was
+                /// previously in the `ACTIVE` state, it transitions to the `INACTIVE` state and is no longer able to
+                /// connect to other spokes that are attached to the hub.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. The name of the spoke to reject.</param>
@@ -5305,8 +5306,9 @@ namespace Google.Apis.Networkconnectivity.v1
                 }
 
                 /// <summary>
-                /// Does one of the following: * Rejects a proposal to attach a Network Connectivity Center spoke to the
-                /// hub. * Rejects and removes a previously attached spoke from the hub.
+                /// Rejects a Network Connectivity Center spoke from being attached to the hub. If the spoke was
+                /// previously in the `ACTIVE` state, it transitions to the `INACTIVE` state and is no longer able to
+                /// connect to other spokes that are attached to the hub.
                 /// </summary>
                 public class RejectRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
                 {
@@ -5633,14 +5635,14 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     public class AcceptSpokeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to
-        /// retry your request. When you need to retry, this ID lets the server know that it can ignore the request if
-        /// it has already been completed. The server guarantees that for at least 60 minutes after the first request.
-        /// For example, consider a situation where you make an initial request and the request times out. If you make
-        /// the request again with the same request ID, the server can check to see whether the original operation was
-        /// received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly
-        /// creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is
-        /// not supported (00000000-0000-0000-0000-000000000000).
+        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your
+        /// request, the server will know to ignore the request if it has already been completed. The server guarantees
+        /// that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example,
+        /// consider a situation where you make an initial request and the request times out. If you make the request
+        /// again with the same request ID, the server can check to see whether the original operation was received. If
+        /// it was, the server ignores the second request. This behavior prevents clients from mistakenly creating
+        /// duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not
+        /// supported (00000000-0000-0000-0000-000000000000).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
@@ -6004,9 +6006,42 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     /// </summary>
     public class Hub : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. The time the hub was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>An optional description of the hub.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -6061,9 +6096,42 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uniqueId")]
         public virtual string UniqueId { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>Output only. The time the hub was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6076,9 +6144,42 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     /// </summary>
     public class InternalRange : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Time when the internal range was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>A description of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -6133,9 +6234,42 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetCidrRange")]
         public virtual System.Collections.Generic.IList<string> TargetCidrRange { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>Time when the internal range was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The type of usage set for this InternalRange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usage")]
@@ -6211,11 +6345,11 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     /// <summary>An existing VPC network.</summary>
     public class LinkedVpcNetwork : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. IP Ranges encompassing the subnets to be excluded from peering.</summary>
+        /// <summary>Optional. IP ranges encompassing the subnets to be excluded from peering.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludeExportRanges")]
         public virtual System.Collections.Generic.IList<string> ExcludeExportRanges { get; set; }
 
-        /// <summary>Required. The URI of the VPC network resource</summary>
+        /// <summary>Required. The URI of the VPC network resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
 
@@ -6548,13 +6682,79 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
         public virtual string ApiVersion { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. The time the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
 
         /// <summary>Output only. The time the operation finished running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
@@ -6725,19 +6925,21 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     /// <summary>The request for HubService.RejectSpoke.</summary>
     public class RejectSpokeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Optional. Additional Details behind the rejection</summary>
+        /// <summary>
+        /// Optional. Additional information provided by the hub administrator in the `RejectSpoke` call.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual string Details { get; set; }
 
         /// <summary>
-        /// Optional. A unique request ID (optional). If you specify this ID, you can use it in cases when you need to
-        /// retry your request. When you need to retry, this ID lets the server know that it can ignore the request if
-        /// it has already been completed. The server guarantees that for at least 60 minutes after the first request.
-        /// For example, consider a situation where you make an initial request and the request times out. If you make
-        /// the request again with the same request ID, the server can check to see whether the original operation was
-        /// received. If it was, the server ignores the second request. This behavior prevents clients from mistakenly
-        /// creating duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is
-        /// not supported (00000000-0000-0000-0000-000000000000).
+        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your
+        /// request, the server will know to ignore the request if it has already been completed. The server guarantees
+        /// that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example,
+        /// consider a situation where you make an initial request and the request times out. If you make the request
+        /// again with the same request ID, the server can check to see whether the original operation was received. If
+        /// it was, the server ignores the second request. This behavior prevents clients from mistakenly creating
+        /// duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not
+        /// supported (00000000-0000-0000-0000-000000000000).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
@@ -6752,9 +6954,42 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     /// </summary>
     public class Route : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. The time the route was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>An optional description of the route.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -6779,7 +7014,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string Location { get; set; }
 
         /// <summary>
-        /// Immutable. The name of the route. Route names must be unique. They use the following form:
+        /// Immutable. The name of the route. Route names must be unique. Route names use the following form:
         /// `projects/{project_number}/locations/global/hubs/{hub}/routeTables/{route_table_id}/routes/{route_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -6808,14 +7043,47 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>
         /// Output only. The Google-generated UUID for the route. This value is unique across all Network Connectivity
         /// Center route resources. If a route is deleted and another with the same name is created, the new route is
-        /// assigned a different unique_id.
+        /// assigned a different `uid`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>Output only. The time the route was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6823,9 +7091,42 @@ namespace Google.Apis.Networkconnectivity.v1.Data
 
     public class RouteTable : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. The time the route table was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>An optional description of the route table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -6839,7 +7140,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Immutable. The name of the route table. Route Table names must be unique. They use the following form:
+        /// Immutable. The name of the route table. Route table names must be unique. They use the following form:
         /// `projects/{project_number}/locations/global/hubs/{hub}/routeTables/{route_table_id}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -6852,14 +7153,47 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>
         /// Output only. The Google-generated UUID for the route table. This value is unique across all route table
         /// resources. If a route table is deleted and another with the same name is created, the new route table is
-        /// assigned a different unique_id.
+        /// assigned a different `uid`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>Output only. The time the route table was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6910,9 +7244,42 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     /// <summary>The ServiceClass resource. Next id: 9</summary>
     public class ServiceClass : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. Time when the ServiceClass was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>A description of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -6948,9 +7315,42 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceConnectionMaps")]
         public virtual System.Collections.Generic.IList<string> ServiceConnectionMaps { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>Output only. Time when the ServiceClass was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
     }
 
     /// <summary>The ServiceConnectionMap resource. Next id: 15</summary>
@@ -6964,9 +7364,42 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("consumerPscConnections")]
         public virtual System.Collections.Generic.IList<ConsumerPscConnection> ConsumerPscConnections { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. Time when the ServiceConnectionMap was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>A description of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -7017,17 +7450,83 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
         public virtual string Token { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>Output only. Time when the ServiceConnectionMap was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
     }
 
     /// <summary>The ServiceConnectionPolicy resource. Next id: 12</summary>
     public class ServiceConnectionPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. Time when the ServiceConnectionMap was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>A description of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -7082,17 +7581,83 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceClass")]
         public virtual string ServiceClass { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>Output only. Time when the ServiceConnectionMap was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
     }
 
     /// <summary>The ServiceConnectionToken resource. Next id: 10</summary>
     public class ServiceConnectionToken : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. Time when the ServiceConnectionToken was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>A description of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -7105,9 +7670,42 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
         /// <summary>Output only. The time to which this token is valid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; }
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>User-defined labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
@@ -7132,9 +7730,42 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
         public virtual string Token { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>Output only. Time when the ServiceConnectionToken was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
     }
 
     /// <summary>Request message for `SetIamPolicy` method.</summary>
@@ -7166,9 +7797,42 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     /// </summary>
     public class Spoke : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. The time the spoke was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>An optional description of the spoke.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -7208,7 +7872,10 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Output only. The reasons for current state of the spoke.</summary>
+        /// <summary>
+        /// Output only. The reasons for current state of the spoke. Only present when the spoke is in the `INACTIVE`
+        /// state.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reasons")]
         public virtual System.Collections.Generic.IList<StateReason> Reasons { get; set; }
 
@@ -7222,14 +7889,48 @@ namespace Google.Apis.Networkconnectivity.v1.Data
 
         /// <summary>
         /// Output only. The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a
-        /// spoke is deleted and another with the same name is created, the new spoke is assigned a different unique_id.
+        /// spoke is deleted and another with the same name is created, the new spoke is assigned a different
+        /// `unique_id`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uniqueId")]
         public virtual string UniqueId { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>Output only. The time the spoke was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
