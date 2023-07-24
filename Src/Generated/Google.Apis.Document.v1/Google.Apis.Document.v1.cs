@@ -3212,6 +3212,10 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
         public virtual GoogleCloudDocumentaiV1GcsPrefix GcsPrefix { get; set; }
 
+        /// <summary>The set of documents specified inline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawDocuments")]
+        public virtual GoogleCloudDocumentaiV1RawDocuments RawDocuments { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5610,7 +5614,7 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentSchema")]
         public virtual GoogleCloudDocumentaiV1DocumentSchema DocumentSchema { get; set; }
 
-        /// <summary>Denotes that this `ProcessorVersion` is managed by Google.</summary>
+        /// <summary>Output only. Denotes that this `ProcessorVersion` is managed by Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("googleManaged")]
         public virtual System.Nullable<bool> GoogleManaged { get; set; }
 
@@ -5701,6 +5705,17 @@ namespace Google.Apis.Document.v1.Data
         /// <summary>An IANA MIME type (RFC6838) indicating the nature and format of the content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specifies a set of raw documents.</summary>
+    public class GoogleCloudDocumentaiV1RawDocuments : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies raw document content and mime type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documents")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1RawDocument> Documents { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

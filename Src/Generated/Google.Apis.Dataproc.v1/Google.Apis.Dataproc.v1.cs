@@ -972,8 +972,8 @@ namespace Google.Apis.Dataproc.v1
                 }
 
                 /// <summary>
-                /// Deletes the batch workload resource. If the batch is not in terminal state, the delete fails and the
-                /// response returns FAILED_PRECONDITION.
+                /// Deletes the batch workload resource. If the batch is not in a CANCELLED, SUCCEEDED or FAILED State,
+                /// the delete operation fails and the response returns FAILED_PRECONDITION.
                 /// </summary>
                 /// <param name="name">
                 /// Required. The fully qualified name of the batch to retrieve in the format
@@ -985,8 +985,8 @@ namespace Google.Apis.Dataproc.v1
                 }
 
                 /// <summary>
-                /// Deletes the batch workload resource. If the batch is not in terminal state, the delete fails and the
-                /// response returns FAILED_PRECONDITION.
+                /// Deletes the batch workload resource. If the batch is not in a CANCELLED, SUCCEEDED or FAILED State,
+                /// the delete operation fails and the response returns FAILED_PRECONDITION.
                 /// </summary>
                 public class DeleteRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Empty>
                 {
@@ -7558,9 +7558,9 @@ namespace Google.Apis.Dataproc.v1.Data
     public class ExecutionConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The duration to keep the session alive while it's idling. Exceeding this threshold causes the
-        /// session to terminate. This field cannot be set on a batch workload. Minimum value is 10 minutes; maximum
-        /// value is 14 days (see JSON representation of Duration
+        /// Optional. Applies to sessions only. The duration to keep the session alive while it's idling. Exceeding this
+        /// threshold causes the session to terminate. This field cannot be set on a batch workload. Minimum value is 10
+        /// minutes; maximum value is 14 days (see JSON representation of Duration
         /// (https://developers.google.com/protocol-buffers/docs/proto3#json)). Defaults to 4 hours if not set. If both
         /// ttl and idle_ttl are specified for an interactive session, the conditions are treated as OR conditions: the
         /// workload will be terminated when it has been idle for idle_ttl or when ttl has been exceeded, whichever
@@ -7661,6 +7661,51 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A Dataproc job for running Apache Flink (https://flink.apache.org/) applications on YARN.</summary>
+    public class FlinkJob : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as
+        /// job properties, since a collision may occur that causes an incorrect job submission.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("args")]
+        public virtual System.Collections.Generic.IList<string> Args { get; set; }
+
+        /// <summary>Optional. HCFS URIs of jar files to add to the CLASSPATHs of the Flink driver and tasks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jarFileUris")]
+        public virtual System.Collections.Generic.IList<string> JarFileUris { get; set; }
+
+        /// <summary>Optional. The runtime log config for job execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
+        public virtual LoggingConfig LoggingConfig { get; set; }
+
+        /// <summary>
+        /// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH
+        /// or specified in jar_file_uris.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mainClass")]
+        public virtual string MainClass { get; set; }
+
+        /// <summary>The HCFS URI of the jar file that contains the main class.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mainJarFileUri")]
+        public virtual string MainJarFileUri { get; set; }
+
+        /// <summary>
+        /// Optional. A mapping of property names to values, used to configure Flink. Properties that conflict with
+        /// values set by the Dataproc API may beoverwritten. Can include properties set
+        /// in/etc/flink/conf/flink-defaults.conf and classes in user code.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Properties { get; set; }
+
+        /// <summary>Optional. HCFS URI of the savepoint which contains the last saved progress for this job</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("savepointUri")]
+        public virtual string SavepointUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Common config settings for resources of Compute Engine cluster instances, applicable to all instances in the
     /// cluster.
@@ -7684,7 +7729,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual System.Nullable<bool> InternalIpOnly { get; set; }
 
         /// <summary>
-        /// The Compute Engine metadata entries to add to all instances (see Project and instance metadata
+        /// Optional. The Compute Engine metadata entries to add to all instances (see Project and instance metadata
         /// (https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
@@ -8433,6 +8478,10 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>Optional. Driver scheduling configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driverSchedulingConfig")]
         public virtual DriverSchedulingConfig DriverSchedulingConfig { get; set; }
+
+        /// <summary>Optional. Job is a Flink job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flinkJob")]
+        public virtual FlinkJob FlinkJob { get; set; }
 
         /// <summary>Optional. Job is a Hadoop job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hadoopJob")]
@@ -9896,8 +9945,12 @@ namespace Google.Apis.Dataproc.v1.Data
     public class RuntimeInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. Approximate workload resource usage calculated after workload finishes (see Dataproc Serverless
-        /// pricing (https://cloud.google.com/dataproc-serverless/pricing)).
+        /// Output only. Approximate workload resource usage, calculated when the workload completes (see Dataproc
+        /// Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).Note: This metric calculation may
+        /// change in the future, for example, to capture cumulative workload resource consumption during workload
+        /// execution (see the Dataproc Serverless release notes
+        /// (https://cloud.google.com/dataproc-serverless/docs/release-notes) for announcements, changes, fixes and
+        /// other Dataproc developments).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approximateUsage")]
         public virtual UsageMetrics ApproximateUsage { get; set; }
@@ -10713,7 +10766,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The usage snaphot represents the resources consumed by a workload at a specified time.</summary>
+    /// <summary>The usage snapshot represents the resources consumed by a workload at a specified time.</summary>
     public class UsageSnapshot : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -10724,11 +10777,25 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual System.Nullable<long> MilliDcu { get; set; }
 
         /// <summary>
+        /// Optional. Milli (one-thousandth) Dataproc Compute Units (DCUs) charged at premium tier (see Dataproc
+        /// Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("milliDcuPremium")]
+        public virtual System.Nullable<long> MilliDcuPremium { get; set; }
+
+        /// <summary>
         /// Optional. Shuffle Storage in gigabytes (GB). (see Dataproc Serverless pricing
         /// (https://cloud.google.com/dataproc-serverless/pricing))
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shuffleStorageGb")]
         public virtual System.Nullable<long> ShuffleStorageGb { get; set; }
+
+        /// <summary>
+        /// Optional. Shuffle Storage in gigabytes (GB) charged at premium tier. (see Dataproc Serverless pricing
+        /// (https://cloud.google.com/dataproc-serverless/pricing))
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("shuffleStorageGbPremium")]
+        public virtual System.Nullable<long> ShuffleStorageGbPremium { get; set; }
 
         private string _snapshotTimeRaw;
 

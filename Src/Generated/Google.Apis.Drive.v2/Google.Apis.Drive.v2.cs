@@ -9396,6 +9396,13 @@ namespace Google.Apis.Drive.v2.Data
     public class ContentRestriction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Whether the content restriction can only be modified or removed by a user who owns the file. For files in
+        /// shared drives, any user with `organizer` capabilities can modify or remove this content restriction.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ownerRestricted")]
+        public virtual System.Nullable<bool> OwnerRestricted { get; set; }
+
+        /// <summary>
         /// Whether the content of the file is read-only. If a file is read-only, a new revision of the file may not be
         /// added, comments may not be added or modified, and the title of the file may not be modified.
         /// </summary>
@@ -10403,14 +10410,28 @@ namespace Google.Apis.Drive.v2.Data
             public virtual System.Nullable<bool> CanModifyContent { get; set; }
 
             /// <summary>
-            /// Output only. Whether the current user can modify restrictions on content of this file.
+            /// Deprecated: Output only. Use one of `canModifyEditorContentRestriction`,
+            /// `canModifyOwnerContentRestriction` or `canRemoveContentRestriction`.
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canModifyContentRestriction")]
             public virtual System.Nullable<bool> CanModifyContentRestriction { get; set; }
 
+            /// <summary>
+            /// Output only. Whether the current user can add or modify content restrictions on the file which are
+            /// editor restricted.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canModifyEditorContentRestriction")]
+            public virtual System.Nullable<bool> CanModifyEditorContentRestriction { get; set; }
+
             /// <summary>Output only. Whether the current user can modify the labels on the file.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canModifyLabels")]
             public virtual System.Nullable<bool> CanModifyLabels { get; set; }
+
+            /// <summary>
+            /// Output only. Whether the current user can add or modify content restrictions which are owner restricted.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canModifyOwnerContentRestriction")]
+            public virtual System.Nullable<bool> CanModifyOwnerContentRestriction { get; set; }
 
             /// <summary>
             /// Output only. Whether the current user can move children of this folder outside of the shared drive. This
@@ -10499,6 +10520,12 @@ namespace Google.Apis.Drive.v2.Data
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("canRemoveChildren")]
             public virtual System.Nullable<bool> CanRemoveChildren { get; set; }
+
+            /// <summary>
+            /// Output only. Whether there is a content restriction on the file that can be removed by the current user.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("canRemoveContentRestriction")]
+            public virtual System.Nullable<bool> CanRemoveContentRestriction { get; set; }
 
             /// <summary>
             /// Output only. Whether the current user can remove a parent from the item without adding another parent in

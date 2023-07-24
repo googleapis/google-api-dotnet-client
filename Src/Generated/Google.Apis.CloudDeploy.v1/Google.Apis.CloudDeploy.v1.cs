@@ -4300,6 +4300,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("httpRoute")]
         public virtual string HttpRoute { get; set; }
 
+        /// <summary>
+        /// Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in
+        /// seconds format. If unspecified, there is no wait time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routeUpdateWaitTime")]
+        public virtual object RouteUpdateWaitTime { get; set; }
+
         /// <summary>Required. Name of the Kubernetes Service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }

@@ -313,6 +313,126 @@ namespace Google.Apis.ChecksService.v1alpha
                 }
 
                 /// <summary>
+                /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+                /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it
+                /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
+                /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
+                /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
+                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">The name of the operation resource to be cancelled.</param>
+                public virtual CancelRequest Cancel(Google.Apis.ChecksService.v1alpha.Data.CancelOperationRequest body, string name)
+                {
+                    return new CancelRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+                /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it
+                /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
+                /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
+                /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
+                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// </summary>
+                public class CancelRequest : ChecksServiceBaseServiceRequest<Google.Apis.ChecksService.v1alpha.Data.Empty>
+                {
+                    /// <summary>Constructs a new Cancel request.</summary>
+                    public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.ChecksService.v1alpha.Data.CancelOperationRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation resource to be cancelled.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.ChecksService.v1alpha.Data.CancelOperationRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "cancel";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}:cancel";
+
+                    /// <summary>Initializes Cancel parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/apps/[^/]+/operations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes a long-running operation. This method indicates that the client is no longer interested in
+                /// the operation result. It does not cancel the operation. If the server doesn't support this method,
+                /// it returns `google.rpc.Code.UNIMPLEMENTED`.
+                /// </summary>
+                /// <param name="name">The name of the operation resource to be deleted.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>
+                /// Deletes a long-running operation. This method indicates that the client is no longer interested in
+                /// the operation result. It does not cancel the operation. If the server doesn't support this method,
+                /// it returns `google.rpc.Code.UNIMPLEMENTED`.
+                /// </summary>
+                public class DeleteRequest : ChecksServiceBaseServiceRequest<Google.Apis.ChecksService.v1alpha.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation resource to be deleted.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/apps/[^/]+/operations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
                 /// result at intervals as recommended by the API service.
                 /// </summary>
@@ -449,6 +569,75 @@ namespace Google.Apis.ChecksService.v1alpha
                         });
                     }
                 }
+
+                /// <summary>
+                /// Waits until the specified long-running operation is done or reaches at most a specified timeout,
+                /// returning the latest state. If the operation is already done, the latest state is immediately
+                /// returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC
+                /// timeout is used. If the server does not support this method, it returns
+                /// `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the
+                /// latest state before the specified timeout (including immediately), meaning even an immediate
+                /// response is no guarantee that the operation is done.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">The name of the operation resource to wait on.</param>
+                public virtual WaitRequest Wait(Google.Apis.ChecksService.v1alpha.Data.WaitOperationRequest body, string name)
+                {
+                    return new WaitRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Waits until the specified long-running operation is done or reaches at most a specified timeout,
+                /// returning the latest state. If the operation is already done, the latest state is immediately
+                /// returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC
+                /// timeout is used. If the server does not support this method, it returns
+                /// `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the
+                /// latest state before the specified timeout (including immediately), meaning even an immediate
+                /// response is no guarantee that the operation is done.
+                /// </summary>
+                public class WaitRequest : ChecksServiceBaseServiceRequest<Google.Apis.ChecksService.v1alpha.Data.Operation>
+                {
+                    /// <summary>Constructs a new Wait request.</summary>
+                    public WaitRequest(Google.Apis.Services.IClientService service, Google.Apis.ChecksService.v1alpha.Data.WaitOperationRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation resource to wait on.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.ChecksService.v1alpha.Data.WaitOperationRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "wait";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}:wait";
+
+                    /// <summary>Initializes Wait parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/apps/[^/]+/operations/[^/]+$",
+                        });
+                    }
+                }
             }
         }
     }
@@ -519,7 +708,116 @@ namespace Google.Apis.ChecksService.v1alpha
         public ProjectsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            PrivacyPolicies = new PrivacyPoliciesResource(service);
             Privacypolicy = new PrivacypolicyResource(service);
+        }
+
+        /// <summary>Gets the PrivacyPolicies resource.</summary>
+        public virtual PrivacyPoliciesResource PrivacyPolicies { get; }
+
+        /// <summary>The "privacyPolicies" collection of methods.</summary>
+        public class PrivacyPoliciesResource
+        {
+            private const string Resource = "privacyPolicies";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public PrivacyPoliciesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Deletes a privacy policy.</summary>
+            /// <param name="name">Required. Resource name of the privacy policy.</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes a privacy policy.</summary>
+            public class DeleteRequest : ChecksServiceBaseServiceRequest<Google.Apis.ChecksService.v1alpha.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Resource name of the privacy policy.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/privacyPolicies/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Gets a privacy policy.</summary>
+            /// <param name="name">Required. Resource name of the privacy policy.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets a privacy policy.</summary>
+            public class GetRequest : ChecksServiceBaseServiceRequest<Google.Apis.ChecksService.v1alpha.Data.PrivacyPolicy>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Resource name of the privacy policy.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/privacyPolicies/[^/]+$",
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the Privacypolicy resource.</summary>
@@ -555,6 +853,118 @@ namespace Google.Apis.ChecksService.v1alpha
                 public OperationsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
+                }
+
+                /// <summary>
+                /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+                /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it
+                /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
+                /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
+                /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
+                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// </summary>
+                /// <param name="name">The name of the operation resource to be cancelled.</param>
+                public virtual CancelRequest Cancel(string name)
+                {
+                    return new CancelRequest(service, name);
+                }
+
+                /// <summary>
+                /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to
+                /// cancel the operation, but success is not guaranteed. If the server doesn't support this method, it
+                /// returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to
+                /// check whether the cancellation succeeded or whether the operation completed despite cancellation. On
+                /// successful cancellation, the operation is not deleted; instead, it becomes an operation with an
+                /// Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`.
+                /// </summary>
+                public class CancelRequest : ChecksServiceBaseServiceRequest<Google.Apis.ChecksService.v1alpha.Data.Empty>
+                {
+                    /// <summary>Constructs a new Cancel request.</summary>
+                    public CancelRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation resource to be cancelled.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "cancel";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}:cancel";
+
+                    /// <summary>Initializes Cancel parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/privacypolicy/operations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes a long-running operation. This method indicates that the client is no longer interested in
+                /// the operation result. It does not cancel the operation. If the server doesn't support this method,
+                /// it returns `google.rpc.Code.UNIMPLEMENTED`.
+                /// </summary>
+                /// <param name="name">The name of the operation resource to be deleted.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>
+                /// Deletes a long-running operation. This method indicates that the client is no longer interested in
+                /// the operation result. It does not cancel the operation. If the server doesn't support this method,
+                /// it returns `google.rpc.Code.UNIMPLEMENTED`.
+                /// </summary>
+                public class DeleteRequest : ChecksServiceBaseServiceRequest<Google.Apis.ChecksService.v1alpha.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation resource to be deleted.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/privacypolicy/operations/[^/]+$",
+                        });
+                    }
                 }
 
                 /// <summary>
@@ -604,6 +1014,170 @@ namespace Google.Apis.ChecksService.v1alpha
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/privacypolicy/operations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Lists operations that match the specified filter in the request. If the server doesn't support this
+                /// method, it returns `UNIMPLEMENTED`.
+                /// </summary>
+                /// <param name="name">The name of the operation's parent resource.</param>
+                public virtual ListRequest List(string name)
+                {
+                    return new ListRequest(service, name);
+                }
+
+                /// <summary>
+                /// Lists operations that match the specified filter in the request. If the server doesn't support this
+                /// method, it returns `UNIMPLEMENTED`.
+                /// </summary>
+                public class ListRequest : ChecksServiceBaseServiceRequest<Google.Apis.ChecksService.v1alpha.Data.ListOperationsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation's parent resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The standard list page token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}/privacypolicy/operations";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Waits until the specified long-running operation is done or reaches at most a specified timeout,
+                /// returning the latest state. If the operation is already done, the latest state is immediately
+                /// returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC
+                /// timeout is used. If the server does not support this method, it returns
+                /// `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the
+                /// latest state before the specified timeout (including immediately), meaning even an immediate
+                /// response is no guarantee that the operation is done.
+                /// </summary>
+                /// <param name="name">The name of the operation resource to wait on.</param>
+                public virtual WaitRequest Wait(string name)
+                {
+                    return new WaitRequest(service, name);
+                }
+
+                /// <summary>
+                /// Waits until the specified long-running operation is done or reaches at most a specified timeout,
+                /// returning the latest state. If the operation is already done, the latest state is immediately
+                /// returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC
+                /// timeout is used. If the server does not support this method, it returns
+                /// `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the
+                /// latest state before the specified timeout (including immediately), meaning even an immediate
+                /// response is no guarantee that the operation is done.
+                /// </summary>
+                public class WaitRequest : ChecksServiceBaseServiceRequest<Google.Apis.ChecksService.v1alpha.Data.Operation>
+                {
+                    /// <summary>Constructs a new Wait request.</summary>
+                    public WaitRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation resource to wait on.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// The maximum duration to wait before timing out. If left blank, the wait will be at most the time
+                    /// permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the
+                    /// shorter one will be used.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("timeout", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object Timeout { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "wait";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}:wait";
+
+                    /// <summary>Initializes Wait parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/privacypolicy/operations/[^/]+$",
+                        });
+                        RequestParameters.Add("timeout", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "timeout",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -661,6 +1235,13 @@ namespace Google.Apis.ChecksService.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request message for Operations.CancelOperation.</summary>
+    public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
     /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
@@ -686,6 +1267,17 @@ namespace Google.Apis.ChecksService.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("year")]
         public virtual System.Nullable<int> Year { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    /// </summary>
+    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -871,6 +1463,36 @@ namespace Google.Apis.ChecksService.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Privacy policy.</summary>
+    public class PrivacyPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>HTML content for the privacy policy page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("htmlContent")]
+        public virtual string HtmlContent { get; set; }
+
+        /// <summary>Resource name. Example: projects/123/privacyPolicies/456</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>URI of the privacy policy corresponding to this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privacyPolicyUri")]
+        public virtual string PrivacyPolicyUri { get; set; }
+
+        /// <summary>Confidence that the privacy policy URI is indeed from a privacy policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<float> Score { get; set; }
+
+        /// <summary>
+        /// URI of the original website used to find this privacy policy. Only populated for resources created by the
+        /// FindPrivacyPolicy API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("websiteUri")]
+        public virtual string WebsiteUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The `Status` type defines a logical error model that is suitable for different programming environments,
     /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
@@ -895,6 +1517,21 @@ namespace Google.Apis.ChecksService.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for Operations.WaitOperation.</summary>
+    public class WaitOperationRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted
+        /// by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be
+        /// used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
+        public virtual object Timeout { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

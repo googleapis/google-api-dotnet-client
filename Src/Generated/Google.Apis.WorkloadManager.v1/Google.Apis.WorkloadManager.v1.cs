@@ -2510,13 +2510,13 @@ namespace Google.Apis.WorkloadManager.v1.Data
     /// <summary>Message describing the system component.</summary>
     public class SapDiscoveryComponent : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The component is a SAP application.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("applicationType")]
-        public virtual string ApplicationType { get; set; }
+        /// <summary>Optional. The component is a SAP application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationProperties")]
+        public virtual SapDiscoveryComponentApplicationProperties ApplicationProperties { get; set; }
 
-        /// <summary>The component is a SAP database.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("databaseType")]
-        public virtual string DatabaseType { get; set; }
+        /// <summary>Optional. The component is a SAP database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseProperties")]
+        public virtual SapDiscoveryComponentDatabaseProperties DatabaseProperties { get; set; }
 
         /// <summary>Pantheon Project in which the resources reside.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostProject")]
@@ -2531,6 +2531,50 @@ namespace Google.Apis.WorkloadManager.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sid")]
         public virtual string Sid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A set of properties describing an SAP Application layer.</summary>
+    public class SapDiscoveryComponentApplicationProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Type of the application. Netweaver, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicationType")]
+        public virtual string ApplicationType { get; set; }
+
+        /// <summary>Required. Resource URI of the recognized ASCS host of the application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ascsUri")]
+        public virtual string AscsUri { get; set; }
+
+        /// <summary>
+        /// Optional. Resource URI of the recognized shared NFS of the application. May be empty if the application
+        /// server has only a single node.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nfsUri")]
+        public virtual string NfsUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A set of properties describing an SAP Database layer.</summary>
+    public class SapDiscoveryComponentDatabaseProperties : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Type of the database. HANA, DB2, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("databaseType")]
+        public virtual string DatabaseType { get; set; }
+
+        /// <summary>Required. URI of the recognized primary instance of the database.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("primaryInstanceUri")]
+        public virtual string PrimaryInstanceUri { get; set; }
+
+        /// <summary>
+        /// Optional. URI of the recognized shared NFS of the database. May be empty if the database has only a single
+        /// node.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sharedNfsUri")]
+        public virtual string SharedNfsUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

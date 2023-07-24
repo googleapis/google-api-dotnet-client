@@ -2820,6 +2820,10 @@ namespace Google.Apis.TPU.v2alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>Output only. The initiator of the QueuedResources's current state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateInitiator")]
+        public virtual string StateInitiator { get; set; }
+
         /// <summary>Further data for the suspended state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suspendedData")]
         public virtual SuspendedData SuspendedData { get; set; }

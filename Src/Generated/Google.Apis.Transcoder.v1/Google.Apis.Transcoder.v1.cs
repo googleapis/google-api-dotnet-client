@@ -944,7 +944,7 @@ namespace Google.Apis.Transcoder.v1.Data
     }
 
     /// <summary>
-    /// End previous overlay animation from the video. Without AnimationEnd, the overlay object will keep the state of
+    /// End previous overlay animation from the video. Without `AnimationEnd`, the overlay object will keep the state of
     /// previous animation until the end of the video.
     /// </summary>
     public class AnimationEnd : Google.Apis.Requests.IDirectResponseSchema
@@ -1032,11 +1032,11 @@ namespace Google.Apis.Transcoder.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.</summary>
+    /// <summary>The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.</summary>
     public class AudioMapping : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The `EditAtom.key` that references the atom with audio inputs in the `Job.edit_list`.
+        /// Required. The EditAtom.key that references the atom with audio inputs in the JobConfig.edit_list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("atomKey")]
         public virtual string AtomKey { get; set; }
@@ -1051,7 +1051,7 @@ namespace Google.Apis.Transcoder.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inputChannel")]
         public virtual System.Nullable<int> InputChannel { get; set; }
 
-        /// <summary>Required. The `Input.key` that identifies the input file.</summary>
+        /// <summary>Required. The Input.key that identifies the input file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputKey")]
         public virtual string InputKey { get; set; }
 
@@ -1108,7 +1108,7 @@ namespace Google.Apis.Transcoder.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
 
-        /// <summary>The mapping for the `Job.edit_list` atoms with audio `EditAtom.inputs`.</summary>
+        /// <summary>The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mapping")]
         public virtual System.Collections.Generic.IList<AudioMapping> Mapping { get; set; }
 
@@ -1212,7 +1212,7 @@ namespace Google.Apis.Transcoder.v1.Data
     /// <summary>`DASH` manifest configuration.</summary>
     public class DashConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The segment reference scheme for a `DASH` manifest. The default is `SEGMENT_LIST`</summary>
+        /// <summary>The segment reference scheme for a `DASH` manifest. The default is `SEGMENT_LIST`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("segmentReferenceScheme")]
         public virtual string SegmentReferenceScheme { get; set; }
 
@@ -1307,8 +1307,8 @@ namespace Google.Apis.Transcoder.v1.Data
         public virtual object EndTimeOffset { get; set; }
 
         /// <summary>
-        /// List of `Input.key`s identifying files that should be used in this atom. The listed `inputs` must have the
-        /// same timeline.
+        /// List of Input.key values identifying files that should be used in this atom. The listed `inputs` must have
+        /// the same timeline.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputs")]
         public virtual System.Collections.Generic.IList<string> Inputs { get; set; }
@@ -1425,7 +1425,7 @@ namespace Google.Apis.Transcoder.v1.Data
 
         /// <summary>
         /// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than
-        /// `VideoStream.gop_frame_count` if set. The default is 0.
+        /// H264CodecSettings.gop_frame_count if set. The default is 0.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bFrameCount")]
         public virtual System.Nullable<int> BFrameCount { get; set; }
@@ -1452,7 +1452,7 @@ namespace Google.Apis.Transcoder.v1.Data
         public virtual System.Nullable<int> CrfLevel { get; set; }
 
         /// <summary>
-        /// Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be
+        /// Use two-pass encoding strategy to achieve better video quality. H264CodecSettings.rate_control_mode must be
         /// `vbr`. The default is `false`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableTwoPass")]
@@ -1522,8 +1522,8 @@ namespace Google.Apis.Transcoder.v1.Data
         public virtual string Profile { get; set; }
 
         /// <summary>
-        /// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable
-        /// bitrate - `crf` - constant rate factor
+        /// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` -
+        /// constant rate factor
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rateControlMode")]
         public virtual string RateControlMode { get; set; }
@@ -1538,14 +1538,14 @@ namespace Google.Apis.Transcoder.v1.Data
 
         /// <summary>
         /// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The
-        /// default is equal to 90% of `VideoStream.vbv_size_bits`.
+        /// default is equal to 90% of H264CodecSettings.vbv_size_bits.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vbvFullnessBits")]
         public virtual System.Nullable<int> VbvFullnessBits { get; set; }
 
         /// <summary>
         /// Size of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The default is equal
-        /// to `VideoStream.bitrate_bps`.
+        /// to H264CodecSettings.bitrate_bps.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vbvSizeBits")]
         public virtual System.Nullable<int> VbvSizeBits { get; set; }
@@ -1584,7 +1584,7 @@ namespace Google.Apis.Transcoder.v1.Data
 
         /// <summary>
         /// The number of consecutive B-frames. Must be greater than or equal to zero. Must be less than
-        /// `VideoStream.gop_frame_count` if set. The default is 0.
+        /// H265CodecSettings.gop_frame_count if set. The default is 0.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bFrameCount")]
         public virtual System.Nullable<int> BFrameCount { get; set; }
@@ -1611,7 +1611,7 @@ namespace Google.Apis.Transcoder.v1.Data
         public virtual System.Nullable<int> CrfLevel { get; set; }
 
         /// <summary>
-        /// Use two-pass encoding strategy to achieve better video quality. `VideoStream.rate_control_mode` must be
+        /// Use two-pass encoding strategy to achieve better video quality. H265CodecSettings.rate_control_mode must be
         /// `vbr`. The default is `false`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableTwoPass")]
@@ -1677,8 +1677,8 @@ namespace Google.Apis.Transcoder.v1.Data
         public virtual string Profile { get; set; }
 
         /// <summary>
-        /// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable
-        /// bitrate - `crf` - constant rate factor
+        /// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate - `crf` -
+        /// constant rate factor
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rateControlMode")]
         public virtual string RateControlMode { get; set; }
@@ -1693,7 +1693,7 @@ namespace Google.Apis.Transcoder.v1.Data
 
         /// <summary>
         /// Initial fullness of the Video Buffering Verifier (VBV) buffer in bits. Must be greater than zero. The
-        /// default is equal to 90% of `VideoStream.vbv_size_bits`.
+        /// default is equal to 90% of H265CodecSettings.vbv_size_bits.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vbvFullnessBits")]
         public virtual System.Nullable<int> VbvFullnessBits { get; set; }
@@ -1763,8 +1763,8 @@ namespace Google.Apis.Transcoder.v1.Data
 
         /// <summary>
         /// URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for
-        /// example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from `Job.input_uri`. See
-        /// [Supported input and output
+        /// example, `gs://bucket/inputs/file.mp4`). If empty, the value is populated from Job.input_uri. See [Supported
+        /// input and output
         /// formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
@@ -1778,8 +1778,8 @@ namespace Google.Apis.Transcoder.v1.Data
     public class Job : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The processing priority of a batch job. This field can only be set for batch mode jobs, and the default
-        /// value is 0. This value cannot be negative. Higher values correspond to higher priorities for the job.
+        /// The processing priority of a batch job. This field can only be set for batch mode jobs. The default value is
+        /// 0. This value cannot be negative. Higher values correspond to higher priorities for the job.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("batchModePriority")]
         public virtual System.Nullable<int> BatchModePriority { get; set; }
@@ -1864,7 +1864,7 @@ namespace Google.Apis.Transcoder.v1.Data
 
         /// <summary>
         /// Output only. An error object that describes the reason for the failure. This property is always present when
-        /// `state` is `FAILED`.
+        /// ProcessingState is `FAILED`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual Status Error { get; set; }
@@ -1971,7 +1971,7 @@ namespace Google.Apis.Transcoder.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adBreaks")]
         public virtual System.Collections.Generic.IList<AdBreak> AdBreaks { get; set; }
 
-        /// <summary>List of `Edit atom`s. Defines the ultimate timeline of the resulting file or manifest.</summary>
+        /// <summary>List of edit atoms. Defines the ultimate timeline of the resulting file or manifest.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("editList")]
         public virtual System.Collections.Generic.IList<EditAtom> EditList { get; set; }
 
@@ -2091,15 +2091,15 @@ namespace Google.Apis.Transcoder.v1.Data
 
         /// <summary>
         /// The name of the generated file. The default is `manifest` with the extension suffix corresponding to the
-        /// `Manifest.type`.
+        /// Manifest.type.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileName")]
         public virtual string FileName { get; set; }
 
         /// <summary>
-        /// Required. List of user given `MuxStream.key`s that should appear in this manifest. When `Manifest.type` is
-        /// `HLS`, a media manifest with name `MuxStream.key` and `.m3u8` extension is generated for each element of the
-        /// `Manifest.mux_streams`.
+        /// Required. List of user supplied MuxStream.key values that should appear in this manifest. When Manifest.type
+        /// is `HLS`, a media manifest with name MuxStream.key and `.m3u8` extension is generated for each element in
+        /// this list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("muxStreams")]
         public virtual System.Collections.Generic.IList<string> MuxStreams { get; set; }
@@ -2134,7 +2134,7 @@ namespace Google.Apis.Transcoder.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("container")]
         public virtual string Container { get; set; }
 
-        /// <summary>List of `ElementaryStream.key`s multiplexed in this stream.</summary>
+        /// <summary>List of ElementaryStream.key values multiplexed in this stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("elementaryStreams")]
         public virtual System.Collections.Generic.IList<string> ElementaryStreams { get; set; }
 
@@ -2145,17 +2145,14 @@ namespace Google.Apis.Transcoder.v1.Data
         public virtual string EncryptionId { get; set; }
 
         /// <summary>
-        /// The name of the generated file. The default is `MuxStream.key` with the extension suffix corresponding to
-        /// the `MuxStream.container`. Individual segments also have an incremental 10-digit zero-padded suffix starting
-        /// from 0 before the extension, such as `mux_stream0000000123.ts`.
+        /// The name of the generated file. The default is MuxStream.key with the extension suffix corresponding to the
+        /// MuxStream.container. Individual segments also have an incremental 10-digit zero-padded suffix starting from
+        /// 0 before the extension, such as `mux_stream0000000123.ts`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileName")]
         public virtual string FileName { get; set; }
 
-        /// <summary>
-        /// A unique key for this multiplexed stream. HLS media manifests will be named `MuxStream.key` with the `.m3u8`
-        /// extension suffix.
-        /// </summary>
+        /// <summary>A unique key for this multiplexed stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
@@ -2187,7 +2184,7 @@ namespace Google.Apis.Transcoder.v1.Data
     {
         /// <summary>
         /// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from
-        /// `Job.output_uri`. See [Supported input and output
+        /// Job.output_uri. See [Supported input and output
         /// formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
@@ -2200,7 +2197,7 @@ namespace Google.Apis.Transcoder.v1.Data
     /// <summary>Overlay configuration.</summary>
     public class Overlay : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>List of Animations. The list should be chronological, without any time overlap.</summary>
+        /// <summary>List of animations. The list should be chronological, without any time overlap.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("animations")]
         public virtual System.Collections.Generic.IList<Animation> Animations { get; set; }
 
@@ -2452,16 +2449,16 @@ namespace Google.Apis.Transcoder.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.</summary>
+    /// <summary>The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.</summary>
     public class TextMapping : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
+        /// Required. The EditAtom.key that references atom with text inputs in the JobConfig.edit_list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("atomKey")]
         public virtual string AtomKey { get; set; }
 
-        /// <summary>Required. The `Input.key` that identifies the input file.</summary>
+        /// <summary>Required. The Input.key that identifies the input file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputKey")]
         public virtual string InputKey { get; set; }
 
@@ -2497,7 +2494,7 @@ namespace Google.Apis.Transcoder.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
 
-        /// <summary>The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.</summary>
+        /// <summary>The mapping for the JobConfig.edit_list atoms with text EditAtom.inputs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mapping")]
         public virtual System.Collections.Generic.IList<TextMapping> Mapping { get; set; }
 
@@ -2591,8 +2588,7 @@ namespace Google.Apis.Transcoder.v1.Data
         public virtual string Profile { get; set; }
 
         /// <summary>
-        /// Specify the `rate_control_mode`. The default is `vbr`. Supported rate control modes: - `vbr` - variable
-        /// bitrate
+        /// Specify the mode. The default is `vbr`. Supported rate control modes: - `vbr` - variable bitrate
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rateControlMode")]
         public virtual string RateControlMode { get; set; }

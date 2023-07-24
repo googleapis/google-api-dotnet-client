@@ -2753,10 +2753,9 @@ namespace Google.Apis.Calendar.v3
             /// events deleted since the previous list request will always be in the result set and it is not allowed to
             /// set showDeleted to False. There are several query parameters that cannot be specified together with
             /// nextSyncToken to ensure consistency of the client state.  These are:  - iCalUID  - orderBy  -
-            /// privateExtendedProperty  - q  - sharedExtendedProperty  - timeMin  - timeMax  - updatedMin All other
-            /// query parameters should be the same as for the initial synchronization to avoid undefined behavior. If
-            /// the syncToken expires, the server will respond with a 410 GONE response code and the client should clear
-            /// its storage and perform a full synchronization without any syncToken. Learn more about incremental
+            /// privateExtendedProperty  - q  - sharedExtendedProperty  - timeMin  - timeMax  - updatedMin If the
+            /// syncToken expires, the server will respond with a 410 GONE response code and the client should clear its
+            /// storage and perform a full synchronization without any syncToken. Learn more about incremental
             /// synchronization. Optional. The default is to return all entries.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -3714,10 +3713,9 @@ namespace Google.Apis.Calendar.v3
             /// events deleted since the previous list request will always be in the result set and it is not allowed to
             /// set showDeleted to False. There are several query parameters that cannot be specified together with
             /// nextSyncToken to ensure consistency of the client state.  These are:  - iCalUID  - orderBy  -
-            /// privateExtendedProperty  - q  - sharedExtendedProperty  - timeMin  - timeMax  - updatedMin All other
-            /// query parameters should be the same as for the initial synchronization to avoid undefined behavior. If
-            /// the syncToken expires, the server will respond with a 410 GONE response code and the client should clear
-            /// its storage and perform a full synchronization without any syncToken. Learn more about incremental
+            /// privateExtendedProperty  - q  - sharedExtendedProperty  - timeMin  - timeMax  - updatedMin If the
+            /// syncToken expires, the server will respond with a 410 GONE response code and the client should clear its
+            /// storage and perform a full synchronization without any syncToken. Learn more about incremental
             /// synchronization. Optional. The default is to return all entries.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("syncToken", Google.Apis.Util.RequestParameterType.Query)]

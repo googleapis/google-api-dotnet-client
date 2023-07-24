@@ -8681,7 +8681,7 @@ namespace Google.Apis.GKEOnPrem.v1.Data
     /// <summary>BareMetalParallelUpgradeConfig defines the parallel upgrade settings for worker node pools.</summary>
     public class BareMetalParallelUpgradeConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The maximum number of nodes that can be upgraded at once. Defaults to 1.</summary>
+        /// <summary>The maximum number of nodes that can be upgraded at once.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("concurrentNodes")]
         public virtual System.Nullable<int> ConcurrentNodes { get; set; }
 
@@ -10205,6 +10205,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("memory")]
         public virtual System.Nullable<long> Memory { get; set; }
 
+        /// <summary>The number of control plane nodes for this VMware admin cluster. (default: 1 replica).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicas")]
+        public virtual System.Nullable<long> Replicas { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10231,6 +10235,17 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specifies HA admin control plane config.</summary>
+    public class VmwareAdminHAControlPlaneConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Static IP addresses for the admin control plane nodes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlPlaneIpBlock")]
+        public virtual VmwareIpBlock ControlPlaneIpBlock { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>VmwareAdminLoadBalancerConfig contains load balancer configuration for VMware admin cluster.</summary>
     public class VmwareAdminLoadBalancerConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10245,6 +10260,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// <summary>MetalLB load balancers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metalLbConfig")]
         public virtual VmwareAdminMetalLbConfig MetalLbConfig { get; set; }
+
+        /// <summary>Output only. Configuration for Seesaw typed load balancers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seesawConfig")]
+        public virtual VmwareAdminSeesawConfig SeesawConfig { get; set; }
 
         /// <summary>The VIPs used by the load balancer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vipConfig")]
@@ -10308,6 +10327,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dhcpIpConfig")]
         public virtual VmwareDhcpIpConfig DhcpIpConfig { get; set; }
 
+        /// <summary>Configuration for HA admin cluster control plane.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("haControlPlaneConfig")]
+        public virtual VmwareAdminHAControlPlaneConfig HaControlPlaneConfig { get; set; }
+
         /// <summary>Represents common network settings irrespective of the host's IP address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostConfig")]
         public virtual VmwareHostConfig HostConfig { get; set; }
@@ -10333,6 +10356,47 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// <summary>vcenter_network specifies vCenter network name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vcenterNetwork")]
         public virtual string VcenterNetwork { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// VmwareSeesawConfig represents configuration parameters for an already existing Seesaw load balancer. IMPORTANT:
+    /// Please note that the Anthos On-Prem API will not generate or update Seesaw configurations it can only bind a
+    /// pre-existing configuration to a new user cluster. IMPORTANT: When attempting to create a user cluster with a
+    /// pre-existing Seesaw load balancer you will need to follow some preparation steps before calling the
+    /// 'CreateVmwareCluster' API method. First you will need to create the user cluster's namespace via kubectl. The
+    /// namespace will need to use the following naming convention : -gke-onprem-mgmt or -gke-onprem-mgmt depending on
+    /// whether you used the 'VmwareCluster.local_name' to disambiguate collisions; for more context see the
+    /// documentation of 'VmwareCluster.local_name'. Once the namespace is created you will need to create a secret
+    /// resource via kubectl. This secret will contain copies of your Seesaw credentials. The Secret must be called
+    /// 'user-cluster-creds' and contain Seesaw's SSH and Cert credentials. The credentials must be keyed with the
+    /// following names: 'seesaw-ssh-private-key', 'seesaw-ssh-public-key', 'seesaw-ssh-ca-key', 'seesaw-ssh-ca-cert'.
+    /// </summary>
+    public class VmwareAdminSeesawConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enable two load balancer VMs to achieve a highly-available Seesaw load balancer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableHa")]
+        public virtual System.Nullable<bool> EnableHa { get; set; }
+
+        /// <summary>
+        /// In general the following format should be used for the Seesaw group name: seesaw-for-[cluster_name].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("group")]
+        public virtual string Group { get; set; }
+
+        /// <summary>The IP Blocks to be used by the Seesaw load balancer</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipBlocks")]
+        public virtual System.Collections.Generic.IList<VmwareIpBlock> IpBlocks { get; set; }
+
+        /// <summary>MasterIP is the IP announced by the master of Seesaw group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("masterIp")]
+        public virtual string MasterIp { get; set; }
+
+        /// <summary>Names of the VMs created for this Seesaw group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vms")]
+        public virtual System.Collections.Generic.IList<string> Vms { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10703,7 +10767,7 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("replicas")]
         public virtual System.Nullable<long> Replicas { get; set; }
 
-        /// <summary>Output only. Vsphere-specific config.</summary>
+        /// <summary>Vsphere-specific config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vsphereConfig")]
         public virtual VmwareControlPlaneVsphereConfig VsphereConfig { get; set; }
 
@@ -11012,7 +11076,7 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("taints")]
         public virtual System.Collections.Generic.IList<NodeTaint> Taints { get; set; }
 
-        /// <summary>Output only. Specifies the vSphere config for node pool.</summary>
+        /// <summary>Specifies the vSphere config for node pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vsphereConfig")]
         public virtual VmwareVsphereConfig VsphereConfig { get; set; }
 

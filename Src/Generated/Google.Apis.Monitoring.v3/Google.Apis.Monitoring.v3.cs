@@ -7475,9 +7475,10 @@ namespace Google.Apis.Monitoring.v3.Data
         /// <summary>
         /// A short name or phrase used to identify the policy in dashboards, notifications, and incidents. To avoid
         /// confusion, don't use the same display name for multiple policies in the same project. The name is limited to
-        /// 512 Unicode characters.The convention for the display_name of a PrometheusQueryLanguageCondition is "/",
-        /// where the and should be taken from the corresponding Prometheus configuration file. This convention is not
-        /// enforced. In any case the display_name is not a unique key of the AlertPolicy.
+        /// 512 Unicode characters.The convention for the display_name of a PrometheusQueryLanguageCondition is "{rule
+        /// group name}/{alert name}", where the {rule group name} and {alert name} should be taken from the
+        /// corresponding Prometheus configuration file. This convention is not enforced. In any case the display_name
+        /// is not a unique key of the AlertPolicy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -7530,9 +7531,9 @@ namespace Google.Apis.Monitoring.v3.Data
         /// User-supplied key/value data to be used for organizing and identifying the AlertPolicy objects.The field can
         /// contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is
         /// smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must
-        /// begin with a letter.Note that Prometheus and are valid Prometheus label names
+        /// begin with a letter.Note that Prometheus {rule group name} and {alert name} are valid Prometheus label names
         /// (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). This means that they cannot be
-        /// stored as is in user labels, because Prometheus labels may contain upper-case letters.
+        /// stored as-is in user labels, because Prometheus labels may contain upper-case letters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userLabels")]
         public virtual System.Collections.Generic.IDictionary<string, string> UserLabels { get; set; }
@@ -7727,6 +7728,28 @@ namespace Google.Apis.Monitoring.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
         public virtual string Service { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Synthetic Monitor deployed to a Cloud Functions V2 instance.</summary>
+    public class CloudFunctionV2Target : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The cloud_run_revision Monitored Resource associated with the GCFv2. The Synthetic Monitor
+        /// execution results (metrics, logs, and spans) are reported against this Monitored Resource. This field is
+        /// output only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudRunRevision")]
+        public virtual MonitoredResource CloudRunRevision { get; set; }
+
+        /// <summary>
+        /// Required. Fully qualified GCFv2 resource name i.e.
+        /// projects/{project}/locations/{location}/functions/{function} Required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10792,6 +10815,17 @@ namespace Google.Apis.Monitoring.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Describes a Synthetic Monitor to be invoked by Uptime.</summary>
+    public class SyntheticMonitorTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Target a Synthetic Monitor GCFv2 instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudFunctionV2")]
+        public virtual CloudFunctionV2Target CloudFunctionV2 { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information required for a TCP Uptime check request.</summary>
     public class TcpCheck : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11231,6 +11265,10 @@ namespace Google.Apis.Monitoring.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectedRegions")]
         public virtual System.Collections.Generic.IList<string> SelectedRegions { get; set; }
+
+        /// <summary>Specifies a Synthetic Monitor to invoke.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syntheticMonitor")]
+        public virtual SyntheticMonitorTarget SyntheticMonitor { get; set; }
 
         /// <summary>Contains information needed to make a TCP check.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tcpCheck")]

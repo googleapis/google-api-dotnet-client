@@ -6657,6 +6657,15 @@ namespace Google.Apis.DataCatalog.v1.Data
     public class GoogleCloudDatacatalogV1SearchCatalogRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. If set, use searchAll permission granted on organizations from `include_org_ids` and projects from
+        /// `include_project_ids` instead of the fine grained per resource permissions when filtering the search
+        /// results. The only allowed `order_by` criteria for admin_search mode is `default`. Using this flags
+        /// guarantees a full recall of the search results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminSearch")]
+        public virtual System.Nullable<bool> AdminSearch { get; set; }
+
+        /// <summary>
         /// Specifies the order of results. Currently supported case-sensitive values are: * `relevance` that can only
         /// be descending * `last_modified_timestamp [asc|desc]` with descending (`desc`) as default * `default` that
         /// can only be descending Search queries don't guarantee full recall. Results that match your query might not

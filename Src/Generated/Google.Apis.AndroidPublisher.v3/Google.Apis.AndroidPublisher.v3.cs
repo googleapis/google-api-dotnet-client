@@ -12570,8 +12570,9 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         }
 
         /// <summary>
-        /// Optional. The behavior the caller wants users to see if there is a price increase during migration. If left
-        /// unset, the behavior defaults to PRICE_INCREASE_TYPE_OPT_IN.
+        /// Optional. The behavior the caller wants users to see when there is a price increase during migration. If
+        /// left unset, the behavior defaults to PRICE_INCREASE_TYPE_OPT_IN. Note that the first opt-out price increase
+        /// migration for each app must be initiated in Play Console.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("priceIncreaseType")]
         public virtual string PriceIncreaseType { get; set; }

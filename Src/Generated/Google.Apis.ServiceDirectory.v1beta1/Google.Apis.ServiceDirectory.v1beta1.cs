@@ -308,214 +308,8 @@ namespace Google.Apis.ServiceDirectory.v1beta1
                 public NamespacesResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-                    ServiceWorkloads = new ServiceWorkloadsResource(service);
                     Services = new ServicesResource(service);
                     Workloads = new WorkloadsResource(service);
-                }
-
-                /// <summary>Gets the ServiceWorkloads resource.</summary>
-                public virtual ServiceWorkloadsResource ServiceWorkloads { get; }
-
-                /// <summary>The "serviceWorkloads" collection of methods.</summary>
-                public class ServiceWorkloadsResource
-                {
-                    private const string Resource = "serviceWorkloads";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public ServiceWorkloadsResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-                    }
-
-                    /// <summary>Gets the IAM Policy for a resource</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="resource">
-                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
-                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                    /// field.
-                    /// </param>
-                    public virtual GetIamPolicyRequest GetIamPolicy(Google.Apis.ServiceDirectory.v1beta1.Data.GetIamPolicyRequest body, string resource)
-                    {
-                        return new GetIamPolicyRequest(service, body, resource);
-                    }
-
-                    /// <summary>Gets the IAM Policy for a resource</summary>
-                    public class GetIamPolicyRequest : ServiceDirectoryBaseServiceRequest<Google.Apis.ServiceDirectory.v1beta1.Data.Policy>
-                    {
-                        /// <summary>Constructs a new GetIamPolicy request.</summary>
-                        public GetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceDirectory.v1beta1.Data.GetIamPolicyRequest body, string resource) : base(service)
-                        {
-                            Resource = resource;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// REQUIRED: The resource for which the policy is being requested. See [Resource
-                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
-                        /// this field.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Resource { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.ServiceDirectory.v1beta1.Data.GetIamPolicyRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "getIamPolicy";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta1/{+resource}:getIamPolicy";
-
-                        /// <summary>Initializes GetIamPolicy parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/serviceWorkloads/[^/]+$",
-                            });
-                        }
-                    }
-
-                    /// <summary>Sets the IAM Policy for a resource</summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="resource">
-                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
-                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                    /// field.
-                    /// </param>
-                    public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.ServiceDirectory.v1beta1.Data.SetIamPolicyRequest body, string resource)
-                    {
-                        return new SetIamPolicyRequest(service, body, resource);
-                    }
-
-                    /// <summary>Sets the IAM Policy for a resource</summary>
-                    public class SetIamPolicyRequest : ServiceDirectoryBaseServiceRequest<Google.Apis.ServiceDirectory.v1beta1.Data.Policy>
-                    {
-                        /// <summary>Constructs a new SetIamPolicy request.</summary>
-                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceDirectory.v1beta1.Data.SetIamPolicyRequest body, string resource) : base(service)
-                        {
-                            Resource = resource;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// REQUIRED: The resource for which the policy is being specified. See [Resource
-                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
-                        /// this field.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Resource { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.ServiceDirectory.v1beta1.Data.SetIamPolicyRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "setIamPolicy";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta1/{+resource}:setIamPolicy";
-
-                        /// <summary>Initializes SetIamPolicy parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/serviceWorkloads/[^/]+$",
-                            });
-                        }
-                    }
-
-                    /// <summary>
-                    /// Tests IAM permissions for a resource (namespace, service or service workload only).
-                    /// </summary>
-                    /// <param name="body">The body of the request.</param>
-                    /// <param name="resource">
-                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
-                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
-                    /// field.
-                    /// </param>
-                    public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.ServiceDirectory.v1beta1.Data.TestIamPermissionsRequest body, string resource)
-                    {
-                        return new TestIamPermissionsRequest(service, body, resource);
-                    }
-
-                    /// <summary>
-                    /// Tests IAM permissions for a resource (namespace, service or service workload only).
-                    /// </summary>
-                    public class TestIamPermissionsRequest : ServiceDirectoryBaseServiceRequest<Google.Apis.ServiceDirectory.v1beta1.Data.TestIamPermissionsResponse>
-                    {
-                        /// <summary>Constructs a new TestIamPermissions request.</summary>
-                        public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.ServiceDirectory.v1beta1.Data.TestIamPermissionsRequest body, string resource) : base(service)
-                        {
-                            Resource = resource;
-                            Body = body;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
-                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
-                        /// this field.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Resource { get; private set; }
-
-                        /// <summary>Gets or sets the body of this request.</summary>
-                        Google.Apis.ServiceDirectory.v1beta1.Data.TestIamPermissionsRequest Body { get; set; }
-
-                        /// <summary>Returns the body of the request.</summary>
-                        protected override object GetBody() => Body;
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "testIamPermissions";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "POST";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta1/{+resource}:testIamPermissions";
-
-                        /// <summary>Initializes TestIamPermissions parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "resource",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+/locations/[^/]+/namespaces/[^/]+/serviceWorkloads/[^/]+$",
-                            });
-                        }
-                    }
                 }
 
                 /// <summary>Gets the Services resource.</summary>
@@ -2484,9 +2278,42 @@ namespace Google.Apis.ServiceDirectory.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string Address { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. The timestamp when the endpoint was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Optional. Metadata for the endpoint. This data can be consumed by service clients. Restrictions: * The
@@ -2526,9 +2353,42 @@ namespace Google.Apis.ServiceDirectory.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>Output only. The timestamp when the endpoint was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2712,9 +2572,42 @@ namespace Google.Apis.ServiceDirectory.v1beta1.Data
     /// </summary>
     public class Namespace : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. The timestamp when the namespace was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with
@@ -2733,9 +2626,42 @@ namespace Google.Apis.ServiceDirectory.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>Output only. The timestamp when the namespace was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2862,9 +2788,42 @@ namespace Google.Apis.ServiceDirectory.v1beta1.Data
     /// </summary>
     public class Service : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. The timestamp when the service was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. Endpoints associated with this service. Returned on LookupService.ResolveService. Control plane
@@ -2897,12 +2856,45 @@ namespace Google.Apis.ServiceDirectory.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>
         /// Output only. The timestamp when the service was last updated. Note: endpoints being created/deleted/updated
         /// within the service are not considered service updates for the purpose of this timestamp.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
