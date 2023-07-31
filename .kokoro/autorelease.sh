@@ -63,6 +63,12 @@ rm -f DiscoveryJson/contentwarehouse_v1.json
 # TODO[atarafamas] find out why
 rm -f DiscoveryJson/integrations_v1alpha.json
 
+# This causes a failure of
+# error CS0102: The type 'OrganizationsResource.LocationsResource'
+# already contains a definition for 'OrgPolicyViolationsPreviews'
+# TODO[atarafamas] work out what to do about it
+rm -f DiscoveryJson/policysimulator_v1alpha.json
+rm -f DiscoveryJson/policysimulator_v1beta.json
 
 ./BuildGenerated.sh --skipdownload
 
