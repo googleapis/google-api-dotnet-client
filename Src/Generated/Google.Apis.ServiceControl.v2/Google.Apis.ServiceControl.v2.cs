@@ -748,6 +748,10 @@ namespace Google.Apis.ServiceControl.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountKeyName")]
         public virtual string ServiceAccountKeyName { get; set; }
 
+        /// <summary>Records the history of delegated resource access across Google services.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceDelegationHistory")]
+        public virtual ServiceDelegationHistory ServiceDelegationHistory { get; set; }
+
         /// <summary>
         /// The third party identification (if any) of the authenticated user making the request. When the JSON object
         /// represented here has a proto equivalent, the proto name will be indicated in the `@type` property.
@@ -1032,42 +1036,9 @@ namespace Google.Apis.ServiceControl.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<long> Size { get; set; }
 
-        private string _timeRaw;
-
-        private object _time;
-
         /// <summary>The timestamp when the `destination` service receives the last byte of the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("time")]
-        public virtual string TimeRaw
-        {
-            get => _timeRaw;
-            set
-            {
-                _time = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _timeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="TimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimeDateTimeOffset instead.")]
-        public virtual object Time
-        {
-            get => _time;
-            set
-            {
-                _timeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _time = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? TimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeRaw);
-            set => TimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object Time { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1141,85 +1112,19 @@ namespace Google.Apis.ServiceControl.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>
         /// Output only. The timestamp when the resource was created. This may be either the time creation was initiated
         /// or when it was completed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _deleteTimeRaw;
-
-        private object _deleteTime;
+        public virtual object CreateTime { get; set; }
 
         /// <summary>
         /// Output only. The timestamp when the resource was deleted. If the resource is not deleted, this must be
         /// empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
-        public virtual string DeleteTimeRaw
-        {
-            get => _deleteTimeRaw;
-            set
-            {
-                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _deleteTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
-        public virtual object DeleteTime
-        {
-            get => _deleteTime;
-            set
-            {
-                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _deleteTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object DeleteTime { get; set; }
 
         /// <summary>Mutable. The display name set by clients. Must be &lt;= 63 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
@@ -1283,45 +1188,12 @@ namespace Google.Apis.ServiceControl.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>
         /// Output only. The timestamp when the resource was last updated. Any change to the resource made by users must
         /// refresh this value. Changes to a resource made by the service should refresh this value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
     }
 
     /// <summary>Describes a resource referenced in the request.</summary>
@@ -1413,42 +1285,9 @@ namespace Google.Apis.ServiceControl.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<long> Size { get; set; }
 
-        private string _timeRaw;
-
-        private object _time;
-
         /// <summary>The timestamp when the `destination` service sends the last byte of the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("time")]
-        public virtual string TimeRaw
-        {
-            get => _timeRaw;
-            set
-            {
-                _time = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _timeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="TimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimeDateTimeOffset instead.")]
-        public virtual object Time
-        {
-            get => _time;
-            set
-            {
-                _timeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _time = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? TimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeRaw);
-            set => TimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object Time { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1473,6 +1312,60 @@ namespace Google.Apis.ServiceControl.v2.Data
         /// <summary>Third party identity as the real authority.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyPrincipal")]
         public virtual ThirdPartyPrincipal ThirdPartyPrincipal { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The history of delegation across multiple services as the result of the original user's action. Such as "service
+    /// A uses its own account to do something for user B". This differs from ServiceAccountDelegationInfo, which only
+    /// tracks the history of direct token exchanges (impersonation).
+    /// </summary>
+    public class ServiceDelegationHistory : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The original end user who initiated the request to GCP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalPrincipal")]
+        public virtual string OriginalPrincipal { get; set; }
+
+        /// <summary>
+        /// Data identifying the service specific jobs or units of work that were involved in a chain of service calls.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceMetadata")]
+        public virtual System.Collections.Generic.IList<ServiceMetadata> ServiceMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata describing the service and additional service specific information used to identify the job or unit of
+    /// work at hand.
+    /// </summary>
+    public class ServiceMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Additional metadata provided by service teams to describe service specific job information that was
+        /// triggered by the original principal.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jobMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> JobMetadata { get; set; }
+
+        /// <summary>
+        /// A string representing the principal_subject associated with the identity. For most identities, the format
+        /// will be `principal://iam.googleapis.com/{identity pool name}/subject/{subject)` except for some GKE
+        /// identities (GKE_WORKLOAD, FREEFORM, GKE_HUB_WORKLOAD) that are still in the legacy format
+        /// `serviceAccount:{identity pool name}[{subject}]` If the identity is a Google account (e.g. workspace user
+        /// account or service account), this will be the email of the prefixed by `serviceAccount:`. For example:
+        /// `serviceAccount:my-service-account@project-1.iam.gserviceaccount.com`. If the identity is an individual
+        /// user, the identity will be formatted as: `user:user_ABC@email.com`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("principalSubject")]
+        public virtual string PrincipalSubject { get; set; }
+
+        /// <summary>The service's fully qualified domain name, e.g. "dataproc.googleapis.com".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceDomain")]
+        public virtual string ServiceDomain { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1692,44 +1585,11 @@ namespace Google.Apis.ServiceControl.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textPayload")]
         public virtual string TextPayload { get; set; }
 
-        private string _timestampRaw;
-
-        private object _timestamp;
-
         /// <summary>
         /// The time the event described by the log entry occurred. If omitted, defaults to operation start time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
-        public virtual string TimestampRaw
-        {
-            get => _timestampRaw;
-            set
-            {
-                _timestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _timestampRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="TimestampRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimestampDateTimeOffset instead.")]
-        public virtual object Timestamp
-        {
-            get => _timestamp;
-            set
-            {
-                _timestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _timestamp = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimestampRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? TimestampDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimestampRaw);
-            set => TimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object Timestamp { get; set; }
 
         /// <summary>
         /// Optional. Resource name of the trace associated with the log entry, if any. If this field contains a

@@ -18411,42 +18411,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
         public virtual string Result { get; set; }
 
-        private string _runTimeRaw;
-
-        private object _runTime;
-
         /// <summary>Time when the continuous testing run starts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runTime")]
-        public virtual string RunTimeRaw
-        {
-            get => _runTimeRaw;
-            set
-            {
-                _runTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _runTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="RunTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RunTimeDateTimeOffset instead.")]
-        public virtual object RunTime
-        {
-            get => _runTime;
-            set
-            {
-                _runTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _runTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="RunTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? RunTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RunTimeRaw);
-            set => RunTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object RunTime { get; set; }
 
         /// <summary>A list of individual test case results names in this continuous test run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testCaseResults")]
@@ -18660,42 +18627,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("testCasesConfig")]
         public virtual GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig TestCasesConfig { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>Output only. Update time of this environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>
         /// A list of configurations for flow versions. You should include version configs for all flows that are
@@ -19903,42 +19837,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>Represents a test case.</summary>
     public class GoogleCloudDialogflowCxV3TestCase : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _creationTimeRaw;
-
-        private object _creationTime;
-
         /// <summary>Output only. When the test was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual string CreationTimeRaw
-        {
-            get => _creationTimeRaw;
-            set
-            {
-                _creationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _creationTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreationTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreationTimeDateTimeOffset instead.")]
-        public virtual object CreationTime
-        {
-            get => _creationTime;
-            set
-            {
-                _creationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _creationTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreationTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
-            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreationTime { get; set; }
 
         /// <summary>
         /// Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
@@ -20019,42 +19920,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("testResult")]
         public virtual string TestResult { get; set; }
 
-        private string _testTimeRaw;
-
-        private object _testTime;
-
         /// <summary>The time that the test was run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testTime")]
-        public virtual string TestTimeRaw
-        {
-            get => _testTimeRaw;
-            set
-            {
-                _testTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _testTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="TestTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TestTimeDateTimeOffset instead.")]
-        public virtual object TestTime
-        {
-            get => _testTime;
-            set
-            {
-                _testTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _testTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TestTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? TestTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TestTimeRaw);
-            set => TestTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object TestTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20100,42 +19968,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("testCase")]
         public virtual string TestCase { get; set; }
 
-        private string _testTimeRaw;
-
-        private object _testTime;
-
         /// <summary>The timestamp when the test was completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testTime")]
-        public virtual string TestTimeRaw
-        {
-            get => _testTimeRaw;
-            set
-            {
-                _testTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _testTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="TestTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TestTimeDateTimeOffset instead.")]
-        public virtual object TestTime
-        {
-            get => _testTime;
-            set
-            {
-                _testTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _testTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TestTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? TestTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TestTimeRaw);
-            set => TestTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object TestTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20334,9 +20169,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This
         /// overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default
         /// trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject
-        /// alt name". For instance a certificate can be self-signed using the following command,  openssl x509 -req
+        /// alt name". For instance a certificate can be self-signed using the following command, ``` openssl x509 -req
         /// -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile &amp;lt;(printf
-        /// "\nsubjectAltName='DNS:www.example.com'") 
+        /// "\nsubjectAltName='DNS:www.example.com'") ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedCaCerts")]
         public virtual System.Collections.Generic.IList<string> AllowedCaCerts { get; set; }
@@ -20678,42 +20513,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("result")]
         public virtual string Result { get; set; }
 
-        private string _runTimeRaw;
-
-        private object _runTime;
-
         /// <summary>Time when the continuous testing run starts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runTime")]
-        public virtual string RunTimeRaw
-        {
-            get => _runTimeRaw;
-            set
-            {
-                _runTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _runTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="RunTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RunTimeDateTimeOffset instead.")]
-        public virtual object RunTime
-        {
-            get => _runTime;
-            set
-            {
-                _runTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _runTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="RunTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? RunTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RunTimeRaw);
-            set => RunTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object RunTime { get; set; }
 
         /// <summary>A list of individual test case results names in this continuous test run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testCaseResults")]
@@ -20927,42 +20729,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("testCasesConfig")]
         public virtual GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfig TestCasesConfig { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>Output only. Update time of this environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>
         /// A list of configurations for flow versions. You should include version configs for all flows that are
@@ -22166,42 +21935,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>Represents a test case.</summary>
     public class GoogleCloudDialogflowCxV3beta1TestCase : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _creationTimeRaw;
-
-        private object _creationTime;
-
         /// <summary>Output only. When the test was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual string CreationTimeRaw
-        {
-            get => _creationTimeRaw;
-            set
-            {
-                _creationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _creationTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreationTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreationTimeDateTimeOffset instead.")]
-        public virtual object CreationTime
-        {
-            get => _creationTime;
-            set
-            {
-                _creationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _creationTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreationTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
-            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreationTime { get; set; }
 
         /// <summary>
         /// Required. The human-readable name of the test case, unique within the agent. Limit of 200 characters.
@@ -22282,42 +22018,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("testResult")]
         public virtual string TestResult { get; set; }
 
-        private string _testTimeRaw;
-
-        private object _testTime;
-
         /// <summary>The time that the test was run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testTime")]
-        public virtual string TestTimeRaw
-        {
-            get => _testTimeRaw;
-            set
-            {
-                _testTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _testTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="TestTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TestTimeDateTimeOffset instead.")]
-        public virtual object TestTime
-        {
-            get => _testTime;
-            set
-            {
-                _testTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _testTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TestTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? TestTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TestTimeRaw);
-            set => TestTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object TestTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22363,42 +22066,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("testCase")]
         public virtual string TestCase { get; set; }
 
-        private string _testTimeRaw;
-
-        private object _testTime;
-
         /// <summary>The timestamp when the test was completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testTime")]
-        public virtual string TestTimeRaw
-        {
-            get => _testTimeRaw;
-            set
-            {
-                _testTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _testTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="TestTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TestTimeDateTimeOffset instead.")]
-        public virtual object TestTime
-        {
-            get => _testTime;
-            set
-            {
-                _testTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _testTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TestTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? TestTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TestTimeRaw);
-            set => TestTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object TestTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22597,9 +22267,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This
         /// overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default
         /// trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject
-        /// alt name". For instance a certificate can be self-signed using the following command,  openssl x509 -req
+        /// alt name". For instance a certificate can be self-signed using the following command, ``` openssl x509 -req
         /// -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile &amp;lt;(printf
-        /// "\nsubjectAltName='DNS:www.example.com'") 
+        /// "\nsubjectAltName='DNS:www.example.com'") ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedCaCerts")]
         public virtual System.Collections.Generic.IList<string> AllowedCaCerts { get; set; }
@@ -22988,42 +22658,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conversationProfile")]
         public virtual string ConversationProfile { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Timestamp whe the request was created. The time is measured on server side.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>
         /// Required. The participant role to remove the suggestion feature config. Only HUMAN_AGENT or END_USER can be
@@ -23122,42 +22759,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("articleSuggestionModelMetadata")]
         public virtual GoogleCloudDialogflowV2ArticleSuggestionModelMetadata ArticleSuggestionModelMetadata { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. Creation time of this model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Required. Datasets used to create model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datasets")]
@@ -23222,44 +22826,11 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conversationModelEvaluation")]
         public virtual string ConversationModelEvaluation { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>
         /// Timestamp when the request to create conversation model was submitted. The time is measured on server side.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>State of CreateConversationModel operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -23276,44 +22847,11 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conversationModel")]
         public virtual string ConversationModel { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>
         /// Timestamp when the request to create conversation model is submitted. The time is measured on server side.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>State of CreateConversationModel operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -23337,44 +22875,11 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conversationModel")]
         public virtual string ConversationModel { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>
         /// Timestamp when delete conversation model request was created. The time is measured on server side.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23387,44 +22892,11 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conversationModel")]
         public virtual string ConversationModel { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>
         /// Timestamp when request to deploy conversation model was submitted. The time is measured on server side.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -23647,44 +23119,11 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conversationDataset")]
         public virtual string ConversationDataset { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>
         /// Timestamp when import conversation data request was created. The time is measured on server side.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>
         /// Partial failures are failures that don't fail the whole long running operation, e.g. single files that
@@ -24605,42 +24044,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. The time when the message was created in Contact Center AI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>
         /// Optional. The message language. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
@@ -24667,42 +24073,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("participantRole")]
         public virtual string ParticipantRole { get; set; }
 
-        private string _sendTimeRaw;
-
-        private object _sendTime;
-
         /// <summary>Optional. The time when the message was sent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sendTime")]
-        public virtual string SendTimeRaw
-        {
-            get => _sendTimeRaw;
-            set
-            {
-                _sendTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _sendTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="SendTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SendTimeDateTimeOffset instead.")]
-        public virtual object SendTime
-        {
-            get => _sendTime;
-            set
-            {
-                _sendTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _sendTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="SendTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? SendTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SendTimeRaw);
-            set => SendTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object SendTime { get; set; }
 
         /// <summary>Output only. The sentiment analysis result for the message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sentimentAnalysis")]
@@ -24973,42 +24346,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conversationProfile")]
         public virtual string ConversationProfile { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Timestamp whe the request was created. The time is measured on server side.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>
         /// Required. The participant role to add or update the suggestion feature config. Only HUMAN_AGENT or END_USER
@@ -25172,45 +24512,12 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conversationModel")]
         public virtual string ConversationModel { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>
         /// Timestamp when the request to undeploy conversation model was submitted. The time is measured on server
         /// side.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -25446,83 +24753,13 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// <summary>Feedback for conversation summarization.</summary>
     public class GoogleCloudDialogflowV2beta1AgentAssistantFeedbackSummarizationFeedback : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _startTimestampRaw;
-
-        private object _startTimestamp;
-
         /// <summary>Timestamp when composing of the summary starts.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTimestamp")]
-        public virtual string StartTimestampRaw
-        {
-            get => _startTimestampRaw;
-            set
-            {
-                _startTimestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _startTimestampRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="StartTimestampRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimestampDateTimeOffset instead.")]
-        public virtual object StartTimestamp
-        {
-            get => _startTimestamp;
-            set
-            {
-                _startTimestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _startTimestamp = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimestampRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? StartTimestampDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimestampRaw);
-            set => StartTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _submitTimestampRaw;
-
-        private object _submitTimestamp;
+        public virtual object StartTimestamp { get; set; }
 
         /// <summary>Timestamp when the summary was submitted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("submitTimestamp")]
-        public virtual string SubmitTimestampRaw
-        {
-            get => _submitTimestampRaw;
-            set
-            {
-                _submitTimestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _submitTimestampRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="SubmitTimestampRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SubmitTimestampDateTimeOffset instead.")]
-        public virtual object SubmitTimestamp
-        {
-            get => _submitTimestamp;
-            set
-            {
-                _submitTimestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _submitTimestamp = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SubmitTimestampRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? SubmitTimestampDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SubmitTimestampRaw);
-            set => SubmitTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object SubmitTimestamp { get; set; }
 
         /// <summary>Text of actual submitted summary.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summaryText")]
@@ -25584,10 +24821,6 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eventInput")]
         public virtual GoogleCloudDialogflowV2beta1EventInput EventInput { get; set; }
 
-        private string _messageSendTimeRaw;
-
-        private object _messageSendTime;
-
         /// <summary>
         /// Optional. The send time of the message from end user or human agent's perspective. It is used for
         /// identifying the same message under one participant. Given two messages under the same participant: * If send
@@ -25598,38 +24831,7 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// as a new message without any de-duplication.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messageSendTime")]
-        public virtual string MessageSendTimeRaw
-        {
-            get => _messageSendTimeRaw;
-            set
-            {
-                _messageSendTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _messageSendTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="MessageSendTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use MessageSendTimeDateTimeOffset instead.")]
-        public virtual object MessageSendTime
-        {
-            get => _messageSendTime;
-            set
-            {
-                _messageSendTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _messageSendTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="MessageSendTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? MessageSendTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(MessageSendTimeRaw);
-            set => MessageSendTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object MessageSendTime { get; set; }
 
         /// <summary>Parameters for a Dialogflow virtual-agent query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryParams")]
@@ -25762,42 +24964,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("agentAssistantDetailFeedback")]
         public virtual GoogleCloudDialogflowV2beta1AgentAssistantFeedback AgentAssistantDetailFeedback { get; set; }
 
-        private string _clickTimeRaw;
-
-        private object _clickTime;
-
         /// <summary>Time when the answer/item was clicked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clickTime")]
-        public virtual string ClickTimeRaw
-        {
-            get => _clickTimeRaw;
-            set
-            {
-                _clickTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _clickTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="ClickTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ClickTimeDateTimeOffset instead.")]
-        public virtual object ClickTime
-        {
-            get => _clickTime;
-            set
-            {
-                _clickTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _clickTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ClickTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ClickTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ClickTimeRaw);
-            set => ClickTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object ClickTime { get; set; }
 
         /// <summary>
         /// Indicates whether the answer/item was clicked by the human agent or not. Default to false. For knowledge
@@ -25810,42 +24979,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("correctnessLevel")]
         public virtual string CorrectnessLevel { get; set; }
 
-        private string _displayTimeRaw;
-
-        private object _displayTime;
-
         /// <summary>Time when the answer/item was displayed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayTime")]
-        public virtual string DisplayTimeRaw
-        {
-            get => _displayTimeRaw;
-            set
-            {
-                _displayTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _displayTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="DisplayTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DisplayTimeDateTimeOffset instead.")]
-        public virtual object DisplayTime
-        {
-            get => _displayTime;
-            set
-            {
-                _displayTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _displayTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DisplayTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? DisplayTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DisplayTimeRaw);
-            set => DisplayTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object DisplayTime { get; set; }
 
         /// <summary>
         /// Indicates whether the answer/item was displayed to the human agent in the agent desktop UI. Default to
@@ -25927,9 +25063,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// Key-value filters on the metadata of documents returned by article suggestion. If specified, article
         /// suggestion only returns suggested documents that match all filters in their Document.metadata. Multiple
         /// values for a metadata key should be concatenated by comma. For example, filters to match all documents that
-        /// have 'US' or 'CA' in their market metadata values and 'agent' in their user metadata values will be 
+        /// have 'US' or 'CA' in their market metadata values and 'agent' in their user metadata values will be ```
         /// documents_metadata_filters { key: "market" value: "US,CA" } documents_metadata_filters { key: "user" value:
-        /// "agent" } 
+        /// "agent" } ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentsMetadataFilters")]
         public virtual System.Collections.Generic.IDictionary<string, string> DocumentsMetadataFilters { get; set; }
@@ -26059,10 +25195,10 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// barge-in phase and during which the API starts speech detection and may inform the client that an utterance has
     /// been detected. Note that no-speech event is not expected in this phase. The client provides this configuration
     /// in terms of the durations of those two phases. The durations are measured in terms of the audio length fromt the
-    /// the start of the input audio. The flow goes like below:  --&amp;gt; Time without speech detection | utterance
+    /// the start of the input audio. The flow goes like below: ``` --&amp;gt; Time without speech detection | utterance
     /// only | utterance or no-speech event | | +-------------+ | +------------+ | +---------------+ ----------+ no
     /// barge-in +-|-+ barge-in +-|-+ normal period +----------- +-------------+ | +------------+ | +---------------+
-    ///  No-speech event is a response with END_OF_UTTERANCE without any transcript following up.
+    /// ``` No-speech event is a response with END_OF_UTTERANCE without any transcript following up.
     /// </summary>
     public class GoogleCloudDialogflowV2beta1BargeInConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -26286,42 +25422,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conversationProfile")]
         public virtual string ConversationProfile { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Timestamp whe the request was created. The time is measured on server side.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>
         /// Required. The participant role to remove the suggestion feature config. Only HUMAN_AGENT or END_USER can be
@@ -26484,42 +25587,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conversationStage")]
         public virtual string ConversationStage { get; set; }
 
-        private string _endTimeRaw;
-
-        private object _endTime;
-
         /// <summary>Output only. The time the conversation was finished.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTimeRaw
-        {
-            get => _endTimeRaw;
-            set
-            {
-                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _endTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
-        public virtual object EndTime
-        {
-            get => _endTime;
-            set
-            {
-                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _endTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object EndTime { get; set; }
 
         /// <summary>Output only. The current state of the Conversation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lifecycleState")]
@@ -26535,42 +25605,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
         public virtual GoogleCloudDialogflowV2beta1ConversationPhoneNumber PhoneNumber { get; set; }
 
-        private string _startTimeRaw;
-
-        private object _startTime;
-
         /// <summary>Output only. The time the conversation was started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTimeRaw
-        {
-            get => _startTimeRaw;
-            set
-            {
-                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _startTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
-        public virtual object StartTime
-        {
-            get => _startTime;
-            set
-            {
-                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _startTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26625,42 +25662,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("automatedAgentConfig")]
         public virtual GoogleCloudDialogflowV2beta1AutomatedAgentConfig AutomatedAgentConfig { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. Create time of the conversation profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Required. Human readable name for this profile. Max length 1024 bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
@@ -26729,42 +25733,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ttsConfig")]
         public virtual GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig TtsConfig { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>Output only. Update time of the conversation profile.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -26994,45 +25965,12 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual GoogleRpcStatus Status { get; set; }
 
-        private string _timeRaw;
-
-        private object _time;
-
         /// <summary>
         /// Output only. The time of a reload attempt. This reload may have been triggered automatically or manually and
         /// may not have succeeded.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("time")]
-        public virtual string TimeRaw
-        {
-            get => _timeRaw;
-            set
-            {
-                _time = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _timeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="TimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimeDateTimeOffset instead.")]
-        public virtual object Time
-        {
-            get => _time;
-            set
-            {
-                _timeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _time = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? TimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeRaw);
-            set => TimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object Time { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27172,45 +26110,12 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textToSpeechSettings")]
         public virtual GoogleCloudDialogflowV2beta1TextToSpeechSettings TextToSpeechSettings { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>
         /// Output only. The last update time of this environment. This field is read-only, i.e., it cannot be set by
         /// create and update methods.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -27250,42 +26155,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("agentVersion")]
         public virtual string AgentVersion { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>The creation time of this environment history entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The developer-provided description for this environment history entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -29825,42 +28697,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. The time when the message was created in Contact Center AI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>
         /// Optional. The message language. This should be a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt)
@@ -29887,42 +28726,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("participantRole")]
         public virtual string ParticipantRole { get; set; }
 
-        private string _sendTimeRaw;
-
-        private object _sendTime;
-
         /// <summary>Optional. The time when the message was sent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sendTime")]
-        public virtual string SendTimeRaw
-        {
-            get => _sendTimeRaw;
-            set
-            {
-                _sendTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _sendTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="SendTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SendTimeDateTimeOffset instead.")]
-        public virtual object SendTime
-        {
-            get => _sendTime;
-            set
-            {
-                _sendTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _sendTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="SendTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? SendTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SendTimeRaw);
-            set => SendTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object SendTime { get; set; }
 
         /// <summary>Output only. The sentiment analysis result for the message.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sentimentAnalysis")]
@@ -30052,8 +28858,8 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// article suggestion only returns suggested documents that match all filters in their Document.metadata.
         /// Multiple values for a metadata key should be concatenated by comma. For example, filters to match all
         /// documents that have 'US' or 'CA' in their market metadata values and 'agent' in their user metadata values
-        /// will be  documents_metadata_filters { key: "market" value: "US,CA" } documents_metadata_filters { key:
-        /// "user" value: "agent" } 
+        /// will be ``` documents_metadata_filters { key: "market" value: "US,CA" } documents_metadata_filters { key:
+        /// "user" value: "agent" } ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentsMetadataFilters")]
         public virtual System.Collections.Generic.IDictionary<string, string> DocumentsMetadataFilters { get; set; }
@@ -30143,6 +28949,13 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
+
+        /// <summary>
+        /// The platform of the virtual agent response messages. If not empty, only emits messages from this platform in
+        /// the response. Valid values are the enum names of platform.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("platform")]
+        public virtual string Platform { get; set; }
 
         /// <summary>
         /// Specifies whether to delete all contexts in the current session before the new ones are activated.
@@ -30621,42 +29434,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conversationProfile")]
         public virtual string ConversationProfile { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Timestamp whe the request was created. The time is measured on server side.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>
         /// Required. The participant role to add or update the suggestion feature config. Only HUMAN_AGENT or END_USER
@@ -31049,42 +29829,9 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("articles")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2beta1SuggestionArticle> Articles { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. The time the suggestion was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. Answers extracted from FAQ documents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("faqAnswers")]
@@ -31431,45 +30178,12 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// </summary>
     public class GoogleCloudDialogflowV2beta1Version : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>
         /// Output only. The creation time of this version. This field is read-only, i.e., it cannot be set by create
         /// and update methods.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Optional. The developer-provided description of this version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]

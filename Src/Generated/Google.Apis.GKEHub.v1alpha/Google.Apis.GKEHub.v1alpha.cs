@@ -5211,42 +5211,9 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>Last timestamp the condition was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5316,42 +5283,9 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// </summary>
     public class ClusterUpgradeIgnoredMembership : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _ignoredTimeRaw;
-
-        private object _ignoredTime;
-
         /// <summary>Time when the membership was first set to ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoredTime")]
-        public virtual string IgnoredTimeRaw
-        {
-            get => _ignoredTimeRaw;
-            set
-            {
-                _ignoredTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _ignoredTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="IgnoredTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use IgnoredTimeDateTimeOffset instead.")]
-        public virtual object IgnoredTime
-        {
-            get => _ignoredTime;
-            set
-            {
-                _ignoredTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _ignoredTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="IgnoredTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? IgnoredTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(IgnoredTimeRaw);
-            set => IgnoredTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object IgnoredTime { get; set; }
 
         /// <summary>Reason why the membership is ignored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
@@ -5496,42 +5430,9 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reason")]
         public virtual string Reason { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>Last timestamp the status was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5668,7 +5569,7 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud
         /// Monitoring and Cloud Monarch when Workload Identity is enabled. The GSA should have the Monitoring Metric
         /// Writer (roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace
-        /// `config-management-monitoring` should be binded to the GSA. This field is required when automatic Feature
+        /// `config-management-monitoring` should be bound to the GSA. This field is required when automatic Feature
         /// management is enabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metricsGcpServiceAccountEmail")]
@@ -6176,42 +6077,9 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("templateLibraryInstalled")]
         public virtual System.Nullable<bool> TemplateLibraryInstalled { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>Output only. Last time this membership spec was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6220,42 +6088,9 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>State for the migration of PolicyController from ACM -&gt; PoCo Hub.</summary>
     public class ConfigManagementPolicyControllerMigration : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _copyTimeRaw;
-
-        private object _copyTime;
-
         /// <summary>Last time this membership spec was copied to PoCo feature.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("copyTime")]
-        public virtual string CopyTimeRaw
-        {
-            get => _copyTimeRaw;
-            set
-            {
-                _copyTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _copyTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CopyTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CopyTimeDateTimeOffset instead.")]
-        public virtual object CopyTime
-        {
-            get => _copyTime;
-            set
-            {
-                _copyTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _copyTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CopyTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CopyTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CopyTimeRaw);
-            set => CopyTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CopyTime { get; set; }
 
         /// <summary>Stage of the migration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stage")]
@@ -6357,42 +6192,9 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastSync")]
         public virtual string LastSync { get; set; }
 
-        private string _lastSyncTimeRaw;
-
-        private object _lastSyncTime;
-
         /// <summary>Timestamp type of when ACM last successfully synced the repo</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastSyncTime")]
-        public virtual string LastSyncTimeRaw
-        {
-            get => _lastSyncTimeRaw;
-            set
-            {
-                _lastSyncTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _lastSyncTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="LastSyncTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastSyncTimeDateTimeOffset instead.")]
-        public virtual object LastSyncTime
-        {
-            get => _lastSyncTime;
-            set
-            {
-                _lastSyncTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _lastSyncTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastSyncTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? LastSyncTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastSyncTimeRaw);
-            set => LastSyncTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object LastSyncTime { get; set; }
 
         /// <summary>Token indicating the state of the repo.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceToken")]
@@ -6493,79 +6295,13 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>Feature represents the settings and status of any Hub Feature.</summary>
     public class Feature : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. When the Feature resource was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _deleteTimeRaw;
-
-        private object _deleteTime;
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. When the Feature resource was deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
-        public virtual string DeleteTimeRaw
-        {
-            get => _deleteTimeRaw;
-            set
-            {
-                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _deleteTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
-        public virtual object DeleteTime
-        {
-            get => _deleteTime;
-            set
-            {
-                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _deleteTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object DeleteTime { get; set; }
 
         /// <summary>Optional. Feature configuration applicable to all memberships of the fleet.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fleetDefaultMemberConfig")]
@@ -6640,42 +6376,9 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual CommonFeatureState State { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>Output only. When the Feature resource was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6726,42 +6429,9 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>The time this status and any related Feature-specific details were updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6770,79 +6440,13 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>Fleet contains the Fleet-wide metadata and configuration.</summary>
     public class Fleet : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. When the Fleet was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _deleteTimeRaw;
-
-        private object _deleteTime;
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. When the Fleet was deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
-        public virtual string DeleteTimeRaw
-        {
-            get => _deleteTimeRaw;
-            set
-            {
-                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _deleteTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
-        public virtual object DeleteTime
-        {
-            get => _deleteTime;
-            set
-            {
-                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _deleteTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object DeleteTime { get; set; }
 
         /// <summary>
         /// Optional. A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
@@ -6875,42 +6479,9 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>Output only. When the Fleet was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7189,10 +6760,6 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("tenant")]
         public virtual string Tenant { get; set; }
 
-        /// <summary>Optional. Claim in the AzureAD ID Token that holds the user details.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userClaim")]
-        public virtual string UserClaim { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7341,45 +6908,12 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodeProviderId")]
         public virtual string NodeProviderId { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>
         /// Output only. The time at which these details were last updated. This update_time is different from the
         /// Membership-level update_time since EndpointDetails are updated internally for API consumers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>Output only. vCPU count as reported by Kubernetes nodes resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vcpuCount")]
@@ -7673,79 +7207,13 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authority")]
         public virtual Authority Authority { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. When the Membership was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _deleteTimeRaw;
-
-        private object _deleteTime;
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. When the Membership was deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
-        public virtual string DeleteTimeRaw
-        {
-            get => _deleteTimeRaw;
-            set
-            {
-                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _deleteTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
-        public virtual object DeleteTime
-        {
-            get => _deleteTime;
-            set
-            {
-                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _deleteTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object DeleteTime { get; set; }
 
         /// <summary>
         /// Output only. Description of this membership, limited to 63 characters. Must match the regex: `a-zA-Z0-9*`
@@ -7770,48 +7238,13 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        private string _lastConnectionTimeRaw;
-
-        private object _lastConnectionTime;
-
         /// <summary>
         /// Output only. For clusters using Connect, the timestamp of the most recent connection established with Google
         /// Cloud. This time is updated every several minutes, not continuously. For clusters that do not use GKE
         /// Connect, or that have never connected successfully, this field will be unset.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastConnectionTime")]
-        public virtual string LastConnectionTimeRaw
-        {
-            get => _lastConnectionTimeRaw;
-            set
-            {
-                _lastConnectionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _lastConnectionTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="LastConnectionTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastConnectionTimeDateTimeOffset instead.")]
-        public virtual object LastConnectionTime
-        {
-            get => _lastConnectionTime;
-            set
-            {
-                _lastConnectionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _lastConnectionTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastConnectionTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? LastConnectionTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastConnectionTimeRaw);
-            set => LastConnectionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object LastConnectionTime { get; set; }
 
         /// <summary>Optional. The monitoring config information for this membership.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("monitoringConfig")]
@@ -7839,42 +7272,9 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uniqueId")]
         public virtual string UniqueId { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>Output only. When the Membership was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7886,79 +7286,13 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// </summary>
     public class MembershipBinding : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. When the membership binding was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _deleteTimeRaw;
-
-        private object _deleteTime;
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. When the membership binding was deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
-        public virtual string DeleteTimeRaw
-        {
-            get => _deleteTimeRaw;
-            set
-            {
-                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _deleteTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
-        public virtual object DeleteTime
-        {
-            get => _deleteTime;
-            set
-            {
-                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _deleteTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object DeleteTime { get; set; }
 
         /// <summary>
         /// Whether the membershipbinding is Fleet-wide; true means that this Membership should be bound to all
@@ -7994,42 +7328,9 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>Output only. When the membership binding was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8215,44 +7516,9 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>**Metering**: Per-Membership Feature State.</summary>
     public class MeteringMembershipState : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _lastMeasurementTimeRaw;
-
-        private object _lastMeasurementTime;
-
         /// <summary>The time stamp of the most recent measurement of the number of vCPUs in the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastMeasurementTime")]
-        public virtual string LastMeasurementTimeRaw
-        {
-            get => _lastMeasurementTimeRaw;
-            set
-            {
-                _lastMeasurementTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _lastMeasurementTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="LastMeasurementTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastMeasurementTimeDateTimeOffset instead.")]
-        public virtual object LastMeasurementTime
-        {
-            get => _lastMeasurementTime;
-            set
-            {
-                _lastMeasurementTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _lastMeasurementTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastMeasurementTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? LastMeasurementTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastMeasurementTimeRaw);
-            set => LastMeasurementTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object LastMeasurementTime { get; set; }
 
         /// <summary>
         /// The vCPUs capacity in the cluster according to the most recent measurement (1/1000 precision).
@@ -8352,79 +7618,13 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>Namespace represents a namespace across the Fleet</summary>
     public class Namespace : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. When the namespace was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _deleteTimeRaw;
-
-        private object _deleteTime;
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. When the namespace was deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
-        public virtual string DeleteTimeRaw
-        {
-            get => _deleteTimeRaw;
-            set
-            {
-                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _deleteTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
-        public virtual object DeleteTime
-        {
-            get => _deleteTime;
-            set
-            {
-                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _deleteTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object DeleteTime { get; set; }
 
         /// <summary>Optional. Labels for this Namespace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
@@ -8451,42 +7651,9 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>Output only. When the namespace was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8591,79 +7758,13 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
         public virtual System.Nullable<bool> CancelRequested { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. The time the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _endTimeRaw;
-
-        private object _endTime;
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. The time the operation finished running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTimeRaw
-        {
-            get => _endTimeRaw;
-            set
-            {
-                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _endTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
-        public virtual object EndTime
-        {
-            get => _endTime;
-            set
-            {
-                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _endTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object EndTime { get; set; }
 
         /// <summary>Output only. Human-readable status of the operation, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
@@ -9044,79 +8145,13 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// <summary>RBACRoleBinding represents a rbacrolebinding across the Fleet</summary>
     public class RBACRoleBinding : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. When the rbacrolebinding was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _deleteTimeRaw;
-
-        private object _deleteTime;
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. When the rbacrolebinding was deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
-        public virtual string DeleteTimeRaw
-        {
-            get => _deleteTimeRaw;
-            set
-            {
-                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _deleteTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
-        public virtual object DeleteTime
-        {
-            get => _deleteTime;
-            set
-            {
-                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _deleteTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object DeleteTime { get; set; }
 
         /// <summary>group is the group, as seen by the kubernetes cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
@@ -9150,42 +8185,9 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>Output only. When the rbacrolebinding was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>
         /// user is the name of the user as seen by the kubernetes cluster, example "alice" or "alice@domain.tld"
@@ -9272,79 +8274,13 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("allMemberships")]
         public virtual System.Nullable<bool> AllMemberships { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. When the scope was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _deleteTimeRaw;
-
-        private object _deleteTime;
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. When the scope was deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
-        public virtual string DeleteTimeRaw
-        {
-            get => _deleteTimeRaw;
-            set
-            {
-                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _deleteTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
-        public virtual object DeleteTime
-        {
-            get => _deleteTime;
-            set
-            {
-                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _deleteTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
-            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object DeleteTime { get; set; }
 
         /// <summary>Optional. Labels for this Scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
@@ -9365,42 +8301,9 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>Output only. When the scope was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

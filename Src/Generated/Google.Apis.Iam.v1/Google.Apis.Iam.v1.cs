@@ -7845,85 +7845,19 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("keySpec")]
         public virtual string KeySpec { get; set; }
 
-        private string _notAfterTimeRaw;
-
-        private object _notAfterTime;
-
         /// <summary>
         /// Output only. Latest timestamp when this key is valid. Attempts to use this key after this time will fail.
         /// Only present if the key data represents a X.509 certificate.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notAfterTime")]
-        public virtual string NotAfterTimeRaw
-        {
-            get => _notAfterTimeRaw;
-            set
-            {
-                _notAfterTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _notAfterTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="NotAfterTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use NotAfterTimeDateTimeOffset instead.")]
-        public virtual object NotAfterTime
-        {
-            get => _notAfterTime;
-            set
-            {
-                _notAfterTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _notAfterTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="NotAfterTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? NotAfterTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(NotAfterTimeRaw);
-            set => NotAfterTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _notBeforeTimeRaw;
-
-        private object _notBeforeTime;
+        public virtual object NotAfterTime { get; set; }
 
         /// <summary>
         /// Output only. Earliest timestamp when this key is valid. Attempts to use this key before this time will fail.
         /// Only present if the key data represents a X.509 certificate.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notBeforeTime")]
-        public virtual string NotBeforeTimeRaw
-        {
-            get => _notBeforeTimeRaw;
-            set
-            {
-                _notBeforeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _notBeforeTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="NotBeforeTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use NotBeforeTimeDateTimeOffset instead.")]
-        public virtual object NotBeforeTime
-        {
-            get => _notBeforeTime;
-            set
-            {
-                _notBeforeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _notBeforeTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="NotBeforeTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? NotBeforeTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(NotBeforeTimeRaw);
-            set => NotBeforeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object NotBeforeTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8573,7 +8507,7 @@ namespace Google.Apis.Iam.v1.Data
     /// not a person. You can use a service account to call Google APIs. To learn more, read the [overview of service
     /// accounts](https://cloud.google.com/iam/help/service-accounts/overview). When you create a service account, you
     /// specify the project ID that owns the service account, as well as a name that must be unique within the project.
-    /// IAM uses these values to create an email address that identifies the service //
+    /// IAM uses these values to create an email address that identifies the service account. //
     /// </summary>
     public class ServiceAccount : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8692,48 +8626,9 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publicKeyData")]
         public virtual string PublicKeyData { get; set; }
 
-        private string _validAfterTimeRaw;
-
-        private object _validAfterTime;
-
         /// <summary>The key can be used after this timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validAfterTime")]
-        public virtual string ValidAfterTimeRaw
-        {
-            get => _validAfterTimeRaw;
-            set
-            {
-                _validAfterTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _validAfterTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="ValidAfterTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ValidAfterTimeDateTimeOffset instead.")]
-        public virtual object ValidAfterTime
-        {
-            get => _validAfterTime;
-            set
-            {
-                _validAfterTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _validAfterTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ValidAfterTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ValidAfterTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ValidAfterTimeRaw);
-            set => ValidAfterTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _validBeforeTimeRaw;
-
-        private object _validBeforeTime;
+        public virtual object ValidAfterTime { get; set; }
 
         /// <summary>
         /// The key can be used before this timestamp. For system-managed key pairs, this timestamp is the end time for
@@ -8741,38 +8636,7 @@ namespace Google.Apis.Iam.v1.Data
         /// this time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validBeforeTime")]
-        public virtual string ValidBeforeTimeRaw
-        {
-            get => _validBeforeTimeRaw;
-            set
-            {
-                _validBeforeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _validBeforeTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="ValidBeforeTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ValidBeforeTimeDateTimeOffset instead.")]
-        public virtual object ValidBeforeTime
-        {
-            get => _validBeforeTime;
-            set
-            {
-                _validBeforeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _validBeforeTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ValidBeforeTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ValidBeforeTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ValidBeforeTimeRaw);
-            set => ValidBeforeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object ValidBeforeTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9054,44 +8918,11 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        private string _expireTimeRaw;
-
-        private object _expireTime;
-
         /// <summary>
         /// Output only. Time after which the workforce pool will be permanently purged and cannot be recovered.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual string ExpireTimeRaw
-        {
-            get => _expireTimeRaw;
-            set
-            {
-                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _expireTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
-        public virtual object ExpireTime
-        {
-            get => _expireTime;
-            set
-            {
-                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _expireTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object ExpireTime { get; set; }
 
         /// <summary>
         /// Output only. The resource name of the pool. Format:
@@ -9189,44 +9020,11 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        private string _expireTimeRaw;
-
-        private object _expireTime;
-
         /// <summary>
         /// Output only. Time after which the workload pool provider will be permanently purged and cannot be recovered.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual string ExpireTimeRaw
-        {
-            get => _expireTimeRaw;
-            set
-            {
-                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _expireTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
-        public virtual object ExpireTime
-        {
-            get => _expireTime;
-            set
-            {
-                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _expireTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object ExpireTime { get; set; }
 
         /// <summary>
         /// Output only. The resource name of the provider. Format:
@@ -9258,45 +9056,12 @@ namespace Google.Apis.Iam.v1.Data
     /// </summary>
     public class WorkforcePoolProviderKey : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _expireTimeRaw;
-
-        private object _expireTime;
-
         /// <summary>
         /// Output only. The time after which the key will be permanently deleted and cannot be recovered. Note that the
         /// key may get purged before this time if the total limit of keys per provider is exceeded.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual string ExpireTimeRaw
-        {
-            get => _expireTimeRaw;
-            set
-            {
-                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _expireTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
-        public virtual object ExpireTime
-        {
-            get => _expireTime;
-            set
-            {
-                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _expireTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object ExpireTime { get; set; }
 
         /// <summary>Immutable. Public half of the asymmetric key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyData")]
@@ -9339,44 +9104,11 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        private string _expireTimeRaw;
-
-        private object _expireTime;
-
         /// <summary>
         /// Output only. Time after which the workload identity pool will be permanently purged and cannot be recovered.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual string ExpireTimeRaw
-        {
-            get => _expireTimeRaw;
-            set
-            {
-                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _expireTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
-        public virtual object ExpireTime
-        {
-            get => _expireTime;
-            set
-            {
-                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _expireTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object ExpireTime { get; set; }
 
         /// <summary>Output only. The resource name of the pool.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -9467,45 +9199,12 @@ namespace Google.Apis.Iam.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        private string _expireTimeRaw;
-
-        private object _expireTime;
-
         /// <summary>
         /// Output only. Time after which the workload identity pool provider will be permanently purged and cannot be
         /// recovered.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual string ExpireTimeRaw
-        {
-            get => _expireTimeRaw;
-            set
-            {
-                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _expireTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
-        public virtual object ExpireTime
-        {
-            get => _expireTime;
-            set
-            {
-                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _expireTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object ExpireTime { get; set; }
 
         /// <summary>Output only. The resource name of the provider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -9534,45 +9233,12 @@ namespace Google.Apis.Iam.v1.Data
     /// </summary>
     public class WorkloadIdentityPoolProviderKey : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _expireTimeRaw;
-
-        private object _expireTime;
-
         /// <summary>
         /// Output only. Time after which the key will be permanently purged and cannot be recovered. Note that the key
         /// may get purged before this timestamp if the total limit of keys per provider is crossed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual string ExpireTimeRaw
-        {
-            get => _expireTimeRaw;
-            set
-            {
-                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _expireTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
-        public virtual object ExpireTime
-        {
-            get => _expireTime;
-            set
-            {
-                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _expireTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
-            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object ExpireTime { get; set; }
 
         /// <summary>Immutable. Public half of the asymmetric key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keyData")]

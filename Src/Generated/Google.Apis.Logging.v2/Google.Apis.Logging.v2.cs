@@ -2779,9 +2779,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Creates a sink that exports specified log entries to a destination. The export of newly-ingested log
-            /// entries begins immediately, unless the sink's writer_identity is not permitted to write to the
-            /// destination. A sink can export log entries only from the resource owning the sink.
+            /// Creates a sink that exports specified log entries to a destination. The export begins upon ingress,
+            /// unless the sink's writer_identity is not permitted to write to the destination. A sink can export log
+            /// entries only from the resource owning the sink.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -2795,9 +2795,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Creates a sink that exports specified log entries to a destination. The export of newly-ingested log
-            /// entries begins immediately, unless the sink's writer_identity is not permitted to write to the
-            /// destination. A sink can export log entries only from the resource owning the sink.
+            /// Creates a sink that exports specified log entries to a destination. The export begins upon ingress,
+            /// unless the sink's writer_identity is not permitted to write to the destination. A sink can export log
+            /// entries only from the resource owning the sink.
             /// </summary>
             public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
@@ -3578,7 +3578,7 @@ namespace Google.Apis.Logging.v2
         }
 
         /// <summary>
-        /// Streaming read of log entries as they are ingested. Until the stream is terminated, it will continue reading
+        /// Streaming read of log entries as they are received. Until the stream is terminated, it will continue reading
         /// logs.
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -3588,7 +3588,7 @@ namespace Google.Apis.Logging.v2
         }
 
         /// <summary>
-        /// Streaming read of log entries as they are ingested. Until the stream is terminated, it will continue reading
+        /// Streaming read of log entries as they are received. Until the stream is terminated, it will continue reading
         /// logs.
         /// </summary>
         public class TailRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.TailLogEntriesResponse>
@@ -6483,9 +6483,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Creates a sink that exports specified log entries to a destination. The export of newly-ingested log
-            /// entries begins immediately, unless the sink's writer_identity is not permitted to write to the
-            /// destination. A sink can export log entries only from the resource owning the sink.
+            /// Creates a sink that exports specified log entries to a destination. The export begins upon ingress,
+            /// unless the sink's writer_identity is not permitted to write to the destination. A sink can export log
+            /// entries only from the resource owning the sink.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -6499,9 +6499,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Creates a sink that exports specified log entries to a destination. The export of newly-ingested log
-            /// entries begins immediately, unless the sink's writer_identity is not permitted to write to the
-            /// destination. A sink can export log entries only from the resource owning the sink.
+            /// Creates a sink that exports specified log entries to a destination. The export begins upon ingress,
+            /// unless the sink's writer_identity is not permitted to write to the destination. A sink can export log
+            /// entries only from the resource owning the sink.
             /// </summary>
             public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
@@ -11699,9 +11699,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Creates a sink that exports specified log entries to a destination. The export of newly-ingested log
-            /// entries begins immediately, unless the sink's writer_identity is not permitted to write to the
-            /// destination. A sink can export log entries only from the resource owning the sink.
+            /// Creates a sink that exports specified log entries to a destination. The export begins upon ingress,
+            /// unless the sink's writer_identity is not permitted to write to the destination. A sink can export log
+            /// entries only from the resource owning the sink.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -11715,9 +11715,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Creates a sink that exports specified log entries to a destination. The export of newly-ingested log
-            /// entries begins immediately, unless the sink's writer_identity is not permitted to write to the
-            /// destination. A sink can export log entries only from the resource owning the sink.
+            /// Creates a sink that exports specified log entries to a destination. The export begins upon ingress,
+            /// unless the sink's writer_identity is not permitted to write to the destination. A sink can export log
+            /// entries only from the resource owning the sink.
             /// </summary>
             public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
@@ -15356,9 +15356,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Creates a sink that exports specified log entries to a destination. The export of newly-ingested log
-            /// entries begins immediately, unless the sink's writer_identity is not permitted to write to the
-            /// destination. A sink can export log entries only from the resource owning the sink.
+            /// Creates a sink that exports specified log entries to a destination. The export begins upon ingress,
+            /// unless the sink's writer_identity is not permitted to write to the destination. A sink can export log
+            /// entries only from the resource owning the sink.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -15372,9 +15372,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Creates a sink that exports specified log entries to a destination. The export of newly-ingested log
-            /// entries begins immediately, unless the sink's writer_identity is not permitted to write to the
-            /// destination. A sink can export log entries only from the resource owning the sink.
+            /// Creates a sink that exports specified log entries to a destination. The export begins upon ingress,
+            /// unless the sink's writer_identity is not permitted to write to the destination. A sink can export log
+            /// entries only from the resource owning the sink.
             /// </summary>
             public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
@@ -16069,9 +16069,9 @@ namespace Google.Apis.Logging.v2
         }
 
         /// <summary>
-        /// Creates a sink that exports specified log entries to a destination. The export of newly-ingested log entries
-        /// begins immediately, unless the sink's writer_identity is not permitted to write to the destination. A sink
-        /// can export log entries only from the resource owning the sink.
+        /// Creates a sink that exports specified log entries to a destination. The export begins upon ingress, unless
+        /// the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only
+        /// from the resource owning the sink.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
@@ -16085,9 +16085,9 @@ namespace Google.Apis.Logging.v2
         }
 
         /// <summary>
-        /// Creates a sink that exports specified log entries to a destination. The export of newly-ingested log entries
-        /// begins immediately, unless the sink's writer_identity is not permitted to write to the destination. A sink
-        /// can export log entries only from the resource owning the sink.
+        /// Creates a sink that exports specified log entries to a destination. The export begins upon ingress, unless
+        /// the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only
+        /// from the resource owning the sink.
         /// </summary>
         public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
         {
@@ -16870,7 +16870,7 @@ namespace Google.Apis.Logging.v2.Data
         public virtual System.Nullable<bool> UsePartitionedTables { get; set; }
 
         /// <summary>
-        /// Output only. True if new timestamp column based partitioning is in use, false if legacy ingestion-time
+        /// Output only. True if new timestamp column based partitioning is in use, false if legacy ingress-time
         /// partitioning is in use.All new sinks will have this field set true and will use timestamp column based
         /// partitioning. If use_partitioned_tables is false, this value has no meaning and will be false. Legacy sinks
         /// using partitioned tables will have this field set to false.
@@ -16889,79 +16889,13 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createBucketRequest")]
         public virtual CreateBucketRequest CreateBucketRequest { get; set; }
 
-        private string _endTimeRaw;
-
-        private object _endTime;
-
         /// <summary>The end time of an operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTimeRaw
-        {
-            get => _endTimeRaw;
-            set
-            {
-                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _endTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
-        public virtual object EndTime
-        {
-            get => _endTime;
-            set
-            {
-                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _endTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _startTimeRaw;
-
-        private object _startTime;
+        public virtual object EndTime { get; set; }
 
         /// <summary>The create time of an operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTimeRaw
-        {
-            get => _startTimeRaw;
-            set
-            {
-                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _startTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
-        public virtual object StartTime
-        {
-            get => _startTime;
-            set
-            {
-                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _startTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object StartTime { get; set; }
 
         /// <summary>State of an operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -17073,42 +17007,9 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cancellationRequested")]
         public virtual System.Nullable<bool> CancellationRequested { get; set; }
 
-        private string _endTimeRaw;
-
-        private object _endTime;
-
         /// <summary>The end time of an operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTimeRaw
-        {
-            get => _endTimeRaw;
-            set
-            {
-                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _endTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
-        public virtual object EndTime
-        {
-            get => _endTime;
-            set
-            {
-                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _endTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object EndTime { get; set; }
 
         /// <summary>Estimated progress of the operation (0 - 100%).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("progress")]
@@ -17118,42 +17019,9 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("request")]
         public virtual CopyLogEntriesRequest Request { get; set; }
 
-        private string _startTimeRaw;
-
-        private object _startTime;
-
         /// <summary>The create time of an operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTimeRaw
-        {
-            get => _startTimeRaw;
-            set
-            {
-                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _startTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
-        public virtual object StartTime
-        {
-            get => _startTime;
-            set
-            {
-                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _startTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object StartTime { get; set; }
 
         /// <summary>State of an operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -17432,45 +17300,12 @@ namespace Google.Apis.Logging.v2.Data
     /// <summary>Configuration for an indexed field.</summary>
     public class IndexConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>
         /// Output only. The timestamp when the index was last modified.This is used to return the timestamp, and will
         /// be ignored if supplied during update.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>
         /// Required. The LogEntry field path to index.Note that some paths are automatically indexed, and other paths
@@ -17543,42 +17378,9 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryDataset")]
         public virtual BigQueryDataset BigqueryDataset { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. The creation timestamp of the link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Describes this link.The maximum length of the description is 8000 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -17615,79 +17417,13 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deleteLinkRequest")]
         public virtual DeleteLinkRequest DeleteLinkRequest { get; set; }
 
-        private string _endTimeRaw;
-
-        private object _endTime;
-
         /// <summary>The end time of an operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTimeRaw
-        {
-            get => _endTimeRaw;
-            set
-            {
-                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _endTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
-        public virtual object EndTime
-        {
-            get => _endTime;
-            set
-            {
-                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _endTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _startTimeRaw;
-
-        private object _startTime;
+        public virtual object EndTime { get; set; }
 
         /// <summary>The start time of an operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTimeRaw
-        {
-            get => _startTimeRaw;
-            set
-            {
-                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _startTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
-        public virtual object StartTime
-        {
-            get => _startTime;
-            set
-            {
-                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _startTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object StartTime { get; set; }
 
         /// <summary>State of an operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -18020,44 +17756,11 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cmekSettings")]
         public virtual CmekSettings CmekSettings { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>
         /// Output only. The creation timestamp of the bucket. This is not set for any of the default buckets.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Describes this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -18105,42 +17808,9 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("retentionDays")]
         public virtual System.Nullable<int> RetentionDays { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>Output only. The last update timestamp of the bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18192,7 +17862,7 @@ namespace Google.Apis.Logging.v2.Data
         /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity".[LOG_ID] must be less than
         /// 512 characters long and can only include the following characters: upper and lower case alphanumeric
         /// characters, forward-slash, underscore, hyphen, and period.For backward compatibility, if log_name begins
-        /// with a forward-slash, such as /projects/..., then the log entry is ingested as usual, but the forward-slash
+        /// with a forward-slash, such as /projects/..., then the log entry is processed as usual, but the forward-slash
         /// is removed. Listing the log entry will not show the leading slash and filtering for a log name with a
         /// leading slash will never return any results.
         /// </summary>
@@ -18218,44 +17888,9 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("protoPayload")]
         public virtual System.Collections.Generic.IDictionary<string, object> ProtoPayload { get; set; }
 
-        private string _receiveTimestampRaw;
-
-        private object _receiveTimestamp;
-
         /// <summary>Output only. The time the log entry was received by Logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("receiveTimestamp")]
-        public virtual string ReceiveTimestampRaw
-        {
-            get => _receiveTimestampRaw;
-            set
-            {
-                _receiveTimestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _receiveTimestampRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="ReceiveTimestampRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReceiveTimestampDateTimeOffset instead.")]
-        public virtual object ReceiveTimestamp
-        {
-            get => _receiveTimestamp;
-            set
-            {
-                _receiveTimestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _receiveTimestamp = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ReceiveTimestampRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ReceiveTimestampDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReceiveTimestampRaw);
-            set => ReceiveTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object ReceiveTimestamp { get; set; }
 
         /// <summary>
         /// Required. The monitored resource that produced this log entry.Example: a log entry that reports a database
@@ -18302,10 +17937,6 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textPayload")]
         public virtual string TextPayload { get; set; }
 
-        private string _timestampRaw;
-
-        private object _timestamp;
-
         /// <summary>
         /// Optional. The time the event described by the log entry occurred. This time is used to compute the log
         /// entry's age and to enforce the logs retention period. If this field is omitted in a new log entry, then
@@ -18313,39 +17944,10 @@ namespace Google.Apis.Logging.v2.Data
         /// fractional seconds might be omitted when the timestamp is displayed.Incoming log entries must have
         /// timestamps that don't exceed the logs retention period
         /// (https://cloud.google.com/logging/quotas#logs_retention_periods) in the past, and that don't exceed 24 hours
-        /// in the future. Log entries outside those time boundaries aren't ingested by Logging.
+        /// in the future. Log entries outside those time boundaries are rejected by Logging.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
-        public virtual string TimestampRaw
-        {
-            get => _timestampRaw;
-            set
-            {
-                _timestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _timestampRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="TimestampRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimestampDateTimeOffset instead.")]
-        public virtual object Timestamp
-        {
-            get => _timestamp;
-            set
-            {
-                _timestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _timestamp = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimestampRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? TimestampDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimestampRaw);
-            set => TimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object Timestamp { get; set; }
 
         /// <summary>
         /// Optional. The REST resource name of the trace being written to Cloud Trace (https://cloud.google.com/trace)
@@ -18437,44 +18039,11 @@ namespace Google.Apis.Logging.v2.Data
     /// </summary>
     public class LogExclusion : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>
         /// Output only. The creation timestamp of the exclusion.This field may not be present for older exclusions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Optional. A description of this exclusion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -18505,44 +18074,11 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>
         /// Output only. The last update timestamp of the exclusion.This field may not be present for older exclusions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18563,42 +18099,9 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceLocation")]
         public virtual SourceLocation SourceLocation { get; set; }
 
-        private string _timeRaw;
-
-        private object _time;
-
         /// <summary>Approximate time when this log entry was made.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("time")]
-        public virtual string TimeRaw
-        {
-            get => _timeRaw;
-            set
-            {
-                _time = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _timeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="TimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimeDateTimeOffset instead.")]
-        public virtual object Time
-        {
-            get => _time;
-            set
-            {
-                _timeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _time = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? TimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeRaw);
-            set => TimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object Time { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -18628,44 +18131,11 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bucketOptions")]
         public virtual BucketOptions BucketOptions { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>
         /// Output only. The creation timestamp of the metric.This field may not be present for older metrics.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>
         /// Optional. A description of this metric, which is used in documentation. The maximum length of the
@@ -18727,44 +18197,11 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>
         /// Output only. The last update timestamp of the metric.This field may not be present for older metrics.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>
         /// Optional. A value_extractor is required when using a distribution logs-based metric to extract the values to
@@ -18803,44 +18240,11 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bigqueryOptions")]
         public virtual BigQueryOptions BigqueryOptions { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>
         /// Output only. The creation timestamp of the sink.This field may not be present for older sinks.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>
         /// Optional. A description of this sink.The maximum length of the description is 8000 characters.
@@ -18852,9 +18256,11 @@ namespace Google.Apis.Logging.v2.Data
         /// Required. The export destination: "storage.googleapis.com/[GCS_BUCKET]"
         /// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
         /// "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
-        /// "logging.googleapis.com/projects/[PROJECT_ID]" The sink's writer_identity, set when the sink is created,
-        /// must have permission to write to the destination or else the log entries are not exported. For more
-        /// information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
+        /// "logging.googleapis.com/projects/[PROJECT_ID]"
+        /// "logging.googleapis.com/projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" The sink's
+        /// writer_identity, set when the sink is created, must have permission to write to the destination or else the
+        /// log entries are not exported. For more information, see Exporting Logs with Sinks
+        /// (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual string Destination { get; set; }
@@ -18906,44 +18312,11 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outputVersionFormat")]
         public virtual string OutputVersionFormat { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>
         /// Output only. The last update timestamp of the sink.This field may not be present for older sinks.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>
         /// Output only. An IAM identity—a service account or group—under which Cloud Logging writes the exported log
@@ -18994,42 +18367,9 @@ namespace Google.Apis.Logging.v2.Data
     /// <summary>Describes a view over log entries in a bucket.</summary>
     public class LogView : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. The creation timestamp of the view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Describes this view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -19051,42 +18391,9 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>Output only. The last update timestamp of the view.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -19396,42 +18703,9 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cost")]
         public virtual System.Nullable<double> Cost { get; set; }
 
-        private string _endTimeRaw;
-
-        private object _endTime;
-
         /// <summary>Time when the request finished.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTimeRaw
-        {
-            get => _endTimeRaw;
-            set
-            {
-                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _endTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
-        public virtual object EndTime
-        {
-            get => _endTime;
-            set
-            {
-                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _endTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object EndTime { get; set; }
 
         /// <summary>Whether this request is finished or active.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("finished")]
@@ -19534,42 +18808,9 @@ namespace Google.Apis.Logging.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("spanId")]
         public virtual string SpanId { get; set; }
 
-        private string _startTimeRaw;
-
-        private object _startTime;
-
         /// <summary>Time when the request started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTimeRaw
-        {
-            get => _startTimeRaw;
-            set
-            {
-                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _startTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
-        public virtual object StartTime
-        {
-            get => _startTime;
-            set
-            {
-                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _startTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object StartTime { get; set; }
 
         /// <summary>HTTP response status code. Example: 200, 404.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
@@ -19618,7 +18859,7 @@ namespace Google.Apis.Logging.v2.Data
     {
         /// <summary>
         /// Optional. If set to true, the _Default sink in newly created projects and folders will created in a disabled
-        /// state. This can be used to automatically disable log ingestion if there is already an aggregated sink
+        /// state. This can be used to automatically disable log storage if there is already an aggregated sink
         /// configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableDefaultSink")]

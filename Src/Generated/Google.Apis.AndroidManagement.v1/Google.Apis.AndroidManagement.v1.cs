@@ -2571,42 +2571,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("seinfo")]
         public virtual string Seinfo { get; set; }
 
-        private string _startTimeRaw;
-
-        private object _startTime;
-
         /// <summary>Process start time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTimeRaw
-        {
-            get => _startTimeRaw;
-            set
-            {
-                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _startTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
-        public virtual object StartTime
-        {
-            get => _startTime;
-            set
-            {
-                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _startTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object StartTime { get; set; }
 
         /// <summary>UID of the package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
@@ -2776,42 +2743,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>Output only. The approximate time (within 7 days) the app was last published.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2820,42 +2754,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>An app-related event.</summary>
     public class ApplicationEvent : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>The creation time of the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>App event type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
@@ -3089,42 +2990,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("device")]
         public virtual string Device { get; set; }
 
-        private string _retrievalTimeRaw;
-
-        private object _retrievalTime;
-
         /// <summary>The device timestamp when the batch of events were collected from the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retrievalTime")]
-        public virtual string RetrievalTimeRaw
-        {
-            get => _retrievalTimeRaw;
-            set
-            {
-                _retrievalTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _retrievalTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="RetrievalTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RetrievalTimeDateTimeOffset instead.")]
-        public virtual object RetrievalTime
-        {
-            get => _retrievalTime;
-            set
-            {
-                _retrievalTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _retrievalTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="RetrievalTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? RetrievalTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RetrievalTimeRaw);
-            set => RetrievalTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object RetrievalTime { get; set; }
 
         /// <summary>
         /// The list of UsageLogEvent that were reported by the device, sorted chronologically by the event time.
@@ -3314,44 +3182,11 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clearAppsDataStatus")]
         public virtual ClearAppsDataStatus ClearAppsDataStatus { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>
         /// The timestamp at which the command was created. The timestamp is automatically generated by the server.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>
         /// The duration for which the command is valid. The command will expire if not executed by the device during
@@ -3669,44 +3504,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displays")]
         public virtual System.Collections.Generic.IList<Display> Displays { get; set; }
 
-        private string _enrollmentTimeRaw;
-
-        private object _enrollmentTime;
-
         /// <summary>The time of device enrollment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enrollmentTime")]
-        public virtual string EnrollmentTimeRaw
-        {
-            get => _enrollmentTimeRaw;
-            set
-            {
-                _enrollmentTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _enrollmentTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="EnrollmentTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EnrollmentTimeDateTimeOffset instead.")]
-        public virtual object EnrollmentTime
-        {
-            get => _enrollmentTime;
-            set
-            {
-                _enrollmentTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _enrollmentTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="EnrollmentTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? EnrollmentTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EnrollmentTimeRaw);
-            set => EnrollmentTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object EnrollmentTime { get; set; }
 
         /// <summary>
         /// If the device was enrolled with an enrollment token with additional data provided, this field contains that
@@ -3732,124 +3532,17 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hardwareStatusSamples")]
         public virtual System.Collections.Generic.IList<HardwareStatus> HardwareStatusSamples { get; set; }
 
-        private string _lastPolicyComplianceReportTimeRaw;
-
-        private object _lastPolicyComplianceReportTime;
-
         /// <summary>Deprecated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastPolicyComplianceReportTime")]
-        public virtual string LastPolicyComplianceReportTimeRaw
-        {
-            get => _lastPolicyComplianceReportTimeRaw;
-            set
-            {
-                _lastPolicyComplianceReportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _lastPolicyComplianceReportTimeRaw = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="object"/> representation of <see cref="LastPolicyComplianceReportTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastPolicyComplianceReportTimeDateTimeOffset instead.")]
-        public virtual object LastPolicyComplianceReportTime
-        {
-            get => _lastPolicyComplianceReportTime;
-            set
-            {
-                _lastPolicyComplianceReportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _lastPolicyComplianceReportTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastPolicyComplianceReportTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? LastPolicyComplianceReportTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastPolicyComplianceReportTimeRaw);
-            set => LastPolicyComplianceReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _lastPolicySyncTimeRaw;
-
-        private object _lastPolicySyncTime;
+        public virtual object LastPolicyComplianceReportTime { get; set; }
 
         /// <summary>The last time the device fetched its policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastPolicySyncTime")]
-        public virtual string LastPolicySyncTimeRaw
-        {
-            get => _lastPolicySyncTimeRaw;
-            set
-            {
-                _lastPolicySyncTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _lastPolicySyncTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="LastPolicySyncTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastPolicySyncTimeDateTimeOffset instead.")]
-        public virtual object LastPolicySyncTime
-        {
-            get => _lastPolicySyncTime;
-            set
-            {
-                _lastPolicySyncTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _lastPolicySyncTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastPolicySyncTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? LastPolicySyncTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastPolicySyncTimeRaw);
-            set => LastPolicySyncTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _lastStatusReportTimeRaw;
-
-        private object _lastStatusReportTime;
+        public virtual object LastPolicySyncTime { get; set; }
 
         /// <summary>The last time the device sent a status report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastStatusReportTime")]
-        public virtual string LastStatusReportTimeRaw
-        {
-            get => _lastStatusReportTimeRaw;
-            set
-            {
-                _lastStatusReportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _lastStatusReportTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="LastStatusReportTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastStatusReportTimeDateTimeOffset instead.")]
-        public virtual object LastStatusReportTime
-        {
-            get => _lastStatusReportTime;
-            set
-            {
-                _lastStatusReportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _lastStatusReportTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastStatusReportTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? LastStatusReportTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastStatusReportTimeRaw);
-            set => LastStatusReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object LastStatusReportTime { get; set; }
 
         /// <summary>
         /// The type of management mode Android Device Policy takes on the device. This influences which policy settings
@@ -3995,6 +3688,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>Controls for device radio settings.</summary>
     public class DeviceRadioState : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Controls whether airplane mode can be toggled by the user or not</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("airplaneModeState")]
+        public virtual string AirplaneModeState { get; set; }
+
         /// <summary>Controls current state of Wi-Fi and if user can change its state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wifiState")]
         public virtual string WifiState { get; set; }
@@ -4151,44 +3848,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("duration")]
         public virtual object Duration { get; set; }
 
-        private string _expirationTimestampRaw;
-
-        private object _expirationTimestamp;
-
         /// <summary>The expiration time of the token. This is a read-only field generated by the server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTimestamp")]
-        public virtual string ExpirationTimestampRaw
-        {
-            get => _expirationTimestampRaw;
-            set
-            {
-                _expirationTimestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _expirationTimestampRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="ExpirationTimestampRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpirationTimestampDateTimeOffset instead.")]
-        public virtual object ExpirationTimestamp
-        {
-            get => _expirationTimestamp;
-            set
-            {
-                _expirationTimestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _expirationTimestamp = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpirationTimestampRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ExpirationTimestampDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpirationTimestampRaw);
-            set => ExpirationTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object ExpirationTimestamp { get; set; }
 
         /// <summary>
         /// The name of the enrollment token, which is generated by the server during creation, in the form
@@ -4515,42 +4177,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cpuUsages")]
         public virtual System.Collections.Generic.IList<System.Nullable<float>> CpuUsages { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>The time the measurements were taken.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>
         /// Fan speeds in RPM for each fan on the device. Empty array means that there are no fans or fan speed is not
@@ -4669,42 +4298,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>Keyed app state reported by the app.</summary>
     public class KeyedAppState : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>The creation time of the app state on the device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>
         /// Optionally, a machine-readable value to be read by the EMM. For example, setting values that the admin can
@@ -4720,44 +4316,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("key")]
         public virtual string Key { get; set; }
 
-        private string _lastUpdateTimeRaw;
-
-        private object _lastUpdateTime;
-
         /// <summary>The time the app state was most recently updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTime")]
-        public virtual string LastUpdateTimeRaw
-        {
-            get => _lastUpdateTimeRaw;
-            set
-            {
-                _lastUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _lastUpdateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="LastUpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastUpdateTimeDateTimeOffset instead.")]
-        public virtual object LastUpdateTime
-        {
-            get => _lastUpdateTime;
-            set
-            {
-                _lastUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _lastUpdateTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastUpdateTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? LastUpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdateTimeRaw);
-            set => LastUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object LastUpdateTime { get; set; }
 
         /// <summary>
         /// Optionally, a free-form message string to explain the app state. If the state was triggered by a particular
@@ -5083,42 +4644,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("byteCount")]
         public virtual System.Nullable<long> ByteCount { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>The creation time of the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Event type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
@@ -6153,42 +5681,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("batteryLevel")]
         public virtual System.Nullable<float> BatteryLevel { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>The creation time of the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Event type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
@@ -6401,44 +5896,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("androidBuildNumber")]
         public virtual string AndroidBuildNumber { get; set; }
 
-        private string _androidBuildTimeRaw;
-
-        private object _androidBuildTime;
-
         /// <summary>Build time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidBuildTime")]
-        public virtual string AndroidBuildTimeRaw
-        {
-            get => _androidBuildTimeRaw;
-            set
-            {
-                _androidBuildTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _androidBuildTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="AndroidBuildTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use AndroidBuildTimeDateTimeOffset instead.")]
-        public virtual object AndroidBuildTime
-        {
-            get => _androidBuildTime;
-            set
-            {
-                _androidBuildTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _androidBuildTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="AndroidBuildTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? AndroidBuildTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(AndroidBuildTimeRaw);
-            set => AndroidBuildTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object AndroidBuildTime { get; set; }
 
         /// <summary>The Android Device Policy app version code.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("androidDevicePolicyVersionCode")]
@@ -6632,48 +6092,13 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>Information about a potential pending system update.</summary>
     public class SystemUpdateInfo : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _updateReceivedTimeRaw;
-
-        private object _updateReceivedTime;
-
         /// <summary>
         /// The time when the update was first available. A zero value indicates that this field is not set. This field
         /// is set only if an update is available (that is, updateStatus is neither UPDATE_STATUS_UNKNOWN nor
         /// UP_TO_DATE).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateReceivedTime")]
-        public virtual string UpdateReceivedTimeRaw
-        {
-            get => _updateReceivedTimeRaw;
-            set
-            {
-                _updateReceivedTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateReceivedTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateReceivedTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateReceivedTimeDateTimeOffset instead.")]
-        public virtual object UpdateReceivedTime
-        {
-            get => _updateReceivedTime;
-            set
-            {
-                _updateReceivedTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateReceivedTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateReceivedTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateReceivedTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateReceivedTimeRaw);
-            set => UpdateReceivedTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateReceivedTime { get; set; }
 
         /// <summary>The status of an update: whether an update exists and what type it is.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateStatus")]
@@ -6800,42 +6225,9 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]
         public virtual System.Nullable<long> EventId { get; set; }
 
-        private string _eventTimeRaw;
-
-        private object _eventTime;
-
         /// <summary>Device timestamp when the event was logged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
-        public virtual string EventTimeRaw
-        {
-            get => _eventTimeRaw;
-            set
-            {
-                _eventTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _eventTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="EventTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EventTimeDateTimeOffset instead.")]
-        public virtual object EventTime
-        {
-            get => _eventTime;
-            set
-            {
-                _eventTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _eventTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EventTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? EventTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
-            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object EventTime { get; set; }
 
         /// <summary>
         /// The particular usage log event type that was reported on the device. Use this to determine which event field

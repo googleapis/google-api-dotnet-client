@@ -4382,47 +4382,12 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
     /// <summary>An entry for an Access Control list.</summary>
     public class AclEntry : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _expirationTimeRaw;
-
-        private object _expirationTime;
-
         /// <summary>
         /// The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format,
         /// for example `2012-11-15T16:19:00.094Z`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
-        public virtual string ExpirationTimeRaw
-        {
-            get => _expirationTimeRaw;
-            set
-            {
-                _expirationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _expirationTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="ExpirationTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpirationTimeDateTimeOffset instead.")]
-        public virtual object ExpirationTime
-        {
-            get => _expirationTime;
-            set
-            {
-                _expirationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _expirationTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpirationTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ExpirationTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpirationTimeRaw);
-            set => ExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object ExpirationTime { get; set; }
 
         /// <summary>This is always `sql#aclEntry`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -4587,85 +4552,19 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskEncryptionStatus")]
         public virtual DiskEncryptionStatus DiskEncryptionStatus { get; set; }
 
-        private string _endTimeRaw;
-
-        private object _endTime;
-
         /// <summary>
         /// The time the backup operation completed in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339)
         /// format, for example `2012-11-15T16:19:00.094Z`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTimeRaw
-        {
-            get => _endTimeRaw;
-            set
-            {
-                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _endTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
-        public virtual object EndTime
-        {
-            get => _endTime;
-            set
-            {
-                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _endTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _enqueuedTimeRaw;
-
-        private object _enqueuedTime;
+        public virtual object EndTime { get; set; }
 
         /// <summary>
         /// The time the run was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for
         /// example `2012-11-15T16:19:00.094Z`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enqueuedTime")]
-        public virtual string EnqueuedTimeRaw
-        {
-            get => _enqueuedTimeRaw;
-            set
-            {
-                _enqueuedTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _enqueuedTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="EnqueuedTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EnqueuedTimeDateTimeOffset instead.")]
-        public virtual object EnqueuedTime
-        {
-            get => _enqueuedTime;
-            set
-            {
-                _enqueuedTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _enqueuedTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EnqueuedTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? EnqueuedTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EnqueuedTimeRaw);
-            set => EnqueuedTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object EnqueuedTime { get; set; }
 
         /// <summary>
         /// Information about why the backup operation failed. This is only present if the run has the FAILED status.
@@ -4693,45 +4592,12 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
 
-        private string _startTimeRaw;
-
-        private object _startTime;
-
         /// <summary>
         /// The time the backup operation actually started in UTC timezone in [RFC
         /// 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTimeRaw
-        {
-            get => _startTimeRaw;
-            set
-            {
-                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _startTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
-        public virtual object StartTime
-        {
-            get => _startTime;
-            set
-            {
-                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _startTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object StartTime { get; set; }
 
         /// <summary>The status of this run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
@@ -4751,47 +4617,12 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
-        private string _windowStartTimeRaw;
-
-        private object _windowStartTime;
-
         /// <summary>
         /// The start time of the backup window during which this the backup was attempted in [RFC
         /// 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("windowStartTime")]
-        public virtual string WindowStartTimeRaw
-        {
-            get => _windowStartTimeRaw;
-            set
-            {
-                _windowStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _windowStartTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="WindowStartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use WindowStartTimeDateTimeOffset instead.")]
-        public virtual object WindowStartTime
-        {
-            get => _windowStartTime;
-            set
-            {
-                _windowStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _windowStartTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="WindowStartTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? WindowStartTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(WindowStartTimeRaw);
-            set => WindowStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object WindowStartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4876,42 +4707,9 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pitrTimestampMs")]
         public virtual System.Nullable<long> PitrTimestampMs { get; set; }
 
-        private string _pointInTimeRaw;
-
-        private object _pointInTime;
-
         /// <summary>Timestamp, if specified, identifies the time to which the source instance is cloned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pointInTime")]
-        public virtual string PointInTimeRaw
-        {
-            get => _pointInTimeRaw;
-            set
-            {
-                _pointInTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _pointInTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="PointInTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PointInTimeDateTimeOffset instead.")]
-        public virtual object PointInTime
-        {
-            get => _pointInTime;
-            set
-            {
-                _pointInTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _pointInTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PointInTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? PointInTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PointInTimeRaw);
-            set => PointInTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object PointInTime { get; set; }
 
         /// <summary>
         /// Optional. (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no
@@ -4956,6 +4754,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>This is always `sql#connectSettings`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>Whether PSC connectivity is enabled for this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscEnabled")]
+        public virtual System.Nullable<bool> PscEnabled { get; set; }
 
         /// <summary>
         /// The cloud region for the instance. e.g. `us-central1`, `europe-west1`. The region cannot be changed after
@@ -5068,45 +4870,12 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("connectionName")]
         public virtual string ConnectionName { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>
         /// Output only. The time when the instance was created in [RFC 3339](https://tools.ietf.org/html/rfc3339)
         /// format, for example `2012-11-15T16:19:00.094Z`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>
         /// The current disk usage of the instance in bytes. This property has been deprecated. Use the
@@ -5137,6 +4906,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>Disk encryption status specific to an instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskEncryptionStatus")]
         public virtual DiskEncryptionStatus DiskEncryptionStatus { get; set; }
+
+        /// <summary>Output only. The dns name of the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsName")]
+        public virtual string DnsName { get; set; }
 
         /// <summary>
         /// This field is deprecated and will be removed from a future version of the API. Use the
@@ -5209,6 +4982,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
+
+        /// <summary>Output only. The link to service attachment of PSC instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscServiceAttachmentLink")]
+        public virtual string PscServiceAttachmentLink { get; set; }
 
         /// <summary>
         /// The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1` (`SECOND_GEN`
@@ -5723,42 +5500,9 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("public_key")]
         public virtual string PublicKey { get; set; }
 
-        private string _readTimeRaw;
-
-        private object _readTime;
-
         /// <summary>Optional. Optional snapshot read timestamp to trade freshness for performance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readTime")]
-        public virtual string ReadTimeRaw
-        {
-            get => _readTimeRaw;
-            set
-            {
-                _readTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _readTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="ReadTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReadTimeDateTimeOffset instead.")]
-        public virtual object ReadTime
-        {
-            get => _readTime;
-            set
-            {
-                _readTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _readTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ReadTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ReadTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReadTimeRaw);
-            set => ReadTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object ReadTime { get; set; }
 
         /// <summary>Optional. If set, it will contain the cert valid duration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validDuration")]
@@ -5849,44 +5593,11 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
             [Newtonsoft.Json.JsonPropertyAttribute("recoveryOnly")]
             public virtual System.Nullable<bool> RecoveryOnly { get; set; }
 
-            private string _stopAtRaw;
-
-            private object _stopAt;
-
             /// <summary>
             /// Optional. StopAt keyword for transaction log import, Applies to Cloud SQL for SQL Server only
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("stopAt")]
-            public virtual string StopAtRaw
-            {
-                get => _stopAtRaw;
-                set
-                {
-                    _stopAt = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                    _stopAtRaw = value;
-                }
-            }
-
-            /// <summary><seealso cref="object"/> representation of <see cref="StopAtRaw"/>.</summary>
-            [Newtonsoft.Json.JsonIgnoreAttribute]
-            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StopAtDateTimeOffset instead.")]
-            public virtual object StopAt
-            {
-                get => _stopAt;
-                set
-                {
-                    _stopAtRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                    _stopAt = value;
-                }
-            }
-
-            /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StopAtRaw"/>.</summary>
-            [Newtonsoft.Json.JsonIgnoreAttribute]
-            public virtual System.DateTimeOffset? StopAtDateTimeOffset
-            {
-                get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StopAtRaw);
-                set => StopAtRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-            }
+            public virtual object StopAt { get; set; }
 
             /// <summary>
             /// Optional. StopAtMark keyword for transaction log import, Applies to Cloud SQL for SQL Server only
@@ -6196,6 +5907,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateNetwork")]
         public virtual string PrivateNetwork { get; set; }
 
+        /// <summary>PSC settings for this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscConfig")]
+        public virtual PscConfig PscConfig { get; set; }
+
         /// <summary>Whether SSL connections over IP are enforced or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireSsl")]
         public virtual System.Nullable<bool> RequireSsl { get; set; }
@@ -6211,45 +5926,12 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; }
 
-        private string _timeToRetireRaw;
-
-        private object _timeToRetire;
-
         /// <summary>
         /// The due time for this IP to be retired in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for
         /// example `2012-11-15T16:19:00.094Z`. This field is only available when the IP is scheduled to be retired.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeToRetire")]
-        public virtual string TimeToRetireRaw
-        {
-            get => _timeToRetireRaw;
-            set
-            {
-                _timeToRetire = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _timeToRetireRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="TimeToRetireRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimeToRetireDateTimeOffset instead.")]
-        public virtual object TimeToRetire
-        {
-            get => _timeToRetire;
-            set
-            {
-                _timeToRetireRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _timeToRetire = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="TimeToRetireRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? TimeToRetireDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeToRetireRaw);
-            set => TimeToRetireRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object TimeToRetire { get; set; }
 
         /// <summary>
         /// The type of this IP address. A `PRIMARY` address is a public address that can accept incoming connections. A
@@ -6456,45 +6138,12 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("backupContext")]
         public virtual BackupContext BackupContext { get; set; }
 
-        private string _endTimeRaw;
-
-        private object _endTime;
-
         /// <summary>
         /// The time this operation finished in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format,
         /// for example `2012-11-15T16:19:00.094Z`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTimeRaw
-        {
-            get => _endTimeRaw;
-            set
-            {
-                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _endTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
-        public virtual object EndTime
-        {
-            get => _endTime;
-            set
-            {
-                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _endTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object EndTime { get; set; }
 
         /// <summary>If errors occurred during processing of this operation, this field will be populated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
@@ -6508,45 +6157,12 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("importContext")]
         public virtual ImportContext ImportContext { get; set; }
 
-        private string _insertTimeRaw;
-
-        private object _insertTime;
-
         /// <summary>
         /// The time this operation was enqueued in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339)
         /// format, for example `2012-11-15T16:19:00.094Z`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
-        public virtual string InsertTimeRaw
-        {
-            get => _insertTimeRaw;
-            set
-            {
-                _insertTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _insertTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="InsertTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use InsertTimeDateTimeOffset instead.")]
-        public virtual object InsertTime
-        {
-            get => _insertTime;
-            set
-            {
-                _insertTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _insertTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="InsertTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? InsertTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(InsertTimeRaw);
-            set => InsertTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object InsertTime { get; set; }
 
         /// <summary>This is always `sql#operation`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -6571,45 +6187,12 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
 
-        private string _startTimeRaw;
-
-        private object _startTime;
-
         /// <summary>
         /// The time this operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339)
         /// format, for example `2012-11-15T16:19:00.094Z`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTimeRaw
-        {
-            get => _startTimeRaw;
-            set
-            {
-                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _startTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
-        public virtual object StartTime
-        {
-            get => _startTime;
-            set
-            {
-                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _startTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object StartTime { get; set; }
 
         /// <summary>The status of an operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
@@ -6683,79 +6266,13 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
         public virtual System.Nullable<bool> CancelRequested { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. The time the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _endTimeRaw;
-
-        private object _endTime;
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. The time the operation finished running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTimeRaw
-        {
-            get => _endTimeRaw;
-            set
-            {
-                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _endTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
-        public virtual object EndTime
-        {
-            get => _endTime;
-            set
-            {
-                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _endTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object EndTime { get; set; }
 
         /// <summary>Output only. Human-readable status of the operation, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
@@ -6802,44 +6319,9 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("locked")]
         public virtual System.Nullable<bool> Locked { get; set; }
 
-        private string _passwordExpirationTimeRaw;
-
-        private object _passwordExpirationTime;
-
         /// <summary>The expiration time of the current password.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passwordExpirationTime")]
-        public virtual string PasswordExpirationTimeRaw
-        {
-            get => _passwordExpirationTimeRaw;
-            set
-            {
-                _passwordExpirationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _passwordExpirationTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="PasswordExpirationTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PasswordExpirationTimeDateTimeOffset instead.")]
-        public virtual object PasswordExpirationTime
-        {
-            get => _passwordExpirationTime;
-            set
-            {
-                _passwordExpirationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _passwordExpirationTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="PasswordExpirationTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? PasswordExpirationTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PasswordExpirationTimeRaw);
-            set => PasswordExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object PasswordExpirationTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6889,6 +6371,25 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>PSC settings for a Cloud SQL instance.</summary>
+    public class PscConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be
+        /// connected to with PSC from any network in these projects. Each consumer project in this list may be
+        /// represented by a project number (numeric) or by a project id (alphanumeric).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedConsumerProjects")]
+        public virtual System.Collections.Generic.IList<string> AllowedConsumerProjects { get; set; }
+
+        /// <summary>Whether PSC connectivity is enabled for this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscEnabled")]
+        public virtual System.Nullable<bool> PscEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Read-replica configuration for connecting to the primary instance.</summary>
     public class ReplicaConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6924,45 +6425,12 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rescheduleType")]
         public virtual string RescheduleType { get; set; }
 
-        private string _scheduleTimeRaw;
-
-        private object _scheduleTime;
-
         /// <summary>
         /// Optional. Timestamp when the maintenance shall be rescheduled to if reschedule_type=SPECIFIC_TIME, in [RFC
         /// 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]
-        public virtual string ScheduleTimeRaw
-        {
-            get => _scheduleTimeRaw;
-            set
-            {
-                _scheduleTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _scheduleTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="ScheduleTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ScheduleTimeDateTimeOffset instead.")]
-        public virtual object ScheduleTime
-        {
-            get => _scheduleTime;
-            set
-            {
-                _scheduleTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _scheduleTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ScheduleTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ScheduleTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduleTimeRaw);
-            set => ScheduleTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object ScheduleTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7261,44 +6729,9 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
-        private string _latestRecoveryTimeRaw;
-
-        private object _latestRecoveryTime;
-
         /// <summary>Timestamp, identifies the latest recovery time of the source instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestRecoveryTime")]
-        public virtual string LatestRecoveryTimeRaw
-        {
-            get => _latestRecoveryTimeRaw;
-            set
-            {
-                _latestRecoveryTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _latestRecoveryTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="LatestRecoveryTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LatestRecoveryTimeDateTimeOffset instead.")]
-        public virtual object LatestRecoveryTime
-        {
-            get => _latestRecoveryTime;
-            set
-            {
-                _latestRecoveryTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _latestRecoveryTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LatestRecoveryTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? LatestRecoveryTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LatestRecoveryTimeRaw);
-            set => LatestRecoveryTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object LatestRecoveryTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7416,81 +6849,13 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("canReschedule")]
         public virtual System.Nullable<bool> CanReschedule { get; set; }
 
-        private string _scheduleDeadlineTimeRaw;
-
-        private object _scheduleDeadlineTime;
-
         /// <summary>Maintenance cannot be rescheduled to start beyond this deadline.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleDeadlineTime")]
-        public virtual string ScheduleDeadlineTimeRaw
-        {
-            get => _scheduleDeadlineTimeRaw;
-            set
-            {
-                _scheduleDeadlineTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _scheduleDeadlineTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="ScheduleDeadlineTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ScheduleDeadlineTimeDateTimeOffset instead.")]
-        public virtual object ScheduleDeadlineTime
-        {
-            get => _scheduleDeadlineTime;
-            set
-            {
-                _scheduleDeadlineTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _scheduleDeadlineTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ScheduleDeadlineTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ScheduleDeadlineTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduleDeadlineTimeRaw);
-            set => ScheduleDeadlineTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _startTimeRaw;
-
-        private object _startTime;
+        public virtual object ScheduleDeadlineTime { get; set; }
 
         /// <summary>The start time of any upcoming scheduled maintenance for this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTimeRaw
-        {
-            get => _startTimeRaw;
-            set
-            {
-                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _startTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
-        public virtual object StartTime
-        {
-            get => _startTime;
-            set
-            {
-                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _startTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7564,87 +6929,19 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("commonName")]
         public virtual string CommonName { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>
         /// The time when the certificate was created in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for
         /// example `2012-11-15T16:19:00.094Z`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _expirationTimeRaw;
-
-        private object _expirationTime;
+        public virtual object CreateTime { get; set; }
 
         /// <summary>
         /// The time when the certificate expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example
         /// `2012-11-15T16:19:00.094Z`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
-        public virtual string ExpirationTimeRaw
-        {
-            get => _expirationTimeRaw;
-            set
-            {
-                _expirationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _expirationTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="ExpirationTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpirationTimeDateTimeOffset instead.")]
-        public virtual object ExpirationTime
-        {
-            get => _expirationTime;
-            set
-            {
-                _expirationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _expirationTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpirationTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ExpirationTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpirationTimeRaw);
-            set => ExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object ExpirationTime { get; set; }
 
         /// <summary>Name of the database instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instance")]

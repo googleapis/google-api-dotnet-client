@@ -57,6 +57,44 @@ namespace Google.Apis.DriveLabels.v2
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
 
+        /// <summary>Available OAuth 2.0 scopes for use with the Drive Labels API.</summary>
+        public class Scope
+        {
+            /// <summary>
+            /// See, edit, create, and delete all Google Drive labels in your organization, and see your organization's
+            /// label-related admin policies
+            /// </summary>
+            public static string DriveAdminLabels = "https://www.googleapis.com/auth/drive.admin.labels";
+
+            /// <summary>See all Google Drive labels and label-related admin policies in your organization</summary>
+            public static string DriveAdminLabelsReadonly = "https://www.googleapis.com/auth/drive.admin.labels.readonly";
+
+            /// <summary>See, edit, create, and delete your Google Drive labels</summary>
+            public static string DriveLabels = "https://www.googleapis.com/auth/drive.labels";
+
+            /// <summary>See your Google Drive labels</summary>
+            public static string DriveLabelsReadonly = "https://www.googleapis.com/auth/drive.labels.readonly";
+        }
+
+        /// <summary>Available OAuth 2.0 scope constants for use with the Drive Labels API.</summary>
+        public static class ScopeConstants
+        {
+            /// <summary>
+            /// See, edit, create, and delete all Google Drive labels in your organization, and see your organization's
+            /// label-related admin policies
+            /// </summary>
+            public const string DriveAdminLabels = "https://www.googleapis.com/auth/drive.admin.labels";
+
+            /// <summary>See all Google Drive labels and label-related admin policies in your organization</summary>
+            public const string DriveAdminLabelsReadonly = "https://www.googleapis.com/auth/drive.admin.labels.readonly";
+
+            /// <summary>See, edit, create, and delete your Google Drive labels</summary>
+            public const string DriveLabels = "https://www.googleapis.com/auth/drive.labels";
+
+            /// <summary>See your Google Drive labels</summary>
+            public const string DriveLabelsReadonly = "https://www.googleapis.com/auth/drive.labels.readonly";
+        }
+
         /// <summary>Gets the Labels resource.</summary>
         public virtual LabelsResource Labels { get; }
 

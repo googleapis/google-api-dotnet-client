@@ -2605,71 +2605,6 @@ namespace Google.Apis.Bigquery.v2
         }
 
         /// <summary>
-        /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
-        /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="resource">
-        /// REQUIRED: The resource for which the policy is being specified. See [Resource
-        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
-        /// </param>
-        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Bigquery.v2.Data.SetIamPolicyRequest body, string resource)
-        {
-            return new SetIamPolicyRequest(service, body, resource);
-        }
-
-        /// <summary>
-        /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
-        /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-        /// </summary>
-        public class SetIamPolicyRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Policy>
-        {
-            /// <summary>Constructs a new SetIamPolicy request.</summary>
-            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.SetIamPolicyRequest body, string resource) : base(service)
-            {
-                Resource = resource;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>
-            /// REQUIRED: The resource for which the policy is being specified. See [Resource
-            /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Resource { get; private set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Bigquery.v2.Data.SetIamPolicyRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "setIamPolicy";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{+resource}:setIamPolicy";
-
-            /// <summary>Initializes SetIamPolicy parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "resource",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^projects/[^/]+/datasets/[^/]+/tables/[^/]+/rowAccessPolicies/[^/]+$",
-                });
-            }
-        }
-
-        /// <summary>
         /// Returns permissions that a caller has on the specified resource. If the resource does not exist, this will
         /// return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for
         /// building permission-aware UIs and command-line tools, not for authorization checking. This operation may
@@ -4460,18 +4395,9 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
         public virtual string StartTimeRaw { get; set; }
 
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="StartTimeRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
-        public virtual System.DateTime? StartTime
+        public virtual System.Nullable<System.DateTime> StartTime
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(StartTimeRaw);
             set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -4577,18 +4503,9 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cloneTime")]
         public virtual string CloneTimeRaw { get; set; }
 
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CloneTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CloneTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CloneTimeRaw);
-            set => CloneTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="CloneTimeRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CloneTimeDateTimeOffset instead.")]
-        public virtual System.DateTime? CloneTime
+        public virtual System.Nullable<System.DateTime> CloneTime
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(CloneTimeRaw);
             set => CloneTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -5148,20 +5065,9 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
         public virtual string ExpirationTimeRaw { get; set; }
 
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpirationTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ExpirationTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpirationTimeRaw);
-            set => ExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="ExpirationTimeRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpirationTimeDateTimeOffset instead.")]
-        public virtual System.DateTime? ExpirationTime
+        public virtual System.Nullable<System.DateTime> ExpirationTime
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(ExpirationTimeRaw);
             set => ExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -7640,6 +7546,14 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Information for all training runs in increasing order of start_time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingRuns")]
         public virtual System.Collections.Generic.IList<TrainingRun> TrainingRuns { get; set; }
+
+        /// <summary>
+        /// Output only. This field will be populated if a TRANSFORM clause was used to train a model. TRANSFORM clause
+        /// (if used) takes feature_columns as input and outputs transform_columns. transform_columns then are used to
+        /// train the model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transformColumns")]
+        public virtual System.Collections.Generic.IList<TransformColumn> TransformColumns { get; set; }
     }
 
     public class ModelDefinition : Google.Apis.Requests.IDirectResponseSchema
@@ -8533,44 +8447,11 @@ namespace Google.Apis.Bigquery.v2.Data
     /// </summary>
     public class RowAccessPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _creationTimeRaw;
-
-        private object _creationTime;
-
         /// <summary>
         /// Output only. The time when this row access policy was created, in milliseconds since the epoch.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual string CreationTimeRaw
-        {
-            get => _creationTimeRaw;
-            set
-            {
-                _creationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _creationTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreationTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreationTimeDateTimeOffset instead.")]
-        public virtual object CreationTime
-        {
-            get => _creationTime;
-            set
-            {
-                _creationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _creationTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreationTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
-            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreationTime { get; set; }
 
         /// <summary>Output only. A hash of this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
@@ -8585,46 +8466,11 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filterPredicate")]
         public virtual string FilterPredicate { get; set; }
 
-        private string _lastModifiedTimeRaw;
-
-        private object _lastModifiedTime;
-
         /// <summary>
         /// Output only. The time when this row access policy was last modified, in milliseconds since the epoch.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
-        public virtual string LastModifiedTimeRaw
-        {
-            get => _lastModifiedTimeRaw;
-            set
-            {
-                _lastModifiedTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _lastModifiedTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="LastModifiedTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastModifiedTimeDateTimeOffset instead.")]
-        public virtual object LastModifiedTime
-        {
-            get => _lastModifiedTime;
-            set
-            {
-                _lastModifiedTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _lastModifiedTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastModifiedTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? LastModifiedTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastModifiedTimeRaw);
-            set => LastModifiedTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object LastModifiedTime { get; set; }
 
         /// <summary>Required. Reference describing the ID of this row access policy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowAccessPolicyReference")]
@@ -8775,18 +8621,9 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotTime")]
         public virtual string SnapshotTimeRaw { get; set; }
 
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="SnapshotTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? SnapshotTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SnapshotTimeRaw);
-            set => SnapshotTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
         /// <summary><seealso cref="System.DateTime"/> representation of <see cref="SnapshotTimeRaw"/>.</summary>
         [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SnapshotTimeDateTimeOffset instead.")]
-        public virtual System.DateTime? SnapshotTime
+        public virtual System.Nullable<System.DateTime> SnapshotTime
         {
             get => Google.Apis.Util.Utilities.GetDateTimeFromString(SnapshotTimeRaw);
             set => SnapshotTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
@@ -10158,42 +9995,9 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("results")]
         public virtual System.Collections.Generic.IList<IterationResult> Results { get; set; }
 
-        private string _startTimeRaw;
-
-        private object _startTime;
-
         /// <summary>Output only. The start time of this training run.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTimeRaw
-        {
-            get => _startTimeRaw;
-            set
-            {
-                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _startTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
-        public virtual object StartTime
-        {
-            get => _startTime;
-            set
-            {
-                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _startTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object StartTime { get; set; }
 
         /// <summary>
         /// Output only. Options that were used for this training run, includes user specified and default options that
@@ -10229,6 +10033,25 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Output-only] // [Alpha] Id of the transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionId")]
         public virtual string TransactionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about a single transform column.</summary>
+    public class TransformColumn : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Name of the column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The SQL expression used in the column transform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transformSql")]
+        public virtual string TransformSql { get; set; }
+
+        /// <summary>Output only. Data type of the column after the transform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual StandardSqlDataType Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1715,6 +1715,246 @@ namespace Google.Apis.PolicySimulator.v1
 namespace Google.Apis.PolicySimulator.v1.Data
 {
     /// <summary>
+    /// Similar to PolicySpec but with an extra 'launch' field for launch reference. The PolicySpec here is specific for
+    /// dry-run/darklaunch.
+    /// </summary>
+    public class GoogleCloudOrgpolicyV2AlternatePolicySpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Reference to the launch that will be used while audit logging and to control the launch. Should be set only
+        /// in the alternate policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("launch")]
+        public virtual string Launch { get; set; }
+
+        /// <summary>Specify constraint for configurations of Google Cloud resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spec")]
+        public virtual GoogleCloudOrgpolicyV2PolicySpec Spec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A custom constraint defined by customers which can *only* be applied to the given resource types and
+    /// organization. By creating a custom constraint, customers can apply policies of this custom constraint. *Creating
+    /// a custom constraint itself does NOT apply any policy enforcement*.
+    /// </summary>
+    public class GoogleCloudOrgpolicyV2CustomConstraint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Allow or deny type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actionType")]
+        public virtual string ActionType { get; set; }
+
+        /// <summary>
+        /// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")'`
+        /// or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual string Condition { get; set; }
+
+        /// <summary>
+        /// Detailed information about this custom policy constraint. The max length of the description is 2000
+        /// characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>One line display name for the UI. The max length of the display_name is 200 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>All the operations being applied for this constraint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("methodTypes")]
+        public virtual System.Collections.Generic.IList<string> MethodTypes { get; set; }
+
+        /// <summary>
+        /// Immutable. Name of the constraint. This is unique within the organization. Format of the name should be *
+        /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example:
+        /// `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 70 characters and the
+        /// minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/` is not
+        /// counted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource instance type on which this policy applies. Format will be of the form : `/`
+        /// Example: * `compute.googleapis.com/Instance`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceTypes")]
+        public virtual System.Collections.Generic.IList<string> ResourceTypes { get; set; }
+
+        /// <summary>
+        /// Output only. The last time this custom constraint was updated. This represents the last time that the
+        /// `CreateCustomConstraint` or `UpdateCustomConstraint` RPC was called
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Defines an organization policy which is used to specify constraints for configurations of Google Cloud
+    /// resources.
+    /// </summary>
+    public class GoogleCloudOrgpolicyV2Policy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Deprecated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternate")]
+        public virtual GoogleCloudOrgpolicyV2AlternatePolicySpec Alternate { get; set; }
+
+        /// <summary>
+        /// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing
+        /// and future resources if it's enforced.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dryRunSpec")]
+        public virtual GoogleCloudOrgpolicyV2PolicySpec DryRunSpec { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the policy. Must be one of the following forms, where constraint_name is the
+        /// name of the constraint which this policy configures: *
+        /// `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` *
+        /// `organizations/{organization_id}/policies/{constraint_name}` For example,
+        /// "projects/123/policies/compute.disableSerialPortAccess". Note:
+        /// `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but
+        /// responses will return the name using the equivalent project number.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Basic information about the Organization Policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spec")]
+        public virtual GoogleCloudOrgpolicyV2PolicySpec Spec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Defines a Google Cloud policy specification which is used to specify constraints for configurations of Google
+    /// Cloud resources.
+    /// </summary>
+    public class GoogleCloudOrgpolicyV2PolicySpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An opaque tag indicating the current version of the policy, used for concurrency control. This field is
+        /// ignored if used in a `CreatePolicy` request. When the policy` is returned from either a `GetPolicy` or a
+        /// `ListPolicies` request, this `etag` indicates the version of the current policy to use when executing a
+        /// read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be
+        /// unset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Determines the inheritance behavior for this policy. If `inherit_from_parent` is true, policy rules set
+        /// higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it
+        /// is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can
+        /// be set only for policies which configure list constraints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inheritFromParent")]
+        public virtual System.Nullable<bool> InheritFromParent { get; set; }
+
+        /// <summary>
+        /// Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the
+        /// specific constraint at this resource. This field can be set in policies for either list or boolean
+        /// constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reset")]
+        public virtual System.Nullable<bool> Reset { get; set; }
+
+        /// <summary>
+        /// In policies for boolean constraints, the following requirements apply: - There must be one and only one
+        /// policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the
+        /// opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions
+        /// that are true for a target resource take precedence.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rules")]
+        public virtual System.Collections.Generic.IList<GoogleCloudOrgpolicyV2PolicySpecPolicyRule> Rules { get; set; }
+
+        /// <summary>
+        /// Output only. The time stamp this was previously updated. This represents the last time a call to
+        /// `CreatePolicy` or `UpdatePolicy` was made for that policy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual object UpdateTime { get; set; }
+    }
+
+    /// <summary>A rule used to express this policy.</summary>
+    public class GoogleCloudOrgpolicyV2PolicySpecPolicyRule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Setting this to true means that all values are allowed. This field can be set only in policies for list
+        /// constraints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowAll")]
+        public virtual System.Nullable<bool> AllowAll { get; set; }
+
+        /// <summary>
+        /// A condition which determines whether this rule is used in the evaluation of the policy. When set, the
+        /// `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or
+        /// "&amp;amp;&amp;amp;" operators. Each subexpression must be of the form
+        /// "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id',
+        /// 'tagValues/value_id')". where key_name and value_name are the resource names for Label Keys and Values.
+        /// These names are available from the Tag Manager Service. An example expression is:
+        /// "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123',
+        /// 'tagValues/456')".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual GoogleTypeExpr Condition { get; set; }
+
+        /// <summary>
+        /// Setting this to true means that all values are denied. This field can be set only in policies for list
+        /// constraints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("denyAll")]
+        public virtual System.Nullable<bool> DenyAll { get; set; }
+
+        /// <summary>
+        /// If `true`, then the policy is enforced. If `false`, then any configuration is acceptable. This field can be
+        /// set only in policies for boolean constraints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enforce")]
+        public virtual System.Nullable<bool> Enforce { get; set; }
+
+        /// <summary>
+        /// List of values to be used for this policy rule. This field can be set only in policies for list constraints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A message that holds specific allowed and denied values. This message can define specific values and subtrees of
+    /// the Resource Manager resource hierarchy (`Organizations`, `Folders`, `Projects`) that are allowed or denied.
+    /// This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote
+    /// resource subtree values. The `is:` prefix is used to denote specific values, and is required only if the value
+    /// contains a ":". Values prefixed with "is:" are treated the same as values with no prefix. Ancestry subtrees must
+    /// be in one of the following formats: - "projects/", e.g. "projects/tokyo-rain-123" - "folders/", e.g.
+    /// "folders/1234" - "organizations/", e.g. "organizations/1234" The `supports_under` field of the associated
+    /// `Constraint` defines whether ancestry prefixes can be used.
+    /// </summary>
+    public class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of values allowed at this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedValues")]
+        public virtual System.Collections.Generic.IList<string> AllowedValues { get; set; }
+
+        /// <summary>List of values denied at this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deniedValues")]
+        public virtual System.Collections.Generic.IList<string> DeniedValues { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A summary and comparison of the principal's access under the current (baseline) policies and the proposed
     /// (simulated) policies for a single access tuple.
     /// </summary>
@@ -2105,6 +2345,334 @@ namespace Google.Apis.PolicySimulator.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unchangedCount")]
         public virtual System.Nullable<int> UnchangedCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// GenerateOrgPolicyViolationsPreviewOperationMetadata is metadata about an OrgPolicyViolationsPreview generations
+    /// operation.
+    /// </summary>
+    public class GoogleCloudPolicysimulatorV1alphaGenerateOrgPolicyViolationsPreviewOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time when the request was received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestTime")]
+        public virtual object RequestTime { get; set; }
+
+        /// <summary>
+        /// Total number of resources that need scanning. Should equal resource_scanned + resources_pending
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcesFound")]
+        public virtual System.Nullable<int> ResourcesFound { get; set; }
+
+        /// <summary>Number of resources still to scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcesPending")]
+        public virtual System.Nullable<int> ResourcesPending { get; set; }
+
+        /// <summary>Number of resources already scanned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcesScanned")]
+        public virtual System.Nullable<int> ResourcesScanned { get; set; }
+
+        /// <summary>Time when the request started processing, i.e. when the state was set to RUNNING.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>The current state of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The proposed changes to OrgPolicy.</summary>
+    public class GoogleCloudPolicysimulatorV1alphaOrgPolicyOverlay : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The OrgPolicy CustomConstraint changes to preview violations for. Any existing CustomConstraints with the
+        /// same name will be overridden in the simulation. That is, violations will be determined as if all custom
+        /// constraints in the overlay were instantiated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customConstraints")]
+        public virtual System.Collections.Generic.IList<GoogleCloudPolicysimulatorV1alphaOrgPolicyOverlayCustomConstraintOverlay> CustomConstraints { get; set; }
+
+        /// <summary>
+        /// The OrgPolicy changes to preview violations for. Any existing OrgPolicies with the same name will be
+        /// overridden in the simulation. That is, violations will be determined as if all policies in the overlay were
+        /// created or updated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policies")]
+        public virtual System.Collections.Generic.IList<GoogleCloudPolicysimulatorV1alphaOrgPolicyOverlayPolicyOverlay> Policies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A change to an OrgPolicy custom constraint.</summary>
+    public class GoogleCloudPolicysimulatorV1alphaOrgPolicyOverlayCustomConstraintOverlay : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The new or updated custom constraint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customConstraint")]
+        public virtual GoogleCloudOrgpolicyV2CustomConstraint CustomConstraint { get; set; }
+
+        /// <summary>Resource the constraint is attached to. Example: "organization/987654"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customConstraintParent")]
+        public virtual string CustomConstraintParent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A change to an OrgPolicy.</summary>
+    public class GoogleCloudPolicysimulatorV1alphaOrgPolicyOverlayPolicyOverlay : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The new or updated OrgPolicy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual GoogleCloudOrgpolicyV2Policy Policy { get; set; }
+
+        /// <summary>The parent of the policy we are attaching to. Example: "projects/123456"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyParent")]
+        public virtual string PolicyParent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// OrgPolicyViolationsPreview is a resource providing a preview of the violations that will exist if an OrgPolicy
+    /// change is made. The list of violations are modeled as child resources and retrieved via a
+    /// ListOrgPolicyViolations API call. There are potentially more OrgPolicyViolations than could fit in an embedded
+    /// field. Thus, the use of a child resource instead of a field.
+    /// </summary>
+    public class GoogleCloudPolicysimulatorV1alphaOrgPolicyViolationsPreview : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The resource name of the `OrgPolicyViolationsPreview`. It has the following format:
+        /// `organizations/{organization}/locations/{location}/orgPolicyViolationsPreviews/{orgPolicyViolationsPreview}`
+        /// Example: `organizations/my-example-org/locations/global/orgPolicyViolationsPreviews/506a5f7f`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The proposed changes we are previewing violations for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overlay")]
+        public virtual GoogleCloudPolicysimulatorV1alphaOrgPolicyOverlay Overlay { get; set; }
+
+        /// <summary>
+        /// Output only. A summary of the state of all resources scanned for compliance with the changed OrgPolicy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceCounts")]
+        public virtual GoogleCloudPolicysimulatorV1alphaOrgPolicyViolationsPreviewResourceCounts ResourceCounts { get; set; }
+
+        /// <summary>Output only. The state of the `OrgPolicyViolationsPreview`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. The number of OrgPolicyViolations in this `OrgPolicyViolationsPreview`. This count may differ
+        /// from `resource_summary.noncompliant_count` because each OrgPolicyViolation is specific to a resource **and**
+        /// constraint. If there are multiple constraints being evaluated (i.e. multiple policies in the overlay), a
+        /// single resource may violate multiple constraints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("violationsCount")]
+        public virtual System.Nullable<int> ViolationsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A summary of the state of all resources scanned for compliance with the changed OrgPolicy.</summary>
+    public class GoogleCloudPolicysimulatorV1alphaOrgPolicyViolationsPreviewResourceCounts : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of scanned resources with zero violations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compliant")]
+        public virtual System.Nullable<int> Compliant { get; set; }
+
+        /// <summary>Number of resources that returned an error when scanned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Nullable<int> Errors { get; set; }
+
+        /// <summary>Number of scanned resources with at least one violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noncompliant")]
+        public virtual System.Nullable<int> Noncompliant { get; set; }
+
+        /// <summary>
+        /// Number of resources checked for compliance. Must equal: unenforced + noncompliant + compliant + error
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scanned")]
+        public virtual System.Nullable<int> Scanned { get; set; }
+
+        /// <summary>
+        /// Number of resources where the constraint was not enforced, i.e. the Policy set `enforced: false` for that
+        /// resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unenforced")]
+        public virtual System.Nullable<int> Unenforced { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// GenerateOrgPolicyViolationsPreviewOperationMetadata is metadata about an OrgPolicyViolationsPreview generations
+    /// operation.
+    /// </summary>
+    public class GoogleCloudPolicysimulatorV1betaGenerateOrgPolicyViolationsPreviewOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Time when the request was received.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestTime")]
+        public virtual object RequestTime { get; set; }
+
+        /// <summary>
+        /// Total number of resources that need scanning. Should equal resource_scanned + resources_pending
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcesFound")]
+        public virtual System.Nullable<int> ResourcesFound { get; set; }
+
+        /// <summary>Number of resources still to scan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcesPending")]
+        public virtual System.Nullable<int> ResourcesPending { get; set; }
+
+        /// <summary>Number of resources already scanned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcesScanned")]
+        public virtual System.Nullable<int> ResourcesScanned { get; set; }
+
+        /// <summary>Time when the request started processing, i.e. when the state was set to RUNNING.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual object StartTime { get; set; }
+
+        /// <summary>The current state of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The proposed changes to OrgPolicy.</summary>
+    public class GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The OrgPolicy CustomConstraint changes to preview violations for. Any existing CustomConstraints with the
+        /// same name will be overridden in the simulation. That is, violations will be determined as if all custom
+        /// constraints in the overlay were instantiated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customConstraints")]
+        public virtual System.Collections.Generic.IList<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay> CustomConstraints { get; set; }
+
+        /// <summary>
+        /// The OrgPolicy changes to preview violations for. Any existing OrgPolicies with the same name will be
+        /// overridden in the simulation. That is, violations will be determined as if all policies in the overlay were
+        /// created or updated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policies")]
+        public virtual System.Collections.Generic.IList<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay> Policies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A change to an OrgPolicy custom constraint.</summary>
+    public class GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The new or updated custom constraint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customConstraint")]
+        public virtual GoogleCloudOrgpolicyV2CustomConstraint CustomConstraint { get; set; }
+
+        /// <summary>Resource the constraint is attached to. Example: "organization/987654"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customConstraintParent")]
+        public virtual string CustomConstraintParent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A change to an OrgPolicy.</summary>
+    public class GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The new or updated OrgPolicy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual GoogleCloudOrgpolicyV2Policy Policy { get; set; }
+
+        /// <summary>The parent of the policy we are attaching to. Example: "projects/123456"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyParent")]
+        public virtual string PolicyParent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// OrgPolicyViolationsPreview is a resource providing a preview of the violations that will exist if an OrgPolicy
+    /// change is made. The list of violations are modeled as child resources and retrieved via a
+    /// ListOrgPolicyViolations API call. There are potentially more OrgPolicyViolations than could fit in an embedded
+    /// field. Thus, the use of a child resource instead of a field.
+    /// </summary>
+    public class GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The resource name of the `OrgPolicyViolationsPreview`. It has the following format:
+        /// `organizations/{organization}/locations/{location}/orgPolicyViolationsPreviews/{orgPolicyViolationsPreview}`
+        /// Example: `organizations/my-example-org/locations/global/orgPolicyViolationsPreviews/506a5f7f`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. The proposed changes we are previewing violations for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overlay")]
+        public virtual GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay Overlay { get; set; }
+
+        /// <summary>
+        /// Output only. A summary of the state of all resources scanned for compliance with the changed OrgPolicy.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceCounts")]
+        public virtual GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts ResourceCounts { get; set; }
+
+        /// <summary>Output only. The state of the `OrgPolicyViolationsPreview`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. The number of OrgPolicyViolations in this `OrgPolicyViolationsPreview`. This count may differ
+        /// from `resource_summary.noncompliant_count` because each OrgPolicyViolation is specific to a resource **and**
+        /// constraint. If there are multiple constraints being evaluated (i.e. multiple policies in the overlay), a
+        /// single resource may violate multiple constraints.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("violationsCount")]
+        public virtual System.Nullable<int> ViolationsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A summary of the state of all resources scanned for compliance with the changed OrgPolicy.</summary>
+    public class GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Number of scanned resources with zero violations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("compliant")]
+        public virtual System.Nullable<int> Compliant { get; set; }
+
+        /// <summary>Number of resources that returned an error when scanned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Nullable<int> Errors { get; set; }
+
+        /// <summary>Number of scanned resources with at least one violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("noncompliant")]
+        public virtual System.Nullable<int> Noncompliant { get; set; }
+
+        /// <summary>
+        /// Number of resources checked for compliance. Must equal: unenforced + noncompliant + compliant + error
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scanned")]
+        public virtual System.Nullable<int> Scanned { get; set; }
+
+        /// <summary>
+        /// Number of resources where the constraint was not enforced, i.e. the Policy set `enforced: false` for that
+        /// resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unenforced")]
+        public virtual System.Nullable<int> Unenforced { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

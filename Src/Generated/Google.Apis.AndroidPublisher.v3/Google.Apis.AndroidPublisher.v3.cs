@@ -6830,11 +6830,13 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// Required. The parent app (package name) for which the subscriptions should be read.
                     /// </param>
                     /// <param name="productId">
-                    /// Required. The parent subscription (ID) for which the offers should be read.
+                    /// Required. The parent subscription (ID) for which the offers should be read. May be specified as
+                    /// '-' to read all offers under an app.
                     /// </param>
                     /// <param name="basePlanId">
                     /// Required. The parent base plan (ID) for which the offers should be read. May be specified as '-'
-                    /// to read all offers under a subscription.
+                    /// to read all offers under a subscription or an app. Must be specified as '-' if product_id is
+                    /// specified as '-'.
                     /// </param>
                     public virtual ListRequest List(string packageName, string productId, string basePlanId)
                     {
@@ -6860,14 +6862,16 @@ namespace Google.Apis.AndroidPublisher.v3
                         public virtual string PackageName { get; private set; }
 
                         /// <summary>
-                        /// Required. The parent subscription (ID) for which the offers should be read.
+                        /// Required. The parent subscription (ID) for which the offers should be read. May be specified
+                        /// as '-' to read all offers under an app.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProductId { get; private set; }
 
                         /// <summary>
                         /// Required. The parent base plan (ID) for which the offers should be read. May be specified as
-                        /// '-' to read all offers under a subscription.
+                        /// '-' to read all offers under a subscription or an app. Must be specified as '-' if
+                        /// product_id is specified as '-'.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("basePlanId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string BasePlanId { get; private set; }
@@ -11056,45 +11060,12 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>The details of an external transaction.</summary>
     public class ExternalTransaction : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>
         /// Output only. The time when this transaction was created. This is the time when Google was notified of the
         /// transaction.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>
         /// Output only. The current transaction amount before tax. This represents the current pre-tax amount including
@@ -11156,44 +11127,9 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("transactionState")]
         public virtual string TransactionState { get; set; }
 
-        private string _transactionTimeRaw;
-
-        private object _transactionTime;
-
         /// <summary>Required. The time when the transaction was completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionTime")]
-        public virtual string TransactionTimeRaw
-        {
-            get => _transactionTimeRaw;
-            set
-            {
-                _transactionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _transactionTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="TransactionTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TransactionTimeDateTimeOffset instead.")]
-        public virtual object TransactionTime
-        {
-            get => _transactionTime;
-            set
-            {
-                _transactionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _transactionTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="TransactionTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? TransactionTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TransactionTimeRaw);
-            set => TransactionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object TransactionTime { get; set; }
 
         /// <summary>Required. User address for tax computation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userTaxAddress")]
@@ -12185,44 +12121,9 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>Information specific to a subscription in paused state.</summary>
     public class PausedStateContext : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _autoResumeTimeRaw;
-
-        private object _autoResumeTime;
-
         /// <summary>Time at which the subscription will be automatically resumed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoResumeTime")]
-        public virtual string AutoResumeTimeRaw
-        {
-            get => _autoResumeTimeRaw;
-            set
-            {
-                _autoResumeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _autoResumeTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="AutoResumeTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use AutoResumeTimeDateTimeOffset instead.")]
-        public virtual object AutoResumeTime
-        {
-            get => _autoResumeTime;
-            set
-            {
-                _autoResumeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _autoResumeTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="AutoResumeTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? AutoResumeTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(AutoResumeTimeRaw);
-            set => AutoResumeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object AutoResumeTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12255,47 +12156,12 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>Information related to a prepaid plan.</summary>
     public class PrepaidPlan : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _allowExtendAfterTimeRaw;
-
-        private object _allowExtendAfterTime;
-
         /// <summary>
         /// If present, this is the time after which top up purchases are allowed for the prepaid plan. Will not be
         /// present for expired prepaid plans.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowExtendAfterTime")]
-        public virtual string AllowExtendAfterTimeRaw
-        {
-            get => _allowExtendAfterTimeRaw;
-            set
-            {
-                _allowExtendAfterTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _allowExtendAfterTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="AllowExtendAfterTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use AllowExtendAfterTimeDateTimeOffset instead.")]
-        public virtual object AllowExtendAfterTime
-        {
-            get => _allowExtendAfterTime;
-            set
-            {
-                _allowExtendAfterTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _allowExtendAfterTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="AllowExtendAfterTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? AllowExtendAfterTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(AllowExtendAfterTimeRaw);
-            set => AllowExtendAfterTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object AllowExtendAfterTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12453,42 +12319,9 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("partialRefund")]
         public virtual PartialRefund PartialRefund { get; set; }
 
-        private string _refundTimeRaw;
-
-        private object _refundTime;
-
         /// <summary>Required. The time that the transaction was refunded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("refundTime")]
-        public virtual string RefundTimeRaw
-        {
-            get => _refundTimeRaw;
-            set
-            {
-                _refundTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _refundTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="RefundTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RefundTimeDateTimeOffset instead.")]
-        public virtual object RefundTime
-        {
-            get => _refundTime;
-            set
-            {
-                _refundTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _refundTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="RefundTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? RefundTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RefundTimeRaw);
-            set => RefundTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object RefundTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12523,10 +12356,6 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>Configuration for a price migration.</summary>
     public class RegionalPriceMigrationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _oldestAllowedPriceVersionTimeRaw;
-
-        private object _oldestAllowedPriceVersionTime;
-
         /// <summary>
         /// Required. The cutoff time for historical prices that subscribers can remain paying. Subscribers who are on a
         /// price that was created before this cutoff time will be migrated to the currently-offered price. These
@@ -12534,40 +12363,7 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// agree to the new price will have their subscription ended at the next renewal.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("oldestAllowedPriceVersionTime")]
-        public virtual string OldestAllowedPriceVersionTimeRaw
-        {
-            get => _oldestAllowedPriceVersionTimeRaw;
-            set
-            {
-                _oldestAllowedPriceVersionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _oldestAllowedPriceVersionTimeRaw = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="object"/> representation of <see cref="OldestAllowedPriceVersionTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use OldestAllowedPriceVersionTimeDateTimeOffset instead.")]
-        public virtual object OldestAllowedPriceVersionTime
-        {
-            get => _oldestAllowedPriceVersionTime;
-            set
-            {
-                _oldestAllowedPriceVersionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _oldestAllowedPriceVersionTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="OldestAllowedPriceVersionTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? OldestAllowedPriceVersionTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(OldestAllowedPriceVersionTimeRaw);
-            set => OldestAllowedPriceVersionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object OldestAllowedPriceVersionTime { get; set; }
 
         /// <summary>
         /// Optional. The behavior the caller wants users to see when there is a price increase during migration. If
@@ -13007,47 +12803,12 @@ namespace Google.Apis.AndroidPublisher.v3.Data
     /// <summary>Price change related information of a subscription item.</summary>
     public class SubscriptionItemPriceChangeDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _expectedNewPriceChargeTimeRaw;
-
-        private object _expectedNewPriceChargeTime;
-
         /// <summary>
         /// The renewal time at which the price change will become effective for the user. This is subject to change(to
         /// a future time) due to cases where the renewal time shifts like pause.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expectedNewPriceChargeTime")]
-        public virtual string ExpectedNewPriceChargeTimeRaw
-        {
-            get => _expectedNewPriceChargeTimeRaw;
-            set
-            {
-                _expectedNewPriceChargeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _expectedNewPriceChargeTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="ExpectedNewPriceChargeTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpectedNewPriceChargeTimeDateTimeOffset instead.")]
-        public virtual object ExpectedNewPriceChargeTime
-        {
-            get => _expectedNewPriceChargeTime;
-            set
-            {
-                _expectedNewPriceChargeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _expectedNewPriceChargeTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpectedNewPriceChargeTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ExpectedNewPriceChargeTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpectedNewPriceChargeTimeRaw);
-            set => ExpectedNewPriceChargeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object ExpectedNewPriceChargeTime { get; set; }
 
         /// <summary>New recurring price for the subscription item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newPrice")]
@@ -13455,44 +13216,11 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deferredItemReplacement")]
         public virtual DeferredItemReplacement DeferredItemReplacement { get; set; }
 
-        private string _expiryTimeRaw;
-
-        private object _expiryTime;
-
         /// <summary>
         /// Time at which the subscription expired or will expire unless the access is extended (ex. renews).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expiryTime")]
-        public virtual string ExpiryTimeRaw
-        {
-            get => _expiryTimeRaw;
-            set
-            {
-                _expiryTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _expiryTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="ExpiryTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpiryTimeDateTimeOffset instead.")]
-        public virtual object ExpiryTime
-        {
-            get => _expiryTime;
-            set
-            {
-                _expiryTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _expiryTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpiryTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ExpiryTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpiryTimeRaw);
-            set => ExpiryTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object ExpiryTime { get; set; }
 
         /// <summary>The offer details for this item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("offerDetails")]
@@ -13570,45 +13298,12 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("regionCode")]
         public virtual string RegionCode { get; set; }
 
-        private string _startTimeRaw;
-
-        private object _startTime;
-
         /// <summary>
         /// Time at which the subscription was granted. Not set for pending subscriptions (subscription was created but
         /// awaiting payment during signup).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTimeRaw
-        {
-            get => _startTimeRaw;
-            set
-            {
-                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _startTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
-        public virtual object StartTime
-        {
-            get => _startTime;
-            set
-            {
-                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _startTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object StartTime { get; set; }
 
         /// <summary>User profile associated with purchases made with 'Subscribe with Google'.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subscribeWithGoogleInfo")]
@@ -14006,47 +13701,12 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("email")]
         public virtual string Email { get; set; }
 
-        private string _expirationTimeRaw;
-
-        private object _expirationTime;
-
         /// <summary>
         /// The time at which the user's access expires, if set. When setting this value, it must always be in the
         /// future.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
-        public virtual string ExpirationTimeRaw
-        {
-            get => _expirationTimeRaw;
-            set
-            {
-                _expirationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _expirationTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="ExpirationTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpirationTimeDateTimeOffset instead.")]
-        public virtual object ExpirationTime
-        {
-            get => _expirationTime;
-            set
-            {
-                _expirationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _expirationTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpirationTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ExpirationTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpirationTimeRaw);
-            set => ExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object ExpirationTime { get; set; }
 
         /// <summary>Output only. Per-app permissions for the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("grants")]
@@ -14190,45 +13850,12 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cancelSurveyResult")]
         public virtual CancelSurveyResult CancelSurveyResult { get; set; }
 
-        private string _cancelTimeRaw;
-
-        private object _cancelTime;
-
         /// <summary>
         /// The time at which the subscription was canceled by the user. The user might still have access to the
         /// subscription after this time. Use line_items.expiry_time to determine if a user still has access.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cancelTime")]
-        public virtual string CancelTimeRaw
-        {
-            get => _cancelTimeRaw;
-            set
-            {
-                _cancelTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _cancelTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CancelTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CancelTimeDateTimeOffset instead.")]
-        public virtual object CancelTime
-        {
-            get => _cancelTime;
-            set
-            {
-                _cancelTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _cancelTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CancelTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CancelTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CancelTimeRaw);
-            set => CancelTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CancelTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

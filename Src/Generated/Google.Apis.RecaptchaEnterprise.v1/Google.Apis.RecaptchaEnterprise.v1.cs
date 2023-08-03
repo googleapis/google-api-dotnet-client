@@ -1750,44 +1750,9 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
         public virtual string EmailAddress { get; set; }
 
-        private string _lastVerificationTimeRaw;
-
-        private object _lastVerificationTime;
-
         /// <summary>Output only. Timestamp of the last successful verification for the endpoint, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastVerificationTime")]
-        public virtual string LastVerificationTimeRaw
-        {
-            get => _lastVerificationTimeRaw;
-            set
-            {
-                _lastVerificationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _lastVerificationTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="LastVerificationTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastVerificationTimeDateTimeOffset instead.")]
-        public virtual object LastVerificationTime
-        {
-            get => _lastVerificationTime;
-            set
-            {
-                _lastVerificationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _lastVerificationTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastVerificationTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? LastVerificationTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastVerificationTimeRaw);
-            set => LastVerificationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object LastVerificationTime { get; set; }
 
         /// <summary>
         /// Phone number for which to trigger a verification request. Should be given in E.164 format.
@@ -2060,8 +2025,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict StolenInstrumentVerdict { get; set; }
 
         /// <summary>
-        /// Probability (0-1) of this transaction being fraudulent. Summarizes the combined risk of attack vectors
-        /// below.
+        /// Probability of this transaction being fraudulent. Summarizes the combined risk of attack vectors below.
+        /// Values are from 0.0 (lowest) to 1.0 (highest).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionRisk")]
         public virtual System.Nullable<float> TransactionRisk { get; set; }
@@ -2074,7 +2039,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     public class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Probability (0-1) of this transaction attempt being executed in a behaviorally trustworthy way.
+        /// Probability of this transaction attempt being executed in a behaviorally trustworthy way. Values are from
+        /// 0.0 (lowest) to 1.0 (highest).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trust")]
         public virtual System.Nullable<float> Trust { get; set; }
@@ -2089,7 +2055,10 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// </summary>
     public class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Probability (0-1) of this transaction attempt being part of a card testing attack.</summary>
+        /// <summary>
+        /// Probability of this transaction attempt being part of a card testing attack. Values are from 0.0 (lowest) to
+        /// 1.0 (highest).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("risk")]
         public virtual System.Nullable<float> Risk { get; set; }
 
@@ -2103,7 +2072,10 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// </summary>
     public class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Probability (0-1) of this transaction being executed with a stolen instrument.</summary>
+        /// <summary>
+        /// Probability of this transaction being executed with a stolen instrument. Values are from 0.0 (lowest) to 1.0
+        /// (highest).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("risk")]
         public virtual System.Nullable<float> Risk { get; set; }
 
@@ -2146,42 +2118,9 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("androidSettings")]
         public virtual GoogleCloudRecaptchaenterpriseV1AndroidKeySettings AndroidSettings { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. The timestamp corresponding to the creation of this key.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Human-readable display name of this key. Modifiable by user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
@@ -2308,42 +2247,9 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("scoreMetrics")]
         public virtual System.Collections.Generic.IList<GoogleCloudRecaptchaenterpriseV1ScoreMetrics> ScoreMetrics { get; set; }
 
-        private string _startTimeRaw;
-
-        private object _startTime;
-
         /// <summary>Inclusive start time aligned to a day (UTC).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTimeRaw
-        {
-            get => _startTimeRaw;
-            set
-            {
-                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _startTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
-        public virtual object StartTime
-        {
-            get => _startTime;
-            set
-            {
-                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _startTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object StartTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2591,42 +2497,9 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("androidPackageName")]
         public virtual string AndroidPackageName { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>The timestamp corresponding to the generation of the token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The hostname of the page on which the token was generated (Web keys only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
@@ -2845,44 +2718,11 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// <summary>Describes an event in the lifecycle of a payment transaction.</summary>
     public class GoogleCloudRecaptchaenterpriseV1TransactionEvent : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _eventTimeRaw;
-
-        private object _eventTime;
-
         /// <summary>
         /// Optional. Timestamp when this transaction event occurred; otherwise assumed to be the time of the API call.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
-        public virtual string EventTimeRaw
-        {
-            get => _eventTimeRaw;
-            set
-            {
-                _eventTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _eventTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="EventTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EventTimeDateTimeOffset instead.")]
-        public virtual object EventTime
-        {
-            get => _eventTime;
-            set
-            {
-                _eventTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _eventTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EventTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? EventTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
-            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object EventTime { get; set; }
 
         /// <summary>Optional. The type of this transaction event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]

@@ -55,7 +55,7 @@ namespace Google.Apis.CloudDeploy.v1
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Deploy API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Deploy API.</summary>
         public class Scope
         {
             /// <summary>
@@ -65,7 +65,7 @@ namespace Google.Apis.CloudDeploy.v1
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Google Cloud Deploy API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Deploy API.</summary>
         public static class ScopeConstants
         {
             /// <summary>
@@ -3926,13 +3926,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
     }
 
     /// <summary>
-    /// A `DeliveryPipeline` resource in the Google Cloud Deploy API. A `DeliveryPipeline` defines a pipeline through
-    /// which a Skaffold configuration can progress.
+    /// A `DeliveryPipeline` resource in the Cloud Deploy API. A `DeliveryPipeline` defines a pipeline through which a
+    /// Skaffold configuration can progress.
     /// </summary>
     public class DeliveryPipeline : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.
+        /// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
@@ -3941,42 +3941,9 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual PipelineCondition Condition { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. Time at which the pipeline was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Description of the `DeliveryPipeline`. Max length is 255 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -3990,8 +3957,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet
-        /// the following constraints: * Keys and values can contain only lowercase letters, numeric characters,
+        /// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the
+        /// following constraints: * Keys and values can contain only lowercase letters, numeric characters,
         /// underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed.
         /// * Keys must start with a lowercase letter or international character. * Each resource is limited to a
         /// maximum of 64 labels. Both keys and values are additionally constrained to be &amp;lt;= 128 bytes.
@@ -4020,42 +3987,9 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>Output only. Most recent time at which the pipeline was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
     }
 
     /// <summary>
@@ -4403,7 +4337,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     }
 
     /// <summary>
-    /// A `JobRun` resource in the Google Cloud Deploy API. A `JobRun` contains information of a single `Rollout` job
+    /// A `JobRun` resource in the Cloud Deploy API. A `JobRun` contains information of a single `Rollout` job
     /// evaluation.
     /// </summary>
     public class JobRun : Google.Apis.Requests.IDirectResponseSchema
@@ -4416,83 +4350,17 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("createChildRolloutJobRun")]
         public virtual CreateChildRolloutJobRun CreateChildRolloutJobRun { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. Time at which the `JobRun` was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. Information specific to a deploy `JobRun`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployJobRun")]
         public virtual DeployJobRun DeployJobRun { get; set; }
 
-        private string _endTimeRaw;
-
-        private object _endTime;
-
         /// <summary>Output only. Time at which the `JobRun` ended.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTimeRaw
-        {
-            get => _endTimeRaw;
-            set
-            {
-                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _endTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
-        public virtual object EndTime
-        {
-            get => _endTime;
-            set
-            {
-                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _endTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object EndTime { get; set; }
 
         /// <summary>
         /// Output only. This checksum is computed by the server based on the value of other fields, and may be sent on
@@ -4516,42 +4384,9 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("phaseId")]
         public virtual string PhaseId { get; set; }
 
-        private string _startTimeRaw;
-
-        private object _startTime;
-
         /// <summary>Output only. Time at which the `JobRun` was started.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTimeRaw
-        {
-            get => _startTimeRaw;
-            set
-            {
-                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _startTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
-        public virtual object StartTime
-        {
-            get => _startTime;
-            set
-            {
-                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _startTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object StartTime { get; set; }
 
         /// <summary>Output only. The current state of the `JobRun`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -4863,79 +4698,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
         public virtual string ApiVersion { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. The time the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _endTimeRaw;
-
-        private object _endTime;
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. The time the operation finished running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTimeRaw
-        {
-            get => _endTimeRaw;
-            set
-            {
-                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _endTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
-        public virtual object EndTime
-        {
-            get => _endTime;
-            set
-            {
-                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _endTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object EndTime { get; set; }
 
         /// <summary>
         /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
@@ -5070,42 +4839,9 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual System.Nullable<bool> Status { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>Last time the condition was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5210,8 +4946,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
     }
 
     /// <summary>
-    /// A `Release` resource in the Google Cloud Deploy API. A `Release` defines a specific Skaffold configuration
-    /// instance that can be deployed.
+    /// A `Release` resource in the Cloud Deploy API. A `Release` defines a specific Skaffold configuration instance
+    /// that can be deployed.
     /// </summary>
     public class Release : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5220,7 +4956,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual System.Nullable<bool> Abandoned { get; set; }
 
         /// <summary>
-        /// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See
+        /// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See
         /// https://google.aip.dev/128#annotations for more details such as format and size limitations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
@@ -5234,42 +4970,9 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual ReleaseCondition Condition { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. Time at which the `Release` was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. Snapshot of the parent pipeline taken at release creation time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deliveryPipelineSnapshot")]
@@ -5291,8 +4994,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet
-        /// the following constraints: * Keys and values can contain only lowercase letters, numeric characters,
+        /// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the
+        /// following constraints: * Keys and values can contain only lowercase letters, numeric characters,
         /// underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed.
         /// * Keys must start with a lowercase letter or international character. * Each resource is limited to a
         /// maximum of 64 labels. Both keys and values are additionally constrained to be &amp;lt;= 128 bytes.
@@ -5307,81 +5010,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        private string _renderEndTimeRaw;
-
-        private object _renderEndTime;
-
         /// <summary>Output only. Time at which the render completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("renderEndTime")]
-        public virtual string RenderEndTimeRaw
-        {
-            get => _renderEndTimeRaw;
-            set
-            {
-                _renderEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _renderEndTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="RenderEndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RenderEndTimeDateTimeOffset instead.")]
-        public virtual object RenderEndTime
-        {
-            get => _renderEndTime;
-            set
-            {
-                _renderEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _renderEndTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="RenderEndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? RenderEndTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RenderEndTimeRaw);
-            set => RenderEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _renderStartTimeRaw;
-
-        private object _renderStartTime;
+        public virtual object RenderEndTime { get; set; }
 
         /// <summary>Output only. Time at which the render began.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("renderStartTime")]
-        public virtual string RenderStartTimeRaw
-        {
-            get => _renderStartTimeRaw;
-            set
-            {
-                _renderStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _renderStartTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="RenderStartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RenderStartTimeDateTimeOffset instead.")]
-        public virtual object RenderStartTime
-        {
-            get => _renderStartTime;
-            set
-            {
-                _renderStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _renderStartTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="RenderStartTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? RenderStartTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RenderStartTimeRaw);
-            set => RenderStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object RenderStartTime { get; set; }
 
         /// <summary>Output only. Current state of the render operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("renderState")]
@@ -5397,8 +5032,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         /// <summary>
         /// The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid;
-        /// Google Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold
-        /// version will be used.
+        /// Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will
+        /// be used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skaffoldVersion")]
         public virtual string SkaffoldVersion { get; set; }
@@ -5532,13 +5167,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
     }
 
     /// <summary>
-    /// A `Rollout` resource in the Google Cloud Deploy API. A `Rollout` contains information around a specific
-    /// deployment to a `Target`.
+    /// A `Rollout` resource in the Cloud Deploy API. A `Rollout` contains information around a specific deployment to a
+    /// `Target`.
     /// </summary>
     public class Rollout : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See
+        /// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See
         /// https://google.aip.dev/128#annotations for more details such as format and size limitations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
@@ -5548,42 +5183,9 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("approvalState")]
         public virtual string ApprovalState { get; set; }
 
-        private string _approveTimeRaw;
-
-        private object _approveTime;
-
         /// <summary>Output only. Time at which the `Rollout` was approved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approveTime")]
-        public virtual string ApproveTimeRaw
-        {
-            get => _approveTimeRaw;
-            set
-            {
-                _approveTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _approveTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="ApproveTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ApproveTimeDateTimeOffset instead.")]
-        public virtual object ApproveTime
-        {
-            get => _approveTime;
-            set
-            {
-                _approveTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _approveTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ApproveTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ApproveTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ApproveTimeRaw);
-            set => ApproveTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object ApproveTime { get; set; }
 
         /// <summary>
         /// Output only. Name of the `ControllerRollout`. Format is projects/{project}/
@@ -5592,79 +5194,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("controllerRollout")]
         public virtual string ControllerRollout { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. Time at which the `Rollout` was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _deployEndTimeRaw;
-
-        private object _deployEndTime;
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. Time at which the `Rollout` finished deploying.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployEndTime")]
-        public virtual string DeployEndTimeRaw
-        {
-            get => _deployEndTimeRaw;
-            set
-            {
-                _deployEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _deployEndTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="DeployEndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeployEndTimeDateTimeOffset instead.")]
-        public virtual object DeployEndTime
-        {
-            get => _deployEndTime;
-            set
-            {
-                _deployEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _deployEndTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeployEndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? DeployEndTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeployEndTimeRaw);
-            set => DeployEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object DeployEndTime { get; set; }
 
         /// <summary>
         /// Output only. The reason this rollout failed. This will always be unspecified while the rollout is in
@@ -5673,44 +5209,9 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deployFailureCause")]
         public virtual string DeployFailureCause { get; set; }
 
-        private string _deployStartTimeRaw;
-
-        private object _deployStartTime;
-
         /// <summary>Output only. Time at which the `Rollout` started deploying.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployStartTime")]
-        public virtual string DeployStartTimeRaw
-        {
-            get => _deployStartTimeRaw;
-            set
-            {
-                _deployStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _deployStartTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="DeployStartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeployStartTimeDateTimeOffset instead.")]
-        public virtual object DeployStartTime
-        {
-            get => _deployStartTime;
-            set
-            {
-                _deployStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _deployStartTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="DeployStartTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? DeployStartTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeployStartTimeRaw);
-            set => DeployStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object DeployStartTime { get; set; }
 
         /// <summary>
         /// Output only. The resource name of the Cloud Build `Build` object that is used to deploy the Rollout. Format
@@ -5723,42 +5224,9 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        private string _enqueueTimeRaw;
-
-        private object _enqueueTime;
-
         /// <summary>Output only. Time at which the `Rollout` was enqueued.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enqueueTime")]
-        public virtual string EnqueueTimeRaw
-        {
-            get => _enqueueTimeRaw;
-            set
-            {
-                _enqueueTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _enqueueTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="EnqueueTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EnqueueTimeDateTimeOffset instead.")]
-        public virtual object EnqueueTime
-        {
-            get => _enqueueTime;
-            set
-            {
-                _enqueueTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _enqueueTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EnqueueTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? EnqueueTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EnqueueTimeRaw);
-            set => EnqueueTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object EnqueueTime { get; set; }
 
         /// <summary>
         /// This checksum is computed by the server based on the value of other fields, and may be sent on update and
@@ -5772,8 +5240,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string FailureReason { get; set; }
 
         /// <summary>
-        /// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet
-        /// the following constraints: * Keys and values can contain only lowercase letters, numeric characters,
+        /// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the
+        /// following constraints: * Keys and values can contain only lowercase letters, numeric characters,
         /// underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed.
         /// * Keys must start with a lowercase letter or international character. * Each resource is limited to a
         /// maximum of 64 labels. Both keys and values are additionally constrained to be &amp;lt;= 128 bytes.
@@ -5923,44 +5391,9 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// </summary>
     public class SkaffoldSupportedCondition : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _maintenanceModeTimeRaw;
-
-        private object _maintenanceModeTime;
-
         /// <summary>The time at which this release's version of skaffold will enter maintenance mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceModeTime")]
-        public virtual string MaintenanceModeTimeRaw
-        {
-            get => _maintenanceModeTimeRaw;
-            set
-            {
-                _maintenanceModeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _maintenanceModeTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="MaintenanceModeTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use MaintenanceModeTimeDateTimeOffset instead.")]
-        public virtual object MaintenanceModeTime
-        {
-            get => _maintenanceModeTime;
-            set
-            {
-                _maintenanceModeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _maintenanceModeTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="MaintenanceModeTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? MaintenanceModeTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(MaintenanceModeTimeRaw);
-            set => MaintenanceModeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object MaintenanceModeTime { get; set; }
 
         /// <summary>The skaffold support state for this release's version of skaffold.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skaffoldSupportState")]
@@ -5970,44 +5403,9 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual System.Nullable<bool> Status { get; set; }
 
-        private string _supportExpirationTimeRaw;
-
-        private object _supportExpirationTime;
-
         /// <summary>The time at which this release's version of skaffold will no longer be supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportExpirationTime")]
-        public virtual string SupportExpirationTimeRaw
-        {
-            get => _supportExpirationTimeRaw;
-            set
-            {
-                _supportExpirationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _supportExpirationTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="SupportExpirationTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SupportExpirationTimeDateTimeOffset instead.")]
-        public virtual object SupportExpirationTime
-        {
-            get => _supportExpirationTime;
-            set
-            {
-                _supportExpirationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _supportExpirationTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SupportExpirationTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? SupportExpirationTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SupportExpirationTimeRaw);
-            set => SupportExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object SupportExpirationTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6016,87 +5414,17 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>Details of a supported Skaffold version.</summary>
     public class SkaffoldVersion : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _maintenanceModeTimeRaw;
-
-        private object _maintenanceModeTime;
-
         /// <summary>The time at which this version of skaffold will enter maintenance mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maintenanceModeTime")]
-        public virtual string MaintenanceModeTimeRaw
-        {
-            get => _maintenanceModeTimeRaw;
-            set
-            {
-                _maintenanceModeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _maintenanceModeTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="MaintenanceModeTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use MaintenanceModeTimeDateTimeOffset instead.")]
-        public virtual object MaintenanceModeTime
-        {
-            get => _maintenanceModeTime;
-            set
-            {
-                _maintenanceModeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _maintenanceModeTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="MaintenanceModeTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? MaintenanceModeTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(MaintenanceModeTimeRaw);
-            set => MaintenanceModeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object MaintenanceModeTime { get; set; }
 
         /// <summary>Date when this version is expected to no longer be supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportEndDate")]
         public virtual Date SupportEndDate { get; set; }
 
-        private string _supportExpirationTimeRaw;
-
-        private object _supportExpirationTime;
-
         /// <summary>The time at which this version of skaffold will no longer be supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("supportExpirationTime")]
-        public virtual string SupportExpirationTimeRaw
-        {
-            get => _supportExpirationTimeRaw;
-            set
-            {
-                _supportExpirationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _supportExpirationTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="SupportExpirationTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SupportExpirationTimeDateTimeOffset instead.")]
-        public virtual object SupportExpirationTime
-        {
-            get => _supportExpirationTime;
-            set
-            {
-                _supportExpirationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _supportExpirationTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SupportExpirationTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? SupportExpirationTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SupportExpirationTimeRaw);
-            set => SupportExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object SupportExpirationTime { get; set; }
 
         /// <summary>Release version number. For example, "1.20.3".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
@@ -6192,14 +5520,14 @@ namespace Google.Apis.CloudDeploy.v1.Data
     }
 
     /// <summary>
-    /// A `Target` resource in the Google Cloud Deploy API. A `Target` defines a location to which a Skaffold
-    /// configuration can be deployed.
+    /// A `Target` resource in the Cloud Deploy API. A `Target` defines a location to which a Skaffold configuration can
+    /// be deployed.
     /// </summary>
     public class Target : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud
-        /// Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        /// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.
+        /// See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
@@ -6208,42 +5536,9 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("anthosCluster")]
         public virtual AnthosCluster AnthosCluster { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. Time at which the `Target` was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Optional. The deploy parameters to use for this target.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deployParameters")]
@@ -6274,12 +5569,11 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual GkeCluster Gke { get; set; }
 
         /// <summary>
-        /// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels
-        /// must meet the following constraints: * Keys and values can contain only lowercase letters, numeric
-        /// characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters
-        /// are allowed. * Keys must start with a lowercase letter or international character. * Each resource is
-        /// limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &amp;lt;= 128
-        /// bytes.
+        /// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must
+        /// meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters,
+        /// underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed.
+        /// * Keys must start with a lowercase letter or international character. * Each resource is limited to a
+        /// maximum of 64 labels. Both keys and values are additionally constrained to be &amp;lt;= 128 bytes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -6310,42 +5604,9 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>Output only. Most recent time at which the `Target` was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
     }
 
     /// <summary>The artifacts produced by a target render operation.</summary>
@@ -6445,42 +5706,9 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual System.Nullable<bool> Status { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>Last time the condition was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

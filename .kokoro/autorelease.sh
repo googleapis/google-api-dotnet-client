@@ -3,12 +3,12 @@
 set -ex
 
 # Make sure secrets are loaded in a well known localtion before running releasetool
-source ./populatesecrets.sh
-populate_all_secrets
+# source ./populatesecrets.sh
+# populate_all_secrets
 
 declare -r github_user="$(cat "$SECRETS_LOCATION"/google-api-dotnet-client-github-user-name)"
 declare -r github_email="$(cat "$SECRETS_LOCATION"/google-api-dotnet-client-github-user-email)"
-declare -r github_token="$(cat "$SECRETS_LOCATION"/google-api-dotnet-client-github-token)"
+declare -r github_token="$GITHUB_TOKEN"
 declare -r nuget_token="$(cat "$SECRETS_LOCATION"/google-apis-nuget-api-key)"
 
 now="$(date +%Y-%m-%d.%H-%M-%S)"
@@ -21,8 +21,8 @@ git checkout $branchname
 # So that chmod changes are ignored.
 git config core.fileMode false
 # Even though we use the token to authenticate, we need the email for the CLA.
-git config user.name "$github_user"
-git config user.email "$github_email"
+git config user.name "Amanda Tarafa Mas"
+git config user.email "atarafamas@google.com"
 
 # Download, generate, build and pack all generated libraries
 # Build support libraries in case the latest support library version isn't yet on nuget.
@@ -77,13 +77,15 @@ shopt -s nullglob
 for pkg in ./NuPkgs/Support/*.nupkg; do
   if [[ $pkg != *.symbols.* ]]; then
     # Push is expected to fail often; when a package hasn't been updated.
-    nuget push $pkg $nuget_token -Source nuget.org || true
+    # nuget push $pkg $nuget_token -Source nuget.org || true
+    echo "Pushing..."
   fi
 done
 for pkg in ./NuPkgs/Generated/*.nupkg; do
   if [[ $pkg != *.symbols.* ]]; then
     # Push is expected to fail often; when a package hasn't been updated.
-    nuget push $pkg $nuget_token -Source nuget.org || true
+    # nuget push $pkg $nuget_token -Source nuget.org || true
+    echo "Pushing..."
   fi
 done
 
@@ -91,7 +93,7 @@ done
 git add -A
 git commit -m "Update discovery documents and generated code" -m "automatically_generated_update"
 # We change the origin URL so that we can push with SSH
-git remote set-url origin git@github.com:googleapis/google-api-dotnet-client.git
+git remote set-url origin https://github.com/googleapis/google-api-dotnet-client
 git push --set-upstream origin $branchname
 
 # Create a PR for the changes in branchname.

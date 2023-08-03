@@ -68,7 +68,8 @@
   ],
   "Google.Apis.Admin.Directory.directory_v1.OrgunitsResource+ListRequest.TypeEnum": [
     "all",
-    "children"
+    "children",
+    "allIncludingParent"
   ],
   "Google.Apis.Admin.Directory.directory_v1.ResourcesResource+BuildingsResource+InsertRequest.CoordinatesSourceEnum": [
     "CLIENT_SPECIFIED",

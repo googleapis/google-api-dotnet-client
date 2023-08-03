@@ -507,28 +507,28 @@ namespace Google.Apis.BackupforGKE.v1
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
-                            /// <summary>Field match expression used to filter the results.</summary>
+                            /// <summary>Optional. Field match expression used to filter the results.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
 
-                            /// <summary>Field by which to sort the results.</summary>
+                            /// <summary>Optional. Field by which to sort the results.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string OrderBy { get; set; }
 
                             /// <summary>
-                            /// The target number of results to return in a single response. If not specified, a default
-                            /// value will be chosen by the service. Note that the response may inclue a partial list
-                            /// and a caller should only rely on the response's next_page_token to determine if there
-                            /// are more instances left to be queried.
+                            /// Optional. The target number of results to return in a single response. If not specified,
+                            /// a default value will be chosen by the service. Note that the response may include a
+                            /// partial list and a caller should only rely on the response's next_page_token to
+                            /// determine if there are more instances left to be queried.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 
                             /// <summary>
-                            /// The value of next_page_token received from a previous `ListVolumeBackups` call. Provide
-                            /// this to retrieve the subsequent page in a multi-page list of results. When paginating,
-                            /// all other parameters provided to `ListVolumeBackups` must match the call that provided
-                            /// the page token.
+                            /// Optional. The value of next_page_token received from a previous `ListVolumeBackups`
+                            /// call. Provide this to retrieve the subsequent page in a multi-page list of results. When
+                            /// paginating, all other parameters provided to `ListVolumeBackups` must match the call
+                            /// that provided the page token.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
@@ -758,10 +758,10 @@ namespace Google.Apis.BackupforGKE.v1
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// The client-provided short name for the Backup resource. This name must: - be between 1 and
-                        /// 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and
-                        /// dashes - start with a lower-case letter - end with a lower-case letter or number - be unique
-                        /// within the set of Backups in this BackupPlan
+                        /// Optional. The client-provided short name for the Backup resource. This name must: - be
+                        /// between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters,
+                        /// numbers, and dashes - start with a lower-case letter - end with a lower-case letter or
+                        /// number - be unique within the set of Backups in this BackupPlan
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("backupId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string BackupId { get; set; }
@@ -831,15 +831,15 @@ namespace Google.Apis.BackupforGKE.v1
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// If provided, this value must match the current value of the target Backup's etag field or
-                        /// the request is rejected.
+                        /// Optional. If provided, this value must match the current value of the target Backup's etag
+                        /// field or the request is rejected.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Etag { get; set; }
 
                         /// <summary>
-                        /// If set to true, any VolumeBackups below this Backup will also be deleted. Otherwise, the
-                        /// request will only succeed if the Backup has no VolumeBackups.
+                        /// Optional. If set to true, any VolumeBackups below this Backup will also be deleted.
+                        /// Otherwise, the request will only succeed if the Backup has no VolumeBackups.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> Force { get; set; }
@@ -1043,27 +1043,27 @@ namespace Google.Apis.BackupforGKE.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Field match expression used to filter the results.</summary>
+                        /// <summary>Optional. Field match expression used to filter the results.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>Field by which to sort the results.</summary>
+                        /// <summary>Optional. Field by which to sort the results.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
                         /// <summary>
-                        /// The target number of results to return in a single response. If not specified, a default
-                        /// value will be chosen by the service. Note that the response may inclue a partial list and a
-                        /// caller should only rely on the response's next_page_token to determine if there are more
-                        /// instances left to be queried.
+                        /// Optional. The target number of results to return in a single response. If not specified, a
+                        /// default value will be chosen by the service. Note that the response may include a partial
+                        /// list and a caller should only rely on the response's next_page_token to determine if there
+                        /// are more instances left to be queried.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
                         /// <summary>
-                        /// The value of next_page_token received from a previous `ListBackups` call. Provide this to
-                        /// retrieve the subsequent page in a multi-page list of results. When paginating, all other
-                        /// parameters provided to `ListBackups` must match the call that provided the page token.
+                        /// Optional. The value of next_page_token received from a previous `ListBackups` call. Provide
+                        /// this to retrieve the subsequent page in a multi-page list of results. When paginating, all
+                        /// other parameters provided to `ListBackups` must match the call that provided the page token.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -1154,12 +1154,12 @@ namespace Google.Apis.BackupforGKE.v1
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// This is used to specify the fields to be overwritten in the Backup targeted for update. The
-                        /// values for each of these updated fields will be taken from the `backup_plan` provided with
-                        /// this request. Field names are relative to the root of the resource. If no `update_mask` is
-                        /// provided, all fields in `backup` will be written to the target Backup resource. Note that
-                        /// OUTPUT_ONLY and IMMUTABLE fields in `backup` are ignored and are not used to update the
-                        /// target Backup.
+                        /// Optional. This is used to specify the fields to be overwritten in the Backup targeted for
+                        /// update. The values for each of these updated fields will be taken from the `backup_plan`
+                        /// provided with this request. Field names are relative to the root of the resource. If no
+                        /// `update_mask` is provided, all fields in `backup` will be written to the target Backup
+                        /// resource. Note that OUTPUT_ONLY and IMMUTABLE fields in `backup` are ignored and are not
+                        /// used to update the target Backup.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -1441,8 +1441,8 @@ namespace Google.Apis.BackupforGKE.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// If provided, this value must match the current value of the target BackupPlan's etag field or
-                    /// the request is rejected.
+                    /// Optional. If provided, this value must match the current value of the target BackupPlan's etag
+                    /// field or the request is rejected.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
@@ -1633,26 +1633,26 @@ namespace Google.Apis.BackupforGKE.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Field match expression used to filter the results.</summary>
+                    /// <summary>Optional. Field match expression used to filter the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Field by which to sort the results.</summary>
+                    /// <summary>Optional. Field by which to sort the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// The target number of results to return in a single response. If not specified, a default value
-                    /// will be chosen by the service. Note that the response may inclue a partial list and a caller
-                    /// should only rely on the response's next_page_token to determine if there are more instances left
-                    /// to be queried.
+                    /// Optional. The target number of results to return in a single response. If not specified, a
+                    /// default value will be chosen by the service. Note that the response may include a partial list
+                    /// and a caller should only rely on the response's next_page_token to determine if there are more
+                    /// instances left to be queried.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// The value of next_page_token received from a previous `ListBackupPlans` call. Provide this to
-                    /// retrieve the subsequent page in a multi-page list of results. When paginating, all other
+                    /// Optional. The value of next_page_token received from a previous `ListBackupPlans` call. Provide
+                    /// this to retrieve the subsequent page in a multi-page list of results. When paginating, all other
                     /// parameters provided to `ListBackupPlans` must match the call that provided the page token.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -1744,12 +1744,13 @@ namespace Google.Apis.BackupforGKE.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// This is used to specify the fields to be overwritten in the BackupPlan targeted for update. The
-                    /// values for each of these updated fields will be taken from the `backup_plan` provided with this
-                    /// request. Field names are relative to the root of the resource (e.g., `description`,
-                    /// `backup_config.include_volume_data`, etc.) If no `update_mask` is provided, all fields in
-                    /// `backup_plan` will be written to the target BackupPlan resource. Note that OUTPUT_ONLY and
-                    /// IMMUTABLE fields in `backup_plan` are ignored and are not used to update the target BackupPlan.
+                    /// Optional. This is used to specify the fields to be overwritten in the BackupPlan targeted for
+                    /// update. The values for each of these updated fields will be taken from the `backup_plan`
+                    /// provided with this request. Field names are relative to the root of the resource (e.g.,
+                    /// `description`, `backup_config.include_volume_data`, etc.) If no `update_mask` is provided, all
+                    /// fields in `backup_plan` will be written to the target BackupPlan resource. Note that OUTPUT_ONLY
+                    /// and IMMUTABLE fields in `backup_plan` are ignored and are not used to update the target
+                    /// BackupPlan.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -2366,28 +2367,28 @@ namespace Google.Apis.BackupforGKE.v1
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
-                            /// <summary>Field match expression used to filter the results.</summary>
+                            /// <summary>Optional. Field match expression used to filter the results.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Filter { get; set; }
 
-                            /// <summary>Field by which to sort the results.</summary>
+                            /// <summary>Optional. Field by which to sort the results.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string OrderBy { get; set; }
 
                             /// <summary>
-                            /// The target number of results to return in a single response. If not specified, a default
-                            /// value will be chosen by the service. Note that the response may inclue a partial list
-                            /// and a caller should only rely on the response's next_page_token to determine if there
-                            /// are more instances left to be queried.
+                            /// Optional. The target number of results to return in a single response. If not specified,
+                            /// a default value will be chosen by the service. Note that the response may include a
+                            /// partial list and a caller should only rely on the response's next_page_token to
+                            /// determine if there are more instances left to be queried.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 
                             /// <summary>
-                            /// The value of next_page_token received from a previous `ListVolumeRestores` call. Provide
-                            /// this to retrieve the subsequent page in a multi-page list of results. When paginating,
-                            /// all other parameters provided to `ListVolumeRestores` must match the call that provided
-                            /// the page token.
+                            /// Optional. The value of next_page_token received from a previous `ListVolumeRestores`
+                            /// call. Provide this to retrieve the subsequent page in a multi-page list of results. When
+                            /// paginating, all other parameters provided to `ListVolumeRestores` must match the call
+                            /// that provided the page token.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
@@ -2690,15 +2691,15 @@ namespace Google.Apis.BackupforGKE.v1
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// If provided, this value must match the current value of the target Restore's etag field or
-                        /// the request is rejected.
+                        /// Optional. If provided, this value must match the current value of the target Restore's etag
+                        /// field or the request is rejected.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Etag { get; set; }
 
                         /// <summary>
-                        /// If set to true, any VolumeRestores below this restore will also be deleted. Otherwise, the
-                        /// request will only succeed if the restore has no VolumeRestores.
+                        /// Optional. If set to true, any VolumeRestores below this restore will also be deleted.
+                        /// Otherwise, the request will only succeed if the restore has no VolumeRestores.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> Force { get; set; }
@@ -2902,27 +2903,28 @@ namespace Google.Apis.BackupforGKE.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Field match expression used to filter the results.</summary>
+                        /// <summary>Optional. Field match expression used to filter the results.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
-                        /// <summary>Field by which to sort the results.</summary>
+                        /// <summary>Optional. Field by which to sort the results.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string OrderBy { get; set; }
 
                         /// <summary>
-                        /// The target number of results to return in a single response. If not specified, a default
-                        /// value will be chosen by the service. Note that the response may inclue a partial list and a
-                        /// caller should only rely on the response's next_page_token to determine if there are more
-                        /// instances left to be queried.
+                        /// Optional. The target number of results to return in a single response. If not specified, a
+                        /// default value will be chosen by the service. Note that the response may include a partial
+                        /// list and a caller should only rely on the response's next_page_token to determine if there
+                        /// are more instances left to be queried.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
                         /// <summary>
-                        /// The value of next_page_token received from a previous `ListRestores` call. Provide this to
-                        /// retrieve the subsequent page in a multi-page list of results. When paginating, all other
-                        /// parameters provided to `ListRestores` must match the call that provided the page token.
+                        /// Optional. The value of next_page_token received from a previous `ListRestores` call. Provide
+                        /// this to retrieve the subsequent page in a multi-page list of results. When paginating, all
+                        /// other parameters provided to `ListRestores` must match the call that provided the page
+                        /// token.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
@@ -3013,12 +3015,12 @@ namespace Google.Apis.BackupforGKE.v1
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// This is used to specify the fields to be overwritten in the Restore targeted for update. The
-                        /// values for each of these updated fields will be taken from the `restore` provided with this
-                        /// request. Field names are relative to the root of the resource. If no `update_mask` is
-                        /// provided, all fields in `restore` will be written to the target Restore resource. Note that
-                        /// OUTPUT_ONLY and IMMUTABLE fields in `restore` are ignored and are not used to update the
-                        /// target Restore.
+                        /// Optional. This is used to specify the fields to be overwritten in the Restore targeted for
+                        /// update. The values for each of these updated fields will be taken from the `restore`
+                        /// provided with this request. Field names are relative to the root of the resource. If no
+                        /// `update_mask` is provided, all fields in `restore` will be written to the target Restore
+                        /// resource. Note that OUTPUT_ONLY and IMMUTABLE fields in `restore` are ignored and are not
+                        /// used to update the target Restore.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual object UpdateMask { get; set; }
@@ -3300,15 +3302,15 @@ namespace Google.Apis.BackupforGKE.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// If provided, this value must match the current value of the target RestorePlan's etag field or
-                    /// the request is rejected.
+                    /// Optional. If provided, this value must match the current value of the target RestorePlan's etag
+                    /// field or the request is rejected.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
 
                     /// <summary>
-                    /// If set to true, any Restores below this RestorePlan will also be deleted. Otherwise, the request
-                    /// will only succeed if the RestorePlan has no Restores.
+                    /// Optional. If set to true, any Restores below this RestorePlan will also be deleted. Otherwise,
+                    /// the request will only succeed if the RestorePlan has no Restores.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> Force { get; set; }
@@ -3507,26 +3509,26 @@ namespace Google.Apis.BackupforGKE.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Field match expression used to filter the results.</summary>
+                    /// <summary>Optional. Field match expression used to filter the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
-                    /// <summary>Field by which to sort the results.</summary>
+                    /// <summary>Optional. Field by which to sort the results.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// The target number of results to return in a single response. If not specified, a default value
-                    /// will be chosen by the service. Note that the response may inclue a partial list and a caller
-                    /// should only rely on the response's next_page_token to determine if there are more instances left
-                    /// to be queried.
+                    /// Optional. The target number of results to return in a single response. If not specified, a
+                    /// default value will be chosen by the service. Note that the response may include a partial list
+                    /// and a caller should only rely on the response's next_page_token to determine if there are more
+                    /// instances left to be queried.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
                     /// <summary>
-                    /// The value of next_page_token received from a previous `ListRestorePlans` call. Provide this to
-                    /// retrieve the subsequent page in a multi-page list of results. When paginating, all other
+                    /// Optional. The value of next_page_token received from a previous `ListRestorePlans` call. Provide
+                    /// this to retrieve the subsequent page in a multi-page list of results. When paginating, all other
                     /// parameters provided to `ListRestorePlans` must match the call that provided the page token.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -3618,12 +3620,12 @@ namespace Google.Apis.BackupforGKE.v1
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// This is used to specify the fields to be overwritten in the RestorePlan targeted for update. The
-                    /// values for each of these updated fields will be taken from the `restore_plan` provided with this
-                    /// request. Field names are relative to the root of the resource. If no `update_mask` is provided,
-                    /// all fields in `restore_plan` will be written to the target RestorePlan resource. Note that
-                    /// OUTPUT_ONLY and IMMUTABLE fields in `restore_plan` are ignored and are not used to update the
-                    /// target RestorePlan.
+                    /// Optional. This is used to specify the fields to be overwritten in the RestorePlan targeted for
+                    /// update. The values for each of these updated fields will be taken from the `restore_plan`
+                    /// provided with this request. Field names are relative to the root of the resource. If no
+                    /// `update_mask` is provided, all fields in `restore_plan` will be written to the target
+                    /// RestorePlan resource. Note that OUTPUT_ONLY and IMMUTABLE fields in `restore_plan` are ignored
+                    /// and are not used to update the target RestorePlan.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -4063,42 +4065,9 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clusterMetadata")]
         public virtual ClusterMetadata ClusterMetadata { get; set; }
 
-        private string _completeTimeRaw;
-
-        private object _completeTime;
-
         /// <summary>Output only. Completion time of the Backup</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
-        public virtual string CompleteTimeRaw
-        {
-            get => _completeTimeRaw;
-            set
-            {
-                _completeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _completeTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CompleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CompleteTimeDateTimeOffset instead.")]
-        public virtual object CompleteTime
-        {
-            get => _completeTime;
-            set
-            {
-                _completeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _completeTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CompleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CompleteTimeRaw);
-            set => CompleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CompleteTime { get; set; }
 
         /// <summary>Output only. The size of the config backup in bytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configBackupSizeBytes")]
@@ -4118,96 +4087,28 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("containsVolumeData")]
         public virtual System.Nullable<bool> ContainsVolumeData { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. The timestamp when this Backup resource was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>
-        /// Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will be "locked"
-        /// against deletion (either manual or automatic deletion) for the number of days provided (measured from the
-        /// creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent
+        /// Optional. Minimum age for this Backup (in days). If this field is set to a non-zero value, the Backup will
+        /// be "locked" against deletion (either manual or automatic deletion) for the number of days provided (measured
+        /// from the creation time of the Backup). MUST be an integer value between 0-90 (inclusive). Defaults to parent
         /// BackupPlan's backup_delete_lock_days setting and may only be increased (either at creation time or in a
         /// subsequent update).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteLockDays")]
         public virtual System.Nullable<int> DeleteLockDays { get; set; }
 
-        private string _deleteLockExpireTimeRaw;
-
-        private object _deleteLockExpireTime;
-
         /// <summary>
         /// Output only. The time at which an existing delete lock will expire for this backup (calculated from
         /// create_time + delete_lock_days).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteLockExpireTime")]
-        public virtual string DeleteLockExpireTimeRaw
-        {
-            get => _deleteLockExpireTimeRaw;
-            set
-            {
-                _deleteLockExpireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _deleteLockExpireTimeRaw = value;
-            }
-        }
+        public virtual object DeleteLockExpireTime { get; set; }
 
-        /// <summary><seealso cref="object"/> representation of <see cref="DeleteLockExpireTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteLockExpireTimeDateTimeOffset instead.")]
-        public virtual object DeleteLockExpireTime
-        {
-            get => _deleteLockExpireTime;
-            set
-            {
-                _deleteLockExpireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _deleteLockExpireTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteLockExpireTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? DeleteLockExpireTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteLockExpireTimeRaw);
-            set => DeleteLockExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        /// <summary>User specified descriptive string for this Backup.</summary>
+        /// <summary>Optional. User specified descriptive string for this Backup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -4228,7 +4129,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>A set of custom labels supplied by user.</summary>
+        /// <summary>Optional. A set of custom labels supplied by user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
@@ -4254,55 +4155,20 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual System.Nullable<int> ResourceCount { get; set; }
 
         /// <summary>
-        /// The age (in days) after which this Backup will be automatically deleted. Must be an integer value &amp;gt;=
-        /// 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be &amp;gt;=
+        /// Optional. The age (in days) after which this Backup will be automatically deleted. Must be an integer value
+        /// &amp;gt;= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be &amp;gt;=
         /// delete_lock_days and &amp;lt;= 365. Once a Backup is created, this value may only be increased. Defaults to
         /// the parent BackupPlan's backup_retain_days value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retainDays")]
         public virtual System.Nullable<int> RetainDays { get; set; }
 
-        private string _retainExpireTimeRaw;
-
-        private object _retainExpireTime;
-
         /// <summary>
         /// Output only. The time at which this Backup will be automatically deleted (calculated from create_time +
         /// retain_days).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retainExpireTime")]
-        public virtual string RetainExpireTimeRaw
-        {
-            get => _retainExpireTimeRaw;
-            set
-            {
-                _retainExpireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _retainExpireTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="RetainExpireTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RetainExpireTimeDateTimeOffset instead.")]
-        public virtual object RetainExpireTime
-        {
-            get => _retainExpireTime;
-            set
-            {
-                _retainExpireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _retainExpireTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="RetainExpireTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? RetainExpireTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RetainExpireTimeRaw);
-            set => RetainExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object RetainExpireTime { get; set; }
 
         /// <summary>
         /// Output only. If set, the list of ProtectedApplications whose resources were included in the Backup.
@@ -4335,42 +4201,9 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>Output only. The timestamp when this Backup resource was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>Output only. The total number of volume backups contained in the Backup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeCount")]
@@ -4385,23 +4218,23 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual System.Nullable<bool> AllNamespaces { get; set; }
 
         /// <summary>
-        /// This defines a customer managed encryption key that will be used to encrypt the "config" portion (the
-        /// Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will not be
-        /// encrypted.
+        /// Optional. This defines a customer managed encryption key that will be used to encrypt the "config" portion
+        /// (the Kubernetes resources) of Backups created via this plan. Default (empty): Config backup artifacts will
+        /// not be encrypted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionKey")]
         public virtual EncryptionKey EncryptionKey { get; set; }
 
         /// <summary>
-        /// This flag specifies whether Kubernetes Secret resources should be included when they fall into the scope of
-        /// Backups. Default: False
+        /// Optional. This flag specifies whether Kubernetes Secret resources should be included when they fall into the
+        /// scope of Backups. Default: False
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeSecrets")]
         public virtual System.Nullable<bool> IncludeSecrets { get; set; }
 
         /// <summary>
-        /// This flag specifies whether volume data should be backed up when PVCs are included in the scope of a Backup.
-        /// Default: False
+        /// Optional. This flag specifies whether volume data should be backed up when PVCs are included in the scope of
+        /// a Backup. Default: False
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeVolumeData")]
         public virtual System.Nullable<bool> IncludeVolumeData { get; set; }
@@ -4421,11 +4254,11 @@ namespace Google.Apis.BackupforGKE.v1.Data
     /// <summary>Defines the configuration and scheduling for a "line" of Backups.</summary>
     public class BackupPlan : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Defines the configuration of Backups created via this BackupPlan.</summary>
+        /// <summary>Optional. Defines the configuration of Backups created via this BackupPlan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupConfig")]
         public virtual BackupConfig BackupConfig { get; set; }
 
-        /// <summary>Defines a schedule for automatic Backup creation via this BackupPlan.</summary>
+        /// <summary>Optional. Defines a schedule for automatic Backup creation via this BackupPlan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupSchedule")]
         public virtual Schedule BackupSchedule { get; set; }
 
@@ -4436,53 +4269,20 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
         public virtual string Cluster { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. The timestamp when this BackupPlan resource was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>
-        /// This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks the
-        /// BackupPlan such that no further updates will be allowed (except deletes), including the deactivated field
-        /// itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled
+        /// Optional. This flag indicates whether this BackupPlan has been deactivated. Setting this field to True locks
+        /// the BackupPlan such that no further updates will be allowed (except deletes), including the deactivated
+        /// field itself. It also prevents any new Backups from being created via this BackupPlan (including scheduled
         /// Backups). Default: False
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deactivated")]
         public virtual System.Nullable<bool> Deactivated { get; set; }
 
-        /// <summary>User specified descriptive string for this BackupPlan.</summary>
+        /// <summary>Optional. User specified descriptive string for this BackupPlan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -4497,7 +4297,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>A set of custom labels supplied by user.</summary>
+        /// <summary>Optional. A set of custom labels supplied by user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
@@ -4514,7 +4314,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("protectedPodCount")]
         public virtual System.Nullable<int> ProtectedPodCount { get; set; }
 
-        /// <summary>RetentionPolicy governs lifecycle of Backups created under this plan.</summary>
+        /// <summary>Optional. RetentionPolicy governs lifecycle of Backups created under this plan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retentionPolicy")]
         public virtual RetentionPolicy RetentionPolicy { get; set; }
 
@@ -4536,42 +4336,9 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>Output only. The timestamp when this BackupPlan resource was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
     }
 
     /// <summary>Associates `members`, or principals, with a `role`.</summary>
@@ -4629,26 +4396,27 @@ namespace Google.Apis.BackupforGKE.v1.Data
     /// <summary>Information about the GKE cluster from which this Backup was created.</summary>
     public class ClusterMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Anthos version</summary>
+        /// <summary>Output only. Anthos version</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("anthosVersion")]
         public virtual string AnthosVersion { get; set; }
 
-        /// <summary>A list of the Backup for GKE CRD versions found in the cluster.</summary>
+        /// <summary>Output only. A list of the Backup for GKE CRD versions found in the cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupCrdVersions")]
         public virtual System.Collections.Generic.IDictionary<string, string> BackupCrdVersions { get; set; }
 
         /// <summary>
-        /// The source cluster from which this Backup was created. Valid formats: - `projects/*/locations/*/clusters/*`
-        /// - `projects/*/zones/*/clusters/*` This is inherited from the parent BackupPlan's cluster field.
+        /// Output only. The source cluster from which this Backup was created. Valid formats: -
+        /// `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*` This is inherited from the parent
+        /// BackupPlan's cluster field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
         public virtual string Cluster { get; set; }
 
-        /// <summary>GKE version</summary>
+        /// <summary>Output only. GKE version</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gkeVersion")]
         public virtual string GkeVersion { get; set; }
 
-        /// <summary>The Kubernetes server version of the source cluster.</summary>
+        /// <summary>Output only. The Kubernetes server version of the source cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("k8sVersion")]
         public virtual string K8sVersion { get; set; }
 
@@ -4667,30 +4435,30 @@ namespace Google.Apis.BackupforGKE.v1.Data
     public class ClusterResourceRestoreScope : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// If True, all valid cluster-scoped resources will be restored. Mutually exclusive to any other field in the
-        /// message.
+        /// Optional. If True, all valid cluster-scoped resources will be restored. Mutually exclusive to any other
+        /// field in the message.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allGroupKinds")]
         public virtual System.Nullable<bool> AllGroupKinds { get; set; }
 
         /// <summary>
-        /// A list of cluster-scoped resource group kinds to NOT restore from the backup. If specified, all valid
-        /// cluster-scoped resources will be restored except for those specified in the list. Mutually exclusive to any
-        /// other field in the message.
+        /// Optional. A list of cluster-scoped resource group kinds to NOT restore from the backup. If specified, all
+        /// valid cluster-scoped resources will be restored except for those specified in the list. Mutually exclusive
+        /// to any other field in the message.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedGroupKinds")]
         public virtual System.Collections.Generic.IList<GroupKind> ExcludedGroupKinds { get; set; }
 
         /// <summary>
-        /// If True, no cluster-scoped resources will be restored. This has the same restore scope as if the message is
-        /// not defined. Mutually exclusive to any other field in the message.
+        /// Optional. If True, no cluster-scoped resources will be restored. This has the same restore scope as if the
+        /// message is not defined. Mutually exclusive to any other field in the message.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("noGroupKinds")]
         public virtual System.Nullable<bool> NoGroupKinds { get; set; }
 
         /// <summary>
-        /// A list of cluster-scoped resource group kinds to restore from the backup. If specified, only the selected
-        /// resources will be restored. Mutually exclusive to any other field in the message.
+        /// Optional. A list of cluster-scoped resource group kinds to restore from the backup. If specified, only the
+        /// selected resources will be restored. Mutually exclusive to any other field in the message.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectedGroupKinds")]
         public virtual System.Collections.Generic.IList<GroupKind> SelectedGroupKinds { get; set; }
@@ -4713,7 +4481,9 @@ namespace Google.Apis.BackupforGKE.v1.Data
     /// <summary>Defined a customer managed encryption key that will be used to encrypt Backup artifacts.</summary>
     public class EncryptionKey : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`</summary>
+        /// <summary>
+        /// Optional. Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcpKmsEncryptionKey")]
         public virtual string GcpKmsEncryptionKey { get; set; }
 
@@ -4867,13 +4637,15 @@ namespace Google.Apis.BackupforGKE.v1.Data
     public class GroupKind : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use
-        /// empty string for core API group
+        /// Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc.
+        /// Note: use empty string for core API group
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceGroup")]
         public virtual string ResourceGroup { get; set; }
 
-        /// <summary>Kind of a Kubernetes resource, e.g. "CustomResourceDefinition", "StorageClass", etc.</summary>
+        /// <summary>
+        /// Optional. Kind of a Kubernetes resource, e.g. "CustomResourceDefinition", "StorageClass", etc.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceKind")]
         public virtual string ResourceKind { get; set; }
 
@@ -5051,11 +4823,11 @@ namespace Google.Apis.BackupforGKE.v1.Data
     /// <summary>A reference to a namespaced resource in Kubernetes.</summary>
     public class NamespacedName : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The name of the Kubernetes resource.</summary>
+        /// <summary>Optional. The name of the Kubernetes resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The Namespace of the Kubernetes resource.</summary>
+        /// <summary>Optional. The Namespace of the Kubernetes resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
         public virtual string Namespace__ { get; set; }
 
@@ -5066,7 +4838,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
     /// <summary>A list of namespaced Kubernetes resources.</summary>
     public class NamespacedNames : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of namespaced Kubernetes resources.</summary>
+        /// <summary>Optional. A list of namespaced Kubernetes resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespacedNames")]
         public virtual System.Collections.Generic.IList<NamespacedName> NamespacedNamesValue { get; set; }
 
@@ -5077,7 +4849,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
     /// <summary>A list of Kubernetes Namespaces</summary>
     public class Namespaces : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of Kubernetes Namespaces</summary>
+        /// <summary>Optional. A list of Kubernetes Namespaces</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaces")]
         public virtual System.Collections.Generic.IList<string> NamespacesValue { get; set; }
 
@@ -5092,79 +4864,13 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
         public virtual string ApiVersion { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. The time the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _endTimeRaw;
-
-        private object _endTime;
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. The time the operation finished running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTimeRaw
-        {
-            get => _endTimeRaw;
-            set
-            {
-                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _endTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
-        public virtual object EndTime
-        {
-            get => _endTime;
-            set
-            {
-                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _endTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object EndTime { get; set; }
 
         /// <summary>
         /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
@@ -5266,25 +4972,25 @@ namespace Google.Apis.BackupforGKE.v1.Data
     public class ResourceFilter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// (Filtering parameter) Any resource subject to transformation must belong to one of the listed "types". If
-        /// this field is not provided, no type filtering will be performed (all resources of all types matching
-        /// previous filtering parameters will be candidates for transformation).
+        /// Optional. (Filtering parameter) Any resource subject to transformation must belong to one of the listed
+        /// "types". If this field is not provided, no type filtering will be performed (all resources of all types
+        /// matching previous filtering parameters will be candidates for transformation).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupKinds")]
         public virtual System.Collections.Generic.IList<GroupKind> GroupKinds { get; set; }
 
         /// <summary>
-        /// This is a [JSONPath] (https://github.com/json-path/JsonPath/blob/master/README.md) expression that matches
-        /// specific fields of candidate resources and it operates as a filtering parameter (resources that are not
-        /// matched with this expression will not be candidates for transformation).
+        /// Optional. This is a [JSONPath] (https://github.com/json-path/JsonPath/blob/master/README.md) expression that
+        /// matches specific fields of candidate resources and it operates as a filtering parameter (resources that are
+        /// not matched with this expression will not be candidates for transformation).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jsonPath")]
         public virtual string JsonPath { get; set; }
 
         /// <summary>
-        /// (Filtering parameter) Any resource subject to transformation must be contained within one of the listed
-        /// Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed
-        /// (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for
+        /// Optional. (Filtering parameter) Any resource subject to transformation must be contained within one of the
+        /// listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be
+        /// performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for
         /// transformation). To mix cluster-scoped and namespaced resources in the same rule, use an empty string ("")
         /// as one of the target namespaces.
         /// </summary>
@@ -5317,79 +5023,13 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
         public virtual string Cluster { get; set; }
 
-        private string _completeTimeRaw;
-
-        private object _completeTime;
-
         /// <summary>Output only. Timestamp of when the restore operation completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
-        public virtual string CompleteTimeRaw
-        {
-            get => _completeTimeRaw;
-            set
-            {
-                _completeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _completeTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CompleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CompleteTimeDateTimeOffset instead.")]
-        public virtual object CompleteTime
-        {
-            get => _completeTime;
-            set
-            {
-                _completeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _completeTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CompleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CompleteTimeRaw);
-            set => CompleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _createTimeRaw;
-
-        private object _createTime;
+        public virtual object CompleteTime { get; set; }
 
         /// <summary>Output only. The timestamp when this Restore resource was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>User specified descriptive string for this Restore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -5450,42 +5090,9 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>Output only. The timestamp when this Restore resource was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>Output only. Number of volumes restored during the restore execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumesRestoredCount")]
@@ -5503,16 +5110,16 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual System.Nullable<bool> AllNamespaces { get; set; }
 
         /// <summary>
-        /// Defines the behavior for handling the situation where cluster-scoped resources being restored already exist
-        /// in the target cluster. This MUST be set to a value other than CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED
-        /// if cluster_resource_restore_scope is not empty.
+        /// Optional. Defines the behavior for handling the situation where cluster-scoped resources being restored
+        /// already exist in the target cluster. This MUST be set to a value other than
+        /// CLUSTER_RESOURCE_CONFLICT_POLICY_UNSPECIFIED if cluster_resource_restore_scope is not empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterResourceConflictPolicy")]
         public virtual string ClusterResourceConflictPolicy { get; set; }
 
         /// <summary>
-        /// Identifies the cluster-scoped resources to restore from the Backup. Not specifying it means NO cluster
-        /// resource will be restored.
+        /// Optional. Identifies the cluster-scoped resources to restore from the Backup. Not specifying it means NO
+        /// cluster resource will be restored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterResourceRestoreScope")]
         public virtual ClusterResourceRestoreScope ClusterResourceRestoreScope { get; set; }
@@ -5525,8 +5132,8 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual Namespaces ExcludedNamespaces { get; set; }
 
         /// <summary>
-        /// Defines the behavior for handling the situation where sets of namespaced resources being restored already
-        /// exist in the target cluster. This MUST be set to a value other than
+        /// Optional. Defines the behavior for handling the situation where sets of namespaced resources being restored
+        /// already exist in the target cluster. This MUST be set to a value other than
         /// NAMESPACED_RESOURCE_RESTORE_MODE_UNSPECIFIED.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespacedResourceRestoreMode")]
@@ -5553,7 +5160,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual Namespaces SelectedNamespaces { get; set; }
 
         /// <summary>
-        /// A list of transformation rules to be applied against Kubernetes resources as they are selected for
+        /// Optional. A list of transformation rules to be applied against Kubernetes resources as they are selected for
         /// restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a
         /// rule may impact the filtering logic of subsequent rules. An empty list means no substitution will occur.
         /// </summary>
@@ -5561,7 +5168,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual System.Collections.Generic.IList<SubstitutionRule> SubstitutionRules { get; set; }
 
         /// <summary>
-        /// A list of transformation rules to be applied against Kubernetes resources as they are selected for
+        /// Optional. A list of transformation rules to be applied against Kubernetes resources as they are selected for
         /// restoration from a Backup. Rules are executed in order defined - this order matters, as changes made by a
         /// rule may impact the filtering logic of subsequent rules. An empty list means no transformation will occur.
         /// </summary>
@@ -5569,8 +5176,8 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual System.Collections.Generic.IList<TransformationRule> TransformationRules { get; set; }
 
         /// <summary>
-        /// Specifies the mechanism to be used to restore volume data. Default: VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED
-        /// (will be treated as NO_VOLUME_DATA_RESTORATION).
+        /// Optional. Specifies the mechanism to be used to restore volume data. Default:
+        /// VOLUME_DATA_RESTORE_POLICY_UNSPECIFIED (will be treated as NO_VOLUME_DATA_RESTORATION).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeDataRestorePolicy")]
         public virtual string VolumeDataRestorePolicy { get; set; }
@@ -5600,44 +5207,11 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
         public virtual string Cluster { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. The timestamp when this RestorePlan resource was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
+        public virtual object CreateTime { get; set; }
 
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        /// <summary>User specified descriptive string for this RestorePlan.</summary>
+        /// <summary>Optional. User specified descriptive string for this RestorePlan.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -5652,7 +5226,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>A set of custom labels supplied by user.</summary>
+        /// <summary>Optional. A set of custom labels supplied by user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
@@ -5684,72 +5258,39 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>Output only. The timestamp when this RestorePlan resource was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
     }
 
     /// <summary>RetentionPolicy defines a Backup retention policy for a BackupPlan.</summary>
     public class RetentionPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between
-        /// 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's
-        /// (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing
-        /// Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no
-        /// delete blocking)
+        /// Optional. Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value
+        /// between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches
+        /// Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect
+        /// existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0
+        /// (no delete blocking)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupDeleteLockDays")]
         public virtual System.Nullable<int> BackupDeleteLockDays { get; set; }
 
         /// <summary>
-        /// The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer value
-        /// &amp;gt;= 0 and &amp;lt;= 365. If specified, a Backup created under this BackupPlan will be automatically
-        /// deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups created under
-        /// this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect existing
-        /// Backups under it. Backups created AFTER a successful update will automatically pick up the new value. NOTE:
-        /// backup_retain_days must be &amp;gt;= backup_delete_lock_days. If cron_schedule is defined, then this must be
-        /// &amp;lt;= 360 * the creation interval. Default: 0 (no automatic deletion)
+        /// Optional. The default maximum age of a Backup created via this BackupPlan. This field MUST be an integer
+        /// value &amp;gt;= 0 and &amp;lt;= 365. If specified, a Backup created under this BackupPlan will be
+        /// automatically deleted after its age reaches (create_time + backup_retain_days). If not specified, Backups
+        /// created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect
+        /// existing Backups under it. Backups created AFTER a successful update will automatically pick up the new
+        /// value. NOTE: backup_retain_days must be &amp;gt;= backup_delete_lock_days. If cron_schedule is defined, then
+        /// this must be &amp;lt;= 360 * the creation interval. Default: 0 (no automatic deletion)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupRetainDays")]
         public virtual System.Nullable<int> BackupRetainDays { get; set; }
 
         /// <summary>
-        /// This flag denotes whether the retention policy of this BackupPlan is locked. If set to True, no further
-        /// update is allowed on this policy, including the `locked` field itself. Default: False
+        /// Optional. This flag denotes whether the retention policy of this BackupPlan is locked. If set to True, no
+        /// further update is allowed on this policy, including the `locked` field itself. Default: False
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locked")]
         public virtual System.Nullable<bool> Locked { get; set; }
@@ -5762,16 +5303,16 @@ namespace Google.Apis.BackupforGKE.v1.Data
     public class Schedule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for creating
-        /// Backups via this BackupPlan. This is mutually exclusive with the rpo_config field since at most one schedule
-        /// can be defined for a BackupPlan. If this is defined, then backup_retain_days must also be defined. Default
-        /// (empty): no automatic backup creation will occur.
+        /// Optional. A standard [cron](https://wikipedia.com/wiki/cron) string that defines a repeating schedule for
+        /// creating Backups via this BackupPlan. This is mutually exclusive with the rpo_config field since at most one
+        /// schedule can be defined for a BackupPlan. If this is defined, then backup_retain_days must also be defined.
+        /// Default (empty): no automatic backup creation will occur.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cronSchedule")]
         public virtual string CronSchedule { get; set; }
 
         /// <summary>
-        /// This flag denotes whether automatic Backup creation is paused for this BackupPlan. Default: False
+        /// Optional. This flag denotes whether automatic Backup creation is paused for this BackupPlan. Default: False
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paused")]
         public virtual System.Nullable<bool> Paused { get; set; }
@@ -5810,27 +5351,28 @@ namespace Google.Apis.BackupforGKE.v1.Data
     public class SubstitutionRule : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// This is the new value to set for any fields that pass the filtering and selection criteria. To remove a
-        /// value from a Kubernetes resource, either leave this field unspecified, or set it to the empty string ("").
+        /// Optional. This is the new value to set for any fields that pass the filtering and selection criteria. To
+        /// remove a value from a Kubernetes resource, either leave this field unspecified, or set it to the empty
+        /// string ("").
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("newValue")]
         public virtual string NewValue { get; set; }
 
         /// <summary>
-        /// (Filtering parameter) This is a [regular expression] (https://en.wikipedia.org/wiki/Regular_expression) that
-        /// is compared against the fields matched by the target_json_path expression (and must also have passed the
-        /// previous filters). Substitution will not be performed against fields whose value does not match this
-        /// expression. If this field is NOT specified, then ALL fields matched by the target_json_path expression will
-        /// undergo substitution. Note that an empty (e.g., "", rather than unspecified) value for this field will only
-        /// match empty fields.
+        /// Optional. (Filtering parameter) This is a [regular expression]
+        /// (https://en.wikipedia.org/wiki/Regular_expression) that is compared against the fields matched by the
+        /// target_json_path expression (and must also have passed the previous filters). Substitution will not be
+        /// performed against fields whose value does not match this expression. If this field is NOT specified, then
+        /// ALL fields matched by the target_json_path expression will undergo substitution. Note that an empty (e.g.,
+        /// "", rather than unspecified) value for this field will only match empty fields.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalValuePattern")]
         public virtual string OriginalValuePattern { get; set; }
 
         /// <summary>
-        /// (Filtering parameter) Any resource subject to substitution must belong to one of the listed "types". If this
-        /// field is not provided, no type filtering will be performed (all resources of all types matching previous
-        /// filtering parameters will be candidates for substitution).
+        /// Optional. (Filtering parameter) Any resource subject to substitution must belong to one of the listed
+        /// "types". If this field is not provided, no type filtering will be performed (all resources of all types
+        /// matching previous filtering parameters will be candidates for substitution).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetGroupKinds")]
         public virtual System.Collections.Generic.IList<GroupKind> TargetGroupKinds { get; set; }
@@ -5845,9 +5387,9 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual string TargetJsonPath { get; set; }
 
         /// <summary>
-        /// (Filtering parameter) Any resource subject to substitution must be contained within one of the listed
-        /// Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be performed
-        /// (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for
+        /// Optional. (Filtering parameter) Any resource subject to substitution must be contained within one of the
+        /// listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be
+        /// performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for
         /// substitution). To mix cluster-scoped and namespaced resources in the same rule, use an empty string ("") as
         /// one of the target namespaces.
         /// </summary>
@@ -5891,7 +5433,9 @@ namespace Google.Apis.BackupforGKE.v1.Data
     /// </summary>
     public class TransformationRule : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The description is a user specified string description of the transformation rule.</summary>
+        /// <summary>
+        /// Optional. The description is a user specified string description of the transformation rule.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
@@ -5904,9 +5448,9 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual System.Collections.Generic.IList<TransformationRuleAction> FieldActions { get; set; }
 
         /// <summary>
-        /// This field is used to specify a set of fields that should be used to determine which resources in backup
-        /// should be acted upon by the supplied transformation rule actions, and this will ensure that only specific
-        /// resources are affected by transformation rule actions.
+        /// Optional. This field is used to specify a set of fields that should be used to determine which resources in
+        /// backup should be acted upon by the supplied transformation rule actions, and this will ensure that only
+        /// specific resources are affected by transformation rule actions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceFilter")]
         public virtual ResourceFilter ResourceFilter { get; set; }
@@ -5922,8 +5466,8 @@ namespace Google.Apis.BackupforGKE.v1.Data
     public class TransformationRuleAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A string containing a JSON Pointer value that references the location in the target document to move the
-        /// value from.
+        /// Optional. A string containing a JSON Pointer value that references the location in the target document to
+        /// move the value from.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fromPath")]
         public virtual string FromPath { get; set; }
@@ -5933,13 +5477,15 @@ namespace Google.Apis.BackupforGKE.v1.Data
         public virtual string Op { get; set; }
 
         /// <summary>
-        /// A string containing a JSON-Pointer value that references a location within the target document where the
-        /// operation is performed.
+        /// Optional. A string containing a JSON-Pointer value that references a location within the target document
+        /// where the operation is performed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
-        /// <summary>A string that specifies the desired value in string format to use for transformation.</summary>
+        /// <summary>
+        /// Optional. A string that specifies the desired value in string format to use for transformation.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 
@@ -5953,81 +5499,15 @@ namespace Google.Apis.BackupforGKE.v1.Data
     /// </summary>
     public class VolumeBackup : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _completeTimeRaw;
-
-        private object _completeTime;
-
         /// <summary>
         /// Output only. The timestamp when the associated underlying volume backup operation completed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
-        public virtual string CompleteTimeRaw
-        {
-            get => _completeTimeRaw;
-            set
-            {
-                _completeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _completeTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CompleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CompleteTimeDateTimeOffset instead.")]
-        public virtual object CompleteTime
-        {
-            get => _completeTime;
-            set
-            {
-                _completeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _completeTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CompleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CompleteTimeRaw);
-            set => CompleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _createTimeRaw;
-
-        private object _createTime;
+        public virtual object CompleteTime { get; set; }
 
         /// <summary>Output only. The timestamp when this VolumeBackup resource was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. The minimum size of the disk to which this VolumeBackup can be restored.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskSizeBytes")]
@@ -6084,42 +5564,9 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>Output only. The timestamp when this VolumeBackup resource was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>Output only. A storage system-specific opaque handle to the underlying volume backup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumeBackupHandle")]
@@ -6129,79 +5576,13 @@ namespace Google.Apis.BackupforGKE.v1.Data
     /// <summary>Represents the operation of restoring a volume from a VolumeBackup. Next id: 13</summary>
     public class VolumeRestore : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _completeTimeRaw;
-
-        private object _completeTime;
-
         /// <summary>Output only. The timestamp when the associated underlying volume restoration completed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("completeTime")]
-        public virtual string CompleteTimeRaw
-        {
-            get => _completeTimeRaw;
-            set
-            {
-                _completeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _completeTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CompleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CompleteTimeDateTimeOffset instead.")]
-        public virtual object CompleteTime
-        {
-            get => _completeTime;
-            set
-            {
-                _completeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _completeTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CompleteTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CompleteTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CompleteTimeRaw);
-            set => CompleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _createTimeRaw;
-
-        private object _createTime;
+        public virtual object CompleteTime { get; set; }
 
         /// <summary>Output only. The timestamp when this VolumeRestore resource was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>
         /// Output only. `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates
@@ -6239,42 +5620,9 @@ namespace Google.Apis.BackupforGKE.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>Output only. The timestamp when this VolumeRestore resource was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>
         /// Output only. The full name of the VolumeBackup from which the volume will be restored. Format:

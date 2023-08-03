@@ -1567,42 +1567,9 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("complianceRegime")]
         public virtual string ComplianceRegime { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Optional. Time when the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Optional. The display name of the workload.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
@@ -1677,48 +1644,13 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("acknowledged")]
         public virtual System.Nullable<bool> Acknowledged { get; set; }
 
-        private string _acknowledgementTimeRaw;
-
-        private object _acknowledgementTime;
-
         /// <summary>
         /// Optional. Timestamp when this violation was acknowledged first. Check exception_contexts to find the last
         /// time the violation was acknowledged when there are more than one violations. This field will be absent when
         /// acknowledged field is marked as false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acknowledgementTime")]
-        public virtual string AcknowledgementTimeRaw
-        {
-            get => _acknowledgementTimeRaw;
-            set
-            {
-                _acknowledgementTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _acknowledgementTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="AcknowledgementTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use AcknowledgementTimeDateTimeOffset instead.")]
-        public virtual object AcknowledgementTime
-        {
-            get => _acknowledgementTime;
-            set
-            {
-                _acknowledgementTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _acknowledgementTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="AcknowledgementTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? AcknowledgementTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(AcknowledgementTimeRaw);
-            set => AcknowledgementTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object AcknowledgementTime { get; set; }
 
         /// <summary>
         /// Output only. Immutable. Audit Log Link for violated resource Format:
@@ -1727,42 +1659,9 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("auditLogLink")]
         public virtual string AuditLogLink { get; set; }
 
-        private string _beginTimeRaw;
-
-        private object _beginTime;
-
         /// <summary>Output only. Time of the event which triggered the Violation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("beginTime")]
-        public virtual string BeginTimeRaw
-        {
-            get => _beginTimeRaw;
-            set
-            {
-                _beginTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _beginTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="BeginTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use BeginTimeDateTimeOffset instead.")]
-        public virtual object BeginTime
-        {
-            get => _beginTime;
-            set
-            {
-                _beginTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _beginTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="BeginTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? BeginTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(BeginTimeRaw);
-            set => BeginTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object BeginTime { get; set; }
 
         /// <summary>
         /// Output only. Category under which this violation is mapped. e.g. Location, Service Usage, Access,
@@ -1804,89 +1703,30 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nonCompliantOrgPolicy")]
         public virtual string NonCompliantOrgPolicy { get; set; }
 
+        /// <summary>
+        /// Output only. Immutable. The org-policy-constraint that was incorrectly changed, which resulted in this
+        /// violation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgPolicyConstraint")]
+        public virtual string OrgPolicyConstraint { get; set; }
+
         /// <summary>Output only. Compliance violation remediation</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remediation")]
         public virtual GoogleCloudAssuredworkloadsV1beta1ViolationRemediation Remediation { get; set; }
-
-        private string _resolveTimeRaw;
-
-        private object _resolveTime;
 
         /// <summary>
         /// Output only. Time of the event which fixed the Violation. If the violation is ACTIVE this will be empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolveTime")]
-        public virtual string ResolveTimeRaw
-        {
-            get => _resolveTimeRaw;
-            set
-            {
-                _resolveTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _resolveTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="ResolveTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ResolveTimeDateTimeOffset instead.")]
-        public virtual object ResolveTime
-        {
-            get => _resolveTime;
-            set
-            {
-                _resolveTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _resolveTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ResolveTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? ResolveTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ResolveTimeRaw);
-            set => ResolveTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object ResolveTime { get; set; }
 
         /// <summary>Output only. State of the violation</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>Output only. The last time when the Violation record was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1895,44 +1735,9 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
     /// <summary>Violation exception detail. Next Id: 6</summary>
     public class GoogleCloudAssuredworkloadsV1beta1ViolationExceptionContext : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _acknowledgementTimeRaw;
-
-        private object _acknowledgementTime;
-
         /// <summary>Timestamp when the violation was acknowledged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acknowledgementTime")]
-        public virtual string AcknowledgementTimeRaw
-        {
-            get => _acknowledgementTimeRaw;
-            set
-            {
-                _acknowledgementTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _acknowledgementTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="AcknowledgementTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use AcknowledgementTimeDateTimeOffset instead.")]
-        public virtual object AcknowledgementTime
-        {
-            get => _acknowledgementTime;
-            set
-            {
-                _acknowledgementTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _acknowledgementTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="AcknowledgementTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? AcknowledgementTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(AcknowledgementTimeRaw);
-            set => AcknowledgementTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object AcknowledgementTime { get; set; }
 
         /// <summary>Business justification provided towards the acknowledgement of the violation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comment")]
@@ -2053,46 +1858,9 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("compliantButDisallowedServices")]
         public virtual System.Collections.Generic.IList<string> CompliantButDisallowedServices { get; set; }
 
-        /// <summary>Output only. Controls associated with the customer workload</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("controls")]
-        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControls Controls { get; set; }
-
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. Immutable. The Workload creation timestamp.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>
         /// Required. The user-assigned display name of the Workload. When present it must be between 4 to 30
@@ -2213,34 +1981,6 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Controls enabled to the user associated with this workload</summary>
-    public class GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControls : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. Org policies currently applied by this Assured Workload</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("appliedOrgPolicies")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControl> AppliedOrgPolicies { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>An org policy control applied by Assured Workloads</summary>
-    public class GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControl : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Output only. Constraint name of the org policy control Example: constraints/gcp.resourcelocations
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("constraint")]
-        public virtual string Constraint { get; set; }
-
-        /// <summary>Output only. Org policy version</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Represents the Compliance Status of this workload</summary>
     public class GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatus : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2311,47 +2051,12 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
     /// <summary>Settings specific to the Key Management Service.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _nextRotationTimeRaw;
-
-        private object _nextRotationTime;
-
         /// <summary>
         /// Required. Input only. Immutable. The time at which the Key Management Service will automatically create a
         /// new version of the crypto key and mark it as the primary.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextRotationTime")]
-        public virtual string NextRotationTimeRaw
-        {
-            get => _nextRotationTimeRaw;
-            set
-            {
-                _nextRotationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _nextRotationTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="NextRotationTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use NextRotationTimeDateTimeOffset instead.")]
-        public virtual object NextRotationTime
-        {
-            get => _nextRotationTime;
-            set
-            {
-                _nextRotationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _nextRotationTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="NextRotationTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? NextRotationTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(NextRotationTimeRaw);
-            set => NextRotationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object NextRotationTime { get; set; }
 
         /// <summary>
         /// Required. Input only. Immutable. [next_rotation_time] will be advanced by this period when the Key
@@ -2374,6 +2079,10 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         /// <summary>Allow partner to monitor folder and remediate violations</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remediateFolderViolations")]
         public virtual System.Nullable<bool> RemediateFolderViolations { get; set; }
+
+        /// <summary>Optional. Allow partner to view access approval logs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccessApprover")]
+        public virtual System.Nullable<bool> ServiceAccessApprover { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

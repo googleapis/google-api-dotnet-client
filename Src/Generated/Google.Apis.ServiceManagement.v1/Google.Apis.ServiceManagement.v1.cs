@@ -2674,6 +2674,10 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string Environment { get; set; }
 
+        /// <summary>Defines policies applying to the API methods of the service.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("methodPolicies")]
+        public virtual System.Collections.Generic.IList<MethodPolicy> MethodPolicies { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3126,6 +3130,40 @@ namespace Google.Apis.ServiceManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("typeUrl")]
         public virtual string TypeUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Google API Policy Annotation This message defines a simple API policy annotation that can be used to annotate
+    /// API request and response message fields with applicable policies. One field may have multiple applicable
+    /// policies that must all be satisfied before a request can be processed. This policy annotation is used to
+    /// generate the overall policy that will be used for automatic runtime policy enforcement and documentation
+    /// generation.
+    /// </summary>
+    public class FieldPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies the required permission(s) for the resource referred to by the field. It requires the field
+        /// contains a valid resource reference, and the request must pass the permission checks to proceed. For
+        /// example, "resourcemanager.projects.get".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourcePermission")]
+        public virtual string ResourcePermission { get; set; }
+
+        /// <summary>Specifies the resource type for the resource referred to by the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
+        /// <summary>
+        /// Selects one or more request or response message fields to apply this `FieldPolicy`. When a `FieldPolicy` is
+        /// used in proto annotation, the selector must be left as empty. The service config generator will
+        /// automatically fill the correct value. When a `FieldPolicy` is used in service config, the selector must be a
+        /// comma-separated string with valid request or response field paths, such as "foo.bar" or "foo.bar,foo.baz".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selector")]
+        public virtual string Selector { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3733,6 +3771,25 @@ namespace Google.Apis.ServiceManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Defines policies applying to an RPC method.</summary>
+    public class MethodPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Policies that are applicable to the request message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestPolicies")]
+        public virtual System.Collections.Generic.IList<FieldPolicy> RequestPolicies { get; set; }
+
+        /// <summary>
+        /// Selects a method to which these policies should be enforced, for example,
+        /// "google.pubsub.v1.Subscriber.CreateSubscription". Refer to selector for syntax details. NOTE: This field
+        /// must not be set in the proto annotation. It will be automatically filled by the service config compiler .
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selector")]
+        public virtual string Selector { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Describes the generator configuration for a method.</summary>
     public class MethodSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4193,42 +4250,9 @@ namespace Google.Apis.ServiceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceNames")]
         public virtual System.Collections.Generic.IList<string> ResourceNames { get; set; }
 
-        private string _startTimeRaw;
-
-        private object _startTime;
-
         /// <summary>The start time of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual string StartTimeRaw
-        {
-            get => _startTimeRaw;
-            set
-            {
-                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _startTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
-        public virtual object StartTime
-        {
-            get => _startTime;
-            set
-            {
-                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _startTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
-            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object StartTime { get; set; }
 
         /// <summary>Detailed status information for each step. The order is undetermined.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("steps")]
@@ -4606,42 +4630,9 @@ namespace Google.Apis.ServiceManagement.v1.Data
     /// </summary>
     public class Rollout : Google.Apis.Requests.IDirectResponseSchema
     {
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Creation time of the rollout. Readonly.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>The user who created the Rollout. Readonly.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createdBy")]

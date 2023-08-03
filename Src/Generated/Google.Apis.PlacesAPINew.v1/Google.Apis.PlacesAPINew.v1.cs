@@ -597,7 +597,7 @@ namespace Google.Apis.PlacesAPINew.v1.Data
 
         /// <summary>Output only. List of reviews about this place.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviews")]
-        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1PlaceReview> Reviews { get; set; }
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1Review> Reviews { get; set; }
 
         /// <summary>
         /// Output only. Contains an array of entries for information about regular secondary hours of a business.
@@ -855,64 +855,22 @@ namespace Google.Apis.PlacesAPINew.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Information about a review of the place.</summary>
-    public class GoogleMapsPlacesV1PlaceReview : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Information about a review of a place.</summary>
+    public class GoogleMapsPlacesV1Review : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. This review's author.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authorAttribution")]
         public virtual GoogleMapsPlacesV1AuthorAttribution AuthorAttribution { get; set; }
 
-        /// <summary>
-        /// Output only. A BCP-47 language code indicating the original language of the review. If the review has been
-        /// translated, then original_language != language. This field contains the main language tag only, and not the
-        /// secondary tag indicating country or region. For example, all the English reviews are tagged as 'en', and not
-        /// 'en-AU' or 'en-UK' and so on.This field is empty if there is only a rating with no review text.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("originalLanguageCode")]
-        public virtual string OriginalLanguageCode { get; set; }
-
         /// <summary>Output only. The review text in its original language.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("originalText")]
         public virtual GoogleTypeLocalizedText OriginalText { get; set; }
 
-        private string _publishTimeRaw;
-
-        private object _publishTime;
-
-        /// <summary>Output only. Timestamp for the review, expressed in seconds since epoch.</summary>
+        /// <summary>Output only. Timestamp for the review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishTime")]
-        public virtual string PublishTimeRaw
-        {
-            get => _publishTimeRaw;
-            set
-            {
-                _publishTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _publishTimeRaw = value;
-            }
-        }
+        public virtual object PublishTime { get; set; }
 
-        /// <summary><seealso cref="object"/> representation of <see cref="PublishTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PublishTimeDateTimeOffset instead.")]
-        public virtual object PublishTime
-        {
-            get => _publishTime;
-            set
-            {
-                _publishTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _publishTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PublishTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? PublishTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishTimeRaw);
-            set => PublishTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        /// <summary>Output only. A whole number between 1.0 and 5.0, a.k.a. the number of stars.</summary>
+        /// <summary>Output only. A number between 1.0 and 5.0, a.k.a. the number of stars.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rating")]
         public virtual System.Nullable<double> Rating { get; set; }
 
@@ -926,15 +884,6 @@ namespace Google.Apis.PlacesAPINew.v1.Data
         /// <summary>Output only. The localized text of the review.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual GoogleTypeLocalizedText Text { get; set; }
-
-        /// <summary>
-        /// Output only. A boolean value indicating if the review was translated from the original language it was
-        /// written in. If a review has been translated, corresponding to a value of true, Google recommends that you
-        /// indicate this to your users. For example, you can add the following string, “Translated by Google”, to the
-        /// review.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("translated")]
-        public virtual System.Nullable<bool> Translated { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

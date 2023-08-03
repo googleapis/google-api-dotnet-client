@@ -511,57 +511,6 @@ namespace Google.Apis.CCAIPlatform.v1alpha1
                     }
                 }
 
-                /// <summary></summary>
-                /// <param name="name">
-                /// Required. The name of the AuthenticationConfig resource. Format:
-                /// projects/{project}/locations/{location}/contactCenters/{contact_center}/authentication-config
-                /// </param>
-                public virtual GetAuthenticationConfigRequest GetAuthenticationConfig(string name)
-                {
-                    return new GetAuthenticationConfigRequest(service, name);
-                }
-
-                /// <summary></summary>
-                public class GetAuthenticationConfigRequest : CCAIPlatformBaseServiceRequest<Google.Apis.CCAIPlatform.v1alpha1.Data.AuthenticationConfig>
-                {
-                    /// <summary>Constructs a new GetAuthenticationConfig request.</summary>
-                    public GetAuthenticationConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                    {
-                        Name = name;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Required. The name of the AuthenticationConfig resource. Format:
-                    /// projects/{project}/locations/{location}/contactCenters/{contact_center}/authentication-config
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "getAuthentication-config";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "GET";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1alpha1/{+name}";
-
-                    /// <summary>Initializes GetAuthenticationConfig parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/contactCenters/[^/]+/authentication-config$",
-                        });
-                    }
-                }
-
                 /// <summary>Lists ContactCenters in a given project and location.</summary>
                 /// <param name="parent">Required. Parent value for ListContactCentersRequest</param>
                 public virtual ListRequest List(string parent)
@@ -737,80 +686,6 @@ namespace Google.Apis.CCAIPlatform.v1alpha1
                             ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
-                        });
-                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "updateMask",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                    }
-                }
-
-                /// <summary></summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="name">
-                /// Name of authentication config. Format:
-                /// projects/{project}/locations/{location}/contactCenters/{contact_center}/authentication-config
-                /// </param>
-                public virtual UpdateAuthenticationConfigRequest UpdateAuthenticationConfig(Google.Apis.CCAIPlatform.v1alpha1.Data.AuthenticationConfig body, string name)
-                {
-                    return new UpdateAuthenticationConfigRequest(service, body, name);
-                }
-
-                /// <summary></summary>
-                public class UpdateAuthenticationConfigRequest : CCAIPlatformBaseServiceRequest<Google.Apis.CCAIPlatform.v1alpha1.Data.AuthenticationConfig>
-                {
-                    /// <summary>Constructs a new UpdateAuthenticationConfig request.</summary>
-                    public UpdateAuthenticationConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.CCAIPlatform.v1alpha1.Data.AuthenticationConfig body, string name) : base(service)
-                    {
-                        Name = name;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>
-                    /// Name of authentication config. Format:
-                    /// projects/{project}/locations/{location}/contactCenters/{contact_center}/authentication-config
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Name { get; private set; }
-
-                    /// <summary>
-                    /// Required. Indicates which fields in the provided authentication config to update. Must be
-                    /// specified and non-empty.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual object UpdateMask { get; set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.CCAIPlatform.v1alpha1.Data.AuthenticationConfig Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "updateAuthentication-config";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "PATCH";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1alpha1/{+name}";
-
-                    /// <summary>Initializes UpdateAuthenticationConfig parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "name",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/contactCenters/[^/]+/authentication-config$",
                         });
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
@@ -1304,34 +1179,6 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    public class AuthenticationConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("basicAuthSetting")]
-        public virtual BasicAuthConfig BasicAuthSetting { get; set; }
-
-        /// <summary>
-        /// Name of authentication config. Format:
-        /// projects/{project}/locations/{location}/contactCenters/{contact_center}/authentication-config
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        [Newtonsoft.Json.JsonPropertyAttribute("samlSetting")]
-        public virtual SamlConfig SamlSetting { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class BasicAuthConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
-        public virtual System.Nullable<bool> Enabled { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1353,42 +1200,9 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ccaipManagedUsers")]
         public virtual System.Nullable<bool> CcaipManagedUsers { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. [Output only] Create time stamp</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object CreateTime { get; set; }
 
         /// <summary>
         /// Required. Immutable. At least 2 and max 16 char long, must conform to [RFC
@@ -1425,42 +1239,9 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        private string _updateTimeRaw;
-
-        private object _updateTime;
-
         /// <summary>Output only. [Output only] Update time stamp</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual string UpdateTimeRaw
-        {
-            get => _updateTimeRaw;
-            set
-            {
-                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _updateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
-        public virtual object UpdateTime
-        {
-            get => _updateTime;
-            set
-            {
-                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _updateTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
-            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object UpdateTime { get; set; }
 
         /// <summary>Output only. URIs to access the deployed ContactCenters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uris")]
@@ -1523,79 +1304,13 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
         public virtual System.Nullable<bool> CancelRequested { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. The time the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _endTimeRaw;
-
-        private object _endTime;
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. The time the operation finished running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTimeRaw
-        {
-            get => _endTimeRaw;
-            set
-            {
-                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _endTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
-        public virtual object EndTime
-        {
-            get => _endTime;
-            set
-            {
-                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _endTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object EndTime { get; set; }
 
         /// <summary>Output only. Human-readable status of the operation, if any.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
@@ -1759,79 +1474,13 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contactCenter")]
         public virtual ContactCenter ContactCenter { get; set; }
 
-        private string _createTimeRaw;
-
-        private object _createTime;
-
         /// <summary>Output only. The time the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual string CreateTimeRaw
-        {
-            get => _createTimeRaw;
-            set
-            {
-                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _createTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
-        public virtual object CreateTime
-        {
-            get => _createTime;
-            set
-            {
-                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _createTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
-            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        private string _endTimeRaw;
-
-        private object _endTime;
+        public virtual object CreateTime { get; set; }
 
         /// <summary>Output only. The time the operation finished running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual string EndTimeRaw
-        {
-            get => _endTimeRaw;
-            set
-            {
-                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _endTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
-        public virtual object EndTime
-        {
-            get => _endTime;
-            set
-            {
-                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _endTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
-            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object EndTime { get; set; }
 
         /// <summary>
         /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
@@ -1894,28 +1543,6 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         /// <summary>Email address of the first admin users.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEmail")]
         public virtual string UserEmail { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    public class SamlConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>X.509 public certificate for IdP</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cert")]
-        public virtual string Cert { get; set; }
-
-        /// <summary>IdP field that maps to the user’s email address</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("emailMapping")]
-        public virtual string EmailMapping { get; set; }
-
-        /// <summary>The entity ID for the identity provider. Example: https://[IDP Domain]/saml/metadata</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
-        public virtual string EntityId { get; set; }
-
-        /// <summary>The sso login url. Example: https://[IDP Domain]/saml/sso/login</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("loginUri")]
-        public virtual string LoginUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

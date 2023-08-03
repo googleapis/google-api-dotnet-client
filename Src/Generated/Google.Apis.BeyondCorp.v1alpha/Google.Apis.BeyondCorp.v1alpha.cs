@@ -641,6 +641,57 @@ namespace Google.Apis.BeyondCorp.v1alpha
                             }
                         }
 
+                        /// <summary>Lists BrowserDlpRules for PartnerTenant in a given organization.</summary>
+                        /// <param name="parent">
+                        /// Required. The parent partnerTenant to which the BrowserDlpRules belong. Format:
+                        /// `organizations/{organization_id}/locations/global/partnerTenants/{partner_tenant_id}`
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>Lists BrowserDlpRules for PartnerTenant in a given organization.</summary>
+                        public class ListRequest : BeyondCorpBaseServiceRequest<Google.Apis.BeyondCorp.v1alpha.Data.GoogleCloudBeyondcorpPartnerservicesV1alphaListBrowserDlpRulesResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The parent partnerTenant to which the BrowserDlpRules belong. Format:
+                            /// `organizations/{organization_id}/locations/global/partnerTenants/{partner_tenant_id}`
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+parent}/browserDlpRules";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^organizations/[^/]+/locations/global/partnerTenants/[^/]+$",
+                                });
+                            }
+                        }
+
                         /// <summary>
                         /// Update an existing BrowserDlpRule in a given organization and PartnerTenant.
                         /// </summary>
@@ -10493,6 +10544,17 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         /// <summary>Google group id</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing BrowserDlpRules.</summary>
+    public class GoogleCloudBeyondcorpPartnerservicesV1alphaListBrowserDlpRulesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of ProxyConfig objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("browserDlpRules")]
+        public virtual System.Collections.Generic.IList<GoogleCloudBeyondcorpPartnerservicesV1alphaBrowserDlpRule> BrowserDlpRules { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

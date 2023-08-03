@@ -2069,42 +2069,9 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("discountScopeType")]
         public virtual string DiscountScopeType { get; set; }
 
-        private string _fixTimeRaw;
-
-        private object _fixTime;
-
         /// <summary>Time that the fixed discount is anchored to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixTime")]
-        public virtual string FixTimeRaw
-        {
-            get => _fixTimeRaw;
-            set
-            {
-                _fixTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _fixTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="FixTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FixTimeDateTimeOffset instead.")]
-        public virtual object FixTime
-        {
-            get => _fixTime;
-            set
-            {
-                _fixTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _fixTime = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="FixTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? FixTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FixTimeRaw);
-            set => FixTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual object FixTime { get; set; }
 
         /// <summary>SKU group where the fixed discount comes from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skuGroup")]
