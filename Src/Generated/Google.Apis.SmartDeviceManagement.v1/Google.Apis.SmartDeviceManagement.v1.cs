@@ -419,17 +419,6 @@ namespace Google.Apis.SmartDeviceManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>
-                /// Optional requested page size. Server may return fewer devices than requested. If unspecified, server
-                /// will pick an appropriate default.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional token of the page to retrieve.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
@@ -454,22 +443,6 @@ namespace Google.Apis.SmartDeviceManagement.v1
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -588,17 +561,6 @@ namespace Google.Apis.SmartDeviceManagement.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>
-                    /// Requested page size. Server may return fewer rooms than requested. If unspecified, server will
-                    /// pick an appropriate default.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<int> PageSize { get; set; }
-
-                    /// <summary>The token of the page to retrieve.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string PageToken { get; set; }
-
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "list";
 
@@ -619,22 +581,6 @@ namespace Google.Apis.SmartDeviceManagement.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^enterprises/[^/]+/structures/[^/]+$",
-                        });
-                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageSize",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "pageToken",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
                         });
                     }
                 }
@@ -714,17 +660,6 @@ namespace Google.Apis.SmartDeviceManagement.v1
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Filter { get; set; }
 
-                /// <summary>
-                /// Requested page size. Server may return fewer structures than requested. If unspecified, server will
-                /// pick an appropriate default.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>The token of the page to retrieve.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
@@ -749,22 +684,6 @@ namespace Google.Apis.SmartDeviceManagement.v1
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -837,10 +756,6 @@ namespace Google.Apis.SmartDeviceManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("devices")]
         public virtual System.Collections.Generic.IList<GoogleHomeEnterpriseSdmV1Device> Devices { get; set; }
 
-        /// <summary>The pagination token to retrieve the next page of results.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -848,13 +763,6 @@ namespace Google.Apis.SmartDeviceManagement.v1.Data
     /// <summary>Response message for SmartDeviceManagementService.ListRooms</summary>
     public class GoogleHomeEnterpriseSdmV1ListRoomsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The pagination token to retrieve the next page of results. If this field is omitted, there are no subsequent
-        /// pages.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
         /// <summary>The list of rooms.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rooms")]
         public virtual System.Collections.Generic.IList<GoogleHomeEnterpriseSdmV1Room> Rooms { get; set; }
@@ -866,13 +774,6 @@ namespace Google.Apis.SmartDeviceManagement.v1.Data
     /// <summary>Response message for SmartDeviceManagementService.ListStructures</summary>
     public class GoogleHomeEnterpriseSdmV1ListStructuresResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// The pagination token to retrieve the next page of results. If this field is omitted, there are no subsequent
-        /// pages.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
         /// <summary>The list of structures.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structures")]
         public virtual System.Collections.Generic.IList<GoogleHomeEnterpriseSdmV1Structure> Structures { get; set; }

@@ -355,6 +355,51 @@ namespace Google.Apis.Networkconnectivity.v1
                             this.service = service;
                         }
 
+                        /// <summary>Gets details about a Network Connectivity Center group.</summary>
+                        /// <param name="name">Required. The name of the route table resource.</param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>Gets details about a Network Connectivity Center group.</summary>
+                        public class GetRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.Group>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The name of the route table resource.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/global/hubs/[^/]+/groups/[^/]+$",
+                                });
+                            }
+                        }
+
                         /// <summary>
                         /// Gets the access control policy for a resource. Returns an empty policy if the resource
                         /// exists and does not have a policy set.
@@ -428,6 +473,99 @@ namespace Google.Apis.Networkconnectivity.v1
                                 RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
                                 {
                                     Name = "options.requestedPolicyVersion",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
+
+                        /// <summary>Lists groups in a given hub.</summary>
+                        /// <param name="parent">Required. The parent resource's name.</param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>Lists groups in a given hub.</summary>
+                        public class ListRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.ListGroupsResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>Required. The parent resource's name.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>An expression that filters the list of results.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string Filter { get; set; }
+
+                            /// <summary>Sort the results by a certain order.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string OrderBy { get; set; }
+
+                            /// <summary>The maximum number of results to return per page.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>The page token.</summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/groups";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/global/hubs/[^/]+$",
+                                });
+                                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "filter",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "orderBy",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
                                     IsRequired = false,
                                     ParameterType = "query",
                                     DefaultValue = null,
@@ -2808,7 +2946,9 @@ namespace Google.Apis.Networkconnectivity.v1
                 }
 
                 /// <summary>Lists ServiceClasses in a given project and location.</summary>
-                /// <param name="parent">Required. The parent resource's name.</param>
+                /// <param name="parent">
+                /// Required. The parent resource's name. ex. projects/123/locations/us-east1
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -2824,7 +2964,7 @@ namespace Google.Apis.Networkconnectivity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The parent resource's name.</summary>
+                    /// <summary>Required. The parent resource's name. ex. projects/123/locations/us-east1</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -3157,7 +3297,10 @@ namespace Google.Apis.Networkconnectivity.v1
 
                 /// <summary>Creates a new ServiceConnectionMap in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The parent resource's name of the ServiceConnectionMap.</param>
+                /// <param name="parent">
+                /// Required. The parent resource's name of the ServiceConnectionMap. ex.
+                /// projects/123/locations/us-east1
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.Networkconnectivity.v1.Data.ServiceConnectionMap body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -3174,7 +3317,10 @@ namespace Google.Apis.Networkconnectivity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The parent resource's name of the ServiceConnectionMap.</summary>
+                    /// <summary>
+                    /// Required. The parent resource's name of the ServiceConnectionMap. ex.
+                    /// projects/123/locations/us-east1
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -3452,7 +3598,9 @@ namespace Google.Apis.Networkconnectivity.v1
                 }
 
                 /// <summary>Lists ServiceConnectionMaps in a given project and location.</summary>
-                /// <param name="parent">Required. The parent resource's name.</param>
+                /// <param name="parent">
+                /// Required. The parent resource's name. ex. projects/123/locations/us-east1
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -3468,7 +3616,7 @@ namespace Google.Apis.Networkconnectivity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The parent resource's name.</summary>
+                    /// <summary>Required. The parent resource's name. ex. projects/123/locations/us-east1</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -3801,7 +3949,10 @@ namespace Google.Apis.Networkconnectivity.v1
 
                 /// <summary>Creates a new ServiceConnectionPolicy in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The parent resource's name of the ServiceConnectionPolicy.</param>
+                /// <param name="parent">
+                /// Required. The parent resource's name of the ServiceConnectionPolicy. ex.
+                /// projects/123/locations/us-east1
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.Networkconnectivity.v1.Data.ServiceConnectionPolicy body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -3818,7 +3969,10 @@ namespace Google.Apis.Networkconnectivity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The parent resource's name of the ServiceConnectionPolicy.</summary>
+                    /// <summary>
+                    /// Required. The parent resource's name of the ServiceConnectionPolicy. ex.
+                    /// projects/123/locations/us-east1
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -4096,7 +4250,9 @@ namespace Google.Apis.Networkconnectivity.v1
                 }
 
                 /// <summary>Lists ServiceConnectionPolicies in a given project and location.</summary>
-                /// <param name="parent">Required. The parent resource's name.</param>
+                /// <param name="parent">
+                /// Required. The parent resource's name. ex. projects/123/locations/us-east1
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -4112,7 +4268,7 @@ namespace Google.Apis.Networkconnectivity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The parent resource's name.</summary>
+                    /// <summary>Required. The parent resource's name. ex. projects/123/locations/us-east1</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -4445,7 +4601,10 @@ namespace Google.Apis.Networkconnectivity.v1
 
                 /// <summary>Creates a new ServiceConnectionToken in a given project and location.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="parent">Required. The parent resource's name of the ServiceConnectionToken.</param>
+                /// <param name="parent">
+                /// Required. The parent resource's name of the ServiceConnectionToken. ex.
+                /// projects/123/locations/us-east1
+                /// </param>
                 public virtual CreateRequest Create(Google.Apis.Networkconnectivity.v1.Data.ServiceConnectionToken body, string parent)
                 {
                     return new CreateRequest(service, body, parent);
@@ -4462,7 +4621,10 @@ namespace Google.Apis.Networkconnectivity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The parent resource's name of the ServiceConnectionToken.</summary>
+                    /// <summary>
+                    /// Required. The parent resource's name of the ServiceConnectionToken. ex.
+                    /// projects/123/locations/us-east1
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -4660,7 +4822,9 @@ namespace Google.Apis.Networkconnectivity.v1
                 }
 
                 /// <summary>Lists ServiceConnectionTokens in a given project and location.</summary>
-                /// <param name="parent">Required. The parent resource's name.</param>
+                /// <param name="parent">
+                /// Required. The parent resource's name. ex. projects/123/locations/us-east1
+                /// </param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -4676,7 +4840,7 @@ namespace Google.Apis.Networkconnectivity.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The parent resource's name.</summary>
+                    /// <summary>Required. The parent resource's name. ex. projects/123/locations/us-east1</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -5792,6 +5956,10 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual GoogleRpcStatus Error { get; set; }
 
+        /// <summary>Output only. The error info for the latest error during operating this connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorInfo")]
+        public virtual GoogleRpcErrorInfo ErrorInfo { get; set; }
+
         /// <summary>
         /// The error type indicates whether the error is consumer facing, producer facing or system internal.
         /// </summary>
@@ -5970,6 +6138,47 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     }
 
     /// <summary>
+    /// Describes the cause of the error with structured details. Example of an error when contacting the
+    /// "pubsub.googleapis.com" API when it is not enabled: { "reason": "API_DISABLED" "domain": "googleapis.com"
+    /// "metadata": { "resource": "projects/123", "service": "pubsub.googleapis.com" } } This response indicates that
+    /// the pubsub.googleapis.com API is not enabled. Example of an error that is returned when attempting to create a
+    /// Spanner instance in a region that is out of stock: { "reason": "STOCKOUT" "domain": "spanner.googleapis.com",
+    /// "metadata": { "availableRegions": "us-central1,us-east2" } }
+    /// </summary>
+    public class GoogleRpcErrorInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The logical grouping to which the "reason" belongs. The error domain is typically the registered service
+        /// name of the tool or product that generates the error. Example: "pubsub.googleapis.com". If the error is
+        /// generated by some common infrastructure, the error domain must be a globally unique value that identifies
+        /// the infrastructure. For Google API infrastructure, the error domain is "googleapis.com".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("domain")]
+        public virtual string Domain { get; set; }
+
+        /// <summary>
+        /// Additional structured details about this error. Keys should match /[a-zA-Z0-9-_]/ and be limited to 64
+        /// characters in length. When identifying the current value of an exceeded limit, the units should be contained
+        /// in the key, not the value. For example, rather than {"instanceLimit": "100/request"}, should be returned as,
+        /// {"instanceLimitPerRequest": "100"}, if the client exceeds the number of instances that can be created in a
+        /// single (batch) request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The reason of the error. This is a constant value that identifies the proximate cause of the error. Error
+        /// reasons are unique within a particular domain of errors. This should be at most 63 characters and match a
+        /// regular expression of `A-Z+[A-Z0-9]`, which represents UPPER_SNAKE_CASE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reason")]
+        public virtual string Reason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// The `Status` type defines a logical error model that is suitable for different programming environments,
     /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
     /// three pieces of data: error code, error message, and error details. You can find out more about this error model
@@ -5993,6 +6202,120 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A group is a set of spokes to which you can apply policies. Each group of spokes has its own route table. For
+    /// each group, you can also set different rules for whether spokes can be automatically attached to the hub.
+    /// </summary>
+    public class Group : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the group was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Optional. The description of the group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Optional. Labels in key:value format. For more information about labels, see [Requirements for
+        /// labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Immutable. The name of the group. Group names must be unique. They use the following form:
+        /// `projects/{project_number}/locations/global/hubs/{hub}/groups/{group_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The current lifecycle state of this group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. The Google-generated UUID for the group. This value is unique across all group resources. If a
+        /// group is deleted and another with the same name is created, the new route table is assigned a different
+        /// unique_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time the group was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6379,6 +6702,28 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>Output only. The VPC network where these VPN tunnels are located.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vpcNetwork")]
         public virtual string VpcNetwork { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for HubService.ListGroups method.</summary>
+    public class ListGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The requested groups.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groups")]
+        public virtual System.Collections.Generic.IList<Group> Groups { get; set; }
+
+        /// <summary>
+        /// The token for the next page of the response. To see more results, use this value as the page_token for your
+        /// next request. If this value is empty, there are no more results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Hubs that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6900,6 +7245,10 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("error")]
         public virtual GoogleRpcStatus Error { get; set; }
 
+        /// <summary>Output only. The error info for the latest error during operating this connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorInfo")]
+        public virtual GoogleRpcErrorInfo ErrorInfo { get; set; }
+
         /// <summary>
         /// The error type indicates whether the error is consumer facing, producer facing or system internal.
         /// </summary>
@@ -7310,10 +7659,6 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceClass")]
         public virtual string ServiceClassValue { get; set; }
-
-        /// <summary>Output only. URIs of all Service Connection Maps using this service class.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("serviceConnectionMaps")]
-        public virtual System.Collections.Generic.IList<string> ServiceConnectionMaps { get; set; }
 
         private string _updateTimeRaw;
 
@@ -7837,6 +8182,10 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>An optional description of the spoke.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>The name of the group that this spoke is associated with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("group")]
+        public virtual string Group { get; set; }
 
         /// <summary>Immutable. The name of the hub that this spoke is attached to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hub")]

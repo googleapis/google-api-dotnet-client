@@ -527,14 +527,15 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                             }
 
                             /// <summary>
-                            /// Analyzes a hypothetical move of a source project or project-based workload to a target
-                            /// (destination) folder-based workload.
+                            /// Analyzes a hypothetical move of a source project to a target (destination) folder-based
+                            /// workload.
                             /// </summary>
                             /// <param name="source">
                             /// The source type is a project-based workload. Specify the workloads's relative resource
                             /// name, formatted as:
                             /// "organizations/{ORGANIZATION_ID}/locations/{LOCATION_ID}/workloads/{WORKLOAD_ID}" For
-                            /// example: "organizations/123/locations/us-east1/workloads/assured-workload-1"
+                            /// example: "organizations/123/locations/us-east1/workloads/assured-workload-1" This option
+                            /// is now deprecated
                             /// </param>
                             /// <param name="target">
                             /// Required. The resource ID of the folder-based destination workload. This workload is
@@ -549,8 +550,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                             }
 
                             /// <summary>
-                            /// Analyzes a hypothetical move of a source project or project-based workload to a target
-                            /// (destination) folder-based workload.
+                            /// Analyzes a hypothetical move of a source project to a target (destination) folder-based
+                            /// workload.
                             /// </summary>
                             public class AnalyzeWorkloadMoveRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1AnalyzeWorkloadMoveResponse>
                             {
@@ -567,6 +568,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                                 /// resource name, formatted as:
                                 /// "organizations/{ORGANIZATION_ID}/locations/{LOCATION_ID}/workloads/{WORKLOAD_ID}"
                                 /// For example: "organizations/123/locations/us-east1/workloads/assured-workload-1"
+                                /// This option is now deprecated
                                 /// </summary>
                                 [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Path)]
                                 public virtual string Source { get; private set; }
@@ -1409,8 +1411,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     }
 
                     /// <summary>
-                    /// Analyzes a hypothetical move of a source project or project-based workload to a target
-                    /// (destination) folder-based workload.
+                    /// Analyzes a hypothetical move of a source project to a target (destination) folder-based
+                    /// workload.
                     /// </summary>
                     /// <param name="project">
                     /// The source type is a project. Specify the project's relative resource name, formatted as either
@@ -1430,8 +1432,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     }
 
                     /// <summary>
-                    /// Analyzes a hypothetical move of a source project or project-based workload to a target
-                    /// (destination) folder-based workload.
+                    /// Analyzes a hypothetical move of a source project to a target (destination) folder-based
+                    /// workload.
                     /// </summary>
                     public class AnalyzeWorkloadMoveRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1AnalyzeWorkloadMoveResponse>
                     {
@@ -1466,7 +1468,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                         /// The source type is a project-based workload. Specify the workloads's relative resource name,
                         /// formatted as:
                         /// "organizations/{ORGANIZATION_ID}/locations/{LOCATION_ID}/workloads/{WORKLOAD_ID}" For
-                        /// example: "organizations/123/locations/us-east1/workloads/assured-workload-1"
+                        /// example: "organizations/123/locations/us-east1/workloads/assured-workload-1" This option is
+                        /// now deprecated
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Source { get; set; }
@@ -1804,6 +1807,13 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nonCompliantOrgPolicy")]
         public virtual string NonCompliantOrgPolicy { get; set; }
 
+        /// <summary>
+        /// Output only. Immutable. The org-policy-constraint that was incorrectly changed, which resulted in this
+        /// violation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgPolicyConstraint")]
+        public virtual string OrgPolicyConstraint { get; set; }
+
         /// <summary>Output only. Compliance violation remediation</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remediation")]
         public virtual GoogleCloudAssuredworkloadsV1beta1ViolationRemediation Remediation { get; set; }
@@ -2053,10 +2063,6 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("compliantButDisallowedServices")]
         public virtual System.Collections.Generic.IList<string> CompliantButDisallowedServices { get; set; }
 
-        /// <summary>Output only. Controls associated with the customer workload</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("controls")]
-        public virtual GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControls Controls { get; set; }
-
         private string _createTimeRaw;
 
         private object _createTime;
@@ -2213,34 +2219,6 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Controls enabled to the user associated with this workload</summary>
-    public class GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControls : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Output only. Org policies currently applied by this Assured Workload</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("appliedOrgPolicies")]
-        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControl> AppliedOrgPolicies { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>An org policy control applied by Assured Workloads</summary>
-    public class GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceControlsOrgPolicyControl : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Output only. Constraint name of the org policy control Example: constraints/gcp.resourcelocations
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("constraint")]
-        public virtual string Constraint { get; set; }
-
-        /// <summary>Output only. Org policy version</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("version")]
-        public virtual System.Nullable<int> Version { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Represents the Compliance Status of this workload</summary>
     public class GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatus : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2367,13 +2345,17 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
     /// <summary>Permissions granted to the AW Partner SA account for the customer workload</summary>
     public class GoogleCloudAssuredworkloadsV1beta1WorkloadPartnerPermissions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Allow partner to view violation alerts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assuredWorkloadsMonitoring")]
+        public virtual System.Nullable<bool> AssuredWorkloadsMonitoring { get; set; }
+
         /// <summary>Allow the partner to view inspectability logs and monitoring violations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataLogsViewer")]
         public virtual System.Nullable<bool> DataLogsViewer { get; set; }
 
-        /// <summary>Allow partner to monitor folder and remediate violations</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("remediateFolderViolations")]
-        public virtual System.Nullable<bool> RemediateFolderViolations { get; set; }
+        /// <summary>Optional. Allow partner to view access approval logs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccessApprover")]
+        public virtual System.Nullable<bool> ServiceAccessApprover { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

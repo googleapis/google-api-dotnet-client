@@ -8076,6 +8076,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
+        /// <summary>The cluster upgrade policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradePolicy")]
+        public virtual BareMetalClusterUpgradePolicy UpgradePolicy { get; set; }
+
         /// <summary>Output only. The result of the preflight check.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validationCheck")]
         public virtual ValidationCheck ValidationCheck { get; set; }
@@ -8089,6 +8093,17 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableApplicationLogs")]
         public virtual System.Nullable<bool> EnableApplicationLogs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>BareMetalClusterUpgradePolicy defines the cluster upgrade policy.</summary>
+    public class BareMetalClusterUpgradePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies which upgrade policy to use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual string Policy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11404,6 +11419,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// <summary>The name of the vCenter datastore. Inherited from the user cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datastore")]
         public virtual string Datastore { get; set; }
+
+        /// <summary>Vsphere host groups to apply to all VMs in the node pool</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostGroups")]
+        public virtual System.Collections.Generic.IList<string> HostGroups { get; set; }
 
         /// <summary>Tags to apply to VMs.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]

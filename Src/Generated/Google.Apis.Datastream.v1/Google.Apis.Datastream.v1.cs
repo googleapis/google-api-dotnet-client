@@ -2569,6 +2569,69 @@ namespace Google.Apis.Datastream.v1
                         });
                     }
                 }
+
+                /// <summary>
+                /// Use this method to start, resume or recover a stream with a non default CDC strategy.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Name of the stream resource to start, in the format:
+                /// projects/{project_id}/locations/{location}/streams/{stream_name}
+                /// </param>
+                public virtual RunRequest Run(Google.Apis.Datastream.v1.Data.RunStreamRequest body, string name)
+                {
+                    return new RunRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Use this method to start, resume or recover a stream with a non default CDC strategy.
+                /// </summary>
+                public class RunRequest : DatastreamBaseServiceRequest<Google.Apis.Datastream.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Run request.</summary>
+                    public RunRequest(Google.Apis.Services.IClientService service, Google.Apis.Datastream.v1.Data.RunStreamRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the stream resource to start, in the format:
+                    /// projects/{project_id}/locations/{location}/streams/{stream_name}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Datastream.v1.Data.RunStreamRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "run";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:run";
+
+                    /// <summary>Initializes Run parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/streams/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>The FetchStaticIps API call exposes the static IP addresses used by Datastream.</summary>
@@ -2947,6 +3010,25 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The strategy that the stream uses for CDC replication.</summary>
+    public class CdcStrategy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Start replicating from the most recent position in the source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mostRecentStartPosition")]
+        public virtual MostRecentStartPosition MostRecentStartPosition { get; set; }
+
+        /// <summary>Optional. Resume replication from the next available position in the source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextAvailableStartPosition")]
+        public virtual NextAvailableStartPosition NextAvailableStartPosition { get; set; }
+
+        /// <summary>Optional. Start replicating from a specific position in the source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("specificStartPosition")]
+        public virtual SpecificStartPosition SpecificStartPosition { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -3548,6 +3630,13 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>CDC strategy to start replicating from the most recent position in the source.</summary>
+    public class MostRecentStartPosition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>MySQL Column.</summary>
     public class MysqlColumn : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3604,6 +3693,21 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>Tables in the database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mysqlTables")]
         public virtual System.Collections.Generic.IList<MysqlTable> MysqlTables { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MySQL log position</summary>
+    public class MysqlLogPosition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The binary log file name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logFile")]
+        public virtual string LogFile { get; set; }
+
+        /// <summary>The position within the binary log file. Default is head of file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logPosition")]
+        public virtual System.Nullable<int> LogPosition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3744,6 +3848,13 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("table")]
         public virtual string Table { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CDC strategy to resume replication from the next available position in the source.</summary>
+    public class NextAvailableStartPosition : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4456,6 +4567,19 @@ namespace Google.Apis.Datastream.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for running a stream.</summary>
+    public class RunStreamRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The CDC strategy of the stream. If not set, the system's default value will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cdcStrategy")]
+        public virtual CdcStrategy CdcStrategy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A single target dataset to which all data will be streamed.</summary>
     public class SingleTargetDataset : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4523,6 +4647,17 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>PostgreSQL data source object identifier.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postgresqlIdentifier")]
         public virtual PostgresqlObjectIdentifier PostgresqlIdentifier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CDC strategy to start replicating from a specific position in the source.</summary>
+    public class SpecificStartPosition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>MySQL specific log position to start replicating from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mysqlLogPosition")]
+        public virtual MysqlLogPosition MysqlLogPosition { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

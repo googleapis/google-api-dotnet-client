@@ -10514,6 +10514,10 @@ namespace Google.Apis.CloudHealthcare.v1.Data
     /// <summary>The request to analyze healthcare entities in a document.</summary>
     public class AnalyzeEntitiesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Alternative output format to be generated based on the results of analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternativeOutputFormat")]
+        public virtual string AlternativeOutputFormat { get; set; }
+
         /// <summary>document_content is a document to be annotated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentContent")]
         public virtual string DocumentContent { get; set; }
@@ -10544,6 +10548,13 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityMentions")]
         public virtual System.Collections.Generic.IList<EntityMention> EntityMentions { get; set; }
+
+        /// <summary>
+        /// The FHIR bundle ([`R4`](http://hl7.org/fhir/R4/bundle.html)) that includes all the entities, the entity
+        /// mentions, and the relationships in JSON format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fhirBundle")]
+        public virtual string FhirBundle { get; set; }
 
         /// <summary>
         /// relationships contains all the binary relationships that were identified between entity mentions within the

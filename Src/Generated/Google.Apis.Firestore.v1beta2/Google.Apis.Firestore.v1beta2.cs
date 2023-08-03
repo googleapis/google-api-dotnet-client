@@ -1039,6 +1039,24 @@ namespace Google.Apis.Firestore.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Describes the progress of the operation. Unit of work is generic and must be interpreted based on where Progress
+    /// is used.
+    /// </summary>
+    public class GoogleFirestoreAdminV1Progress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The amount of work completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completedWork")]
+        public virtual System.Nullable<long> CompletedWork { get; set; }
+
+        /// <summary>The amount of work estimated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedWork")]
+        public virtual System.Nullable<long> EstimatedWork { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for the long-running operation from the RestoreDatabase request.</summary>
     public class GoogleFirestoreAdminV1RestoreDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1090,6 +1108,10 @@ namespace Google.Apis.Firestore.v1beta2.Data
         /// <summary>The operation state of the restore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationState")]
         public virtual string OperationState { get; set; }
+
+        /// <summary>How far along the restore is as an estimated percentage of remaining time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressPercentage")]
+        public virtual GoogleFirestoreAdminV1Progress ProgressPercentage { get; set; }
 
         private string _startTimeRaw;
 

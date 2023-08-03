@@ -7101,6 +7101,13 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Optional. Data dump parallelism settings used by the migration. Currently applicable only for MySQL to Cloud
+        /// SQL for MySQL migrations only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("performanceConfig")]
+        public virtual PerformanceConfig PerformanceConfig { get; set; }
+
         /// <summary>Output only. The current migration job phase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phase")]
         public virtual string Phase { get; set; }
@@ -7448,6 +7455,17 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Performance configuration definition.</summary>
+    public class PerformanceConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Initial dump parallelism level.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dumpParallelLevel")]
+        public virtual string DumpParallelLevel { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A
     /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single
@@ -7759,8 +7777,8 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     }
 
     /// <summary>
-    /// Private Service Connect connectivity
-    /// (https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
+    /// [Private Service Connect
+    /// connectivity](https://cloud.google.com/vpc/docs/private-service-connect#service-attachments)
     /// </summary>
     public class PrivateServiceConnectConnectivity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7785,6 +7803,12 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
     /// <summary>Request message for 'RestartMigrationJob' request.</summary>
     public class RestartMigrationJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Restart the migration job without running prior configuration verification. Defaults to `false`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skipValidation")]
+        public virtual System.Nullable<bool> SkipValidation { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

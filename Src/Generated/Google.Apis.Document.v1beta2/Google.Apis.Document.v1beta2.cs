@@ -730,7 +730,7 @@ namespace Google.Apis.Document.v1beta2.Data
     /// <summary>Metadata of the auto-labeling documents operation.</summary>
     public class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -770,7 +770,7 @@ namespace Google.Apis.Document.v1beta2.Data
 
     public class GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -814,7 +814,7 @@ namespace Google.Apis.Document.v1beta2.Data
 
     public class GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -1123,7 +1123,7 @@ namespace Google.Apis.Document.v1beta2.Data
     /// <summary>Metadata of the batch export documents operation.</summary>
     public class GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -1207,7 +1207,7 @@ namespace Google.Apis.Document.v1beta2.Data
     /// <summary>Metadata of the import document operation.</summary>
     public class GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -1228,8 +1228,8 @@ namespace Google.Apis.Document.v1beta2.Data
     }
 
     /// <summary>
-    /// The validation status of each import config. Status is set to errors if there is no documents to import in the
-    /// import_config, or OK if the operation will try to proceed at least one document.
+    /// The validation status of each import config. Status is set to an error if there are no documents to import in
+    /// the `import_config`, or `OK` if the operation will try to proceed with at least one document.
     /// </summary>
     public class GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataImportConfigValidationResult : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1302,7 +1302,7 @@ namespace Google.Apis.Document.v1beta2.Data
     /// <summary>The metadata proto of ResyncDataset method.</summary>
     public class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -1396,7 +1396,7 @@ namespace Google.Apis.Document.v1beta2.Data
     /// <summary>Metadata of the sample documents operation.</summary>
     public class GoogleCloudDocumentaiUiv1beta3SampleDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -1532,7 +1532,7 @@ namespace Google.Apis.Document.v1beta2.Data
 
     public class GoogleCloudDocumentaiUiv1beta3UpdateDatasetOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -5094,7 +5094,7 @@ namespace Google.Apis.Document.v1beta2.Data
 
     public class GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -5639,7 +5639,7 @@ namespace Google.Apis.Document.v1beta2.Data
     /// <summary>Metadata of the import document operation.</summary>
     public class GoogleCloudDocumentaiV1beta3ImportDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -5660,8 +5660,8 @@ namespace Google.Apis.Document.v1beta2.Data
     }
 
     /// <summary>
-    /// The validation status of each import config. Status is set to errors if there is no documents to import in the
-    /// import_config, or OK if the operation will try to proceed at least one document.
+    /// The validation status of each import config. Status is set to an error if there are no documents to import in
+    /// the `import_config`, or `OK` if the operation will try to proceed with at least one document.
     /// </summary>
     public class GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataImportConfigValidationResult : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5966,7 +5966,7 @@ namespace Google.Apis.Document.v1beta2.Data
 
     public class GoogleCloudDocumentaiV1beta3UpdateDatasetOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1beta3CommonOperationMetadata CommonMetadata { get; set; }
 

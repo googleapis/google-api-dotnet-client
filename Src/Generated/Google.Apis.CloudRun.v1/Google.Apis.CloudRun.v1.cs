@@ -5913,18 +5913,20 @@ namespace Google.Apis.CloudRun.v1.Data
     public class ContainerOverride : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Arguments to the entrypoint. Will replace existing args for override if present. Must be empty if
-        /// `clear_args` is set to true.
+        /// Arguments to the entrypoint. The specified arguments replace and override any existing entrypoint arguments.
+        /// Must be empty if `clear_args` is set to true.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IList<string> Args { get; set; }
 
-        /// <summary>Optional. True if the intention is to clear out existing args list.</summary>
+        /// <summary>Optional. Set to True to clear all existing arguments.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clearArgs")]
         public virtual System.Nullable<bool> ClearArgs { get; set; }
 
         /// <summary>
-        /// List of environment variables to set in the container. Will be merged with existing env for override.
+        /// List of environment variables to set in the container. All specified environment variables are merged with
+        /// existing environment variables. When the specified environment variables exist, these values override any
+        /// existing values.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
         public virtual System.Collections.Generic.IList<EnvVar> Env { get; set; }
@@ -6051,8 +6053,7 @@ namespace Google.Apis.CloudRun.v1.Data
     }
 
     /// <summary>
-    /// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now
-    /// only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data
+    /// In memory (tmpfs) ephemeral storage. It is ephemeral in the sense that when the sandbox is taken down, the data
     /// is destroyed with it (it does not persist across sandbox runs).
     /// </summary>
     public class EmptyDirVolumeSource : Google.Apis.Requests.IDirectResponseSchema
@@ -6068,9 +6069,9 @@ namespace Google.Apis.CloudRun.v1.Data
         /// <summary>
         /// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium.
         /// The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here
-        /// and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type:
-        /// https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which
-        /// means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
+        /// and the sum of memory limits of all containers. The default is nil which means that the limit is undefined.
+        /// More info: https://cloud.google.com/run/docs/configuring/in-memory-volumes#configure-volume. Info in
+        /// Kubernetes: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeLimit")]
         public virtual string SizeLimit { get; set; }
@@ -7767,7 +7768,7 @@ namespace Google.Apis.CloudRun.v1.Data
     {
         /// <summary>
         /// Optional. Private preview feature. Currently only available by invitation. Overrides specification for a
-        /// given execution of a job. If provided, overrides will be applied to update the execution or task spec.
+        /// given execution of a job. The specified values update the specification of the created execution.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overrides")]
         public virtual Overrides Overrides { get; set; }

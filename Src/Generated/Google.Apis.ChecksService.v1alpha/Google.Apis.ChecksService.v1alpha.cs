@@ -57,20 +57,6 @@ namespace Google.Apis.ChecksService.v1alpha
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Checks API.</summary>
-        public class Scope
-        {
-            /// <summary>Test scope for access to the Zoo service</summary>
-            public static string XapiZoo = "https://www.googleapis.com/auth/xapi.zoo";
-        }
-
-        /// <summary>Available OAuth 2.0 scope constants for use with the Checks API.</summary>
-        public static class ScopeConstants
-        {
-            /// <summary>Test scope for access to the Zoo service</summary>
-            public const string XapiZoo = "https://www.googleapis.com/auth/xapi.zoo";
-        }
-
         /// <summary>Gets the Accounts resource.</summary>
         public virtual AccountsResource Accounts { get; }
 
@@ -708,116 +694,7 @@ namespace Google.Apis.ChecksService.v1alpha
         public ProjectsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
-            PrivacyPolicies = new PrivacyPoliciesResource(service);
             Privacypolicy = new PrivacypolicyResource(service);
-        }
-
-        /// <summary>Gets the PrivacyPolicies resource.</summary>
-        public virtual PrivacyPoliciesResource PrivacyPolicies { get; }
-
-        /// <summary>The "privacyPolicies" collection of methods.</summary>
-        public class PrivacyPoliciesResource
-        {
-            private const string Resource = "privacyPolicies";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public PrivacyPoliciesResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-            }
-
-            /// <summary>Deletes a privacy policy.</summary>
-            /// <param name="name">Required. Resource name of the privacy policy.</param>
-            public virtual DeleteRequest Delete(string name)
-            {
-                return new DeleteRequest(service, name);
-            }
-
-            /// <summary>Deletes a privacy policy.</summary>
-            public class DeleteRequest : ChecksServiceBaseServiceRequest<Google.Apis.ChecksService.v1alpha.Data.Empty>
-            {
-                /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-                /// <summary>Required. Resource name of the privacy policy.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "delete";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "DELETE";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1alpha/{+name}";
-
-                /// <summary>Initializes Delete parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+/privacyPolicies/[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>Gets a privacy policy.</summary>
-            /// <param name="name">Required. Resource name of the privacy policy.</param>
-            public virtual GetRequest Get(string name)
-            {
-                return new GetRequest(service, name);
-            }
-
-            /// <summary>Gets a privacy policy.</summary>
-            public class GetRequest : ChecksServiceBaseServiceRequest<Google.Apis.ChecksService.v1alpha.Data.PrivacyPolicy>
-            {
-                /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-                /// <summary>Required. Resource name of the privacy policy.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "get";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1alpha/{+name}";
-
-                /// <summary>Initializes Get parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+/privacyPolicies/[^/]+$",
-                    });
-                }
-            }
         }
 
         /// <summary>Gets the Privacypolicy resource.</summary>
@@ -1282,6 +1159,17 @@ namespace Google.Apis.ChecksService.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Operation response for `FindPrivacyPolicy`.</summary>
+    public class FindPrivacyPolicyResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resource name of the PrivacyPolicy that was found.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privacyPolicy")]
+        public virtual string PrivacyPolicy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information about the date when the privacy policy was last updated.</summary>
     public class LastUpdatedDate : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1353,8 +1241,8 @@ namespace Google.Apis.ChecksService.v1alpha.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The normal response of the operation in case of success. If the original method returns no data on success,
-        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
         /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
@@ -1458,36 +1346,6 @@ namespace Google.Apis.ChecksService.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textContent")]
         public virtual string TextContent { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Privacy policy.</summary>
-    public class PrivacyPolicy : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>HTML content for the privacy policy page.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("htmlContent")]
-        public virtual string HtmlContent { get; set; }
-
-        /// <summary>Resource name. Example: projects/123/privacyPolicies/456</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>URI of the privacy policy corresponding to this resource.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("privacyPolicyUri")]
-        public virtual string PrivacyPolicyUri { get; set; }
-
-        /// <summary>Confidence that the privacy policy URI is indeed from a privacy policy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("score")]
-        public virtual System.Nullable<float> Score { get; set; }
-
-        /// <summary>
-        /// URI of the original website used to find this privacy policy. Only populated for resources created by the
-        /// FindPrivacyPolicy API.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("websiteUri")]
-        public virtual string WebsiteUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

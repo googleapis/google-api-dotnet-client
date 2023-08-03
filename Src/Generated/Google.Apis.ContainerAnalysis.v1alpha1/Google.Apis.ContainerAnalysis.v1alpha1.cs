@@ -3387,7 +3387,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A step in the build pipeline. Next ID: 20</summary>
+    /// <summary>A step in the build pipeline. Next ID: 21</summary>
     public class BuildStep : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -3413,6 +3413,13 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IList<string> Args { get; set; }
+
+        /// <summary>
+        /// Option to include built-in and custom substitutions as env variables for this build step. This option will
+        /// override the global option in BuildOption.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automapSubstitutions")]
+        public virtual System.Nullable<bool> AutomapSubstitutions { get; set; }
 
         /// <summary>
         /// Working directory to use when running this step's container. If this value is a relative path, it is
@@ -4305,6 +4312,10 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
     /// <summary>Optional arguments to enable specific features of builds.</summary>
     public class ContaineranalysisGoogleDevtoolsCloudbuildV1BuildOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Option to include built-in and custom substitutions as env variables for all build steps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automapSubstitutions")]
+        public virtual System.Nullable<bool> AutomapSubstitutions { get; set; }
+
         /// <summary>Optional. Option to specify how default logs buckets are setup.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultLogsBucketBehavior")]
         public virtual string DefaultLogsBucketBehavior { get; set; }
@@ -4436,6 +4447,13 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IList<string> Args { get; set; }
+
+        /// <summary>
+        /// Option to include built-in and custom substitutions as env variables for this build step. This option will
+        /// override the global option in BuildOption.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automapSubstitutions")]
+        public virtual System.Nullable<bool> AutomapSubstitutions { get; set; }
 
         /// <summary>
         /// Working directory to use when running this step's container. If this value is a relative path, it is

@@ -5561,6 +5561,61 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration options for sampling elements.</summary>
+    public class DataSamplingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of given sampling behaviors to enable. For example, specifying behaviors = [ALWAYS_ON] samples
+        /// in-flight elements but does not sample exceptions. Can be used to specify multiple behaviors like, behaviors
+        /// = [ALWAYS_ON, EXCEPTIONS] for specifying periodic sampling and exception sampling. If DISABLED is in the
+        /// list, then sampling will be disabled and ignore the other given behaviors. Ordering does not matter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("behaviors")]
+        public virtual System.Collections.Generic.IList<string> Behaviors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains per-worker telemetry about the data sampling feature.</summary>
+    public class DataSamplingReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Delta of bytes written to file from previous report.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bytesWrittenDelta")]
+        public virtual System.Nullable<long> BytesWrittenDelta { get; set; }
+
+        /// <summary>Optional. Delta of bytes sampled from previous report.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("elementsSampledBytes")]
+        public virtual System.Nullable<long> ElementsSampledBytes { get; set; }
+
+        /// <summary>Optional. Delta of number of elements sampled from previous report.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("elementsSampledCount")]
+        public virtual System.Nullable<long> ElementsSampledCount { get; set; }
+
+        /// <summary>
+        /// Optional. Delta of number of samples taken from user code exceptions from previous report.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exceptionsSampledCount")]
+        public virtual System.Nullable<long> ExceptionsSampledCount { get; set; }
+
+        /// <summary>Optional. Delta of number of PCollections sampled from previous report.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pcollectionsSampledCount")]
+        public virtual System.Nullable<long> PcollectionsSampledCount { get; set; }
+
+        /// <summary>Optional. Delta of errors counts from persisting the samples from previous report.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("persistenceErrorsCount")]
+        public virtual System.Nullable<long> PersistenceErrorsCount { get; set; }
+
+        /// <summary>
+        /// Optional. Delta of errors counts from retrieving, or translating the samples from previous report.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("translationErrorsCount")]
+        public virtual System.Nullable<long> TranslationErrorsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for a Datastore connector used by the job.</summary>
     public class DatastoreIODetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5579,6 +5634,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>Describes any options that have an effect on the debugging of pipelines.</summary>
     public class DebugOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Configuration options for sampling elements from a running pipeline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSampling")]
+        public virtual DataSamplingConfig DataSampling { get; set; }
+
         /// <summary>When true, enables the logging of the literal hot key to the user's Cloud Logging.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableHotKeyLogging")]
         public virtual System.Nullable<bool> EnableHotKeyLogging { get; set; }
@@ -5878,6 +5937,12 @@ namespace Google.Apis.Dataflow.v1b3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tempStoragePrefix")]
         public virtual string TempStoragePrefix { get; set; }
+
+        /// <summary>
+        /// Output only. Whether the job uses the new streaming engine billing model based on resource usage.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useStreamingEngineResourceBasedBilling")]
+        public virtual System.Nullable<bool> UseStreamingEngineResourceBasedBilling { get; set; }
 
         /// <summary>A description of the process that generated the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userAgent")]
@@ -8405,6 +8470,25 @@ namespace Google.Apis.Dataflow.v1b3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A bug found in the Dataflow SDK.</summary>
+    public class SdkBug : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. How severe the SDK bug is.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>Output only. Describes the impact of this SDK bug.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Output only. Link to more information on the bug.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Defines an SDK harness container for executing Dataflow pipelines.</summary>
     public class SdkHarnessContainerImage : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8440,6 +8524,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>The version of the SDK used to run the job.</summary>
     public class SdkVersion : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Known bugs found in this SDK version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bugs")]
+        public virtual System.Collections.Generic.IList<SdkBug> Bugs { get; set; }
+
         /// <summary>The support status for this SDK version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sdkSupportStatus")]
         public virtual string SdkSupportStatus { get; set; }
@@ -10432,6 +10520,10 @@ namespace Google.Apis.Dataflow.v1b3.Data
     /// <summary>WorkerMessage provides information to the backend about a worker.</summary>
     public class WorkerMessage : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Contains metrics related to go/dataflow-data-sampling-telemetry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataSamplingReport")]
+        public virtual DataSamplingReport DataSamplingReport { get; set; }
+
         /// <summary>
         /// Labels are used to group WorkerMessages. For example, a worker_message about a particular container might
         /// have the labels: { "JOB_ID": "2015-04-22", "WORKER_ID": "wordcount-vm-2015…" "CONTAINER_TYPE": "worker",

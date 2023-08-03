@@ -5023,7 +5023,7 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appliedLicense")]
         public virtual AppliedLicense AppliedLicense { get; set; }
 
-        /// <summary>Output only. The VM Boot Option, as set in the source vm.</summary>
+        /// <summary>Output only. The VM Boot Option, as set in the source VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootOption")]
         public virtual string BootOption { get; set; }
 
@@ -5063,12 +5063,12 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
         public virtual System.Collections.Generic.IList<NetworkInterface> NetworkInterfaces { get; set; }
 
-        /// <summary>A map of network tags to associate with the VM.</summary>
+        /// <summary>A list of network tags to associate with the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkTags")]
         public virtual System.Collections.Generic.IList<string> NetworkTags { get; set; }
 
         /// <summary>
-        /// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is
+        /// Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is
         /// EFI.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secureBoot")]
@@ -5110,7 +5110,7 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appliedLicense")]
         public virtual AppliedLicense AppliedLicense { get; set; }
 
-        /// <summary>The VM Boot Option, as set in the source vm.</summary>
+        /// <summary>The VM Boot Option, as set in the source VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootOption")]
         public virtual string BootOption { get; set; }
 
@@ -5150,7 +5150,7 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
         public virtual System.Collections.Generic.IList<NetworkInterface> NetworkInterfaces { get; set; }
 
-        /// <summary>A map of network tags to associate with the VM.</summary>
+        /// <summary>A list of network tags to associate with the VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkTags")]
         public virtual System.Collections.Generic.IList<string> NetworkTags { get; set; }
 
@@ -5159,7 +5159,7 @@ namespace Google.Apis.VMMigrationService.v1.Data
         public virtual string Project { get; set; }
 
         /// <summary>
-        /// Defines whether the instance has Secure Boot enabled. This can be set to true only if the vm boot option is
+        /// Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is
         /// EFI.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secureBoot")]
@@ -6801,7 +6801,7 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
 
-        /// <summary>The ordinal number of the source VM disk.</summary>
+        /// <summary>Required. The ordinal number of the source VM disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceDiskNumber")]
         public virtual System.Nullable<int> SourceDiskNumber { get; set; }
 

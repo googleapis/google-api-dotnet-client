@@ -28547,6 +28547,13 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
 
         /// <summary>
+        /// The platform of the virtual agent response messages. If not empty, only emits messages from this platform in
+        /// the response. Valid values are the enum names of platform.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("platform")]
+        public virtual string Platform { get; set; }
+
+        /// <summary>
         /// Specifies whether to delete all contexts in the current session before the new ones are activated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resetContexts")]

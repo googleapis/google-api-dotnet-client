@@ -10066,10 +10066,6 @@ namespace Google.Apis.CloudRetail.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enrolledSolution")]
         public virtual string EnrolledSolution { get; set; }
 
-        /// <summary>Search solution use case that the project has enrolled.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("searchSolutionUseCase")]
-        public virtual string SearchSolutionUseCase { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

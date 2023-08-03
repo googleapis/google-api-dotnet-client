@@ -7356,7 +7356,11 @@ namespace Google.Apis.Spanner.v1.Data
             set => EarliestVersionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
-        /// <summary>Whether drop protection is enabled for this database. Defaults to false, if not set.</summary>
+        /// <summary>
+        /// Whether drop protection is enabled for this database. Defaults to false, if not set. For more details,
+        /// please see how to [prevent accidental database
+        /// deletion](https://cloud.google.com/spanner/docs/prevent-database-deletion).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableDropProtection")]
         public virtual System.Nullable<bool> EnableDropProtection { get; set; }
 

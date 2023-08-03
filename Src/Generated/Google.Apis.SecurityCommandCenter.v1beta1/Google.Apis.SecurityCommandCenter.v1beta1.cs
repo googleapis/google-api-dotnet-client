@@ -2362,6 +2362,85 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An attack exposure contains the results of an attack path simulation run.</summary>
+    public class AttackExposure : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the attack path simulation result that contains the details regarding this attack
+        /// exposure score. Example: organizations/123/attackExposureResults/456
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attackExposureResult")]
+        public virtual string AttackExposureResult { get; set; }
+
+        /// <summary>The number of high value resources that are exposed as a result of this finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exposedHighValueResourcesCount")]
+        public virtual System.Nullable<int> ExposedHighValueResourcesCount { get; set; }
+
+        /// <summary>The number of high value resources that are exposed as a result of this finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exposedLowValueResourcesCount")]
+        public virtual System.Nullable<int> ExposedLowValueResourcesCount { get; set; }
+
+        /// <summary>The number of medium value resources that are exposed as a result of this finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exposedMediumValueResourcesCount")]
+        public virtual System.Nullable<int> ExposedMediumValueResourcesCount { get; set; }
+
+        private string _latestCalculationTimeRaw;
+
+        private object _latestCalculationTime;
+
+        /// <summary>The most recent time the attack exposure was updated on this finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestCalculationTime")]
+        public virtual string LatestCalculationTimeRaw
+        {
+            get => _latestCalculationTimeRaw;
+            set
+            {
+                _latestCalculationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _latestCalculationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LatestCalculationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LatestCalculationTimeDateTimeOffset instead.")]
+        public virtual object LatestCalculationTime
+        {
+            get => _latestCalculationTime;
+            set
+            {
+                _latestCalculationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _latestCalculationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LatestCalculationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LatestCalculationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LatestCalculationTimeRaw);
+            set => LatestCalculationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// A number between 0 (inclusive) and infinity that represents how important this finding is to remediate. The
+        /// higher the score, the more important it is to remediate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
+
+        /// <summary>
+        /// What state this AttackExposure is in. This captures whether or not an attack exposure has been calculated or
+        /// not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
@@ -2984,6 +3063,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("access")]
         public virtual Access Access { get; set; }
+
+        /// <summary>The results of an attack path simulation relevant to this finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attackExposure")]
+        public virtual AttackExposure AttackExposure { get; set; }
 
         /// <summary>
         /// The canonical name of the finding. It's either
@@ -3927,6 +4010,133 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// <summary>The resource types to run the detector on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceTypes")]
         public virtual System.Collections.Generic.IList<string> ResourceTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A resource value config is a mapping configuration of user's tag values to resource values. Used by the attack
+    /// path simulation.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV1ResourceValueConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp this resource value config was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Description of the resource value config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Name for the resource value config</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// List of resource labels to search for, evaluated with AND. E.g. "resource_labels_selector": {"key": "value",
+        /// "env": "prod"} will match resources with labels "key": "value" AND "env": "prod"
+        /// https://cloud.google.com/resource-manager/docs/creating-managing-labels
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLabelsSelector")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ResourceLabelsSelector { get; set; }
+
+        /// <summary>
+        /// Apply resource_value only to resources that match resource_type. resource_type will be checked with "AND" of
+        /// other resources. E.g. "storage.googleapis.com/Bucket" with resource_value "HIGH" will apply "HIGH" value
+        /// only to "storage.googleapis.com/Bucket" resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
+        /// <summary>Required. Resource value level this expression represents</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceValue")]
+        public virtual string ResourceValue { get; set; }
+
+        /// <summary>
+        /// Project or folder to scope this config to. For example, "project/456" would apply this config only to
+        /// resources in "project/456" scope will be checked with "AND" of other resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>
+        /// Required. Tag values combined with AND to check against. Values in the form "tagValues/123" E.g. [
+        /// "tagValues/123", "tagValues/456", "tagValues/789" ]
+        /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagValues")]
+        public virtual System.Collections.Generic.IList<string> TagValues { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp this resource value config was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

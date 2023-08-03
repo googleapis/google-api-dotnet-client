@@ -2213,9 +2213,17 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("alias")]
         public virtual string Alias { get; set; }
 
+        /// <summary>Average aggregator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("avg")]
+        public virtual Avg Avg { get; set; }
+
         /// <summary>Count aggregator.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual Count Count { get; set; }
+
+        /// <summary>Sum aggregator.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sum")]
+        public virtual Sum Sum { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2246,6 +2254,21 @@ namespace Google.Apis.Firestore.v1beta1.Data
         /// <summary>Values in the array.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<Value> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Average of the values of the requested field. * Only numeric values will be aggregated. All non-numeric values
+    /// including `NULL` are skipped. * If the aggregated values contain `NaN`, returns `NaN`. * If the aggregated value
+    /// set is empty, returns `NULL`. * Always returns the result as a double.
+    /// </summary>
+    public class Avg : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The field to aggregate on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual FieldReference Field { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2960,7 +2983,9 @@ namespace Google.Apis.Firestore.v1beta1.Data
         /// <summary>
         /// The total count of documents that match target_id. If different from the count of documents in the client
         /// that match, the client must manually determine which documents no longer match the target. The client can
-        /// use the `unchanged_names` bloom filter to assist with this determination.
+        /// use the `unchanged_names` bloom filter to assist with this determination by testing ALL the document names
+        /// against the filter; if the document name is NOT in the filter, it means the document no longer matches the
+        /// target.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<int> Count { get; set; }
@@ -2970,14 +2995,13 @@ namespace Google.Apis.Firestore.v1beta1.Data
         public virtual System.Nullable<int> TargetId { get; set; }
 
         /// <summary>
-        /// A bloom filter that contains the UTF-8 byte encodings of the resource names of the documents that match
-        /// target_id, in the form `projects/{project_id}/databases/{database_id}/documents/{document_path}` that have
-        /// NOT changed since the query results indicated by the resume token or timestamp given in
-        /// `Target.resume_type`. This bloom filter may be omitted at the server's discretion, such as if it is deemed
-        /// that the client will not make use of it or if it is too computationally expensive to calculate or transmit.
-        /// Clients must gracefully handle this field being absent by falling back to the logic used before this field
-        /// existed; that is, re-add the target without a resume token to figure out which documents in the client's
-        /// cache are out of sync.
+        /// A bloom filter that, despite its name, contains the UTF-8 byte encodings of the resource names of ALL the
+        /// documents that match target_id, in the form
+        /// `projects/{project_id}/databases/{database_id}/documents/{document_path}`. This bloom filter may be omitted
+        /// at the server's discretion, such as if it is deemed that the client will not make use of it or if it is too
+        /// computationally expensive to calculate or transmit. Clients must gracefully handle this field being absent
+        /// by falling back to the logic used before this field existed; that is, re-add the target without a resume
+        /// token to figure out which documents in the client's cache are out of sync.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unchangedNames")]
         public virtual BloomFilter UnchangedNames { get; set; }
@@ -3107,6 +3131,24 @@ namespace Google.Apis.Firestore.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Describes the progress of the operation. Unit of work is generic and must be interpreted based on where Progress
+    /// is used.
+    /// </summary>
+    public class GoogleFirestoreAdminV1Progress : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The amount of work completed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("completedWork")]
+        public virtual System.Nullable<long> CompletedWork { get; set; }
+
+        /// <summary>The amount of work estimated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedWork")]
+        public virtual System.Nullable<long> EstimatedWork { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for the long-running operation from the RestoreDatabase request.</summary>
     public class GoogleFirestoreAdminV1RestoreDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3158,6 +3200,10 @@ namespace Google.Apis.Firestore.v1beta1.Data
         /// <summary>The operation state of the restore.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operationState")]
         public virtual string OperationState { get; set; }
+
+        /// <summary>How far along the restore is as an estimated percentage of remaining time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressPercentage")]
+        public virtual GoogleFirestoreAdminV1Progress ProgressPercentage { get; set; }
 
         private string _startTimeRaw;
 
@@ -4543,6 +4589,26 @@ namespace Google.Apis.Firestore.v1beta1.Data
         /// <summary>The filter to apply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("where")]
         public virtual Filter Where { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Sum of the values of the requested field. * Only numeric values will be aggregated. All non-numeric values
+    /// including `NULL` are skipped. * If the aggregated values contain `NaN`, returns `NaN`. * If the aggregated value
+    /// set is empty, returns 0. * Returns a 64-bit integer if the sum result is an integer value and does not overflow.
+    /// Otherwise, the result is returned as a double. Note that even if all the aggregated values are integers, the
+    /// result is returned as a double if it cannot fit within a 64-bit signed integer. When this occurs, the returned
+    /// value will lose precision. * When underflow occurs, floating-point aggregation is non-deterministic. This means
+    /// that running the same query repeatedly without any changes to the underlying values could produce slightly
+    /// different results each time. In those cases, values should be stored as integers over floating-point numbers.
+    /// </summary>
+    public class Sum : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The field to aggregate on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("field")]
+        public virtual FieldReference Field { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

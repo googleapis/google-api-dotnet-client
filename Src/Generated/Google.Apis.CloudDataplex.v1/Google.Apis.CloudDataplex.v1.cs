@@ -11321,6 +11321,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// </summary>
     public class GoogleCloudDataplexV1DataProfileResult : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The result of post scan actions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postScanActionsResult")]
+        public virtual GoogleCloudDataplexV1DataProfileResultPostScanActionsResult PostScanActionsResult { get; set; }
+
         /// <summary>The profile information per field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("profile")]
         public virtual GoogleCloudDataplexV1DataProfileResultProfile Profile { get; set; }
@@ -11332,6 +11336,32 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>The data scanned for this result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scannedData")]
         public virtual GoogleCloudDataplexV1ScannedData ScannedData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The result of post scan actions of DataProfileScan job.</summary>
+    public class GoogleCloudDataplexV1DataProfileResultPostScanActionsResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The result of BigQuery export post scan action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryExportResult")]
+        public virtual GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult BigqueryExportResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The result of BigQuery export post scan action.</summary>
+    public class GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Additional information about the BigQuery exporting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Output only. Execution state for the BigQuery exporting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11545,6 +11575,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("includeFields")]
         public virtual GoogleCloudDataplexV1DataProfileSpecSelectedFields IncludeFields { get; set; }
 
+        /// <summary>Optional. Actions to take upon job completion..</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postScanActions")]
+        public virtual GoogleCloudDataplexV1DataProfileSpecPostScanActions PostScanActions { get; set; }
+
         /// <summary>
         /// Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL
         /// expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 &amp;gt;= 0 AND col2 &amp;lt;
@@ -11560,6 +11594,31 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("samplingPercent")]
         public virtual System.Nullable<float> SamplingPercent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration of post scan actions of DataProfileScan job.</summary>
+    public class GoogleCloudDataplexV1DataProfileSpecPostScanActions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. If set, results will be exported to the provided BigQuery table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryExport")]
+        public virtual GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport BigqueryExport { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration of BigQuery export post scan action.</summary>
+    public class GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The BigQuery table to export DataProfileScan results to. Format:
+        /// projects/{project}/datasets/{dataset}/tables/{table}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultsTable")]
+        public virtual string ResultsTable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11602,6 +11661,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("passed")]
         public virtual System.Nullable<bool> Passed { get; set; }
 
+        /// <summary>Output only. The result of post scan actions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postScanActionsResult")]
+        public virtual GoogleCloudDataplexV1DataQualityResultPostScanActionsResult PostScanActionsResult { get; set; }
+
         /// <summary>The count of rows processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rowCount")]
         public virtual System.Nullable<long> RowCount { get; set; }
@@ -11613,6 +11676,32 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>The data scanned for this result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scannedData")]
         public virtual GoogleCloudDataplexV1ScannedData ScannedData { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The result of post scan actions of DataQualityScan job.</summary>
+    public class GoogleCloudDataplexV1DataQualityResultPostScanActionsResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The result of BigQuery export post scan action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryExportResult")]
+        public virtual GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult BigqueryExportResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The result of BigQuery export post scan action.</summary>
+    public class GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Additional information about the BigQuery exporting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Output only. Execution state for the BigQuery exporting.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11947,6 +12036,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>DataQualityScan related setting.</summary>
     public class GoogleCloudDataplexV1DataQualitySpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Actions to take upon job completion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postScanActions")]
+        public virtual GoogleCloudDataplexV1DataQualitySpecPostScanActions PostScanActions { get; set; }
+
         /// <summary>
         /// Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL
         /// expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 &amp;gt;= 0 AND col2 &amp;lt;
@@ -11966,6 +12059,31 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("samplingPercent")]
         public virtual System.Nullable<float> SamplingPercent { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration of post scan actions of DataQualityScan.</summary>
+    public class GoogleCloudDataplexV1DataQualitySpecPostScanActions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. If set, results will be exported to the provided BigQuery table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigqueryExport")]
+        public virtual GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport BigqueryExport { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration of BigQuery export post scan action.</summary>
+    public class GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The BigQuery table to export DataQualityScan results to. Format:
+        /// projects/{project}/datasets/{dataset}/tables/{table}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultsTable")]
+        public virtual string ResultsTable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12653,6 +12771,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
         /// <summary>Output only. The number of attributes in the DataTaxonomy.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributeCount")]
         public virtual System.Nullable<int> AttributeCount { get; set; }
+
+        /// <summary>Output only. The number of classes in the DataTaxonomy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("classCount")]
+        public virtual System.Nullable<int> ClassCount { get; set; }
 
         private string _createTimeRaw;
 

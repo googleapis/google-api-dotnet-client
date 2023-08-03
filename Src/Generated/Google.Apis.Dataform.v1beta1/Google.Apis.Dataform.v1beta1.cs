@@ -3090,6 +3090,65 @@ namespace Google.Apis.Dataform.v1beta1
                     }
                 }
 
+                /// <summary>
+                /// Applies a Git commit to a Repository. The Repository must not have a value for
+                /// `git_remote_settings.url`.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The repository's name.</param>
+                public virtual CommitRequest Commit(Google.Apis.Dataform.v1beta1.Data.CommitRepositoryChangesRequest body, string name)
+                {
+                    return new CommitRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Applies a Git commit to a Repository. The Repository must not have a value for
+                /// `git_remote_settings.url`.
+                /// </summary>
+                public class CommitRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Commit request.</summary>
+                    public CommitRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataform.v1beta1.Data.CommitRepositoryChangesRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The repository's name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dataform.v1beta1.Data.CommitRepositoryChangesRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "commit";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:commit";
+
+                    /// <summary>Initializes Commit parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Computes a Repository's Git access token status.</summary>
                 /// <param name="name">Required. The repository's name.</param>
                 public virtual ComputeAccessTokenStatusRequest ComputeAccessTokenStatus(string name)
@@ -3261,6 +3320,88 @@ namespace Google.Apis.Dataform.v1beta1
                         RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
                         {
                             Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Fetches a Repository's history of commits. The Repository must not have a value for
+                /// `git_remote_settings.url`.
+                /// </summary>
+                /// <param name="name">Required. The repository's name.</param>
+                public virtual FetchHistoryRequest FetchHistory(string name)
+                {
+                    return new FetchHistoryRequest(service, name);
+                }
+
+                /// <summary>
+                /// Fetches a Repository's history of commits. The Repository must not have a value for
+                /// `git_remote_settings.url`.
+                /// </summary>
+                public class FetchHistoryRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.FetchRepositoryHistoryResponse>
+                {
+                    /// <summary>Constructs a new FetchHistory request.</summary>
+                    public FetchHistoryRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The repository's name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Maximum number of commits to return. The server may return fewer items than requested.
+                    /// If unspecified, the server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. Page token received from a previous `FetchRepositoryHistory` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `FetchRepositoryHistory` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "fetchHistory";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:fetchHistory";
+
+                    /// <summary>Initializes FetchHistory parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3608,6 +3749,195 @@ namespace Google.Apis.Dataform.v1beta1
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
                             Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns the contents of a given Repository directory. The Repository must not have a value for
+                /// `git_remote_settings.url`.
+                /// </summary>
+                /// <param name="name">Required. The repository's name.</param>
+                public virtual QueryDirectoryContentsRequest QueryDirectoryContents(string name)
+                {
+                    return new QueryDirectoryContentsRequest(service, name);
+                }
+
+                /// <summary>
+                /// Returns the contents of a given Repository directory. The Repository must not have a value for
+                /// `git_remote_settings.url`.
+                /// </summary>
+                public class QueryDirectoryContentsRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.QueryRepositoryDirectoryContentsResponse>
+                {
+                    /// <summary>Constructs a new QueryDirectoryContents request.</summary>
+                    public QueryDirectoryContentsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The repository's name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The Commit SHA for the commit to query from. If unset, the directory will be queried
+                    /// from HEAD.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("commitSha", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string CommitSha { get; set; }
+
+                    /// <summary>
+                    /// Optional. Maximum number of paths to return. The server may return fewer items than requested.
+                    /// If unspecified, the server will pick an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. Page token received from a previous `QueryRepositoryDirectoryContents` call. Provide
+                    /// this to retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `QueryRepositoryDirectoryContents` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>
+                    /// Optional. The directory's full path including directory name, relative to root. If left unset,
+                    /// the root is used.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Path { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "queryDirectoryContents";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:queryDirectoryContents";
+
+                    /// <summary>Initializes QueryDirectoryContents parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
+                        });
+                        RequestParameters.Add("commitSha", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "commitSha",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("path", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "path",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns the contents of a file (inside a Repository). The Repository must not have a value for
+                /// `git_remote_settings.url`.
+                /// </summary>
+                /// <param name="name">Required. The repository's name.</param>
+                public virtual ReadFileRequest ReadFile(string name)
+                {
+                    return new ReadFileRequest(service, name);
+                }
+
+                /// <summary>
+                /// Returns the contents of a file (inside a Repository). The Repository must not have a value for
+                /// `git_remote_settings.url`.
+                /// </summary>
+                public class ReadFileRequest : DataformBaseServiceRequest<Google.Apis.Dataform.v1beta1.Data.ReadRepositoryFileResponse>
+                {
+                    /// <summary>Constructs a new ReadFile request.</summary>
+                    public ReadFileRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The repository's name.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The commit SHA for the commit to read from. If unset, the file will be read from HEAD.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("commitSha", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string CommitSha { get; set; }
+
+                    /// <summary>Required. Full file path to read including filename, from repository root.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("path", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Path { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "readFile";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:readFile";
+
+                    /// <summary>Initializes ReadFile parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/repositories/[^/]+$",
+                        });
+                        RequestParameters.Add("commitSha", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "commitSha",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("path", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "path",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4076,6 +4406,102 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a single commit log.</summary>
+    public class CommitLogEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The commit author for this commit log entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("author")]
+        public virtual CommitAuthor Author { get; set; }
+
+        /// <summary>The commit message for this commit log entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitMessage")]
+        public virtual string CommitMessage { get; set; }
+
+        /// <summary>The commit SHA for this commit log entry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitSha")]
+        public virtual string CommitSha { get; set; }
+
+        private string _commitTimeRaw;
+
+        private object _commitTime;
+
+        /// <summary>Commit timestamp.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitTime")]
+        public virtual string CommitTimeRaw
+        {
+            get => _commitTimeRaw;
+            set
+            {
+                _commitTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _commitTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CommitTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CommitTimeDateTimeOffset instead.")]
+        public virtual object CommitTime
+        {
+            get => _commitTime;
+            set
+            {
+                _commitTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _commitTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CommitTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CommitTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CommitTimeRaw);
+            set => CommitTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a Dataform Git commit.</summary>
+    public class CommitMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The commit's author.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("author")]
+        public virtual CommitAuthor Author { get; set; }
+
+        /// <summary>Optional. The commit's message.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitMessage")]
+        public virtual string CommitMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>`CommitRepositoryChanges` request message.</summary>
+    public class CommitRepositoryChangesRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The changes to commit to the repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitMetadata")]
+        public virtual CommitMetadata CommitMetadata { get; set; }
+
+        /// <summary>
+        /// A map to the path of the file to the operation. The path is the ull file path including filename, from
+        /// repository root.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileOperations")]
+        public virtual System.Collections.Generic.IDictionary<string, FileOperation> FileOperations { get; set; }
+
+        /// <summary>
+        /// Optional. The commit SHA which must be the repository's current HEAD before applying this commit; otherwise
+        /// this request will fail. If unset, no validation on the current HEAD commit SHA is performed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredHeadCommitSha")]
+        public virtual string RequiredHeadCommitSha { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>`CommitWorkspaceChanges` request message.</summary>
     public class CommitWorkspaceChangesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4245,6 +4671,13 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents the delete file operation.</summary>
+    public class DeleteFile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a single entry in a directory.</summary>
     public class DirectoryEntry : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4366,11 +4799,44 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>`FetchRepositoryHistory` response message.</summary>
+    public class FetchRepositoryHistoryResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of commit logs, ordered by 'git log' default order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commits")]
+        public virtual System.Collections.Generic.IList<CommitLogEntry> Commits { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a single file operation to the repository.</summary>
+    public class FileOperation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Represents the delete operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteFile")]
+        public virtual DeleteFile DeleteFile { get; set; }
+
+        /// <summary>Represents the write operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("writeFile")]
+        public virtual WriteFile WriteFile { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Controls Git remote configuration for a repository.</summary>
     public class GitRemoteSettings : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The name of the Secret Manager secret version to use as an authentication token for Git
+        /// Optional. The name of the Secret Manager secret version to use as an authentication token for Git
         /// operations. Must be in the format `projects/*/secrets/*/versions/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("authenticationTokenSecretVersion")]
@@ -5094,6 +5560,24 @@ namespace Google.Apis.Dataform.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>`QueryRepositoryDirectoryContents` response message.</summary>
+    public class QueryRepositoryDirectoryContentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of entries in the directory.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("directoryEntries")]
+        public virtual System.Collections.Generic.IList<DirectoryEntry> DirectoryEntries { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>`QueryWorkflowInvocationActions` response message.</summary>
     public class QueryWorkflowInvocationActionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5118,6 +5602,17 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// <summary>The file's contents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileContents")]
         public virtual string FileContents { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>`ReadRepositoryFile` response message.</summary>
+    public class ReadRepositoryFileResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The file's contents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contents")]
+        public virtual string Contents { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5297,9 +5792,17 @@ namespace Google.Apis.Dataform.v1beta1.Data
     /// <summary>Represents a Dataform Git repository.</summary>
     public class Repository : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The repository's user-friendly name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
         /// <summary>Optional. If set, configures this repository to be linked to a Git remote.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gitRemoteSettings")]
         public virtual GitRemoteSettings GitRemoteSettings { get; set; }
+
+        /// <summary>Optional. Repository user labels.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>Output only. The repository's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -5316,6 +5819,14 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// <summary>Optional. The service account to run workflow invocations under.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
+
+        /// <summary>
+        /// Optional. Input only. If set to true, the authenticated user will be granted the roles/dataform.admin role
+        /// on the created repository. To modify access to the created repository later apply setIamPolicy from
+        /// https://cloud.google.com/dataform/reference/rest#rest-resource:-v1beta1.projects.locations.repositories
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setAuthenticatedUserAdmin")]
+        public virtual System.Nullable<bool> SetAuthenticatedUserAdmin { get; set; }
 
         /// <summary>
         /// Optional. If set, fields of `workspace_compilation_overrides` override the default compilation settings that
@@ -5721,6 +6232,17 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// <summary>Optional. The prefix that should be prepended to all table names.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tablePrefix")]
         public virtual string TablePrefix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the write file operation (for files added or modified).</summary>
+    public class WriteFile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The file's contents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contents")]
+        public virtual string Contents { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

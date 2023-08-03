@@ -860,7 +860,7 @@ namespace Google.Apis.Document.v1beta3
                         /// <summary>Reads the revision by the predefined case.</summary>
                         public enum DocumentIdRevisionRefRevisionCaseEnum
                         {
-                            /// <summary>Unspecified case, fallback to read the LATEST_HUMAN_REVIEW.</summary>
+                            /// <summary>Unspecified case, fall back to read the `LATEST_HUMAN_REVIEW`.</summary>
                             [Google.Apis.Util.StringValueAttribute("REVISION_CASE_UNSPECIFIED")]
                             REVISIONCASEUNSPECIFIED = 0,
 
@@ -2781,7 +2781,7 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Metadata of the auto-labeling documents operation.</summary>
     public class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -2821,7 +2821,7 @@ namespace Google.Apis.Document.v1beta3.Data
 
     public class GoogleCloudDocumentaiUiv1beta3BatchDeleteDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -2865,7 +2865,7 @@ namespace Google.Apis.Document.v1beta3.Data
 
     public class GoogleCloudDocumentaiUiv1beta3BatchMoveDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -3174,7 +3174,7 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Metadata of the batch export documents operation.</summary>
     public class GoogleCloudDocumentaiUiv1beta3ExportDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -3258,7 +3258,7 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Metadata of the import document operation.</summary>
     public class GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -3279,8 +3279,8 @@ namespace Google.Apis.Document.v1beta3.Data
     }
 
     /// <summary>
-    /// The validation status of each import config. Status is set to errors if there is no documents to import in the
-    /// import_config, or OK if the operation will try to proceed at least one document.
+    /// The validation status of each import config. Status is set to an error if there are no documents to import in
+    /// the `import_config`, or `OK` if the operation will try to proceed with at least one document.
     /// </summary>
     public class GoogleCloudDocumentaiUiv1beta3ImportDocumentsMetadataImportConfigValidationResult : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3353,7 +3353,7 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>The metadata proto of ResyncDataset method.</summary>
     public class GoogleCloudDocumentaiUiv1beta3ResyncDatasetMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -3447,7 +3447,7 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Metadata of the sample documents operation.</summary>
     public class GoogleCloudDocumentaiUiv1beta3SampleDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -3583,7 +3583,7 @@ namespace Google.Apis.Document.v1beta3.Data
 
     public class GoogleCloudDocumentaiUiv1beta3UpdateDatasetOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -6993,7 +6993,7 @@ namespace Google.Apis.Document.v1beta3.Data
 
     public class GoogleCloudDocumentaiV1beta3BatchDeleteDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -7059,10 +7059,6 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>The set of documents that match the specified Cloud Storage `gcs_prefix`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsPrefix")]
         public virtual GoogleCloudDocumentaiV1beta3GcsPrefix GcsPrefix { get; set; }
-
-        /// <summary>The set of documents specified inline.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rawDocuments")]
-        public virtual GoogleCloudDocumentaiV1beta3RawDocuments RawDocuments { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9293,7 +9289,7 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Metadata of the import document operation.</summary>
     public class GoogleCloudDocumentaiV1beta3ImportDocumentsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1beta3CommonOperationMetadata CommonMetadata { get; set; }
 
@@ -9314,8 +9310,8 @@ namespace Google.Apis.Document.v1beta3.Data
     }
 
     /// <summary>
-    /// The validation status of each import config. Status is set to errors if there is no documents to import in the
-    /// import_config, or OK if the operation will try to proceed at least one document.
+    /// The validation status of each import config. Status is set to an error if there are no documents to import in
+    /// the `import_config`, or `OK` if the operation will try to proceed with at least one document.
     /// </summary>
     public class GoogleCloudDocumentaiV1beta3ImportDocumentsMetadataImportConfigValidationResult : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9412,8 +9408,7 @@ namespace Google.Apis.Document.v1beta3.Data
     }
 
     /// <summary>
-    /// The request message for the ImportProcessorVersion method. Requirements: - The source processor version and
-    /// destination processor must be in the same location. - The Document AI [Service
+    /// The request message for the ImportProcessorVersion method. Requirements: - The Document AI [Service
     /// Agent](https://cloud.google.com/iam/docs/service-agents) of the destination project must have [Document AI
     /// Editor role](https://cloud.google.com/document-ai/docs/access-control/iam-roles) on the source project. The
     /// destination project is specified as part of the parent field. The source project is specified as part of the
@@ -9422,11 +9417,38 @@ namespace Google.Apis.Document.v1beta3.Data
     public class GoogleCloudDocumentaiV1beta3ImportProcessorVersionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// The source processor version to import from, and can be from different environment and region than the
+        /// destination processor.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalProcessorVersionSource")]
+        public virtual GoogleCloudDocumentaiV1beta3ImportProcessorVersionRequestExternalProcessorVersionSource ExternalProcessorVersionSource { get; set; }
+
+        /// <summary>
         /// The source processor version to import from. The source processor version and destination processor need to
         /// be in the same environment and region.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("processorVersionSource")]
         public virtual string ProcessorVersionSource { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The external source processor version.</summary>
+    public class GoogleCloudDocumentaiV1beta3ImportProcessorVersionRequestExternalProcessorVersionSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The processor version name. Format:
+        /// `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processorVersion")]
+        public virtual string ProcessorVersion { get; set; }
+
+        /// <summary>
+        /// Optional. The Document AI service endpoint. For example, 'https://us-documentai.googleapis.com'
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceEndpoint")]
+        public virtual string ServiceEndpoint { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9723,6 +9745,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("processEndpoint")]
         public virtual string ProcessEndpoint { get; set; }
 
+        /// <summary>Output only. The processor version aliases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processorVersionAliases")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3ProcessorVersionAlias> ProcessorVersionAliases { get; set; }
+
         /// <summary>Output only. The state of the processor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -9882,6 +9908,21 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains the alias and the aliased resource name of processor version.</summary>
+    public class GoogleCloudDocumentaiV1beta3ProcessorVersionAlias : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The alias in the form of `processor_version` resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alias")]
+        public virtual string Alias { get; set; }
+
+        /// <summary>The resource name of aliased processor version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("processorVersion")]
+        public virtual string ProcessorVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Information about the upcoming deprecation of this processor version.</summary>
     public class GoogleCloudDocumentaiV1beta3ProcessorVersionDeprecationInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9950,20 +9991,17 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
 
+        /// <summary>
+        /// The display name of the document, it supports all Unicode characters except the following: `*`, `?`, `[`,
+        /// `]`, `%`, `{`, `}`,`'`, `\"`, `,` `~`, `=` and `:` are reserved. If not specified, a default ID will be
+        /// generated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
         /// <summary>An IANA MIME type (RFC6838) indicating the nature and format of the content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mimeType")]
         public virtual string MimeType { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Specifies a set of raw documents.</summary>
-    public class GoogleCloudDocumentaiV1beta3RawDocuments : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Specifies raw document content and mime type.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("documents")]
-        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3RawDocument> Documents { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10315,7 +10353,7 @@ namespace Google.Apis.Document.v1beta3.Data
 
     public class GoogleCloudDocumentaiV1beta3UpdateDatasetOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The basic metadata of the long running operation.</summary>
+        /// <summary>The basic metadata of the long-running operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("commonMetadata")]
         public virtual GoogleCloudDocumentaiV1beta3CommonOperationMetadata CommonMetadata { get; set; }
 

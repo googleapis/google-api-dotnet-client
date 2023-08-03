@@ -6062,6 +6062,54 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Verification information for target sites in advanced site search.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSiteVerificationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Site verification state indicating the ownership and validity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("siteVerificationState")]
+        public virtual string SiteVerificationState { get; set; }
+
+        private string _verifyTimeRaw;
+
+        private object _verifyTime;
+
+        /// <summary>Latest site verification time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifyTime")]
+        public virtual string VerifyTimeRaw
+        {
+            get => _verifyTimeRaw;
+            set
+            {
+                _verifyTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _verifyTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="VerifyTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use VerifyTimeDateTimeOffset instead.")]
+        public virtual object VerifyTime
+        {
+            get => _verifyTime;
+            set
+            {
+                _verifyTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _verifyTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="VerifyTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? VerifyTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(VerifyTimeRaw);
+            set => VerifyTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A target site for the SiteSearchEngine.</summary>
     public class GoogleCloudDiscoveryengineV1alphaTargetSite : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6091,6 +6139,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("providedUriPattern")]
         public virtual string ProvidedUriPattern { get; set; }
+
+        /// <summary>Output only. Site ownership and validity verification status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("siteVerificationInfo")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSiteVerificationInfo SiteVerificationInfo { get; set; }
 
         /// <summary>The type of the target site, e.g. whether the site is to be included or excluded.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]

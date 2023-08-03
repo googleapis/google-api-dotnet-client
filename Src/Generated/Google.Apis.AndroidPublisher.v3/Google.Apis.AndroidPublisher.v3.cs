@@ -6830,11 +6830,13 @@ namespace Google.Apis.AndroidPublisher.v3
                     /// Required. The parent app (package name) for which the subscriptions should be read.
                     /// </param>
                     /// <param name="productId">
-                    /// Required. The parent subscription (ID) for which the offers should be read.
+                    /// Required. The parent subscription (ID) for which the offers should be read. May be specified as
+                    /// '-' to read all offers under an app.
                     /// </param>
                     /// <param name="basePlanId">
                     /// Required. The parent base plan (ID) for which the offers should be read. May be specified as '-'
-                    /// to read all offers under a subscription.
+                    /// to read all offers under a subscription or an app. Must be specified as '-' if product_id is
+                    /// specified as '-'.
                     /// </param>
                     public virtual ListRequest List(string packageName, string productId, string basePlanId)
                     {
@@ -6860,14 +6862,16 @@ namespace Google.Apis.AndroidPublisher.v3
                         public virtual string PackageName { get; private set; }
 
                         /// <summary>
-                        /// Required. The parent subscription (ID) for which the offers should be read.
+                        /// Required. The parent subscription (ID) for which the offers should be read. May be specified
+                        /// as '-' to read all offers under an app.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string ProductId { get; private set; }
 
                         /// <summary>
                         /// Required. The parent base plan (ID) for which the offers should be read. May be specified as
-                        /// '-' to read all offers under a subscription.
+                        /// '-' to read all offers under a subscription or an app. Must be specified as '-' if
+                        /// product_id is specified as '-'.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("basePlanId", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string BasePlanId { get; private set; }

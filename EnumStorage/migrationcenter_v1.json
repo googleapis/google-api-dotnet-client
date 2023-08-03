@@ -1,0 +1,53 @@
+{
+  "Google.Apis.MigrationCenterAPI.v1.MigrationCenterAPIBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.MigrationCenterAPI.v1.MigrationCenterAPIBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.MigrationCenterAPI.v1.ProjectsResource+LocationsResource+AssetsResource+GetRequest.ViewEnum": [
+    "ASSET_VIEW_UNSPECIFIED",
+    "ASSET_VIEW_BASIC",
+    "ASSET_VIEW_FULL"
+  ],
+  "Google.Apis.MigrationCenterAPI.v1.ProjectsResource+LocationsResource+AssetsResource+ListRequest.ViewEnum": [
+    "ASSET_VIEW_UNSPECIFIED",
+    "ASSET_VIEW_BASIC",
+    "ASSET_VIEW_FULL"
+  ],
+  "Google.Apis.MigrationCenterAPI.v1.ProjectsResource+LocationsResource+ImportJobsResource+GetRequest.ViewEnum": [
+    "IMPORT_JOB_VIEW_UNSPECIFIED",
+    "IMPORT_JOB_VIEW_BASIC",
+    "IMPORT_JOB_VIEW_FULL"
+  ],
+  "Google.Apis.MigrationCenterAPI.v1.ProjectsResource+LocationsResource+ImportJobsResource+ListRequest.ViewEnum": [
+    "IMPORT_JOB_VIEW_UNSPECIFIED",
+    "IMPORT_JOB_VIEW_BASIC",
+    "IMPORT_JOB_VIEW_FULL"
+  ],
+  "Google.Apis.MigrationCenterAPI.v1.ProjectsResource+LocationsResource+ReportConfigsResource+ReportsResource+GetRequest.ViewEnum": [
+    "REPORT_VIEW_UNSPECIFIED",
+    "REPORT_VIEW_BASIC",
+    "REPORT_VIEW_FULL",
+    "REPORT_VIEW_STANDARD"
+  ],
+  "Google.Apis.MigrationCenterAPI.v1.ProjectsResource+LocationsResource+ReportConfigsResource+ReportsResource+ListRequest.ViewEnum": [
+    "REPORT_VIEW_UNSPECIFIED",
+    "REPORT_VIEW_BASIC",
+    "REPORT_VIEW_FULL",
+    "REPORT_VIEW_STANDARD"
+  ],
+  "Google.Apis.MigrationCenterAPI.v1.ProjectsResource+LocationsResource+SourcesResource+ErrorFramesResource+GetRequest.ViewEnum": [
+    "ERROR_FRAME_VIEW_UNSPECIFIED",
+    "ERROR_FRAME_VIEW_BASIC",
+    "ERROR_FRAME_VIEW_FULL"
+  ],
+  "Google.Apis.MigrationCenterAPI.v1.ProjectsResource+LocationsResource+SourcesResource+ErrorFramesResource+ListRequest.ViewEnum": [
+    "ERROR_FRAME_VIEW_UNSPECIFIED",
+    "ERROR_FRAME_VIEW_BASIC",
+    "ERROR_FRAME_VIEW_FULL"
+  ]
+}
