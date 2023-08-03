@@ -4957,6 +4957,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
+        /// <summary>Whether PSC connectivity is enabled for this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscEnabled")]
+        public virtual System.Nullable<bool> PscEnabled { get; set; }
+
         /// <summary>
         /// The cloud region for the instance. e.g. `us-central1`, `europe-west1`. The region cannot be changed after
         /// instance creation.
@@ -5138,6 +5142,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("diskEncryptionStatus")]
         public virtual DiskEncryptionStatus DiskEncryptionStatus { get; set; }
 
+        /// <summary>Output only. The dns name of the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dnsName")]
+        public virtual string DnsName { get; set; }
+
         /// <summary>
         /// This field is deprecated and will be removed from a future version of the API. Use the
         /// `settings.settingsVersion` field instead.
@@ -5209,6 +5217,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("project")]
         public virtual string Project { get; set; }
+
+        /// <summary>Output only. The link to service attachment of PSC instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscServiceAttachmentLink")]
+        public virtual string PscServiceAttachmentLink { get; set; }
 
         /// <summary>
         /// The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1` (`SECOND_GEN`
@@ -6196,6 +6208,10 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateNetwork")]
         public virtual string PrivateNetwork { get; set; }
 
+        /// <summary>PSC settings for this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscConfig")]
+        public virtual PscConfig PscConfig { get; set; }
+
         /// <summary>Whether SSL connections over IP are enforced or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireSsl")]
         public virtual System.Nullable<bool> RequireSsl { get; set; }
@@ -6884,6 +6900,25 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         /// <summary>The target disk shrink size in GigaBytes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetSizeGb")]
         public virtual System.Nullable<long> TargetSizeGb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PSC settings for a Cloud SQL instance.</summary>
+    public class PscConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be
+        /// connected to with PSC from any network in these projects. Each consumer project in this list may be
+        /// represented by a project number (numeric) or by a project id (alphanumeric).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowedConsumerProjects")]
+        public virtual System.Collections.Generic.IList<string> AllowedConsumerProjects { get; set; }
+
+        /// <summary>Whether PSC connectivity is enabled for this instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pscEnabled")]
+        public virtual System.Nullable<bool> PscEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

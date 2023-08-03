@@ -6416,7 +6416,8 @@ namespace Google.Apis.NetworkServices.v1.Data
 
         /// <summary>
         /// The specification for modifying the headers of a matching request prior to delivery of the request to the
-        /// destination.
+        /// destination. If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged.
+        /// Conflicts between the two will not be resolved on the configuration.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestHeaderModifier")]
         public virtual HttpRouteHeaderModifier RequestHeaderModifier { get; set; }
@@ -6431,6 +6432,8 @@ namespace Google.Apis.NetworkServices.v1.Data
 
         /// <summary>
         /// The specification for modifying the headers of a response prior to sending the response back to the client.
+        /// If HeaderModifiers are set on both the Destination and the RouteAction, they will be merged. Conflicts
+        /// between the two will not be resolved on the configuration.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseHeaderModifier")]
         public virtual HttpRouteHeaderModifier ResponseHeaderModifier { get; set; }

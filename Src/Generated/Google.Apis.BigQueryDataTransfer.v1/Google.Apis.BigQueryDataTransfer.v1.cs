@@ -3333,6 +3333,17 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents the encryption configuration for a transfer.</summary>
+    public class EncryptionConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the KMS key used for encrypting BigQuery data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A request to enroll a set of data sources so they are visible in the BigQuery UI's `Transfer` tab.
     /// </summary>
@@ -3666,7 +3677,8 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         private object _requestedRunTime;
 
         /// <summary>
-        /// Specific run_time for a transfer run to be started. The requested_run_time must not be in the future.
+        /// A run_time timestamp for historical data files or reports that are scheduled to be transferred by the
+        /// scheduled transfer run. requested_run_time must be a past time and cannot include future time values.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedRunTime")]
         public virtual string RequestedRunTimeRaw
@@ -3702,7 +3714,11 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
             set => RequestedRunTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
-        /// <summary>Time range for the transfer runs that should be started.</summary>
+        /// <summary>
+        /// A time_range start and end timestamp for historical data files or reports that are scheduled to be
+        /// transferred by the scheduled transfer run. requested_time_range must be a past time and cannot include
+        /// future time values.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedTimeRange")]
         public virtual TimeRange RequestedTimeRange { get; set; }
 
@@ -3888,6 +3904,15 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emailPreferences")]
         public virtual EmailPreferences EmailPreferences { get; set; }
+
+        /// <summary>
+        /// The encryption configuration part. Currently, it is only used for the optional KMS key name. The BigQuery
+        /// service account of your project must be granted permissions to use the key. Read methods will return the key
+        /// name applied in effect. Write methods will apply the key if it is present, or otherwise try to apply project
+        /// default keys if it is absent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionConfiguration")]
+        public virtual EncryptionConfiguration EncryptionConfiguration { get; set; }
 
         /// <summary>
         /// The resource name of the transfer config. Transfer config names have the form

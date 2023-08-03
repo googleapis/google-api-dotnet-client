@@ -4813,6 +4813,174 @@ namespace Google.Apis.ShoppingContent.v2_1
         public FreelistingsprogramResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            Checkoutsettings = new CheckoutsettingsResource(service);
+        }
+
+        /// <summary>Gets the Checkoutsettings resource.</summary>
+        public virtual CheckoutsettingsResource Checkoutsettings { get; }
+
+        /// <summary>The "checkoutsettings" collection of methods.</summary>
+        public class CheckoutsettingsResource
+        {
+            private const string Resource = "checkoutsettings";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public CheckoutsettingsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Deletes `Checkout` settings and unenrolls merchant from `Checkout` program.</summary>
+            /// <param name="merchantId">Required. The ID of the account.</param>
+            public virtual DeleteRequest Delete(long merchantId)
+            {
+                return new DeleteRequest(service, merchantId);
+            }
+
+            /// <summary>Deletes `Checkout` settings and unenrolls merchant from `Checkout` program.</summary>
+            public class DeleteRequest : ShoppingContentBaseServiceRequest<string>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, long merchantId) : base(service)
+                {
+                    MerchantId = merchantId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the account.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long MerchantId { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "{merchantId}/freelistingsprogram/checkoutsettings";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Gets Checkout settings for the given merchant. This includes information about review state, enrollment
+            /// state and URL settings.
+            /// </summary>
+            /// <param name="merchantId">Required. The ID of the account.</param>
+            public virtual GetRequest Get(long merchantId)
+            {
+                return new GetRequest(service, merchantId);
+            }
+
+            /// <summary>
+            /// Gets Checkout settings for the given merchant. This includes information about review state, enrollment
+            /// state and URL settings.
+            /// </summary>
+            public class GetRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.CheckoutSettings>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, long merchantId) : base(service)
+                {
+                    MerchantId = merchantId;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the account.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long MerchantId { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "{merchantId}/freelistingsprogram/checkoutsettings";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Enrolls merchant in `Checkout` program.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="merchantId">Required. The ID of the account.</param>
+            public virtual InsertRequest Insert(Google.Apis.ShoppingContent.v2_1.Data.InsertCheckoutSettingsRequest body, long merchantId)
+            {
+                return new InsertRequest(service, body, merchantId);
+            }
+
+            /// <summary>Enrolls merchant in `Checkout` program.</summary>
+            public class InsertRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.CheckoutSettings>
+            {
+                /// <summary>Constructs a new Insert request.</summary>
+                public InsertRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.InsertCheckoutSettingsRequest body, long merchantId) : base(service)
+                {
+                    MerchantId = merchantId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the account.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long MerchantId { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.ShoppingContent.v2_1.Data.InsertCheckoutSettingsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "insert";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "{merchantId}/freelistingsprogram/checkoutsettings";
+
+                /// <summary>Initializes Insert parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "merchantId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>
@@ -15217,6 +15385,58 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>`CheckoutSettings` for a specific merchant ID.</summary>
+    public class CheckoutSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The effective value of enrollment state for a given merchant ID. If account level settings are
+        /// present then this value will be a copy of the account level settings. Otherwise, it will have the value of
+        /// the parent account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveEnrollmentState")]
+        public virtual string EffectiveEnrollmentState { get; set; }
+
+        /// <summary>
+        /// Output only. The effective value of review state for a given merchant ID. If account level settings are
+        /// present then this value will be a copy of the account level settings. Otherwise, it will have the value of
+        /// the parent account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveReviewState")]
+        public virtual string EffectiveReviewState { get; set; }
+
+        /// <summary>
+        /// The effective value of `url_settings` for a given merchant ID. If account level settings are present then
+        /// this value will be a copy of the account level settings. Otherwise, it will have the value of the parent
+        /// account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveUriSettings")]
+        public virtual UrlSettings EffectiveUriSettings { get; set; }
+
+        /// <summary>Output only. Reflects the merchant enrollment state in `Checkout` feature.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enrollmentState")]
+        public virtual string EnrollmentState { get; set; }
+
+        /// <summary>Required. The ID of the account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("merchantId")]
+        public virtual System.Nullable<long> MerchantId { get; set; }
+
+        /// <summary>
+        /// Output only. Reflects the merchant review state in `Checkout` feature. This is set based on the data quality
+        /// reviews of the URL provided by the merchant. A merchant with enrollment state as `ENROLLED` can be in the
+        /// following review states: `IN_REVIEW`, `APPROVED` or `DISAPPROVED`. A merchant must be in an enrollment_state
+        /// of `ENROLLED` before a review can begin for the merchant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reviewState")]
+        public virtual string ReviewState { get; set; }
+
+        /// <summary>URL settings for cart or checkout URL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uriSettings")]
+        public virtual UrlSettings UriSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Product property for the Cloud Retail API. For example, properties for a TV product could be "Screen-Resolution"
     /// or "Screen-Size".
@@ -16911,6 +17131,19 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Reason code this rule was not applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inapplicableReason")]
         public virtual string InapplicableReason { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for the `InsertCheckoutSettings` method.</summary>
+    public class InsertCheckoutSettingsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The `UrlSettings` for the request. The presence of URL settings indicates `Checkout` enrollment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uriSettings")]
+        public virtual UrlSettings UriSettings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20942,6 +21175,22 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
+        /// <summary>
+        /// Optional. Supported pickup method for this offer. Unless the value is "not supported", this field must be
+        /// submitted together with `pickupSla`. For accepted attribute values, see the [local product inventory feed
+        /// specification](https://support.google.com/merchants/answer/3061342).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pickupMethod")]
+        public virtual string PickupMethod { get; set; }
+
+        /// <summary>
+        /// Optional. Expected date that an order will be ready for pickup relative to the order date. Must be submitted
+        /// together with `pickupMethod`. For accepted attribute values, see the [local product inventory feed
+        /// specification](https://support.google.com/merchants/answer/3061342).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pickupSla")]
+        public virtual string PickupSla { get; set; }
+
         /// <summary>Required. The current price of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
         public virtual Price Price { get; set; }
@@ -20982,6 +21231,22 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Required. A unique identifier for the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("itemId")]
         public virtual string ItemId { get; set; }
+
+        /// <summary>
+        /// Optional. Supported pickup method for this offer. Unless the value is "not supported", this field must be
+        /// submitted together with `pickupSla`. For accepted attribute values, see the [local product inventory feed
+        /// specification](https://support.google.com/merchants/answer/3061342).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pickupMethod")]
+        public virtual string PickupMethod { get; set; }
+
+        /// <summary>
+        /// Optional. Expected date that an order will be ready for pickup relative to the order date. Must be submitted
+        /// together with `pickupMethod`. For accepted attribute values, see the [local product inventory feed
+        /// specification](https://support.google.com/merchants/answer/3061342).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pickupSla")]
+        public virtual string PickupSla { get; set; }
 
         /// <summary>Required. The current price of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
@@ -21029,6 +21294,22 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// Optional. Supported pickup method for this offer. Unless the value is "not supported", this field must be
+        /// submitted together with `pickupSla`. For accepted attribute values, see the [local product inventory feed
+        /// specification](https://support.google.com/merchants/answer/3061342).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pickupMethod")]
+        public virtual string PickupMethod { get; set; }
+
+        /// <summary>
+        /// Optional. Expected date that an order will be ready for pickup relative to the order date. Must be submitted
+        /// together with `pickupMethod`. For accepted attribute values, see the [local product inventory feed
+        /// specification](https://support.google.com/merchants/answer/3061342).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pickupSla")]
+        public virtual string PickupSla { get; set; }
 
         /// <summary>Required. The current price of the item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("price")]
@@ -26376,6 +26657,32 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxType")]
         public virtual string TaxType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Specifications related to the `Checkout` URL. The `UriTemplate` is of the form
+    /// `https://www.mystore.com/checkout?item_id={id}` where `{id}` will be automatically replaced with data from the
+    /// merchant account with this attribute
+    /// [offer_id](https://developers.google.com/shopping-content/reference/rest/v2.1/products#Product.FIELDS.offer_id)
+    /// </summary>
+    public class UrlSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// URL template when the placeholders are expanded will redirect the buyer to the cart page on the merchant
+        /// website with the selected item in cart.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cartUriTemplate")]
+        public virtual string CartUriTemplate { get; set; }
+
+        /// <summary>
+        /// URL template when the placeholders are expanded will redirect the buyer to the merchant checkout page with
+        /// the item in the cart.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("checkoutUriTemplate")]
+        public virtual string CheckoutUriTemplate { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

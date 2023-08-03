@@ -3320,11 +3320,14 @@ namespace Google.Apis.SecurityCommandCenter.v1
             this.service = service;
             Assets = new AssetsResource(service);
             BigQueryExports = new BigQueryExportsResource(service);
+            EventThreatDetectionSettings = new EventThreatDetectionSettingsResource(service);
             Findings = new FindingsResource(service);
             MuteConfigs = new MuteConfigsResource(service);
             NotificationConfigs = new NotificationConfigsResource(service);
             Operations = new OperationsResource(service);
+            ResourceValueConfigs = new ResourceValueConfigsResource(service);
             SecurityHealthAnalyticsSettings = new SecurityHealthAnalyticsSettingsResource(service);
+            Simulations = new SimulationsResource(service);
             Sources = new SourcesResource(service);
         }
 
@@ -4134,6 +4137,423 @@ namespace Google.Apis.SecurityCommandCenter.v1
                         ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the EventThreatDetectionSettings resource.</summary>
+        public virtual EventThreatDetectionSettingsResource EventThreatDetectionSettings { get; }
+
+        /// <summary>The "eventThreatDetectionSettings" collection of methods.</summary>
+        public class EventThreatDetectionSettingsResource
+        {
+            private const string Resource = "eventThreatDetectionSettings";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public EventThreatDetectionSettingsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                CustomModules = new CustomModulesResource(service);
+            }
+
+            /// <summary>Gets the CustomModules resource.</summary>
+            public virtual CustomModulesResource CustomModules { get; }
+
+            /// <summary>The "customModules" collection of methods.</summary>
+            public class CustomModulesResource
+            {
+                private const string Resource = "customModules";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public CustomModulesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates an Event Threat Detection custom module.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The new custom module's parent. Its format is: *
+                /// "organizations/{organization}/eventThreatDetectionSettings".
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.SecurityCommandCenter.v1.Data.EventThreatDetectionCustomModule body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates an Event Threat Detection custom module.</summary>
+                public class CreateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.EventThreatDetectionCustomModule>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.EventThreatDetectionCustomModule body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The new custom module's parent. Its format is: *
+                    /// "organizations/{organization}/eventThreatDetectionSettings".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SecurityCommandCenter.v1.Data.EventThreatDetectionCustomModule Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/customModules";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/eventThreatDetectionSettings$",
+                        });
+                    }
+                }
+
+                /// <summary>Deletes an Event Threat Detection custom module.</summary>
+                /// <param name="name">
+                /// Required. Name of the custom module to delete. Its format is: *
+                /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes an Event Threat Detection custom module.</summary>
+                public class DeleteRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the custom module to delete. Its format is: *
+                    /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/eventThreatDetectionSettings/customModules/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets an Event Threat Detection custom module.</summary>
+                /// <param name="name">
+                /// Required. Name of the custom module to get. Its format is: *
+                /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets an Event Threat Detection custom module.</summary>
+                public class GetRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.EventThreatDetectionCustomModule>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the custom module to get. Its format is: *
+                    /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/eventThreatDetectionSettings/customModules/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists Event Threat Detection custom modules.</summary>
+                /// <param name="parent">
+                /// Required. Name of the parent to list custom modules under. Its format is: *
+                /// "organizations/{organization}/eventThreatDetectionSettings".
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists Event Threat Detection custom modules.</summary>
+                public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListEventThreatDetectionCustomModulesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the parent to list custom modules under. Its format is: *
+                    /// "organizations/{organization}/eventThreatDetectionSettings".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The maximum number of modules to return. The service may return fewer than this value. If
+                    /// unspecified, at most 10 configs will be returned. The maximum value is 1000; values above 1000
+                    /// will be coerced to 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous `ListEventThreatDetectionCustomModules` call. Provide
+                    /// this to retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListEventThreatDetectionCustomModules` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/customModules";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/eventThreatDetectionSettings$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates an Event Threat Detection custom module.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Immutable. The resource name of the Event Threat Detection custom module. Its format is: *
+                /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}". *
+                /// "folders/{folder}/eventThreatDetectionSettings/customModules/{module}". *
+                /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.EventThreatDetectionCustomModule body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates an Event Threat Detection custom module.</summary>
+                public class PatchRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.EventThreatDetectionCustomModule>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.EventThreatDetectionCustomModule body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Immutable. The resource name of the Event Threat Detection custom module. Its format is: *
+                    /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}". *
+                    /// "folders/{folder}/eventThreatDetectionSettings/customModules/{module}". *
+                    /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// The list of fields to be updated. If empty all mutable fields will be updated.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.SecurityCommandCenter.v1.Data.EventThreatDetectionCustomModule Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/eventThreatDetectionSettings/customModules/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Validates the given Event Threat Detection custom module.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. Resource name of the parent to validate the Custom Module under. Its format is: *
+            /// "organizations/{organization}/eventThreatDetectionSettings".
+            /// </param>
+            public virtual ValidateCustomModuleRequest ValidateCustomModule(Google.Apis.SecurityCommandCenter.v1.Data.ValidateEventThreatDetectionCustomModuleRequest body, string parent)
+            {
+                return new ValidateCustomModuleRequest(service, body, parent);
+            }
+
+            /// <summary>Validates the given Event Threat Detection custom module.</summary>
+            public class ValidateCustomModuleRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ValidateEventThreatDetectionCustomModuleResponse>
+            {
+                /// <summary>Constructs a new ValidateCustomModule request.</summary>
+                public ValidateCustomModuleRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.ValidateEventThreatDetectionCustomModuleRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the parent to validate the Custom Module under. Its format is: *
+                /// "organizations/{organization}/eventThreatDetectionSettings".
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SecurityCommandCenter.v1.Data.ValidateEventThreatDetectionCustomModuleRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "validateCustomModule";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}:validateCustomModule";
+
+                /// <summary>Initializes ValidateCustomModule parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/eventThreatDetectionSettings$",
                     });
                 }
             }
@@ -5215,6 +5635,334 @@ namespace Google.Apis.SecurityCommandCenter.v1
             }
         }
 
+        /// <summary>Gets the ResourceValueConfigs resource.</summary>
+        public virtual ResourceValueConfigsResource ResourceValueConfigs { get; }
+
+        /// <summary>The "resourceValueConfigs" collection of methods.</summary>
+        public class ResourceValueConfigsResource
+        {
+            private const string Resource = "resourceValueConfigs";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public ResourceValueConfigsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Creates a ResourceValueConfig for an organization. Maps user's tags to difference resource values for
+            /// use by the attack path simulation.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. Resource name of the new ResourceValueConfig's parent. The parent field in the
+            /// CreateResourceValueConfigRequest messages must either be empty or match this field.
+            /// </param>
+            public virtual BatchCreateRequest BatchCreate(Google.Apis.SecurityCommandCenter.v1.Data.BatchCreateResourceValueConfigsRequest body, string parent)
+            {
+                return new BatchCreateRequest(service, body, parent);
+            }
+
+            /// <summary>
+            /// Creates a ResourceValueConfig for an organization. Maps user's tags to difference resource values for
+            /// use by the attack path simulation.
+            /// </summary>
+            public class BatchCreateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.BatchCreateResourceValueConfigsResponse>
+            {
+                /// <summary>Constructs a new BatchCreate request.</summary>
+                public BatchCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.BatchCreateResourceValueConfigsRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the new ResourceValueConfig's parent. The parent field in the
+                /// CreateResourceValueConfigRequest messages must either be empty or match this field.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SecurityCommandCenter.v1.Data.BatchCreateResourceValueConfigsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "batchCreate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/resourceValueConfigs:batchCreate";
+
+                /// <summary>Initializes BatchCreate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Deletes a ResourceValueConfig.</summary>
+            /// <param name="name">Required. Name of the ResourceValueConfig to delete</param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>Deletes a ResourceValueConfig.</summary>
+            public class DeleteRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Name of the ResourceValueConfig to delete</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/resourceValueConfigs/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Gets a ResourceValueConfig.</summary>
+            /// <param name="name">
+            /// Required. Name of the resource value config to retrieve. Its format is
+            /// organizations/{organization}/resourceValueConfigs/{config_id}.
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets a ResourceValueConfig.</summary>
+            public class GetRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1ResourceValueConfig>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Name of the resource value config to retrieve. Its format is
+                /// organizations/{organization}/resourceValueConfigs/{config_id}.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/resourceValueConfigs/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists all ResourceValueConfigs.</summary>
+            /// <param name="parent">
+            /// Required. The parent, which owns the collection of resource value configs. Its format is
+            /// "organizations/[organization_id]"
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists all ResourceValueConfigs.</summary>
+            public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListResourceValueConfigsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent, which owns the collection of resource value configs. Its format is
+                /// "organizations/[organization_id]"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// The number of results to return. The service may return fewer than this value. If unspecified, at
+                /// most 10 configs will be returned. The maximum value is 1000; values above 1000 will be coerced to
+                /// 1000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A page token, received from a previous `ListResourceValueConfigs` call. Provide this to retrieve the
+                /// subsequent page. When paginating, all other parameters provided to `ListResourceValueConfigs` must
+                /// match the call that provided the page token. page_size can be specified, and the new page_size will
+                /// be used.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/resourceValueConfigs";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates an existing ResourceValueConfigs with new rules.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">Name for the resource value config</param>
+            public virtual PatchRequest Patch(Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1ResourceValueConfig body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates an existing ResourceValueConfigs with new rules.</summary>
+            public class PatchRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1ResourceValueConfig>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1ResourceValueConfig body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Name for the resource value config</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>The list of fields to be updated. If empty all mutable fields will be updated.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.SecurityCommandCenter.v1.Data.GoogleCloudSecuritycenterV1ResourceValueConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/resourceValueConfigs/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
         /// <summary>Gets the SecurityHealthAnalyticsSettings resource.</summary>
         public virtual SecurityHealthAnalyticsSettingsResource SecurityHealthAnalyticsSettings { get; }
 
@@ -5866,6 +6614,703 @@ namespace Google.Apis.SecurityCommandCenter.v1
                             Pattern = null,
                         });
                     }
+                }
+            }
+        }
+
+        /// <summary>Gets the Simulations resource.</summary>
+        public virtual SimulationsResource Simulations { get; }
+
+        /// <summary>The "simulations" collection of methods.</summary>
+        public class SimulationsResource
+        {
+            private const string Resource = "simulations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public SimulationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                AttackExposureResults = new AttackExposureResultsResource(service);
+                AttackPaths = new AttackPathsResource(service);
+                ValuedResources = new ValuedResourcesResource(service);
+            }
+
+            /// <summary>Gets the AttackExposureResults resource.</summary>
+            public virtual AttackExposureResultsResource AttackExposureResults { get; }
+
+            /// <summary>The "attackExposureResults" collection of methods.</summary>
+            public class AttackExposureResultsResource
+            {
+                private const string Resource = "attackExposureResults";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AttackExposureResultsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    AttackPaths = new AttackPathsResource(service);
+                    ValuedResources = new ValuedResourcesResource(service);
+                }
+
+                /// <summary>Gets the AttackPaths resource.</summary>
+                public virtual AttackPathsResource AttackPaths { get; }
+
+                /// <summary>The "attackPaths" collection of methods.</summary>
+                public class AttackPathsResource
+                {
+                    private const string Resource = "attackPaths";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public AttackPathsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Lists the attack paths for a set of simulation results or valued resources and filter.
+                    /// </summary>
+                    /// <param name="parent">
+                    /// Required. Name of parent to list attack paths. Valid formats: "organizations/{organization}",
+                    /// "organizations/{organization}/simulations/{simulation}"
+                    /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
+                    /// "organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}"
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>
+                    /// Lists the attack paths for a set of simulation results or valued resources and filter.
+                    /// </summary>
+                    public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListAttackPathsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Name of parent to list attack paths. Valid formats:
+                        /// "organizations/{organization}", "organizations/{organization}/simulations/{simulation}"
+                        /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
+                        /// "organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// The filter expression that filters the attack path in the response. Supported fields: *
+                        /// `valued_resources` supports =
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// The maximum number of results to return in a single response. Default is 10, minimum is 1,
+                        /// maximum is 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// The value returned by the last `ListAttackPathsResponse`; indicates that this is a
+                        /// continuation of a prior `ListAttackPaths` call, and that the system should return the next
+                        /// page of data.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/attackPaths";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/simulations/[^/]+/attackExposureResults/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the ValuedResources resource.</summary>
+                public virtual ValuedResourcesResource ValuedResources { get; }
+
+                /// <summary>The "valuedResources" collection of methods.</summary>
+                public class ValuedResourcesResource
+                {
+                    private const string Resource = "valuedResources";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ValuedResourcesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Lists the valued resources for a set of simulation results and filter.</summary>
+                    /// <param name="parent">
+                    /// Required. Name of parent to list valued resources. Valid formats:
+                    /// "organizations/{organization}", "organizations/{organization}/simulations/{simulation}"
+                    /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists the valued resources for a set of simulation results and filter.</summary>
+                    public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListValuedResourcesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Name of parent to list valued resources. Valid formats:
+                        /// "organizations/{organization}", "organizations/{organization}/simulations/{simulation}"
+                        /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// The filter expression that filters the valued resources in the response. Supported fields: *
+                        /// `resource_value` supports = * `resource_type` supports =
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// The maximum number of results to return in a single response. Default is 10, minimum is 1,
+                        /// maximum is 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// The value returned by the last `ListValuedResourcesResponse`; indicates that this is a
+                        /// continuation of a prior `ListValuedResources` call, and that the system should return the
+                        /// next page of data.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/valuedResources";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/simulations/[^/]+/attackExposureResults/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+            }
+
+            /// <summary>Gets the AttackPaths resource.</summary>
+            public virtual AttackPathsResource AttackPaths { get; }
+
+            /// <summary>The "attackPaths" collection of methods.</summary>
+            public class AttackPathsResource
+            {
+                private const string Resource = "attackPaths";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AttackPathsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Lists the attack paths for a set of simulation results or valued resources and filter.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. Name of parent to list attack paths. Valid formats: "organizations/{organization}",
+                /// "organizations/{organization}/simulations/{simulation}"
+                /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
+                /// "organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}"
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>
+                /// Lists the attack paths for a set of simulation results or valued resources and filter.
+                /// </summary>
+                public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListAttackPathsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of parent to list attack paths. Valid formats: "organizations/{organization}",
+                    /// "organizations/{organization}/simulations/{simulation}"
+                    /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
+                    /// "organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The filter expression that filters the attack path in the response. Supported fields: *
+                    /// `valued_resources` supports =
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// The maximum number of results to return in a single response. Default is 10, minimum is 1,
+                    /// maximum is 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// The value returned by the last `ListAttackPathsResponse`; indicates that this is a continuation
+                    /// of a prior `ListAttackPaths` call, and that the system should return the next page of data.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/attackPaths";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/simulations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the ValuedResources resource.</summary>
+            public virtual ValuedResourcesResource ValuedResources { get; }
+
+            /// <summary>The "valuedResources" collection of methods.</summary>
+            public class ValuedResourcesResource
+            {
+                private const string Resource = "valuedResources";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public ValuedResourcesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    AttackPaths = new AttackPathsResource(service);
+                }
+
+                /// <summary>Gets the AttackPaths resource.</summary>
+                public virtual AttackPathsResource AttackPaths { get; }
+
+                /// <summary>The "attackPaths" collection of methods.</summary>
+                public class AttackPathsResource
+                {
+                    private const string Resource = "attackPaths";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public AttackPathsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Lists the attack paths for a set of simulation results or valued resources and filter.
+                    /// </summary>
+                    /// <param name="parent">
+                    /// Required. Name of parent to list attack paths. Valid formats: "organizations/{organization}",
+                    /// "organizations/{organization}/simulations/{simulation}"
+                    /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
+                    /// "organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}"
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>
+                    /// Lists the attack paths for a set of simulation results or valued resources and filter.
+                    /// </summary>
+                    public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListAttackPathsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Name of parent to list attack paths. Valid formats:
+                        /// "organizations/{organization}", "organizations/{organization}/simulations/{simulation}"
+                        /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
+                        /// "organizations/{organization}/simulations/{simulation}/valuedResources/{valued_resource}"
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// The filter expression that filters the attack path in the response. Supported fields: *
+                        /// `valued_resources` supports =
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// The maximum number of results to return in a single response. Default is 10, minimum is 1,
+                        /// maximum is 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// The value returned by the last `ListAttackPathsResponse`; indicates that this is a
+                        /// continuation of a prior `ListAttackPaths` call, and that the system should return the next
+                        /// page of data.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/attackPaths";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^organizations/[^/]+/simulations/[^/]+/valuedResources/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Lists the valued resources for a set of simulation results and filter.</summary>
+                /// <param name="parent">
+                /// Required. Name of parent to list valued resources. Valid formats: "organizations/{organization}",
+                /// "organizations/{organization}/simulations/{simulation}"
+                /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists the valued resources for a set of simulation results and filter.</summary>
+                public class ListRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.ListValuedResourcesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of parent to list valued resources. Valid formats:
+                    /// "organizations/{organization}", "organizations/{organization}/simulations/{simulation}"
+                    /// "organizations/{organization}/simulations/{simulation}/attackExposureResults/{attack_exposure_result_v2}"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The filter expression that filters the valued resources in the response. Supported fields: *
+                    /// `resource_value` supports = * `resource_type` supports =
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// The maximum number of results to return in a single response. Default is 10, minimum is 1,
+                    /// maximum is 1000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// The value returned by the last `ListValuedResourcesResponse`; indicates that this is a
+                    /// continuation of a prior `ListValuedResources` call, and that the system should return the next
+                    /// page of data.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/valuedResources";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/simulations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Get the simulation by name or the latest simulation for the given organization.</summary>
+            /// <param name="name">
+            /// Required. The organization name or simulation name of this simulation Valid format:
+            /// "organizations/{organization}/simulations/latest"
+            /// "organizations/{organization}/simulations/{simulation}"
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Get the simulation by name or the latest simulation for the given organization.</summary>
+            public class GetRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1.Data.Simulation>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The organization name or simulation name of this simulation Valid format:
+                /// "organizations/{organization}/simulations/latest"
+                /// "organizations/{organization}/simulations/{simulation}"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^organizations/[^/]+/simulations/[^/]+$",
+                    });
                 }
             }
         }
@@ -10565,6 +12010,182 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An attack exposure contains the results of an attack path simulation run.</summary>
+    public class AttackExposure : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The resource name of the attack path simulation result that contains the details regarding this attack
+        /// exposure score. Example: organizations/123/attackExposureResults/456
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attackExposureResult")]
+        public virtual string AttackExposureResult { get; set; }
+
+        /// <summary>The number of high value resources that are exposed as a result of this finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exposedHighValueResourcesCount")]
+        public virtual System.Nullable<int> ExposedHighValueResourcesCount { get; set; }
+
+        /// <summary>The number of high value resources that are exposed as a result of this finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exposedLowValueResourcesCount")]
+        public virtual System.Nullable<int> ExposedLowValueResourcesCount { get; set; }
+
+        /// <summary>The number of medium value resources that are exposed as a result of this finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exposedMediumValueResourcesCount")]
+        public virtual System.Nullable<int> ExposedMediumValueResourcesCount { get; set; }
+
+        private string _latestCalculationTimeRaw;
+
+        private object _latestCalculationTime;
+
+        /// <summary>The most recent time the attack exposure was updated on this finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestCalculationTime")]
+        public virtual string LatestCalculationTimeRaw
+        {
+            get => _latestCalculationTimeRaw;
+            set
+            {
+                _latestCalculationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _latestCalculationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LatestCalculationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LatestCalculationTimeDateTimeOffset instead.")]
+        public virtual object LatestCalculationTime
+        {
+            get => _latestCalculationTime;
+            set
+            {
+                _latestCalculationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _latestCalculationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LatestCalculationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LatestCalculationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LatestCalculationTimeRaw);
+            set => LatestCalculationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// A number between 0 (inclusive) and infinity that represents how important this finding is to remediate. The
+        /// higher the score, the more important it is to remediate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("score")]
+        public virtual System.Nullable<double> Score { get; set; }
+
+        /// <summary>
+        /// What state this AttackExposure is in. This captures whether or not an attack exposure has been calculated or
+        /// not.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A path that an attacker could take to reach an exposed resource.</summary>
+    public class AttackPath : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of the edges between nodes in this attack path.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edges")]
+        public virtual System.Collections.Generic.IList<AttackPathEdge> Edges { get; set; }
+
+        /// <summary>
+        /// The attack path name, for example, `organizations/12/simulation/34/valuedResources/56/attackPaths/78`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>A list of nodes that exist in this attack path.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pathNodes")]
+        public virtual System.Collections.Generic.IList<AttackPathNode> PathNodes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents a connection between a source node and a destination node in this attack path.</summary>
+    public class AttackPathEdge : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The attack node uuid of the destination node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destination")]
+        public virtual string Destination { get; set; }
+
+        /// <summary>The attack node uuid of the source node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("source")]
+        public virtual string Source { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents one point that an attacker passes through in this attack path.</summary>
+    public class AttackPathNode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The findings associated with this node in the attack path.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("associatedFindings")]
+        public virtual System.Collections.Generic.IList<PathNodeAssociatedFinding> AssociatedFindings { get; set; }
+
+        /// <summary>A list of attack step nodes that exist in this attack path node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attackSteps")]
+        public virtual System.Collections.Generic.IList<AttackStepNode> AttackSteps { get; set; }
+
+        /// <summary>Human-readable name of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// The name of the resource at this point in the attack path. The format of the name follows the Cloud Asset
+        /// Inventory [resource name format]("https://cloud.google.com/asset-inventory/docs/resource-name-format")
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>The [supported resource type](http://cloud/asset-inventory/docs/supported-asset-types")</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
+        /// <summary>Unique id of the attack path node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uuid")]
+        public virtual string Uuid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Detailed steps the attack can take between path nodes.</summary>
+    public class AttackStepNode : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Attack step description</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>User friendly name of the attack step</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Attack step labels for metadata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Attack step type. Can be either AND, OR or DEFENSE</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Unique ID for one Node</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uuid")]
+        public virtual string Uuid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
@@ -10612,6 +12233,28 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>The log type that this config enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
         public virtual string LogType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message to create multiple resource value configs</summary>
+    public class BatchCreateResourceValueConfigsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The resource value configs to be created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<CreateResourceValueConfigRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for BatchCreateResourceValueConfigs</summary>
+    public class BatchCreateResourceValueConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource value configs created</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceValueConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV1ResourceValueConfig> ResourceValueConfigs { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10882,6 +12525,68 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message to create single resource value config</summary>
+    public class CreateResourceValueConfigRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Resource name of the new ResourceValueConfig's parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>Required. The resource value config being created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceValueConfig")]
+        public virtual GoogleCloudSecuritycenterV1ResourceValueConfig ResourceValueConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An error encountered while validating the uploaded configuration of an Event Threat Detection Custom Module.
+    /// </summary>
+    public class CustomModuleValidationError : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A description of the error, suitable for human consumption. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// The end position of the error in the uploaded text version of the module. This field may be omitted if no
+        /// specific position applies, or if one could not be computed..
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("end")]
+        public virtual Position End { get; set; }
+
+        /// <summary>
+        /// The path, in RFC 8901 JSON Pointer format, to the field that failed validation. This may be left empty if no
+        /// specific field is affected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldPath")]
+        public virtual string FieldPath { get; set; }
+
+        /// <summary>
+        /// The initial position of the error in the uploaded text version of the module. This field may be omitted if
+        /// no specific position applies, or if one could not be computed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("start")]
+        public virtual Position Start { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A list of zero or more errors encountered while validating the uploaded configuration of an Event Threat
+    /// Detection Custom Module.
+    /// </summary>
+    public class CustomModuleValidationErrors : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<CustomModuleValidationError> Errors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>CVE stands for Common Vulnerabilities and Exposures. More information: https://cve.mitre.org</summary>
     public class Cve : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11066,6 +12771,89 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents an instance of an Event Threat Detection custom module, including its full module name, display name,
+    /// enablement state, and last updated time. You can create a custom module at the organization level only.
+    /// </summary>
+    public class EventThreatDetectionCustomModule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Config for the module. For the resident module, its config value is defined at this level. For the inherited
+        /// module, its config value is inherited from the ancestor module.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("config")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Config { get; set; }
+
+        /// <summary>The description for the module.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The human readable name to be displayed for the module.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The state of enablement for the module at the given level of the hierarchy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enablementState")]
+        public virtual string EnablementState { get; set; }
+
+        /// <summary>Output only. The editor the module was last updated by.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastEditor")]
+        public virtual string LastEditor { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the Event Threat Detection custom module. Its format is: *
+        /// "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}". *
+        /// "folders/{folder}/eventThreatDetectionSettings/customModules/{module}". *
+        /// "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Type for the module. e.g. CONFIGURABLE_BAD_IP.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The time the module was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Resource where data was exfiltrated from or exfiltrated to.</summary>
     public class ExfilResource : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11209,6 +12997,10 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("access")]
         public virtual Access Access { get; set; }
+
+        /// <summary>The results of an attack path simulation relevant to this finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attackExposure")]
+        public virtual AttackExposure AttackExposure { get; set; }
 
         /// <summary>
         /// The canonical name of the finding. It's either
@@ -12152,6 +13944,133 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>The resource types to run the detector on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceTypes")]
         public virtual System.Collections.Generic.IList<string> ResourceTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A resource value config is a mapping configuration of user's tag values to resource values. Used by the attack
+    /// path simulation.
+    /// </summary>
+    public class GoogleCloudSecuritycenterV1ResourceValueConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp this resource value config was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Description of the resource value config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Name for the resource value config</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// List of resource labels to search for, evaluated with AND. E.g. "resource_labels_selector": {"key": "value",
+        /// "env": "prod"} will match resources with labels "key": "value" AND "env": "prod"
+        /// https://cloud.google.com/resource-manager/docs/creating-managing-labels
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLabelsSelector")]
+        public virtual System.Collections.Generic.IDictionary<string, string> ResourceLabelsSelector { get; set; }
+
+        /// <summary>
+        /// Apply resource_value only to resources that match resource_type. resource_type will be checked with "AND" of
+        /// other resources. E.g. "storage.googleapis.com/Bucket" with resource_value "HIGH" will apply "HIGH" value
+        /// only to "storage.googleapis.com/Bucket" resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
+        /// <summary>Required. Resource value level this expression represents</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceValue")]
+        public virtual string ResourceValue { get; set; }
+
+        /// <summary>
+        /// Project or folder to scope this config to. For example, "project/456" would apply this config only to
+        /// resources in "project/456" scope will be checked with "AND" of other resources.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>
+        /// Required. Tag values combined with AND to check against. Values in the form "tagValues/123" E.g. [
+        /// "tagValues/123", "tagValues/456", "tagValues/789" ]
+        /// https://cloud.google.com/resource-manager/docs/tags/tags-creating-and-managing
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagValues")]
+        public virtual System.Collections.Generic.IList<string> TagValues { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp this resource value config was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13201,6 +15120,21 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for listing the attack paths for a given simulation or valued resource.</summary>
+    public class ListAttackPathsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The attack paths that the attack path simulation identified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attackPaths")]
+        public virtual System.Collections.Generic.IList<AttackPath> AttackPaths { get; set; }
+
+        /// <summary>Token to retrieve the next page of results, or empty if there are no more results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for listing BigQuery exports.</summary>
     public class ListBigQueryExportsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13242,6 +15176,24 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV1EffectiveSecurityHealthAnalyticsCustomModule> EffectiveSecurityHealthAnalyticsCustomModules { get; set; }
 
         /// <summary>If not empty, indicates that there may be more effective custom modules to be returned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for listing Event Threat Detection custom modules.</summary>
+    public class ListEventThreatDetectionCustomModulesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Custom modules belonging to the requested parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventThreatDetectionCustomModules")]
+        public virtual System.Collections.Generic.IList<EventThreatDetectionCustomModule> EventThreatDetectionCustomModules { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
@@ -13372,6 +15324,24 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message to list resource value configs</summary>
+    public class ListResourceValueConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is empty, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The resource value configs from the specified parent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceValueConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleCloudSecuritycenterV1ResourceValueConfig> ResourceValueConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for listing Security Health Analytics custom modules.</summary>
     public class ListSecurityHealthAnalyticsCustomModulesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13397,6 +15367,25 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>Sources belonging to the requested parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sources")]
         public virtual System.Collections.Generic.IList<Source> Sources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for listing the valued resources for a given simulation.</summary>
+    public class ListValuedResourcesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Token to retrieve the next page of results, or empty if there are no more results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The estimated total number of results matching the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<int> TotalSize { get; set; }
+
+        /// <summary>The valued resources that the attack path simulation identified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("valuedResources")]
+        public virtual System.Collections.Generic.IList<ValuedResource> ValuedResources { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13594,6 +15583,27 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A finding that is associated with this node in the attack path.</summary>
+    public class PathNodeAssociatedFinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Canonical name of the associated findings. Example: organizations/123/sources/456/findings/789
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalFinding")]
+        public virtual string CanonicalFinding { get; set; }
+
+        /// <summary>The additional taxonomy group within findings from a given source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("findingCategory")]
+        public virtual string FindingCategory { get; set; }
+
+        /// <summary>Full resource name of the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A Kubernetes Pod.</summary>
     public class Pod : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13684,6 +15694,19 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>A position in the uploaded text version of a module.</summary>
+    public class Position : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("columnNumber")]
+        public virtual System.Nullable<int> ColumnNumber { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("lineNumber")]
+        public virtual System.Nullable<int> LineNumber { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Represents an operating system process.</summary>
@@ -13811,6 +15834,17 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>The full resource type of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about a ResourceValueConfig. For example, id and name.</summary>
+    public class ResourceValueConfigMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Resource value config name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14046,6 +16080,58 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Attack path simulation</summary>
+    public class Simulation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Time simulation was created</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Full resource name of the Simulation: organizations/123/simulations/456</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Resource value configurations' metadata used in this simulation. Maximum of 100.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceValueConfigsMetadata")]
+        public virtual System.Collections.Generic.IList<ResourceValueConfigMetadata> ResourceValueConfigsMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Security Command Center finding source. A finding source is an entity or a mechanism that can produce a finding.
     /// A source is like a container of findings that come from the same scanner, logger, monitor, and other tools.
@@ -14180,6 +16266,80 @@ namespace Google.Apis.SecurityCommandCenter.v1.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to validate an Event Threat Detection custom module.</summary>
+    public class ValidateEventThreatDetectionCustomModuleRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The raw text of the module's contents. Used to generate error messages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rawText")]
+        public virtual string RawText { get; set; }
+
+        /// <summary>Required. The type of the module (e.g. CONFIGURABLE_BAD_IP).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response to validating an Event Threat Detection custom module.</summary>
+    public class ValidateEventThreatDetectionCustomModuleResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of errors returned by the validator. If the list is empty, there were no errors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual CustomModuleValidationErrors Errors { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A resource that is determined to have value to a user's system</summary>
+    public class ValuedResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Human-readable name of the valued resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Exposed score for this valued resource. A value of 0 means no exposure was detected exposure.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exposedScore")]
+        public virtual System.Nullable<double> ExposedScore { get; set; }
+
+        /// <summary>
+        /// Valued resource name, for example, e.g.: `organizations/123/simulations/456/valuedResources/789`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The [full resource name](https://cloud.google.com/apis/design/resource_names#full_resource_name) of the
+        /// valued resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resource")]
+        public virtual string Resource { get; set; }
+
+        /// <summary>
+        /// The [resource type](https://cloud.google.com/asset-inventory/docs/supported-asset-types) of the valued
+        /// resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
+        /// <summary>How valuable this resource is.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceValue")]
+        public virtual string ResourceValue { get; set; }
+
+        /// <summary>
+        /// List of resource value configurations' metadata used to determine the value of this resource. Maximum of
+        /// 100.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceValueConfigsUsed")]
+        public virtual System.Collections.Generic.IList<ResourceValueConfigMetadata> ResourceValueConfigsUsed { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

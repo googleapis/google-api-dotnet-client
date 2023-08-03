@@ -8057,6 +8057,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>Describes the Migration Center settings related to the project.</summary>
     public class Settings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Disable Cloud Logging for the Migration Center API. Users are billed for the logs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableCloudLogging")]
+        public virtual System.Nullable<bool> DisableCloudLogging { get; set; }
+
         /// <summary>Output only. The name of the resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

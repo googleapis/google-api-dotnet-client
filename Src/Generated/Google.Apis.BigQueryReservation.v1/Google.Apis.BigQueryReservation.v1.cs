@@ -2403,9 +2403,7 @@ namespace Google.Apis.BigQueryReservation.v1.Data
         /// will be charged with the autoscale SKU. You can increase the number of baseline slots in a reservation every
         /// few minutes. If you want to decrease your baseline slots, you are limited to once an hour if you have
         /// recently changed your baseline slot capacity and your baseline slots exceed your committed slots. Otherwise,
-        /// you can decrease your baseline slots every few minutes. NOTE: for reservations in US or EU multi-regions,
-        /// slot capacity constraints are checked separately for default and auxiliary regions. See
-        /// multi_region_auxiliary flag for more details.
+        /// you can decrease your baseline slots every few minutes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("slotCapacity")]
         public virtual System.Nullable<long> SlotCapacity { get; set; }

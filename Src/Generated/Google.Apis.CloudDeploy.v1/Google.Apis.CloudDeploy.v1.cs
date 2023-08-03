@@ -55,7 +55,7 @@ namespace Google.Apis.CloudDeploy.v1
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Google Cloud Deploy API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Cloud Deploy API.</summary>
         public class Scope
         {
             /// <summary>
@@ -65,7 +65,7 @@ namespace Google.Apis.CloudDeploy.v1
             public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Google Cloud Deploy API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Deploy API.</summary>
         public static class ScopeConstants
         {
             /// <summary>
@@ -3926,13 +3926,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
     }
 
     /// <summary>
-    /// A `DeliveryPipeline` resource in the Google Cloud Deploy API. A `DeliveryPipeline` defines a pipeline through
-    /// which a Skaffold configuration can progress.
+    /// A `DeliveryPipeline` resource in the Cloud Deploy API. A `DeliveryPipeline` defines a pipeline through which a
+    /// Skaffold configuration can progress.
     /// </summary>
     public class DeliveryPipeline : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy.
+        /// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
@@ -3990,8 +3990,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet
-        /// the following constraints: * Keys and values can contain only lowercase letters, numeric characters,
+        /// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the
+        /// following constraints: * Keys and values can contain only lowercase letters, numeric characters,
         /// underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed.
         /// * Keys must start with a lowercase letter or international character. * Each resource is limited to a
         /// maximum of 64 labels. Both keys and values are additionally constrained to be &amp;lt;= 128 bytes.
@@ -4403,7 +4403,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     }
 
     /// <summary>
-    /// A `JobRun` resource in the Google Cloud Deploy API. A `JobRun` contains information of a single `Rollout` job
+    /// A `JobRun` resource in the Cloud Deploy API. A `JobRun` contains information of a single `Rollout` job
     /// evaluation.
     /// </summary>
     public class JobRun : Google.Apis.Requests.IDirectResponseSchema
@@ -5210,8 +5210,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
     }
 
     /// <summary>
-    /// A `Release` resource in the Google Cloud Deploy API. A `Release` defines a specific Skaffold configuration
-    /// instance that can be deployed.
+    /// A `Release` resource in the Cloud Deploy API. A `Release` defines a specific Skaffold configuration instance
+    /// that can be deployed.
     /// </summary>
     public class Release : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5220,7 +5220,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual System.Nullable<bool> Abandoned { get; set; }
 
         /// <summary>
-        /// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See
+        /// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See
         /// https://google.aip.dev/128#annotations for more details such as format and size limitations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
@@ -5291,8 +5291,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet
-        /// the following constraints: * Keys and values can contain only lowercase letters, numeric characters,
+        /// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the
+        /// following constraints: * Keys and values can contain only lowercase letters, numeric characters,
         /// underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed.
         /// * Keys must start with a lowercase letter or international character. * Each resource is limited to a
         /// maximum of 64 labels. Both keys and values are additionally constrained to be &amp;lt;= 128 bytes.
@@ -5397,8 +5397,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
 
         /// <summary>
         /// The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid;
-        /// Google Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold
-        /// version will be used.
+        /// Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will
+        /// be used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skaffoldVersion")]
         public virtual string SkaffoldVersion { get; set; }
@@ -5532,13 +5532,13 @@ namespace Google.Apis.CloudDeploy.v1.Data
     }
 
     /// <summary>
-    /// A `Rollout` resource in the Google Cloud Deploy API. A `Rollout` contains information around a specific
-    /// deployment to a `Target`.
+    /// A `Rollout` resource in the Cloud Deploy API. A `Rollout` contains information around a specific deployment to a
+    /// `Target`.
     /// </summary>
     public class Rollout : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See
+        /// User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy. See
         /// https://google.aip.dev/128#annotations for more details such as format and size limitations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
@@ -5772,8 +5772,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string FailureReason { get; set; }
 
         /// <summary>
-        /// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet
-        /// the following constraints: * Keys and values can contain only lowercase letters, numeric characters,
+        /// Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the
+        /// following constraints: * Keys and values can contain only lowercase letters, numeric characters,
         /// underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed.
         /// * Keys must start with a lowercase letter or international character. * Each resource is limited to a
         /// maximum of 64 labels. Both keys and values are additionally constrained to be &amp;lt;= 128 bytes.
@@ -6192,14 +6192,14 @@ namespace Google.Apis.CloudDeploy.v1.Data
     }
 
     /// <summary>
-    /// A `Target` resource in the Google Cloud Deploy API. A `Target` defines a location to which a Skaffold
-    /// configuration can be deployed.
+    /// A `Target` resource in the Cloud Deploy API. A `Target` defines a location to which a Skaffold configuration can
+    /// be deployed.
     /// </summary>
     public class Target : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud
-        /// Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
+        /// Optional. User annotations. These attributes can only be set and used by the user, and not by Cloud Deploy.
+        /// See https://google.aip.dev/128#annotations for more details such as format and size limitations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
@@ -6274,12 +6274,11 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual GkeCluster Gke { get; set; }
 
         /// <summary>
-        /// Optional. Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels
-        /// must meet the following constraints: * Keys and values can contain only lowercase letters, numeric
-        /// characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters
-        /// are allowed. * Keys must start with a lowercase letter or international character. * Each resource is
-        /// limited to a maximum of 64 labels. Both keys and values are additionally constrained to be &amp;lt;= 128
-        /// bytes.
+        /// Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must
+        /// meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters,
+        /// underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed.
+        /// * Keys must start with a lowercase letter or international character. * Each resource is limited to a
+        /// maximum of 64 labels. Both keys and values are additionally constrained to be &amp;lt;= 128 bytes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }

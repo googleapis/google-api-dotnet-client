@@ -2605,71 +2605,6 @@ namespace Google.Apis.Bigquery.v2
         }
 
         /// <summary>
-        /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
-        /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        /// <param name="resource">
-        /// REQUIRED: The resource for which the policy is being specified. See [Resource
-        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
-        /// </param>
-        public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Bigquery.v2.Data.SetIamPolicyRequest body, string resource)
-        {
-            return new SetIamPolicyRequest(service, body, resource);
-        }
-
-        /// <summary>
-        /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
-        /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-        /// </summary>
-        public class SetIamPolicyRequest : BigqueryBaseServiceRequest<Google.Apis.Bigquery.v2.Data.Policy>
-        {
-            /// <summary>Constructs a new SetIamPolicy request.</summary>
-            public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Bigquery.v2.Data.SetIamPolicyRequest body, string resource) : base(service)
-            {
-                Resource = resource;
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>
-            /// REQUIRED: The resource for which the policy is being specified. See [Resource
-            /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Resource { get; private set; }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.Bigquery.v2.Data.SetIamPolicyRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "setIamPolicy";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "{+resource}:setIamPolicy";
-
-            /// <summary>Initializes SetIamPolicy parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "resource",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^projects/[^/]+/datasets/[^/]+/tables/[^/]+/rowAccessPolicies/[^/]+$",
-                });
-            }
-        }
-
-        /// <summary>
         /// Returns permissions that a caller has on the specified resource. If the resource does not exist, this will
         /// return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for
         /// building permission-aware UIs and command-line tools, not for authorization checking. This operation may
@@ -7640,6 +7575,14 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Information for all training runs in increasing order of start_time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trainingRuns")]
         public virtual System.Collections.Generic.IList<TrainingRun> TrainingRuns { get; set; }
+
+        /// <summary>
+        /// Output only. This field will be populated if a TRANSFORM clause was used to train a model. TRANSFORM clause
+        /// (if used) takes feature_columns as input and outputs transform_columns. transform_columns then are used to
+        /// train the model.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transformColumns")]
+        public virtual System.Collections.Generic.IList<TransformColumn> TransformColumns { get; set; }
     }
 
     public class ModelDefinition : Google.Apis.Requests.IDirectResponseSchema
@@ -10229,6 +10172,25 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>[Output-only] // [Alpha] Id of the transaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionId")]
         public virtual string TransactionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about a single transform column.</summary>
+    public class TransformColumn : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Name of the column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The SQL expression used in the column transform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("transformSql")]
+        public virtual string TransformSql { get; set; }
+
+        /// <summary>Output only. Data type of the column after the transform.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual StandardSqlDataType Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

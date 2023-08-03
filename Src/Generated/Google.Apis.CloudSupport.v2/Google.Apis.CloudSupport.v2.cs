@@ -286,9 +286,12 @@ namespace Google.Apis.CloudSupport.v2
         /// Retrieve valid classifications to be used when creating a support case. The classications are hierarchical,
         /// with each classification containing all levels of the hierarchy, separated by `" &amp;gt; "`. For example
         /// `"Technical Issue &amp;gt; Compute &amp;gt; Compute Engine"`. Classification IDs returned by
-        /// `caseClassifications.search` are guaranteed to be valid for at least 6 months. If a given classification is
-        /// deactiveated, it will immediately stop being returned. After 6 months, `case.create` requests using the
-        /// classification ID will fail.
+        /// `caseClassifications.search` are guaranteed to be valid for at least six months. If a given classification
+        /// is deactivated, it immediately stops being returned. After six months, `case.create` requests using the
+        /// classification ID will fail. Here is an example of calling this endpoint using cURL: ```shell curl \
+        /// --header "Authorization: Bearer $(gcloud auth print-access-token)" \
+        /// 'https://cloudsupport.googleapis.com/v2/caseClassifications:search?query=display_name:"*Compute%20Engine*"'
+        /// ```
         /// </summary>
         public virtual SearchRequest Search()
         {
@@ -299,9 +302,12 @@ namespace Google.Apis.CloudSupport.v2
         /// Retrieve valid classifications to be used when creating a support case. The classications are hierarchical,
         /// with each classification containing all levels of the hierarchy, separated by `" &amp;gt; "`. For example
         /// `"Technical Issue &amp;gt; Compute &amp;gt; Compute Engine"`. Classification IDs returned by
-        /// `caseClassifications.search` are guaranteed to be valid for at least 6 months. If a given classification is
-        /// deactiveated, it will immediately stop being returned. After 6 months, `case.create` requests using the
-        /// classification ID will fail.
+        /// `caseClassifications.search` are guaranteed to be valid for at least six months. If a given classification
+        /// is deactivated, it immediately stops being returned. After six months, `case.create` requests using the
+        /// classification ID will fail. Here is an example of calling this endpoint using cURL: ```shell curl \
+        /// --header "Authorization: Bearer $(gcloud auth print-access-token)" \
+        /// 'https://cloudsupport.googleapis.com/v2/caseClassifications:search?query=display_name:"*Compute%20Engine*"'
+        /// ```
         /// </summary>
         public class SearchRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2.Data.SearchCaseClassificationsResponse>
         {
@@ -402,7 +408,11 @@ namespace Google.Apis.CloudSupport.v2
                 this.service = service;
             }
 
-            /// <summary>Retrieve all attachments associated with a support case.</summary>
+            /// <summary>
+            /// Retrieve all attachments associated with a support case. Here is an example of calling this endpoint
+            /// using cURL: ```shell case="projects/some-project/cases/23598314" curl \ --header "Authorization: Bearer
+            /// $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case/attachments" ```
+            /// </summary>
             /// <param name="parent">
             /// Required. The resource name of Case object for which attachments should be listed.
             /// </param>
@@ -411,7 +421,11 @@ namespace Google.Apis.CloudSupport.v2
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Retrieve all attachments associated with a support case.</summary>
+            /// <summary>
+            /// Retrieve all attachments associated with a support case. Here is an example of calling this endpoint
+            /// using cURL: ```shell case="projects/some-project/cases/23598314" curl \ --header "Authorization: Bearer
+            /// $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case/attachments" ```
+            /// </summary>
             public class ListRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2.Data.ListAttachmentsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -500,6 +514,10 @@ namespace Google.Apis.CloudSupport.v2
 
             /// <summary>
             /// Add a new comment to the specified Case. The comment object must have the following fields set: body.
+            /// Here is an example of calling this endpoint using cURL: ```shell
+            /// case="projects/some-project/cases/43591344" curl \ --request POST \ --header "Authorization: Bearer
+            /// $(gcloud auth print-access-token)" \ --header 'Content-Type: application/json' \ --data '{ "body": "This
+            /// is a test comment." }' \ "https://cloudsupport.googleapis.com/v2/$case/comments" ```
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The resource name of Case to which this comment should be added.</param>
@@ -510,6 +528,10 @@ namespace Google.Apis.CloudSupport.v2
 
             /// <summary>
             /// Add a new comment to the specified Case. The comment object must have the following fields set: body.
+            /// Here is an example of calling this endpoint using cURL: ```shell
+            /// case="projects/some-project/cases/43591344" curl \ --request POST \ --header "Authorization: Bearer
+            /// $(gcloud auth print-access-token)" \ --header 'Content-Type: application/json' \ --data '{ "body": "This
+            /// is a test comment." }' \ "https://cloudsupport.googleapis.com/v2/$case/comments" ```
             /// </summary>
             public class CreateRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2.Data.Comment>
             {
@@ -555,7 +577,11 @@ namespace Google.Apis.CloudSupport.v2
                 }
             }
 
-            /// <summary>Retrieve all Comments associated with the Case object.</summary>
+            /// <summary>
+            /// Retrieve all comments associated with the Case object. Here is an example of calling this endpoint using
+            /// cURL: ```shell case="projects/cloud-support-qa-premium/cases/43595344" curl \ --header "Authorization:
+            /// Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case/comments" ```
+            /// </summary>
             /// <param name="parent">
             /// Required. The resource name of Case object for which comments should be listed.
             /// </param>
@@ -564,7 +590,11 @@ namespace Google.Apis.CloudSupport.v2
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Retrieve all Comments associated with the Case object.</summary>
+            /// <summary>
+            /// Retrieve all comments associated with the Case object. Here is an example of calling this endpoint using
+            /// cURL: ```shell case="projects/cloud-support-qa-premium/cases/43595344" curl \ --header "Authorization:
+            /// Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case/comments" ```
+            /// </summary>
             public class ListRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2.Data.ListCommentsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -629,7 +659,11 @@ namespace Google.Apis.CloudSupport.v2
             }
         }
 
-        /// <summary>Close the specified case.</summary>
+        /// <summary>
+        /// Close the specified case. Here is an example of calling this endpoint using cURL: ```shell
+        /// case="projects/some-project/cases/43595344" curl \ --request POST \ --header "Authorization: Bearer $(gcloud
+        /// auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case:close" ```
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">Required. The fully qualified name of the case resource to be closed.</param>
         public virtual CloseRequest Close(Google.Apis.CloudSupport.v2.Data.CloseCaseRequest body, string name)
@@ -637,7 +671,11 @@ namespace Google.Apis.CloudSupport.v2
             return new CloseRequest(service, body, name);
         }
 
-        /// <summary>Close the specified case.</summary>
+        /// <summary>
+        /// Close the specified case. Here is an example of calling this endpoint using cURL: ```shell
+        /// case="projects/some-project/cases/43595344" curl \ --request POST \ --header "Authorization: Bearer $(gcloud
+        /// auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case:close" ```
+        /// </summary>
         public class CloseRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2.Data.Case>
         {
             /// <summary>Constructs a new Close request.</summary>
@@ -684,7 +722,14 @@ namespace Google.Apis.CloudSupport.v2
 
         /// <summary>
         /// Create a new case and associate it with the given Google Cloud Resource. The case object must have the
-        /// following fields set: `display_name`, `description`, `classification`, and `priority`.
+        /// following fields set: `display_name`, `description`, `classification`, and `priority`. Here is an example of
+        /// calling this endpoint using cURL: ```shell parent="projects/some-project" curl \ --request POST \ --header
+        /// "Authorization: Bearer $(gcloud auth print-access-token)" \ --header 'Content-Type: application/json' \
+        /// --data '{ "display_name": "Test case created by me.", "description": "a random test case, feel free to
+        /// close", "classification": { "id":
+        /// "100IK2AKCLHMGRJ9CDGMOCGP8DM6UTB4BT262T31BT1M2T31DHNMENPO6KS36CPJ786L2TBFEHGN6NPI64R3CDHN8880G08I1H3MURR7DHII0GRCDTQM8"
+        /// }, "time_zone": "-07:00", "subscriber_email_addresses": [ "foo@domain.com", "bar@domain.com" ], "testCase":
+        /// true, "priority": "P3" }' \ "https://cloudsupport.googleapis.com/v2/$parent/cases" ```
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
@@ -697,7 +742,14 @@ namespace Google.Apis.CloudSupport.v2
 
         /// <summary>
         /// Create a new case and associate it with the given Google Cloud Resource. The case object must have the
-        /// following fields set: `display_name`, `description`, `classification`, and `priority`.
+        /// following fields set: `display_name`, `description`, `classification`, and `priority`. Here is an example of
+        /// calling this endpoint using cURL: ```shell parent="projects/some-project" curl \ --request POST \ --header
+        /// "Authorization: Bearer $(gcloud auth print-access-token)" \ --header 'Content-Type: application/json' \
+        /// --data '{ "display_name": "Test case created by me.", "description": "a random test case, feel free to
+        /// close", "classification": { "id":
+        /// "100IK2AKCLHMGRJ9CDGMOCGP8DM6UTB4BT262T31BT1M2T31DHNMENPO6KS36CPJ786L2TBFEHGN6NPI64R3CDHN8880G08I1H3MURR7DHII0GRCDTQM8"
+        /// }, "time_zone": "-07:00", "subscriber_email_addresses": [ "foo@domain.com", "bar@domain.com" ], "testCase":
+        /// true, "priority": "P3" }' \ "https://cloudsupport.googleapis.com/v2/$parent/cases" ```
         /// </summary>
         public class CreateRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2.Data.Case>
         {
@@ -746,10 +798,14 @@ namespace Google.Apis.CloudSupport.v2
         }
 
         /// <summary>
-        /// Escalate a case. Escalating a case will initiate the Google Cloud Support escalation management process.
-        /// This operation is only available to certain Customer Care tiers. Go to https://cloud.google.com/support and
-        /// look for 'Technical support escalations' in the feature list to find out which tiers are able to perform
-        /// escalations.
+        /// Escalate a case. Escalating a case initiates the Google Cloud Support escalation management process. This
+        /// operation is only available to certain Customer Care support services. Go to
+        /// https://cloud.google.com/support and look for 'Technical support escalations' in the feature list to find
+        /// out which support services let you perform escalations. Here is an example of calling this endpoint using
+        /// cURL: ```shell case="projects/some-project/cases/43595344" curl \ --request POST \ --header "Authorization:
+        /// Bearer $(gcloud auth print-access-token)" \ --header "Content-Type: application/json" \ --data '{
+        /// "escalation": { "reason": "BUSINESS_IMPACT", "justification": "This is a test escalation." } }' \
+        /// "https://cloudsupport.googleapis.com/v2/$case:escalate" ```
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">Required. The fully qualified name of the Case resource to be escalated.</param>
@@ -759,10 +815,14 @@ namespace Google.Apis.CloudSupport.v2
         }
 
         /// <summary>
-        /// Escalate a case. Escalating a case will initiate the Google Cloud Support escalation management process.
-        /// This operation is only available to certain Customer Care tiers. Go to https://cloud.google.com/support and
-        /// look for 'Technical support escalations' in the feature list to find out which tiers are able to perform
-        /// escalations.
+        /// Escalate a case. Escalating a case initiates the Google Cloud Support escalation management process. This
+        /// operation is only available to certain Customer Care support services. Go to
+        /// https://cloud.google.com/support and look for 'Technical support escalations' in the feature list to find
+        /// out which support services let you perform escalations. Here is an example of calling this endpoint using
+        /// cURL: ```shell case="projects/some-project/cases/43595344" curl \ --request POST \ --header "Authorization:
+        /// Bearer $(gcloud auth print-access-token)" \ --header "Content-Type: application/json" \ --data '{
+        /// "escalation": { "reason": "BUSINESS_IMPACT", "justification": "This is a test escalation." } }' \
+        /// "https://cloudsupport.googleapis.com/v2/$case:escalate" ```
         /// </summary>
         public class EscalateRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2.Data.Case>
         {
@@ -808,14 +868,22 @@ namespace Google.Apis.CloudSupport.v2
             }
         }
 
-        /// <summary>Retrieve the specified case.</summary>
+        /// <summary>
+        /// Retrieve the specified case. Here is an example of calling this endpoint using cURL: ```shell
+        /// case="projects/some-project/cases/16033687" curl \ --header "Authorization: Bearer $(gcloud auth
+        /// print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case" ```
+        /// </summary>
         /// <param name="name">Required. The fully qualified name of a case to be retrieved.</param>
         public virtual GetRequest Get(string name)
         {
             return new GetRequest(service, name);
         }
 
-        /// <summary>Retrieve the specified case.</summary>
+        /// <summary>
+        /// Retrieve the specified case. Here is an example of calling this endpoint using cURL: ```shell
+        /// case="projects/some-project/cases/16033687" curl \ --header "Authorization: Bearer $(gcloud auth
+        /// print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case" ```
+        /// </summary>
         public class GetRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2.Data.Case>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -854,9 +922,11 @@ namespace Google.Apis.CloudSupport.v2
         }
 
         /// <summary>
-        /// Retrieve all cases under the specified parent. Note: Listing cases under an Organization returns only the
+        /// Retrieve all cases under the specified parent. Note: Listing cases under an organization returns only the
         /// cases directly parented by that organization. To retrieve all cases under an organization, including cases
-        /// parented by projects under that organization, use `cases.search`.
+        /// parented by projects under that organization, use `cases.search`. Here is an example of calling this
+        /// endpoint using cURL: ```shell parent="projects/some-project" curl \ --header "Authorization: Bearer $(gcloud
+        /// auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$parent/cases" ```
         /// </summary>
         /// <param name="parent">Required. The fully qualified name of parent resource to list cases under.</param>
         public virtual ListRequest List(string parent)
@@ -865,9 +935,11 @@ namespace Google.Apis.CloudSupport.v2
         }
 
         /// <summary>
-        /// Retrieve all cases under the specified parent. Note: Listing cases under an Organization returns only the
+        /// Retrieve all cases under the specified parent. Note: Listing cases under an organization returns only the
         /// cases directly parented by that organization. To retrieve all cases under an organization, including cases
-        /// parented by projects under that organization, use `cases.search`.
+        /// parented by projects under that organization, use `cases.search`. Here is an example of calling this
+        /// endpoint using cURL: ```shell parent="projects/some-project" curl \ --header "Authorization: Bearer $(gcloud
+        /// auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$parent/cases" ```
         /// </summary>
         public class ListRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2.Data.ListCasesResponse>
         {
@@ -952,7 +1024,12 @@ namespace Google.Apis.CloudSupport.v2
             }
         }
 
-        /// <summary>Update the specified case. Only a subset of fields can be updated.</summary>
+        /// <summary>
+        /// Update the specified case. Only a subset of fields can be updated. Here is an example of calling this
+        /// endpoint using cURL: ```shell case="projects/some-project/cases/43595344" curl \ --request PATCH \ --header
+        /// "Authorization: Bearer $(gcloud auth print-access-token)" \ --header "Content-Type: application/json" \
+        /// --data '{ "priority": "P1" }' \ "https://cloudsupport.googleapis.com/v2/$case?updateMask=priority" ```
+        /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">The resource name for the case.</param>
         public virtual PatchRequest Patch(Google.Apis.CloudSupport.v2.Data.Case body, string name)
@@ -960,7 +1037,12 @@ namespace Google.Apis.CloudSupport.v2
             return new PatchRequest(service, body, name);
         }
 
-        /// <summary>Update the specified case. Only a subset of fields can be updated.</summary>
+        /// <summary>
+        /// Update the specified case. Only a subset of fields can be updated. Here is an example of calling this
+        /// endpoint using cURL: ```shell case="projects/some-project/cases/43595344" curl \ --request PATCH \ --header
+        /// "Authorization: Bearer $(gcloud auth print-access-token)" \ --header "Content-Type: application/json" \
+        /// --data '{ "priority": "P1" }' \ "https://cloudsupport.googleapis.com/v2/$case?updateMask=priority" ```
+        /// </summary>
         public class PatchRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2.Data.Case>
         {
             /// <summary>Constructs a new Patch request.</summary>
@@ -1023,14 +1105,22 @@ namespace Google.Apis.CloudSupport.v2
             }
         }
 
-        /// <summary>Search cases using the specified query.</summary>
+        /// <summary>
+        /// Search cases using the specified query. Here is an example of calling this endpoint using cURL: ```shell
+        /// parent="projects/some-project" curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \
+        /// "https://cloudsupport.googleapis.com/v2/$parent/cases:search" ```
+        /// </summary>
         /// <param name="parent">The fully qualified name of parent resource to search cases under.</param>
         public virtual SearchRequest Search(string parent)
         {
             return new SearchRequest(service, parent);
         }
 
-        /// <summary>Search cases using the specified query.</summary>
+        /// <summary>
+        /// Search cases using the specified query. Here is an example of calling this endpoint using cURL: ```shell
+        /// parent="projects/some-project" curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \
+        /// "https://cloudsupport.googleapis.com/v2/$parent/cases:search" ```
+        /// </summary>
         public class SearchRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2.Data.SearchCasesResponse>
         {
             /// <summary>Constructs a new Search request.</summary>
@@ -1139,7 +1229,11 @@ namespace Google.Apis.CloudSupport.v2
         }
 
         /// <summary>
-        /// Download a file attachment on a case. Note: HTTP requests must append "?alt=media" to the URL.
+        /// Download a file attachment on a case. Note: HTTP requests must append "?alt=media" to the URL. Here is an
+        /// example of calling this endpoint using cURL: ```shell
+        /// name="projects/some-project/cases/43594844/attachments/0674M00000WijAnZAJ" curl \ --header "Authorization:
+        /// Bearer $(gcloud auth print-access-token)" \
+        /// "https://cloudsupport.googleapis.com/v2/$name:download?alt=media" ```
         /// </summary>
         /// <param name="name">The resource name of the attachment to be downloaded.</param>
         public virtual DownloadRequest Download(string name)
@@ -1148,7 +1242,11 @@ namespace Google.Apis.CloudSupport.v2
         }
 
         /// <summary>
-        /// Download a file attachment on a case. Note: HTTP requests must append "?alt=media" to the URL.
+        /// Download a file attachment on a case. Note: HTTP requests must append "?alt=media" to the URL. Here is an
+        /// example of calling this endpoint using cURL: ```shell
+        /// name="projects/some-project/cases/43594844/attachments/0674M00000WijAnZAJ" curl \ --header "Authorization:
+        /// Bearer $(gcloud auth print-access-token)" \
+        /// "https://cloudsupport.googleapis.com/v2/$name:download?alt=media" ```
         /// </summary>
         public class DownloadRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2.Data.Media>
         {
@@ -1275,7 +1373,11 @@ namespace Google.Apis.CloudSupport.v2
 
         /// <summary>
         /// Create a file attachment on a case or Cloud resource. The attachment object must have the following fields
-        /// set: filename.
+        /// set: filename. Here is an example of calling this endpoint using cURL: ```shell echo "This text is in a file
+        /// I'm uploading using CSAPI." \ &amp;gt; "./example_file.txt" case="projects/some-project/cases/43594844" curl
+        /// \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ --data-binary @"./example_file.txt" \
+        /// "https://cloudsupport.googleapis.com/upload/v2beta/$case/attachments?attachment.filename=uploaded_via_curl.txt"
+        /// ```
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
@@ -1288,7 +1390,11 @@ namespace Google.Apis.CloudSupport.v2
 
         /// <summary>
         /// Create a file attachment on a case or Cloud resource. The attachment object must have the following fields
-        /// set: filename.
+        /// set: filename. Here is an example of calling this endpoint using cURL: ```shell echo "This text is in a file
+        /// I'm uploading using CSAPI." \ &amp;gt; "./example_file.txt" case="projects/some-project/cases/43594844" curl
+        /// \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ --data-binary @"./example_file.txt" \
+        /// "https://cloudsupport.googleapis.com/upload/v2beta/$case/attachments?attachment.filename=uploaded_via_curl.txt"
+        /// ```
         /// </summary>
         public class UploadRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2.Data.Attachment>
         {
@@ -1338,7 +1444,11 @@ namespace Google.Apis.CloudSupport.v2
 
         /// <summary>
         /// Create a file attachment on a case or Cloud resource. The attachment object must have the following fields
-        /// set: filename.
+        /// set: filename. Here is an example of calling this endpoint using cURL: ```shell echo "This text is in a file
+        /// I'm uploading using CSAPI." \ &amp;gt; "./example_file.txt" case="projects/some-project/cases/43594844" curl
+        /// \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ --data-binary @"./example_file.txt" \
+        /// "https://cloudsupport.googleapis.com/upload/v2beta/$case/attachments?attachment.filename=uploaded_via_curl.txt"
+        /// ```
         /// </summary>
         /// <remarks>
         /// Considerations regarding <paramref name="stream"/>:

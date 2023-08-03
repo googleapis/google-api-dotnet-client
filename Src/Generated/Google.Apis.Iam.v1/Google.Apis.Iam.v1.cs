@@ -8573,7 +8573,7 @@ namespace Google.Apis.Iam.v1.Data
     /// not a person. You can use a service account to call Google APIs. To learn more, read the [overview of service
     /// accounts](https://cloud.google.com/iam/help/service-accounts/overview). When you create a service account, you
     /// specify the project ID that owns the service account, as well as a name that must be unique within the project.
-    /// IAM uses these values to create an email address that identifies the service //
+    /// IAM uses these values to create an email address that identifies the service account. //
     /// </summary>
     public class ServiceAccount : Google.Apis.Requests.IDirectResponseSchema
     {

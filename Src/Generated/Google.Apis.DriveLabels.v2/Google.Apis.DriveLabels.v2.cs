@@ -57,6 +57,44 @@ namespace Google.Apis.DriveLabels.v2
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
 
+        /// <summary>Available OAuth 2.0 scopes for use with the Drive Labels API.</summary>
+        public class Scope
+        {
+            /// <summary>
+            /// See, edit, create, and delete all Google Drive labels in your organization, and see your organization's
+            /// label-related admin policies
+            /// </summary>
+            public static string DriveAdminLabels = "https://www.googleapis.com/auth/drive.admin.labels";
+
+            /// <summary>See all Google Drive labels and label-related admin policies in your organization</summary>
+            public static string DriveAdminLabelsReadonly = "https://www.googleapis.com/auth/drive.admin.labels.readonly";
+
+            /// <summary>See, edit, create, and delete your Google Drive labels</summary>
+            public static string DriveLabels = "https://www.googleapis.com/auth/drive.labels";
+
+            /// <summary>See your Google Drive labels</summary>
+            public static string DriveLabelsReadonly = "https://www.googleapis.com/auth/drive.labels.readonly";
+        }
+
+        /// <summary>Available OAuth 2.0 scope constants for use with the Drive Labels API.</summary>
+        public static class ScopeConstants
+        {
+            /// <summary>
+            /// See, edit, create, and delete all Google Drive labels in your organization, and see your organization's
+            /// label-related admin policies
+            /// </summary>
+            public const string DriveAdminLabels = "https://www.googleapis.com/auth/drive.admin.labels";
+
+            /// <summary>See all Google Drive labels and label-related admin policies in your organization</summary>
+            public const string DriveAdminLabelsReadonly = "https://www.googleapis.com/auth/drive.admin.labels.readonly";
+
+            /// <summary>See, edit, create, and delete your Google Drive labels</summary>
+            public const string DriveLabels = "https://www.googleapis.com/auth/drive.labels";
+
+            /// <summary>See your Google Drive labels</summary>
+            public const string DriveLabelsReadonly = "https://www.googleapis.com/auth/drive.labels.readonly";
+        }
+
         /// <summary>Gets the Labels resource.</summary>
         public virtual LabelsResource Labels { get; }
 
@@ -3033,9 +3071,42 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appliedCapabilities")]
         public virtual GoogleAppsDriveLabelsV2FieldAppliedCapabilities AppliedCapabilities { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. The time this field was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. The user who created this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creator")]
@@ -3045,11 +3116,44 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dateOptions")]
         public virtual GoogleAppsDriveLabelsV2FieldDateOptions DateOptions { get; set; }
 
+        private string _disableTimeRaw;
+
+        private object _disableTime;
+
         /// <summary>
         /// Output only. The time this field was disabled. This value has no meaning when the field is not disabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableTime")]
-        public virtual object DisableTime { get; set; }
+        public virtual string DisableTimeRaw
+        {
+            get => _disableTimeRaw;
+            set
+            {
+                _disableTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _disableTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DisableTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DisableTimeDateTimeOffset instead.")]
+        public virtual object DisableTime
+        {
+            get => _disableTime;
+            set
+            {
+                _disableTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _disableTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DisableTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DisableTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DisableTimeRaw);
+            set => DisableTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. The user who disabled this field. This value has no meaning when the field is not disabled.
@@ -3109,9 +3213,42 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("textOptions")]
         public virtual GoogleAppsDriveLabelsV2FieldTextOptions TextOptions { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>Output only. The time this field was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. The user who modified this field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updater")]
@@ -3359,19 +3496,85 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appliedCapabilities")]
         public virtual GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceAppliedCapabilities AppliedCapabilities { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. The time this choice was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. The user who created this choice.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creator")]
         public virtual GoogleAppsDriveLabelsV2UserInfo Creator { get; set; }
 
+        private string _disableTimeRaw;
+
+        private object _disableTime;
+
         /// <summary>
         /// Output only. The time this choice was disabled. This value has no meaning when the choice is not disabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableTime")]
-        public virtual object DisableTime { get; set; }
+        public virtual string DisableTimeRaw
+        {
+            get => _disableTimeRaw;
+            set
+            {
+                _disableTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _disableTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DisableTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DisableTimeDateTimeOffset instead.")]
+        public virtual object DisableTime
+        {
+            get => _disableTime;
+            set
+            {
+                _disableTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _disableTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DisableTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DisableTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DisableTimeRaw);
+            set => DisableTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. The user who disabled this choice. This value has no meaning when the option is not disabled.
@@ -3401,11 +3604,44 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceProperties Properties { get; set; }
 
+        private string _publishTimeRaw;
+
+        private object _publishTime;
+
         /// <summary>
         /// Output only. The time this choice was published. This value has no meaning when the choice is not published.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishTime")]
-        public virtual object PublishTime { get; set; }
+        public virtual string PublishTimeRaw
+        {
+            get => _publishTimeRaw;
+            set
+            {
+                _publishTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _publishTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="PublishTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PublishTimeDateTimeOffset instead.")]
+        public virtual object PublishTime
+        {
+            get => _publishTime;
+            set
+            {
+                _publishTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _publishTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PublishTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PublishTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishTimeRaw);
+            set => PublishTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. The user who published this choice. This value has no meaning when the choice is not published.
@@ -3417,9 +3653,42 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("schemaCapabilities")]
         public virtual GoogleAppsDriveLabelsV2FieldSelectionOptionsChoiceSchemaCapabilities SchemaCapabilities { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>Output only. The time this choice was updated last.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. The user who updated this choice last.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updater")]
@@ -3601,9 +3870,42 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appliedLabelPolicy")]
         public virtual GoogleAppsDriveLabelsV2LabelAppliedLabelPolicy AppliedLabelPolicy { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. The time this label was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. The user who created this label.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creator")]
@@ -3613,11 +3915,44 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customer")]
         public virtual string Customer { get; set; }
 
+        private string _disableTimeRaw;
+
+        private object _disableTime;
+
         /// <summary>
         /// Output only. The time this label was disabled. This value has no meaning when the label is not disabled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableTime")]
-        public virtual object DisableTime { get; set; }
+        public virtual string DisableTimeRaw
+        {
+            get => _disableTimeRaw;
+            set
+            {
+                _disableTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _disableTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DisableTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DisableTimeDateTimeOffset instead.")]
+        public virtual object DisableTime
+        {
+            get => _disableTime;
+            set
+            {
+                _disableTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _disableTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DisableTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DisableTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DisableTimeRaw);
+            set => DisableTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. The user who disabled this label. This value has no meaning when the label is not disabled.
@@ -3672,11 +4007,44 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual GoogleAppsDriveLabelsV2LabelProperties Properties { get; set; }
 
+        private string _publishTimeRaw;
+
+        private object _publishTime;
+
         /// <summary>
         /// Output only. The time this label was published. This value has no meaning when the label is not published.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publishTime")]
-        public virtual object PublishTime { get; set; }
+        public virtual string PublishTimeRaw
+        {
+            get => _publishTimeRaw;
+            set
+            {
+                _publishTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _publishTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="PublishTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PublishTimeDateTimeOffset instead.")]
+        public virtual object PublishTime
+        {
+            get => _publishTime;
+            set
+            {
+                _publishTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _publishTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PublishTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PublishTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PublishTimeRaw);
+            set => PublishTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. The user who published this label. This value has no meaning when the label is not published.
@@ -3684,9 +4052,44 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publisher")]
         public virtual GoogleAppsDriveLabelsV2UserInfo Publisher { get; set; }
 
+        private string _revisionCreateTimeRaw;
+
+        private object _revisionCreateTime;
+
         /// <summary>Output only. The time this label revision was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionCreateTime")]
-        public virtual object RevisionCreateTime { get; set; }
+        public virtual string RevisionCreateTimeRaw
+        {
+            get => _revisionCreateTimeRaw;
+            set
+            {
+                _revisionCreateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _revisionCreateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RevisionCreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RevisionCreateTimeDateTimeOffset instead.")]
+        public virtual object RevisionCreateTime
+        {
+            get => _revisionCreateTime;
+            set
+            {
+                _revisionCreateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _revisionCreateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="RevisionCreateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RevisionCreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RevisionCreateTimeRaw);
+            set => RevisionCreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. The user who created this label revision.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("revisionCreator")]
@@ -3814,9 +4217,42 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("choiceId")]
         public virtual string ChoiceId { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. The time this LabelLock was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. The user whose credentials were used to create the LabelLock. This will not be present if no
@@ -3825,12 +4261,45 @@ namespace Google.Apis.DriveLabels.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("creator")]
         public virtual GoogleAppsDriveLabelsV2UserInfo Creator { get; set; }
 
+        private string _deleteTimeRaw;
+
+        private object _deleteTime;
+
         /// <summary>
         /// Output only. A timestamp indicating when this LabelLock was scheduled for deletion. This will be present
         /// only if this LabelLock is in the DELETING state.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
-        public virtual object DeleteTime { get; set; }
+        public virtual string DeleteTimeRaw
+        {
+            get => _deleteTimeRaw;
+            set
+            {
+                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deleteTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
+        public virtual object DeleteTime
+        {
+            get => _deleteTime;
+            set
+            {
+                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deleteTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ID of the Field that should be locked. Empty if the whole Label should be locked.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldId")]

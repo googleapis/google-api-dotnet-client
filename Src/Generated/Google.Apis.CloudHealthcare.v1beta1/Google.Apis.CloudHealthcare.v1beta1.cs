@@ -12843,6 +12843,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// <summary>The request to analyze healthcare entities in a document.</summary>
     public class AnalyzeEntitiesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Alternative output format to be generated based on the results of analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternativeOutputFormat")]
+        public virtual string AlternativeOutputFormat { get; set; }
+
         /// <summary>document_content is a document to be annotated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentContent")]
         public virtual string DocumentContent { get; set; }
@@ -12873,6 +12877,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityMentions")]
         public virtual System.Collections.Generic.IList<EntityMention> EntityMentions { get; set; }
+
+        /// <summary>
+        /// The FHIR bundle ([`R4`](http://hl7.org/fhir/R4/bundle.html)) that includes all the entities, the entity
+        /// mentions, and the relationships in JSON format.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fhirBundle")]
+        public virtual string FhirBundle { get; set; }
 
         /// <summary>
         /// relationships contains all the binary relationships that were identified between entity mentions within the
@@ -13782,11 +13793,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>
         /// Ensures in-flight data remains in the region of origin during de-identification. Using this option results
         /// in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME`
-        /// infoTypes. If the deprecated
-        /// [`DicomConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.dicom_config) or
-        /// [`FhirConfig`](google.cloud.healthcare.v1beta1.deidentify.DeidentifyConfig.fhir_config) are used, then
-        /// `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig` if image
-        /// redaction is required.
+        /// infoTypes. If the deprecated `DicomConfig` or `FhirConfig` are used, then `LOCATION` must be excluded within
+        /// `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useRegionalDataProcessing")]
         public virtual System.Nullable<bool> UseRegionalDataProcessing { get; set; }

@@ -1903,7 +1903,10 @@ namespace Google.Apis.ChromePolicy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("definition")]
         public virtual Proto2FileDescriptorProto Definition { get; set; }
 
-        /// <summary>Output only. Detailed description of each field that is part of the schema.</summary>
+        /// <summary>
+        /// Output only. Detailed description of each field that is part of the schema. Fields are suggested to be
+        /// displayed by the ordering in this list, not by field number.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldDescriptions")]
         public virtual System.Collections.Generic.IList<GoogleChromePolicyVersionsV1PolicySchemaFieldDescription> FieldDescriptions { get; set; }
 
@@ -2006,7 +2009,8 @@ namespace Google.Apis.ChromePolicy.v1.Data
 
         /// <summary>
         /// Output only. Provides the description of the fields nested in this field, if the field is a message type
-        /// that defines multiple fields.
+        /// that defines multiple fields. Fields are suggested to be displayed by the ordering in this list, not by
+        /// field number.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nestedFieldDescriptions")]
         public virtual System.Collections.Generic.IList<GoogleChromePolicyVersionsV1PolicySchemaFieldDescription> NestedFieldDescriptions { get; set; }

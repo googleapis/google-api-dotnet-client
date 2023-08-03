@@ -613,10 +613,7 @@ namespace Google.Apis.Connectors.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>
-                        /// Filter.
-                        /// https://g3doc.corp.google.com/cloud/control2/g3doc/dev/apihosting/list_filtering.md#filtering.
-                        /// </summary>
+                        /// <summary>Filter.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
@@ -1985,10 +1982,7 @@ namespace Google.Apis.Connectors.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>
-                    /// Filter.
-                    /// https://g3doc.corp.google.com/cloud/control2/g3doc/dev/apihosting/list_filtering.md#filtering.
-                    /// </summary>
+                    /// <summary>Filter.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -2366,10 +2360,7 @@ namespace Google.Apis.Connectors.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>
-                        /// Filter.
-                        /// https://g3doc.corp.google.com/cloud/control2/g3doc/dev/apihosting/list_filtering.md#filtering.
-                        /// </summary>
+                        /// <summary>Filter.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Filter { get; set; }
 
@@ -4111,7 +4102,9 @@ namespace Google.Apis.Connectors.v1.Data
     /// </summary>
     public class AuthorizationCodeLink : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The client ID assigned to the GCP Connectors OAuth app for the connector data source.</summary>
+        /// <summary>
+        /// The client ID assigned to the Google Cloud Connectors OAuth app for the connector data source.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; }
 
@@ -4119,7 +4112,9 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enablePkce")]
         public virtual System.Nullable<bool> EnablePkce { get; set; }
 
-        /// <summary>The scopes for which the user will authorize GCP Connectors on the connector data source.</summary>
+        /// <summary>
+        /// The scopes for which the user will authorize Google Cloud Connectors on the connector data source.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scopes")]
         public virtual System.Collections.Generic.IList<string> Scopes { get; set; }
 
@@ -4417,7 +4412,7 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodeConfig")]
         public virtual NodeConfig NodeConfig { get; set; }
 
-        /// <summary>Optional. Service account needed for runtime plane to access GCP resources.</summary>
+        /// <summary>Optional. Service account needed for runtime plane to access Google Cloud resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 
@@ -6620,8 +6615,8 @@ namespace Google.Apis.Connectors.v1.Data
     public class Resource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Template to uniquely represent a GCP resource in a format IAM expects This is a template that can have
-        /// references to other values provided in the config variable template.
+        /// Template to uniquely represent a Google Cloud resource in a format IAM expects This is a template that can
+        /// have references to other values provided in the config variable template.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathTemplate")]
         public virtual string PathTemplate { get; set; }
@@ -6661,10 +6656,10 @@ namespace Google.Apis.Connectors.v1.Data
     }
 
     /// <summary>
-    /// This configuration defines all the Cloud IAM roles that needs to be granted to a particular GCP resource for the
-    /// selected principal like service account. These configurations will let UI display to customers what IAM roles
-    /// need to be granted by them. Or these configurations can be used by the UI to render a 'grant' button to do the
-    /// same on behalf of the user.
+    /// This configuration defines all the Cloud IAM roles that needs to be granted to a particular Google Cloud
+    /// resource for the selected principal like service account. These configurations will let UI display to customers
+    /// what IAM roles need to be granted by them. Or these configurations can be used by the UI to render a 'grant'
+    /// button to do the same on behalf of the user.
     /// </summary>
     public class RoleGrant : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6988,11 +6983,7 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Supported runtime features of a connector version. This is passed to the management layer to add a new connector
-    /// version by the connector developer. Details about how this proto is passed to the management layer is covered in
-    /// this doc - go/runtime-manifest.
-    /// </summary>
+    /// <summary>Supported runtime features of a connector version.</summary>
     public class SupportedRuntimeFeatures : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Specifies if the connector supports action apis like 'executeAction'.</summary>

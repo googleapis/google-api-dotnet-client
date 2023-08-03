@@ -1172,7 +1172,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents an output piece of text.</summary>
+    /// <summary>Represents a text span in the input document.</summary>
     public class TextSpan : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -1182,7 +1182,7 @@ namespace Google.Apis.CloudNaturalLanguage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("beginOffset")]
         public virtual System.Nullable<int> BeginOffset { get; set; }
 
-        /// <summary>The content of the output text.</summary>
+        /// <summary>The content of the text span, which is a substring of the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
 

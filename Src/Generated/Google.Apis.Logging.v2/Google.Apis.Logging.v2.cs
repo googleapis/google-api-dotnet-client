@@ -2779,9 +2779,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Creates a sink that exports specified log entries to a destination. The export of newly-ingested log
-            /// entries begins immediately, unless the sink's writer_identity is not permitted to write to the
-            /// destination. A sink can export log entries only from the resource owning the sink.
+            /// Creates a sink that exports specified log entries to a destination. The export begins upon ingress,
+            /// unless the sink's writer_identity is not permitted to write to the destination. A sink can export log
+            /// entries only from the resource owning the sink.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -2795,9 +2795,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Creates a sink that exports specified log entries to a destination. The export of newly-ingested log
-            /// entries begins immediately, unless the sink's writer_identity is not permitted to write to the
-            /// destination. A sink can export log entries only from the resource owning the sink.
+            /// Creates a sink that exports specified log entries to a destination. The export begins upon ingress,
+            /// unless the sink's writer_identity is not permitted to write to the destination. A sink can export log
+            /// entries only from the resource owning the sink.
             /// </summary>
             public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
@@ -3578,7 +3578,7 @@ namespace Google.Apis.Logging.v2
         }
 
         /// <summary>
-        /// Streaming read of log entries as they are ingested. Until the stream is terminated, it will continue reading
+        /// Streaming read of log entries as they are received. Until the stream is terminated, it will continue reading
         /// logs.
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -3588,7 +3588,7 @@ namespace Google.Apis.Logging.v2
         }
 
         /// <summary>
-        /// Streaming read of log entries as they are ingested. Until the stream is terminated, it will continue reading
+        /// Streaming read of log entries as they are received. Until the stream is terminated, it will continue reading
         /// logs.
         /// </summary>
         public class TailRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.TailLogEntriesResponse>
@@ -6483,9 +6483,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Creates a sink that exports specified log entries to a destination. The export of newly-ingested log
-            /// entries begins immediately, unless the sink's writer_identity is not permitted to write to the
-            /// destination. A sink can export log entries only from the resource owning the sink.
+            /// Creates a sink that exports specified log entries to a destination. The export begins upon ingress,
+            /// unless the sink's writer_identity is not permitted to write to the destination. A sink can export log
+            /// entries only from the resource owning the sink.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -6499,9 +6499,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Creates a sink that exports specified log entries to a destination. The export of newly-ingested log
-            /// entries begins immediately, unless the sink's writer_identity is not permitted to write to the
-            /// destination. A sink can export log entries only from the resource owning the sink.
+            /// Creates a sink that exports specified log entries to a destination. The export begins upon ingress,
+            /// unless the sink's writer_identity is not permitted to write to the destination. A sink can export log
+            /// entries only from the resource owning the sink.
             /// </summary>
             public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
@@ -11699,9 +11699,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Creates a sink that exports specified log entries to a destination. The export of newly-ingested log
-            /// entries begins immediately, unless the sink's writer_identity is not permitted to write to the
-            /// destination. A sink can export log entries only from the resource owning the sink.
+            /// Creates a sink that exports specified log entries to a destination. The export begins upon ingress,
+            /// unless the sink's writer_identity is not permitted to write to the destination. A sink can export log
+            /// entries only from the resource owning the sink.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -11715,9 +11715,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Creates a sink that exports specified log entries to a destination. The export of newly-ingested log
-            /// entries begins immediately, unless the sink's writer_identity is not permitted to write to the
-            /// destination. A sink can export log entries only from the resource owning the sink.
+            /// Creates a sink that exports specified log entries to a destination. The export begins upon ingress,
+            /// unless the sink's writer_identity is not permitted to write to the destination. A sink can export log
+            /// entries only from the resource owning the sink.
             /// </summary>
             public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
@@ -15356,9 +15356,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Creates a sink that exports specified log entries to a destination. The export of newly-ingested log
-            /// entries begins immediately, unless the sink's writer_identity is not permitted to write to the
-            /// destination. A sink can export log entries only from the resource owning the sink.
+            /// Creates a sink that exports specified log entries to a destination. The export begins upon ingress,
+            /// unless the sink's writer_identity is not permitted to write to the destination. A sink can export log
+            /// entries only from the resource owning the sink.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -15372,9 +15372,9 @@ namespace Google.Apis.Logging.v2
             }
 
             /// <summary>
-            /// Creates a sink that exports specified log entries to a destination. The export of newly-ingested log
-            /// entries begins immediately, unless the sink's writer_identity is not permitted to write to the
-            /// destination. A sink can export log entries only from the resource owning the sink.
+            /// Creates a sink that exports specified log entries to a destination. The export begins upon ingress,
+            /// unless the sink's writer_identity is not permitted to write to the destination. A sink can export log
+            /// entries only from the resource owning the sink.
             /// </summary>
             public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
             {
@@ -16069,9 +16069,9 @@ namespace Google.Apis.Logging.v2
         }
 
         /// <summary>
-        /// Creates a sink that exports specified log entries to a destination. The export of newly-ingested log entries
-        /// begins immediately, unless the sink's writer_identity is not permitted to write to the destination. A sink
-        /// can export log entries only from the resource owning the sink.
+        /// Creates a sink that exports specified log entries to a destination. The export begins upon ingress, unless
+        /// the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only
+        /// from the resource owning the sink.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
@@ -16085,9 +16085,9 @@ namespace Google.Apis.Logging.v2
         }
 
         /// <summary>
-        /// Creates a sink that exports specified log entries to a destination. The export of newly-ingested log entries
-        /// begins immediately, unless the sink's writer_identity is not permitted to write to the destination. A sink
-        /// can export log entries only from the resource owning the sink.
+        /// Creates a sink that exports specified log entries to a destination. The export begins upon ingress, unless
+        /// the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only
+        /// from the resource owning the sink.
         /// </summary>
         public class CreateRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogSink>
         {
@@ -16870,7 +16870,7 @@ namespace Google.Apis.Logging.v2.Data
         public virtual System.Nullable<bool> UsePartitionedTables { get; set; }
 
         /// <summary>
-        /// Output only. True if new timestamp column based partitioning is in use, false if legacy ingestion-time
+        /// Output only. True if new timestamp column based partitioning is in use, false if legacy ingress-time
         /// partitioning is in use.All new sinks will have this field set true and will use timestamp column based
         /// partitioning. If use_partitioned_tables is false, this value has no meaning and will be false. Legacy sinks
         /// using partitioned tables will have this field set to false.
@@ -18192,7 +18192,7 @@ namespace Google.Apis.Logging.v2.Data
         /// "organizations/1234567890/logs/cloudresourcemanager.googleapis.com%2Factivity".[LOG_ID] must be less than
         /// 512 characters long and can only include the following characters: upper and lower case alphanumeric
         /// characters, forward-slash, underscore, hyphen, and period.For backward compatibility, if log_name begins
-        /// with a forward-slash, such as /projects/..., then the log entry is ingested as usual, but the forward-slash
+        /// with a forward-slash, such as /projects/..., then the log entry is processed as usual, but the forward-slash
         /// is removed. Listing the log entry will not show the leading slash and filtering for a log name with a
         /// leading slash will never return any results.
         /// </summary>
@@ -18313,7 +18313,7 @@ namespace Google.Apis.Logging.v2.Data
         /// fractional seconds might be omitted when the timestamp is displayed.Incoming log entries must have
         /// timestamps that don't exceed the logs retention period
         /// (https://cloud.google.com/logging/quotas#logs_retention_periods) in the past, and that don't exceed 24 hours
-        /// in the future. Log entries outside those time boundaries aren't ingested by Logging.
+        /// in the future. Log entries outside those time boundaries are rejected by Logging.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamp")]
         public virtual string TimestampRaw
@@ -18852,9 +18852,11 @@ namespace Google.Apis.Logging.v2.Data
         /// Required. The export destination: "storage.googleapis.com/[GCS_BUCKET]"
         /// "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
         /// "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]"
-        /// "logging.googleapis.com/projects/[PROJECT_ID]" The sink's writer_identity, set when the sink is created,
-        /// must have permission to write to the destination or else the log entries are not exported. For more
-        /// information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
+        /// "logging.googleapis.com/projects/[PROJECT_ID]"
+        /// "logging.googleapis.com/projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]" The sink's
+        /// writer_identity, set when the sink is created, must have permission to write to the destination or else the
+        /// log entries are not exported. For more information, see Exporting Logs with Sinks
+        /// (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destination")]
         public virtual string Destination { get; set; }
@@ -19618,7 +19620,7 @@ namespace Google.Apis.Logging.v2.Data
     {
         /// <summary>
         /// Optional. If set to true, the _Default sink in newly created projects and folders will created in a disabled
-        /// state. This can be used to automatically disable log ingestion if there is already an aggregated sink
+        /// state. This can be used to automatically disable log storage if there is already an aggregated sink
         /// configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableDefaultSink")]

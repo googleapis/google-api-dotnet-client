@@ -2060,8 +2060,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         public virtual GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict StolenInstrumentVerdict { get; set; }
 
         /// <summary>
-        /// Probability (0-1) of this transaction being fraudulent. Summarizes the combined risk of attack vectors
-        /// below.
+        /// Probability of this transaction being fraudulent. Summarizes the combined risk of attack vectors below.
+        /// Values are from 0.0 (lowest) to 1.0 (highest).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transactionRisk")]
         public virtual System.Nullable<float> TransactionRisk { get; set; }
@@ -2074,7 +2074,8 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     public class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentBehavioralTrustVerdict : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Probability (0-1) of this transaction attempt being executed in a behaviorally trustworthy way.
+        /// Probability of this transaction attempt being executed in a behaviorally trustworthy way. Values are from
+        /// 0.0 (lowest) to 1.0 (highest).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trust")]
         public virtual System.Nullable<float> Trust { get; set; }
@@ -2089,7 +2090,10 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// </summary>
     public class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentCardTestingVerdict : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Probability (0-1) of this transaction attempt being part of a card testing attack.</summary>
+        /// <summary>
+        /// Probability of this transaction attempt being part of a card testing attack. Values are from 0.0 (lowest) to
+        /// 1.0 (highest).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("risk")]
         public virtual System.Nullable<float> Risk { get; set; }
 
@@ -2103,7 +2107,10 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
     /// </summary>
     public class GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessmentStolenInstrumentVerdict : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Probability (0-1) of this transaction being executed with a stolen instrument.</summary>
+        /// <summary>
+        /// Probability of this transaction being executed with a stolen instrument. Values are from 0.0 (lowest) to 1.0
+        /// (highest).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("risk")]
         public virtual System.Nullable<float> Risk { get; set; }
 

@@ -1528,6 +1528,13 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nonCompliantOrgPolicy")]
         public virtual string NonCompliantOrgPolicy { get; set; }
 
+        /// <summary>
+        /// Output only. Immutable. The org-policy-constraint that was incorrectly changed, which resulted in this
+        /// violation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orgPolicyConstraint")]
+        public virtual string OrgPolicyConstraint { get; set; }
+
         /// <summary>Output only. Compliance violation remediation</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remediation")]
         public virtual GoogleCloudAssuredworkloadsV1ViolationRemediation Remediation { get; set; }
@@ -1999,13 +2006,17 @@ namespace Google.Apis.Assuredworkloads.v1.Data
     /// <summary>Permissions granted to the AW Partner SA account for the customer workload</summary>
     public class GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Allow partner to view violation alerts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assuredWorkloadsMonitoring")]
+        public virtual System.Nullable<bool> AssuredWorkloadsMonitoring { get; set; }
+
         /// <summary>Allow the partner to view inspectability logs and monitoring violations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataLogsViewer")]
         public virtual System.Nullable<bool> DataLogsViewer { get; set; }
 
-        /// <summary>Allow partner to monitor folder and remediate violations</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("remediateFolderViolations")]
-        public virtual System.Nullable<bool> RemediateFolderViolations { get; set; }
+        /// <summary>Optional. Allow partner to view access approval logs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccessApprover")]
+        public virtual System.Nullable<bool> ServiceAccessApprover { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

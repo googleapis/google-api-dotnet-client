@@ -3166,9 +3166,42 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
     /// </summary>
     public class AuctionPackage : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. Time the auction package was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. The buyer that created this auction package. Format: `buyers/{buyerAccountId}`
@@ -3199,12 +3232,45 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("subscribedClients")]
         public virtual System.Collections.Generic.IList<string> SubscribedClients { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>
         /// Output only. Time the auction package was last updated. This value is only increased when this auction
         /// package is updated but never when a buyer subscribed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3471,9 +3537,42 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("client")]
         public virtual string Client { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. The time of the deal creation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. Metadata about the creatives of this deal.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creativeRequirements")]
@@ -3506,12 +3605,49 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("estimatedGrossSpend")]
         public virtual Money EstimatedGrossSpend { get; set; }
 
+        private string _flightEndTimeRaw;
+
+        private object _flightEndTime;
+
         /// <summary>
         /// Proposed flight end time of the deal. This will generally be stored in a granularity of a second. A value is
         /// not necessary for Private Auction deals.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flightEndTime")]
-        public virtual object FlightEndTime { get; set; }
+        public virtual string FlightEndTimeRaw
+        {
+            get => _flightEndTimeRaw;
+            set
+            {
+                _flightEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _flightEndTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FlightEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FlightEndTimeDateTimeOffset instead.")]
+        public virtual object FlightEndTime
+        {
+            get => _flightEndTime;
+            set
+            {
+                _flightEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _flightEndTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="FlightEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FlightEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FlightEndTimeRaw);
+            set => FlightEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _flightStartTimeRaw;
+
+        private object _flightStartTime;
 
         /// <summary>
         /// Proposed flight start time of the deal. This will generally be stored in the granularity of one second since
@@ -3519,7 +3655,38 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         /// milliseconds) will be truncated towards the start of time in seconds.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flightStartTime")]
-        public virtual object FlightStartTime { get; set; }
+        public virtual string FlightStartTimeRaw
+        {
+            get => _flightStartTimeRaw;
+            set
+            {
+                _flightStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _flightStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FlightStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FlightStartTimeDateTimeOffset instead.")]
+        public virtual object FlightStartTime
+        {
+            get => _flightStartTime;
+            set
+            {
+                _flightStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _flightStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="FlightStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FlightStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FlightStartTimeRaw);
+            set => FlightStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Immutable. The unique identifier of the deal. Auto-generated by the server when a deal is created. Format:
@@ -3571,9 +3738,42 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targeting")]
         public virtual MarketplaceTargeting Targeting { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>Output only. The time when the deal was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3958,9 +4158,42 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
     /// </summary>
     public class Note : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. When this note was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. The role who created the note.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creatorRole")]
@@ -4232,9 +4465,42 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("termsAndConditions")]
         public virtual string TermsAndConditions { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>Output only. The time when the proposal was last revised.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4436,19 +4702,87 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("estimatedGrossSpend")]
         public virtual Money EstimatedGrossSpend { get; set; }
 
+        private string _flightEndTimeRaw;
+
+        private object _flightEndTime;
+
         /// <summary>
         /// Required. Proposed flight end time of the RFP. A timestamp in RFC3339 UTC "Zulu" format. Note that the
         /// specified value will be truncated to a granularity of one second.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flightEndTime")]
-        public virtual object FlightEndTime { get; set; }
+        public virtual string FlightEndTimeRaw
+        {
+            get => _flightEndTimeRaw;
+            set
+            {
+                _flightEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _flightEndTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FlightEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FlightEndTimeDateTimeOffset instead.")]
+        public virtual object FlightEndTime
+        {
+            get => _flightEndTime;
+            set
+            {
+                _flightEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _flightEndTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="FlightEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FlightEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FlightEndTimeRaw);
+            set => FlightEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _flightStartTimeRaw;
+
+        private object _flightStartTime;
 
         /// <summary>
         /// Required. Proposed flight start time of the RFP. A timestamp in RFC3339 UTC "Zulu" format. Note that the
         /// specified value will be truncated to a granularity of one second.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flightStartTime")]
-        public virtual object FlightStartTime { get; set; }
+        public virtual string FlightStartTimeRaw
+        {
+            get => _flightStartTimeRaw;
+            set
+            {
+                _flightStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _flightStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FlightStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FlightStartTimeDateTimeOffset instead.")]
+        public virtual object FlightStartTime
+        {
+            get => _flightStartTime;
+            set
+            {
+                _flightStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _flightStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="FlightStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FlightStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FlightStartTimeRaw);
+            set => FlightStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Geo criteria IDs to be targeted. Refer to Geo tables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("geoTargeting")]

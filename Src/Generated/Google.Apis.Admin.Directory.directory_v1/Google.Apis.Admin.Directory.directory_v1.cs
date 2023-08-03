@@ -11021,6 +11021,10 @@ namespace Google.Apis.Admin.Directory.directory_v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
         public virtual string DeviceId { get; set; }
 
+        /// <summary>Output only. Device license type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceLicenseType")]
+        public virtual string DeviceLicenseType { get; set; }
+
         /// <summary>Reports of disk space and other info about mounted/connected volumes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskVolumeReports")]
         public virtual System.Collections.Generic.IList<DiskVolumeReportsData> DiskVolumeReports { get; set; }
