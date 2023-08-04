@@ -77,8 +77,14 @@ build_site() {
   sed -i "1s/^/baseUrl: https:\/\/googleapis.dev\/dotnet\/$package\/$version\/\n/" $directory/obj/site/xrefmap.yml
 }
 
-for pkgdir in Src/Generated/Google.*
-do
-  pkg=$(basename $pkgdir)
-  build_site $pkg
-done
+# Allow a single package name to be specified on the command line, for ease of testing.
+if [[ "$1" == "" ]]
+then
+  for pkgdir in Src/Generated/Google.*
+  do
+    pkg=$(basename $pkgdir)
+    build_site $pkg
+  done
+else
+  build_site $1
+fi
