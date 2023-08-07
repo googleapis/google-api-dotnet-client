@@ -149,7 +149,7 @@ then
         if [[ -f $(pwd)/PostGeneration/$name.sh ]]
         then
           echo "Running post-generation step for $name"
-          $(pwd)/PostGeneration/$name.sh
+          $(pwd)/PostGeneration/$name.sh "$CODE_GENERATION_DIR"
         fi
         ;;
     esac
