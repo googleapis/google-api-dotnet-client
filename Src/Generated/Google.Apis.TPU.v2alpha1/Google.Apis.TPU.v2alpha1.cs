@@ -1550,6 +1550,59 @@ namespace Google.Apis.TPU.v2alpha1
                         });
                     }
                 }
+
+                /// <summary>Resets a QueuedResource TPU instance</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Required. The name of the queued resource.</param>
+                public virtual ResetRequest Reset(Google.Apis.TPU.v2alpha1.Data.ResetQueuedResourceRequest body, string name)
+                {
+                    return new ResetRequest(service, body, name);
+                }
+
+                /// <summary>Resets a QueuedResource TPU instance</summary>
+                public class ResetRequest : TPUBaseServiceRequest<Google.Apis.TPU.v2alpha1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Reset request.</summary>
+                    public ResetRequest(Google.Apis.Services.IClientService service, Google.Apis.TPU.v2alpha1.Data.ResetQueuedResourceRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The name of the queued resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.TPU.v2alpha1.Data.ResetQueuedResourceRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "reset";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2alpha1/{+name}:reset";
+
+                    /// <summary>Initializes Reset parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/queuedResources/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the RuntimeVersions resource.</summary>
@@ -2361,6 +2414,31 @@ namespace Google.Apis.TPU.v2alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Parameters to specify for multi-node QueuedResource requests. This field must be populated in case of multi-node
+    /// requests instead of node_id. It's an error to specify both node_id and multi_node_params.
+    /// </summary>
+    public class MultiNodeParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Number of nodes with this spec. The system will attempt to provison "node_count" nodes as part of
+        /// the request. This needs to be &amp;gt; 1.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
+        public virtual System.Nullable<int> NodeCount { get; set; }
+
+        /// <summary>
+        /// Prefix of node_ids in case of multi-node request Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. If
+        /// node_count = 3 and node_id_prefix = "np", node ids of nodes created will be "np-0", "np-1", "np-2". If this
+        /// field is not provided we use queued_resource_id as the node_id_prefix.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeIdPrefix")]
+        public virtual string NodeIdPrefix { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Network related configurations.</summary>
     public class NetworkConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2573,6 +2651,10 @@ namespace Google.Apis.TPU.v2alpha1.Data
     /// </summary>
     public class NodeSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Fields to specify in case of multi-node request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiNodeParams")]
+        public virtual MultiNodeParams MultiNodeParams { get; set; }
+
         /// <summary>Required. The node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("node")]
         public virtual Node Node { get; set; }
@@ -2935,6 +3017,13 @@ namespace Google.Apis.TPU.v2alpha1.Data
             set => ValidUntilTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for ResetQueuedResource.</summary>
+    public class ResetQueuedResourceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

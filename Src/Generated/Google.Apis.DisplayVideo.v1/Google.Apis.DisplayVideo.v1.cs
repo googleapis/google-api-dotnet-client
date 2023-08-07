@@ -11045,6 +11045,14 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual string Filter { get; set; }
 
             /// <summary>
+            /// The config used in internal debugging and manual testing. Use comma to separate multiple values.
+            /// Examples: To allow entity search to go through tangle `searchUsingTangle` To get only the advertiser Ids
+            /// use `idOnly`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("internalDebuggingConfig", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string InternalDebuggingConfig { get; set; }
+
+            /// <summary>
             /// Field by which to sort the list. Acceptable values are: * `displayName` (default) * `entityStatus` *
             /// `updateTime` The default sorting order is ascending. To specify descending order for a field, a suffix
             /// "desc" should be added to the field name. For example, `displayName desc`.
@@ -11089,6 +11097,14 @@ namespace Google.Apis.DisplayVideo.v1
                 RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                 {
                     Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("internalDebuggingConfig", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "internalDebuggingConfig",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -23598,8 +23614,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual BiddingStrategy BidStrategy { get; set; }
 
         /// <summary>
-        /// Immutable. The billable outcome of the insertion order. Outcome based buying will be deprecated on **August
-        /// 1, 2023**. Read more on our [Announced Deprecations page](/display-video/api/deprecations#features.obb).
+        /// Immutable. The billable outcome of the insertion order. Outcome based buying is deprecated.
+        /// `BILLABLE_OUTCOME_PAY_PER_IMPRESSION` is the only valid value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("billableOutcome")]
         public virtual string BillableOutcome { get; set; }
@@ -25703,8 +25719,8 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The normal response of the operation in case of success. If the original method returns no data on success,
-        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
         /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.

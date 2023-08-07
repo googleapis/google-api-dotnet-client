@@ -3375,6 +3375,36 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resetPasswordFlags")]
         public virtual System.Collections.Generic.IList<string> ResetPasswordFlags { get; set; }
 
+        /// <summary>
+        /// Parameters for the START_LOST_MODE command to put the device into lost mode. See StartLostModeParams. If
+        /// this is set, then it is suggested that type should not be set. In this case, the server automatically sets
+        /// it to START_LOST_MODE. It is also acceptable to explicitly set type to START_LOST_MODE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startLostModeParams")]
+        public virtual StartLostModeParams StartLostModeParams { get; set; }
+
+        /// <summary>
+        /// Output only. Status of the START_LOST_MODE command to put the device into lost mode. See
+        /// StartLostModeStatus.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startLostModeStatus")]
+        public virtual StartLostModeStatus StartLostModeStatus { get; set; }
+
+        /// <summary>
+        /// Parameters for the STOP_LOST_MODE command to take the device out of lost mode. See StopLostModeParams. If
+        /// this is set, then it is suggested that type should not be set. In this case, the server automatically sets
+        /// it to STOP_LOST_MODE. It is also acceptable to explicitly set type to STOP_LOST_MODE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stopLostModeParams")]
+        public virtual StopLostModeParams StopLostModeParams { get; set; }
+
+        /// <summary>
+        /// Output only. Status of the STOP_LOST_MODE command to take the device out of lost mode. See
+        /// StopLostModeStatus.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stopLostModeStatus")]
+        public virtual StopLostModeStatus StopLostModeStatus { get; set; }
+
         /// <summary>The type of the command.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -4947,6 +4977,21 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The device location containing the latitude and longitude.</summary>
+    public class Location : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The latitude position of the location</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latitude")]
+        public virtual System.Nullable<double> Latitude { get; set; }
+
+        /// <summary>The longitude position of the location</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("longitude")]
+        public virtual System.Nullable<double> Longitude { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The usageLog buffer on the device has reached 90% of its capacity, therefore older events may be dropped.
     /// Intentionally empty.
@@ -4966,6 +5011,30 @@ namespace Google.Apis.AndroidManagement.v1.Data
 
     /// <summary>usageLog policy has been disabled. Intentionally empty.</summary>
     public class LoggingStoppedEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A lost mode event containing the device location and battery level as a percentage.</summary>
+    public class LostModeLocationEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The battery level as a number between 0 and 100 inclusive</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("batteryLevel")]
+        public virtual System.Nullable<int> BatteryLevel { get; set; }
+
+        /// <summary>The device location</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual Location Location { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An event indicating an outgoing phone call has been made when a device is in lost mode. Intentionally empty.
+    /// </summary>
+    public class LostModeOutgoingPhoneCallEvent : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6209,12 +6278,6 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("apiLevel")]
         public virtual System.Nullable<int> ApiLevel { get; set; }
 
-        /// <summary>
-        /// The email address of the authenticated user (only present for Google Account provisioning method).
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("authenticatedUserEmail")]
-        public virtual string AuthenticatedUserEmail { get; set; }
-
         /// <summary>Brand of the device. For example, Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brand")]
         public virtual string Brand { get; set; }
@@ -6510,6 +6573,48 @@ namespace Google.Apis.AndroidManagement.v1.Data
     }
 
     /// <summary>
+    /// Parameters associated with the START_LOST_MODE command to put the device into lost mode. At least one of the
+    /// parameters, not including the organization name, must be provided in order for the device to be put into lost
+    /// mode.
+    /// </summary>
+    public class StartLostModeParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The email address displayed to the user when the device is in lost mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lostEmailAddress")]
+        public virtual string LostEmailAddress { get; set; }
+
+        /// <summary>The message displayed to the user when the device is in lost mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lostMessage")]
+        public virtual UserFacingMessage LostMessage { get; set; }
+
+        /// <summary>The organization name displayed to the user when the device is in lost mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lostOrganization")]
+        public virtual UserFacingMessage LostOrganization { get; set; }
+
+        /// <summary>The phone number displayed to the user when the device is in lost mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lostPhoneNumber")]
+        public virtual UserFacingMessage LostPhoneNumber { get; set; }
+
+        /// <summary>The street address displayed to the user when the device is in lost mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lostStreetAddress")]
+        public virtual UserFacingMessage LostStreetAddress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Status of the START_LOST_MODE command to put the device into lost mode.</summary>
+    public class StartLostModeStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status. See StartLostModeStatus.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// The Status type defines a logical error model that is suitable for different programming environments, including
     /// REST APIs and RPC APIs. It is used by gRPC (https://github.com/grpc). Each Status message contains three pieces
     /// of data: error code, error message, and error details.You can find out more about this error model and how to
@@ -6593,6 +6698,35 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Whether system properties reporting is enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("systemPropertiesEnabled")]
         public virtual System.Nullable<bool> SystemPropertiesEnabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Parameters associated with the STOP_LOST_MODE command to take the device out of lost mode.</summary>
+    public class StopLostModeParams : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Status of the STOP_LOST_MODE command to take the device out of lost mode.</summary>
+    public class StopLostModeStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status. See StopLostModeStatus.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A lost mode event indicating the user has attempted to stop lost mode.</summary>
+    public class StopLostModeUserAttemptEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status of the attempt to stop lost mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6912,6 +7046,14 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("loggingStoppedEvent")]
         public virtual LoggingStoppedEvent LoggingStoppedEvent { get; set; }
 
+        /// <summary>A lost mode location update when a device in lost mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lostModeLocationEvent")]
+        public virtual LostModeLocationEvent LostModeLocationEvent { get; set; }
+
+        /// <summary>An outgoing phone call has been made when a device in lost mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lostModeOutgoingPhoneCallEvent")]
+        public virtual LostModeOutgoingPhoneCallEvent LostModeOutgoingPhoneCallEvent { get; set; }
+
         /// <summary>Removable media was mounted. Part of SECURITY_LOGS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mediaMountEvent")]
         public virtual MediaMountEvent MediaMountEvent { get; set; }
@@ -6933,6 +7075,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remoteLockEvent")]
         public virtual RemoteLockEvent RemoteLockEvent { get; set; }
+
+        /// <summary>An attempt to take a device out of lost mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stopLostModeUserAttemptEvent")]
+        public virtual StopLostModeUserAttemptEvent StopLostModeUserAttemptEvent { get; set; }
 
         /// <summary>
         /// The work profile or company-owned device failed to wipe when requested. This could be user initiated or

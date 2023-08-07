@@ -3601,6 +3601,13 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>There was an issue with the assets in this test.</summary>
+    public class AssetIssue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A suggestion to use deep links for a Robo run.</summary>
     public class AvailableDeepLinks : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3919,7 +3926,7 @@ namespace Google.Apis.ToolResults.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Failed to install the APK.</summary>
+    /// <summary>Failed to install the App.</summary>
     public class FailedToInstall : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>

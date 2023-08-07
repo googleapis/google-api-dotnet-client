@@ -767,11 +767,11 @@ namespace Google.Apis.HangoutsChat.v1
             /// (for human membership) or `chat.memberships.app` (for app membership) scope. To specify the member to
             /// add, set the `membership.member.name` in the `CreateMembershipRequest`: - To add the calling app to a
             /// space or a direct message between two human users, use `users/app`. Unable to add other apps to the
-            /// space. - To add a human user, use `users/{user}`, where `{user}` is either the `{person_id}` for the
-            /// [person](https://developers.google.com/people/api/rest/v1/people) from the People API, or the `id` for
-            /// the [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users) in the Directory
-            /// API. For example, if the People API `Person` `resourceName` is `people/123456789`, you can add the user
-            /// to the space by setting the `membership.member.name` to `users/123456789`.
+            /// space. - To add a human user, use `users/{user}`, where `{user}` can be the email address for the user.
+            /// For users in the same Workspace organization `{user}` can also be the `{person_id}` for the person from
+            /// the People API, or the `id` for the user in the Directory API. For example, if the People API Person
+            /// `resourceName` for `user@example.com` is `people/123456789`, you can add the user to the space by
+            /// setting the `membership.member.name` to `users/user@example.com` or `users/123456789`.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -793,11 +793,11 @@ namespace Google.Apis.HangoutsChat.v1
             /// (for human membership) or `chat.memberships.app` (for app membership) scope. To specify the member to
             /// add, set the `membership.member.name` in the `CreateMembershipRequest`: - To add the calling app to a
             /// space or a direct message between two human users, use `users/app`. Unable to add other apps to the
-            /// space. - To add a human user, use `users/{user}`, where `{user}` is either the `{person_id}` for the
-            /// [person](https://developers.google.com/people/api/rest/v1/people) from the People API, or the `id` for
-            /// the [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users) in the Directory
-            /// API. For example, if the People API `Person` `resourceName` is `people/123456789`, you can add the user
-            /// to the space by setting the `membership.member.name` to `users/123456789`.
+            /// space. - To add a human user, use `users/{user}`, where `{user}` can be the email address for the user.
+            /// For users in the same Workspace organization `{user}` can also be the `{person_id}` for the person from
+            /// the People API, or the `id` for the user in the Directory API. For example, if the People API Person
+            /// `resourceName` for `user@example.com` is `people/123456789`, you can add the user to the space by
+            /// setting the `membership.member.name` to `users/user@example.com` or `users/123456789`.
             /// </summary>
             public class CreateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Membership>
             {
@@ -854,9 +854,11 @@ namespace Google.Apis.HangoutsChat.v1
             /// <param name="name">
             /// Required. Resource name of the membership to delete. Chat apps can delete human users' or their own
             /// memberships. Chat apps can't delete other apps' memberships. When deleting a human membership, requires
-            /// the `chat.memberships` scope and `spaces/{space}/members/{member}` format. When deleting an app
-            /// membership, requires the `chat.memberships.app` scope and `spaces/{space}/members/app` format. Format:
-            /// `spaces/{space}/members/{member}` or `spaces/{space}/members/app`
+            /// the `chat.memberships` scope and `spaces/{space}/members/{member}` format. You can use the email as an
+            /// alias for `{member}`. For example, `spaces/{space}/members/example@gmail.com` where `example@gmail.com`
+            /// is the email of the Google Chat user. When deleting an app membership, requires the
+            /// `chat.memberships.app` scope and `spaces/{space}/members/app` format. Format:
+            /// `spaces/{space}/members/{member}` or `spaces/{space}/members/app`.
             /// </param>
             public virtual DeleteRequest Delete(string name)
             {
@@ -881,9 +883,11 @@ namespace Google.Apis.HangoutsChat.v1
                 /// <summary>
                 /// Required. Resource name of the membership to delete. Chat apps can delete human users' or their own
                 /// memberships. Chat apps can't delete other apps' memberships. When deleting a human membership,
-                /// requires the `chat.memberships` scope and `spaces/{space}/members/{member}` format. When deleting an
-                /// app membership, requires the `chat.memberships.app` scope and `spaces/{space}/members/app` format.
-                /// Format: `spaces/{space}/members/{member}` or `spaces/{space}/members/app`
+                /// requires the `chat.memberships` scope and `spaces/{space}/members/{member}` format. You can use the
+                /// email as an alias for `{member}`. For example, `spaces/{space}/members/example@gmail.com` where
+                /// `example@gmail.com` is the email of the Google Chat user. When deleting an app membership, requires
+                /// the `chat.memberships.app` scope and `spaces/{space}/members/app` format. Format:
+                /// `spaces/{space}/members/{member}` or `spaces/{space}/members/app`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -924,7 +928,10 @@ namespace Google.Apis.HangoutsChat.v1
             /// <param name="name">
             /// Required. Resource name of the membership to retrieve. To get the app's own membership, you can
             /// optionally use `spaces/{space}/members/app`. Format: `spaces/{space}/members/{member}` or
-            /// `spaces/{space}/members/app`
+            /// `spaces/{space}/members/app` When [authenticated as a
+            /// user](https://developers.google.com/chat/api/guides/auth/users), you can use the user's email as an
+            /// alias for `{member}`. For example, `spaces/{space}/members/example@gmail.com` where `example@gmail.com`
+            /// is the email of the Google Chat user.
             /// </param>
             public virtual GetRequest Get(string name)
             {
@@ -952,7 +959,10 @@ namespace Google.Apis.HangoutsChat.v1
                 /// <summary>
                 /// Required. Resource name of the membership to retrieve. To get the app's own membership, you can
                 /// optionally use `spaces/{space}/members/app`. Format: `spaces/{space}/members/{member}` or
-                /// `spaces/{space}/members/app`
+                /// `spaces/{space}/members/app` When [authenticated as a
+                /// user](https://developers.google.com/chat/api/guides/auth/users), you can use the user's email as an
+                /// alias for `{member}`. For example, `spaces/{space}/members/example@gmail.com` where
+                /// `example@gmail.com` is the email of the Google Chat user.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -1686,7 +1696,8 @@ namespace Google.Apis.HangoutsChat.v1
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
             /// authentication](https://developers.google.com/chat/api/guides/auth/users). [User
             /// authentication](https://developers.google.com/chat/api/guides/auth/users) requires the `chat.messages`
-            /// authorization scope.
+            /// authorization scope. Requests authenticated with service accounts can only delete messages created by
+            /// the calling Chat app.
             /// </summary>
             /// <param name="name">
             /// Required. Resource name of the message that you want to delete, in the form `spaces/*/messages/*`
@@ -1704,7 +1715,8 @@ namespace Google.Apis.HangoutsChat.v1
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
             /// authentication](https://developers.google.com/chat/api/guides/auth/users). [User
             /// authentication](https://developers.google.com/chat/api/guides/auth/users) requires the `chat.messages`
-            /// authorization scope.
+            /// authorization scope. Requests authenticated with service accounts can only delete messages created by
+            /// the calling Chat app.
             /// </summary>
             public class DeleteRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Empty>
             {
@@ -1842,8 +1854,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// Lists messages in a space that the caller is a member of, including messages from blocked members and
             /// spaces. For an example, see [List messages](/chat/api/guides/v1/messages/list). Requires [user
             /// authentication](https://developers.google.com/chat/api/guides/auth/users) and the `chat.messages` or
-            /// `chat.messages.readonly` authorization scope. This method is only supported in spaces that don't allow
-            /// users from outside the Workspace organization to join.
+            /// `chat.messages.readonly` authorization scope.
             /// </summary>
             /// <param name="parent">
             /// Required. The resource name of the space to list messages from. Format: `spaces/{space}`
@@ -1857,8 +1868,7 @@ namespace Google.Apis.HangoutsChat.v1
             /// Lists messages in a space that the caller is a member of, including messages from blocked members and
             /// spaces. For an example, see [List messages](/chat/api/guides/v1/messages/list). Requires [user
             /// authentication](https://developers.google.com/chat/api/guides/auth/users) and the `chat.messages` or
-            /// `chat.messages.readonly` authorization scope. This method is only supported in spaces that don't allow
-            /// users from outside the Workspace organization to join.
+            /// `chat.messages.readonly` authorization scope.
             /// </summary>
             public class ListRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.ListMessagesResponse>
             {
@@ -1999,7 +2009,8 @@ namespace Google.Apis.HangoutsChat.v1
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
             /// authentication](https://developers.google.com/chat/api/guides/auth/users). [User
             /// authentication](https://developers.google.com/chat/api/guides/auth/users) requires the `chat.messages`
-            /// authorization scope.
+            /// authorization scope. Requests authenticated with service accounts can only update messages created by
+            /// the calling Chat app.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -2020,7 +2031,8 @@ namespace Google.Apis.HangoutsChat.v1
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
             /// authentication](https://developers.google.com/chat/api/guides/auth/users). [User
             /// authentication](https://developers.google.com/chat/api/guides/auth/users) requires the `chat.messages`
-            /// authorization scope.
+            /// authorization scope. Requests authenticated with service accounts can only update messages created by
+            /// the calling Chat app.
             /// </summary>
             public class PatchRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Message>
             {
@@ -2112,7 +2124,8 @@ namespace Google.Apis.HangoutsChat.v1
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
             /// authentication](https://developers.google.com/chat/api/guides/auth/users). [User
             /// authentication](https://developers.google.com/chat/api/guides/auth/users) requires the `chat.messages`
-            /// authorization scope.
+            /// authorization scope. Requests authenticated with service accounts can only update messages created by
+            /// the calling Chat app.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
@@ -2133,7 +2146,8 @@ namespace Google.Apis.HangoutsChat.v1
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
             /// authentication](https://developers.google.com/chat/api/guides/auth/users). [User
             /// authentication](https://developers.google.com/chat/api/guides/auth/users) requires the `chat.messages`
-            /// authorization scope.
+            /// authorization scope. Requests authenticated with service accounts can only update messages created by
+            /// the calling Chat app.
             /// </summary>
             public class UpdateRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Message>
             {
@@ -2218,8 +2232,8 @@ namespace Google.Apis.HangoutsChat.v1
         }
 
         /// <summary>
-        /// Creates a named space. Spaces grouped by topics or that have guest access aren't supported. For an example,
-        /// see [Create a space](https://developers.google.com/chat/api/guides/v1/spaces/create). Requires [user
+        /// Creates a named space. Spaces grouped by topics aren't supported. For an example, see [Create a
+        /// space](https://developers.google.com/chat/api/guides/v1/spaces/create). Requires [user
         /// authentication](https://developers.google.com/chat/api/guides/auth/users) and the `chat.spaces.create` or
         /// `chat.spaces` scope.
         /// </summary>
@@ -2230,8 +2244,8 @@ namespace Google.Apis.HangoutsChat.v1
         }
 
         /// <summary>
-        /// Creates a named space. Spaces grouped by topics or that have guest access aren't supported. For an example,
-        /// see [Create a space](https://developers.google.com/chat/api/guides/v1/spaces/create). Requires [user
+        /// Creates a named space. Spaces grouped by topics aren't supported. For an example, see [Create a
+        /// space](https://developers.google.com/chat/api/guides/v1/spaces/create). Requires [user
         /// authentication](https://developers.google.com/chat/api/guides/auth/users) and the `chat.spaces.create` or
         /// `chat.spaces` scope.
         /// </summary>
@@ -2380,7 +2394,10 @@ namespace Google.Apis.HangoutsChat.v1
             /// from the People API, or the `id` for the
             /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users) in the Directory API.
             /// For example, if the People API `Person.resourceName` is `people/123456789`, you can find a direct
-            /// message with that person by using `users/123456789` as the `name`.
+            /// message with that person by using `users/123456789` as the `name`. When [authenticated as a
+            /// user](https://developers.google.com/chat/api/guides/auth/users), you can use the email as an alias for
+            /// `{user}`. For example, `users/example@gmail.com` where `example@gmail.com` is the email of the Google
+            /// Chat user.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Name { get; set; }
@@ -2669,17 +2686,17 @@ namespace Google.Apis.HangoutsChat.v1
         /// shouldn't be specified as a membership in the request. For an example, see [Set up a
         /// space](https://developers.google.com/chat/api/guides/v1/spaces/set-up). To specify the human members to add,
         /// add memberships with the appropriate `member.name` in the `SetUpSpaceRequest`. To add a human user, use
-        /// `users/{user}`, where `{user}` is either the `{person_id}` for the
-        /// [person](https://developers.google.com/people/api/rest/v1/people) from the People API, or the `id` for the
-        /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users) in the Admin SDK Directory
-        /// API. For example, if the People API `Person` `resourceName` is `people/123456789`, you can add the user to
-        /// the space by including a membership with `users/123456789` as the `member.name`. For a space or group chat,
-        /// if the caller blocks or is blocked by some members, then those members aren't added to the created space. To
-        /// create a direct message (DM) between the calling user and another human user, specify exactly one membership
-        /// to represent the human user. If one user blocks the other, the request fails and the DM isn't created. To
-        /// create a DM between the calling user and the calling app, set `Space.singleUserBotDm` to `true` and don't
-        /// specify any memberships. You can only use this method to set up a DM with the calling app. To add the
-        /// calling app as a member of a space or an existing DM between two human users, see [create a
+        /// `users/{user}`, where `{user}` can be the email address for the user. For users in the same Workspace
+        /// organization `{user}` can also be the `{person_id}` for the person from the People API, or the `id` for the
+        /// user in the Directory API. For example, if the People API Person `resourceName` for `user@example.com` is
+        /// `people/123456789`, you can add the user to the space by setting the `membership.member.name` to
+        /// `users/user@example.com` or `users/123456789`. For a space or group chat, if the caller blocks or is blocked
+        /// by some members, then those members aren't added to the created space. To create a direct message (DM)
+        /// between the calling user and another human user, specify exactly one membership to represent the human user.
+        /// If one user blocks the other, the request fails and the DM isn't created. To create a DM between the calling
+        /// user and the calling app, set `Space.singleUserBotDm` to `true` and don't specify any memberships. You can
+        /// only use this method to set up a DM with the calling app. To add the calling app as a member of a space or
+        /// an existing DM between two human users, see [create a
         /// membership](https://developers.google.com/chat/api/guides/v1/members/create). If a DM already exists between
         /// two users, even when one user blocks the other at the time a request is made, then the existing DM is
         /// returned. Spaces with threaded replies or guest access aren't supported. Requires [user
@@ -2697,17 +2714,17 @@ namespace Google.Apis.HangoutsChat.v1
         /// shouldn't be specified as a membership in the request. For an example, see [Set up a
         /// space](https://developers.google.com/chat/api/guides/v1/spaces/set-up). To specify the human members to add,
         /// add memberships with the appropriate `member.name` in the `SetUpSpaceRequest`. To add a human user, use
-        /// `users/{user}`, where `{user}` is either the `{person_id}` for the
-        /// [person](https://developers.google.com/people/api/rest/v1/people) from the People API, or the `id` for the
-        /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users) in the Admin SDK Directory
-        /// API. For example, if the People API `Person` `resourceName` is `people/123456789`, you can add the user to
-        /// the space by including a membership with `users/123456789` as the `member.name`. For a space or group chat,
-        /// if the caller blocks or is blocked by some members, then those members aren't added to the created space. To
-        /// create a direct message (DM) between the calling user and another human user, specify exactly one membership
-        /// to represent the human user. If one user blocks the other, the request fails and the DM isn't created. To
-        /// create a DM between the calling user and the calling app, set `Space.singleUserBotDm` to `true` and don't
-        /// specify any memberships. You can only use this method to set up a DM with the calling app. To add the
-        /// calling app as a member of a space or an existing DM between two human users, see [create a
+        /// `users/{user}`, where `{user}` can be the email address for the user. For users in the same Workspace
+        /// organization `{user}` can also be the `{person_id}` for the person from the People API, or the `id` for the
+        /// user in the Directory API. For example, if the People API Person `resourceName` for `user@example.com` is
+        /// `people/123456789`, you can add the user to the space by setting the `membership.member.name` to
+        /// `users/user@example.com` or `users/123456789`. For a space or group chat, if the caller blocks or is blocked
+        /// by some members, then those members aren't added to the created space. To create a direct message (DM)
+        /// between the calling user and another human user, specify exactly one membership to represent the human user.
+        /// If one user blocks the other, the request fails and the DM isn't created. To create a DM between the calling
+        /// user and the calling app, set `Space.singleUserBotDm` to `true` and don't specify any memberships. You can
+        /// only use this method to set up a DM with the calling app. To add the calling app as a member of a space or
+        /// an existing DM between two human users, see [create a
         /// membership](https://developers.google.com/chat/api/guides/v1/members/create). If a DM already exists between
         /// two users, even when one user blocks the other at the time a request is made, then the existing DM is
         /// returned. Spaces with threaded replies or guest access aren't supported. Requires [user
@@ -3566,8 +3583,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// A text, icon, or text and icon button that users can click. To make an image a clickable button, specify an
-    /// `Image` (not an `ImageComponent`) and set an `onClick` action.
+    /// A text, icon, or text and icon button that users can click. For an example in Google Chat apps, see [Button
+    /// list](https://developers.google.com/chat/ui/widgets/button-list). To make an image a clickable button, specify
+    /// an `Image` (not an `ImageComponent`) and set an `onClick` action.
     /// </summary>
     public class GoogleAppsCardV1Button : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3619,7 +3637,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A list of buttons layed out horizontally.</summary>
+    /// <summary>
+    /// A list of buttons layed out horizontally. For an example in Google Chat apps, see [Button
+    /// list](https://developers.google.com/chat/ui/widgets/button-list).
+    /// </summary>
     public class GoogleAppsCardV1ButtonList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>An array of buttons.</summary>
@@ -3637,7 +3658,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// text message. - As a [dialog](https://developers.google.com/chat/how-tos/dialogs). The following example JSON
     /// creates a "contact card" that features: - A header with the contact's name, job title, and avatar picture. - A
     /// section with the contact information, including formatted text. - Buttons that users can click to share the
-    /// contact, or see more or less information. ![Example contact
+    /// contact, or see more or less information. For more examples, see [Design dynamic, interactive, and consistent
+    /// UIs with cards](https://developers.google.com/chat/ui). ![Example contact
     /// card](https://developers.google.com/chat/images/card_api_reference.png) ``` { "cardsV2": [ { "cardId":
     /// "unique-card-id", "card": { "header": { "title": "Sasha", "subtitle": "Software Engineer", "imageUrl":
     /// "https://developers.google.com/chat/images/quickstart-app-avatar.png", "imageType": "CIRCLE", "imageAltText":
@@ -3705,7 +3727,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// Contains a collection of widgets. Each section has its own, optional header. Sections are visually separated
-        /// by a line divider.
+        /// by a line divider. For an example in Google Chat apps, see [Card
+        /// section](https://developers.google.com/chat/ui/widgets/card-section).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sections")]
         public virtual System.Collections.Generic.IList<GoogleAppsCardV1Section> Sections { get; set; }
@@ -3733,9 +3756,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// A persistent (sticky) footer that that appears at the bottom of the card. Setting `fixedFooter` without
-    /// specifying a `primaryButton` or a `secondaryButton` causes an error. Supported by Google Workspace Add-ons and
-    /// Chat apps. For Chat apps, you can use fixed footers in
+    /// A persistent (sticky) footer that that appears at the bottom of the card. For an example in Google Chat apps,
+    /// see [Card footer](https://developers.google.com/chat/ui/widgets/card-fixed-footer). Setting `fixedFooter`
+    /// without specifying a `primaryButton` or a `secondaryButton` causes an error. Supported by Google Workspace
+    /// Add-ons and Chat apps. For Chat apps, you can use fixed footers in
     /// [dialogs](https://developers.google.com/chat/how-tos/dialogs), but not [card
     /// messages](https://developers.google.com/chat/api/guides/message-formats/cards).
     /// </summary>
@@ -3758,7 +3782,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents a card header.</summary>
+    /// <summary>
+    /// Represents a card header. For an example in Google Chat apps, see [Card
+    /// header](https://developers.google.com/chat/ui/widgets/card-header).
+    /// </summary>
     public class GoogleAppsCardV1CardHeader : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The alternative text of this image that's used for accessibility.</summary>
@@ -3815,15 +3842,16 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// The `Columns` widget displays up to 2 columns in a card message or dialog. You can add widgets to each column;
-    /// the widgets appear in the order that they are specified. The height of each column is determined by the taller
-    /// column. For example, if the first column is taller than the second column, both columns have the height of the
-    /// first column. Because each column can contain a different number of widgets, you can't define rows or align
-    /// widgets between the columns. Columns are displayed side-by-side. You can customize the width of each column
-    /// using the `HorizontalSizeStyle` field. If the user's screen width is too narrow, the second column wraps below
-    /// the first: * On web, the second column wraps if the screen width is less than or equal to 480 pixels. * On iOS
-    /// devices, the second column wraps if the screen width is less than or equal to 300 pt. * On Android devices, the
-    /// second column wraps if the screen width is less than or equal to 320 dp. To include more than 2 columns, or to
-    /// use rows, use the `Grid` widget. Supported by Chat apps, but not Google Workspace Add-ons.
+    /// the widgets appear in the order that they are specified. For an example in Google Chat apps, see
+    /// [Columns](https://developers.google.com/chat/ui/widgets/columns). The height of each column is determined by the
+    /// taller column. For example, if the first column is taller than the second column, both columns have the height
+    /// of the first column. Because each column can contain a different number of widgets, you can't define rows or
+    /// align widgets between the columns. Columns are displayed side-by-side. You can customize the width of each
+    /// column using the `HorizontalSizeStyle` field. If the user's screen width is too narrow, the second column wraps
+    /// below the first: * On web, the second column wraps if the screen width is less than or equal to 480 pixels. * On
+    /// iOS devices, the second column wraps if the screen width is less than or equal to 300 pt. * On Android devices,
+    /// the second column wraps if the screen width is less than or equal to 320 dp. To include more than 2 columns, or
+    /// to use rows, use the `Grid` widget. Supported by Chat apps, but not Google Workspace Add-ons.
     /// </summary>
     public class GoogleAppsCardV1Columns : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3836,9 +3864,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Lets users input a date, a time, or both a date and a time. Users can input text or use the picker to select
-    /// dates and times. If users input an invalid date or time, the picker shows an error that prompts users to input
-    /// the information correctly.
+    /// Lets users input a date, a time, or both a date and a time. For an example in Google Chat apps, see [Date time
+    /// picker](https://developers.google.com/chat/ui/widgets/date-time-picker). Users can input text or use the picker
+    /// to select dates and times. If users input an invalid date or time, the picker shows an error that prompts users
+    /// to input the information correctly.
     /// </summary>
     public class GoogleAppsCardV1DateTimePicker : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3851,8 +3880,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// The name by which the `DateTimePicker` is identified in a form input event. For details about working with
-        /// form inputs, see [Receive form
-        /// data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
+        /// form inputs, see [Receive form data](https://developers.google.com/chat/ui/read-form-data).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3889,7 +3917,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// A widget that displays text with optional decorations such as a label above or below the text, an icon in front
-    /// of the text, a selection widget, or a button after the text.
+    /// of the text, a selection widget, or a button after the text. For an example in Google Chat apps, see [Decorated
+    /// text](https://developers.google.com/chat/ui/widgets/decorated-text).
     /// </summary>
     public class GoogleAppsCardV1DecoratedText : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3928,8 +3957,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>
         /// Required. The primary text. Supports simple formatting. For more information about formatting text, see
         /// [Formatting text in Google Chat
-        /// apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting) and
-        /// [Formatting text in Google Workspace
+        /// apps](https://developers.google.com/chat/api/guides/message-formats/cards#card-formatting) and [Formatting
+        /// text in Google Workspace
         /// Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
@@ -3951,8 +3980,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Displays a divider between widgets as a horizontal line. For example, the following JSON creates a divider: ```
-    /// "divider": {} ```
+    /// Displays a divider between widgets as a horizontal line. For an example in Google Chat apps, see
+    /// [Divider](https://developers.google.com/chat/ui/widgets/divider). For example, the following JSON creates a
+    /// divider: ``` "divider": {} ```
     /// </summary>
     public class GoogleAppsCardV1Divider : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3961,11 +3991,12 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Displays a grid with a collection of items. Items can only include text or images. A grid supports any number of
-    /// columns and items. The number of rows is determined by items divided by columns. A grid with 10 items and 2
-    /// columns has 5 rows. A grid with 11 items and 2 columns has 6 rows. For responsive columns, or to include more
-    /// than text or images, use `Columns`. For example, the following JSON creates a 2 column grid with a single item:
-    /// ``` "grid": { "title": "A fine collection of items", "columnCount": 2, "borderStyle": { "type": "STROKE",
+    /// Displays a grid with a collection of items. Items can only include text or images. For responsive columns, or to
+    /// include more than text or images, use `Columns`. For an example in Google Chat apps, see
+    /// [Grid](https://developers.google.com/chat/ui/widgets/grid). A grid supports any number of columns and items. The
+    /// number of rows is determined by items divided by columns. A grid with 10 items and 2 columns has 5 rows. A grid
+    /// with 11 items and 2 columns has 6 rows. For example, the following JSON creates a 2 column grid with a single
+    /// item: ``` "grid": { "title": "A fine collection of items", "columnCount": 2, "borderStyle": { "type": "STROKE",
     /// "cornerRadius": 4 }, "items": [ { "image": { "imageUri": "https://www.example.com/image.png", "cropStyle": {
     /// "type": "SQUARE" }, "borderStyle": { "type": "STROKE" } }, "title": "An item", "textAlignment": "CENTER" } ],
     /// "onClick": { "openLink": { "url": "https://www.example.com" } } } ```
@@ -4035,7 +4066,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// An icon displayed in a widget on a card. Supports
+    /// An icon displayed in a widget on a card. For an example in Google Chat apps, see
+    /// [Icon](https://developers.google.com/chat/ui/widgets/icon). Supports
     /// [built-in](https://developers.google.com/chat/api/guides/message-formats/cards#builtinicons) and
     /// [custom](https://developers.google.com/chat/api/guides/message-formats/cards#customicons) icons.
     /// </summary>
@@ -4079,7 +4111,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An image that is specified by a URL and can have an `onClick` action.</summary>
+    /// <summary>
+    /// An image that is specified by a URL and can have an `onClick` action. For an example, see
+    /// [Image](https://developers.google.com/chat/ui/widgets/image).
+    /// </summary>
     public class GoogleAppsCardV1Image : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The alternative text of this image that's used for accessibility.</summary>
@@ -4241,8 +4276,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>
         /// Text that appears at the top of a section. Supports simple HTML formatted text. For more information about
         /// formatting text, see [Formatting text in Google Chat
-        /// apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting) and
-        /// [Formatting text in Google Workspace
+        /// apps](https://developers.google.com/chat/api/guides/message-formats/cards#card-formatting) and [Formatting
+        /// text in Google Workspace
         /// Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
@@ -4267,10 +4302,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// A widget that creates one or more UI items that users can select. For example, a dropdown menu or checkboxes.
-    /// You can use this widget to collect data that can be predicted or enumerated. Chat apps can process the value of
-    /// items that users select or input. For details about working with form inputs, see [Receive form
-    /// data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs). To collect undefined
-    /// or abstract data from users, use the TextInput widget.
+    /// You can use this widget to collect data that can be predicted or enumerated. For an example in Google Chat apps,
+    /// see [Selection input](https://developers.google.com/chat/ui/widgets/selection-input). Chat apps can process the
+    /// value of items that users select or input. For details about working with form inputs, see [Receive form
+    /// data](https://developers.google.com/chat/ui/read-form-data). To collect undefined or abstract data from users,
+    /// use the TextInput widget.
     /// </summary>
     public class GoogleAppsCardV1SelectionInput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4314,8 +4350,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// The name that identifies the selection input in a form input event. For details about working with form
-        /// inputs, see [Receive form
-        /// data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
+        /// inputs, see [Receive form data](https://developers.google.com/chat/ui/read-form-data).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4323,7 +4358,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>
         /// If specified, the form is submitted when the selection changes. If not specified, you must specify a
         /// separate button that submits the form. For details about working with form inputs, see [Receive form
-        /// data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
+        /// data](https://developers.google.com/chat/ui/read-form-data).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onChangeAction")]
         public virtual GoogleAppsCardV1Action OnChangeAction { get; set; }
@@ -4380,8 +4415,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// The value associated with this item. The client should use this as a form input value. For details about
-        /// working with form inputs, see [Receive form
-        /// data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
+        /// working with form inputs, see [Receive form data](https://developers.google.com/chat/ui/read-form-data).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
@@ -4434,8 +4468,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// The name by which the switch widget is identified in a form input event. For details about working with form
-        /// inputs, see [Receive form
-        /// data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
+        /// inputs, see [Receive form data](https://developers.google.com/chat/ui/read-form-data).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4450,8 +4483,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// The value entered by a user, returned as part of a form input event. For details about working with form
-        /// inputs, see [Receive form
-        /// data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
+        /// inputs, see [Receive form data](https://developers.google.com/chat/ui/read-form-data).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
@@ -4461,11 +4493,12 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// A field in which users can enter text. Supports suggestions and on-change actions. Chat apps receive and can
+    /// A field in which users can enter text. Supports suggestions and on-change actions. For an example in Google Chat
+    /// apps, see [Text input](https://developers.google.com/chat/ui/widgets/text-input). Chat apps receive and can
     /// process the value of entered text during form input events. For details about working with form inputs, see
-    /// [Receive form data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs). When you
-    /// need to collect undefined or abstract data from users, use a text input. To collect defined or enumerated data
-    /// from users, use the SelectionInput widget.
+    /// [Receive form data](https://developers.google.com/chat/ui/read-form-data). When you need to collect undefined or
+    /// abstract data from users, use a text input. To collect defined or enumerated data from users, use the
+    /// SelectionInput widget.
     /// </summary>
     public class GoogleAppsCardV1TextInput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4508,8 +4541,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// The name by which the text input is identified in a form input event. For details about working with form
-        /// inputs, see [Receive form
-        /// data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
+        /// inputs, see [Receive form data](https://developers.google.com/chat/ui/read-form-data).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -4531,8 +4563,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// The value entered by a user, returned as part of a form input event. For details about working with form
-        /// inputs, see [Receive form
-        /// data](https://developers.google.com/chat/how-tos/dialogs#receive_form_data_from_dialogs).
+        /// inputs, see [Receive form data](https://developers.google.com/chat/ui/read-form-data).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
@@ -4542,9 +4573,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// A paragraph of text that supports formatting. For more information about formatting text, see [Formatting text
-    /// in Google Chat apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting)
-    /// and [Formatting text in Google Workspace
+    /// A paragraph of text that supports formatting. For an example in Google Chat apps, see [Text
+    /// paragraph](https://developers.google.com/chat/ui/widgets/text-paragraph). For more information about formatting
+    /// text, see [Formatting text in Google Chat
+    /// apps](https://developers.google.com/chat/api/guides/message-formats/cards##card-formatting) and [Formatting text
+    /// in Google Workspace
     /// Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
     /// </summary>
     public class GoogleAppsCardV1TextParagraph : Google.Apis.Requests.IDirectResponseSchema
@@ -4657,8 +4690,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>
         /// Displays a text paragraph. Supports simple HTML formatted text. For more information about formatting text,
         /// see [Formatting text in Google Chat
-        /// apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting) and
-        /// [Formatting text in Google Workspace
+        /// apps](https://developers.google.com/chat/api/guides/message-formats/cards#card-formatting) and [Formatting
+        /// text in Google Workspace
         /// Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting). For example,
         /// the following JSON creates a bolded text: ``` "textParagraph": { "text": " *bold text*" } ```
         /// </summary>
@@ -5414,15 +5447,17 @@ namespace Google.Apis.HangoutsChat.v1.Data
     public class SetUpSpaceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The initial set of in-domain users invited to join the space. The calling user is automatically
-        /// added to the space, and shouldn't be specified as a membership. The set currently allows up to 20
-        /// memberships (in addition to the caller). The `Membership.member` field must contain a user with `name`
-        /// populated and `User.Type.HUMAN`. All other fields are ignored. Optional when setting `Space.spaceType` to
-        /// `SPACE`. Required when setting `Space.spaceType` to `GROUP_CHAT`, along with at least two memberships.
-        /// Required when setting `Space.spaceType` to `DIRECT_MESSAGE` with a human user, along with exactly one
-        /// membership. Must be empty when creating a 1:1 conversation between a human and the calling Chat app (when
-        /// setting `Space.spaceType` to `DIRECT_MESSAGE` and `Space.singleUserBotDm` to `true`). Not supported:
-        /// Inviting guest users, or adding other Chat apps.
+        /// Optional. The Google Chat users to invite to join the space. Omit the calling user, as they are added
+        /// automatically. The set currently allows up to 20 memberships (in addition to the caller). The
+        /// `Membership.member` field must contain a `user` with `name` populated (format: `users/{user}`) and `type`
+        /// set to `User.Type.HUMAN`. You can only add human users when setting up a space (adding Chat apps is only
+        /// supported for direct message setup with the calling app). You can also add members using the user's email as
+        /// an alias for {user}. For example, the `user.name` can be `users/example@gmail.com`." To invite Gmail users
+        /// or users from external Google Workspace domains, user's email must be used for `{user}`. Optional when
+        /// setting `Space.spaceType` to `SPACE`. Required when setting `Space.spaceType` to `GROUP_CHAT`, along with at
+        /// least two memberships. Required when setting `Space.spaceType` to `DIRECT_MESSAGE` with a human user, along
+        /// with exactly one membership. Must be empty when creating a 1:1 conversation between a human and the calling
+        /// Chat app (when setting `Space.spaceType` to `DIRECT_MESSAGE` and `Space.singleUserBotDm` to `true`).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("memberships")]
         public virtual System.Collections.Generic.IList<Membership> Memberships { get; set; }
@@ -5511,6 +5546,15 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Immutable. Whether this space permits any Google Chat user as a member. Input when creating a space in a
+        /// Google Workspace organization. For Google Chat users that use a Google Account, omit this field when
+        /// creating a space (By default, the space permits any Google Chat user). For existing spaces, this field is
+        /// output only.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalUserAllowed")]
+        public virtual System.Nullable<bool> ExternalUserAllowed { get; set; }
 
         /// <summary>Resource name of the space. Format: `spaces/{space}`</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -5740,7 +5784,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A user in Google Chat.</summary>
+    /// <summary>
+    /// A user in Google Chat. When returned as an output from a request, if your Chat app [authenticates as a
+    /// user](https://developers.google.com/chat/api/guides/auth/users), the output for a `User` resource only populates
+    /// the user's `name` and `type`.
+    /// </summary>
     public class User : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The user's display name.</summary>

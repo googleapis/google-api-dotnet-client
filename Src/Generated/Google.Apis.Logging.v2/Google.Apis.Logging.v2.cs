@@ -923,7 +923,7 @@ namespace Google.Apis.Logging.v2
                     /// link:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                     /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                     /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-                    /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+                    /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -945,7 +945,7 @@ namespace Google.Apis.Logging.v2
                         /// link:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                         /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                         /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-                        /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+                        /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -977,10 +977,10 @@ namespace Google.Apis.Logging.v2
                     /// <summary>Lists links.</summary>
                     /// <param name="parent">
                     /// Required. The parent resource whose links are to be
-                    /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/"
-                    /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-                    /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-                    /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+                    /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                    /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                    /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                    /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -999,10 +999,10 @@ namespace Google.Apis.Logging.v2
 
                         /// <summary>
                         /// Required. The parent resource whose links are to be
-                        /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/"
-                        /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-                        /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-                        /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+                        /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                        /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                        /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                        /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -1346,7 +1346,7 @@ namespace Google.Apis.Logging.v2
                         }
                     }
 
-                    /// <summary>Gets a view on a log bucket..</summary>
+                    /// <summary>Gets a view on a log bucket.</summary>
                     /// <param name="name">
                     /// Required. The resource name of the policy:
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
@@ -1357,7 +1357,7 @@ namespace Google.Apis.Logging.v2
                         return new GetRequest(service, name);
                     }
 
-                    /// <summary>Gets a view on a log bucket..</summary>
+                    /// <summary>Gets a view on a log bucket.</summary>
                     public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -2832,8 +2832,9 @@ namespace Google.Apis.Logging.v2
                 /// writer_identity is the same group or service account used by Cloud Logging before the addition of
                 /// writer identities to this API. The sink's destination must be in the same project as the sink
                 /// itself.If this field is set to true, or if the sink is owned by a non-project resource such as an
-                /// organization, then the value of writer_identity will be a unique service account used only for
-                /// exports from the new sink. For more information, see writer_identity in LogSink.
+                /// organization, then the value of writer_identity will be a service agent
+                /// (https://cloud.google.com/iam/docs/service-account-types#service-agents) used by the sinks with the
+                /// same parent. For more information, see writer_identity in LogSink.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
@@ -3136,8 +3137,9 @@ namespace Google.Apis.Logging.v2
                 /// field on the value of writer_identity in the updated sink depends on both the old and new values of
                 /// this field: If the old and new values of this field are both false or both true, then there is no
                 /// change to the sink's writer_identity. If the old value is false and the new value is true, then
-                /// writer_identity is changed to a unique service account. It is an error if the old value is true and
-                /// the new value is set to false or defaulted to false.
+                /// writer_identity is changed to a service agent
+                /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)) owned by Cloud Logging. It
+                /// is an error if the old value is true and the new value is set to false or defaulted to false.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
@@ -3264,8 +3266,9 @@ namespace Google.Apis.Logging.v2
                 /// field on the value of writer_identity in the updated sink depends on both the old and new values of
                 /// this field: If the old and new values of this field are both false or both true, then there is no
                 /// change to the sink's writer_identity. If the old value is false and the new value is true, then
-                /// writer_identity is changed to a unique service account. It is an error if the old value is true and
-                /// the new value is set to false or defaulted to false.
+                /// writer_identity is changed to a service agent
+                /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)) owned by Cloud Logging. It
+                /// is an error if the old value is true and the new value is set to false or defaulted to false.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
@@ -4627,7 +4630,7 @@ namespace Google.Apis.Logging.v2
                     /// link:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                     /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                     /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-                    /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+                    /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -4649,7 +4652,7 @@ namespace Google.Apis.Logging.v2
                         /// link:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                         /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                         /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-                        /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+                        /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -4681,10 +4684,10 @@ namespace Google.Apis.Logging.v2
                     /// <summary>Lists links.</summary>
                     /// <param name="parent">
                     /// Required. The parent resource whose links are to be
-                    /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/"
-                    /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-                    /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-                    /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+                    /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                    /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                    /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                    /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -4703,10 +4706,10 @@ namespace Google.Apis.Logging.v2
 
                         /// <summary>
                         /// Required. The parent resource whose links are to be
-                        /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/"
-                        /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-                        /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-                        /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+                        /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                        /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                        /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                        /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -5050,7 +5053,7 @@ namespace Google.Apis.Logging.v2
                         }
                     }
 
-                    /// <summary>Gets a view on a log bucket..</summary>
+                    /// <summary>Gets a view on a log bucket.</summary>
                     /// <param name="name">
                     /// Required. The resource name of the policy:
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
@@ -5061,7 +5064,7 @@ namespace Google.Apis.Logging.v2
                         return new GetRequest(service, name);
                     }
 
-                    /// <summary>Gets a view on a log bucket..</summary>
+                    /// <summary>Gets a view on a log bucket.</summary>
                     public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -6536,8 +6539,9 @@ namespace Google.Apis.Logging.v2
                 /// writer_identity is the same group or service account used by Cloud Logging before the addition of
                 /// writer identities to this API. The sink's destination must be in the same project as the sink
                 /// itself.If this field is set to true, or if the sink is owned by a non-project resource such as an
-                /// organization, then the value of writer_identity will be a unique service account used only for
-                /// exports from the new sink. For more information, see writer_identity in LogSink.
+                /// organization, then the value of writer_identity will be a service agent
+                /// (https://cloud.google.com/iam/docs/service-account-types#service-agents) used by the sinks with the
+                /// same parent. For more information, see writer_identity in LogSink.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
@@ -6840,8 +6844,9 @@ namespace Google.Apis.Logging.v2
                 /// field on the value of writer_identity in the updated sink depends on both the old and new values of
                 /// this field: If the old and new values of this field are both false or both true, then there is no
                 /// change to the sink's writer_identity. If the old value is false and the new value is true, then
-                /// writer_identity is changed to a unique service account. It is an error if the old value is true and
-                /// the new value is set to false or defaulted to false.
+                /// writer_identity is changed to a service agent
+                /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)) owned by Cloud Logging. It
+                /// is an error if the old value is true and the new value is set to false or defaulted to false.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
@@ -6968,8 +6973,9 @@ namespace Google.Apis.Logging.v2
                 /// field on the value of writer_identity in the updated sink depends on both the old and new values of
                 /// this field: If the old and new values of this field are both false or both true, then there is no
                 /// change to the sink's writer_identity. If the old value is false and the new value is true, then
-                /// writer_identity is changed to a unique service account. It is an error if the old value is true and
-                /// the new value is set to false or defaulted to false.
+                /// writer_identity is changed to a service agent
+                /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)) owned by Cloud Logging. It
+                /// is an error if the old value is true and the new value is set to false or defaulted to false.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
@@ -7477,7 +7483,7 @@ namespace Google.Apis.Logging.v2
                 /// link:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                 /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                 /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-                /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+                /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -7499,7 +7505,7 @@ namespace Google.Apis.Logging.v2
                     /// link:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                     /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                     /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-                    /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+                    /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -7531,10 +7537,10 @@ namespace Google.Apis.Logging.v2
                 /// <summary>Lists links.</summary>
                 /// <param name="parent">
                 /// Required. The parent resource whose links are to be
-                /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/"
-                /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-                /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-                /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+                /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -7553,10 +7559,10 @@ namespace Google.Apis.Logging.v2
 
                     /// <summary>
                     /// Required. The parent resource whose links are to be
-                    /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/"
-                    /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-                    /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-                    /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+                    /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                    /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                    /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                    /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -7769,7 +7775,7 @@ namespace Google.Apis.Logging.v2
                     }
                 }
 
-                /// <summary>Gets a view on a log bucket..</summary>
+                /// <summary>Gets a view on a log bucket.</summary>
                 /// <param name="name">
                 /// Required. The resource name of the policy:
                 /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
@@ -7780,7 +7786,7 @@ namespace Google.Apis.Logging.v2
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets a view on a log bucket..</summary>
+                /// <summary>Gets a view on a log bucket.</summary>
                 public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -9843,7 +9849,7 @@ namespace Google.Apis.Logging.v2
                     /// link:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                     /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                     /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-                    /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+                    /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -9865,7 +9871,7 @@ namespace Google.Apis.Logging.v2
                         /// link:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                         /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                         /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-                        /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+                        /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -9897,10 +9903,10 @@ namespace Google.Apis.Logging.v2
                     /// <summary>Lists links.</summary>
                     /// <param name="parent">
                     /// Required. The parent resource whose links are to be
-                    /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/"
-                    /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-                    /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-                    /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+                    /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                    /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                    /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                    /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -9919,10 +9925,10 @@ namespace Google.Apis.Logging.v2
 
                         /// <summary>
                         /// Required. The parent resource whose links are to be
-                        /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/"
-                        /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-                        /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-                        /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+                        /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                        /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                        /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                        /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -10266,7 +10272,7 @@ namespace Google.Apis.Logging.v2
                         }
                     }
 
-                    /// <summary>Gets a view on a log bucket..</summary>
+                    /// <summary>Gets a view on a log bucket.</summary>
                     /// <param name="name">
                     /// Required. The resource name of the policy:
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
@@ -10277,7 +10283,7 @@ namespace Google.Apis.Logging.v2
                         return new GetRequest(service, name);
                     }
 
-                    /// <summary>Gets a view on a log bucket..</summary>
+                    /// <summary>Gets a view on a log bucket.</summary>
                     public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -11752,8 +11758,9 @@ namespace Google.Apis.Logging.v2
                 /// writer_identity is the same group or service account used by Cloud Logging before the addition of
                 /// writer identities to this API. The sink's destination must be in the same project as the sink
                 /// itself.If this field is set to true, or if the sink is owned by a non-project resource such as an
-                /// organization, then the value of writer_identity will be a unique service account used only for
-                /// exports from the new sink. For more information, see writer_identity in LogSink.
+                /// organization, then the value of writer_identity will be a service agent
+                /// (https://cloud.google.com/iam/docs/service-account-types#service-agents) used by the sinks with the
+                /// same parent. For more information, see writer_identity in LogSink.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
@@ -12056,8 +12063,9 @@ namespace Google.Apis.Logging.v2
                 /// field on the value of writer_identity in the updated sink depends on both the old and new values of
                 /// this field: If the old and new values of this field are both false or both true, then there is no
                 /// change to the sink's writer_identity. If the old value is false and the new value is true, then
-                /// writer_identity is changed to a unique service account. It is an error if the old value is true and
-                /// the new value is set to false or defaulted to false.
+                /// writer_identity is changed to a service agent
+                /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)) owned by Cloud Logging. It
+                /// is an error if the old value is true and the new value is set to false or defaulted to false.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
@@ -12184,8 +12192,9 @@ namespace Google.Apis.Logging.v2
                 /// field on the value of writer_identity in the updated sink depends on both the old and new values of
                 /// this field: If the old and new values of this field are both false or both true, then there is no
                 /// change to the sink's writer_identity. If the old value is false and the new value is true, then
-                /// writer_identity is changed to a unique service account. It is an error if the old value is true and
-                /// the new value is set to false or defaulted to false.
+                /// writer_identity is changed to a service agent
+                /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)) owned by Cloud Logging. It
+                /// is an error if the old value is true and the new value is set to false or defaulted to false.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
@@ -13183,7 +13192,7 @@ namespace Google.Apis.Logging.v2
                     /// link:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                     /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                     /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-                    /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+                    /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -13205,7 +13214,7 @@ namespace Google.Apis.Logging.v2
                         /// link:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                         /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                         /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
-                        /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID
+                        /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/LINK_ID"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -13237,10 +13246,10 @@ namespace Google.Apis.Logging.v2
                     /// <summary>Lists links.</summary>
                     /// <param name="parent">
                     /// Required. The parent resource whose links are to be
-                    /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/"
-                    /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-                    /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-                    /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+                    /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                    /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                    /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                    /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -13259,10 +13268,10 @@ namespace Google.Apis.Logging.v2
 
                         /// <summary>
                         /// Required. The parent resource whose links are to be
-                        /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/links/"
-                        /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-                        /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID/"
-                        /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID/
+                        /// listed:"projects/PROJECT_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                        /// "organizations/ORGANIZATION_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                        /// "billingAccounts/BILLING_ACCOUNT_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
+                        /// "folders/FOLDER_ID/locations/LOCATION_ID/buckets/BUCKET_ID"
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
@@ -13606,7 +13615,7 @@ namespace Google.Apis.Logging.v2
                         }
                     }
 
-                    /// <summary>Gets a view on a log bucket..</summary>
+                    /// <summary>Gets a view on a log bucket.</summary>
                     /// <param name="name">
                     /// Required. The resource name of the policy:
                     /// "projects/[PROJECT_ID]/locations/[LOCATION_ID]/buckets/[BUCKET_ID]/views/[VIEW_ID]" For
@@ -13617,7 +13626,7 @@ namespace Google.Apis.Logging.v2
                         return new GetRequest(service, name);
                     }
 
-                    /// <summary>Gets a view on a log bucket..</summary>
+                    /// <summary>Gets a view on a log bucket.</summary>
                     public class GetRequest : LoggingBaseServiceRequest<Google.Apis.Logging.v2.Data.LogView>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -15409,8 +15418,9 @@ namespace Google.Apis.Logging.v2
                 /// writer_identity is the same group or service account used by Cloud Logging before the addition of
                 /// writer identities to this API. The sink's destination must be in the same project as the sink
                 /// itself.If this field is set to true, or if the sink is owned by a non-project resource such as an
-                /// organization, then the value of writer_identity will be a unique service account used only for
-                /// exports from the new sink. For more information, see writer_identity in LogSink.
+                /// organization, then the value of writer_identity will be a service agent
+                /// (https://cloud.google.com/iam/docs/service-account-types#service-agents) used by the sinks with the
+                /// same parent. For more information, see writer_identity in LogSink.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
@@ -15713,8 +15723,9 @@ namespace Google.Apis.Logging.v2
                 /// field on the value of writer_identity in the updated sink depends on both the old and new values of
                 /// this field: If the old and new values of this field are both false or both true, then there is no
                 /// change to the sink's writer_identity. If the old value is false and the new value is true, then
-                /// writer_identity is changed to a unique service account. It is an error if the old value is true and
-                /// the new value is set to false or defaulted to false.
+                /// writer_identity is changed to a service agent
+                /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)) owned by Cloud Logging. It
+                /// is an error if the old value is true and the new value is set to false or defaulted to false.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
@@ -15841,8 +15852,9 @@ namespace Google.Apis.Logging.v2
                 /// field on the value of writer_identity in the updated sink depends on both the old and new values of
                 /// this field: If the old and new values of this field are both false or both true, then there is no
                 /// change to the sink's writer_identity. If the old value is false and the new value is true, then
-                /// writer_identity is changed to a unique service account. It is an error if the old value is true and
-                /// the new value is set to false or defaulted to false.
+                /// writer_identity is changed to a service agent
+                /// (https://cloud.google.com/iam/docs/service-account-types#service-agents)) owned by Cloud Logging. It
+                /// is an error if the old value is true and the new value is set to false or defaulted to false.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
@@ -16122,8 +16134,9 @@ namespace Google.Apis.Logging.v2
             /// writer_identity is the same group or service account used by Cloud Logging before the addition of writer
             /// identities to this API. The sink's destination must be in the same project as the sink itself.If this
             /// field is set to true, or if the sink is owned by a non-project resource such as an organization, then
-            /// the value of writer_identity will be a unique service account used only for exports from the new sink.
-            /// For more information, see writer_identity in LogSink.
+            /// the value of writer_identity will be a service agent
+            /// (https://cloud.google.com/iam/docs/service-account-types#service-agents) used by the sinks with the same
+            /// parent. For more information, see writer_identity in LogSink.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }
@@ -16422,8 +16435,9 @@ namespace Google.Apis.Logging.v2
             /// field on the value of writer_identity in the updated sink depends on both the old and new values of this
             /// field: If the old and new values of this field are both false or both true, then there is no change to
             /// the sink's writer_identity. If the old value is false and the new value is true, then writer_identity is
-            /// changed to a unique service account. It is an error if the old value is true and the new value is set to
-            /// false or defaulted to false.
+            /// changed to a service agent (https://cloud.google.com/iam/docs/service-account-types#service-agents))
+            /// owned by Cloud Logging. It is an error if the old value is true and the new value is set to false or
+            /// defaulted to false.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("uniqueWriterIdentity", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<bool> UniqueWriterIdentity { get; set; }

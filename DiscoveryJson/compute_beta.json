@@ -30749,6 +30749,53 @@
       "https://www.googleapis.com/auth/compute.readonly"
      ]
     },
+    "getNatIpInfo": {
+     "description": "Retrieves runtime NAT IP information.",
+     "flatPath": "projects/{project}/regions/{region}/routers/{router}/getNatIpInfo",
+     "httpMethod": "GET",
+     "id": "compute.routers.getNatIpInfo",
+     "parameterOrder": [
+      "project",
+      "region",
+      "router"
+     ],
+     "parameters": {
+      "natName": {
+       "description": "Name of the nat service to filter the NAT IP information. If it is omitted, all nats for this router will be returned. Name should conform to RFC1035.",
+       "location": "query",
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "router": {
+       "description": "Name of the Router resource to query for Nat IP information. The name should conform to RFC1035.",
+       "location": "path",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/routers/{router}/getNatIpInfo",
+     "response": {
+      "$ref": "NatIpInfoResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
     "getNatMappingInfo": {
      "description": "Retrieves runtime Nat mapping information of VM endpoints.",
      "flatPath": "projects/{project}/regions/{region}/routers/{router}/getNatMappingInfo",
@@ -32402,6 +32449,77 @@
       "https://www.googleapis.com/auth/cloud-platform",
       "https://www.googleapis.com/auth/compute",
       "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    }
+   }
+  },
+  "snapshotSettings": {
+   "methods": {
+    "get": {
+     "description": "Get snapshot settings.",
+     "flatPath": "projects/{project}/global/snapshotSettings",
+     "httpMethod": "GET",
+     "id": "compute.snapshotSettings.get",
+     "parameterOrder": [
+      "project"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/global/snapshotSettings",
+     "response": {
+      "$ref": "SnapshotSettings"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "patch": {
+     "description": "Patch snapshot settings.",
+     "flatPath": "projects/{project}/global/snapshotSettings",
+     "httpMethod": "PATCH",
+     "id": "compute.snapshotSettings.patch",
+     "parameterOrder": [
+      "project"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      },
+      "updateMask": {
+       "description": "update_mask indicates fields to be updated as part of this request.",
+       "format": "google-fieldmask",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/global/snapshotSettings",
+     "request": {
+      "$ref": "SnapshotSettings"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
      ]
     }
    }
@@ -38670,7 +38788,7 @@
    }
   }
  },
- "revision": "20230720",
+ "revision": "20230725",
  "rootUrl": "https://compute.googleapis.com/",
  "schemas": {
   "AWSV4Signature": {
@@ -59053,6 +59171,72 @@
    },
    "type": "object"
   },
+  "NatIpInfo": {
+   "description": "Contains NAT IP information of a NAT config (i.e. usage status, mode).",
+   "id": "NatIpInfo",
+   "properties": {
+    "natIpInfoMappings": {
+     "description": "A list of all NAT IPs assigned to this NAT config.",
+     "items": {
+      "$ref": "NatIpInfoNatIpInfoMapping"
+     },
+     "type": "array"
+    },
+    "natName": {
+     "description": "Name of the NAT config which the NAT IP belongs to.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "NatIpInfoNatIpInfoMapping": {
+   "description": "Contains information of a NAT IP.",
+   "id": "NatIpInfoNatIpInfoMapping",
+   "properties": {
+    "mode": {
+     "description": "Specifies whether NAT IP is auto or manual.",
+     "enum": [
+      "AUTO",
+      "MANUAL"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ],
+     "type": "string"
+    },
+    "natIp": {
+     "description": "NAT IP address. For example: 203.0.113.11.",
+     "type": "string"
+    },
+    "usage": {
+     "description": "Specifies whether NAT IP is currently serving at least one endpoint or not.",
+     "enum": [
+      "IN_USE",
+      "UNUSED"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ],
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "NatIpInfoResponse": {
+   "id": "NatIpInfoResponse",
+   "properties": {
+    "result": {
+     "description": "[Output Only] A list of NAT IP information.",
+     "items": {
+      "$ref": "NatIpInfo"
+     },
+     "type": "array"
+    }
+   },
+   "type": "object"
+  },
   "Network": {
    "description": "Represents a VPC Network resource. Networks connect resources to each other and to the internet. For more information, read Virtual Private Cloud (VPC) Network.",
    "id": "Network",
@@ -63714,7 +63898,7 @@
    "type": "object"
   },
   "Operation": {
-   "description": "Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/beta/globalOperations) * [Regional](/compute/docs/reference/rest/beta/regionOperations) * [Zonal](/compute/docs/reference/rest/beta/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zonalOperations` resource. For more information, read Global, Regional, and Zonal Resources.",
+   "description": "Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/beta/globalOperations) * [Regional](/compute/docs/reference/rest/beta/regionOperations) * [Zonal](/compute/docs/reference/rest/beta/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zoneOperations` resource. For more information, read Global, Regional, and Zonal Resources.",
    "id": "Operation",
    "properties": {
     "clientOperationId": {
@@ -75067,6 +75251,56 @@
       }
      },
      "type": "object"
+    }
+   },
+   "type": "object"
+  },
+  "SnapshotSettings": {
+   "id": "SnapshotSettings",
+   "properties": {
+    "storageLocation": {
+     "$ref": "SnapshotSettingsStorageLocationSettings",
+     "description": "Policy of which storage location is going to be resolved, and additional data that particularizes how the policy is going to be carried out."
+    }
+   },
+   "type": "object"
+  },
+  "SnapshotSettingsStorageLocationSettings": {
+   "id": "SnapshotSettingsStorageLocationSettings",
+   "properties": {
+    "locations": {
+     "additionalProperties": {
+      "$ref": "SnapshotSettingsStorageLocationSettingsStorageLocationPreference"
+     },
+     "description": "When the policy is SPECIFIC_LOCATIONS, snapshots will be stored in the locations listed in this field. Keys are GCS bucket locations.",
+     "type": "object"
+    },
+    "policy": {
+     "description": "The chosen location policy.",
+     "enum": [
+      "LOCAL_REGION",
+      "NEAREST_MULTI_REGION",
+      "SPECIFIC_LOCATIONS",
+      "STORAGE_LOCATION_POLICY_UNSPECIFIED"
+     ],
+     "enumDescriptions": [
+      "Store snapshot in the same region as with the originating disk. No additional parameters are needed.",
+      "Store snapshot to the nearest multi region GCS bucket, relative to the originating disk. No additional parameters are needed.",
+      "Store snapshot in the specific locations, as specified by the user. The list of regions to store must be defined under the `locations` field.",
+      ""
+     ],
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "SnapshotSettingsStorageLocationSettingsStorageLocationPreference": {
+   "description": "A structure for specifying storage locations.",
+   "id": "SnapshotSettingsStorageLocationSettingsStorageLocationPreference",
+   "properties": {
+    "name": {
+     "description": "Name of the location. It should be one of the GCS buckets.",
+     "type": "string"
     }
    },
    "type": "object"

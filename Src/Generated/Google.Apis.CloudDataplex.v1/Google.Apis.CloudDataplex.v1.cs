@@ -11832,7 +11832,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>Evaluates whether each column value matches a specified regex.</summary>
     public class GoogleCloudDataplexV1DataQualityRuleRegexExpectation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A regular expression the column value is expected to match.</summary>
+        /// <summary>Optional. A regular expression the column value is expected to match.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regex")]
         public virtual string Regex { get; set; }
 
@@ -11891,7 +11891,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// </summary>
     public class GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The SQL expression.</summary>
+        /// <summary>Optional. The SQL expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlExpression")]
         public virtual string SqlExpression { get; set; }
 
@@ -11902,7 +11902,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// <summary>Evaluates whether each column value is contained by a specified set.</summary>
     public class GoogleCloudDataplexV1DataQualityRuleSetExpectation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Expected values for the column value.</summary>
+        /// <summary>Optional. Expected values for the column value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
@@ -11914,33 +11914,33 @@ namespace Google.Apis.CloudDataplex.v1.Data
     public class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The maximum column statistic value allowed for a row to pass this validation.At least one of min_value and
-        /// max_value need to be provided.
+        /// Optional. The maximum column statistic value allowed for a row to pass this validation.At least one of
+        /// min_value and max_value need to be provided.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxValue")]
         public virtual string MaxValue { get; set; }
 
         /// <summary>
-        /// The minimum column statistic value allowed for a row to pass this validation.At least one of min_value and
-        /// max_value need to be provided.
+        /// Optional. The minimum column statistic value allowed for a row to pass this validation.At least one of
+        /// min_value and max_value need to be provided.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minValue")]
         public virtual string MinValue { get; set; }
 
-        /// <summary>The aggregate metric to evaluate.</summary>
+        /// <summary>Optional. The aggregate metric to evaluate.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("statistic")]
         public virtual string Statistic { get; set; }
 
         /// <summary>
-        /// Whether column statistic needs to be strictly lesser than ('&amp;lt;') the maximum, or if equality is
-        /// allowed.Only relevant if a max_value has been defined. Default = false.
+        /// Optional. Whether column statistic needs to be strictly lesser than ('&amp;lt;') the maximum, or if equality
+        /// is allowed.Only relevant if a max_value has been defined. Default = false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("strictMaxEnabled")]
         public virtual System.Nullable<bool> StrictMaxEnabled { get; set; }
 
         /// <summary>
-        /// Whether column statistic needs to be strictly greater than ('&amp;gt;') the minimum, or if equality is
-        /// allowed.Only relevant if a min_value has been defined. Default = false.
+        /// Optional. Whether column statistic needs to be strictly greater than ('&amp;gt;') the minimum, or if
+        /// equality is allowed.Only relevant if a min_value has been defined. Default = false.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("strictMinEnabled")]
         public virtual System.Nullable<bool> StrictMinEnabled { get; set; }
@@ -11955,7 +11955,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     /// </summary>
     public class GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The SQL expression.</summary>
+        /// <summary>Optional. The SQL expression.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sqlExpression")]
         public virtual string SqlExpression { get; set; }
 
@@ -12048,7 +12048,9 @@ namespace Google.Apis.CloudDataplex.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rowFilter")]
         public virtual string RowFilter { get; set; }
 
-        /// <summary>The list of rules to evaluate against a data source. At least one rule is required.</summary>
+        /// <summary>
+        /// Required. The list of rules to evaluate against a data source. At least one rule is required.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rules")]
         public virtual System.Collections.Generic.IList<GoogleCloudDataplexV1DataQualityRule> Rules { get; set; }
 

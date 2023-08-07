@@ -5448,6 +5448,12 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 /// <summary>Immediate children only (default).</summary>
                 [Google.Apis.Util.StringValueAttribute("children")]
                 Children = 1,
+
+                /// <summary>
+                /// All sub-organizational units and the specified organizational unit (root if not specified).
+                /// </summary>
+                [Google.Apis.Util.StringValueAttribute("allIncludingParent")]
+                AllIncludingParent = 2,
             }
 
             /// <summary>Gets the method name.</summary>

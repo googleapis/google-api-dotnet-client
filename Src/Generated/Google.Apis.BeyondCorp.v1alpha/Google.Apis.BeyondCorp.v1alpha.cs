@@ -11443,7 +11443,7 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
     /// <summary>Message for response to listing BrowserDlpRules.</summary>
     public class GoogleCloudBeyondcorpPartnerservicesV1alphaListBrowserDlpRulesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of ProxyConfig objects.</summary>
+        /// <summary>The list of BrowserDlpRule objects.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("browserDlpRules")]
         public virtual System.Collections.Generic.IList<GoogleCloudBeyondcorpPartnerservicesV1alphaBrowserDlpRule> BrowserDlpRules { get; set; }
 
