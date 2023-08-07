@@ -26592,6 +26592,53 @@
       "https://www.googleapis.com/auth/compute.readonly"
      ]
     },
+    "getNatIpInfo": {
+     "description": "Retrieves runtime NAT IP information.",
+     "flatPath": "projects/{project}/regions/{region}/routers/{router}/getNatIpInfo",
+     "httpMethod": "GET",
+     "id": "compute.routers.getNatIpInfo",
+     "parameterOrder": [
+      "project",
+      "region",
+      "router"
+     ],
+     "parameters": {
+      "natName": {
+       "description": "Name of the nat service to filter the NAT IP information. If it is omitted, all nats for this router will be returned. Name should conform to RFC1035.",
+       "location": "query",
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region for this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "router": {
+       "description": "Name of the Router resource to query for Nat IP information. The name should conform to RFC1035.",
+       "location": "path",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/routers/{router}/getNatIpInfo",
+     "response": {
+      "$ref": "NatIpInfoResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
     "getNatMappingInfo": {
      "description": "Retrieves runtime Nat mapping information of VM endpoints.",
      "flatPath": "projects/{project}/regions/{region}/routers/{router}/getNatMappingInfo",
@@ -33788,7 +33835,7 @@
    }
   }
  },
- "revision": "20230720",
+ "revision": "20230725",
  "rootUrl": "https://compute.googleapis.com/",
  "schemas": {
   "AWSV4Signature": {
@@ -38057,6 +38104,10 @@
    "description": "Per-instance properties to be set on individual instances. To be extended in the future.",
    "id": "BulkInsertInstanceResourcePerInstanceProperties",
    "properties": {
+    "hostname": {
+     "description": "Specifies the hostname of the instance. More details in: https://cloud.google.com/compute/docs/instances/custom-hostname-vm#naming_convention",
+     "type": "string"
+    },
     "name": {
      "description": "This field is only temporary. It will be removed. Do not use it.",
      "type": "string"
@@ -52556,6 +52607,72 @@
    },
    "type": "object"
   },
+  "NatIpInfo": {
+   "description": "Contains NAT IP information of a NAT config (i.e. usage status, mode).",
+   "id": "NatIpInfo",
+   "properties": {
+    "natIpInfoMappings": {
+     "description": "A list of all NAT IPs assigned to this NAT config.",
+     "items": {
+      "$ref": "NatIpInfoNatIpInfoMapping"
+     },
+     "type": "array"
+    },
+    "natName": {
+     "description": "Name of the NAT config which the NAT IP belongs to.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "NatIpInfoNatIpInfoMapping": {
+   "description": "Contains information of a NAT IP.",
+   "id": "NatIpInfoNatIpInfoMapping",
+   "properties": {
+    "mode": {
+     "description": "Specifies whether NAT IP is auto or manual.",
+     "enum": [
+      "AUTO",
+      "MANUAL"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ],
+     "type": "string"
+    },
+    "natIp": {
+     "description": "NAT IP address. For example: 203.0.113.11.",
+     "type": "string"
+    },
+    "usage": {
+     "description": "Specifies whether NAT IP is currently serving at least one endpoint or not.",
+     "enum": [
+      "IN_USE",
+      "UNUSED"
+     ],
+     "enumDescriptions": [
+      "",
+      ""
+     ],
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "NatIpInfoResponse": {
+   "id": "NatIpInfoResponse",
+   "properties": {
+    "result": {
+     "description": "[Output Only] A list of NAT IP information.",
+     "items": {
+      "$ref": "NatIpInfo"
+     },
+     "type": "array"
+    }
+   },
+   "type": "object"
+  },
   "Network": {
    "description": "Represents a VPC Network resource. Networks connect resources to each other and to the internet. For more information, read Virtual Private Cloud (VPC) Network.",
    "id": "Network",
@@ -57111,7 +57228,7 @@
    "type": "object"
   },
   "Operation": {
-   "description": "Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/v1/globalOperations) * [Regional](/compute/docs/reference/rest/v1/regionOperations) * [Zonal](/compute/docs/reference/rest/v1/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zonalOperations` resource. For more information, read Global, Regional, and Zonal Resources.",
+   "description": "Represents an Operation resource. Google Compute Engine has three Operation resources: * [Global](/compute/docs/reference/rest/v1/globalOperations) * [Regional](/compute/docs/reference/rest/v1/regionOperations) * [Zonal](/compute/docs/reference/rest/v1/zoneOperations) You can use an operation resource to manage asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the `regionOperations` resource. - For zonal operations, use the `zoneOperations` resource. For more information, read Global, Regional, and Zonal Resources.",
    "id": "Operation",
    "properties": {
     "clientOperationId": {

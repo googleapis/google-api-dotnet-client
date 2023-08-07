@@ -3709,6 +3709,20 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("percentages")]
         public virtual System.Collections.Generic.IList<System.Nullable<int>> Percentages { get; set; }
 
+        /// <summary>
+        /// Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job
+        /// will not be present.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postdeploy")]
+        public virtual Postdeploy Postdeploy { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job
+        /// will not be present.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predeploy")]
+        public virtual Predeploy Predeploy { get; set; }
+
         /// <summary>Whether to run verify tests after each percentage deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verify")]
         public virtual System.Nullable<bool> Verify { get; set; }
@@ -4175,6 +4189,18 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deployJob")]
         public virtual Job DeployJob { get; set; }
 
+        /// <summary>
+        /// Output only. The postdeploy Job. This is the postdeploy job in the phase. This is the last job of the phase.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postdeployJob")]
+        public virtual Job PostdeployJob { get; set; }
+
+        /// <summary>
+        /// Output only. The predeploy Job. This is the predeploy job in the phase. This is the first job of the phase.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predeployJob")]
+        public virtual Job PredeployJob { get; set; }
+
         /// <summary>Output only. The verify Job. Runs after a deploy if the deploy succeeds.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifyJob")]
         public virtual Job VerifyJob { get; set; }
@@ -4386,6 +4412,14 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jobRun")]
         public virtual string JobRun { get; set; }
 
+        /// <summary>Output only. A postdeploy Job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postdeployJob")]
+        public virtual PostdeployJob PostdeployJob { get; set; }
+
+        /// <summary>Output only. A predeploy Job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predeployJob")]
+        public virtual PredeployJob PredeployJob { get; set; }
+
         /// <summary>Output only. Additional information on why the Job was skipped, if available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("skipMessage")]
         public virtual string SkipMessage { get; set; }
@@ -4515,6 +4549,14 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Output only. ID of the `Rollout` phase this `JobRun` belongs in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phaseId")]
         public virtual string PhaseId { get; set; }
+
+        /// <summary>Output only. Information specific to a postdeploy `JobRun`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postdeployJobRun")]
+        public virtual PostdeployJobRun PostdeployJobRun { get; set; }
+
+        /// <summary>Output only. Information specific to a predeploy `JobRun`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predeployJobRun")]
+        public virtual PredeployJobRun PredeployJobRun { get; set; }
 
         private string _startTimeRaw;
 
@@ -5026,6 +5068,20 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string PhaseId { get; set; }
 
         /// <summary>
+        /// Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will
+        /// not be present for this phase.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postdeploy")]
+        public virtual Postdeploy Postdeploy { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will
+        /// not be present for this phase.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predeploy")]
+        public virtual Predeploy Predeploy { get; set; }
+
+        /// <summary>
         /// Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles
         /// list specified in the `DeliveryPipeline` stage.
         /// </summary>
@@ -5178,6 +5234,104 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>Postdeploy contains the postdeploy job configuration information.</summary>
+    public class Postdeploy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actions")]
+        public virtual System.Collections.Generic.IList<string> Actions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A postdeploy Job.</summary>
+    public class PostdeployJob : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The custom actions that the postdeploy Job executes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actions")]
+        public virtual System.Collections.Generic.IList<string> Actions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PostdeployJobRun contains information specific to a postdeploy `JobRun`.</summary>
+    public class PostdeployJobRun : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The resource name of the Cloud Build `Build` object that is used to execute the custom actions
+        /// associated with the postdeploy Job. Format is projects/{project}/locations/{location}/builds/{build}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("build")]
+        public virtual string Build { get; set; }
+
+        /// <summary>
+        /// Output only. The reason the postdeploy failed. This will always be unspecified while the postdeploy is in
+        /// progress or if it succeeded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCause")]
+        public virtual string FailureCause { get; set; }
+
+        /// <summary>Output only. Additional information about the postdeploy failure, if available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureMessage")]
+        public virtual string FailureMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Predeploy contains the predeploy job configuration information.</summary>
+    public class Predeploy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actions")]
+        public virtual System.Collections.Generic.IList<string> Actions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A predeploy Job.</summary>
+    public class PredeployJob : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The custom actions that the predeploy Job executes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actions")]
+        public virtual System.Collections.Generic.IList<string> Actions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>PredeployJobRun contains information specific to a predeploy `JobRun`.</summary>
+    public class PredeployJobRun : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The resource name of the Cloud Build `Build` object that is used to execute the custom actions
+        /// associated with the predeploy Job. Format is projects/{project}/locations/{location}/builds/{build}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("build")]
+        public virtual string Build { get; set; }
+
+        /// <summary>
+        /// Output only. The reason the predeploy failed. This will always be unspecified while the predeploy is in
+        /// progress or if it succeeded.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureCause")]
+        public virtual string FailureCause { get; set; }
+
+        /// <summary>Output only. Additional information about the predeploy failure, if available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureMessage")]
+        public virtual string FailureMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Execution using a private Cloud Build pool.</summary>
@@ -6137,6 +6291,19 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// <summary>Standard represents the standard deployment strategy.</summary>
     public class Standard : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be
+        /// present.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postdeploy")]
+        public virtual Postdeploy Postdeploy { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("predeploy")]
+        public virtual Predeploy Predeploy { get; set; }
+
         /// <summary>Whether to verify a deployment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verify")]
         public virtual System.Nullable<bool> Verify { get; set; }

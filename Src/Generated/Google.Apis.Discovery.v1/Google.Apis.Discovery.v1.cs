@@ -572,6 +572,13 @@ namespace Google.Apis.Discovery.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentationLink")]
         public virtual string DocumentationLink { get; set; }
 
+        /// <summary>
+        /// A list of location-based endpoint objects for this API. Each object contains the endpoint URL, location,
+        /// description and deprecation status.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoints")]
+        public virtual System.Collections.Generic.IList<EndpointsData> Endpoints { get; set; }
+
         /// <summary>The ETag for this response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -684,6 +691,29 @@ namespace Google.Apis.Discovery.v1.Data
                     public virtual string Description { get; set; }
                 }
             }
+        }
+
+        /// <summary>
+        /// A list of location-based endpoint objects for this API. Each object contains the endpoint URL, location,
+        /// description and deprecation status.
+        /// </summary>
+        public class EndpointsData
+        {
+            /// <summary>Whether this endpoint is deprecated</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("deprecated")]
+            public virtual System.Nullable<bool> Deprecated { get; set; }
+
+            /// <summary>A string describing the host designated by the URL</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("description")]
+            public virtual string Description { get; set; }
+
+            /// <summary>The URL of the endpoint target host</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("endpointUrl")]
+            public virtual string EndpointUrl { get; set; }
+
+            /// <summary>The location of the endpoint</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("location")]
+            public virtual string Location { get; set; }
         }
 
         /// <summary>Links to 16x16 and 32x32 icons representing the API.</summary>

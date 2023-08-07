@@ -11979,6 +11979,65 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual System.Nullable<ulong> WalltimeMs { get; set; }
     }
 
+    /// <summary>Schedule to insert cuepoints into a broadcast by ads automator.</summary>
+    public class CuepointSchedule : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This field is semantically required. If it is set false or not set, other fields in this message will be
+        /// ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        private string _pauseAdsUntilRaw;
+
+        private object _pauseAdsUntil;
+
+        /// <summary>If set, automatic cuepoint insertion is paused until this timestamp ("No Ad Zone").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pauseAdsUntil")]
+        public virtual string PauseAdsUntilRaw
+        {
+            get => _pauseAdsUntilRaw;
+            set
+            {
+                _pauseAdsUntil = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _pauseAdsUntilRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="PauseAdsUntilRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PauseAdsUntilDateTimeOffset instead.")]
+        public virtual object PauseAdsUntil
+        {
+            get => _pauseAdsUntil;
+            set
+            {
+                _pauseAdsUntilRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _pauseAdsUntil = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PauseAdsUntilRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PauseAdsUntilDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PauseAdsUntilRaw);
+            set => PauseAdsUntilRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Interval frequency that api uses to insert cuepoints automatically.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repeatInterval")]
+        public virtual object RepeatInterval { get; set; }
+
+        /// <summary>The strategy to use when scheduling cuepoints.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduleStrategy")]
+        public virtual string ScheduleStrategy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class Entity : Google.Apis.Requests.IDirectResponseSchema
     {
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
@@ -12419,6 +12478,12 @@ namespace Google.Apis.YouTube.v3.Data
         public virtual string Kind { get; set; }
 
         /// <summary>
+        /// The monetizationDetails object contains information about the event's monetization details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monetizationDetails")]
+        public virtual LiveBroadcastMonetizationDetails MonetizationDetails { get; set; }
+
+        /// <summary>
         /// The snippet object contains basic details about the event, including its title, description, start time, and
         /// end time.
         /// </summary>
@@ -12622,6 +12687,16 @@ namespace Google.Apis.YouTube.v3.Data
         /// <summary>The visitorId identifies the visitor.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("visitorId")]
         public virtual string VisitorId { get; set; }
+    }
+
+    /// <summary>Monetization settings of a broadcast.</summary>
+    public class LiveBroadcastMonetizationDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("cuepointSchedule")]
+        public virtual CuepointSchedule CuepointSchedule { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Basic broadcast information.</summary>

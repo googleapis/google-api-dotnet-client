@@ -2712,7 +2712,7 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("command")]
         public virtual System.Collections.Generic.IList<string> Command { get; set; }
 
-        /// <summary>Container names which must start before this container.</summary>
+        /// <summary>Names of the containers that must start before this container.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dependsOn")]
         public virtual System.Collections.Generic.IList<string> DependsOn { get; set; }
 
@@ -2790,8 +2790,7 @@ namespace Google.Apis.CloudRun.v2.Data
     }
 
     /// <summary>
-    /// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now
-    /// only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data
+    /// In memory (tmpfs) ephemeral storage. It is ephemeral in the sense that when the sandbox is taken down, the data
     /// is destroyed with it (it does not persist across sandbox runs).
     /// </summary>
     public class GoogleCloudRunV2EmptyDirVolumeSource : Google.Apis.Requests.IDirectResponseSchema
@@ -2806,9 +2805,9 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>
         /// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium.
         /// The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here
-        /// and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type:
-        /// https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which
-        /// means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
+        /// and the sum of memory limits of all containers. The default is nil which means that the limit is undefined.
+        /// More info: https://cloud.google.com/run/docs/configuring/in-memory-volumes#configure-volume. Info in
+        /// Kubernetes: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeLimit")]
         public virtual string SizeLimit { get; set; }

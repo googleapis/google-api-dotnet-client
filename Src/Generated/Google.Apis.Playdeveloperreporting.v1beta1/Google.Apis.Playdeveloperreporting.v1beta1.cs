@@ -2486,8 +2486,9 @@ namespace Google.Apis.Playdeveloperreporting.v1beta1.Data
 
     /// <summary>
     /// Singleton resource representing the set of error report metrics. This metric set contains un-normalized error
-    /// report counts. **Supported aggregation periods:** * DAILY: metrics are aggregated in calendar date intervals.
-    /// The default and only supported timezone is `America/Los_Angeles`. **Supported metrics:** * `errorReportCount`
+    /// report counts. **Supported aggregation periods:** * HOURLY: metrics are aggregated in hourly intervals. The
+    /// default and only supported timezone is `UTC`. * DAILY: metrics are aggregated in calendar date intervals. The
+    /// default and only supported timezone is `America/Los_Angeles`. **Supported metrics:** * `errorReportCount`
     /// (`google.type.Decimal`): Absolute count of individual error reports that have been received for an app. *
     /// `distinctUsers` (`google.type.Decimal`): Count of distinct users for which reports have been received. Care must
     /// be taken not to aggregate this count further, as it may result in users being counted multiple times. This value

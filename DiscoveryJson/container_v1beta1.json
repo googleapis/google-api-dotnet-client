@@ -2565,7 +2565,7 @@
    }
   }
  },
- "revision": "20230719",
+ "revision": "20230724",
  "rootUrl": "https://container.googleapis.com/",
  "schemas": {
   "AcceleratorConfig": {
@@ -5131,12 +5131,24 @@
        "WORKLOADS",
        "APISERVER",
        "SCHEDULER",
-       "CONTROLLER_MANAGER"
+       "CONTROLLER_MANAGER",
+       "STORAGE",
+       "HPA",
+       "POD",
+       "DAEMONSET",
+       "DEPLOYMENT",
+       "STATEFULSET"
       ],
       "enumDeprecated": [
        false,
        false,
        true,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
        false,
        false,
        false
@@ -5147,7 +5159,13 @@
        "Deprecated: Use Google Cloud Managed Service for Prometheus.",
        "kube-apiserver",
        "kube-scheduler",
-       "kube-controller-manager"
+       "kube-controller-manager",
+       "Storage",
+       "Horizontal Pod Autoscaling",
+       "Pod",
+       "DaemonSet",
+       "Deployment",
+       "Statefulset"
       ],
       "type": "string"
      },
