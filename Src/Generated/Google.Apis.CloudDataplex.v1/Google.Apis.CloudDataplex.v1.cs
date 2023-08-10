@@ -11615,7 +11615,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     {
         /// <summary>
         /// Optional. The BigQuery table to export DataProfileScan results to. Format:
-        /// projects/{project}/datasets/{dataset}/tables/{table}
+        /// //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultsTable")]
         public virtual string ResultsTable { get; set; }
@@ -12082,7 +12082,7 @@ namespace Google.Apis.CloudDataplex.v1.Data
     {
         /// <summary>
         /// Optional. The BigQuery table to export DataQualityScan results to. Format:
-        /// projects/{project}/datasets/{dataset}/tables/{table}
+        /// //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultsTable")]
         public virtual string ResultsTable { get; set; }
@@ -15854,10 +15854,10 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The normal response of the operation in case of success. If the original method returns no data on success,
-        /// such as Delete, the response is google.protobuf.Empty. If the original method is standard Get/Create/Update,
-        /// the response should be the resource. For other methods, the response should have the type XxxResponse, where
-        /// Xxx is the original method name. For example, if the original method name is TakeSnapshot(), the inferred
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// Delete, the response is google.protobuf.Empty. If the original method is standard Get/Create/Update, the
+        /// response should be the resource. For other methods, the response should have the type XxxResponse, where Xxx
+        /// is the original method name. For example, if the original method name is TakeSnapshot(), the inferred
         /// response type is TakeSnapshotResponse.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]

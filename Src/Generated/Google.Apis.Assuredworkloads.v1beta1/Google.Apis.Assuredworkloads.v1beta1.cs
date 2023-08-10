@@ -469,170 +469,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                 public WorkloadsResource(Google.Apis.Services.IClientService service)
                 {
                     this.service = service;
-                    Organizations = new OrganizationsResource(service);
                     Violations = new ViolationsResource(service);
-                }
-
-                /// <summary>Gets the Organizations resource.</summary>
-                public virtual OrganizationsResource Organizations { get; }
-
-                /// <summary>The "organizations" collection of methods.</summary>
-                public class OrganizationsResource
-                {
-                    private const string Resource = "organizations";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public OrganizationsResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-                        Locations = new LocationsResource(service);
-                    }
-
-                    /// <summary>Gets the Locations resource.</summary>
-                    public virtual LocationsResource Locations { get; }
-
-                    /// <summary>The "locations" collection of methods.</summary>
-                    public class LocationsResource
-                    {
-                        private const string Resource = "locations";
-
-                        /// <summary>The service which this resource belongs to.</summary>
-                        private readonly Google.Apis.Services.IClientService service;
-
-                        /// <summary>Constructs a new resource.</summary>
-                        public LocationsResource(Google.Apis.Services.IClientService service)
-                        {
-                            this.service = service;
-                            Workloads = new WorkloadsResource(service);
-                        }
-
-                        /// <summary>Gets the Workloads resource.</summary>
-                        public virtual WorkloadsResource Workloads { get; }
-
-                        /// <summary>The "workloads" collection of methods.</summary>
-                        public class WorkloadsResource
-                        {
-                            private const string Resource = "workloads";
-
-                            /// <summary>The service which this resource belongs to.</summary>
-                            private readonly Google.Apis.Services.IClientService service;
-
-                            /// <summary>Constructs a new resource.</summary>
-                            public WorkloadsResource(Google.Apis.Services.IClientService service)
-                            {
-                                this.service = service;
-                            }
-
-                            /// <summary>
-                            /// Analyzes a hypothetical move of a source project to a target (destination) folder-based
-                            /// workload.
-                            /// </summary>
-                            /// <param name="source">
-                            /// The source type is a project-based workload. Specify the workloads's relative resource
-                            /// name, formatted as:
-                            /// "organizations/{ORGANIZATION_ID}/locations/{LOCATION_ID}/workloads/{WORKLOAD_ID}" For
-                            /// example: "organizations/123/locations/us-east1/workloads/assured-workload-1" This option
-                            /// is now deprecated
-                            /// </param>
-                            /// <param name="target">
-                            /// Required. The resource ID of the folder-based destination workload. This workload is
-                            /// where the source project will hypothetically be moved to. Specify the workload's
-                            /// relative resource name, formatted as:
-                            /// "organizations/{ORGANIZATION_ID}/locations/{LOCATION_ID}/workloads/{WORKLOAD_ID}" For
-                            /// example: "organizations/123/locations/us-east1/workloads/assured-workload-2"
-                            /// </param>
-                            public virtual AnalyzeWorkloadMoveRequest AnalyzeWorkloadMove(string source, string target)
-                            {
-                                return new AnalyzeWorkloadMoveRequest(service, source, target);
-                            }
-
-                            /// <summary>
-                            /// Analyzes a hypothetical move of a source project to a target (destination) folder-based
-                            /// workload.
-                            /// </summary>
-                            public class AnalyzeWorkloadMoveRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1AnalyzeWorkloadMoveResponse>
-                            {
-                                /// <summary>Constructs a new AnalyzeWorkloadMove request.</summary>
-                                public AnalyzeWorkloadMoveRequest(Google.Apis.Services.IClientService service, string source, string target) : base(service)
-                                {
-                                    Source = source;
-                                    Target = target;
-                                    InitParameters();
-                                }
-
-                                /// <summary>
-                                /// The source type is a project-based workload. Specify the workloads's relative
-                                /// resource name, formatted as:
-                                /// "organizations/{ORGANIZATION_ID}/locations/{LOCATION_ID}/workloads/{WORKLOAD_ID}"
-                                /// For example: "organizations/123/locations/us-east1/workloads/assured-workload-1"
-                                /// This option is now deprecated
-                                /// </summary>
-                                [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Path)]
-                                public virtual string Source { get; private set; }
-
-                                /// <summary>
-                                /// Required. The resource ID of the folder-based destination workload. This workload is
-                                /// where the source project will hypothetically be moved to. Specify the workload's
-                                /// relative resource name, formatted as:
-                                /// "organizations/{ORGANIZATION_ID}/locations/{LOCATION_ID}/workloads/{WORKLOAD_ID}"
-                                /// For example: "organizations/123/locations/us-east1/workloads/assured-workload-2"
-                                /// </summary>
-                                [Google.Apis.Util.RequestParameterAttribute("target", Google.Apis.Util.RequestParameterType.Path)]
-                                public virtual string Target { get; private set; }
-
-                                /// <summary>
-                                /// The source type is a project. Specify the project's relative resource name,
-                                /// formatted as either a project number or a project ID: "projects/{PROJECT_NUMBER}" or
-                                /// "projects/{PROJECT_ID}" For example: "projects/951040570662" when specifying a
-                                /// project number, or "projects/my-project-123" when specifying a project ID.
-                                /// </summary>
-                                [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Query)]
-                                public virtual string Project { get; set; }
-
-                                /// <summary>Gets the method name.</summary>
-                                public override string MethodName => "analyzeWorkloadMove";
-
-                                /// <summary>Gets the HTTP method.</summary>
-                                public override string HttpMethod => "GET";
-
-                                /// <summary>Gets the REST path.</summary>
-                                public override string RestPath => "v1beta1/{+source}/{+target}:analyzeWorkloadMove";
-
-                                /// <summary>Initializes AnalyzeWorkloadMove parameter list.</summary>
-                                protected override void InitParameters()
-                                {
-                                    base.InitParameters();
-                                    RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "source",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^organizations/[^/]+/locations/[^/]+/workloads/[^/]+$",
-                                    });
-                                    RequestParameters.Add("target", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "target",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^organizations/[^/]+/locations/[^/]+/workloads/[^/]+$",
-                                    });
-                                    RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "project",
-                                        IsRequired = false,
-                                        ParameterType = "query",
-                                        DefaultValue = null,
-                                        Pattern = null,
-                                    });
-                                }
-                            }
-                        }
-                    }
                 }
 
                 /// <summary>Gets the Violations resource.</summary>
@@ -1042,6 +879,57 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     }
                 }
 
+                /// <summary>Enable resource violation monitoring for a workload.</summary>
+                /// <param name="name">
+                /// Required. The `name` field is used to identify the workload. Format:
+                /// organizations/{org_id}/locations/{location_id}/workloads/{workload_id}
+                /// </param>
+                public virtual EnableResourceMonitoringRequest EnableResourceMonitoring(string name)
+                {
+                    return new EnableResourceMonitoringRequest(service, name);
+                }
+
+                /// <summary>Enable resource violation monitoring for a workload.</summary>
+                public class EnableResourceMonitoringRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1EnableResourceMonitoringResponse>
+                {
+                    /// <summary>Constructs a new EnableResourceMonitoring request.</summary>
+                    public EnableResourceMonitoringRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The `name` field is used to identify the workload. Format:
+                    /// organizations/{org_id}/locations/{location_id}/workloads/{workload_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "enableResourceMonitoring";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}:enableResourceMonitoring";
+
+                    /// <summary>Initializes EnableResourceMonitoring parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/workloads/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Gets Assured Workload associated with a CRM Node</summary>
                 /// <param name="name">
                 /// Required. The resource name of the Workload to fetch. This is the workloads's relative path in the
@@ -1411,8 +1299,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     }
 
                     /// <summary>
-                    /// Analyzes a hypothetical move of a source project to a target (destination) folder-based
-                    /// workload.
+                    /// Analyzes a hypothetical move of a source resource to a target(destination) folder-based workload
+                    /// to surface compliance risks.
                     /// </summary>
                     /// <param name="project">
                     /// The source type is a project. Specify the project's relative resource name, formatted as either
@@ -1422,7 +1310,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     /// </param>
                     /// <param name="target">
                     /// Required. The resource ID of the folder-based destination workload. This workload is where the
-                    /// source project will hypothetically be moved to. Specify the workload's relative resource name,
+                    /// source resource will hypothetically be moved to. Specify the workload's relative resource name,
                     /// formatted as: "organizations/{ORGANIZATION_ID}/locations/{LOCATION_ID}/workloads/{WORKLOAD_ID}"
                     /// For example: "organizations/123/locations/us-east1/workloads/assured-workload-2"
                     /// </param>
@@ -1432,8 +1320,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     }
 
                     /// <summary>
-                    /// Analyzes a hypothetical move of a source project to a target (destination) folder-based
-                    /// workload.
+                    /// Analyzes a hypothetical move of a source resource to a target(destination) folder-based workload
+                    /// to surface compliance risks.
                     /// </summary>
                     public class AnalyzeWorkloadMoveRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1AnalyzeWorkloadMoveResponse>
                     {
@@ -1456,8 +1344,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1
 
                         /// <summary>
                         /// Required. The resource ID of the folder-based destination workload. This workload is where
-                        /// the source project will hypothetically be moved to. Specify the workload's relative resource
-                        /// name, formatted as:
+                        /// the source resource will hypothetically be moved to. Specify the workload's relative
+                        /// resource name, formatted as:
                         /// "organizations/{ORGANIZATION_ID}/locations/{LOCATION_ID}/workloads/{WORKLOAD_ID}" For
                         /// example: "organizations/123/locations/us-east1/workloads/assured-workload-2"
                         /// </summary>
@@ -1465,11 +1353,31 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                         public virtual string Target { get; private set; }
 
                         /// <summary>
+                        /// Optional. Indicates if all child assets of the source resource should also be analyzed in
+                        /// addition to the source.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("analyzeChildAssets", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> AnalyzeChildAssets { get; set; }
+
+                        /// <summary>
+                        /// Optional. Page size. If a value is not specified, the default value of 10 is used.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// Optional. The page token from the previous response. It needs to be passed in the second and
+                        /// following requests.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>
                         /// The source type is a project-based workload. Specify the workloads's relative resource name,
                         /// formatted as:
                         /// "organizations/{ORGANIZATION_ID}/locations/{LOCATION_ID}/workloads/{WORKLOAD_ID}" For
                         /// example: "organizations/123/locations/us-east1/workloads/assured-workload-1" This option is
-                        /// now deprecated
+                        /// now deprecated.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Source { get; set; }
@@ -1503,6 +1411,30 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                                 DefaultValue = null,
                                 Pattern = @"^organizations/[^/]+/locations/[^/]+/workloads/[^/]+$",
                             });
+                            RequestParameters.Add("analyzeChildAssets", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "analyzeChildAssets",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
                             RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "source",
@@ -1523,6 +1455,10 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
     /// <summary>Request for acknowledging the violation Next Id: 5</summary>
     public class GoogleCloudAssuredworkloadsV1beta1AcknowledgeViolationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Acknowledge type of specified violation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acknowledgeType")]
+        public virtual string AcknowledgeType { get; set; }
+
         /// <summary>Required. Business justification explaining the need for violation acknowledgement</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comment")]
         public virtual string Comment { get; set; }
@@ -1547,15 +1483,48 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A response that includes the analysis of the hypothetical resource move.</summary>
+    /// <summary>Response containing the analysis results for the hypothetical resource move.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1AnalyzeWorkloadMoveResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>List of analysis results for each asset in scope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetMoveAnalyses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1AssetMoveAnalysis> AssetMoveAnalyses { get; set; }
+
         /// <summary>
         /// A list of blockers that should be addressed before moving the source project or project-based workload to
-        /// the destination folder-based workload.
+        /// the destination folder-based workload. This field is now deprecated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("blockers")]
         public virtual System.Collections.Generic.IList<string> Blockers { get; set; }
+
+        /// <summary>The next page token. Is empty if the last page is reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents move analysis results for an asset.</summary>
+    public class GoogleCloudAssuredworkloadsV1beta1AssetMoveAnalysis : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of eligible analyses performed for the asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisGroups")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1MoveAnalysisGroup> AnalysisGroups { get; set; }
+
+        /// <summary>
+        /// The full resource name of the asset being analyzed. Example:
+        /// //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asset")]
+        public virtual string Asset { get; set; }
+
+        /// <summary>
+        /// Type of the asset being analyzed. Possible values will be among the ones listed
+        /// [here](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
+        public virtual string AssetType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1625,6 +1594,13 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for EnableResourceMonitoring endpoint.</summary>
+    public class GoogleCloudAssuredworkloadsV1beta1EnableResourceMonitoringResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response of ListViolations endpoint.</summary>
     public class GoogleCloudAssuredworkloadsV1beta1ListViolationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1650,6 +1626,56 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         /// <summary>List of Workloads under a given parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloads")]
         public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1Workload> Workloads { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a logical group of checks performed for an asset. If successful, the group contains the analysis
+    /// result, otherwise it contains an error with the failure reason.
+    /// </summary>
+    public class GoogleCloudAssuredworkloadsV1beta1MoveAnalysisGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Result of a successful analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisResult")]
+        public virtual GoogleCloudAssuredworkloadsV1beta1MoveAnalysisResult AnalysisResult { get; set; }
+
+        /// <summary>Name of the analysis group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Error details for a failed analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the successful move analysis results for a group.</summary>
+    public class GoogleCloudAssuredworkloadsV1beta1MoveAnalysisResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of blockers. If not resolved, these will result in compliance violations in the target.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1MoveImpact> Blockers { get; set; }
+
+        /// <summary>List of warnings. These are risks that may or may not result in compliance violations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1MoveImpact> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the impact of moving the asset to the target.</summary>
+    public class GoogleCloudAssuredworkloadsV1beta1MoveImpact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Explanation of the impact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detail")]
+        public virtual string Detail { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1722,6 +1748,13 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
             get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(AcknowledgementTimeRaw);
             set => AcknowledgementTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
+
+        /// <summary>
+        /// Optional. Output only. Violation Id of the org-policy violation due to which the resource violation is
+        /// caused. Empty for org-policy violations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("associatedOrgPolicyViolationId")]
+        public virtual string AssociatedOrgPolicyViolationId { get; set; }
 
         /// <summary>
         /// Output only. Immutable. Audit Log Link for violated resource Format:
@@ -1814,6 +1847,12 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("orgPolicyConstraint")]
         public virtual string OrgPolicyConstraint { get; set; }
 
+        /// <summary>
+        /// Optional. Output only. Parent project number where resource is present. Empty for org-policy violations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentProjectNumber")]
+        public virtual string ParentProjectNumber { get; set; }
+
         /// <summary>Output only. Compliance violation remediation</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remediation")]
         public virtual GoogleCloudAssuredworkloadsV1beta1ViolationRemediation Remediation { get; set; }
@@ -1857,6 +1896,20 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
             set => ResolveTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
+        /// <summary>
+        /// Optional. Output only. Name of the resource like //storage.googleapis.com/myprojectxyz-testbucket. Empty for
+        /// org-policy violations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>
+        /// Optional. Output only. Type of the resource like compute.googleapis.com/Disk, etc. Empty for org-policy
+        /// violations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
+        public virtual string ResourceType { get; set; }
+
         /// <summary>Output only. State of the violation</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -1897,6 +1950,10 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
             get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
+
+        /// <summary>Output only. Type of the violation</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("violationType")]
+        public virtual string ViolationType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2178,6 +2235,14 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ProvisionedResourcesParent { get; set; }
 
         /// <summary>
+        /// Output only. Indicates whether resource monitoring is enabled for workload or not. It is true when Resource
+        /// feed is subscribed to AWM topic and AWM Service Agent Role is binded to AW Service Account for resource
+        /// Assured workload.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceMonitoringEnabled")]
+        public virtual System.Nullable<bool> ResourceMonitoringEnabled { get; set; }
+
+        /// <summary>
         /// Input only. Resource properties that are used to customize workload resources. These properties (such as
         /// custom project id) will be used to create workload resources if possible. This field is optional.
         /// </summary>
@@ -2222,9 +2287,17 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
     /// <summary>Represents the Compliance Status of this workload</summary>
     public class GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Number of current resource violations which are not acknowledged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("acknowledgedResourceViolationCount")]
+        public virtual System.Nullable<int> AcknowledgedResourceViolationCount { get; set; }
+
         /// <summary>Number of current orgPolicy violations which are acknowledged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("acknowledgedViolationCount")]
         public virtual System.Nullable<int> AcknowledgedViolationCount { get; set; }
+
+        /// <summary>Number of current resource violations which are acknowledged.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeResourceViolationCount")]
+        public virtual System.Nullable<int> ActiveResourceViolationCount { get; set; }
 
         /// <summary>Number of current orgPolicy violations which are not acknowledged.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeViolationCount")]
@@ -2465,8 +2538,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The normal response of the operation in case of success. If the original method returns no data on success,
-        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
         /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.

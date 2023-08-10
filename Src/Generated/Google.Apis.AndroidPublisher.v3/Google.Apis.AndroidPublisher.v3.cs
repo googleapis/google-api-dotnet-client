@@ -5312,8 +5312,8 @@ namespace Google.Apis.AndroidPublisher.v3
         }
 
         /// <summary>
-        /// Deletes an in-app product (i.e. a managed product or a subscription). This method should no longer be used
-        /// to delete subscriptions. See [this
+        /// Deletes an in-app product (a managed product or a subscription). This method should no longer be used to
+        /// delete subscriptions. See [this
         /// article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
         /// for more information.
         /// </summary>
@@ -5325,8 +5325,8 @@ namespace Google.Apis.AndroidPublisher.v3
         }
 
         /// <summary>
-        /// Deletes an in-app product (i.e. a managed product or a subscription). This method should no longer be used
-        /// to delete subscriptions. See [this
+        /// Deletes an in-app product (a managed product or a subscription). This method should no longer be used to
+        /// delete subscriptions. See [this
         /// article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
         /// for more information.
         /// </summary>
@@ -5450,8 +5450,8 @@ namespace Google.Apis.AndroidPublisher.v3
         }
 
         /// <summary>
-        /// Creates an in-app product (i.e. a managed product or a subscription). This method should no longer be used
-        /// to create subscriptions. See [this
+        /// Creates an in-app product (a managed product or a subscription). This method should no longer be used to
+        /// create subscriptions. See [this
         /// article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
         /// for more information.
         /// </summary>
@@ -5463,8 +5463,8 @@ namespace Google.Apis.AndroidPublisher.v3
         }
 
         /// <summary>
-        /// Creates an in-app product (i.e. a managed product or a subscription). This method should no longer be used
-        /// to create subscriptions. See [this
+        /// Creates an in-app product (a managed product or a subscription). This method should no longer be used to
+        /// create subscriptions. See [this
         /// article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
         /// for more information.
         /// </summary>
@@ -5624,8 +5624,8 @@ namespace Google.Apis.AndroidPublisher.v3
         }
 
         /// <summary>
-        /// Patches an in-app product (i.e. a managed product or a subscription). This method should no longer be used
-        /// to update subscriptions. See [this
+        /// Patches an in-app product (a managed product or a subscription). This method should no longer be used to
+        /// update subscriptions. See [this
         /// article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
         /// for more information.
         /// </summary>
@@ -5638,8 +5638,8 @@ namespace Google.Apis.AndroidPublisher.v3
         }
 
         /// <summary>
-        /// Patches an in-app product (i.e. a managed product or a subscription). This method should no longer be used
-        /// to update subscriptions. See [this
+        /// Patches an in-app product (a managed product or a subscription). This method should no longer be used to
+        /// update subscriptions. See [this
         /// article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
         /// for more information.
         /// </summary>
@@ -5717,8 +5717,8 @@ namespace Google.Apis.AndroidPublisher.v3
         }
 
         /// <summary>
-        /// Updates an in-app product (i.e. a managed product or a subscription). This method should no longer be used
-        /// to update subscriptions. See [this
+        /// Updates an in-app product (a managed product or a subscription). This method should no longer be used to
+        /// update subscriptions. See [this
         /// article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
         /// for more information.
         /// </summary>
@@ -5731,8 +5731,8 @@ namespace Google.Apis.AndroidPublisher.v3
         }
 
         /// <summary>
-        /// Updates an in-app product (i.e. a managed product or a subscription). This method should no longer be used
-        /// to update subscriptions. See [this
+        /// Updates an in-app product (a managed product or a subscription). This method should no longer be used to
+        /// update subscriptions. See [this
         /// article](https://android-developers.googleblog.com/2023/06/changes-to-google-play-developer-api-june-2023.html)
         /// for more information.
         /// </summary>

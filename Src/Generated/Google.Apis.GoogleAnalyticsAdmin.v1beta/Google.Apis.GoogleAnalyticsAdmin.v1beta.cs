@@ -1142,6 +1142,81 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
                     });
                 }
             }
+
+            /// <summary>Updates a conversion event with the specified attributes.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Output only. Resource name of this conversion event. Format:
+            /// properties/{property}/conversionEvents/{conversion_event}
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaConversionEvent body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Updates a conversion event with the specified attributes.</summary>
+            public class PatchRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaConversionEvent>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaConversionEvent body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Output only. Resource name of this conversion event. Format:
+                /// properties/{property}/conversionEvents/{conversion_event}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Required. The list of fields to be updated. Field names must be in snake case (e.g.,
+                /// "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path
+                /// with the string "*" to match all fields.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaConversionEvent Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/conversionEvents/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the CustomDimensions resource.</summary>
@@ -4200,6 +4275,13 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta.Data
     /// <summary>A conversion event in a Google Analytics property.</summary>
     public class GoogleAnalyticsAdminV1betaConversionEvent : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The method by which conversions will be counted across multiple events within a session. If this
+        /// value is not provided, it will be set to `ONCE_PER_EVENT`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countingMethod")]
+        public virtual string CountingMethod { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;

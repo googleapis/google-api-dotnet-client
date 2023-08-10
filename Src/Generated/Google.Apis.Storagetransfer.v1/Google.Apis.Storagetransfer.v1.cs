@@ -1739,12 +1739,51 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// </summary>
     public class EventStream : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _eventStreamExpirationTimeRaw;
+
+        private object _eventStreamExpirationTime;
+
         /// <summary>
         /// Specifies the data and time at which Storage Transfer Service stops listening for events from this stream.
         /// After this time, any transfers in progress will complete, but no new transfers are initiated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventStreamExpirationTime")]
-        public virtual object EventStreamExpirationTime { get; set; }
+        public virtual string EventStreamExpirationTimeRaw
+        {
+            get => _eventStreamExpirationTimeRaw;
+            set
+            {
+                _eventStreamExpirationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _eventStreamExpirationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EventStreamExpirationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EventStreamExpirationTimeDateTimeOffset instead.")]
+        public virtual object EventStreamExpirationTime
+        {
+            get => _eventStreamExpirationTime;
+            set
+            {
+                _eventStreamExpirationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _eventStreamExpirationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="EventStreamExpirationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EventStreamExpirationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventStreamExpirationTimeRaw);
+            set => EventStreamExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _eventStreamStartTimeRaw;
+
+        private object _eventStreamStartTime;
 
         /// <summary>
         /// Specifies the date and time that Storage Transfer Service starts listening for events from this stream. If
@@ -1752,7 +1791,38 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// immediately.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventStreamStartTime")]
-        public virtual object EventStreamStartTime { get; set; }
+        public virtual string EventStreamStartTimeRaw
+        {
+            get => _eventStreamStartTimeRaw;
+            set
+            {
+                _eventStreamStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _eventStreamStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EventStreamStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EventStreamStartTimeDateTimeOffset instead.")]
+        public virtual object EventStreamStartTime
+        {
+            get => _eventStreamStartTime;
+            set
+            {
+                _eventStreamStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _eventStreamStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="EventStreamStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EventStreamStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventStreamStartTimeRaw);
+            set => EventStreamStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Required. Specifies a unique name of the resource such as AWS SQS ARN in the form
@@ -2064,12 +2134,51 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("includePrefixes")]
         public virtual System.Collections.Generic.IList<string> IncludePrefixes { get; set; }
 
+        private string _lastModifiedBeforeRaw;
+
+        private object _lastModifiedBefore;
+
         /// <summary>
         /// If specified, only objects with a "last modification time" before this timestamp and objects that don't have
         /// a "last modification time" are transferred.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedBefore")]
-        public virtual object LastModifiedBefore { get; set; }
+        public virtual string LastModifiedBeforeRaw
+        {
+            get => _lastModifiedBeforeRaw;
+            set
+            {
+                _lastModifiedBefore = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastModifiedBeforeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastModifiedBeforeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastModifiedBeforeDateTimeOffset instead.")]
+        public virtual object LastModifiedBefore
+        {
+            get => _lastModifiedBefore;
+            set
+            {
+                _lastModifiedBeforeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastModifiedBefore = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastModifiedBeforeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastModifiedBeforeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastModifiedBeforeRaw);
+            set => LastModifiedBeforeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _lastModifiedSinceRaw;
+
+        private object _lastModifiedSince;
 
         /// <summary>
         /// If specified, only objects with a "last modification time" on or after this timestamp and objects that don't
@@ -2079,7 +2188,38 @@ namespace Google.Apis.Storagetransfer.v1.Data
         /// start of the day * `last_modified_before` to the end of the day
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedSince")]
-        public virtual object LastModifiedSince { get; set; }
+        public virtual string LastModifiedSinceRaw
+        {
+            get => _lastModifiedSinceRaw;
+            set
+            {
+                _lastModifiedSince = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastModifiedSinceRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastModifiedSinceRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastModifiedSinceDateTimeOffset instead.")]
+        public virtual object LastModifiedSince
+        {
+            get => _lastModifiedSince;
+            set
+            {
+                _lastModifiedSinceRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastModifiedSince = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastModifiedSinceRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastModifiedSinceDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastModifiedSinceRaw);
+            set => LastModifiedSinceRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Ensures that objects are not transferred if a specific maximum time has elapsed since the "last modification
@@ -2132,8 +2272,8 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The normal response of the operation in case of success. If the original method returns no data on success,
-        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
         /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
@@ -2457,13 +2597,79 @@ namespace Google.Apis.Storagetransfer.v1.Data
     /// <summary>This resource represents the configuration of a transfer job that runs periodically.</summary>
     public class TransferJob : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _creationTimeRaw;
+
+        private object _creationTime;
+
         /// <summary>Output only. The time that the transfer job was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
-        public virtual object CreationTime { get; set; }
+        public virtual string CreationTimeRaw
+        {
+            get => _creationTimeRaw;
+            set
+            {
+                _creationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _creationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreationTimeDateTimeOffset instead.")]
+        public virtual object CreationTime
+        {
+            get => _creationTime;
+            set
+            {
+                _creationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _creationTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _deletionTimeRaw;
+
+        private object _deletionTime;
 
         /// <summary>Output only. The time that the transfer job was deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deletionTime")]
-        public virtual object DeletionTime { get; set; }
+        public virtual string DeletionTimeRaw
+        {
+            get => _deletionTimeRaw;
+            set
+            {
+                _deletionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deletionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeletionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeletionTimeDateTimeOffset instead.")]
+        public virtual object DeletionTime
+        {
+            get => _deletionTime;
+            set
+            {
+                _deletionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deletionTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeletionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeletionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeletionTimeRaw);
+            set => DeletionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
@@ -2478,9 +2684,44 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eventStream")]
         public virtual EventStream EventStream { get; set; }
 
+        private string _lastModificationTimeRaw;
+
+        private object _lastModificationTime;
+
         /// <summary>Output only. The time that the transfer job was last modified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastModificationTime")]
-        public virtual object LastModificationTime { get; set; }
+        public virtual string LastModificationTimeRaw
+        {
+            get => _lastModificationTimeRaw;
+            set
+            {
+                _lastModificationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastModificationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastModificationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastModificationTimeDateTimeOffset instead.")]
+        public virtual object LastModificationTime
+        {
+            get => _lastModificationTime;
+            set
+            {
+                _lastModificationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastModificationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastModificationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastModificationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastModificationTimeRaw);
+            set => LastModificationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// The name of the most recently started TransferOperation of this JobConfig. Present if a TransferOperation
@@ -2563,9 +2804,42 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("counters")]
         public virtual TransferCounters Counters { get; set; }
 
+        private string _endTimeRaw;
+
+        private object _endTime;
+
         /// <summary>End time of this transfer execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Summarizes errors encountered with sample error log entries.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("errorBreakdowns")]
@@ -2587,9 +2861,42 @@ namespace Google.Apis.Storagetransfer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
+        private string _startTimeRaw;
+
+        private object _startTime;
+
         /// <summary>Start time of this transfer execution.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Status of the transfer operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]

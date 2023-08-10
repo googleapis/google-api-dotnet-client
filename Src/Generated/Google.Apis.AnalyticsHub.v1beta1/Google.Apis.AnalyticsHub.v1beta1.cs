@@ -1899,6 +1899,19 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Reference to a linked resource tracked by this Subscription.</summary>
+    public class LinkedResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linked_dataset
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedDataset")]
+        public virtual string LinkedDataset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for response to the list of data exchanges.</summary>
     public class ListDataExchangesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2221,6 +2234,17 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message for response when you refresh a subscription.</summary>
+    public class RefreshSubscriptionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The refreshed subscription resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
+        public virtual Subscription Subscription { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Restricted export config, used to configure restricted export on linked dataset.</summary>
     public class RestrictedExportConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2266,6 +2290,17 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message for response when you subscribe to a Data Exchange.</summary>
+    public class SubscribeDataExchangeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Subscription object created from this subscribe action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
+        public virtual Subscription Subscription { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for subscribing to a listing.</summary>
     public class SubscribeListingRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2280,6 +2315,137 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
     /// <summary>Message for response when you subscribe to a listing.</summary>
     public class SubscribeListingResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A subscription represents a subscribers' access to a particular set of published data. It contains references to
+    /// associated listings, data exchanges, and linked datasets. TODO(b/267528977) Consider port the new resource to
+    /// v1beta1 and dataexchange APIs.
+    /// </summary>
+    public class Subscription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _creationTimeRaw;
+
+        private object _creationTime;
+
+        /// <summary>Output only. Timestamp when the subscription was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
+        public virtual string CreationTimeRaw
+        {
+            get => _creationTimeRaw;
+            set
+            {
+                _creationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _creationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreationTimeDateTimeOffset instead.")]
+        public virtual object CreationTime
+        {
+            get => _creationTime;
+            set
+            {
+                _creationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _creationTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Output only. Resource name of the source Data Exchange. e.g. projects/123/locations/US/dataExchanges/456
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataExchange")]
+        public virtual string DataExchange { get; set; }
+
+        private string _lastModifyTimeRaw;
+
+        private object _lastModifyTime;
+
+        /// <summary>Output only. Timestamp when the subscription was last modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModifyTime")]
+        public virtual string LastModifyTimeRaw
+        {
+            get => _lastModifyTimeRaw;
+            set
+            {
+                _lastModifyTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastModifyTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastModifyTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastModifyTimeDateTimeOffset instead.")]
+        public virtual object LastModifyTime
+        {
+            get => _lastModifyTime;
+            set
+            {
+                _lastModifyTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastModifyTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastModifyTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastModifyTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastModifyTimeRaw);
+            set => LastModifyTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Output only. Map of listing resource names to associated linked resource, e.g.
+        /// projects/123/locations/US/dataExchanges/456/listings/789 -&amp;gt; projects/123/datasets/my_dataset For
+        /// listing-level subscriptions, this is a map of size 1. Only contains values if state == STATE_ACTIVE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedDatasetMap")]
+        public virtual System.Collections.Generic.IDictionary<string, LinkedResource> LinkedDatasetMap { get; set; }
+
+        /// <summary>
+        /// Output only. Resource name of the source Listing. e.g.
+        /// projects/123/locations/US/dataExchanges/456/listings/789
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listing")]
+        public virtual string Listing { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the subscription. e.g.
+        /// `projects/myproject/locations/US/subscriptions/123`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Display name of the project of this subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organizationDisplayName")]
+        public virtual string OrganizationDisplayName { get; set; }
+
+        /// <summary>Output only. Organization of the project this subscription belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organizationId")]
+        public virtual string OrganizationId { get; set; }
+
+        /// <summary>Output only. Current state of the subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Email of the subscriber.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriberContact")]
+        public virtual string SubscriberContact { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -1869,18 +1869,18 @@ namespace Google.Apis.SecretManager.v1.Data
     /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
     /// constraints based on attributes of the request, the resource, or both. To learn which resources support
     /// conditions in their IAM policies, see the [IAM
-    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings":
-    /// [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` {
+    /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
     /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:**
-    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
+    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML
+    /// example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features,
-    /// see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its
+    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2008,13 +2008,48 @@ namespace Google.Apis.SecretManager.v1.Data
     /// </summary>
     public class Rotation : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _nextRotationTimeRaw;
+
+        private object _nextRotationTime;
+
         /// <summary>
         /// Optional. Timestamp in UTC at which the Secret is scheduled to rotate. Cannot be set to less than 300s (5
         /// min) in the future and at most 3153600000s (100 years). next_rotation_time MUST be set if rotation_period is
         /// set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextRotationTime")]
-        public virtual object NextRotationTime { get; set; }
+        public virtual string NextRotationTimeRaw
+        {
+            get => _nextRotationTimeRaw;
+            set
+            {
+                _nextRotationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _nextRotationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="NextRotationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use NextRotationTimeDateTimeOffset instead.")]
+        public virtual object NextRotationTime
+        {
+            get => _nextRotationTime;
+            set
+            {
+                _nextRotationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _nextRotationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="NextRotationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? NextRotationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(NextRotationTimeRaw);
+            set => NextRotationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Input only. The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at
@@ -2045,20 +2080,86 @@ namespace Google.Apis.SecretManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. The time at which the Secret was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Optional. Etag of the currently stored Secret.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
+
+        private string _expireTimeRaw;
+
+        private object _expireTime;
 
         /// <summary>
         /// Optional. Timestamp in UTC when the Secret is scheduled to expire. This is always provided on output,
         /// regardless of what was sent on input.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; }
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// The labels assigned to this Secret. Label keys must be between 1 and 63 characters long, have a UTF-8
@@ -2145,15 +2246,81 @@ namespace Google.Apis.SecretManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientSpecifiedPayloadChecksum")]
         public virtual System.Nullable<bool> ClientSpecifiedPayloadChecksum { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. The time at which the SecretVersion was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _destroyTimeRaw;
+
+        private object _destroyTime;
 
         /// <summary>
         /// Output only. The time this SecretVersion was destroyed. Only present if state is DESTROYED.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destroyTime")]
-        public virtual object DestroyTime { get; set; }
+        public virtual string DestroyTimeRaw
+        {
+            get => _destroyTimeRaw;
+            set
+            {
+                _destroyTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _destroyTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DestroyTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DestroyTimeDateTimeOffset instead.")]
+        public virtual object DestroyTime
+        {
+            get => _destroyTime;
+            set
+            {
+                _destroyTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _destroyTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DestroyTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DestroyTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DestroyTimeRaw);
+            set => DestroyTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. Etag of the currently stored SecretVersion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]

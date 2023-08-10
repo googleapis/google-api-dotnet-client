@@ -1094,13 +1094,48 @@ namespace Google.Apis.WebRisk.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("newVersionToken")]
         public virtual string NewVersionToken { get; set; }
 
+        private string _recommendedNextDiffRaw;
+
+        private object _recommendedNextDiff;
+
         /// <summary>
         /// The soonest the client should wait before issuing any diff request. Querying sooner is unlikely to produce a
         /// meaningful diff. Waiting longer is acceptable considering the use case. If this field is not set clients may
         /// update as soon as they want.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("recommendedNextDiff")]
-        public virtual object RecommendedNextDiff { get; set; }
+        public virtual string RecommendedNextDiffRaw
+        {
+            get => _recommendedNextDiffRaw;
+            set
+            {
+                _recommendedNextDiff = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _recommendedNextDiffRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RecommendedNextDiffRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RecommendedNextDiffDateTimeOffset instead.")]
+        public virtual object RecommendedNextDiff
+        {
+            get => _recommendedNextDiff;
+            set
+            {
+                _recommendedNextDiffRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _recommendedNextDiff = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="RecommendedNextDiffRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RecommendedNextDiffDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RecommendedNextDiffRaw);
+            set => RecommendedNextDiffRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>A set of entries to remove from a local threat type's list. This field may be empty.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("removals")]
@@ -1203,11 +1238,46 @@ namespace Google.Apis.WebRisk.v1.Data
 
     public class GoogleCloudWebriskV1SearchHashesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _negativeExpireTimeRaw;
+
+        private object _negativeExpireTime;
+
         /// <summary>
         /// For requested entities that did not match the threat list, how long to cache the response until.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negativeExpireTime")]
-        public virtual object NegativeExpireTime { get; set; }
+        public virtual string NegativeExpireTimeRaw
+        {
+            get => _negativeExpireTimeRaw;
+            set
+            {
+                _negativeExpireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _negativeExpireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="NegativeExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use NegativeExpireTimeDateTimeOffset instead.")]
+        public virtual object NegativeExpireTime
+        {
+            get => _negativeExpireTime;
+            set
+            {
+                _negativeExpireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _negativeExpireTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="NegativeExpireTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? NegativeExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(NegativeExpireTimeRaw);
+            set => NegativeExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// The full hashes that matched the requested prefixes. The hash will be populated in the key.
@@ -1222,12 +1292,45 @@ namespace Google.Apis.WebRisk.v1.Data
     /// <summary>Contains threat information on a matching hash.</summary>
     public class GoogleCloudWebriskV1SearchHashesResponseThreatHash : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
         /// <summary>
         /// The cache lifetime for the returned match. Clients must not cache this response past this timestamp to avoid
         /// false positives.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; }
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// A 32 byte SHA256 hash. This field is in binary format. For JSON requests, hashes are base64-encoded.
@@ -1256,12 +1359,45 @@ namespace Google.Apis.WebRisk.v1.Data
     /// <summary>Contains threat information on a matching uri.</summary>
     public class GoogleCloudWebriskV1SearchUrisResponseThreatUri : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
         /// <summary>
         /// The cache lifetime for the returned match. Clients must not cache this response past this timestamp to avoid
         /// false positives.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; }
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ThreatList this threat belongs to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threatTypes")]
@@ -1369,8 +1505,8 @@ namespace Google.Apis.WebRisk.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The normal response of the operation in case of success. If the original method returns no data on success,
-        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
         /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.

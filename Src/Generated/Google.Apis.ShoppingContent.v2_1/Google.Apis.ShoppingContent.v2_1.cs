@@ -15720,8 +15720,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>
         /// [Ads / organic ratio] (https://support.google.com/merchants/answer/11366442#zippy=%2Cadsfree-ratio) shows
         /// how often a merchant receives impressions from Shopping ads compared to organic traffic. The number is
-        /// rounded and bucketed. Available only in `CompetitiveVisibilityTopMerchantView`. Cannot be filtered on in the
-        /// 'WHERE' clause.
+        /// rounded and bucketed. Available only in `CompetitiveVisibilityTopMerchantView` and
+        /// `CompetitiveVisibilityCompetitorView`. Cannot be filtered on in the 'WHERE' clause.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adsOrganicRatio")]
         public virtual System.Nullable<double> AdsOrganicRatio { get; set; }
@@ -15750,39 +15750,41 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string CountryCode { get; set; }
 
         /// <summary>
-        /// Date of this row. Available only in `CompetitiveVisibilityBenchmarkView`. Required in the `SELECT` clause
-        /// for `CompetitiveVisibilityMarketBenchmarkView`.
+        /// Date of this row. Available only in `CompetitiveVisibilityBenchmarkView` and
+        /// `CompetitiveVisibilityCompetitorView`. Required in the `SELECT` clause for
+        /// `CompetitiveVisibilityMarketBenchmarkView`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("date")]
         public virtual Date Date { get; set; }
 
         /// <summary>
         /// Domain of your competitor or your domain, if 'is_your_domain' is true. Available only in
-        /// `CompetitiveVisibilityTopMerchantView`. Required in the `SELECT` clause for
-        /// `CompetitiveVisibilityTopMerchantView`. Cannot be filtered on in the 'WHERE' clause.
+        /// `CompetitiveVisibilityTopMerchantView` and `CompetitiveVisibilityCompetitorView`. Required in the `SELECT`
+        /// clause for `CompetitiveVisibilityTopMerchantView` and `CompetitiveVisibilityCompetitorView`. Cannot be
+        /// filtered on in the 'WHERE' clause.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("domain")]
         public virtual string Domain { get; set; }
 
         /// <summary>
         /// Higher position rate shows how often a competitor’s offer got placed in a higher position on the page than
-        /// your offer. Available only in `CompetitiveVisibilityTopMerchantView`. Cannot be filtered on in the 'WHERE'
-        /// clause.
+        /// your offer. Available only in `CompetitiveVisibilityTopMerchantView` and
+        /// `CompetitiveVisibilityCompetitorView`. Cannot be filtered on in the 'WHERE' clause.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("higherPositionRate")]
         public virtual System.Nullable<double> HigherPositionRate { get; set; }
 
         /// <summary>
-        /// True if this row contains data for your domain. Available only in `CompetitiveVisibilityTopMerchantView`.
-        /// Cannot be filtered on in the 'WHERE' clause.
+        /// True if this row contains data for your domain. Available only in `CompetitiveVisibilityTopMerchantView` and
+        /// `CompetitiveVisibilityCompetitorView`. Cannot be filtered on in the 'WHERE' clause.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isYourDomain")]
         public virtual System.Nullable<bool> IsYourDomain { get; set; }
 
         /// <summary>
         /// Page overlap rate describes how frequently competing retailers’ offers are shown together with your offers
-        /// on the same page. Available only in `CompetitiveVisibilityTopMerchantView`. Cannot be filtered on in the
-        /// 'WHERE' clause.
+        /// on the same page. Available only in `CompetitiveVisibilityTopMerchantView` and
+        /// `CompetitiveVisibilityCompetitorView`. Cannot be filtered on in the 'WHERE' clause.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageOverlapRate")]
         public virtual System.Nullable<double> PageOverlapRate { get; set; }
@@ -15790,14 +15792,23 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>
         /// Position of the domain in the top merchants ranking for the selected keys (`date`, `category_id`,
         /// `country_code`, `listing_type`) based on impressions. 1 is the highest. Available only in
-        /// `CompetitiveVisibilityTopMerchantView`. Cannot be filtered on in the 'WHERE' clause.
+        /// `CompetitiveVisibilityTopMerchantView` and `CompetitiveVisibilityCompetitorView`. Cannot be filtered on in
+        /// the 'WHERE' clause.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rank")]
         public virtual System.Nullable<ulong> Rank { get; set; }
 
         /// <summary>
-        /// Type of impression listing. Required in the `SELECT` clause for `CompetitiveVisibilityTopMerchantView` and
-        /// `CompetitiveVisibilityMarketBenchmarkView`. Cannot be filtered on in the 'WHERE' clause.
+        /// Relative visibility shows how often your competitors’ offers are shown compared to your offers. In other
+        /// words, this is the number of displayed impressions of a competitor retailer divided by the number of your
+        /// displayed impressions during a selected time range for a selected product category and country. Available
+        /// only in `CompetitiveVisibilityCompetitorView`. Cannot be filtered on in the 'WHERE' clause.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("relativeVisibility")]
+        public virtual System.Nullable<double> RelativeVisibility { get; set; }
+
+        /// <summary>
+        /// Type of impression listing. Required in the `SELECT` clause. Cannot be filtered on in the 'WHERE' clause.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trafficSource")]
         public virtual string TrafficSource { get; set; }
@@ -23997,7 +24008,8 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
 
         /// <summary>
         /// Competitive visibility fields requested by the merchant in the query. Field values are only set if the
-        /// merchant queries `CompetitiveVisibilityTopMerchantView` or `CompetitiveVisibilityBenchmarkView`.
+        /// merchant queries `CompetitiveVisibilityTopMerchantView`, `CompetitiveVisibilityBenchmarkView` or
+        /// `CompetitiveVisibilityCompetitorView`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("competitiveVisibility")]
         public virtual CompetitiveVisibility CompetitiveVisibility { get; set; }

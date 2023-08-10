@@ -298,6 +298,7 @@ namespace Google.Apis.Appengine.v1beta
             Firewall = new FirewallResource(service);
             Locations = new LocationsResource(service);
             Operations = new OperationsResource(service);
+            Runtimes = new RuntimesResource(service);
             Services = new ServicesResource(service);
         }
 
@@ -2007,6 +2008,125 @@ namespace Google.Apis.Appengine.v1beta
                     RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                     {
                         Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Runtimes resource.</summary>
+        public virtual RuntimesResource Runtimes { get; }
+
+        /// <summary>The "runtimes" collection of methods.</summary>
+        public class RuntimesResource
+        {
+            private const string Resource = "runtimes";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public RuntimesResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Lists all the available runtimes for the application.</summary>
+            /// <param name="appsId">
+            /// Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
+            /// </param>
+            public virtual ListRequest List(string appsId)
+            {
+                return new ListRequest(service, appsId);
+            }
+
+            /// <summary>Lists all the available runtimes for the application.</summary>
+            public class ListRequest : AppengineBaseServiceRequest<Google.Apis.Appengine.v1beta.Data.ListRuntimesResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string appsId) : base(service)
+                {
+                    AppsId = appsId;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string AppsId { get; private set; }
+
+                /// <summary>Optional. The environment of the Application.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("environment", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<EnvironmentEnum> Environment { get; set; }
+
+                /// <summary>Optional. The environment of the Application.</summary>
+                public enum EnvironmentEnum
+                {
+                    /// <summary>Default value.</summary>
+                    [Google.Apis.Util.StringValueAttribute("ENVIRONMENT_UNSPECIFIED")]
+                    ENVIRONMENTUNSPECIFIED = 0,
+
+                    /// <summary>App Engine Standard.</summary>
+                    [Google.Apis.Util.StringValueAttribute("STANDARD")]
+                    STANDARD = 1,
+
+                    /// <summary>App Engine Flexible</summary>
+                    [Google.Apis.Util.StringValueAttribute("FLEXIBLE")]
+                    FLEXIBLE = 2,
+                }
+
+                /// <summary>Optional. Maximum results to return per page.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. Continuation token for fetching the next page of results.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/apps/{appsId}/runtimes";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("appsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "appsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("environment", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "environment",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -5192,6 +5312,21 @@ namespace Google.Apis.Appengine.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for Applications.ListRuntimes.</summary>
+    public class ListRuntimesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Continuation token for fetching the next page of results.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The runtimes available to the requested application.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimes")]
+        public virtual System.Collections.Generic.IList<Runtime> Runtimes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for Services.ListServices.</summary>
     public class ListServicesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5500,10 +5635,10 @@ namespace Google.Apis.Appengine.v1beta.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The normal response of the operation in case of success. If the original method returns no data on success,
-        /// such as Delete, the response is google.protobuf.Empty. If the original method is standard Get/Create/Update,
-        /// the response should be the resource. For other methods, the response should have the type XxxResponse, where
-        /// Xxx is the original method name. For example, if the original method name is TakeSnapshot(), the inferred
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// Delete, the response is google.protobuf.Empty. If the original method is standard Get/Create/Update, the
+        /// response should be the resource. For other methods, the response should have the type XxxResponse, where Xxx
+        /// is the original method name. For example, if the original method name is TakeSnapshot(), the inferred
         /// response type is TakeSnapshotResponse.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]
@@ -6081,6 +6216,29 @@ namespace Google.Apis.Appengine.v1beta.Data
         /// <summary>User specified volumes.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
         public virtual System.Collections.Generic.IList<Volume> Volumes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Runtime versions for App Engine.</summary>
+    public class Runtime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The environment of the runtime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("environment")]
+        public virtual string Environment { get; set; }
+
+        /// <summary>The name of the runtime, e.g., 'go113', 'nodejs12', etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The stage of life this runtime is in, e.g., BETA, GA, etc.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stage")]
+        public virtual string Stage { get; set; }
+
+        /// <summary>Warning messages, e.g., a deprecation warning.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<string> Warnings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

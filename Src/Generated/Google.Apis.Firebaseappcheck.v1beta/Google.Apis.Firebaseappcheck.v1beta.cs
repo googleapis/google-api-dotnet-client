@@ -4639,6 +4639,14 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
         public virtual string EnforcementMode { get; set; }
 
         /// <summary>
+        /// This checksum is computed by the server based on the value of other fields, and may be sent on update and
+        /// delete requests to ensure the client has an up-to-date value before proceeding. This etag is strongly
+        /// validated as defined by RFC 7232.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
         /// Required. The relative resource name of the service configuration object, in the format: ```
         /// projects/{project_number}/services/{service_id} ``` Note that the `service_id` element must be a supported
         /// service ID. Currently, the following service IDs are supported: * `firebasestorage.googleapis.com` (Cloud
@@ -4685,9 +4693,6 @@ namespace Google.Apis.Firebaseappcheck.v1beta.Data
             get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>
