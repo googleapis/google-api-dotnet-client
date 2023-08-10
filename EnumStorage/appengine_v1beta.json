@@ -21,6 +21,11 @@
     "STRICT",
     "OVERRIDE"
   ],
+  "Google.Apis.Appengine.v1beta.AppsResource+RuntimesResource+ListRequest.EnvironmentEnum": [
+    "ENVIRONMENT_UNSPECIFIED",
+    "STANDARD",
+    "FLEXIBLE"
+  ],
   "Google.Apis.Appengine.v1beta.AppsResource+ServicesResource+VersionsResource+GetRequest.ViewEnum": [
     "BASIC",
     "FULL"

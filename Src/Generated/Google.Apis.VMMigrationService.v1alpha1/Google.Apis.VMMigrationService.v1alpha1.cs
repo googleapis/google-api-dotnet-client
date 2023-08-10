@@ -4614,6 +4614,12 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("firmware")]
         public virtual string Firmware { get; set; }
 
+        /// <summary>
+        /// Output only. Unordered list. List of VM certain capabilities needed for some Compute Engine features.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmCapabilities")]
+        public virtual System.Collections.Generic.IList<string> VmCapabilities { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6692,8 +6698,8 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The normal response of the operation in case of success. If the original method returns no data on success,
-        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
         /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.

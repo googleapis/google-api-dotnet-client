@@ -4191,9 +4191,7 @@ namespace Google.Apis.NetworkServices.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>
-                    /// Required. Short name of the TcpRoute resource to be created. E.g. TODO(Add an example).
-                    /// </summary>
+                    /// <summary>Required. Short name of the TcpRoute resource to be created.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("tcpRouteId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string TcpRouteId { get; set; }
 
@@ -4537,9 +4535,7 @@ namespace Google.Apis.NetworkServices.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>
-                    /// Required. Short name of the TlsRoute resource to be created. E.g. TODO(Add an example).
-                    /// </summary>
+                    /// <summary>Required. Short name of the TlsRoute resource to be created.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("tlsRouteId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string TlsRouteId { get; set; }
 
@@ -5672,7 +5668,7 @@ namespace Google.Apis.NetworkServices.v1.Data
 
         /// <summary>
         /// Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
-        /// This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some
+        /// This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some
         /// epsilon from the exact proportion defined here depending on the precision an implementation supports. If
         /// only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to
         /// that backend. If weights are specified for any one service name, they need to be specified for all of them.
@@ -6099,7 +6095,7 @@ namespace Google.Apis.NetworkServices.v1.Data
 
         /// <summary>
         /// Specifies the proportion of requests forwarded to the backend referenced by the serviceName field. This is
-        /// computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon
+        /// computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some epsilon
         /// from the exact proportion defined here depending on the precision an implementation supports. If only one
         /// serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to that
         /// backend. If weights are specified for any one service name, they need to be specified for all of them. If
@@ -6903,8 +6899,8 @@ namespace Google.Apis.NetworkServices.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The normal response of the operation in case of success. If the original method returns no data on success,
-        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
         /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
@@ -7030,18 +7026,18 @@ namespace Google.Apis.NetworkServices.v1.Data
     /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
     /// constraints based on attributes of the request, the resource, or both. To learn which resources support
     /// conditions in their IAM policies, see the [IAM
-    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings":
-    /// [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` {
+    /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
     /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:**
-    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
+    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML
+    /// example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features,
-    /// see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its
+    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7409,7 +7405,7 @@ namespace Google.Apis.NetworkServices.v1.Data
 
         /// <summary>
         /// Optional. Specifies the proportion of requests forwarded to the backend referenced by the serviceName field.
-        /// This is computed as: weight/Sum(weights in this destination list). For non-zero values, there may be some
+        /// This is computed as: - weight/Sum(weights in this destination list). For non-zero values, there may be some
         /// epsilon from the exact proportion defined here depending on the precision an implementation supports. If
         /// only one serviceName is specified and it has a weight greater than 0, 100% of the traffic is forwarded to
         /// that backend. If weights are specified for any one service name, they need to be specified for all of them.
@@ -7634,8 +7630,8 @@ namespace Google.Apis.NetworkServices.v1.Data
 
         /// <summary>
         /// Optional. Specifies the proportion of requests forwareded to the backend referenced by the service_name
-        /// field. This is computed as: weight/Sum(weights in destinations) Weights in all destinations does not need to
-        /// sum up to 100.
+        /// field. This is computed as: - weight/Sum(weights in destinations) Weights in all destinations does not need
+        /// to sum up to 100.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("weight")]
         public virtual System.Nullable<int> Weight { get; set; }

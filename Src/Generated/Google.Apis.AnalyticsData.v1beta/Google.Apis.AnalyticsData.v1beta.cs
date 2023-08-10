@@ -1105,7 +1105,8 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
     }
 
     /// <summary>
-    /// A contiguous set of days: startDate, startDate + 1, ..., endDate. Requests are allowed up to 4 date ranges.
+    /// A contiguous set of days: `startDate`, `startDate + 1`, ..., `endDate`. Requests are allowed up to 4 date
+    /// ranges.
     /// </summary>
     public class DateRange : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1560,8 +1561,8 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
     }
 
     /// <summary>
-    /// A contiguous set of minutes: startMinutesAgo, startMinutesAgo + 1, ..., endMinutesAgo. Requests are allowed up
-    /// to 2 minute ranges.
+    /// A contiguous set of minutes: `startMinutesAgo`, `startMinutesAgo + 1`, ..., `endMinutesAgo`. Requests are
+    /// allowed up to 2 minute ranges.
     /// </summary>
     public class MinuteRange : Google.Apis.Requests.IDirectResponseSchema
     {

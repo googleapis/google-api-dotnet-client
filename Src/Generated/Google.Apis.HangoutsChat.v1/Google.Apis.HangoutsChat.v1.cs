@@ -1619,9 +1619,9 @@ namespace Google.Apis.HangoutsChat.v1
                 public virtual string RequestId { get; set; }
 
                 /// <summary>
-                /// Optional. Deprecated: Use thread.thread_key instead. Opaque thread identifier. To start or add to a
-                /// thread, create a message and specify a `threadKey` or the thread.name. For example usage, see [Start
-                /// or reply to a message
+                /// Optional. Deprecated: Use thread.thread_key instead. ID for the thread. Supports up to 4000
+                /// characters. To start or add to a thread, create a message and specify a `threadKey` or the
+                /// thread.name. For example usage, see [Start or reply to a message
                 /// thread](https://developers.google.com/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("threadKey", Google.Apis.Util.RequestParameterType.Query)]
@@ -2233,7 +2233,9 @@ namespace Google.Apis.HangoutsChat.v1
 
         /// <summary>
         /// Creates a named space. Spaces grouped by topics aren't supported. For an example, see [Create a
-        /// space](https://developers.google.com/chat/api/guides/v1/spaces/create). Requires [user
+        /// space](https://developers.google.com/chat/api/guides/v1/spaces/create). If you receive the error message
+        /// `ALREADY_EXISTS` when creating a space, try a different `displayName`. An existing space within the Google
+        /// Workspace organization might already use this display name. Requires [user
         /// authentication](https://developers.google.com/chat/api/guides/auth/users) and the `chat.spaces.create` or
         /// `chat.spaces` scope.
         /// </summary>
@@ -2245,7 +2247,9 @@ namespace Google.Apis.HangoutsChat.v1
 
         /// <summary>
         /// Creates a named space. Spaces grouped by topics aren't supported. For an example, see [Create a
-        /// space](https://developers.google.com/chat/api/guides/v1/spaces/create). Requires [user
+        /// space](https://developers.google.com/chat/api/guides/v1/spaces/create). If you receive the error message
+        /// `ALREADY_EXISTS` when creating a space, try a different `displayName`. An existing space within the Google
+        /// Workspace organization might already use this display name. Requires [user
         /// authentication](https://developers.google.com/chat/api/guides/auth/users) and the `chat.spaces.create` or
         /// `chat.spaces` scope.
         /// </summary>
@@ -2596,7 +2600,9 @@ namespace Google.Apis.HangoutsChat.v1
 
         /// <summary>
         /// Updates a space. For an example, see [Update a
-        /// space](https://developers.google.com/chat/api/guides/v1/spaces/update). Requires [user
+        /// space](https://developers.google.com/chat/api/guides/v1/spaces/update). If you're updating the `displayName`
+        /// field and receive the error message `ALREADY_EXISTS`, try a different display name.. An existing space
+        /// within the Google Workspace organization might already use this display name. Requires [user
         /// authentication](https://developers.google.com/chat/api/guides/auth/users) and the `chat.spaces` scope.
         /// </summary>
         /// <param name="body">The body of the request.</param>
@@ -2608,7 +2614,9 @@ namespace Google.Apis.HangoutsChat.v1
 
         /// <summary>
         /// Updates a space. For an example, see [Update a
-        /// space](https://developers.google.com/chat/api/guides/v1/spaces/update). Requires [user
+        /// space](https://developers.google.com/chat/api/guides/v1/spaces/update). If you're updating the `displayName`
+        /// field and receive the error message `ALREADY_EXISTS`, try a different display name.. An existing space
+        /// within the Google Workspace organization might already use this display name. Requires [user
         /// authentication](https://developers.google.com/chat/api/guides/auth/users) and the `chat.spaces` scope.
         /// </summary>
         public class PatchRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Space>
@@ -2630,7 +2638,9 @@ namespace Google.Apis.HangoutsChat.v1
             /// paths: - `display_name` (Only supports changing the display name of a space with the `SPACE` type, or
             /// when also including the `space_type` mask to change a `GROUP_CHAT` space type to `SPACE`. Trying to
             /// update the display name of a `GROUP_CHAT` or a `DIRECT_MESSAGE` space results in an invalid argument
-            /// error.) - `space_type` (Only supports changing a `GROUP_CHAT` space type to `SPACE`. Include
+            /// error. If you receive the error message `ALREADY_EXISTS` when updating the `displayName`, try a
+            /// different `displayName`. An existing space within the Google Workspace organization might already use
+            /// this display name.) - `space_type` (Only supports changing a `GROUP_CHAT` space type to `SPACE`. Include
             /// `display_name` together with `space_type` in the update mask and ensure that the specified space has a
             /// non-empty display name and the `SPACE` space type. Including the `space_type` mask and the `SPACE` type
             /// in the specified space when updating the display name is optional if the existing space already has the
@@ -2699,7 +2709,9 @@ namespace Google.Apis.HangoutsChat.v1
         /// an existing DM between two human users, see [create a
         /// membership](https://developers.google.com/chat/api/guides/v1/members/create). If a DM already exists between
         /// two users, even when one user blocks the other at the time a request is made, then the existing DM is
-        /// returned. Spaces with threaded replies or guest access aren't supported. Requires [user
+        /// returned. Spaces with threaded replies aren't supported. If you receive the error message `ALREADY_EXISTS`
+        /// when setting up a space, try a different `displayName`. An existing space within the Google Workspace
+        /// organization might already use this display name. Requires [user
         /// authentication](https://developers.google.com/chat/api/guides/auth/users) and the `chat.spaces.create` or
         /// `chat.spaces` scope.
         /// </summary>
@@ -2727,7 +2739,9 @@ namespace Google.Apis.HangoutsChat.v1
         /// an existing DM between two human users, see [create a
         /// membership](https://developers.google.com/chat/api/guides/v1/members/create). If a DM already exists between
         /// two users, even when one user blocks the other at the time a request is made, then the existing DM is
-        /// returned. Spaces with threaded replies or guest access aren't supported. Requires [user
+        /// returned. Spaces with threaded replies aren't supported. If you receive the error message `ALREADY_EXISTS`
+        /// when setting up a space, try a different `displayName`. An existing space within the Google Workspace
+        /// organization might already use this display name. Requires [user
         /// authentication](https://developers.google.com/chat/api/guides/auth/users) and the `chat.spaces.create` or
         /// `chat.spaces` scope.
         /// </summary>
@@ -2883,11 +2897,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("attachmentDataRef")]
         public virtual AttachmentDataRef AttachmentDataRef { get; set; }
 
-        /// <summary>The original file name for the content, not the full path.</summary>
+        /// <summary>Output only. The original file name for the content, not the full path.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentName")]
         public virtual string ContentName { get; set; }
 
-        /// <summary>The content type (MIME type) of the file.</summary>
+        /// <summary>Output only. The content type (MIME type) of the file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("contentType")]
         public virtual string ContentType { get; set; }
 
@@ -2898,7 +2912,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("downloadUri")]
         public virtual string DownloadUri { get; set; }
 
-        /// <summary>A reference to the drive attachment. This field is used with the Drive API.</summary>
+        /// <summary>
+        /// Output only. A reference to the Google Drive attachment. This field is used with the Google Drive API.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driveDataRef")]
         public virtual DriveDataRef DriveDataRef { get; set; }
 
@@ -2906,7 +2922,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>The source of the attachment.</summary>
+        /// <summary>Output only. The source of the attachment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("source")]
         public virtual string Source { get; set; }
 
@@ -4199,7 +4215,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>
         /// An add-on triggers this action when the action needs to open a link. This differs from the `open_link` above
         /// in that this needs to talk to server to get the link. Thus some preparation work is required for web client
-        /// to do before the open link action response comes back.
+        /// to do before the open link action response comes back. Supported by Google Workspace Add-ons, but not Google
+        /// Chat apps.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openDynamicLinkAction")]
         public virtual GoogleAppsCardV1Action OpenDynamicLinkAction { get; set; }
@@ -5293,8 +5310,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual Space Space { get; set; }
 
         /// <summary>
-        /// Plain-text body of the message. The first link to an image, video, web page, or other preview-able item
-        /// generates a preview chip.
+        /// Plain-text body of the message. The first link to an image, video, or web page generates a preview chip. You
+        /// can also @mention a Google Chat user, or everyone in the space. To learn about creating text messages, see
+        /// [Create a text message](https://developers.google.com/chat/api/guides/message-formats/text).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
@@ -5472,10 +5490,12 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// Required. The `Space.spaceType` field is required. To create a space, set `Space.spaceType` to `SPACE` and
-        /// set `Space.displayName`. To create a group chat, set `Space.spaceType` to `GROUP_CHAT`. Don't set
-        /// `Space.displayName`. To create a 1:1 conversation between humans, set `Space.spaceType` to `DIRECT_MESSAGE`
-        /// and set `Space.singleUserBotDm` to `false`. Don't set `Space.displayName` or `Space.spaceDetails`. To create
-        /// an 1:1 conversation between a human and the calling Chat app, set `Space.spaceType` to `DIRECT_MESSAGE` and
+        /// set `Space.displayName`. If you receive the error message `ALREADY_EXISTS` when setting up a space, try a
+        /// different `displayName`. An existing space within the Google Workspace organization might already use this
+        /// display name. To create a group chat, set `Space.spaceType` to `GROUP_CHAT`. Don't set `Space.displayName`.
+        /// To create a 1:1 conversation between humans, set `Space.spaceType` to `DIRECT_MESSAGE` and set
+        /// `Space.singleUserBotDm` to `false`. Don't set `Space.displayName` or `Space.spaceDetails`. To create an 1:1
+        /// conversation between a human and the calling Chat app, set `Space.spaceType` to `DIRECT_MESSAGE` and
         /// `Space.singleUserBotDm` to `true`. Don't set `Space.displayName` or `Space.spaceDetails`. If a
         /// `DIRECT_MESSAGE` space already exists, that space is returned instead of creating a new space.
         /// </summary>
@@ -5541,8 +5561,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// The space's display name. Required when [creating a
-        /// space](https://developers.google.com/chat/api/reference/rest/v1/spaces/create). For direct messages, this
-        /// field might be empty. Supports up to 128 characters.
+        /// space](https://developers.google.com/chat/api/reference/rest/v1/spaces/create). If you receive the error
+        /// message `ALREADY_EXISTS` when creating a space or updating the `displayName`, try a different `displayName`.
+        /// An existing space within the Google Workspace organization might already use this display name. For direct
+        /// messages, this field might be empty. Supports up to 128 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -5707,7 +5729,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A thread in Google Chat.</summary>
+    /// <summary>
+    /// A thread in a Google Chat space. For example usage, see [Start or reply to a message
+    /// thread](https://developers.google.com/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
+    /// </summary>
     public class Thread : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Resource name of the thread. Example: `spaces/{space}/threads/{thread}`</summary>
@@ -5715,10 +5740,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Optional. Opaque thread identifier. To start or add to a thread, create a message and specify a `threadKey`
-        /// or the thread.name. For example usage, see [Start or reply to a message
-        /// thread](https://developers.google.com/chat/api/guides/crudl/messages#start_or_reply_to_a_message_thread).
-        /// For other requests, this is an output only field.
+        /// Optional. ID for the thread. Supports up to 4000 characters. Input for creating or updating a thread.
+        /// Otherwise, output only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("threadKey")]
         public virtual string ThreadKey { get; set; }

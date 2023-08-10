@@ -365,12 +365,47 @@ namespace Google.Apis.AdExperienceReport.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("betterAdsStatus")]
         public virtual string BetterAdsStatus { get; set; }
 
+        private string _enforcementTimeRaw;
+
+        private object _enforcementTime;
+
         /// <summary>
         /// The time at which [enforcement](https://support.google.com/webtools/answer/7308033) against the site began
         /// or will begin on this platform. Not set when the filter_status is OFF.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enforcementTime")]
-        public virtual object EnforcementTime { get; set; }
+        public virtual string EnforcementTimeRaw
+        {
+            get => _enforcementTimeRaw;
+            set
+            {
+                _enforcementTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _enforcementTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EnforcementTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EnforcementTimeDateTimeOffset instead.")]
+        public virtual object EnforcementTime
+        {
+            get => _enforcementTime;
+            set
+            {
+                _enforcementTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _enforcementTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="EnforcementTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EnforcementTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EnforcementTimeRaw);
+            set => EnforcementTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// The site's [enforcement status](https://support.google.com/webtools/answer/7308033) on this platform.
@@ -378,9 +413,44 @@ namespace Google.Apis.AdExperienceReport.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filterStatus")]
         public virtual string FilterStatus { get; set; }
 
+        private string _lastChangeTimeRaw;
+
+        private object _lastChangeTime;
+
         /// <summary>The time at which the site's status last changed on this platform.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastChangeTime")]
-        public virtual object LastChangeTime { get; set; }
+        public virtual string LastChangeTimeRaw
+        {
+            get => _lastChangeTimeRaw;
+            set
+            {
+                _lastChangeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastChangeTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastChangeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastChangeTimeDateTimeOffset instead.")]
+        public virtual object LastChangeTime
+        {
+            get => _lastChangeTime;
+            set
+            {
+                _lastChangeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastChangeTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastChangeTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastChangeTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastChangeTimeRaw);
+            set => LastChangeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// The site's regions on this platform. No longer populated, because there is no longer any semantic difference

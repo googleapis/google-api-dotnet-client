@@ -2307,7 +2307,7 @@ namespace Google.Apis.AndroidManagement.v1
             this.service = service;
         }
 
-        /// <summary>Get the device provisioning info by the identifier provided via the sign-in url.</summary>
+        /// <summary>Get the device provisioning information by the identifier provided in the sign-in url.</summary>
         /// <param name="name">
         /// Required. The identifier that Android Device Policy passes to the 3P sign-in page in the form of
         /// provisioningInfo/{provisioning_info}.
@@ -2317,7 +2317,7 @@ namespace Google.Apis.AndroidManagement.v1
             return new GetRequest(service, name);
         }
 
-        /// <summary>Get the device provisioning info by the identifier provided via the sign-in url.</summary>
+        /// <summary>Get the device provisioning information by the identifier provided in the sign-in url.</summary>
         public class GetRequest : AndroidManagementBaseServiceRequest<Google.Apis.AndroidManagement.v1.Data.ProvisioningInfo>
         {
             /// <summary>Constructs a new Get request.</summary>
@@ -4146,6 +4146,16 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
     public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents that the device has completed enrollment. User should be in the launcher at this point, device at
+    /// this point will be compliant and all setup steps have been completed. Intentionally empty.
+    /// </summary>
+    public class EnrollmentCompleteEvent : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6278,7 +6288,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("apiLevel")]
         public virtual System.Nullable<int> ApiLevel { get; set; }
 
-        /// <summary>Brand of the device. For example, Google.</summary>
+        /// <summary>The brand of the device. For example, Google.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("brand")]
         public virtual string Brand { get; set; }
 
@@ -6933,6 +6943,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dnsEvent")]
         public virtual DnsEvent DnsEvent { get; set; }
+
+        /// <summary>Device has completed enrollment. Part of AMAPI_LOGS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enrollmentCompleteEvent")]
+        public virtual EnrollmentCompleteEvent EnrollmentCompleteEvent { get; set; }
 
         /// <summary>Unique id of the event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventId")]

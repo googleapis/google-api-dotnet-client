@@ -557,7 +557,6 @@ namespace Google.Apis.ServiceNetworking.v1
             this.service = service;
             Connections = new ConnectionsResource(service);
             DnsRecordSets = new DnsRecordSetsResource(service);
-            DnsZone = new DnsZoneResource(service);
             DnsZones = new DnsZonesResource(service);
             Projects = new ProjectsResource(service);
             Roles = new RolesResource(service);
@@ -1012,7 +1011,7 @@ namespace Google.Apis.ServiceNetworking.v1
 
                 /// <summary>
                 /// Required. RecordSet Type eg. type='A'. See the list of [Supported DNS
-                /// Types](https://dns.corp.google.com/docs/overview).
+                /// Types](https://cloud.google.com/dns/records/json-record).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("type", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string Type { get; set; }
@@ -1302,87 +1301,6 @@ namespace Google.Apis.ServiceNetworking.v1
             }
         }
 
-        /// <summary>Gets the DnsZone resource.</summary>
-        public virtual DnsZoneResource DnsZone { get; }
-
-        /// <summary>The "dnsZone" collection of methods.</summary>
-        public class DnsZoneResource
-        {
-            private const string Resource = "dnsZone";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public DnsZoneResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-            }
-
-            /// <summary>
-            /// Service producers can use this method to retrieve a DNS zone in the shared producer host project and the
-            /// matching peering zones in consumer project
-            /// </summary>
-            /// <param name="name">
-            /// Required. The network that the consumer is using to connect with services. Must be in the form of
-            /// services/{service}/projects/{project}/global/networks/{network}/zones/{zoneName} Where {service} is the
-            /// peering service that is managing connectivity for the service producer's organization. For Google
-            /// services that support this {project} is the project number, as in '12345' {network} is the network name.
-            /// {zoneName} is the DNS zone name
-            /// </param>
-            public virtual GetRequest Get(string name)
-            {
-                return new GetRequest(service, name);
-            }
-
-            /// <summary>
-            /// Service producers can use this method to retrieve a DNS zone in the shared producer host project and the
-            /// matching peering zones in consumer project
-            /// </summary>
-            public class GetRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1.Data.GetDnsZoneResponse>
-            {
-                /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. The network that the consumer is using to connect with services. Must be in the form of
-                /// services/{service}/projects/{project}/global/networks/{network}/zones/{zoneName} Where {service} is
-                /// the peering service that is managing connectivity for the service producer's organization. For
-                /// Google services that support this {project} is the project number, as in '12345' {network} is the
-                /// network name. {zoneName} is the DNS zone name
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "get";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/{+name}/dnsZone:get";
-
-                /// <summary>Initializes Get parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^services/[^/]+$",
-                    });
-                }
-            }
-        }
-
         /// <summary>Gets the DnsZones resource.</summary>
         public virtual DnsZonesResource DnsZones { get; }
 
@@ -1453,69 +1371,6 @@ namespace Google.Apis.ServiceNetworking.v1
                 public override string RestPath => "v1/{+parent}/dnsZones:add";
 
                 /// <summary>Initializes Add parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^services/[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>
-            /// * Service producers can use this method to retrieve a list of available DNS zones in the shared producer
-            /// host project and the matching peering zones in the consumer project. *
-            /// </summary>
-            /// <param name="parent">
-            /// Required. Parent resource identifying the connection which owns this collection of DNS zones in the
-            /// format services/{service}/projects/{project}/global/networks/{network} Service: The service that is
-            /// managing connectivity for the service producer's organization. For Google services that support this
-            /// functionality, this value is `servicenetworking.googleapis.com`. Projects: the consumer project
-            /// containing the consumer network. Network: The consumer network accessible from the tenant project.
-            /// </param>
-            public virtual ListRequest List(string parent)
-            {
-                return new ListRequest(service, parent);
-            }
-
-            /// <summary>
-            /// * Service producers can use this method to retrieve a list of available DNS zones in the shared producer
-            /// host project and the matching peering zones in the consumer project. *
-            /// </summary>
-            public class ListRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1.Data.ListDnsZonesResponse>
-            {
-                /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                {
-                    Parent = parent;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. Parent resource identifying the connection which owns this collection of DNS zones in the
-                /// format services/{service}/projects/{project}/global/networks/{network} Service: The service that is
-                /// managing connectivity for the service producer's organization. For Google services that support this
-                /// functionality, this value is `servicenetworking.googleapis.com`. Projects: the consumer project
-                /// containing the consumer network. Network: The consumer network accessible from the tenant project.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "list";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/{+parent}/dnsZones:list";
-
-                /// <summary>Initializes List parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
@@ -1649,7 +1504,155 @@ namespace Google.Apis.ServiceNetworking.v1
                     public NetworksResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                        DnsZones = new DnsZonesResource(service);
                         PeeredDnsDomains = new PeeredDnsDomainsResource(service);
+                    }
+
+                    /// <summary>Gets the DnsZones resource.</summary>
+                    public virtual DnsZonesResource DnsZones { get; }
+
+                    /// <summary>The "dnsZones" collection of methods.</summary>
+                    public class DnsZonesResource
+                    {
+                        private const string Resource = "dnsZones";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public DnsZonesResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>
+                        /// Service producers can use this method to retrieve a DNS zone in the shared producer host
+                        /// project and the matching peering zones in consumer project
+                        /// </summary>
+                        /// <param name="name">
+                        /// Required. The network that the consumer is using to connect with services. Must be in the
+                        /// form of services/{service}/projects/{project}/global/networks/{network}/zones/{zoneName}
+                        /// Where {service} is the peering service that is managing connectivity for the service
+                        /// producer's organization. For Google services that support this {project} is the project
+                        /// number, as in '12345' {network} is the network name. {zoneName} is the DNS zone name
+                        /// </param>
+                        public virtual GetRequest Get(string name)
+                        {
+                            return new GetRequest(service, name);
+                        }
+
+                        /// <summary>
+                        /// Service producers can use this method to retrieve a DNS zone in the shared producer host
+                        /// project and the matching peering zones in consumer project
+                        /// </summary>
+                        public class GetRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1.Data.GetDnsZoneResponse>
+                        {
+                            /// <summary>Constructs a new Get request.</summary>
+                            public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                            {
+                                Name = name;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. The network that the consumer is using to connect with services. Must be in
+                            /// the form of
+                            /// services/{service}/projects/{project}/global/networks/{network}/zones/{zoneName} Where
+                            /// {service} is the peering service that is managing connectivity for the service
+                            /// producer's organization. For Google services that support this {project} is the project
+                            /// number, as in '12345' {network} is the network name. {zoneName} is the DNS zone name
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Name { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "get";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+name}";
+
+                            /// <summary>Initializes Get parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "name",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^services/[^/]+/projects/[^/]+/global/networks/[^/]+/dnsZones/[^/]+$",
+                                });
+                            }
+                        }
+
+                        /// <summary>
+                        /// * Service producers can use this method to retrieve a list of available DNS zones in the
+                        /// shared producer host project and the matching peering zones in the consumer project. *
+                        /// </summary>
+                        /// <param name="parent">
+                        /// Required. Parent resource identifying the connection which owns this collection of DNS zones
+                        /// in the format services/{service}/projects/{project}/global/networks/{network} Service: The
+                        /// service that is managing connectivity for the service producer's organization. For Google
+                        /// services that support this functionality, this value is `servicenetworking.googleapis.com`.
+                        /// Projects: the consumer project containing the consumer network. Network: The consumer
+                        /// network accessible from the tenant project.
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>
+                        /// * Service producers can use this method to retrieve a list of available DNS zones in the
+                        /// shared producer host project and the matching peering zones in the consumer project. *
+                        /// </summary>
+                        public class ListRequest : ServiceNetworkingBaseServiceRequest<Google.Apis.ServiceNetworking.v1.Data.ListDnsZonesResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Parent resource identifying the connection which owns this collection of DNS
+                            /// zones in the format services/{service}/projects/{project}/global/networks/{network}
+                            /// Service: The service that is managing connectivity for the service producer's
+                            /// organization. For Google services that support this functionality, this value is
+                            /// `servicenetworking.googleapis.com`. Projects: the consumer project containing the
+                            /// consumer network. Network: The consumer network accessible from the tenant project.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/dnsZones:list";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^services/[^/]+/projects/[^/]+/global/networks/[^/]+$",
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>Gets the PeeredDnsDomains resource.</summary>

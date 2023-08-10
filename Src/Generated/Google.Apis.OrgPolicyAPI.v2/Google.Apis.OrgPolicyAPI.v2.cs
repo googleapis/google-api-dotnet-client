@@ -528,7 +528,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND` is returned. The `etag`
             /// value can be used with `UpdatePolicy()` to update a policy during read-modify-write.
             /// </summary>
-            /// <param name="name">Required. Resource name of the policy. See `Policy` for naming requirements.</param>
+            /// <param name="name">Required. Resource name of the policy. See Policy for naming requirements.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -547,7 +547,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
                     InitParameters();
                 }
 
-                /// <summary>Required. Resource name of the policy. See `Policy` for naming requirements.</summary>
+                /// <summary>Required. Resource name of the policy. See Policy for naming requirements.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -581,7 +581,9 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// because it is an evaluated policy across multiple resources. Subtrees of Resource Manager resource
             /// hierarchy with 'under:' prefix will not be expanded.
             /// </summary>
-            /// <param name="name">Required. The effective policy to compute. See `Policy` for naming rules.</param>
+            /// <param name="name">
+            /// Required. The effective policy to compute. See Policy for naming requirements.
+            /// </param>
             public virtual GetEffectivePolicyRequest GetEffectivePolicy(string name)
             {
                 return new GetEffectivePolicyRequest(service, name);
@@ -602,7 +604,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
                     InitParameters();
                 }
 
-                /// <summary>Required. The effective policy to compute. See `Policy` for naming rules.</summary>
+                /// <summary>Required. The effective policy to compute. See Policy for naming requirements.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -722,12 +724,12 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Immutable. The resource name of the policy. Must be one of the following forms, where constraint_name is
-            /// the name of the constraint which this policy configures: *
+            /// Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name`
+            /// is the name of the constraint which this policy configures: *
             /// `projects/{project_number}/policies/{constraint_name}` *
             /// `folders/{folder_id}/policies/{constraint_name}` *
             /// `organizations/{organization_id}/policies/{constraint_name}` For example,
-            /// "projects/123/policies/compute.disableSerialPortAccess". Note:
+            /// `projects/123/policies/compute.disableSerialPortAccess`. Note:
             /// `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but
             /// responses will return the name using the equivalent project number.
             /// </param>
@@ -754,11 +756,11 @@ namespace Google.Apis.OrgPolicyAPI.v2
 
                 /// <summary>
                 /// Immutable. The resource name of the policy. Must be one of the following forms, where
-                /// constraint_name is the name of the constraint which this policy configures: *
+                /// `constraint_name` is the name of the constraint which this policy configures: *
                 /// `projects/{project_number}/policies/{constraint_name}` *
                 /// `folders/{folder_id}/policies/{constraint_name}` *
                 /// `organizations/{organization_id}/policies/{constraint_name}` For example,
-                /// "projects/123/policies/compute.disableSerialPortAccess". Note:
+                /// `projects/123/policies/compute.disableSerialPortAccess`. Note:
                 /// `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but
                 /// responses will return the name using the equivalent project number.
                 /// </summary>
@@ -1422,7 +1424,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND` is returned. The `etag`
             /// value can be used with `UpdatePolicy()` to update a policy during read-modify-write.
             /// </summary>
-            /// <param name="name">Required. Resource name of the policy. See `Policy` for naming requirements.</param>
+            /// <param name="name">Required. Resource name of the policy. See Policy for naming requirements.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -1441,7 +1443,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
                     InitParameters();
                 }
 
-                /// <summary>Required. Resource name of the policy. See `Policy` for naming requirements.</summary>
+                /// <summary>Required. Resource name of the policy. See Policy for naming requirements.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1475,7 +1477,9 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// because it is an evaluated policy across multiple resources. Subtrees of Resource Manager resource
             /// hierarchy with 'under:' prefix will not be expanded.
             /// </summary>
-            /// <param name="name">Required. The effective policy to compute. See `Policy` for naming rules.</param>
+            /// <param name="name">
+            /// Required. The effective policy to compute. See Policy for naming requirements.
+            /// </param>
             public virtual GetEffectivePolicyRequest GetEffectivePolicy(string name)
             {
                 return new GetEffectivePolicyRequest(service, name);
@@ -1496,7 +1500,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
                     InitParameters();
                 }
 
-                /// <summary>Required. The effective policy to compute. See `Policy` for naming rules.</summary>
+                /// <summary>Required. The effective policy to compute. See Policy for naming requirements.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1616,12 +1620,12 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Immutable. The resource name of the policy. Must be one of the following forms, where constraint_name is
-            /// the name of the constraint which this policy configures: *
+            /// Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name`
+            /// is the name of the constraint which this policy configures: *
             /// `projects/{project_number}/policies/{constraint_name}` *
             /// `folders/{folder_id}/policies/{constraint_name}` *
             /// `organizations/{organization_id}/policies/{constraint_name}` For example,
-            /// "projects/123/policies/compute.disableSerialPortAccess". Note:
+            /// `projects/123/policies/compute.disableSerialPortAccess`. Note:
             /// `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but
             /// responses will return the name using the equivalent project number.
             /// </param>
@@ -1648,11 +1652,11 @@ namespace Google.Apis.OrgPolicyAPI.v2
 
                 /// <summary>
                 /// Immutable. The resource name of the policy. Must be one of the following forms, where
-                /// constraint_name is the name of the constraint which this policy configures: *
+                /// `constraint_name` is the name of the constraint which this policy configures: *
                 /// `projects/{project_number}/policies/{constraint_name}` *
                 /// `folders/{folder_id}/policies/{constraint_name}` *
                 /// `organizations/{organization_id}/policies/{constraint_name}` For example,
-                /// "projects/123/policies/compute.disableSerialPortAccess". Note:
+                /// `projects/123/policies/compute.disableSerialPortAccess`. Note:
                 /// `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but
                 /// responses will return the name using the equivalent project number.
                 /// </summary>
@@ -1966,7 +1970,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// Gets a policy on a resource. If no policy is set on the resource, `NOT_FOUND` is returned. The `etag`
             /// value can be used with `UpdatePolicy()` to update a policy during read-modify-write.
             /// </summary>
-            /// <param name="name">Required. Resource name of the policy. See `Policy` for naming requirements.</param>
+            /// <param name="name">Required. Resource name of the policy. See Policy for naming requirements.</param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
@@ -1985,7 +1989,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
                     InitParameters();
                 }
 
-                /// <summary>Required. Resource name of the policy. See `Policy` for naming requirements.</summary>
+                /// <summary>Required. Resource name of the policy. See Policy for naming requirements.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2019,7 +2023,9 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// because it is an evaluated policy across multiple resources. Subtrees of Resource Manager resource
             /// hierarchy with 'under:' prefix will not be expanded.
             /// </summary>
-            /// <param name="name">Required. The effective policy to compute. See `Policy` for naming rules.</param>
+            /// <param name="name">
+            /// Required. The effective policy to compute. See Policy for naming requirements.
+            /// </param>
             public virtual GetEffectivePolicyRequest GetEffectivePolicy(string name)
             {
                 return new GetEffectivePolicyRequest(service, name);
@@ -2040,7 +2046,7 @@ namespace Google.Apis.OrgPolicyAPI.v2
                     InitParameters();
                 }
 
-                /// <summary>Required. The effective policy to compute. See `Policy` for naming rules.</summary>
+                /// <summary>Required. The effective policy to compute. See Policy for naming requirements.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -2160,12 +2166,12 @@ namespace Google.Apis.OrgPolicyAPI.v2
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Immutable. The resource name of the policy. Must be one of the following forms, where constraint_name is
-            /// the name of the constraint which this policy configures: *
+            /// Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name`
+            /// is the name of the constraint which this policy configures: *
             /// `projects/{project_number}/policies/{constraint_name}` *
             /// `folders/{folder_id}/policies/{constraint_name}` *
             /// `organizations/{organization_id}/policies/{constraint_name}` For example,
-            /// "projects/123/policies/compute.disableSerialPortAccess". Note:
+            /// `projects/123/policies/compute.disableSerialPortAccess`. Note:
             /// `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but
             /// responses will return the name using the equivalent project number.
             /// </param>
@@ -2192,11 +2198,11 @@ namespace Google.Apis.OrgPolicyAPI.v2
 
                 /// <summary>
                 /// Immutable. The resource name of the policy. Must be one of the following forms, where
-                /// constraint_name is the name of the constraint which this policy configures: *
+                /// `constraint_name` is the name of the constraint which this policy configures: *
                 /// `projects/{project_number}/policies/{constraint_name}` *
                 /// `folders/{folder_id}/policies/{constraint_name}` *
                 /// `organizations/{organization_id}/policies/{constraint_name}` For example,
-                /// "projects/123/policies/compute.disableSerialPortAccess". Note:
+                /// `projects/123/policies/compute.disableSerialPortAccess`. Note:
                 /// `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but
                 /// responses will return the name using the equivalent project number.
                 /// </summary>
@@ -2373,7 +2379,7 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         public virtual string ActionType { get; set; }
 
         /// <summary>
-        /// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")'`
+        /// Org policy condition/expression. For example: `resource.instanceName.matches("[production|test]_.*_(\d)+")`
         /// or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
@@ -2532,11 +2538,11 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
         public virtual GoogleCloudOrgpolicyV2PolicySpec DryRunSpec { get; set; }
 
         /// <summary>
-        /// Immutable. The resource name of the policy. Must be one of the following forms, where constraint_name is the
-        /// name of the constraint which this policy configures: *
+        /// Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is
+        /// the name of the constraint which this policy configures: *
         /// `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` *
         /// `organizations/{organization_id}/policies/{constraint_name}` For example,
-        /// "projects/123/policies/compute.disableSerialPortAccess". Note:
+        /// `projects/123/policies/compute.disableSerialPortAccess`. Note:
         /// `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but
         /// responses will return the name using the equivalent project number.
         /// </summary>
@@ -2687,9 +2693,9 @@ namespace Google.Apis.OrgPolicyAPI.v2.Data
     /// This is achieved by using the `under:` and optional `is:` prefixes. The `under:` prefix is used to denote
     /// resource subtree values. The `is:` prefix is used to denote specific values, and is required only if the value
     /// contains a ":". Values prefixed with "is:" are treated the same as values with no prefix. Ancestry subtrees must
-    /// be in one of the following formats: - "projects/", e.g. "projects/tokyo-rain-123" - "folders/", e.g.
-    /// "folders/1234" - "organizations/", e.g. "organizations/1234" The `supports_under` field of the associated
-    /// `Constraint` defines whether ancestry prefixes can be used.
+    /// be in one of the following formats: - `projects/` (for example, `projects/tokyo-rain-123`) - `folders/` (for
+    /// example, `folders/1234`) - `organizations/` (for example, `organizations/1234`) The `supports_under` field of
+    /// the associated `Constraint` defines whether ancestry prefixes can be used.
     /// </summary>
     public class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues : Google.Apis.Requests.IDirectResponseSchema
     {

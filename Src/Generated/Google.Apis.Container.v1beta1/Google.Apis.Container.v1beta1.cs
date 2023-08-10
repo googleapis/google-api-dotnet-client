@@ -6752,6 +6752,10 @@ namespace Google.Apis.Container.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("evaluationMode")]
         public virtual string EvaluationMode { get; set; }
 
+        /// <summary>Optional. Binauthz policies that apply to this cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyBindings")]
+        public virtual System.Collections.Generic.IList<PolicyBinding> PolicyBindings { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10040,6 +10044,20 @@ namespace Google.Apis.Container.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Binauthz policy that applies to this cluster.</summary>
+    public class PolicyBinding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The relative resource name of the binauthz platform policy to audit. GKE platform policies have the
+        /// following format: `projects/{project_number}/platforms/gke/policies/{policy_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -9671,6 +9671,14 @@ namespace Google.Apis.TagManager.v2.Data
     public class Parameter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Whether or not a reference type parameter is strongly or weakly referenced. @mutable
+        /// tagmanager.accounts.containers.workspaces.transformations.create @mutable
+        /// tagmanager.accounts.containers.workspaces.transformations.update
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isWeakReference")]
+        public virtual System.Nullable<bool> IsWeakReference { get; set; }
+
+        /// <summary>
         /// The named key that uniquely identifies a parameter. Required for top-level parameters, as well as map
         /// values. Ignored for list values. @mutable tagmanager.accounts.containers.workspaces.variables.create
         /// @mutable tagmanager.accounts.containers.workspaces.variables.update @mutable

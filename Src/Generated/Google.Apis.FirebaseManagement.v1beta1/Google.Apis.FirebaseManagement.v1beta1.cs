@@ -4095,6 +4095,13 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Describes the progress of an LRO. It is included in the `metadata` field of the `Operation`.</summary>
+    public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata about a long-running Product operation.</summary>
     public class ProductMetadata : Google.Apis.Requests.IDirectResponseSchema
     {

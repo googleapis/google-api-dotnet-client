@@ -436,6 +436,7 @@ namespace Google.Apis.AnalyticsHub.v1
             {
                 this.service = service;
                 DataExchanges = new DataExchangesResource(service);
+                Subscriptions = new SubscriptionsResource(service);
             }
 
             /// <summary>Gets the DataExchanges resource.</summary>
@@ -771,6 +772,97 @@ namespace Google.Apis.AnalyticsHub.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/dataExchanges/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists all subscriptions on a given Data Exchange or Listing.</summary>
+                    /// <param name="resource">
+                    /// Required. Resource name of the requested target. This resource may be either a Listing or a
+                    /// DataExchange. e.g. projects/123/locations/US/dataExchanges/456 OR e.g.
+                    /// projects/123/locations/US/dataExchanges/456/listings/789
+                    /// </param>
+                    public virtual ListSubscriptionsRequest ListSubscriptions(string resource)
+                    {
+                        return new ListSubscriptionsRequest(service, resource);
+                    }
+
+                    /// <summary>Lists all subscriptions on a given Data Exchange or Listing.</summary>
+                    public class ListSubscriptionsRequest : AnalyticsHubBaseServiceRequest<Google.Apis.AnalyticsHub.v1.Data.ListSharedResourceSubscriptionsResponse>
+                    {
+                        /// <summary>Constructs a new ListSubscriptions request.</summary>
+                        public ListSubscriptionsRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Resource name of the requested target. This resource may be either a Listing or a
+                        /// DataExchange. e.g. projects/123/locations/US/dataExchanges/456 OR e.g.
+                        /// projects/123/locations/US/dataExchanges/456/listings/789
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>
+                        /// If selected, includes deleted subscriptions in the response (up to 63 days after deletion).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("includeDeletedSubscriptions", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> IncludeDeletedSubscriptions { get; set; }
+
+                        /// <summary>The maximum number of results to return in a single response page.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Page token, returned by a previous call.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "listSubscriptions";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:listSubscriptions";
+
+                        /// <summary>Initializes ListSubscriptions parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataExchanges/[^/]+/listings/[^/]+$",
+                            });
+                            RequestParameters.Add("includeDeletedSubscriptions", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "includeDeletedSubscriptions",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
                             });
                             RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                             {
@@ -1368,6 +1460,97 @@ namespace Google.Apis.AnalyticsHub.v1
                     }
                 }
 
+                /// <summary>Lists all subscriptions on a given Data Exchange or Listing.</summary>
+                /// <param name="resource">
+                /// Required. Resource name of the requested target. This resource may be either a Listing or a
+                /// DataExchange. e.g. projects/123/locations/US/dataExchanges/456 OR e.g.
+                /// projects/123/locations/US/dataExchanges/456/listings/789
+                /// </param>
+                public virtual ListSubscriptionsRequest ListSubscriptions(string resource)
+                {
+                    return new ListSubscriptionsRequest(service, resource);
+                }
+
+                /// <summary>Lists all subscriptions on a given Data Exchange or Listing.</summary>
+                public class ListSubscriptionsRequest : AnalyticsHubBaseServiceRequest<Google.Apis.AnalyticsHub.v1.Data.ListSharedResourceSubscriptionsResponse>
+                {
+                    /// <summary>Constructs a new ListSubscriptions request.</summary>
+                    public ListSubscriptionsRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the requested target. This resource may be either a Listing or a
+                    /// DataExchange. e.g. projects/123/locations/US/dataExchanges/456 OR e.g.
+                    /// projects/123/locations/US/dataExchanges/456/listings/789
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>
+                    /// If selected, includes deleted subscriptions in the response (up to 63 days after deletion).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("includeDeletedSubscriptions", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IncludeDeletedSubscriptions { get; set; }
+
+                    /// <summary>The maximum number of results to return in a single response page.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Page token, returned by a previous call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "listSubscriptions";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:listSubscriptions";
+
+                    /// <summary>Initializes ListSubscriptions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/dataExchanges/[^/]+$",
+                        });
+                        RequestParameters.Add("includeDeletedSubscriptions", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includeDeletedSubscriptions",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Updates an existing data exchange.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
@@ -1503,6 +1686,71 @@ namespace Google.Apis.AnalyticsHub.v1
                     }
                 }
 
+                /// <summary>
+                /// Creates a Subscription to a Data Exchange. This is a long-running operation as it will create one or
+                /// more linked datasets.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Resource name of the Data Exchange. e.g.
+                /// `projects/publisherproject/locations/US/dataExchanges/123`
+                /// </param>
+                public virtual SubscribeRequest Subscribe(Google.Apis.AnalyticsHub.v1.Data.SubscribeDataExchangeRequest body, string name)
+                {
+                    return new SubscribeRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Creates a Subscription to a Data Exchange. This is a long-running operation as it will create one or
+                /// more linked datasets.
+                /// </summary>
+                public class SubscribeRequest : AnalyticsHubBaseServiceRequest<Google.Apis.AnalyticsHub.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Subscribe request.</summary>
+                    public SubscribeRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsHub.v1.Data.SubscribeDataExchangeRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the Data Exchange. e.g.
+                    /// `projects/publisherproject/locations/US/dataExchanges/123`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AnalyticsHub.v1.Data.SubscribeDataExchangeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "subscribe";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:subscribe";
+
+                    /// <summary>Initializes Subscribe parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/dataExchanges/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Returns the permissions that a caller has.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resource">
@@ -1560,6 +1808,333 @@ namespace Google.Apis.AnalyticsHub.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/dataExchanges/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Subscriptions resource.</summary>
+            public virtual SubscriptionsResource Subscriptions { get; }
+
+            /// <summary>The "subscriptions" collection of methods.</summary>
+            public class SubscriptionsResource
+            {
+                private const string Resource = "subscriptions";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SubscriptionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Deletes a subscription.</summary>
+                /// <param name="name">
+                /// Required. Resource name of the subscription to delete. e.g.
+                /// projects/123/locations/US/subscriptions/456
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a subscription.</summary>
+                public class DeleteRequest : AnalyticsHubBaseServiceRequest<Google.Apis.AnalyticsHub.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the subscription to delete. e.g.
+                    /// projects/123/locations/US/subscriptions/456
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/subscriptions/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets the details of a Subscription.</summary>
+                /// <param name="name">
+                /// Required. Resource name of the subscription. e.g. projects/123/locations/US/subscriptions/456
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets the details of a Subscription.</summary>
+                public class GetRequest : AnalyticsHubBaseServiceRequest<Google.Apis.AnalyticsHub.v1.Data.Subscription>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the subscription. e.g. projects/123/locations/US/subscriptions/456
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/subscriptions/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists all subscriptions in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The parent resource path of the subscription. e.g. projects/myproject/locations/US
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists all subscriptions in a given project and location.</summary>
+                public class ListRequest : AnalyticsHubBaseServiceRequest<Google.Apis.AnalyticsHub.v1.Data.ListSubscriptionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource path of the subscription. e.g. projects/myproject/locations/US
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>The filter expression may be used to filter by Data Exchange or Listing.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>The maximum number of results to return in a single response page.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Page token, returned by a previous call.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/subscriptions";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Refreshes a Subscription to a Data Exchange. A Data Exchange can become stale when a publisher adds
+                /// or removes data. This is a long-running operation as it may create many linked datasets.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Resource name of the Subscription to refresh. e.g.
+                /// `projects/subscriberproject/locations/US/subscriptions/123`
+                /// </param>
+                public virtual RefreshRequest Refresh(Google.Apis.AnalyticsHub.v1.Data.RefreshSubscriptionRequest body, string name)
+                {
+                    return new RefreshRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Refreshes a Subscription to a Data Exchange. A Data Exchange can become stale when a publisher adds
+                /// or removes data. This is a long-running operation as it may create many linked datasets.
+                /// </summary>
+                public class RefreshRequest : AnalyticsHubBaseServiceRequest<Google.Apis.AnalyticsHub.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Refresh request.</summary>
+                    public RefreshRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsHub.v1.Data.RefreshSubscriptionRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the Subscription to refresh. e.g.
+                    /// `projects/subscriberproject/locations/US/subscriptions/123`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AnalyticsHub.v1.Data.RefreshSubscriptionRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "refresh";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:refresh";
+
+                    /// <summary>Initializes Refresh parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/subscriptions/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Revokes a given subscription.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Resource name of the subscription to revoke. e.g.
+                /// projects/123/locations/US/subscriptions/456
+                /// </param>
+                public virtual RevokeRequest Revoke(Google.Apis.AnalyticsHub.v1.Data.RevokeSubscriptionRequest body, string name)
+                {
+                    return new RevokeRequest(service, body, name);
+                }
+
+                /// <summary>Revokes a given subscription.</summary>
+                public class RevokeRequest : AnalyticsHubBaseServiceRequest<Google.Apis.AnalyticsHub.v1.Data.RevokeSubscriptionResponse>
+                {
+                    /// <summary>Constructs a new Revoke request.</summary>
+                    public RevokeRequest(Google.Apis.Services.IClientService service, Google.Apis.AnalyticsHub.v1.Data.RevokeSubscriptionRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Resource name of the subscription to revoke. e.g.
+                    /// projects/123/locations/US/subscriptions/456
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AnalyticsHub.v1.Data.RevokeSubscriptionRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "revoke";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:revoke";
+
+                    /// <summary>Initializes Revoke parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/subscriptions/[^/]+$",
                         });
                     }
                 }
@@ -1743,6 +2318,10 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("primaryContact")]
         public virtual string PrimaryContact { get; set; }
 
+        /// <summary>Required. Configurable data sharing environment option for a data exchange.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sharingEnvironmentConfig")]
+        public virtual SharingEnvironmentConfig SharingEnvironmentConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1758,6 +2337,20 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("primaryContact")]
         public virtual string PrimaryContact { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Data Clean Room (DCR), used for privacy-safe and secured data sharing.</summary>
+    public class DcrExchangeConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Default Analytics Hub data exchange, used for secured data sharing.</summary>
+    public class DefaultExchangeConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1899,6 +2492,19 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Reference to a linked resource tracked by this Subscription.</summary>
+    public class LinkedResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linked_dataset
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedDataset")]
+        public virtual string LinkedDataset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for response to the list of data exchanges.</summary>
     public class ListDataExchangesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1939,6 +2545,36 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         /// <summary>A token to request the next page of results.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to the listing of shared resource subscriptions.</summary>
+    public class ListSharedResourceSubscriptionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Next page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of subscriptions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sharedResourceSubscriptions")]
+        public virtual System.Collections.Generic.IList<Subscription> SharedResourceSubscriptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to the listing of subscriptions.</summary>
+    public class ListSubscriptionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Next page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of subscriptions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptions")]
+        public virtual System.Collections.Generic.IList<Subscription> Subscriptions { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2027,6 +2663,49 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         /// <summary>Output only. Current state of the listing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
+    public class Operation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed,
+        /// and either `error` or `response` is available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("done")]
+        public virtual System.Nullable<bool> Done { get; set; }
+
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>
+        /// Service-specific metadata associated with the operation. It typically contains progress information and
+        /// common metadata such as create time. Some services might not provide such metadata. Any method that returns
+        /// a long-running operation should document the metadata type, if any.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you
+        /// use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The normal response of the operation in case of success. If the original method returns no data on success,
+        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2221,6 +2900,24 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message for refreshing a subscription.</summary>
+    public class RefreshSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response when you refresh a subscription.</summary>
+    public class RefreshSubscriptionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The refreshed subscription resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
+        public virtual Subscription Subscription { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Restricted export config, used to configure restricted export on linked dataset.</summary>
     public class RestrictedExportConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2240,6 +2937,20 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("restrictQueryResult")]
         public virtual System.Nullable<bool> RestrictQueryResult { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for revoking a subscription.</summary>
+    public class RevokeSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response when you revoke a subscription.</summary>
+    public class RevokeSubscriptionResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2266,6 +2977,85 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Sharing environment is a behavior model for sharing data within a data exchange. This option is configurable for
+    /// a data exchange.
+    /// </summary>
+    public class SharingEnvironmentConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Data Clean Room (DCR), used for privacy-safe and secured data sharing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dcrExchangeConfig")]
+        public virtual DcrExchangeConfig DcrExchangeConfig { get; set; }
+
+        /// <summary>Default Analytics Hub data exchange, used for secured data sharing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultExchangeConfig")]
+        public virtual DefaultExchangeConfig DefaultExchangeConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
+
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for subscribing to a Data Exchange.</summary>
+    public class SubscribeDataExchangeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The parent resource path of the Subscription. e.g. `projects/subscriberproject/locations/US`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destination")]
+        public virtual string Destination { get; set; }
+
+        /// <summary>Email of the subscriber.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriberContact")]
+        public virtual string SubscriberContact { get; set; }
+
+        /// <summary>Required. Name of the subscription to create. e.g. `subscription1`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
+        public virtual string Subscription { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response when you subscribe to a Data Exchange.</summary>
+    public class SubscribeDataExchangeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Subscription object created from this subscribe action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
+        public virtual Subscription Subscription { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Message for subscribing to a listing.</summary>
     public class SubscribeListingRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2280,6 +3070,141 @@ namespace Google.Apis.AnalyticsHub.v1.Data
     /// <summary>Message for response when you subscribe to a listing.</summary>
     public class SubscribeListingResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Subscription object created from this subscribe action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscription")]
+        public virtual Subscription Subscription { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A subscription represents a subscribers' access to a particular set of published data. It contains references to
+    /// associated listings, data exchanges, and linked datasets. TODO(b/267528977) Consider port the new resource to
+    /// v1beta1 and dataexchange APIs.
+    /// </summary>
+    public class Subscription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _creationTimeRaw;
+
+        private object _creationTime;
+
+        /// <summary>Output only. Timestamp when the subscription was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
+        public virtual string CreationTimeRaw
+        {
+            get => _creationTimeRaw;
+            set
+            {
+                _creationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _creationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreationTimeDateTimeOffset instead.")]
+        public virtual object CreationTime
+        {
+            get => _creationTime;
+            set
+            {
+                _creationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _creationTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreationTimeRaw);
+            set => CreationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Output only. Resource name of the source Data Exchange. e.g. projects/123/locations/US/dataExchanges/456
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataExchange")]
+        public virtual string DataExchange { get; set; }
+
+        private string _lastModifyTimeRaw;
+
+        private object _lastModifyTime;
+
+        /// <summary>Output only. Timestamp when the subscription was last modified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModifyTime")]
+        public virtual string LastModifyTimeRaw
+        {
+            get => _lastModifyTimeRaw;
+            set
+            {
+                _lastModifyTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastModifyTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastModifyTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastModifyTimeDateTimeOffset instead.")]
+        public virtual object LastModifyTime
+        {
+            get => _lastModifyTime;
+            set
+            {
+                _lastModifyTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastModifyTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastModifyTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastModifyTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastModifyTimeRaw);
+            set => LastModifyTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Output only. Map of listing resource names to associated linked resource, e.g.
+        /// projects/123/locations/US/dataExchanges/456/listings/789 -&amp;gt; projects/123/datasets/my_dataset For
+        /// listing-level subscriptions, this is a map of size 1. Only contains values if state == STATE_ACTIVE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkedDatasetMap")]
+        public virtual System.Collections.Generic.IDictionary<string, LinkedResource> LinkedDatasetMap { get; set; }
+
+        /// <summary>
+        /// Output only. Resource name of the source Listing. e.g.
+        /// projects/123/locations/US/dataExchanges/456/listings/789
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listing")]
+        public virtual string Listing { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the subscription. e.g.
+        /// `projects/myproject/locations/US/subscriptions/123`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Display name of the project of this subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organizationDisplayName")]
+        public virtual string OrganizationDisplayName { get; set; }
+
+        /// <summary>Output only. Organization of the project this subscription belongs to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("organizationId")]
+        public virtual string OrganizationId { get; set; }
+
+        /// <summary>Output only. Current state of the subscription.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. Email of the subscriber.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriberContact")]
+        public virtual string SubscriberContact { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
