@@ -2513,8 +2513,8 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The normal response of the operation in case of success. If the original method returns no data on success,
-        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
         /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
@@ -2638,18 +2638,18 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
     /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
     /// constraints based on attributes of the request, the resource, or both. To learn which resources support
     /// conditions in their IAM policies, see the [IAM
-    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings":
-    /// [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` {
+    /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
     /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:**
-    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
+    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML
+    /// example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features,
-    /// see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its
+    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2860,7 +2860,7 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("destPortRanges")]
         public virtual System.Collections.Generic.IList<string> DestPortRanges { get; set; }
 
-        /// <summary>Name of a Compute Engine route.</summary>
+        /// <summary>Name of a route.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -2868,7 +2868,15 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("instanceTags")]
         public virtual System.Collections.Generic.IList<string> InstanceTags { get; set; }
 
-        /// <summary>URI of a Compute Engine network.</summary>
+        /// <summary>URI of a NCC Hub. NCC_HUB routes only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nccHubUri")]
+        public virtual string NccHubUri { get; set; }
+
+        /// <summary>URI of a NCC Spoke. NCC_HUB routes only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nccSpokeUri")]
+        public virtual string NccSpokeUri { get; set; }
+
+        /// <summary>URI of a Compute Engine network. NETWORK routes only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkUri")]
         public virtual string NetworkUri { get; set; }
 
@@ -2888,6 +2896,10 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("protocols")]
         public virtual System.Collections.Generic.IList<string> Protocols { get; set; }
 
+        /// <summary>Indicates where route is applicable.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routeScope")]
+        public virtual string RouteScope { get; set; }
+
         /// <summary>Type of route.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("routeType")]
         public virtual string RouteType { get; set; }
@@ -2901,8 +2913,8 @@ namespace Google.Apis.NetworkManagement.v1beta1.Data
         public virtual System.Collections.Generic.IList<string> SrcPortRanges { get; set; }
 
         /// <summary>
-        /// URI of a Compute Engine route. Dynamic route from cloud router does not have a URI. Advertised route from
-        /// Google Cloud VPC to on-premises network also does not have a URI.
+        /// URI of a route. Dynamic, peering static and peering dynamic routes do not have an URI. Advertised route from
+        /// Google Cloud VPC to on-premises network also does not have an URI.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }

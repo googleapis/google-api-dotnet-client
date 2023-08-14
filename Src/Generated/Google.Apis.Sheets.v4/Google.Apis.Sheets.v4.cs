@@ -7722,7 +7722,7 @@ namespace Google.Apis.Sheets.v4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
         public virtual TextFormat Format { get; set; }
 
-        /// <summary>The character index where this run starts.</summary>
+        /// <summary>The zero-based character index where this run starts, in UTF-16 code units.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startIndex")]
         public virtual System.Nullable<int> StartIndex { get; set; }
 

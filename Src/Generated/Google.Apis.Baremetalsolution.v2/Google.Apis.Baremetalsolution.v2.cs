@@ -294,6 +294,7 @@ namespace Google.Apis.Baremetalsolution.v2
                 Networks = new NetworksResource(service);
                 NfsShares = new NfsSharesResource(service);
                 Operations = new OperationsResource(service);
+                OsImages = new OsImagesResource(service);
                 ProvisioningConfigs = new ProvisioningConfigsResource(service);
                 ProvisioningQuotas = new ProvisioningQuotasResource(service);
                 SshKeys = new SshKeysResource(service);
@@ -1687,6 +1688,97 @@ namespace Google.Apis.Baremetalsolution.v2
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/operations/.*$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the OsImages resource.</summary>
+            public virtual OsImagesResource OsImages { get; }
+
+            /// <summary>The "osImages" collection of methods.</summary>
+            public class OsImagesResource
+            {
+                private const string Resource = "osImages";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public OsImagesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Retrieves the list of OS images which are currently approved.</summary>
+                /// <param name="parent">Required. Parent value for ListProvisioningQuotasRequest.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Retrieves the list of OS images which are currently approved.</summary>
+                public class ListRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.ListOSImagesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Parent value for ListProvisioningQuotasRequest.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Requested page size. The server might return fewer items than requested. If unspecified, server
+                    /// will pick an appropriate default. Notice that page_size field is not supported and won't be
+                    /// respected in the API request for now, will be updated when pagination is supported.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>A token identifying a page of results from the server.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/osImages";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -3380,6 +3472,13 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Message for response of DisableInteractiveSerialConsole.</summary>
+    public class DisableInteractiveSerialConsoleResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -3393,6 +3492,13 @@ namespace Google.Apis.Baremetalsolution.v2.Data
 
     /// <summary>Message for enabling the interactive serial console on an instance.</summary>
     public class EnableInteractiveSerialConsoleRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response of EnableInteractiveSerialConsole.</summary>
+    public class EnableInteractiveSerialConsoleResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3433,6 +3539,28 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// <summary>Interface name. This is of syntax or and forms part of the network template name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Logical interface.</summary>
+    public class GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Interface name. This is not a globally unique identifier. Name is unique only inside the
+        /// ServerNetworkTemplate. This is of syntax or and forms part of the network template name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>If true, interface must have network connected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("required")]
+        public virtual System.Nullable<bool> Required { get; set; }
+
+        /// <summary>Interface type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3825,6 +3953,23 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// <summary>Locations that could not be reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for getting all available OS images.</summary>
+    public class ListOSImagesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The OS images available.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osImages")]
+        public virtual System.Collections.Generic.IList<OSImage> OsImages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4379,6 +4524,36 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Operation System image.</summary>
+    public class OSImage : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Instance types this image is applicable to. [Available
+        /// types](https://cloud.google.com/bare-metal/docs/bms-planning#server_configurations)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicableInstanceTypes")]
+        public virtual System.Collections.Generic.IList<string> ApplicableInstanceTypes { get; set; }
+
+        /// <summary>OS Image code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>OS Image description.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. OS Image's unique name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Network templates that can be used with this OS Image.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedNetworkTemplates")]
+        public virtual System.Collections.Generic.IList<string> SupportedNetworkTemplates { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4409,8 +4584,8 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The normal response of the operation in case of success. If the original method returns no data on success,
-        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
         /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
@@ -4667,6 +4842,29 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// <summary>The public SSH key. This must be in OpenSSH .authorized_keys format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicKey")]
         public virtual string PublicKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Network template.</summary>
+    public class ServerNetworkTemplate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Instance types this template is applicable to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applicableInstanceTypes")]
+        public virtual System.Collections.Generic.IList<string> ApplicableInstanceTypes { get; set; }
+
+        /// <summary>Logical interfaces.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logicalInterfaces")]
+        public virtual System.Collections.Generic.IList<GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface> LogicalInterfaces { get; set; }
+
+        /// <summary>
+        /// Output only. Template's unique name. The full resource name follows the pattern:
+        /// `projects/{project}/locations/{location}/serverNetworkTemplate/{server_network_template}` Generally, the
+        /// {server_network_template} follows the syntax of "bond" or "nic".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
