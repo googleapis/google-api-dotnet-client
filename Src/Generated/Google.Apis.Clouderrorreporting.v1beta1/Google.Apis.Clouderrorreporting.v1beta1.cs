@@ -323,7 +323,12 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("projectName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ProjectName { get; private set; }
 
-                /// <summary>Required. The group for which events shall be returned.</summary>
+                /// <summary>
+                /// Required. The group for which events shall be returned. The `group_id` is a unique identifier for a
+                /// particular error group. The identifier is derived from key parts of the error-log content and is
+                /// treated as Service Data. For information about how Service Data is handled, see [Google Cloud
+                /// Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice).
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("groupId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string GroupId { get; set; }
 
@@ -643,7 +648,12 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("alignmentTime", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual object AlignmentTime { get; set; }
 
-                /// <summary>Optional. List all ErrorGroupStats with these IDs.</summary>
+                /// <summary>
+                /// Optional. List all ErrorGroupStats with these IDs. The `group_id` is a unique identifier for a
+                /// particular error group. The identifier is derived from key parts of the error-log content and is
+                /// treated as Service Data. For information about how Service Data is handled, see [Google Cloud
+                /// Privacy Notice] (https://cloud.google.com/terms/cloud-privacy-notice).
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("groupId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual Google.Apis.Util.Repeatable<string> GroupId { get; set; }
 
@@ -894,9 +904,12 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
 
             /// <summary>Get the specified group.</summary>
             /// <param name="groupName">
-            /// Required. The group resource name. Written as `projects/{projectID}/groups/{group_name}`. Call
+            /// Required. The group resource name. Written as `projects/{projectID}/groups/{group_id}`. Call
             /// groupStats.list to return a list of groups belonging to this project. Example:
-            /// `projects/my-project-123/groups/my-group`
+            /// `projects/my-project-123/groups/my-group` In the group resource name, the `group_id` is a unique
+            /// identifier for a particular error group. The identifier is derived from key parts of the error-log
+            /// content and is treated as Service Data. For information about how Service Data is handled, see [Google
+            /// Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice).
             /// </param>
             public virtual GetRequest Get(string groupName)
             {
@@ -914,9 +927,12 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                 }
 
                 /// <summary>
-                /// Required. The group resource name. Written as `projects/{projectID}/groups/{group_name}`. Call
+                /// Required. The group resource name. Written as `projects/{projectID}/groups/{group_id}`. Call
                 /// groupStats.list to return a list of groups belonging to this project. Example:
-                /// `projects/my-project-123/groups/my-group`
+                /// `projects/my-project-123/groups/my-group` In the group resource name, the `group_id` is a unique
+                /// identifier for a particular error group. The identifier is derived from key parts of the error-log
+                /// content and is treated as Service Data. For information about how Service Data is handled, see
+                /// [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice).
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("groupName", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string GroupName { get; private set; }
@@ -948,7 +964,11 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
             /// <summary>Replace the data for the specified group. Fails if the group does not exist.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// The group resource name. Example: projects/my-project-123/groups/CNSgkpnppqKCUw
+            /// The group resource name. Written as `projects/{projectID}/groups/{group_id}`. Example:
+            /// `projects/my-project-123/groups/my-group` In the group resource name, the `group_id` is a unique
+            /// identifier for a particular error group. The identifier is derived from key parts of the error-log
+            /// content and is treated as Service Data. For information about how Service Data is handled, see [Google
+            /// Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice).
             /// </param>
             public virtual UpdateRequest Update(Google.Apis.Clouderrorreporting.v1beta1.Data.ErrorGroup body, string name)
             {
@@ -966,7 +986,13 @@ namespace Google.Apis.Clouderrorreporting.v1beta1
                     InitParameters();
                 }
 
-                /// <summary>The group resource name. Example: projects/my-project-123/groups/CNSgkpnppqKCUw</summary>
+                /// <summary>
+                /// The group resource name. Written as `projects/{projectID}/groups/{group_id}`. Example:
+                /// `projects/my-project-123/groups/my-group` In the group resource name, the `group_id` is a unique
+                /// identifier for a particular error group. The identifier is derived from key parts of the error-log
+                /// content and is treated as Service Data. For information about how Service Data is handled, see
+                /// [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice).
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -1108,12 +1134,45 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
         public virtual ErrorContext Context { get; set; }
 
+        private string _eventTimeRaw;
+
+        private object _eventTime;
+
         /// <summary>
         /// Time when the event occurred as provided in the error report. If the report did not contain a timestamp, the
         /// time the error was received by the Error Reporting system is used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
-        public virtual object EventTime { get; set; }
+        public virtual string EventTimeRaw
+        {
+            get => _eventTimeRaw;
+            set
+            {
+                _eventTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _eventTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EventTimeDateTimeOffset instead.")]
+        public virtual object EventTime
+        {
+            get => _eventTime;
+            set
+            {
+                _eventTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _eventTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EventTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The stack trace that was reported or logged by the service.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
@@ -1137,7 +1196,13 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
         public virtual string GroupId { get; set; }
 
-        /// <summary>The group resource name. Example: projects/my-project-123/groups/CNSgkpnppqKCUw</summary>
+        /// <summary>
+        /// The group resource name. Written as `projects/{projectID}/groups/{group_id}`. Example:
+        /// `projects/my-project-123/groups/my-group` In the group resource name, the `group_id` is a unique identifier
+        /// for a particular error group. The identifier is derived from key parts of the error-log content and is
+        /// treated as Service Data. For information about how Service Data is handled, see [Google Cloud Privacy
+        /// Notice](https://cloud.google.com/terms/cloud-privacy-notice).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -1183,23 +1248,89 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<long> Count { get; set; }
 
+        private string _firstSeenTimeRaw;
+
+        private object _firstSeenTime;
+
         /// <summary>
         /// Approximate first occurrence that was ever seen for this group and which matches the given filter criteria,
         /// ignoring the time_range that was specified in the request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstSeenTime")]
-        public virtual object FirstSeenTime { get; set; }
+        public virtual string FirstSeenTimeRaw
+        {
+            get => _firstSeenTimeRaw;
+            set
+            {
+                _firstSeenTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _firstSeenTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FirstSeenTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FirstSeenTimeDateTimeOffset instead.")]
+        public virtual object FirstSeenTime
+        {
+            get => _firstSeenTime;
+            set
+            {
+                _firstSeenTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _firstSeenTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="FirstSeenTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FirstSeenTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FirstSeenTimeRaw);
+            set => FirstSeenTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Group data that is independent of the filter criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
         public virtual ErrorGroup Group { get; set; }
+
+        private string _lastSeenTimeRaw;
+
+        private object _lastSeenTime;
 
         /// <summary>
         /// Approximate last occurrence that was ever seen for this group and which matches the given filter criteria,
         /// ignoring the time_range that was specified in the request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastSeenTime")]
-        public virtual object LastSeenTime { get; set; }
+        public virtual string LastSeenTimeRaw
+        {
+            get => _lastSeenTimeRaw;
+            set
+            {
+                _lastSeenTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastSeenTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastSeenTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastSeenTimeDateTimeOffset instead.")]
+        public virtual object LastSeenTime
+        {
+            get => _lastSeenTime;
+            set
+            {
+                _lastSeenTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastSeenTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastSeenTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastSeenTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastSeenTimeRaw);
+            set => LastSeenTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The total number of services with a non-zero error count for the given filter criteria.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("numAffectedServices")]
@@ -1276,9 +1407,44 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
+        private string _timeRangeBeginRaw;
+
+        private object _timeRangeBegin;
+
         /// <summary>The timestamp specifies the start time to which the request was restricted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeRangeBegin")]
-        public virtual object TimeRangeBegin { get; set; }
+        public virtual string TimeRangeBeginRaw
+        {
+            get => _timeRangeBeginRaw;
+            set
+            {
+                _timeRangeBegin = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timeRangeBeginRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimeRangeBeginRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimeRangeBeginDateTimeOffset instead.")]
+        public virtual object TimeRangeBegin
+        {
+            get => _timeRangeBegin;
+            set
+            {
+                _timeRangeBeginRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _timeRangeBegin = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="TimeRangeBeginRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimeRangeBeginDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeRangeBeginRaw);
+            set => TimeRangeBeginRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1298,13 +1464,48 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
+        private string _timeRangeBeginRaw;
+
+        private object _timeRangeBegin;
+
         /// <summary>
         /// The timestamp specifies the start time to which the request was restricted. The start time is set based on
         /// the requested time range. It may be adjusted to a later time if a project has exceeded the storage quota and
         /// older data has been deleted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeRangeBegin")]
-        public virtual object TimeRangeBegin { get; set; }
+        public virtual string TimeRangeBeginRaw
+        {
+            get => _timeRangeBeginRaw;
+            set
+            {
+                _timeRangeBegin = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _timeRangeBeginRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="TimeRangeBeginRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TimeRangeBeginDateTimeOffset instead.")]
+        public virtual object TimeRangeBegin
+        {
+            get => _timeRangeBegin;
+            set
+            {
+                _timeRangeBeginRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _timeRangeBegin = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="TimeRangeBeginRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? TimeRangeBeginDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TimeRangeBeginRaw);
+            set => TimeRangeBeginRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1326,6 +1527,10 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("context")]
         public virtual ErrorContext Context { get; set; }
 
+        private string _eventTimeRaw;
+
+        private object _eventTime;
+
         /// <summary>
         /// Optional. Time when the event occurred. If not provided, the time when the event was received by the Error
         /// Reporting system is used. If provided, the time must not exceed the [logs retention
@@ -1333,7 +1538,36 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         /// hours in the future. If an invalid time is provided, then an error is returned.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
-        public virtual object EventTime { get; set; }
+        public virtual string EventTimeRaw
+        {
+            get => _eventTimeRaw;
+            set
+            {
+                _eventTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _eventTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EventTimeDateTimeOffset instead.")]
+        public virtual object EventTime
+        {
+            get => _eventTime;
+            set
+            {
+                _eventTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _eventTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EventTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Required. The error message. If no `context.reportLocation` is provided, the message must contain a header
@@ -1459,13 +1693,79 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<long> Count { get; set; }
 
+        private string _endTimeRaw;
+
+        private object _endTime;
+
         /// <summary>End of the time period to which `count` refers (excluded).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
 
         /// <summary>Start of the time period to which `count` refers (included).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

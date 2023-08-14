@@ -324,6 +324,7 @@ namespace Google.Apis.Dialogflow.v3
                     Intents = new IntentsResource(service);
                     Sessions = new SessionsResource(service);
                     TestCases = new TestCasesResource(service);
+                    TransitionRouteGroups = new TransitionRouteGroupsResource(service);
                     Webhooks = new WebhooksResource(service);
                 }
 
@@ -3311,7 +3312,8 @@ namespace Google.Apis.Dialogflow.v3
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
                         /// Required. The flow to create an TransitionRouteGroup for. Format:
-                        /// `projects//locations//agents//flows/`.
+                        /// `projects//locations//agents//flows/` or `projects//locations//agents/` for agent-level
+                        /// groups.
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3TransitionRouteGroup body, string parent)
                         {
@@ -3335,7 +3337,8 @@ namespace Google.Apis.Dialogflow.v3
 
                             /// <summary>
                             /// Required. The flow to create an TransitionRouteGroup for. Format:
-                            /// `projects//locations//agents//flows/`.
+                            /// `projects//locations//agents//flows/` or `projects//locations//agents/` for agent-level
+                            /// groups.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -3396,7 +3399,8 @@ namespace Google.Apis.Dialogflow.v3
                         /// </summary>
                         /// <param name="name">
                         /// Required. The name of the TransitionRouteGroup to delete. Format:
-                        /// `projects//locations//agents//flows//transitionRouteGroups/`.
+                        /// `projects//locations//agents//flows//transitionRouteGroups/` or
+                        /// `projects//locations//agents//transitionRouteGroups/`.
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
@@ -3419,7 +3423,8 @@ namespace Google.Apis.Dialogflow.v3
 
                             /// <summary>
                             /// Required. The name of the TransitionRouteGroup to delete. Format:
-                            /// `projects//locations//agents//flows//transitionRouteGroups/`.
+                            /// `projects//locations//agents//flows//transitionRouteGroups/` or
+                            /// `projects//locations//agents//transitionRouteGroups/`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -3469,7 +3474,8 @@ namespace Google.Apis.Dialogflow.v3
                         /// <summary>Retrieves the specified TransitionRouteGroup.</summary>
                         /// <param name="name">
                         /// Required. The name of the TransitionRouteGroup. Format:
-                        /// `projects//locations//agents//flows//transitionRouteGroups/`.
+                        /// `projects//locations//agents//flows//transitionRouteGroups/` or
+                        /// `projects//locations//agents//transitionRouteGroups/`.
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
@@ -3488,7 +3494,8 @@ namespace Google.Apis.Dialogflow.v3
 
                             /// <summary>
                             /// Required. The name of the TransitionRouteGroup. Format:
-                            /// `projects//locations//agents//flows//transitionRouteGroups/`.
+                            /// `projects//locations//agents//flows//transitionRouteGroups/` or
+                            /// `projects//locations//agents//transitionRouteGroups/`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -3540,7 +3547,7 @@ namespace Google.Apis.Dialogflow.v3
                         /// <summary>Returns the list of all transition route groups in the specified flow.</summary>
                         /// <param name="parent">
                         /// Required. The flow to list all transition route groups for. Format:
-                        /// `projects//locations//agents//flows/`.
+                        /// `projects//locations//agents//flows/` or `projects//locations//agents/.
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -3559,7 +3566,7 @@ namespace Google.Apis.Dialogflow.v3
 
                             /// <summary>
                             /// Required. The flow to list all transition route groups for. Format:
-                            /// `projects//locations//agents//flows/`.
+                            /// `projects//locations//agents//flows/` or `projects//locations//agents/.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -3642,7 +3649,7 @@ namespace Google.Apis.Dialogflow.v3
                         /// <param name="name">
                         /// The unique identifier of the transition route group.
                         /// TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format:
-                        /// `projects//locations//agents//flows//transitionRouteGroups/`.
+                        /// `projects//locations//agents//flows//transitionRouteGroups/` .
                         /// </param>
                         public virtual PatchRequest Patch(Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3TransitionRouteGroup body, string name)
                         {
@@ -3667,7 +3674,7 @@ namespace Google.Apis.Dialogflow.v3
                             /// <summary>
                             /// The unique identifier of the transition route group.
                             /// TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically.
-                            /// Format: `projects//locations//agents//flows//transitionRouteGroups/`.
+                            /// Format: `projects//locations//agents//flows//transitionRouteGroups/` .
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -6910,6 +6917,458 @@ namespace Google.Apis.Dialogflow.v3
                     }
                 }
 
+                /// <summary>Gets the TransitionRouteGroups resource.</summary>
+                public virtual TransitionRouteGroupsResource TransitionRouteGroups { get; }
+
+                /// <summary>The "transitionRouteGroups" collection of methods.</summary>
+                public class TransitionRouteGroupsResource
+                {
+                    private const string Resource = "transitionRouteGroups";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public TransitionRouteGroupsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Creates an TransitionRouteGroup in the specified flow. Note: You should always train a flow
+                    /// prior to sending it queries. See the [training
+                    /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The flow to create an TransitionRouteGroup for. Format:
+                    /// `projects//locations//agents//flows/` or `projects//locations//agents/` for agent-level groups.
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3TransitionRouteGroup body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Creates an TransitionRouteGroup in the specified flow. Note: You should always train a flow
+                    /// prior to sending it queries. See the [training
+                    /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                    /// </summary>
+                    public class CreateRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3TransitionRouteGroup>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3TransitionRouteGroup body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The flow to create an TransitionRouteGroup for. Format:
+                        /// `projects//locations//agents//flows/` or `projects//locations//agents/` for agent-level
+                        /// groups.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// The language of the following fields in `TransitionRouteGroup`: *
+                        /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.messages` *
+                        /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.conditional_cases` If not
+                        /// specified, the agent's default language is used. [Many
+                        /// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported.
+                        /// Note: languages must be enabled in the agent before they can be used.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string LanguageCode { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3TransitionRouteGroup Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3/{+parent}/transitionRouteGroups";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+$",
+                            });
+                            RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "languageCode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes the specified TransitionRouteGroup. Note: You should always train a flow prior to
+                    /// sending it queries. See the [training
+                    /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The name of the TransitionRouteGroup to delete. Format:
+                    /// `projects//locations//agents//flows//transitionRouteGroups/` or
+                    /// `projects//locations//agents//transitionRouteGroups/`.
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Deletes the specified TransitionRouteGroup. Note: You should always train a flow prior to
+                    /// sending it queries. See the [training
+                    /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                    /// </summary>
+                    public class DeleteRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleProtobufEmpty>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the TransitionRouteGroup to delete. Format:
+                        /// `projects//locations//agents//flows//transitionRouteGroups/` or
+                        /// `projects//locations//agents//transitionRouteGroups/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// This field has no effect for transition route group that no page is using. If the transition
+                        /// route group is referenced by any page: * If `force` is set to false, an error will be
+                        /// returned with message indicating pages that reference the transition route group. * If
+                        /// `force` is set to true, Dialogflow will remove the transition route group, as well as any
+                        /// reference to it.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> Force { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/transitionRouteGroups/[^/]+$",
+                            });
+                            RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "force",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Retrieves the specified TransitionRouteGroup.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the TransitionRouteGroup. Format:
+                    /// `projects//locations//agents//flows//transitionRouteGroups/` or
+                    /// `projects//locations//agents//transitionRouteGroups/`.
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Retrieves the specified TransitionRouteGroup.</summary>
+                    public class GetRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3TransitionRouteGroup>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the TransitionRouteGroup. Format:
+                        /// `projects//locations//agents//flows//transitionRouteGroups/` or
+                        /// `projects//locations//agents//transitionRouteGroups/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// The language to retrieve the transition route group for. The following fields are language
+                        /// dependent: * `TransitionRouteGroup.transition_routes.trigger_fulfillment.messages` *
+                        /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.conditional_cases` If not
+                        /// specified, the agent's default language is used. [Many
+                        /// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported.
+                        /// Note: languages must be enabled in the agent before they can be used.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string LanguageCode { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/transitionRouteGroups/[^/]+$",
+                            });
+                            RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "languageCode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Returns the list of all transition route groups in the specified flow.</summary>
+                    /// <param name="parent">
+                    /// Required. The flow to list all transition route groups for. Format:
+                    /// `projects//locations//agents//flows/` or `projects//locations//agents/.
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Returns the list of all transition route groups in the specified flow.</summary>
+                    public class ListRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3ListTransitionRouteGroupsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The flow to list all transition route groups for. Format:
+                        /// `projects//locations//agents//flows/` or `projects//locations//agents/.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// The language to list transition route groups for. The following fields are language
+                        /// dependent: * `TransitionRouteGroup.transition_routes.trigger_fulfillment.messages` *
+                        /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.conditional_cases` If not
+                        /// specified, the agent's default language is used. [Many
+                        /// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported.
+                        /// Note: languages must be enabled in the agent before they can be used.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string LanguageCode { get; set; }
+
+                        /// <summary>
+                        /// The maximum number of items to return in a single page. By default 100 and at most 1000.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>The next_page_token value returned from a previous list request.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3/{+parent}/transitionRouteGroups";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+$",
+                            });
+                            RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "languageCode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Updates the specified TransitionRouteGroup. Note: You should always train a flow prior to
+                    /// sending it queries. See the [training
+                    /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// The unique identifier of the transition route group.
+                    /// TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format:
+                    /// `projects//locations//agents//flows//transitionRouteGroups/` .
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3TransitionRouteGroup body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Updates the specified TransitionRouteGroup. Note: You should always train a flow prior to
+                    /// sending it queries. See the [training
+                    /// documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
+                    /// </summary>
+                    public class PatchRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3TransitionRouteGroup>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3TransitionRouteGroup body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The unique identifier of the transition route group.
+                        /// TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format:
+                        /// `projects//locations//agents//flows//transitionRouteGroups/` .
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// The language of the following fields in `TransitionRouteGroup`: *
+                        /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.messages` *
+                        /// `TransitionRouteGroup.transition_routes.trigger_fulfillment.conditional_cases` If not
+                        /// specified, the agent's default language is used. [Many
+                        /// languages](https://cloud.google.com/dialogflow/cx/docs/reference/language) are supported.
+                        /// Note: languages must be enabled in the agent before they can be used.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string LanguageCode { get; set; }
+
+                        /// <summary>The mask to control which fields get updated.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v3.Data.GoogleCloudDialogflowCxV3TransitionRouteGroup Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/transitionRouteGroups/[^/]+$",
+                            });
+                            RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "languageCode",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
                 /// <summary>Gets the Webhooks resource.</summary>
                 public virtual WebhooksResource Webhooks { get; }
 
@@ -8785,7 +9244,7 @@ namespace Google.Apis.Dialogflow.v3.Data
     /// Agents are best described as Natural Language Understanding (NLU) modules that transform user requests into
     /// actionable data. You can include agents in your app, product, or service to determine user intent and respond to
     /// the user in a natural way. After you create an agent, you can add Intents, Entity Types, Flows, Fulfillments,
-    /// Webhooks, and so on to manage the conversation flows..
+    /// Webhooks, TransitionRouteGroups and so on to manage the conversation flows.
     /// </summary>
     public class GoogleCloudDialogflowCxV3Agent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10483,7 +10942,8 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// A flow's transition route group serve two purposes: * They are responsible for matching the user's first
         /// utterances in the flow. * They are inherited by every page's transition route groups. Transition route
         /// groups defined in the page have higher priority than those defined in the flow.
-        /// Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+        /// Format:`projects//locations//agents//flows//transitionRouteGroups/` or
+        /// `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitionRouteGroups")]
         public virtual System.Collections.Generic.IList<string> TransitionRouteGroups { get; set; }
@@ -10499,6 +10959,22 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitionRoutes")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3TransitionRoute> TransitionRoutes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The flow import strategy used for resource conflict resolution associated with an ImportFlowRequest.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3FlowImportStrategy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Import strategy for resource conflict resolution, applied globally throughout the flow. It will be
+        /// applied for all display name conflicts in the imported content. If not specified, 'CREATE_NEW' is assumed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("globalImportStrategy")]
+        public virtual string GlobalImportStrategy { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10879,6 +11355,10 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>Uncompressed raw byte content for flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("flowContent")]
         public virtual string FlowContent { get; set; }
+
+        /// <summary>Optional. Specifies the import strategy used when resolving resource conflicts.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flowImportStrategy")]
+        public virtual GoogleCloudDialogflowCxV3FlowImportStrategy FlowImportStrategy { get; set; }
 
         /// <summary>
         /// The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to import flow from. The format of
@@ -11789,7 +12269,8 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// precedence order is: page's transition route -&amp;gt; page's transition route group -&amp;gt; flow's
         /// transition routes. * If multiple transition route groups within a page contain the same intent, then the
         /// first group in the ordered list takes precedence.
-        /// Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+        /// Format:`projects//locations//agents//flows//transitionRouteGroups/` or
+        /// `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitionRouteGroups")]
         public virtual System.Collections.Generic.IList<string> TransitionRouteGroups { get; set; }
@@ -13327,7 +13808,7 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An TransitionRouteGroup represents a group of `TransitionRoutes` to be used by a Page.</summary>
+    /// <summary>A TransitionRouteGroup represents a group of `TransitionRoutes` to be used by a Page.</summary>
     public class GoogleCloudDialogflowCxV3TransitionRouteGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -13339,7 +13820,7 @@ namespace Google.Apis.Dialogflow.v3.Data
 
         /// <summary>
         /// The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup
-        /// populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/`.
+        /// populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/` .
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -15107,7 +15588,8 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// precedence order is: page's transition route -&amp;gt; page's transition route group -&amp;gt; flow's
         /// transition routes. * If multiple transition route groups within a page contain the same intent, then the
         /// first group in the ordered list takes precedence.
-        /// Format:`projects//locations//agents//flows//transitionRouteGroups/`.
+        /// Format:`projects//locations//agents//flows//transitionRouteGroups/` or
+        /// `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitionRouteGroups")]
         public virtual System.Collections.Generic.IList<string> TransitionRouteGroups { get; set; }
@@ -21425,8 +21907,8 @@ namespace Google.Apis.Dialogflow.v3.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The normal response of the operation in case of success. If the original method returns no data on success,
-        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
         /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.

@@ -4268,6 +4268,17 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for an Apt remote repository.</summary>
+    public class AptRepository : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>One of the publicly available Apt repositories supported by Artifact Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicRepository")]
+        public virtual GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository PublicRepository { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The metadata of an LRO from deleting multiple versions.</summary>
     public class BatchDeleteVersionsMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4920,6 +4931,40 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
             get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Publicly available Apt repositories constructed from a common repository base and a custom repository path.
+    /// </summary>
+    public class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A common public repository base for Apt.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repositoryBase")]
+        public virtual string RepositoryBase { get; set; }
+
+        /// <summary>A custom field to define a path to a specific repository from the base.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repositoryPath")]
+        public virtual string RepositoryPath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Publicly available Yum repositories constructed from a common repository base and a custom repository path.
+    /// </summary>
+    public class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A common public repository base for Yum.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repositoryBase")]
+        public virtual string RepositoryBase { get; set; }
+
+        /// <summary>A custom field to define a path to a specific repository from the base.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repositoryPath")]
+        public virtual string RepositoryPath { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5948,6 +5993,10 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     /// <summary>Remote repository configuration.</summary>
     public class RemoteRepositoryConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Specific settings for an Apt remote repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aptRepository")]
+        public virtual AptRepository AptRepository { get; set; }
+
         /// <summary>The description of the remote source.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -5967,6 +6016,10 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         /// <summary>Specific settings for a Python remote repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pythonRepository")]
         public virtual PythonRepository PythonRepository { get; set; }
+
+        /// <summary>Specific settings for a Yum remote repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("yumRepository")]
+        public virtual YumRepository YumRepository { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6643,6 +6696,17 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         /// <summary>Output only. An artifact is a binary or source package.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("packageType")]
         public virtual string PackageType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration for a Yum remote repository.</summary>
+    public class YumRepository : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>One of the publicly available Yum repositories supported by Artifact Registry.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicRepository")]
+        public virtual GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository PublicRepository { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

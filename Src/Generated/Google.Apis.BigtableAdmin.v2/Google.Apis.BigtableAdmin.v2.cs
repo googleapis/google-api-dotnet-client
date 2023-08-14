@@ -4557,8 +4557,8 @@ namespace Google.Apis.BigtableAdmin.v2.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The number of nodes allocated to this cluster. More nodes enable higher throughput and more consistent
-        /// performance.
+        /// The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based
+        /// on your data footprint and optimized for 50% storage utilization.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serveNodes")]
         public virtual System.Nullable<int> ServeNodes { get; set; }

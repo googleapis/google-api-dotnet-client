@@ -496,6 +496,67 @@ namespace Google.Apis.CloudRun.v2
                         }
                     }
 
+                    /// <summary>Cancels an Execution.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Required. The name of the Execution to cancel. Format:
+                    /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}, where {project} can
+                    /// be project id or number.
+                    /// </param>
+                    public virtual CancelRequest Cancel(Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2CancelExecutionRequest body, string name)
+                    {
+                        return new CancelRequest(service, body, name);
+                    }
+
+                    /// <summary>Cancels an Execution.</summary>
+                    public class CancelRequest : CloudRunBaseServiceRequest<Google.Apis.CloudRun.v2.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Cancel request.</summary>
+                        public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2CancelExecutionRequest body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the Execution to cancel. Format:
+                        /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}, where {project}
+                        /// can be project id or number.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2CancelExecutionRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "cancel";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}:cancel";
+
+                        /// <summary>Initializes Cancel parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/jobs/[^/]+/executions/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Deletes an Execution.</summary>
                     /// <param name="name">
                     /// Required. The name of the Execution to delete. Format:
@@ -2597,6 +2658,21 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request message for deleting an Execution.</summary>
+    public class GoogleCloudRunV2CancelExecutionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A system-generated fingerprint for this version of the resource. This may be used to detect modification
+        /// conflict during updates.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Indicates that the request should be validated without actually cancelling any resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+    }
+
     /// <summary>
     /// Represents a set of Cloud SQL instances. Each one will be available under /cloudsql/[instance]. Visit
     /// https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud
@@ -4657,6 +4733,13 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2TrafficTargetStatus> TrafficStatuses { get; set; }
 
         /// <summary>
+        /// Optional. Override the traffic tag threshold limit. Garbage collection will start cleaning up non-serving
+        /// tagged traffic targets based on creation item. The default value is 2000.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trafficTagsCleanupThreshold")]
+        public virtual System.Nullable<long> TrafficTagsCleanupThreshold { get; set; }
+
+        /// <summary>
         /// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed
         /// to remain unchanged until the resource is deleted.
         /// </summary>
@@ -4787,8 +4870,8 @@ namespace Google.Apis.CloudRun.v2.Data
         private object _createTime;
 
         /// <summary>
-        /// Output only. Represents time when the task was created by the job controller. It is not guaranteed to be set
-        /// in happens-before order across separate operations.
+        /// Output only. Represents time when the task was created by the system. It is not guaranteed to be set in
+        /// happens-before order across separate operations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
@@ -5442,18 +5525,18 @@ namespace Google.Apis.CloudRun.v2.Data
     /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
     /// constraints based on attributes of the request, the resource, or both. To learn which resources support
     /// conditions in their IAM policies, see the [IAM
-    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings":
-    /// [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` {
+    /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
     /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:**
-    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
+    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML
+    /// example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features,
-    /// see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its
+    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class GoogleIamV1Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5595,8 +5678,8 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The normal response of the operation in case of success. If the original method returns no data on success,
-        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
         /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.

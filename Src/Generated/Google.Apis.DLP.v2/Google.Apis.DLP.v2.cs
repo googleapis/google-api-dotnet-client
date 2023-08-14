@@ -9075,7 +9075,8 @@ namespace Google.Apis.DLP.v2.Data
     {
         /// <summary>
         /// References to fields excluded from scanning. This allows you to skip inspection of entire columns which you
-        /// know have no findings.
+        /// know have no findings. When inspecting a table, we recommend that you inspect all columns. Otherwise,
+        /// findings might be impacted because hints from excluded columns will not be used.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedFields")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldId> ExcludedFields { get; set; }
@@ -9089,7 +9090,10 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("identifyingFields")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldId> IdentifyingFields { get; set; }
 
-        /// <summary>Limit scanning only to these fields.</summary>
+        /// <summary>
+        /// Limit scanning only to these fields. When inspecting a table, we recommend that you inspect all columns.
+        /// Otherwise, findings might be impacted because hints from excluded columns will not be used.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includedFields")]
         public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2FieldId> IncludedFields { get; set; }
 

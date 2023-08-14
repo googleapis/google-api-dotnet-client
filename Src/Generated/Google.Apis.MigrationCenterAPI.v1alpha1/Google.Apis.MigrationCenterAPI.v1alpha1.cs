@@ -5776,6 +5776,34 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An insight about an asset (experimental insight)</summary>
+    public class GenericInsight : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Additional information about the insight, each entry can be a logical entry and must make sense
+        /// if it is displayed with line breaks between each entry. Text can contain md style links
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalInformation")]
+        public virtual System.Collections.Generic.IList<string> AdditionalInformation { get; set; }
+
+        /// <summary>
+        /// Output only. In case message_code is not yet known by the client default_message will be the message to be
+        /// used instead. Text can contain md file style links.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultMessage")]
+        public virtual string DefaultMessage { get; set; }
+
+        /// <summary>
+        /// Output only. Represents a globally unique message id for this insight, can be used for localization
+        /// purposes, in case message_code is not yet known by the client use default_message instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("messageId")]
+        public virtual System.Nullable<long> MessageId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Generic platform details.</summary>
     public class GenericPlatformDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6317,6 +6345,10 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     /// <summary>An insight about an asset.</summary>
     public class Insight : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. A generic insight about an asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericInsight")]
+        public virtual GenericInsight GenericInsight { get; set; }
+
         /// <summary>Output only. An insight about potential migrations for an asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("migrationInsight")]
         public virtual MigrationInsight MigrationInsight { get; set; }
@@ -6925,8 +6957,8 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The normal response of the operation in case of success. If the original method returns no data on success,
-        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
         /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.

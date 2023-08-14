@@ -956,10 +956,7 @@ namespace Google.Apis.ServiceControl.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Response message for the Report method. If the request contains any invalid data, the server returns an RPC
-    /// error.
-    /// </summary>
+    /// <summary>Response message for the Report method.</summary>
     public class ReportResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
@@ -1333,16 +1330,15 @@ namespace Google.Apis.ServiceControl.v2.Data
     {
         /// <summary>
         /// Optional. The identifier of the container of this resource. For Google Cloud APIs, the resource container
-        /// must be one of the following formats: - `projects/` - `folders/` - `organizations/` For the policy
-        /// enforcement on the container level (VPCSC and Location Policy check), this field takes precedence on the
-        /// container extracted from name when presents.
+        /// must be one of the following formats: - `projects/` - `folders/` - `organizations/` Required for the policy
+        /// enforcement on the container level (e.g. VPCSC, Location Policy check, Org Policy check).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("container")]
         public virtual string Container { get; set; }
 
         /// <summary>
-        /// Optional. The location of the resource. The value must be a valid zone, region or multiregion. For example:
-        /// "europe-west4" or "northamerica-northeast1-a"
+        /// Optional. The location of the resource, it must be a valid zone, region or multiregion, for example:
+        /// "europe-west4", "northamerica-northeast1-a". Required for location policy check.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual string Location { get; set; }

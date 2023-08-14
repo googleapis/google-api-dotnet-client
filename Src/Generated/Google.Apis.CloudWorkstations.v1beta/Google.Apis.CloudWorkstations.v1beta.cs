@@ -647,7 +647,8 @@ namespace Google.Apis.CloudWorkstations.v1beta
                             public virtual string Parent { get; private set; }
 
                             /// <summary>
-                            /// If set, validate the request and preview the review, but do not actually apply it.
+                            /// Optional. If set, validate the request and preview the review, but do not actually apply
+                            /// it.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -724,14 +725,15 @@ namespace Google.Apis.CloudWorkstations.v1beta
                             public virtual string Name { get; private set; }
 
                             /// <summary>
-                            /// If set, the request will be rejected if the latest version of the workstation on the
-                            /// server does not have this ETag.
+                            /// Optional. If set, the request will be rejected if the latest version of the workstation
+                            /// on the server does not have this ETag.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string Etag { get; set; }
 
                             /// <summary>
-                            /// If set, validate the request and preview the review, but do not actually apply it.
+                            /// Optional. If set, validate the request and preview the review, but do not actually apply
+                            /// it.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -986,11 +988,13 @@ namespace Google.Apis.CloudWorkstations.v1beta
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
-                            /// <summary>Maximum number of items to return.</summary>
+                            /// <summary>Optional. Maximum number of items to return.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 
-                            /// <summary>next_page_token value returned from a previous List request, if any.</summary>
+                            /// <summary>
+                            /// Optional. next_page_token value returned from a previous List request, if any.
+                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
 
@@ -1061,11 +1065,13 @@ namespace Google.Apis.CloudWorkstations.v1beta
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
-                            /// <summary>Maximum number of items to return.</summary>
+                            /// <summary>Optional. Maximum number of items to return.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<int> PageSize { get; set; }
 
-                            /// <summary>next_page_token value returned from a previous List request, if any.</summary>
+                            /// <summary>
+                            /// Optional. next_page_token value returned from a previous List request, if any.
+                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string PageToken { get; set; }
 
@@ -1111,7 +1117,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
 
                         /// <summary>Updates an existing workstation.</summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="name">Full name of this resource.</param>
+                        /// <param name="name">Full name of this workstation.</param>
                         public virtual PatchRequest Patch(Google.Apis.CloudWorkstations.v1beta.Data.Workstation body, string name)
                         {
                             return new PatchRequest(service, body, name);
@@ -1128,13 +1134,13 @@ namespace Google.Apis.CloudWorkstations.v1beta
                                 InitParameters();
                             }
 
-                            /// <summary>Full name of this resource.</summary>
+                            /// <summary>Full name of this workstation.</summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
 
                             /// <summary>
-                            /// If set and the workstation configuration is not found, a new workstation configuration
-                            /// is created. In this situation, update_mask is ignored.
+                            /// Optional. If set and the workstation configuration is not found, a new workstation
+                            /// configuration is created. In this situation, update_mask is ignored.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<bool> AllowMissing { get; set; }
@@ -1147,7 +1153,8 @@ namespace Google.Apis.CloudWorkstations.v1beta
                             public virtual object UpdateMask { get; set; }
 
                             /// <summary>
-                            /// If set, validate the request and preview the review, but do not actually apply it.
+                            /// Optional. If set, validate the request and preview the review, but do not actually apply
+                            /// it.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -1475,7 +1482,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         public virtual string Parent { get; private set; }
 
                         /// <summary>
-                        /// If set, validate the request and preview the review, but do not actually apply it.
+                        /// Optional. If set, validate the request and preview the review, but do not actually apply it.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -1552,21 +1559,21 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// If set, the request is rejected if the latest version of the workstation configuration on
-                        /// the server does not have this ETag.
+                        /// Optional. If set, the request is rejected if the latest version of the workstation
+                        /// configuration on the server does not have this ETag.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string Etag { get; set; }
 
                         /// <summary>
-                        /// If set, any workstations in the workstation configuration are also deleted. Otherwise, the
-                        /// request works only if the workstation configuration has no workstations.
+                        /// Optional. If set, any workstations in the workstation configuration are also deleted.
+                        /// Otherwise, the request works only if the workstation configuration has no workstations.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> Force { get; set; }
 
                         /// <summary>
-                        /// If set, validate the request and preview the review, but do not actually apply it.
+                        /// Optional. If set, validate the request and preview the review, but do not actually apply it.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -1766,11 +1773,13 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Maximum number of items to return.</summary>
+                        /// <summary>Optional. Maximum number of items to return.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
-                        /// <summary>next_page_token value returned from a previous List request, if any.</summary>
+                        /// <summary>
+                        /// Optional. next_page_token value returned from a previous List request, if any.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
@@ -1841,11 +1850,13 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Maximum number of items to return.</summary>
+                        /// <summary>Optional. Maximum number of items to return.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<int> PageSize { get; set; }
 
-                        /// <summary>next_page_token value returned from a previous List request, if any.</summary>
+                        /// <summary>
+                        /// Optional. next_page_token value returned from a previous List request, if any.
+                        /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
@@ -1891,7 +1902,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
 
                     /// <summary>Updates an existing workstation configuration.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Full name of this resource.</param>
+                    /// <param name="name">Full name of this workstation configuration.</param>
                     public virtual PatchRequest Patch(Google.Apis.CloudWorkstations.v1beta.Data.WorkstationConfig body, string name)
                     {
                         return new PatchRequest(service, body, name);
@@ -1908,13 +1919,13 @@ namespace Google.Apis.CloudWorkstations.v1beta
                             InitParameters();
                         }
 
-                        /// <summary>Full name of this resource.</summary>
+                        /// <summary>Full name of this workstation configuration.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
                         /// <summary>
-                        /// If set and the workstation configuration is not found, a new workstation configuration will
-                        /// be created. In this situation, update_mask is ignored.
+                        /// Optional. If set and the workstation configuration is not found, a new workstation
+                        /// configuration will be created. In this situation, update_mask is ignored.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> AllowMissing { get; set; }
@@ -1926,7 +1937,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         public virtual object UpdateMask { get; set; }
 
                         /// <summary>
-                        /// If set, validate the request and preview the review, but do not actually apply it.
+                        /// Optional. If set, validate the request and preview the review, but do not actually apply it.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -2148,7 +2159,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// If set, validate the request and preview the review, but do not actually apply it.
+                    /// Optional. If set, validate the request and preview the review, but do not actually apply it.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -2225,21 +2236,23 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// If set, the request will be rejected if the latest version of the workstation cluster on the
-                    /// server does not have this ETag.
+                    /// Optional. If set, the request will be rejected if the latest version of the workstation cluster
+                    /// on the server does not have this ETag.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Etag { get; set; }
 
                     /// <summary>
-                    /// If set, any workstation configurations and workstations in the workstation cluster are also
-                    /// deleted. Otherwise, the request only works if the workstation cluster has no configurations or
-                    /// workstations.
+                    /// Optional. If set, any workstation configurations and workstations in the workstation cluster are
+                    /// also deleted. Otherwise, the request only works if the workstation cluster has no configurations
+                    /// or workstations.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> Force { get; set; }
 
-                    /// <summary>If set, validate the request and preview the review, but do not apply it.</summary>
+                    /// <summary>
+                    /// Optional. If set, validate the request and preview the review, but do not apply it.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
 
@@ -2357,11 +2370,13 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Maximum number of items to return.</summary>
+                    /// <summary>Optional. Maximum number of items to return.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
 
-                    /// <summary>next_page_token value returned from a previous List request, if any.</summary>
+                    /// <summary>
+                    /// Optional. next_page_token value returned from a previous List request, if any.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PageToken { get; set; }
 
@@ -2407,7 +2422,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
 
                 /// <summary>Updates an existing workstation cluster.</summary>
                 /// <param name="body">The body of the request.</param>
-                /// <param name="name">Full name of this resource.</param>
+                /// <param name="name">Full name of this workstation cluster.</param>
                 public virtual PatchRequest Patch(Google.Apis.CloudWorkstations.v1beta.Data.WorkstationCluster body, string name)
                 {
                     return new PatchRequest(service, body, name);
@@ -2424,13 +2439,13 @@ namespace Google.Apis.CloudWorkstations.v1beta
                         InitParameters();
                     }
 
-                    /// <summary>Full name of this resource.</summary>
+                    /// <summary>Full name of this workstation cluster.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
                     /// <summary>
-                    /// If set, and the workstation cluster is not found, a new workstation cluster will be created. In
-                    /// this situation, update_mask is ignored.
+                    /// Optional. If set, and the workstation cluster is not found, a new workstation cluster will be
+                    /// created. In this situation, update_mask is ignored.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("allowMissing", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> AllowMissing { get; set; }
@@ -2442,7 +2457,7 @@ namespace Google.Apis.CloudWorkstations.v1beta
                     public virtual object UpdateMask { get; set; }
 
                     /// <summary>
-                    /// If set, validate the request and preview the review, but do not actually apply it.
+                    /// Optional. If set, validate the request and preview the review, but do not actually apply it.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<bool> ValidateOnly { get; set; }
@@ -2509,11 +2524,13 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     /// <summary>An accelerator card attached to the instance.</summary>
     public class Accelerator : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Number of accelerator cards exposed to the instance.</summary>
+        /// <summary>Optional. Number of accelerator cards exposed to the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("count")]
         public virtual System.Nullable<int> Count { get; set; }
 
-        /// <summary>Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".</summary>
+        /// <summary>
+        /// Optional. Type of accelerator resource to attach to the instance, for example, `"nvidia-tesla-p100"`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -2635,21 +2652,21 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     /// <summary>A Docker container.</summary>
     public class Container : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Arguments passed to the entrypoint.</summary>
+        /// <summary>Optional. Arguments passed to the entrypoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IList<string> Args { get; set; }
 
-        /// <summary>If set, overrides the default ENTRYPOINT specified by the image.</summary>
+        /// <summary>Optional. If set, overrides the default ENTRYPOINT specified by the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("command")]
         public virtual System.Collections.Generic.IList<string> Command { get; set; }
 
-        /// <summary>Environment variables passed to the container's entrypoint.</summary>
+        /// <summary>Optional. Environment variables passed to the container's entrypoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
         public virtual System.Collections.Generic.IDictionary<string, string> Env { get; set; }
 
         /// <summary>
-        /// A Docker container image that defines a custom environment. Cloud Workstations provides a number of
-        /// [preconfigured images](https://cloud.google.com/workstations/docs/preconfigured-base-images), but you can
+        /// Optional. A Docker container image that defines a custom environment. Cloud Workstations provides a number
+        /// of [preconfigured images](https://cloud.google.com/workstations/docs/preconfigured-base-images), but you can
         /// create your own [custom container
         /// images](https://cloud.google.com/workstations/docs/custom-container-images). If using a private image, the
         /// `host.gceInstance.serviceAccount` field must be specified in the workstation configuration and must have
@@ -2658,11 +2675,11 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual string Image { get; set; }
 
-        /// <summary>If set, overrides the USER specified in the image with the given uid.</summary>
+        /// <summary>Optional. If set, overrides the USER specified in the image with the given uid.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runAsUser")]
         public virtual System.Nullable<int> RunAsUser { get; set; }
 
-        /// <summary>If set, overrides the default DIR specified by the image.</summary>
+        /// <summary>Optional. If set, overrides the default DIR specified by the image.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workingDir")]
         public virtual string WorkingDir { get; set; }
 
@@ -2680,7 +2697,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     {
         /// <summary>
         /// Immutable. The name of the Google Cloud KMS encryption key. For example,
-        /// `projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME`. The key must be in the same
+        /// `"projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME"`. The key must be in the same
         /// region as the workstation configuration.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
@@ -2746,7 +2763,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     /// <summary>A set of Compute Engine Confidential VM instance options.</summary>
     public class GceConfidentialInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether the instance has confidential compute enabled.</summary>
+        /// <summary>Optional. Whether the instance has confidential compute enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableConfidentialCompute")]
         public virtual System.Nullable<bool> EnableConfidentialCompute { get; set; }
 
@@ -2757,24 +2774,24 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     /// <summary>A runtime using a Compute Engine instance.</summary>
     public class GceInstance : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of the type and count of accelerator cards attached to the instance.</summary>
+        /// <summary>Optional. A list of the type and count of accelerator cards attached to the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accelerators")]
         public virtual System.Collections.Generic.IList<Accelerator> Accelerators { get; set; }
 
         /// <summary>
-        /// The size of the boot disk for the VM in gigabytes (GB). The minimum boot disk size is `30` GB. Defaults to
-        /// `50` GB.
+        /// Optional. The size of the boot disk for the VM in gigabytes (GB). The minimum boot disk size is `30` GB.
+        /// Defaults to `50` GB.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootDiskSizeGb")]
         public virtual System.Nullable<int> BootDiskSizeGb { get; set; }
 
-        /// <summary>A set of Compute Engine Confidential VM instance options.</summary>
+        /// <summary>Optional. A set of Compute Engine Confidential VM instance options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("confidentialInstanceConfig")]
         public virtual GceConfidentialInstanceConfig ConfidentialInstanceConfig { get; set; }
 
         /// <summary>
-        /// When set to true, disables public IP addresses for VMs. If you disable public IP addresses, you must set up
-        /// Private Google Access or Cloud NAT on your network. If you use Private Google Access and you use
+        /// Optional. When set to true, disables public IP addresses for VMs. If you disable public IP addresses, you
+        /// must set up Private Google Access or Cloud NAT on your network. If you use Private Google Access and you use
         /// `private.googleapis.com` or `restricted.googleapis.com` for Container Registry and Artifact Registry, make
         /// sure that you set up DNS records for domains `*.gcr.io` and `*.pkg.dev`. Defaults to false (VMs have public
         /// IP addresses).
@@ -2782,21 +2799,39 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disablePublicIpAddresses")]
         public virtual System.Nullable<bool> DisablePublicIpAddresses { get; set; }
 
-        /// <summary>Whether to enable nested virtualization on instances.</summary>
+        /// <summary>
+        /// Optional. Whether to enable nested virtualization on Cloud Workstations VMs created under this workstation
+        /// configuration. Nested virtualization lets you run virtual machine (VM) instances inside your workstation.
+        /// Before enabling nested virtualization, consider the following important considerations. Cloud Workstations
+        /// instances are subject to the [same restrictions as Compute Engine
+        /// instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): *
+        /// **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if
+        /// the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more
+        /// information, see the Compute Engine section, [Checking whether nested virtualization is
+        /// allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed).
+        /// * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that
+        /// are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. *
+        /// **Machine Type**: nested virtualization can only be enabled on workstation configurations that specify a
+        /// machine_type in the N1 or N2 machine series. * **GPUs**: nested virtualization may not be enabled on
+        /// workstation configurations with accelerators. * **Operating System**: Because [Container-Optimized
+        /// OS](https://cloud.google.com/compute/docs/images/os-details#container-optimized_os_cos) does not support
+        /// nested virtualization, when nested virtualization is enabled, the underlying Compute Engine VM instances
+        /// boot from an [Ubuntu LTS](https://cloud.google.com/compute/docs/images/os-details#ubuntu_lts) image.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableNestedVirtualization")]
         public virtual System.Nullable<bool> EnableNestedVirtualization { get; set; }
 
         /// <summary>
-        /// The type of machine to use for VM instances—for example, `e2-standard-4`. For more information about machine
-        /// types that Cloud Workstations supports, see the list of [available machine
+        /// Optional. The type of machine to use for VM instances—for example, `"e2-standard-4"`. For more information
+        /// about machine types that Cloud Workstations supports, see the list of [available machine
         /// types](https://cloud.google.com/workstations/docs/available-machine-types).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
 
         /// <summary>
-        /// The number of VMs that the system should keep idle so that new workstations can be started quickly for new
-        /// users. Defaults to `0` in the API.
+        /// Optional. The number of VMs that the system should keep idle so that new workstations can be started quickly
+        /// for new users. Defaults to `0` in the API.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("poolSize")]
         public virtual System.Nullable<int> PoolSize { get; set; }
@@ -2808,11 +2843,11 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual System.Nullable<int> PooledInstances { get; set; }
 
         /// <summary>
-        /// The email address of the service account for Cloud Workstations VMs created with this configuration. When
-        /// specified, be sure that the service account has `logginglogEntries.create` permission on the project so it
-        /// can write logs out to Cloud Logging. If using a custom container image, the service account must have
-        /// permissions to pull the specified image. If you as the administrator want to be able to `ssh` into the
-        /// underlying VM, you need to set this value to a service account for which you have the
+        /// Optional. The email address of the service account for Cloud Workstations VMs created with this
+        /// configuration. When specified, be sure that the service account has `logginglogEntries.create` permission on
+        /// the project so it can write logs out to Cloud Logging. If using a custom container image, the service
+        /// account must have permissions to pull the specified image. If you as the administrator want to be able to
+        /// `ssh` into the underlying VM, you need to set this value to a service account for which you have the
         /// `iam.serviceAccounts.actAs` permission. Conversely, if you don't want anyone to be able to `ssh` into the
         /// underlying VM, use a service account where no one has that permission. If not set, VMs run with a service
         /// account provided by the Cloud Workstations service, and the image must be publicly accessible.
@@ -2820,14 +2855,14 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 
-        /// <summary>A set of Compute Engine Shielded instance options.</summary>
+        /// <summary>Optional. A set of Compute Engine Shielded instance options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceConfig")]
         public virtual GceShieldedInstanceConfig ShieldedInstanceConfig { get; set; }
 
         /// <summary>
-        /// Network tags to add to the Compute Engine machines backing the workstations. This option applies [network
-        /// tags](https://cloud.google.com/vpc/docs/add-remove-network-tags) to VMs created with this configuration.
-        /// These network tags enable the creation of [firewall
+        /// Optional. Network tags to add to the Compute Engine VMs backing the workstations. This option applies
+        /// [network tags](https://cloud.google.com/vpc/docs/add-remove-network-tags) to VMs created with this
+        /// configuration. These network tags enable the creation of [firewall
         /// rules](https://cloud.google.com/workstations/docs/configure-firewall-rules).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
@@ -2838,8 +2873,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     }
 
     /// <summary>
-    /// A PersistentDirectory backed by a Compute Engine regional persistent disk. The `persistentDirectories[]` field
-    /// is repeated, but it may contain only one entry. It creates a [persistent
+    /// A PersistentDirectory backed by a Compute Engine regional persistent disk. The persistent_directories field is
+    /// repeated, but it may contain only one entry. It creates a [persistent
     /// disk](https://cloud.google.com/compute/docs/disks/persistent-disks) that mounts to the workstation VM at `/home`
     /// when the session starts and detaches when the session ends. If this field is empty, workstations created with
     /// this configuration do not have a persistent home directory.
@@ -2847,36 +2882,36 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     public class GceRegionalPersistentDisk : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The [type of the persistent disk](https://cloud.google.com/compute/docs/disks#disk-types) for the home
-        /// directory. Defaults to `pd-standard`.
+        /// Optional. The [type of the persistent disk](https://cloud.google.com/compute/docs/disks#disk-types) for the
+        /// home directory. Defaults to `"pd-standard"`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
         public virtual string DiskType { get; set; }
 
         /// <summary>
-        /// Type of file system that the disk should be formatted with. The workstation image must support this file
-        /// system type. Must be empty if source_snapshot is set. Defaults to `ext4`.
+        /// Optional. Type of file system that the disk should be formatted with. The workstation image must support
+        /// this file system type. Must be empty if source_snapshot is set. Defaults to `"ext4"`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fsType")]
         public virtual string FsType { get; set; }
 
         /// <summary>
-        /// Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and
-        /// `RETAIN`. Defaults to `DELETE`.
+        /// Optional. Whether the persistent disk should be deleted when the workstation is deleted. Valid values are
+        /// `DELETE` and `RETAIN`. Defaults to `DELETE`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reclaimPolicy")]
         public virtual string ReclaimPolicy { get; set; }
 
         /// <summary>
-        /// The GB capacity of a persistent home directory for each workstation created with this configuration. Must be
-        /// empty if `source_snapshot` is set. Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to
-        /// `200`. If less than `200` GB, the `diskType` must be `pd-balanced` or `pd-ssd`.
+        /// Optional. The GB capacity of a persistent home directory for each workstation created with this
+        /// configuration. Must be empty if source_snapshot is set. Valid values are `10`, `50`, `100`, `200`, `500`, or
+        /// `1000`. Defaults to `200`. If less than `200` GB, the disk_type must be `"pd-balanced"` or `"pd-ssd"`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
         public virtual System.Nullable<int> SizeGb { get; set; }
 
         /// <summary>
-        /// Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
+        /// Optional. Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshot")]
         public virtual string SourceSnapshot { get; set; }
@@ -2888,15 +2923,15 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     /// <summary>A set of Compute Engine Shielded instance options.</summary>
     public class GceShieldedInstanceConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Whether the instance has integrity monitoring enabled.</summary>
+        /// <summary>Optional. Whether the instance has integrity monitoring enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableIntegrityMonitoring")]
         public virtual System.Nullable<bool> EnableIntegrityMonitoring { get; set; }
 
-        /// <summary>Whether the instance has Secure Boot enabled.</summary>
+        /// <summary>Optional. Whether the instance has Secure Boot enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableSecureBoot")]
         public virtual System.Nullable<bool> EnableSecureBoot { get; set; }
 
-        /// <summary>Whether the instance has the vTPM enabled.</summary>
+        /// <summary>Optional. Whether the instance has the vTPM enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableVtpm")]
         public virtual System.Nullable<bool> EnableVtpm { get; set; }
 
@@ -2907,12 +2942,45 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     /// <summary>Request message for GenerateAccessToken.</summary>
     public class GenerateAccessTokenRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
         /// <summary>
         /// Desired expiration time of the access token. This value must be at most 24 hours in the future. If a value
         /// is not specified, the token's expiration time will be set to a default value of 1 hour in the future.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; }
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Desired lifetime duration of the access token. This value must be at most 24 hours. If a value is not
@@ -2935,9 +3003,42 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("accessToken")]
         public virtual string AccessToken { get; set; }
 
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
         /// <summary>Time at which the generated token will expire.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; }
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3068,12 +3169,12 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     public class ListWorkstationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Token to retrieve the next page of results, or empty if there are no more results in the list.
+        /// Optional. Token to retrieve the next page of results, or empty if there are no more results in the list.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>Unreachable resources.</summary>
+        /// <summary>Optional. Unreachable resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
         public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
@@ -3115,8 +3216,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The normal response of the operation in case of success. If the original method returns no data on success,
-        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
         /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
@@ -3135,13 +3236,79 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
         public virtual string ApiVersion { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. Time that the operation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
 
         /// <summary>Output only. Time that the operation finished running.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. Identifies whether the user has requested cancellation of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
@@ -3170,7 +3337,7 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcePd")]
         public virtual GceRegionalPersistentDisk GcePd { get; set; }
 
-        /// <summary>Location of this directory in the running workstation.</summary>
+        /// <summary>Optional. Location of this directory in the running workstation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mountPath")]
         public virtual string MountPath { get; set; }
 
@@ -3187,18 +3354,18 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
     /// constraints based on attributes of the request, the resource, or both. To learn which resources support
     /// conditions in their IAM policies, see the [IAM
-    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings":
-    /// [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` {
+    /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
     /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:**
-    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
+    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML
+    /// example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features,
-    /// see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its
+    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3247,20 +3414,20 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual System.Nullable<int> Version { get; set; }
     }
 
-    /// <summary>Configuration options for private clusters.</summary>
+    /// <summary>Configuration options for private workstation clusters.</summary>
     public class PrivateClusterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Additional projects that are allowed to attach to the workstation cluster's service attachment. By default,
-        /// the workstation cluster's project and the VPC host project (if different) are allowed.
+        /// Optional. Additional projects that are allowed to attach to the workstation cluster's service attachment. By
+        /// default, the workstation cluster's project and the VPC host project (if different) are allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedProjects")]
         public virtual System.Collections.Generic.IList<string> AllowedProjects { get; set; }
 
         /// <summary>
         /// Output only. Hostname for the workstation cluster. This field will be populated only when private endpoint
-        /// is enabled. To access workstations in the cluster, create a new DNS zone mapping this domain name to an
-        /// internal IP address and a forwarding rule mapping that address to the service attachment.
+        /// is enabled. To access workstations in the workstation cluster, create a new DNS zone mapping this domain
+        /// name to an internal IP address and a forwarding rule mapping that address to the service attachment.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterHostname")]
         public virtual string ClusterHostname { get; set; }
@@ -3271,8 +3438,8 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
 
         /// <summary>
         /// Output only. Service attachment URI for the workstation cluster. The service attachemnt is created when
-        /// private endpoint is enabled. To access workstations in the cluster, configure access to the managed service
-        /// using [Private Service
+        /// private endpoint is enabled. To access workstations in the workstation cluster, configure access to the
+        /// managed service using [Private Service
         /// Connect](https://cloud.google.com/vpc/docs/configure-private-service-connect-services).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAttachmentUri")]
@@ -3285,11 +3452,11 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     /// <summary>A readiness check to be performed on a workstation.</summary>
     public class ReadinessCheck : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Path to which the request should be sent.</summary>
+        /// <summary>Optional. Path to which the request should be sent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("path")]
         public virtual string Path { get; set; }
 
-        /// <summary>Port to which the request should be sent.</summary>
+        /// <summary>Optional. Port to which the request should be sent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("port")]
         public virtual System.Nullable<int> Port { get; set; }
 
@@ -3323,13 +3490,15 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     public class StartWorkstationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// If set, the request will be rejected if the latest version of the workstation on the server does not have
-        /// this ETag.
+        /// Optional. If set, the request will be rejected if the latest version of the workstation on the server does
+        /// not have this ETag.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>If set, validate the request and preview the review, but do not actually apply it.</summary>
+        /// <summary>
+        /// Optional. If set, validate the request and preview the review, but do not actually apply it.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
     }
@@ -3367,13 +3536,15 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     public class StopWorkstationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// If set, the request will be rejected if the latest version of the workstation on the server does not have
-        /// this ETag.
+        /// Optional. If set, the request will be rejected if the latest version of the workstation on the server does
+        /// not have this ETag.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>If set, validate the request and preview the review, but do not actually apply it.</summary>
+        /// <summary>
+        /// Optional. If set, validate the request and preview the review, but do not actually apply it.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
         public virtual System.Nullable<bool> ValidateOnly { get; set; }
     }
@@ -3407,29 +3578,95 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     /// <summary>A single instance of a developer workstation with its own persistent storage.</summary>
     public class Workstation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Client-specified annotations.</summary>
+        /// <summary>Optional. Client-specified annotations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
-        /// <summary>Output only. Time when this resource was created.</summary>
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Time when this workstation was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
 
-        /// <summary>Output only. Time when this resource was soft-deleted.</summary>
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _deleteTimeRaw;
+
+        private object _deleteTime;
+
+        /// <summary>Output only. Time when this workstation was soft-deleted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
-        public virtual object DeleteTime { get; set; }
+        public virtual string DeleteTimeRaw
+        {
+            get => _deleteTimeRaw;
+            set
+            {
+                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deleteTimeRaw = value;
+            }
+        }
 
-        /// <summary>Human-readable name for this resource.</summary>
+        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
+        public virtual object DeleteTime
+        {
+            get => _deleteTime;
+            set
+            {
+                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deleteTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Optional. Human-readable name for this workstation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>Environment variables passed to the workstation container's entrypoint.</summary>
+        /// <summary>Optional. Environment variables passed to the workstation container's entrypoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("env")]
         public virtual System.Collections.Generic.IDictionary<string, string> Env { get; set; }
 
         /// <summary>
-        /// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has
-        /// an up-to-date value before proceeding.
+        /// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the
+        /// client has an up-to-date value before proceeding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
@@ -3443,18 +3680,18 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual string Host { get; set; }
 
         /// <summary>
-        /// Client-specified labels that are applied to the resource and that are also propagated to the underlying
-        /// Compute Engine resources.
+        /// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the
+        /// workstation and that are also propagated to the underlying Compute Engine resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Full name of this resource.</summary>
+        /// <summary>Full name of this workstation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. Indicates whether this resource is currently being updated to match its intended state.
+        /// Output only. Indicates whether this workstation is currently being updated to match its intended state.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
@@ -3463,111 +3700,250 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>Output only. A system-assigned unique identifier for this resource.</summary>
+        /// <summary>Output only. A system-assigned unique identifier for this workstation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
-        /// <summary>Output only. Time when this resource was most recently updated.</summary>
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Time when this workstation was most recently updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
     }
 
-    /// <summary>A grouping of workstation configurations and the associated workstations in that region.</summary>
+    /// <summary>
+    /// A workstation cluster resource in the Cloud Workstations API. Defines a group of workstations in a particular
+    /// region and the VPC network they're attached to.
+    /// </summary>
     public class WorkstationCluster : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Client-specified annotations.</summary>
+        /// <summary>Optional. Client-specified annotations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
-        /// <summary>Output only. Status conditions describing the current resource state.</summary>
+        /// <summary>Output only. Status conditions describing the workstation cluster's current state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditions")]
         public virtual System.Collections.Generic.IList<Status> Conditions { get; set; }
 
         /// <summary>
-        /// Output only. The private IP address of the control plane for this cluster. Workstation VMs need access to
-        /// this IP address to work with the service, so make sure that your firewall rules allow egress from the
-        /// workstation VMs to this address.
+        /// Output only. The private IP address of the control plane for this workstation cluster. Workstation VMs need
+        /// access to this IP address to work with the service, so make sure that your firewall rules allow egress from
+        /// the workstation VMs to this address.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("controlPlaneIp")]
         public virtual string ControlPlaneIp { get; set; }
 
-        /// <summary>Output only. Time when this resource was created.</summary>
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Time when this workstation cluster was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
-        /// Output only. Whether this resource is in degraded mode, in which case it may require user action to restore
-        /// full functionality. Details can be found in the `conditions` field.
+        /// Output only. Whether this workstation cluster is in degraded mode, in which case it may require user action
+        /// to restore full functionality. Details can be found in conditions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("degraded")]
         public virtual System.Nullable<bool> Degraded { get; set; }
 
-        /// <summary>Output only. Time when this resource was soft-deleted.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
-        public virtual object DeleteTime { get; set; }
+        private string _deleteTimeRaw;
 
-        /// <summary>Human-readable name for this resource.</summary>
+        private object _deleteTime;
+
+        /// <summary>Output only. Time when this workstation cluster was soft-deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual string DeleteTimeRaw
+        {
+            get => _deleteTimeRaw;
+            set
+            {
+                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deleteTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
+        public virtual object DeleteTime
+        {
+            get => _deleteTime;
+            set
+            {
+                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deleteTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Optional. Human-readable name for this workstation cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has
-        /// an up-to-date value before proceeding.
+        /// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the
+        /// client has an up-to-date value before proceeding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Client-specified labels that are applied to the resource and that are also propagated to the underlying
-        /// Compute Engine resources.
+        /// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the
+        /// workstation cluster and that are also propagated to the underlying Compute Engine resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Full name of this resource.</summary>
+        /// <summary>Full name of this workstation cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Immutable. Name of the Compute Engine network in which instances associated with this cluster will be
-        /// created.
+        /// Immutable. Name of the Compute Engine network in which instances associated with this workstation cluster
+        /// will be created.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
-        /// <summary>Configuration for private cluster.</summary>
+        /// <summary>Optional. Configuration for private workstation cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateClusterConfig")]
         public virtual PrivateClusterConfig PrivateClusterConfig { get; set; }
 
         /// <summary>
-        /// Output only. Indicates whether this resource is currently being updated to match its intended state.
+        /// Output only. Indicates whether this workstation cluster is currently being updated to match its intended
+        /// state.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
         /// <summary>
-        /// Immutable. Name of the Compute Engine subnetwork in which instances associated with this cluster will be
-        /// created. Must be part of the subnetwork specified for this cluster.
+        /// Immutable. Name of the Compute Engine subnetwork in which instances associated with this workstation cluster
+        /// will be created. Must be part of the subnetwork specified for this workstation cluster.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; }
 
-        /// <summary>Output only. A system-assigned unique identifier for this resource.</summary>
+        /// <summary>Output only. A system-assigned unique identifier for this workstation cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
-        /// <summary>Output only. Time when this resource was most recently updated.</summary>
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Time when this workstation cluster was most recently updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
     }
 
     /// <summary>
-    /// A set of configuration options that describe how a workstation runs. Workstation configurations are intended to
-    /// be shared across multiple workstations.
+    /// A workstation configuration resource in the Cloud Workstations API. Workstation configurations act as templates
+    /// for workstations. The workstation configuration defines details such as the workstation virtual machine (VM)
+    /// instance type, persistent storage, container image defining environment, which IDE or Code Editor to use, and
+    /// more. Administrators and platform teams can also use [Identity and Access Management
+    /// (IAM)](https://cloud.google.com/iam/docs/overview) rules to grant access to teams or to individual developers.
     /// </summary>
     public class WorkstationConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Client-specified annotations.</summary>
+        /// <summary>Optional. Client-specified annotations.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("annotations")]
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
@@ -3576,34 +3952,100 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual System.Collections.Generic.IList<Status> Conditions { get; set; }
 
         /// <summary>
-        /// Container that runs upon startup for each workstation using this workstation configuration.
+        /// Optional. Container that runs upon startup for each workstation using this workstation configuration.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("container")]
         public virtual Container Container { get; set; }
 
-        /// <summary>Output only. Time when this resource was created.</summary>
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Time when this workstation configuration was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. Whether this resource is degraded, in which case it may require user action to restore full
-        /// functionality. See also the `conditions` field.
+        /// functionality. See also the conditions field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("degraded")]
         public virtual System.Nullable<bool> Degraded { get; set; }
 
-        /// <summary>Output only. Time when this resource was soft-deleted.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
-        public virtual object DeleteTime { get; set; }
+        private string _deleteTimeRaw;
 
-        /// <summary>Human-readable name for this resource.</summary>
+        private object _deleteTime;
+
+        /// <summary>Output only. Time when this workstation configuration was soft-deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual string DeleteTimeRaw
+        {
+            get => _deleteTimeRaw;
+            set
+            {
+                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deleteTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
+        public virtual object DeleteTime
+        {
+            get => _deleteTime;
+            set
+            {
+                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deleteTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Optional. Human-readable name for this workstation configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be
-        /// specified that has `logging.buckets.write` permission on the project. Operating system audit logging is
-        /// distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
+        /// Optional. Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must
+        /// also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging
+        /// is distinct from [Cloud Audit Logs](https://cloud.google.com/workstations/docs/audit-logging).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableAuditAgent")]
         public virtual System.Nullable<bool> EnableAuditAgent { get; set; }
@@ -3623,74 +4065,109 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         public virtual CustomerEncryptionKey EncryptionKey { get; set; }
 
         /// <summary>
-        /// Checksum computed by the server. May be sent on update and delete requests to make sure that the client has
-        /// an up-to-date value before proceeding.
+        /// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the
+        /// client has an up-to-date value before proceeding.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
-        /// <summary>Runtime host for the workstation.</summary>
+        /// <summary>Optional. Runtime host for the workstation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual Host Host { get; set; }
 
         /// <summary>
-        /// Number of seconds to wait before automatically stopping a workstation after it last received user traffic. A
-        /// value of `0s` indicates that Cloud Workstations VMs created with this configuration should never time out
-        /// due to idleness. Provide
+        /// Optional. Number of seconds to wait before automatically stopping a workstation after it last received user
+        /// traffic. A value of `"0s"` indicates that Cloud Workstations VMs created with this configuration should
+        /// never time out due to idleness. Provide
         /// [duration](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#duration)
-        /// terminated by `s` for seconds—for example, `7200s` (2 hours). The default is `1200s` (20 minutes).
+        /// terminated by `s` for seconds—for example, `"7200s"` (2 hours). The default is `"1200s"` (20 minutes).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("idleTimeout")]
         public virtual object IdleTimeout { get; set; }
 
         /// <summary>
-        /// Client-specified labels that are applied to the resource and that are also propagated to the underlying
-        /// Compute Engine resources.
+        /// Optional. [Labels](https://cloud.google.com/workstations/docs/label-resources) that are applied to the
+        /// workstation configuration and that are also propagated to the underlying Compute Engine resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Full name of this resource.</summary>
+        /// <summary>Full name of this workstation configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Directories to persist across workstation sessions.</summary>
+        /// <summary>Optional. Directories to persist across workstation sessions.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("persistentDirectories")]
         public virtual System.Collections.Generic.IList<PersistentDirectory> PersistentDirectories { get; set; }
 
         /// <summary>
-        /// Readiness checks to perform when starting a workstation using this workstation configuration. Mark a
-        /// workstation as running only after all specified readiness checks return 200 status codes.
+        /// Optional. Readiness checks to perform when starting a workstation using this workstation configuration. Mark
+        /// a workstation as running only after all specified readiness checks return 200 status codes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("readinessChecks")]
         public virtual System.Collections.Generic.IList<ReadinessCheck> ReadinessChecks { get; set; }
 
         /// <summary>
-        /// Output only. Indicates whether this resource is currently being updated to match its intended state.
+        /// Output only. Indicates whether this workstation configuration is currently being updated to match its
+        /// intended state.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
         /// <summary>
-        /// Number of seconds that a workstation can run until it is automatically shut down. We recommend that
-        /// workstations be shut down daily to reduce costs and so that security updates can be applied upon restart.
-        /// The `idleTimeout` and `runningTimeout` parameters are independent of each other. Note that the
-        /// `runningTimeout` parameter shuts down VMs after the specified time, regardless of whether or not the VMs are
-        /// idle. Provide duration terminated by `s` for seconds—for example, `54000s` (15 hours). Defaults to `43200s`
-        /// (12 hours). A value of `0` indicates that workstations using this configuration should never time out. If
-        /// `encryption_key` is set, it must be greater than `0` and less than `86400s` (24 hours). Warning: A value of
-        /// `0s` indicates that Cloud Workstations VMs created with this configuration have no maximum running time.
-        /// This is strongly discouraged because you incur costs and will not pick up security updates.
+        /// Optional. Number of seconds that a workstation can run until it is automatically shut down. We recommend
+        /// that workstations be shut down daily to reduce costs and so that security updates can be applied upon
+        /// restart. The idle_timeout and running_timeout fields are independent of each other. Note that the
+        /// running_timeout field shuts down VMs after the specified time, regardless of whether or not the VMs are
+        /// idle. Provide duration terminated by `s` for seconds—for example, `"54000s"` (15 hours). Defaults to
+        /// `"43200s"` (12 hours). A value of `"0s"` indicates that workstations using this configuration should never
+        /// time out. If encryption_key is set, it must be greater than `"0s"` and less than `"86400s"` (24 hours).
+        /// Warning: A value of `"0s"` indicates that Cloud Workstations VMs created with this configuration have no
+        /// maximum running time. This is strongly discouraged because you incur costs and will not pick up security
+        /// updates.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("runningTimeout")]
         public virtual object RunningTimeout { get; set; }
 
-        /// <summary>Output only. A system-assigned unique identifier for this resource.</summary>
+        /// <summary>Output only. A system-assigned unique identifier for this workstation configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uid")]
         public virtual string Uid { get; set; }
 
-        /// <summary>Output only. Time when this resource was most recently updated.</summary>
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Time when this workstation configuration was most recently updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
     }
 }

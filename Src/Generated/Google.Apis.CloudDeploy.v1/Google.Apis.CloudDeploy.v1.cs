@@ -3710,15 +3710,15 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual System.Collections.Generic.IList<System.Nullable<int>> Percentages { get; set; }
 
         /// <summary>
-        /// Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job
-        /// will not be present.
+        /// Optional. Configuration for the postdeploy job of the last phase. If this is not configured, there will be
+        /// no postdeploy job for this phase.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postdeploy")]
         public virtual Postdeploy Postdeploy { get; set; }
 
         /// <summary>
-        /// Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job
-        /// will not be present.
+        /// Optional. Configuration for the predeploy job of the first phase. If this is not configured, there will be
+        /// no predeploy job for this phase.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predeploy")]
         public virtual Predeploy Predeploy { get; set; }
@@ -4189,15 +4189,11 @@ namespace Google.Apis.CloudDeploy.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("deployJob")]
         public virtual Job DeployJob { get; set; }
 
-        /// <summary>
-        /// Output only. The postdeploy Job. This is the postdeploy job in the phase. This is the last job of the phase.
-        /// </summary>
+        /// <summary>Output only. The postdeploy Job, which is the last job on the phase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postdeployJob")]
         public virtual Job PostdeployJob { get; set; }
 
-        /// <summary>
-        /// Output only. The predeploy Job. This is the predeploy job in the phase. This is the first job of the phase.
-        /// </summary>
+        /// <summary>Output only. The predeploy Job, which is the first job on the phase.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predeployJob")]
         public virtual Job PredeployJob { get; set; }
 
@@ -4885,8 +4881,8 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The normal response of the operation in case of success. If the original method returns no data on success,
-        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
         /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
@@ -5068,15 +5064,15 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string PhaseId { get; set; }
 
         /// <summary>
-        /// Optional. Configuration for the postdeploy job of this phase. If this is not configured, postdeploy job will
-        /// not be present for this phase.
+        /// Optional. Configuration for the postdeploy job of this phase. If this is not configured, there will be no
+        /// postdeploy job for this phase.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postdeploy")]
         public virtual Postdeploy Postdeploy { get; set; }
 
         /// <summary>
-        /// Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will
-        /// not be present for this phase.
+        /// Optional. Configuration for the predeploy job of this phase. If this is not configured, there will be no
+        /// predeploy job for this phase.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("predeploy")]
         public virtual Predeploy Predeploy { get; set; }
@@ -5176,18 +5172,18 @@ namespace Google.Apis.CloudDeploy.v1.Data
     /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
     /// constraints based on attributes of the request, the resource, or both. To learn which resources support
     /// conditions in their IAM policies, see the [IAM
-    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings":
-    /// [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` {
+    /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
     /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:**
-    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
+    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML
+    /// example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features,
-    /// see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its
+    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5240,7 +5236,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     public class Postdeploy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. A sequence of skaffold custom actions to invoke during execution of the postdeploy job.
+        /// Optional. A sequence of Skaffold custom actions to invoke during execution of the postdeploy job.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actions")]
         public virtual System.Collections.Generic.IList<string> Actions { get; set; }
@@ -5289,7 +5285,7 @@ namespace Google.Apis.CloudDeploy.v1.Data
     public class Predeploy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
+        /// Optional. A sequence of Skaffold custom actions to invoke during execution of the predeploy job.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("actions")]
         public virtual System.Collections.Generic.IList<string> Actions { get; set; }

@@ -381,7 +381,7 @@ namespace Google.Apis.Advisorynotifications.v1
                 /// <summary>Lists notifications under a given parent.</summary>
                 /// <param name="parent">
                 /// Required. The parent, which owns this collection of notifications. Must be of the form
-                /// "organizations/{organization}/locations/{location}".
+                /// "organizations/{organization}/locations/{location}"
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -400,7 +400,7 @@ namespace Google.Apis.Advisorynotifications.v1
 
                     /// <summary>
                     /// Required. The parent, which owns this collection of notifications. Must be of the form
-                    /// "organizations/{organization}/locations/{location}".
+                    /// "organizations/{organization}/locations/{location}"
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
