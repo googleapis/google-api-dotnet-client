@@ -23,7 +23,6 @@ using Google.Apis.Json;
 using Google.Apis.Tests.Mocks;
 using Google.Apis.Util;
 using Google.Apis.Util.Store;
-using Moq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -122,12 +121,10 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
 
         private async Task<TokenResponse> SubtestLoadTokenAsync(TokenResponse response)
         {
-            var task = Task.FromResult(response);
-            var mock = new Mock<IDataStore>();
-            mock.Setup(ds => ds.GetAsync<TokenResponse>("user")).Returns(task);
-            var flow = CreateFlow(dataStore: mock.Object);
+            var store = new FakeDataStore { TokenResponse = response };
+            var flow = CreateFlow(dataStore: store);
             var result = await flow.LoadTokenAsync("user", default);
-            mock.Verify(ds => ds.GetAsync<TokenResponse>("user"));
+            Assert.Equal("user", store.FetchedKey);
             return result;
         }
 
@@ -164,7 +161,7 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
         [Fact]
         public async Task TestExchangeCodeForTokenAsync()
         {
-            var mock = new Mock<IDataStore>();
+            var store = new FakeDataStore();
             var handler = new FetchTokenMessageHandler();
             handler.AuthorizationCodeTokenRequest = new AuthorizationCodeTokenRequest()
             {
@@ -173,22 +170,17 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
                 Scope = "a"
             };
             MockHttpClientFactory mockFactory = new MockHttpClientFactory(handler);
-
-            TaskCompletionSource<object> tcs = new TaskCompletionSource<object>();
-            tcs.SetResult(null);
-            mock.Setup(ds => ds.StoreAsync("uSer", It.IsAny<TokenResponse>())).Returns(tcs.Task);
-
-            var flow = CreateFlow(httpClientFactory: mockFactory, scopes: new[] { "a" }, dataStore: mock.Object);
+            var flow = CreateFlow(httpClientFactory: mockFactory, scopes: new[] { "a" }, dataStore: store);
             var response = await flow.ExchangeCodeForTokenAsync("uSer", "c0de", "redIrect", default);
             SubtestTokenResponse(response);
 
-            mock.Verify(ds => ds.StoreAsync("uSer", It.IsAny<TokenResponse>()));
+            Assert.Equal("uSer", store.StoredKey);
         }
 
         [Fact]
         public async Task TestExchangeCodeForTokenAsync_NullScopes()
         {
-            var mock = new Mock<IDataStore>();
+            var store = new FakeDataStore();
             var handler = new FetchTokenMessageHandler();
             handler.AuthorizationCodeTokenRequest = new AuthorizationCodeTokenRequest()
             {
@@ -197,22 +189,17 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
                 Scope = null
             };
             MockHttpClientFactory mockFactory = new MockHttpClientFactory(handler);
-
-            TaskCompletionSource<object> tcs = new TaskCompletionSource<object>();
-            tcs.SetResult(null);
-            mock.Setup(ds => ds.StoreAsync("uSer", It.IsAny<TokenResponse>())).Returns(tcs.Task);
-
-            var flow = CreateFlow(httpClientFactory: mockFactory, scopes: null, dataStore: mock.Object);
+            var flow = CreateFlow(httpClientFactory: mockFactory, scopes: null, dataStore: store);
             var response = await flow.ExchangeCodeForTokenAsync("uSer", "c0de", "redIrect", default);
             SubtestTokenResponse(response);
 
-            mock.Verify(ds => ds.StoreAsync("uSer", It.IsAny<TokenResponse>()));
+            Assert.Equal("uSer", store.StoredKey);
         }
 
         [Fact]
         public async Task TestRefreshTokenAsync()
         {
-            var mock = new Mock<IDataStore>();
+            var store = new FakeDataStore();
             var handler = new FetchTokenMessageHandler();
             handler.RefreshTokenRequest = new RefreshTokenRequest()
             {
@@ -220,17 +207,11 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
                 Scope = "a"
             };
             MockHttpClientFactory mockFactory = new MockHttpClientFactory(handler);
-
-            TaskCompletionSource<object> tcs = new TaskCompletionSource<object>();
-            tcs.SetResult(null);
-            mock.Setup(ds => ds.StoreAsync("uSer", It.IsAny<TokenResponse>())).Returns(tcs.Task);
-
-            var flow = CreateFlow(httpClientFactory: mockFactory, scopes: new[] { "a" }, dataStore: mock.Object);
+            var flow = CreateFlow(httpClientFactory: mockFactory, scopes: new[] { "a" }, dataStore: store);
             var response = await flow.RefreshTokenAsync("uSer", "REFRESH", default);
             SubtestTokenResponse(response);
 
-
-            mock.Verify(ds => ds.StoreAsync("uSer", It.IsAny<TokenResponse>()));
+            Assert.Equal("uSer", store.StoredKey);
         }
 
         #region FetchToken
@@ -450,6 +431,30 @@ namespace Google.Apis.Auth.Tests.OAuth2.Flows
             Assert.Equal("r", response.RefreshToken);
             Assert.Equal(100, response.ExpiresInSeconds);
             Assert.Equal("b", response.Scope);
+        }
+
+        private class FakeDataStore : IDataStore
+        {
+            public string StoredKey { get; private set; }
+            public string FetchedKey { get; private set; }
+            public TokenResponse TokenResponse { get; set; }
+
+            public Task ClearAsync() => throw new NotImplementedException();
+
+            public Task DeleteAsync<T>(string key) => throw new NotImplementedException();
+
+            public Task<T> GetAsync<T>(string key)
+            {
+                FetchedKey = key;
+                return Task.FromResult((T) (object) TokenResponse);
+            }
+
+            public Task StoreAsync<T>(string key, T value)
+            {
+                StoredKey = key;
+                // Task.CompletedTask doesn't exist in older frameworks.
+                return Task.FromResult<object>(null);
+            }
         }
     }
 }

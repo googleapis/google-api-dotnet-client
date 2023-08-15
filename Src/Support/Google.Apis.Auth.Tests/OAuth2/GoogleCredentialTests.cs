@@ -22,11 +22,13 @@ limitations under the License.
 
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Auth.OAuth2.Flows;
+using Google.Apis.Auth.OAuth2.Requests;
 using Google.Apis.Auth.OAuth2.Responses;
 using Google.Apis.Http;
 using Google.Apis.Json;
 using Google.Apis.Tests.Mocks;
-using Moq;
+using Google.Apis.Util;
+using Google.Apis.Util.Store;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -547,14 +549,8 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
                     IssuedUtc = clock.UtcNow,
                     RefreshToken = "REFRESH_TOKEN",
                 };
-                var flowMock = new Mock<IAuthorizationCodeFlow>(MockBehavior.Strict);
-                flowMock
-                    .Setup(flow => flow.Clock)
-                    .Returns(clock);
-                flowMock
-                    .Setup(flow => flow.AccessMethod)
-                    .Returns(new AuthorizationHeaderAccessMethod());
-                yield return new object[] { new GoogleCredential(new UserCredential(flowMock.Object, "my.user.id", tokenResponse)) };
+                var flow = new FakeFlow(clock);
+                yield return new object[] { new GoogleCredential(new UserCredential(flow, "my.user.id", tokenResponse)) };
 
                 yield return new object[] { GoogleCredential.FromAccessToken("my.access.token") };
             }
@@ -699,6 +695,42 @@ TOgrHXgWf1cxYf5cB8DfC3NoaYZ4D3Wh9Qjn3cl36CXfSKEnPK49DkrGZz1avAjV
         {
             var googleCredential = GoogleCredential.FromAccessToken("fake_token");
             await Assert.ThrowsAsync<InvalidOperationException>(() => googleCredential.SignBlobAsync(Encoding.ASCII.GetBytes("toSign")));
+        }
+
+        /// <summary>
+        /// Fake implementation of <see cref="IAuthorizationCodeFlow"/> which only supports fetching the
+        /// clock and the access method.
+        /// </summary>
+        private class FakeFlow : IAuthorizationCodeFlow
+        {
+            public IAccessMethod AccessMethod => new AuthorizationHeaderAccessMethod();
+            public IClock Clock { get; }
+
+            internal FakeFlow(IClock clock) => Clock = clock;
+
+            public IDataStore DataStore => throw new NotImplementedException();
+
+            public AuthorizationCodeRequestUrl CreateAuthorizationCodeRequest(string redirectUri) =>
+                throw new NotImplementedException();
+
+            public Task DeleteTokenAsync(string userId, CancellationToken taskCancellationToken) =>
+                throw new NotImplementedException();
+
+            public void Dispose() => throw new NotImplementedException();
+
+            public Task<TokenResponse> ExchangeCodeForTokenAsync(string userId, string code, string redirectUri, CancellationToken taskCancellationToken) =>
+                throw new NotImplementedException();
+
+            public Task<TokenResponse> LoadTokenAsync(string userId, CancellationToken taskCancellationToken) =>
+                throw new NotImplementedException();
+
+            public Task<TokenResponse> RefreshTokenAsync(string userId, string refreshToken, CancellationToken taskCancellationToken) =>
+                throw new NotImplementedException();
+
+            public Task RevokeTokenAsync(string userId, string token, CancellationToken taskCancellationToken) =>
+                throw new NotImplementedException();
+
+            public bool ShouldForceTokenRetrieval() => throw new NotImplementedException();
         }
     }
 }
