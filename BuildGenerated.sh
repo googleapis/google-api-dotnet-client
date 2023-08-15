@@ -30,6 +30,7 @@ while [[ $# -gt 0 ]]; do
   case $key in
     --skipdownload)
       SKIPDOWNLOAD=TRUE
+      GENERATE_CHANGES_ONLY=FALSE
       ;;
     --skiprevert)
       SKIPREVERT=TRUE
