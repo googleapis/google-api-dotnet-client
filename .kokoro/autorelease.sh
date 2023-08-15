@@ -2,9 +2,14 @@
 
 set -ex
 
-# Make sure secrets are loaded in a well known localtion before running releasetool
+# Make sure secrets are loaded in a well known location before running the release
 source ./populatesecrets.sh
 populate_all_secrets
+
+maybe_force_all=""
+if [ "$FORCE_ALL" == "true" ]; then
+  maybe_force_all="--forcegenerateall"
+fi
 
 declare -r github_user="$(cat "$SECRETS_LOCATION"/google-api-dotnet-client-github-user-name)"
 declare -r github_email="$(cat "$SECRETS_LOCATION"/google-api-dotnet-client-github-user-email)"
@@ -70,7 +75,7 @@ rm -f DiscoveryJson/integrations_v1alpha.json
 rm -f DiscoveryJson/policysimulator_v1alpha.json
 rm -f DiscoveryJson/policysimulator_v1beta.json
 
-./BuildGenerated.sh --skipdownload
+./BuildGenerated.sh --skipdownload "$maybe_force_all"
 
 # Push support and generated packages to nuget
 shopt -s nullglob
@@ -78,12 +83,14 @@ for pkg in ./NuPkgs/Support/*.nupkg; do
   if [[ $pkg != *.symbols.* ]]; then
     # Push is expected to fail often; when a package hasn't been updated.
     nuget push $pkg $nuget_token -Source nuget.org || true
+    sleep 10
   fi
 done
 for pkg in ./NuPkgs/Generated/*.nupkg; do
   if [[ $pkg != *.symbols.* ]]; then
     # Push is expected to fail often; when a package hasn't been updated.
     nuget push $pkg $nuget_token -Source nuget.org || true
+    sleep 10
   fi
 done
 
@@ -95,9 +102,8 @@ git remote set-url origin git@github.com:googleapis/google-api-dotnet-client.git
 git push --set-upstream origin $branchname
 
 # Create a PR for the changes in branchname.
-# TODO: Remove the draft flag once everything else is working.
 prRequestBody='{"title":"Release PR: '"$branchname"'", "body": "Changes in this PR have already been published to Nuget.", "head": "'"$branchname"'", "base": "main"}'
 curl -v -i -X POST https://api.github.com/repos/googleapis/google-api-dotnet-client/pulls -H 'Authorization: token '"$github_token" -H "Content-Type:application/json" -H "accept: */*" -d "$prRequestBody"
 
 # All done :)
-echo "Success - Apiary release completed."
+echo "Success - Discovery libraries release completed."
