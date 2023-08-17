@@ -2256,16 +2256,84 @@ namespace Google.Apis.AccessApproval.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        private string _requestTimeRaw;
+
+        private object _requestTime;
+
         /// <summary>The time at which approval was requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestTime")]
-        public virtual object RequestTime { get; set; }
+        public virtual string RequestTimeRaw
+        {
+            get => _requestTimeRaw;
+            set
+            {
+                _requestTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _requestTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RequestTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RequestTimeDateTimeOffset instead.")]
+        public virtual object RequestTime
+        {
+            get => _requestTime;
+            set
+            {
+                _requestTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _requestTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="RequestTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RequestTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RequestTimeRaw);
+            set => RequestTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _requestedExpirationRaw;
+
+        private object _requestedExpiration;
 
         /// <summary>
         /// The requested expiration for the approval. If the request is approved, access will be granted from the time
         /// of approval until the expiration time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedExpiration")]
-        public virtual object RequestedExpiration { get; set; }
+        public virtual string RequestedExpirationRaw
+        {
+            get => _requestedExpirationRaw;
+            set
+            {
+                _requestedExpiration = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _requestedExpirationRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RequestedExpirationRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RequestedExpirationDateTimeOffset instead.")]
+        public virtual object RequestedExpiration
+        {
+            get => _requestedExpiration;
+            set
+            {
+                _requestedExpirationRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _requestedExpiration = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="RequestedExpirationRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RequestedExpirationDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RequestedExpirationRaw);
+            set => RequestedExpirationRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The locations for which approval is being requested.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedLocations")]
@@ -2295,9 +2363,42 @@ namespace Google.Apis.AccessApproval.v1.Data
     /// <summary>Request to approve an ApprovalRequest.</summary>
     public class ApproveApprovalRequestMessage : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
         /// <summary>The expiration time of this approval.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; }
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2306,21 +2407,122 @@ namespace Google.Apis.AccessApproval.v1.Data
     /// <summary>A decision that has been made to approve access to a resource.</summary>
     public class ApproveDecision : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _approveTimeRaw;
+
+        private object _approveTime;
+
         /// <summary>The time at which approval was granted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("approveTime")]
-        public virtual object ApproveTime { get; set; }
+        public virtual string ApproveTimeRaw
+        {
+            get => _approveTimeRaw;
+            set
+            {
+                _approveTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _approveTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ApproveTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ApproveTimeDateTimeOffset instead.")]
+        public virtual object ApproveTime
+        {
+            get => _approveTime;
+            set
+            {
+                _approveTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _approveTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ApproveTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ApproveTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ApproveTimeRaw);
+            set => ApproveTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>True when the request has been auto-approved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoApproved")]
         public virtual System.Nullable<bool> AutoApproved { get; set; }
 
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
         /// <summary>The time at which the approval expires.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
-        public virtual object ExpireTime { get; set; }
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _invalidateTimeRaw;
+
+        private object _invalidateTime;
 
         /// <summary>If set, denotes the timestamp at which the approval is invalidated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invalidateTime")]
-        public virtual object InvalidateTime { get; set; }
+        public virtual string InvalidateTimeRaw
+        {
+            get => _invalidateTimeRaw;
+            set
+            {
+                _invalidateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _invalidateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="InvalidateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use InvalidateTimeDateTimeOffset instead.")]
+        public virtual object InvalidateTime
+        {
+            get => _invalidateTime;
+            set
+            {
+                _invalidateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _invalidateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="InvalidateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? InvalidateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(InvalidateTimeRaw);
+            set => InvalidateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The signature for the ApprovalRequest and details on how it was signed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signatureInfo")]
@@ -2340,9 +2542,42 @@ namespace Google.Apis.AccessApproval.v1.Data
     /// <summary>A decision that has been made to dismiss an approval request.</summary>
     public class DismissDecision : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _dismissTimeRaw;
+
+        private object _dismissTime;
+
         /// <summary>The time at which the approval request was dismissed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dismissTime")]
-        public virtual object DismissTime { get; set; }
+        public virtual string DismissTimeRaw
+        {
+            get => _dismissTimeRaw;
+            set
+            {
+                _dismissTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _dismissTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DismissTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DismissTimeDateTimeOffset instead.")]
+        public virtual object DismissTime
+        {
+            get => _dismissTime;
+            set
+            {
+                _dismissTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _dismissTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DismissTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DismissTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DismissTimeRaw);
+            set => DismissTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// This field will be true if the ApprovalRequest was implicitly dismissed due to inaction by the access

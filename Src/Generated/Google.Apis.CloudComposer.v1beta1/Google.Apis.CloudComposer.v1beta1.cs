@@ -2253,8 +2253,11 @@ namespace Google.Apis.CloudComposer.v1beta1.Data
     }
 
     /// <summary>
-    /// The configuration settings for Cloud Composer maintenance window. The following example: ``` {
-    /// "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" } ```
+    /// The configuration settings for Cloud Composer maintenance window. The following example:
+    /// ```
+    /// {
+    /// "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" }
+    /// ```
     /// would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
     /// </summary>
     public class MaintenanceWindow : Google.Apis.Requests.IDirectResponseSchema

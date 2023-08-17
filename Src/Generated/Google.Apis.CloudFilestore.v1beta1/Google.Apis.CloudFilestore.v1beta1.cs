@@ -2624,7 +2624,9 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
 
     /// <summary>
     /// Instance represents the interface for SLM services to actuate the state of control plane resources. Example
-    /// Instance in JSON, where consumer-project-number=123456, producer-project-id=cloud-sql: ```json Instance: {
+    /// Instance in JSON, where consumer-project-number=123456, producer-project-id=cloud-sql:
+    /// ```
+    /// json Instance: {
     /// "name": "projects/123456/locations/us-east1/instances/prod-instance", "create_time": { "seconds": 1526406431, },
     /// "labels": { "env": "prod", "foo": "bar" }, "state": READY, "software_versions": { "software_update":
     /// "cloud-sql-09-28-2018", }, "maintenance_policy_names": { "UpdatePolicy":
@@ -2634,7 +2636,9 @@ namespace Google.Apis.CloudFilestore.v1beta1.Data
     /// "https://www.googleapis.com/compute/v1/projects/cloud-sql/zones/us-east1-b/instances/vm-1", } ],
     /// "maintenance_schedules": { "csa_rollout": { "start_time": { "seconds": 1526406431, }, "end_time": { "seconds":
     /// 1535406431, }, }, "ncsa_rollout": { "start_time": { "seconds": 1526406431, }, "end_time": { "seconds":
-    /// 1535406431, }, } }, "consumer_defined_name": "my-sql-instance1", } ``` LINT.IfChange
+    /// 1535406431, }, } }, "consumer_defined_name": "my-sql-instance1", }
+    /// ```
+    /// LINT.IfChange
     /// </summary>
     public class GoogleCloudSaasacceleratorManagementProvidersV1Instance : Google.Apis.Requests.IDirectResponseSchema
     {

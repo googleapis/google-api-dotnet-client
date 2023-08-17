@@ -2122,12 +2122,45 @@ namespace Google.Apis.Essentialcontacts.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("notificationCategorySubscriptions")]
         public virtual System.Collections.Generic.IList<string> NotificationCategorySubscriptions { get; set; }
 
+        private string _validateTimeRaw;
+
+        private object _validateTime;
+
         /// <summary>
         /// The last time the validation_state was updated, either manually or automatically. A contact is considered
         /// stale if its validation state was updated more than 1 year ago.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateTime")]
-        public virtual object ValidateTime { get; set; }
+        public virtual string ValidateTimeRaw
+        {
+            get => _validateTimeRaw;
+            set
+            {
+                _validateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _validateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ValidateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ValidateTimeDateTimeOffset instead.")]
+        public virtual object ValidateTime
+        {
+            get => _validateTime;
+            set
+            {
+                _validateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _validateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ValidateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ValidateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ValidateTimeRaw);
+            set => ValidateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// The validity of the contact. A contact is considered valid if it is the correct recipient for notifications

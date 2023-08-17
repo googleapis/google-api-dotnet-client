@@ -1581,7 +1581,7 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("interconnectAttachments")]
         public virtual System.Collections.Generic.IList<VlanAttachment> InterconnectAttachments { get; set; }
 
-        /// <summary>Vlan attachment type.</summary>
+        /// <summary>VLAN attachment type</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interconnectType")]
         public virtual string InterconnectType { get; set; }
 
@@ -3371,10 +3371,13 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         /// * `T` tera (10^12) * `P` peta (10^15) * `Ki` kibi (2^10) * `Mi` mebi (2^20) * `Gi` gibi (2^30) * `Ti` tebi
         /// (2^40) * `Pi` pebi (2^50) **Grammar** The grammar also includes these connectors: * `/` division or ratio
         /// (as an infix operator). For example: `kBy/{email}` or `MiBy/10ms`. * `.` multiplication or composition (as
-        /// an infix operator). For example: `GBy.d` or `k{watt}.h`. The grammar for a unit is as follows: ```
+        /// an infix operator). For example: `GBy.d` or `k{watt}.h`. The grammar for a unit is as follows:
+        /// ```
         /// Expression = Component { "." Component } { "/" Component } ; Component = ( [ PREFIX ] UNIT | "%" ) [
         /// Annotation ] | Annotation | "1" ; UNIT = TIME-UNIT | STORAGE-UNIT | DATA-UNIT | COUNT-UNIT Annotation = "{"
-        /// NAME "}" ; ``` Examples: * Request per second: `1/s` or `{requests}/s` * GibiBytes: `GiBy` * GibiBytes *
+        /// NAME "}" ;
+        /// ```
+        /// Examples: * Request per second: `1/s` or `{requests}/s` * GibiBytes: `GiBy` * GibiBytes *
         /// seconds: `GiBy.s`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("unit")]
@@ -3412,7 +3415,7 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>VLAN attachment for cloud interconnect.</summary>
+    /// <summary>VLAN attachment for Cloud Interconnect.</summary>
     public class VlanAttachment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

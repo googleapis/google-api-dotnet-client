@@ -3555,7 +3555,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Cross-profile policies applied on the device.</summary>
+    /// <summary>
+    /// Controls the data from the work profile that can be accessed from the personal profile and vice versa. A
+    /// nonComplianceDetail with MANAGEMENT_MODE is reported if the device does not have a work profile.
+    /// </summary>
     public class CrossProfilePolicies : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -5395,10 +5398,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The normal response of the operation in case of success. If the original method returns no data on success,
-        /// such as Delete, the response is google.protobuf.Empty. If the original method is standard Get/Create/Update,
-        /// the response should be the resource. For other methods, the response should have the type XxxResponse, where
-        /// Xxx is the original method name. For example, if the original method name is TakeSnapshot(), the inferred
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// Delete, the response is google.protobuf.Empty. If the original method is standard Get/Create/Update, the
+        /// response should be the resource. For other methods, the response should have the type XxxResponse, where Xxx
+        /// is the original method name. For example, if the original method name is TakeSnapshot(), the inferred
         /// response type is TakeSnapshotResponse.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("response")]

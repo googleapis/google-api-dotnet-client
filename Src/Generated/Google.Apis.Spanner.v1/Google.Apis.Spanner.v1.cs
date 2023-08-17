@@ -9369,7 +9369,11 @@ namespace Google.Apis.Spanner.v1.Data
         /// Spanner to use the latest generated statistics package. If not specified, Cloud Spanner uses the statistics
         /// package set at the database level options, or the latest package if the database option is not set. The
         /// statistics package requested by the query has to be exempt from garbage collection. This can be achieved
-        /// with the following DDL statement: ``` ALTER STATISTICS SET OPTIONS (allow_gc=false) ``` The list of
+        /// with the following DDL statement:
+        /// ```
+        /// ALTER STATISTICS SET OPTIONS (allow_gc=false)
+        /// ```
+        /// The list of
         /// available statistics packages can be queried from `INFORMATION_SCHEMA.SPANNER_STATISTICS`. Executing a SQL
         /// statement with an invalid optimizer statistics package or with a statistics package that allows garbage
         /// collection fails with an `INVALID_ARGUMENT` error.

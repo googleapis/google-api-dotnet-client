@@ -4733,6 +4733,10 @@ namespace Google.Apis.Connectors.v1.Data
     /// </summary>
     public class ConnectorInfraConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>HPA autoscaling config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hpaConfig")]
+        public virtual HPAConfig HpaConfig { get; set; }
+
         /// <summary>Max QPS supported for internal requests originating from Connd.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalclientRatelimitThreshold")]
         public virtual System.Nullable<long> InternalclientRatelimitThreshold { get; set; }
@@ -4740,6 +4744,14 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Max QPS supported by the connector version before throttling of requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ratelimitThreshold")]
         public virtual System.Nullable<long> RatelimitThreshold { get; set; }
+
+        /// <summary>System resource limits.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLimits")]
+        public virtual ResourceLimits ResourceLimits { get; set; }
+
+        /// <summary>System resource requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceRequests")]
+        public virtual ResourceRequests ResourceRequests { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4901,6 +4913,10 @@ namespace Google.Apis.Connectors.v1.Data
     /// </summary>
     public class ConnectorVersionInfraConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. HPA autoscaling config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hpaConfig")]
+        public virtual HPAConfig HpaConfig { get; set; }
+
         /// <summary>Output only. Max QPS supported for internal requests originating from Connd.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalclientRatelimitThreshold")]
         public virtual System.Nullable<long> InternalclientRatelimitThreshold { get; set; }
@@ -4908,6 +4924,14 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Output only. Max QPS supported by the connector version before throttling of requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ratelimitThreshold")]
         public virtual System.Nullable<long> RatelimitThreshold { get; set; }
+
+        /// <summary>Output only. System resource limits.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLimits")]
+        public virtual ResourceLimits ResourceLimits { get; set; }
+
+        /// <summary>Output only. System resource requests.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceRequests")]
+        public virtual ResourceRequests ResourceRequests { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5726,6 +5750,21 @@ namespace Google.Apis.Connectors.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Autoscaling config for connector deployment system metrics.</summary>
+    public class HPAConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Percent CPU utilization where HPA triggers autoscaling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuUtilizationThreshold")]
+        public virtual System.Nullable<long> CpuUtilizationThreshold { get; set; }
+
+        /// <summary>Output only. Percent Memory utilization where HPA triggers autoscaling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryUtilizationThreshold")]
+        public virtual System.Nullable<long> MemoryUtilizationThreshold { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Header details for a given header to be added to Endpoint.</summary>
     public class Header : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6425,17 +6464,25 @@ namespace Google.Apis.Connectors.v1.Data
     /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
     /// constraints based on attributes of the request, the resource, or both. To learn which resources support
     /// conditions in their IAM policies, see the [IAM
-    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` {
+    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:**
+    /// ```
+    /// {
     /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
     /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML
-    /// example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
+    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
+    /// ```
+    /// **YAML
+    /// example:**
+    /// ```
+    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3
+    /// ```
+    /// For a description of IAM and its
     /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
@@ -6632,6 +6679,36 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Different types of resource supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Resource limits defined for connection pods of a given connector type.</summary>
+    public class ResourceLimits : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. CPU limit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpu")]
+        public virtual string Cpu { get; set; }
+
+        /// <summary>Output only. Memory limit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memory")]
+        public virtual string Memory { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Resource requests defined for connection pods of a given connector type.</summary>
+    public class ResourceRequests : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. CPU request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpu")]
+        public virtual string Cpu { get; set; }
+
+        /// <summary>Output only. Memory request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memory")]
+        public virtual string Memory { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

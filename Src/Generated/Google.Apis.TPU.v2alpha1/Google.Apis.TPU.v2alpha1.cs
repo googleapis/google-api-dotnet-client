@@ -2039,9 +2039,40 @@ namespace Google.Apis.TPU.v2alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Boot disk configurations.</summary>
+    public class BootDiskConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Customer encryption key for boot disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerEncryptionKey")]
+        public virtual CustomerEncryptionKey CustomerEncryptionKey { get; set; }
+
+        /// <summary>Optional. Whether the boot disk will be created with confidential compute mode.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableConfidentialCompute")]
+        public virtual System.Nullable<bool> EnableConfidentialCompute { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Further data for the creating state.</summary>
     public class CreatingData : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Customer's encryption key.</summary>
+    public class CustomerEncryptionKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName":
+        /// "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key The fully-qualifed key name
+        /// may be returned for resource GET requests. For example: "kmsKeyName":
+        /// "projects/kms_project_id/locations/region/keyRings/ key_region/cryptoKeys/key /cryptoKeyVersions/1
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKeyName")]
+        public virtual string KmsKeyName { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2507,6 +2538,10 @@ namespace Google.Apis.TPU.v2alpha1.Data
         /// <summary>Output only. The API version that created this Node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
         public virtual string ApiVersion { get; set; }
+
+        /// <summary>Optional. Boot disk configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootDiskConfig")]
+        public virtual BootDiskConfig BootDiskConfig { get; set; }
 
         /// <summary>
         /// The CIDR block that the TPU node will use when selecting an IP address. This CIDR block must be a /29 block;

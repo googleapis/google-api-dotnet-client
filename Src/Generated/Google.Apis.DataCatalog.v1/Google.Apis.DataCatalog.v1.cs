@@ -6447,7 +6447,10 @@ namespace Google.Apis.DataCatalog.v1.Data
 
     /// <summary>
     /// Denotes one policy tag in a taxonomy, for example, SSN. Policy tags can be defined in a hierarchy. For example:
-    /// ``` + Geolocation + LatLong + City + ZipCode ``` Where the "Geolocation" policy tag contains three children.
+    /// ```
+    /// + Geolocation + LatLong + City + ZipCode
+    /// ```
+    /// Where the "Geolocation" policy tag contains three children.
     /// </summary>
     public class GoogleCloudDatacatalogV1PolicyTag : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7436,9 +7439,16 @@ namespace Google.Apis.DataCatalog.v1.Data
 
     /// <summary>
     /// A taxonomy is a collection of hierarchical policy tags that classify data along a common axis. For example, a
-    /// "data sensitivity" taxonomy might contain the following policy tags: ``` + PII + Account number + Age + SSN +
-    /// Zipcode + Financials + Revenue ``` A "data origin" taxonomy might contain the following policy tags: ``` + User
-    /// data + Employee data + Partner data + Public data ```
+    /// "data sensitivity" taxonomy might contain the following policy tags:
+    /// ```
+    /// + PII + Account number + Age + SSN +
+    /// Zipcode + Financials + Revenue
+    /// ```
+    /// A "data origin" taxonomy might contain the following policy tags:
+    /// ```
+    /// + User
+    /// data + Employee data + Partner data + Public data
+    /// ```
     /// </summary>
     public class GoogleCloudDatacatalogV1Taxonomy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7691,17 +7701,25 @@ namespace Google.Apis.DataCatalog.v1.Data
     /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
     /// constraints based on attributes of the request, the resource, or both. To learn which resources support
     /// conditions in their IAM policies, see the [IAM
-    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` {
+    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:**
+    /// ```
+    /// {
     /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
     /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML
-    /// example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
+    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
+    /// ```
+    /// **YAML
+    /// example:**
+    /// ```
+    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3
+    /// ```
+    /// For a description of IAM and its
     /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema

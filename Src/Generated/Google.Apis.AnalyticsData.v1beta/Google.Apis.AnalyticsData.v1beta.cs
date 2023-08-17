@@ -1900,9 +1900,15 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
     }
 
     /// <summary>
-    /// Report data for each row. For example if RunReportRequest contains: ```none "dimensions": [ { "name":
-    /// "eventName" }, { "name": "countryId" } ], "metrics": [ { "name": "eventCount" } ] ``` One row with
-    /// 'in_app_purchase' as the eventName, 'JP' as the countryId, and 15 as the eventCount, would be: ```none
+    /// Report data for each row. For example if RunReportRequest contains:
+    /// ```
+    /// none "dimensions": [ { "name":
+    /// "eventName" }, { "name": "countryId" } ], "metrics": [ { "name": "eventCount" } ]
+    /// ```
+    /// One row with
+    /// 'in_app_purchase' as the eventName, 'JP' as the countryId, and 15 as the eventCount, would be:
+    /// ```
+    /// none
     /// "dimensionValues": [ { "value": "in_app_purchase" }, { "value": "JP" } ], "metricValues": [ { "value": "15" } ]
     /// ```
     /// </summary>

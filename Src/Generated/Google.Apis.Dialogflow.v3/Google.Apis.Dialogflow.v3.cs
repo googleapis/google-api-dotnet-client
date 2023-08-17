@@ -12475,8 +12475,11 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// <summary>
         /// This field can be used to pass custom data into the webhook associated with the agent. Arbitrary JSON
         /// objects are supported. Some integrations that query a Dialogflow agent may provide additional information in
-        /// the payload. In particular, for the Dialogflow Phone Gateway integration, this field has the form: ``` {
-        /// "telephony": { "caller_id": "+18558363987" } } ```
+        /// the payload. In particular, for the Dialogflow Phone Gateway integration, this field has the form:
+        /// ```
+        /// {
+        /// "telephony": { "caller_id": "+18558363987" } }
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("payload")]
         public virtual System.Collections.Generic.IDictionary<string, object> Payload { get; set; }
@@ -14225,9 +14228,12 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This
         /// overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default
         /// trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject
-        /// alt name". For instance a certificate can be self-signed using the following command, ``` openssl x509 -req
+        /// alt name". For instance a certificate can be self-signed using the following command,
+        /// ```
+        /// openssl x509 -req
         /// -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile &amp;lt;(printf
-        /// "\nsubjectAltName='DNS:www.example.com'") ```
+        /// "\nsubjectAltName='DNS:www.example.com'")
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedCaCerts")]
         public virtual System.Collections.Generic.IList<string> AllowedCaCerts { get; set; }
@@ -16489,9 +16495,12 @@ namespace Google.Apis.Dialogflow.v3.Data
         /// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This
         /// overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default
         /// trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject
-        /// alt name". For instance a certificate can be self-signed using the following command, ``` openssl x509 -req
+        /// alt name". For instance a certificate can be self-signed using the following command,
+        /// ```
+        /// openssl x509 -req
         /// -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile &amp;lt;(printf
-        /// "\nsubjectAltName='DNS:www.example.com'") ```
+        /// "\nsubjectAltName='DNS:www.example.com'")
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedCaCerts")]
         public virtual System.Collections.Generic.IList<string> AllowedCaCerts { get; set; }

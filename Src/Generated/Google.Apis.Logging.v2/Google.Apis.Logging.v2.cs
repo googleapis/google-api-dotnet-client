@@ -17803,9 +17803,9 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string OrderBy { get; set; }
 
         /// <summary>
-        /// Optional. The maximum number of results to return from this request. Default is 50. If the value is negative
-        /// or exceeds 1000, the request is rejected. The presence of next_page_token in the response indicates that
-        /// more results might be available.
+        /// Optional. The maximum number of results to return from this request. Default is 50. If the value is
+        /// negative, the request is rejected.The presence of next_page_token in the response indicates that more
+        /// results might be available.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
         public virtual System.Nullable<int> PageSize { get; set; }
@@ -18365,7 +18365,7 @@ namespace Google.Apis.Logging.v2.Data
         /// Optional. The REST resource name of the trace being written to Cloud Trace (https://cloud.google.com/trace)
         /// in association with this log entry. For example, if your trace data is stored in the Cloud project
         /// "my-trace-project" and if the service that is creating the log entry receives a trace header that includes
-        /// the trace ID "12345", then the service should use "projects/my-tracing-project/traces/12345".The trace field
+        /// the trace ID "12345", then the service should use "projects/my-trace-project/traces/12345".The trace field
         /// provides the link between logs and traces. By using this field, you can navigate from a log entry to a
         /// trace.
         /// </summary>

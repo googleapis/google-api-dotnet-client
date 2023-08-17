@@ -1049,10 +1049,18 @@ namespace Google.Apis.HangoutsChat.v1
                 /// and type ([`member.type`](https://developers.google.com/chat/api/reference/rest/v1/User#type)). To
                 /// filter by role, set `role` to `ROLE_MEMBER` or `ROLE_MANAGER`. To filter by type, set `member.type`
                 /// to `HUMAN` or `BOT`. To filter by both role and type, use the `AND` operator. To filter by either
-                /// role or type, use the `OR` operator. For example, the following queries are valid: ``` role =
-                /// "ROLE_MANAGER" OR role = "ROLE_MEMBER" member.type = "HUMAN" AND role = "ROLE_MANAGER" ``` The
-                /// following queries are invalid: ``` member.type = "HUMAN" AND member.type = "BOT" role =
-                /// "ROLE_MANAGER" AND role = "ROLE_MEMBER" ``` Invalid queries are rejected by the server with an
+                /// role or type, use the `OR` operator. For example, the following queries are valid:
+                /// ```
+                /// role =
+                /// "ROLE_MANAGER" OR role = "ROLE_MEMBER" member.type = "HUMAN" AND role = "ROLE_MANAGER"
+                /// ```
+                /// The
+                /// following queries are invalid:
+                /// ```
+                /// member.type = "HUMAN" AND member.type = "BOT" role =
+                /// "ROLE_MANAGER" AND role = "ROLE_MEMBER"
+                /// ```
+                /// Invalid queries are rejected by the server with an
                 /// `INVALID_ARGUMENT` error.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
@@ -1433,15 +1441,23 @@ namespace Google.Apis.HangoutsChat.v1
                     /// `emoji.unicode = "🙂" OR emoji.unicode = "👍"` and `user.name = "users/AAAAAA" OR user.name =
                     /// "users/BBBBBB"`. To filter reactions by emoji and user, use the `AND` operator, such as
                     /// `emoji.unicode = "🙂" AND user.name = "users/AAAAAA"`. If your query uses both `AND` and `OR`,
-                    /// group them with parentheses. For example, the following queries are valid: ``` user.name =
+                    /// group them with parentheses. For example, the following queries are valid:
+                    /// ```
+                    /// user.name =
                     /// "users/{user}" emoji.unicode = "🙂" emoji.custom_emoji.uid = "{uid}" emoji.unicode = "🙂" OR
                     /// emoji.unicode = "👍" emoji.unicode = "🙂" OR emoji.custom_emoji.uid = "{uid}" emoji.unicode =
                     /// "🙂" AND user.name = "users/{user}" (emoji.unicode = "🙂" OR emoji.custom_emoji.uid = "{uid}")
-                    /// AND user.name = "users/{user}" ``` The following queries are invalid: ``` emoji.unicode = "🙂"
+                    /// AND user.name = "users/{user}"
+                    /// ```
+                    /// The following queries are invalid:
+                    /// ```
+                    /// emoji.unicode = "🙂"
                     /// AND emoji.unicode = "👍" emoji.unicode = "🙂" AND emoji.custom_emoji.uid = "{uid}" emoji.unicode
                     /// = "🙂" OR user.name = "users/{user}" emoji.unicode = "🙂" OR emoji.custom_emoji.uid = "{uid}" OR
                     /// user.name = "users/{user}" emoji.unicode = "🙂" OR emoji.custom_emoji.uid = "{uid}" AND
-                    /// user.name = "users/{user}" ``` Invalid queries are rejected by the server with an
+                    /// user.name = "users/{user}"
+                    /// ```
+                    /// Invalid queries are rejected by the server with an
                     /// `INVALID_ARGUMENT` error.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
@@ -1895,10 +1911,14 @@ namespace Google.Apis.HangoutsChat.v1
                 /// between two timestamps. To filter by thread, specify the `thread.name`, formatted as
                 /// `spaces/{space}/threads/{thread}`. You can only specify one `thread.name` per query. To filter by
                 /// both thread and date, use the `AND` operator in your query. For example, the following queries are
-                /// valid: ``` create_time &amp;gt; "2012-04-21T11:30:00-04:00" create_time &amp;gt;
+                /// valid:
+                /// ```
+                /// create_time &amp;gt; "2012-04-21T11:30:00-04:00" create_time &amp;gt;
                 /// "2012-04-21T11:30:00-04:00" AND thread.name = spaces/AAAAAAAAAAA/threads/123 create_time &amp;gt;
                 /// "2012-04-21T11:30:00+00:00" AND create_time &amp;lt; "2013-01-01T00:00:00+00:00" AND thread.name =
-                /// spaces/AAAAAAAAAAA/threads/123 thread.name = spaces/AAAAAAAAAAA/threads/123 ``` Invalid queries are
+                /// spaces/AAAAAAAAAAA/threads/123 thread.name = spaces/AAAAAAAAAAA/threads/123
+                /// ```
+                /// Invalid queries are
                 /// rejected by the server with an `INVALID_ARGUMENT` error.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
@@ -2532,8 +2552,12 @@ namespace Google.Apis.HangoutsChat.v1
             /// space type ([`space_type`](https://developers.google.com/chat/api/reference/rest/v1/spaces#spacetype)).
             /// To filter by space type, you must specify valid enum value, such as `SPACE` or `GROUP_CHAT` (the
             /// `space_type` can't be `SPACE_TYPE_UNSPECIFIED`). To query for multiple space types, use the `OR`
-            /// operator. For example, the following queries are valid: ``` space_type = "SPACE" spaceType =
-            /// "GROUP_CHAT" OR spaceType = "DIRECT_MESSAGE" ``` Invalid queries are rejected by the server with an
+            /// operator. For example, the following queries are valid:
+            /// ```
+            /// space_type = "SPACE" spaceType =
+            /// "GROUP_CHAT" OR spaceType = "DIRECT_MESSAGE"
+            /// ```
+            /// Invalid queries are rejected by the server with an
             /// `INVALID_ARGUMENT` error. With [service account
             /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts), this field is
             /// ignored and the query always returns all spaces. But the Chat API still validates the query syntax with
@@ -2844,10 +2868,17 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Annotations associated with the plain-text body of the message. Example plain-text message body: ``` Hello
-    /// @FooBot how are you!" ``` The corresponding annotations metadata: ``` "annotations":[{ "type":"USER_MENTION",
+    /// Annotations associated with the plain-text body of the message. Example plain-text message body:
+    /// ```
+    /// Hello
+    /// @FooBot how are you!"
+    /// ```
+    /// The corresponding annotations metadata:
+    /// ```
+    /// "annotations":[{ "type":"USER_MENTION",
     /// "startIndex":6, "length":7, "userMention": { "user": { "name":"users/{user}", "displayName":"FooBot",
-    /// "avatarUrl":"https://goo.gl/aeDtrS", "type":"BOT" }, "type":"MENTION" } }] ```
+    /// "avatarUrl":"https://goo.gl/aeDtrS", "type":"BOT" }, "type":"MENTION" } }]
+    /// ```
     /// </summary>
     public class Annotation : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3620,10 +3651,16 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// is a `float` number that you can express in either of two ways: as a number between 0 and 255 divided by 255
         /// (153/255), or as a value between 0 and 1 (0.6). 0 represents the absence of a color and 1 or 255/255
         /// represent the full presence of that color on the RGB scale. Optionally set `alpha`, which sets a level of
-        /// transparency using this equation: ``` pixel color = alpha * (this color) + (1.0 - alpha) * (background
-        /// color) ``` For `alpha`, a value of `1` corresponds with a solid color, and a value of `0` corresponds with a
-        /// completely transparent color. For example, the following color represents a half transparent red: ```
-        /// "color": { "red": 1, "green": 0, "blue": 0, "alpha": 0.5 } ```
+        /// transparency using this equation:
+        /// ```
+        /// pixel color = alpha * (this color) + (1.0 - alpha) * (background
+        /// color)
+        /// ```
+        /// For `alpha`, a value of `1` corresponds with a solid color, and a value of `0` corresponds with a
+        /// completely transparent color. For example, the following color represents a half transparent red:
+        /// ```
+        /// "color": { "red": 1, "green": 0, "blue": 0, "alpha": 0.5 }
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("color")]
         public virtual Color Color { get; set; }
@@ -3676,7 +3713,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// section with the contact information, including formatted text. - Buttons that users can click to share the
     /// contact, or see more or less information. For more examples, see [Design dynamic, interactive, and consistent
     /// UIs with cards](https://developers.google.com/chat/ui). ![Example contact
-    /// card](https://developers.google.com/chat/images/card_api_reference.png) ``` { "cardsV2": [ { "cardId":
+    /// card](https://developers.google.com/chat/images/card_api_reference.png)
+    /// ```
+    /// { "cardsV2": [ { "cardId":
     /// "unique-card-id", "card": { "header": { "title": "Sasha", "subtitle": "Software Engineer", "imageUrl":
     /// "https://developers.google.com/chat/images/quickstart-app-avatar.png", "imageType": "CIRCLE", "imageAltText":
     /// "Avatar for Sasha", }, "sections": [ { "header": "Contact Info", "collapsible": true,
@@ -3685,17 +3724,21 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// "Online", }, }, { "decoratedText": { "startIcon": { "knownIcon": "PHONE", }, "text": "+1 (555) 555-1234", } }, {
     /// "buttonList": { "buttons": [ { "text": "Share", "onClick": { "openLink": { "url": "https://example.com/share", }
     /// } }, { "text": "Edit", "onClick": { "action": { "function": "goToView", "parameters": [ { "key": "viewType",
-    /// "value": "EDIT", } ], } } }, ], } }, ], }, ], }, } ], } ```
+    /// "value": "EDIT", } ], } } }, ], } }, ], }, ], }, } ], }
+    /// ```
     /// </summary>
     public class GoogleAppsCardV1Card : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// The card's actions. Actions are added to the card's toolbar menu. Because Chat app cards have no toolbar,
         /// `cardActions[]` isn't supported by Chat apps. For example, the following JSON constructs a card action menu
-        /// with `Settings` and `Send Feedback` options: ``` "card_actions": [ { "actionLabel": "Settings", "onClick": {
+        /// with `Settings` and `Send Feedback` options:
+        /// ```
+        /// "card_actions": [ { "actionLabel": "Settings", "onClick": {
         /// "action": { "functionName": "goToView", "parameters": [ { "key": "viewType", "value": "SETTING" } ],
         /// "loadIndicator": "LoadIndicator.SPINNER" } } }, { "actionLabel": "Send Feedback", "onClick": { "openLink": {
-        /// "url": "https://example.com/feedback" } } } ] ```
+        /// "url": "https://example.com/feedback" } } } ]
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cardActions")]
         public virtual System.Collections.Generic.IList<GoogleAppsCardV1CardAction> CardActions { get; set; }
@@ -3998,7 +4041,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>
     /// Displays a divider between widgets as a horizontal line. For an example in Google Chat apps, see
     /// [Divider](https://developers.google.com/chat/ui/widgets/divider). For example, the following JSON creates a
-    /// divider: ``` "divider": {} ```
+    /// divider:
+    /// ```
+    /// "divider": {}
+    /// ```
     /// </summary>
     public class GoogleAppsCardV1Divider : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4012,10 +4058,13 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// [Grid](https://developers.google.com/chat/ui/widgets/grid). A grid supports any number of columns and items. The
     /// number of rows is determined by items divided by columns. A grid with 10 items and 2 columns has 5 rows. A grid
     /// with 11 items and 2 columns has 6 rows. For example, the following JSON creates a 2 column grid with a single
-    /// item: ``` "grid": { "title": "A fine collection of items", "columnCount": 2, "borderStyle": { "type": "STROKE",
+    /// item:
+    /// ```
+    /// "grid": { "title": "A fine collection of items", "columnCount": 2, "borderStyle": { "type": "STROKE",
     /// "cornerRadius": 4 }, "items": [ { "image": { "imageUri": "https://www.example.com/image.png", "cropStyle": {
     /// "type": "SQUARE" }, "borderStyle": { "type": "STROKE" } }, "title": "An item", "textAlignment": "CENTER" } ],
-    /// "onClick": { "openLink": { "url": "https://www.example.com" } } } ```
+    /// "onClick": { "openLink": { "url": "https://www.example.com" } } }
+    /// ```
     /// </summary>
     public class GoogleAppsCardV1Grid : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4101,8 +4150,12 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string AltText { get; set; }
 
         /// <summary>
-        /// Display a custom icon hosted at an HTTPS URL. For example: ``` "iconUrl":
-        /// "https://developers.google.com/chat/images/quickstart-app-avatar.png" ``` Supported file types include
+        /// Display a custom icon hosted at an HTTPS URL. For example:
+        /// ```
+        /// "iconUrl":
+        /// "https://developers.google.com/chat/images/quickstart-app-avatar.png"
+        /// ```
+        /// Supported file types include
         /// `.png` and `.jpg`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iconUrl")]
@@ -4138,8 +4191,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string AltText { get; set; }
 
         /// <summary>
-        /// The HTTPS URL that hosts the image. For example: ```
-        /// https://developers.google.com/chat/images/quickstart-app-avatar.png ```
+        /// The HTTPS URL that hosts the image. For example:
+        /// ```
+        /// https://developers.google.com/chat/images/quickstart-app-avatar.png
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUrl")]
         public virtual string ImageUrl { get; set; }
@@ -4176,14 +4231,19 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Represents the crop style applied to an image. For example, here's how to apply a 16:9 aspect ratio: ```
-    /// cropStyle { "type": "RECTANGLE_CUSTOM", "aspectRatio": 16/9 } ```
+    /// Represents the crop style applied to an image. For example, here's how to apply a 16:9 aspect ratio:
+    /// ```
+    /// cropStyle { "type": "RECTANGLE_CUSTOM", "aspectRatio": 16/9 }
+    /// ```
     /// </summary>
     public class GoogleAppsCardV1ImageCropStyle : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// The aspect ratio to use if the crop type is `RECTANGLE_CUSTOM`. For example, here's how to apply a 16:9
-        /// aspect ratio: ``` cropStyle { "type": "RECTANGLE_CUSTOM", "aspectRatio": 16/9 } ```
+        /// aspect ratio:
+        /// ```
+        /// cropStyle { "type": "RECTANGLE_CUSTOM", "aspectRatio": 16/9 }
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aspectRatio")]
         public virtual System.Nullable<double> AspectRatio { get; set; }
@@ -4615,7 +4675,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>
         /// A list of buttons. For example, the following JSON creates two buttons. The first is a blue text button and
-        /// the second is an image button that opens a link: ``` "buttonList": { "buttons": [ { "text": "Edit", "color":
+        /// the second is an image button that opens a link:
+        /// ```
+        /// "buttonList": { "buttons": [ { "text": "Edit", "color":
         /// { "red": 0, "green": 0, "blue": 1, "alpha": 1 }, "disabled": true, }, { "icon": { "knownIcon": "INVITE",
         /// "altText": "check calendar" }, "onClick": { "openLink": { "url": "https://example.com/calendar" } } } ] }
         /// ```
@@ -4625,35 +4687,46 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// Displays up to 2 columns. To include more than 2 columns, or to use rows, use the `Grid` widget. For
-        /// example, the following JSON creates 2 columns that each contain text paragraphs: ``` "columns": {
+        /// example, the following JSON creates 2 columns that each contain text paragraphs:
+        /// ```
+        /// "columns": {
         /// "columnItems": [ { "horizontalSizeStyle": "FILL_AVAILABLE_SPACE", "horizontalAlignment": "CENTER",
         /// "verticalAlignment": "CENTER", "widgets": [ { "textParagraph": { "text": "First column text paragraph" } } ]
         /// }, { "horizontalSizeStyle": "FILL_AVAILABLE_SPACE", "horizontalAlignment": "CENTER", "verticalAlignment":
-        /// "CENTER", "widgets": [ { "textParagraph": { "text": "Second column text paragraph" } } ] } ] } ```
+        /// "CENTER", "widgets": [ { "textParagraph": { "text": "Second column text paragraph" } } ] } ] }
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("columns")]
         public virtual GoogleAppsCardV1Columns Columns { get; set; }
 
         /// <summary>
         /// Displays a widget that lets users input a date, time, or date and time. For example, the following JSON
-        /// creates a date time picker to schedule an appointment: ``` "dateTimePicker": { "name": "appointment_time",
-        /// "label": "Book your appointment at:", "type": "DATE_AND_TIME", "valueMsEpoch": "796435200000" } ```
+        /// creates a date time picker to schedule an appointment:
+        /// ```
+        /// "dateTimePicker": { "name": "appointment_time",
+        /// "label": "Book your appointment at:", "type": "DATE_AND_TIME", "valueMsEpoch": "796435200000" }
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateTimePicker")]
         public virtual GoogleAppsCardV1DateTimePicker DateTimePicker { get; set; }
 
         /// <summary>
         /// Displays a decorated text item. For example, the following JSON creates a decorated text widget showing
-        /// email address: ``` "decoratedText": { "icon": { "knownIcon": "EMAIL" }, "topLabel": "Email Address", "text":
+        /// email address:
+        /// ```
+        /// "decoratedText": { "icon": { "knownIcon": "EMAIL" }, "topLabel": "Email Address", "text":
         /// "sasha@example.com", "bottomLabel": "This is a new Email address!", "switchControl": { "name":
-        /// "has_send_welcome_email_to_sasha", "selected": false, "controlType": "CHECKBOX" } } ```
+        /// "has_send_welcome_email_to_sasha", "selected": false, "controlType": "CHECKBOX" } }
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("decoratedText")]
         public virtual GoogleAppsCardV1DecoratedText DecoratedText { get; set; }
 
         /// <summary>
-        /// Displays a horizontal line divider between widgets. For example, the following JSON creates a divider: ```
-        /// "divider": { } ```
+        /// Displays a horizontal line divider between widgets. For example, the following JSON creates a divider:
+        /// ```
+        /// "divider": { }
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("divider")]
         public virtual GoogleAppsCardV1Divider Divider { get; set; }
@@ -4662,11 +4735,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// Displays a grid with a collection of items. A grid supports any number of columns and items. The number of
         /// rows is determined by the upper bounds of the number items divided by the number of columns. A grid with 10
         /// items and 2 columns has 5 rows. A grid with 11 items and 2 columns has 6 rows. For example, the following
-        /// JSON creates a 2 column grid with a single item: ``` "grid": { "title": "A fine collection of items",
+        /// JSON creates a 2 column grid with a single item:
+        /// ```
+        /// "grid": { "title": "A fine collection of items",
         /// "columnCount": 2, "borderStyle": { "type": "STROKE", "cornerRadius": 4 }, "items": [ { "image": {
         /// "imageUri": "https://www.example.com/image.png", "cropStyle": { "type": "SQUARE" }, "borderStyle": { "type":
         /// "STROKE" } }, "title": "An item", "textAlignment": "CENTER" } ], "onClick": { "openLink": { "url":
-        /// "https://www.example.com" } } } ```
+        /// "https://www.example.com" } } }
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("grid")]
         public virtual GoogleAppsCardV1Grid Grid { get; set; }
@@ -4676,9 +4752,12 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string HorizontalAlignment { get; set; }
 
         /// <summary>
-        /// Displays an image. For example, the following JSON creates an image with alternative text: ``` "image": {
+        /// Displays an image. For example, the following JSON creates an image with alternative text:
+        /// ```
+        /// "image": {
         /// "imageUrl": "https://developers.google.com/chat/images/quickstart-app-avatar.png", "altText": "Chat app
-        /// avatar" } ```
+        /// avatar" }
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual GoogleAppsCardV1Image Image { get; set; }
@@ -4686,20 +4765,29 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>
         /// Displays a selection control that lets users select items. Selection controls can be checkboxes, radio
         /// buttons, switches, or dropdown menus. For example, the following JSON creates a dropdown menu that lets
-        /// users choose a size: ``` "selectionInput": { "name": "size", "label": "Size" "type": "DROPDOWN", "items": [
+        /// users choose a size:
+        /// ```
+        /// "selectionInput": { "name": "size", "label": "Size" "type": "DROPDOWN", "items": [
         /// { "text": "S", "value": "small", "selected": false }, { "text": "M", "value": "medium", "selected": true },
         /// { "text": "L", "value": "large", "selected": false }, { "text": "XL", "value": "extra_large", "selected":
-        /// false } ] } ```
+        /// false } ] }
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectionInput")]
         public virtual GoogleAppsCardV1SelectionInput SelectionInput { get; set; }
 
         /// <summary>
         /// Displays a text box that users can type into. For example, the following JSON creates a text input for an
-        /// email address: ``` "textInput": { "name": "mailing_address", "label": "Mailing Address" } ``` As another
-        /// example, the following JSON creates a text input for a programming language with static suggestions: ```
+        /// email address:
+        /// ```
+        /// "textInput": { "name": "mailing_address", "label": "Mailing Address" }
+        /// ```
+        /// As another
+        /// example, the following JSON creates a text input for a programming language with static suggestions:
+        /// ```
         /// "textInput": { "name": "preferred_programing_language", "label": "Preferred Language", "initialSuggestions":
-        /// { "items": [ { "text": "C++" }, { "text": "Java" }, { "text": "JavaScript" }, { "text": "Python" } ] } } ```
+        /// { "items": [ { "text": "C++" }, { "text": "Java" }, { "text": "JavaScript" }, { "text": "Python" } ] } }
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textInput")]
         public virtual GoogleAppsCardV1TextInput TextInput { get; set; }
@@ -4710,7 +4798,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// apps](https://developers.google.com/chat/api/guides/message-formats/cards#card-formatting) and [Formatting
         /// text in Google Workspace
         /// Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting). For example,
-        /// the following JSON creates a bolded text: ``` "textParagraph": { "text": " *bold text*" } ```
+        /// the following JSON creates a bolded text:
+        /// ```
+        /// "textParagraph": { "text": " *bold text*" }
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textParagraph")]
         public virtual GoogleAppsCardV1TextParagraph TextParagraph { get; set; }

@@ -4753,6 +4753,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response from export issue model</summary>
+    public class GoogleCloudContactcenterinsightsV1ExportIssueModelResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Agent Assist frequently-asked-question answer data.</summary>
     public class GoogleCloudContactcenterinsightsV1FaqAnswerData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4811,6 +4818,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
 
     /// <summary>The data for a hold annotation.</summary>
     public class GoogleCloudContactcenterinsightsV1HoldData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response from import issue model</summary>
+    public class GoogleCloudContactcenterinsightsV1ImportIssueModelResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8058,6 +8072,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response from export issue model</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Agent Assist frequently-asked-question answer data.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8116,6 +8137,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
 
     /// <summary>The data for a hold annotation.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1HoldData : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response from import issue model</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

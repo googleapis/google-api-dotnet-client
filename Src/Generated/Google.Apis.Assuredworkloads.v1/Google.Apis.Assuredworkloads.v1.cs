@@ -1394,7 +1394,7 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Workload monitoring Violation. Next Id: 27</summary>
+    /// <summary>Workload monitoring Violation. Next Id: 28</summary>
     public class GoogleCloudAssuredworkloadsV1Violation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A boolean that indicates if the violation is acknowledged</summary>

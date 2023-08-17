@@ -691,10 +691,17 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
         /// https://cloud.google.com/iam/docs/reference/rest/v1/projects.locations.workloadIdentityPools.providers#oidc.
         /// For workforce pools, this must match the client ID specified in the provider configuration. See
         /// https://cloud.google.com/iam/docs/reference/rest/v1/locations.workforcePools.providers#oidc. Example header:
-        /// ``` { "alg": "RS256", "kid": "us-east-11" } ``` Example payload: ``` { "iss": "https://accounts.google.com",
+        /// ```
+        /// { "alg": "RS256", "kid": "us-east-11" }
+        /// ```
+        /// Example payload:
+        /// ```
+        /// { "iss": "https://accounts.google.com",
         /// "iat": 1517963104, "exp": 1517966704, "aud":
         /// "//iam.googleapis.com/projects/1234567890123/locations/global/workloadIdentityPools/my-pool/providers/my-provider",
-        /// "sub": "113475438248934895348", "my_claims": { "additional_claim": "value" } } ``` If `subject_token` is for
+        /// "sub": "113475438248934895348", "my_claims": { "additional_claim": "value" } }
+        /// ```
+        /// If `subject_token` is for
         /// AWS, it must be a serialized `GetCallerIdentity` token. This token contains the same information as a
         /// request to the AWS
         /// [`GetCallerIdentity()`](https://docs.aws.amazon.com/STS/latest/APIReference/API_GetCallerIdentity) method,
@@ -714,13 +721,17 @@ namespace Google.Apis.CloudSecurityToken.v1.Data
         /// request. For example: //iam.googleapis.com/projects//locations/global/workloadIdentityPools//providers/
         /// https://iam.googleapis.com/projects//locations/global/workloadIdentityPools//providers/ If you are using
         /// temporary security credentials provided by AWS, you must also include the header `x-amz-security-token`,
-        /// with the value set to the session token. The following example shows a `GetCallerIdentity` token: ``` {
+        /// with the value set to the session token. The following example shows a `GetCallerIdentity` token:
+        /// ```
+        /// {
         /// "headers": [ {"key": "x-amz-date", "value": "20200815T015049Z"}, {"key": "Authorization", "value":
         /// "AWS4-HMAC-SHA256+Credential=$credential,+SignedHeaders=host;x-amz-date;x-goog-cloud-target-resource,+Signature=$signature"},
         /// {"key": "x-goog-cloud-target-resource", "value":
         /// "//iam.googleapis.com/projects//locations/global/workloadIdentityPools//providers/"}, {"key": "host",
         /// "value": "sts.amazonaws.com"} . ], "method": "POST", "url":
-        /// "https://sts.amazonaws.com?Action=GetCallerIdentity&amp;amp;Version=2011-06-15" } ``` If the token is a SAML
+        /// "https://sts.amazonaws.com?Action=GetCallerIdentity&amp;amp;Version=2011-06-15" }
+        /// ```
+        /// If the token is a SAML
         /// 2.0 assertion, it must use the format defined in [the SAML 2.0
         /// spec](https://www.oasis-open.org/committees/download.php/56776/sstc-saml-core-errata-2.0-wd-07.pdf), and the
         /// `subject_token_type` must be `urn:ietf:params:oauth:token-type:saml2`. See [Verification of external

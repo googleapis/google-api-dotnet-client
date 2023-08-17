@@ -1868,12 +1868,45 @@ namespace Google.Apis.CloudTasks.v2.Data
     /// <summary>The status of a task attempt.</summary>
     public class Attempt : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _dispatchTimeRaw;
+
+        private object _dispatchTime;
+
         /// <summary>
         /// Output only. The time that this attempt was dispatched. `dispatch_time` will be truncated to the nearest
         /// microsecond.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dispatchTime")]
-        public virtual object DispatchTime { get; set; }
+        public virtual string DispatchTimeRaw
+        {
+            get => _dispatchTimeRaw;
+            set
+            {
+                _dispatchTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _dispatchTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DispatchTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DispatchTimeDateTimeOffset instead.")]
+        public virtual object DispatchTime
+        {
+            get => _dispatchTime;
+            set
+            {
+                _dispatchTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _dispatchTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DispatchTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DispatchTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DispatchTimeRaw);
+            set => DispatchTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. The response from the worker for this attempt. If `response_time` is unset, then the task has
@@ -1882,19 +1915,85 @@ namespace Google.Apis.CloudTasks.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("responseStatus")]
         public virtual Status ResponseStatus { get; set; }
 
+        private string _responseTimeRaw;
+
+        private object _responseTime;
+
         /// <summary>
         /// Output only. The time that this attempt response was received. `response_time` will be truncated to the
         /// nearest microsecond.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("responseTime")]
-        public virtual object ResponseTime { get; set; }
+        public virtual string ResponseTimeRaw
+        {
+            get => _responseTimeRaw;
+            set
+            {
+                _responseTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _responseTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ResponseTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ResponseTimeDateTimeOffset instead.")]
+        public virtual object ResponseTime
+        {
+            get => _responseTime;
+            set
+            {
+                _responseTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _responseTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ResponseTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ResponseTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ResponseTimeRaw);
+            set => ResponseTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _scheduleTimeRaw;
+
+        private object _scheduleTime;
 
         /// <summary>
         /// Output only. The time that this attempt was scheduled. `schedule_time` will be truncated to the nearest
         /// microsecond.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]
-        public virtual object ScheduleTime { get; set; }
+        public virtual string ScheduleTimeRaw
+        {
+            get => _scheduleTimeRaw;
+            set
+            {
+                _scheduleTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _scheduleTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ScheduleTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ScheduleTimeDateTimeOffset instead.")]
+        public virtual object ScheduleTime
+        {
+            get => _scheduleTime;
+            set
+            {
+                _scheduleTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _scheduleTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ScheduleTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ScheduleTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduleTimeRaw);
+            set => ScheduleTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2388,6 +2487,10 @@ namespace Google.Apis.CloudTasks.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        private string _purgeTimeRaw;
+
+        private object _purgeTime;
+
         /// <summary>
         /// Output only. The last time this queue was purged. All tasks that were created before this time were purged.
         /// A queue can be purged using PurgeQueue, the [App Engine Task Queue SDK, or the Cloud
@@ -2396,7 +2499,36 @@ namespace Google.Apis.CloudTasks.v2.Data
         /// been purged.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("purgeTime")]
-        public virtual object PurgeTime { get; set; }
+        public virtual string PurgeTimeRaw
+        {
+            get => _purgeTimeRaw;
+            set
+            {
+                _purgeTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _purgeTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="PurgeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PurgeTimeDateTimeOffset instead.")]
+        public virtual object PurgeTime
+        {
+            get => _purgeTime;
+            set
+            {
+                _purgeTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _purgeTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PurgeTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? PurgeTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PurgeTimeRaw);
+            set => PurgeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Rate limits for task dispatches. rate_limits and retry_config are related because they both control task
@@ -2648,11 +2780,44 @@ namespace Google.Apis.CloudTasks.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appEngineHttpRequest")]
         public virtual AppEngineHttpRequest AppEngineHttpRequest { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>
         /// Output only. The time that the task was created. `create_time` will be truncated to the nearest second.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. The number of attempts dispatched. This count includes attempts which have been dispatched but
@@ -2715,12 +2880,45 @@ namespace Google.Apis.CloudTasks.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("responseCount")]
         public virtual System.Nullable<int> ResponseCount { get; set; }
 
+        private string _scheduleTimeRaw;
+
+        private object _scheduleTime;
+
         /// <summary>
         /// The time when the task is scheduled to be attempted or retried. `schedule_time` will be truncated to the
         /// nearest microsecond.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleTime")]
-        public virtual object ScheduleTime { get; set; }
+        public virtual string ScheduleTimeRaw
+        {
+            get => _scheduleTimeRaw;
+            set
+            {
+                _scheduleTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _scheduleTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ScheduleTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ScheduleTimeDateTimeOffset instead.")]
+        public virtual object ScheduleTime
+        {
+            get => _scheduleTime;
+            set
+            {
+                _scheduleTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _scheduleTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ScheduleTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ScheduleTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduleTimeRaw);
+            set => ScheduleTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. The view specifies which subset of the Task has been returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("view")]

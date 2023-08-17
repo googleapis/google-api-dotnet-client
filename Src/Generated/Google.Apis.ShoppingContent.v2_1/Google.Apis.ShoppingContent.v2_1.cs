@@ -9844,7 +9844,10 @@ namespace Google.Apis.ShoppingContent.v2_1
             [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual ulong MerchantId { get; private set; }
 
-            /// <summary>The maximum number of products to return in the response, used for paging.</summary>
+            /// <summary>
+            /// The maximum number of products to return in the response, used for paging. The default value is 25. The
+            /// maximum value is 250.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 
@@ -10310,7 +10313,10 @@ namespace Google.Apis.ShoppingContent.v2_1
             [Google.Apis.Util.RequestParameterAttribute("destinations", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> Destinations { get; set; }
 
-            /// <summary>The maximum number of product statuses to return in the response, used for paging.</summary>
+            /// <summary>
+            /// The maximum number of product statuses to return in the response, used for paging. The default value is
+            /// 25. The maximum value is 250.
+            /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("maxResults", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> MaxResults { get; set; }
 

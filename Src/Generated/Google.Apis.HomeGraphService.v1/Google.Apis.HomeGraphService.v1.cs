@@ -768,7 +768,9 @@ namespace Google.Apis.HomeGraphService.v1.Data
     /// <summary>
     /// Response type for the [`Query`](#google.home.graph.v1.HomeGraphApiService.Query) call. This should follow the
     /// same format as the Google smart home `action.devices.QUERY`
-    /// [response](https://developers.home.google.com/cloud-to-cloud/intents/query). Example: ```json { "requestId":
+    /// [response](https://developers.home.google.com/cloud-to-cloud/intents/query). Example:
+    /// ```
+    /// json { "requestId":
     /// "ff36a3cc-ec34-11e6-b1a0-64510650abcf", "payload": { "devices": { "123": { "on": true, "online": true }, "456":
     /// { "on": true, "online": true, "brightness": 80, "color": { "name": "cerulean", "spectrumRGB": 31655 } } } } }
     /// ```
@@ -823,9 +825,12 @@ namespace Google.Apis.HomeGraphService.v1.Data
     /// Request type for the
     /// [`ReportStateAndNotification`](#google.home.graph.v1.HomeGraphApiService.ReportStateAndNotification) call. It
     /// may include states, notifications, or both. States and notifications are defined per `device_id` (for example,
-    /// "123" and "456" in the following example). Example: ```json { "requestId":
+    /// "123" and "456" in the following example). Example:
+    /// ```
+    /// json { "requestId":
     /// "ff36a3cc-ec34-11e6-b1a0-64510650abcf", "agentUserId": "1234", "payload": { "devices": { "states": { "123": {
-    /// "on": true }, "456": { "on": true, "brightness": 10 } }, } } } ```
+    /// "on": true }, "456": { "on": true, "brightness": 10 } }, } } }
+    /// ```
     /// </summary>
     public class ReportStateAndNotificationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -927,12 +932,15 @@ namespace Google.Apis.HomeGraphService.v1.Data
     /// <summary>
     /// Response type for the [`Sync`](#google.home.graph.v1.HomeGraphApiService.Sync) call. This should follow the same
     /// format as the Google smart home `action.devices.SYNC`
-    /// [response](https://developers.home.google.com/cloud-to-cloud/intents/sync). Example: ```json { "requestId":
+    /// [response](https://developers.home.google.com/cloud-to-cloud/intents/sync). Example:
+    /// ```
+    /// json { "requestId":
     /// "ff36a3cc-ec34-11e6-b1a0-64510650abcf", "payload": { "agentUserId": "1836.15267389", "devices": [{ "id": "123",
     /// "type": "action.devices.types.OUTLET", "traits": [ "action.devices.traits.OnOff" ], "name": { "defaultNames":
     /// ["My Outlet 1234"], "name": "Night light", "nicknames": ["wall plug"] }, "willReportState": false, "deviceInfo":
     /// { "manufacturer": "lights-out-inc", "model": "hs1234", "hwVersion": "3.2", "swVersion": "11.4" }, "customData":
-    /// { "fooValue": 74, "barValue": true, "bazValue": "foo" } }] } } ```
+    /// { "fooValue": 74, "barValue": true, "bazValue": "foo" } }] } }
+    /// ```
     /// </summary>
     public class SyncResponse : Google.Apis.Requests.IDirectResponseSchema
     {

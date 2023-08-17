@@ -1941,9 +1941,44 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
+        private string _firstPublishTimeRaw;
+
+        private object _firstPublishTime;
+
         /// <summary>Output only. First published time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstPublishTime")]
-        public virtual object FirstPublishTime { get; set; }
+        public virtual string FirstPublishTimeRaw
+        {
+            get => _firstPublishTimeRaw;
+            set
+            {
+                _firstPublishTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _firstPublishTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FirstPublishTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FirstPublishTimeDateTimeOffset instead.")]
+        public virtual object FirstPublishTime
+        {
+            get => _firstPublishTime;
+            set
+            {
+                _firstPublishTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _firstPublishTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="FirstPublishTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FirstPublishTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FirstPublishTimeRaw);
+            set => FirstPublishTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. Home page or Website uri.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("homepageUri")]
@@ -1957,9 +1992,44 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("isPaidApp")]
         public virtual System.Nullable<bool> IsPaidApp { get; set; }
 
+        private string _latestPublishTimeRaw;
+
+        private object _latestPublishTime;
+
         /// <summary>Output only. Latest published time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestPublishTime")]
-        public virtual object LatestPublishTime { get; set; }
+        public virtual string LatestPublishTimeRaw
+        {
+            get => _latestPublishTimeRaw;
+            set
+            {
+                _latestPublishTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _latestPublishTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LatestPublishTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LatestPublishTimeDateTimeOffset instead.")]
+        public virtual object LatestPublishTime
+        {
+            get => _latestPublishTime;
+            set
+            {
+                _latestPublishTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _latestPublishTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LatestPublishTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LatestPublishTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LatestPublishTimeRaw);
+            set => LatestPublishTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. Format: name=customers/{customer_id}/apps/{chrome|android|web}/{app_id}@{version}
@@ -2044,9 +2114,42 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outputVolume")]
         public virtual System.Nullable<int> OutputVolume { get; set; }
 
+        private string _reportTimeRaw;
+
+        private object _reportTime;
+
         /// <summary>Output only. Timestamp of when the sample was collected on device.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
-        public virtual object ReportTime { get; set; }
+        public virtual string ReportTimeRaw
+        {
+            get => _reportTimeRaw;
+            set
+            {
+                _reportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _reportTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReportTimeDateTimeOffset instead.")]
+        public virtual object ReportTime
+        {
+            get => _reportTime;
+            set
+            {
+                _reportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _reportTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2119,9 +2222,42 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("remainingCapacity")]
         public virtual System.Nullable<long> RemainingCapacity { get; set; }
 
+        private string _reportTimeRaw;
+
+        private object _reportTime;
+
         /// <summary>Output only. Timestamp of when the sample was collected on device</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
-        public virtual object ReportTime { get; set; }
+        public virtual string ReportTimeRaw
+        {
+            get => _reportTimeRaw;
+            set
+            {
+                _reportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _reportTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReportTimeDateTimeOffset instead.")]
+        public virtual object ReportTime
+        {
+            get => _reportTime;
+            set
+            {
+                _reportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _reportTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. Battery status read from sysfs. Example: Discharging</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
@@ -2161,9 +2297,42 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fullChargeCapacity")]
         public virtual System.Nullable<long> FullChargeCapacity { get; set; }
 
+        private string _reportTimeRaw;
+
+        private object _reportTime;
+
         /// <summary>Output only. Timestamp of when the sample was collected on device</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
-        public virtual object ReportTime { get; set; }
+        public virtual string ReportTimeRaw
+        {
+            get => _reportTimeRaw;
+            set
+            {
+                _reportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _reportTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReportTimeDateTimeOffset instead.")]
+        public virtual object ReportTime
+        {
+            get => _reportTime;
+            set
+            {
+                _reportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _reportTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. Sampling data for the battery sorted in a decreasing order of report_time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sample")]
@@ -2191,13 +2360,79 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bootUpDuration")]
         public virtual object BootUpDuration { get; set; }
 
+        private string _bootUpTimeRaw;
+
+        private object _bootUpTime;
+
         /// <summary>The timestamp when power came on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bootUpTime")]
-        public virtual object BootUpTime { get; set; }
+        public virtual string BootUpTimeRaw
+        {
+            get => _bootUpTimeRaw;
+            set
+            {
+                _bootUpTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _bootUpTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="BootUpTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use BootUpTimeDateTimeOffset instead.")]
+        public virtual object BootUpTime
+        {
+            get => _bootUpTime;
+            set
+            {
+                _bootUpTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _bootUpTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="BootUpTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? BootUpTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(BootUpTimeRaw);
+            set => BootUpTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _reportTimeRaw;
+
+        private object _reportTime;
 
         /// <summary>Timestamp when the report was collected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
-        public virtual object ReportTime { get; set; }
+        public virtual string ReportTimeRaw
+        {
+            get => _reportTimeRaw;
+            set
+            {
+                _reportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _reportTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReportTimeDateTimeOffset instead.")]
+        public virtual object ReportTime
+        {
+            get => _reportTime;
+            set
+            {
+                _reportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _reportTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Total time since shutdown start to power off.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shutdownDuration")]
@@ -2207,9 +2442,42 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("shutdownReason")]
         public virtual string ShutdownReason { get; set; }
 
+        private string _shutdownTimeRaw;
+
+        private object _shutdownTime;
+
         /// <summary>The timestamp when shutdown.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shutdownTime")]
-        public virtual object ShutdownTime { get; set; }
+        public virtual string ShutdownTimeRaw
+        {
+            get => _shutdownTimeRaw;
+            set
+            {
+                _shutdownTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _shutdownTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ShutdownTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ShutdownTimeDateTimeOffset instead.")]
+        public virtual object ShutdownTime
+        {
+            get => _shutdownTime;
+            set
+            {
+                _shutdownTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _shutdownTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ShutdownTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ShutdownTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ShutdownTimeRaw);
+            set => ShutdownTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2357,9 +2625,44 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("iconUri")]
         public virtual string IconUri { get; set; }
 
+        private string _latestRequestTimeRaw;
+
+        private object _latestRequestTime;
+
         /// <summary>Output only. The timestamp of the most recently made request for this app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("latestRequestTime")]
-        public virtual object LatestRequestTime { get; set; }
+        public virtual string LatestRequestTimeRaw
+        {
+            get => _latestRequestTimeRaw;
+            set
+            {
+                _latestRequestTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _latestRequestTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LatestRequestTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LatestRequestTimeDateTimeOffset instead.")]
+        public virtual object LatestRequestTime
+        {
+            get => _latestRequestTime;
+            set
+            {
+                _latestRequestTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _latestRequestTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LatestRequestTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LatestRequestTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LatestRequestTimeRaw);
+            set => LatestRequestTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. Total count of requests for this app.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestCount")]
@@ -2587,11 +2890,44 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cpuUtilizationPct")]
         public virtual System.Nullable<int> CpuUtilizationPct { get; set; }
 
+        private string _reportTimeRaw;
+
+        private object _reportTime;
+
         /// <summary>
         /// Output only. The timestamp in milliseconds representing time at which this report was sampled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
-        public virtual object ReportTime { get; set; }
+        public virtual string ReportTimeRaw
+        {
+            get => _reportTimeRaw;
+            set
+            {
+                _reportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _reportTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReportTimeDateTimeOffset instead.")]
+        public virtual object ReportTime
+        {
+            get => _reportTime;
+            set
+            {
+                _reportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _reportTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. Frequency the report is sampled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleFrequency")]
@@ -2909,9 +3245,42 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displays")]
         public virtual System.Collections.Generic.IList<GoogleChromeManagementV1DisplayInfo> Displays { get; set; }
 
+        private string _reportTimeRaw;
+
+        private object _reportTime;
+
         /// <summary>Output only. Time at which the graphics data was reported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
-        public virtual object ReportTime { get; set; }
+        public virtual string ReportTimeRaw
+        {
+            get => _reportTimeRaw;
+            set
+            {
+                _reportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _reportTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReportTimeDateTimeOffset instead.")]
+        public virtual object ReportTime
+        {
+            get => _reportTime;
+            set
+            {
+                _reportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _reportTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2930,9 +3299,42 @@ namespace Google.Apis.ChromeManagement.v1.Data
     /// </summary>
     public class GoogleChromeManagementV1HeartbeatStatusReport : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _reportTimeRaw;
+
+        private object _reportTime;
+
         /// <summary>Timestamp of when status changed was detected</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
-        public virtual object ReportTime { get; set; }
+        public virtual string ReportTimeRaw
+        {
+            get => _reportTimeRaw;
+            set
+            {
+                _reportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _reportTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReportTimeDateTimeOffset instead.")]
+        public virtual object ReportTime
+        {
+            get => _reportTime;
+            set
+            {
+                _reportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _reportTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>State the device changed to</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -3036,9 +3438,42 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appVersion")]
         public virtual string AppVersion { get; set; }
 
+        private string _reportTimeRaw;
+
+        private object _reportTime;
+
         /// <summary>Timestamp of when report was collected</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
-        public virtual object ReportTime { get; set; }
+        public virtual string ReportTimeRaw
+        {
+            get => _reportTimeRaw;
+            set
+            {
+                _reportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _reportTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReportTimeDateTimeOffset instead.")]
+        public virtual object ReportTime
+        {
+            get => _reportTime;
+            set
+            {
+                _reportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _reportTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3133,11 +3568,44 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pageFaults")]
         public virtual System.Nullable<int> PageFaults { get; set; }
 
+        private string _reportTimeRaw;
+
+        private object _reportTime;
+
         /// <summary>
         /// Output only. The timestamp in milliseconds representing time at which this report was sampled.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
-        public virtual object ReportTime { get; set; }
+        public virtual string ReportTimeRaw
+        {
+            get => _reportTimeRaw;
+            set
+            {
+                _reportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _reportTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReportTimeDateTimeOffset instead.")]
+        public virtual object ReportTime
+        {
+            get => _reportTime;
+            set
+            {
+                _reportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _reportTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. Frequency the report is sampled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleFrequency")]
@@ -3199,9 +3667,42 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("httpsLatencyData")]
         public virtual GoogleChromeManagementV1HttpsLatencyRoutineData HttpsLatencyData { get; set; }
 
+        private string _reportTimeRaw;
+
+        private object _reportTime;
+
         /// <summary>Output only. Timestamp of when the diagnostics were collected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
-        public virtual object ReportTime { get; set; }
+        public virtual string ReportTimeRaw
+        {
+            get => _reportTimeRaw;
+            set
+            {
+                _reportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _reportTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReportTimeDateTimeOffset instead.")]
+        public virtual object ReportTime
+        {
+            get => _reportTime;
+            set
+            {
+                _reportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _reportTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3264,9 +3765,42 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("receivingBitRateMbps")]
         public virtual System.Nullable<long> ReceivingBitRateMbps { get; set; }
 
+        private string _reportTimeRaw;
+
+        private object _reportTime;
+
         /// <summary>Output only. Time at which the network state was reported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
-        public virtual object ReportTime { get; set; }
+        public virtual string ReportTimeRaw
+        {
+            get => _reportTimeRaw;
+            set
+            {
+                _reportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _reportTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReportTimeDateTimeOffset instead.")]
+        public virtual object ReportTime
+        {
+            get => _reportTime;
+            set
+            {
+                _reportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _reportTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. Frequency the report is sampled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleFrequency")]
@@ -3309,17 +3843,122 @@ namespace Google.Apis.ChromeManagement.v1.Data
     /// </summary>
     public class GoogleChromeManagementV1OsUpdateStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _lastRebootTimeRaw;
+
+        private object _lastRebootTime;
+
         /// <summary>Output only. Timestamp of the last reboot.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastRebootTime")]
-        public virtual object LastRebootTime { get; set; }
+        public virtual string LastRebootTimeRaw
+        {
+            get => _lastRebootTimeRaw;
+            set
+            {
+                _lastRebootTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastRebootTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastRebootTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastRebootTimeDateTimeOffset instead.")]
+        public virtual object LastRebootTime
+        {
+            get => _lastRebootTime;
+            set
+            {
+                _lastRebootTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastRebootTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastRebootTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastRebootTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastRebootTimeRaw);
+            set => LastRebootTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _lastUpdateCheckTimeRaw;
+
+        private object _lastUpdateCheckTime;
 
         /// <summary>Output only. Timestamp of the last update check.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateCheckTime")]
-        public virtual object LastUpdateCheckTime { get; set; }
+        public virtual string LastUpdateCheckTimeRaw
+        {
+            get => _lastUpdateCheckTimeRaw;
+            set
+            {
+                _lastUpdateCheckTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastUpdateCheckTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastUpdateCheckTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastUpdateCheckTimeDateTimeOffset instead.")]
+        public virtual object LastUpdateCheckTime
+        {
+            get => _lastUpdateCheckTime;
+            set
+            {
+                _lastUpdateCheckTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastUpdateCheckTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastUpdateCheckTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastUpdateCheckTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdateCheckTimeRaw);
+            set => LastUpdateCheckTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _lastUpdateTimeRaw;
+
+        private object _lastUpdateTime;
 
         /// <summary>Output only. Timestamp of the last successful update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lastUpdateTime")]
-        public virtual object LastUpdateTime { get; set; }
+        public virtual string LastUpdateTimeRaw
+        {
+            get => _lastUpdateTimeRaw;
+            set
+            {
+                _lastUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastUpdateTimeDateTimeOffset instead.")]
+        public virtual object LastUpdateTime
+        {
+            get => _lastUpdateTime;
+            set
+            {
+                _lastUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastUpdateTimeRaw);
+            set => LastUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. New platform version of the os image being downloaded and applied. It is only set when update
@@ -3344,9 +3983,42 @@ namespace Google.Apis.ChromeManagement.v1.Data
     /// <summary>Peripherals report. * Granular permission needed: TELEMETRY_API_PERIPHERALS_REPORT</summary>
     public class GoogleChromeManagementV1PeripheralsReport : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _reportTimeRaw;
+
+        private object _reportTime;
+
         /// <summary>Output only. Timestamp of when the report was collected.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
-        public virtual object ReportTime { get; set; }
+        public virtual string ReportTimeRaw
+        {
+            get => _reportTimeRaw;
+            set
+            {
+                _reportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _reportTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReportTimeDateTimeOffset instead.")]
+        public virtual object ReportTime
+        {
+            get => _reportTime;
+            set
+            {
+                _reportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _reportTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Reports of all usb connected devices.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("usbPeripheralReport")]
@@ -3417,9 +4089,42 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disk")]
         public virtual System.Collections.Generic.IList<GoogleChromeManagementV1DiskInfo> Disk { get; set; }
 
+        private string _reportTimeRaw;
+
+        private object _reportTime;
+
         /// <summary>Output only. Timestamp of when the sample was collected on device</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
-        public virtual object ReportTime { get; set; }
+        public virtual string ReportTimeRaw
+        {
+            get => _reportTimeRaw;
+            set
+            {
+                _reportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _reportTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReportTimeDateTimeOffset instead.")]
+        public virtual object ReportTime
+        {
+            get => _reportTime;
+            set
+            {
+                _reportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _reportTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3610,9 +4315,42 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        private string _reportTimeRaw;
+
+        private object _reportTime;
+
         /// <summary>Timestamp that represents when the event was reported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
-        public virtual object ReportTime { get; set; }
+        public virtual string ReportTimeRaw
+        {
+            get => _reportTimeRaw;
+            set
+            {
+                _reportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _reportTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReportTimeDateTimeOffset instead.")]
+        public virtual object ReportTime
+        {
+            get => _reportTime;
+            set
+            {
+                _reportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _reportTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Output only. Payload for usb peripherals event. Present only when the `event_type` field is either

@@ -376,12 +376,45 @@ namespace Google.Apis.Indexing.v3.Data
     /// </summary>
     public class UrlNotification : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _notifyTimeRaw;
+
+        private object _notifyTime;
+
         /// <summary>
         /// Creation timestamp for this notification. Users should _not_ specify it, the field is ignored at the request
         /// time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notifyTime")]
-        public virtual object NotifyTime { get; set; }
+        public virtual string NotifyTimeRaw
+        {
+            get => _notifyTimeRaw;
+            set
+            {
+                _notifyTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _notifyTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="NotifyTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use NotifyTimeDateTimeOffset instead.")]
+        public virtual object NotifyTime
+        {
+            get => _notifyTime;
+            set
+            {
+                _notifyTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _notifyTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="NotifyTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? NotifyTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(NotifyTimeRaw);
+            set => NotifyTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The URL life cycle event that Google is being notified about.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]

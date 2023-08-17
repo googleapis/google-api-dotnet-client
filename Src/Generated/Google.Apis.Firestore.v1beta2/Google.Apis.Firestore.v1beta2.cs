@@ -508,7 +508,8 @@ namespace Google.Apis.Firestore.v1beta2
                     /// e.g. `address.city`, or a special field path. The only valid special field is `*`, which
                     /// represents any field. Field paths may be quoted using ` (backtick). The only character that
                     /// needs to be escaped within a quoted field path is the backtick character itself, escaped using a
-                    /// backslash. Special characters in field paths that must be quoted include: `*`, `.`, ```
+                    /// backslash. Special characters in field paths that must be quoted include: `*`, `.`,
+                    /// ```
                     /// (backtick), `[`, `]`, as well as any ascii symbolic characters. Examples: (Note: Comments here
                     /// are written in markdown syntax, so there is an additional layer of backticks to represent a code
                     /// block) `\`address.city\`` represents a field named `address.city`, not the map key `city` in the
@@ -551,7 +552,8 @@ namespace Google.Apis.Firestore.v1beta2
                         /// represents any field. Field paths may be quoted using ` (backtick). The only character that
                         /// needs to be escaped within a quoted field path is the backtick character itself, escaped
                         /// using a backslash. Special characters in field paths that must be quoted include: `*`, `.`,
-                        /// ``` (backtick), `[`, `]`, as well as any ascii symbolic characters. Examples: (Note:
+                        /// ```
+                        /// (backtick), `[`, `]`, as well as any ascii symbolic characters. Examples: (Note:
                         /// Comments here are written in markdown syntax, so there is an additional layer of backticks
                         /// to represent a code block) `\`address.city\`` represents a field named `address.city`, not
                         /// the map key `city` in the field `address`. `\`*\`` represents a field named `*`, not any
@@ -1318,7 +1320,9 @@ namespace Google.Apis.Firestore.v1beta2.Data
         /// or a special field path. The only valid special field is `*`, which represents any field. Field paths may be
         /// quoted using ` (backtick). The only character that needs to be escaped within a quoted field path is the
         /// backtick character itself, escaped using a backslash. Special characters in field paths that must be quoted
-        /// include: `*`, `.`, ``` (backtick), `[`, `]`, as well as any ascii symbolic characters. Examples: (Note:
+        /// include: `*`, `.`,
+        /// ```
+        /// (backtick), `[`, `]`, as well as any ascii symbolic characters. Examples: (Note:
         /// Comments here are written in markdown syntax, so there is an additional layer of backticks to represent a
         /// code block) `\`address.city\`` represents a field named `address.city`, not the map key `city` in the field
         /// `address`. `\`*\`` represents a field named `*`, not any field. A special `Field` contains the default

@@ -4080,6 +4080,41 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    public class BigLakeConfiguration : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// [Required] Required and immutable. Credential reference for accessing external storage system. Normalized as
+        /// project_id.location_id.connection_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionId")]
+        public virtual string ConnectionId { get; set; }
+
+        /// <summary>
+        /// [Required] Required and immutable. Open source file format that the table data is stored in. Currently only
+        /// PARQUET is supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fileFormat")]
+        public virtual string FileFormat { get; set; }
+
+        /// <summary>
+        /// [Required] Required and immutable. Fully qualified location prefix of the external folder where data is
+        /// stored. Normalized to standard format: "gs:////". Starts with "gs://" rather than "/bigstore/". Ends with
+        /// "/". Does not contain "*". See also BigLakeStorageMetadata on how it is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageUri")]
+        public virtual string StorageUri { get; set; }
+
+        /// <summary>
+        /// [Required] Required and immutable. Open source file format that the table data is stored in. Currently only
+        /// PARQUET is supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tableFormat")]
+        public virtual string TableFormat { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class BigQueryModelTraining : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -6012,7 +6047,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>
         /// [Output-only] Specifies the base table involved in the reason that no search index was used.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("base_table")]
+        [Newtonsoft.Json.JsonPropertyAttribute("baseTable")]
         public virtual TableReference BaseTable { get; set; }
 
         /// <summary>
@@ -6022,7 +6057,7 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual string Code { get; set; }
 
         /// <summary>[Output-only] Specifies the name of the unused search index, if available.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("index_name")]
+        [Newtonsoft.Json.JsonPropertyAttribute("indexName")]
         public virtual string IndexName { get; set; }
 
         /// <summary>
@@ -7279,11 +7314,11 @@ namespace Google.Apis.Bigquery.v2.Data
     public class JobStatistics5 : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>[Output-only] Number of logical bytes copied to the destination table.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("copied_logical_bytes")]
+        [Newtonsoft.Json.JsonPropertyAttribute("copiedLogicalBytes")]
         public virtual System.Nullable<long> CopiedLogicalBytes { get; set; }
 
         /// <summary>[Output-only] Number of rows copied to the destination table.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("copied_rows")]
+        [Newtonsoft.Json.JsonPropertyAttribute("copiedRows")]
         public virtual System.Nullable<long> CopiedRows { get; set; }
 
         /// <summary>The ETag of the item.</summary>
@@ -7400,7 +7435,7 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>
         /// [Optional] Allow non incremental materialized view definition. The default value is "false".
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allow_non_incremental_definition")]
+        [Newtonsoft.Json.JsonPropertyAttribute("allowNonIncrementalDefinition")]
         public virtual System.Nullable<bool> AllowNonIncrementalDefinition { get; set; }
 
         /// <summary>
@@ -7685,18 +7720,26 @@ namespace Google.Apis.Bigquery.v2.Data
     /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
     /// constraints based on attributes of the request, the resource, or both. To learn which resources support
     /// conditions in their IAM policies, see the [IAM
-    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings":
-    /// [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:**
+    /// ```
+    /// {
+    /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
     /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:**
+    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
+    /// ```
+    /// **YAML
+    /// example:**
+    /// ```
     /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features,
-    /// see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3
+    /// ```
+    /// For a description of IAM and its
+    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8272,14 +8315,18 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>
         /// Fully qualified name of the user-provided connection object which holds the authentication information to
         /// send requests to the remote service. Format:
-        /// ```"projects/{projectId}/locations/{locationId}/connections/{connectionId}"```
+        /// ```
+        /// "projects/{projectId}/locations/{locationId}/connections/{connectionId}"
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connection")]
         public virtual string Connection { get; set; }
 
         /// <summary>
         /// Endpoint of the user-provided remote service, e.g.
-        /// ```https://us-east1-my_gcf_project.cloudfunctions.net/remote_add```
+        /// ```
+        /// https://us-east1-my_gcf_project.cloudfunctions.net/remote_add
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
         public virtual string Endpoint { get; set; }
@@ -8308,7 +8355,9 @@ namespace Google.Apis.Bigquery.v2.Data
     {
         /// <summary>
         /// Output only. Fully qualified name of the user-provided connection object of the remote model. Format:
-        /// ```"projects/{project_id}/locations/{location_id}/connections/{connection_id}"```
+        /// ```
+        /// "projects/{project_id}/locations/{location_id}/connections/{connection_id}"
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connection")]
         public virtual string Connection { get; set; }
@@ -8323,6 +8372,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxBatchingRows")]
         public virtual System.Nullable<long> MaxBatchingRows { get; set; }
+
+        /// <summary>Output only. The model version for LLM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remoteModelVersion")]
+        public virtual string RemoteModelVersion { get; set; }
 
         /// <summary>Output only. The remote service type for remote model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("remoteServiceType")]
@@ -8342,6 +8395,13 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>Output only. The time when this routine was created, in milliseconds since the epoch.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("creationTime")]
         public virtual System.Nullable<long> CreationTime { get; set; }
+
+        /// <summary>
+        /// Optional. Data governance specific option, if the value is DATA_MASKING, the function will be validated as
+        /// masking functions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataGovernanceType")]
+        public virtual string DataGovernanceType { get; set; }
 
         /// <summary>
         /// Required. The body of the routine. For functions, this is the expression in the AS clause. If language=SQL,
@@ -8662,8 +8722,8 @@ namespace Google.Apis.Bigquery.v2.Data
         /// When index_usage_mode is UNUSED or PARTIALLY_USED, this field explains why index was not used in all or part
         /// of the search query. If index_usage_mode is FULLLY_USED, this field is not populated.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("indexUnusedReason")]
-        public virtual System.Collections.Generic.IList<IndexUnusedReason> IndexUnusedReason { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("indexUnusedReasons")]
+        public virtual System.Collections.Generic.IList<IndexUnusedReason> IndexUnusedReasons { get; set; }
 
         /// <summary>Specifies index usage mode for the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("indexUsageMode")]
@@ -8765,7 +8825,9 @@ namespace Google.Apis.Bigquery.v2.Data
 
         /// <summary>
         /// Fully qualified name of the user-provided Spark connection object. Format:
-        /// ```"projects/{project_id}/locations/{location_id}/connections/{connection_id}"```
+        /// ```
+        /// "projects/{project_id}/locations/{location_id}/connections/{connection_id}"
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connection")]
         public virtual string Connection { get; set; }
@@ -8835,15 +8897,15 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Endpoints { get; set; }
 
         /// <summary>[Output-only] Logging info is used to generate a link to Cloud Logging.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("logging_info")]
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingInfo")]
         public virtual SparkLoggingInfo LoggingInfo { get; set; }
 
         /// <summary>[Output-only] Spark job id if a Spark job is created successfully.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("spark_job_id")]
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkJobId")]
         public virtual string SparkJobId { get; set; }
 
         /// <summary>[Output-only] Location where the Spark job is executed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("spark_job_location")]
+        [Newtonsoft.Json.JsonPropertyAttribute("sparkJobLocation")]
         public virtual string SparkJobLocation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
@@ -8861,6 +8923,10 @@ namespace Google.Apis.Bigquery.v2.Data
         /// <summary>The type of the array's elements, if type_kind = "ARRAY".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("arrayElementType")]
         public virtual StandardSqlDataType ArrayElementType { get; set; }
+
+        /// <summary>The type of the range's elements, if type_kind = "RANGE".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rangeElementType")]
+        public virtual StandardSqlDataType RangeElementType { get; set; }
 
         /// <summary>The fields of this struct, in order, if type_kind = "STRUCT".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("structType")]
@@ -8952,6 +9018,10 @@ namespace Google.Apis.Bigquery.v2.Data
 
     public class Table : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>[Optional] Specifies the configuration of a BigLake managed table.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("biglakeConfiguration")]
+        public virtual BigLakeConfiguration BiglakeConfiguration { get; set; }
+
         /// <summary>[Output-only] Clone definition.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cloneDefinition")]
         public virtual CloneDefinition CloneDefinition { get; set; }
@@ -9717,6 +9787,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("calculatePValues")]
         public virtual System.Nullable<bool> CalculatePValues { get; set; }
 
+        /// <summary>Categorical feature encoding method.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categoryEncodingMethod")]
+        public virtual string CategoryEncodingMethod { get; set; }
+
         /// <summary>If true, clean spikes and dips in the input time series.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cleanSpikesAndDips")]
         public virtual System.Nullable<bool> CleanSpikesAndDips { get; set; }
@@ -9812,6 +9886,10 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("holidayRegion")]
         public virtual string HolidayRegion { get; set; }
 
+        /// <summary>A list of geographical regions that are used for time series modeling.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("holidayRegions")]
+        public virtual System.Collections.Generic.IList<string> HolidayRegions { get; set; }
+
         /// <summary>The number of periods ahead that need to be forecasted.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("horizon")]
         public virtual System.Nullable<long> Horizon { get; set; }
@@ -9899,8 +9977,8 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Nullable<long> MaxParallelTrials { get; set; }
 
         /// <summary>
-        /// Get truncated length by last n points in time series. Use separately from time_series_length_fraction and
-        /// min_time_series_length.
+        /// The maximum number of time points in a time series that can be used in modeling the trend component of the
+        /// time series. Don't use this option with the `timeSeriesLengthFraction` or `minTimeSeriesLength` options.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxTimeSeriesLength")]
         public virtual System.Nullable<long> MaxTimeSeriesLength { get; set; }
@@ -9921,7 +9999,12 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Nullable<double> MinSplitLoss { get; set; }
 
         /// <summary>
-        /// Set fast trend ARIMA_PLUS model minimum training length. Use in pair with time_series_length_fraction.
+        /// The minimum number of time points in a time series that are used in modeling the trend component of the time
+        /// series. If you use this option you must also set the `timeSeriesLengthFraction` option. This training option
+        /// ensures that enough time points are available when you use `timeSeriesLengthFraction` in trend modeling.
+        /// This is particularly important when forecasting multiple time series in a single query using
+        /// `timeSeriesIdColumn`. If the total number of time points is less than the `minTimeSeriesLength` value, then
+        /// the query uses all available time points.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minTimeSeriesLength")]
         public virtual System.Nullable<long> MinTimeSeriesLength { get; set; }
@@ -10025,7 +10108,12 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesIdColumns")]
         public virtual System.Collections.Generic.IList<string> TimeSeriesIdColumns { get; set; }
 
-        /// <summary>Get truncated length by fraction in time series.</summary>
+        /// <summary>
+        /// The fraction of the interpolated length of the time series that's used to model the time series trend
+        /// component. All of the time points of the time series are used to model the non-trend component. This
+        /// training option accelerates modeling training without sacrificing much forecasting accuracy. You can use
+        /// this option with `minTimeSeriesLength` but not with `maxTimeSeriesLength`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesLengthFraction")]
         public virtual System.Nullable<double> TimeSeriesLengthFraction { get; set; }
 
@@ -10037,7 +10125,12 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("treeMethod")]
         public virtual string TreeMethod { get; set; }
 
-        /// <summary>The smoothing window size for the trend component of the time series.</summary>
+        /// <summary>
+        /// Smoothing window size for the trend component. When a positive value is specified, a center moving average
+        /// smoothing is applied on the history trend. When the smoothing window is out of the boundary at the beginning
+        /// or the end of the trend, the first element or the last element is padded to fill the smoothing window before
+        /// the average is applied.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trendSmoothingWindowSize")]
         public virtual System.Nullable<long> TrendSmoothingWindowSize { get; set; }
 
