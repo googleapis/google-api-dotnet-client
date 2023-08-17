@@ -6,11 +6,6 @@ set -ex
 source ./populatesecrets.sh
 populate_all_secrets
 
-maybe_force_all=""
-if [ "$FORCE_ALL" == "true" ]; then
-  maybe_force_all="--forcegenerateall"
-fi
-
 declare -r github_user="$(cat "$SECRETS_LOCATION"/google-api-dotnet-client-github-user-name)"
 declare -r github_email="$(cat "$SECRETS_LOCATION"/google-api-dotnet-client-github-user-email)"
 declare -r github_token="$(cat "$SECRETS_LOCATION"/google-api-dotnet-client-github-token)"
@@ -75,7 +70,14 @@ rm -f DiscoveryJson/integrations_v1alpha.json
 rm -f DiscoveryJson/policysimulator_v1alpha.json
 rm -f DiscoveryJson/policysimulator_v1beta.json
 
-./BuildGenerated.sh --skipdownload "$maybe_force_all"
+# Note the space on the parameter definition and not on command
+# execution itself: this is because if there's a space, then on
+# some environments, a second empty parameter is passed to
+# BuildGenerated.sh and that makes it fail.
+if [ "$FORCE_ALL" == "true" ]; then
+  maybe_force_all=" --forcegenerateall"
+fi
+./BuildGenerated.sh --skipdownload"$maybe_force_all"
 
 # Push support and generated packages to nuget
 shopt -s nullglob
