@@ -1655,6 +1655,31 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A test that explores an iOS application on an iOS device.</summary>
+    public class IosRoboTest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The bundle ID for the app-under-test. This is determined by examining the application's "Info.plist" file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appBundleId")]
+        public virtual string AppBundleId { get; set; }
+
+        /// <summary>Required. The ipa stored at this file should be used to run the test.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("appIpa")]
+        public virtual FileReference AppIpa { get; set; }
+
+        /// <summary>
+        /// An optional Roboscript to customize the crawl. See
+        /// https://firebase.google.com/docs/test-lab/android/robo-scripts-reference for more information about
+        /// Roboscripts.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("roboScript")]
+        public virtual FileReference RoboScript { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>iOS configuration that can be selected at the time a test is run.</summary>
     public class IosRuntimeConfiguration : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2520,6 +2545,10 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>Disables video recording. May reduce test latency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableVideoRecording")]
         public virtual System.Nullable<bool> DisableVideoRecording { get; set; }
+
+        /// <summary>An iOS Robo test.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("iosRoboTest")]
+        public virtual IosRoboTest IosRoboTest { get; set; }
 
         /// <summary>An iOS application with a test loop.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("iosTestLoop")]

@@ -383,6 +383,10 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
     /// </summary>
     public class Activity : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _activityTimeRaw;
+
+        private object _activityTime;
+
         /// <summary>
         /// Timestamp of the activity. If activities for a visit cross midnight and occur in two separate dates, then
         /// two sessions (one per date) share the session identifier. For example, say session ID 113472 has activity
@@ -390,7 +394,36 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
         /// one session, and session ID 243742 is two sessions.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activityTime")]
-        public virtual object ActivityTime { get; set; }
+        public virtual string ActivityTimeRaw
+        {
+            get => _activityTimeRaw;
+            set
+            {
+                _activityTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _activityTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ActivityTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ActivityTimeDateTimeOffset instead.")]
+        public virtual object ActivityTime
+        {
+            get => _activityTime;
+            set
+            {
+                _activityTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _activityTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ActivityTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ActivityTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ActivityTimeRaw);
+            set => ActivityTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Type of this activity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activityType")]
@@ -1182,12 +1215,47 @@ namespace Google.Apis.AnalyticsReporting.v4.Data
     /// <summary>The data part of the report.</summary>
     public class ReportData : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _dataLastRefreshedRaw;
+
+        private object _dataLastRefreshed;
+
         /// <summary>
         /// The last time the data in the report was refreshed. All the hits received before this timestamp are included
         /// in the calculation of the report.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataLastRefreshed")]
-        public virtual object DataLastRefreshed { get; set; }
+        public virtual string DataLastRefreshedRaw
+        {
+            get => _dataLastRefreshedRaw;
+            set
+            {
+                _dataLastRefreshed = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _dataLastRefreshedRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DataLastRefreshedRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DataLastRefreshedDateTimeOffset instead.")]
+        public virtual object DataLastRefreshed
+        {
+            get => _dataLastRefreshed;
+            set
+            {
+                _dataLastRefreshedRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _dataLastRefreshed = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="DataLastRefreshedRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DataLastRefreshedDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DataLastRefreshedRaw);
+            set => DataLastRefreshedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>If empty reason is specified, the report is empty for this reason.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("emptyReason")]

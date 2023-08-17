@@ -530,14 +530,24 @@ namespace Google.Apis.DeploymentManager.v2beta
             /// instances named `example-instance` by specifying `name != example-instance`. The `:` operator can be
             /// used with string fields to match substrings. For non-string fields it is equivalent to the `=` operator.
             /// The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects
-            /// with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could
+            /// with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested fields. For example, you could
             /// specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for
             /// automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter
-            /// on multiple expressions, provide each separate expression within parentheses. For example: ```
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
-            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// on multiple expressions, provide each separate expression within parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example:
+            /// ```
             /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator
+            /// true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator
             /// against a single un-parenthesized expression with or without quotes or against multiple parenthesized
             /// expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname
             /// eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is
@@ -1192,14 +1202,24 @@ namespace Google.Apis.DeploymentManager.v2beta
             /// instances named `example-instance` by specifying `name != example-instance`. The `:` operator can be
             /// used with string fields to match substrings. For non-string fields it is equivalent to the `=` operator.
             /// The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects
-            /// with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could
+            /// with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested fields. For example, you could
             /// specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for
             /// automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter
-            /// on multiple expressions, provide each separate expression within parentheses. For example: ```
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
-            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// on multiple expressions, provide each separate expression within parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example:
+            /// ```
             /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator
+            /// true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator
             /// against a single un-parenthesized expression with or without quotes or against multiple parenthesized
             /// expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname
             /// eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is
@@ -1901,14 +1921,24 @@ namespace Google.Apis.DeploymentManager.v2beta
             /// instances named `example-instance` by specifying `name != example-instance`. The `:` operator can be
             /// used with string fields to match substrings. For non-string fields it is equivalent to the `=` operator.
             /// The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects
-            /// with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could
+            /// with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested fields. For example, you could
             /// specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for
             /// automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter
-            /// on multiple expressions, provide each separate expression within parentheses. For example: ```
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
-            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// on multiple expressions, provide each separate expression within parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example:
+            /// ```
             /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator
+            /// true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator
             /// against a single un-parenthesized expression with or without quotes or against multiple parenthesized
             /// expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname
             /// eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is
@@ -2113,14 +2143,24 @@ namespace Google.Apis.DeploymentManager.v2beta
             /// instances named `example-instance` by specifying `name != example-instance`. The `:` operator can be
             /// used with string fields to match substrings. For non-string fields it is equivalent to the `=` operator.
             /// The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects
-            /// with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could
+            /// with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested fields. For example, you could
             /// specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for
             /// automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter
-            /// on multiple expressions, provide each separate expression within parentheses. For example: ```
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
-            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// on multiple expressions, provide each separate expression within parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example:
+            /// ```
             /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator
+            /// true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator
             /// against a single un-parenthesized expression with or without quotes or against multiple parenthesized
             /// expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname
             /// eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is
@@ -2337,14 +2377,24 @@ namespace Google.Apis.DeploymentManager.v2beta
             /// instances named `example-instance` by specifying `name != example-instance`. The `:` operator can be
             /// used with string fields to match substrings. For non-string fields it is equivalent to the `=` operator.
             /// The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects
-            /// with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could
+            /// with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested fields. For example, you could
             /// specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for
             /// automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter
-            /// on multiple expressions, provide each separate expression within parentheses. For example: ```
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
-            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// on multiple expressions, provide each separate expression within parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example:
+            /// ```
             /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator
+            /// true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator
             /// against a single un-parenthesized expression with or without quotes or against multiple parenthesized
             /// expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname
             /// eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is
@@ -2734,14 +2784,24 @@ namespace Google.Apis.DeploymentManager.v2beta
             /// instances named `example-instance` by specifying `name != example-instance`. The `:` operator can be
             /// used with string fields to match substrings. For non-string fields it is equivalent to the `=` operator.
             /// The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects
-            /// with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could
+            /// with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested fields. For example, you could
             /// specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for
             /// automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter
-            /// on multiple expressions, provide each separate expression within parentheses. For example: ```
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
-            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// on multiple expressions, provide each separate expression within parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example:
+            /// ```
             /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator
+            /// true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator
             /// against a single un-parenthesized expression with or without quotes or against multiple parenthesized
             /// expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname
             /// eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is
@@ -2870,14 +2930,24 @@ namespace Google.Apis.DeploymentManager.v2beta
             /// instances named `example-instance` by specifying `name != example-instance`. The `:` operator can be
             /// used with string fields to match substrings. For non-string fields it is equivalent to the `=` operator.
             /// The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects
-            /// with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could
+            /// with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested fields. For example, you could
             /// specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for
             /// automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter
-            /// on multiple expressions, provide each separate expression within parentheses. For example: ```
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
-            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// on multiple expressions, provide each separate expression within parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example:
+            /// ```
             /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator
+            /// true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator
             /// against a single un-parenthesized expression with or without quotes or against multiple parenthesized
             /// expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname
             /// eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is
@@ -3157,14 +3227,24 @@ namespace Google.Apis.DeploymentManager.v2beta
             /// instances named `example-instance` by specifying `name != example-instance`. The `:` operator can be
             /// used with string fields to match substrings. For non-string fields it is equivalent to the `=` operator.
             /// The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects
-            /// with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could
+            /// with `owner` label use:
+            /// ```
+            /// labels.owner:*
+            /// ```
+            /// You can also filter nested fields. For example, you could
             /// specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for
             /// automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter
-            /// on multiple expressions, provide each separate expression within parentheses. For example: ```
-            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is
-            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ```
+            /// on multiple expressions, provide each separate expression within parentheses. For example:
+            /// ```
+            /// (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake")
+            /// ```
+            /// By default, each expression is
+            /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example:
+            /// ```
             /// (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart =
-            /// true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator
+            /// true)
+            /// ```
+            /// If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator
             /// against a single un-parenthesized expression with or without quotes or against multiple parenthesized
             /// expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname
             /// eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is

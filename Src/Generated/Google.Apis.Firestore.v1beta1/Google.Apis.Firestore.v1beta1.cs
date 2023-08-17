@@ -1581,8 +1581,11 @@ namespace Google.Apis.Firestore.v1beta1
                 /// <summary>
                 /// Runs an aggregation query. Rather than producing Document results like Firestore.RunQuery, this API
                 /// allows running an aggregation to produce a series of AggregationResult server-side. High-Level
-                /// Example: ``` -- Return the number of documents in table given a filter. SELECT COUNT(*) FROM (
-                /// SELECT * FROM k where a = true ); ```
+                /// Example:
+                /// ```
+                /// -- Return the number of documents in table given a filter. SELECT COUNT(*) FROM (
+                /// SELECT * FROM k where a = true );
+                /// ```
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -1600,8 +1603,11 @@ namespace Google.Apis.Firestore.v1beta1
                 /// <summary>
                 /// Runs an aggregation query. Rather than producing Document results like Firestore.RunQuery, this API
                 /// allows running an aggregation to produce a series of AggregationResult server-side. High-Level
-                /// Example: ``` -- Return the number of documents in table given a filter. SELECT COUNT(*) FROM (
-                /// SELECT * FROM k where a = true ); ```
+                /// Example:
+                /// ```
+                /// -- Return the number of documents in table given a filter. SELECT COUNT(*) FROM (
+                /// SELECT * FROM k where a = true );
+                /// ```
                 /// </summary>
                 public class RunAggregationQueryRequest : FirestoreBaseServiceRequest<Google.Apis.Firestore.v1beta1.Data.RunAggregationQueryResponse>
                 {
@@ -2204,10 +2210,17 @@ namespace Google.Apis.Firestore.v1beta1.Data
     {
         /// <summary>
         /// Optional. Optional name of the field to store the result of the aggregation into. If not provided, Firestore
-        /// will pick a default name following the format `field_`. For example: ``` AGGREGATE COUNT_UP_TO(1) AS
-        /// count_up_to_1, COUNT_UP_TO(2), COUNT_UP_TO(3) AS count_up_to_3, COUNT(*) OVER ( ... ); ``` becomes: ```
+        /// will pick a default name following the format `field_`. For example:
+        /// ```
+        /// AGGREGATE COUNT_UP_TO(1) AS
+        /// count_up_to_1, COUNT_UP_TO(2), COUNT_UP_TO(3) AS count_up_to_3, COUNT(*) OVER ( ... );
+        /// ```
+        /// becomes:
+        /// ```
         /// AGGREGATE COUNT_UP_TO(1) AS count_up_to_1, COUNT_UP_TO(2) AS field_1, COUNT_UP_TO(3) AS count_up_to_3,
-        /// COUNT(*) AS field_2 OVER ( ... ); ``` Requires: * Must be unique across all aggregation aliases. * Conform
+        /// COUNT(*) AS field_2 OVER ( ... );
+        /// ```
+        /// Requires: * Must be unique across all aggregation aliases. * Conform
         /// to document field name limitations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alias")]
@@ -2632,7 +2645,11 @@ namespace Google.Apis.Firestore.v1beta1.Data
         /// <summary>
         /// Optional. Optional constraint on the maximum number of documents to count. This provides a way to set an
         /// upper bound on the number of documents to scan, limiting latency, and cost. Unspecified is interpreted as no
-        /// bound. High-Level Example: ``` AGGREGATE COUNT_UP_TO(1000) OVER ( SELECT * FROM k ); ``` Requires: * Must be
+        /// bound. High-Level Example:
+        /// ```
+        /// AGGREGATE COUNT_UP_TO(1000) OVER ( SELECT * FROM k );
+        /// ```
+        /// Requires: * Must be
         /// greater than zero when present.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("upTo")]
@@ -4573,8 +4590,12 @@ namespace Google.Apis.Firestore.v1beta1.Data
 
         /// <summary>
         /// A potential prefix of a position in the result set to start the query at. The ordering of the result set is
-        /// based on the `ORDER BY` clause of the original query. ``` SELECT * FROM k WHERE a = 1 AND b &amp;gt; 2 ORDER
-        /// BY b ASC, __name__ ASC; ``` This query's results are ordered by `(b ASC, __name__ ASC)`. Cursors can
+        /// based on the `ORDER BY` clause of the original query.
+        /// ```
+        /// SELECT * FROM k WHERE a = 1 AND b &amp;gt; 2 ORDER
+        /// BY b ASC, __name__ ASC;
+        /// ```
+        /// This query's results are ordered by `(b ASC, __name__ ASC)`. Cursors can
         /// reference either the full ordering or a prefix of the location, though it cannot reference more fields than
         /// what are in the provided `ORDER BY`. Continuing off the example above, attaching the following start cursors
         /// will have varying impact: - `START BEFORE (2, /k/123)`: start the query right before `a = 1 AND b &amp;gt; 2

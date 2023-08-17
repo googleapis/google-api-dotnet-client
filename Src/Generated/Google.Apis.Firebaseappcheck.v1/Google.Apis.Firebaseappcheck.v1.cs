@@ -401,8 +401,11 @@ namespace Google.Apis.Firebaseappcheck.v1
 
                 /// <summary>Atomically gets the AppAttestConfigs for the specified list of apps.</summary>
                 /// <param name="parent">
-                /// Required. The parent project name shared by all AppAttestConfigs being retrieved, in the format ```
-                /// projects/{project_number} ``` The parent collection in the `name` field of any resource being
+                /// Required. The parent project name shared by all AppAttestConfigs being retrieved, in the format
+                /// ```
+                /// projects/{project_number}
+                /// ```
+                /// The parent collection in the `name` field of any resource being
                 /// retrieved must match this field, or the entire batch fails.
                 /// </param>
                 public virtual BatchGetRequest BatchGet(string parent)
@@ -422,15 +425,21 @@ namespace Google.Apis.Firebaseappcheck.v1
 
                     /// <summary>
                     /// Required. The parent project name shared by all AppAttestConfigs being retrieved, in the format
-                    /// ``` projects/{project_number} ``` The parent collection in the `name` field of any resource
+                    /// ```
+                    /// projects/{project_number}
+                    /// ```
+                    /// The parent collection in the `name` field of any resource
                     /// being retrieved must match this field, or the entire batch fails.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. The relative resource names of the AppAttestConfigs to retrieve, in the format ```
-                    /// projects/{project_number}/apps/{app_id}/appAttestConfig ``` A maximum of 100 objects can be
+                    /// Required. The relative resource names of the AppAttestConfigs to retrieve, in the format
+                    /// ```
+                    /// projects/{project_number}/apps/{app_id}/appAttestConfig
+                    /// ```
+                    /// A maximum of 100 objects can be
                     /// retrieved in a batch.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("names", Google.Apis.Util.RequestParameterType.Query)]
@@ -470,8 +479,10 @@ namespace Google.Apis.Firebaseappcheck.v1
 
                 /// <summary>Gets the AppAttestConfig for the specified app.</summary>
                 /// <param name="name">
-                /// Required. The relative resource name of the AppAttestConfig, in the format: ```
-                /// projects/{project_number}/apps/{app_id}/appAttestConfig ```
+                /// Required. The relative resource name of the AppAttestConfig, in the format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}/appAttestConfig
+                /// ```
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -489,8 +500,10 @@ namespace Google.Apis.Firebaseappcheck.v1
                     }
 
                     /// <summary>
-                    /// Required. The relative resource name of the AppAttestConfig, in the format: ```
-                    /// projects/{project_number}/apps/{app_id}/appAttestConfig ```
+                    /// Required. The relative resource name of the AppAttestConfig, in the format:
+                    /// ```
+                    /// projects/{project_number}/apps/{app_id}/appAttestConfig
+                    /// ```
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -525,8 +538,10 @@ namespace Google.Apis.Firebaseappcheck.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. The relative resource name of the App Attest configuration object, in the format: ```
-                /// projects/{project_number}/apps/{app_id}/appAttestConfig ```
+                /// Required. The relative resource name of the App Attest configuration object, in the format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}/appAttestConfig
+                /// ```
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1AppAttestConfig body, string name)
                 {
@@ -548,8 +563,10 @@ namespace Google.Apis.Firebaseappcheck.v1
                     }
 
                     /// <summary>
-                    /// Required. The relative resource name of the App Attest configuration object, in the format: ```
-                    /// projects/{project_number}/apps/{app_id}/appAttestConfig ```
+                    /// Required. The relative resource name of the App Attest configuration object, in the format:
+                    /// ```
+                    /// projects/{project_number}/apps/{app_id}/appAttestConfig
+                    /// ```
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -625,7 +642,10 @@ namespace Google.Apis.Firebaseappcheck.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The relative resource name of the parent app in which the specified DebugToken will be
-                /// created, in the format: ``` projects/{project_number}/apps/{app_id} ```
+                /// created, in the format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}
+                /// ```
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1DebugToken body, string parent)
                 {
@@ -649,7 +669,10 @@ namespace Google.Apis.Firebaseappcheck.v1
 
                     /// <summary>
                     /// Required. The relative resource name of the parent app in which the specified DebugToken will be
-                    /// created, in the format: ``` projects/{project_number}/apps/{app_id} ```
+                    /// created, in the format:
+                    /// ```
+                    /// projects/{project_number}/apps/{app_id}
+                    /// ```
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -690,8 +713,10 @@ namespace Google.Apis.Firebaseappcheck.v1
                 /// longer need the debug token.
                 /// </summary>
                 /// <param name="name">
-                /// Required. The relative resource name of the DebugToken to delete, in the format: ```
-                /// projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id} ```
+                /// Required. The relative resource name of the DebugToken to delete, in the format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id}
+                /// ```
                 /// </param>
                 public virtual DeleteRequest Delete(string name)
                 {
@@ -713,8 +738,10 @@ namespace Google.Apis.Firebaseappcheck.v1
                     }
 
                     /// <summary>
-                    /// Required. The relative resource name of the DebugToken to delete, in the format: ```
-                    /// projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id} ```
+                    /// Required. The relative resource name of the DebugToken to delete, in the format:
+                    /// ```
+                    /// projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id}
+                    /// ```
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -748,8 +775,10 @@ namespace Google.Apis.Firebaseappcheck.v1
                 /// response.
                 /// </summary>
                 /// <param name="name">
-                /// Required. The relative resource name of the debug token, in the format: ```
-                /// projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id} ```
+                /// Required. The relative resource name of the debug token, in the format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id}
+                /// ```
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -770,8 +799,10 @@ namespace Google.Apis.Firebaseappcheck.v1
                     }
 
                     /// <summary>
-                    /// Required. The relative resource name of the debug token, in the format: ```
-                    /// projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id} ```
+                    /// Required. The relative resource name of the debug token, in the format:
+                    /// ```
+                    /// projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id}
+                    /// ```
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -806,7 +837,10 @@ namespace Google.Apis.Firebaseappcheck.v1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. The relative resource name of the parent app for which to list each associated DebugToken,
-                /// in the format: ``` projects/{project_number}/apps/{app_id} ```
+                /// in the format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}
+                /// ```
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -828,7 +862,10 @@ namespace Google.Apis.Firebaseappcheck.v1
 
                     /// <summary>
                     /// Required. The relative resource name of the parent app for which to list each associated
-                    /// DebugToken, in the format: ``` projects/{project_number}/apps/{app_id} ```
+                    /// DebugToken, in the format:
+                    /// ```
+                    /// projects/{project_number}/apps/{app_id}
+                    /// ```
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
@@ -896,8 +933,10 @@ namespace Google.Apis.Firebaseappcheck.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. The relative resource name of the debug token, in the format: ```
-                /// projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id} ```
+                /// Required. The relative resource name of the debug token, in the format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id}
+                /// ```
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1DebugToken body, string name)
                 {
@@ -919,8 +958,10 @@ namespace Google.Apis.Firebaseappcheck.v1
                     }
 
                     /// <summary>
-                    /// Required. The relative resource name of the debug token, in the format: ```
-                    /// projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id} ```
+                    /// Required. The relative resource name of the debug token, in the format:
+                    /// ```
+                    /// projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id}
+                    /// ```
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -994,7 +1035,10 @@ namespace Google.Apis.Firebaseappcheck.v1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. The parent project name shared by all DeviceCheckConfigs being retrieved, in the format
-                /// ``` projects/{project_number} ``` The parent collection in the `name` field of any resource being
+                /// ```
+                /// projects/{project_number}
+                /// ```
+                /// The parent collection in the `name` field of any resource being
                 /// retrieved must match this field, or the entire batch fails.
                 /// </param>
                 public virtual BatchGetRequest BatchGet(string parent)
@@ -1017,15 +1061,22 @@ namespace Google.Apis.Firebaseappcheck.v1
 
                     /// <summary>
                     /// Required. The parent project name shared by all DeviceCheckConfigs being retrieved, in the
-                    /// format ``` projects/{project_number} ``` The parent collection in the `name` field of any
+                    /// format
+                    /// ```
+                    /// projects/{project_number}
+                    /// ```
+                    /// The parent collection in the `name` field of any
                     /// resource being retrieved must match this field, or the entire batch fails.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. The relative resource names of the DeviceCheckConfigs to retrieve, in the format ```
-                    /// projects/{project_number}/apps/{app_id}/deviceCheckConfig ``` A maximum of 100 objects can be
+                    /// Required. The relative resource names of the DeviceCheckConfigs to retrieve, in the format
+                    /// ```
+                    /// projects/{project_number}/apps/{app_id}/deviceCheckConfig
+                    /// ```
+                    /// A maximum of 100 objects can be
                     /// retrieved in a batch.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("names", Google.Apis.Util.RequestParameterType.Query)]
@@ -1068,8 +1119,10 @@ namespace Google.Apis.Firebaseappcheck.v1
                 /// never populated in the response.
                 /// </summary>
                 /// <param name="name">
-                /// Required. The relative resource name of the DeviceCheckConfig, in the format: ```
-                /// projects/{project_number}/apps/{app_id}/deviceCheckConfig ```
+                /// Required. The relative resource name of the DeviceCheckConfig, in the format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}/deviceCheckConfig
+                /// ```
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -1090,8 +1143,10 @@ namespace Google.Apis.Firebaseappcheck.v1
                     }
 
                     /// <summary>
-                    /// Required. The relative resource name of the DeviceCheckConfig, in the format: ```
-                    /// projects/{project_number}/apps/{app_id}/deviceCheckConfig ```
+                    /// Required. The relative resource name of the DeviceCheckConfig, in the format:
+                    /// ```
+                    /// projects/{project_number}/apps/{app_id}/deviceCheckConfig
+                    /// ```
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1127,8 +1182,10 @@ namespace Google.Apis.Firebaseappcheck.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. The relative resource name of the DeviceCheck configuration object, in the format: ```
-                /// projects/{project_number}/apps/{app_id}/deviceCheckConfig ```
+                /// Required. The relative resource name of the DeviceCheck configuration object, in the format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}/deviceCheckConfig
+                /// ```
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1DeviceCheckConfig body, string name)
                 {
@@ -1151,8 +1208,10 @@ namespace Google.Apis.Firebaseappcheck.v1
                     }
 
                     /// <summary>
-                    /// Required. The relative resource name of the DeviceCheck configuration object, in the format: ```
-                    /// projects/{project_number}/apps/{app_id}/deviceCheckConfig ```
+                    /// Required. The relative resource name of the DeviceCheck configuration object, in the format:
+                    /// ```
+                    /// projects/{project_number}/apps/{app_id}/deviceCheckConfig
+                    /// ```
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1223,7 +1282,10 @@ namespace Google.Apis.Firebaseappcheck.v1
                 /// <summary>Atomically gets the PlayIntegrityConfigs for the specified list of apps.</summary>
                 /// <param name="parent">
                 /// Required. The parent project name shared by all PlayIntegrityConfigs being retrieved, in the format
-                /// ``` projects/{project_number} ``` The parent collection in the `name` field of any resource being
+                /// ```
+                /// projects/{project_number}
+                /// ```
+                /// The parent collection in the `name` field of any resource being
                 /// retrieved must match this field, or the entire batch fails.
                 /// </param>
                 public virtual BatchGetRequest BatchGet(string parent)
@@ -1243,15 +1305,22 @@ namespace Google.Apis.Firebaseappcheck.v1
 
                     /// <summary>
                     /// Required. The parent project name shared by all PlayIntegrityConfigs being retrieved, in the
-                    /// format ``` projects/{project_number} ``` The parent collection in the `name` field of any
+                    /// format
+                    /// ```
+                    /// projects/{project_number}
+                    /// ```
+                    /// The parent collection in the `name` field of any
                     /// resource being retrieved must match this field, or the entire batch fails.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. The relative resource names of the PlayIntegrityConfigs to retrieve, in the format ```
-                    /// projects/{project_number}/apps/{app_id}/playIntegrityConfig ``` A maximum of 100 objects can be
+                    /// Required. The relative resource names of the PlayIntegrityConfigs to retrieve, in the format
+                    /// ```
+                    /// projects/{project_number}/apps/{app_id}/playIntegrityConfig
+                    /// ```
+                    /// A maximum of 100 objects can be
                     /// retrieved in a batch.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("names", Google.Apis.Util.RequestParameterType.Query)]
@@ -1291,8 +1360,10 @@ namespace Google.Apis.Firebaseappcheck.v1
 
                 /// <summary>Gets the PlayIntegrityConfig for the specified app.</summary>
                 /// <param name="name">
-                /// Required. The relative resource name of the PlayIntegrityConfig, in the format: ```
-                /// projects/{project_number}/apps/{app_id}/playIntegrityConfig ```
+                /// Required. The relative resource name of the PlayIntegrityConfig, in the format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}/playIntegrityConfig
+                /// ```
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -1310,8 +1381,10 @@ namespace Google.Apis.Firebaseappcheck.v1
                     }
 
                     /// <summary>
-                    /// Required. The relative resource name of the PlayIntegrityConfig, in the format: ```
-                    /// projects/{project_number}/apps/{app_id}/playIntegrityConfig ```
+                    /// Required. The relative resource name of the PlayIntegrityConfig, in the format:
+                    /// ```
+                    /// projects/{project_number}/apps/{app_id}/playIntegrityConfig
+                    /// ```
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1346,8 +1419,10 @@ namespace Google.Apis.Firebaseappcheck.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. The relative resource name of the Play Integrity configuration object, in the format: ```
-                /// projects/{project_number}/apps/{app_id}/playIntegrityConfig ```
+                /// Required. The relative resource name of the Play Integrity configuration object, in the format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}/playIntegrityConfig
+                /// ```
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1PlayIntegrityConfig body, string name)
                 {
@@ -1370,7 +1445,9 @@ namespace Google.Apis.Firebaseappcheck.v1
 
                     /// <summary>
                     /// Required. The relative resource name of the Play Integrity configuration object, in the format:
-                    /// ``` projects/{project_number}/apps/{app_id}/playIntegrityConfig ```
+                    /// ```
+                    /// projects/{project_number}/apps/{app_id}/playIntegrityConfig
+                    /// ```
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1441,7 +1518,11 @@ namespace Google.Apis.Firebaseappcheck.v1
                 /// <summary>Atomically gets the RecaptchaEnterpriseConfigs for the specified list of apps.</summary>
                 /// <param name="parent">
                 /// Required. The parent project name shared by all RecaptchaEnterpriseConfigs being retrieved, in the
-                /// format ``` projects/{project_number} ``` The parent collection in the `name` field of any resource
+                /// format
+                /// ```
+                /// projects/{project_number}
+                /// ```
+                /// The parent collection in the `name` field of any resource
                 /// being retrieved must match this field, or the entire batch fails.
                 /// </param>
                 public virtual BatchGetRequest BatchGet(string parent)
@@ -1461,7 +1542,11 @@ namespace Google.Apis.Firebaseappcheck.v1
 
                     /// <summary>
                     /// Required. The parent project name shared by all RecaptchaEnterpriseConfigs being retrieved, in
-                    /// the format ``` projects/{project_number} ``` The parent collection in the `name` field of any
+                    /// the format
+                    /// ```
+                    /// projects/{project_number}
+                    /// ```
+                    /// The parent collection in the `name` field of any
                     /// resource being retrieved must match this field, or the entire batch fails.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -1469,7 +1554,11 @@ namespace Google.Apis.Firebaseappcheck.v1
 
                     /// <summary>
                     /// Required. The relative resource names of the RecaptchaEnterpriseConfigs to retrieve, in the
-                    /// format: ``` projects/{project_number}/apps/{app_id}/recaptchaEnterpriseConfig ``` A maximum of
+                    /// format:
+                    /// ```
+                    /// projects/{project_number}/apps/{app_id}/recaptchaEnterpriseConfig
+                    /// ```
+                    /// A maximum of
                     /// 100 objects can be retrieved in a batch.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("names", Google.Apis.Util.RequestParameterType.Query)]
@@ -1509,8 +1598,10 @@ namespace Google.Apis.Firebaseappcheck.v1
 
                 /// <summary>Gets the RecaptchaEnterpriseConfig for the specified app.</summary>
                 /// <param name="name">
-                /// Required. The relative resource name of the RecaptchaEnterpriseConfig, in the format: ```
-                /// projects/{project_number}/apps/{app_id}/recaptchaEnterpriseConfig ```
+                /// Required. The relative resource name of the RecaptchaEnterpriseConfig, in the format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}/recaptchaEnterpriseConfig
+                /// ```
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -1528,8 +1619,10 @@ namespace Google.Apis.Firebaseappcheck.v1
                     }
 
                     /// <summary>
-                    /// Required. The relative resource name of the RecaptchaEnterpriseConfig, in the format: ```
-                    /// projects/{project_number}/apps/{app_id}/recaptchaEnterpriseConfig ```
+                    /// Required. The relative resource name of the RecaptchaEnterpriseConfig, in the format:
+                    /// ```
+                    /// projects/{project_number}/apps/{app_id}/recaptchaEnterpriseConfig
+                    /// ```
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1565,7 +1658,10 @@ namespace Google.Apis.Firebaseappcheck.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Required. The relative resource name of the reCAPTCHA Enterprise configuration object, in the
-                /// format: ``` projects/{project_number}/apps/{app_id}/recaptchaEnterpriseConfig ```
+                /// format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}/recaptchaEnterpriseConfig
+                /// ```
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig body, string name)
                 {
@@ -1588,7 +1684,10 @@ namespace Google.Apis.Firebaseappcheck.v1
 
                     /// <summary>
                     /// Required. The relative resource name of the reCAPTCHA Enterprise configuration object, in the
-                    /// format: ``` projects/{project_number}/apps/{app_id}/recaptchaEnterpriseConfig ```
+                    /// format:
+                    /// ```
+                    /// projects/{project_number}/apps/{app_id}/recaptchaEnterpriseConfig
+                    /// ```
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1662,7 +1761,10 @@ namespace Google.Apis.Firebaseappcheck.v1
                 /// </summary>
                 /// <param name="parent">
                 /// Required. The parent project name shared by all RecaptchaV3Configs being retrieved, in the format
-                /// ``` projects/{project_number} ``` The parent collection in the `name` field of any resource being
+                /// ```
+                /// projects/{project_number}
+                /// ```
+                /// The parent collection in the `name` field of any resource being
                 /// retrieved must match this field, or the entire batch fails.
                 /// </param>
                 public virtual BatchGetRequest BatchGet(string parent)
@@ -1685,15 +1787,22 @@ namespace Google.Apis.Firebaseappcheck.v1
 
                     /// <summary>
                     /// Required. The parent project name shared by all RecaptchaV3Configs being retrieved, in the
-                    /// format ``` projects/{project_number} ``` The parent collection in the `name` field of any
+                    /// format
+                    /// ```
+                    /// projects/{project_number}
+                    /// ```
+                    /// The parent collection in the `name` field of any
                     /// resource being retrieved must match this field, or the entire batch fails.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. The relative resource names of the RecaptchaV3Configs to retrieve, in the format: ```
-                    /// projects/{project_number}/apps/{app_id}/recaptchaV3Config ``` A maximum of 100 objects can be
+                    /// Required. The relative resource names of the RecaptchaV3Configs to retrieve, in the format:
+                    /// ```
+                    /// projects/{project_number}/apps/{app_id}/recaptchaV3Config
+                    /// ```
+                    /// A maximum of 100 objects can be
                     /// retrieved in a batch.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("names", Google.Apis.Util.RequestParameterType.Query)]
@@ -1736,8 +1845,10 @@ namespace Google.Apis.Firebaseappcheck.v1
                 /// never populated in the response.
                 /// </summary>
                 /// <param name="name">
-                /// Required. The relative resource name of the RecaptchaV3Config, in the format: ```
-                /// projects/{project_number}/apps/{app_id}/recaptchaV3Config ```
+                /// Required. The relative resource name of the RecaptchaV3Config, in the format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}/recaptchaV3Config
+                /// ```
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -1758,8 +1869,10 @@ namespace Google.Apis.Firebaseappcheck.v1
                     }
 
                     /// <summary>
-                    /// Required. The relative resource name of the RecaptchaV3Config, in the format: ```
-                    /// projects/{project_number}/apps/{app_id}/recaptchaV3Config ```
+                    /// Required. The relative resource name of the RecaptchaV3Config, in the format:
+                    /// ```
+                    /// projects/{project_number}/apps/{app_id}/recaptchaV3Config
+                    /// ```
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1795,8 +1908,10 @@ namespace Google.Apis.Firebaseappcheck.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. The relative resource name of the reCAPTCHA v3 configuration object, in the format: ```
-                /// projects/{project_number}/apps/{app_id}/recaptchaV3Config ```
+                /// Required. The relative resource name of the reCAPTCHA v3 configuration object, in the format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}/recaptchaV3Config
+                /// ```
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1RecaptchaV3Config body, string name)
                 {
@@ -1820,7 +1935,9 @@ namespace Google.Apis.Firebaseappcheck.v1
 
                     /// <summary>
                     /// Required. The relative resource name of the reCAPTCHA v3 configuration object, in the format:
-                    /// ``` projects/{project_number}/apps/{app_id}/recaptchaV3Config ```
+                    /// ```
+                    /// projects/{project_number}/apps/{app_id}/recaptchaV3Config
+                    /// ```
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1890,8 +2007,11 @@ namespace Google.Apis.Firebaseappcheck.v1
 
                 /// <summary>Atomically gets the SafetyNetConfigs for the specified list of apps.</summary>
                 /// <param name="parent">
-                /// Required. The parent project name shared by all SafetyNetConfigs being retrieved, in the format ```
-                /// projects/{project_number} ``` The parent collection in the `name` field of any resource being
+                /// Required. The parent project name shared by all SafetyNetConfigs being retrieved, in the format
+                /// ```
+                /// projects/{project_number}
+                /// ```
+                /// The parent collection in the `name` field of any resource being
                 /// retrieved must match this field, or the entire batch fails.
                 /// </param>
                 public virtual BatchGetRequest BatchGet(string parent)
@@ -1911,15 +2031,21 @@ namespace Google.Apis.Firebaseappcheck.v1
 
                     /// <summary>
                     /// Required. The parent project name shared by all SafetyNetConfigs being retrieved, in the format
-                    /// ``` projects/{project_number} ``` The parent collection in the `name` field of any resource
+                    /// ```
+                    /// projects/{project_number}
+                    /// ```
+                    /// The parent collection in the `name` field of any resource
                     /// being retrieved must match this field, or the entire batch fails.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
                     /// <summary>
-                    /// Required. The relative resource names of the SafetyNetConfigs to retrieve, in the format ```
-                    /// projects/{project_number}/apps/{app_id}/safetyNetConfig ``` A maximum of 100 objects can be
+                    /// Required. The relative resource names of the SafetyNetConfigs to retrieve, in the format
+                    /// ```
+                    /// projects/{project_number}/apps/{app_id}/safetyNetConfig
+                    /// ```
+                    /// A maximum of 100 objects can be
                     /// retrieved in a batch.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("names", Google.Apis.Util.RequestParameterType.Query)]
@@ -1959,8 +2085,10 @@ namespace Google.Apis.Firebaseappcheck.v1
 
                 /// <summary>Gets the SafetyNetConfig for the specified app.</summary>
                 /// <param name="name">
-                /// Required. The relative resource name of the SafetyNetConfig, in the format: ```
-                /// projects/{project_number}/apps/{app_id}/safetyNetConfig ```
+                /// Required. The relative resource name of the SafetyNetConfig, in the format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}/safetyNetConfig
+                /// ```
                 /// </param>
                 public virtual GetRequest Get(string name)
                 {
@@ -1978,8 +2106,10 @@ namespace Google.Apis.Firebaseappcheck.v1
                     }
 
                     /// <summary>
-                    /// Required. The relative resource name of the SafetyNetConfig, in the format: ```
-                    /// projects/{project_number}/apps/{app_id}/safetyNetConfig ```
+                    /// Required. The relative resource name of the SafetyNetConfig, in the format:
+                    /// ```
+                    /// projects/{project_number}/apps/{app_id}/safetyNetConfig
+                    /// ```
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2014,8 +2144,10 @@ namespace Google.Apis.Firebaseappcheck.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Required. The relative resource name of the SafetyNet configuration object, in the format: ```
-                /// projects/{project_number}/apps/{app_id}/safetyNetConfig ```
+                /// Required. The relative resource name of the SafetyNet configuration object, in the format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}/safetyNetConfig
+                /// ```
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1SafetyNetConfig body, string name)
                 {
@@ -2037,8 +2169,10 @@ namespace Google.Apis.Firebaseappcheck.v1
                     }
 
                     /// <summary>
-                    /// Required. The relative resource name of the SafetyNet configuration object, in the format: ```
-                    /// projects/{project_number}/apps/{app_id}/safetyNetConfig ```
+                    /// Required. The relative resource name of the SafetyNet configuration object, in the format:
+                    /// ```
+                    /// projects/{project_number}/apps/{app_id}/safetyNetConfig
+                    /// ```
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2095,8 +2229,11 @@ namespace Google.Apis.Firebaseappcheck.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="app">
-            /// Required. The relative resource name of the iOS app, in the format: ```
-            /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced
+            /// Required. The relative resource name of the iOS app, in the format:
+            /// ```
+            /// projects/{project_number}/apps/{app_id}
+            /// ```
+            /// If necessary, the `project_number` element can be replaced
             /// with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP
             /// 2510](https://google.aip.dev/cloud/2510) standard.
             /// </param>
@@ -2120,8 +2257,11 @@ namespace Google.Apis.Firebaseappcheck.v1
                 }
 
                 /// <summary>
-                /// Required. The relative resource name of the iOS app, in the format: ```
-                /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be
+                /// Required. The relative resource name of the iOS app, in the format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}
+                /// ```
+                /// If necessary, the `project_number` element can be
                 /// replaced with the project ID of the Firebase project. Learn more about using project identifiers in
                 /// Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard.
                 /// </summary>
@@ -2166,8 +2306,11 @@ namespace Google.Apis.Firebaseappcheck.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="app">
-            /// Required. The relative resource name of the iOS app, in the format: ```
-            /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced
+            /// Required. The relative resource name of the iOS app, in the format:
+            /// ```
+            /// projects/{project_number}/apps/{app_id}
+            /// ```
+            /// If necessary, the `project_number` element can be replaced
             /// with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP
             /// 2510](https://google.aip.dev/cloud/2510) standard.
             /// </param>
@@ -2193,8 +2336,11 @@ namespace Google.Apis.Firebaseappcheck.v1
                 }
 
                 /// <summary>
-                /// Required. The relative resource name of the iOS app, in the format: ```
-                /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be
+                /// Required. The relative resource name of the iOS app, in the format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}
+                /// ```
+                /// If necessary, the `project_number` element can be
                 /// replaced with the project ID of the Firebase project. Learn more about using project identifiers in
                 /// Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard.
                 /// </summary>
@@ -2237,8 +2383,11 @@ namespace Google.Apis.Firebaseappcheck.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="app">
-            /// Required. The relative resource name of the app, in the format: ```
-            /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced
+            /// Required. The relative resource name of the app, in the format:
+            /// ```
+            /// projects/{project_number}/apps/{app_id}
+            /// ```
+            /// If necessary, the `project_number` element can be replaced
             /// with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP
             /// 2510](https://google.aip.dev/cloud/2510) standard.
             /// </param>
@@ -2262,8 +2411,11 @@ namespace Google.Apis.Firebaseappcheck.v1
                 }
 
                 /// <summary>
-                /// Required. The relative resource name of the app, in the format: ```
-                /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be
+                /// Required. The relative resource name of the app, in the format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}
+                /// ```
+                /// If necessary, the `project_number` element can be
                 /// replaced with the project ID of the Firebase project. Learn more about using project identifiers in
                 /// Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard.
                 /// </summary>
@@ -2307,8 +2459,11 @@ namespace Google.Apis.Firebaseappcheck.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="app">
-            /// Required. The relative resource name of the app, in the format: ```
-            /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced
+            /// Required. The relative resource name of the app, in the format:
+            /// ```
+            /// projects/{project_number}/apps/{app_id}
+            /// ```
+            /// If necessary, the `project_number` element can be replaced
             /// with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP
             /// 2510](https://google.aip.dev/cloud/2510) standard.
             /// </param>
@@ -2333,8 +2488,11 @@ namespace Google.Apis.Firebaseappcheck.v1
                 }
 
                 /// <summary>
-                /// Required. The relative resource name of the app, in the format: ```
-                /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be
+                /// Required. The relative resource name of the app, in the format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}
+                /// ```
+                /// If necessary, the `project_number` element can be
                 /// replaced with the project ID of the Firebase project. Learn more about using project identifiers in
                 /// Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard.
                 /// </summary>
@@ -2377,8 +2535,11 @@ namespace Google.Apis.Firebaseappcheck.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="app">
-            /// Required. The relative resource name of the iOS app, in the format: ```
-            /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced
+            /// Required. The relative resource name of the iOS app, in the format:
+            /// ```
+            /// projects/{project_number}/apps/{app_id}
+            /// ```
+            /// If necessary, the `project_number` element can be replaced
             /// with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP
             /// 2510](https://google.aip.dev/cloud/2510) standard.
             /// </param>
@@ -2402,8 +2563,11 @@ namespace Google.Apis.Firebaseappcheck.v1
                 }
 
                 /// <summary>
-                /// Required. The relative resource name of the iOS app, in the format: ```
-                /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be
+                /// Required. The relative resource name of the iOS app, in the format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}
+                /// ```
+                /// If necessary, the `project_number` element can be
                 /// replaced with the project ID of the Firebase project. Learn more about using project identifiers in
                 /// Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard.
                 /// </summary>
@@ -2447,8 +2611,11 @@ namespace Google.Apis.Firebaseappcheck.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="app">
-            /// Required. The relative resource name of the Android app, in the format: ```
-            /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced
+            /// Required. The relative resource name of the Android app, in the format:
+            /// ```
+            /// projects/{project_number}/apps/{app_id}
+            /// ```
+            /// If necessary, the `project_number` element can be replaced
             /// with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP
             /// 2510](https://google.aip.dev/cloud/2510) standard.
             /// </param>
@@ -2473,8 +2640,11 @@ namespace Google.Apis.Firebaseappcheck.v1
                 }
 
                 /// <summary>
-                /// Required. The relative resource name of the Android app, in the format: ```
-                /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be
+                /// Required. The relative resource name of the Android app, in the format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}
+                /// ```
+                /// If necessary, the `project_number` element can be
                 /// replaced with the project ID of the Firebase project. Learn more about using project identifiers in
                 /// Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard.
                 /// </summary>
@@ -2518,8 +2688,11 @@ namespace Google.Apis.Firebaseappcheck.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="app">
-            /// Required. The relative resource name of the web app, in the format: ```
-            /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced
+            /// Required. The relative resource name of the web app, in the format:
+            /// ```
+            /// projects/{project_number}/apps/{app_id}
+            /// ```
+            /// If necessary, the `project_number` element can be replaced
             /// with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP
             /// 2510](https://google.aip.dev/cloud/2510) standard.
             /// </param>
@@ -2544,8 +2717,11 @@ namespace Google.Apis.Firebaseappcheck.v1
                 }
 
                 /// <summary>
-                /// Required. The relative resource name of the web app, in the format: ```
-                /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be
+                /// Required. The relative resource name of the web app, in the format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}
+                /// ```
+                /// If necessary, the `project_number` element can be
                 /// replaced with the project ID of the Firebase project. Learn more about using project identifiers in
                 /// Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard.
                 /// </summary>
@@ -2588,8 +2764,11 @@ namespace Google.Apis.Firebaseappcheck.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="app">
-            /// Required. The relative resource name of the web app, in the format: ```
-            /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced
+            /// Required. The relative resource name of the web app, in the format:
+            /// ```
+            /// projects/{project_number}/apps/{app_id}
+            /// ```
+            /// If necessary, the `project_number` element can be replaced
             /// with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP
             /// 2510](https://google.aip.dev/cloud/2510) standard.
             /// </param>
@@ -2613,8 +2792,11 @@ namespace Google.Apis.Firebaseappcheck.v1
                 }
 
                 /// <summary>
-                /// Required. The relative resource name of the web app, in the format: ```
-                /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be
+                /// Required. The relative resource name of the web app, in the format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}
+                /// ```
+                /// If necessary, the `project_number` element can be
                 /// replaced with the project ID of the Firebase project. Learn more about using project identifiers in
                 /// Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard.
                 /// </summary>
@@ -2658,8 +2840,11 @@ namespace Google.Apis.Firebaseappcheck.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="app">
-            /// Required. The relative resource name of the Android app, in the format: ```
-            /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced
+            /// Required. The relative resource name of the Android app, in the format:
+            /// ```
+            /// projects/{project_number}/apps/{app_id}
+            /// ```
+            /// If necessary, the `project_number` element can be replaced
             /// with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP
             /// 2510](https://google.aip.dev/cloud/2510) standard.
             /// </param>
@@ -2684,8 +2869,11 @@ namespace Google.Apis.Firebaseappcheck.v1
                 }
 
                 /// <summary>
-                /// Required. The relative resource name of the Android app, in the format: ```
-                /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be
+                /// Required. The relative resource name of the Android app, in the format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}
+                /// ```
+                /// If necessary, the `project_number` element can be
                 /// replaced with the project ID of the Firebase project. Learn more about using project identifiers in
                 /// Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard.
                 /// </summary>
@@ -2729,8 +2917,11 @@ namespace Google.Apis.Firebaseappcheck.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="app">
-            /// Required. The relative resource name of the iOS app, in the format: ```
-            /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced
+            /// Required. The relative resource name of the iOS app, in the format:
+            /// ```
+            /// projects/{project_number}/apps/{app_id}
+            /// ```
+            /// If necessary, the `project_number` element can be replaced
             /// with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP
             /// 2510](https://google.aip.dev/cloud/2510) standard.
             /// </param>
@@ -2755,8 +2946,11 @@ namespace Google.Apis.Firebaseappcheck.v1
                 }
 
                 /// <summary>
-                /// Required. The relative resource name of the iOS app, in the format: ```
-                /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be
+                /// Required. The relative resource name of the iOS app, in the format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}
+                /// ```
+                /// If necessary, the `project_number` element can be
                 /// replaced with the project ID of the Firebase project. Learn more about using project identifiers in
                 /// Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard.
                 /// </summary>
@@ -2801,8 +2995,11 @@ namespace Google.Apis.Firebaseappcheck.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="app">
-            /// Required. The relative resource name of the app, in the format: ```
-            /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced
+            /// Required. The relative resource name of the app, in the format:
+            /// ```
+            /// projects/{project_number}/apps/{app_id}
+            /// ```
+            /// If necessary, the `project_number` element can be replaced
             /// with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP
             /// 2510](https://google.aip.dev/cloud/2510) standard.
             /// </param>
@@ -2828,8 +3025,11 @@ namespace Google.Apis.Firebaseappcheck.v1
                 }
 
                 /// <summary>
-                /// Required. The relative resource name of the app, in the format: ```
-                /// projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be
+                /// Required. The relative resource name of the app, in the format:
+                /// ```
+                /// projects/{project_number}/apps/{app_id}
+                /// ```
+                /// If necessary, the `project_number` element can be
                 /// replaced with the project ID of the Firebase project. Learn more about using project identifiers in
                 /// Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard.
                 /// </summary>
@@ -2887,8 +3087,11 @@ namespace Google.Apis.Firebaseappcheck.v1
             /// <summary>Atomically updates the specified Service configurations.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The parent project name shared by all Service configurations being updated, in the format ```
-            /// projects/{project_number} ``` The parent collection in the `name` field of any resource being updated
+            /// Required. The parent project name shared by all Service configurations being updated, in the format
+            /// ```
+            /// projects/{project_number}
+            /// ```
+            /// The parent collection in the `name` field of any resource being updated
             /// must match this field, or the entire batch fails.
             /// </param>
             public virtual BatchUpdateRequest BatchUpdate(Google.Apis.Firebaseappcheck.v1.Data.GoogleFirebaseAppcheckV1BatchUpdateServicesRequest body, string parent)
@@ -2909,7 +3112,10 @@ namespace Google.Apis.Firebaseappcheck.v1
 
                 /// <summary>
                 /// Required. The parent project name shared by all Service configurations being updated, in the format
-                /// ``` projects/{project_number} ``` The parent collection in the `name` field of any resource being
+                /// ```
+                /// projects/{project_number}
+                /// ```
+                /// The parent collection in the `name` field of any resource being
                 /// updated must match this field, or the entire batch fails.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -2947,8 +3153,11 @@ namespace Google.Apis.Firebaseappcheck.v1
 
             /// <summary>Gets the Service configuration for the specified service name.</summary>
             /// <param name="name">
-            /// Required. The relative resource name of the Service to retrieve, in the format: ```
-            /// projects/{project_number}/services/{service_id} ``` Note that the `service_id` element must be a
+            /// Required. The relative resource name of the Service to retrieve, in the format:
+            /// ```
+            /// projects/{project_number}/services/{service_id}
+            /// ```
+            /// Note that the `service_id` element must be a
             /// supported service ID. Currently, the following service IDs are supported: *
             /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com`
             /// (Firebase Realtime Database) * `firestore.googleapis.com` (Cloud Firestore)
@@ -2969,8 +3178,11 @@ namespace Google.Apis.Firebaseappcheck.v1
                 }
 
                 /// <summary>
-                /// Required. The relative resource name of the Service to retrieve, in the format: ```
-                /// projects/{project_number}/services/{service_id} ``` Note that the `service_id` element must be a
+                /// Required. The relative resource name of the Service to retrieve, in the format:
+                /// ```
+                /// projects/{project_number}/services/{service_id}
+                /// ```
+                /// Note that the `service_id` element must be a
                 /// supported service ID. Currently, the following service IDs are supported: *
                 /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com`
                 /// (Firebase Realtime Database) * `firestore.googleapis.com` (Cloud Firestore)
@@ -3008,7 +3220,10 @@ namespace Google.Apis.Firebaseappcheck.v1
             /// </summary>
             /// <param name="parent">
             /// Required. The relative resource name of the parent project for which to list each associated Service, in
-            /// the format: ``` projects/{project_number} ```
+            /// the format:
+            /// ```
+            /// projects/{project_number}
+            /// ```
             /// </param>
             public virtual ListRequest List(string parent)
             {
@@ -3030,7 +3245,10 @@ namespace Google.Apis.Firebaseappcheck.v1
 
                 /// <summary>
                 /// Required. The relative resource name of the parent project for which to list each associated
-                /// Service, in the format: ``` projects/{project_number} ```
+                /// Service, in the format:
+                /// ```
+                /// projects/{project_number}
+                /// ```
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -3095,8 +3313,11 @@ namespace Google.Apis.Firebaseappcheck.v1
             /// <summary>Updates the specified Service configuration.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// Required. The relative resource name of the service configuration object, in the format: ```
-            /// projects/{project_number}/services/{service_id} ``` Note that the `service_id` element must be a
+            /// Required. The relative resource name of the service configuration object, in the format:
+            /// ```
+            /// projects/{project_number}/services/{service_id}
+            /// ```
+            /// Note that the `service_id` element must be a
             /// supported service ID. Currently, the following service IDs are supported: *
             /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com`
             /// (Firebase Realtime Database) * `firestore.googleapis.com` (Cloud Firestore)
@@ -3118,8 +3339,11 @@ namespace Google.Apis.Firebaseappcheck.v1
                 }
 
                 /// <summary>
-                /// Required. The relative resource name of the service configuration object, in the format: ```
-                /// projects/{project_number}/services/{service_id} ``` Note that the `service_id` element must be a
+                /// Required. The relative resource name of the service configuration object, in the format:
+                /// ```
+                /// projects/{project_number}/services/{service_id}
+                /// ```
+                /// Note that the `service_id` element must be a
                 /// supported service ID. Currently, the following service IDs are supported: *
                 /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com`
                 /// (Firebase Realtime Database) * `firestore.googleapis.com` (Cloud Firestore)
@@ -3186,8 +3410,10 @@ namespace Google.Apis.Firebaseappcheck.v1.Data
     public class GoogleFirebaseAppcheckV1AppAttestConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The relative resource name of the App Attest configuration object, in the format: ```
-        /// projects/{project_number}/apps/{app_id}/appAttestConfig ```
+        /// Required. The relative resource name of the App Attest configuration object, in the format:
+        /// ```
+        /// projects/{project_number}/apps/{app_id}/appAttestConfig
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3340,8 +3566,10 @@ namespace Google.Apis.Firebaseappcheck.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Required. The relative resource name of the debug token, in the format: ```
-        /// projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id} ```
+        /// Required. The relative resource name of the debug token, in the format:
+        /// ```
+        /// projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id}
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3376,8 +3604,10 @@ namespace Google.Apis.Firebaseappcheck.v1.Data
         public virtual string KeyId { get; set; }
 
         /// <summary>
-        /// Required. The relative resource name of the DeviceCheck configuration object, in the format: ```
-        /// projects/{project_number}/apps/{app_id}/deviceCheckConfig ```
+        /// Required. The relative resource name of the DeviceCheck configuration object, in the format:
+        /// ```
+        /// projects/{project_number}/apps/{app_id}/deviceCheckConfig
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3728,8 +3958,10 @@ namespace Google.Apis.Firebaseappcheck.v1.Data
     public class GoogleFirebaseAppcheckV1PlayIntegrityConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The relative resource name of the Play Integrity configuration object, in the format: ```
-        /// projects/{project_number}/apps/{app_id}/playIntegrityConfig ```
+        /// Required. The relative resource name of the Play Integrity configuration object, in the format:
+        /// ```
+        /// projects/{project_number}/apps/{app_id}/playIntegrityConfig
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3804,8 +4036,10 @@ namespace Google.Apis.Firebaseappcheck.v1.Data
     public class GoogleFirebaseAppcheckV1RecaptchaEnterpriseConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The relative resource name of the reCAPTCHA Enterprise configuration object, in the format: ```
-        /// projects/{project_number}/apps/{app_id}/recaptchaEnterpriseConfig ```
+        /// Required. The relative resource name of the reCAPTCHA Enterprise configuration object, in the format:
+        /// ```
+        /// projects/{project_number}/apps/{app_id}/recaptchaEnterpriseConfig
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3840,8 +4074,10 @@ namespace Google.Apis.Firebaseappcheck.v1.Data
     public class GoogleFirebaseAppcheckV1RecaptchaV3Config : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The relative resource name of the reCAPTCHA v3 configuration object, in the format: ```
-        /// projects/{project_number}/apps/{app_id}/recaptchaV3Config ```
+        /// Required. The relative resource name of the reCAPTCHA v3 configuration object, in the format:
+        /// ```
+        /// projects/{project_number}/apps/{app_id}/recaptchaV3Config
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3881,8 +4117,10 @@ namespace Google.Apis.Firebaseappcheck.v1.Data
     public class GoogleFirebaseAppcheckV1SafetyNetConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The relative resource name of the SafetyNet configuration object, in the format: ```
-        /// projects/{project_number}/apps/{app_id}/safetyNetConfig ```
+        /// Required. The relative resource name of the SafetyNet configuration object, in the format:
+        /// ```
+        /// projects/{project_number}/apps/{app_id}/safetyNetConfig
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3906,8 +4144,11 @@ namespace Google.Apis.Firebaseappcheck.v1.Data
         public virtual string EnforcementMode { get; set; }
 
         /// <summary>
-        /// Required. The relative resource name of the service configuration object, in the format: ```
-        /// projects/{project_number}/services/{service_id} ``` Note that the `service_id` element must be a supported
+        /// Required. The relative resource name of the service configuration object, in the format:
+        /// ```
+        /// projects/{project_number}/services/{service_id}
+        /// ```
+        /// Note that the `service_id` element must be a supported
         /// service ID. Currently, the following service IDs are supported: * `firebasestorage.googleapis.com` (Cloud
         /// Storage for Firebase) * `firebasedatabase.googleapis.com` (Firebase Realtime Database) *
         /// `firestore.googleapis.com` (Cloud Firestore)
@@ -3927,7 +4168,11 @@ namespace Google.Apis.Firebaseappcheck.v1.Data
     {
         /// <summary>
         /// Required. The Service to update. The Service's `name` field is used to identify the Service to be updated,
-        /// in the format: ``` projects/{project_number}/services/{service_id} ``` Note that the `service_id` element
+        /// in the format:
+        /// ```
+        /// projects/{project_number}/services/{service_id}
+        /// ```
+        /// Note that the `service_id` element
         /// must be a supported service ID. Currently, the following service IDs are supported: *
         /// `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com` (Firebase
         /// Realtime Database) * `firestore.googleapis.com` (Cloud Firestore)

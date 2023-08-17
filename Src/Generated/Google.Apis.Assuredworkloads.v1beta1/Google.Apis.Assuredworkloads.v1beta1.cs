@@ -35,7 +35,6 @@ namespace Google.Apis.Assuredworkloads.v1beta1
         public AssuredworkloadsService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Organizations = new OrganizationsResource(this);
-            Projects = new ProjectsResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -78,9 +77,6 @@ namespace Google.Apis.Assuredworkloads.v1beta1
 
         /// <summary>Gets the Organizations resource.</summary>
         public virtual OrganizationsResource Organizations { get; }
-
-        /// <summary>Gets the Projects resource.</summary>
-        public virtual ProjectsResource Projects { get; }
     }
 
     /// <summary>A base abstract class for Assuredworkloads requests.</summary>
@@ -729,6 +725,145 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     }
                 }
 
+                /// <summary>
+                /// Analyzes a hypothetical move of a source resource to a target(destination) folder-based workload to
+                /// surface compliance risks.
+                /// </summary>
+                /// <param name="target">
+                /// Required. The resource ID of the folder-based destination workload. This workload is where the
+                /// source resource will hypothetically be moved to. Specify the workload's relative resource name,
+                /// formatted as: "organizations/{ORGANIZATION_ID}/locations/{LOCATION_ID}/workloads/{WORKLOAD_ID}" For
+                /// example: "organizations/123/locations/us-east1/workloads/assured-workload-2"
+                /// </param>
+                public virtual AnalyzeWorkloadMoveRequest AnalyzeWorkloadMove(string target)
+                {
+                    return new AnalyzeWorkloadMoveRequest(service, target);
+                }
+
+                /// <summary>
+                /// Analyzes a hypothetical move of a source resource to a target(destination) folder-based workload to
+                /// surface compliance risks.
+                /// </summary>
+                public class AnalyzeWorkloadMoveRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1AnalyzeWorkloadMoveResponse>
+                {
+                    /// <summary>Constructs a new AnalyzeWorkloadMove request.</summary>
+                    public AnalyzeWorkloadMoveRequest(Google.Apis.Services.IClientService service, string target) : base(service)
+                    {
+                        Target = target;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource ID of the folder-based destination workload. This workload is where the
+                    /// source resource will hypothetically be moved to. Specify the workload's relative resource name,
+                    /// formatted as: "organizations/{ORGANIZATION_ID}/locations/{LOCATION_ID}/workloads/{WORKLOAD_ID}"
+                    /// For example: "organizations/123/locations/us-east1/workloads/assured-workload-2"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("target", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Target { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Indicates if all child assets of the source resource should also be analyzed in
+                    /// addition to the source.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("analyzeChildAssets", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> AnalyzeChildAssets { get; set; }
+
+                    /// <summary>
+                    /// Optional. Page size. If a value is not specified, the default value of 10 is used.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The page token from the previous response. It needs to be passed in the second and
+                    /// following requests.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>
+                    /// The source type is a project. Specify the project's relative resource name, formatted as either
+                    /// a project number or a project ID: "projects/{PROJECT_NUMBER}" or "projects/{PROJECT_ID}" For
+                    /// example: "projects/951040570662" when specifying a project number, or "projects/my-project-123"
+                    /// when specifying a project ID.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Project { get; set; }
+
+                    /// <summary>
+                    /// The source type is a project-based workload. Specify the workloads's relative resource name,
+                    /// formatted as: "organizations/{ORGANIZATION_ID}/locations/{LOCATION_ID}/workloads/{WORKLOAD_ID}"
+                    /// For example: "organizations/123/locations/us-east1/workloads/assured-workload-1" This option is
+                    /// now deprecated.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Source { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "analyzeWorkloadMove";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+target}:analyzeWorkloadMove";
+
+                    /// <summary>Initializes AnalyzeWorkloadMove parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("target", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "target",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/workloads/[^/]+$",
+                        });
+                        RequestParameters.Add("analyzeChildAssets", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "analyzeChildAssets",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "project",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "source",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Creates Assured Workload.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -1229,226 +1364,6 @@ namespace Google.Apis.Assuredworkloads.v1beta1
             }
         }
     }
-
-    /// <summary>The "projects" collection of methods.</summary>
-    public class ProjectsResource
-    {
-        private const string Resource = "projects";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public ProjectsResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-            Organizations = new OrganizationsResource(service);
-        }
-
-        /// <summary>Gets the Organizations resource.</summary>
-        public virtual OrganizationsResource Organizations { get; }
-
-        /// <summary>The "organizations" collection of methods.</summary>
-        public class OrganizationsResource
-        {
-            private const string Resource = "organizations";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public OrganizationsResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-                Locations = new LocationsResource(service);
-            }
-
-            /// <summary>Gets the Locations resource.</summary>
-            public virtual LocationsResource Locations { get; }
-
-            /// <summary>The "locations" collection of methods.</summary>
-            public class LocationsResource
-            {
-                private const string Resource = "locations";
-
-                /// <summary>The service which this resource belongs to.</summary>
-                private readonly Google.Apis.Services.IClientService service;
-
-                /// <summary>Constructs a new resource.</summary>
-                public LocationsResource(Google.Apis.Services.IClientService service)
-                {
-                    this.service = service;
-                    Workloads = new WorkloadsResource(service);
-                }
-
-                /// <summary>Gets the Workloads resource.</summary>
-                public virtual WorkloadsResource Workloads { get; }
-
-                /// <summary>The "workloads" collection of methods.</summary>
-                public class WorkloadsResource
-                {
-                    private const string Resource = "workloads";
-
-                    /// <summary>The service which this resource belongs to.</summary>
-                    private readonly Google.Apis.Services.IClientService service;
-
-                    /// <summary>Constructs a new resource.</summary>
-                    public WorkloadsResource(Google.Apis.Services.IClientService service)
-                    {
-                        this.service = service;
-                    }
-
-                    /// <summary>
-                    /// Analyzes a hypothetical move of a source resource to a target(destination) folder-based workload
-                    /// to surface compliance risks.
-                    /// </summary>
-                    /// <param name="project">
-                    /// The source type is a project. Specify the project's relative resource name, formatted as either
-                    /// a project number or a project ID: "projects/{PROJECT_NUMBER}" or "projects/{PROJECT_ID}" For
-                    /// example: "projects/951040570662" when specifying a project number, or "projects/my-project-123"
-                    /// when specifying a project ID.
-                    /// </param>
-                    /// <param name="target">
-                    /// Required. The resource ID of the folder-based destination workload. This workload is where the
-                    /// source resource will hypothetically be moved to. Specify the workload's relative resource name,
-                    /// formatted as: "organizations/{ORGANIZATION_ID}/locations/{LOCATION_ID}/workloads/{WORKLOAD_ID}"
-                    /// For example: "organizations/123/locations/us-east1/workloads/assured-workload-2"
-                    /// </param>
-                    public virtual AnalyzeWorkloadMoveRequest AnalyzeWorkloadMove(string project, string target)
-                    {
-                        return new AnalyzeWorkloadMoveRequest(service, project, target);
-                    }
-
-                    /// <summary>
-                    /// Analyzes a hypothetical move of a source resource to a target(destination) folder-based workload
-                    /// to surface compliance risks.
-                    /// </summary>
-                    public class AnalyzeWorkloadMoveRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1AnalyzeWorkloadMoveResponse>
-                    {
-                        /// <summary>Constructs a new AnalyzeWorkloadMove request.</summary>
-                        public AnalyzeWorkloadMoveRequest(Google.Apis.Services.IClientService service, string project, string target) : base(service)
-                        {
-                            Project = project;
-                            Target = target;
-                            InitParameters();
-                        }
-
-                        /// <summary>
-                        /// The source type is a project. Specify the project's relative resource name, formatted as
-                        /// either a project number or a project ID: "projects/{PROJECT_NUMBER}" or
-                        /// "projects/{PROJECT_ID}" For example: "projects/951040570662" when specifying a project
-                        /// number, or "projects/my-project-123" when specifying a project ID.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Project { get; private set; }
-
-                        /// <summary>
-                        /// Required. The resource ID of the folder-based destination workload. This workload is where
-                        /// the source resource will hypothetically be moved to. Specify the workload's relative
-                        /// resource name, formatted as:
-                        /// "organizations/{ORGANIZATION_ID}/locations/{LOCATION_ID}/workloads/{WORKLOAD_ID}" For
-                        /// example: "organizations/123/locations/us-east1/workloads/assured-workload-2"
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("target", Google.Apis.Util.RequestParameterType.Path)]
-                        public virtual string Target { get; private set; }
-
-                        /// <summary>
-                        /// Optional. Indicates if all child assets of the source resource should also be analyzed in
-                        /// addition to the source.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("analyzeChildAssets", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<bool> AnalyzeChildAssets { get; set; }
-
-                        /// <summary>
-                        /// Optional. Page size. If a value is not specified, the default value of 10 is used.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual System.Nullable<int> PageSize { get; set; }
-
-                        /// <summary>
-                        /// Optional. The page token from the previous response. It needs to be passed in the second and
-                        /// following requests.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string PageToken { get; set; }
-
-                        /// <summary>
-                        /// The source type is a project-based workload. Specify the workloads's relative resource name,
-                        /// formatted as:
-                        /// "organizations/{ORGANIZATION_ID}/locations/{LOCATION_ID}/workloads/{WORKLOAD_ID}" For
-                        /// example: "organizations/123/locations/us-east1/workloads/assured-workload-1" This option is
-                        /// now deprecated.
-                        /// </summary>
-                        [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
-                        public virtual string Source { get; set; }
-
-                        /// <summary>Gets the method name.</summary>
-                        public override string MethodName => "analyzeWorkloadMove";
-
-                        /// <summary>Gets the HTTP method.</summary>
-                        public override string HttpMethod => "GET";
-
-                        /// <summary>Gets the REST path.</summary>
-                        public override string RestPath => "v1beta1/{+project}/{+target}:analyzeWorkloadMove";
-
-                        /// <summary>Initializes AnalyzeWorkloadMove parameter list.</summary>
-                        protected override void InitParameters()
-                        {
-                            base.InitParameters();
-                            RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "project",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^projects/[^/]+$",
-                            });
-                            RequestParameters.Add("target", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "target",
-                                IsRequired = true,
-                                ParameterType = "path",
-                                DefaultValue = null,
-                                Pattern = @"^organizations/[^/]+/locations/[^/]+/workloads/[^/]+$",
-                            });
-                            RequestParameters.Add("analyzeChildAssets", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "analyzeChildAssets",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageSize",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "pageToken",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                            RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
-                            {
-                                Name = "source",
-                                IsRequired = false,
-                                ParameterType = "query",
-                                DefaultValue = null,
-                                Pattern = null,
-                            });
-                        }
-                    }
-                }
-            }
-        }
-    }
 }
 namespace Google.Apis.Assuredworkloads.v1beta1.Data
 {
@@ -1699,7 +1614,7 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Workload monitoring Violation. Next Id: 27</summary>
+    /// <summary>Workload monitoring Violation. Next Id: 28</summary>
     public class GoogleCloudAssuredworkloadsV1beta1Violation : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>A boolean that indicates if the violation is acknowledged</summary>

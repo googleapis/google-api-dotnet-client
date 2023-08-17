@@ -8161,8 +8161,11 @@ namespace Google.Apis.Iam.v1.Data
         /// the token audience does not match one of the configured values. Each audience may be at most 256 characters.
         /// A maximum of 10 audiences may be configured. If this list is empty, the OIDC token audience must be equal to
         /// the full canonical resource name of the WorkloadIdentityPoolProvider, with or without the HTTPS prefix. For
-        /// example: ``` //iam.googleapis.com/projects//locations//workloadIdentityPools//providers/
-        /// https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/ ```
+        /// example:
+        /// ```
+        /// //iam.googleapis.com/projects//locations//workloadIdentityPools//providers/
+        /// https://iam.googleapis.com/projects//locations//workloadIdentityPools//providers/
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedAudiences")]
         public virtual System.Collections.Generic.IList<string> AllowedAudiences { get; set; }
@@ -8315,17 +8318,25 @@ namespace Google.Apis.Iam.v1.Data
     /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
     /// constraints based on attributes of the request, the resource, or both. To learn which resources support
     /// conditions in their IAM policies, see the [IAM
-    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` {
+    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:**
+    /// ```
+    /// {
     /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
     /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML
-    /// example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
+    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
+    /// ```
+    /// **YAML
+    /// example:**
+    /// ```
+    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3
+    /// ```
+    /// For a description of IAM and its
     /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
@@ -9134,8 +9145,10 @@ namespace Google.Apis.Iam.v1.Data
         /// `google.profile_photo` and `google.display_name` are not supported. * `attribute`: The custom attributes
         /// mapped from the assertion in the `attribute_mappings`. The maximum length of the attribute condition
         /// expression is 4096 characters. If unspecified, all valid authentication credentials will be accepted. The
-        /// following example shows how to only allow credentials with a mapped `google.groups` value of `admins`: ```
-        /// "'admins' in google.groups" ```
+        /// following example shows how to only allow credentials with a mapped `google.groups` value of `admins`:
+        /// ```
+        /// "'admins' in google.groups"
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributeCondition")]
         public virtual string AttributeCondition { get; set; }
@@ -9168,8 +9181,11 @@ namespace Google.Apis.Iam.v1.Data
         /// credential issued by the provider. The maximum length of an attribute mapping expression is 2048 characters.
         /// When evaluated, the total size of all mapped attributes must not exceed 4KB. For OIDC providers, you must
         /// supply a custom mapping that includes the `google.subject` attribute. For example, the following maps the
-        /// `sub` claim of the incoming credential to the `subject` attribute on a Google token: ``` {"google.subject":
-        /// "assertion.sub"} ```
+        /// `sub` claim of the incoming credential to the `subject` attribute on a Google token:
+        /// ```
+        /// {"google.subject":
+        /// "assertion.sub"}
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributeMapping")]
         public virtual System.Collections.Generic.IDictionary<string, string> AttributeMapping { get; set; }
@@ -9409,7 +9425,10 @@ namespace Google.Apis.Iam.v1.Data
         /// `attribute`: The custom attributes mapped from the assertion in the `attribute_mappings`. The maximum length
         /// of the attribute condition expression is 4096 characters. If unspecified, all valid authentication
         /// credential are accepted. The following example shows how to only allow credentials with a mapped
-        /// `google.groups` value of `admins`: ``` "'admins' in google.groups" ```
+        /// `google.groups` value of `admins`:
+        /// ```
+        /// "'admins' in google.groups"
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributeCondition")]
         public virtual string AttributeCondition { get; set; }
@@ -9436,14 +9455,20 @@ namespace Google.Apis.Iam.v1.Data
         /// can use the `assertion` keyword in the expression to access a JSON representation of the authentication
         /// credential issued by the provider. The maximum length of an attribute mapping expression is 2048 characters.
         /// When evaluated, the total size of all mapped attributes must not exceed 8KB. For AWS providers, if no
-        /// attribute mapping is defined, the following default mapping applies: ``` { "google.subject":"assertion.arn",
+        /// attribute mapping is defined, the following default mapping applies:
+        /// ```
+        /// { "google.subject":"assertion.arn",
         /// "attribute.aws_role": "assertion.arn.contains('assumed-role')" " ?
         /// assertion.arn.extract('{account_arn}assumed-role/')" " + 'assumed-role/'" " +
-        /// assertion.arn.extract('assumed-role/{role_name}/')" " : assertion.arn", } ``` If any custom attribute
+        /// assertion.arn.extract('assumed-role/{role_name}/')" " : assertion.arn", }
+        /// ```
+        /// If any custom attribute
         /// mappings are defined, they must include a mapping to the `google.subject` attribute. For OIDC providers, you
         /// must supply a custom mapping, which must include the `google.subject` attribute. For example, the following
-        /// maps the `sub` claim of the incoming credential to the `subject` attribute on a Google token: ```
-        /// {"google.subject": "assertion.sub"} ```
+        /// maps the `sub` claim of the incoming credential to the `subject` attribute on a Google token:
+        /// ```
+        /// {"google.subject": "assertion.sub"}
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attributeMapping")]
         public virtual System.Collections.Generic.IDictionary<string, string> AttributeMapping { get; set; }

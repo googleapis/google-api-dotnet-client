@@ -9388,6 +9388,13 @@ namespace Google.Apis.Admin.Directory.directory_v1
                 InitParameters();
             }
 
+            /// <summary>
+            /// Optional. If set to `true`, the option selected for [handling unmanaged user
+            /// accounts](https://support.google.com/a/answer/11112794) will apply. Default: `false`
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("resolveConflictAccount", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> ResolveConflictAccount { get; set; }
+
             /// <summary>Gets or sets the body of this request.</summary>
             Google.Apis.Admin.Directory.directory_v1.Data.User Body { get; set; }
 
@@ -9407,6 +9414,14 @@ namespace Google.Apis.Admin.Directory.directory_v1
             protected override void InitParameters()
             {
                 base.InitParameters();
+                RequestParameters.Add("resolveConflictAccount", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "resolveConflictAccount",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
             }
         }
 

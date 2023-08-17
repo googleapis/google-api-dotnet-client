@@ -13731,8 +13731,12 @@ namespace Google.Apis.Aiplatform.v1
                         /// 10.0`. In case the field name contains special characters (such as colon), one can embed it
                         /// inside double quote. For example: `metadata."field:1".number_value = 10.0` * **Parent Child
                         /// filtering**: To filter Contexts based on parent-child relationship use the HAS operator as
-                        /// follows: ``` parent_contexts: "projects//locations//metadataStores//contexts/"
-                        /// child_contexts: "projects//locations//metadataStores//contexts/" ``` Each of the above
+                        /// follows:
+                        /// ```
+                        /// parent_contexts: "projects//locations//metadataStores//contexts/"
+                        /// child_contexts: "projects//locations//metadataStores//contexts/"
+                        /// ```
+                        /// Each of the above
                         /// supported filters can be combined together using logical operators (`AND` &amp;amp; `OR`).
                         /// Maximum nested expression depth allowed is 5. For example: `display_name = "test" AND
                         /// metadata.field1.bool_value = true`.
@@ -37603,8 +37607,12 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// Immutable. List of environment variables to set in the container. After the container starts running, code
         /// running in the container can read these environment variables. Additionally, the command and args fields can
         /// reference these variables. Later entries in this list can also reference earlier entries. For example, the
-        /// following example sets the variable `VAR_2` to have the value `foo bar`: ```json [ { "name": "VAR_1",
-        /// "value": "foo" }, { "name": "VAR_2", "value": "$(VAR_1) bar" } ] ``` If you switch the order of the
+        /// following example sets the variable `VAR_2` to have the value `foo bar`:
+        /// ```
+        /// json [ { "name": "VAR_1",
+        /// "value": "foo" }, { "name": "VAR_2", "value": "$(VAR_1) bar" } ]
+        /// ```
+        /// If you switch the order of the
         /// variables in the example, then the expansion does not occur. This field corresponds to the `env` field of
         /// the Kubernetes Containers [v1 core
         /// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
@@ -37650,8 +37658,12 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// Immutable. List of ports to expose from the container. Vertex AI sends any prediction requests that it
         /// receives to the first port on this list. Vertex AI also sends [liveness and health
         /// checks](https://cloud.google.com/vertex-ai/docs/predictions/custom-container-requirements#liveness) to this
-        /// port. If you do not specify this field, it defaults to following value: ```json [ { "containerPort": 8080 }
-        /// ] ``` Vertex AI does not use ports other than the first one listed. This field corresponds to the `ports`
+        /// port. If you do not specify this field, it defaults to following value:
+        /// ```
+        /// json [ { "containerPort": 8080 }
+        /// ]
+        /// ```
+        /// Vertex AI does not use ports other than the first one listed. This field corresponds to the `ports`
         /// field of the Kubernetes Containers [v1 core
         /// API](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#container-v1-core).
         /// </summary>
@@ -39503,6 +39515,12 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual GoogleCloudAiplatformV1PipelineJobRuntimeConfig RuntimeConfig { get; set; }
 
         /// <summary>
+        /// Output only. The schedule resource name. Only returned if the Pipeline is created by Schedule API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduleName")]
+        public virtual string ScheduleName { get; set; }
+
+        /// <summary>
         /// The service account that the pipeline workload runs as. If not specified, the Compute Engine default service
         /// account in the project will be used. See
         /// https://cloud.google.com/compute/docs/access/service-accounts#default_service_account Users starting the
@@ -40303,6 +40321,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Optional. Deploy the PublisherModel to Vertex Endpoint.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deploy")]
         public virtual GoogleCloudAiplatformV1PublisherModelCallToActionDeploy Deploy { get; set; }
+
+        /// <summary>Optional. Open evaluation pipeline of the PublisherModel.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("openEvaluationPipeline")]
+        public virtual GoogleCloudAiplatformV1PublisherModelCallToActionRegionalResourceReferences OpenEvaluationPipeline { get; set; }
 
         /// <summary>Optional. Open fine-tuning pipeline of the PublisherModel.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("openFineTuningPipeline")]
@@ -48399,18 +48421,26 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
     /// constraints based on attributes of the request, the resource, or both. To learn which resources support
     /// conditions in their IAM policies, see the [IAM
-    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings":
-    /// [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:**
+    /// ```
+    /// {
+    /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
     /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:**
+    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
+    /// ```
+    /// **YAML
+    /// example:**
+    /// ```
     /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features,
-    /// see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3
+    /// ```
+    /// For a description of IAM and its
+    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class GoogleIamV1Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -48526,8 +48556,8 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The normal response of the operation in case of success. If the original method returns no data on success,
-        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
         /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.

@@ -3944,7 +3944,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// sample log entry shows a `failed to evaluate consent policy` error that occurred during a
                     /// QueryAccessibleData call to consent store
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`.
-                    /// ```json jsonPayload: { @type:
+                    /// ```
+                    /// json jsonPayload: { @type:
                     /// "type.googleapis.com/google.cloud.healthcare.logging.QueryAccessibleDataLogEntry" error: { code:
                     /// 9 message: "failed to evaluate consent policy" } resourceName:
                     /// "projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}"
@@ -3954,7 +3955,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// producer: "healthcare.googleapis.com/QueryAccessibleData" } receiveTimestamp: "TIMESTAMP"
                     /// resource: { labels: { consent_store_id: "{consent_store_id}" dataset_id: "{dataset_id}"
                     /// location: "{location_id}" project_id: "{project_id}" } type: "healthcare_consent_store" }
-                    /// severity: "ERROR" timestamp: "TIMESTAMP" ```
+                    /// severity: "ERROR" timestamp: "TIMESTAMP"
+                    /// ```
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="consentStore">
@@ -3976,7 +3978,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// sample log entry shows a `failed to evaluate consent policy` error that occurred during a
                     /// QueryAccessibleData call to consent store
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`.
-                    /// ```json jsonPayload: { @type:
+                    /// ```
+                    /// json jsonPayload: { @type:
                     /// "type.googleapis.com/google.cloud.healthcare.logging.QueryAccessibleDataLogEntry" error: { code:
                     /// 9 message: "failed to evaluate consent policy" } resourceName:
                     /// "projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}"
@@ -3986,7 +3989,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                     /// producer: "healthcare.googleapis.com/QueryAccessibleData" } receiveTimestamp: "TIMESTAMP"
                     /// resource: { labels: { consent_store_id: "{consent_store_id}" dataset_id: "{dataset_id}"
                     /// location: "{location_id}" project_id: "{project_id}" } type: "healthcare_consent_store" }
-                    /// severity: "ERROR" timestamp: "TIMESTAMP" ```
+                    /// severity: "ERROR" timestamp: "TIMESTAMP"
+                    /// ```
                     /// </summary>
                     public class QueryAccessibleDataRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1beta1.Data.Operation>
                     {
@@ -14237,10 +14241,18 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>
         /// Optional. InfoType mapping for `eval_store`. Different resources can map to the same infoType. For example,
         /// `PERSON_NAME`, `PERSON`, `NAME`, and `HUMAN` are different. To map all of these into a single infoType (such
-        /// as `PERSON_NAME`), specify the following mapping: ``` info_type_mapping["PERSON"] = "PERSON_NAME"
-        /// info_type_mapping["NAME"] = "PERSON_NAME" info_type_mapping["HUMAN"] = "PERSON_NAME" ``` Unmentioned
-        /// infoTypes, such as `DATE`, are treated as identity mapping. For example: ``` info_type_mapping["DATE"] =
-        /// "DATE" ``` InfoTypes are case-insensitive.
+        /// as `PERSON_NAME`), specify the following mapping:
+        /// ```
+        /// info_type_mapping["PERSON"] = "PERSON_NAME"
+        /// info_type_mapping["NAME"] = "PERSON_NAME" info_type_mapping["HUMAN"] = "PERSON_NAME"
+        /// ```
+        /// Unmentioned
+        /// infoTypes, such as `DATE`, are treated as identity mapping. For example:
+        /// ```
+        /// info_type_mapping["DATE"] =
+        /// "DATE"
+        /// ```
+        /// InfoTypes are case-insensitive.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("evalInfoTypeMapping")]
         public virtual System.Collections.Generic.IDictionary<string, string> EvalInfoTypeMapping { get; set; }

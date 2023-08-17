@@ -20335,9 +20335,12 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This
         /// overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default
         /// trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject
-        /// alt name". For instance a certificate can be self-signed using the following command,  openssl x509 -req
+        /// alt name". For instance a certificate can be self-signed using the following command,
+        /// ```
+        /// openssl x509 -req
         /// -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile &amp;lt;(printf
-        /// "\nsubjectAltName='DNS:www.example.com'") 
+        /// "\nsubjectAltName='DNS:www.example.com'")
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedCaCerts")]
         public virtual System.Collections.Generic.IList<string> AllowedCaCerts { get; set; }
@@ -22599,9 +22602,12 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// Optional. Specifies a list of allowed custom CA certificates (in DER format) for HTTPS verification. This
         /// overrides the default SSL trust store. If this is empty or unspecified, Dialogflow will use Google's default
         /// trust store to verify certificates. N.B. Make sure the HTTPS server certificates are signed with "subject
-        /// alt name". For instance a certificate can be self-signed using the following command,  openssl x509 -req
+        /// alt name". For instance a certificate can be self-signed using the following command,
+        /// ```
+        /// openssl x509 -req
         /// -days 200 -in example.com.csr \ -signkey example.com.key \ -out example.com.crt \ -extfile &amp;lt;(printf
-        /// "\nsubjectAltName='DNS:www.example.com'") 
+        /// "\nsubjectAltName='DNS:www.example.com'")
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowedCaCerts")]
         public virtual System.Collections.Generic.IList<string> AllowedCaCerts { get; set; }
@@ -25929,9 +25935,11 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// Key-value filters on the metadata of documents returned by article suggestion. If specified, article
         /// suggestion only returns suggested documents that match all filters in their Document.metadata. Multiple
         /// values for a metadata key should be concatenated by comma. For example, filters to match all documents that
-        /// have 'US' or 'CA' in their market metadata values and 'agent' in their user metadata values will be 
+        /// have 'US' or 'CA' in their market metadata values and 'agent' in their user metadata values will be
+        /// ```
         /// documents_metadata_filters { key: "market" value: "US,CA" } documents_metadata_filters { key: "user" value:
-        /// "agent" } 
+        /// "agent" }
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentsMetadataFilters")]
         public virtual System.Collections.Generic.IDictionary<string, string> DocumentsMetadataFilters { get; set; }
@@ -26061,10 +26069,13 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
     /// barge-in phase and during which the API starts speech detection and may inform the client that an utterance has
     /// been detected. Note that no-speech event is not expected in this phase. The client provides this configuration
     /// in terms of the durations of those two phases. The durations are measured in terms of the audio length fromt the
-    /// the start of the input audio. The flow goes like below:  --&amp;gt; Time without speech detection | utterance
+    /// the start of the input audio. The flow goes like below:
+    /// ```
+    /// --&amp;gt; Time without speech detection | utterance
     /// only | utterance or no-speech event | | +-------------+ | +------------+ | +---------------+ ----------+ no
     /// barge-in +-|-+ barge-in +-|-+ normal period +----------- +-------------+ | +------------+ | +---------------+
-    ///  No-speech event is a response with END_OF_UTTERANCE without any transcript following up.
+    /// ```
+    /// No-speech event is a response with END_OF_UTTERANCE without any transcript following up.
     /// </summary>
     public class GoogleCloudDialogflowV2beta1BargeInConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -30054,8 +30065,11 @@ namespace Google.Apis.Dialogflow.v2beta1.Data
         /// article suggestion only returns suggested documents that match all filters in their Document.metadata.
         /// Multiple values for a metadata key should be concatenated by comma. For example, filters to match all
         /// documents that have 'US' or 'CA' in their market metadata values and 'agent' in their user metadata values
-        /// will be  documents_metadata_filters { key: "market" value: "US,CA" } documents_metadata_filters { key:
-        /// "user" value: "agent" } 
+        /// will be
+        /// ```
+        /// documents_metadata_filters { key: "market" value: "US,CA" } documents_metadata_filters { key:
+        /// "user" value: "agent" }
+        /// ```
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("documentsMetadataFilters")]
         public virtual System.Collections.Generic.IDictionary<string, string> DocumentsMetadataFilters { get; set; }

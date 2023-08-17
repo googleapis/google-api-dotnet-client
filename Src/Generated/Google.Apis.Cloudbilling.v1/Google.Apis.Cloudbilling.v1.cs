@@ -409,7 +409,7 @@ namespace Google.Apis.Cloudbilling.v1
         /// When creating a subaccount, the current authenticated user must have the `billing.accounts.update` IAM
         /// permission on the parent account, which is typically given to billing account
         /// [administrators](https://cloud.google.com/billing/docs/how-to/billing-access). This method will return an
-        /// error if the parent account has not been provisioned as a reseller account.
+        /// error if the parent account has not been provisioned for subaccounts.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         public virtual CreateRequest Create(Google.Apis.Cloudbilling.v1.Data.BillingAccount body)
@@ -426,7 +426,7 @@ namespace Google.Apis.Cloudbilling.v1
         /// When creating a subaccount, the current authenticated user must have the `billing.accounts.update` IAM
         /// permission on the parent account, which is typically given to billing account
         /// [administrators](https://cloud.google.com/billing/docs/how-to/billing-access). This method will return an
-        /// error if the parent account has not been provisioned as a reseller account.
+        /// error if the parent account has not been provisioned for subaccounts.
         /// </summary>
         public class CreateRequest : CloudbillingBaseServiceRequest<Google.Apis.Cloudbilling.v1.Data.BillingAccount>
         {
@@ -618,8 +618,8 @@ namespace Google.Apis.Cloudbilling.v1
             }
 
             /// <summary>
-            /// Options for how to filter the returned billing accounts. Currently this only supports filtering for
-            /// [subaccounts](https://cloud.google.com/billing/docs/concepts) under a single provided reseller billing
+            /// Options for how to filter the returned billing accounts. This only supports filtering for
+            /// [subaccounts](https://cloud.google.com/billing/docs/concepts) under a single provided parent billing
             /// account. (e.g. "master_billing_account=billingAccounts/012345-678901-ABCDEF"). Boolean algebra and other
             /// fields are not currently supported.
             /// </summary>
@@ -1635,17 +1635,25 @@ namespace Google.Apis.Cloudbilling.v1.Data
     /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
     /// constraints based on attributes of the request, the resource, or both. To learn which resources support
     /// conditions in their IAM policies, see the [IAM
-    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` {
+    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:**
+    /// ```
+    /// {
     /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
     /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML
-    /// example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
+    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
+    /// ```
+    /// **YAML
+    /// example:**
+    /// ```
+    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3
+    /// ```
+    /// For a description of IAM and its
     /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema

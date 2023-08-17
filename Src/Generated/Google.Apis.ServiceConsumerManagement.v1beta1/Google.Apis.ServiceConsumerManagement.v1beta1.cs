@@ -4045,6 +4045,10 @@ namespace Google.Apis.ServiceConsumerManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("producerOverride")]
         public virtual V1Beta1QuotaOverride ProducerOverride { get; set; }
 
+        /// <summary>Producer policy inherited from the closet ancestor of the current consumer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("producerQuotaPolicy")]
+        public virtual V1Beta1ProducerQuotaPolicy ProducerQuotaPolicy { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

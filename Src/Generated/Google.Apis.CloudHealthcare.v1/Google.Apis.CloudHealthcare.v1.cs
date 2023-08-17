@@ -2733,7 +2733,8 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// sample log entry shows a `failed to evaluate consent policy` error that occurred during a
                     /// QueryAccessibleData call to consent store
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`.
-                    /// ```json jsonPayload: { @type:
+                    /// ```
+                    /// json jsonPayload: { @type:
                     /// "type.googleapis.com/google.cloud.healthcare.logging.QueryAccessibleDataLogEntry" error: { code:
                     /// 9 message: "failed to evaluate consent policy" } resourceName:
                     /// "projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}"
@@ -2743,7 +2744,8 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// producer: "healthcare.googleapis.com/QueryAccessibleData" } receiveTimestamp: "TIMESTAMP"
                     /// resource: { labels: { consent_store_id: "{consent_store_id}" dataset_id: "{dataset_id}"
                     /// location: "{location_id}" project_id: "{project_id}" } type: "healthcare_consent_store" }
-                    /// severity: "ERROR" timestamp: "TIMESTAMP" ```
+                    /// severity: "ERROR" timestamp: "TIMESTAMP"
+                    /// ```
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="consentStore">
@@ -2765,7 +2767,8 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// sample log entry shows a `failed to evaluate consent policy` error that occurred during a
                     /// QueryAccessibleData call to consent store
                     /// `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`.
-                    /// ```json jsonPayload: { @type:
+                    /// ```
+                    /// json jsonPayload: { @type:
                     /// "type.googleapis.com/google.cloud.healthcare.logging.QueryAccessibleDataLogEntry" error: { code:
                     /// 9 message: "failed to evaluate consent policy" } resourceName:
                     /// "projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}"
@@ -2775,7 +2778,8 @@ namespace Google.Apis.CloudHealthcare.v1
                     /// producer: "healthcare.googleapis.com/QueryAccessibleData" } receiveTimestamp: "TIMESTAMP"
                     /// resource: { labels: { consent_store_id: "{consent_store_id}" dataset_id: "{dataset_id}"
                     /// location: "{location_id}" project_id: "{project_id}" } type: "healthcare_consent_store" }
-                    /// severity: "ERROR" timestamp: "TIMESTAMP" ```
+                    /// severity: "ERROR" timestamp: "TIMESTAMP"
+                    /// ```
                     /// </summary>
                     public class QueryAccessibleDataRequest : CloudHealthcareBaseServiceRequest<Google.Apis.CloudHealthcare.v1.Data.Operation>
                     {

@@ -730,9 +730,42 @@ namespace Google.Apis.FactCheckTools.v1alpha1.Data
     /// <summary>Information about the claim.</summary>
     public class GoogleFactcheckingFactchecktoolsV1alpha1Claim : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _claimDateRaw;
+
+        private object _claimDate;
+
         /// <summary>The date that the claim was made.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claimDate")]
-        public virtual object ClaimDate { get; set; }
+        public virtual string ClaimDateRaw
+        {
+            get => _claimDateRaw;
+            set
+            {
+                _claimDate = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _claimDateRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ClaimDateRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ClaimDateDateTimeOffset instead.")]
+        public virtual object ClaimDate
+        {
+            get => _claimDate;
+            set
+            {
+                _claimDateRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _claimDate = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ClaimDateRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ClaimDateDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ClaimDateRaw);
+            set => ClaimDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>One or more reviews of this claim (namely, a fact-checking article).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("claimReview")]
@@ -830,9 +863,42 @@ namespace Google.Apis.FactCheckTools.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("publisher")]
         public virtual GoogleFactcheckingFactchecktoolsV1alpha1Publisher Publisher { get; set; }
 
+        private string _reviewDateRaw;
+
+        private object _reviewDate;
+
         /// <summary>The date the claim was reviewed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reviewDate")]
-        public virtual object ReviewDate { get; set; }
+        public virtual string ReviewDateRaw
+        {
+            get => _reviewDateRaw;
+            set
+            {
+                _reviewDate = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _reviewDateRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ReviewDateRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReviewDateDateTimeOffset instead.")]
+        public virtual object ReviewDate
+        {
+            get => _reviewDate;
+            set
+            {
+                _reviewDateRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _reviewDate = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ReviewDateRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ReviewDateDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReviewDateRaw);
+            set => ReviewDateRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Textual rating. For instance, "Mostly false".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textualRating")]

@@ -971,10 +971,14 @@ namespace Google.Apis.CloudResourceManager.v3
             /// all accessible folders will be returned. Query expressions can be used to restrict results based upon
             /// displayName, state and parent, where the operators `=` (`:`) `NOT`, `AND` and `OR` can be used along
             /// with the suffix wildcard symbol `*`. The `displayName` field in a query expression should use escaped
-            /// quotes for values that include whitespace to prevent unexpected behavior. ``` | Field | Description |
+            /// quotes for values that include whitespace to prevent unexpected behavior.
+            /// ```
+            /// | Field | Description |
             /// |-------------------------|----------------------------------------| | displayName | Filters by
             /// displayName. | | parent | Filters by parent (for example: folders/123). | | state, lifecycleState |
-            /// Filters by state. | ``` Some example queries are: * Query `displayName=Test*` returns Folder resources
+            /// Filters by state. |
+            /// ```
+            /// Some example queries are: * Query `displayName=Test*` returns Folder resources
             /// whose display name starts with "Test". * Query `state=ACTIVE` returns Folder resources with `state` set
             /// to `ACTIVE`. * Query `parent=folders/123` returns Folder resources that have `folders/123` as a parent
             /// resource. * Query `parent=folders/123 AND state=ACTIVE` returns active Folder resources that have
@@ -1717,9 +1721,12 @@ namespace Google.Apis.CloudResourceManager.v3
 
             /// <summary>
             /// Optional. An optional query string used to filter the Organizations to return in the response. Query
-            /// rules are case-insensitive. ``` | Field | Description |
+            /// rules are case-insensitive.
+            /// ```
+            /// | Field | Description |
             /// |------------------|--------------------------------------------| | directoryCustomerId,
-            /// owner.directoryCustomerId | Filters by directory customer id. | | domain | Filters by domain. | ```
+            /// owner.directoryCustomerId | Filters by directory customer id. | | domain | Filters by domain. |
+            /// ```
             /// Organizations may be queried by `directoryCustomerId` or by `domain`, where the domain is a G Suite
             /// domain, for example: * Query `directorycustomerid:123456789` returns Organization resources with
             /// `owner.directory_customer_id` equal to `123456789`. * Query `domain:google.com` returns Organization
@@ -2439,20 +2446,28 @@ namespace Google.Apis.CloudResourceManager.v3
             /// <summary>
             /// Optional. A query string for searching for projects that the caller has `resourcemanager.projects.get`
             /// permission to. If multiple fields are included in the query, then it will return results that match any
-            /// of the fields. Some eligible fields are: ``` | Field | Description |
+            /// of the fields. Some eligible fields are:
+            /// ```
+            /// | Field | Description |
             /// |-------------------------|----------------------------------------------| | displayName, name | Filters
             /// by displayName. | | parent | Project's parent (for example: folders/123, organizations/*). Prefer parent
             /// field over parent.type and parent.id.| | parent.type | Parent's type: `folder` or `organization`. | |
             /// parent.id | Parent's id number (for example: 123) | | id, projectId | Filters by projectId. | | state,
             /// lifecycleState | Filters by state. | | labels | Filters by label name or value. | | labels.\ (where
-            /// *key* is the name of a label) | Filters by label name.| ``` Search expressions are case insensitive.
-            /// Some examples queries: ``` | Query | Description |
+            /// *key* is the name of a label) | Filters by label name.|
+            /// ```
+            /// Search expressions are case insensitive.
+            /// Some examples queries:
+            /// ```
+            /// | Query | Description |
             /// |------------------|-----------------------------------------------------| | name:how* | The project's
             /// name starts with "how". | | name:Howl | The project's name is `Howl` or `howl`. | | name:HOWL |
             /// Equivalent to above. | | NAME:howl | Equivalent to above. | | labels.color:* | The project has the label
             /// `color`. | | labels.color:red | The project's label `color` has the value `red`. | | labels.color:red
             /// labels.size:big | The project's label `color` has the value `red` or its label `size` has the value
-            /// `big`. | ``` If no query is specified, the call will return projects for which the user has the
+            /// `big`. |
+            /// ```
+            /// If no query is specified, the call will return projects for which the user has the
             /// `resourcemanager.projects.get` permission.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
@@ -5565,17 +5580,25 @@ namespace Google.Apis.CloudResourceManager.v3.Data
     /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
     /// constraints based on attributes of the request, the resource, or both. To learn which resources support
     /// conditions in their IAM policies, see the [IAM
-    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** ``` {
+    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:**
+    /// ```
+    /// {
     /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
     /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } ``` **YAML
-    /// example:** ``` bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
+    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
+    /// ```
+    /// **YAML
+    /// example:**
+    /// ```
+    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 ``` For a description of IAM and its
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3
+    /// ```
+    /// For a description of IAM and its
     /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema

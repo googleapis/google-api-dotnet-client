@@ -2439,19 +2439,89 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sectionType")]
         public virtual string SectionType { get; set; }
 
+        private string _vacationModeExpireTimeRaw;
+
+        private object _vacationModeExpireTime;
+
         /// <summary>
         /// The timestamp when the device will exit ‘vacation mode’. This value is present iff the device is in
         /// 'vacation mode'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vacationModeExpireTime")]
-        public virtual object VacationModeExpireTime { get; set; }
+        public virtual string VacationModeExpireTimeRaw
+        {
+            get => _vacationModeExpireTimeRaw;
+            set
+            {
+                _vacationModeExpireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _vacationModeExpireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="VacationModeExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use VacationModeExpireTimeDateTimeOffset instead.")]
+        public virtual object VacationModeExpireTime
+        {
+            get => _vacationModeExpireTime;
+            set
+            {
+                _vacationModeExpireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _vacationModeExpireTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="VacationModeExpireTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? VacationModeExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(VacationModeExpireTimeRaw);
+            set => VacationModeExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _vacationModeStartTimeRaw;
+
+        private object _vacationModeStartTime;
 
         /// <summary>
         /// The timestamp when the device was put into ‘vacation mode’. This value is present iff the device is in
         /// 'vacation mode'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vacationModeStartTime")]
-        public virtual object VacationModeStartTime { get; set; }
+        public virtual string VacationModeStartTimeRaw
+        {
+            get => _vacationModeStartTimeRaw;
+            set
+            {
+                _vacationModeStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _vacationModeStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="VacationModeStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use VacationModeStartTimeDateTimeOffset instead.")]
+        public virtual object VacationModeStartTime
+        {
+            get => _vacationModeStartTime;
+            set
+            {
+                _vacationModeStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _vacationModeStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="VacationModeStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? VacationModeStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(VacationModeStartTimeRaw);
+            set => VacationModeStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2939,9 +3009,44 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("vacationModeDays")]
         public virtual System.Nullable<int> VacationModeDays { get; set; }
 
+        private string _vacationModeExpireTimeRaw;
+
+        private object _vacationModeExpireTime;
+
         /// <summary>Optional. The expiration time of the vacation unlock.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vacationModeExpireTime")]
-        public virtual object VacationModeExpireTime { get; set; }
+        public virtual string VacationModeExpireTimeRaw
+        {
+            get => _vacationModeExpireTimeRaw;
+            set
+            {
+                _vacationModeExpireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _vacationModeExpireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="VacationModeExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use VacationModeExpireTimeDateTimeOffset instead.")]
+        public virtual object VacationModeExpireTime
+        {
+            get => _vacationModeExpireTime;
+            set
+            {
+                _vacationModeExpireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _vacationModeExpireTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="VacationModeExpireTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? VacationModeExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(VacationModeExpireTimeRaw);
+            set => VacationModeExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3021,9 +3126,44 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("vacationModeDays")]
         public virtual System.Nullable<int> VacationModeDays { get; set; }
 
+        private string _vacationModeExpireTimeRaw;
+
+        private object _vacationModeExpireTime;
+
         /// <summary>The expiration time of the vacation unlock.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vacationModeExpireTime")]
-        public virtual object VacationModeExpireTime { get; set; }
+        public virtual string VacationModeExpireTimeRaw
+        {
+            get => _vacationModeExpireTimeRaw;
+            set
+            {
+                _vacationModeExpireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _vacationModeExpireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="VacationModeExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use VacationModeExpireTimeDateTimeOffset instead.")]
+        public virtual object VacationModeExpireTime
+        {
+            get => _vacationModeExpireTime;
+            set
+            {
+                _vacationModeExpireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _vacationModeExpireTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="VacationModeExpireTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? VacationModeExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(VacationModeExpireTimeRaw);
+            set => VacationModeExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

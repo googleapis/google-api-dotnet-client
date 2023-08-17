@@ -4898,10 +4898,22 @@ namespace Google.Apis.Recommender.v1beta1.Data
         /// <summary>
         /// Set of filters to apply if `path` refers to array elements or nested array elements in order to narrow down
         /// to a single unique element that is being tested/modified. This is intended to be an exact match per filter.
-        /// To perform advanced matching, use path_value_matchers. * Example: ``` { "/versions/*/name" : "it-123"
-        /// "/versions/*/targetSize/percent": 20 } ``` * Example: ``` { "/bindings/*/role": "roles/owner"
-        /// "/bindings/*/condition" : null } ``` * Example: ``` { "/bindings/*/role": "roles/owner"
-        /// "/bindings/*/members/*" : ["x@example.com", "y@example.com"] } ``` When both path_filters and
+        /// To perform advanced matching, use path_value_matchers. * Example:
+        /// ```
+        /// { "/versions/*/name" : "it-123"
+        /// "/versions/*/targetSize/percent": 20 }
+        /// ```
+        /// * Example:
+        /// ```
+        /// { "/bindings/*/role": "roles/owner"
+        /// "/bindings/*/condition" : null }
+        /// ```
+        /// * Example:
+        /// ```
+        /// { "/bindings/*/role": "roles/owner"
+        /// "/bindings/*/members/*" : ["x@example.com", "y@example.com"] }
+        /// ```
+        /// When both path_filters and
         /// path_value_matchers are set, an implicit AND must be performed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathFilters")]

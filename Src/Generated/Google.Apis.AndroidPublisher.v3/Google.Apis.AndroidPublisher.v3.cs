@@ -11866,6 +11866,12 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string EeaWithdrawalRightType { get; set; }
 
         /// <summary>
+        /// Whether this in-app product is declared as a product representing a tokenized digital asset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isTokenizedDigitalAsset")]
+        public virtual System.Nullable<bool> IsTokenizedDigitalAsset { get; set; }
+
+        /// <summary>
         /// A mapping from region code to tax rate details. The keys are region codes as defined by Unicode's "CLDR".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("taxRateInfoByRegionCode")]
@@ -13674,6 +13680,12 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eeaWithdrawalRightType")]
         public virtual string EeaWithdrawalRightType { get; set; }
+
+        /// <summary>
+        /// Whether this subscription is declared as a product representing a tokenized digital asset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isTokenizedDigitalAsset")]
+        public virtual System.Nullable<bool> IsTokenizedDigitalAsset { get; set; }
 
         /// <summary>
         /// A mapping from region code to tax rate details. The keys are region codes as defined by Unicode's "CLDR".

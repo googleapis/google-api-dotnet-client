@@ -6762,6 +6762,30 @@ namespace Google.Apis.CloudBuild.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Location of the source in a 2nd-gen Google Cloud Build repository resource.</summary>
+    public class ConnectedRepository : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Directory, relative to the source root, in which to run the build.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dir")]
+        public virtual string Dir { get; set; }
+
+        /// <summary>
+        /// Required. Name of the Google Cloud Build repository, formatted as
+        /// `projects/*/locations/*/connections/*/repositories/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repository")]
+        public virtual string Repository { get; set; }
+
+        /// <summary>
+        /// The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revision")]
+        public virtual string Revision { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for `CreateBitbucketServerConfig` operation.</summary>
     public class CreateBitbucketServerConfigOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9003,6 +9027,12 @@ namespace Google.Apis.CloudBuild.v1.Data
     /// <summary>Location of the source in a supported storage service.</summary>
     public class Source : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. If provided, get the source from this 2nd-gen Google Cloud Build repository resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectedRepository")]
+        public virtual ConnectedRepository ConnectedRepository { get; set; }
+
         /// <summary>If provided, get the source from this Git repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gitSource")]
         public virtual GitSource GitSource { get; set; }

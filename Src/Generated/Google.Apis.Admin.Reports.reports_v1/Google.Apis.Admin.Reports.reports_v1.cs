@@ -535,9 +535,12 @@ namespace Google.Apis.Admin.Reports.reports_v1
             /// `doc_id` parameter value matches the conditions defined by the relational operator. In the first
             /// example, the request returns all edited documents with a `doc_id` value equal to `12345`. In the second
             /// example, the report returns any edited documents where the `doc_id` value is not equal to `98765`. The
-            /// `&amp;lt;&amp;gt;` operator is URL-encoded in the request's query string (`%3C%3E`): ```
+            /// `&amp;lt;&amp;gt;` operator is URL-encoded in the request's query string (`%3C%3E`):
+            /// ```
             /// GET...&amp;amp;eventName=edit&amp;amp;filters=doc_id==12345
-            /// GET...&amp;amp;eventName=edit&amp;amp;filters=doc_id%3C%3E98765 ``` A `filters` query supports these
+            /// GET...&amp;amp;eventName=edit&amp;amp;filters=doc_id%3C%3E98765
+            /// ```
+            /// A `filters` query supports these
             /// relational operators: * `==`—'equal to'. * `&amp;lt;&amp;gt;`—'not equal to'. Must be URL-encoded
             /// (%3C%3E). * `&amp;lt;`—'less than'. Must be URL-encoded (%3C). * `&amp;lt;=`—'less than or equal to'.
             /// Must be URL-encoded (%3C=). * `&amp;gt;`—'greater than'. Must be URL-encoded (%3E). *
@@ -946,9 +949,12 @@ namespace Google.Apis.Admin.Reports.reports_v1
             /// `doc_id` parameter value matches the conditions defined by the relational operator. In the first
             /// example, the request returns all edited documents with a `doc_id` value equal to `12345`. In the second
             /// example, the report returns any edited documents where the `doc_id` value is not equal to `98765`. The
-            /// `&amp;lt;&amp;gt;` operator is URL-encoded in the request's query string (`%3C%3E`): ```
+            /// `&amp;lt;&amp;gt;` operator is URL-encoded in the request's query string (`%3C%3E`):
+            /// ```
             /// GET...&amp;amp;eventName=edit&amp;amp;filters=doc_id==12345
-            /// GET...&amp;amp;eventName=edit&amp;amp;filters=doc_id%3C%3E98765 ``` A `filters` query supports these
+            /// GET...&amp;amp;eventName=edit&amp;amp;filters=doc_id%3C%3E98765
+            /// ```
+            /// A `filters` query supports these
             /// relational operators: * `==`—'equal to'. * `&amp;lt;&amp;gt;`—'not equal to'. Must be URL-encoded
             /// (%3C%3E). * `&amp;lt;`—'less than'. Must be URL-encoded (%3C). * `&amp;lt;=`—'less than or equal to'.
             /// Must be URL-encoded (%3C=). * `&amp;gt;`—'greater than'. Must be URL-encoded (%3E). *

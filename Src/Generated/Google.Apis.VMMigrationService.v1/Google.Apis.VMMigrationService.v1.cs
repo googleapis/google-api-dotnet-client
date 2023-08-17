@@ -4614,12 +4614,6 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("firmware")]
         public virtual string Firmware { get; set; }
 
-        /// <summary>
-        /// Output only. Unordered list. List of VM certain capabilities needed for some Compute Engine features.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("vmCapabilities")]
-        public virtual System.Collections.Generic.IList<string> VmCapabilities { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -1186,12 +1186,49 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
 
     public class GoogleCloudPaymentsResellerSubscriptionV1ExtendSubscriptionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _cycleEndTimeRaw;
+
+        private object _cycleEndTime;
+
         /// <summary>
         /// The time at which the subscription is expected to be extended, in ISO 8061 format. UTC timezone. Example,
         /// "cycleEndTime":"2019-08-31T17:28:54.564Z"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cycleEndTime")]
-        public virtual object CycleEndTime { get; set; }
+        public virtual string CycleEndTimeRaw
+        {
+            get => _cycleEndTimeRaw;
+            set
+            {
+                _cycleEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _cycleEndTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CycleEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CycleEndTimeDateTimeOffset instead.")]
+        public virtual object CycleEndTime
+        {
+            get => _cycleEndTime;
+            set
+            {
+                _cycleEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _cycleEndTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CycleEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CycleEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CycleEndTimeRaw);
+            set => CycleEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _freeTrialEndTimeRaw;
+
+        private object _freeTrialEndTime;
 
         /// <summary>
         /// End of the free trial period, in ISO 8061 format. UTC timezone. Example,
@@ -1199,7 +1236,42 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// creation time if no free trial period is offered to the partner.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freeTrialEndTime")]
-        public virtual object FreeTrialEndTime { get; set; }
+        public virtual string FreeTrialEndTimeRaw
+        {
+            get => _freeTrialEndTimeRaw;
+            set
+            {
+                _freeTrialEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _freeTrialEndTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FreeTrialEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FreeTrialEndTimeDateTimeOffset instead.")]
+        public virtual object FreeTrialEndTime
+        {
+            get => _freeTrialEndTime;
+            set
+            {
+                _freeTrialEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _freeTrialEndTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="FreeTrialEndTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FreeTrialEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FreeTrialEndTimeRaw);
+            set => FreeTrialEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _renewalTimeRaw;
+
+        private object _renewalTime;
 
         /// <summary>
         /// Output only. The time at which the subscription is expected to be renewed by Google - a new charge will be
@@ -1208,7 +1280,36 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// format. For example: "2019-08-31T17:28:54.564Z"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("renewalTime")]
-        public virtual object RenewalTime { get; set; }
+        public virtual string RenewalTimeRaw
+        {
+            get => _renewalTimeRaw;
+            set
+            {
+                _renewalTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _renewalTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RenewalTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RenewalTimeDateTimeOffset instead.")]
+        public virtual object RenewalTime
+        {
+            get => _renewalTime;
+            set
+            {
+                _renewalTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _renewalTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="RenewalTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RenewalTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RenewalTimeRaw);
+            set => RenewalTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1276,6 +1377,19 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// <summary>The promotions for the current user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promotions")]
         public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1Promotion> Promotions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details for a subscriptiin line item with finite billing cycles.</summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The number of a subscription line item billing cycles after which billing will stop automatically.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingCycleCountLimit")]
+        public virtual System.Nullable<long> BillingCycleCountLimit { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1360,6 +1474,13 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     public class GoogleCloudPaymentsResellerSubscriptionV1Product : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. Details for a subscription line item with finite billing cycles. If unset, the line item will be
+        /// charged indefinitely.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finiteBillingCycleDetails")]
+        public virtual GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails FiniteBillingCycleDetails { get; set; }
+
+        /// <summary>
         /// Output only. Response only. Resource name of the product. It will have the format of
         /// "partners/{partner_id}/products/{product_id}"
         /// </summary>
@@ -1426,12 +1547,52 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("applicableProducts")]
         public virtual System.Collections.Generic.IList<string> ApplicableProducts { get; set; }
 
+        private string _endTimeRaw;
+
+        private object _endTime;
+
         /// <summary>
         /// Optional. Specifies the end time (exclusive) of the period that the promotion is available in. If unset, the
         /// promotion is available indefinitely.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Optional. Details for a subscription line item with finite billing cycles. If unset, the line item will be
+        /// charged indefinitely. Used only with PROMOTION_TYPE_REGULAR_REDUCTION.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finiteBillingCycleDetails")]
+        public virtual GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails FiniteBillingCycleDetails { get; set; }
 
         /// <summary>
         /// Optional. Specifies the duration of the free trial of the subscription when promotion_type is
@@ -1465,11 +1626,44 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("regionCodes")]
         public virtual System.Collections.Generic.IList<string> RegionCodes { get; set; }
 
+        private string _startTimeRaw;
+
+        private object _startTime;
+
         /// <summary>
         /// Optional. Specifies the start time (inclusive) of the period that the promotion is available in.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. Localized human readable name of the promotion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("titles")]
@@ -1518,13 +1712,79 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     /// </summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1ServicePeriod : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
         /// <summary>Optional. The end time of the service period. Time is exclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
-        public virtual object EndTime { get; set; }
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
 
         /// <summary>Required. The start time of the service period. Time is inclusive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
-        public virtual object StartTime { get; set; }
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1540,27 +1800,128 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cancellationDetails")]
         public virtual GoogleCloudPaymentsResellerSubscriptionV1SubscriptionCancellationDetails CancellationDetails { get; set; }
 
+        private string _createTimeRaw;
+
+        private object _createTime;
+
         /// <summary>Output only. System generated timestamp when the subscription is created. UTC timezone.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
-        public virtual object CreateTime { get; set; }
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _cycleEndTimeRaw;
+
+        private object _cycleEndTime;
 
         /// <summary>
         /// Output only. The time at which the subscription is expected to be extended, in ISO 8061 format. UTC
         /// timezone. For example: "2019-08-31T17:28:54.564Z"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cycleEndTime")]
-        public virtual object CycleEndTime { get; set; }
+        public virtual string CycleEndTimeRaw
+        {
+            get => _cycleEndTimeRaw;
+            set
+            {
+                _cycleEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _cycleEndTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CycleEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CycleEndTimeDateTimeOffset instead.")]
+        public virtual object CycleEndTime
+        {
+            get => _cycleEndTime;
+            set
+            {
+                _cycleEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _cycleEndTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CycleEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CycleEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CycleEndTimeRaw);
+            set => CycleEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. Indicates if the subscription is entitled to the end user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endUserEntitled")]
         public virtual System.Nullable<bool> EndUserEntitled { get; set; }
+
+        private string _freeTrialEndTimeRaw;
+
+        private object _freeTrialEndTime;
 
         /// <summary>
         /// Output only. End of the free trial period, in ISO 8061 format. For example, "2019-08-31T17:28:54.564Z". It
         /// will be set the same as createTime if no free trial promotion is specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("freeTrialEndTime")]
-        public virtual object FreeTrialEndTime { get; set; }
+        public virtual string FreeTrialEndTimeRaw
+        {
+            get => _freeTrialEndTimeRaw;
+            set
+            {
+                _freeTrialEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _freeTrialEndTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="FreeTrialEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use FreeTrialEndTimeDateTimeOffset instead.")]
+        public virtual object FreeTrialEndTime
+        {
+            get => _freeTrialEndTime;
+            set
+            {
+                _freeTrialEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _freeTrialEndTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="FreeTrialEndTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? FreeTrialEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(FreeTrialEndTimeRaw);
+            set => FreeTrialEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Required. The line items of the subscription.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItems")]
@@ -1619,6 +1980,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("redirectUri")]
         public virtual string RedirectUri { get; set; }
 
+        private string _renewalTimeRaw;
+
+        private object _renewalTime;
+
         /// <summary>
         /// Output only. The time at which the subscription is expected to be renewed by Google - a new charge will be
         /// incurred and the service entitlement will be renewed. A non-immediate cancellation will take place at this
@@ -1626,7 +1991,36 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// format. For example: "2019-08-31T17:28:54.564Z"
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("renewalTime")]
-        public virtual object RenewalTime { get; set; }
+        public virtual string RenewalTimeRaw
+        {
+            get => _renewalTimeRaw;
+            set
+            {
+                _renewalTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _renewalTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="RenewalTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RenewalTimeDateTimeOffset instead.")]
+        public virtual object RenewalTime
+        {
+            get => _renewalTime;
+            set
+            {
+                _renewalTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _renewalTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="RenewalTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? RenewalTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RenewalTimeRaw);
+            set => RenewalTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Required. The location that the service is provided as indicated by the partner.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceLocation")]
@@ -1639,11 +2033,44 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
         /// <summary>
         /// Output only. System generated timestamp when the subscription is most recently updated. UTC timezone.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
-        public virtual object UpdateTime { get; set; }
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>
         /// Optional. Details about the previous subscription that this new subscription upgrades/downgrades from. Only
@@ -1682,12 +2109,54 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         public virtual string Description { get; set; }
 
         /// <summary>
+        /// Optional. Details for a subscription line item with finite billing cycles. If unset, the line item will be
+        /// charged indefinitely. Used only with LINE_ITEM_RECURRENCE_TYPE_PERIODIC.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finiteBillingCycleDetails")]
+        public virtual GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails FiniteBillingCycleDetails { get; set; }
+
+        private string _lineItemFreeTrialEndTimeRaw;
+
+        private object _lineItemFreeTrialEndTime;
+
+        /// <summary>
         /// Output only. The free trial end time will be populated after the line item is successfully processed. End
         /// time of the line item free trial period, in ISO 8061 format. For example, "2019-08-31T17:28:54.564Z". It
         /// will be set the same as createTime if no free trial promotion is specified.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemFreeTrialEndTime")]
-        public virtual object LineItemFreeTrialEndTime { get; set; }
+        public virtual string LineItemFreeTrialEndTimeRaw
+        {
+            get => _lineItemFreeTrialEndTimeRaw;
+            set
+            {
+                _lineItemFreeTrialEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lineItemFreeTrialEndTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LineItemFreeTrialEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LineItemFreeTrialEndTimeDateTimeOffset instead.")]
+        public virtual object LineItemFreeTrialEndTime
+        {
+            get => _lineItemFreeTrialEndTime;
+            set
+            {
+                _lineItemFreeTrialEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lineItemFreeTrialEndTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LineItemFreeTrialEndTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LineItemFreeTrialEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LineItemFreeTrialEndTimeRaw);
+            set => LineItemFreeTrialEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. A unique index of the subscription line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lineItemIndex")]
@@ -1806,9 +2275,42 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     /// <summary>Payload specific to Youtube products.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1YoutubePayload : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _accessEndTimeRaw;
+
+        private object _accessEndTime;
+
         /// <summary>Output only. The access expiration time for this line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessEndTime")]
-        public virtual object AccessEndTime { get; set; }
+        public virtual string AccessEndTimeRaw
+        {
+            get => _accessEndTimeRaw;
+            set
+            {
+                _accessEndTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _accessEndTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="AccessEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use AccessEndTimeDateTimeOffset instead.")]
+        public virtual object AccessEndTime
+        {
+            get => _accessEndTime;
+            set
+            {
+                _accessEndTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _accessEndTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="AccessEndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? AccessEndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(AccessEndTimeRaw);
+            set => AccessEndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The list of eligibility_ids which are applicable for the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partnerEligibilityIds")]
