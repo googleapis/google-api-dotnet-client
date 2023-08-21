@@ -62,6 +62,8 @@ rm -f DiscoveryJson/identitytoolkit_v3.json
 rm -f DiscoveryJson/contentwarehouse_v1.json
 # TODO[atarafamas] find out why
 rm -f DiscoveryJson/integrations_v1alpha.json
+# TODO[atarafamas] find out why
+rm -f DiscoveryJson/datalineage_v1.json
 
 # This causes a failure of
 # error CS0102: The type 'OrganizationsResource.LocationsResource'
