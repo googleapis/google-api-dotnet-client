@@ -231,7 +231,7 @@ namespace Google.Apis.Util
             ? null
             // While FFF sounds like it should work, we really want to produce no subsecond parts or 3 digits.
             : date.Value.Millisecond == 0 ? date.Value.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss'Z'")
-            : date.Value.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss.fff'Z'");
+            : date.Value.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss.fff'Z'", CultureInfo.InvariantCulture);
 
         /// <summary>
         /// Deserializes the given raw value to an object using <see cref="NewtonsoftJsonSerializer.Instance"/>,
