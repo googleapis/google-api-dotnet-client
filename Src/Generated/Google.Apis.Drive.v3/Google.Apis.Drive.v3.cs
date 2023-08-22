@@ -5949,7 +5949,10 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A comment on a file.</summary>
+    /// <summary>
+    /// A comment on a file. Some resource methods (such as `comments.update`) require a `commentId`. Use the
+    /// `comments.list` method to retrieve the ID for a comment in a file.
+    /// </summary>
     public class Comment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -6160,7 +6163,10 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Representation of a shared drive.</summary>
+    /// <summary>
+    /// Representation of a shared drive. Some resource methods (such as `drives.update`) require a `driveId`. Use the
+    /// `drives.list` method to retrieve the ID for a shared drive.
+    /// </summary>
     public class Drive : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -6469,7 +6475,10 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The metadata for a file.</summary>
+    /// <summary>
+    /// The metadata for a file. Some resource methods (such as `files.update`) require a `fileId`. Use the `files.list`
+    /// method to retrieve the ID for a file.
+    /// </summary>
     public class File : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -7647,8 +7656,9 @@ namespace Google.Apis.Drive.v3.Data
     }
 
     /// <summary>
-    /// A permission for a file. A permission grants a user, group, domain or the world access to a file or a folder
-    /// hierarchy.
+    /// A permission for a file. A permission grants a user, group, domain, or the world access to a file or a folder
+    /// hierarchy. Some resource methods (such as `permissions.update`) require a `permissionId`. Use the
+    /// `permissions.list` method to retrieve the ID for a file, folder, or shared drive.
     /// </summary>
     public class Permission : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7855,7 +7865,10 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A reply to a comment on a file.</summary>
+    /// <summary>
+    /// A reply to a comment on a file. Some resource methods (such as `replies.update`) require a `replyId`. Use the
+    /// `replies.list` method to retrieve the ID for a reply.
+    /// </summary>
     public class Reply : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -7968,7 +7981,10 @@ namespace Google.Apis.Drive.v3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The metadata for a revision to a file.</summary>
+    /// <summary>
+    /// The metadata for a revision to a file. Some resource methods (such as `revisions.update`) require a
+    /// `revisionId`. Use the `revisions.list` method to retrieve the ID for a revision.
+    /// </summary>
     public class Revision : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. Links for exporting Docs Editors files to specific formats.</summary>

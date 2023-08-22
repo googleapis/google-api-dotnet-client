@@ -414,6 +414,10 @@ namespace Google.Apis.Verifiedaccess.v1.Data
     /// <summary>Result message for VerifiedAccess.VerifyChallengeResponse.</summary>
     public class VerifyChallengeResponseResult : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Attested device id (ADID) of the device, read from the verified data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attestedDeviceId")]
+        public virtual string AttestedDeviceId { get; set; }
+
         /// <summary>Device enrollment id is returned in this field (for the machine response only).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceEnrollmentId")]
         public virtual string DeviceEnrollmentId { get; set; }

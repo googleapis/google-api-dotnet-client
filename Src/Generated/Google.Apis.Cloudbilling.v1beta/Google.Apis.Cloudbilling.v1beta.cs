@@ -2169,17 +2169,11 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
     /// <summary>Encapsulates a price migrated from other SKUs.</summary>
     public class GoogleCloudBillingBillingaccountpricesV1betaMigratedPrice : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The source SKU floating discount is applied on the target SKU's default price.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sourceDiscountOnTargetPrice")]
-        public virtual GoogleCloudBillingBillingaccountpricesV1betaSourceDiscountOnTargetPrice SourceDiscountOnTargetPrice { get; set; }
-
-        /// <summary>Source SKU where the discount is migrated from.</summary>
+        /// <summary>
+        /// Source SKU where the discount is migrated from. Format: billingAccounts/{billing_account}/skus/{sku}
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceSku")]
         public virtual string SourceSku { get; set; }
-
-        /// <summary>Type of the migrated price. It can have values such as 'source-discount-on-target-price'.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("type")]
-        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2284,20 +2278,6 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startAmount")]
         public virtual Decimal StartAmount { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Encapsulates a type of MigratedPrice where the source SKU floating discount is applied on the target SKU's
-    /// default price.
-    /// </summary>
-    public class GoogleCloudBillingBillingaccountpricesV1betaSourceDiscountOnTargetPrice : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Discount percent of the source SKU that is applied on the target SKU's default price.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("migratedDiscountPercent")]
-        public virtual Decimal MigratedDiscountPercent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

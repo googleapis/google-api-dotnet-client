@@ -521,6 +521,16 @@ namespace Google.Apis.CloudBillingBudget.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
+                /// <summary>
+                /// Optional. Set the scope of the budgets to be returned, in the format of the resource name. The scope
+                /// of a budget is the cost that it tracks, such as costs for a single project, or the costs for all
+                /// projects in a folder. Only project scope (in the format of "projects/project-id" or "projects/123")
+                /// is supported in this field. When this field is set to a project's resource name, the budgets
+                /// returned are tracking the costs for that project.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("scope", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Scope { get; set; }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
@@ -553,6 +563,14 @@ namespace Google.Apis.CloudBillingBudget.v1beta1
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("scope", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "scope",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -642,6 +660,14 @@ namespace Google.Apis.CloudBillingBudget.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableDefaultIamRecipients")]
         public virtual System.Nullable<bool> DisableDefaultIamRecipients { get; set; }
+
+        /// <summary>
+        /// Optional. When set to true, and when the budget has a single project configured, notifications will be sent
+        /// to project level recipients of that project. This field will be ignored if the budget has multiple or no
+        /// project configured. Currently, project level recipients are the users with `Owner` role on a cloud project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableProjectLevelRecipients")]
+        public virtual System.Nullable<bool> EnableProjectLevelRecipients { get; set; }
 
         /// <summary>
         /// Optional. Targets to send notifications to when a threshold is exceeded. This is in addition to default

@@ -2888,7 +2888,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
 
     /// <summary>
     /// Policy for an individual app. Note: Application availability on a given device cannot be changed using this
-    /// policy if installAppsDisabled is enabled.
+    /// policy if installAppsDisabled is enabled. The maximum number of applications that you can specify per enterprise
+    /// policy is 3,000.
     /// </summary>
     public class ApplicationPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2933,7 +2934,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultPermissionPolicy")]
         public virtual string DefaultPermissionPolicy { get; set; }
 
-        /// <summary>The scopes delegated to the app from Android Device Policy.</summary>
+        /// <summary>
+        /// The scopes delegated to the app from Android Device Policy. These provide additional privileges for the
+        /// applications they are applied to.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delegatedScopes")]
         public virtual System.Collections.Generic.IList<string> DelegatedScopes { get; set; }
 
@@ -5770,7 +5774,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cellBroadcastsConfigDisabled")]
         public virtual System.Nullable<bool> CellBroadcastsConfigDisabled { get; set; }
 
-        /// <summary>Rules for determining apps' access to private keys. See ChoosePrivateKeyRule for details.</summary>
+        /// <summary>
+        /// Rules for determining apps' access to private keys. See ChoosePrivateKeyRule for details. This must be empty
+        /// if any application has CERT_SELECTION delegation scope.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("choosePrivateKeyRules")]
         public virtual System.Collections.Generic.IList<ChoosePrivateKeyRule> ChoosePrivateKeyRules { get; set; }
 
@@ -6026,7 +6033,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
 
         /// <summary>
         /// Allows showing UI on a device for a user to choose a private key alias if there are no matching rules in
-        /// ChoosePrivateKeyRules. For devices below Android P, setting this may leave enterprise keys vulnerable.
+        /// ChoosePrivateKeyRules. For devices below Android P, setting this may leave enterprise keys vulnerable. This
+        /// value will have no effect if any application has CERT_SELECTION delegation scope.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateKeySelectionEnabled")]
         public virtual System.Nullable<bool> PrivateKeySelectionEnabled { get; set; }

@@ -763,11 +763,12 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     public virtual string Target { get; private set; }
 
                     /// <summary>
-                    /// Optional. Indicates if all child assets of the source resource should also be analyzed in
-                    /// addition to the source.
+                    /// Optional. List of asset types to be analyzed,including and under the source resource. If empty,
+                    /// all assets are analyzed. The complete list of asset types is available
+                    /// [here](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types)
                     /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("analyzeChildAssets", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual System.Nullable<bool> AnalyzeChildAssets { get; set; }
+                    [Google.Apis.Util.RequestParameterAttribute("assetTypes", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> AssetTypes { get; set; }
 
                     /// <summary>
                     /// Optional. Page size. If a value is not specified, the default value of 10 is used.
@@ -821,9 +822,9 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                             DefaultValue = null,
                             Pattern = @"^organizations/[^/]+/locations/[^/]+/workloads/[^/]+$",
                         });
-                        RequestParameters.Add("analyzeChildAssets", new Google.Apis.Discovery.Parameter
+                        RequestParameters.Add("assetTypes", new Google.Apis.Discovery.Parameter
                         {
-                            Name = "analyzeChildAssets",
+                            Name = "assetTypes",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,

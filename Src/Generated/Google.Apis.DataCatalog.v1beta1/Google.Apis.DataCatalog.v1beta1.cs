@@ -5011,6 +5011,17 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Specification that applies to a dataset. Valid only for entries with the `DATASET` type.</summary>
+    public class GoogleCloudDatacatalogV1DatasetSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Vertex AI Dataset specific fields</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertexDatasetSpec")]
+        public virtual GoogleCloudDatacatalogV1VertexDatasetSpec VertexDatasetSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Wrapper for any item that can be contained in the dump.</summary>
     public class GoogleCloudDatacatalogV1DumpItem : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5071,6 +5082,10 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseTableSpec")]
         public virtual GoogleCloudDatacatalogV1DatabaseTableSpec DatabaseTableSpec { get; set; }
+
+        /// <summary>Specification that applies to a dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetSpec")]
+        public virtual GoogleCloudDatacatalogV1DatasetSpec DatasetSpec { get; set; }
 
         /// <summary>
         /// Entry description that can consist of several sentences or paragraphs that describe entry contents. The
@@ -5141,6 +5156,10 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("lookerSystemSpec")]
         public virtual GoogleCloudDatacatalogV1LookerSystemSpec LookerSystemSpec { get; set; }
+
+        /// <summary>Model specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("modelSpec")]
+        public virtual GoogleCloudDatacatalogV1ModelSpec ModelSpec { get; set; }
 
         /// <summary>
         /// Output only. The resource name of an entry in URL format. Note: The entry itself and its child resources
@@ -5351,6 +5370,17 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         /// <summary>ID of the parent View. Empty if it does not exist.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parentViewId")]
         public virtual string ParentViewId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification that applies to a model. Valid only for entries with the `MODEL` type.</summary>
+    public class GoogleCloudDatacatalogV1ModelSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specification for vertex model resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertexModelSpec")]
+        public virtual GoogleCloudDatacatalogV1VertexModelSpec VertexModelSpec { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6058,6 +6088,65 @@ namespace Google.Apis.DataCatalog.v1beta1.Data
         /// <summary>The number of failed attempts to use the underlying entry.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalFailures")]
         public virtual System.Nullable<float> TotalFailures { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification for vertex dataset resources.</summary>
+    public class GoogleCloudDatacatalogV1VertexDatasetSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The number of DataItems in this Dataset. Only apply for non-structured Dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataItemCount")]
+        public virtual System.Nullable<long> DataItemCount { get; set; }
+
+        /// <summary>Type of the dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
+        public virtual string DataType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Detail description of the source information of a Vertex model.</summary>
+    public class GoogleCloudDatacatalogV1VertexModelSourceInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If this Model is copy of another Model. If true then source_type pertains to the original.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("copy")]
+        public virtual System.Nullable<bool> Copy { get; set; }
+
+        /// <summary>Type of the model source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceType")]
+        public virtual string SourceType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Specification for vertex model resources.</summary>
+    public class GoogleCloudDatacatalogV1VertexModelSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URI of the Docker image to be used as the custom container for serving predictions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerImageUri")]
+        public virtual string ContainerImageUri { get; set; }
+
+        /// <summary>User provided version aliases so that a model version can be referenced via alias</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionAliases")]
+        public virtual System.Collections.Generic.IList<string> VersionAliases { get; set; }
+
+        /// <summary>The description of this version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionDescription")]
+        public virtual string VersionDescription { get; set; }
+
+        /// <summary>The version ID of the model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
+        public virtual string VersionId { get; set; }
+
+        /// <summary>Source of a Vertex model.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vertexModelSourceInfo")]
+        public virtual GoogleCloudDatacatalogV1VertexModelSourceInfo VertexModelSourceInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

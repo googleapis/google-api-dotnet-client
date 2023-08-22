@@ -2414,7 +2414,9 @@ namespace Google.Apis.CertificateManager.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Required. A user-provided name of the TrustConfig.</summary>
+                    /// <summary>
+                    /// Required. A user-provided name of the TrustConfig. Must match the regexp `[a-z0-9-]{1,63}`.
+                    /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("trustConfigId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string TrustConfigId { get; set; }
 

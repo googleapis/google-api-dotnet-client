@@ -2577,8 +2577,10 @@ namespace Google.Apis.RealTimeBidding.v1
             }
 
             /// <summary>
-            /// Gets remarketing tag for a buyer. A remarketing tag is a piece of JavaScript code that can be placed on
-            /// a web page. When a user visits a page containing a remarketing tag, Google adds the user to a user list.
+            /// Deprecated. This will be removed in October 2023. For more information, see the release notes:
+            /// https://developers.google.com/authorized-buyers/apis/relnotes#real-time-bidding-api Gets remarketing tag
+            /// for a buyer. A remarketing tag is a piece of JavaScript code that can be placed on a web page. When a
+            /// user visits a page containing a remarketing tag, Google adds the user to a user list.
             /// </summary>
             /// <param name="name">
             /// Required. To fetch remarketing tag for an account, name must follow the pattern `buyers/{accountId}`
@@ -2593,8 +2595,10 @@ namespace Google.Apis.RealTimeBidding.v1
             }
 
             /// <summary>
-            /// Gets remarketing tag for a buyer. A remarketing tag is a piece of JavaScript code that can be placed on
-            /// a web page. When a user visits a page containing a remarketing tag, Google adds the user to a user list.
+            /// Deprecated. This will be removed in October 2023. For more information, see the release notes:
+            /// https://developers.google.com/authorized-buyers/apis/relnotes#real-time-bidding-api Gets remarketing tag
+            /// for a buyer. A remarketing tag is a piece of JavaScript code that can be placed on a web page. When a
+            /// user visits a page containing a remarketing tag, Google adds the user to a user list.
             /// </summary>
             public class GetRemarketingTagRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.GetRemarketingTagResponse>
             {
@@ -2886,8 +2890,10 @@ namespace Google.Apis.RealTimeBidding.v1
         }
 
         /// <summary>
-        /// Gets remarketing tag for a buyer. A remarketing tag is a piece of JavaScript code that can be placed on a
-        /// web page. When a user visits a page containing a remarketing tag, Google adds the user to a user list.
+        /// Deprecated. This will be removed in October 2023. For more information, see the release notes:
+        /// https://developers.google.com/authorized-buyers/apis/relnotes#real-time-bidding-api Gets remarketing tag for
+        /// a buyer. A remarketing tag is a piece of JavaScript code that can be placed on a web page. When a user
+        /// visits a page containing a remarketing tag, Google adds the user to a user list.
         /// </summary>
         /// <param name="name">
         /// Required. To fetch remarketing tag for an account, name must follow the pattern `buyers/{accountId}` where
@@ -2902,8 +2908,10 @@ namespace Google.Apis.RealTimeBidding.v1
         }
 
         /// <summary>
-        /// Gets remarketing tag for a buyer. A remarketing tag is a piece of JavaScript code that can be placed on a
-        /// web page. When a user visits a page containing a remarketing tag, Google adds the user to a user list.
+        /// Deprecated. This will be removed in October 2023. For more information, see the release notes:
+        /// https://developers.google.com/authorized-buyers/apis/relnotes#real-time-bidding-api Gets remarketing tag for
+        /// a buyer. A remarketing tag is a piece of JavaScript code that can be placed on a web page. When a user
+        /// visits a page containing a remarketing tag, Google adds the user to a user list.
         /// </summary>
         public class GetRemarketingTagRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.GetRemarketingTagResponse>
         {
@@ -3947,7 +3955,11 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response for a request to get remarketing tag.</summary>
+    /// <summary>
+    /// Deprecated. This will be removed in October 2023. For more information, see the release notes:
+    /// https://developers.google.com/authorized-buyers/apis/relnotes#real-time-bidding-api Response for a request to
+    /// get remarketing tag.
+    /// </summary>
     public class GetRemarketingTagResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4712,7 +4724,11 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents the URL restriction (for the URL captured by the pixel callback) for a user list.</summary>
+    /// <summary>
+    /// Deprecated. This will be removed in October 2023. For more information, see the release notes:
+    /// https://developers.google.com/authorized-buyers/apis/relnotes#real-time-bidding-api Represents the URL
+    /// restriction (for the URL captured by the pixel callback) for a user list.
+    /// </summary>
     public class UrlRestriction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -4775,7 +4791,11 @@ namespace Google.Apis.RealTimeBidding.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 
-        /// <summary>Required. The URL restriction for the user list.</summary>
+        /// <summary>
+        /// Required. Deprecated. This will be removed in October 2023. For more information, see the release notes:
+        /// https://developers.google.com/authorized-buyers/apis/relnotes#real-time-bidding-api The URL restriction for
+        /// the user list.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlRestriction")]
         public virtual UrlRestriction UrlRestriction { get; set; }
 

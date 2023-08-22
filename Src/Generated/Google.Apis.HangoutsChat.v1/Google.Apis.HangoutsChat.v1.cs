@@ -3311,8 +3311,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Google Chat events. To learn how to use events, see [Receive and respond to Google Chat
-    /// events](https://developers.google.com/chat/api/guides/message-formats).
+    /// Google Chat app interaction events. To learn about interaction events, see [Receive and respond to Google Chat
+    /// app interaction events](https://developers.google.com/chat/api/guides/message-formats).
     /// </summary>
     public class DeprecatedEvent : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3339,7 +3339,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("configCompleteRedirectUrl")]
         public virtual string ConfigCompleteRedirectUrl { get; set; }
 
-        /// <summary>The type of [dialog](https://developers.google.com/chat/how-tos/dialogs) event received.</summary>
+        /// <summary>
+        /// The type of [dialog](https://developers.google.com/chat/how-tos/dialogs) interaction event received.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dialogEventType")]
         public virtual string DialogEventType { get; set; }
 
@@ -3347,7 +3349,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         private object _eventTime;
 
-        /// <summary>The timestamp indicating when the event occurred.</summary>
+        /// <summary>The timestamp indicating when the interaction event occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
         public virtual string EventTimeRaw
         {
@@ -3381,21 +3383,21 @@ namespace Google.Apis.HangoutsChat.v1.Data
         }
 
         /// <summary>
-        /// True when the event is related to [dialogs](https://developers.google.com/chat/how-tos/dialogs).
+        /// True when the interaction event is related to [dialogs](https://developers.google.com/chat/how-tos/dialogs).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isDialogEvent")]
         public virtual System.Nullable<bool> IsDialogEvent { get; set; }
 
-        /// <summary>The message that triggered the event, if applicable.</summary>
+        /// <summary>The message that triggered the interaction event, if applicable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual Message Message { get; set; }
 
-        /// <summary>The space in which the event occurred.</summary>
+        /// <summary>The space in which the interaction event occurred.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("space")]
         public virtual Space Space { get; set; }
 
         /// <summary>
-        /// The Chat app-defined key for the thread related to the event. See
+        /// The Chat app-defined key for the thread related to the interaction event. See
         /// [`spaces.messages.thread.threadKey`](/chat/api/reference/rest/v1/spaces.messages#Thread.FIELDS.thread_key)
         /// for more information.
         /// </summary>
@@ -3412,11 +3414,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
         public virtual string Token { get; set; }
 
-        /// <summary>The type of the event.</summary>
+        /// <summary>The type of the interaction event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
-        /// <summary>The user that triggered the event.</summary>
+        /// <summary>The user that triggered the interaction event.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
         public virtual User User { get; set; }
 
@@ -3708,11 +3710,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// Cards support a defined layout, interactive UI elements like buttons, and rich media like images. Use cards to
     /// present detailed information, gather information from users, and guide users to take a next step. In Google
     /// Chat, cards appear in several places: - As stand-alone messages. - Accompanying a text message, just beneath the
-    /// text message. - As a [dialog](https://developers.google.com/chat/how-tos/dialogs). The following example JSON
-    /// creates a "contact card" that features: - A header with the contact's name, job title, and avatar picture. - A
-    /// section with the contact information, including formatted text. - Buttons that users can click to share the
-    /// contact, or see more or less information. For more examples, see [Design dynamic, interactive, and consistent
-    /// UIs with cards](https://developers.google.com/chat/ui). ![Example contact
+    /// text message. - As a [dialog](https://developers.google.com/chat/how-tos/dialogs). Only Google Chat apps can
+    /// create card messages in Google Chat. If your Chat app uses [user
+    /// authentication](https://developers.google.com/chat/api/guides/auth/users) to send messages on behalf of users,
+    /// the messages can't contain cards. The following example JSON creates a "contact card" that features: - A header
+    /// with the contact's name, job title, and avatar picture. - A section with the contact information, including
+    /// formatted text. - Buttons that users can click to share the contact, or see more or less information. For more
+    /// examples, see [Design dynamic, interactive, and consistent UIs with
+    /// cards](https://developers.google.com/chat/ui). ![Example contact
     /// card](https://developers.google.com/chat/images/card_api_reference.png)
     /// ```
     /// { "cardsV2": [ { "cardId":
@@ -4267,7 +4272,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// A new card is pushed to the card stack after clicking if specified. Supported by Google Workspace Add-ons,
-        /// but not Chat apps.
+        /// but not Google Chat apps.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("card")]
         public virtual GoogleAppsCardV1Card Card { get; set; }
@@ -4583,7 +4588,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// Optional. Specify what action to take when the text input field provides suggestions to users who interact
         /// with it. If unspecified, the suggestions are set by `initialSuggestions` and are processed by the client. If
         /// specified, the app takes the action specified here, such as running a custom function. Supported by Google
-        /// Workspace Add-ons, but not Chat apps.
+        /// Workspace Add-ons, but not Google Chat apps.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("autoCompleteAction")]
         public virtual GoogleAppsCardV1Action AutoCompleteAction { get; set; }

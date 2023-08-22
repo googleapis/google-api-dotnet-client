@@ -614,12 +614,101 @@ namespace Google.Apis.SA360.v0
 }
 namespace Google.Apis.SA360.v0.Data
 {
+    /// <summary>
+    /// Represents an AdSchedule criterion. AdSchedule is specified as the day of the week and a time interval within
+    /// which ads will be shown. No more than six AdSchedules can be added for the same day.
+    /// </summary>
+    public class GoogleAdsSearchads360V0CommonAdScheduleInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Day of the week the schedule applies to. This field is required for CREATE operations and is prohibited on
+        /// UPDATE operations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dayOfWeek")]
+        public virtual string DayOfWeek { get; set; }
+
+        /// <summary>
+        /// Ending hour in 24 hour time; 24 signifies end of the day. This field must be between 0 and 24, inclusive.
+        /// This field is required for CREATE operations and is prohibited on UPDATE operations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endHour")]
+        public virtual System.Nullable<int> EndHour { get; set; }
+
+        /// <summary>
+        /// Minutes after the end hour at which this schedule ends. The schedule is exclusive of the end minute. This
+        /// field is required for CREATE operations and is prohibited on UPDATE operations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endMinute")]
+        public virtual string EndMinute { get; set; }
+
+        /// <summary>
+        /// Starting hour in 24 hour time. This field must be between 0 and 23, inclusive. This field is required for
+        /// CREATE operations and is prohibited on UPDATE operations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startHour")]
+        public virtual System.Nullable<int> StartHour { get; set; }
+
+        /// <summary>
+        /// Minutes after the start hour at which this schedule starts. This field is required for CREATE operations and
+        /// is prohibited on UPDATE operations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startMinute")]
+        public virtual string StartMinute { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An age range criterion.</summary>
     public class GoogleAdsSearchads360V0CommonAgeRangeInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Type of the age range.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An AssetInteractionTarget segment.</summary>
+    public class GoogleAdsSearchads360V0CommonAssetInteractionTarget : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The asset resource name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asset")]
+        public virtual string Asset { get; set; }
+
+        /// <summary>
+        /// Only used with CustomerAsset, CampaignAsset and AdGroupAsset metrics. Indicates whether the interaction
+        /// metrics occurred on the asset itself or a different asset or ad unit.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("interactionOnThisAsset")]
+        public virtual System.Nullable<bool> InteractionOnThisAsset { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Business Profile location data synced from the linked Business Profile account.</summary>
+    public class GoogleAdsSearchads360V0CommonBusinessProfileLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Advertiser specified label for the location on the Business Profile account. This is synced from the
+        /// Business Profile account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IList<string> Labels { get; set; }
+
+        /// <summary>
+        /// Listing ID of this Business Profile location. This is synced from the linked Business Profile account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("listingId")]
+        public virtual System.Nullable<long> ListingId { get; set; }
+
+        /// <summary>
+        /// Business Profile store code of this location. This is synced from the Business Profile account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storeCode")]
+        public virtual string StoreCode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -991,11 +1080,19 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("averageCost")]
         public virtual System.Nullable<double> AverageCost { get; set; }
 
-        /// <summary>The total cost of all clicks divided by the total number of clicks received.</summary>
+        /// <summary>
+        /// The total cost of all clicks divided by the total number of clicks received. This metric is a monetary value
+        /// and returned in the customer's currency by default. See the metrics_currency parameter at
+        /// https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averageCpc")]
         public virtual System.Nullable<double> AverageCpc { get; set; }
 
-        /// <summary>Average cost-per-thousand impressions (CPM).</summary>
+        /// <summary>
+        /// Average cost-per-thousand impressions (CPM). This metric is a monetary value and returned in the customer's
+        /// currency by default. See the metrics_currency parameter at
+        /// https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("averageCpm")]
         public virtual System.Nullable<double> AverageCpm { get; set; }
 
@@ -1103,7 +1200,9 @@ namespace Google.Apis.SA360.v0.Data
         public virtual System.Nullable<double> ConversionsValuePerCost { get; set; }
 
         /// <summary>
-        /// The sum of your cost-per-click (CPC) and cost-per-thousand impressions (CPM) costs during this period.
+        /// The sum of your cost-per-click (CPC) and cost-per-thousand impressions (CPM) costs during this period. This
+        /// metric is a monetary value and returned in the customer's currency by default. See the metrics_currency
+        /// parameter at https://developers.google.com/search-ads/reporting/query/query-structure#parameters_clause
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("costMicros")]
         public virtual System.Nullable<long> CostMicros { get; set; }
@@ -1506,6 +1605,17 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adNetworkType")]
         public virtual string AdNetworkType { get; set; }
 
+        /// <summary>
+        /// Only used with CustomerAsset, CampaignAsset and AdGroupAsset metrics. Indicates whether the interaction
+        /// metrics occurred on the asset itself or a different asset or ad unit. Interactions (for example, clicks) are
+        /// counted across all the parts of the served ad (for example, Ad itself and other components like Sitelinks)
+        /// when they are served together. When interaction_on_this_asset is true, it means the interactions are on this
+        /// specific asset and when interaction_on_this_asset is false, it means the interactions is not on this
+        /// specific asset but on other parts of the served ad this asset is served with.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetInteractionTarget")]
+        public virtual GoogleAdsSearchads360V0CommonAssetInteractionTarget AssetInteractionTarget { get; set; }
+
         /// <summary>Resource name of the conversion action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conversionAction")]
         public virtual string ConversionAction { get; set; }
@@ -1753,6 +1863,197 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A unified call asset.</summary>
+    public class GoogleAdsSearchads360V0CommonUnifiedCallAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of non-overlapping schedules specifying all time intervals for which the asset may serve. There can be
+        /// a maximum of 6 schedules per day, 42 in total.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adScheduleTargets")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V0CommonAdScheduleInfo> AdScheduleTargets { get; set; }
+
+        /// <summary>
+        /// The conversion action to attribute a call conversion to. If not set, the default conversion action is used.
+        /// This field only has effect if call_conversion_reporting_state is set to
+        /// USE_RESOURCE_LEVEL_CALL_CONVERSION_ACTION.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callConversionAction")]
+        public virtual string CallConversionAction { get; set; }
+
+        /// <summary>
+        /// Output only. Indicates whether this CallAsset should use its own call conversion setting, follow the account
+        /// level setting, or disable call conversion.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callConversionReportingState")]
+        public virtual string CallConversionReportingState { get; set; }
+
+        /// <summary>
+        /// Whether the call only shows the phone number without a link to the website. Applies to Microsoft Ads.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callOnly")]
+        public virtual System.Nullable<bool> CallOnly { get; set; }
+
+        /// <summary>Whether the call should be enabled on call tracking. Applies to Microsoft Ads.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callTrackingEnabled")]
+        public virtual System.Nullable<bool> CallTrackingEnabled { get; set; }
+
+        /// <summary>Two-letter country code of the phone number. Examples: 'US', 'us'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
+        public virtual string CountryCode { get; set; }
+
+        /// <summary>Last date of when this asset is effective and still serving, in yyyy-MM-dd format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
+        public virtual string EndDate { get; set; }
+
+        /// <summary>The advertiser's raw phone number. Examples: '1234567890', '(123)456-7890'</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("phoneNumber")]
+        public virtual string PhoneNumber { get; set; }
+
+        /// <summary>Start date of when this asset is effective and can begin serving, in yyyy-MM-dd format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
+        public virtual string StartDate { get; set; }
+
+        /// <summary>Whether to show the call extension in search user's time zone. Applies to Microsoft Ads.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useSearcherTimeZone")]
+        public virtual System.Nullable<bool> UseSearcherTimeZone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A unified callout asset.</summary>
+    public class GoogleAdsSearchads360V0CommonUnifiedCalloutAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of non-overlapping schedules specifying all time intervals for which the asset may serve. There can be
+        /// a maximum of 6 schedules per day, 42 in total.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adScheduleTargets")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V0CommonAdScheduleInfo> AdScheduleTargets { get; set; }
+
+        /// <summary>The callout text. The length of this string should be between 1 and 25, inclusive.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("calloutText")]
+        public virtual string CalloutText { get; set; }
+
+        /// <summary>Last date of when this asset is effective and still serving, in yyyy-MM-dd format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
+        public virtual string EndDate { get; set; }
+
+        /// <summary>Start date of when this asset is effective and can begin serving, in yyyy-MM-dd format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
+        public virtual string StartDate { get; set; }
+
+        /// <summary>Whether to show the asset in search user's time zone. Applies to Microsoft Ads.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useSearcherTimeZone")]
+        public virtual System.Nullable<bool> UseSearcherTimeZone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A unified location asset.</summary>
+    public class GoogleAdsSearchads360V0CommonUnifiedLocationAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The list of business locations for the customer. This will only be returned if the Location Asset is syncing
+        /// from the Business Profile account. It is possible to have multiple Business Profile listings under the same
+        /// account that point to the same Place ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessProfileLocations")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V0CommonBusinessProfileLocation> BusinessProfileLocations { get; set; }
+
+        /// <summary>
+        /// The type of location ownership. If the type is BUSINESS_OWNER, it will be served as a location extension. If
+        /// the type is AFFILIATE, it will be served as an affiliate location.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationOwnershipType")]
+        public virtual string LocationOwnershipType { get; set; }
+
+        /// <summary>
+        /// Place IDs uniquely identify a place in the Google Places database and on Google Maps. This field is unique
+        /// for a given customer ID and asset type. See https://developers.google.com/places/web-service/place-id to
+        /// learn more about Place ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placeId")]
+        public virtual string PlaceId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A Unified Page Feed asset.</summary>
+    public class GoogleAdsSearchads360V0CommonUnifiedPageFeedAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Labels used to group the page urls.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IList<string> Labels { get; set; }
+
+        /// <summary>The webpage that advertisers want to target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageUrl")]
+        public virtual string PageUrl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A unified sitelink asset.</summary>
+    public class GoogleAdsSearchads360V0CommonUnifiedSitelinkAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of non-overlapping schedules specifying all time intervals for which the asset may serve. There can be
+        /// a maximum of 6 schedules per day, 42 in total.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adScheduleTargets")]
+        public virtual System.Collections.Generic.IList<GoogleAdsSearchads360V0CommonAdScheduleInfo> AdScheduleTargets { get; set; }
+
+        /// <summary>
+        /// First line of the description for the sitelink. If set, the length should be between 1 and 35, inclusive,
+        /// and description2 must also be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description1")]
+        public virtual string Description1 { get; set; }
+
+        /// <summary>
+        /// Second line of the description for the sitelink. If set, the length should be between 1 and 35, inclusive,
+        /// and description1 must also be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description2")]
+        public virtual string Description2 { get; set; }
+
+        /// <summary>Last date of when this asset is effective and still serving, in yyyy-MM-dd format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endDate")]
+        public virtual string EndDate { get; set; }
+
+        /// <summary>
+        /// URL display text for the sitelink. The length of this string should be between 1 and 25, inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("linkText")]
+        public virtual string LinkText { get; set; }
+
+        /// <summary>
+        /// Whether the preference is for the sitelink asset to be displayed on mobile devices. Applies to Microsoft
+        /// Ads.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mobilePreferred")]
+        public virtual System.Nullable<bool> MobilePreferred { get; set; }
+
+        /// <summary>Start date of when this asset is effective and can begin serving, in yyyy-MM-dd format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
+        public virtual string StartDate { get; set; }
+
+        /// <summary>ID used for tracking clicks for the sitelink asset. This is a Yahoo! Japan only field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trackingId")]
+        public virtual System.Nullable<long> TrackingId { get; set; }
+
+        /// <summary>Whether to show the sitelink asset in search user's time zone. Applies to Microsoft Ads.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useSearcherTimeZone")]
+        public virtual System.Nullable<bool> UseSearcherTimeZone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A User List criterion. Represents a user list that is defined by the advertiser to be targeted.
     /// </summary>
@@ -1878,6 +2179,10 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>An unexpected server-side error.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("internalError")]
         public virtual string InternalError { get; set; }
+
+        /// <summary>The reasons for invalid parameter errors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invalidParameterError")]
+        public virtual string InvalidParameterError { get; set; }
 
         /// <summary>An error with the query</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryError")]
@@ -2251,6 +2556,61 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A link between an ad group and an asset.</summary>
+    public class GoogleAdsSearchads360V0ResourcesAdGroupAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Immutable. The ad group to which the asset is linked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroup")]
+        public virtual string AdGroup { get; set; }
+
+        /// <summary>Required. Immutable. The asset which is linked to the ad group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asset")]
+        public virtual string Asset { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the ad group asset. AdGroupAsset resource names have the form:
+        /// `customers/{customer_id}/adGroupAssets/{ad_group_id}~{asset_id}~{field_type}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>Status of the ad group asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// AdGroupAssetSet is the linkage between an ad group and an asset set. Creating an AdGroupAssetSet links an asset
+    /// set with an ad group.
+    /// </summary>
+    public class GoogleAdsSearchads360V0ResourcesAdGroupAssetSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The ad group to which this asset set is linked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroup")]
+        public virtual string AdGroup { get; set; }
+
+        /// <summary>Immutable. The asset set which is linked to the ad group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetSet")]
+        public virtual string AssetSet { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the ad group asset set. Ad group asset set resource names have the form:
+        /// `customers/{customer_id}/adGroupAssetSets/{ad_group_id}~{asset_set_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>Output only. The status of the ad group asset set. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// An ad group audience view. Includes performance data from interests and remarketing lists for Display Network
     /// and YouTube Network ads, and remarketing lists for search ads (RLSA), aggregated at the audience level.
@@ -2373,7 +2733,7 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("listingGroup")]
         public virtual GoogleAdsSearchads360V0CommonListingGroupInfo ListingGroup { get; set; }
 
-        /// <summary>Output only. Location.</summary>
+        /// <summary>Immutable. Location.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("location")]
         public virtual GoogleAdsSearchads360V0CommonLocationInfo Location { get; set; }
 
@@ -2383,6 +2743,10 @@ namespace Google.Apis.SA360.v0.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("negative")]
         public virtual System.Nullable<bool> Negative { get; set; }
+
+        /// <summary>Output only. Estimates for criterion bids at various positions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("positionEstimates")]
+        public virtual GoogleAdsSearchads360V0ResourcesAdGroupCriterionPositionEstimates PositionEstimates { get; set; }
 
         /// <summary>Output only. Information regarding the quality of the criterion.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("qualityInfo")]
@@ -2451,6 +2815,20 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Estimates for criterion bids at various positions.</summary>
+    public class GoogleAdsSearchads360V0ResourcesAdGroupCriterionPositionEstimates : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The estimate of the CPC bid required for ad to be displayed at the top of the first page of
+        /// search results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("topOfPageCpcMicros")]
+        public virtual System.Nullable<long> TopOfPageCpcMicros { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A container for ad group criterion quality information.</summary>
     public class GoogleAdsSearchads360V0ResourcesAdGroupCriterionQualityInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2508,6 +2886,14 @@ namespace Google.Apis.SA360.v0.Data
     /// </summary>
     public class GoogleAdsSearchads360V0ResourcesAsset : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. A unified call asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callAsset")]
+        public virtual GoogleAdsSearchads360V0CommonUnifiedCallAsset CallAsset { get; set; }
+
+        /// <summary>Output only. A unified callout asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("calloutAsset")]
+        public virtual GoogleAdsSearchads360V0CommonUnifiedCalloutAsset CalloutAsset { get; set; }
+
         /// <summary>
         /// Output only. The timestamp when this asset was created. The timestamp is in the customer's time zone and in
         /// "yyyy-MM-dd HH:mm:ss" format.
@@ -2534,9 +2920,17 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("lastModifiedTime")]
         public virtual string LastModifiedTime { get; set; }
 
+        /// <summary>Output only. A unified location asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationAsset")]
+        public virtual GoogleAdsSearchads360V0CommonUnifiedLocationAsset LocationAsset { get; set; }
+
         /// <summary>A mobile app asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mobileAppAsset")]
         public virtual GoogleAdsSearchads360V0CommonMobileAppAsset MobileAppAsset { get; set; }
+
+        /// <summary>Output only. A unified page feed asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageFeedAsset")]
+        public virtual GoogleAdsSearchads360V0CommonUnifiedPageFeedAsset PageFeedAsset { get; set; }
 
         /// <summary>
         /// Immutable. The resource name of the asset. Asset resource names have the form:
@@ -2544,6 +2938,10 @@ namespace Google.Apis.SA360.v0.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
+
+        /// <summary>Output only. A unified sitelink asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sitelinkAsset")]
+        public virtual GoogleAdsSearchads360V0CommonUnifiedSitelinkAsset SitelinkAsset { get; set; }
 
         /// <summary>Output only. The status of the asset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
@@ -2576,6 +2974,35 @@ namespace Google.Apis.SA360.v0.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// AssetSetAsset is the link between an asset and an asset set. Adding an AssetSetAsset links an asset with an
+    /// asset set.
+    /// </summary>
+    public class GoogleAdsSearchads360V0ResourcesAssetSetAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The asset which this asset set asset is linking to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asset")]
+        public virtual string Asset { get; set; }
+
+        /// <summary>Immutable. The asset set which this asset set asset is linking to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetSet")]
+        public virtual string AssetSet { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the asset set asset. Asset set asset resource names have the form:
+        /// `customers/{customer_id}/assetSetAssets/{asset_set_id}~{asset_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>Output only. The status of the asset set asset. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2889,7 +3316,8 @@ namespace Google.Apis.SA360.v0.Data
 
         /// <summary>
         /// Selective optimization setting for this campaign, which includes a set of conversion actions to optimize
-        /// this campaign towards.
+        /// this campaign towards. This feature only applies to app campaigns that use MULTI_CHANNEL as
+        /// AdvertisingChannelType and APP_CAMPAIGN or APP_CAMPAIGN_FOR_ENGAGEMENT as AdvertisingChannelSubType.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selectiveOptimization")]
         public virtual GoogleAdsSearchads360V0ResourcesCampaignSelectiveOptimization SelectiveOptimization { get; set; }
@@ -2965,6 +3393,61 @@ namespace Google.Apis.SA360.v0.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("urlExpansionOptOut")]
         public virtual System.Nullable<bool> UrlExpansionOptOut { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A link between a Campaign and an Asset.</summary>
+    public class GoogleAdsSearchads360V0ResourcesCampaignAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The asset which is linked to the campaign.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asset")]
+        public virtual string Asset { get; set; }
+
+        /// <summary>Immutable. The campaign to which the asset is linked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaign")]
+        public virtual string Campaign { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the campaign asset. CampaignAsset resource names have the form:
+        /// `customers/{customer_id}/campaignAssets/{campaign_id}~{asset_id}~{field_type}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>Output only. Status of the campaign asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// CampaignAssetSet is the linkage between a campaign and an asset set. Adding a CampaignAssetSet links an asset
+    /// set with a campaign.
+    /// </summary>
+    public class GoogleAdsSearchads360V0ResourcesCampaignAssetSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The asset set which is linked to the campaign.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetSet")]
+        public virtual string AssetSet { get; set; }
+
+        /// <summary>Immutable. The campaign to which this asset set is linked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaign")]
+        public virtual string Campaign { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the campaign asset set. Asset set asset resource names have the form:
+        /// `customers/{customer_id}/campaignAssetSets/{campaign_id}~{asset_set_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>Output only. The status of the campaign asset set asset. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3211,7 +3694,8 @@ namespace Google.Apis.SA360.v0.Data
 
     /// <summary>
     /// Selective optimization setting for this campaign, which includes a set of conversion actions to optimize this
-    /// campaign towards.
+    /// campaign towards. This feature only applies to app campaigns that use MULTI_CHANNEL as AdvertisingChannelType
+    /// and APP_CAMPAIGN or APP_CAMPAIGN_FOR_ENGAGEMENT as AdvertisingChannelSubType.
     /// </summary>
     public class GoogleAdsSearchads360V0ResourcesCampaignSelectiveOptimization : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3642,6 +4126,57 @@ namespace Google.Apis.SA360.v0.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A link between a customer and an asset.</summary>
+    public class GoogleAdsSearchads360V0ResourcesCustomerAsset : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Immutable. The asset which is linked to the customer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asset")]
+        public virtual string Asset { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the customer asset. CustomerAsset resource names have the form:
+        /// `customers/{customer_id}/customerAssets/{asset_id}~{field_type}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>Status of the customer asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// CustomerAssetSet is the linkage between a customer and an asset set. Adding a CustomerAssetSet links an asset
+    /// set with a customer.
+    /// </summary>
+    public class GoogleAdsSearchads360V0ResourcesCustomerAssetSet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The asset set which is linked to the customer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetSet")]
+        public virtual string AssetSet { get; set; }
+
+        /// <summary>Immutable. The customer to which this asset set is linked.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
+        public virtual string Customer { get; set; }
+
+        /// <summary>
+        /// Immutable. The resource name of the customer asset set. Asset set asset resource names have the form:
+        /// `customers/{customer_id}/customerAssetSets/{asset_set_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>Output only. The status of the customer asset set asset. Read-only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A link between the given customer and a client customer. CustomerClients only exist for manager customers. All
     /// direct and indirect client customers are included, as well as the manager itself.
@@ -3792,6 +4327,54 @@ namespace Google.Apis.SA360.v0.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A geo target constant.</summary>
+    public class GoogleAdsSearchads360V0ResourcesGeoTargetConstant : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The fully qualified English name, consisting of the target's name and that of its parent and
+        /// country.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("canonicalName")]
+        public virtual string CanonicalName { get; set; }
+
+        /// <summary>Output only. The ISO-3166-1 alpha-2 country code that is associated with the target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("countryCode")]
+        public virtual string CountryCode { get; set; }
+
+        /// <summary>Output only. The ID of the geo target constant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual System.Nullable<long> Id { get; set; }
+
+        /// <summary>Output only. Geo target constant English name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the parent geo target constant. Geo target constant resource names have
+        /// the form: `geoTargetConstants/{parent_geo_target_constant_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parentGeoTarget")]
+        public virtual string ParentGeoTarget { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the geo target constant. Geo target constant resource names have the form:
+        /// `geoTargetConstants/{geo_target_constant_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
+        public virtual string ResourceName { get; set; }
+
+        /// <summary>Output only. Geo target constant status.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>Output only. Geo target constant target type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetType")]
+        public virtual string TargetType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4056,6 +4639,14 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupAdLabel")]
         public virtual GoogleAdsSearchads360V0ResourcesAdGroupAdLabel AdGroupAdLabel { get; set; }
 
+        /// <summary>The ad group asset referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupAsset")]
+        public virtual GoogleAdsSearchads360V0ResourcesAdGroupAsset AdGroupAsset { get; set; }
+
+        /// <summary>The ad group asset set referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adGroupAssetSet")]
+        public virtual GoogleAdsSearchads360V0ResourcesAdGroupAssetSet AdGroupAssetSet { get; set; }
+
         /// <summary>The ad group audience view referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("adGroupAudienceView")]
         public virtual GoogleAdsSearchads360V0ResourcesAdGroupAudienceView AdGroupAudienceView { get; set; }
@@ -4088,6 +4679,10 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("assetSet")]
         public virtual GoogleAdsSearchads360V0ResourcesAssetSet AssetSet { get; set; }
 
+        /// <summary>The asset set asset referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetSetAsset")]
+        public virtual GoogleAdsSearchads360V0ResourcesAssetSetAsset AssetSetAsset { get; set; }
+
         /// <summary>The bidding strategy referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("biddingStrategy")]
         public virtual GoogleAdsSearchads360V0ResourcesBiddingStrategy BiddingStrategy { get; set; }
@@ -4095,6 +4690,14 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>The campaign referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaign")]
         public virtual GoogleAdsSearchads360V0ResourcesCampaign Campaign { get; set; }
+
+        /// <summary>The campaign asset referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignAsset")]
+        public virtual GoogleAdsSearchads360V0ResourcesCampaignAsset CampaignAsset { get; set; }
+
+        /// <summary>The campaign asset set referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaignAssetSet")]
+        public virtual GoogleAdsSearchads360V0ResourcesCampaignAssetSet CampaignAssetSet { get; set; }
 
         /// <summary>The campaign audience view referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("campaignAudienceView")]
@@ -4124,6 +4727,14 @@ namespace Google.Apis.SA360.v0.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customer")]
         public virtual GoogleAdsSearchads360V0ResourcesCustomer Customer { get; set; }
 
+        /// <summary>The customer asset referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerAsset")]
+        public virtual GoogleAdsSearchads360V0ResourcesCustomerAsset CustomerAsset { get; set; }
+
+        /// <summary>The customer asset set referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customerAssetSet")]
+        public virtual GoogleAdsSearchads360V0ResourcesCustomerAssetSet CustomerAssetSet { get; set; }
+
         /// <summary>The CustomerClient referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerClient")]
         public virtual GoogleAdsSearchads360V0ResourcesCustomerClient CustomerClient { get; set; }
@@ -4139,6 +4750,10 @@ namespace Google.Apis.SA360.v0.Data
         /// <summary>The gender view referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("genderView")]
         public virtual GoogleAdsSearchads360V0ResourcesGenderView GenderView { get; set; }
+
+        /// <summary>The geo target constant referenced in the query.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("geoTargetConstant")]
+        public virtual GoogleAdsSearchads360V0ResourcesGeoTargetConstant GeoTargetConstant { get; set; }
 
         /// <summary>The keyword view referenced in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("keywordView")]

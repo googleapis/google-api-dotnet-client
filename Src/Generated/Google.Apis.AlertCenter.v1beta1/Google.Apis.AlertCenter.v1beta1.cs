@@ -1064,6 +1064,43 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Alert that is triggered when Google support requests to access customer data.</summary>
+    public class AccessApproval : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Justification for data access based on justification enums.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("justificationReason")]
+        public virtual System.Collections.Generic.IList<string> JustificationReason { get; set; }
+
+        /// <summary>Office location of Google staff requesting access such as "US".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("officeLocation")]
+        public virtual string OfficeLocation { get; set; }
+
+        /// <summary>Products within scope of the Access Approvals request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("products")]
+        public virtual System.Collections.Generic.IList<string> Products { get; set; }
+
+        /// <summary>
+        /// ID of the Access Approvals request. This is a helpful field when requesting support from Google.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>
+        /// Scope of access, also known as a resource. This is further narrowed down by the product field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scope")]
+        public virtual string Scope { get; set; }
+
+        /// <summary>
+        /// Support tickets related to this Access Approvals request. Populated if there is an associated case number.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tickets")]
+        public virtual System.Collections.Generic.IList<SupportTicket> Tickets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Details about why an account is receiving an account suspension warning.</summary>
     public class AccountSuspensionDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2820,6 +2857,21 @@ namespace Google.Apis.AlertCenter.v1beta1.Data
         /// <summary>email of person whose password was reset</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("userEmail")]
         public virtual string UserEmail { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Support ticket related to Access Approvals request</summary>
+    public class SupportTicket : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Support ticket ID</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ticketId")]
+        public virtual string TicketId { get; set; }
+
+        /// <summary>Link to support ticket</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ticketUrl")]
+        public virtual string TicketUrl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -9828,6 +9828,17 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxExtractiveSegmentCount")]
         public virtual System.Nullable<int> MaxExtractiveSegmentCount { get; set; }
 
+        /// <summary>Return at most `num_next_segments` segments after each selected segments.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numNextSegments")]
+        public virtual System.Nullable<int> NumNextSegments { get; set; }
+
+        /// <summary>
+        /// Specifies whether to also include the adjacent from each selected segments. Return at most
+        /// `num_previous_segments` segments before each selected segments.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numPreviousSegments")]
+        public virtual System.Nullable<int> NumPreviousSegments { get; set; }
+
         /// <summary>
         /// Specifies whether to return the confidence score from the extractive segments in each search result. The
         /// default value is `false`.
