@@ -2276,6 +2276,35 @@ namespace Google.Apis.DeploymentManager.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    public class BulkInsertOperationStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] Count of VMs successfully created so far.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createdVmCount")]
+        public virtual System.Nullable<int> CreatedVmCount { get; set; }
+
+        /// <summary>[Output Only] Count of VMs that got deleted during rollback.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deletedVmCount")]
+        public virtual System.Nullable<int> DeletedVmCount { get; set; }
+
+        /// <summary>[Output Only] Count of VMs that started creating but encountered an error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedToCreateVmCount")]
+        public virtual System.Nullable<int> FailedToCreateVmCount { get; set; }
+
+        /// <summary>
+        /// [Output Only] Creation status of BulkInsert operation - information if the flow is rolling forward or
+        /// rolling back.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual string Status { get; set; }
+
+        /// <summary>[Output Only] Count of VMs originally planned to be created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetVmCount")]
+        public virtual System.Nullable<int> TargetVmCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class ConfigFile : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The contents of the file.</summary>
@@ -2559,6 +2588,16 @@ namespace Google.Apis.DeploymentManager.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    public class InstancesBulkInsertOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Status information per location (location name is key). Example key: zones/us-central1-a</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("perLocationStatus")]
+        public virtual System.Collections.Generic.IDictionary<string, BulkInsertOperationStatus> PerLocationStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class Manifest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. The YAML configuration for this manifest.</summary>
@@ -2631,7 +2670,7 @@ namespace Google.Apis.DeploymentManager.v2.Data
     /// [Zonal](/compute/docs/reference/rest/{$api_version}/zoneOperations) You can use an operation resource to manage
     /// asynchronous API requests. For more information, read Handling API responses. Operations can be global, regional
     /// or zonal. - For global operations, use the `globalOperations` resource. - For regional operations, use the
-    /// `regionOperations` resource. - For zonal operations, use the `zonalOperations` resource. For more information,
+    /// `regionOperations` resource. - For zonal operations, use the `zoneOperations` resource. For more information,
     /// read Global, Regional, and Zonal Resources.
     /// </summary>
     public class Operation : Google.Apis.Requests.IDirectResponseSchema
@@ -2690,6 +2729,9 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("insertTime")]
         public virtual string InsertTime { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("instancesBulkInsertOperationMetadata")]
+        public virtual InstancesBulkInsertOperationMetadata InstancesBulkInsertOperationMetadata { get; set; }
+
         /// <summary>[Output Only] Type of the resource. Always `compute#operation` for Operation resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
@@ -2729,6 +2771,13 @@ namespace Google.Apis.DeploymentManager.v2.Data
         public virtual string SelfLink { get; set; }
 
         /// <summary>
+        /// [Output Only] If the operation is for projects.setCommonInstanceMetadata, this field will contain
+        /// information on all underlying zonal actions and their state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("setCommonInstanceMetadataOperationMetadata")]
+        public virtual SetCommonInstanceMetadataOperationMetadata SetCommonInstanceMetadataOperationMetadata { get; set; }
+
+        /// <summary>
         /// [Output Only] The time that this operation was started by the server. This value is in RFC3339 text format.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
@@ -2758,7 +2807,10 @@ namespace Google.Apis.DeploymentManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetLink")]
         public virtual string TargetLink { get; set; }
 
-        /// <summary>[Output Only] User who requested the operation, for example: `user@example.com`.</summary>
+        /// <summary>
+        /// [Output Only] User who requested the operation, for example: `user@example.com` or `alice_smith_identifier
+        /// (global/workforcePools/example-com-us-employees)`.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
         public virtual string User { get; set; }
 
@@ -2881,18 +2933,26 @@ namespace Google.Apis.DeploymentManager.v2.Data
     /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
     /// constraints based on attributes of the request, the resource, or both. To learn which resources support
     /// conditions in their IAM policies, see the [IAM
-    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings":
-    /// [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:**
+    /// ```
+    /// {
+    /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
     /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:**
+    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
+    /// ```
+    /// **YAML
+    /// example:**
+    /// ```
     /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features,
-    /// see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3
+    /// ```
+    /// For a description of IAM and its
+    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3201,6 +3261,68 @@ namespace Google.Apis.DeploymentManager.v2.Data
         /// <summary>Resources contained in this list response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<Resource> Resources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class SetCommonInstanceMetadataOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] The client operation id.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientOperationId")]
+        public virtual string ClientOperationId { get; set; }
+
+        /// <summary>
+        /// [Output Only] Status information per location (location name is key). Example key: zones/us-central1-a
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("perLocationOperations")]
+        public virtual System.Collections.Generic.IDictionary<string, SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo> PerLocationOperations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class SetCommonInstanceMetadataOperationMetadataPerLocationOperationInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>[Output Only] If state is `ABANDONED` or `FAILED`, this field is populated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>
+        /// [Output Only] Status of the action, which can be one of the following: `PROPAGATING`, `PROPAGATED`,
+        /// `ABANDONED`, `FAILED`, or `DONE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
+
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

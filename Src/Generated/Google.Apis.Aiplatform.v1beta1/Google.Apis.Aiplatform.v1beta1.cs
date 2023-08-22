@@ -39926,104 +39926,6 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// <summary>Required. Immutable. Type of Feature value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
         public virtual string ValueType { get; set; }
-
-        private string _versionCreateTimeRaw;
-
-        private object _versionCreateTime;
-
-        /// <summary>Output only. Timestamp when this version was created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("versionCreateTime")]
-        public virtual string VersionCreateTimeRaw
-        {
-            get => _versionCreateTimeRaw;
-            set
-            {
-                _versionCreateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _versionCreateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="VersionCreateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use VersionCreateTimeDateTimeOffset instead.")]
-        public virtual object VersionCreateTime
-        {
-            get => _versionCreateTime;
-            set
-            {
-                _versionCreateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _versionCreateTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="VersionCreateTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? VersionCreateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(VersionCreateTimeRaw);
-            set => VersionCreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
-
-        /// <summary>The description of this version.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("versionDescription")]
-        public virtual string VersionDescription { get; set; }
-
-        /// <summary>
-        /// Output only. Immutable. The version ID of the feature. It is an auto-incrementing decimal number in string
-        /// representation. A new version is committed when a new model version is created under an existing feature id.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
-        public virtual string VersionId { get; set; }
-
-        /// <summary>
-        /// The labels with user-defined metadata to organize your versions. Label keys and values can be no longer than
-        /// 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and
-        /// dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of
-        /// labels.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("versionLabels")]
-        public virtual System.Collections.Generic.IDictionary<string, string> VersionLabels { get; set; }
-
-        private string _versionUpdateTimeRaw;
-
-        private object _versionUpdateTime;
-
-        /// <summary>Output only. Timestamp when this version was most recently updated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("versionUpdateTime")]
-        public virtual string VersionUpdateTimeRaw
-        {
-            get => _versionUpdateTimeRaw;
-            set
-            {
-                _versionUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _versionUpdateTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="VersionUpdateTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use VersionUpdateTimeDateTimeOffset instead.")]
-        public virtual object VersionUpdateTime
-        {
-            get => _versionUpdateTime;
-            set
-            {
-                _versionUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _versionUpdateTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="VersionUpdateTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? VersionUpdateTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(VersionUpdateTimeRaw);
-            set => VersionUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
     }
 
     /// <summary>
@@ -48764,6 +48666,13 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     /// <summary>All parameters related to queuing and scheduling of custom jobs.</summary>
     public class GoogleCloudAiplatformV1beta1Scheduling : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Indicates if the job should retry for internal errors after the job starts running. If true,
+        /// overrides `Scheduling.restart_job_on_worker_restart` to false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableRetries")]
+        public virtual System.Nullable<bool> DisableRetries { get; set; }
+
         /// <summary>
         /// Restarts the entire CustomJob if a worker gets restarted. This feature can be used by distributed training
         /// jobs that are not resilient to workers leaving and joining a job.

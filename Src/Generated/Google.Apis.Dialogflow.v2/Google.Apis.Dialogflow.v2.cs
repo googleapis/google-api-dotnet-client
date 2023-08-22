@@ -26349,6 +26349,13 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// <summary>Generated summary for a conversation.</summary>
     public class GoogleCloudDialogflowV2GenerateStatelessSummaryResponseSummary : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The baseline model version used to generate this summary. It is empty if a baseline model was not used to
+        /// generate this summary.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baselineModelVersion")]
+        public virtual string BaselineModelVersion { get; set; }
+
         /// <summary>The summary content that is concatenated into one string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
@@ -29206,6 +29213,13 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>The name of the answer record. Format: "projects//answerRecords/"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
         public virtual string AnswerRecord { get; set; }
+
+        /// <summary>
+        /// The baseline model version used to generate this summary. It is empty if a baseline model was not used to
+        /// generate this summary.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("baselineModelVersion")]
+        public virtual string BaselineModelVersion { get; set; }
 
         /// <summary>The summary content that is concatenated into one string.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]

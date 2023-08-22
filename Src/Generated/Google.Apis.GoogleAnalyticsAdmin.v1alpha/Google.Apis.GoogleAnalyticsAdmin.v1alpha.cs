@@ -10793,10 +10793,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dailyExportEnabled")]
         public virtual System.Nullable<bool> DailyExportEnabled { get; set; }
 
-        /// <summary>If set true, enables enterprise export to the linked Google Cloud project.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enterpriseExportEnabled")]
-        public virtual System.Nullable<bool> EnterpriseExportEnabled { get; set; }
-
         /// <summary>The list of event names that will be excluded from exports.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("excludedEvents")]
         public virtual System.Collections.Generic.IList<string> ExcludedEvents { get; set; }
@@ -10807,6 +10803,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("exportStreams")]
         public virtual System.Collections.Generic.IList<string> ExportStreams { get; set; }
+
+        /// <summary>If set true, enables fresh daily export to the linked Google Cloud project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("freshDailyExportEnabled")]
+        public virtual System.Nullable<bool> FreshDailyExportEnabled { get; set; }
 
         /// <summary>If set true, exported data will include advertising identifiers for mobile app streams.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("includeAdvertisingId")]

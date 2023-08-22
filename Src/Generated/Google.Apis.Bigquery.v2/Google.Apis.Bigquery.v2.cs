@@ -4842,6 +4842,13 @@ namespace Google.Apis.Bigquery.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
 
+        /// <summary>
+        /// [Optional] Information about the external metadata storage where the dataset is defined. Filled out when the
+        /// dataset type is EXTERNAL.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalDatasetReference")]
+        public virtual ExternalDatasetReference ExternalDatasetReference { get; set; }
+
         /// <summary>[Optional] A descriptive name for the dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("friendlyName")]
         public virtual string FriendlyName { get; set; }
@@ -5661,6 +5668,23 @@ namespace Google.Apis.Bigquery.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceUris")]
         public virtual System.Collections.Generic.IList<string> SourceUris { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class ExternalDatasetReference : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// [Required] The connection id that is used to access the external_source. Format:
+        /// projects/{project_id}/locations/{location_id}/connections/{connection_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connection")]
+        public virtual string Connection { get; set; }
+
+        /// <summary>[Required] External source that backs this dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalSource")]
+        public virtual string ExternalSource { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9505,6 +9529,13 @@ namespace Google.Apis.Bigquery.v2.Data
         public virtual System.Nullable<long> Precision { get; set; }
 
         /// <summary>
+        /// Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is
+        /// required. Possible values for the field element type of a RANGE include: - DATE - DATETIME - TIMESTAMP
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rangeElementType")]
+        public virtual RangeElementTypeData RangeElementType { get; set; }
+
+        /// <summary>
         /// Optional. Rounding Mode specification of the field. It only can be set on NUMERIC or BIGNUMERIC type fields.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roundingMode")]
@@ -9545,6 +9576,17 @@ namespace Google.Apis.Bigquery.v2.Data
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("names")]
             public virtual System.Collections.Generic.IList<string> Names { get; set; }
+        }
+
+        /// <summary>
+        /// Optional. The subtype of the RANGE, if the type of this field is RANGE. If the type is RANGE, this field is
+        /// required. Possible values for the field element type of a RANGE include: - DATE - DATETIME - TIMESTAMP
+        /// </summary>
+        public class RangeElementTypeData
+        {
+            /// <summary>The field element type of a RANGE</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("type")]
+            public virtual string Type { get; set; }
         }
     }
 

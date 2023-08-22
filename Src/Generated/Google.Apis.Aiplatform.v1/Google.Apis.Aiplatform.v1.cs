@@ -33834,15 +33834,6 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Required. Immutable. Type of Feature value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
         public virtual string ValueType { get; set; }
-
-        /// <summary>
-        /// The labels with user-defined metadata to organize your versions. Label keys and values can be no longer than
-        /// 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and
-        /// dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of
-        /// labels.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("versionLabels")]
-        public virtual System.Collections.Generic.IDictionary<string, string> VersionLabels { get; set; }
     }
 
     /// <summary>
@@ -41588,6 +41579,13 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>All parameters related to queuing and scheduling of custom jobs.</summary>
     public class GoogleCloudAiplatformV1Scheduling : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. Indicates if the job should retry for internal errors after the job starts running. If true,
+        /// overrides `Scheduling.restart_job_on_worker_restart` to false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableRetries")]
+        public virtual System.Nullable<bool> DisableRetries { get; set; }
+
         /// <summary>
         /// Restarts the entire CustomJob if a worker gets restarted. This feature can be used by distributed training
         /// jobs that are not resilient to workers leaving and joining a job.

@@ -273,8 +273,11 @@ namespace Google.Apis.AdMob.v1beta
         {
             this.service = service;
             AdSources = new AdSourcesResource(service);
+            AdUnitMappings = new AdUnitMappingsResource(service);
             AdUnits = new AdUnitsResource(service);
             Apps = new AppsResource(service);
+            Campaigns = new CampaignsResource(service);
+            MediationGroups = new MediationGroupsResource(service);
             MediationReport = new MediationReportResource(service);
             NetworkReport = new NetworkReportResource(service);
         }
@@ -294,6 +297,106 @@ namespace Google.Apis.AdMob.v1beta
             public AdSourcesResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                Adapters = new AdaptersResource(service);
+            }
+
+            /// <summary>Gets the Adapters resource.</summary>
+            public virtual AdaptersResource Adapters { get; }
+
+            /// <summary>The "adapters" collection of methods.</summary>
+            public class AdaptersResource
+            {
+                private const string Resource = "adapters";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AdaptersResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>List the adapters of the ad source.</summary>
+                /// <param name="parent">
+                /// Required. The parent which owns this collection of adapters. Format:
+                /// accounts/{publisher_id}/adSources/{ad_source_id}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>List the adapters of the ad source.</summary>
+                public class ListRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1beta.Data.ListAdaptersResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent which owns this collection of adapters. Format:
+                    /// accounts/{publisher_id}/adSources/{ad_source_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The maximum number of adapters to return. If unspecified or 0, at most 10,000 adapters will be
+                    /// returned. The maximum value is 20,000; values above 20,000 will be coerced to 20,000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous `ListAdapters` call. Provide this to retrieve the
+                    /// subsequent page.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+parent}/adapters";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/adSources/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
             }
 
             /// <summary>List the ad sources.</summary>
@@ -376,6 +479,91 @@ namespace Google.Apis.AdMob.v1beta
             }
         }
 
+        /// <summary>Gets the AdUnitMappings resource.</summary>
+        public virtual AdUnitMappingsResource AdUnitMappings { get; }
+
+        /// <summary>The "adUnitMappings" collection of methods.</summary>
+        public class AdUnitMappingsResource
+        {
+            private const string Resource = "adUnitMappings";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public AdUnitMappingsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Batch create the ad unit mappings under the specific AdMob account. The maximum allowed batch size is
+            /// 100.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The AdMob account which owns this collection of ad unit mappings. Format:
+            /// accounts/{publisher_id} See https://support.google.com/admob/answer/2784578 for instructions on how to
+            /// find your AdMob publisher ID.
+            /// </param>
+            public virtual BatchCreateRequest BatchCreate(Google.Apis.AdMob.v1beta.Data.BatchCreateAdUnitMappingsRequest body, string parent)
+            {
+                return new BatchCreateRequest(service, body, parent);
+            }
+
+            /// <summary>
+            /// Batch create the ad unit mappings under the specific AdMob account. The maximum allowed batch size is
+            /// 100.
+            /// </summary>
+            public class BatchCreateRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1beta.Data.BatchCreateAdUnitMappingsResponse>
+            {
+                /// <summary>Constructs a new BatchCreate request.</summary>
+                public BatchCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdMob.v1beta.Data.BatchCreateAdUnitMappingsRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The AdMob account which owns this collection of ad unit mappings. Format:
+                /// accounts/{publisher_id} See https://support.google.com/admob/answer/2784578 for instructions on how
+                /// to find your AdMob publisher ID.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AdMob.v1beta.Data.BatchCreateAdUnitMappingsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "batchCreate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+parent}/adUnitMappings:batchCreate";
+
+                /// <summary>Initializes BatchCreate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                }
+            }
+        }
+
         /// <summary>Gets the AdUnits resource.</summary>
         public virtual AdUnitsResource AdUnits { get; }
 
@@ -391,6 +579,244 @@ namespace Google.Apis.AdMob.v1beta
             public AdUnitsResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
+                AdUnitMappings = new AdUnitMappingsResource(service);
+            }
+
+            /// <summary>Gets the AdUnitMappings resource.</summary>
+            public virtual AdUnitMappingsResource AdUnitMappings { get; }
+
+            /// <summary>The "adUnitMappings" collection of methods.</summary>
+            public class AdUnitMappingsResource
+            {
+                private const string Resource = "adUnitMappings";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public AdUnitMappingsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Create an ad unit mapping under the specific AdMob account and ad unit.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent which owns the ad unit mapping. Format:
+                /// accounts/{publisher_id}/adUnits/{ad_unit_id}
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.AdMob.v1beta.Data.AdUnitMapping body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Create an ad unit mapping under the specific AdMob account and ad unit.</summary>
+                public class CreateRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1beta.Data.AdUnitMapping>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdMob.v1beta.Data.AdUnitMapping body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent which owns the ad unit mapping. Format:
+                    /// accounts/{publisher_id}/adUnits/{ad_unit_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AdMob.v1beta.Data.AdUnitMapping Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+parent}/adUnitMappings";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/adUnits/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>List ad unit mappings under the specified AdMob account and ad unit.</summary>
+                /// <param name="parent">
+                /// Required. The parent which owns this collection of ad unit mappings. Format:
+                /// accounts/{publisher_id}/adUnits/{ad_unit_id}
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>List ad unit mappings under the specified AdMob account and ad unit.</summary>
+                public class ListRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1beta.Data.ListAdUnitMappingsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent which owns this collection of ad unit mappings. Format:
+                    /// accounts/{publisher_id}/adUnits/{ad_unit_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The filter string that uses [EBNF grammar
+                    /// syntax](https://google.aip.dev/assets/misc/ebnf-filtering.txt). Possible field to filter by is:
+                    /// - "DISPLAY_NAME" Possible filter function is: - `IN`: Used to filter fields that represent a
+                    /// singleton including "DISPLAY_NAME". The filter functions can be added together using `AND`. `OR`
+                    /// functionality is not supported. Example: filter: IN(DISPLAY_NAME, "Test Ad Unit Mapping 1",
+                    /// "Test Ad Unit Mapping 2")
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// The maximum number of ad unit mappings to return. If unspecified or 0, at most 10,000 ad unit
+                    /// mappings will be returned. The maximum value is 20,000; values above 20,000 will be coerced to
+                    /// 20,000.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous `ListAdUnitMappings` call. Provide this to retrieve the
+                    /// subsequent page.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+parent}/adUnitMappings";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/adUnits/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Creates an ad unit under the specified AdMob account.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. Resource name of the account to create the specified ad unit for. Example:
+            /// accounts/pub-9876543210987654
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.AdMob.v1beta.Data.AdUnit body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates an ad unit under the specified AdMob account.</summary>
+            public class CreateRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1beta.Data.AdUnit>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdMob.v1beta.Data.AdUnit body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the account to create the specified ad unit for. Example:
+                /// accounts/pub-9876543210987654
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AdMob.v1beta.Data.AdUnit Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+parent}/adUnits";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                }
             }
 
             /// <summary>List the ad units under the specified AdMob account.</summary>
@@ -490,6 +916,65 @@ namespace Google.Apis.AdMob.v1beta
                 this.service = service;
             }
 
+            /// <summary>Creates an app under the specified AdMob account.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. Resource name of the account for which the app is being created. Example:
+            /// accounts/pub-9876543210987654
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.AdMob.v1beta.Data.App body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Creates an app under the specified AdMob account.</summary>
+            public class CreateRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1beta.Data.App>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdMob.v1beta.Data.App body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the account for which the app is being created. Example:
+                /// accounts/pub-9876543210987654
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AdMob.v1beta.Data.App Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+parent}/apps";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>List the apps under the specified AdMob account.</summary>
             /// <param name="parent">
             /// Required. Resource name of the account to list apps for. Example: accounts/pub-9876543210987654
@@ -561,6 +1046,585 @@ namespace Google.Apis.AdMob.v1beta
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the Campaigns resource.</summary>
+        public virtual CampaignsResource Campaigns { get; }
+
+        /// <summary>The "campaigns" collection of methods.</summary>
+        public class CampaignsResource
+        {
+            private const string Resource = "campaigns";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public CampaignsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>Batch update operation for campaigns under the specified AdMob publisher.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. Resource name of the account to list campaigns for. The `parent` field in the individual
+            /// UpdateCampaignRequest messages should match the value set here. Example: accounts/pub-9876543210987654
+            /// </param>
+            public virtual BatchUpdateRequest BatchUpdate(Google.Apis.AdMob.v1beta.Data.BatchUpdateCampaignsRequest body, string parent)
+            {
+                return new BatchUpdateRequest(service, body, parent);
+            }
+
+            /// <summary>Batch update operation for campaigns under the specified AdMob publisher.</summary>
+            public class BatchUpdateRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1beta.Data.BatchUpdateCampaignsResponse>
+            {
+                /// <summary>Constructs a new BatchUpdate request.</summary>
+                public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdMob.v1beta.Data.BatchUpdateCampaignsRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the account to list campaigns for. The `parent` field in the individual
+                /// UpdateCampaignRequest messages should match the value set here. Example:
+                /// accounts/pub-9876543210987654
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AdMob.v1beta.Data.BatchUpdateCampaignsRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "batchUpdate";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+parent}/campaigns:batchUpdate";
+
+                /// <summary>Initializes BatchUpdate parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>List the campaigns under the specified AdMob account.</summary>
+            /// <param name="parent">
+            /// Required. Resource name of the account to list campaigns for. Example: accounts/pub-9876543210987654
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>List the campaigns under the specified AdMob account.</summary>
+            public class ListRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1beta.Data.ListCampaignsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the account to list campaigns for. Example: accounts/pub-9876543210987654
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// The filter string that uses [EBNF grammar
+                /// syntax](https://google.aip.dev/assets/misc/ebnf-filtering.txt). Possible field to filter by is: -
+                /// "CAMPAIGN_GOAL_TYPE" Possible filter function is: - `IN`: Used to filter fields that represent a
+                /// singleton including "CAMPAIGN_GOAL_TYPE". The filter functions can be added together using `AND`.
+                /// `OR` functionality is not supported. Example: filter: IN(CAMPAIGN_GOAL_TYPE, "NUMBER_OF_CLICKS",
+                /// "MEDIATED_ADS")
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>The maximum number of campaigns to return.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// The value returned by the last `ListCampaignsResponse`; indicates that this is a continuation of a
+                /// prior `ListGoogleBiddingAdUnits` call, and that the system should return the next page of data.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+parent}/campaigns";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
+        /// <summary>Gets the MediationGroups resource.</summary>
+        public virtual MediationGroupsResource MediationGroups { get; }
+
+        /// <summary>The "mediationGroups" collection of methods.</summary>
+        public class MediationGroupsResource
+        {
+            private const string Resource = "mediationGroups";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public MediationGroupsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                MediationAbExperiments = new MediationAbExperimentsResource(service);
+            }
+
+            /// <summary>Gets the MediationAbExperiments resource.</summary>
+            public virtual MediationAbExperimentsResource MediationAbExperiments { get; }
+
+            /// <summary>The "mediationAbExperiments" collection of methods.</summary>
+            public class MediationAbExperimentsResource
+            {
+                private const string Resource = "mediationAbExperiments";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public MediationAbExperimentsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Create an A/B testing experiment for a specified AdMob account and a mediation group.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent which owns the mediation group. Format:
+                /// accounts/{publisher_id}/mediationGroups/{mediation_group_id}
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.AdMob.v1beta.Data.MediationAbExperiment body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Create an A/B testing experiment for a specified AdMob account and a mediation group.
+                /// </summary>
+                public class CreateRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1beta.Data.MediationAbExperiment>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdMob.v1beta.Data.MediationAbExperiment body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent which owns the mediation group. Format:
+                    /// accounts/{publisher_id}/mediationGroups/{mediation_group_id}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AdMob.v1beta.Data.MediationAbExperiment Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+parent}/mediationAbExperiments";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/mediationGroups/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Stop the mediation A/B experiment and choose a variant.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Name of the mediation group, the experiment for which to choose a variant for. Example:
+                /// accounts/pub-9876543210987654/mediationGroups/0123456789/ mediationAbExperiments
+                /// </param>
+                public virtual StopRequest Stop(Google.Apis.AdMob.v1beta.Data.StopMediationAbExperimentRequest body, string name)
+                {
+                    return new StopRequest(service, body, name);
+                }
+
+                /// <summary>Stop the mediation A/B experiment and choose a variant.</summary>
+                public class StopRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1beta.Data.MediationAbExperiment>
+                {
+                    /// <summary>Constructs a new Stop request.</summary>
+                    public StopRequest(Google.Apis.Services.IClientService service, Google.Apis.AdMob.v1beta.Data.StopMediationAbExperimentRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Name of the mediation group, the experiment for which to choose a variant for. Example:
+                    /// accounts/pub-9876543210987654/mediationGroups/0123456789/ mediationAbExperiments
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.AdMob.v1beta.Data.StopMediationAbExperimentRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "stop";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+name}:stop";
+
+                    /// <summary>Initializes Stop parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^accounts/[^/]+/mediationGroups/[^/]+/mediationAbExperiments$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Create a mediation group under the specific AdMob account.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The parent which owns the mediation group. Format: accounts/{publisher_id}
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.AdMob.v1beta.Data.MediationGroup body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>Create a mediation group under the specific AdMob account.</summary>
+            public class CreateRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1beta.Data.MediationGroup>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdMob.v1beta.Data.MediationGroup body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The parent which owns the mediation group. Format: accounts/{publisher_id}
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AdMob.v1beta.Data.MediationGroup Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+parent}/mediationGroups";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>List mediation groups under the specified AdMob account.</summary>
+            /// <param name="parent">
+            /// Required. Resource name of the account to list mediation groups for. Example:
+            /// accounts/pub-9876543210987654
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>List mediation groups under the specified AdMob account.</summary>
+            public class ListRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1beta.Data.ListMediationGroupsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Resource name of the account to list mediation groups for. Example:
+                /// accounts/pub-9876543210987654
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// The filter string that uses [EBNF grammar
+                /// syntax](https://google.aip.dev/assets/misc/ebnf-filtering.txt). Possible fields to filter by are: -
+                /// "AD_SOURCE_IDS" - "AD_UNIT_IDS" - "APP_IDS" - "DISPLAY_NAME" - "FORMAT" - "MEDIATION_GROUP_ID" -
+                /// "PLATFORM" - "STATE" - "TARGETED_REGION_CODES" Possible filter functions are: - `IN`: Used to filter
+                /// fields that represent a singleton including "MEDIATION_GROUP_ID", "DISPLAY_NAME", "STATE",
+                /// "PLATFORM", and "FORMAT". - `CONTAINS_ANY`: Used to filter fields that represent a collection
+                /// including "AD_SOURCE_IDS", "AD_UNIT_IDS", "APP_IDS", and "TARGETED_REGION_CODES". The filter
+                /// functions can be added together using `AND`. `OR` functionality is not supported. Example: filter:
+                /// IN(DISPLAY_NAME, "Test Group 1", "Test Group 2") AND IN(PLATFORM, "ANDROID") AND
+                /// CONTAINS_ANY(AD_SOURCE_IDS, "5450213213286189855")
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// The maximum number of mediation groups to return. If unspecified or 0, at most 10,000 mediation
+                /// groups will be returned. The maximum value is 20,000; values above 20,000 will be coerced to 20,000.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// The value returned by the last `ListMediationGroupsResponse`; indicates that this is a continuation
+                /// of a prior `ListMediationGroups` call, and that the system should return the next page of data.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+parent}/mediationGroups";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Update the specified mediation group under the specified AdMob account.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Resource name for this mediation group. Format is:
+            /// accounts/{publisher_id}/mediationGroups/{mediation_group_id} Example:
+            /// accounts/pub-9876543210987654/mediationGroups/0123456789
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.AdMob.v1beta.Data.MediationGroup body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>Update the specified mediation group under the specified AdMob account.</summary>
+            public class PatchRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1beta.Data.MediationGroup>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.AdMob.v1beta.Data.MediationGroup body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Resource name for this mediation group. Format is:
+                /// accounts/{publisher_id}/mediationGroups/{mediation_group_id} Example:
+                /// accounts/pub-9876543210987654/mediationGroups/0123456789
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// List of mediation group fields to be updated. Updates to repeated fields such as items in a list
+                /// will fully replace the existing value(s) with the new value(s). Updates to individual values in a
+                /// map can be done by indexing by the key. The following field masks are supported for mediation group
+                /// updates: - "mediation_group_lines[\"{mediation_group_line_id}\"]" clang-format off -
+                /// "mediation_group_lines[\"{mediation_group_line_id}\"].ad_unit_mappings[\"{ad_unit_id}\"]"
+                /// clang-format on - "mediation_group_lines[\"{mediation_group_line_id}\"].cpm_micros" -
+                /// "mediation_group_lines[\"{mediation_group_line_id}\"].cpm_mode" -
+                /// "mediation_group_lines[\"{mediation_group_line_id}\"].state" -
+                /// "mediation_group_lines[\"{mediation_group_line_id}\"].display_name" - "targeting.ad_unit_ids" To
+                /// update a mediation group with a new mediation group line, use a distinct negative number for the
+                /// "mediation_group_line_id". For Example: update_mask { paths:
+                /// "mediation_group_lines[\"123456789012345\"].cpm_micros" }
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AdMob.v1beta.Data.MediationGroup Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1beta/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/mediationGroups/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -919,6 +1983,134 @@ namespace Google.Apis.AdMob.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Optional. Settings for a rewarded ad unit. This can be set or unset only when the ad_format is "REWARDED".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rewardSettings")]
+        public virtual AdUnitRewardSettings RewardSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings to map an AdMob ad unit to a 3rd party ad unit.</summary>
+    public class AdUnitMapping : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Settings for the specified ad unit to make an ad request to 3rd party ad network. Key-value pairs with
+        /// values set by the user for the keys requested by the ad network. Please see
+        /// https://support.google.com/admob/answer/3245073 for details on how to configure the network settings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adUnitConfigurations")]
+        public virtual System.Collections.Generic.IDictionary<string, string> AdUnitConfigurations { get; set; }
+
+        /// <summary>
+        /// The ID of mediation ad source adapter used by this ad unit mapping. The adapter determines the information
+        /// needed in the ad_network_settings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adapterId")]
+        public virtual System.Nullable<long> AdapterId { get; set; }
+
+        /// <summary>Optional. The display name of this ad unit mapping instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Resource name of this ad unit mapping. Format is:
+        /// accounts/{publisher_id}/adUnits/{ad_unit_id_fragment}/adUnitMappings/{ad_unit_mapping_id} Example:
+        /// accounts/pub-1234567890123456/adUnits/0123456789/adUnitMappings/987654321
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The status of this ad unit mapping.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for a rewarded ad unit.</summary>
+    public class AdUnitRewardSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Reward amount for this ad unit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unitAmount")]
+        public virtual System.Nullable<long> UnitAmount { get; set; }
+
+        /// <summary>Reward item for this ad unit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unitType")]
+        public virtual string UnitType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Describes adapters supported by each mediation ad source. Adapters correspond to a specific SDK implementation
+    /// of the ad source, and are each associated with a single platform and a list of supported ad unit formats.
+    /// Adapters may also require setting some configurations to perform ad requests. Configurations can be specified in
+    /// the AdUnitMapping by setting the [ad_unit_configurations](#AdUnitMapping.ad_unit_configurations) key/value
+    /// pairs. For example, the ad_unit_configurations can be used to pass various IDs to the adapter's third-party SDK.
+    /// </summary>
+    public class Adapter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Configuration metadata associated with this adapter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adapterConfigMetadata")]
+        public virtual System.Collections.Generic.IList<AdapterAdapterConfigMetadata> AdapterConfigMetadata { get; set; }
+
+        /// <summary>
+        /// Output only. ID of this adapter. It is used to set [adapter_id](#AdUnitMapping.adapter_id).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adapterId")]
+        public virtual string AdapterId { get; set; }
+
+        /// <summary>Output only. Indicates the formats of the ad units supported by this adapter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("formats")]
+        public virtual System.Collections.Generic.IList<string> Formats { get; set; }
+
+        /// <summary>
+        /// Output only. Resource name of the adapter. Format is:
+        /// accounts/{publisher_id}/adSources/{ad_source_id}/adapters/{adapter_id}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. Mobile application platform supported by this adapter. Supported values are: IOS, ANDROID,
+        /// WINDOWS_PHONE
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("platform")]
+        public virtual string Platform { get; set; }
+
+        /// <summary>Output only. The display name of this adapter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Configuration metadata associated with this adapter. They are used to define the ad_unit_configurations
+    /// associated with AdUnitMappings for the this adapter.
+    /// </summary>
+    public class AdapterAdapterConfigMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This is used to fill the key of the [ad_unit_configurations](#AdUnitMapping.ad_unit_configurations).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adapterConfigMetadataId")]
+        public virtual string AdapterConfigMetadataId { get; set; }
+
+        /// <summary>Name of the adapter configuration metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adapterConfigMetadataLabel")]
+        public virtual string AdapterConfigMetadataLabel { get; set; }
+
+        /// <summary>Whether this metadata is required for configuring the AdUnitMappings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isRequired")]
+        public virtual System.Nullable<bool> IsRequired { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -970,6 +2162,15 @@ namespace Google.Apis.AdMob.v1beta.Data
     public class AppLinkedAppInfo : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. The app store information for published Android apps. This field is only used for apps on the
+        /// Android platform and will be ignored if the PLATFORM is set to iOS. The default value is the Google Play App
+        /// store. This field can be updated after app is created. If the app is not published, this field will not be
+        /// included in the response.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidAppStores")]
+        public virtual System.Collections.Generic.IList<string> AndroidAppStores { get; set; }
+
+        /// <summary>
         /// The app store ID of the app; present if and only if the app is linked to an app store. If the app is added
         /// to the Google Play store, it will be the application ID of the app. For example: "com.example.myapp". See
         /// https://developer.android.com/studio/build/application-id. If the app is added to the Apple App Store, it
@@ -1002,6 +2203,111 @@ namespace Google.Apis.AdMob.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to create a batch of ad unit mappings under the specific AdMob account.</summary>
+    public class BatchCreateAdUnitMappingsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The request message specifying the ad unit mappings to create. A maximum of 100 ad unit mappings
+        /// can be created in a batch. If the number of ad unit mappings in the batch request exceed 100, the entire
+        /// request will be rejected and no ad unit mappings will be created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<CreateAdUnitMappingRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response containing a batch of created ad unit mappings.</summary>
+    public class BatchCreateAdUnitMappingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The Ad units mappings created under the requested account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adUnitMappings")]
+        public virtual System.Collections.Generic.IList<AdUnitMapping> AdUnitMappings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request for the BatchUpdateCampaigns API.</summary>
+    public class BatchUpdateCampaignsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The individual requests to update campaigns. Max 1000 allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
+        public virtual System.Collections.Generic.IList<UpdateCampaignRequest> Requests { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for the BatchUpdateCampaigns API.</summary>
+    public class BatchUpdateCampaignsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The updated campaigns per the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaigns")]
+        public virtual System.Collections.Generic.IList<Campaign> Campaigns { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes an AdMob campaign.</summary>
+    public class Campaign : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The CPI setting of the campaign.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpiSetting")]
+        public virtual CampaignCpiSetting CpiSetting { get; set; }
+
+        /// <summary>Output only. The display name for the campaign.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. The Goal type of the campaign.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("goalType")]
+        public virtual string GoalType { get; set; }
+
+        /// <summary>
+        /// Output only. Resource name for this campaign. Format is: accounts/{publisher_id}/campaigns/{campaign_id}
+        /// Example: accounts/pub-9876543210987654/campaigns/0123456789
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>CPI setting for AdMob campaign. Ignored unless campaign goal type is MAX_CPI or TARGET_CPI.</summary>
+    public class CampaignCpiSetting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Cost-per-install for this campaign in micro units in the currency of the GoogleAds account linked to this
+        /// AdMob publisher.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpiMicros")]
+        public virtual System.Nullable<long> CpiMicros { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to create an ad unit mapping under the specific AdMob account and ad unit.</summary>
+    public class CreateAdUnitMappingRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The ad unit mapping to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adUnitMapping")]
+        public virtual AdUnitMapping AdUnitMapping { get; set; }
+
+        /// <summary>
+        /// Required. The parent which owns the ad unit mapping. Format: accounts/{publisher_id}/adUnits/{ad_unit_id}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1151,6 +2457,24 @@ namespace Google.Apis.AdMob.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for the ListAdUnitMappingsRequest.</summary>
+    public class ListAdUnitMappingsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ad unit mappings from the specified account and ad unit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adUnitMappings")]
+        public virtual System.Collections.Generic.IList<AdUnitMapping> AdUnitMappings { get; set; }
+
+        /// <summary>
+        /// Used to set the `page_token` in the `ListAdUnitMappingsRequest` to retrieve the next page. If this field is
+        /// omitted, there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for the ad units list request.</summary>
     public class ListAdUnitsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1169,6 +2493,24 @@ namespace Google.Apis.AdMob.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response for the ListAdaptersRequest.</summary>
+    public class ListAdaptersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The adapter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adapters")]
+        public virtual System.Collections.Generic.IList<Adapter> Adapters { get; set; }
+
+        /// <summary>
+        /// Used to set the `page_token` in the `ListAdapterRequest` to retrieve the next page. If this field is
+        /// omitted, there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for the apps list request.</summary>
     public class ListAppsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1179,6 +2521,42 @@ namespace Google.Apis.AdMob.v1beta.Data
         /// <summary>
         /// If not empty, indicates that there may be more apps for the request; this value should be passed in a new
         /// `ListAppsRequest`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the ListCampaignsRequest.</summary>
+    public class ListCampaignsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resulting mediation groups for the requested account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaigns")]
+        public virtual System.Collections.Generic.IList<Campaign> Campaigns { get; set; }
+
+        /// <summary>
+        /// Used to set the `page_token` in the `ListCampaignsRequest` to retrieve the next page. If this field is
+        /// omitted, there are no subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the mediation groups list request.</summary>
+    public class ListMediationGroupsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resulting mediation groups for the requested account.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediationGroups")]
+        public virtual System.Collections.Generic.IList<MediationGroup> MediationGroups { get; set; }
+
+        /// <summary>
+        /// If not empty, indicates that there may be more mediation groups for the request; this value should be passed
+        /// in a new `ListMediationGroupsRequest`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -1223,6 +2601,219 @@ namespace Google.Apis.AdMob.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The mediation A/B experiment. NEXT ID: 12</summary>
+    public class MediationAbExperiment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The experiment mediation lines for control. They are inherited from the parent mediation group.
+        /// It is an output only field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlMediationLines")]
+        public virtual System.Collections.Generic.IList<MediationAbExperimentExperimentMediationLine> ControlMediationLines { get; set; }
+
+        /// <summary>The display name for the mediation A/B experiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. Unique identifier for the mediation A/B experiment. It is an output only property.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("experimentId")]
+        public virtual string ExperimentId { get; set; }
+
+        /// <summary>
+        /// Resource name for this experiment. The format is accounts/{publisher_id}/
+        /// mediationGroups/{mediation_group_id}/mediationAbExperiment/ {mediation_group_experiment_id}. For example:
+        /// accounts/pub-9876543210987654/mediationGroups/0123456789/ mediationAbExperiment/12345
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The state of the experiment. It is an output only field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// The experiment mediation lines created for the treatment. They will be used for serving when the experiment
+        /// status is RUNNING.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("treatmentMediationLines")]
+        public virtual System.Collections.Generic.IList<MediationAbExperimentExperimentMediationLine> TreatmentMediationLines { get; set; }
+
+        /// <summary>
+        /// The percentage of the mediation A/B experiment traffic that will be send to the treatment (variant B). The
+        /// remainder is sent to the control (variant A). The percentage is expressed as an integer in the inclusive
+        /// range of [1,99]. See https://support.google.com/admob/answer/9572326 for details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("treatmentTrafficPercentage")]
+        public virtual System.Nullable<long> TreatmentTrafficPercentage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The mediation group line for the experiment. It will be used for serving during the run of the experiment.
+    /// </summary>
+    public class MediationAbExperimentExperimentMediationLine : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The mediation group line used by the experiment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediationGroupLine")]
+        public virtual MediationGroupMediationGroupLine MediationGroupLine { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes an AdMob mediation group.</summary>
+    public class MediationGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>User provided name for the mediation group. The maximum length allowed is 120 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. The state of the mediation a/b experiment that belongs to this mediation group.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediationAbExperimentState")]
+        public virtual string MediationAbExperimentState { get; set; }
+
+        /// <summary>The ID of the mediation group. Example: "0123456789". This is a read only property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediationGroupId")]
+        public virtual string MediationGroupId { get; set; }
+
+        /// <summary>
+        /// The mediation lines used for serving for this mediation group. Key is the ID of the mediation group line.
+        /// For creation, use distinct negative values as placeholder.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mediationGroupLines")]
+        public virtual System.Collections.Generic.IDictionary<string, MediationGroupMediationGroupLine> MediationGroupLines { get; set; }
+
+        /// <summary>
+        /// Resource name for this mediation group. Format is:
+        /// accounts/{publisher_id}/mediationGroups/{mediation_group_id} Example:
+        /// accounts/pub-9876543210987654/mediationGroups/0123456789
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The status of the mediation group. Only enabled mediation groups will be served.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Set of criteria targeted by this mediation group, such as ad units and geo locations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targeting")]
+        public virtual MediationGroupTargeting Targeting { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for an ad network used by a mediation group.</summary>
+    public class MediationGroupMediationGroupLine : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the ad source this mediation line is associated with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adSourceId")]
+        public virtual string AdSourceId { get; set; }
+
+        /// <summary>
+        /// References of the ad unit mappings for each ad unit associated with this mediation line. Key is the ad unit
+        /// ID, value is resource name of the ad unit mapping. For mediation lines where the ad source id is the AdMob
+        /// Network, ad unit mappings will be ignored.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adUnitMappings")]
+        public virtual System.Collections.Generic.IDictionary<string, string> AdUnitMappings { get; set; }
+
+        /// <summary>
+        /// The CPM for this allocation line. $0.01 is the minimum allowed amount. For LIVE CPM modes, the default
+        /// amount is $0.01. This value is ignored if `cpm_mode` is `LIVE`. **Warning:** "USD" is the only supported
+        /// currency at the moment. The unit is in micros.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpmMicros")]
+        public virtual System.Nullable<long> CpmMicros { get; set; }
+
+        /// <summary>
+        /// Indicates how the CPM for this mediation line is provided. Note that `MANUAL` and `LIVE` are the only
+        /// fully-supported mode at the moment. Please use the AdMob UI (https://admob.google.com) if you wish to create
+        /// or update to other cpm modes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpmMode")]
+        public virtual string CpmMode { get; set; }
+
+        /// <summary>
+        /// User-provided label for this mediation line. The maximum length allowed is 255 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Output only. The Mediation A/B experiment variant to which the mediation group line belongs to.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("experimentVariant")]
+        public virtual string ExperimentVariant { get; set; }
+
+        /// <summary>
+        /// The 16 digit ID for this mediation line e.g. 0123456789012345. When creating a new mediation group line, use
+        /// a distinct negative integer as the ID place holder.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("id")]
+        public virtual string Id { get; set; }
+
+        /// <summary>
+        /// The status of the mediation group line. Only enabled mediation group lines will be served.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Set of criteria targeted by this mediation group. For example, a mediation group can target specific ad unit
+    /// IDs, platform, format and geo location.
+    /// </summary>
+    public class MediationGroupTargeting : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Ad units targeted by this mediation group. Example: "ca-app-pub-1234/8790".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adUnitIds")]
+        public virtual System.Collections.Generic.IList<string> AdUnitIds { get; set; }
+
+        /// <summary>
+        /// The Unicode country/region code (CLDR) of a location, such as "US". Unset if this mediation group does not
+        /// exclude any region.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("excludedRegionCodes")]
+        public virtual System.Collections.Generic.IList<string> ExcludedRegionCodes { get; set; }
+
+        /// <summary>Ad format targeted by this mediation group. Examples: "banner", "native".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("format")]
+        public virtual string Format { get; set; }
+
+        /// <summary>
+        /// The parameter can be used to target ad requests based on the availability of the IDFA. If set to ALL, the
+        /// mediation group applies to all ad requests (with or without IDFA). If set to AVAILABLE, the mediation group
+        /// applies to ad requests with IDFA. If set to NOT_AVAILABLE, the mediation group applies to ad requests
+        /// without IDFA. Doesn't need to be specified for an ANDROID device.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idfaTargeting")]
+        public virtual string IdfaTargeting { get; set; }
+
+        /// <summary>Describes the platform of the app. Examples: "IOS", "Android".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("platform")]
+        public virtual string Platform { get; set; }
+
+        /// <summary>
+        /// The Unicode country/region code (CLDR) of a location, such as "US". Unset if this mediation group targets
+        /// all available regions. For more information, see http://www.unicode.org/reports/tr35/#unicode_region_subtag.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetedRegionCodes")]
+        public virtual System.Collections.Generic.IList<string> TargetedRegionCodes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1589,12 +3180,44 @@ namespace Google.Apis.AdMob.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Request to end the mediation A/B experiment and choose a winning variant.</summary>
+    public class StopMediationAbExperimentRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The choice for the winning variant.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("variantChoice")]
+        public virtual string VariantChoice { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>List of string values.</summary>
     public class StringList : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The string values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An update request for a singular campaign. Currently only cpi_micros of MAX_CPI and TARGET_CPI campaigns can be
+    /// updated.
+    /// </summary>
+    public class UpdateCampaignRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The campaign which is being updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("campaign")]
+        public virtual Campaign Campaign { get; set; }
+
+        /// <summary>
+        /// List of campaign fields to be updated. Currently this field is not supported as only the cpi_micros field
+        /// can be updated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

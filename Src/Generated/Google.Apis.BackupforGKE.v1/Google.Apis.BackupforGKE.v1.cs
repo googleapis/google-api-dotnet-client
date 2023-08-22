@@ -5757,7 +5757,8 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// created under this BackupPlan will NOT be subject to automatic deletion. Updating this field does NOT affect
         /// existing Backups under it. Backups created AFTER a successful update will automatically pick up the new
         /// value. NOTE: backup_retain_days must be &amp;gt;= backup_delete_lock_days. If cron_schedule is defined, then
-        /// this must be &amp;lt;= 360 * the creation interval. Default: 0 (no automatic deletion)
+        /// this must be &amp;lt;= 360 * the creation interval. If rpo_config is defined, then this must be &amp;lt;=
+        /// 360 * target_rpo_minutes / (1440minutes/day). Default: 0 (no automatic deletion)
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backupRetainDays")]
         public virtual System.Nullable<int> BackupRetainDays { get; set; }

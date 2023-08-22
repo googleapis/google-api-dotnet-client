@@ -4846,6 +4846,10 @@ namespace Google.Apis.Dataform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("defaultBranch")]
         public virtual string DefaultBranch { get; set; }
 
+        /// <summary>Optional. Authentication fields for remote uris using SSH protocol.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sshAuthenticationConfig")]
+        public virtual SshAuthenticationConfig SshAuthenticationConfig { get; set; }
+
         /// <summary>
         /// Output only. Deprecated: The field does not contain any token status information. Instead use
         /// https://cloud.google.com/dataform/reference/rest/v1beta1/projects.locations.repositories/computeAccessTokenStatus
@@ -5992,6 +5996,24 @@ namespace Google.Apis.Dataform.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policy")]
         public virtual Policy Policy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configures fields for performing SSH authentication.</summary>
+    public class SshAuthenticationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Content of a public SSH key to verify an identity of a remote Git host.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostPublicKey")]
+        public virtual string HostPublicKey { get; set; }
+
+        /// <summary>
+        /// Required. The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must
+        /// be in the format `projects/*/secrets/*/versions/*`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userPrivateKeySecretVersion")]
+        public virtual string UserPrivateKeySecretVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

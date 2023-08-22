@@ -9253,6 +9253,17 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata for how this field value is extracted.</summary>
+    public class GoogleCloudDocumentaiV1beta3FieldExtractionMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Summary options config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summaryOptions")]
+        public virtual GoogleCloudDocumentaiV1beta3SummaryOptions SummaryOptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Specifies a document stored on Cloud Storage.</summary>
     public class GoogleCloudDocumentaiV1beta3GcsDocument : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9649,6 +9660,13 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ocrConfig")]
         public virtual GoogleCloudDocumentaiV1beta3OcrConfig OcrConfig { get; set; }
 
+        /// <summary>
+        /// Optional. Override the schema of the ProcessorVersion. Will return an Invalid Argument error if this field
+        /// is set when the underlying ProcessorVersion doesn't support schema override.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("schemaOverride")]
+        public virtual GoogleCloudDocumentaiV1beta3DocumentSchema SchemaOverride { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -10014,6 +10032,10 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Metadata about a property.</summary>
     public class GoogleCloudDocumentaiV1beta3PropertyMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Field extraction metadata on the property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldExtractionMetadata")]
+        public virtual GoogleCloudDocumentaiV1beta3FieldExtractionMetadata FieldExtractionMetadata { get; set; }
+
         /// <summary>Whether the property should be considered as "inactive".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inactive")]
         public virtual System.Nullable<bool> Inactive { get; set; }
@@ -10242,6 +10264,21 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Response message for the SetDefaultProcessorVersion method.</summary>
     public class GoogleCloudDocumentaiV1beta3SetDefaultProcessorVersionResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for document summarization.</summary>
+    public class GoogleCloudDocumentaiV1beta3SummaryOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>What format the summary should be in.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("format")]
+        public virtual string Format { get; set; }
+
+        /// <summary>How long the summary should be.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("length")]
+        public virtual string Length { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

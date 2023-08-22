@@ -7575,6 +7575,10 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gateways")]
         public virtual System.Collections.Generic.IList<string> Gateways { get; set; }
 
+        /// <summary>Optional. Set of label tags associated with the TlsRoute resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
         /// <summary>
         /// Optional. Meshes defines a list of meshes this TlsRoute is attached to, as one of the routing rules to route
         /// the requests served by the mesh. Each mesh reference should match the pattern:

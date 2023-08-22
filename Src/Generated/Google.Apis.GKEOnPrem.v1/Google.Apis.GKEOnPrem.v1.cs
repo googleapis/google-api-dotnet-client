@@ -7213,6 +7213,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("bareMetalVersion")]
         public virtual string BareMetalVersion { get; set; }
 
+        /// <summary>Binary Authorization related configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("binaryAuthorization")]
+        public virtual BinaryAuthorization BinaryAuthorization { get; set; }
+
         /// <summary>Cluster operations configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterOperations")]
         public virtual BareMetalAdminClusterOperationsConfig ClusterOperations { get; set; }
@@ -7460,8 +7464,9 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         public virtual System.Collections.Generic.IList<BareMetalAdminApiServerArgument> ApiServerArgs { get; set; }
 
         /// <summary>
-        /// Configures the node pool running the control plane. If specified the corresponding NodePool will be created
-        /// for the cluster's control plane. The NodePool will have the same name and namespace as the cluster.
+        /// Required. Configures the node pool running the control plane. If specified the corresponding NodePool will
+        /// be created for the cluster's control plane. The NodePool will have the same name and namespace as the
+        /// cluster.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("controlPlaneNodePoolConfig")]
         public virtual BareMetalAdminControlPlaneNodePoolConfig ControlPlaneNodePoolConfig { get; set; }
@@ -7477,7 +7482,7 @@ namespace Google.Apis.GKEOnPrem.v1.Data
     /// </summary>
     public class BareMetalAdminControlPlaneNodePoolConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The generic configuration for a node pool running the control plane.</summary>
+        /// <summary>Required. The generic configuration for a node pool running the control plane.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodePoolConfig")]
         public virtual BareMetalNodePoolConfig NodePoolConfig { get; set; }
 
@@ -7860,6 +7865,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// <summary>Required. The Anthos clusters on bare metal version for your user cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bareMetalVersion")]
         public virtual string BareMetalVersion { get; set; }
+
+        /// <summary>Binary Authorization related configurations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("binaryAuthorization")]
+        public virtual BinaryAuthorization BinaryAuthorization { get; set; }
 
         /// <summary>Cluster operations configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("clusterOperations")]
@@ -8845,6 +8854,17 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for Binary Authorization.</summary>
+    public class BinaryAuthorization : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("evaluationMode")]
+        public virtual string EvaluationMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Associates `members`, or principals, with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9394,8 +9414,8 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The normal response of the operation in case of success. If the original method returns no data on success,
-        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
         /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
@@ -9640,18 +9660,26 @@ namespace Google.Apis.GKEOnPrem.v1.Data
     /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
     /// constraints based on attributes of the request, the resource, or both. To learn which resources support
     /// conditions in their IAM policies, see the [IAM
-    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings":
-    /// [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:**
+    /// ```
+    /// {
+    /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
     /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:**
+    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
+    /// ```
+    /// **YAML
+    /// example:**
+    /// ```
     /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features,
-    /// see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3
+    /// ```
+    /// For a description of IAM and its
+    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10409,6 +10437,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("masterIp")]
         public virtual string MasterIp { get; set; }
 
+        /// <summary>Name to be used by Stackdriver.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stackdriverName")]
+        public virtual string StackdriverName { get; set; }
+
         /// <summary>Names of the VMs created for this Seesaw group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vms")]
         public virtual System.Collections.Generic.IList<string> Vms { get; set; }
@@ -10637,6 +10669,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>Disable bundled ingress.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableBundledIngress")]
+        public virtual System.Nullable<bool> DisableBundledIngress { get; set; }
+
         /// <summary>Enable control plane V2. Default to false.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableControlPlaneV2")]
         public virtual System.Nullable<bool> EnableControlPlaneV2 { get; set; }
@@ -10741,6 +10777,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
+        /// <summary>Specifies upgrade policy for the cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upgradePolicy")]
+        public virtual VmwareClusterUpgradePolicy UpgradePolicy { get; set; }
+
         /// <summary>Output only. ValidationCheck represents the result of the preflight check job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validationCheck")]
         public virtual ValidationCheck ValidationCheck { get; set; }
@@ -10755,6 +10795,17 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// <summary>Enable VM tracking.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmTrackingEnabled")]
         public virtual System.Nullable<bool> VmTrackingEnabled { get; set; }
+    }
+
+    /// <summary>VmwareClusterUpgradePolicy defines the cluster upgrade policy.</summary>
+    public class VmwareClusterUpgradePolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Controls whether the upgrade applies to the control plane only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("controlPlaneOnly")]
+        public virtual System.Nullable<bool> ControlPlaneOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Specifies control plane node config for the VMware user cluster.</summary>
@@ -10807,6 +10858,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// <summary>The Vsphere datastore used by the control plane Node.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("datastore")]
         public virtual string Datastore { get; set; }
+
+        /// <summary>The Vsphere storage policy used by the control plane Node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storagePolicyName")]
+        public virtual string StoragePolicyName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10936,6 +10991,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// <summary>Configuration for MetalLB typed load balancers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metalLbConfig")]
         public virtual VmwareMetalLbConfig MetalLbConfig { get; set; }
+
+        /// <summary>Output only. Configuration for Seesaw typed load balancers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("seesawConfig")]
+        public virtual VmwareSeesawConfig SeesawConfig { get; set; }
 
         /// <summary>The VIPs used by the load balancer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vipConfig")]
@@ -11313,6 +11372,52 @@ namespace Google.Apis.GKEOnPrem.v1.Data
     }
 
     /// <summary>
+    /// VmwareSeesawConfig represents configuration parameters for an already existing Seesaw load balancer. IMPORTANT:
+    /// Please note that the Anthos On-Prem API will not generate or update Seesaw configurations it can only bind a
+    /// pre-existing configuration to a new user cluster. IMPORTANT: When attempting to create a user cluster with a
+    /// pre-existing Seesaw load balancer you will need to follow some preparation steps before calling the
+    /// 'CreateVmwareCluster' API method. First you will need to create the user cluster's namespace via kubectl. The
+    /// namespace will need to use the following naming convention : -gke-onprem-mgmt or -gke-onprem-mgmt depending on
+    /// whether you used the 'VmwareCluster.local_name' to disambiguate collisions; for more context see the
+    /// documentation of 'VmwareCluster.local_name'. Once the namespace is created you will need to create a secret
+    /// resource via kubectl. This secret will contain copies of your Seesaw credentials. The Secret must be called
+    /// 'user-cluster-creds' and contain Seesaw's SSH and Cert credentials. The credentials must be keyed with the
+    /// following names: 'seesaw-ssh-private-key', 'seesaw-ssh-public-key', 'seesaw-ssh-ca-key', 'seesaw-ssh-ca-cert'.
+    /// </summary>
+    public class VmwareSeesawConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Enable two load balancer VMs to achieve a highly-available Seesaw load balancer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableHa")]
+        public virtual System.Nullable<bool> EnableHa { get; set; }
+
+        /// <summary>
+        /// Required. In general the following format should be used for the Seesaw group name:
+        /// seesaw-for-[cluster_name].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("group")]
+        public virtual string Group { get; set; }
+
+        /// <summary>Required. The IP Blocks to be used by the Seesaw load balancer</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipBlocks")]
+        public virtual System.Collections.Generic.IList<VmwareIpBlock> IpBlocks { get; set; }
+
+        /// <summary>Required. MasterIP is the IP announced by the master of Seesaw group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("masterIp")]
+        public virtual string MasterIp { get; set; }
+
+        /// <summary>Name to be used by Stackdriver.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stackdriverName")]
+        public virtual string StackdriverName { get; set; }
+
+        /// <summary>Names of the VMs created for this Seesaw group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vms")]
+        public virtual System.Collections.Generic.IList<string> Vms { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents the network configuration required for the VMware user clusters with Static IP configurations.
     /// </summary>
     public class VmwareStaticIpConfig : Google.Apis.Requests.IDirectResponseSchema
@@ -11368,6 +11473,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         /// <summary>The name of the vCenter resource pool for the user cluster.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourcePool")]
         public virtual string ResourcePool { get; set; }
+
+        /// <summary>The name of the vCenter storage policy for the user cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storagePolicyName")]
+        public virtual string StoragePolicyName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

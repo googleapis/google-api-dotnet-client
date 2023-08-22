@@ -8693,7 +8693,8 @@ namespace Google.Apis.Drive.v2.Data
 
     /// <summary>
     /// The apps resource provides a list of the apps that a user has installed, with information about each app's
-    /// supported MIME types, file extensions, and other details.
+    /// supported MIME types, file extensions, and other details. Some resource methods (such as `apps.get`) require an
+    /// `appId`. Use the `apps.list` method to retrieve the ID for an installed application.
     /// </summary>
     public class App : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9080,7 +9081,10 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string SelfLink { get; set; }
     }
 
-    /// <summary>A reference to a folder's child.</summary>
+    /// <summary>
+    /// A reference to a folder's child. Some resource methods (such as `children.get`) require a `childId`. Use the
+    /// `children.list` method to retrieve the ID of the child.
+    /// </summary>
     public class ChildReference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. A link to the child.</summary>
@@ -9103,7 +9107,10 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A comment on a file in Google Drive.</summary>
+    /// <summary>
+    /// A comment on a file in Google Drive. Some resource methods (such as `comments.update`) require a `commentId`.
+    /// Use the `comments.list` method to retrieve the ID for a comment in a file.
+    /// </summary>
     public class Comment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -9268,7 +9275,10 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A comment on a file in Google Drive.</summary>
+    /// <summary>
+    /// A comment on a file in Google Drive. Some resource methods (such as `replies.update`) require a `replyId`. Use
+    /// the `replies.list` method to retrieve the ID for a reply.
+    /// </summary>
     public class CommentReply : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -9459,7 +9469,10 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Representation of a shared drive.</summary>
+    /// <summary>
+    /// Representation of a shared drive. Some resource methods (such as `drives.update`) require a `driveId`. Use the
+    /// `drives.list` method to retrieve the ID for a shared drive.
+    /// </summary>
     public class Drive : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -9765,7 +9778,10 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The metadata for a file.</summary>
+    /// <summary>
+    /// The metadata for a file. Some resource methods (such as `files.update`) require a `fileId`. Use the `files.list`
+    /// method to retrieve the ID for a file.
+    /// </summary>
     public class File : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. A link for opening the file in a relevant Google editor or viewer.</summary>
@@ -11061,7 +11077,10 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string SelfLink { get; set; }
     }
 
-    /// <summary>A reference to a file's parent.</summary>
+    /// <summary>
+    /// A reference to a file's parent. Some resource methods (such as `parents.get`) require a `parentId`. Use the
+    /// `parents.list` method to retrieve the ID for a parent.
+    /// </summary>
     public class ParentReference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ID of the parent.</summary>
@@ -11088,7 +11107,11 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A permission for a file.</summary>
+    /// <summary>
+    /// A permission for a file. A permission grants a user, group, domain, or the world access to a file or a folder
+    /// hierarchy. Some resource methods (such as `permissions.update`) require a `permissionId`. Use the
+    /// `permissions.list` method to retrieve the ID for a file, folder, or shared drive.
+    /// </summary>
     public class Permission : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -11340,7 +11363,8 @@ namespace Google.Apis.Drive.v2.Data
     /// A key-value pair attached to a file that is either public or private to an application. The following limits
     /// apply to file properties: * Maximum of 100 properties total per file * Maximum of 30 private properties per app
     /// * Maximum of 30 public properties * Maximum of 124 bytes size limit on (key + value) string in UTF-8 encoding
-    /// for a single property
+    /// for a single property Some resource methods (such as `properties.update`) require a `propertyKey`. Use the
+    /// `properties.list` method to retrieve the key for a property.
     /// </summary>
     public class Property : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11386,7 +11410,7 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Property> Items { get; set; }
 
-        /// <summary>This is always `drive#propertyList`.</summary>
+        /// <summary>This is always `drive#propertyList`.s</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 
@@ -11395,7 +11419,10 @@ namespace Google.Apis.Drive.v2.Data
         public virtual string SelfLink { get; set; }
     }
 
-    /// <summary>A revision of a file.</summary>
+    /// <summary>
+    /// A revision of a file. Some resource methods (such as `revisions.update`) require a `revisionId`. Use the
+    /// `revisions.list` method to retrieve the ID for a revision.
+    /// </summary>
     public class Revision : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

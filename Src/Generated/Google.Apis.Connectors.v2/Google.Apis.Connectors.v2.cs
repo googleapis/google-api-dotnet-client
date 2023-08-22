@@ -1462,9 +1462,37 @@ namespace Google.Apis.Connectors.v2.Data
     /// </summary>
     public class Query : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Sets the limit for the maximum number of rows returned after the query execution.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxRows")]
+        public virtual System.Nullable<long> MaxRows { get; set; }
+
         /// <summary>Required. Sql query to execute.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("query")]
         public virtual string QueryValue { get; set; }
+
+        /// <summary>
+        /// In the struct, the value corresponds to the value of query parameter and date type corresponds to the date
+        /// type of the query parameter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryParameters")]
+        public virtual System.Collections.Generic.IList<QueryParameter> QueryParameters { get; set; }
+
+        /// <summary>Sets the number of seconds the driver will wait for a query to execute.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
+        public virtual System.Nullable<long> Timeout { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Query parameter definition</summary>
+    public class QueryParameter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
+        public virtual string DataType { get; set; }
+
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

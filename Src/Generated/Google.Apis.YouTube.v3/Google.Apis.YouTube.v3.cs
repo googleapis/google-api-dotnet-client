@@ -11989,42 +11989,12 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
         public virtual System.Nullable<bool> Enabled { get; set; }
 
-        private string _pauseAdsUntilRaw;
-
-        private object _pauseAdsUntil;
-
-        /// <summary>If set, automatic cuepoint insertion is paused until this timestamp ("No Ad Zone").</summary>
+        /// <summary>
+        /// If set, automatic cuepoint insertion is paused until this timestamp ("No Ad Zone"). The value is specified
+        /// in ISO 8601 format.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pauseAdsUntil")]
-        public virtual string PauseAdsUntilRaw
-        {
-            get => _pauseAdsUntilRaw;
-            set
-            {
-                _pauseAdsUntil = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _pauseAdsUntilRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="PauseAdsUntilRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use PauseAdsUntilDateTimeOffset instead.")]
-        public virtual object PauseAdsUntil
-        {
-            get => _pauseAdsUntil;
-            set
-            {
-                _pauseAdsUntilRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _pauseAdsUntil = value;
-            }
-        }
-
-        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="PauseAdsUntilRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? PauseAdsUntilDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(PauseAdsUntilRaw);
-            set => PauseAdsUntilRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
+        public virtual string PauseAdsUntil { get; set; }
 
         /// <summary>Interval frequency that api uses to insert cuepoints automatically.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("repeatInterval")]

@@ -5877,6 +5877,55 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>**ClusterUpgrade**: The configuration for the fleet-level ClusterUpgrade feature.</summary>
+    public class ClusterUpgradeFleetSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Allow users to override some properties of each GKE upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeUpgradeOverrides")]
+        public virtual System.Collections.Generic.IList<ClusterUpgradeGKEUpgradeOverride> GkeUpgradeOverrides { get; set; }
+
+        /// <summary>Required. Post conditions to evaluate to mark an upgrade COMPLETE. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postConditions")]
+        public virtual ClusterUpgradePostConditions PostConditions { get; set; }
+
+        /// <summary>
+        /// This fleet consumes upgrades that have COMPLETE status code in the upstream fleets. See UpgradeStatus.Code
+        /// for code definitions. The fleet name should be either fleet project number or id. This is defined as
+        /// repeated for future proof reasons. Initial implementation will enforce at most one upstream fleet.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("upstreamFleets")]
+        public virtual System.Collections.Generic.IList<string> UpstreamFleets { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>**ClusterUpgrade**: The state for the fleet-level ClusterUpgrade feature.</summary>
+    public class ClusterUpgradeFleetState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// This fleets whose upstream_fleets contain the current fleet. The fleet name should be either fleet project
+        /// number or id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("downstreamFleets")]
+        public virtual System.Collections.Generic.IList<string> DownstreamFleets { get; set; }
+
+        /// <summary>Feature state for GKE clusters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeState")]
+        public virtual ClusterUpgradeGKEUpgradeFeatureState GkeState { get; set; }
+
+        /// <summary>
+        /// A list of memberships ignored by the feature. For example, manually upgraded clusters can be ignored if they
+        /// are newer than the default versions of its release channel. The membership resource is in the format:
+        /// `projects/{p}/locations/{l}/membership/{m}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignored")]
+        public virtual System.Collections.Generic.IDictionary<string, ClusterUpgradeIgnoredMembership> Ignored { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>GKEUpgrade represents a GKE provided upgrade, e.g., control plane upgrade.</summary>
     public class ClusterUpgradeGKEUpgrade : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6080,6 +6129,13 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     public class ClusterUpgradeMembershipState : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Project number or id of the fleet. It is set only for Memberships that are part of fleet-based Rollout
+        /// Sequencing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fleet")]
+        public virtual string Fleet { get; set; }
+
+        /// <summary>
         /// Whether this membership is ignored by the feature. For example, manually upgraded clusters can be ignored if
         /// they are newer than the default versions of its release channel.
         /// </summary>
@@ -6233,6 +6289,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("cloudauditlogging")]
         public virtual CloudAuditLoggingFeatureSpec Cloudauditlogging { get; set; }
 
+        /// <summary>ClusterUpgrade (fleet-based) feature spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterupgrade")]
+        public virtual ClusterUpgradeFleetSpec Clusterupgrade { get; set; }
+
         /// <summary>FleetObservability feature spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fleetobservability")]
         public virtual FleetObservabilityFeatureSpec Fleetobservability { get; set; }
@@ -6255,6 +6315,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// <summary>Appdevexperience specific state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("appdevexperience")]
         public virtual AppDevExperienceFeatureState Appdevexperience { get; set; }
+
+        /// <summary>ClusterUpgrade fleet-level state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterupgrade")]
+        public virtual ClusterUpgradeFleetState Clusterupgrade { get; set; }
 
         /// <summary>FleetObservability feature state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fleetobservability")]
@@ -8676,13 +8740,6 @@ namespace Google.Apis.GKEHub.v1alpha.Data
             get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
             set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
-
-        /// <summary>
-        /// Whether the membershipbinding is Fleet-wide; true means that this Membership should be bound to all
-        /// Namespaces in this entire Fleet.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fleet")]
-        public virtual System.Nullable<bool> Fleet { get; set; }
 
         /// <summary>Optional. Labels for this MembershipBinding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]

@@ -749,9 +749,10 @@ namespace Google.Apis.CloudSupport.v2beta
         }
 
         /// <summary>
-        /// Create a new case and associate it with the given Google Cloud Resource. The case object must have the
-        /// following fields set: `display_name`, `description`, `classification`, and `priority`. Here is an example of
-        /// calling this endpoint using cURL:
+        /// Create a new case and associate it with a Google Cloud Resource. The case object must have the following
+        /// fields set: `display_name`, `description`, `classification`, and `priority`. If you're just testing the API
+        /// and don't want to route your case to an agent, set `testCase=true`. Here is an example of calling this
+        /// endpoint using cURL:
         /// ```
         /// shell parent="projects/some-project" curl \ --request POST \ --header
         /// "Authorization: Bearer $(gcloud auth print-access-token)" \ --header 'Content-Type: application/json' \
@@ -772,9 +773,10 @@ namespace Google.Apis.CloudSupport.v2beta
         }
 
         /// <summary>
-        /// Create a new case and associate it with the given Google Cloud Resource. The case object must have the
-        /// following fields set: `display_name`, `description`, `classification`, and `priority`. Here is an example of
-        /// calling this endpoint using cURL:
+        /// Create a new case and associate it with a Google Cloud Resource. The case object must have the following
+        /// fields set: `display_name`, `description`, `classification`, and `priority`. If you're just testing the API
+        /// and don't want to route your case to an agent, set `testCase=true`. Here is an example of calling this
+        /// endpoint using cURL:
         /// ```
         /// shell parent="projects/some-project" curl \ --request POST \ --header
         /// "Authorization: Bearer $(gcloud auth print-access-token)" \ --header 'Content-Type: application/json' \

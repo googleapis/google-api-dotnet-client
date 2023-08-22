@@ -13697,6 +13697,25 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Options for system APKs.</summary>
+    public class SystemApkOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether to use the rotated key for signing the system APK.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rotated")]
+        public virtual System.Nullable<bool> Rotated { get; set; }
+
+        /// <summary>Whether system APK was generated with uncompressed dex files.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uncompressedDexFiles")]
+        public virtual System.Nullable<bool> UncompressedDexFiles { get; set; }
+
+        /// <summary>Whether system APK was generated with uncompressed native libraries.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uncompressedNativeLibraries")]
+        public virtual System.Nullable<bool> UncompressedNativeLibraries { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response to list previously created system APK variants.</summary>
     public class SystemApksListResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14271,6 +14290,10 @@ namespace Google.Apis.AndroidPublisher.v3.Data
         /// <summary>The device spec used to generate the APK.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceSpec")]
         public virtual DeviceSpec DeviceSpec { get; set; }
+
+        /// <summary>Optional. Options applied to the generated APK.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("options")]
+        public virtual SystemApkOptions Options { get; set; }
 
         /// <summary>Output only. The ID of a previously created system APK variant.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variantId")]

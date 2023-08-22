@@ -6992,13 +6992,6 @@ namespace Google.Apis.GKEHub.v1beta.Data
             set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
-        /// <summary>
-        /// Whether the membershipbinding is Fleet-wide; true means that this Membership should be bound to all
-        /// Namespaces in this entire Fleet.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fleet")]
-        public virtual System.Nullable<bool> Fleet { get; set; }
-
         /// <summary>Optional. Labels for this MembershipBinding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }

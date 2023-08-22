@@ -12870,11 +12870,11 @@ namespace Google.Apis.DisplayVideo.v2
                 public virtual long AdvertiserId { get; private set; }
 
                 /// <summary>
-                /// Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are
-                /// made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR`. *
-                /// A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)`
-                /// operator. Supported fields: * `targetingType` Examples: * `AssignedTargetingOption` resources of
-                /// targeting type `TARGETING_TYPE_YOUTUBE_VIDEO` or `TARGETING_TYPE_YOUTUBE_CHANNEL`:
+                /// Optional. Allows filtering by assigned targeting option fields. Supported syntax: * Filter
+                /// expressions are made up of one or more restrictions. * Restrictions can be combined by the logical
+                /// operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use
+                /// the `EQUALS (=)` operator. Supported fields: * `targetingType` Examples: * `AssignedTargetingOption`
+                /// resources of targeting type `TARGETING_TYPE_YOUTUBE_VIDEO` or `TARGETING_TYPE_YOUTUBE_CHANNEL`:
                 /// `targetingType="TARGETING_TYPE_YOUTUBE_VIDEO" OR targetingType="TARGETING_TYPE_YOUTUBE_CHANNEL"` The
                 /// length of this field should be no more than 500 characters. Reference our [filter `LIST`
                 /// requests](/display-video/api/guides/how-tos/filters) guide for more information.
@@ -12883,24 +12883,24 @@ namespace Google.Apis.DisplayVideo.v2
                 public virtual string Filter { get; set; }
 
                 /// <summary>
-                /// Field by which to sort the list. Acceptable values are: * `youtubeAdGroupId` (default) *
-                /// `assignedTargetingOption.targetingType` The default sorting order is ascending. To specify
-                /// descending order for a field, a suffix "desc" should be added to the field name. Example:
-                /// `targetingType desc`.
+                /// Optional. Field by which to sort the list. Acceptable values are: * `youtubeAdGroupId` (acceptable
+                /// in v2) * `adGroupId` (acceptable in v3) * `assignedTargetingOption.targetingType` The default
+                /// sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added
+                /// to the field name. Example: `targetingType desc`.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string OrderBy { get; set; }
 
                 /// <summary>
-                /// Requested page size. The size must be an integer between `1` and `5000`. If unspecified, the default
-                /// is `5000`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
+                /// Optional. Requested page size. The size must be an integer between `1` and `5000`. If unspecified,
+                /// the default is `5000`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// A token that lets the client fetch the next page of results. Typically, this is the value of
-                /// next_page_token returned from the previous call to the `BulkListAdGroupAssignedTargetingOptions`
+                /// Optional. A token that lets the client fetch the next page of results. Typically, this is the value
+                /// of next_page_token returned from the previous call to the `BulkListAdGroupAssignedTargetingOptions`
                 /// method. If not specified, the first page of results will be returned.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
@@ -23466,7 +23466,8 @@ namespace Google.Apis.DisplayVideo.v2.Data
         /// <summary>
         /// A token identifying the next page of results. This value should be specified as the pageToken in a
         /// subsequent call to `BulkListAdGroupAssignedTargetingOptions` to fetch the next page of results. This token
-        /// will be absent if there are no more youtube_ad_group_assigned_targeting_options to return.
+        /// will be absent if there are no more youtube_ad_group_assigned_targeting_options or
+        /// ad_group_assigned_targeting_options to return.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -30839,7 +30840,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
     /// <summary>Settings for YouTube and Partners line items.</summary>
     public class YoutubeAndPartnersSettings : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The bidding strategy of the YouTube and Partners line item.</summary>
+        /// <summary>Required. The bidding strategy of the YouTube and Partners line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("biddingStrategy")]
         public virtual YoutubeAndPartnersBiddingStrategy BiddingStrategy { get; set; }
 
@@ -30873,7 +30874,7 @@ namespace Google.Apis.DisplayVideo.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targetFrequency")]
         public virtual TargetFrequency TargetFrequency { get; set; }
 
-        /// <summary>The third-party measurement settings of the line item.</summary>
+        /// <summary>Optional. The third-party measurement settings of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("thirdPartyMeasurementSettings")]
         public virtual YoutubeAndPartnersThirdPartyMeasurementSettings ThirdPartyMeasurementSettings { get; set; }
 

@@ -1269,7 +1269,10 @@ namespace Google.Apis.CloudScheduler.v1.Data
         /// scheduled to run at 16:00 but the `n`th execution takes until 16:15, the `n+1`th execution will not start
         /// until `16:15`. A scheduled start time will be delayed if the previous execution has not ended when its
         /// scheduled time occurs. If retry_count &amp;gt; 0 and a job attempt fails, the job will be tried a total of
-        /// retry_count times, with exponential backoff, until the next scheduled start time.
+        /// retry_count times, with exponential backoff, until the next scheduled start time. If retry_count is 0, a job
+        /// attempt will not be retried if it fails. Instead the Cloud Scheduler system will wait for the next scheduled
+        /// execution time. Setting retry_count to 0 does not prevent failed jobs from running according to schedule
+        /// after the failure.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schedule")]
         public virtual string Schedule { get; set; }
@@ -1662,11 +1665,12 @@ namespace Google.Apis.CloudScheduler.v1.Data
 
         /// <summary>
         /// The number of attempts that the system will make to run a job using the exponential backoff procedure
-        /// described by max_doublings. The default value of retry_count is zero. If retry_count is zero, a job attempt
-        /// will *not* be retried if it fails. Instead the Cloud Scheduler system will wait for the next scheduled
-        /// execution time. If retry_count is set to a non-zero number then Cloud Scheduler will retry failed attempts,
-        /// using exponential backoff, retry_count times, or until the next scheduled execution time, whichever comes
-        /// first. Values greater than 5 and negative values are not allowed.
+        /// described by max_doublings. The default value of retry_count is zero. If retry_count is 0, a job attempt
+        /// will not be retried if it fails. Instead the Cloud Scheduler system will wait for the next scheduled
+        /// execution time. Setting retry_count to 0 does not prevent failed jobs from running according to schedule
+        /// after the failure. If retry_count is set to a non-zero number then Cloud Scheduler will retry failed
+        /// attempts, using exponential backoff, retry_count times, or until the next scheduled execution time,
+        /// whichever comes first. Values greater than 5 and negative values are not allowed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("retryCount")]
         public virtual System.Nullable<int> RetryCount { get; set; }
