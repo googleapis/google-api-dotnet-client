@@ -2974,6 +2974,54 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Device activity report. * Granular permission needed: TELEMETRY_API_DEVICE_ACTIVITY_REPORT</summary>
+    public class GoogleChromeManagementV1DeviceActivityReport : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Device activity state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceActivityState")]
+        public virtual string DeviceActivityState { get; set; }
+
+        private string _reportTimeRaw;
+
+        private object _reportTime;
+
+        /// <summary>Output only. Timestamp of when the report was collected.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportTime")]
+        public virtual string ReportTimeRaw
+        {
+            get => _reportTimeRaw;
+            set
+            {
+                _reportTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _reportTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ReportTimeDateTimeOffset instead.")]
+        public virtual object ReportTime
+        {
+            get => _reportTime;
+            set
+            {
+                _reportTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _reportTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ReportTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ReportTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ReportTimeRaw);
+            set => ReportTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Report for CountChromeDevicesPerAueDateResponse, contains the count of devices of a specific model and auto
     /// update expiration range.
@@ -4443,6 +4491,12 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("audioStatusReport")]
         public virtual System.Collections.Generic.IList<GoogleChromeManagementV1AudioStatusReport> AudioStatusReport { get; set; }
+
+        /// <summary>
+        /// Output only. Device activity reports collected periodically sorted in a decreasing order of report_time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceActivityReport")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1DeviceActivityReport> DeviceActivityReport { get; set; }
 
         /// <summary>
         /// The unique Directory API ID of the device. This value is the same as the Admin Console's Directory API ID in

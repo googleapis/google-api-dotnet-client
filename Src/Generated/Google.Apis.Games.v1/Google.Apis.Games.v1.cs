@@ -404,7 +404,7 @@ namespace Google.Apis.Games.v1
         /// Increments the steps of the achievement with the given ID for the currently authenticated player.
         /// </summary>
         /// <param name="achievementId">The ID of the achievement used by this method.</param>
-        /// <param name="stepsToIncrement">The number of steps to increment.</param>
+        /// <param name="stepsToIncrement">Required. The number of steps to increment.</param>
         public virtual IncrementRequest Increment(string achievementId, int stepsToIncrement)
         {
             return new IncrementRequest(service, achievementId, stepsToIncrement);
@@ -427,7 +427,7 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("achievementId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AchievementId { get; private set; }
 
-            /// <summary>The number of steps to increment.</summary>
+            /// <summary>Required. The number of steps to increment.</summary>
             [Google.Apis.Util.RequestParameterAttribute("stepsToIncrement", Google.Apis.Util.RequestParameterType.Query)]
             public virtual int StepsToIncrement { get; private set; }
 
@@ -662,7 +662,7 @@ namespace Google.Apis.Games.v1
         /// achievement is not modified.
         /// </summary>
         /// <param name="achievementId">The ID of the achievement used by this method.</param>
-        /// <param name="steps">The minimum value to set the steps to.</param>
+        /// <param name="steps">Required. The minimum value to set the steps to.</param>
         public virtual SetStepsAtLeastRequest SetStepsAtLeast(string achievementId, int steps)
         {
             return new SetStepsAtLeastRequest(service, achievementId, steps);
@@ -687,7 +687,7 @@ namespace Google.Apis.Games.v1
             [Google.Apis.Util.RequestParameterAttribute("achievementId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AchievementId { get; private set; }
 
-            /// <summary>The minimum value to set the steps to.</summary>
+            /// <summary>Required. The minimum value to set the steps to.</summary>
             [Google.Apis.Util.RequestParameterAttribute("steps", Google.Apis.Util.RequestParameterType.Query)]
             public virtual int Steps { get; private set; }
 
@@ -1889,9 +1889,9 @@ namespace Google.Apis.Games.v1
 
         /// <summary>Checks whether the games client is out of date.</summary>
         /// <param name="clientRevision">
-        /// The revision of the client SDK used by your application. Format: `[PLATFORM_TYPE]:[VERSION_NUMBER]`.
-        /// Possible values of `PLATFORM_TYPE` are: * `ANDROID` - Client is running the Android SDK. * `IOS` - Client is
-        /// running the iOS SDK. * `WEB_APP` - Client is running as a Web App.
+        /// Required. The revision of the client SDK used by your application. Format:
+        /// `[PLATFORM_TYPE]:[VERSION_NUMBER]`. Possible values of `PLATFORM_TYPE` are: * `ANDROID` - Client is running
+        /// the Android SDK. * `IOS` - Client is running the iOS SDK. * `WEB_APP` - Client is running as a Web App.
         /// </param>
         public virtual CheckRequest Check(string clientRevision)
         {
@@ -1909,9 +1909,10 @@ namespace Google.Apis.Games.v1
             }
 
             /// <summary>
-            /// The revision of the client SDK used by your application. Format: `[PLATFORM_TYPE]:[VERSION_NUMBER]`.
-            /// Possible values of `PLATFORM_TYPE` are: * `ANDROID` - Client is running the Android SDK. * `IOS` -
-            /// Client is running the iOS SDK. * `WEB_APP` - Client is running as a Web App.
+            /// Required. The revision of the client SDK used by your application. Format:
+            /// `[PLATFORM_TYPE]:[VERSION_NUMBER]`. Possible values of `PLATFORM_TYPE` are: * `ANDROID` - Client is
+            /// running the Android SDK. * `IOS` - Client is running the iOS SDK. * `WEB_APP` - Client is running as a
+            /// Web App.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("clientRevision", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string ClientRevision { get; private set; }
@@ -2151,7 +2152,7 @@ namespace Google.Apis.Games.v1
         /// <summary>Lists the scores in a leaderboard, starting from the top.</summary>
         /// <param name="leaderboardId">The ID of the leaderboard.</param>
         /// <param name="collection">The collection of scores you're requesting.</param>
-        /// <param name="timeSpan">The time span for the scores and ranks you're requesting.</param>
+        /// <param name="timeSpan">Required. The time span for the scores and ranks you're requesting.</param>
         public virtual ListRequest List(string leaderboardId, ListRequest.CollectionEnum collection, ListRequest.TimeSpanEnum timeSpan)
         {
             return new ListRequest(service, leaderboardId, collection, timeSpan);
@@ -2197,11 +2198,11 @@ namespace Google.Apis.Games.v1
                 FRIENDS = 3,
             }
 
-            /// <summary>The time span for the scores and ranks you're requesting.</summary>
+            /// <summary>Required. The time span for the scores and ranks you're requesting.</summary>
             [Google.Apis.Util.RequestParameterAttribute("timeSpan", Google.Apis.Util.RequestParameterType.Query)]
             public virtual TimeSpanEnum TimeSpan { get; private set; }
 
-            /// <summary>The time span for the scores and ranks you're requesting.</summary>
+            /// <summary>Required. The time span for the scores and ranks you're requesting.</summary>
             public enum TimeSpanEnum
             {
                 /// <summary>Default value. This value is unused.</summary>
@@ -2303,7 +2304,7 @@ namespace Google.Apis.Games.v1
         /// <summary>Lists the scores in a leaderboard around (and including) a player's score.</summary>
         /// <param name="leaderboardId">The ID of the leaderboard.</param>
         /// <param name="collection">The collection of scores you're requesting.</param>
-        /// <param name="timeSpan">The time span for the scores and ranks you're requesting.</param>
+        /// <param name="timeSpan">Required. The time span for the scores and ranks you're requesting.</param>
         public virtual ListWindowRequest ListWindow(string leaderboardId, ListWindowRequest.CollectionEnum collection, ListWindowRequest.TimeSpanEnum timeSpan)
         {
             return new ListWindowRequest(service, leaderboardId, collection, timeSpan);
@@ -2349,11 +2350,11 @@ namespace Google.Apis.Games.v1
                 FRIENDS = 3,
             }
 
-            /// <summary>The time span for the scores and ranks you're requesting.</summary>
+            /// <summary>Required. The time span for the scores and ranks you're requesting.</summary>
             [Google.Apis.Util.RequestParameterAttribute("timeSpan", Google.Apis.Util.RequestParameterType.Query)]
             public virtual TimeSpanEnum TimeSpan { get; private set; }
 
-            /// <summary>The time span for the scores and ranks you're requesting.</summary>
+            /// <summary>Required. The time span for the scores and ranks you're requesting.</summary>
             public enum TimeSpanEnum
             {
                 /// <summary>Default value. This value is unused.</summary>
@@ -2485,10 +2486,10 @@ namespace Google.Apis.Games.v1
         /// <summary>Submits a score to the specified leaderboard.</summary>
         /// <param name="leaderboardId">The ID of the leaderboard.</param>
         /// <param name="score">
-        /// The score you're submitting. The submitted score is ignored if it is worse than a previously submitted
-        /// score, where worse depends on the leaderboard sort order. The meaning of the score value depends on the
-        /// leaderboard format type. For fixed-point, the score represents the raw value. For time, the score represents
-        /// elapsed time in milliseconds. For currency, the score represents a value in micro units.
+        /// Required. The score you're submitting. The submitted score is ignored if it is worse than a previously
+        /// submitted score, where worse depends on the leaderboard sort order. The meaning of the score value depends
+        /// on the leaderboard format type. For fixed-point, the score represents the raw value. For time, the score
+        /// represents elapsed time in milliseconds. For currency, the score represents a value in micro units.
         /// </param>
         public virtual SubmitRequest Submit(string leaderboardId, long score)
         {
@@ -2511,10 +2512,11 @@ namespace Google.Apis.Games.v1
             public virtual string LeaderboardId { get; private set; }
 
             /// <summary>
-            /// The score you're submitting. The submitted score is ignored if it is worse than a previously submitted
-            /// score, where worse depends on the leaderboard sort order. The meaning of the score value depends on the
-            /// leaderboard format type. For fixed-point, the score represents the raw value. For time, the score
-            /// represents elapsed time in milliseconds. For currency, the score represents a value in micro units.
+            /// Required. The score you're submitting. The submitted score is ignored if it is worse than a previously
+            /// submitted score, where worse depends on the leaderboard sort order. The meaning of the score value
+            /// depends on the leaderboard format type. For fixed-point, the score represents the raw value. For time,
+            /// the score represents elapsed time in milliseconds. For currency, the score represents a value in micro
+            /// units.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("score", Google.Apis.Util.RequestParameterType.Query)]
             public virtual long Score { get; private set; }

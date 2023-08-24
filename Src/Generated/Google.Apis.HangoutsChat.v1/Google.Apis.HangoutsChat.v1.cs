@@ -3311,14 +3311,17 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Google Chat app interaction events. To learn about interaction events, see [Receive and respond to Google Chat
-    /// app interaction events](https://developers.google.com/chat/api/guides/message-formats).
+    /// A Google Chat app interaction event. To learn about interaction events, see [Receive and respond to interactions
+    /// with your Google Chat app](https://developers.google.com/chat/api/guides/message-formats). To learn about event
+    /// types and for example event payloads, see [Types of Google Chat app interaction
+    /// events](https://developers.google.com/chat/api/guides/message-formats/events).
     /// </summary>
     public class DeprecatedEvent : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The form action data associated with an interactive card that was clicked. Only populated for CARD_CLICKED
-        /// events. See the [Interactive Cards guide](/chat/how-tos/cards-onclick) for more information.
+        /// For `CARD_CLICKED` interaction events, the form action data associated when a user clicks a card or dialog.
+        /// To learn more, see [Read form data input by users on
+        /// cards](https://developers.google.com/chat/ui/read-form-data).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual FormAction Action { get; set; }
@@ -3383,7 +3386,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         }
 
         /// <summary>
-        /// True when the interaction event is related to [dialogs](https://developers.google.com/chat/how-tos/dialogs).
+        /// For `CARD_CLICKED` interaction events, whether the user interacted with a
+        /// [dialog](https://developers.google.com/chat/how-tos/dialogs).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isDialogEvent")]
         public virtual System.Nullable<bool> IsDialogEvent { get; set; }
@@ -3414,7 +3418,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("token")]
         public virtual string Token { get; set; }
 
-        /// <summary>The type of the interaction event.</summary>
+        /// <summary>
+        /// The type of interaction event. For details, see [Types of Google Chat app interaction
+        /// events](https://developers.google.com/chat/api/guides/message-formats/events).
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
@@ -3707,18 +3714,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
     }
 
     /// <summary>
-    /// Cards support a defined layout, interactive UI elements like buttons, and rich media like images. Use cards to
-    /// present detailed information, gather information from users, and guide users to take a next step. In Google
-    /// Chat, cards appear in several places: - As stand-alone messages. - Accompanying a text message, just beneath the
-    /// text message. - As a [dialog](https://developers.google.com/chat/how-tos/dialogs). Only Google Chat apps can
-    /// create card messages in Google Chat. If your Chat app uses [user
-    /// authentication](https://developers.google.com/chat/api/guides/auth/users) to send messages on behalf of users,
-    /// the messages can't contain cards. The following example JSON creates a "contact card" that features: - A header
-    /// with the contact's name, job title, and avatar picture. - A section with the contact information, including
-    /// formatted text. - Buttons that users can click to share the contact, or see more or less information. For more
-    /// examples, see [Design dynamic, interactive, and consistent UIs with
-    /// cards](https://developers.google.com/chat/ui). ![Example contact
-    /// card](https://developers.google.com/chat/images/card_api_reference.png)
+    /// A card interface displayed in a Google Chat message or Google Workspace Add-on. Cards support a defined layout,
+    /// interactive UI elements like buttons, and rich media like images. Use cards to present detailed information,
+    /// gather information from users, and guide users to take a next step. To learn how to build cards, see the
+    /// following documentation: * For Google Chat apps, see [Design dynamic, interactive, and consistent UIs with
+    /// cards](https://developers.google.com/chat/ui). * For Google Workspace Add-ons, see [Card-based
+    /// interfaces](https://developers.google.com/apps-script/add-ons/concepts/cards). **Example: Card message for a
+    /// Google Chat app** ![Example contact card](https://developers.google.com/chat/images/card_api_reference.png) To
+    /// create the sample card message in Google Chat, use the following JSON:
     /// ```
     /// { "cardsV2": [ { "cardId":
     /// "unique-card-id", "card": { "header": { "title": "Sasha", "subtitle": "Software Engineer", "imageUrl":
@@ -4915,7 +4918,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Types of data inputs for widgets. Users enter data with these inputs.</summary>
+    /// <summary>
+    /// Types of data that users can enter on cards or dialogs. To learn how to process information from users, see
+    /// [Read form data input by users on cards](https://developers.google.com/chat/ui/read-form-data).
+    /// </summary>
     public class Inputs : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Date input values.</summary>

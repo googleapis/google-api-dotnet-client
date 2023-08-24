@@ -1438,7 +1438,7 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>
-        /// Permanently deletes a shared drive for which the user is an organizer. The shared drive cannot contain any
+        /// Permanently deletes a shared drive for which the user is an `organizer`. The shared drive cannot contain any
         /// untrashed items.
         /// </summary>
         /// <param name="driveId">The ID of the shared drive.</param>
@@ -1448,7 +1448,7 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>
-        /// Permanently deletes a shared drive for which the user is an organizer. The shared drive cannot contain any
+        /// Permanently deletes a shared drive for which the user is an `organizer`. The shared drive cannot contain any
         /// untrashed items.
         /// </summary>
         public class DeleteRequest : DriveBaseServiceRequest<string>
@@ -2385,8 +2385,8 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Permanently deletes a file owned by the user without moving it to the trash. If the file belongs to a shared
-        /// drive the user must be an organizer on the parent. If the target is a folder, all descendants owned by the
-        /// user are also deleted.
+        /// drive, the user must be an `organizer` on the parent folder. If the target is a folder, all descendants
+        /// owned by the user are also deleted.
         /// </summary>
         /// <param name="fileId">The ID of the file.</param>
         public virtual DeleteRequest Delete(string fileId)
@@ -2396,8 +2396,8 @@ namespace Google.Apis.Drive.v3
 
         /// <summary>
         /// Permanently deletes a file owned by the user without moving it to the trash. If the file belongs to a shared
-        /// drive the user must be an organizer on the parent. If the target is a folder, all descendants owned by the
-        /// user are also deleted.
+        /// drive, the user must be an `organizer` on the parent folder. If the target is a folder, all descendants
+        /// owned by the user are also deleted.
         /// </summary>
         public class DeleteRequest : DriveBaseServiceRequest<string>
         {
@@ -3228,7 +3228,7 @@ namespace Google.Apis.Drive.v3
         }
 
         /// <summary>Lists the labels on a file.</summary>
-        /// <param name="fileId">The ID for the file or shared drive.</param>
+        /// <param name="fileId">The ID for the file.</param>
         public virtual ListLabelsRequest ListLabels(string fileId)
         {
             return new ListLabelsRequest(service, fileId);
@@ -3244,7 +3244,7 @@ namespace Google.Apis.Drive.v3
                 InitParameters();
             }
 
-            /// <summary>The ID for the file or shared drive.</summary>
+            /// <summary>The ID for the file.</summary>
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 

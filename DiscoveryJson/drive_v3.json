@@ -667,7 +667,7 @@
      ]
     },
     "delete": {
-     "description": "Permanently deletes a shared drive for which the user is an organizer. The shared drive cannot contain any untrashed items.",
+     "description": "Permanently deletes a shared drive for which the user is an `organizer`. The shared drive cannot contain any untrashed items.",
      "flatPath": "drives/{driveId}",
      "httpMethod": "DELETE",
      "id": "drive.drives.delete",
@@ -1024,7 +1024,7 @@
      "supportsMediaUpload": true
     },
     "delete": {
-     "description": "Permanently deletes a file owned by the user without moving it to the trash. If the file belongs to a shared drive the user must be an organizer on the parent. If the target is a folder, all descendants owned by the user are also deleted.",
+     "description": "Permanently deletes a file owned by the user without moving it to the trash. If the file belongs to a shared drive, the user must be an `organizer` on the parent folder. If the target is a folder, all descendants owned by the user are also deleted.",
      "flatPath": "files/{fileId}",
      "httpMethod": "DELETE",
      "id": "drive.files.delete",
@@ -1352,7 +1352,7 @@
      ],
      "parameters": {
       "fileId": {
-       "description": "The ID for the file or shared drive.",
+       "description": "The ID for the file.",
        "location": "path",
        "required": true,
        "type": "string"
@@ -2433,7 +2433,7 @@
    }
   }
  },
- "revision": "20230815",
+ "revision": "20230822",
  "rootUrl": "https://www.googleapis.com/",
  "schemas": {
   "About": {

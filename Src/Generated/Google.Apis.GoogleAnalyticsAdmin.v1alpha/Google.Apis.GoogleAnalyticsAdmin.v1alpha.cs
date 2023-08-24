@@ -4759,6 +4759,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 this.service = service;
                 EventCreateRules = new EventCreateRulesResource(service);
                 MeasurementProtocolSecrets = new MeasurementProtocolSecretsResource(service);
+                SKAdNetworkConversionValueSchema = new SKAdNetworkConversionValueSchemaResource(service);
             }
 
             /// <summary>Gets the EventCreateRules resource.</summary>
@@ -5403,6 +5404,350 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^properties/[^/]+/dataStreams/[^/]+/measurementProtocolSecrets/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the SKAdNetworkConversionValueSchema resource.</summary>
+            public virtual SKAdNetworkConversionValueSchemaResource SKAdNetworkConversionValueSchema { get; }
+
+            /// <summary>The "sKAdNetworkConversionValueSchema" collection of methods.</summary>
+            public class SKAdNetworkConversionValueSchemaResource
+            {
+                private const string Resource = "sKAdNetworkConversionValueSchema";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public SKAdNetworkConversionValueSchemaResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a SKAdNetworkConversionValueSchema.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource where this schema will be created. Format:
+                /// properties/{property}/dataStreams/{dataStream}
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a SKAdNetworkConversionValueSchema.</summary>
+                public class CreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource where this schema will be created. Format:
+                    /// properties/{property}/dataStreams/{dataStream}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/sKAdNetworkConversionValueSchema";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^properties/[^/]+/dataStreams/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Deletes target SKAdNetworkConversionValueSchema.</summary>
+                /// <param name="name">
+                /// Required. The name of the SKAdNetworkConversionValueSchema to delete. Format:
+                /// properties/{property}/dataStreams/{dataStream}/sKAdNetworkConversionValueSchema/{skadnetwork_conversion_value_schema}
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes target SKAdNetworkConversionValueSchema.</summary>
+                public class DeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the SKAdNetworkConversionValueSchema to delete. Format:
+                    /// properties/{property}/dataStreams/{dataStream}/sKAdNetworkConversionValueSchema/{skadnetwork_conversion_value_schema}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^properties/[^/]+/dataStreams/[^/]+/sKAdNetworkConversionValueSchema/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Looks up a single SKAdNetworkConversionValueSchema.</summary>
+                /// <param name="name">
+                /// Required. The resource name of SKAdNetwork conversion value schema to look up. Format:
+                /// properties/{property}/dataStreams/{dataStream}/sKAdNetworkConversionValueSchema/{skadnetwork_conversion_value_schema}
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Looks up a single SKAdNetworkConversionValueSchema.</summary>
+                public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of SKAdNetwork conversion value schema to look up. Format:
+                    /// properties/{property}/dataStreams/{dataStream}/sKAdNetworkConversionValueSchema/{skadnetwork_conversion_value_schema}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^properties/[^/]+/dataStreams/[^/]+/sKAdNetworkConversionValueSchema/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Lists SKAdNetworkConversionValueSchema on a stream. Properties can have at most one
+                /// SKAdNetworkConversionValueSchema.
+                /// </summary>
+                /// <param name="parent">
+                /// Required. Format: properties/{property_id}/dataStreams/{dataStream}/sKAdNetworkConversionValueSchema
+                /// Example: properties/1234/dataStreams/5678/sKAdNetworkConversionValueSchema
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>
+                /// Lists SKAdNetworkConversionValueSchema on a stream. Properties can have at most one
+                /// SKAdNetworkConversionValueSchema.
+                /// </summary>
+                public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchemasResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Format:
+                    /// properties/{property_id}/dataStreams/{dataStream}/sKAdNetworkConversionValueSchema Example:
+                    /// properties/1234/dataStreams/5678/sKAdNetworkConversionValueSchema
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The maximum number of resources to return. The service may return fewer than this value, even if
+                    /// there are additional pages. If unspecified, at most 50 resources will be returned. The maximum
+                    /// value is 200; (higher values will be coerced to the maximum)
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous `ListSKAdNetworkConversionValueSchemas` call. Provide
+                    /// this to retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListSKAdNetworkConversionValueSchema` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+parent}/sKAdNetworkConversionValueSchema";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^properties/[^/]+/dataStreams/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates a SKAdNetworkConversionValueSchema.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. Resource name of the schema. This will be child of ONLY an iOS stream, and there can be
+                /// at most one such child under an iOS stream. Format:
+                /// properties/{property}/dataStreams/{dataStream}/sKAdNetworkConversionValueSchema
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates a SKAdNetworkConversionValueSchema.</summary>
+                public class PatchRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. Resource name of the schema. This will be child of ONLY an iOS stream, and there
+                    /// can be at most one such child under an iOS stream. Format:
+                    /// properties/{property}/dataStreams/{dataStream}/sKAdNetworkConversionValueSchema
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Required. The list of fields to be updated. Omitted fields will not be updated.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1alpha/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^properties/[^/]+/dataStreams/[^/]+/sKAdNetworkConversionValueSchema/[^/]+$",
                         });
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
@@ -10963,6 +11308,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("searchAds360Link")]
         public virtual GoogleAnalyticsAdminV1alphaSearchAds360Link SearchAds360Link { get; set; }
 
+        /// <summary>A snapshot of SKAdNetworkConversionValueSchema resource in change history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skadnetworkConversionValueSchema")]
+        public virtual GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema SkadnetworkConversionValueSchema { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -11257,6 +11606,44 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Conversion value settings for a postback window for SKAdNetwork conversion value schema.</summary>
+    public class GoogleAnalyticsAdminV1alphaConversionValues : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. A coarse grained conversion value. This value is not guaranteed to be unique.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("coarseValue")]
+        public virtual string CoarseValue { get; set; }
+
+        /// <summary>
+        /// Display name of the SKAdNetwork conversion value. The max allowed display name length is 50 UTF-16 code
+        /// units.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Event conditions that must be met for this Conversion Value to be achieved. The conditions in this list are
+        /// ANDed together. It must have minimum of 1 entry and maximum of 3 entries, if the postback window is enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventMappings")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaEventMapping> EventMappings { get; set; }
+
+        /// <summary>
+        /// The fine-grained conversion value. This is applicable only to the first postback window. Its valid values
+        /// are [0,63], both inclusive. It must be set for postback window 1, and must not be set for postback window 2
+        /// &amp;amp; 3. This value is not guaranteed to be unique. If the configuration for the first postback window
+        /// is re-used for second or third postback windows this field has no effect.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fineValue")]
+        public virtual System.Nullable<int> FineValue { get; set; }
+
+        /// <summary>If true, the SDK should lock to this conversion value for the current postback window.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lockEnabled")]
+        public virtual System.Nullable<bool> LockEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11945,6 +12332,48 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sourceCopyParameters")]
         public virtual System.Nullable<bool> SourceCopyParameters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Event setting conditions to match an event.</summary>
+    public class GoogleAnalyticsAdminV1alphaEventMapping : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Name of the GA4 event. It must always be set. The max allowed display name length is 40 UTF-16
+        /// code units.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventName")]
+        public virtual string EventName { get; set; }
+
+        /// <summary>
+        /// The maximum number of times the event occurred. If not set, maximum event count won't be checked.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxEventCount")]
+        public virtual System.Nullable<long> MaxEventCount { get; set; }
+
+        /// <summary>
+        /// The maximum revenue generated due to the event. Revenue currency will be defined at the property level. If
+        /// not set, maximum event value won't be checked.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxEventValue")]
+        public virtual System.Nullable<double> MaxEventValue { get; set; }
+
+        /// <summary>
+        /// At least one of the following four min/max values must be set. The values set will be ANDed together to
+        /// qualify an event. The minimum number of times the event occurred. If not set, minimum event count won't be
+        /// checked.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minEventCount")]
+        public virtual System.Nullable<long> MinEventCount { get; set; }
+
+        /// <summary>
+        /// The minimum revenue generated due to the event. Revenue currency will be defined at the property level. If
+        /// not set, minimum event value won't be checked.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minEventValue")]
+        public virtual System.Nullable<double> MinEventValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12790,6 +13219,25 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListSKAdNetworkConversionValueSchemas RPC</summary>
+    public class GoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchemasResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages. Currently, Google Analytics supports only one SKAdNetworkConversionValueSchema per
+        /// dataStream, so this will never be populated.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of SKAdNetworkConversionValueSchemas. This will have at most one value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skadnetworkConversionValueSchemas")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema> SkadnetworkConversionValueSchemas { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ListSearchAds360Links RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -12918,6 +13366,31 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameterValue")]
         public virtual string ParameterValue { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for a SKAdNetwork conversion postback window.</summary>
+    public class GoogleAnalyticsAdminV1alphaPostbackWindow : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Ordering of the repeated field will be used to prioritize the conversion value settings. Lower indexed
+        /// entries are prioritized higher. The first conversion value setting that evaluates to true will be selected.
+        /// It must have at least one entry if enable_postback_window_settings is set to true. It can have maximum of
+        /// 128 entries.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversionValues")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaConversionValues> ConversionValues { get; set; }
+
+        /// <summary>
+        /// If enable_postback_window_settings is true, conversion_values must be populated and will be used for
+        /// determining when and how to set the Conversion Value on a client device and exporting schema to linked Ads
+        /// accounts. If false, the settings are not used, but are retained in case they may be used in the future. This
+        /// must always be true for postback_window_one.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postbackWindowSettingsEnabled")]
+        public virtual System.Nullable<bool> PostbackWindowSettingsEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13322,6 +13795,55 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>Rows of dimension value combinations and metric values in the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rows")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaAccessRow> Rows { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>SKAdNetwork conversion value schema of an iOS stream.</summary>
+    public class GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If enabled, the GA SDK will set conversion values using this schema definition, and schema will be exported
+        /// to any Google Ads accounts linked to this property. If disabled, the GA SDK will not automatically set
+        /// conversion values, and also the schema will not be exported to Ads.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applyConversionValues")]
+        public virtual System.Nullable<bool> ApplyConversionValues { get; set; }
+
+        /// <summary>
+        /// Output only. Resource name of the schema. This will be child of ONLY an iOS stream, and there can be at most
+        /// one such child under an iOS stream. Format:
+        /// properties/{property}/dataStreams/{dataStream}/sKAdNetworkConversionValueSchema
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. The conversion value settings for the first postback window. These differ from values for postback
+        /// window two and three in that they contain a "Fine" grained conversion value (a numeric value). Conversion
+        /// values for this postback window must be set. The other windows are optional and may inherit this window's
+        /// settings if unset or disabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postbackWindowOne")]
+        public virtual GoogleAnalyticsAdminV1alphaPostbackWindow PostbackWindowOne { get; set; }
+
+        /// <summary>
+        /// The conversion value settings for the third postback window. This field should only be set if the user chose
+        /// to define different conversion values for this postback window. It is allowed to configure window 3 without
+        /// setting window 2. In case window 1 &amp;amp; 2 settings are set and enable_postback_window_settings for this
+        /// postback window is set to false, the schema will inherit settings from postback_window_two.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postbackWindowThree")]
+        public virtual GoogleAnalyticsAdminV1alphaPostbackWindow PostbackWindowThree { get; set; }
+
+        /// <summary>
+        /// The conversion value settings for the second postback window. This field should only be configured if there
+        /// is a need to define different conversion values for this postback window. If enable_postback_window_settings
+        /// is set to false for this postback window, the values from postback_window_one will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postbackWindowTwo")]
+        public virtual GoogleAnalyticsAdminV1alphaPostbackWindow PostbackWindowTwo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

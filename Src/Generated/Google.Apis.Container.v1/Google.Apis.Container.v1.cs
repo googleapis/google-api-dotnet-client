@@ -9648,6 +9648,13 @@ namespace Google.Apis.Container.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("policyName")]
         public virtual string PolicyName { get; set; }
 
+        /// <summary>
+        /// Optional. TPU placement topology for pod slice node pool.
+        /// https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tpuTopology")]
+        public virtual string TpuTopology { get; set; }
+
         /// <summary>The type of placement.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -11017,6 +11024,20 @@ namespace Google.Apis.Container.v1.Data
         public virtual ConfidentialNodes ConfidentialNodes { get; set; }
 
         /// <summary>
+        /// Optional. The desired disk size for nodes in the node pool specified in GB. The smallest allowed disk size
+        /// is 10GB. Initiates an upgrade operation that migrates the nodes in the node pool to the specified disk size.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
+        public virtual System.Nullable<long> DiskSizeGb { get; set; }
+
+        /// <summary>
+        /// Optional. The desired disk type (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') for nodes in the node pool.
+        /// Initiates an upgrade operation that migrates the nodes in the node pool to the specified disk type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
+        public virtual string DiskType { get; set; }
+
+        /// <summary>
         /// The current etag of the node pool. If an etag is provided and does not match the current etag of the node
         /// pool, update will be blocked and an ABORTED error will be returned.
         /// </summary>
@@ -11069,6 +11090,14 @@ namespace Google.Apis.Container.v1.Data
         /// <summary>Logging configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
         public virtual NodePoolLoggingConfig LoggingConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The desired [Google Compute Engine machine
+        /// type](https://cloud.google.com/compute/docs/machine-types) for nodes in the node pool. Initiates an upgrade
+        /// operation that migrates the nodes in the node pool to the specified machine type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
 
         /// <summary>
         /// The name (project, location, cluster, node pool) of the node pool to update. Specified in the format

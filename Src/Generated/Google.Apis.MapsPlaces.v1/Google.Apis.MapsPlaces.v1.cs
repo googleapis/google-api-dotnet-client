@@ -1007,8 +1007,9 @@ namespace Google.Apis.MapsPlaces.v1.Data
         public virtual string RankPreference { get; set; }
 
         /// <summary>
-        /// The Unicode country/region code (CLDR) of the location where the request is coming from. It is used to
-        /// display the place details, like region-specific place name, if available. For more information, see
+        /// The Unicode country/region code (CLDR) of the location where the request is coming from. This parameter is
+        /// used to display the place details, like region-specific place name, if available. The parameter can affect
+        /// results based on applicable law. For more information, see
         /// http://www.unicode.org/reports/tr35/#unicode_region_subtag. Note that 3-digit region codes are not currently
         /// supported.
         /// </summary>

@@ -6460,6 +6460,10 @@ namespace Google.Apis.VMMigrationService.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
+        /// <summary>Output only. Details of the VM from a Vmware source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmwareSourceVmDetails")]
+        public virtual VmwareSourceVmDetails VmwareSourceVmDetails { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7619,6 +7623,25 @@ namespace Google.Apis.VMMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The details of a Vmware VM disk.</summary>
+    public class VmwareDiskDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ordinal number of the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskNumber")]
+        public virtual System.Nullable<int> DiskNumber { get; set; }
+
+        /// <summary>The disk label.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>Size in GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
+        public virtual System.Nullable<long> SizeGb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>VmwareSourceDetails message describes a specific source details for the vmware source type.</summary>
     public class VmwareSourceDetails : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7643,6 +7666,25 @@ namespace Google.Apis.VMMigrationService.v1.Data
         /// <summary>The ip address of the vcenter this Source represents.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vcenterIp")]
         public virtual string VcenterIp { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represent the source Vmware VM details.</summary>
+    public class VmwareSourceVmDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The total size of the disks being migrated in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("committedStorageBytes")]
+        public virtual System.Nullable<long> CommittedStorageBytes { get; set; }
+
+        /// <summary>The disks attached to the source VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disks")]
+        public virtual System.Collections.Generic.IList<VmwareDiskDetails> Disks { get; set; }
+
+        /// <summary>The firmware type of the source VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firmware")]
+        public virtual string Firmware { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
