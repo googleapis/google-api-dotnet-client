@@ -314,7 +314,7 @@ namespace Google.Apis.ServerlessVPCAccess.v1beta1
                 /// <summary>Creates a Serverless VPC Access connector, returns an operation.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The project and location in which the configuration should be created, specified in the
+                /// Required. The project id and location in which the configuration should be created, specified in the
                 /// format `projects/*/locations/*`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.ServerlessVPCAccess.v1beta1.Data.Connector body, string parent)
@@ -334,7 +334,7 @@ namespace Google.Apis.ServerlessVPCAccess.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The project and location in which the configuration should be created, specified in
+                    /// Required. The project id and location in which the configuration should be created, specified in
                     /// the format `projects/*/locations/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -887,7 +887,10 @@ namespace Google.Apis.ServerlessVPCAccess.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("maxInstances")]
         public virtual System.Nullable<int> MaxInstances { get; set; }
 
-        /// <summary>Maximum throughput of the connector in Mbps. Default is 300, max is 1000.</summary>
+        /// <summary>
+        /// Maximum throughput of the connector in Mbps. Default is 300, max is 1000. If both maxThroughput and
+        /// maxInstances are set, the value for maxInstances is utilzed.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxThroughput")]
         public virtual System.Nullable<int> MaxThroughput { get; set; }
 
@@ -895,7 +898,10 @@ namespace Google.Apis.ServerlessVPCAccess.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("minInstances")]
         public virtual System.Nullable<int> MinInstances { get; set; }
 
-        /// <summary>Minimum throughput of the connector in Mbps. Default and min is 200.</summary>
+        /// <summary>
+        /// Minimum throughput of the connector in Mbps. Default and min is 200. If both max-throughput and
+        /// max-instances are provided, max-instances takes precedence over max-throughput.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minThroughput")]
         public virtual System.Nullable<int> MinThroughput { get; set; }
 
@@ -1026,8 +1032,8 @@ namespace Google.Apis.ServerlessVPCAccess.v1beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The normal response of the operation in case of success. If the original method returns no data on success,
-        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
         /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.

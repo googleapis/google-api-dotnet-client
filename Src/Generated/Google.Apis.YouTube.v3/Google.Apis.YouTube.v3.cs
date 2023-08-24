@@ -6912,6 +6912,24 @@ namespace Google.Apis.YouTube.v3
                 CreativeCommon = 2,
             }
 
+            [Google.Apis.Util.RequestParameterAttribute("videoPaidProductPlacement", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<VideoPaidProductPlacementEnum> VideoPaidProductPlacement { get; set; }
+
+            public enum VideoPaidProductPlacementEnum
+            {
+                /// <summary></summary>
+                [Google.Apis.Util.StringValueAttribute("videoPaidProductPlacementUnspecified")]
+                VideoPaidProductPlacementUnspecified = 0,
+
+                /// <summary>Return all videos, paid product placement or not.</summary>
+                [Google.Apis.Util.StringValueAttribute("any")]
+                Any = 1,
+
+                /// <summary>Restrict results to only videos with paid product placement.</summary>
+                [Google.Apis.Util.StringValueAttribute("true")]
+                True__ = 2,
+            }
+
             /// <summary>Filter on syndicated videos.</summary>
             [Google.Apis.Util.RequestParameterAttribute("videoSyndicated", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<VideoSyndicatedEnum> VideoSyndicated { get; set; }
@@ -7196,6 +7214,14 @@ namespace Google.Apis.YouTube.v3
                 RequestParameters.Add("videoLicense", new Google.Apis.Discovery.Parameter
                 {
                     Name = "videoLicense",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("videoPaidProductPlacement", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "videoPaidProductPlacement",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,

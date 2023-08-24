@@ -2095,7 +2095,7 @@ namespace Google.Apis.Drive.v2
         }
 
         /// <summary>
-        /// Permanently deletes a shared drive for which the user is an organizer. The shared drive cannot contain any
+        /// Permanently deletes a shared drive for which the user is an `organizer`. The shared drive cannot contain any
         /// untrashed items.
         /// </summary>
         /// <param name="driveId">The ID of the shared drive.</param>
@@ -2105,7 +2105,7 @@ namespace Google.Apis.Drive.v2
         }
 
         /// <summary>
-        /// Permanently deletes a shared drive for which the user is an organizer. The shared drive cannot contain any
+        /// Permanently deletes a shared drive for which the user is an `organizer`. The shared drive cannot contain any
         /// untrashed items.
         /// </summary>
         public class DeleteRequest : DriveBaseServiceRequest<string>
@@ -2787,8 +2787,9 @@ namespace Google.Apis.Drive.v2
         }
 
         /// <summary>
-        /// Permanently deletes a file by ID. Skips the trash. The currently authenticated user must own the file or be
-        /// an organizer on the parent for shared drive files.
+        /// Permanently deletes a file owned by the user without moving it to the trash. If the file belongs to a shared
+        /// drive, the user must be an `organizer` on the parent folder. If the target is a folder, all descendants
+        /// owned by the user are also deleted.
         /// </summary>
         /// <param name="fileId">The ID of the file to delete.</param>
         public virtual DeleteRequest Delete(string fileId)
@@ -2797,8 +2798,9 @@ namespace Google.Apis.Drive.v2
         }
 
         /// <summary>
-        /// Permanently deletes a file by ID. Skips the trash. The currently authenticated user must own the file or be
-        /// an organizer on the parent for shared drive files.
+        /// Permanently deletes a file owned by the user without moving it to the trash. If the file belongs to a shared
+        /// drive, the user must be an `organizer` on the parent folder. If the target is a folder, all descendants
+        /// owned by the user are also deleted.
         /// </summary>
         public class DeleteRequest : DriveBaseServiceRequest<string>
         {
@@ -4163,7 +4165,7 @@ namespace Google.Apis.Drive.v2
         }
 
         /// <summary>Lists the labels on a file.</summary>
-        /// <param name="fileId">The ID for the file or shared drive.</param>
+        /// <param name="fileId">The ID for the file.</param>
         public virtual ListLabelsRequest ListLabels(string fileId)
         {
             return new ListLabelsRequest(service, fileId);
@@ -4179,7 +4181,7 @@ namespace Google.Apis.Drive.v2
                 InitParameters();
             }
 
-            /// <summary>The ID for the file or shared drive.</summary>
+            /// <summary>The ID for the file.</summary>
             [Google.Apis.Util.RequestParameterAttribute("fileId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string FileId { get; private set; }
 
@@ -4728,12 +4730,8 @@ namespace Google.Apis.Drive.v2
         }
 
         /// <summary>
-        ///  Moves a file to the trash. The currently authenticated user must own the file or be at least a
-        /// `fileOrganizer` on the parent for shared drive files. Only the owner may trash a file. The trashed item is
-        /// excluded from all `files.list` responses returned for any user who doesn't own the file. However, all users
-        /// with access to the file can see the trashed item metadata in an API response. All users with access can
-        /// copy, download, export, and share the file. *Note:* Files moved to the trash still appear by default in
-        /// results from the `files.list` method. To permanently remove a file, use `files.delete`.
+        /// Moves a file to the trash. The currently authenticated user must own the file or be at least a
+        /// `fileOrganizer` on the parent for shared drive files.
         /// </summary>
         /// <param name="fileId">The ID of the file to trash.</param>
         public virtual TrashRequest Trash(string fileId)
@@ -4742,12 +4740,8 @@ namespace Google.Apis.Drive.v2
         }
 
         /// <summary>
-        ///  Moves a file to the trash. The currently authenticated user must own the file or be at least a
-        /// `fileOrganizer` on the parent for shared drive files. Only the owner may trash a file. The trashed item is
-        /// excluded from all `files.list` responses returned for any user who doesn't own the file. However, all users
-        /// with access to the file can see the trashed item metadata in an API response. All users with access can
-        /// copy, download, export, and share the file. *Note:* Files moved to the trash still appear by default in
-        /// results from the `files.list` method. To permanently remove a file, use `files.delete`.
+        /// Moves a file to the trash. The currently authenticated user must own the file or be at least a
+        /// `fileOrganizer` on the parent for shared drive files.
         /// </summary>
         public class TrashRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.File>
         {
@@ -4840,7 +4834,7 @@ namespace Google.Apis.Drive.v2
 
         /// <summary>
         /// Restores a file from the trash. The currently authenticated user must own the file or be at least a
-        /// `fileOrganizer` on the parent for shared drive files. Only the owner may untrash a file.
+        /// `fileOrganizer` on the parent for shared drive files.
         /// </summary>
         /// <param name="fileId">The ID of the file to untrash.</param>
         public virtual UntrashRequest Untrash(string fileId)
@@ -4850,7 +4844,7 @@ namespace Google.Apis.Drive.v2
 
         /// <summary>
         /// Restores a file from the trash. The currently authenticated user must own the file or be at least a
-        /// `fileOrganizer` on the parent for shared drive files. Only the owner may untrash a file.
+        /// `fileOrganizer` on the parent for shared drive files.
         /// </summary>
         public class UntrashRequest : DriveBaseServiceRequest<Google.Apis.Drive.v2.Data.File>
         {
@@ -11410,7 +11404,7 @@ namespace Google.Apis.Drive.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("items")]
         public virtual System.Collections.Generic.IList<Property> Items { get; set; }
 
-        /// <summary>This is always `drive#propertyList`.s</summary>
+        /// <summary>This is always `drive#propertyList`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
         public virtual string Kind { get; set; }
 

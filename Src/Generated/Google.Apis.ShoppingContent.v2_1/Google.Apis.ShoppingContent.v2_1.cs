@@ -47,6 +47,7 @@ namespace Google.Apis.ShoppingContent.v2_1
             Freelistingsprogram = new FreelistingsprogramResource(this);
             Liasettings = new LiasettingsResource(this);
             Localinventory = new LocalinventoryResource(this);
+            Merchantsupport = new MerchantsupportResource(this);
             Orderinvoices = new OrderinvoicesResource(this);
             Orderreports = new OrderreportsResource(this);
             Orderreturns = new OrderreturnsResource(this);
@@ -143,6 +144,9 @@ namespace Google.Apis.ShoppingContent.v2_1
 
         /// <summary>Gets the Localinventory resource.</summary>
         public virtual LocalinventoryResource Localinventory { get; }
+
+        /// <summary>Gets the Merchantsupport resource.</summary>
+        public virtual MerchantsupportResource Merchantsupport { get; }
 
         /// <summary>Gets the Orderinvoices resource.</summary>
         public virtual OrderinvoicesResource Orderinvoices { get; }
@@ -5965,6 +5969,221 @@ namespace Google.Apis.ShoppingContent.v2_1
                     Name = "productId",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "merchantsupport" collection of methods.</summary>
+    public class MerchantsupportResource
+    {
+        private const string Resource = "merchantsupport";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public MerchantsupportResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Provide a list of merchant's issues with a support content and available actions. This content and actions
+        /// are meant to be rendered and shown in third-party applications.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">Required. The ID of the account to fetch issues for.</param>
+        public virtual RenderaccountissuesRequest Renderaccountissues(Google.Apis.ShoppingContent.v2_1.Data.RenderAccountIssuesRequestPayload body, long merchantId)
+        {
+            return new RenderaccountissuesRequest(service, body, merchantId);
+        }
+
+        /// <summary>
+        /// Provide a list of merchant's issues with a support content and available actions. This content and actions
+        /// are meant to be rendered and shown in third-party applications.
+        /// </summary>
+        public class RenderaccountissuesRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.RenderAccountIssuesResponse>
+        {
+            /// <summary>Constructs a new Renderaccountissues request.</summary>
+            public RenderaccountissuesRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.RenderAccountIssuesRequestPayload body, long merchantId) : base(service)
+            {
+                MerchantId = merchantId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the account to fetch issues for.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>
+            /// Optional. The [IETF BCP-47](https://tools.ietf.org/html/bcp47) language code used to localize support
+            /// content. If not set, the result will be in default language ('en-US').
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string LanguageCode { get; set; }
+
+            /// <summary>
+            /// Optional. The [IANA](https://www.iana.org/time-zones) timezone used to localize times in support
+            /// content. For example 'America/Los_Angeles'. If not set, results will use as a default UTC.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("timeZone", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string TimeZone { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.RenderAccountIssuesRequestPayload Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "renderaccountissues";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/merchantsupport/renderaccountissues";
+
+            /// <summary>Initializes Renderaccountissues parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "languageCode",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("timeZone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "timeZone",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>
+        /// Provide a list of issues for merchant's product with a support content and available actions. This content
+        /// and actions are meant to be rendered and shown in third-party applications.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="merchantId">Required. The ID of the account that contains the product.</param>
+        /// <param name="productId">
+        /// Required. The
+        /// [REST_ID](https://developers.google.com/shopping-content/reference/rest/v2.1/products#Product.FIELDS.id) of
+        /// the product to fetch issues for.
+        /// </param>
+        public virtual RenderproductissuesRequest Renderproductissues(Google.Apis.ShoppingContent.v2_1.Data.RenderProductIssuesRequestPayload body, long merchantId, string productId)
+        {
+            return new RenderproductissuesRequest(service, body, merchantId, productId);
+        }
+
+        /// <summary>
+        /// Provide a list of issues for merchant's product with a support content and available actions. This content
+        /// and actions are meant to be rendered and shown in third-party applications.
+        /// </summary>
+        public class RenderproductissuesRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.RenderProductIssuesResponse>
+        {
+            /// <summary>Constructs a new Renderproductissues request.</summary>
+            public RenderproductissuesRequest(Google.Apis.Services.IClientService service, Google.Apis.ShoppingContent.v2_1.Data.RenderProductIssuesRequestPayload body, long merchantId, string productId) : base(service)
+            {
+                MerchantId = merchantId;
+                ProductId = productId;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Required. The ID of the account that contains the product.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual long MerchantId { get; private set; }
+
+            /// <summary>
+            /// Required. The
+            /// [REST_ID](https://developers.google.com/shopping-content/reference/rest/v2.1/products#Product.FIELDS.id)
+            /// of the product to fetch issues for.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("productId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string ProductId { get; private set; }
+
+            /// <summary>
+            /// Optional. The [IETF BCP-47](https://tools.ietf.org/html/bcp47) language code used to localize support
+            /// content. If not set, the result will be in default language ('en-US').
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string LanguageCode { get; set; }
+
+            /// <summary>
+            /// Optional. The [IANA](https://www.iana.org/time-zones) timezone used to localize times in support
+            /// content. For example 'America/Los_Angeles'. If not set, results will use as a default UTC.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("timeZone", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string TimeZone { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.ShoppingContent.v2_1.Data.RenderProductIssuesRequestPayload Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "renderproductissues";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/merchantsupport/renderproductissues/{productId}";
+
+            /// <summary>Initializes Renderproductissues parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("productId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "productId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "languageCode",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("timeZone", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "timeZone",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -14137,6 +14356,97 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An issue affecting specific merchant.</summary>
+    public class AccountIssue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of actionable steps that can be executed to solve the issue. An example is requesting a re-review or
+        /// providing arguments when merchant disagrees with the issue. Actions that are supported in (your) third-party
+        /// application can be rendered as buttons and should be available to merchant when they expand the issue.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actions")]
+        public virtual System.Collections.Generic.IList<Action> Actions { get; set; }
+
+        /// <summary>
+        /// Clarifies the severity of the issue. The summarizing message, if present, should be shown right under the
+        /// title for each issue. It helps merchants to quickly understand the impact of the issue. The detailed
+        /// breakdown helps the merchant to fully understand the impact of the issue. It can be rendered as dialog that
+        /// opens when the merchant mouse over the summarized impact statement. Issues with different severity can be
+        /// styled differently. They may use a different color or icon to signal the difference between `ERROR`,
+        /// `WARNING` and `INFO`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("impact")]
+        public virtual AccountIssueImpact Impact { get; set; }
+
+        /// <summary>
+        /// Details of the issue as a pre-rendered HTML. HTML elements contain CSS classes that can be used to customize
+        /// the style of the content. Always sanitize the HTML before embedding it directly to your application. The
+        /// sanitizer needs to allow basic HTML tags, such as: `div`, `span`, `p`, `a`, `ul`, `li`, `table`, `tr`, `td`.
+        /// For example, you can use [DOMPurify](https://www.npmjs.com/package/dompurify). CSS classes: * `issue-detail`
+        /// - top level container for the detail of the issue * `callout-banners` - section of the `issue-detail` with
+        /// callout banners * `callout-banner` - single callout banner, inside `callout-banners` * `callout-banner-info`
+        /// - callout with important information (default) * `callout-banner-warning` - callout with a warning *
+        /// `callout-banner-error` - callout informing about an error (most severe) * `issue-content` - section of the
+        /// `issue-detail`, contains multiple `content-element` * `content-element` - content element such as a list,
+        /// link or paragraph, inside `issue-content` * `root-causes` - unordered list with items describing root causes
+        /// of the issue, inside `issue-content` * `root-causes-intro` - intro text before the `root-causes` list,
+        /// inside `issue-content` * `segment` - section of the text, `span` inside paragraph * `segment-attribute` -
+        /// section of the text that represents a product attribute, for example 'image\_link' * `segment-literal` -
+        /// section of the text that contains a special value, for example '0-1000 kg' * `segment-bold` - section of the
+        /// text that should be rendered as bold * `segment-italic` - section of the text that should be rendered as
+        /// italic * `tooltip` - used on paragraphs that should be rendered with a tooltip. A section of the text in
+        /// such a paragraph will have a class `tooltip-text` and is intended to be shown in a mouse over dialog. If the
+        /// style is not used, the `tooltip-text` section would be shown on a new line, after the main part of the text.
+        /// * `tooltip-text` - marks a section of the text within a `tooltip`, that is intended to be shown in a mouse
+        /// over dialog. * `tooltip-icon` - marks a section of the text within a `tooltip`, that can be replaced with a
+        /// tooltip icon, for example '?' or 'i'. By default, this section contains a `br` tag, that is separating the
+        /// main text and the tooltip text when the style is not used. * `tooltip-style-question` - the tooltip shows
+        /// helpful information, can use the '?' as an icon. * `tooltip-style-info` - the tooltip adds additional
+        /// information fitting to the context, can use the 'i' as an icon. * `content-moderation` - marks the paragraph
+        /// that explains how the issue was identified. * `overlay` - wrapper for the `popup` dialog. It should be set
+        /// to hidden by default. When the dialog is opened, the overlay should switch to be visible and cover the rest
+        /// of the screen to highlight the dialog. * `popup` - dialog for showing a long block of content *
+        /// `popup-close` - a button to close the `popup` dialog * `new-element` - Present for new elements added to the
+        /// pre-rendered content in the future. To make sure that a new content element does not break your style, you
+        /// can hide everything with this class.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prerenderedContent")]
+        public virtual string PrerenderedContent { get; set; }
+
+        /// <summary>Title of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Overall impact of the issue.</summary>
+    public class AccountIssueImpact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Detailed impact breakdown. Explains the types of restriction the issue has in different shopping
+        /// destinations and territory. If present, it should be rendered to the merchant. Can be shown as a mouse over
+        /// dropdown or a dialog. Each breakdown item represents a group of regions with the same impact details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("breakdowns")]
+        public virtual System.Collections.Generic.IList<Breakdown> Breakdowns { get; set; }
+
+        /// <summary>
+        /// Optional. Message summarizing the overall impact of the issue. If present, it should be rendered to the
+        /// merchant. For example: "Disapproves 90k offers in 25 countries"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The severity of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Turning on [item updates](https://support.google.com/merchants/answer/3246284) allows Google to automatically
     /// update items for you. When item updates are on, Google uses the structured data markup on the website and
@@ -15050,6 +15360,77 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An actionable step that can be executed to solve the issue.</summary>
+    public class Action : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Action implemented and performed in (your) third-party application. The application should point the
+        /// merchant to the place, where they can access the corresponding functionality or provide instructions, if the
+        /// specific functionality is not available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("builtinSimpleAction")]
+        public virtual BuiltInSimpleAction BuiltinSimpleAction { get; set; }
+
+        /// <summary>Label of the action button.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("buttonLabel")]
+        public virtual string ButtonLabel { get; set; }
+
+        /// <summary>
+        /// Action that is implemented and performed outside of (your) third-party application. The application needs to
+        /// redirect the merchant to the external location where they can perform the action.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalAction")]
+        public virtual ExternalAction ExternalAction { get; set; }
+
+        /// <summary>
+        /// Controlling whether the button is active or disabled. The value is 'false' when the action was already
+        /// requested or is not available. If the action is not available then a reason will be present. If (your)
+        /// third-party application shows a disabled button for action that is not available, then it should also show
+        /// reasons.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isAvailable")]
+        public virtual System.Nullable<bool> IsAvailable { get; set; }
+
+        /// <summary>
+        /// List of reasons why the action is not available. The list of reasons is empty if the action is available. If
+        /// there is only one reason, it can be displayed next to the disabled button. If there are more reasons, all of
+        /// them should be displayed, for example in a pop-up dialog.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reasons")]
+        public virtual System.Collections.Generic.IList<ActionReason> Reasons { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single reason why the action is not available.</summary>
+    public class ActionReason : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. An action that needs to be performed to solve the problem represented by this reason. This action
+        /// will always be available. Should be rendered as a link or button next to the summarizing message. For
+        /// example, the review may be available only once merchant configure all required attributes. In such a
+        /// situation this action can be a link to the form, where they can fill the missing attribute to unblock the
+        /// main action.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("action")]
+        public virtual Action Action { get; set; }
+
+        /// <summary>Detailed explanation of the reason. Should be displayed as a hint if present.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detail")]
+        public virtual string Detail { get; set; }
+
+        /// <summary>
+        /// Messages summarizing the reason, why the action is not available. For example: "Review requested on Jan 03.
+        /// Review requests can take a few days to complete."
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for the ActivateProgram method.</summary>
     public class ActivateBuyOnGoogleProgramRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -15087,6 +15468,27 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Street-level part of the address. Use `\n` to add a second line.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streetAddress")]
         public virtual string StreetAddress { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The Alternate Dispute Resolution (ADR) that may be available to merchants in some regions. If present, the link
+    /// should be shown on the same page as the list of issues.
+    /// </summary>
+    public class AlternateDisputeResolution : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The label for the alternate dispute resolution link.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("label")]
+        public virtual string Label { get; set; }
+
+        /// <summary>
+        /// The URL pointing to a page, where merchant can request alternative dispute resolution with an [external
+        /// body](https://support.google.com/european-union-digital-services-act-redress-options/answer/13535501).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -15225,6 +15627,78 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Name of the brand.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A detailed impact breakdown for a group of regions where the impact of the issue on different shopping
+    /// destinations is the same.
+    /// </summary>
+    public class Breakdown : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Human readable, localized description of issue's effect on different targets. Should be rendered as a list.
+        /// For example: * "Products not showing in ads" * "Products not showing organically"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<string> Details { get; set; }
+
+        /// <summary>
+        /// Lists of regions. Should be rendered as a title for this group of details. The full list should be shown to
+        /// merchant. If the list is too long, it is recommended to make it expandable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regions")]
+        public virtual System.Collections.Generic.IList<BreakdownRegion> Regions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Region with code and localized name.</summary>
+    public class BreakdownRegion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The [CLDR territory code] (http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>
+        /// The localized name of the region. For region with code='001' the value is 'All countries' or the equivalent
+        /// in other languages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Action that is implemented and performed in (your) third-party application. Represents various functionality
+    /// that is expected to be available to merchant and will help them with resolving the issue. The application should
+    /// point the merchant to the place, where they can access the corresponding functionality. If the functionality is
+    /// not supported, it is recommended to explain the situation to merchant and provide them with instructions how to
+    /// solve the issue.
+    /// </summary>
+    public class BuiltInSimpleAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The attribute that needs to be updated. Present when the type is `EDIT_ITEM_ATTRIBUTE`. This field contains
+        /// a code for attribute, represented in snake_case. You can find a list of product's attributes, with their
+        /// codes [here](https://support.google.com/merchants/answer/7052112).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeCode")]
+        public virtual string AttributeCode { get; set; }
+
+        /// <summary>
+        /// The type of action that represents a functionality that is expected to be available in third-party
+        /// application.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16800,6 +17274,27 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The message of the first error in `errors`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("message")]
         public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Action that is implemented and performed outside of the third-party application. It should redirect the merchant
+    /// to the provided URL of an external system where they can perform the action. For example to request a review in
+    /// the Merchant Center.
+    /// </summary>
+    public class ExternalAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The type of external action.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>
+        /// URL to external system, for example Merchant Center, where the merchant can perform the action.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22416,6 +22911,97 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>An issue affecting specific product.</summary>
+    public class ProductIssue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A list of actionable steps that can be executed to solve the issue. An example is requesting a re-review or
+        /// providing arguments when merchant disagrees with the issue. Actions that are supported in (your) third-party
+        /// application can be rendered as buttons and should be available to merchant when they expand the issue.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("actions")]
+        public virtual System.Collections.Generic.IList<Action> Actions { get; set; }
+
+        /// <summary>
+        /// Clarifies the severity of the issue. The summarizing message, if present, should be shown right under the
+        /// title for each issue. It helps merchants to quickly understand the impact of the issue. The detailed
+        /// breakdown helps the merchant to fully understand the impact of the issue. It can be rendered as dialog that
+        /// opens when the merchant mouse over the summarized impact statement. Issues with different severity can be
+        /// styled differently. They may use a different color or icon to signal the difference between `ERROR`,
+        /// `WARNING` and `INFO`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("impact")]
+        public virtual ProductIssueImpact Impact { get; set; }
+
+        /// <summary>
+        /// Details of the issue as a pre-rendered HTML. HTML elements contain CSS classes that can be used to customize
+        /// the style of the content. Always sanitize the HTML before embedding it directly to your application. The
+        /// sanitizer needs to allow basic HTML tags, such as: `div`, `span`, `p`, `a`, `ul`, `li`, `table`, `tr`, `td`.
+        /// For example, you can use [DOMPurify](https://www.npmjs.com/package/dompurify). CSS classes: * `issue-detail`
+        /// - top level container for the detail of the issue * `callout-banners` - section of the `issue-detail` with
+        /// callout banners * `callout-banner` - single callout banner, inside `callout-banners` * `callout-banner-info`
+        /// - callout with important information (default) * `callout-banner-warning` - callout with a warning *
+        /// `callout-banner-error` - callout informing about an error (most severe) * `issue-content` - section of the
+        /// `issue-detail`, contains multiple `content-element` * `content-element` - content element such as a list,
+        /// link or paragraph, inside `issue-content` * `root-causes` - unordered list with items describing root causes
+        /// of the issue, inside `issue-content` * `root-causes-intro` - intro text before the `root-causes` list,
+        /// inside `issue-content` * `segment` - section of the text, `span` inside paragraph * `segment-attribute` -
+        /// section of the text that represents a product attribute, for example 'image\_link' * `segment-literal` -
+        /// section of the text that contains a special value, for example '0-1000 kg' * `segment-bold` - section of the
+        /// text that should be rendered as bold * `segment-italic` - section of the text that should be rendered as
+        /// italic * `tooltip` - used on paragraphs that should be rendered with a tooltip. A section of the text in
+        /// such a paragraph will have a class `tooltip-text` and is intended to be shown in a mouse over dialog. If the
+        /// style is not used, the `tooltip-text` section would be shown on a new line, after the main part of the text.
+        /// * `tooltip-text` - marks a section of the text within a `tooltip`, that is intended to be shown in a mouse
+        /// over dialog. * `tooltip-icon` - marks a section of the text within a `tooltip`, that can be replaced with a
+        /// tooltip icon, for example '?' or 'i'. By default, this section contains a `br` tag, that is separating the
+        /// main text and the tooltip text when the style is not used. * `tooltip-style-question` - the tooltip shows
+        /// helpful information, can use the '?' as an icon. * `tooltip-style-info` - the tooltip adds additional
+        /// information fitting to the context, can use the 'i' as an icon. * `content-moderation` - marks the paragraph
+        /// that explains how the issue was identified. * `overlay` - wrapper for the `popup` dialog. It should be set
+        /// to hidden by default. When the dialog is opened, the overlay should switch to be visible and cover the rest
+        /// of the screen to highlight the dialog. * `popup` - dialog for showing a long block of content *
+        /// `popup-close` - a button to close the `popup` dialog * `new-element` - Present for new elements added to the
+        /// pre-rendered content in the future. To make sure that a new content element does not break your style, you
+        /// can hide everything with this class.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("prerenderedContent")]
+        public virtual string PrerenderedContent { get; set; }
+
+        /// <summary>Title of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Overall impact of product issue.</summary>
+    public class ProductIssueImpact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Detailed impact breakdown. Explains the types of restriction the issue has in different shopping
+        /// destinations and territory. If present, it should be rendered to the merchant. Can be shown as a mouse over
+        /// dropdown or a dialog. Each breakdown item represents a group of regions with the same impact details.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("breakdowns")]
+        public virtual System.Collections.Generic.IList<Breakdown> Breakdowns { get; set; }
+
+        /// <summary>
+        /// Optional. Message summarizing the overall impact of the issue. If present, it should be rendered to the
+        /// merchant. For example: "Limits visibility in France"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The severity of the issue.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("severity")]
+        public virtual string Severity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     public class ProductProductDetail : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The name of the product detail.</summary>
@@ -23961,6 +24547,83 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>Price and availability of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionalInventory")]
         public virtual RegionalInventory RegionalInventory { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The payload for configuring how the content should be rendered.</summary>
+    public class RenderAccountIssuesRequestPayload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. How the detailed content should be returned. Default option is to return the content as a
+        /// pre-rendered HTML text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentOption")]
+        public virtual string ContentOption { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response containing support content and actions for listed account issues.</summary>
+    public class RenderAccountIssuesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The Alternate Dispute Resolution (ADR) contains a link to a page where merchant can bring their appeal to an
+        /// [external
+        /// body](https://support.google.com/european-union-digital-services-act-redress-options/answer/13535501). If
+        /// the ADR is present, it MUST be available to the merchant on the page that shows the list with their account
+        /// issues.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternateDisputeResolution")]
+        public virtual AlternateDisputeResolution AlternateDisputeResolution { get; set; }
+
+        /// <summary>
+        /// List of account issues for a given account. This list can be shown with compressed, expandable items. In the
+        /// compressed form, the title and impact should be shown for each issue. Once the issue is expanded, the
+        /// detailed content and available actions should be rendered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issues")]
+        public virtual System.Collections.Generic.IList<AccountIssue> Issues { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The payload for configuring how the content should be rendered.</summary>
+    public class RenderProductIssuesRequestPayload : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. How the detailed content should be returned. Default option is to return the content as a
+        /// pre-rendered HTML text.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contentOption")]
+        public virtual string ContentOption { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response containing support content and actions for listed product issues.</summary>
+    public class RenderProductIssuesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The Alternate Dispute Resolution (ADR) contains a link to a page where merchant can bring their appeal to an
+        /// [external
+        /// body](https://support.google.com/european-union-digital-services-act-redress-options/answer/13535501). If
+        /// present, the link should be shown on the same page as the list of issues.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("alternateDisputeResolution")]
+        public virtual AlternateDisputeResolution AlternateDisputeResolution { get; set; }
+
+        /// <summary>
+        /// List of issues for a given product. This list can be shown with compressed, expandable items. In the
+        /// compressed form, the title and impact should be shown for each issue. Once the issue is expanded, the
+        /// detailed content and available actions should be rendered.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issues")]
+        public virtual System.Collections.Generic.IList<ProductIssue> Issues { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

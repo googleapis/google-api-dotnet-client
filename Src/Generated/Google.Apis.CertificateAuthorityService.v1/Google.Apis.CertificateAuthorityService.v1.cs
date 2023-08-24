@@ -4789,15 +4789,6 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Optional. The maximum lifetime allowed for issued Certificates that use this template. If the issuing
-        /// CaPool's IssuancePolicy specifies a maximum_lifetime the minimum of the two durations will be the maximum
-        /// lifetime for issued Certificates. Note that if the issuing CertificateAuthority expires before a
-        /// Certificate's requested maximum_lifetime, the effective lifetime will be explicitly truncated to match it.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("maximumLifetime")]
-        public virtual object MaximumLifetime { get; set; }
-
-        /// <summary>
         /// Output only. The resource name for this CertificateTemplate in the format
         /// `projects/*/locations/*/certificateTemplates/*`.
         /// </summary>
@@ -6047,7 +6038,7 @@ namespace Google.Apis.CertificateAuthorityService.v1.Data
     public class SubjectConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Contains distinguished name fields such as the common name, location and organization.
+        /// Required. Contains distinguished name fields such as the common name, location and organization.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subject")]
         public virtual Subject Subject { get; set; }

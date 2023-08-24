@@ -140,6 +140,11 @@
     "youtube",
     "creativeCommon"
   ],
+  "Google.Apis.YouTube.v3.SearchResource+ListRequest.VideoPaidProductPlacementEnum": [
+    "videoPaidProductPlacementUnspecified",
+    "any",
+    "true"
+  ],
   "Google.Apis.YouTube.v3.SearchResource+ListRequest.VideoSyndicatedEnum": [
     "videoSyndicatedUnspecified",
     "any",

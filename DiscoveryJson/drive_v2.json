@@ -1007,7 +1007,7 @@
   "drives": {
    "methods": {
     "delete": {
-     "description": "Permanently deletes a shared drive for which the user is an organizer. The shared drive cannot contain any untrashed items.",
+     "description": "Permanently deletes a shared drive for which the user is an `organizer`. The shared drive cannot contain any untrashed items.",
      "flatPath": "drives/{driveId}",
      "httpMethod": "DELETE",
      "id": "drive.drives.delete",
@@ -1333,7 +1333,7 @@
      ]
     },
     "delete": {
-     "description": "Permanently deletes a file by ID. Skips the trash. The currently authenticated user must own the file or be an organizer on the parent for shared drive files.",
+     "description": "Permanently deletes a file owned by the user without moving it to the trash. If the file belongs to a shared drive, the user must be an `organizer` on the parent folder. If the target is a folder, all descendants owned by the user are also deleted.",
      "flatPath": "files/{fileId}",
      "httpMethod": "DELETE",
      "id": "drive.files.delete",
@@ -1822,7 +1822,7 @@
      ],
      "parameters": {
       "fileId": {
-       "description": "The ID for the file or shared drive.",
+       "description": "The ID for the file.",
        "location": "path",
        "required": true,
        "type": "string"
@@ -2086,7 +2086,7 @@
      ]
     },
     "trash": {
-     "description": " Moves a file to the trash. The currently authenticated user must own the file or be at least a `fileOrganizer` on the parent for shared drive files. Only the owner may trash a file. The trashed item is excluded from all `files.list` responses returned for any user who doesn't own the file. However, all users with access to the file can see the trashed item metadata in an API response. All users with access can copy, download, export, and share the file. *Note:* Files moved to the trash still appear by default in results from the `files.list` method. To permanently remove a file, use `files.delete`.",
+     "description": "Moves a file to the trash. The currently authenticated user must own the file or be at least a `fileOrganizer` on the parent for shared drive files.",
      "flatPath": "files/{fileId}/trash",
      "httpMethod": "POST",
      "id": "drive.files.trash",
@@ -2136,7 +2136,7 @@
      ]
     },
     "untrash": {
-     "description": "Restores a file from the trash. The currently authenticated user must own the file or be at least a `fileOrganizer` on the parent for shared drive files. Only the owner may untrash a file.",
+     "description": "Restores a file from the trash. The currently authenticated user must own the file or be at least a `fileOrganizer` on the parent for shared drive files.",
      "flatPath": "files/{fileId}/untrash",
      "httpMethod": "POST",
      "id": "drive.files.untrash",
@@ -3842,7 +3842,7 @@
    }
   }
  },
- "revision": "20230815",
+ "revision": "20230822",
  "rootUrl": "https://www.googleapis.com/",
  "schemas": {
   "About": {
@@ -6318,7 +6318,7 @@
     },
     "kind": {
      "default": "drive#propertyList",
-     "description": "This is always `drive#propertyList`.s",
+     "description": "This is always `drive#propertyList`.",
      "type": "string"
     },
     "selfLink": {

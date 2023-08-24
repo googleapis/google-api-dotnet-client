@@ -6691,6 +6691,16 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Autoscaled rollout policy uses cluster autoscaler during blue-green upgrades to scale both the green and blue
+    /// pools.
+    /// </summary>
+    public class AutoscaledRolloutPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Deprecated.</summary>
     public class AvailableVersion : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6799,6 +6809,10 @@ namespace Google.Apis.Container.v1beta1.Data
     /// <summary>Settings for blue-green upgrade.</summary>
     public class BlueGreenSettings : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Autoscaled policy for cluster autoscaler enabled blue-green upgrade.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("autoscaledRolloutPolicy")]
+        public virtual AutoscaledRolloutPolicy AutoscaledRolloutPolicy { get; set; }
+
         /// <summary>
         /// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
         /// </summary>
@@ -11460,6 +11474,20 @@ namespace Google.Apis.Container.v1beta1.Data
         public virtual ConfidentialNodes ConfidentialNodes { get; set; }
 
         /// <summary>
+        /// Optional. The desired disk size for nodes in the node pool. Initiates an upgrade operation that migrates the
+        /// nodes in the node pool to the specified disk size.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
+        public virtual System.Nullable<long> DiskSizeGb { get; set; }
+
+        /// <summary>
+        /// Optional. The desired disk type for nodes in the node pool. Initiates an upgrade operation that migrates the
+        /// nodes in the node pool to the specified disk type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
+        public virtual string DiskType { get; set; }
+
+        /// <summary>
         /// The current etag of the node pool. If an etag is provided and does not match the current etag of the node
         /// pool, update will be blocked and an ABORTED error will be returned.
         /// </summary>
@@ -11512,6 +11540,13 @@ namespace Google.Apis.Container.v1beta1.Data
         /// <summary>Logging configuration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loggingConfig")]
         public virtual NodePoolLoggingConfig LoggingConfig { get; set; }
+
+        /// <summary>
+        /// Optional. The desired machine type for nodes in the node pool. Initiates an upgrade operation that migrates
+        /// the nodes in the node pool to the specified machine type.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
 
         /// <summary>
         /// The name (project, location, cluster, node pool) of the node pool to update. Specified in the format
