@@ -10,9 +10,7 @@ then
   exit 1
 fi
 
-# Make sure we have the most recent version of pip, then install other packages.
-python -m pip install --require-hashes -r pip-requirements.txt
-python -m pip install --require-hashes -r requirements.txt
+dotnet tool restore > /dev/null
 
 declare -r service_account_json=$(realpath $1)
 declare -r staging_bucket=$2
@@ -30,8 +28,8 @@ do
     version=$(grep \<Version\> Src/Generated/$pkg/$pkg.csproj | sed 's/</>/g' | cut -d\> -f 3)
     pushd Src/Generated/$pkg/obj/site > /dev/null
     echo "Uploading $pkg version $version"
-    python -m docuploader create-metadata --name $pkg --version $version --language dotnet --github-repository googleapis/google-api-dotnet-client
-    python -m docuploader upload . --credentials $service_account_json --staging-bucket $staging_bucket
+    dotnet docuploader create-metadata --name $pkg --version $version --language dotnet --github-repository googleapis/google-api-dotnet-client
+    dotnet docuploader upload --documentation-path . --credentials $service_account_json --staging-bucket $staging_bucket
     popd > /dev/null
   fi
 done
