@@ -3462,10 +3462,6 @@ namespace Google.Apis.OSConfig.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>OSPolicy fingerprint (checksum)</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("fingerprint")]
-        public virtual string Fingerprint { get; set; }
-
         /// <summary>
         /// Required. The id of the OS policy with the following restrictions: * Must contain only lowercase letters,
         /// numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a

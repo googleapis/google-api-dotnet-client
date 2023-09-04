@@ -3856,7 +3856,10 @@ namespace Google.Apis.TagManager.v2
                         }
                     }
 
-                    /// <summary>Moves entities to a GTM Folder.</summary>
+                    /// <summary>
+                    /// Moves entities to a GTM Folder. If {folder_id} in the request path equals 0, this will instead
+                    /// move entities out of the folder they currently belong to.
+                    /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="path">
                     /// GTM Folder's API relative path. Example:
@@ -3867,7 +3870,10 @@ namespace Google.Apis.TagManager.v2
                         return new MoveEntitiesToFolderRequest(service, body, path);
                     }
 
-                    /// <summary>Moves entities to a GTM Folder.</summary>
+                    /// <summary>
+                    /// Moves entities to a GTM Folder. If {folder_id} in the request path equals 0, this will instead
+                    /// move entities out of the folder they currently belong to.
+                    /// </summary>
                     public class MoveEntitiesToFolderRequest : TagManagerBaseServiceRequest<string>
                     {
                         /// <summary>Constructs a new MoveEntitiesToFolder request.</summary>
@@ -9671,8 +9677,8 @@ namespace Google.Apis.TagManager.v2.Data
     public class Parameter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Whether or not a reference type parameter is strongly or weakly referenced. @mutable
-        /// tagmanager.accounts.containers.workspaces.transformations.create @mutable
+        /// Whether or not a reference type parameter is strongly or weakly referenced. Only used by Transformations.
+        /// @mutable tagmanager.accounts.containers.workspaces.transformations.create @mutable
         /// tagmanager.accounts.containers.workspaces.transformations.update
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("isWeakReference")]

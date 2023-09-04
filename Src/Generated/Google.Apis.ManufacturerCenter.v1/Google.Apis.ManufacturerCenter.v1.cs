@@ -1359,6 +1359,10 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authority")]
         public virtual string Authority { get; set; }
 
+        /// <summary>Required. A unique code to identify the certification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
         /// <summary>Optional. A URL link to the certification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("link")]
         public virtual string Link { get; set; }
@@ -1375,7 +1379,7 @@ namespace Google.Apis.ManufacturerCenter.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("validUntil")]
         public virtual string ValidUntil { get; set; }
 
-        /// <summary>Required. A custom value of the certification.</summary>
+        /// <summary>Optional. A custom value of the certification.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
 

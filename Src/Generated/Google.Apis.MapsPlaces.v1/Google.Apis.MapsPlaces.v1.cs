@@ -450,24 +450,6 @@ namespace Google.Apis.MapsPlaces.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// int 32 range. Both min and max are optional. If only min is set, then the range only has a lower bound. If only
-    /// max is set, then range only has an upper bound. At least one of min and max must be set. Values are inclusive.
-    /// </summary>
-    public class GoogleMapsPlacesV1Int32Range : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Upper bound. If unset, behavior is documented on the range field.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("max")]
-        public virtual System.Nullable<int> Max { get; set; }
-
-        /// <summary>Lower bound. If unset, behavior is documented on the range field.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("min")]
-        public virtual System.Nullable<int> Min { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>All the information representing a Place.</summary>
     public class GoogleMapsPlacesV1Place : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -785,13 +767,6 @@ namespace Google.Apis.MapsPlaces.v1.Data
         public virtual GoogleTypeDate Date { get; set; }
 
         /// <summary>
-        /// Output only. Date of the endpoint expressed in RFC3339 format in the local timezone for the place. For
-        /// example 2010-12-31.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("dateDeprecated")]
-        public virtual string DateDeprecated { get; set; }
-
-        /// <summary>
         /// Output only. A day of the week, as an integer in the range 0-6. 0 is Sunday, 1 is Monday, etc.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("day")]
@@ -942,14 +917,6 @@ namespace Google.Apis.MapsPlaces.v1.Data
         public virtual string LanguageCode { get; set; }
 
         /// <summary>
-        /// [Deprecated!]The region to search. Setting location would usually yields better results. Recommended to set.
-        /// This location serves as a bias unless strict_restriction is set to true, which turns the location to a
-        /// strict restriction.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual GoogleMapsPlacesV1SearchTextRequestLocation Location { get; set; }
-
-        /// <summary>
         /// The region to search. This location serves as a bias which means results around given location might be
         /// returned. Cannot be set along with location_restriction.
         /// </summary>
@@ -994,14 +961,6 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("priceLevels")]
         public virtual System.Collections.Generic.IList<string> PriceLevels { get; set; }
 
-        /// <summary>
-        /// [Deprecated!]Used to restrict the search to places that are within a certain price range. This is on a scale
-        /// of 0 to 4. Set a minimum of 0 or set a maximum of 4 has no effect on the search results. Min price is
-        /// default to 0 and max price is default to 4. Default value will be used if either min or max is unset.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("priceRange")]
-        public virtual GoogleMapsPlacesV1Int32Range PriceRange { get; set; }
-
         /// <summary>How results will be ranked in the response.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rankPreference")]
         public virtual string RankPreference { get; set; }
@@ -1026,24 +985,6 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// <summary>Required. The text query for textual search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textQuery")]
         public virtual string TextQuery { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>[Deprecated!]The region to search.</summary>
-    public class GoogleMapsPlacesV1SearchTextRequestLocation : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>A rectangle box defined by northeast and southwest corner.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("rectangle")]
-        public virtual GoogleGeoTypeViewport Rectangle { get; set; }
-
-        /// <summary>
-        /// Make location field a strict restriction and filter out POIs outside of the given location. If location type
-        /// field is unset this field will have no effect.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("strictRestriction")]
-        public virtual System.Nullable<bool> StrictRestriction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

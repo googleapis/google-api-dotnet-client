@@ -9392,6 +9392,28 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// A data store connection. It represents a data store in Discovery Engine and the type of the contents it
+    /// contains.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3DataStoreConnection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The full name of the referenced data store. Formats:
+        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`
+        /// `projects/{project}/locations/{location}/dataStores/{data_store}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStore")]
+        public virtual string DataStore { get; set; }
+
+        /// <summary>The type of the connected data store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStoreType")]
+        public virtual string DataStoreType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for DeleteDocument operation.</summary>
     public class GoogleCloudDialogflowCxV3DeleteDocumentOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10203,6 +10225,41 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     }
 
     /// <summary>
+    /// The Knowledge Connector settings for this page or flow. This includes information such as the attached Knowledge
+    /// Bases, and the way to execute fulfillment.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3KnowledgeConnectorSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List of related data store connections.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStoreConnections")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3DataStoreConnection> DataStoreConnections { get; set; }
+
+        /// <summary>Whether Knowledge Connector is enabled or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The target flow to transition to. Format: `projects//locations//agents//flows/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetFlow")]
+        public virtual string TargetFlow { get; set; }
+
+        /// <summary>The target page to transition to. Format: `projects//locations//agents//flows//pages/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetPage")]
+        public virtual string TargetPage { get; set; }
+
+        /// <summary>
+        /// The fulfillment to be triggered. When the answers from the Knowledge Connector are selected by Dialogflow,
+        /// you can utitlize the request scoped parameter `$request.knowledge.answers` (contains up to the 5 highest
+        /// confidence answers) and `$request.knowledge.questions` (contains the corresponding questions) to construct
+        /// the fulfillment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerFulfillment")]
+        public virtual GoogleCloudDialogflowCxV3Fulfillment TriggerFulfillment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A Dialogflow CX conversation (session) can be described and visualized as a state machine. The states of a CX
     /// session are represented by pages. For each flow, you define many pages, where your combined pages can handle a
     /// complete conversation on the topics the flow is designed for. At any given moment, exactly one page is the
@@ -10233,6 +10290,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("form")]
         public virtual GoogleCloudDialogflowCxV3Form Form { get; set; }
 
+        /// <summary>Optional. Knowledge connector configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeConnectorSettings")]
+        public virtual GoogleCloudDialogflowCxV3KnowledgeConnectorSettings KnowledgeConnectorSettings { get; set; }
+
         /// <summary>
         /// The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the
         /// name automatically. Format: `projects//locations//agents//flows//pages/`.
@@ -10241,12 +10302,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique
-        /// within a page. * If multiple transition routes within a page scope refer to the same intent, then the
-        /// precedence order is: page's transition route -&amp;gt; page's transition route group -&amp;gt; flow's
-        /// transition routes. * If multiple transition route groups within a page contain the same intent, then the
-        /// first group in the ordered list takes precedence.
-        /// Format:`projects//locations//agents//flows//transitionRouteGroups/` or
+        /// Ordered list of `TransitionRouteGroups` added to the page. Transition route groups must be unique within a
+        /// page. If the page links both flow-level transition route groups and agent-level transition route groups, the
+        /// flow-level ones will have higher priority and will be put before the agent-level ones. * If multiple
+        /// transition routes within a page scope refer to the same intent, then the precedence order is: page's
+        /// transition route -&amp;gt; page's transition route group -&amp;gt; flow's transition routes. * If multiple
+        /// transition route groups within a page contain the same intent, then the first group in the ordered list
+        /// takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/` or
         /// `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitionRouteGroups")]
@@ -10432,6 +10494,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endInteraction")]
         public virtual GoogleCloudDialogflowCxV3ResponseMessageEndInteraction EndInteraction { get; set; }
 
+        /// <summary>
+        /// Represents info card for knowledge answers, to be better rendered in Dialogflow Messenger.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeInfoCard")]
+        public virtual GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard KnowledgeInfoCard { get; set; }
+
         /// <summary>Hands off conversation to a human agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("liveAgentHandoff")]
         public virtual GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff LiveAgentHandoff { get; set; }
@@ -10503,6 +10571,16 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// not supposed to be defined by the user.
     /// </summary>
     public class GoogleCloudDialogflowCxV3ResponseMessageEndInteraction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents info card response. If the response contains generative knowledge prediction, Dialogflow will return
+    /// a payload with Infobot Messenger compatible info card. Otherwise, the info card response is skipped.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3ResponseMessageKnowledgeInfoCard : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11004,6 +11082,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual string Condition { get; set; }
+
+        /// <summary>Optional. The description of the transition route. The maximum length is 500 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
 
         /// <summary>
         /// The unique identifier of an Intent. Format: `projects//locations//agents//intents/`. Indicates that the
@@ -12060,6 +12142,28 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Name of the created version. Format: `projects//locations//agents//flows//versions/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A data store connection. It represents a data store in Discovery Engine and the type of the contents it
+    /// contains.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3beta1DataStoreConnection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The full name of the referenced data store. Formats:
+        /// `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}`
+        /// `projects/{project}/locations/{location}/dataStores/{data_store}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStore")]
+        public virtual string DataStore { get; set; }
+
+        /// <summary>The type of the connected data store.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStoreType")]
+        public virtual string DataStoreType { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13173,6 +13277,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("eventHandlers")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1EventHandler> EventHandlers { get; set; }
 
+        /// <summary>Optional. Knowledge connector configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeConnectorSettings")]
+        public virtual GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings KnowledgeConnectorSettings { get; set; }
+
         /// <summary>The unique identifier of the flow. Format: `projects//locations//agents//flows/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -13932,6 +14040,41 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// The Knowledge Connector settings for this page or flow. This includes information such as the attached Knowledge
+    /// Bases, and the way to execute fulfillment.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. List of related data store connections.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataStoreConnections")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1DataStoreConnection> DataStoreConnections { get; set; }
+
+        /// <summary>Whether Knowledge Connector is enabled or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The target flow to transition to. Format: `projects//locations//agents//flows/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetFlow")]
+        public virtual string TargetFlow { get; set; }
+
+        /// <summary>The target page to transition to. Format: `projects//locations//agents//flows//pages/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetPage")]
+        public virtual string TargetPage { get; set; }
+
+        /// <summary>
+        /// The fulfillment to be triggered. When the answers from the Knowledge Connector are selected by Dialogflow,
+        /// you can utitlize the request scoped parameter `$request.knowledge.answers` (contains up to the 5 highest
+        /// confidence answers) and `$request.knowledge.questions` (contains the corresponding questions) to construct
+        /// the fulfillment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerFulfillment")]
+        public virtual GoogleCloudDialogflowCxV3beta1Fulfillment TriggerFulfillment { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response message for Agents.ListAgents.</summary>
     public class GoogleCloudDialogflowCxV3beta1ListAgentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14500,6 +14643,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("form")]
         public virtual GoogleCloudDialogflowCxV3beta1Form Form { get; set; }
 
+        /// <summary>Optional. Knowledge connector configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeConnectorSettings")]
+        public virtual GoogleCloudDialogflowCxV3beta1KnowledgeConnectorSettings KnowledgeConnectorSettings { get; set; }
+
         /// <summary>
         /// The unique identifier of the page. Required for the Pages.UpdatePage method. Pages.CreatePage populates the
         /// name automatically. Format: `projects//locations//agents//flows//pages/`.
@@ -14508,12 +14655,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Ordered list of `TransitionRouteGroups` associated with the page. Transition route groups must be unique
-        /// within a page. * If multiple transition routes within a page scope refer to the same intent, then the
-        /// precedence order is: page's transition route -&amp;gt; page's transition route group -&amp;gt; flow's
-        /// transition routes. * If multiple transition route groups within a page contain the same intent, then the
-        /// first group in the ordered list takes precedence.
-        /// Format:`projects//locations//agents//flows//transitionRouteGroups/` or
+        /// Ordered list of `TransitionRouteGroups` added to the page. Transition route groups must be unique within a
+        /// page. If the page links both flow-level transition route groups and agent-level transition route groups, the
+        /// flow-level ones will have higher priority and will be put before the agent-level ones. * If multiple
+        /// transition routes within a page scope refer to the same intent, then the precedence order is: page's
+        /// transition route -&amp;gt; page's transition route group -&amp;gt; flow's transition routes. * If multiple
+        /// transition route groups within a page contain the same intent, then the first group in the ordered list
+        /// takes precedence. Format:`projects//locations//agents//flows//transitionRouteGroups/` or
         /// `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("transitionRouteGroups")]
@@ -14941,6 +15089,12 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("endInteraction")]
         public virtual GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction EndInteraction { get; set; }
 
+        /// <summary>
+        /// Represents info card for knowledge answers, to be better rendered in Dialogflow Messenger.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeInfoCard")]
+        public virtual GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCard KnowledgeInfoCard { get; set; }
+
         /// <summary>Hands off conversation to a human agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("liveAgentHandoff")]
         public virtual GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff LiveAgentHandoff { get; set; }
@@ -15008,6 +15162,16 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// not supposed to be defined by the user.
     /// </summary>
     public class GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents info card response. If the response contains generative knowledge prediction, Dialogflow will return
+    /// a payload with Infobot Messenger compatible info card. Otherwise, the info card response is skipped.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3beta1ResponseMessageKnowledgeInfoCard : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -16019,6 +16183,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("condition")]
         public virtual string Condition { get; set; }
+
+        /// <summary>Optional. The description of the transition route. The maximum length is 500 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
 
         /// <summary>
         /// The unique identifier of an Intent. Format: `projects//locations//agents//intents/`. Indicates that the

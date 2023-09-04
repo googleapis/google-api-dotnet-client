@@ -4877,8 +4877,8 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>
                     /// Assigns a targeting option to a line item. Returns the assigned targeting option if successful.
                     /// Requests to this endpoint cannot be made concurrently with the following requests updating the
-                    /// same line item: * BulkEditAssignedTargetingOptions * BulkUpdate * UpdateLineItem *
-                    /// DeleteLineItemAssignedTargetingOption
+                    /// same line item: * lineItems.bulkEditAssignedTargetingOptions * lineItems.bulkUpdate *
+                    /// lineItems.patch * DeleteLineItemAssignedTargetingOption
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="advertiserId">Required. The ID of the advertiser the line item belongs to.</param>
@@ -4916,8 +4916,8 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>
                     /// Assigns a targeting option to a line item. Returns the assigned targeting option if successful.
                     /// Requests to this endpoint cannot be made concurrently with the following requests updating the
-                    /// same line item: * BulkEditAssignedTargetingOptions * BulkUpdate * UpdateLineItem *
-                    /// DeleteLineItemAssignedTargetingOption
+                    /// same line item: * lineItems.bulkEditAssignedTargetingOptions * lineItems.bulkUpdate *
+                    /// lineItems.patch * DeleteLineItemAssignedTargetingOption
                     /// </summary>
                     public class CreateRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.AssignedTargetingOption>
                     {
@@ -5267,7 +5267,7 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>
                     /// Deletes an assigned targeting option from a line item. Requests to this endpoint cannot be made
                     /// concurrently with the following requests updating the same line item: *
-                    /// BulkEditAssignedTargetingOptions * BulkUpdate * UpdateLineItem *
+                    /// lineItems.bulkEditAssignedTargetingOptions * lineItems.bulkUpdate * lineItems.patch *
                     /// CreateLineItemAssignedTargetingOption
                     /// </summary>
                     /// <param name="advertiserId">Required. The ID of the advertiser the line item belongs to.</param>
@@ -5308,7 +5308,7 @@ namespace Google.Apis.DisplayVideo.v1
                     /// <summary>
                     /// Deletes an assigned targeting option from a line item. Requests to this endpoint cannot be made
                     /// concurrently with the following requests updating the same line item: *
-                    /// BulkEditAssignedTargetingOptions * BulkUpdate * UpdateLineItem *
+                    /// lineItems.bulkEditAssignedTargetingOptions * lineItems.bulkUpdate * lineItems.patch *
                     /// CreateLineItemAssignedTargetingOption
                     /// </summary>
                     public class DeleteRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.Empty>
@@ -6521,7 +6521,7 @@ namespace Google.Apis.DisplayVideo.v1
             /// options provided in BulkEditLineItemAssignedTargetingOptionsRequest.delete_requests and then create the
             /// assigned targeting options provided in BulkEditLineItemAssignedTargetingOptionsRequest.create_requests.
             /// Requests to this endpoint cannot be made concurrently with the following requests updating the same line
-            /// item: * UpdateLineItem * CreateLineItemAssignedTargetingOption * DeleteLineItemAssignedTargetingOption
+            /// item: * lineItems.patch * assignedTargetingOptions.create * assignedTargetingOptions.delete
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">Required. The ID of the advertiser the line item belongs to.</param>
@@ -6538,7 +6538,7 @@ namespace Google.Apis.DisplayVideo.v1
             /// options provided in BulkEditLineItemAssignedTargetingOptionsRequest.delete_requests and then create the
             /// assigned targeting options provided in BulkEditLineItemAssignedTargetingOptionsRequest.create_requests.
             /// Requests to this endpoint cannot be made concurrently with the following requests updating the same line
-            /// item: * UpdateLineItem * CreateLineItemAssignedTargetingOption * DeleteLineItemAssignedTargetingOption
+            /// item: * lineItems.patch * assignedTargetingOptions.create * assignedTargetingOptions.delete
             /// </summary>
             public class BulkEditLineItemAssignedTargetingOptionsRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.BulkEditLineItemAssignedTargetingOptionsResponse>
             {
@@ -7102,8 +7102,8 @@ namespace Google.Apis.DisplayVideo.v1
             /// <summary>
             /// Updates an existing line item. Returns the updated line item if successful. Requests to this endpoint
             /// cannot be made concurrently with the following requests updating the same line item: *
-            /// BulkEditAssignedTargetingOptions * BulkUpdateLineItems * CreateLineItemAssignedTargetingOption *
-            /// DeleteLineItemAssignedTargetingOption
+            /// BulkEditAssignedTargetingOptions * BulkUpdateLineItems * assignedTargetingOptions.create *
+            /// assignedTargetingOptions.delete
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="advertiserId">
@@ -7118,8 +7118,8 @@ namespace Google.Apis.DisplayVideo.v1
             /// <summary>
             /// Updates an existing line item. Returns the updated line item if successful. Requests to this endpoint
             /// cannot be made concurrently with the following requests updating the same line item: *
-            /// BulkEditAssignedTargetingOptions * BulkUpdateLineItems * CreateLineItemAssignedTargetingOption *
-            /// DeleteLineItemAssignedTargetingOption
+            /// BulkEditAssignedTargetingOptions * BulkUpdateLineItems * assignedTargetingOptions.create *
+            /// assignedTargetingOptions.delete
             /// </summary>
             public class PatchRequest : DisplayVideoBaseServiceRequest<Google.Apis.DisplayVideo.v1.Data.LineItem>
             {
@@ -11045,14 +11045,6 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual string Filter { get; set; }
 
             /// <summary>
-            /// The config used in internal debugging and manual testing. Use comma to separate multiple values.
-            /// Examples: To allow entity search to go through tangle `searchUsingTangle` To get only the advertiser Ids
-            /// use `idOnly`
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("internalDebuggingConfig", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual string InternalDebuggingConfig { get; set; }
-
-            /// <summary>
             /// Field by which to sort the list. Acceptable values are: * `displayName` (default) * `entityStatus` *
             /// `updateTime` The default sorting order is ascending. To specify descending order for a field, a suffix
             /// "desc" should be added to the field name. For example, `displayName desc`.
@@ -11097,14 +11089,6 @@ namespace Google.Apis.DisplayVideo.v1
                 RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
                 {
                     Name = "filter",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
-                });
-                RequestParameters.Add("internalDebuggingConfig", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "internalDebuggingConfig",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -14588,12 +14572,6 @@ namespace Google.Apis.DisplayVideo.v1
             public virtual long InventorySourceId { get; private set; }
 
             /// <summary>
-            /// Optional. The advertiser_id is optional, when it is provided, the advertiser access is used.
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("advertiserId", Google.Apis.Util.RequestParameterType.Query)]
-            public virtual System.Nullable<long> AdvertiserId { get; set; }
-
-            /// <summary>
             /// Required. The ID of the DV360 partner to which the fetched inventory source is permissioned.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Query)]
@@ -14619,14 +14597,6 @@ namespace Google.Apis.DisplayVideo.v1
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^[^/]+$",
-                });
-                RequestParameters.Add("advertiserId", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "advertiserId",
-                    IsRequired = false,
-                    ParameterType = "query",
-                    DefaultValue = null,
-                    Pattern = null,
                 });
                 RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
                 {
@@ -19668,8 +19638,9 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. The ID of the targeting option assigned to the location list. Must be of type
-        /// TARGETING_TYPE_GEO_REGION.
+        /// Required. The ID of the targeting option assigned to the location list. Assigned locations can only be
+        /// modified in TARGETING_LOCATION_TYPE_REGIONAL location lists. When creating or deleting assigned locations,
+        /// this value must be of type TARGETING_TYPE_GEO_REGION.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetingOptionId")]
         public virtual string TargetingOptionId { get; set; }
@@ -20660,7 +20631,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for BulkListCampaignAssignedTargetingOptions.</summary>
     public class BulkListCampaignAssignedTargetingOptionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of assigned targeting options. This list will be absent if empty.</summary>
@@ -20679,7 +20649,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for BulkListInsertionOrderAssignedTargetingOptions.</summary>
     public class BulkListInsertionOrderAssignedTargetingOptionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of assigned targeting options. This list will be absent if empty.</summary>
@@ -24882,7 +24851,6 @@ namespace Google.Apis.DisplayVideo.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for ListInsertionOrderAssignedTargetingOptions.</summary>
     public class ListInsertionOrderAssignedTargetingOptionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of assigned targeting options. This list will be absent if empty.</summary>
