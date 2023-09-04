@@ -2239,6 +2239,13 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 [Google.Apis.Util.RequestParameterAttribute("siteId", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string SiteId { get; set; }
 
+                /// <summary>
+                /// Optional. If set, validates that the site_id is available and that the request would succeed,
+                /// returning the expected resulting site or error.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
                 /// <summary>Gets or sets the body of this request.</summary>
                 Google.Apis.FirebaseHosting.v1beta1.Data.Site Body { get; set; }
 
@@ -2269,6 +2276,14 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                     RequestParameters.Add("siteId", new Google.Apis.Discovery.Parameter
                     {
                         Name = "siteId",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "validateOnly",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,

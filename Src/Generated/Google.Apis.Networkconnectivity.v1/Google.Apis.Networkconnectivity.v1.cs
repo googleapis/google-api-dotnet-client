@@ -6534,10 +6534,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// A group is a set of spokes to which you can apply policies. Each group of spokes has its own route table. For
-    /// each group, you can also set different rules for whether spokes can be automatically attached to the hub.
-    /// </summary>
+    /// <summary>A group represents a subset of spokes attached to a hub.</summary>
     public class Group : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -8713,7 +8710,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>The name of the group that this spoke is associated with.</summary>
+        /// <summary>Optional. The name of the group that this spoke is associated with.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("group")]
         public virtual string Group { get; set; }
 

@@ -560,7 +560,7 @@ namespace Google.Apis.Firebasestorage.v1beta.Data
     /// <summary>A storage bucket and its relation to a parent Firebase project.</summary>
     public class Bucket : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Resource name of the bucket.</summary>
+        /// <summary>Output only. Resource name of the bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

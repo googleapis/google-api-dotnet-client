@@ -2477,7 +2477,10 @@ namespace Google.Apis.Testing.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("account")]
         public virtual Account Account { get; set; }
 
-        /// <summary>APKs to install in addition to those being directly tested. Currently capped at 100.</summary>
+        /// <summary>
+        /// APKs to install in addition to those being directly tested. These will be installed after the app under
+        /// test. Currently capped at 100.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalApks")]
         public virtual System.Collections.Generic.IList<Apk> AdditionalApks { get; set; }
 

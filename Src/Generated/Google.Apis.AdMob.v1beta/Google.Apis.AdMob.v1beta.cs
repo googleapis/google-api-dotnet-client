@@ -276,7 +276,7 @@ namespace Google.Apis.AdMob.v1beta
             AdUnitMappings = new AdUnitMappingsResource(service);
             AdUnits = new AdUnitsResource(service);
             Apps = new AppsResource(service);
-            Campaigns = new CampaignsResource(service);
+            CampaignReport = new CampaignReportResource(service);
             MediationGroups = new MediationGroupsResource(service);
             MediationReport = new MediationReportResource(service);
             NetworkReport = new NetworkReportResource(service);
@@ -1055,39 +1055,38 @@ namespace Google.Apis.AdMob.v1beta
             }
         }
 
-        /// <summary>Gets the Campaigns resource.</summary>
-        public virtual CampaignsResource Campaigns { get; }
+        /// <summary>Gets the CampaignReport resource.</summary>
+        public virtual CampaignReportResource CampaignReport { get; }
 
-        /// <summary>The "campaigns" collection of methods.</summary>
-        public class CampaignsResource
+        /// <summary>The "campaignReport" collection of methods.</summary>
+        public class CampaignReportResource
         {
-            private const string Resource = "campaigns";
+            private const string Resource = "campaignReport";
 
             /// <summary>The service which this resource belongs to.</summary>
             private readonly Google.Apis.Services.IClientService service;
 
             /// <summary>Constructs a new resource.</summary>
-            public CampaignsResource(Google.Apis.Services.IClientService service)
+            public CampaignReportResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
             }
 
-            /// <summary>Batch update operation for campaigns under the specified AdMob publisher.</summary>
+            /// <summary>Generates Campaign Report based on provided specifications.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. Resource name of the account to list campaigns for. The `parent` field in the individual
-            /// UpdateCampaignRequest messages should match the value set here. Example: accounts/pub-9876543210987654
+            /// Resource name of the account to generate the report for. Example: accounts/pub-9876543210987654
             /// </param>
-            public virtual BatchUpdateRequest BatchUpdate(Google.Apis.AdMob.v1beta.Data.BatchUpdateCampaignsRequest body, string parent)
+            public virtual GenerateRequest Generate(Google.Apis.AdMob.v1beta.Data.GenerateCampaignReportRequest body, string parent)
             {
-                return new BatchUpdateRequest(service, body, parent);
+                return new GenerateRequest(service, body, parent);
             }
 
-            /// <summary>Batch update operation for campaigns under the specified AdMob publisher.</summary>
-            public class BatchUpdateRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1beta.Data.BatchUpdateCampaignsResponse>
+            /// <summary>Generates Campaign Report based on provided specifications.</summary>
+            public class GenerateRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1beta.Data.GenerateCampaignReportResponse>
             {
-                /// <summary>Constructs a new BatchUpdate request.</summary>
-                public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdMob.v1beta.Data.BatchUpdateCampaignsRequest body, string parent) : base(service)
+                /// <summary>Constructs a new Generate request.</summary>
+                public GenerateRequest(Google.Apis.Services.IClientService service, Google.Apis.AdMob.v1beta.Data.GenerateCampaignReportRequest body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
@@ -1095,29 +1094,27 @@ namespace Google.Apis.AdMob.v1beta
                 }
 
                 /// <summary>
-                /// Required. Resource name of the account to list campaigns for. The `parent` field in the individual
-                /// UpdateCampaignRequest messages should match the value set here. Example:
-                /// accounts/pub-9876543210987654
+                /// Resource name of the account to generate the report for. Example: accounts/pub-9876543210987654
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.AdMob.v1beta.Data.BatchUpdateCampaignsRequest Body { get; set; }
+                Google.Apis.AdMob.v1beta.Data.GenerateCampaignReportRequest Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
 
                 /// <summary>Gets the method name.</summary>
-                public override string MethodName => "batchUpdate";
+                public override string MethodName => "generate";
 
                 /// <summary>Gets the HTTP method.</summary>
                 public override string HttpMethod => "POST";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1beta/{+parent}/campaigns:batchUpdate";
+                public override string RestPath => "v1beta/{+parent}/campaignReport:generate";
 
-                /// <summary>Initializes BatchUpdate parameter list.</summary>
+                /// <summary>Initializes Generate parameter list.</summary>
                 protected override void InitParameters()
                 {
                     base.InitParameters();
@@ -1128,101 +1125,6 @@ namespace Google.Apis.AdMob.v1beta
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^accounts/[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>List the campaigns under the specified AdMob account.</summary>
-            /// <param name="parent">
-            /// Required. Resource name of the account to list campaigns for. Example: accounts/pub-9876543210987654
-            /// </param>
-            public virtual ListRequest List(string parent)
-            {
-                return new ListRequest(service, parent);
-            }
-
-            /// <summary>List the campaigns under the specified AdMob account.</summary>
-            public class ListRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1beta.Data.ListCampaignsResponse>
-            {
-                /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                {
-                    Parent = parent;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. Resource name of the account to list campaigns for. Example: accounts/pub-9876543210987654
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>
-                /// The filter string that uses [EBNF grammar
-                /// syntax](https://google.aip.dev/assets/misc/ebnf-filtering.txt). Possible field to filter by is: -
-                /// "CAMPAIGN_GOAL_TYPE" Possible filter function is: - `IN`: Used to filter fields that represent a
-                /// singleton including "CAMPAIGN_GOAL_TYPE". The filter functions can be added together using `AND`.
-                /// `OR` functionality is not supported. Example: filter: IN(CAMPAIGN_GOAL_TYPE, "NUMBER_OF_CLICKS",
-                /// "MEDIATED_ADS")
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string Filter { get; set; }
-
-                /// <summary>The maximum number of campaigns to return.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>
-                /// The value returned by the last `ListCampaignsResponse`; indicates that this is a continuation of a
-                /// prior `ListGoogleBiddingAdUnits` call, and that the system should return the next page of data.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "list";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1beta/{+parent}/campaigns";
-
-                /// <summary>Initializes List parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^accounts/[^/]+$",
-                    });
-                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "filter",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
                     });
                 }
             }
@@ -2234,63 +2136,36 @@ namespace Google.Apis.AdMob.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The request for the BatchUpdateCampaigns API.</summary>
-    public class BatchUpdateCampaignsRequest : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>
+    /// The specification for generating a Campaign report. For example, the specification to get IMPRESSIONS and CLICKS
+    /// sliced by CAMPAIGN_ID can look like the following example: { "date_range": { "start_date": {"year": 2021,
+    /// "month": 12, "day": 1}, "end_date": {"year": 2021, "month": 12, "day": 30} }, "dimensions": ["CAMPAIGN_ID"],
+    /// "metrics": ["IMPRESSIONS", "CLICKS"], }
+    /// </summary>
+    public class CampaignReportSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. The individual requests to update campaigns. Max 1000 allowed.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
-        public virtual System.Collections.Generic.IList<UpdateCampaignRequest> Requests { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>The response for the BatchUpdateCampaigns API.</summary>
-    public class BatchUpdateCampaignsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The updated campaigns per the request.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("campaigns")]
-        public virtual System.Collections.Generic.IList<Campaign> Campaigns { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Describes an AdMob campaign.</summary>
-    public class Campaign : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The CPI setting of the campaign.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cpiSetting")]
-        public virtual CampaignCpiSetting CpiSetting { get; set; }
-
-        /// <summary>Output only. The display name for the campaign.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
-        public virtual string DisplayName { get; set; }
-
-        /// <summary>Output only. The Goal type of the campaign.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("goalType")]
-        public virtual string GoalType { get; set; }
+        /// <summary>The date range for which the report is generated. The max range is 30 days.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dateRange")]
+        public virtual DateRange DateRange { get; set; }
 
         /// <summary>
-        /// Output only. Resource name for this campaign. Format is: accounts/{publisher_id}/campaigns/{campaign_id}
-        /// Example: accounts/pub-9876543210987654/campaigns/0123456789
+        /// List of dimensions of the report. The value combination of these dimensions determines the row of the
+        /// report. If no dimensions are specified, the report returns a single row of requested metrics for the entire
+        /// account.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IList<string> Dimensions { get; set; }
 
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>CPI setting for AdMob campaign. Ignored unless campaign goal type is MAX_CPI or TARGET_CPI.</summary>
-    public class CampaignCpiSetting : Google.Apis.Requests.IDirectResponseSchema
-    {
         /// <summary>
-        /// Cost-per-install for this campaign in micro units in the currency of the GoogleAds account linked to this
-        /// AdMob publisher.
+        /// Language used for any localized text, such as certain applicable dimension values. The language tag is
+        /// defined in the IETF BCP47. Defaults to 'en-US' if unspecified or invalid.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cpiMicros")]
-        public virtual System.Nullable<long> CpiMicros { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>List of metrics of the report. A report must specify at least one metric.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metrics")]
+        public virtual System.Collections.Generic.IList<string> Metrics { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2352,6 +2227,30 @@ namespace Google.Apis.AdMob.v1beta.Data
         /// <summary>Start date of the date range, inclusive. Must be less than or equal to the end date.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("startDate")]
         public virtual Date StartDate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to generate campaign report.</summary>
+    public class GenerateCampaignReportRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Campaign report specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reportSpec")]
+        public virtual CampaignReportSpec ReportSpec { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Campaign Report API response.</summary>
+    public class GenerateCampaignReportResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The campaign report data from the specified publisher. At most 100000 rows will be returned from the API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rows")]
+        public virtual System.Collections.Generic.IList<ReportRow> Rows { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2521,24 +2420,6 @@ namespace Google.Apis.AdMob.v1beta.Data
         /// <summary>
         /// If not empty, indicates that there may be more apps for the request; this value should be passed in a new
         /// `ListAppsRequest`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response for the ListCampaignsRequest.</summary>
-    public class ListCampaignsResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The resulting mediation groups for the requested account.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("campaigns")]
-        public virtual System.Collections.Generic.IList<Campaign> Campaigns { get; set; }
-
-        /// <summary>
-        /// Used to set the `page_token` in the `ListCampaignsRequest` to retrieve the next page. If this field is
-        /// omitted, there are no subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
@@ -3197,27 +3078,6 @@ namespace Google.Apis.AdMob.v1beta.Data
         /// <summary>The string values.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// An update request for a singular campaign. Currently only cpi_micros of MAX_CPI and TARGET_CPI campaigns can be
-    /// updated.
-    /// </summary>
-    public class UpdateCampaignRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The campaign which is being updated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("campaign")]
-        public virtual Campaign Campaign { get; set; }
-
-        /// <summary>
-        /// List of campaign fields to be updated. Currently this field is not supported as only the cpi_micros field
-        /// can be updated.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
-        public virtual object UpdateMask { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

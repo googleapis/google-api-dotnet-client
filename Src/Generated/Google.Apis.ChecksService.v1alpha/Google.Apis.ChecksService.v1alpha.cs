@@ -836,6 +836,127 @@ namespace Google.Apis.ChecksService.v1alpha
                     }
                 }
             }
+
+            /// <summary>Gets an app.</summary>
+            /// <param name="name">Required. Resource name of the app. Example: `accounts/123/apps/456`</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets an app.</summary>
+            public class GetRequest : ChecksServiceBaseServiceRequest<Google.Apis.ChecksService.v1alpha.Data.GoogleChecksAccountV1alphaApp>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Resource name of the app. Example: `accounts/123/apps/456`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+/apps/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists the apps under the given account.</summary>
+            /// <param name="parent">Required. The parent account. Example: `accounts/123`</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>Lists the apps under the given account.</summary>
+            public class ListRequest : ChecksServiceBaseServiceRequest<Google.Apis.ChecksService.v1alpha.Data.GoogleChecksAccountV1alphaListAppsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The parent account. Example: `accounts/123`</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of results to return. The server may further constrain the maximum
+                /// number of results returned in a single page. If unspecified, the server will decide the number of
+                /// results to be returned.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token received from a previous `ListApps` call. Provide this to retrieve the
+                /// subsequent page.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}/apps";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^accounts/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
     }
 
@@ -1643,6 +1764,39 @@ namespace Google.Apis.ChecksService.v1alpha.Data
         /// <summary>Resource name of the PrivacyPolicy that was found.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privacyPolicy")]
         public virtual string PrivacyPolicy { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents an app in Checks.</summary>
+    public class GoogleChecksAccountV1alphaApp : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The resource name of the app. Example: `accounts/123/apps/456`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The app's title.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for AccountService.ListApps.</summary>
+    public class GoogleChecksAccountV1alphaListAppsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The apps.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apps")]
+        public virtual System.Collections.Generic.IList<GoogleChecksAccountV1alphaApp> Apps { get; set; }
+
+        /// <summary>
+        /// A token which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

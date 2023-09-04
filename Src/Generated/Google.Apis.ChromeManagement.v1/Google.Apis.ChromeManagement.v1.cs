@@ -1391,6 +1391,7 @@ namespace Google.Apis.ChromeManagement.v1
                 this.service = service;
                 Devices = new DevicesResource(service);
                 Events = new EventsResource(service);
+                NotificationConfigs = new NotificationConfigsResource(service);
                 Users = new UsersResource(service);
             }
 
@@ -1697,6 +1698,211 @@ namespace Google.Apis.ChromeManagement.v1
                         RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
                         {
                             Name = "readMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the NotificationConfigs resource.</summary>
+            public virtual NotificationConfigsResource NotificationConfigs { get; }
+
+            /// <summary>The "notificationConfigs" collection of methods.</summary>
+            public class NotificationConfigsResource
+            {
+                private const string Resource = "notificationConfigs";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public NotificationConfigsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Create a telemetry notification config.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource where this notification config will be created. Format:
+                /// `customers/{customer}`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1TelemetryNotificationConfig body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Create a telemetry notification config.</summary>
+                public class CreateRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1TelemetryNotificationConfig>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1TelemetryNotificationConfig body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource where this notification config will be created. Format:
+                    /// `customers/{customer}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1TelemetryNotificationConfig Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/telemetry/notificationConfigs";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Delete a telemetry notification config.</summary>
+                /// <param name="name">
+                /// Required. The name of the notification config to delete. Format:
+                /// `customers/{customer}/telemetry/notificationConfigs/{notification_config}`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Delete a telemetry notification config.</summary>
+                public class DeleteRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleProtobufEmpty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the notification config to delete. Format:
+                    /// `customers/{customer}/telemetry/notificationConfigs/{notification_config}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+/telemetry/notificationConfigs/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>List all telemetry notification configs.</summary>
+                /// <param name="parent">Required. The parent which owns the notification configs.</param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>List all telemetry notification configs.</summary>
+                public class ListRequest : ChromeManagementBaseServiceRequest<Google.Apis.ChromeManagement.v1.Data.GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. The parent which owns the notification configs.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// The maximum number of notification configs to return. The service may return fewer than this
+                    /// value. If unspecified, at most 100 notification configs will be returned. The maximum value is
+                    /// 100; values above 100 will be coerced to 100.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous `ListTelemetryNotificationConfigs` call. Provide this to
+                    /// retrieve the subsequent page. When paginating, all other parameters provided to
+                    /// `ListTelemetryNotificationConfigs` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/telemetry/notificationConfigs";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^customers/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -3556,6 +3762,24 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for listing notification configs for a customer.</summary>
+    public class GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The telemetry notification configs from the specified customer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("telemetryNotificationConfigs")]
+        public virtual System.Collections.Generic.IList<GoogleChromeManagementV1TelemetryNotificationConfig> TelemetryNotificationConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for listing telemetry users for a customer.</summary>
     public class GoogleChromeManagementV1ListTelemetryUsersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4415,6 +4639,17 @@ namespace Google.Apis.ChromeManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configures how the telemetry events should be filtered.</summary>
+    public class GoogleChromeManagementV1TelemetryEventNotificationFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Only sends the notifications for events of these types. Must not be empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTypes")]
+        public virtual System.Collections.Generic.IList<string> EventTypes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Https latency routine is run periodically and `TelemetryHttpsLatencyChangeEvent` is triggered if a latency
     /// problem was detected or if the device has recovered from a latency problem. * Granular permission needed:
@@ -4429,6 +4664,60 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Current HTTPS latency state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpsLatencyState")]
         public virtual string HttpsLatencyState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration to receive notifications of telemetry data.</summary>
+    public class GoogleChromeManagementV1TelemetryNotificationConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Google Workspace customer that owns the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customer")]
+        public virtual string Customer { get; set; }
+
+        /// <summary>Only send notifications for telemetry data matching this filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual GoogleChromeManagementV1TelemetryNotificationFilter Filter { get; set; }
+
+        /// <summary>The pubsub topic to which notifications are published to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleCloudPubsubTopic")]
+        public virtual string GoogleCloudPubsubTopic { get; set; }
+
+        /// <summary>Output only. Resource name of the notification configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configures how the telemetry data should be filtered.</summary>
+    public class GoogleChromeManagementV1TelemetryNotificationFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If set, only sends notifications for telemetry data coming from this device.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceId")]
+        public virtual string DeviceId { get; set; }
+
+        /// <summary>If set, only sends notifications for telemetry data coming from devices in this org unit.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceOrgUnitId")]
+        public virtual string DeviceOrgUnitId { get; set; }
+
+        /// <summary>Only sends notifications for the telemetry events matching this filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("telemetryEventNotificationFilter")]
+        public virtual GoogleChromeManagementV1TelemetryEventNotificationFilter TelemetryEventNotificationFilter { get; set; }
+
+        /// <summary>
+        /// If set, only sends notifications for telemetry data coming from devices owned by this user.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userEmail")]
+        public virtual string UserEmail { get; set; }
+
+        /// <summary>
+        /// If set, only sends notifications for telemetry data coming from devices owned by users in this org unit.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userOrgUnitId")]
+        public virtual string UserOrgUnitId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4650,6 +4939,17 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("vid")]
         public virtual System.Nullable<int> Vid { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    /// </summary>
+    public class GoogleProtobufEmpty : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

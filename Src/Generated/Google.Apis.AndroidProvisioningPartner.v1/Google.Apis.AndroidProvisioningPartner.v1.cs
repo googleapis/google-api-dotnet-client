@@ -1591,6 +1591,59 @@ namespace Google.Apis.AndroidProvisioningPartner.v1
                 }
             }
 
+            /// <summary>Gets a device's SIM lock state.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="partnerId">Required. The ID of the partner.</param>
+            public virtual GetSimLockStateRequest GetSimLockState(Google.Apis.AndroidProvisioningPartner.v1.Data.GetDeviceSimLockStateRequest body, long partnerId)
+            {
+                return new GetSimLockStateRequest(service, body, partnerId);
+            }
+
+            /// <summary>Gets a device's SIM lock state.</summary>
+            public class GetSimLockStateRequest : AndroidProvisioningPartnerBaseServiceRequest<Google.Apis.AndroidProvisioningPartner.v1.Data.GetDeviceSimLockStateResponse>
+            {
+                /// <summary>Constructs a new GetSimLockState request.</summary>
+                public GetSimLockStateRequest(Google.Apis.Services.IClientService service, Google.Apis.AndroidProvisioningPartner.v1.Data.GetDeviceSimLockStateRequest body, long partnerId) : base(service)
+                {
+                    PartnerId = partnerId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The ID of the partner.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("partnerId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual long PartnerId { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.AndroidProvisioningPartner.v1.Data.GetDeviceSimLockStateRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getSimLockState";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/partners/{+partnerId}/devices:getSimLockState";
+
+                /// <summary>Initializes GetSimLockState parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("partnerId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "partnerId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^[^/]+$",
+                    });
+                }
+            }
+
             /// <summary>Updates reseller metadata associated with the device. Android devices only.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="metadataOwnerId">
@@ -2797,6 +2850,27 @@ namespace Google.Apis.AndroidProvisioningPartner.v1.Data
         /// <summary>The total count of items in the list irrespective of pagination.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
         public virtual System.Nullable<int> TotalSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request to get a device's SIM lock status.</summary>
+    public class GetDeviceSimLockStateRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Required. The device identifier to search for.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceIdentifier")]
+        public virtual DeviceIdentifier DeviceIdentifier { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response containing a device's SimLock state.</summary>
+    public class GetDeviceSimLockStateResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        [Newtonsoft.Json.JsonPropertyAttribute("simLockState")]
+        public virtual string SimLockState { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

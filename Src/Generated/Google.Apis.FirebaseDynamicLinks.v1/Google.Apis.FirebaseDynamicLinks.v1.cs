@@ -914,8 +914,8 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         public virtual string SdkVersion { get; set; }
 
         /// <summary>
-        /// Possible unique matched link that server need to check before performing fingerprint match. If passed link
-        /// is short server need to expand the link. If link is long server need to vslidate the link.
+        /// Possible unique matched link that server need to check before performing device heuristics match. If passed
+        /// link is short server need to expand the link. If link is long server need to vslidate the link.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uniqueMatchLinkToCheck")]
         public virtual string UniqueMatchLinkToCheck { get; set; }
@@ -946,7 +946,7 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         public virtual string AttributionConfidence { get; set; }
 
         /// <summary>
-        /// The deep-link attributed post-install via one of several techniques (fingerprint, copy unique).
+        /// The deep-link attributed post-install via one of several techniques (device heuristics, copy unique).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deepLink")]
         public virtual string DeepLink { get; set; }
@@ -969,7 +969,7 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         public virtual string FallbackLink { get; set; }
 
         /// <summary>
-        /// Invitation ID attributed post-install via one of several techniques (fingerprint, copy unique).
+        /// Invitation ID attributed post-install via one of several techniques (device heuristics, copy unique).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("invitationId")]
         public virtual string InvitationId { get; set; }
@@ -992,7 +992,8 @@ namespace Google.Apis.FirebaseDynamicLinks.v1.Data
         public virtual string RequestIpVersion { get; set; }
 
         /// <summary>
-        /// Entire FDL (short or long) attributed post-install via one of several techniques (fingerprint, copy unique).
+        /// Entire FDL (short or long) attributed post-install via one of several techniques (device heuristics, copy
+        /// unique).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedLink")]
         public virtual string RequestedLink { get; set; }

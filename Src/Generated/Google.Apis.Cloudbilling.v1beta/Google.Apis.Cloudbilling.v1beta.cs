@@ -2064,7 +2064,7 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
 
         /// <summary>
         /// Type of the fixed discount scope which indicates the source of the discount. It can have values such as
-        /// 'sku-group'.
+        /// 'unspecified' and 'sku-group'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discountScopeType")]
         public virtual string DiscountScopeType { get; set; }
@@ -2132,7 +2132,7 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
 
         /// <summary>
         /// Type of the floating discount scope which indicates the source of the discount. It can have values such as
-        /// 'sku-group'.
+        /// 'unspecified' and 'sku-group'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("discountScopeType")]
         public virtual string DiscountScopeType { get; set; }
@@ -2217,8 +2217,8 @@ namespace Google.Apis.Cloudbilling.v1beta.Data
         public virtual GoogleCloudBillingBillingaccountpricesV1betaMigratedPrice MigratedPrice { get; set; }
 
         /// <summary>
-        /// Type of the price reason. It can values such as 'default-price', 'fixed-price', 'fixed-discount',
-        /// 'floating-discount', 'migrated-price', 'merged-price', 'list-price-as-ceiling'.
+        /// Type of the price reason. It can have values such as 'unspecified', 'default-price', 'fixed-price',
+        /// 'fixed-discount', 'floating-discount', 'migrated-price', 'merged-price', 'list-price-as-ceiling'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }

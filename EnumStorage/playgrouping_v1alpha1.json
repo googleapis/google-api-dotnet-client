@@ -1,0 +1,11 @@
+{
+  "Google.Apis.PlayGrouping.v1alpha1.PlayGroupingBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.PlayGrouping.v1alpha1.PlayGroupingBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

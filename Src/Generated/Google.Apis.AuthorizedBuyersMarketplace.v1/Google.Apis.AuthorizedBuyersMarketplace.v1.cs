@@ -3864,7 +3864,7 @@ namespace Google.Apis.AuthorizedBuyersMarketplace.v1.Data
         public virtual string DealServingStatus { get; set; }
 
         /// <summary>
-        /// The resource name of the finalized deal. Format: `buyers/{accountId}/finalizeddeals/{finalizedDealId}`
+        /// The resource name of the finalized deal. Format: `buyers/{accountId}/finalizedDeals/{finalizedDealId}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

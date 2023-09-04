@@ -1588,13 +1588,6 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         }
 
         /// <summary>
-        /// Optional. Details for a subscription line item with finite billing cycles. If unset, the line item will be
-        /// charged indefinitely. Used only with PROMOTION_TYPE_REGULAR_REDUCTION.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("finiteBillingCycleDetails")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1FiniteBillingCycleDetails FiniteBillingCycleDetails { get; set; }
-
-        /// <summary>
         /// Optional. Specifies the duration of the free trial of the subscription when promotion_type is
         /// PROMOTION_TYPE_FREE_TRIAL
         /// </summary>
