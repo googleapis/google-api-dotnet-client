@@ -77,9 +77,10 @@ rm -f DiscoveryJson/policysimulator_v1beta.json
 # some environments, a second empty parameter is passed to
 # BuildGenerated.sh and that makes it fail.
 if [ "$FORCE_ALL" == "true" ]; then
-  maybe_force_all=" --forcegenerateall"
+  ./BuildGenerated.sh --skipdownload --forcegenerateall
+else
+  ./BuildGenerated.sh --skipdownload
 fi
-./BuildGenerated.sh --skipdownload"$maybe_force_all"
 
 # Push support and generated packages to nuget
 shopt -s nullglob
