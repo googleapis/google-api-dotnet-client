@@ -4614,6 +4614,10 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("firmware")]
         public virtual string Firmware { get; set; }
 
+        /// <summary>Output only. Information about VM capabilities needed for some Compute Engine features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmCapabilitiesInfo")]
+        public virtual VmCapabilities VmCapabilitiesInfo { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4708,6 +4712,160 @@ namespace Google.Apis.VMMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The details of an Azure VM disk.</summary>
+    public class AzureDiskDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Azure disk ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskId")]
+        public virtual string DiskId { get; set; }
+
+        /// <summary>The ordinal number of the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskNumber")]
+        public virtual System.Nullable<int> DiskNumber { get; set; }
+
+        /// <summary>Size in GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
+        public virtual System.Nullable<long> SizeGb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AzureSourceDetails message describes a specific source details for the Azure source type.</summary>
+    public class AzureSourceDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. The Azure location (region) that the source VMs will be migrated from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("azureLocation")]
+        public virtual string AzureLocation { get; set; }
+
+        /// <summary>Azure Credentials using tenant ID, client ID and secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecretCreds")]
+        public virtual ClientSecretCredentials ClientSecretCreds { get; set; }
+
+        /// <summary>Output only. Provides details on the state of the Source in case of an error.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>
+        /// User specified tags to add to every M2VM generated resource in Azure. These tags will be set in addition to
+        /// the default tags that are set as part of the migration process. The tags must not begin with the reserved
+        /// prefix `m4ce` or `m2vm`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("migrationResourcesUserTags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> MigrationResourcesUserTags { get; set; }
+
+        /// <summary>
+        /// Output only. The ID of the Azure resource group that contains all resources related to the migration process
+        /// of this source.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceGroupId")]
+        public virtual string ResourceGroupId { get; set; }
+
+        /// <summary>Output only. State of the source as determined by the health check.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Immutable. Azure subscription ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subscriptionId")]
+        public virtual string SubscriptionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represent the source Azure VM details.</summary>
+    public class AzureSourceVmDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The total size of the disks being migrated in bytes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("committedStorageBytes")]
+        public virtual System.Nullable<long> CommittedStorageBytes { get; set; }
+
+        /// <summary>The disks attached to the source VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disks")]
+        public virtual System.Collections.Generic.IList<AzureDiskDetails> Disks { get; set; }
+
+        /// <summary>The firmware type of the source VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("firmware")]
+        public virtual string Firmware { get; set; }
+
+        /// <summary>Output only. Information about VM capabilities needed for some Compute Engine features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmCapabilitiesInfo")]
+        public virtual VmCapabilities VmCapabilitiesInfo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AwsVmDetails describes a VM in AWS.</summary>
+    public class AzureVmDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The VM Boot Option.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootOption")]
+        public virtual string BootOption { get; set; }
+
+        /// <summary>The total size of the storage allocated to the VM in MB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("committedStorageMb")]
+        public virtual System.Nullable<long> CommittedStorageMb { get; set; }
+
+        /// <summary>The VM's ComputerName.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computerName")]
+        public virtual string ComputerName { get; set; }
+
+        /// <summary>The number of cpus the VM has.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuCount")]
+        public virtual System.Nullable<int> CpuCount { get; set; }
+
+        /// <summary>The number of disks the VM has, including OS disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskCount")]
+        public virtual System.Nullable<int> DiskCount { get; set; }
+
+        /// <summary>Description of the data disks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disks")]
+        public virtual System.Collections.Generic.IList<Disk> Disks { get; set; }
+
+        /// <summary>The memory size of the VM in MB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryMb")]
+        public virtual System.Nullable<int> MemoryMb { get; set; }
+
+        /// <summary>Description of the OS.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osDescription")]
+        public virtual OSDescription OsDescription { get; set; }
+
+        /// <summary>Description of the OS disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osDisk")]
+        public virtual OSDisk OsDisk { get; set; }
+
+        /// <summary>The power state of the VM at the moment list was taken.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("powerState")]
+        public virtual string PowerState { get; set; }
+
+        /// <summary>The tags of the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Tags { get; set; }
+
+        /// <summary>The VM full path in Azure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmId")]
+        public virtual string VmId { get; set; }
+
+        /// <summary>VM size as configured in Azure. Determines the VM's hardware spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmSize")]
+        public virtual string VmSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>AzureVmsDetails describes VMs in Azure.</summary>
+    public class AzureVmsDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The details of the Azure VMs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<AzureVmDetails> Details { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for 'CancelCloneJob' request.</summary>
     public class CancelCloneJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4725,6 +4883,25 @@ namespace Google.Apis.VMMigrationService.v1.Data
     /// <summary>The request message for Operations.CancelOperation.</summary>
     public class CancelOperationRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message describing Azure Credentials using tenant ID, client ID and secret.</summary>
+    public class ClientSecretCredentials : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Azure client ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
+        public virtual string ClientId { get; set; }
+
+        /// <summary>Input only. Azure client secret.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clientSecret")]
+        public virtual string ClientSecret { get; set; }
+
+        /// <summary>Azure tenant ID.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tenantId")]
+        public virtual string TenantId { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5760,6 +5937,25 @@ namespace Google.Apis.VMMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A message describing a data disk.</summary>
+    public class Disk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The disk's Logical Unit Number (LUN).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lun")]
+        public virtual System.Nullable<int> Lun { get; set; }
+
+        /// <summary>The disk name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The disk size in GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
+        public virtual System.Nullable<int> SizeGb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -5777,6 +5973,10 @@ namespace Google.Apis.VMMigrationService.v1.Data
         /// <summary>The description of the VMs in a Source of type AWS.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("awsVms")]
         public virtual AwsVmsDetails AwsVms { get; set; }
+
+        /// <summary>The description of the VMs in a Source of type Azure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("azureVms")]
+        public virtual AzureVmsDetails AzureVms { get; set; }
 
         /// <summary>
         /// Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted,
@@ -6254,6 +6454,10 @@ namespace Google.Apis.VMMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("awsSourceVmDetails")]
         public virtual AwsSourceVmDetails AwsSourceVmDetails { get; set; }
 
+        /// <summary>Output only. Details of the VM from an Azure source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("azureSourceVmDetails")]
+        public virtual AzureSourceVmDetails AzureSourceVmDetails { get; set; }
+
         /// <summary>Details of the target Persistent Disks in Compute Engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeEngineDisksTargetDefaults")]
         public virtual ComputeEngineDisksTargetDefaults ComputeEngineDisksTargetDefaults { get; set; }
@@ -6615,6 +6819,48 @@ namespace Google.Apis.VMMigrationService.v1.Data
         /// <summary>The subnetwork to connect the NIC to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A message describing the VM's OS. Including OS, Publisher, Offer and Plan if applicable.</summary>
+    public class OSDescription : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>OS offer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("offer")]
+        public virtual string Offer { get; set; }
+
+        /// <summary>OS plan.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("plan")]
+        public virtual string Plan { get; set; }
+
+        /// <summary>OS publisher.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publisher")]
+        public virtual string Publisher { get; set; }
+
+        /// <summary>OS type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A message describing the OS disk.</summary>
+    public class OSDisk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The disk's full name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The disk's size in GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
+        public virtual System.Nullable<int> SizeGb { get; set; }
+
+        /// <summary>The disk's type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7084,6 +7330,10 @@ namespace Google.Apis.VMMigrationService.v1.Data
         /// <summary>AWS type source details.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("aws")]
         public virtual AwsSourceDetails Aws { get; set; }
+
+        /// <summary>Azure type source details.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("azure")]
+        public virtual AzureSourceDetails Azure { get; set; }
 
         private string _createTimeRaw;
 
@@ -7561,6 +7811,60 @@ namespace Google.Apis.VMMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Migrating VM source information about the VM capabilities needed for some Compute Engine features.
+    /// </summary>
+    public class VmCapabilities : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _lastOsCapabilitiesUpdateTimeRaw;
+
+        private object _lastOsCapabilitiesUpdateTime;
+
+        /// <summary>Output only. The last time OS capabilities list was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastOsCapabilitiesUpdateTime")]
+        public virtual string LastOsCapabilitiesUpdateTimeRaw
+        {
+            get => _lastOsCapabilitiesUpdateTimeRaw;
+            set
+            {
+                _lastOsCapabilitiesUpdateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastOsCapabilitiesUpdateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastOsCapabilitiesUpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastOsCapabilitiesUpdateTimeDateTimeOffset instead.")]
+        public virtual object LastOsCapabilitiesUpdateTime
+        {
+            get => _lastOsCapabilitiesUpdateTime;
+            set
+            {
+                _lastOsCapabilitiesUpdateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastOsCapabilitiesUpdateTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastOsCapabilitiesUpdateTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastOsCapabilitiesUpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastOsCapabilitiesUpdateTimeRaw);
+            set => LastOsCapabilitiesUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Output only. Unordered list. List of certain VM OS capabilities needed for some Compute Engine features.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("osCapabilities")]
+        public virtual System.Collections.Generic.IList<string> OsCapabilities { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Utilization information of a single VM.</summary>
     public class VmUtilizationInfo : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7685,6 +7989,10 @@ namespace Google.Apis.VMMigrationService.v1.Data
         /// <summary>The firmware type of the source VM.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firmware")]
         public virtual string Firmware { get; set; }
+
+        /// <summary>Output only. Information about VM capabilities needed for some Compute Engine features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmCapabilitiesInfo")]
+        public virtual VmCapabilities VmCapabilitiesInfo { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

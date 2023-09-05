@@ -3680,8 +3680,8 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         public virtual string OsImage { get; set; }
 
         /// <summary>
-        /// Immutable. Pod name. Pod is an independent part of infrastructure. Instance can only be connected to the
-        /// assets (networks, volumes) allocated in the same pod.
+        /// Immutable. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets
+        /// (networks, volumes) allocated in the same pod only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pod")]
         public virtual string Pod { get; set; }
@@ -3777,7 +3777,7 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("logicalInterfaces")]
         public virtual System.Collections.Generic.IList<GoogleCloudBaremetalsolutionV2LogicalInterface> LogicalInterfaces { get; set; }
 
-        /// <summary>The name of the instance config.</summary>
+        /// <summary>Output only. The name of the instance config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -3800,7 +3800,7 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("privateNetwork")]
         public virtual NetworkAddress PrivateNetwork { get; set; }
 
-        /// <summary>Optional. List of names of ssh keys used to provision the instance.</summary>
+        /// <summary>List of names of ssh keys used to provision the instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sshKeyNames")]
         public virtual System.Collections.Generic.IList<string> SshKeyNames { get; set; }
 
@@ -4259,10 +4259,7 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>
-        /// Immutable. Pod name. Pod is an independent part of infrastructure. Network can only be connected to the
-        /// assets (instances, nfsshares) allocated in the same pod.
-        /// </summary>
+        /// <summary>Output only. Pod name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pod")]
         public virtual string Pod { get; set; }
 
@@ -4505,13 +4502,6 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nfsShareId")]
         public virtual string NfsShareId { get; set; }
 
-        /// <summary>
-        /// Immutable. Pod name. Pod is an independent part of infrastructure. NFSShare can only be connected to the
-        /// assets (networks, instances) allocated in the same pod.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pod")]
-        public virtual string Pod { get; set; }
-
         /// <summary>The requested size, in GiB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestedSizeGib")]
         public virtual System.Nullable<long> RequestedSizeGib { get; set; }
@@ -4648,13 +4638,6 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         /// <summary>Networks to be created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networks")]
         public virtual System.Collections.Generic.IList<NetworkConfig> Networks { get; set; }
-
-        /// <summary>
-        /// Optional. Pod name. Pod is an independent part of infrastructure. Instance can be connected to the assets
-        /// (networks, volumes, nfsshares) allocated in the same pod only.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pod")]
-        public virtual string Pod { get; set; }
 
         /// <summary>Output only. State of ProvisioningConfig.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
@@ -5183,10 +5166,7 @@ namespace Google.Apis.Baremetalsolution.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("performanceTier")]
         public virtual string PerformanceTier { get; set; }
 
-        /// <summary>
-        /// Immutable. Pod name. Pod is an independent part of infrastructure. Volume can only be connected to the
-        /// instances allocated in the same pod.
-        /// </summary>
+        /// <summary>Immutable. Pod name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pod")]
         public virtual string Pod { get; set; }
 

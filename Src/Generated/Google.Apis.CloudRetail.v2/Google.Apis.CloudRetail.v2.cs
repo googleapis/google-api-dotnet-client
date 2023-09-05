@@ -5648,6 +5648,10 @@ namespace Google.Apis.CloudRetail.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("exactSearchableOption")]
         public virtual string ExactSearchableOption { get; set; }
 
+        /// <summary>Contains facet options.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("facetConfig")]
+        public virtual GoogleCloudRetailV2CatalogAttributeFacetConfig FacetConfig { get; set; }
+
         /// <summary>
         /// Output only. Indicates whether this attribute has been used by any products. `True` if at least one Product
         /// is using this attribute in Product.attributes. Otherwise, this field is `False`. CatalogAttribute can be
@@ -5704,6 +5708,163 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Possible options for the facet that corresponds to the current attribute config.</summary>
+    public class GoogleCloudRetailV2CatalogAttributeFacetConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If you don't set the facet SearchRequest.FacetSpec.FacetKey.intervals in the request to a numerical
+        /// attribute, then we use the computed intervals with rounded bounds obtained from all its product numerical
+        /// attribute values. The computed intervals might not be ideal for some attributes. Therefore, we give you the
+        /// option to overwrite them with the facet_intervals field. The maximum of facet intervals per CatalogAttribute
+        /// is 40. Each interval must have a lower bound or an upper bound. If both bounds are provided, then the lower
+        /// bound must be smaller or equal than the upper bound.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("facetIntervals")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2Interval> FacetIntervals { get; set; }
+
+        /// <summary>
+        /// Each instance represents a list of attribute values to ignore as facet values for a specific time range. The
+        /// maximum number of instances per CatalogAttribute is 25.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ignoredFacetValues")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues> IgnoredFacetValues { get; set; }
+
+        /// <summary>
+        /// Each instance replaces a list of facet values by a merged facet value. If a facet value is not in any list,
+        /// then it will stay the same. To avoid conflicts, only paths of length 1 are accepted. In other words, if
+        /// "dark_blue" merged into "BLUE", then the latter can't merge into "blues" because this would create a path of
+        /// length 2. The maximum number of instances of MergedFacetValue per CatalogAttribute is 100.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mergedFacetValues")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue> MergedFacetValues { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Facet values to ignore on facets during the specified time range for the given SearchResponse.Facet.key
+    /// attribute.
+    /// </summary>
+    public class GoogleCloudRetailV2CatalogAttributeFacetConfigIgnoredFacetValues : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>
+        /// If start time is empty and end time is not empty, then ignore these facet values before end time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>
+        /// Time range for the current list of facet values to ignore. If multiple time ranges are specified for an
+        /// facet value for the current attribute, consider all of them. If both are empty, ignore always. If start time
+        /// and end time are set, then start time must be before end time. If start time is not empty and end time is
+        /// empty, then will ignore these facet values after the start time.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// List of facet values to ignore for the following time range. The facet values are the same as the attribute
+        /// values. There is a limit of 10 values per instance of IgnoredFacetValues. Each value can have at most 60
+        /// characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Replaces a set of facet values by the same (possibly different) merged facet value. Each facet value should
+    /// appear at most once as a value per CatalogAttribute.
+    /// </summary>
+    public class GoogleCloudRetailV2CatalogAttributeFacetConfigMergedFacetValue : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// All the previous values are replaced by this merged facet value. This merged_value must be non-empty and can
+        /// have up to 60 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mergedValue")]
+        public virtual string MergedValue { get; set; }
+
+        /// <summary>
+        /// All the facet values that are replaces by the same merged_value that follows. The maximum number of values
+        /// per MergedFacetValue is 25. Each value can have up to 60 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("values")]
+        public virtual System.Collections.Generic.IList<string> Values { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5930,6 +6091,13 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("activeTimeRange")]
         public virtual System.Collections.Generic.IList<GoogleCloudRetailV2ConditionTimeRange> ActiveTimeRange { get; set; }
+
+        /// <summary>
+        /// Used to support browse uses cases. A list (up to 10 entries) of categories or departments. The format should
+        /// be the same as UserEvent.page_categories;
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageCategories")]
+        public virtual System.Collections.Generic.IList<string> PageCategories { get; set; }
 
         /// <summary>
         /// A list (up to 10 entries) of terms to match the query on. If not specified, match all queries. If many query
@@ -8386,6 +8554,10 @@ namespace Google.Apis.CloudRetail.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filterAction")]
         public virtual GoogleCloudRetailV2RuleFilterAction FilterAction { get; set; }
 
+        /// <summary>Force returns an attribute as a facet in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forceReturnFacetAction")]
+        public virtual GoogleCloudRetailV2RuleForceReturnFacetAction ForceReturnFacetAction { get; set; }
+
         /// <summary>Ignores specific terms from query during search.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ignoreAction")]
         public virtual GoogleCloudRetailV2RuleIgnoreAction IgnoreAction { get; set; }
@@ -8400,6 +8572,10 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// <summary>Redirects a shopper to a specific page.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirectAction")]
         public virtual GoogleCloudRetailV2RuleRedirectAction RedirectAction { get; set; }
+
+        /// <summary>Remove an attribute as a facet in the request (if present).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removeFacetAction")]
+        public virtual GoogleCloudRetailV2RuleRemoveFacetAction RemoveFacetAction { get; set; }
 
         /// <summary>Replaces specific terms in the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("replacementAction")]
@@ -8490,6 +8666,52 @@ namespace Google.Apis.CloudRetail.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Force returns an attribute/facet in the request around a certain position or above. * Rule Condition: - Must
+    /// specify non-empty Condition.query_terms (for search only) or Condition.page_categories (for browse only), but
+    /// can't specify both. * Action Inputs: attribute name, position * Action Result: Will force return a facet key
+    /// around a certain position or above if the condition is satisfied. Example: Suppose the query is "shoes", the
+    /// Condition.query_terms is "shoes", the ForceReturnFacetAction.FacetPositionAdjustment.attribute_name is "size"
+    /// and the ForceReturnFacetAction.FacetPositionAdjustment.position is 8. Two cases: a) The facet key "size" is not
+    /// already in the top 8 slots, then the facet "size" will appear at a position close to 8. b) The facet key "size"
+    /// in among the top 8 positions in the request, then it will stay at its current rank.
+    /// </summary>
+    public class GoogleCloudRetailV2RuleForceReturnFacetAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Each instance corresponds to a force return attribute for the given condition. There can't be more 3
+        /// instances here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("facetPositionAdjustments")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment> FacetPositionAdjustments { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Each facet position adjustment consists of a single attribute name (i.e. facet key) along with a specified
+    /// position.
+    /// </summary>
+    public class GoogleCloudRetailV2RuleForceReturnFacetActionFacetPositionAdjustment : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The attribute name to force return as a facet. Each attribute name should be a valid attribute name, be
+        /// non-empty and contain at most 80 characters long.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeName")]
+        public virtual string AttributeName { get; set; }
+
+        /// <summary>
+        /// This is the position in the request as explained above. It should be strictly positive be at most 100.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("position")]
+        public virtual System.Nullable<int> Position { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Prevents a term in the query from being used in search. Example: Don't search for "shoddy".</summary>
     public class GoogleCloudRetailV2RuleIgnoreAction : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8536,6 +8758,27 @@ namespace Google.Apis.CloudRetail.v2.Data
         /// <summary>URL must have length equal or less than 2000 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirectUri")]
         public virtual string RedirectUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Removes an attribute/facet in the request if is present. * Rule Condition: - Must specify non-empty
+    /// Condition.query_terms (for search only) or Condition.page_categories (for browse only), but can't specify both.
+    /// * Action Input: attribute name * Action Result: Will remove the attribute (as a facet) from the request if it is
+    /// present. Example: Suppose the query is "shoes", the Condition.query_terms is "shoes" and the attribute name
+    /// "size", then facet key "size" will be removed from the request (if it is present).
+    /// </summary>
+    public class GoogleCloudRetailV2RuleRemoveFacetAction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The attribute names (i.e. facet keys) to remove from the dynamic facets (if present in the request). There
+        /// can't be more 3 attribute names. Each attribute name should be a valid attribute name, be non-empty and
+        /// contain at most 80 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attributeNames")]
+        public virtual System.Collections.Generic.IList<string> AttributeNames { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
