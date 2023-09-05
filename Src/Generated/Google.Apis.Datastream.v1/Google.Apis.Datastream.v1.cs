@@ -2451,11 +2451,11 @@ namespace Google.Apis.Datastream.v1
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
 
-                    /// <summary>The binary log file name.</summary>
+                    /// <summary>Required. The binary log file name.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("cdcStrategy.specificStartPosition.mysqlLogPosition.logFile", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string CdcStrategySpecificStartPositionMysqlLogPositionLogFile { get; set; }
 
-                    /// <summary>The position within the binary log file. Default is head of file.</summary>
+                    /// <summary>Optional. The position within the binary log file. Default is head of file.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("cdcStrategy.specificStartPosition.mysqlLogPosition.logPosition", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> CdcStrategySpecificStartPositionMysqlLogPositionLogPosition { get; set; }
 
@@ -3703,11 +3703,11 @@ namespace Google.Apis.Datastream.v1.Data
     /// <summary>MySQL log position</summary>
     public class MysqlLogPosition : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The binary log file name.</summary>
+        /// <summary>Required. The binary log file name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logFile")]
         public virtual string LogFile { get; set; }
 
-        /// <summary>The position within the binary log file. Default is head of file.</summary>
+        /// <summary>Optional. The position within the binary log file. Default is head of file.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logPosition")]
         public virtual System.Nullable<int> LogPosition { get; set; }
 
@@ -4086,6 +4086,10 @@ namespace Google.Apis.Datastream.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
         public virtual string Hostname { get; set; }
 
+        /// <summary>Optional. SSL configuration for the Oracle connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oracleSslConfig")]
+        public virtual OracleSslConfig OracleSslConfig { get; set; }
+
         /// <summary>Required. Password for the Oracle connection.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("password")]
         public virtual string Password { get; set; }
@@ -4160,6 +4164,25 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>Stream large object values. NOTE: This feature is currently experimental.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("streamLargeObjects")]
         public virtual StreamLargeObjects StreamLargeObjects { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Oracle SSL configuration information.</summary>
+    public class OracleSslConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caCertificate")]
+        public virtual string CaCertificate { get; set; }
+
+        /// <summary>
+        /// Output only. Indicates whether the ca_certificate field has been set for this Connection-Profile.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caCertificateSet")]
+        public virtual System.Nullable<bool> CaCertificateSet { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -4813,6 +4836,48 @@ namespace Google.Apis.Datastream.v1.Data
         /// <summary>Labels.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        private string _lastRecoveryTimeRaw;
+
+        private object _lastRecoveryTime;
+
+        /// <summary>
+        /// Output only. If the stream was recovered, the time of the last recovery. Note: This field is currently
+        /// experimental.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastRecoveryTime")]
+        public virtual string LastRecoveryTimeRaw
+        {
+            get => _lastRecoveryTimeRaw;
+            set
+            {
+                _lastRecoveryTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastRecoveryTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastRecoveryTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastRecoveryTimeDateTimeOffset instead.")]
+        public virtual object LastRecoveryTime
+        {
+            get => _lastRecoveryTime;
+            set
+            {
+                _lastRecoveryTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastRecoveryTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastRecoveryTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastRecoveryTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastRecoveryTimeRaw);
+            set => LastRecoveryTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>Output only. The stream's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

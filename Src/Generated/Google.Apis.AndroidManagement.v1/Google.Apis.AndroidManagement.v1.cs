@@ -4032,7 +4032,7 @@ namespace Google.Apis.AndroidManagement.v1.Data
     /// <summary>Controls for device radio settings.</summary>
     public class DeviceRadioState : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Controls whether airplane mode can be toggled by the user or not</summary>
+        /// <summary>Controls whether airplane mode can be toggled by the user or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("airplaneModeState")]
         public virtual string AirplaneModeState { get; set; }
 
