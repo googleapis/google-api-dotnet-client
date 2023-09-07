@@ -5856,6 +5856,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("targets")]
         public virtual System.Collections.Generic.IList<ExfilResource> Targets { get; set; }
 
+        /// <summary>Total exfiltrated bytes processed for the entire job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalExfiltratedBytes")]
+        public virtual System.Nullable<long> TotalExfiltratedBytes { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6604,9 +6608,7 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
 
         private object _externalSystemUpdateTime;
 
-        /// <summary>
-        /// The most recent time when the corresponding finding's ticket/tracker was updated in the external system.
-        /// </summary>
+        /// <summary>The time when the case was last updated, as reported by the external system.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalSystemUpdateTime")]
         public virtual string ExternalSystemUpdateTimeRaw
         {
@@ -6641,7 +6643,9 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
             set => ExternalSystemUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
-        /// <summary>Identifier that's used to track the given finding in the external system.</summary>
+        /// <summary>
+        /// The identifier that's used to track the finding's corresponding case in the external system.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalUid")]
         public virtual string ExternalUid { get; set; }
 
@@ -6654,7 +6658,9 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
-        /// <summary>Most recent status of the corresponding finding's ticket/tracker in the external system.</summary>
+        /// <summary>
+        /// The most recent status of the finding's corresponding case, as reported by the external system.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
 

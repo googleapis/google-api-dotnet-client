@@ -2724,19 +2724,6 @@ namespace Google.Apis.Firestore.v1beta1.Data
             set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
-        /// <summary>
-        /// The document's fields. The map keys represent field names. A simple field name contains only characters `a`
-        /// to `z`, `A` to `Z`, `0` to `9`, or `_`, and must not start with `0` to `9`. For example, `foo_bar_17`. Field
-        /// names matching the regular expression `__.*__` are reserved. Reserved field names are forbidden except in
-        /// certain documented contexts. The map keys, represented as UTF-8, must not exceed 1,500 bytes and cannot be
-        /// empty. Field paths may be used in other contexts to refer to structured fields defined here. For
-        /// `map_value`, the field path is represented by the simple or quoted field names of the containing fields,
-        /// delimited by `.`. For example, the structured field `"foo" : { map_value: { "x&amp;amp;y" : { string_value:
-        /// "hello" }}}` would be represented by the field path `foo.x&amp;amp;y`. Within a field path, a quoted field
-        /// name starts and ends with `` ` `` and may contain any character. Some characters, including `` ` ``, must be
-        /// escaped using a `\`. For example, `` `x&amp;amp;y` `` represents `x&amp;amp;y` and `` `bak\`tik` ``
-        /// represents `` bak`tik ``.
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IDictionary<string, Value> Fields { get; set; }
 
@@ -3051,7 +3038,8 @@ namespace Google.Apis.Firestore.v1beta1.Data
     public class FieldReference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The relative path of the document being referenced. Requires: * Conform to document field name limitations.
+        /// A reference to a field in a document. Requires: * MUST be a dot-delimited (`.`) string of segments, where
+        /// each segment conforms to document field name limitations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldPath")]
         public virtual string FieldPath { get; set; }
@@ -3145,6 +3133,20 @@ namespace Google.Apis.Firestore.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("unaryFilter")]
         public virtual UnaryFilter UnaryFilter { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata related to the create database operation.</summary>
+    public class GoogleFirestoreAdminV1CreateDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata related to the delete database operation.</summary>
+    public class GoogleFirestoreAdminV1DeleteDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4708,7 +4710,15 @@ namespace Google.Apis.Firestore.v1beta1.Data
         public virtual string ResumeToken { get; set; }
 
         /// <summary>
-        /// The target ID that identifies the target on the stream. Must be a positive number and non-zero.
+        /// The target ID that identifies the target on the stream. Must be a positive number and non-zero. If
+        /// `target_id` is 0 (or unspecified), the server will assign an ID for this target and return that in a
+        /// `TargetChange::ADD` event. Once a target with `target_id=0` is added, all subsequent targets must also have
+        /// `target_id=0`. If an `AddTarget` request with `target_id != 0` is sent to the server after a target with
+        /// `target_id=0` is added, the server will immediately send a response with a `TargetChange::Remove` event.
+        /// Note that if the client sends multiple `AddTarget` requests without an ID, the order of IDs returned in
+        /// `TargetChage.target_ids` are undefined. Therefore, clients should provide a target ID instead of relying on
+        /// the server to assign one. If `target_id` is non-zero, there must not be an existing active target on this
+        /// stream with the same ID.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
         public virtual System.Nullable<int> TargetId { get; set; }

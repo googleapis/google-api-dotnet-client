@@ -344,7 +344,369 @@ namespace Google.Apis.Testing.v1
         public ProjectsResource(Google.Apis.Services.IClientService service)
         {
             this.service = service;
+            DeviceSessions = new DeviceSessionsResource(service);
             TestMatrices = new TestMatricesResource(service);
+        }
+
+        /// <summary>Gets the DeviceSessions resource.</summary>
+        public virtual DeviceSessionsResource DeviceSessions { get; }
+
+        /// <summary>The "deviceSessions" collection of methods.</summary>
+        public class DeviceSessionsResource
+        {
+            private const string Resource = "deviceSessions";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public DeviceSessionsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// POST /v1/projects/{project_id}/deviceSessions/{device_session_id}:cancel Changes the DeviceSession to
+            /// state FINISHED and terminates all connections. Canceled sessions are not deleted and can be retrieved or
+            /// listed by the user until they expire based on the 28 day deletion policy.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Required. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}"
+            /// </param>
+            public virtual CancelRequest Cancel(Google.Apis.Testing.v1.Data.CancelDeviceSessionRequest body, string name)
+            {
+                return new CancelRequest(service, body, name);
+            }
+
+            /// <summary>
+            /// POST /v1/projects/{project_id}/deviceSessions/{device_session_id}:cancel Changes the DeviceSession to
+            /// state FINISHED and terminates all connections. Canceled sessions are not deleted and can be retrieved or
+            /// listed by the user until they expire based on the 28 day deletion policy.
+            /// </summary>
+            public class CancelRequest : TestingBaseServiceRequest<Google.Apis.Testing.v1.Data.Empty>
+            {
+                /// <summary>Constructs a new Cancel request.</summary>
+                public CancelRequest(Google.Apis.Services.IClientService service, Google.Apis.Testing.v1.Data.CancelDeviceSessionRequest body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Testing.v1.Data.CancelDeviceSessionRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "cancel";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}:cancel";
+
+                /// <summary>Initializes Cancel parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/deviceSessions/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>POST /v1/projects/{project_id}/deviceSessions</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// Required. The Compute Engine project under which this device will be allocated. "projects/{project_id}"
+            /// </param>
+            public virtual CreateRequest Create(Google.Apis.Testing.v1.Data.DeviceSession body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>POST /v1/projects/{project_id}/deviceSessions</summary>
+            public class CreateRequest : TestingBaseServiceRequest<Google.Apis.Testing.v1.Data.DeviceSession>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Testing.v1.Data.DeviceSession body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The Compute Engine project under which this device will be allocated.
+                /// "projects/{project_id}"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Testing.v1.Data.DeviceSession Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/deviceSessions";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// GET /v1/projects/{project_id}/deviceSessions/{device_session_id} Return a DeviceSession, which documents
+            /// the allocation status and whether the device is allocated. Clients making requests from this API must
+            /// poll GetDeviceSession.
+            /// </summary>
+            /// <param name="name">
+            /// Required. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}"
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>
+            /// GET /v1/projects/{project_id}/deviceSessions/{device_session_id} Return a DeviceSession, which documents
+            /// the allocation status and whether the device is allocated. Clients making requests from this API must
+            /// poll GetDeviceSession.
+            /// </summary>
+            public class GetRequest : TestingBaseServiceRequest<Google.Apis.Testing.v1.Data.DeviceSession>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/deviceSessions/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// GET /v1/projects/{project_id}/deviceSessions Lists device Sessions owned by the project user.
+            /// </summary>
+            /// <param name="parent">Required. The name of the parent to request, e.g. "projects/{project_id}"</param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>
+            /// GET /v1/projects/{project_id}/deviceSessions Lists device Sessions owned by the project user.
+            /// </summary>
+            public class ListRequest : TestingBaseServiceRequest<Google.Apis.Testing.v1.Data.ListDeviceSessionsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>Required. The name of the parent to request, e.g. "projects/{project_id}"</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. If specified, responses will be filtered by the given filter. Allowed fields are:
+                /// session_state.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>Optional. The maximum number of DeviceSessions to return.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>Optional. A continuation token for paging.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+parent}/deviceSessions";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// PATCH /v1/projects/{projectId}/deviceSessions/deviceSessionId}:updateDeviceSession Updates the current
+            /// device session to the fields described by the update_mask.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Optional. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}"
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.Testing.v1.Data.DeviceSession body, string name)
+            {
+                return new PatchRequest(service, body, name);
+            }
+
+            /// <summary>
+            /// PATCH /v1/projects/{projectId}/deviceSessions/deviceSessionId}:updateDeviceSession Updates the current
+            /// device session to the fields described by the update_mask.
+            /// </summary>
+            public class PatchRequest : TestingBaseServiceRequest<Google.Apis.Testing.v1.Data.DeviceSession>
+            {
+                /// <summary>Constructs a new Patch request.</summary>
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.Testing.v1.Data.DeviceSession body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Optional. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Required. The list of fields to update.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Testing.v1.Data.DeviceSession Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "patch";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Patch parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/deviceSessions/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
         }
 
         /// <summary>Gets the TestMatrices resource.</summary>
@@ -1220,6 +1582,13 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request object for cancelling a Device Session.</summary>
+    public class CancelDeviceSessionRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response containing the current state of the specified test matrix.</summary>
     public class CancelTestMatrixResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1341,6 +1710,200 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Protobuf message describing the device message, used from several RPCs.</summary>
+    public class DeviceSession : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _activeStartTimeRaw;
+
+        private object _activeStartTime;
+
+        /// <summary>Output only. The timestamp that the session first became ACTIVE.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeStartTime")]
+        public virtual string ActiveStartTimeRaw
+        {
+            get => _activeStartTimeRaw;
+            set
+            {
+                _activeStartTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _activeStartTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ActiveStartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ActiveStartTimeDateTimeOffset instead.")]
+        public virtual object ActiveStartTime
+        {
+            get => _activeStartTime;
+            set
+            {
+                _activeStartTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _activeStartTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ActiveStartTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ActiveStartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ActiveStartTimeRaw);
+            set => ActiveStartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Required. The requested device</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidDevice")]
+        public virtual AndroidDevice AndroidDevice { get; set; }
+
+        /// <summary>
+        /// Optional. The list of requested devices. At most two devices may be simultaneously requested.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("androidDeviceList")]
+        public virtual AndroidDeviceList AndroidDeviceList { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time that the Session was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Output only. The title of the DeviceSession to be presented in the UI.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
+        /// <summary>
+        /// Optional. If the device is still in use at this time, any connections will be ended and the SessionState
+        /// will transition from ACTIVE to FINISHED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Output only. The interval of time that this device must be interacted with before it transitions from ACTIVE
+        /// to TIMEOUT_INACTIVITY.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inactivityTimeout")]
+        public virtual object InactivityTimeout { get; set; }
+
+        /// <summary>
+        /// Optional. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Current state of the DeviceSession.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>
+        /// Output only. The historical state transitions of the session_state message including the current session
+        /// state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateHistories")]
+        public virtual System.Collections.Generic.IList<SessionStateEvent> StateHistories { get; set; }
+
+        /// <summary>
+        /// Optional. The amount of time that a device will be initially allocated for. This can eventually be extended
+        /// with the ExtendDeviceSession RPC. Default: 3 hours.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
+        public virtual object Ttl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Denotes whether Direct Access is supported, and by which client versions. DirectAccessService is currently
+    /// available as a preview to select developers. You can register today on behalf of you and your team at
+    /// https://developer.android.com/studio/preview/android-device-streaming
+    /// </summary>
+    public class DirectAccessVersionInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether direct access is supported at all. Clients are expected to filter down the device list to only
+        /// android models and versions which support Direct Access when that is the user intent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("directAccessSupported")]
+        public virtual System.Nullable<bool> DirectAccessSupported { get; set; }
+
+        /// <summary>
+        /// Output only. Indicates client-device compatibility, where a device is known to work only with certain
+        /// workarounds implemented in the Android Studio client. Expected format "major.minor.micro.patch", e.g.
+        /// "5921.22.2211.8881706".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minimumAndroidStudioVersion")]
+        public virtual string MinimumAndroidStudioVersion { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Data about the relative number of devices running a given configuration of the Android platform.
     /// </summary>
@@ -1389,6 +1952,17 @@ namespace Google.Apis.Testing.v1.Data
             set => MeasurementTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    /// </summary>
+    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1829,6 +2403,24 @@ namespace Google.Apis.Testing.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A list of device sessions.</summary>
+    public class ListDeviceSessionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The sessions matching the specified filter in the given cloud project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceSessions")]
+        public virtual System.Collections.Generic.IList<DeviceSession> DeviceSessions { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A location/region designation for language.</summary>
     public class Locale : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1968,6 +2560,10 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>The number of online devices for an Android version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceCapacity")]
         public virtual string DeviceCapacity { get; set; }
+
+        /// <summary>Output only. Identifies supported clients for DirectAccess for this Android version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("directAccessVersionInfo")]
+        public virtual DirectAccessVersionInfo DirectAccessVersionInfo { get; set; }
 
         /// <summary>An Android version.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("versionId")]
@@ -2126,6 +2722,61 @@ namespace Google.Apis.Testing.v1.Data
         /// <summary>The android:name value</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A message encapsulating a series of Session states and the time that the DeviceSession first entered those
+    /// states.
+    /// </summary>
+    public class SessionStateEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _eventTimeRaw;
+
+        private object _eventTime;
+
+        /// <summary>Output only. The time that the session_state first encountered that state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventTime")]
+        public virtual string EventTimeRaw
+        {
+            get => _eventTimeRaw;
+            set
+            {
+                _eventTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _eventTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EventTimeDateTimeOffset instead.")]
+        public virtual object EventTime
+        {
+            get => _eventTime;
+            set
+            {
+                _eventTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _eventTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EventTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EventTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EventTimeRaw);
+            set => EventTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Output only. The session_state tracked by this event</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionState")]
+        public virtual string SessionState { get; set; }
+
+        /// <summary>Output only. A human-readable message to explain the state.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
+        public virtual string StateMessage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

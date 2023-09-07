@@ -5453,7 +5453,9 @@ namespace Google.Apis.GKEHub.v1beta.Data
     /// </summary>
     public class ConfigManagementMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Binauthz conifguration for the cluster.</summary>
+        /// <summary>
+        /// Binauthz conifguration for the cluster. Deprecated: This field will be ignored and should not be set.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binauthz")]
         public virtual ConfigManagementBinauthzConfig Binauthz { get; set; }
 
@@ -6563,10 +6565,6 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tenant")]
         public virtual string Tenant { get; set; }
-
-        /// <summary>Optional. Claim in the AzureAD ID Token that holds the user details.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userClaim")]
-        public virtual string UserClaim { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

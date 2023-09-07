@@ -7794,6 +7794,14 @@ namespace Google.Apis.Dataflow.v1b3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customMetadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> CustomMetadata { get; set; }
 
+        /// <summary>
+        /// Optional. The default values will pre-populate the parameter with the given value from the proto. If
+        /// default_value is left empty, the parameter will be populated with a default of the relevant type, e.g. false
+        /// for a boolean.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
+        public virtual string DefaultValue { get; set; }
+
         /// <summary>Optional. The options shown when ENUM ParameterType is specified.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enumOptions")]
         public virtual System.Collections.Generic.IList<ParameterMetadataEnumOption> EnumOptions { get; set; }

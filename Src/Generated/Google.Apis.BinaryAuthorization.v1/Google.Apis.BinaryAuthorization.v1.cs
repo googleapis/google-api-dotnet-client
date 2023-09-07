@@ -299,8 +299,8 @@ namespace Google.Apis.BinaryAuthorization.v1
             }
 
             /// <summary>
-            /// Creates an attestor, and returns a copy of the new attestor. Returns NOT_FOUND if the project does not
-            /// exist, INVALID_ARGUMENT if the request is malformed, ALREADY_EXISTS if the attestor already exists.
+            /// Creates an attestor, and returns a copy of the new attestor. Returns `NOT_FOUND` if the project does not
+            /// exist, `INVALID_ARGUMENT` if the request is malformed, `ALREADY_EXISTS` if the attestor already exists.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">Required. The parent of this attestor.</param>
@@ -310,8 +310,8 @@ namespace Google.Apis.BinaryAuthorization.v1
             }
 
             /// <summary>
-            /// Creates an attestor, and returns a copy of the new attestor. Returns NOT_FOUND if the project does not
-            /// exist, INVALID_ARGUMENT if the request is malformed, ALREADY_EXISTS if the attestor already exists.
+            /// Creates an attestor, and returns a copy of the new attestor. Returns `NOT_FOUND` if the project does not
+            /// exist, `INVALID_ARGUMENT` if the request is malformed, `ALREADY_EXISTS` if the attestor already exists.
             /// </summary>
             public class CreateRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1.Data.Attestor>
             {
@@ -369,7 +369,7 @@ namespace Google.Apis.BinaryAuthorization.v1
                 }
             }
 
-            /// <summary>Deletes an attestor. Returns NOT_FOUND if the attestor does not exist.</summary>
+            /// <summary>Deletes an attestor. Returns `NOT_FOUND` if the attestor does not exist.</summary>
             /// <param name="name">
             /// Required. The name of the attestors to delete, in the format `projects/*/attestors/*`.
             /// </param>
@@ -378,7 +378,7 @@ namespace Google.Apis.BinaryAuthorization.v1
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes an attestor. Returns NOT_FOUND if the attestor does not exist.</summary>
+            /// <summary>Deletes an attestor. Returns `NOT_FOUND` if the attestor does not exist.</summary>
             public class DeleteRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -418,7 +418,7 @@ namespace Google.Apis.BinaryAuthorization.v1
                 }
             }
 
-            /// <summary>Gets an attestor. Returns NOT_FOUND if the attestor does not exist.</summary>
+            /// <summary>Gets an attestor. Returns `NOT_FOUND` if the attestor does not exist.</summary>
             /// <param name="name">
             /// Required. The name of the attestor to retrieve, in the format `projects/*/attestors/*`.
             /// </param>
@@ -427,7 +427,7 @@ namespace Google.Apis.BinaryAuthorization.v1
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets an attestor. Returns NOT_FOUND if the attestor does not exist.</summary>
+            /// <summary>Gets an attestor. Returns `NOT_FOUND` if the attestor does not exist.</summary>
             public class GetRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1.Data.Attestor>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -546,7 +546,7 @@ namespace Google.Apis.BinaryAuthorization.v1
                 }
             }
 
-            /// <summary>Lists attestors. Returns INVALID_ARGUMENT if the project does not exist.</summary>
+            /// <summary>Lists attestors. Returns `INVALID_ARGUMENT` if the project does not exist.</summary>
             /// <param name="parent">
             /// Required. The resource name of the project associated with the attestors, in the format `projects/*`.
             /// </param>
@@ -555,7 +555,7 @@ namespace Google.Apis.BinaryAuthorization.v1
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists attestors. Returns INVALID_ARGUMENT if the project does not exist.</summary>
+            /// <summary>Lists attestors. Returns `INVALID_ARGUMENT` if the project does not exist.</summary>
             public class ListRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1.Data.ListAttestorsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -762,7 +762,7 @@ namespace Google.Apis.BinaryAuthorization.v1
                 }
             }
 
-            /// <summary>Updates an attestor. Returns NOT_FOUND if the attestor does not exist.</summary>
+            /// <summary>Updates an attestor. Returns `NOT_FOUND` if the attestor does not exist.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Required. The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
@@ -772,7 +772,7 @@ namespace Google.Apis.BinaryAuthorization.v1
                 return new UpdateRequest(service, body, name);
             }
 
-            /// <summary>Updates an attestor. Returns NOT_FOUND if the attestor does not exist.</summary>
+            /// <summary>Updates an attestor. Returns `NOT_FOUND` if the attestor does not exist.</summary>
             public class UpdateRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1.Data.Attestor>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -820,7 +820,7 @@ namespace Google.Apis.BinaryAuthorization.v1
             }
 
             /// <summary>
-            /// Returns whether the given Attestation for the given image URI was signed by the given Attestor
+            /// Returns whether the given `Attestation` for the given image URI was signed by the given `Attestor`
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="attestor">
@@ -832,7 +832,7 @@ namespace Google.Apis.BinaryAuthorization.v1
             }
 
             /// <summary>
-            /// Returns whether the given Attestation for the given image URI was signed by the given Attestor
+            /// Returns whether the given `Attestation` for the given image URI was signed by the given `Attestor`
             /// </summary>
             public class ValidateAttestationOccurrenceRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1.Data.ValidateAttestationOccurrenceResponse>
             {
@@ -918,10 +918,10 @@ namespace Google.Apis.BinaryAuthorization.v1
                 }
 
                 /// <summary>
-                /// Creates a platform policy, and returns a copy of it. Returns NOT_FOUND if the project or platform
-                /// doesn't exist, INVALID_ARGUMENT if the request is malformed, ALREADY_EXISTS if the policy already
-                /// exists, and INVALID_ARGUMENT if the policy contains a platform-specific policy that does not match
-                /// the platform value specified in the URL.
+                /// Creates a platform policy, and returns a copy of it. Returns `NOT_FOUND` if the project or platform
+                /// doesn't exist, `INVALID_ARGUMENT` if the request is malformed, `ALREADY_EXISTS` if the policy
+                /// already exists, and `INVALID_ARGUMENT` if the policy contains a platform-specific policy that does
+                /// not match the platform value specified in the URL.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">Required. The parent of this platform policy.</param>
@@ -931,10 +931,10 @@ namespace Google.Apis.BinaryAuthorization.v1
                 }
 
                 /// <summary>
-                /// Creates a platform policy, and returns a copy of it. Returns NOT_FOUND if the project or platform
-                /// doesn't exist, INVALID_ARGUMENT if the request is malformed, ALREADY_EXISTS if the policy already
-                /// exists, and INVALID_ARGUMENT if the policy contains a platform-specific policy that does not match
-                /// the platform value specified in the URL.
+                /// Creates a platform policy, and returns a copy of it. Returns `NOT_FOUND` if the project or platform
+                /// doesn't exist, `INVALID_ARGUMENT` if the request is malformed, `ALREADY_EXISTS` if the policy
+                /// already exists, and `INVALID_ARGUMENT` if the policy contains a platform-specific policy that does
+                /// not match the platform value specified in the URL.
                 /// </summary>
                 public class CreateRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1.Data.PlatformPolicy>
                 {
@@ -992,7 +992,7 @@ namespace Google.Apis.BinaryAuthorization.v1
                     }
                 }
 
-                /// <summary>Deletes a platform policy. Returns NOT_FOUND if the policy doesn't exist.</summary>
+                /// <summary>Deletes a platform policy. Returns `NOT_FOUND` if the policy doesn't exist.</summary>
                 /// <param name="name">
                 /// Required. The name of the platform policy to delete, in the format
                 /// `projects/*/platforms/*/policies/*`.
@@ -1002,7 +1002,7 @@ namespace Google.Apis.BinaryAuthorization.v1
                     return new DeleteRequest(service, name);
                 }
 
-                /// <summary>Deletes a platform policy. Returns NOT_FOUND if the policy doesn't exist.</summary>
+                /// <summary>Deletes a platform policy. Returns `NOT_FOUND` if the policy doesn't exist.</summary>
                 public class DeleteRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -1043,7 +1043,7 @@ namespace Google.Apis.BinaryAuthorization.v1
                     }
                 }
 
-                /// <summary>Gets a platform policy. Returns NOT_FOUND if the policy doesn't exist.</summary>
+                /// <summary>Gets a platform policy. Returns `NOT_FOUND` if the policy doesn't exist.</summary>
                 /// <param name="name">
                 /// Required. The name of the platform policy to retrieve in the format
                 /// `projects/*/platforms/*/policies/*`.
@@ -1053,7 +1053,7 @@ namespace Google.Apis.BinaryAuthorization.v1
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Gets a platform policy. Returns NOT_FOUND if the policy doesn't exist.</summary>
+                /// <summary>Gets a platform policy. Returns `NOT_FOUND` if the policy doesn't exist.</summary>
                 public class GetRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1.Data.PlatformPolicy>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -1095,7 +1095,7 @@ namespace Google.Apis.BinaryAuthorization.v1
                 }
 
                 /// <summary>
-                /// Lists platform policies owned by a project in the specified platform. Returns INVALID_ARGUMENT if
+                /// Lists platform policies owned by a project in the specified platform. Returns `INVALID_ARGUMENT` if
                 /// the project or the platform doesn't exist.
                 /// </summary>
                 /// <param name="parent">
@@ -1108,7 +1108,7 @@ namespace Google.Apis.BinaryAuthorization.v1
                 }
 
                 /// <summary>
-                /// Lists platform policies owned by a project in the specified platform. Returns INVALID_ARGUMENT if
+                /// Lists platform policies owned by a project in the specified platform. Returns `INVALID_ARGUMENT` if
                 /// the project or the platform doesn't exist.
                 /// </summary>
                 public class ListRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1.Data.ListPlatformPoliciesResponse>
@@ -1182,10 +1182,10 @@ namespace Google.Apis.BinaryAuthorization.v1
                     }
                 }
 
-                /// <summary>Replaces a platform policy. Returns NOT_FOUND if the policy doesn't exist.</summary>
+                /// <summary>Replaces a platform policy. Returns `NOT_FOUND` if the policy doesn't exist.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Output only. The relative resource name of the BinAuthz platform policy, in the form of
+                /// Output only. The relative resource name of the Binary Authorization platform policy, in the form of
                 /// `projects/*/platforms/*/policies/*`.
                 /// </param>
                 public virtual ReplacePlatformPolicyRequest ReplacePlatformPolicy(Google.Apis.BinaryAuthorization.v1.Data.PlatformPolicy body, string name)
@@ -1193,7 +1193,7 @@ namespace Google.Apis.BinaryAuthorization.v1
                     return new ReplacePlatformPolicyRequest(service, body, name);
                 }
 
-                /// <summary>Replaces a platform policy. Returns NOT_FOUND if the policy doesn't exist.</summary>
+                /// <summary>Replaces a platform policy. Returns `NOT_FOUND` if the policy doesn't exist.</summary>
                 public class ReplacePlatformPolicyRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1.Data.PlatformPolicy>
                 {
                     /// <summary>Constructs a new ReplacePlatformPolicy request.</summary>
@@ -1205,8 +1205,8 @@ namespace Google.Apis.BinaryAuthorization.v1
                     }
 
                     /// <summary>
-                    /// Output only. The relative resource name of the BinAuthz platform policy, in the form of
-                    /// `projects/*/platforms/*/policies/*`.
+                    /// Output only. The relative resource name of the Binary Authorization platform policy, in the form
+                    /// of `projects/*/platforms/*/policies/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1538,7 +1538,7 @@ namespace Google.Apis.BinaryAuthorization.v1
         /// <summary>
         /// Creates or updates a project's policy, and returns a copy of the new policy. A policy is always updated as a
         /// whole, to avoid race conditions with concurrent policy enforcement (or management!) requests. Returns
-        /// NOT_FOUND if the project does not exist, INVALID_ARGUMENT if the request is malformed.
+        /// `NOT_FOUND` if the project does not exist, `INVALID_ARGUMENT` if the request is malformed.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="name">
@@ -1552,7 +1552,7 @@ namespace Google.Apis.BinaryAuthorization.v1
         /// <summary>
         /// Creates or updates a project's policy, and returns a copy of the new policy. A policy is always updated as a
         /// whole, to avoid race conditions with concurrent policy enforcement (or management!) requests. Returns
-        /// NOT_FOUND if the project does not exist, INVALID_ARGUMENT if the request is malformed.
+        /// `NOT_FOUND` if the project does not exist, `INVALID_ARGUMENT` if the request is malformed.
         /// </summary>
         public class UpdatePolicyRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1.Data.Policy>
         {
@@ -1690,8 +1690,8 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         /// Optional. The resource names of the attestors that must attest to a container image, in the format
         /// `projects/*/attestors/*`. Each attestor must exist before a policy can reference it. To add an attestor to a
         /// policy the principal issuing the policy change request must be able to read the attestor resource. Note:
-        /// this field must be non-empty when the evaluation_mode field specifies REQUIRE_ATTESTATION, otherwise it must
-        /// be empty.
+        /// this field must be non-empty when the `evaluation_mode` field specifies `REQUIRE_ATTESTATION`, otherwise it
+        /// must be empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requireAttestationsBy")]
         public virtual System.Collections.Generic.IList<string> RequireAttestationsBy { get; set; }
@@ -1725,7 +1725,7 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
     public class AttestationAuthenticator : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. A user-provided name for this AttestationAuthenticator. This field has no effect on the policy
+        /// Optional. A user-provided name for this `AttestationAuthenticator`. This field has no effect on the policy
         /// evaluation behavior except to improve readability of messages in evaluation results.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
@@ -1782,7 +1782,7 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
     public class AttestationSource : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The ids of the GCP projects storing the SLSA attestations as container analysis Occurrences.
+        /// The IDs of the GCP projects storing the SLSA attestations as Container Analysis Occurrences.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("containerAnalysisAttestationProjects")]
         public virtual System.Collections.Generic.IList<string> ContainerAnalysisAttestationProjects { get; set; }
@@ -1866,9 +1866,9 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         /// <summary>
         /// ASCII-armored representation of a PGP public key, as the entire output by the command `gpg --export --armor
         /// foo@example.com` (either LF or CRLF line endings). When using this field, `id` should be left blank. The
-        /// BinAuthz API handlers will calculate the ID and fill it in automatically. BinAuthz computes this ID as the
-        /// OpenPGP RFC4880 V4 fingerprint, represented as upper-case hex. If `id` is provided by the caller, it will be
-        /// overwritten by the API-calculated ID.
+        /// Binary Authorization API handlers will calculate the ID and fill it in automatically. Binary Authorization
+        /// computes this ID as the OpenPGP RFC4880 V4 fingerprint, represented as upper-case hex. If `id` is provided
+        /// by the caller, it will be overwritten by the API-calculated ID.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("asciiArmoredPgpPublicKey")]
         public virtual string AsciiArmoredPgpPublicKey { get; set; }
@@ -1878,10 +1878,10 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         public virtual string Comment { get; set; }
 
         /// <summary>
-        /// The ID of this public key. Signatures verified by BinAuthz must include the ID of the public key that can be
-        /// used to verify them, and that ID must match the contents of this field exactly. Additional restrictions on
-        /// this field can be imposed based on which public key type is encapsulated. See the documentation on
-        /// `public_key` cases below for details.
+        /// The ID of this public key. Signatures verified by Binary Authorization must include the ID of the public key
+        /// that can be used to verify them, and that ID must match the contents of this field exactly. Additional
+        /// restrictions on this field can be imposed based on which public key type is encapsulated. See the
+        /// documentation on `public_key` cases below for details.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -1951,28 +1951,28 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
     }
 
     /// <summary>
-    /// A single check to perform against a Pod. Checks are grouped into CheckSets, which are defined by the top-level
-    /// policy.
+    /// A single check to perform against a Pod. Checks are grouped into `CheckSet` objects, which are defined by the
+    /// top-level policy.
     /// </summary>
     public class Check : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Optional. A special-case check that always denies. Note that this still only applies when the scope of the
-        /// CheckSet applies and the image isn't exempted by an image allowlist. This check is primarily useful for
+        /// `CheckSet` applies and the image isn't exempted by an image allowlist. This check is primarily useful for
         /// testing, or to set the default behavior for all unmatched scopes to "deny".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("alwaysDeny")]
         public virtual System.Nullable<bool> AlwaysDeny { get; set; }
 
         /// <summary>
-        /// Optional. A user-provided name for this Check. This field has no effect on the policy evaluation behavior
+        /// Optional. A user-provided name for this check. This field has no effect on the policy evaluation behavior
         /// except to improve readability of messages in evaluation results.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Optional. Images exempted from this Check. If any of the patterns match the image url, the check will not be
+        /// Optional. Images exempted from this check. If any of the patterns match the image url, the check will not be
         /// evaluated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageAllowlist")]
@@ -1990,7 +1990,7 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         public virtual SimpleSigningAttestationCheck SimpleSigningAttestationCheck { get; set; }
 
         /// <summary>
-        /// Optional. Require that an image was built by a trusted builder (such as Google Cloud Build or GitHub), meets
+        /// Optional. Require that an image was built by a trusted builder (such as Google Cloud Build), meets
         /// requirements for Supply chain Levels for Software Artifacts (SLSA), and was built from a trusted source code
         /// repostitory.
         /// </summary>
@@ -2014,7 +2014,7 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
 
     /// <summary>
     /// A conjunction of policy checks, scoped to a particular namespace or Kubernetes service account. In order for
-    /// evaluation of a CheckSet to return "allowed" for a given image in a given Pod, one of the following conditions
+    /// evaluation of a `CheckSet` to return "allowed" for a given image in a given Pod, one of the following conditions
     /// must be satisfied: * The image is explicitly exempted by an entry in `image_allowlist`, OR * ALL of the `checks`
     /// evaluate to "allowed".
     /// </summary>
@@ -2022,29 +2022,29 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
     {
         /// <summary>
         /// Optional. The checks to apply. The ultimate result of evaluating the check set will be "allow" if and only
-        /// if every check in 'checks' evaluates to "allow". If `checks` is empty, the default behavior is "always
+        /// if every check in `checks` evaluates to "allow". If `checks` is empty, the default behavior is "always
         /// allow".
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("checks")]
         public virtual System.Collections.Generic.IList<Check> Checks { get; set; }
 
         /// <summary>
-        /// Optional. A user-provided name for this CheckSet. This field has no effect on the policy evaluation behavior
-        /// except to improve readability of messages in evaluation results.
+        /// Optional. A user-provided name for this `CheckSet`. This field has no effect on the policy evaluation
+        /// behavior except to improve readability of messages in evaluation results.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
         /// <summary>
-        /// Optional. Images exempted from this CheckSet. If any of the patterns match the image being evaluated, no
-        /// checks in the CheckSet will be evaluated.
+        /// Optional. Images exempted from this `CheckSet`. If any of the patterns match the image being evaluated, no
+        /// checks in the `CheckSet` will be evaluated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageAllowlist")]
         public virtual ImageAllowlist ImageAllowlist { get; set; }
 
         /// <summary>
-        /// Optional. The scope to which this CheckSet applies. If unset or an empty string (the default), applies to
-        /// all namespaces and service accounts. See the Scope message documentation for details on scoping rules.
+        /// Optional. The scope to which this `CheckSet` applies. If unset or an empty string (the default), applies to
+        /// all namespaces and service accounts. See the `Scope` message documentation for details on scoping rules.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual Scope Scope { get; set; }
@@ -2115,17 +2115,18 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
     public class GkePolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The CheckSets to apply, scoped by namespace or namespace and service account. Exactly one CheckSet
-        /// will be evaluated for a given Pod (unless the list is empty, in which case the behavior is "always allow").
-        /// If multiple CheckSets have scopes that match the namespace and service account of the Pod being evaluated,
-        /// only the CheckSet with the MOST SPECIFIC scope will match. CheckSets must be listed in order of decreasing
-        /// specificity, i.e. if a scope matches a given service account (which must include the namespace), it must
-        /// come before a CheckSet with a scope matching just that namespace. This property is enforced by server-side
-        /// validation. The purpose of this restriction is to ensure that if more than one CheckSet matches a given Pod,
-        /// the CheckSet that will be evaluated will always be the first in the list to match (because if any other
-        /// matches, it must be less specific). If `check_sets` is empty, the default behavior is to allow all images.
-        /// If `check_sets` is non-empty, the last `check_sets` entry must always be a CheckSet with no scope set, i.e.
-        /// a catchall to handle any situation not caught by the preceding CheckSets.
+        /// Optional. The `CheckSet` objects to apply, scoped by namespace or namespace and service account. Exactly one
+        /// `CheckSet` will be evaluated for a given Pod (unless the list is empty, in which case the behavior is
+        /// "always allow"). If multiple `CheckSet` objects have scopes that match the namespace and service account of
+        /// the Pod being evaluated, only the `CheckSet` with the MOST SPECIFIC scope will match. `CheckSet` objects
+        /// must be listed in order of decreasing specificity, i.e. if a scope matches a given service account (which
+        /// must include the namespace), it must come before a `CheckSet` with a scope matching just that namespace.
+        /// This property is enforced by server-side validation. The purpose of this restriction is to ensure that if
+        /// more than one `CheckSet` matches a given Pod, the `CheckSet` that will be evaluated will always be the first
+        /// in the list to match (because if any other matches, it must be less specific). If `check_sets` is empty, the
+        /// default behavior is to allow all images. If `check_sets` is non-empty, the last `check_sets` entry must
+        /// always be a `CheckSet` with no scope set, i.e. a catchall to handle any situation not caught by the
+        /// preceding `CheckSet` objects.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("checkSets")]
         public virtual System.Collections.Generic.IList<CheckSet> CheckSets { get; set; }
@@ -2257,7 +2258,7 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for BinauthzManagementService.ListAttestors.</summary>
+    /// <summary>Response message for BinauthzManagementServiceV1.ListAttestors.</summary>
     public class ListAttestorsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The list of attestors.</summary>
@@ -2294,8 +2295,8 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
     }
 
     /// <summary>
-    /// A public key in the PkixPublicKey format (see https://tools.ietf.org/html/rfc5280#section-4.1.2.7 for details).
-    /// Public keys of this type are typically textually encoded using the PEM format.
+    /// A public key in the PkixPublicKey [format](https://tools.ietf.org/html/rfc5280#section-4.1.2.7). Public keys of
+    /// this type are typically textually encoded using the PEM format.
     /// </summary>
     public class PkixPublicKey : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2317,7 +2318,8 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
 
     /// <summary>
     /// A bundle of PKIX public keys, used to authenticate attestation signatures. Generally, a signature is considered
-    /// to be authenticated by a PkixPublicKeySet if any of the public keys verify it (i.e. it is an "OR" of the keys).
+    /// to be authenticated by a `PkixPublicKeySet` if any of the public keys verify it (i.e. it is an "OR" of the
+    /// keys).
     /// </summary>
     public class PkixPublicKeySet : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2341,7 +2343,7 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         public virtual GkePolicy GkePolicy { get; set; }
 
         /// <summary>
-        /// Output only. The relative resource name of the BinAuthz platform policy, in the form of
+        /// Output only. The relative resource name of the Binary Authorization platform policy, in the form of
         /// `projects/*/platforms/*/policies/*`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -2498,7 +2500,7 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         }
     }
 
-    /// <summary>A scope specifier for CheckSets.</summary>
+    /// <summary>A scope specifier for `CheckSet` objects.</summary>
     public class Scope : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -2509,7 +2511,7 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         public virtual string KubernetesNamespace { get; set; }
 
         /// <summary>
-        /// Optional. Matches a single Kubernetes service account, e.g. 'my-namespace:my-service-account'.
+        /// Optional. Matches a single Kubernetes service account, e.g. `my-namespace:my-service-account`.
         /// `kubernetes_service_account` scope is always more specific than `kubernetes_namespace` scope for the same
         /// namespace.
         /// </summary>
@@ -2656,16 +2658,17 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
     {
         /// <summary>
         /// Required. List of trusted directory patterns. A pattern is in the form "registry/path/to/directory". The
-        /// registry domain part is defined as two or more dot-separated words, e.g., us.pkg.dev, or gcr.io.
-        /// Additionally, * can be used in three ways as wildcards: 1. leading * to match varying prefixes in registry
-        /// subdomain (useful for location prefixes); 2. trailing * after registry/ to match varying endings; 3.
-        /// trailing ** after registry/ to match "/" as well. For example: -- gcr.io/my-project/my-repo is valid to
-        /// match a single directory -- *-docker.pkg.dev/my-project/my-repo or *.gcr.io/my-project are valid to match
-        /// varying prefixes -- gcr.io/my-project/* will match all direct directories in my-project --
-        /// gcr.io/my-project/** would match all directories in my-project -- gcr.i* is not allowed since the registry
-        /// is not completely specified -- sub*domain.gcr.io/nginx is not valid because only leading * or trailing * are
-        /// allowed. -- *pkg.dev/my-project/my-repo is not valid because leading * can only match subdomain --
-        /// **-docker.pkg.dev is not valid because one leading * is allowed, and that it cannot match "/"
+        /// registry domain part is defined as two or more dot-separated words, e.g., `us.pkg.dev`, or `gcr.io`.
+        /// Additionally, `*` can be used in three ways as wildcards: 1. leading `*` to match varying prefixes in
+        /// registry subdomain (useful for location prefixes); 2. trailing `*` after registry/ to match varying endings;
+        /// 3. trailing `**` after registry/ to match "/" as well. For example: -- `gcr.io/my-project/my-repo` is valid
+        /// to match a single directory -- `*-docker.pkg.dev/my-project/my-repo` or `*.gcr.io/my-project` are valid to
+        /// match varying prefixes -- `gcr.io/my-project/*` will match all direct directories in `my-project` --
+        /// `gcr.io/my-project/**` would match all directories in `my-project` -- `gcr.i*` is not allowed since the
+        /// registry is not completely specified -- `sub*domain.gcr.io/nginx` is not valid because only leading `*` or
+        /// trailing `*` are allowed. -- `*pkg.dev/my-project/my-repo` is not valid because leading `*` can only match
+        /// subdomain -- `**-docker.pkg.dev` is not valid because one leading `*` is allowed, and that it cannot match
+        /// `/`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trustedDirPatterns")]
         public virtual System.Collections.Generic.IList<string> TrustedDirPatterns { get; set; }
@@ -2680,11 +2683,11 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
     public class UserOwnedGrafeasNote : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. This field will contain the service account email address that this Attestor will use as the
+        /// Output only. This field will contain the service account email address that this attestor will use as the
         /// principal when querying Container Analysis. Attestor administrators must grant this service account the IAM
         /// role needed to read attestations from the note_reference in Container Analysis
         /// (`containeranalysis.notes.occurrences.viewer`). This email address is fixed for the lifetime of the
-        /// Attestor, but callers should not make any other assumptions about the service account email; future versions
+        /// attestor, but callers should not make any other assumptions about the service account email; future versions
         /// may use an email based on a different naming pattern.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("delegationServiceAccountEmail")]
@@ -2716,8 +2719,8 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
     public class ValidateAttestationOccurrenceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. An AttestationOccurrence to be checked that it can be verified by the Attestor. It does not have
-        /// to be an existing entity in Container Analysis. It must otherwise be a valid AttestationOccurrence.
+        /// Required. An AttestationOccurrence to be checked that it can be verified by the `Attestor`. It does not have
+        /// to be an existing entity in Container Analysis. It must otherwise be a valid `AttestationOccurrence`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attestation")]
         public virtual AttestationOccurrence Attestation { get; set; }
@@ -2764,7 +2767,7 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
         public virtual AttestationSource AttestationSource { get; set; }
 
         /// <summary>
-        /// If true, require the image to be built from a top-level configuration. trusted_source_repo patterns
+        /// If true, require the image to be built from a top-level configuration. `trusted_source_repo_patterns`
         /// specifies the repositories containing this configuration.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("configBasedBuildRequired")]
@@ -2781,16 +2784,17 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
 
         /// <summary>
         /// List of trusted source code repository URL patterns. These patterns match the full repository URL without
-        /// its scheme (e.g. "https://"). The patterns must not include schemes. For example, the pattern
-        /// "source.cloud.google.com/my-project/my-repo-name" matches the following URLs: -
-        /// "source.cloud.google.com/my-project/my-repo-name" -
-        /// "git+ssh://source.cloud.google.com/my-project/my-repo-name" -
-        /// "https://source.cloud.google.com/my-project/my-repo-name" A pattern matches a URL either exactly or with *
-        /// wildcards. * can be used in only two ways: 1. trailing * after hosturi/ to match varying endings; 2.
-        /// trailing ** after hosturi/ to match "/" as well. * and ** can only be used as wildcards and can only occur
-        /// at the end of the pattern after a /. (So it's not possible to match a URL that contains literal *.) For
-        /// example: - "github.com/my-project/my-repo" is valid to match a single repo - "github.com/my-project/*" will
-        /// match all direct repos in my-project - "github.com/**" matches all repos in GitHub
+        /// its scheme (e.g. `https://`). The patterns must not include schemes. For example, the pattern
+        /// `source.cloud.google.com/my-project/my-repo-name` matches the following URLs: -
+        /// `source.cloud.google.com/my-project/my-repo-name` -
+        /// `git+ssh://source.cloud.google.com/my-project/my-repo-name` -
+        /// `https://source.cloud.google.com/my-project/my-repo-name` A pattern matches a URL either exactly or with `*`
+        /// wildcards. `*` can be used in only two ways: 1. trailing `*` after hosturi/ to match varying endings; 2.
+        /// trailing `**` after hosturi/ to match `/` as well. `*` and `**` can only be used as wildcards and can only
+        /// occur at the end of the pattern after a `/`. (So it's not possible to match a URL that contains literal
+        /// `*`.) For example: - `github.com/my-project/my-repo` is valid to match a single repo -
+        /// `github.com/my-project/*` will match all direct repos in `my-project` - `github.com/**` matches all repos in
+        /// GitHub
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trustedSourceRepoPatterns")]
         public virtual System.Collections.Generic.IList<string> TrustedSourceRepoPatterns { get; set; }
@@ -2806,8 +2810,8 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
     {
         /// <summary>
         /// Optional. A list of specific CVEs to ignore even if the vulnerability level violates
-        /// maximumUnfixableSeverity or maximumFixableSeverity. CVEs are listed in the format of Container Analysis note
-        /// id. For example: - CVE-2021-20305 - CVE-2020-10543 The CVEs are applicable regardless of note provider
+        /// `maximumUnfixableSeverity` or `maximumFixableSeverity`. CVEs are listed in the format of Container Analysis
+        /// note id. For example: - CVE-2021-20305 - CVE-2020-10543 The CVEs are applicable regardless of note provider
         /// project, e.g., an entry of `CVE-2021-20305` will allow vulnerabilities with a note name of either
         /// `projects/goog-vulnz/notes/CVE-2021-20305` or `projects/CUSTOM-PROJECT/notes/CVE-2021-20305`.
         /// </summary>
@@ -2816,8 +2820,8 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
 
         /// <summary>
         /// Optional. A list of specific CVEs to always raise warnings about even if the vulnerability level meets
-        /// maximumUnfixableSeverity or maximumFixableSeverity. CVEs are listed in the format of Container Analysis note
-        /// id. For example: - CVE-2021-20305 - CVE-2020-10543 The CVEs are applicable regardless of note provider
+        /// `maximumUnfixableSeverity` or `maximumFixableSeverity`. CVEs are listed in the format of Container Analysis
+        /// note id. For example: - CVE-2021-20305 - CVE-2020-10543 The CVEs are applicable regardless of note provider
         /// project, e.g., an entry of `CVE-2021-20305` will block vulnerabilities with a note name of either
         /// `projects/goog-vulnz/notes/CVE-2021-20305` or `projects/CUSTOM-PROJECT/notes/CVE-2021-20305`.
         /// </summary>
@@ -2826,8 +2830,8 @@ namespace Google.Apis.BinaryAuthorization.v1.Data
 
         /// <summary>
         /// Optional. The projects where vulnerabilities are stored as Container Analysis Occurrences. Each project is
-        /// expressed in the resource format of `projects/[PROJECT_ID]`, e.g., projects/my-gcp-project. An attempt will
-        /// be made for each project to fetch vulnerabilities, and all valid vulnerabilities will be used to check
+        /// expressed in the resource format of `projects/[PROJECT_ID]`, e.g., `projects/my-gcp-project`. An attempt
+        /// will be made for each project to fetch vulnerabilities, and all valid vulnerabilities will be used to check
         /// against the vulnerability policy. If no valid scan is found in all projects configured here, an error will
         /// be returned for the check.
         /// </summary>

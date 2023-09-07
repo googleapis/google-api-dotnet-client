@@ -14403,10 +14403,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// main text and the tooltip text when the style is not used. * `tooltip-style-question` - the tooltip shows
         /// helpful information, can use the '?' as an icon. * `tooltip-style-info` - the tooltip adds additional
         /// information fitting to the context, can use the 'i' as an icon. * `content-moderation` - marks the paragraph
-        /// that explains how the issue was identified. * `overlay` - wrapper for the `popup` dialog. It should be set
-        /// to hidden by default. When the dialog is opened, the overlay should switch to be visible and cover the rest
-        /// of the screen to highlight the dialog. * `popup` - dialog for showing a long block of content *
-        /// `popup-close` - a button to close the `popup` dialog * `new-element` - Present for new elements added to the
+        /// that explains how the issue was identified. * `new-element` - Present for new elements added to the
         /// pre-rendered content in the future. To make sure that a new content element does not break your style, you
         /// can hide everything with this class.
         /// </summary>
@@ -15686,6 +15683,13 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
     public class BuiltInSimpleAction : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Long text from an external source that should be available to the merchant. Present when the type is
+        /// `SHOW_ADDITIONAL_CONTENT`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalContent")]
+        public virtual BuiltInSimpleActionAdditionalContent AdditionalContent { get; set; }
+
+        /// <summary>
         /// The attribute that needs to be updated. Present when the type is `EDIT_ITEM_ATTRIBUTE`. This field contains
         /// a code for attribute, represented in snake_case. You can find a list of product's attributes, with their
         /// codes [here](https://support.google.com/merchants/answer/7052112).
@@ -15699,6 +15703,21 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Long text from external source.</summary>
+    public class BuiltInSimpleActionAdditionalContent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Long text organized into paragraphs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("paragraphs")]
+        public virtual System.Collections.Generic.IList<string> Paragraphs { get; set; }
+
+        /// <summary>Title of the additional content;</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22958,10 +22977,7 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// main text and the tooltip text when the style is not used. * `tooltip-style-question` - the tooltip shows
         /// helpful information, can use the '?' as an icon. * `tooltip-style-info` - the tooltip adds additional
         /// information fitting to the context, can use the 'i' as an icon. * `content-moderation` - marks the paragraph
-        /// that explains how the issue was identified. * `overlay` - wrapper for the `popup` dialog. It should be set
-        /// to hidden by default. When the dialog is opened, the overlay should switch to be visible and cover the rest
-        /// of the screen to highlight the dialog. * `popup` - dialog for showing a long block of content *
-        /// `popup-close` - a button to close the `popup` dialog * `new-element` - Present for new elements added to the
+        /// that explains how the issue was identified. * `new-element` - Present for new elements added to the
         /// pre-rendered content in the future. To make sure that a new content element does not break your style, you
         /// can hide everything with this class.
         /// </summary>

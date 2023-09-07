@@ -743,9 +743,8 @@ namespace Google.Apis.CloudNaturalLanguage.v2.Data
         public virtual System.Collections.Generic.IList<EntityMention> Mentions { get; set; }
 
         /// <summary>
-        /// Metadata associated with the entity. For most entity types, the metadata is a Wikipedia URL
-        /// (`wikipedia_url`) and Knowledge Graph MID (`mid`), if they are available. For the metadata associated with
-        /// other entity types, see the Type table below.
+        /// Metadata associated with the entity. For the metadata associated with other entity types, see the Type table
+        /// below.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }

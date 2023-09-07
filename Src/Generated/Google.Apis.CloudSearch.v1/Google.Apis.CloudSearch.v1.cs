@@ -9817,8 +9817,7 @@ namespace Google.Apis.CloudSearch.v1.Data
         public virtual System.Collections.Generic.IList<MatchRange> MatchRanges { get; set; }
 
         /// <summary>
-        /// The snippet of the document. The snippet of the document. May contain escaped HTML character that should be
-        /// unescaped prior to rendering.
+        /// The snippet of the document. May contain escaped HTML character that should be unescaped prior to rendering.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
         public virtual string SnippetValue { get; set; }

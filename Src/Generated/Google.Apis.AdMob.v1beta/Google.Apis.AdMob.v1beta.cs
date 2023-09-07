@@ -498,7 +498,8 @@ namespace Google.Apis.AdMob.v1beta
 
             /// <summary>
             /// Batch create the ad unit mappings under the specific AdMob account. The maximum allowed batch size is
-            /// 100.
+            /// 100. This method has limited access. If you see a 403 permission denied error, please reach out to your
+            /// account manager for access.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
@@ -513,7 +514,8 @@ namespace Google.Apis.AdMob.v1beta
 
             /// <summary>
             /// Batch create the ad unit mappings under the specific AdMob account. The maximum allowed batch size is
-            /// 100.
+            /// 100. This method has limited access. If you see a 403 permission denied error, please reach out to your
+            /// account manager for access.
             /// </summary>
             public class BatchCreateRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1beta.Data.BatchCreateAdUnitMappingsResponse>
             {
@@ -599,7 +601,11 @@ namespace Google.Apis.AdMob.v1beta
                     this.service = service;
                 }
 
-                /// <summary>Create an ad unit mapping under the specific AdMob account and ad unit.</summary>
+                /// <summary>
+                /// Create an ad unit mapping under the specific AdMob account and ad unit. This method has limited
+                /// access. If you see a 403 permission denied error, please reach out to your account manager for
+                /// access.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The parent which owns the ad unit mapping. Format:
@@ -610,7 +616,11 @@ namespace Google.Apis.AdMob.v1beta
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Create an ad unit mapping under the specific AdMob account and ad unit.</summary>
+                /// <summary>
+                /// Create an ad unit mapping under the specific AdMob account and ad unit. This method has limited
+                /// access. If you see a 403 permission denied error, please reach out to your account manager for
+                /// access.
+                /// </summary>
                 public class CreateRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1beta.Data.AdUnitMapping>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -658,7 +668,10 @@ namespace Google.Apis.AdMob.v1beta
                     }
                 }
 
-                /// <summary>List ad unit mappings under the specified AdMob account and ad unit.</summary>
+                /// <summary>
+                /// List ad unit mappings under the specified AdMob account and ad unit. This method has limited access.
+                /// If you see a 403 permission denied error, please reach out to your account manager for access.
+                /// </summary>
                 /// <param name="parent">
                 /// Required. The parent which owns this collection of ad unit mappings. Format:
                 /// accounts/{publisher_id}/adUnits/{ad_unit_id}
@@ -668,7 +681,10 @@ namespace Google.Apis.AdMob.v1beta
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>List ad unit mappings under the specified AdMob account and ad unit.</summary>
+                /// <summary>
+                /// List ad unit mappings under the specified AdMob account and ad unit. This method has limited access.
+                /// If you see a 403 permission denied error, please reach out to your account manager for access.
+                /// </summary>
                 public class ListRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1beta.Data.ListAdUnitMappingsResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -760,7 +776,10 @@ namespace Google.Apis.AdMob.v1beta
                 }
             }
 
-            /// <summary>Creates an ad unit under the specified AdMob account.</summary>
+            /// <summary>
+            /// Creates an ad unit under the specified AdMob account. This method has limited access. If you see a 403
+            /// permission denied error, please reach out to your account manager for access.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. Resource name of the account to create the specified ad unit for. Example:
@@ -771,7 +790,10 @@ namespace Google.Apis.AdMob.v1beta
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Creates an ad unit under the specified AdMob account.</summary>
+            /// <summary>
+            /// Creates an ad unit under the specified AdMob account. This method has limited access. If you see a 403
+            /// permission denied error, please reach out to your account manager for access.
+            /// </summary>
             public class CreateRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1beta.Data.AdUnit>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -916,7 +938,10 @@ namespace Google.Apis.AdMob.v1beta
                 this.service = service;
             }
 
-            /// <summary>Creates an app under the specified AdMob account.</summary>
+            /// <summary>
+            /// Creates an app under the specified AdMob account. This method has limited access. If you see a 403
+            /// permission denied error, please reach out to your account manager for access.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. Resource name of the account for which the app is being created. Example:
@@ -927,7 +952,10 @@ namespace Google.Apis.AdMob.v1beta
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Creates an app under the specified AdMob account.</summary>
+            /// <summary>
+            /// Creates an app under the specified AdMob account. This method has limited access. If you see a 403
+            /// permission denied error, please reach out to your account manager for access.
+            /// </summary>
             public class CreateRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1beta.Data.App>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -1166,7 +1194,9 @@ namespace Google.Apis.AdMob.v1beta
                 }
 
                 /// <summary>
-                /// Create an A/B testing experiment for a specified AdMob account and a mediation group.
+                /// Create an A/B testing experiment for a specified AdMob account and a mediation group. This method
+                /// has limited access. If you see a 403 permission denied error, please reach out to your account
+                /// manager for access.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -1179,7 +1209,9 @@ namespace Google.Apis.AdMob.v1beta
                 }
 
                 /// <summary>
-                /// Create an A/B testing experiment for a specified AdMob account and a mediation group.
+                /// Create an A/B testing experiment for a specified AdMob account and a mediation group. This method
+                /// has limited access. If you see a 403 permission denied error, please reach out to your account
+                /// manager for access.
                 /// </summary>
                 public class CreateRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1beta.Data.MediationAbExperiment>
                 {
@@ -1228,7 +1260,10 @@ namespace Google.Apis.AdMob.v1beta
                     }
                 }
 
-                /// <summary>Stop the mediation A/B experiment and choose a variant.</summary>
+                /// <summary>
+                /// Stop the mediation A/B experiment and choose a variant. This method has limited access. If you see a
+                /// 403 permission denied error, please reach out to your account manager for access.
+                /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// Name of the mediation group, the experiment for which to choose a variant for. Example:
@@ -1239,7 +1274,10 @@ namespace Google.Apis.AdMob.v1beta
                     return new StopRequest(service, body, name);
                 }
 
-                /// <summary>Stop the mediation A/B experiment and choose a variant.</summary>
+                /// <summary>
+                /// Stop the mediation A/B experiment and choose a variant. This method has limited access. If you see a
+                /// 403 permission denied error, please reach out to your account manager for access.
+                /// </summary>
                 public class StopRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1beta.Data.MediationAbExperiment>
                 {
                     /// <summary>Constructs a new Stop request.</summary>
@@ -1288,7 +1326,10 @@ namespace Google.Apis.AdMob.v1beta
                 }
             }
 
-            /// <summary>Create a mediation group under the specific AdMob account.</summary>
+            /// <summary>
+            /// Create a mediation group under the specific AdMob account. This method has limited access. If you see a
+            /// 403 permission denied error, please reach out to your account manager for access.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
             /// Required. The parent which owns the mediation group. Format: accounts/{publisher_id}
@@ -1298,7 +1339,10 @@ namespace Google.Apis.AdMob.v1beta
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Create a mediation group under the specific AdMob account.</summary>
+            /// <summary>
+            /// Create a mediation group under the specific AdMob account. This method has limited access. If you see a
+            /// 403 permission denied error, please reach out to your account manager for access.
+            /// </summary>
             public class CreateRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1beta.Data.MediationGroup>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -1345,7 +1389,10 @@ namespace Google.Apis.AdMob.v1beta
                 }
             }
 
-            /// <summary>List mediation groups under the specified AdMob account.</summary>
+            /// <summary>
+            /// List mediation groups under the specified AdMob account. This method has limited access. If you see a
+            /// 403 permission denied error, please reach out to your account manager for access.
+            /// </summary>
             /// <param name="parent">
             /// Required. Resource name of the account to list mediation groups for. Example:
             /// accounts/pub-9876543210987654
@@ -1355,7 +1402,10 @@ namespace Google.Apis.AdMob.v1beta
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>List mediation groups under the specified AdMob account.</summary>
+            /// <summary>
+            /// List mediation groups under the specified AdMob account. This method has limited access. If you see a
+            /// 403 permission denied error, please reach out to your account manager for access.
+            /// </summary>
             public class ListRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1beta.Data.ListMediationGroupsResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -1449,7 +1499,10 @@ namespace Google.Apis.AdMob.v1beta
                 }
             }
 
-            /// <summary>Update the specified mediation group under the specified AdMob account.</summary>
+            /// <summary>
+            /// Update the specified mediation group under the specified AdMob account. This method has limited access.
+            /// If you see a 403 permission denied error, please reach out to your account manager for access.
+            /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Resource name for this mediation group. Format is:
@@ -1461,7 +1514,10 @@ namespace Google.Apis.AdMob.v1beta
                 return new PatchRequest(service, body, name);
             }
 
-            /// <summary>Update the specified mediation group under the specified AdMob account.</summary>
+            /// <summary>
+            /// Update the specified mediation group under the specified AdMob account. This method has limited access.
+            /// If you see a 403 permission denied error, please reach out to your account manager for access.
+            /// </summary>
             public class PatchRequest : AdMobBaseServiceRequest<Google.Apis.AdMob.v1beta.Data.MediationGroup>
             {
                 /// <summary>Constructs a new Patch request.</summary>

@@ -819,7 +819,7 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
             }
 
             /// <summary>
-            /// Returns whether the given Attestation for the given image URI was signed by the given Attestor
+            /// Returns whether the given `Attestation` for the given image URI was signed by the given `Attestor`
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="attestor">
@@ -831,7 +831,7 @@ namespace Google.Apis.BinaryAuthorization.v1beta1
             }
 
             /// <summary>
-            /// Returns whether the given Attestation for the given image URI was signed by the given Attestor
+            /// Returns whether the given `Attestation` for the given image URI was signed by the given `Attestor`
             /// </summary>
             public class ValidateAttestationOccurrenceRequest : BinaryAuthorizationBaseServiceRequest<Google.Apis.BinaryAuthorization.v1beta1.Data.ValidateAttestationOccurrenceResponse>
             {
@@ -1963,8 +1963,8 @@ namespace Google.Apis.BinaryAuthorization.v1beta1.Data
     public class ValidateAttestationOccurrenceRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. An AttestationOccurrence to be checked that it can be verified by the Attestor. It does not have
-        /// to be an existing entity in Container Analysis. It must otherwise be a valid AttestationOccurrence.
+        /// Required. An AttestationOccurrence to be checked that it can be verified by the `Attestor`. It does not have
+        /// to be an existing entity in Container Analysis. It must otherwise be a valid `AttestationOccurrence`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attestation")]
         public virtual AttestationOccurrence Attestation { get; set; }
