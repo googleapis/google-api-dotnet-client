@@ -1537,6 +1537,13 @@ namespace Google.Apis.Storagetransfer.v1.Data
         public virtual string BucketName { get; set; }
 
         /// <summary>
+        /// Optional. Cloudfront domain name pointing to this bucket (as origin), to use when fetching. Format:
+        /// `https://{id}.cloudfront.net` or any valid custom domain `https://...`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cloudfrontDomain")]
+        public virtual string CloudfrontDomain { get; set; }
+
+        /// <summary>
         /// Optional. The Resource name of a secret in Secret Manager. The Azure SAS token must be stored in Secret
         /// Manager in JSON format: { "sas_token" : "SAS_TOKEN" } GoogleServiceAccount must be granted
         /// `roles/secretmanager.secretAccessor` for the resource. See [Configure access to a source: Microsoft Azure

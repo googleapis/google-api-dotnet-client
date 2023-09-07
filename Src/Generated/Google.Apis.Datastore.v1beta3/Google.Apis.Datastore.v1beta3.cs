@@ -2204,7 +2204,8 @@ namespace Google.Apis.Datastore.v1beta3.Data
     public class PropertyReference : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The name of the property. If name includes "."s, it may be interpreted as a property name path.
+        /// A reference to a property. Requires: * MUST be a dot-delimited (`.`) string of segments, where each segment
+        /// conforms to entity property name limitations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

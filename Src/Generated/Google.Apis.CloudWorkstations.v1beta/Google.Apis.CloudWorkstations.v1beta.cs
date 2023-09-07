@@ -2717,6 +2717,24 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
     }
 
     /// <summary>
+    /// An ephemeral directory which won't persist across workstation sessions. It is freshly created on every
+    /// workstation start operation.
+    /// </summary>
+    public class EphemeralDirectory : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>An EphemeralDirectory backed by a Compute Engine persistent disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gcePd")]
+        public virtual GcePersistentDisk GcePd { get; set; }
+
+        /// <summary>Required. Location of this directory in the running workstation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mountPath")]
+        public virtual string MountPath { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
     /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
     /// (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
@@ -2855,6 +2873,14 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 
+        /// <summary>
+        /// Optional. Scopes to grant to the service_account. Various scopes are automatically added based on feature
+        /// usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs`
+        /// on the service account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountScopes")]
+        public virtual System.Collections.Generic.IList<string> ServiceAccountScopes { get; set; }
+
         /// <summary>Optional. A set of Compute Engine Shielded instance options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceConfig")]
         public virtual GceShieldedInstanceConfig ShieldedInstanceConfig { get; set; }
@@ -2867,6 +2893,40 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An EphemeralDirectory is backed by a Compute Engine persistent disk.</summary>
+    public class GcePersistentDisk : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Type of the disk to use. Defaults to `"pd-standard"`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
+        public virtual string DiskType { get; set; }
+
+        /// <summary>
+        /// Optional. Whether the disk is read only. If true, the disk may be shared by multiple VMs and source_snapshot
+        /// must be set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("readOnly")]
+        public virtual System.Nullable<bool> ReadOnly__ { get; set; }
+
+        /// <summary>
+        /// Optional. Name of the disk image to use as the source for the disk. Must be empty if source_snapshot is set.
+        /// Updating source_image will update content in the ephemeral directory after the workstation is restarted.
+        /// This field is mutable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceImage")]
+        public virtual string SourceImage { get; set; }
+
+        /// <summary>
+        /// Optional. Name of the snapshot to use as the source for the disk. Must be empty if source_image is set.
+        /// Updating source_snapshot will update content in the ephemeral directory after the workstation is restarted.
+        /// This field is mutable.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceSnapshot")]
+        public virtual string SourceSnapshot { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3704,6 +3764,46 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>
+        /// Output only. Time when this workstation was most recently successfully started, regardless of the
+        /// workstation's initial state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary>Output only. Current state of the workstation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -4072,6 +4172,10 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("encryptionKey")]
         public virtual CustomerEncryptionKey EncryptionKey { get; set; }
 
+        /// <summary>Optional. Ephemeral directories which won't persist across workstation sessions.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ephemeralDirectories")]
+        public virtual System.Collections.Generic.IList<EphemeralDirectory> EphemeralDirectories { get; set; }
+
         /// <summary>
         /// Optional. Checksum computed by the server. May be sent on update and delete requests to make sure that the
         /// client has an up-to-date value before proceeding.
@@ -4121,6 +4225,15 @@ namespace Google.Apis.CloudWorkstations.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. Specifies the zones used to replicate the VM and disk resources within the region. If
+        /// set, exactly two zones within the workstation cluster's region must be specified—for example,
+        /// `['us-central1-a', 'us-central1-f']`. If this field is empty, two default zones within the region are used.
+        /// Immutable after the workstation configuration is created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicaZones")]
+        public virtual System.Collections.Generic.IList<string> ReplicaZones { get; set; }
 
         /// <summary>
         /// Optional. Number of seconds that a workstation can run until it is automatically shut down. We recommend

@@ -413,27 +413,43 @@ namespace Google.Apis.CloudSupport.v2
             }
 
             /// <summary>
-            /// Retrieve all attachments associated with a support case. Here is an example of calling this endpoint
-            /// using cURL:
+            /// List all the attachments associated with a support case. EXAMPLES: cURL:
             /// ```
-            /// shell case="projects/some-project/cases/23598314" curl \ --header "Authorization: Bearer
-            /// $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case/attachments"
+            /// shell
+            /// case="projects/some-project/cases/23598314" curl \ --header "Authorization: Bearer $(gcloud auth
+            /// print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case/attachments"
+            /// ```
+            /// Python:
+            /// ```
+            /// python
+            /// import googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
+            /// serviceName="cloudsupport", version=api_version,
+            /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", )
+            /// request = ( supportApiService.cases() .attachments()
+            /// .list(parent="projects/some-project/cases/43595344") ) print(request.execute())
             /// ```
             /// </summary>
-            /// <param name="parent">
-            /// Required. The resource name of Case object for which attachments should be listed.
-            /// </param>
+            /// <param name="parent">Required. The name of the case for which attachments should be listed.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
             }
 
             /// <summary>
-            /// Retrieve all attachments associated with a support case. Here is an example of calling this endpoint
-            /// using cURL:
+            /// List all the attachments associated with a support case. EXAMPLES: cURL:
             /// ```
-            /// shell case="projects/some-project/cases/23598314" curl \ --header "Authorization: Bearer
-            /// $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case/attachments"
+            /// shell
+            /// case="projects/some-project/cases/23598314" curl \ --header "Authorization: Bearer $(gcloud auth
+            /// print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case/attachments"
+            /// ```
+            /// Python:
+            /// ```
+            /// python
+            /// import googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
+            /// serviceName="cloudsupport", version=api_version,
+            /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", )
+            /// request = ( supportApiService.cases() .attachments()
+            /// .list(parent="projects/some-project/cases/43595344") ) print(request.execute())
             /// ```
             /// </summary>
             public class ListRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2.Data.ListAttachmentsResponse>
@@ -445,9 +461,7 @@ namespace Google.Apis.CloudSupport.v2
                     InitParameters();
                 }
 
-                /// <summary>
-                /// Required. The resource name of Case object for which attachments should be listed.
-                /// </summary>
+                /// <summary>Required. The name of the case for which attachments should be listed.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -523,30 +537,44 @@ namespace Google.Apis.CloudSupport.v2
             }
 
             /// <summary>
-            /// Add a new comment to the specified Case. The comment object must have the following fields set: body.
-            /// Here is an example of calling this endpoint using cURL:
+            /// Add a new comment to a case. The comment must have the following fields set: `body`. EXAMPLES: cURL:
             /// ```
-            /// shell
-            /// case="projects/some-project/cases/43591344" curl \ --request POST \ --header "Authorization: Bearer
-            /// $(gcloud auth print-access-token)" \ --header 'Content-Type: application/json' \ --data '{ "body": "This
-            /// is a test comment." }' \ "https://cloudsupport.googleapis.com/v2/$case/comments"
+            /// shell case="projects/some-project/cases/43591344" curl \ --request POST \ --header "Authorization:
+            /// Bearer $(gcloud auth print-access-token)" \ --header 'Content-Type: application/json' \ --data '{
+            /// "body": "This is a test comment." }' \ "https://cloudsupport.googleapis.com/v2/$case/comments"
+            /// ```
+            /// Python:
+            /// ```
+            /// python import googleapiclient.discovery api_version = "v2" supportApiService =
+            /// googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version,
+            /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", )
+            /// request = ( supportApiService.cases() .comments() .create(
+            /// parent="projects/some-project/cases/43595344", body={"body": "This is a test comment."}, ) )
+            /// print(request.execute())
             /// ```
             /// </summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. The resource name of Case to which this comment should be added.</param>
+            /// <param name="parent">Required. The name of the case to which the comment should be added.</param>
             public virtual CreateRequest Create(Google.Apis.CloudSupport.v2.Data.Comment body, string parent)
             {
                 return new CreateRequest(service, body, parent);
             }
 
             /// <summary>
-            /// Add a new comment to the specified Case. The comment object must have the following fields set: body.
-            /// Here is an example of calling this endpoint using cURL:
+            /// Add a new comment to a case. The comment must have the following fields set: `body`. EXAMPLES: cURL:
             /// ```
-            /// shell
-            /// case="projects/some-project/cases/43591344" curl \ --request POST \ --header "Authorization: Bearer
-            /// $(gcloud auth print-access-token)" \ --header 'Content-Type: application/json' \ --data '{ "body": "This
-            /// is a test comment." }' \ "https://cloudsupport.googleapis.com/v2/$case/comments"
+            /// shell case="projects/some-project/cases/43591344" curl \ --request POST \ --header "Authorization:
+            /// Bearer $(gcloud auth print-access-token)" \ --header 'Content-Type: application/json' \ --data '{
+            /// "body": "This is a test comment." }' \ "https://cloudsupport.googleapis.com/v2/$case/comments"
+            /// ```
+            /// Python:
+            /// ```
+            /// python import googleapiclient.discovery api_version = "v2" supportApiService =
+            /// googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version,
+            /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", )
+            /// request = ( supportApiService.cases() .comments() .create(
+            /// parent="projects/some-project/cases/43595344", body={"body": "This is a test comment."}, ) )
+            /// print(request.execute())
             /// ```
             /// </summary>
             public class CreateRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2.Data.Comment>
@@ -559,7 +587,7 @@ namespace Google.Apis.CloudSupport.v2
                     InitParameters();
                 }
 
-                /// <summary>Required. The resource name of Case to which this comment should be added.</summary>
+                /// <summary>Required. The name of the case to which the comment should be added.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
@@ -594,27 +622,43 @@ namespace Google.Apis.CloudSupport.v2
             }
 
             /// <summary>
-            /// Retrieve all comments associated with the Case object. Here is an example of calling this endpoint using
-            /// cURL:
+            /// List all the comments associated with a case. EXAMPLES: cURL:
             /// ```
-            /// shell case="projects/cloud-support-qa-premium/cases/43595344" curl \ --header "Authorization:
-            /// Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case/comments"
+            /// shell
+            /// case="projects/some-project/cases/43595344" curl \ --header "Authorization: Bearer $(gcloud auth
+            /// print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case/comments"
+            /// ```
+            /// Python:
+            /// ```
+            /// python
+            /// import googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
+            /// serviceName="cloudsupport", version=api_version,
+            /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", )
+            /// request = ( supportApiService.cases() .comments() .list(parent="projects/some-project/cases/43595344") )
+            /// print(request.execute())
             /// ```
             /// </summary>
-            /// <param name="parent">
-            /// Required. The resource name of Case object for which comments should be listed.
-            /// </param>
+            /// <param name="parent">Required. The name of the case for which to list comments.</param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
             }
 
             /// <summary>
-            /// Retrieve all comments associated with the Case object. Here is an example of calling this endpoint using
-            /// cURL:
+            /// List all the comments associated with a case. EXAMPLES: cURL:
             /// ```
-            /// shell case="projects/cloud-support-qa-premium/cases/43595344" curl \ --header "Authorization:
-            /// Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case/comments"
+            /// shell
+            /// case="projects/some-project/cases/43595344" curl \ --header "Authorization: Bearer $(gcloud auth
+            /// print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$case/comments"
+            /// ```
+            /// Python:
+            /// ```
+            /// python
+            /// import googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
+            /// serviceName="cloudsupport", version=api_version,
+            /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", )
+            /// request = ( supportApiService.cases() .comments() .list(parent="projects/some-project/cases/43595344") )
+            /// print(request.execute())
             /// ```
             /// </summary>
             public class ListRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2.Data.ListCommentsResponse>
@@ -626,16 +670,16 @@ namespace Google.Apis.CloudSupport.v2
                     InitParameters();
                 }
 
-                /// <summary>Required. The resource name of Case object for which comments should be listed.</summary>
+                /// <summary>Required. The name of the case for which to list comments.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>The maximum number of comments fetched with each request. Defaults to 10.</summary>
+                /// <summary>The maximum number of comments to fetch. Defaults to 10.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// A token identifying the page of results to return. If unspecified, the first page is retrieved.
+                /// A token identifying the page of results to return. If unspecified, the first page is returned.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -1295,29 +1339,45 @@ namespace Google.Apis.CloudSupport.v2
         }
 
         /// <summary>
-        /// Download a file attachment on a case. Note: HTTP requests must append "?alt=media" to the URL. Here is an
-        /// example of calling this endpoint using cURL:
+        /// Download a file attached to a case. Note: HTTP requests must append "?alt=media" to the URL. EXAMPLES: cURL:
         /// ```
-        /// shell
-        /// name="projects/some-project/cases/43594844/attachments/0674M00000WijAnZAJ" curl \ --header "Authorization:
-        /// Bearer $(gcloud auth print-access-token)" \
+        /// shell name="projects/some-project/cases/43594844/attachments/0674M00000WijAnZAJ" curl \ --header
+        /// "Authorization: Bearer $(gcloud auth print-access-token)" \
         /// "https://cloudsupport.googleapis.com/v2/$name:download?alt=media"
         /// ```
+        /// Python:
+        /// ```
+        /// python import
+        /// googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
+        /// serviceName="cloudsupport", version=api_version,
+        /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
+        /// = supportApiService.media().download(
+        /// name="projects/some-project/cases/43595344/attachments/0684M00000Pw6pHQAR" ) request.uri =
+        /// request.uri.split("?")[0] + "?alt=media" print(request.execute())
+        /// ```
         /// </summary>
-        /// <param name="name">The resource name of the attachment to be downloaded.</param>
+        /// <param name="name">The name of the file attachment to download.</param>
         public virtual DownloadRequest Download(string name)
         {
             return new DownloadRequest(service, name);
         }
 
         /// <summary>
-        /// Download a file attachment on a case. Note: HTTP requests must append "?alt=media" to the URL. Here is an
-        /// example of calling this endpoint using cURL:
+        /// Download a file attached to a case. Note: HTTP requests must append "?alt=media" to the URL. EXAMPLES: cURL:
         /// ```
-        /// shell
-        /// name="projects/some-project/cases/43594844/attachments/0674M00000WijAnZAJ" curl \ --header "Authorization:
-        /// Bearer $(gcloud auth print-access-token)" \
+        /// shell name="projects/some-project/cases/43594844/attachments/0674M00000WijAnZAJ" curl \ --header
+        /// "Authorization: Bearer $(gcloud auth print-access-token)" \
         /// "https://cloudsupport.googleapis.com/v2/$name:download?alt=media"
+        /// ```
+        /// Python:
+        /// ```
+        /// python import
+        /// googleapiclient.discovery api_version = "v2" supportApiService = googleapiclient.discovery.build(
+        /// serviceName="cloudsupport", version=api_version,
+        /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request
+        /// = supportApiService.media().download(
+        /// name="projects/some-project/cases/43595344/attachments/0684M00000Pw6pHQAR" ) request.uri =
+        /// request.uri.split("?")[0] + "?alt=media" print(request.execute())
         /// ```
         /// </summary>
         public class DownloadRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2.Data.Media>
@@ -1330,7 +1390,7 @@ namespace Google.Apis.CloudSupport.v2
                 InitParameters();
             }
 
-            /// <summary>The resource name of the attachment to be downloaded.</summary>
+            /// <summary>The name of the file attachment to download.</summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
 
@@ -1444,18 +1504,28 @@ namespace Google.Apis.CloudSupport.v2
         }
 
         /// <summary>
-        /// Create a file attachment on a case or Cloud resource. The attachment object must have the following fields
-        /// set: filename. Here is an example of calling this endpoint using cURL:
+        /// Create a file attachment on a case or Cloud resource. The attachment must have the following fields set:
+        /// `filename`. EXAMPLES: cURL:
         /// ```
-        /// shell echo "This text is in a file
-        /// I'm uploading using CSAPI." \ &amp;gt; "./example_file.txt" case="projects/some-project/cases/43594844" curl
-        /// \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ --data-binary @"./example_file.txt" \
+        /// shell echo "This text is in a file I'm uploading using CSAPI." \ &amp;gt;
+        /// "./example_file.txt" case="projects/some-project/cases/43594844" curl \ --header "Authorization: Bearer
+        /// $(gcloud auth print-access-token)" \ --data-binary @"./example_file.txt" \
         /// "https://cloudsupport.googleapis.com/upload/v2beta/$case/attachments?attachment.filename=uploaded_via_curl.txt"
+        /// ```
+        /// Python:
+        /// ```
+        /// python import googleapiclient.discovery api_version = "v2" supportApiService =
+        /// googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version,
+        /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", )
+        /// file_path = "./example_file.txt" with open(file_path, "w") as file: file.write( "This text is inside a file
+        /// I'm going to upload using the Cloud Support API.", ) request = supportApiService.media().upload(
+        /// parent="projects/some-project/cases/43595344", media_body=file_path ) request.uri =
+        /// request.uri.split("?")[0] + "?attachment.filename=uploaded_via_python.txt" print(request.execute())
         /// ```
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
-        /// Required. The resource name of the case (or case parent) to which the attachment should be attached.
+        /// Required. The name of the case or Cloud resource to which the attachment should be attached.
         /// </param>
         public virtual UploadRequest Upload(Google.Apis.CloudSupport.v2.Data.CreateAttachmentRequest body, string parent)
         {
@@ -1463,13 +1533,23 @@ namespace Google.Apis.CloudSupport.v2
         }
 
         /// <summary>
-        /// Create a file attachment on a case or Cloud resource. The attachment object must have the following fields
-        /// set: filename. Here is an example of calling this endpoint using cURL:
+        /// Create a file attachment on a case or Cloud resource. The attachment must have the following fields set:
+        /// `filename`. EXAMPLES: cURL:
         /// ```
-        /// shell echo "This text is in a file
-        /// I'm uploading using CSAPI." \ &amp;gt; "./example_file.txt" case="projects/some-project/cases/43594844" curl
-        /// \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ --data-binary @"./example_file.txt" \
+        /// shell echo "This text is in a file I'm uploading using CSAPI." \ &amp;gt;
+        /// "./example_file.txt" case="projects/some-project/cases/43594844" curl \ --header "Authorization: Bearer
+        /// $(gcloud auth print-access-token)" \ --data-binary @"./example_file.txt" \
         /// "https://cloudsupport.googleapis.com/upload/v2beta/$case/attachments?attachment.filename=uploaded_via_curl.txt"
+        /// ```
+        /// Python:
+        /// ```
+        /// python import googleapiclient.discovery api_version = "v2" supportApiService =
+        /// googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version,
+        /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", )
+        /// file_path = "./example_file.txt" with open(file_path, "w") as file: file.write( "This text is inside a file
+        /// I'm going to upload using the Cloud Support API.", ) request = supportApiService.media().upload(
+        /// parent="projects/some-project/cases/43595344", media_body=file_path ) request.uri =
+        /// request.uri.split("?")[0] + "?attachment.filename=uploaded_via_python.txt" print(request.execute())
         /// ```
         /// </summary>
         public class UploadRequest : CloudSupportBaseServiceRequest<Google.Apis.CloudSupport.v2.Data.Attachment>
@@ -1483,7 +1563,7 @@ namespace Google.Apis.CloudSupport.v2
             }
 
             /// <summary>
-            /// Required. The resource name of the case (or case parent) to which the attachment should be attached.
+            /// Required. The name of the case or Cloud resource to which the attachment should be attached.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
@@ -1519,13 +1599,23 @@ namespace Google.Apis.CloudSupport.v2
         }
 
         /// <summary>
-        /// Create a file attachment on a case or Cloud resource. The attachment object must have the following fields
-        /// set: filename. Here is an example of calling this endpoint using cURL:
+        /// Create a file attachment on a case or Cloud resource. The attachment must have the following fields set:
+        /// `filename`. EXAMPLES: cURL:
         /// ```
-        /// shell echo "This text is in a file
-        /// I'm uploading using CSAPI." \ &amp;gt; "./example_file.txt" case="projects/some-project/cases/43594844" curl
-        /// \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ --data-binary @"./example_file.txt" \
+        /// shell echo "This text is in a file I'm uploading using CSAPI." \ &amp;gt;
+        /// "./example_file.txt" case="projects/some-project/cases/43594844" curl \ --header "Authorization: Bearer
+        /// $(gcloud auth print-access-token)" \ --data-binary @"./example_file.txt" \
         /// "https://cloudsupport.googleapis.com/upload/v2beta/$case/attachments?attachment.filename=uploaded_via_curl.txt"
+        /// ```
+        /// Python:
+        /// ```
+        /// python import googleapiclient.discovery api_version = "v2" supportApiService =
+        /// googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version,
+        /// discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", )
+        /// file_path = "./example_file.txt" with open(file_path, "w") as file: file.write( "This text is inside a file
+        /// I'm going to upload using the Cloud Support API.", ) request = supportApiService.media().upload(
+        /// parent="projects/some-project/cases/43595344", media_body=file_path ) request.uri =
+        /// request.uri.split("?")[0] + "?attachment.filename=uploaded_via_python.txt" print(request.execute())
         /// ```
         /// </summary>
         /// <remarks>
@@ -1547,7 +1637,7 @@ namespace Google.Apis.CloudSupport.v2
         /// </remarks>
         /// <param name="body">The body of the request.</param>
         /// <param name="parent">
-        /// Required. The resource name of the case (or case parent) to which the attachment should be attached.
+        /// Required. The name of the case or Cloud resource to which the attachment should be attached.
         /// </param>
         /// <param name="stream">The stream to upload. See remarks for further information.</param>
         /// <param name="contentType">The content type of the stream to upload.</param>
@@ -1638,7 +1728,7 @@ namespace Google.Apis.CloudSupport.v2
             public virtual string UploadProtocol { get; set; }
 
             /// <summary>
-            /// Required. The resource name of the case (or case parent) to which the attachment should be attached.
+            /// Required. The name of the case or Cloud resource to which the attachment should be attached.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Parent { get; private set; }
@@ -2263,12 +2353,12 @@ namespace Google.Apis.CloudSupport.v2.Data
     /// <summary>The response message for the ListAttachments endpoint.</summary>
     public class ListAttachmentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of attachments associated with the given case.</summary>
+        /// <summary>The list of attachments associated with a case.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("attachments")]
         public virtual System.Collections.Generic.IList<Attachment> Attachments { get; set; }
 
         /// <summary>
-        /// A token to retrieve the next page of results. This should be set in the `page_token` field of subsequent
+        /// A token to retrieve the next page of results. Set this in the `page_token` field of subsequent
         /// `cases.attachments.list` requests. If unspecified, there are no more results to retrieve.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
@@ -2301,13 +2391,13 @@ namespace Google.Apis.CloudSupport.v2.Data
     /// <summary>The response message for the ListComments endpoint.</summary>
     public class ListCommentsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The list of Comments associated with the given Case.</summary>
+        /// <summary>List of the comments associated with the case.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("comments")]
         public virtual System.Collections.Generic.IList<Comment> Comments { get; set; }
 
         /// <summary>
-        /// A token to retrieve the next page of results. This should be set in the `page_token` field of subsequent
-        /// `ListCommentsRequest` message that is issued. If unspecified, there are no more results to retrieve.
+        /// A token to retrieve the next page of results. Set this in the `page_token` field of subsequent
+        /// `cases.comments.list` requests. If unspecified, there are no more results to retrieve.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }

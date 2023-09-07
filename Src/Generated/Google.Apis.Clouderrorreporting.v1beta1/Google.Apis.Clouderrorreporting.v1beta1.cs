@@ -1190,8 +1190,11 @@ namespace Google.Apis.Clouderrorreporting.v1beta1.Data
     public class ErrorGroup : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Group IDs are unique for a given project. If the same kind of error occurs in different service contexts, it
-        /// will receive the same group ID.
+        /// An opaque identifier of the group. This field is assigned by the Error Reporting system and always
+        /// populated. In the group resource name, the `group_id` is a unique identifier for a particular error group.
+        /// The identifier is derived from key parts of the error-log content and is treated as Service Data. For
+        /// information about how Service Data is handled, see [Google Cloud Privacy
+        /// Notice](https://cloud.google.com/terms/cloud-privacy-notice).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groupId")]
         public virtual string GroupId { get; set; }

@@ -1,0 +1,16 @@
+{
+  "Google.Apis.CloudBuild.v2.CloudBuildBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudBuild.v2.CloudBuildBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.CloudBuild.v2.ProjectsResource+LocationsResource+ConnectionsResource+RepositoriesResource+FetchGitRefsRequest.RefTypeEnum": [
+    "REF_TYPE_UNSPECIFIED",
+    "TAG",
+    "BRANCH"
+  ]
+}

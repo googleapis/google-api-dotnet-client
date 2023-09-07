@@ -12022,9 +12022,9 @@ namespace Google.Apis.YouTube.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("pauseAdsUntil")]
         public virtual string PauseAdsUntil { get; set; }
 
-        /// <summary>Interval frequency that api uses to insert cuepoints automatically.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("repeatInterval")]
-        public virtual object RepeatInterval { get; set; }
+        /// <summary>Interval frequency in seconds that api uses to insert cuepoints automatically.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repeatIntervalSecs")]
+        public virtual System.Nullable<int> RepeatIntervalSecs { get; set; }
 
         /// <summary>The strategy to use when scheduling cuepoints.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduleStrategy")]

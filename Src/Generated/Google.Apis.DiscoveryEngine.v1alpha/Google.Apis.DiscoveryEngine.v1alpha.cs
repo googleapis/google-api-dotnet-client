@@ -7553,8 +7553,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// The unique document field paths that serve as the source of this suggestion if it was generated from
         /// completable fields. This field is only populated for the document-completable model.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("completableFieldPath")]
-        public virtual System.Collections.Generic.IList<string> CompletableFieldPath { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("completableFieldPaths")]
+        public virtual System.Collections.Generic.IList<string> CompletableFieldPaths { get; set; }
 
         /// <summary>The suggestion for the query.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestion")]
@@ -7788,6 +7788,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servingConfig")]
         public virtual string ServingConfig { get; set; }
+
+        /// <summary>A specification for configuring the summary returned in the response.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("summarySpec")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchRequestContentSearchSpecSummarySpec SummarySpec { get; set; }
 
         /// <summary>
         /// The user labels applied to a resource must meet the following requirements: * Each resource can have
@@ -10054,6 +10058,10 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
     /// <summary>Summary of the top N search result specified by the summary spec.</summary>
     public class GoogleCloudDiscoveryengineV1alphaSearchResponseSummary : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>A collection of Safety Attribute categories and their associated confidence scores.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("safetyAttributes")]
+        public virtual GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes SafetyAttributes { get; set; }
+
         /// <summary>
         /// Additional summary-skipped reasons. This provides the reason for ignored cases. If nothing is skipped, this
         /// field is not set.
@@ -10064,6 +10072,27 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>The summary content.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summaryText")]
         public virtual string SummaryText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Safety Attribute categories and their associated confidence scores.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchResponseSummarySafetyAttributes : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The display names of Safety Attribute categories associated with the generated content. Order matches the
+        /// Scores.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("categories")]
+        public virtual System.Collections.Generic.IList<string> Categories { get; set; }
+
+        /// <summary>
+        /// The confidence scores of the each category, higher value means higher confidence. Order matches the
+        /// Categories.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scores")]
+        public virtual System.Collections.Generic.IList<System.Nullable<float>> Scores { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10217,12 +10246,6 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
 
     public class GoogleCloudDiscoveryengineV1alphaTargetSiteFailureReasonQuotaFailure : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// This number is an estimation on how much total quota this project needs to successfully complete indexing.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("totalRequiredQuota")]
-        public virtual System.Nullable<long> TotalRequiredQuota { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

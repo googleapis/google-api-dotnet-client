@@ -726,8 +726,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                 }
 
                 /// <summary>
-                /// Analyzes a hypothetical move of a source resource to a target(destination) folder-based workload to
-                /// surface compliance risks.
+                /// Analyzes a hypothetical move of a source resource to a target workload to surface compliance risks.
+                /// The analysis is best effort and is not guaranteed to be exhaustive.
                 /// </summary>
                 /// <param name="target">
                 /// Required. The resource ID of the folder-based destination workload. This workload is where the
@@ -741,8 +741,8 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                 }
 
                 /// <summary>
-                /// Analyzes a hypothetical move of a source resource to a target(destination) folder-based workload to
-                /// surface compliance risks.
+                /// Analyzes a hypothetical move of a source resource to a target workload to surface compliance risks.
+                /// The analysis is best effort and is not guaranteed to be exhaustive.
                 /// </summary>
                 public class AnalyzeWorkloadMoveRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1beta1.Data.GoogleCloudAssuredworkloadsV1beta1AnalyzeWorkloadMoveResponse>
                 {
@@ -763,9 +763,9 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     public virtual string Target { get; private set; }
 
                     /// <summary>
-                    /// Optional. List of asset types to be analyzed,including and under the source resource. If empty,
+                    /// Optional. List of asset types to be analyzed, including and under the source resource. If empty,
                     /// all assets are analyzed. The complete list of asset types is available
-                    /// [here](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types)
+                    /// [here](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types).
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("assetTypes", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual Google.Apis.Util.Repeatable<string> AssetTypes { get; set; }
@@ -791,15 +791,6 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Project { get; set; }
-
-                    /// <summary>
-                    /// The source type is a project-based workload. Specify the workloads's relative resource name,
-                    /// formatted as: "organizations/{ORGANIZATION_ID}/locations/{LOCATION_ID}/workloads/{WORKLOAD_ID}"
-                    /// For example: "organizations/123/locations/us-east1/workloads/assured-workload-1" This option is
-                    /// now deprecated.
-                    /// </summary>
-                    [Google.Apis.Util.RequestParameterAttribute("source", Google.Apis.Util.RequestParameterType.Query)]
-                    public virtual string Source { get; set; }
 
                     /// <summary>Gets the method name.</summary>
                     public override string MethodName => "analyzeWorkloadMove";
@@ -849,14 +840,6 @@ namespace Google.Apis.Assuredworkloads.v1beta1
                         RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
                         {
                             Name = "project",
-                            IsRequired = false,
-                            ParameterType = "query",
-                            DefaultValue = null,
-                            Pattern = null,
-                        });
-                        RequestParameters.Add("source", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "source",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -1405,13 +1388,6 @@ namespace Google.Apis.Assuredworkloads.v1beta1.Data
         /// <summary>List of analysis results for each asset in scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("assetMoveAnalyses")]
         public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1beta1AssetMoveAnalysis> AssetMoveAnalyses { get; set; }
-
-        /// <summary>
-        /// A list of blockers that should be addressed before moving the source project or project-based workload to
-        /// the destination folder-based workload. This field is now deprecated.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("blockers")]
-        public virtual System.Collections.Generic.IList<string> Blockers { get; set; }
 
         /// <summary>The next page token. Is empty if the last page is reached.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]

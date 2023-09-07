@@ -1041,6 +1041,20 @@ namespace Google.Apis.Firestore.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata related to the create database operation.</summary>
+    public class GoogleFirestoreAdminV1CreateDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata related to the delete database operation.</summary>
+    public class GoogleFirestoreAdminV1DeleteDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Describes the progress of the operation. Unit of work is generic and must be interpreted based on where Progress
     /// is used.

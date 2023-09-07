@@ -650,7 +650,9 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("websiteUri")]
         public virtual string WebsiteUri { get; set; }
 
-        /// <summary>Output only. Specifies if the place has an entrance that is wheelchair-accessible.</summary>
+        /// <summary>
+        /// Output only. [Deprecated!] Specifies if the place has an entrance that is wheelchair-accessible.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wheelchairAccessibleEntrance")]
         public virtual System.Nullable<bool> WheelchairAccessibleEntrance { get; set; }
 
