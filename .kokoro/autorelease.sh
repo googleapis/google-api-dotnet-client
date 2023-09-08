@@ -72,10 +72,6 @@ rm -f DiscoveryJson/datalineage_v1.json
 rm -f DiscoveryJson/policysimulator_v1alpha.json
 rm -f DiscoveryJson/policysimulator_v1beta.json
 
-# Note the space on the parameter definition and not on command
-# execution itself: this is because if there's a space, then on
-# some environments, a second empty parameter is passed to
-# BuildGenerated.sh and that makes it fail.
 if [ "$FORCE_ALL" == "true" ]; then
   ./BuildGenerated.sh --skipdownload --forcegenerateall
 else
