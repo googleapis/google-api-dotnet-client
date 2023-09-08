@@ -34,41 +34,31 @@ git config user.email "$github_email"
 # Delete broken discovery docs here.
 # E.g. rm -f DiscoveryJson/streetviewpublish_v1.json
 
-# These have nested resources with the same type as the parent
+# For more details go/dotnet-apiary-blocked-generation
+
+# b/299933892 because of hierarchical resources
+# "nodes/{node}/nodes/{node}"
 rm -f DiscoveryJson/sasportal_v1alpha1.json
 rm -f DiscoveryJson/prod_tt_sasportal_v1alpha1.json
+# Known exception for library generation
 rm -f DiscoveryJson/apigee_v1.json
-# The following 3 have a Service named parameter in a request
-# that clashes with our own IClientService Service property
-# that we have in BaseServiceRequest
+# Name clashes because of some request's service parameter.
 rm -f DiscoveryJson/metastore_v1alpha.json
 rm -f DiscoveryJson/metastore_v1beta.json
 rm -f DiscoveryJson/metastore_v1.json
-# b/238627322
-rm -f DiscoveryJson/monitoring_v1.json
-# We've only generated identitytoolkit_v3 during 2013 and 2014.
-# After that it was skipped for generation and the package delisted.
-# v1 and v2 were introduced in August 2022 and v1 was broken.
-# As of 20221018, v1 has nested resources or methods with the same name
-# but v2 and v3 generate and build fine.
-# That Auth team is looking into whether we should generate v2 and v3.
+# Investigating with Auth team
 rm -f DiscoveryJson/identitytoolkit_v1.json
 rm -f DiscoveryJson/identitytoolkit_v2.json
 rm -f DiscoveryJson/identitytoolkit_v3.json
-# There's a response type that itself represents and HTTP response
-# and includes an ETag property whose value is the Etag for the
-# response that it represents and not its own. The type ends having
-# two ETag properties.
+# Name clashes because of some response ETag field.
 rm -f DiscoveryJson/contentwarehouse_v1.json
-# TODO[atarafamas] find out why
+# b/299569133 method.request.type instead of method.request.$ref
+# type is not a supported field in method.request.
 rm -f DiscoveryJson/integrations_v1alpha.json
-# TODO[atarafamas] find out why
+# b/299567447 method.request.type instead of method.request.$ref
+# type is not a supported field in method.request.
 rm -f DiscoveryJson/datalineage_v1.json
-
-# This causes a failure of
-# error CS0102: The type 'OrganizationsResource.LocationsResource'
-# already contains a definition for 'OrgPolicyViolationsPreviews'
-# TODO[atarafamas] work out what to do about it
+# b/299985033 Because on non-AIP compliant RPC.
 rm -f DiscoveryJson/policysimulator_v1alpha.json
 rm -f DiscoveryJson/policysimulator_v1beta.json
 
