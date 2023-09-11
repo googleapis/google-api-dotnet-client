@@ -1207,7 +1207,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Filtering results</summary>
+                    /// <summary>Optional. Filtering results</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -1216,8 +1216,8 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Requested page size. Server may return fewer items than requested. If unspecified, server will
-                    /// pick an appropriate default.
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -4679,7 +4679,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>Filtering results</summary>
+                    /// <summary>Optional. Filtering results</summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
 
@@ -4688,8 +4688,8 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     public virtual string OrderBy { get; set; }
 
                     /// <summary>
-                    /// Requested page size. Server may return fewer items than requested. If unspecified, server will
-                    /// pick an appropriate default.
+                    /// Optional. Requested page size. Server may return fewer items than requested. If unspecified,
+                    /// server will pick an appropriate default.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -7807,7 +7807,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
             set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
-        /// <summary>Labels as key value pairs</summary>
+        /// <summary>Optional. Labels as key value pairs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
@@ -7910,7 +7910,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("firewallEndpoint")]
         public virtual string FirewallEndpoint { get; set; }
 
-        /// <summary>Labels as key value pairs</summary>
+        /// <summary>Optional. Labels as key value pairs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 

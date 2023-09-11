@@ -314,7 +314,7 @@ namespace Google.Apis.ServerlessVPCAccess.v1beta1
                 /// <summary>Creates a Serverless VPC Access connector, returns an operation.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The project id and location in which the configuration should be created, specified in the
+                /// Required. The project ID and location in which the configuration should be created, specified in the
                 /// format `projects/*/locations/*`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.ServerlessVPCAccess.v1beta1.Data.Connector body, string parent)
@@ -334,7 +334,7 @@ namespace Google.Apis.ServerlessVPCAccess.v1beta1
                     }
 
                     /// <summary>
-                    /// Required. The project id and location in which the configuration should be created, specified in
+                    /// Required. The project ID and location in which the configuration should be created, specified in
                     /// the format `projects/*/locations/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -888,8 +888,8 @@ namespace Google.Apis.ServerlessVPCAccess.v1beta1.Data
         public virtual System.Nullable<int> MaxInstances { get; set; }
 
         /// <summary>
-        /// Maximum throughput of the connector in Mbps. Default is 300, max is 1000. If both maxThroughput and
-        /// maxInstances are set, the value for maxInstances is utilzed.
+        /// Maximum throughput of the connector in Mbps. Default is 300, max is 1000. If both max-throughput and
+        /// max-instances are provided, max-instances takes precedence over max-throughput.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxThroughput")]
         public virtual System.Nullable<int> MaxThroughput { get; set; }
@@ -899,8 +899,8 @@ namespace Google.Apis.ServerlessVPCAccess.v1beta1.Data
         public virtual System.Nullable<int> MinInstances { get; set; }
 
         /// <summary>
-        /// Minimum throughput of the connector in Mbps. Default and min is 200. If both max-throughput and
-        /// max-instances are provided, max-instances takes precedence over max-throughput.
+        /// Minimum throughput of the connector in Mbps. Default and min is 200. If both min-throughput and
+        /// min-instances are provided, min-instances takes precedence over min-throughput.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minThroughput")]
         public virtual System.Nullable<int> MinThroughput { get; set; }

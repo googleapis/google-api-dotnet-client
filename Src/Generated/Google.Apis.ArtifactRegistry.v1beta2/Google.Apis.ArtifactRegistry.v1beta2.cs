@@ -3781,7 +3781,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta2.Data
     /// </summary>
     public class UploadYumArtifactResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Apt artifacts updated.</summary>
+        /// <summary>The Yum artifacts updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("yumArtifacts")]
         public virtual System.Collections.Generic.IList<YumArtifact> YumArtifacts { get; set; }
 

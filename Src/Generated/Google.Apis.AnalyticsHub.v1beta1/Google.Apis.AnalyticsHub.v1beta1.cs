@@ -2329,8 +2329,7 @@ namespace Google.Apis.AnalyticsHub.v1beta1.Data
 
     /// <summary>
     /// A subscription represents a subscribers' access to a particular set of published data. It contains references to
-    /// associated listings, data exchanges, and linked datasets. TODO(b/267528977) Consider port the new resource to
-    /// v1beta1 and dataexchange APIs.
+    /// associated listings, data exchanges, and linked datasets.
     /// </summary>
     public class Subscription : Google.Apis.Requests.IDirectResponseSchema
     {

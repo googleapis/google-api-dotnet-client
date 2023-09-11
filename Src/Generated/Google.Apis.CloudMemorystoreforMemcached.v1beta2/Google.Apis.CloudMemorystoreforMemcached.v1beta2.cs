@@ -925,6 +925,71 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2
                         });
                     }
                 }
+
+                /// <summary>
+                /// Upgrades the Memcache instance to a newer memcached engine version specified in the request.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Memcache instance resource name using the form:
+                /// `projects/{project}/locations/{location}/instances/{instance}` where `location_id` refers to a GCP
+                /// region.
+                /// </param>
+                public virtual UpgradeRequest Upgrade(Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data.GoogleCloudMemcacheV1beta2UpgradeInstanceRequest body, string name)
+                {
+                    return new UpgradeRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Upgrades the Memcache instance to a newer memcached engine version specified in the request.
+                /// </summary>
+                public class UpgradeRequest : CloudMemorystoreforMemcachedBaseServiceRequest<Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data.Operation>
+                {
+                    /// <summary>Constructs a new Upgrade request.</summary>
+                    public UpgradeRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data.GoogleCloudMemcacheV1beta2UpgradeInstanceRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Memcache instance resource name using the form:
+                    /// `projects/{project}/locations/{location}/instances/{instance}` where `location_id` refers to a
+                    /// GCP region.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data.GoogleCloudMemcacheV1beta2UpgradeInstanceRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "upgrade";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta2/{+name}:upgrade";
+
+                    /// <summary>Initializes Upgrade parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Gets the Operations resource.</summary>
@@ -1683,6 +1748,17 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         /// <summary>Output only. Name of the verb executed by the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verb")]
         public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request for UpgradeInstance.</summary>
+    public class GoogleCloudMemcacheV1beta2UpgradeInstanceRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Specifies the target version of memcached engine to upgrade to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memcacheVersion")]
+        public virtual string MemcacheVersion { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2773,6 +2849,16 @@ namespace Google.Apis.CloudMemorystoreforMemcached.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("host")]
         public virtual string Host { get; set; }
+
+        /// <summary>
+        /// Output only. The full version of memcached server running on this node. e.g. - memcached-1.5.16
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memcacheFullVersion")]
+        public virtual string MemcacheFullVersion { get; set; }
+
+        /// <summary>Output only. Major version of memcached server running on this node, e.g. MEMCACHE_1_5</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memcacheVersion")]
+        public virtual string MemcacheVersion { get; set; }
 
         /// <summary>
         /// Output only. Identifier of the Memcached node. The node id does not include project or location like the

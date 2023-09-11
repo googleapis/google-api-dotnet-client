@@ -6141,10 +6141,6 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
-        /// <summary>Optional. Config and state for sbom generation for resources within this Repository.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("sbomConfig")]
-        public virtual SbomConfig SbomConfig { get; set; }
-
         /// <summary>
         /// Output only. The size, in bytes, of all artifact storage in this repository. Repositories that are generally
         /// available or in public preview use this to calculate storage costs.
@@ -6192,59 +6188,6 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         /// <summary>Configuration specific for a Virtual Repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("virtualRepositoryConfig")]
         public virtual VirtualRepositoryConfig VirtualRepositoryConfig { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Config for whether to generate SBOMs for resources in this repository, as well as output fields describing
-    /// current state.
-    /// </summary>
-    public class SbomConfig : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Optional. Config for whether this repository has sbom generation disabled.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("enablementConfig")]
-        public virtual string EnablementConfig { get; set; }
-
-        private string _lastEnableTimeRaw;
-
-        private object _lastEnableTime;
-
-        /// <summary>Output only. The last time this repository config was set to INHERITED.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("lastEnableTime")]
-        public virtual string LastEnableTimeRaw
-        {
-            get => _lastEnableTimeRaw;
-            set
-            {
-                _lastEnableTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
-                _lastEnableTimeRaw = value;
-            }
-        }
-
-        /// <summary><seealso cref="object"/> representation of <see cref="LastEnableTimeRaw"/>.</summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastEnableTimeDateTimeOffset instead.")]
-        public virtual object LastEnableTime
-        {
-            get => _lastEnableTime;
-            set
-            {
-                _lastEnableTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
-                _lastEnableTime = value;
-            }
-        }
-
-        /// <summary>
-        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastEnableTimeRaw"/>.
-        /// </summary>
-        [Newtonsoft.Json.JsonIgnoreAttribute]
-        public virtual System.DateTimeOffset? LastEnableTimeDateTimeOffset
-        {
-            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastEnableTimeRaw);
-            set => LastEnableTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
-        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6513,7 +6456,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
     /// </summary>
     public class UploadYumArtifactResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The Apt artifacts updated.</summary>
+        /// <summary>The Yum artifacts updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("yumArtifacts")]
         public virtual System.Collections.Generic.IList<YumArtifact> YumArtifacts { get; set; }
 

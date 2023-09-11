@@ -5366,9 +5366,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual Space Space { get; set; }
 
         /// <summary>
-        /// Plain-text body of the message. The first link to an image, video, or web page generates a preview chip. You
-        /// can also @mention a Google Chat user, or everyone in the space. To learn about creating text messages, see
-        /// [Create a text message](https://developers.google.com/chat/api/guides/message-formats/text).
+        /// Plain-text body of the message. The first link to an image, video, or web page generates a [preview
+        /// chip](https://developers.google.com/chat/how-tos/preview-links). You can also [@mention a Google Chat
+        /// user](https://developers.google.com/chat/api/guides/message-formats/text#messages-@mention), or everyone in
+        /// the space. To learn about creating text messages, see [Create a text
+        /// message](https://developers.google.com/chat/api/guides/message-formats/text).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }

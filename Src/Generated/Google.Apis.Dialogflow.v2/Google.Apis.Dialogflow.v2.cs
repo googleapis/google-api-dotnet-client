@@ -8151,6 +8151,65 @@ namespace Google.Apis.Dialogflow.v2
                     this.service = service;
                 }
 
+                /// <summary>Get answers for the given query based on knowledge documents.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="conversation">
+                /// The conversation (between human agent and end user) where the search request is triggered. Format:
+                /// `projects//locations//conversations/`.
+                /// </param>
+                public virtual SearchKnowledgeRequest SearchKnowledge(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SearchKnowledgeRequest body, string conversation)
+                {
+                    return new SearchKnowledgeRequest(service, body, conversation);
+                }
+
+                /// <summary>Get answers for the given query based on knowledge documents.</summary>
+                public class SearchKnowledgeRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SearchKnowledgeResponse>
+                {
+                    /// <summary>Constructs a new SearchKnowledge request.</summary>
+                    public SearchKnowledgeRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SearchKnowledgeRequest body, string conversation) : base(service)
+                    {
+                        Conversation = conversation;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// The conversation (between human agent and end user) where the search request is triggered.
+                    /// Format: `projects//locations//conversations/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("conversation", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Conversation { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SearchKnowledgeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "searchKnowledge";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+conversation}/suggestions:searchKnowledge";
+
+                    /// <summary>Initializes SearchKnowledge parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("conversation", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "conversation",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/conversations/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Suggests summary for a conversation based on specific historical messages. The range of the messages
                 /// to be used for summary can be specified in the request.
@@ -16805,6 +16864,65 @@ namespace Google.Apis.Dialogflow.v2
                         this.service = service;
                     }
 
+                    /// <summary>Get answers for the given query based on knowledge documents.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="conversation">
+                    /// The conversation (between human agent and end user) where the search request is triggered.
+                    /// Format: `projects//locations//conversations/`.
+                    /// </param>
+                    public virtual SearchKnowledgeRequest SearchKnowledge(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SearchKnowledgeRequest body, string conversation)
+                    {
+                        return new SearchKnowledgeRequest(service, body, conversation);
+                    }
+
+                    /// <summary>Get answers for the given query based on knowledge documents.</summary>
+                    public class SearchKnowledgeRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SearchKnowledgeResponse>
+                    {
+                        /// <summary>Constructs a new SearchKnowledge request.</summary>
+                        public SearchKnowledgeRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SearchKnowledgeRequest body, string conversation) : base(service)
+                        {
+                            Conversation = conversation;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// The conversation (between human agent and end user) where the search request is triggered.
+                        /// Format: `projects//locations//conversations/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("conversation", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Conversation { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SearchKnowledgeRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "searchKnowledge";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+conversation}/suggestions:searchKnowledge";
+
+                        /// <summary>Initializes SearchKnowledge parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("conversation", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "conversation",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/conversations/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>
                     /// Suggests summary for a conversation based on specific historical messages. The range of the
                     /// messages to be used for summary can be specified in the request.
@@ -18442,6 +18560,64 @@ namespace Google.Apis.Dialogflow.v2
                         });
                     }
                 }
+
+                /// <summary>Get answers for the given query based on knowledge documents.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// The parent resource contains the conversation profile Format: 'projects/' or `projects//locations/`.
+                /// </param>
+                public virtual SearchKnowledgeRequest SearchKnowledge(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SearchKnowledgeRequest body, string parent)
+                {
+                    return new SearchKnowledgeRequest(service, body, parent);
+                }
+
+                /// <summary>Get answers for the given query based on knowledge documents.</summary>
+                public class SearchKnowledgeRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SearchKnowledgeResponse>
+                {
+                    /// <summary>Constructs a new SearchKnowledge request.</summary>
+                    public SearchKnowledgeRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SearchKnowledgeRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// The parent resource contains the conversation profile Format: 'projects/' or
+                    /// `projects//locations/`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SearchKnowledgeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "searchKnowledge";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+parent}/suggestions:searchKnowledge";
+
+                    /// <summary>Initializes SearchKnowledge parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
             }
 
             /// <summary>Deletes the specified agent.</summary>
@@ -19041,6 +19217,63 @@ namespace Google.Apis.Dialogflow.v2
                     });
                 }
             }
+
+            /// <summary>Get answers for the given query based on knowledge documents.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">
+            /// The parent resource contains the conversation profile Format: 'projects/' or `projects//locations/`.
+            /// </param>
+            public virtual SearchKnowledgeRequest SearchKnowledge(Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SearchKnowledgeRequest body, string parent)
+            {
+                return new SearchKnowledgeRequest(service, body, parent);
+            }
+
+            /// <summary>Get answers for the given query based on knowledge documents.</summary>
+            public class SearchKnowledgeRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SearchKnowledgeResponse>
+            {
+                /// <summary>Constructs a new SearchKnowledge request.</summary>
+                public SearchKnowledgeRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SearchKnowledgeRequest body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// The parent resource contains the conversation profile Format: 'projects/' or `projects//locations/`.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.Dialogflow.v2.Data.GoogleCloudDialogflowV2SearchKnowledgeRequest Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "searchKnowledge";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2/{+parent}/suggestions:searchKnowledge";
+
+                /// <summary>Initializes SearchKnowledge parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                }
+            }
         }
 
         /// <summary>Deletes the specified agent.</summary>
@@ -19215,6 +19448,80 @@ namespace Google.Apis.Dialogflow.v2
 }
 namespace Google.Apis.Dialogflow.v2.Data
 {
+    /// <summary>
+    /// Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level
+    /// overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the
+    /// playback_interruption_settings at fulfillment level only overrides the playback_interruption_settings at the
+    /// agent level, leaving other settings at the agent level unchanged. DTMF settings does not override each other.
+    /// DTMF settings set at different levels define DTMF detections running in parallel. Hierarchy:
+    /// Agent-&amp;gt;Flow-&amp;gt;Page-&amp;gt;Fulfillment/Parameter.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3AdvancedSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination.
+        /// Exposed at the following levels: - Agent level - Flow level
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioExportGcsDestination")]
+        public virtual GoogleCloudDialogflowCxV3GcsDestination AudioExportGcsDestination { get; set; }
+
+        /// <summary>
+        /// Settings for DTMF. Exposed at the following levels: - Agent level - Flow level - Page level - Parameter
+        /// level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dtmfSettings")]
+        public virtual GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings DtmfSettings { get; set; }
+
+        /// <summary>
+        /// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech
+        /// logging. Exposed at the following levels: - Agent level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingSettings")]
+        public virtual GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings LoggingSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Define behaviors for DTMF (dual tone multi frequency).</summary>
+    public class GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller
+        /// presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event
+        /// (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g.
+        /// when 3 is pressed, return the account balance).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The digit that terminates a DTMF digit sequence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finishDigit")]
+        public virtual string FinishDigit { get; set; }
+
+        /// <summary>Max length of DTMF digits.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDigits")]
+        public virtual System.Nullable<int> MaxDigits { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Define behaviors on logging.</summary>
+    public class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If true, DF Interaction logging is currently enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableInteractionLogging")]
+        public virtual System.Nullable<bool> EnableInteractionLogging { get; set; }
+
+        /// <summary>If true, StackDriver logging is currently enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverLogging")]
+        public virtual System.Nullable<bool> EnableStackdriverLogging { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents the natural speech audio to be processed.</summary>
     public class GoogleCloudDialogflowCxV3AudioInput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -19789,6 +20096,13 @@ namespace Google.Apis.Dialogflow.v2.Data
     public class GoogleCloudDialogflowCxV3FormParameter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the
+        /// settings exposed at the higher level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advancedSettings")]
+        public virtual GoogleCloudDialogflowCxV3AdvancedSettings AdvancedSettings { get; set; }
+
+        /// <summary>
         /// The default value of an optional parameter. If the parameter is required, the default value will be ignored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
@@ -19875,9 +20189,24 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// </summary>
     public class GoogleCloudDialogflowCxV3Fulfillment : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Hierarchical advanced settings for this fulfillment. The settings exposed at the lower level overrides the
+        /// settings exposed at the higher level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advancedSettings")]
+        public virtual GoogleCloudDialogflowCxV3AdvancedSettings AdvancedSettings { get; set; }
+
         /// <summary>Conditional cases for this fulfillment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditionalCases")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3FulfillmentConditionalCases> ConditionalCases { get; set; }
+
+        /// <summary>
+        /// If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the
+        /// defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated
+        /// with no-match event handlers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableGenerativeFallback")]
+        public virtual System.Nullable<bool> EnableGenerativeFallback { get; set; }
 
         /// <summary>The list of rich message responses to present to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
@@ -19975,6 +20304,24 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>The new value of the parameter. A null value clears the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual object Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Google Cloud Storage location for a Dialogflow operation that writes or exports objects (e.g. exported agent or
+    /// transcripts) outside of Dialogflow.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3GcsDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The Google Cloud Storage URI for the exported objects. A URI is of the form:
+        /// `gs://bucket/object-name-or-prefix` Whether a full object name, or just a prefix, its usage depends on the
+        /// Dialogflow operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -20318,6 +20665,13 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// </summary>
     public class GoogleCloudDialogflowCxV3Page : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings
+        /// exposed at the higher level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advancedSettings")]
+        public virtual GoogleCloudDialogflowCxV3AdvancedSettings AdvancedSettings { get; set; }
+
         /// <summary>Required. The human-readable name of the page, unique within the flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -21568,6 +21922,80 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level
+    /// overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the
+    /// playback_interruption_settings at fulfillment level only overrides the playback_interruption_settings at the
+    /// agent level, leaving other settings at the agent level unchanged. DTMF settings does not override each other.
+    /// DTMF settings set at different levels define DTMF detections running in parallel. Hierarchy:
+    /// Agent-&amp;gt;Flow-&amp;gt;Page-&amp;gt;Fulfillment/Parameter.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3beta1AdvancedSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination.
+        /// Exposed at the following levels: - Agent level - Flow level
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioExportGcsDestination")]
+        public virtual GoogleCloudDialogflowCxV3beta1GcsDestination AudioExportGcsDestination { get; set; }
+
+        /// <summary>
+        /// Settings for DTMF. Exposed at the following levels: - Agent level - Flow level - Page level - Parameter
+        /// level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dtmfSettings")]
+        public virtual GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettings DtmfSettings { get; set; }
+
+        /// <summary>
+        /// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech
+        /// logging. Exposed at the following levels: - Agent level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingSettings")]
+        public virtual GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings LoggingSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Define behaviors for DTMF (dual tone multi frequency).</summary>
+    public class GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller
+        /// presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event
+        /// (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g.
+        /// when 3 is pressed, return the account balance).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The digit that terminates a DTMF digit sequence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finishDigit")]
+        public virtual string FinishDigit { get; set; }
+
+        /// <summary>Max length of DTMF digits.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDigits")]
+        public virtual System.Nullable<int> MaxDigits { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Define behaviors on logging.</summary>
+    public class GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If true, DF Interaction logging is currently enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableInteractionLogging")]
+        public virtual System.Nullable<bool> EnableInteractionLogging { get; set; }
+
+        /// <summary>If true, StackDriver logging is currently enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverLogging")]
+        public virtual System.Nullable<bool> EnableStackdriverLogging { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents the natural speech audio to be processed.</summary>
     public class GoogleCloudDialogflowCxV3beta1AudioInput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -22142,6 +22570,13 @@ namespace Google.Apis.Dialogflow.v2.Data
     public class GoogleCloudDialogflowCxV3beta1FormParameter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the
+        /// settings exposed at the higher level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advancedSettings")]
+        public virtual GoogleCloudDialogflowCxV3beta1AdvancedSettings AdvancedSettings { get; set; }
+
+        /// <summary>
         /// The default value of an optional parameter. If the parameter is required, the default value will be ignored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
@@ -22228,9 +22663,24 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// </summary>
     public class GoogleCloudDialogflowCxV3beta1Fulfillment : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Hierarchical advanced settings for this fulfillment. The settings exposed at the lower level overrides the
+        /// settings exposed at the higher level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advancedSettings")]
+        public virtual GoogleCloudDialogflowCxV3beta1AdvancedSettings AdvancedSettings { get; set; }
+
         /// <summary>Conditional cases for this fulfillment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditionalCases")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases> ConditionalCases { get; set; }
+
+        /// <summary>
+        /// If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the
+        /// defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated
+        /// with no-match event handlers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableGenerativeFallback")]
+        public virtual System.Nullable<bool> EnableGenerativeFallback { get; set; }
 
         /// <summary>The list of rich message responses to present to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
@@ -22328,6 +22778,24 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>The new value of the parameter. A null value clears the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual object Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Google Cloud Storage location for a Dialogflow operation that writes or exports objects (e.g. exported agent or
+    /// transcripts) outside of Dialogflow.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3beta1GcsDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The Google Cloud Storage URI for the exported objects. A URI is of the form:
+        /// `gs://bucket/object-name-or-prefix` Whether a full object name, or just a prefix, its usage depends on the
+        /// Dialogflow operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22671,6 +23139,13 @@ namespace Google.Apis.Dialogflow.v2.Data
     /// </summary>
     public class GoogleCloudDialogflowCxV3beta1Page : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings
+        /// exposed at the higher level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advancedSettings")]
+        public virtual GoogleCloudDialogflowCxV3beta1AdvancedSettings AdvancedSettings { get; set; }
+
         /// <summary>Required. The human-readable name of the page, unique within the flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -24031,9 +24506,34 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("documentEfficiency")]
         public virtual string DocumentEfficiency { get; set; }
 
+        /// <summary>Optional. Feedback for knowledge search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeSearchFeedback")]
+        public virtual GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeSearchFeedback KnowledgeSearchFeedback { get; set; }
+
         /// <summary>Optional. Feedback for conversation summarization.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("summarizationFeedback")]
         public virtual GoogleCloudDialogflowV2AgentAssistantFeedbackSummarizationFeedback SummarizationFeedback { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Feedback for knowledge search.</summary>
+    public class GoogleCloudDialogflowV2AgentAssistantFeedbackKnowledgeSearchFeedback : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether the answer was copied by the human agent or not. If the value is set to be true,
+        /// AnswerFeedback.clicked will be updated to be true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerCopied")]
+        public virtual System.Nullable<bool> AnswerCopied { get; set; }
+
+        /// <summary>
+        /// The URIs clicked by the human agent. The value is appended for each UpdateAnswerRecordRequest. If the value
+        /// is not empty, AnswerFeedback.clicked will be updated to be true.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clickedUris")]
+        public virtual System.Collections.Generic.IList<string> ClickedUris { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -24131,6 +24631,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("articleSuggestionAnswer")]
         public virtual GoogleCloudDialogflowV2ArticleAnswer ArticleSuggestionAnswer { get; set; }
 
+        /// <summary>Output only. Dialogflow assist answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dialogflowAssistAnswer")]
+        public virtual GoogleCloudDialogflowV2DialogflowAssistAnswer DialogflowAssistAnswer { get; set; }
+
         /// <summary>Output only. The FAQ answer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("faqAnswer")]
         public virtual GoogleCloudDialogflowV2FaqAnswer FaqAnswer { get; set; }
@@ -24176,6 +24680,10 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
+
+        /// <summary>An input representing the selection of a suggestion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("suggestionInput")]
+        public virtual GoogleCloudDialogflowV2SuggestionInput SuggestionInput { get; set; }
 
         /// <summary>The natural language text to be processed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textInput")]
@@ -25727,6 +26235,25 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a Dialogflow assist answer.</summary>
+    public class GoogleCloudDialogflowV2DialogflowAssistAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of answer record, in the format of "projects//locations//answerRecords/"</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
+
+        /// <summary>An intent suggestion generated from conversation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentSuggestion")]
+        public virtual GoogleCloudDialogflowV2IntentSuggestion IntentSuggestion { get; set; }
+
+        /// <summary>Result from v2 agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryResult")]
+        public virtual GoogleCloudDialogflowV2QueryResult QueryResult { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A knowledge document to be used by a KnowledgeBase. For more information, see the [knowledge base
     /// guide](https://cloud.google.com/dialogflow/docs/how/knowledge-bases). Note: The
@@ -26659,8 +27186,15 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfig ConversationProcessConfig { get; set; }
 
         /// <summary>
+        /// Optional. Disable the logging of search queries sent by human agents. It can prevent those queries from
+        /// being stored at answer records. Supported features: KNOWLEDGE_SEARCH.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableAgentQueryLogging")]
+        public virtual System.Nullable<bool> DisableAgentQueryLogging { get; set; }
+
+        /// <summary>
         /// Automatically iterates all participants and tries to compile suggestions. Supported features:
-        /// ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST.
+        /// ARTICLE_SUGGESTION, FAQ, DIALOGFLOW_ASSIST, KNOWLEDGE_ASSIST.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableEventBasedSuggestion")]
         public virtual System.Nullable<bool> EnableEventBasedSuggestion { get; set; }
@@ -26758,6 +27292,24 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>
         /// Required. The name of a Dialogflow virtual agent used for end user side intent detection and suggestion.
         /// Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agent")]
+        public virtual string Agent { get; set; }
+
+        /// <summary>Optional. The Dialogflow assist configuration for human agent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("humanAgentSideConfig")]
+        public virtual GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig HumanAgentSideConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration used for human agent side Dialogflow assist suggestion.</summary>
+    public class GoogleCloudDialogflowV2HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceHumanAgentSideConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The name of a dialogflow virtual agent used for intent detection and suggestion triggered by human
+        /// agent. Format: `projects//locations//agent`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agent")]
         public virtual string Agent { get; set; }
@@ -27964,6 +28516,28 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents an intent suggestion.</summary>
+    public class GoogleCloudDialogflowV2IntentSuggestion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Human readable description for better understanding an intent like its scope, content, result etc. Maximum
+        /// character limit: 140 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>The display name of the intent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>The unique identifier of this intent. Format: `projects//locations//agent/intents/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentV2")]
+        public virtual string IntentV2 { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents an example that the agent is trained on.</summary>
     public class GoogleCloudDialogflowV2IntentTrainingPhrase : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -28975,6 +29549,109 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents a SearchKnowledge answer.</summary>
+    public class GoogleCloudDialogflowV2SearchKnowledgeAnswer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The piece of text from the knowledge base documents that answers the search query</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answer")]
+        public virtual string Answer { get; set; }
+
+        /// <summary>The name of the answer record. Format: `projects//locations//answer Records/`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
+
+        /// <summary>All sources used to generate the answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerSources")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource> AnswerSources { get; set; }
+
+        /// <summary>The type of the answer.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerType")]
+        public virtual string AnswerType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The sources of the answers.</summary>
+    public class GoogleCloudDialogflowV2SearchKnowledgeAnswerAnswerSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The relevant snippet of the article.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
+        public virtual string Snippet { get; set; }
+
+        /// <summary>The title of the article.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The URI of the article.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for Conversations.SearchKnowledge.</summary>
+    public class GoogleCloudDialogflowV2SearchKnowledgeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The conversation (between human agent and end user) where the search request is triggered. Format:
+        /// `projects//locations//conversations/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversation")]
+        public virtual string Conversation { get; set; }
+
+        /// <summary>
+        /// Required. The conversation profile used to configure the search. Format:
+        /// `projects//locations//conversationProfiles/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conversationProfile")]
+        public virtual string ConversationProfile { get; set; }
+
+        /// <summary>
+        /// The name of the latest conversation message when the request is triggered. Format:
+        /// `projects//locations//conversations//messages/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latestMessage")]
+        public virtual string LatestMessage { get; set; }
+
+        /// <summary>
+        /// The parent resource contains the conversation profile Format: 'projects/' or `projects//locations/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parent")]
+        public virtual string Parent { get; set; }
+
+        /// <summary>Required. The natural language text query for knowledge search.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("query")]
+        public virtual GoogleCloudDialogflowV2TextInput Query { get; set; }
+
+        /// <summary>
+        /// The ID of the search session. The session_id can be combined with Dialogflow V3 Agent ID retrieved from
+        /// conversation profile or on its own to identify a search session. The search history of the same session will
+        /// impact the search result. It's up to the API caller to choose an appropriate `Session ID`. It can be a
+        /// random number or some type of session identifiers (preferably hashed). The length must not exceed 36
+        /// characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sessionId")]
+        public virtual string SessionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Conversations.SearchKnowledge.</summary>
+    public class GoogleCloudDialogflowV2SearchKnowledgeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Most relevant snippets extracted from articles in the given knowledge base, ordered by confidence.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowV2SearchKnowledgeAnswer> Answers { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The sentiment, such as positive/negative feeling or association, for a unit of analysis, such as the query text.
     /// See: https://cloud.google.com/natural-language/docs/basics#interpreting_sentiment_analysis_values for how to
@@ -29265,6 +29942,12 @@ namespace Google.Apis.Dialogflow.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("speechModelVariant")]
         public virtual string SpeechModelVariant { get; set; }
 
+        /// <summary>
+        /// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("useTimeoutBasedEndpointing")]
+        public virtual System.Nullable<bool> UseTimeoutBasedEndpointing { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -29517,6 +30200,21 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// <summary>Type of Human Agent Assistant API feature to request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the selection of a suggestion.</summary>
+    public class GoogleCloudDialogflowV2SuggestionInput : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The ID of a suggestion selected by the human agent. The suggestion(s) were generated in a previous
+        /// call to request Dialogflow assist. The format is: `projects//locations//answerRecords/` where is an
+        /// alphanumeric string.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("answerRecord")]
+        public virtual string AnswerRecord { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -7910,6 +7910,63 @@ namespace Google.Apis.Dialogflow.v3beta1
                     }
                 }
 
+                /// <summary>Gets the generative settings for the agent.</summary>
+                /// <param name="name">Required. Format: `projects//locations//agents//generativeSettings`.</param>
+                public virtual GetGenerativeSettingsRequest GetGenerativeSettings(string name)
+                {
+                    return new GetGenerativeSettingsRequest(service, name);
+                }
+
+                /// <summary>Gets the generative settings for the agent.</summary>
+                public class GetGenerativeSettingsRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1GenerativeSettings>
+                {
+                    /// <summary>Constructs a new GetGenerativeSettings request.</summary>
+                    public GetGenerativeSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Format: `projects//locations//agents//generativeSettings`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Required. Language code of the generative settings.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("languageCode", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LanguageCode { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getGenerativeSettings";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v3beta1/{+name}";
+
+                    /// <summary>Initializes GetGenerativeSettings parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/generativeSettings$",
+                        });
+                        RequestParameters.Add("languageCode", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "languageCode",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Gets the latest agent validation result. Agent validation is performed when ValidateAgent is called.
                 /// </summary>
@@ -8205,6 +8262,74 @@ namespace Google.Apis.Dialogflow.v3beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Updates the generative settings for the agent.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">Format: `projects//locations//agents//generativeSettings`.</param>
+                public virtual UpdateGenerativeSettingsRequest UpdateGenerativeSettings(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1GenerativeSettings body, string name)
+                {
+                    return new UpdateGenerativeSettingsRequest(service, body, name);
+                }
+
+                /// <summary>Updates the generative settings for the agent.</summary>
+                public class UpdateGenerativeSettingsRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1GenerativeSettings>
+                {
+                    /// <summary>Constructs a new UpdateGenerativeSettings request.</summary>
+                    public UpdateGenerativeSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1GenerativeSettings body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>Format: `projects//locations//agents//generativeSettings`.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The mask to control which fields get updated. If the mask is not present, all fields
+                    /// will be updated.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1GenerativeSettings Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "updateGenerativeSettings";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v3beta1/{+name}";
+
+                    /// <summary>Initializes UpdateGenerativeSettings parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+/generativeSettings$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                     }
                 }
@@ -9169,6 +9294,80 @@ namespace Google.Apis.Dialogflow.v3beta1
 }
 namespace Google.Apis.Dialogflow.v3beta1.Data
 {
+    /// <summary>
+    /// Hierarchical advanced settings for agent/flow/page/fulfillment/parameter. Settings exposed at lower level
+    /// overrides the settings exposed at higher level. Overriding occurs at the sub-setting level. For example, the
+    /// playback_interruption_settings at fulfillment level only overrides the playback_interruption_settings at the
+    /// agent level, leaving other settings at the agent level unchanged. DTMF settings does not override each other.
+    /// DTMF settings set at different levels define DTMF detections running in parallel. Hierarchy:
+    /// Agent-&amp;gt;Flow-&amp;gt;Page-&amp;gt;Fulfillment/Parameter.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3AdvancedSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination.
+        /// Exposed at the following levels: - Agent level - Flow level
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("audioExportGcsDestination")]
+        public virtual GoogleCloudDialogflowCxV3GcsDestination AudioExportGcsDestination { get; set; }
+
+        /// <summary>
+        /// Settings for DTMF. Exposed at the following levels: - Agent level - Flow level - Page level - Parameter
+        /// level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dtmfSettings")]
+        public virtual GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings DtmfSettings { get; set; }
+
+        /// <summary>
+        /// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech
+        /// logging. Exposed at the following levels: - Agent level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loggingSettings")]
+        public virtual GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings LoggingSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Define behaviors for DTMF (dual tone multi frequency).</summary>
+    public class GoogleCloudDialogflowCxV3AdvancedSettingsDtmfSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller
+        /// presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event
+        /// (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g.
+        /// when 3 is pressed, return the account balance).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The digit that terminates a DTMF digit sequence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finishDigit")]
+        public virtual string FinishDigit { get; set; }
+
+        /// <summary>Max length of DTMF digits.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDigits")]
+        public virtual System.Nullable<int> MaxDigits { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Define behaviors on logging.</summary>
+    public class GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>If true, DF Interaction logging is currently enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableInteractionLogging")]
+        public virtual System.Nullable<bool> EnableInteractionLogging { get; set; }
+
+        /// <summary>If true, StackDriver logging is currently enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverLogging")]
+        public virtual System.Nullable<bool> EnableStackdriverLogging { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents the natural speech audio to be processed.</summary>
     public class GoogleCloudDialogflowCxV3AudioInput : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9743,6 +9942,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     public class GoogleCloudDialogflowCxV3FormParameter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the
+        /// settings exposed at the higher level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advancedSettings")]
+        public virtual GoogleCloudDialogflowCxV3AdvancedSettings AdvancedSettings { get; set; }
+
+        /// <summary>
         /// The default value of an optional parameter. If the parameter is required, the default value will be ignored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
@@ -9829,9 +10035,24 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// </summary>
     public class GoogleCloudDialogflowCxV3Fulfillment : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Hierarchical advanced settings for this fulfillment. The settings exposed at the lower level overrides the
+        /// settings exposed at the higher level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advancedSettings")]
+        public virtual GoogleCloudDialogflowCxV3AdvancedSettings AdvancedSettings { get; set; }
+
         /// <summary>Conditional cases for this fulfillment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditionalCases")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3FulfillmentConditionalCases> ConditionalCases { get; set; }
+
+        /// <summary>
+        /// If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the
+        /// defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated
+        /// with no-match event handlers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableGenerativeFallback")]
+        public virtual System.Nullable<bool> EnableGenerativeFallback { get; set; }
 
         /// <summary>The list of rich message responses to present to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
@@ -9929,6 +10150,24 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>The new value of the parameter. A null value clears the parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual object Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Google Cloud Storage location for a Dialogflow operation that writes or exports objects (e.g. exported agent or
+    /// transcripts) outside of Dialogflow.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3GcsDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The Google Cloud Storage URI for the exported objects. A URI is of the form:
+        /// `gs://bucket/object-name-or-prefix` Whether a full object name, or just a prefix, its usage depends on the
+        /// Dialogflow operation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -10272,6 +10511,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// </summary>
     public class GoogleCloudDialogflowCxV3Page : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings
+        /// exposed at the higher level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advancedSettings")]
+        public virtual GoogleCloudDialogflowCxV3AdvancedSettings AdvancedSettings { get; set; }
+
         /// <summary>Required. The human-readable name of the page, unique within the flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -11540,11 +11786,42 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual GoogleCloudDialogflowCxV3beta1GcsDestination AudioExportGcsDestination { get; set; }
 
         /// <summary>
+        /// Settings for DTMF. Exposed at the following levels: - Agent level - Flow level - Page level - Parameter
+        /// level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dtmfSettings")]
+        public virtual GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettings DtmfSettings { get; set; }
+
+        /// <summary>
         /// Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech
         /// logging. Exposed at the following levels: - Agent level.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("loggingSettings")]
         public virtual GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettings LoggingSettings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Define behaviors for DTMF (dual tone multi frequency).</summary>
+    public class GoogleCloudDialogflowCxV3beta1AdvancedSettingsDtmfSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If true, incoming audio is processed for DTMF (dual tone multi frequency) events. For example, if the caller
+        /// presses a button on their telephone keypad and DTMF processing is enabled, Dialogflow will detect the event
+        /// (e.g. a "3" was pressed) in the incoming audio and pass the event to the bot to drive business logic (e.g.
+        /// when 3 is pressed, return the account balance).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>The digit that terminates a DTMF digit sequence.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("finishDigit")]
+        public virtual string FinishDigit { get; set; }
+
+        /// <summary>Max length of DTMF digits.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxDigits")]
+        public virtual System.Nullable<int> MaxDigits { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11615,6 +11892,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableStackdriverLogging")]
         public virtual System.Nullable<bool> EnableStackdriverLogging { get; set; }
 
+        /// <summary>Gen App Builder-related agent-level settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genAppBuilderSettings")]
+        public virtual GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings GenAppBuilderSettings { get; set; }
+
         /// <summary>Git integration settings for this agent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gitIntegrationSettings")]
         public virtual GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings GitIntegrationSettings { get; set; }
@@ -11668,6 +11949,20 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeZone")]
         public virtual string TimeZone { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for Gen App Builder.</summary>
+    public class GoogleCloudDialogflowCxV3beta1AgentGenAppBuilderSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The full name of the Gen App Builder engine related to this agent if there is one. Format:
+        /// `projects/{Project ID}/locations/{Location ID}/collections/{Collection ID}/engines/{Engine ID}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("engine")]
+        public virtual string Engine { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13258,6 +13553,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     public class GoogleCloudDialogflowCxV3beta1Flow : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Hierarchical advanced settings for this flow. The settings exposed at the lower level overrides the settings
+        /// exposed at the higher level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advancedSettings")]
+        public virtual GoogleCloudDialogflowCxV3beta1AdvancedSettings AdvancedSettings { get; set; }
+
+        /// <summary>
         /// The description of the flow. The maximum length is 500 characters. If exceeded, the request is rejected.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
@@ -13406,6 +13708,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     public class GoogleCloudDialogflowCxV3beta1FormParameter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Hierarchical advanced settings for this parameter. The settings exposed at the lower level overrides the
+        /// settings exposed at the higher level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advancedSettings")]
+        public virtual GoogleCloudDialogflowCxV3beta1AdvancedSettings AdvancedSettings { get; set; }
+
+        /// <summary>
         /// The default value of an optional parameter. If the parameter is required, the default value will be ignored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("defaultValue")]
@@ -13545,9 +13854,24 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// </summary>
     public class GoogleCloudDialogflowCxV3beta1Fulfillment : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Hierarchical advanced settings for this fulfillment. The settings exposed at the lower level overrides the
+        /// settings exposed at the higher level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advancedSettings")]
+        public virtual GoogleCloudDialogflowCxV3beta1AdvancedSettings AdvancedSettings { get; set; }
+
         /// <summary>Conditional cases for this fulfillment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("conditionalCases")]
         public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases> ConditionalCases { get; set; }
+
+        /// <summary>
+        /// If the flag is true, the agent will utilize LLM to generate a text response. If LLM generation fails, the
+        /// defined responses in the fulfillment will be respected. This flag is only useful for fulfillments associated
+        /// with no-match event handlers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableGenerativeFallback")]
+        public virtual System.Nullable<bool> EnableGenerativeFallback { get; set; }
 
         /// <summary>The list of rich message responses to present to the user.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("messages")]
@@ -13663,6 +13987,111 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for Generative AI.</summary>
+    public class GoogleCloudDialogflowCxV3beta1GenerativeSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Settings for Generative Fallback.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fallbackSettings")]
+        public virtual GoogleCloudDialogflowCxV3beta1GenerativeSettingsFallbackSettings FallbackSettings { get; set; }
+
+        /// <summary>Settings for Generative Safety.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generativeSafetySettings")]
+        public virtual GoogleCloudDialogflowCxV3beta1SafetySettings GenerativeSafetySettings { get; set; }
+
+        /// <summary>Settings for knowledge connector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("knowledgeConnectorSettings")]
+        public virtual GoogleCloudDialogflowCxV3beta1GenerativeSettingsKnowledgeConnectorSettings KnowledgeConnectorSettings { get; set; }
+
+        /// <summary>Language for this settings.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>Format: `projects//locations//agents//generativeSettings`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for Generative Fallback.</summary>
+    public class GoogleCloudDialogflowCxV3beta1GenerativeSettingsFallbackSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Stored prompts that can be selected, for example default templates like "conservative" or "chatty", or user
+        /// defined ones.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promptTemplates")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1GenerativeSettingsFallbackSettingsPromptTemplate> PromptTemplates { get; set; }
+
+        /// <summary>Display name of the selected prompt.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("selectedPrompt")]
+        public virtual string SelectedPrompt { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Prompt template.</summary>
+    public class GoogleCloudDialogflowCxV3beta1GenerativeSettingsFallbackSettingsPromptTemplate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Prompt name.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>If the flag is true, the prompt is frozen and cannot be modified by users.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("frozen")]
+        public virtual System.Nullable<bool> Frozen { get; set; }
+
+        /// <summary>
+        /// Prompt text that is sent to a LLM on no-match default, placeholders are filled downstream. For example:
+        /// "Here is a conversation $conversation, a response is: "
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("promptText")]
+        public virtual string PromptText { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Settings for knowledge connector. These parameters are used for LLM prompt like "You are . You are a helpful and
+    /// verbose at , . Your task is to help humans on ".
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3beta1GenerativeSettingsKnowledgeConnectorSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the virtual agent. Used for LLM prompt. Can be left empty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agent")]
+        public virtual string Agent { get; set; }
+
+        /// <summary>Identity of the agent, e.g. "virtual agent", "AI assistant".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentIdentity")]
+        public virtual string AgentIdentity { get; set; }
+
+        /// <summary>
+        /// Agent scope, e.g. "Example company website", "internal Example company website for employees", "manual of
+        /// car owner".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("agentScope")]
+        public virtual string AgentScope { get; set; }
+
+        /// <summary>
+        /// Name of the company, organization or other entity that the agent represents. Used for knowledge connector
+        /// LLM prompt and for knowledge search.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("business")]
+        public virtual string Business { get; set; }
+
+        /// <summary>
+        /// Company description, used for LLM prompt, e.g. "a family company selling freshly roasted coffee beans".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("businessDescription")]
+        public virtual string BusinessDescription { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14625,6 +15054,13 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// </summary>
     public class GoogleCloudDialogflowCxV3beta1Page : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Hierarchical advanced settings for this page. The settings exposed at the lower level overrides the settings
+        /// exposed at the higher level.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advancedSettings")]
+        public virtual GoogleCloudDialogflowCxV3beta1AdvancedSettings AdvancedSettings { get; set; }
+
         /// <summary>Required. The human-readable name of the page, unique within the flow.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
@@ -14916,6 +15352,15 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
     /// <summary>Represents the result of a conversational query.</summary>
     public class GoogleCloudDialogflowCxV3beta1QueryResult : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Returns the current advanced settings including IVR settings. Even though the operations configured by these
+        /// settings are performed by Dialogflow, the client may need to perform special logic at the moment. For
+        /// example, if Dialogflow exports audio to Google Cloud Storage, then the client may need to wait for the
+        /// resulting object to appear in the bucket before proceeding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("advancedSettings")]
+        public virtual GoogleCloudDialogflowCxV3beta1AdvancedSettings AdvancedSettings { get; set; }
+
         /// <summary>
         /// The current Page. Some, not all fields are filled in this message, including but not limited to `name` and
         /// `display_name`.
@@ -15526,6 +15971,32 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Settings for Generative Safety.</summary>
+    public class GoogleCloudDialogflowCxV3beta1SafetySettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Banned phrases for generated text.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bannedPhrases")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDialogflowCxV3beta1SafetySettingsPhrase> BannedPhrases { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Text input which can be used for prompt or banned phrases.</summary>
+    public class GoogleCloudDialogflowCxV3beta1SafetySettingsPhrase : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Language code of the phrase.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
+        public virtual string LanguageCode { get; set; }
+
+        /// <summary>Required. Text input which can be used for prompt or banned phrases.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("text")]
+        public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Represents the settings related to security issues, such as data redaction and data retention. It may take hours
     /// for updates on the settings to propagate to all the related components and take effect.
@@ -15599,6 +16070,10 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// <summary>Strategy that defines how we do redaction.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redactionStrategy")]
         public virtual string RedactionStrategy { get; set; }
+
+        /// <summary>Specifies the retention behavior defined by SecuritySettings.RetentionStrategy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retentionStrategy")]
+        public virtual string RetentionStrategy { get; set; }
 
         /// <summary>
         /// Retains data in interaction logging for the specified number of days. This does not apply to Cloud logging,

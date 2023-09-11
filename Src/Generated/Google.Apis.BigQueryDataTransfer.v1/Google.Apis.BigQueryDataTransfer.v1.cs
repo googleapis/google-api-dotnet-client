@@ -1531,10 +1531,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// The resource name of the transfer config. Transfer config names have the form
-                /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually
-                /// a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer
-                /// config.
+                /// The resource name of the transfer config. Transfer config names have the form either
+                /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or
+                /// `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even
+                /// though it is not guaranteed or required. The name is ignored when creating a transfer config.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.BigQueryDataTransfer.v1.Data.TransferConfig body, string name)
                 {
@@ -1555,10 +1555,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                     }
 
                     /// <summary>
-                    /// The resource name of the transfer config. Transfer config names have the form
-                    /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is
-                    /// usually a uuid, even though it is not guaranteed or required. The name is ignored when creating
-                    /// a transfer config.
+                    /// The resource name of the transfer config. Transfer config names have the form either
+                    /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or
+                    /// `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even
+                    /// though it is not guaranteed or required. The name is ignored when creating a transfer config.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -2782,9 +2782,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
-            /// The resource name of the transfer config. Transfer config names have the form
-            /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a
-            /// uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer config.
+            /// The resource name of the transfer config. Transfer config names have the form either
+            /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or
+            /// `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it
+            /// is not guaranteed or required. The name is ignored when creating a transfer config.
             /// </param>
             public virtual PatchRequest Patch(Google.Apis.BigQueryDataTransfer.v1.Data.TransferConfig body, string name)
             {
@@ -2805,10 +2806,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1
                 }
 
                 /// <summary>
-                /// The resource name of the transfer config. Transfer config names have the form
-                /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually
-                /// a uuid, even though it is not guaranteed or required. The name is ignored when creating a transfer
-                /// config.
+                /// The resource name of the transfer config. Transfer config names have the form either
+                /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or
+                /// `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even
+                /// though it is not guaranteed or required. The name is ignored when creating a transfer config.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -3915,9 +3916,10 @@ namespace Google.Apis.BigQueryDataTransfer.v1.Data
         public virtual EncryptionConfiguration EncryptionConfiguration { get; set; }
 
         /// <summary>
-        /// The resource name of the transfer config. Transfer config names have the form
-        /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}`. Where `config_id` is usually a uuid,
-        /// even though it is not guaranteed or required. The name is ignored when creating a transfer config.
+        /// The resource name of the transfer config. Transfer config names have the form either
+        /// `projects/{project_id}/locations/{region}/transferConfigs/{config_id}` or
+        /// `projects/{project_id}/transferConfigs/{config_id}`, where `config_id` is usually a UUID, even though it is
+        /// not guaranteed or required. The name is ignored when creating a transfer config.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

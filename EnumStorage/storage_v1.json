@@ -131,6 +131,10 @@
     "full",
     "noAcl"
   ],
+  "Google.Apis.Storage.v1.ObjectsResource+RestoreRequest.ProjectionEnum": [
+    "full",
+    "noAcl"
+  ],
   "Google.Apis.Storage.v1.ObjectsResource+RewriteRequest.DestinationPredefinedAclEnum": [
     "authenticatedRead",
     "bucketOwnerFullControl",

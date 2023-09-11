@@ -2387,7 +2387,7 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The response message of "AddEnableRules" method.</summary>
+    /// <summary>The response message of `AddEnableRules` method.</summary>
     public class AddEnableRulesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The values added to the parent consumer policy.</summary>
@@ -2952,9 +2952,9 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Output only. The resource name of the policy. For example, We only allow consumer policy name as "default"
-        /// for now: `projects/12345/consumerPolicies/default`, `folders/12345/consumerPolicies/default`,
-        /// `organizations/12345/consumerPolicies/default`. Legacy format: `projects/12345/consumerPoly`
+        /// Output only. The resource name of the policy. We only allow consumer policy name as `default` for now:
+        /// `projects/12345/consumerPolicies/default`, `folders/12345/consumerPolicies/default`,
+        /// `organizations/12345/consumerPolicies/default`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -3467,7 +3467,7 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
 
         /// <summary>
         /// DEPRECATED: Please use field `values`. Service group should have prefix `groups/`. The names of the service
-        /// groups that are enabled (Not Implemented). go/predefined-service-groups. Example: `groups/googleServices`.
+        /// groups that are enabled (Not Implemented). Example: `groups/googleServices`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("groups")]
         public virtual System.Collections.Generic.IList<string> Groups { get; set; }
@@ -3481,7 +3481,7 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
 
         /// <summary>
         /// The names of the services or service groups that are enabled. Example: `services/storage.googleapis.com`,
-        /// groups/googleServices`, groups/allServices`.
+        /// `groups/googleServices`, `groups/allServices`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("values")]
         public virtual System.Collections.Generic.IList<string> Values { get; set; }
@@ -5544,7 +5544,7 @@ namespace Google.Apis.ServiceUsage.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The response message of "RemoveEnableRules" method.</summary>
+    /// <summary>The response message of `RemoveEnableRules` method.</summary>
     public class RemoveEnableRulesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

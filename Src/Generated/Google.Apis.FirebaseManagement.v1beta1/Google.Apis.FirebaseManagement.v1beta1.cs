@@ -1215,8 +1215,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             }
 
             /// <summary>
-            /// Lists the valid Google Cloud Platform (GCP) resource locations for the specified Project (including a
-            /// FirebaseProject). One of these locations can be selected as the Project's [_default_ GCP resource
+            /// **DEPRECATED.** _Instead, use the applicable resource-specific REST API (or associated documentation, as
+            /// needed) to determine valid locations for each resource used in your Project._ Lists the valid Google
+            /// Cloud Platform (GCP) resource locations for the specified Project (including a FirebaseProject). One of
+            /// these locations can be selected as the Project's [_default_ GCP resource
             /// location](https://firebase.google.com/docs/projects/locations), which is the geographical location where
             /// the Project's resources, such as Cloud Firestore, will be provisioned by default. However, if the
             /// default GCP resource location has already been set for the Project, then this setting cannot be changed.
@@ -1240,8 +1242,10 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             }
 
             /// <summary>
-            /// Lists the valid Google Cloud Platform (GCP) resource locations for the specified Project (including a
-            /// FirebaseProject). One of these locations can be selected as the Project's [_default_ GCP resource
+            /// **DEPRECATED.** _Instead, use the applicable resource-specific REST API (or associated documentation, as
+            /// needed) to determine valid locations for each resource used in your Project._ Lists the valid Google
+            /// Cloud Platform (GCP) resource locations for the specified Project (including a FirebaseProject). One of
+            /// these locations can be selected as the Project's [_default_ GCP resource
             /// location](https://firebase.google.com/docs/projects/locations), which is the geographical location where
             /// the Project's resources, such as Cloud Firestore, will be provisioned by default. However, if the
             /// default GCP resource location has already been set for the Project, then this setting cannot be changed.
@@ -1346,8 +1350,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             }
 
             /// <summary>
-            /// Sets the default Google Cloud Platform (GCP) resource location for the specified FirebaseProject. This
-            /// method creates an App Engine application with a [default Cloud Storage
+            /// **DEPRECATED.** _Instead, use the applicable resource-specific REST API to set the location for each
+            /// resource used in your Project._ Sets the default Google Cloud Platform (GCP) resource location for the
+            /// specified FirebaseProject. This method creates an App Engine application with a [default Cloud Storage
             /// bucket](https://cloud.google.com/appengine/docs/standard/python/googlecloudstorageclient/setting-up-cloud-storage#activating_a_cloud_storage_bucket),
             /// located in the specified [`locationId`](#body.request_body.FIELDS.location_id). This location must be
             /// one of the available [GCP resource locations](https://firebase.google.com/docs/projects/locations).
@@ -1378,8 +1383,9 @@ namespace Google.Apis.FirebaseManagement.v1beta1
             }
 
             /// <summary>
-            /// Sets the default Google Cloud Platform (GCP) resource location for the specified FirebaseProject. This
-            /// method creates an App Engine application with a [default Cloud Storage
+            /// **DEPRECATED.** _Instead, use the applicable resource-specific REST API to set the location for each
+            /// resource used in your Project._ Sets the default Google Cloud Platform (GCP) resource location for the
+            /// specified FirebaseProject. This method creates an App Engine application with a [default Cloud Storage
             /// bucket](https://cloud.google.com/appengine/docs/standard/python/googlecloudstorageclient/setting-up-cloud-storage#activating_a_cloud_storage_bucket),
             /// located in the specified [`locationId`](#body.request_body.FIELDS.location_id). This location must be
             /// one of the available [GCP resource locations](https://firebase.google.com/docs/projects/locations).
@@ -3313,12 +3319,12 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
 
     public class AdminSdkConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The default Firebase Realtime Database URL.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseURL")]
         public virtual string DatabaseURL { get; set; }
 
         /// <summary>
-        /// The ID of the Project's default GCP resource location. The location is one of the available [GCP resource
+        /// **DEPRECATED.** _Instead, use product-specific REST APIs to find the location of resources._ The ID of the
+        /// Project's default GCP resource location. The location is one of the available [GCP resource
         /// locations](https://firebase.google.com/docs/projects/locations). This field is omitted if the default GCP
         /// resource location has not been finalized yet. To set a Project's default GCP resource location, call
         /// [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you add Firebase resources to the
@@ -3335,7 +3341,13 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
-        /// <summary>The default Cloud Storage for Firebase storage bucket name.</summary>
+        /// <summary>
+        /// **DEPRECATED.** _Instead, find the default Cloud Storage for Firebase bucket using the [list
+        /// endpoint](https://firebase.google.com/docs/reference/rest/storage/rest/v1beta/projects.buckets/list) within
+        /// the Cloud Storage for Firebase REST API. Note that the default bucket for the Project might not yet be
+        /// provisioned, so the return might not contain a default bucket._ The default Cloud Storage for Firebase
+        /// storage bucket name.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageBucket")]
         public virtual string StorageBucket { get; set; }
 
@@ -3530,43 +3542,60 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The default resources associated with the Project.</summary>
+    /// <summary>
+    /// **DEPRECATED.** _Auto-provisioning of these resources is changing, so this object no longer reliably provides
+    /// information about the resources within the Project. Instead, retrieve information about each resource directly
+    /// from its resource-specific API._ The default auto-provisioned resources associated with the Project.
+    /// </summary>
     public class DefaultResources : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Output only. The default Firebase Hosting site name, in the format: PROJECT_ID Though rare, your `projectId`
-        /// might already be used as the name for an existing Hosting site in another project (learn more about creating
-        /// non-default, [additional sites](https://firebase.google.com/docs/hosting/multisites)). In these cases, your
-        /// `projectId` is appended with a hyphen then five alphanumeric characters to create your default Hosting site
-        /// name. For example, if your `projectId` is `myproject123`, your default Hosting site name might be:
-        /// `myproject123-a5c16`
+        /// Output only. **DEPRECATED.** _Instead, find the default Firebase Hosting site name using the
+        /// [ListSites](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/projects.sites/list) within the
+        /// Firebase Hosting REST API. Note that the default site for the Project might not yet be provisioned, so the
+        /// return might not contain a default site._ The default Firebase Hosting site name, in the format: PROJECT_ID
+        /// Though rare, your `projectId` might already be used as the name for an existing Hosting site in another
+        /// project (learn more about creating non-default, [additional
+        /// sites](https://firebase.google.com/docs/hosting/multisites)). In these cases, your `projectId` is appended
+        /// with a hyphen then five alphanumeric characters to create your default Hosting site name. For example, if
+        /// your `projectId` is `myproject123`, your default Hosting site name might be: `myproject123-a5c16`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostingSite")]
         public virtual string HostingSite { get; set; }
 
         /// <summary>
-        /// Output only. The ID of the Project's default GCP resource location. The location is one of the available
-        /// [GCP resource locations](https://firebase.google.com/docs/projects/locations). This field is omitted if the
-        /// default GCP resource location has not been finalized yet. To set a Project's default GCP resource location,
-        /// call [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you add Firebase resources to
-        /// the Project.
+        /// Output only. **DEPRECATED.** _Instead, use product-specific REST APIs to find the location of resources._
+        /// The ID of the Project's default GCP resource location. The location is one of the available [GCP resource
+        /// locations](https://firebase.google.com/docs/projects/locations). This field is omitted if the default GCP
+        /// resource location has not been finalized yet. To set a Project's default GCP resource location, call
+        /// [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you add Firebase resources to the
+        /// Project.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
         public virtual string LocationId { get; set; }
 
         /// <summary>
-        /// Output only. The default Firebase Realtime Database instance name, in the format: PROJECT_ID Though rare,
-        /// your `projectId` might already be used as the name for an existing Realtime Database instance in another
-        /// project (learn more about [database sharding](https://firebase.google.com/docs/database/usage/sharding)). In
-        /// these cases, your `projectId` is appended with a hyphen then five alphanumeric characters to create your
-        /// default Realtime Database instance name. For example, if your `projectId` is `myproject123`, your default
-        /// database instance name might be: `myproject123-a5c16`
+        /// Output only. **DEPRECATED.** _Instead, find the default Firebase Realtime Database instance name using the
+        /// [list
+        /// endpoint](https://firebase.google.com/docs/reference/rest/database/database-management/rest/v1beta/projects.locations.instances/list)
+        /// within the Firebase Realtime Database REST API. Note that the default instance for the Project might not yet
+        /// be provisioned, so the return might not contain a default instance._ The default Firebase Realtime Database
+        /// instance name, in the format: PROJECT_ID Though rare, your `projectId` might already be used as the name for
+        /// an existing Realtime Database instance in another project (learn more about [database
+        /// sharding](https://firebase.google.com/docs/database/usage/sharding)). In these cases, your `projectId` is
+        /// appended with a hyphen then five alphanumeric characters to create your default Realtime Database instance
+        /// name. For example, if your `projectId` is `myproject123`, your default database instance name might be:
+        /// `myproject123-a5c16`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("realtimeDatabaseInstance")]
         public virtual string RealtimeDatabaseInstance { get; set; }
 
         /// <summary>
-        /// Output only. The default Cloud Storage for Firebase storage bucket, in the format: PROJECT_ID.appspot.com
+        /// Output only. **DEPRECATED.** _Instead, find the default Cloud Storage for Firebase bucket using the [list
+        /// endpoint](https://firebase.google.com/docs/reference/rest/storage/rest/v1beta/projects.buckets/list) within
+        /// the Cloud Storage for Firebase REST API. Note that the default bucket for the Project might not yet be
+        /// provisioned, so the return might not contain a default bucket._ The default Cloud Storage for Firebase
+        /// storage bucket, in the format: PROJECT_ID.appspot.com
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageBucket")]
         public virtual string StorageBucket { get; set; }
@@ -3756,7 +3785,11 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectNumber")]
         public virtual System.Nullable<long> ProjectNumber { get; set; }
 
-        /// <summary>Output only. The default Firebase resources associated with the Project.</summary>
+        /// <summary>
+        /// Output only. **DEPRECATED.** _Auto-provisioning of these resources is changing, so this object no longer
+        /// reliably provides information about the Project. Instead, retrieve information about each resource directly
+        /// from its resource-specific API._ The default Firebase resources associated with the Project.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual DefaultResources Resources { get; set; }
 
@@ -4020,7 +4053,11 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A GCP resource location that can be selected for a FirebaseProject.</summary>
+    /// <summary>
+    /// **DEPRECATED.** _This Location is no longer used to determine Firebase resource locations. Instead, consult
+    /// product documentation to determine valid locations for each resource used in your Project._ A GCP resource
+    /// location that can be selected for a FirebaseProject.
+    /// </summary>
     public class Location : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Products and services that are available in the GCP resource location.</summary>
@@ -4566,12 +4603,19 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("authDomain")]
         public virtual string AuthDomain { get; set; }
 
-        /// <summary>The default Firebase Realtime Database URL.</summary>
+        /// <summary>
+        /// **DEPRECATED.** _Instead, find the default Firebase Realtime Database instance name using the [list
+        /// endpoint](https://firebase.google.com/docs/reference/rest/database/database-management/rest/v1beta/projects.locations.instances/list)
+        /// within the Firebase Realtime Database REST API. Note that the default instance for the Project might not yet
+        /// be provisioned, so the return might not contain a default instance._ The default Firebase Realtime Database
+        /// URL.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseURL")]
         public virtual string DatabaseURL { get; set; }
 
         /// <summary>
-        /// The ID of the Project's default GCP resource location. The location is one of the available [GCP resource
+        /// **DEPRECATED.** _Instead, use product-specific REST APIs to find the location of resources._ The ID of the
+        /// Project's default GCP resource location. The location is one of the available [GCP resource
         /// locations](https://firebase.google.com/docs/projects/locations). This field is omitted if the default GCP
         /// resource location has not been finalized yet. To set a Project's default GCP resource location, call
         /// [`FinalizeDefaultLocation`](../projects.defaultLocation/finalize) after you add Firebase resources to the
@@ -4602,7 +4646,13 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
-        /// <summary>The default Cloud Storage for Firebase storage bucket name.</summary>
+        /// <summary>
+        /// **DEPRECATED.** _Instead, find the default Cloud Storage for Firebase bucket using the [list
+        /// endpoint](https://firebase.google.com/docs/reference/rest/storage/rest/v1beta/projects.buckets/list) within
+        /// the Cloud Storage for Firebase REST API. Note that the default bucket for the Project might not yet be
+        /// provisioned, so the return might not contain a default bucket._ The default Cloud Storage for Firebase
+        /// storage bucket name.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageBucket")]
         public virtual string StorageBucket { get; set; }
 

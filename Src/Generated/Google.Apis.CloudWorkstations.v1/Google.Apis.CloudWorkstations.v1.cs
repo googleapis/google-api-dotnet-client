@@ -2968,6 +2968,14 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
 
+        /// <summary>
+        /// Optional. Scopes to grant to the service_account. Various scopes are automatically added based on feature
+        /// usage. When specified, users of workstations under this configuration must have `iam.serviceAccounts.actAs`
+        /// on the service account.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccountScopes")]
+        public virtual System.Collections.Generic.IList<string> ServiceAccountScopes { get; set; }
+
         /// <summary>Optional. A set of Compute Engine Shielded instance options.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("shieldedInstanceConfig")]
         public virtual GceShieldedInstanceConfig ShieldedInstanceConfig { get; set; }
@@ -3860,6 +3868,46 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
+        private string _startTimeRaw;
+
+        private object _startTime;
+
+        /// <summary>
+        /// Output only. Time when this workstation was most recently successfully started, regardless of the
+        /// workstation's initial state.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startTime")]
+        public virtual string StartTimeRaw
+        {
+            get => _startTimeRaw;
+            set
+            {
+                _startTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _startTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use StartTimeDateTimeOffset instead.")]
+        public virtual object StartTime
+        {
+            get => _startTime;
+            set
+            {
+                _startTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _startTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="StartTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? StartTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(StartTimeRaw);
+            set => StartTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary>Output only. Current state of the workstation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -4269,6 +4317,15 @@ namespace Google.Apis.CloudWorkstations.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
+
+        /// <summary>
+        /// Optional. Immutable. Specifies the zones used to replicate the VM and disk resources within the region. If
+        /// set, exactly two zones within the workstation cluster's region must be specified—for example,
+        /// `['us-central1-a', 'us-central1-f']`. If this field is empty, two default zones within the region are used.
+        /// Immutable after the workstation configuration is created.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("replicaZones")]
+        public virtual System.Collections.Generic.IList<string> ReplicaZones { get; set; }
 
         /// <summary>
         /// Optional. Number of seconds that a workstation can run until it is automatically shut down. We recommend

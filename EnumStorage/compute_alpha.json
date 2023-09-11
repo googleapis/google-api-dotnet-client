@@ -53,5 +53,15 @@
     "BASIC",
     "FULL",
     "INSTANCE_VIEW_UNSPECIFIED"
+  ],
+  "Google.Apis.Compute.alpha.RoutersResource+ListBgpRoutesRequest.AddressFamilyEnum": [
+    "IPV4",
+    "IPV6",
+    "UNSPECIFIED_IP_VERSION"
+  ],
+  "Google.Apis.Compute.alpha.RoutersResource+ListBgpRoutesRequest.RouteTypeEnum": [
+    "ADVERTISED",
+    "LEARNED",
+    "UNSPECIFIED_ROUTE_TYPE"
   ]
 }

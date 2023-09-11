@@ -18373,10 +18373,10 @@ namespace Google.Apis.Logging.v2.Data
         public virtual string Trace { get; set; }
 
         /// <summary>
-        /// Optional. The sampling decision of the trace associated with the log entry.True means that the trace
-        /// resource name in the trace field was sampled for storage in a trace backend. False means that the trace was
-        /// not sampled for storage when this log entry was written, or the sampling decision was unknown at the time. A
-        /// non-sampled trace value is still useful as a request correlation identifier. The default is False.
+        /// Optional. The sampling decision of the span associated with the log entry at the time the log entry was
+        /// created. This field corresponds to the sampled flag in the W3C trace-context specification
+        /// (https://www.w3.org/TR/trace-context/#sampled-flag). A non-sampled trace value is still useful as a request
+        /// correlation identifier. The default is False.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("traceSampled")]
         public virtual System.Nullable<bool> TraceSampled { get; set; }

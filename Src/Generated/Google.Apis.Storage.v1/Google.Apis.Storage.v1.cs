@@ -41,6 +41,7 @@ namespace Google.Apis.Storage.v1
             Notifications = new NotificationsResource(this);
             ObjectAccessControls = new ObjectAccessControlsResource(this);
             Objects = new ObjectsResource(this);
+            Operations = new OperationsResource(this);
             Projects = new ProjectsResource(this);
         }
 
@@ -120,6 +121,9 @@ namespace Google.Apis.Storage.v1
 
         /// <summary>Gets the Objects resource.</summary>
         public virtual ObjectsResource Objects { get; }
+
+        /// <summary>Gets the Operations resource.</summary>
+        public virtual OperationsResource Operations { get; }
 
         /// <summary>Gets the Projects resource.</summary>
         public virtual ProjectsResource Projects { get; }
@@ -3417,6 +3421,59 @@ namespace Google.Apis.Storage.v1
             this.service = service;
         }
 
+        /// <summary>Initiates a long-running bulk restore operation on the specified bucket.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="bucket">Name of the bucket in which the object resides.</param>
+        public virtual BulkRestoreRequest BulkRestore(Google.Apis.Storage.v1.Data.BulkRestoreObjectsRequest body, string bucket)
+        {
+            return new BulkRestoreRequest(service, body, bucket);
+        }
+
+        /// <summary>Initiates a long-running bulk restore operation on the specified bucket.</summary>
+        public class BulkRestoreRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.GoogleLongrunningOperation>
+        {
+            /// <summary>Constructs a new BulkRestore request.</summary>
+            public BulkRestoreRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.BulkRestoreObjectsRequest body, string bucket) : base(service)
+            {
+                Bucket = bucket;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Name of the bucket in which the object resides.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Storage.v1.Data.BulkRestoreObjectsRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "bulkRestore";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/o/bulkRestore";
+
+            /// <summary>Initializes BulkRestore parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Concatenates a list of existing objects into a new object in the same bucket.</summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="destinationBucket">
@@ -4186,6 +4243,13 @@ namespace Google.Apis.Storage.v1
                 NoAcl = 1,
             }
 
+            /// <summary>
+            /// If true, only soft-deleted object versions will be listed. The default is false. For more information,
+            /// see Soft Delete.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("softDeleted", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SoftDeleted { get; set; }
+
             /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
             [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string UserProject { get; set; }
@@ -4262,6 +4326,14 @@ namespace Google.Apis.Storage.v1
                 RequestParameters.Add("projection", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projection",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("softDeleted", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "softDeleted",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -5011,6 +5083,13 @@ namespace Google.Apis.Storage.v1
             }
 
             /// <summary>
+            /// If true, only soft-deleted object versions will be listed. The default is false. For more information,
+            /// see Soft Delete.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("softDeleted", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> SoftDeleted { get; set; }
+
+            /// <summary>
             /// Filter results to objects whose names are lexicographically equal to or after startOffset. If endOffset
             /// is also set, the objects listed will have names between startOffset (inclusive) and endOffset
             /// (exclusive).
@@ -5109,6 +5188,14 @@ namespace Google.Apis.Storage.v1
                 RequestParameters.Add("projection", new Google.Apis.Discovery.Parameter
                 {
                     Name = "projection",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("softDeleted", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "softDeleted",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -5342,6 +5429,189 @@ namespace Google.Apis.Storage.v1
                 RequestParameters.Add("predefinedAcl", new Google.Apis.Discovery.Parameter
                 {
                     Name = "predefinedAcl",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("projection", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "projection",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("userProject", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "userProject",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Restores a soft-deleted object.</summary>
+        /// <param name="body">The body of the request.</param>
+        /// <param name="generation">Selects a specific revision of this object.</param>
+        /// <param name="bucket">Name of the bucket in which the object resides.</param>
+        /// <param name="storageObject">
+        /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding URI
+        /// Path Parts.
+        /// </param>
+        public virtual RestoreRequest Restore(Google.Apis.Storage.v1.Data.Object body, long generation, string bucket, string storageObject)
+        {
+            return new RestoreRequest(service, body, generation, bucket, storageObject);
+        }
+
+        /// <summary>Restores a soft-deleted object.</summary>
+        public class RestoreRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.Object>
+        {
+            /// <summary>Constructs a new Restore request.</summary>
+            public RestoreRequest(Google.Apis.Services.IClientService service, Google.Apis.Storage.v1.Data.Object body, long generation, string bucket, string storageObject) : base(service)
+            {
+                Generation = generation;
+                Bucket = bucket;
+                Object = storageObject;
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Selects a specific revision of this object.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("generation", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual long Generation { get; private set; }
+
+            /// <summary>Name of the bucket in which the object resides.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>
+            /// Name of the object. For information about how to URL encode object names to be path safe, see Encoding
+            /// URI Path Parts.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("object", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Object { get; private set; }
+
+            /// <summary>
+            /// Makes the operation conditional on whether the object's one live generation matches the given value.
+            /// Setting to 0 makes the operation succeed only if there are no live versions of the object.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("ifGenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> IfGenerationMatch { get; set; }
+
+            /// <summary>
+            /// Makes the operation conditional on whether none of the object's live generations match the given value.
+            /// If no live object exists, the precondition fails. Setting to 0 makes the operation succeed only if there
+            /// is a live version of the object.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("ifGenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> IfGenerationNotMatch { get; set; }
+
+            /// <summary>
+            /// Makes the operation conditional on whether the object's one live metageneration matches the given value.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationMatch", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> IfMetagenerationMatch { get; set; }
+
+            /// <summary>
+            /// Makes the operation conditional on whether none of the object's live metagenerations match the given
+            /// value.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<long> IfMetagenerationNotMatch { get; set; }
+
+            /// <summary>Set of properties to return. Defaults to full.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("projection", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<ProjectionEnum> Projection { get; set; }
+
+            /// <summary>Set of properties to return. Defaults to full.</summary>
+            public enum ProjectionEnum
+            {
+                /// <summary>Include all properties.</summary>
+                [Google.Apis.Util.StringValueAttribute("full")]
+                Full = 0,
+
+                /// <summary>Omit the owner, acl property.</summary>
+                [Google.Apis.Util.StringValueAttribute("noAcl")]
+                NoAcl = 1,
+            }
+
+            /// <summary>The project to be billed for this request. Required for Requester Pays buckets.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("userProject", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string UserProject { get; set; }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.Storage.v1.Data.Object Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "restore";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/o/{object}/restore";
+
+            /// <summary>Initializes Restore parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("generation", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "generation",
+                    IsRequired = true,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("object", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "object",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifGenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifGenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifGenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifGenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "ifMetagenerationNotMatch",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -6385,6 +6655,234 @@ namespace Google.Apis.Storage.v1
                 RequestParameters.Add("versions", new Google.Apis.Discovery.Parameter
                 {
                     Name = "versions",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+    }
+
+    /// <summary>The "operations" collection of methods.</summary>
+    public class OperationsResource
+    {
+        private const string Resource = "operations";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public OperationsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+        }
+
+        /// <summary>
+        /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the
+        /// operation, but success is not guaranteed.
+        /// </summary>
+        /// <param name="bucket">The parent bucket of the operation resource.</param>
+        /// <param name="operationId">The ID of the operation resource.</param>
+        public virtual CancelRequest Cancel(string bucket, string operationId)
+        {
+            return new CancelRequest(service, bucket, operationId);
+        }
+
+        /// <summary>
+        /// Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the
+        /// operation, but success is not guaranteed.
+        /// </summary>
+        public class CancelRequest : StorageBaseServiceRequest<string>
+        {
+            /// <summary>Constructs a new Cancel request.</summary>
+            public CancelRequest(Google.Apis.Services.IClientService service, string bucket, string operationId) : base(service)
+            {
+                Bucket = bucket;
+                OperationId = operationId;
+                InitParameters();
+            }
+
+            /// <summary>The parent bucket of the operation resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>The ID of the operation resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string OperationId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "cancel";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/operations/{operationId}/cancel";
+
+            /// <summary>Initializes Cancel parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("operationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "operationId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Gets the latest state of a long-running operation.</summary>
+        /// <param name="bucket">The parent bucket of the operation resource.</param>
+        /// <param name="operationId">The ID of the operation resource.</param>
+        public virtual GetRequest Get(string bucket, string operationId)
+        {
+            return new GetRequest(service, bucket, operationId);
+        }
+
+        /// <summary>Gets the latest state of a long-running operation.</summary>
+        public class GetRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.GoogleLongrunningOperation>
+        {
+            /// <summary>Constructs a new Get request.</summary>
+            public GetRequest(Google.Apis.Services.IClientService service, string bucket, string operationId) : base(service)
+            {
+                Bucket = bucket;
+                OperationId = operationId;
+                InitParameters();
+            }
+
+            /// <summary>The parent bucket of the operation resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>The ID of the operation resource.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("operationId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string OperationId { get; private set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "get";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/operations/{operationId}";
+
+            /// <summary>Initializes Get parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("operationId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "operationId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
+        /// <summary>Lists operations that match the specified filter in the request.</summary>
+        /// <param name="bucket">Name of the bucket in which to look for operations.</param>
+        public virtual ListRequest List(string bucket)
+        {
+            return new ListRequest(service, bucket);
+        }
+
+        /// <summary>Lists operations that match the specified filter in the request.</summary>
+        public class ListRequest : StorageBaseServiceRequest<Google.Apis.Storage.v1.Data.GoogleLongrunningListOperationsResponse>
+        {
+            /// <summary>Constructs a new List request.</summary>
+            public ListRequest(Google.Apis.Services.IClientService service, string bucket) : base(service)
+            {
+                Bucket = bucket;
+                InitParameters();
+            }
+
+            /// <summary>Name of the bucket in which to look for operations.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("bucket", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual string Bucket { get; private set; }
+
+            /// <summary>
+            /// A filter to narrow down results to a preferred subset. The filtering language is documented in more
+            /// detail in [AIP-160](https://google.aip.dev/160).
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Filter { get; set; }
+
+            /// <summary>
+            /// Maximum number of items to return in a single page of responses. Fewer total results may be returned
+            /// than requested. The service uses this parameter or 100 items, whichever is smaller.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<int> PageSize { get; set; }
+
+            /// <summary>
+            /// A previously-returned page token representing part of the larger set of results to view.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string PageToken { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "list";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "GET";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "b/{bucket}/operations";
+
+            /// <summary>Initializes List parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("bucket", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "bucket",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "filter",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageSize",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pageToken",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -7647,6 +8145,87 @@ namespace Google.Apis.Storage.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A bulk restore objects request.</summary>
+    public class BulkRestoreObjectsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If false (default), the restore will not overwrite live objects with the same name at the destination. This
+        /// means some deleted objects may be skipped. If true, live objects will be overwritten resulting in a
+        /// noncurrent object (if versioning is enabled). If versioning is not enabled, overwriting the object will
+        /// result in a soft-deleted object. In either case, if a noncurrent object already exists with the same name, a
+        /// live version can be written without issue.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("allowOverwrite")]
+        public virtual System.Nullable<bool> AllowOverwrite { get; set; }
+
+        /// <summary>
+        /// If true, copies the source object's ACL; otherwise, uses the bucket's default object ACL. The default is
+        /// false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("copySourceAcl")]
+        public virtual System.Nullable<bool> CopySourceAcl { get; set; }
+
+        /// <summary>
+        /// Restores only the objects matching any of the specified glob(s). If this parameter is not specified, all
+        /// objects will be restored within the specified time range.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchGlobs")]
+        public virtual System.Collections.Generic.IList<string> MatchGlobs { get; set; }
+
+        /// <summary>Restores only the objects that were soft-deleted after this time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("softDeletedAfterTime")]
+        public virtual string SoftDeletedAfterTimeRaw { get; set; }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SoftDeletedAfterTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SoftDeletedAfterTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SoftDeletedAfterTimeRaw);
+            set => SoftDeletedAfterTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTime"/> representation of <see cref="SoftDeletedAfterTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SoftDeletedAfterTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? SoftDeletedAfterTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(SoftDeletedAfterTimeRaw);
+            set => SoftDeletedAfterTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
+
+        /// <summary>Restores only the objects that were soft-deleted before this time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("softDeletedBeforeTime")]
+        public virtual string SoftDeletedBeforeTimeRaw { get; set; }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SoftDeletedBeforeTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SoftDeletedBeforeTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SoftDeletedBeforeTimeRaw);
+            set => SoftDeletedBeforeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTime"/> representation of <see cref="SoftDeletedBeforeTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SoftDeletedBeforeTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? SoftDeletedBeforeTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(SoftDeletedBeforeTimeRaw);
+            set => SoftDeletedBeforeTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>An notification channel used to watch for resource changes.</summary>
     public class Channel : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7784,6 +8363,93 @@ namespace Google.Apis.Storage.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("title")]
         public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for storage.buckets.operations.list.</summary>
+    public class GoogleLongrunningListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The continuation token, used to page through large result sets. Provide this value in a subsequent request
+        /// to return the next page of results.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of operations that matches the specified filter in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
+        public virtual System.Collections.Generic.IList<GoogleLongrunningOperation> Operations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
+    public class GoogleLongrunningOperation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If the value is "false", it means the operation is still in progress. If "true", the operation is completed,
+        /// and either "error" or "response" is available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("done")]
+        public virtual System.Nullable<bool> Done { get; set; }
+
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; }
+
+        /// <summary>
+        /// Service-specific metadata associated with the operation. It typically contains progress information and
+        /// common metadata such as create time. Some services might not provide such metadata. Any method that returns
+        /// a long-running operation should document the metadata type, if any.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you
+        /// use the default HTTP mapping, the "name" should be a resource name ending with "operations/{operationId}".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The normal response of the operation in case of success. If the original method returns no data on success,
+        /// such as "Delete", the response is google.protobuf.Empty. If the original method is standard
+        /// Get/Create/Update, the response should be the resource. For other methods, the response should have the type
+        /// "XxxResponse", where "Xxx" is the original method name. For example, if the original method name is
+        /// "TakeSnapshot()", the inferred response type is "TakeSnapshotResponse".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The "Status" type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each "Status" message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
+    public class GoogleRpcStatus : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
+
+        /// <summary>A developer-facing error message, which should be in English.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

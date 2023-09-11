@@ -1074,6 +1074,10 @@ namespace Google.Apis.CloudOSLogin.v1alpha.Data
     /// <summary>The credential information for a Google registered security key.</summary>
     public class SecurityKey : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The security key nickname explicitly set by the user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceNickname")]
+        public virtual string DeviceNickname { get; set; }
+
         /// <summary>Hardware-backed private key text in SSH format.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateKey")]
         public virtual string PrivateKey { get; set; }

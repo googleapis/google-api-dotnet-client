@@ -1956,13 +1956,13 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string InstanceId { get; set; }
 
         /// <summary>
-        /// The insights data for sap system discovery. This is a copy of SAP System proto and should get updated
+        /// The insights data for SAP system discovery. This is a copy of SAP System proto and should get updated
         /// whenever that one changes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sapDiscovery")]
         public virtual SapDiscovery SapDiscovery { get; set; }
 
-        /// <summary>The insights data for the sap workload validation.</summary>
+        /// <summary>The insights data for the SAP workload validation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sapValidation")]
         public virtual SapValidation SapValidation { get; set; }
 
@@ -2192,8 +2192,8 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The normal response of the operation in case of success. If the original method returns no data on success,
-        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
         /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
@@ -2444,24 +2444,24 @@ namespace Google.Apis.WorkloadManager.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>LINT.IfChange The schema of SAP system discovery data.</summary>
+    /// <summary>The schema of SAP system discovery data.</summary>
     public class SapDiscovery : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>An SAP system may run without an application layer.</summary>
+        /// <summary>Optional. An SAP system may run without an application layer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("applicationLayer")]
         public virtual SapDiscoveryComponent ApplicationLayer { get; set; }
 
-        /// <summary>An SAP System must have a database.</summary>
+        /// <summary>Required. An SAP System must have a database.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseLayer")]
         public virtual SapDiscoveryComponent DatabaseLayer { get; set; }
 
-        /// <summary>The metadata for SAP system discovery data.</summary>
+        /// <summary>Optional. The metadata for SAP system discovery data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual SapDiscoveryMetadata Metadata { get; set; }
 
         /// <summary>
-        /// A combination of database SID, database instance URI and tenant DB name to make a unique identifier
-        /// per-system.
+        /// Output only. A combination of database SID, database instance URI and tenant DB name to make a unique
+        /// identifier per-system.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("systemId")]
         public virtual string SystemId { get; set; }
@@ -2470,7 +2470,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Unix timestamp this system has been updated last.</summary>
+        /// <summary>Required. Unix timestamp this system has been updated last.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -2518,16 +2518,16 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("databaseProperties")]
         public virtual SapDiscoveryComponentDatabaseProperties DatabaseProperties { get; set; }
 
-        /// <summary>Pantheon Project in which the resources reside.</summary>
+        /// <summary>Required. Pantheon Project in which the resources reside.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hostProject")]
         public virtual string HostProject { get; set; }
 
-        /// <summary>The resources in a component.</summary>
+        /// <summary>Optional. The resources in a component.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resources")]
         public virtual System.Collections.Generic.IList<SapDiscoveryResource> Resources { get; set; }
 
         /// <summary>
-        /// The sap identifier, used by the SAP software and helps differentiate systems for customers.
+        /// Optional. The SAP identifier, used by the SAP software and helps differentiate systems for customers.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sid")]
         public virtual string Sid { get; set; }
@@ -2543,7 +2543,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("applicationType")]
         public virtual string ApplicationType { get; set; }
 
-        /// <summary>Required. Resource URI of the recognized ASCS host of the application.</summary>
+        /// <summary>Optional. Resource URI of the recognized ASCS host of the application.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ascsUri")]
         public virtual string AscsUri { get; set; }
 
@@ -2583,19 +2583,19 @@ namespace Google.Apis.WorkloadManager.v1.Data
     /// <summary>Message describing SAP discovery system metadata</summary>
     public class SapDiscoveryMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Customer region string for customer's use. Does not represent GCP region.</summary>
+        /// <summary>Optional. Customer region string for customer's use. Does not represent GCP region.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customerRegion")]
         public virtual string CustomerRegion { get; set; }
 
-        /// <summary>Customer defined, something like "E-commerce pre prod"</summary>
+        /// <summary>Optional. Customer defined, something like "E-commerce pre prod"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("definedSystem")]
         public virtual string DefinedSystem { get; set; }
 
-        /// <summary>Should be "prod", "QA", "dev", "staging", etc.</summary>
+        /// <summary>Optional. Should be "prod", "QA", "dev", "staging", etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environmentType")]
         public virtual string EnvironmentType { get; set; }
 
-        /// <summary>This sap product name</summary>
+        /// <summary>Optional. This SAP product name</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sapProduct")]
         public virtual string SapProduct { get; set; }
 
@@ -2606,7 +2606,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
     /// <summary>Message describing a resource.</summary>
     public class SapDiscoveryResource : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of resource URIs related to this resource.</summary>
+        /// <summary>Optional. A list of resource URIs related to this resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("relatedResources")]
         public virtual System.Collections.Generic.IList<string> RelatedResources { get; set; }
 
@@ -2618,7 +2618,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceType")]
         public virtual string ResourceType { get; set; }
 
-        /// <summary>URI of the resource, includes project, location, and name.</summary>
+        /// <summary>Required. URI of the resource, includes project, location, and name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceUri")]
         public virtual string ResourceUri { get; set; }
 
@@ -2626,7 +2626,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Unix timestamp of when this resource last had its discovery data updated.</summary>
+        /// <summary>Required. Unix timestamp of when this resource last had its discovery data updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -2666,7 +2666,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
     /// <summary>A presentation of SAP workload insight. The schema of SAP workloads validation related data.</summary>
     public class SapValidation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>A list of SAP validation metrics data.</summary>
+        /// <summary>Optional. A list of SAP validation metrics data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validationDetails")]
         public virtual System.Collections.Generic.IList<SapValidationValidationDetail> ValidationDetails { get; set; }
 
@@ -2677,11 +2677,11 @@ namespace Google.Apis.WorkloadManager.v1.Data
     /// <summary>Message describing the SAP validation metrics.</summary>
     public class SapValidationValidationDetail : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The pairs of metrics data: field name &amp; field value.</summary>
+        /// <summary>Optional. The pairs of metrics data: field name &amp; field value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IDictionary<string, string> Details { get; set; }
 
-        /// <summary>The SAP system that the validation data is from.</summary>
+        /// <summary>Optional. The SAP system that the validation data is from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sapValidationType")]
         public virtual string SapValidationType { get; set; }
 
@@ -2705,7 +2705,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
     /// </summary>
     public class SqlserverValidation : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The agent version collected this data point</summary>
+        /// <summary>Optional. The agent version collected this data point</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("agentVersion")]
         public virtual string AgentVersion { get; set; }
 
@@ -2721,7 +2721,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
         public virtual string ProjectId { get; set; }
 
-        /// <summary>A list of SqlServer validation metrics data.</summary>
+        /// <summary>Optional. A list of SqlServer validation metrics data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validationDetails")]
         public virtual System.Collections.Generic.IList<SqlserverValidationValidationDetail> ValidationDetails { get; set; }
 
@@ -2747,7 +2747,7 @@ namespace Google.Apis.WorkloadManager.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<SqlserverValidationDetails> Details { get; set; }
 
-        /// <summary>The Sqlserver system that the validation data is from.</summary>
+        /// <summary>Optional. The Sqlserver system that the validation data is from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
 
