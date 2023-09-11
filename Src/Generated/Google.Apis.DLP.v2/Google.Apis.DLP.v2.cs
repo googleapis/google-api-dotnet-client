@@ -11807,6 +11807,30 @@ namespace Google.Apis.DLP.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Configuration to control custom minimum likelihoods per infotype. Used when certain infotypes need to return
+    /// with higher or lower precision than the baseline, i.e. when wanting PERSON_NAME to return all possible names
+    /// without lowering the precision of other infotypes.
+    /// </summary>
+    public class GooglePrivacyDlpV2InfoTypeLikelihood : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Type of information the likelihood threshold applies to. Only one likelihood per info_type should be
+        /// provided. If InfoTypeLikelihood does not have an info_type, the configuration fails.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("infoType")]
+        public virtual GooglePrivacyDlpV2InfoType InfoType { get; set; }
+
+        /// <summary>
+        /// Only returns findings equal or above this threshold. This field is required or else the configuration fails.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minLikelihood")]
+        public virtual string MinLikelihood { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Max findings configuration per infoType, per content item or long running DlpJob.</summary>
     public class GooglePrivacyDlpV2InfoTypeLimit : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11948,6 +11972,14 @@ namespace Google.Apis.DLP.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minLikelihood")]
         public virtual string MinLikelihood { get; set; }
+
+        /// <summary>
+        /// Per infotype likelihoods. For each infotype, a user can specify a minimum likelihood, and only return that
+        /// infotype if it is above that threshold. If an infotype is not included, it uses the InspectConfig
+        /// min_likelihood.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("minLikelihoodPerInfoType")]
+        public virtual System.Collections.Generic.IList<GooglePrivacyDlpV2InfoTypeLikelihood> MinLikelihoodPerInfoType { get; set; }
 
         /// <summary>
         /// Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are

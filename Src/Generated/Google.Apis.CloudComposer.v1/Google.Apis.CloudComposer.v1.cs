@@ -1625,6 +1625,10 @@ namespace Google.Apis.CloudComposer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
+        /// <summary>Optional. Storage configuration for this environment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageConfig")]
+        public virtual StorageConfig StorageConfig { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -2833,6 +2837,13 @@ namespace Google.Apis.CloudComposer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("output")]
         public virtual System.Collections.Generic.IList<string> Output { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration for data storage in the environment.</summary>
+    public class StorageConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

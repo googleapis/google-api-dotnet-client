@@ -2412,7 +2412,7 @@ namespace Google.Apis.RealTimeBidding.v1
             }
 
             /// <summary>
-            /// Change the status of a user list to CLOSED. This prevents new users from being added to the user list.
+            /// Changes the status of a user list to CLOSED. This prevents new users from being added to the user list.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Required. The name of the user list to close. See UserList.name</param>
@@ -2422,7 +2422,7 @@ namespace Google.Apis.RealTimeBidding.v1
             }
 
             /// <summary>
-            /// Change the status of a user list to CLOSED. This prevents new users from being added to the user list.
+            /// Changes the status of a user list to CLOSED. This prevents new users from being added to the user list.
             /// </summary>
             public class CloseRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.UserList>
             {
@@ -2468,12 +2468,12 @@ namespace Google.Apis.RealTimeBidding.v1
                 }
             }
 
-            /// <summary>Create a new user list.</summary>
+            /// <summary>Creates a new user list.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The name of the parent buyer of the user list to be retrieved that must follow the pattern
-            /// `buyers/{buyerAccountId}`, where `{buyerAccountId}` represents the account ID of the buyer who owns user
-            /// lists. For a bidder accessing user lists on behalf of a child seat buyer , `{buyerAccountId}` should
+            /// Required. The name of the parent buyer of the user list to be retrieved, which must follow the pattern
+            /// `buyers/{buyerAccountId}`, where `{buyerAccountId}` represents the account ID of the buyer who owns the
+            /// user list. For a bidder accessing user lists on behalf of a child seat buyer, `{buyerAccountId}` should
             /// represent the account ID of the child seat buyer.
             /// </param>
             public virtual CreateRequest Create(Google.Apis.RealTimeBidding.v1.Data.UserList body, string parent)
@@ -2481,7 +2481,7 @@ namespace Google.Apis.RealTimeBidding.v1
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>Create a new user list.</summary>
+            /// <summary>Creates a new user list.</summary>
             public class CreateRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.UserList>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -2493,10 +2493,10 @@ namespace Google.Apis.RealTimeBidding.v1
                 }
 
                 /// <summary>
-                /// Required. The name of the parent buyer of the user list to be retrieved that must follow the pattern
-                /// `buyers/{buyerAccountId}`, where `{buyerAccountId}` represents the account ID of the buyer who owns
-                /// user lists. For a bidder accessing user lists on behalf of a child seat buyer , `{buyerAccountId}`
-                /// should represent the account ID of the child seat buyer.
+                /// Required. The name of the parent buyer of the user list to be retrieved, which must follow the
+                /// pattern `buyers/{buyerAccountId}`, where `{buyerAccountId}` represents the account ID of the buyer
+                /// who owns the user list. For a bidder accessing user lists on behalf of a child seat buyer,
+                /// `{buyerAccountId}` should represent the account ID of the child seat buyer.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
@@ -2583,11 +2583,11 @@ namespace Google.Apis.RealTimeBidding.v1
             /// user visits a page containing a remarketing tag, Google adds the user to a user list.
             /// </summary>
             /// <param name="name">
-            /// Required. To fetch remarketing tag for an account, name must follow the pattern `buyers/{accountId}`
-            /// where `{accountId}` represents ID of a buyer that owns the remarketing tag. For a bidder accessing
-            /// remarketing tag on behalf of a child seat buyer, `{accountId}` should represent the ID of the child seat
-            /// buyer. To fetch remarketing tag for a specific user list, name must follow the pattern
-            /// `buyers/{accountId}/userLists/{userListId}`. See UserList.name.
+            /// Required. To fetch the remarketing tag for an account, the name must follow the pattern
+            /// `buyers/{accountId}`, where `{accountId}` represents the ID of the buyer that owns the remarketing tag.
+            /// For a bidder accessing the remarketing tag on behalf of a child seat buyer, `{accountId}` should
+            /// represent the ID of the child seat buyer. To fetch the remarketing tag for a specific user list, the
+            /// name must follow the pattern `buyers/{accountId}/userLists/{userListId}`. See UserList.name.
             /// </param>
             public virtual GetRemarketingTagRequest GetRemarketingTag(string name)
             {
@@ -2610,11 +2610,12 @@ namespace Google.Apis.RealTimeBidding.v1
                 }
 
                 /// <summary>
-                /// Required. To fetch remarketing tag for an account, name must follow the pattern `buyers/{accountId}`
-                /// where `{accountId}` represents ID of a buyer that owns the remarketing tag. For a bidder accessing
-                /// remarketing tag on behalf of a child seat buyer, `{accountId}` should represent the ID of the child
-                /// seat buyer. To fetch remarketing tag for a specific user list, name must follow the pattern
-                /// `buyers/{accountId}/userLists/{userListId}`. See UserList.name.
+                /// Required. To fetch the remarketing tag for an account, the name must follow the pattern
+                /// `buyers/{accountId}`, where `{accountId}` represents the ID of the buyer that owns the remarketing
+                /// tag. For a bidder accessing the remarketing tag on behalf of a child seat buyer, `{accountId}`
+                /// should represent the ID of the child seat buyer. To fetch the remarketing tag for a specific user
+                /// list, the name must follow the pattern `buyers/{accountId}/userLists/{userListId}`. See
+                /// UserList.name.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
@@ -2678,7 +2679,7 @@ namespace Google.Apis.RealTimeBidding.v1
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
-                /// <summary>Continuation page token (as received from a previous response).</summary>
+                /// <summary>Continuation page token as received from a previous response.</summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
 
@@ -2723,7 +2724,7 @@ namespace Google.Apis.RealTimeBidding.v1
             }
 
             /// <summary>
-            /// Change the status of a user list to OPEN. This allows new users to be added to the user list.
+            /// Changes the status of a user list to OPEN. This allows new users to be added to the user list.
             /// </summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">Required. The name of the user list to open. See UserList.name</param>
@@ -2733,7 +2734,7 @@ namespace Google.Apis.RealTimeBidding.v1
             }
 
             /// <summary>
-            /// Change the status of a user list to OPEN. This allows new users to be added to the user list.
+            /// Changes the status of a user list to OPEN. This allows new users to be added to the user list.
             /// </summary>
             public class OpenRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.UserList>
             {
@@ -2779,7 +2780,7 @@ namespace Google.Apis.RealTimeBidding.v1
                 }
             }
 
-            /// <summary>Update the given user list. Only user lists with URLRestrictions can be updated.</summary>
+            /// <summary>Updates the given user list. Only user lists with URLRestrictions can be updated.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="name">
             /// Output only. Name of the user list that must follow the pattern `buyers/{buyer}/userLists/{user_list}`,
@@ -2792,7 +2793,7 @@ namespace Google.Apis.RealTimeBidding.v1
                 return new UpdateRequest(service, body, name);
             }
 
-            /// <summary>Update the given user list. Only user lists with URLRestrictions can be updated.</summary>
+            /// <summary>Updates the given user list. Only user lists with URLRestrictions can be updated.</summary>
             public class UpdateRequest : RealTimeBiddingBaseServiceRequest<Google.Apis.RealTimeBidding.v1.Data.UserList>
             {
                 /// <summary>Constructs a new Update request.</summary>
@@ -2896,11 +2897,11 @@ namespace Google.Apis.RealTimeBidding.v1
         /// visits a page containing a remarketing tag, Google adds the user to a user list.
         /// </summary>
         /// <param name="name">
-        /// Required. To fetch remarketing tag for an account, name must follow the pattern `buyers/{accountId}` where
-        /// `{accountId}` represents ID of a buyer that owns the remarketing tag. For a bidder accessing remarketing tag
-        /// on behalf of a child seat buyer, `{accountId}` should represent the ID of the child seat buyer. To fetch
-        /// remarketing tag for a specific user list, name must follow the pattern
-        /// `buyers/{accountId}/userLists/{userListId}`. See UserList.name.
+        /// Required. To fetch the remarketing tag for an account, the name must follow the pattern
+        /// `buyers/{accountId}`, where `{accountId}` represents the ID of the buyer that owns the remarketing tag. For
+        /// a bidder accessing the remarketing tag on behalf of a child seat buyer, `{accountId}` should represent the
+        /// ID of the child seat buyer. To fetch the remarketing tag for a specific user list, the name must follow the
+        /// pattern `buyers/{accountId}/userLists/{userListId}`. See UserList.name.
         /// </param>
         public virtual GetRemarketingTagRequest GetRemarketingTag(string name)
         {
@@ -2923,11 +2924,11 @@ namespace Google.Apis.RealTimeBidding.v1
             }
 
             /// <summary>
-            /// Required. To fetch remarketing tag for an account, name must follow the pattern `buyers/{accountId}`
-            /// where `{accountId}` represents ID of a buyer that owns the remarketing tag. For a bidder accessing
-            /// remarketing tag on behalf of a child seat buyer, `{accountId}` should represent the ID of the child seat
-            /// buyer. To fetch remarketing tag for a specific user list, name must follow the pattern
-            /// `buyers/{accountId}/userLists/{userListId}`. See UserList.name.
+            /// Required. To fetch the remarketing tag for an account, the name must follow the pattern
+            /// `buyers/{accountId}`, where `{accountId}` represents the ID of the buyer that owns the remarketing tag.
+            /// For a bidder accessing the remarketing tag on behalf of a child seat buyer, `{accountId}` should
+            /// represent the ID of the child seat buyer. To fetch the remarketing tag for a specific user list, the
+            /// name must follow the pattern `buyers/{accountId}/userLists/{userListId}`. See UserList.name.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string Name { get; private set; }
@@ -3963,9 +3964,9 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     public class GetRemarketingTagResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A HTML tag that can be placed on the advertiser's page to add users to a user list. For more information and
-        /// code samples on using snippet on your website refer to [Tag your site for remarketing](
-        /// https://support.google.com/google-ads/answer/2476688).
+        /// An HTML tag that can be placed on the advertiser's page to add users to a user list. For more information
+        /// and code samples on using snippets on your website, refer to [Tag your site for
+        /// remarketing](https://support.google.com/google-ads/answer/2476688).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snippet")]
         public virtual string Snippet { get; set; }
@@ -4166,8 +4167,8 @@ namespace Google.Apis.RealTimeBidding.v1.Data
     {
         /// <summary>
         /// The continuation page token to send back to the server in a subsequent request. Due to a currently known
-        /// issue, it is recommended that the caller keep invoking the list method till the time a next page token is
-        /// not returned (even if the result set is empty).
+        /// issue, it is recommended that the caller keep invoking the list method until the time a next page token is
+        /// not returned, even if the result set is empty.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }

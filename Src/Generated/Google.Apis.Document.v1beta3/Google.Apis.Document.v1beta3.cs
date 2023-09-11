@@ -9455,16 +9455,16 @@ namespace Google.Apis.Document.v1beta3.Data
     }
 
     /// <summary>
-    /// The request message for the ImportProcessorVersion method. Requirements: - The Document AI [Service
+    /// The request message for the ImportProcessorVersion method. The Document AI [Service
     /// Agent](https://cloud.google.com/iam/docs/service-agents) of the destination project must have [Document AI
     /// Editor role](https://cloud.google.com/document-ai/docs/access-control/iam-roles) on the source project. The
     /// destination project is specified as part of the parent field. The source project is specified as part of the
-    /// source field.
+    /// source or external_processor_version_source field.
     /// </summary>
     public class GoogleCloudDocumentaiV1beta3ImportProcessorVersionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The source processor version to import from, and can be from different environment and region than the
+        /// The source processor version to import from. It can be from a different environment and region than the
         /// destination processor.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalProcessorVersionSource")]
@@ -9605,9 +9605,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advancedOcrOptions")]
         public virtual System.Collections.Generic.IList<string> AdvancedOcrOptions { get; set; }
 
-        /// <summary>
-        /// Turn on font id model and returns font style information. Use PremiumFeatures.compute_style_info instead.
-        /// </summary>
+        /// <summary>Turn on font identification model and return font style information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeStyleInfo")]
         public virtual System.Nullable<bool> ComputeStyleInfo { get; set; }
 
@@ -10053,7 +10051,7 @@ namespace Google.Apis.Document.v1beta3.Data
 
         /// <summary>
         /// The display name of the document, it supports all Unicode characters except the following: `*`, `?`, `[`,
-        /// `]`, `%`, `{`, `}`,`'`, `\"`, `,` `~`, `=` and `:` are reserved. If not specified, a default ID will be
+        /// `]`, `%`, `{`, `}`,`'`, `\"`, `,` `~`, `=` and `:` are reserved. If not specified, a default ID is
         /// generated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
@@ -10271,7 +10269,7 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>Metadata for document summarization.</summary>
     public class GoogleCloudDocumentaiV1beta3SummaryOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>What format the summary should be in.</summary>
+        /// <summary>The format the summary should be in.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
         public virtual string Format { get; set; }
 

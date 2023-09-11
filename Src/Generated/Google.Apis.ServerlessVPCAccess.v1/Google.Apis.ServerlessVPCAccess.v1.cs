@@ -314,7 +314,7 @@ namespace Google.Apis.ServerlessVPCAccess.v1
                 /// <summary>Creates a Serverless VPC Access connector, returns an operation.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The project id and location in which the configuration should be created, specified in the
+                /// Required. The project ID and location in which the configuration should be created, specified in the
                 /// format `projects/*/locations/*`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.ServerlessVPCAccess.v1.Data.Connector body, string parent)
@@ -334,7 +334,7 @@ namespace Google.Apis.ServerlessVPCAccess.v1
                     }
 
                     /// <summary>
-                    /// Required. The project id and location in which the configuration should be created, specified in
+                    /// Required. The project ID and location in which the configuration should be created, specified in
                     /// the format `projects/*/locations/*`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]

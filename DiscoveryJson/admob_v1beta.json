@@ -758,7 +758,7 @@
    }
   }
  },
- "revision": "20230906",
+ "revision": "20230907",
  "rootUrl": "https://admob.googleapis.com/",
  "schemas": {
   "AdSource": {
@@ -1075,6 +1075,7 @@
        "DIMENSION_UNSPECIFIED",
        "DATE",
        "CAMPAIGN_ID",
+       "CAMPAIGN_NAME",
        "AD_ID",
        "AD_NAME",
        "PLACEMENT_ID",
@@ -1087,6 +1088,7 @@
        "Default value of an unspecified dimension. Do not use.",
        "A date in the YYYYMMDD format (for example, \"20210701\").",
        "The unique ID of the campaign, for example \"123456789\", which is consistent with the campaign id from campaign list api.",
+       "The name of the campaign.",
        "The unique ID of the ad, for example \"123456789\".",
        "The name of the ad, which may not be unique.",
        "The vendor-specific unique ID of the app where the ad is placed. For example, com.goog.bar for Android and 123456789 for iOS apps.",

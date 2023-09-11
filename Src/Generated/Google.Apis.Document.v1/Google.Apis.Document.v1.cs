@@ -5343,9 +5343,7 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advancedOcrOptions")]
         public virtual System.Collections.Generic.IList<string> AdvancedOcrOptions { get; set; }
 
-        /// <summary>
-        /// Turn on font id model and returns font style information. Use PremiumFeatures.compute_style_info instead.
-        /// </summary>
+        /// <summary>Turn on font identification model and return font style information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeStyleInfo")]
         public virtual System.Nullable<bool> ComputeStyleInfo { get; set; }
 
@@ -5757,7 +5755,7 @@ namespace Google.Apis.Document.v1.Data
 
         /// <summary>
         /// The display name of the document, it supports all Unicode characters except the following: `*`, `?`, `[`,
-        /// `]`, `%`, `{`, `}`,`'`, `\"`, `,` `~`, `=` and `:` are reserved. If not specified, a default ID will be
+        /// `]`, `%`, `{`, `}`,`'`, `\"`, `,` `~`, `=` and `:` are reserved. If not specified, a default ID is
         /// generated.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]

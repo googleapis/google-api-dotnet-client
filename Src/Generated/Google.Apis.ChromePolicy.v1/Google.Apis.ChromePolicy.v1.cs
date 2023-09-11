@@ -2487,6 +2487,10 @@ namespace Google.Apis.ChromePolicy.v1.Data
     /// <summary>Describes a complete .proto file.</summary>
     public class Proto2FileDescriptorProto : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The edition of the proto file.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("editionEnum")]
+        public virtual string EditionEnum { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("enumType")]
         public virtual System.Collections.Generic.IList<Proto2EnumDescriptorProto> EnumType { get; set; }
 

@@ -5758,11 +5758,11 @@ namespace Google.Apis.GKEHub.v1alpha.Data
 
         /// <summary>
         /// Optional. A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and be a valid URL with
-        /// length &amp;lt;2000 characters. If set, then Google will allow valid OIDC tokens from this issuer to
-        /// authenticate within the workload_identity_pool. OIDC discovery will be performed on this URI to validate
-        /// tokens from the issuer. Clearing `issuer` disables Workload Identity. `issuer` cannot be directly modified;
-        /// it must be cleared (and Workload Identity disabled) before using a new issuer (and re-enabling Workload
-        /// Identity).
+        /// length &amp;lt;2000 characters, it must use `location` rather than `zone` for GKE clusters. If set, then
+        /// Google will allow valid OIDC tokens from this issuer to authenticate within the workload_identity_pool. OIDC
+        /// discovery will be performed on this URI to validate tokens from the issuer. Clearing `issuer` disables
+        /// Workload Identity. `issuer` cannot be directly modified; it must be cleared (and Workload Identity disabled)
+        /// before using a new issuer (and re-enabling Workload Identity).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("issuer")]
         public virtual string Issuer { get; set; }
@@ -6739,7 +6739,9 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// </summary>
     public class ConfigManagementMembershipSpec : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Binauthz conifguration for the cluster.</summary>
+        /// <summary>
+        /// Binauthz conifguration for the cluster. Deprecated: This field will be ignored and should not be set.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("binauthz")]
         public virtual ConfigManagementBinauthzConfig Binauthz { get; set; }
 
@@ -7933,10 +7935,6 @@ namespace Google.Apis.GKEHub.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tenant")]
         public virtual string Tenant { get; set; }
-
-        /// <summary>Optional. Claim in the AzureAD ID Token that holds the user details.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userClaim")]
-        public virtual string UserClaim { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

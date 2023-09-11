@@ -326,6 +326,113 @@ namespace Google.Apis.WorkflowExecutions.v1
                     public ExecutionsResource(Google.Apis.Services.IClientService service)
                     {
                         this.service = service;
+                        Callbacks = new CallbacksResource(service);
+                    }
+
+                    /// <summary>Gets the Callbacks resource.</summary>
+                    public virtual CallbacksResource Callbacks { get; }
+
+                    /// <summary>The "callbacks" collection of methods.</summary>
+                    public class CallbacksResource
+                    {
+                        private const string Resource = "callbacks";
+
+                        /// <summary>The service which this resource belongs to.</summary>
+                        private readonly Google.Apis.Services.IClientService service;
+
+                        /// <summary>Constructs a new resource.</summary>
+                        public CallbacksResource(Google.Apis.Services.IClientService service)
+                        {
+                            this.service = service;
+                        }
+
+                        /// <summary>
+                        /// Returns a list of active callbacks which belong to the execution with the given name. The
+                        /// returned callbacks are ordered by callback ID. first).
+                        /// </summary>
+                        /// <param name="parent">
+                        /// Required. Name of the execution for which the callbacks should be listed. Format:
+                        /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
+                        /// </param>
+                        public virtual ListRequest List(string parent)
+                        {
+                            return new ListRequest(service, parent);
+                        }
+
+                        /// <summary>
+                        /// Returns a list of active callbacks which belong to the execution with the given name. The
+                        /// returned callbacks are ordered by callback ID. first).
+                        /// </summary>
+                        public class ListRequest : WorkflowExecutionsBaseServiceRequest<Google.Apis.WorkflowExecutions.v1.Data.ListCallbacksResponse>
+                        {
+                            /// <summary>Constructs a new List request.</summary>
+                            public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                            {
+                                Parent = parent;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Name of the execution for which the callbacks should be listed. Format:
+                            /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string Parent { get; private set; }
+
+                            /// <summary>
+                            /// Maximum number of callbacks to return per call. The default value is 100 and is also the
+                            /// maximum value.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual System.Nullable<int> PageSize { get; set; }
+
+                            /// <summary>
+                            /// A page token, received from a previous `ListCallbacks` call. Provide this to retrieve
+                            /// the subsequent page. Note that pagination is applied to dynamic data. The list of
+                            /// callbacks returned can change between page requests if callbacks are created or deleted.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                            public virtual string PageToken { get; set; }
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "list";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "GET";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1/{+parent}/callbacks";
+
+                            /// <summary>Initializes List parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "parent",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/workflows/[^/]+/executions/[^/]+$",
+                                });
+                                RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageSize",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                                RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "pageToken",
+                                    IsRequired = false,
+                                    ParameterType = "query",
+                                    DefaultValue = null,
+                                    Pattern = null,
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>Cancels an execution of the given name.</summary>
@@ -444,6 +551,63 @@ namespace Google.Apis.WorkflowExecutions.v1
                                 ParameterType = "path",
                                 DefaultValue = null,
                                 Pattern = @"^projects/[^/]+/locations/[^/]+/workflows/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Returns all metadata stored about an execution, excluding most data that is already accessible
+                    /// via other API methods.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. Name of the execution to be data exported. Format:
+                    /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
+                    /// </param>
+                    public virtual ExportDataRequest ExportData(string name)
+                    {
+                        return new ExportDataRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Returns all metadata stored about an execution, excluding most data that is already accessible
+                    /// via other API methods.
+                    /// </summary>
+                    public class ExportDataRequest : WorkflowExecutionsBaseServiceRequest<Google.Apis.WorkflowExecutions.v1.Data.ExportDataResponse>
+                    {
+                        /// <summary>Constructs a new ExportData request.</summary>
+                        public ExportDataRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Name of the execution to be data exported. Format:
+                        /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "exportData";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}:exportData";
+
+                        /// <summary>Initializes ExportData parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/workflows/[^/]+/executions/[^/]+$",
                             });
                         }
                     }
@@ -769,6 +933,34 @@ namespace Google.Apis.WorkflowExecutions.v1
 }
 namespace Google.Apis.WorkflowExecutions.v1.Data
 {
+    /// <summary>An instance of a Callback created by an execution.</summary>
+    public class Callback : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The payloads received by the callback that have not been processed by a waiting execution step.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availablePayloads")]
+        public virtual System.Collections.Generic.IList<string> AvailablePayloads { get; set; }
+
+        /// <summary>Output only. The method accepted by the callback. E.g. GET, POST, PUT.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("method")]
+        public virtual string Method { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the callback. Format:
+        /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}/callback/{callback}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. Number of execution steps waiting on this callback.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("waiters")]
+        public virtual System.Nullable<long> Waiters { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request for the CancelExecution method.</summary>
     public class CancelExecutionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -938,6 +1130,35 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
         /// <summary>Output only. Revision of the workflow this execution is using.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workflowRevisionId")]
         public virtual string WorkflowRevisionId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the ExportData method.</summary>
+    public class ExportDataResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The JSON string with customer data and metadata of an execution of the given name</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("data")]
+        public virtual string Data { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>RPC response object for the ListCallbacks method.</summary>
+    public class ListCallbacksResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The callbacks which match the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("callbacks")]
+        public virtual System.Collections.Generic.IList<Callback> Callbacks { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

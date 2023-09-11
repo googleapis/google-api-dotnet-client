@@ -7782,9 +7782,7 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
-        /// <summary>
-        /// Count of the number of assets in this group which are also included in another group within the same report.
-        /// </summary>
+        /// <summary>This field is deprecated, do not rely on it having a value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("overlappingAssetCount")]
         public virtual System.Nullable<long> OverlappingAssetCount { get; set; }
 
