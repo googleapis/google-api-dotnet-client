@@ -196,10 +196,7 @@ namespace Google.Apis.Requests
                 // If an exception was thrown during the tasks, unwrap and throw it.
                 throw aex.InnerException;
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            // Any other exception will just bubble up.
         }
 
         /// <inheritdoc/>
@@ -273,6 +270,8 @@ namespace Google.Apis.Requests
             request.SetRequestSerailizedContent(service, body, overrideGZipEnabled.HasValue
                 ? overrideGZipEnabled.Value : service.GZipEnabled);
             AddETag(request);
+// TODO: Use Options instead, ideally in a single place...
+#pragma warning disable CS0618 // Type or member is obsolete
             if (_unsuccessfulResponseHandlers != null)
             {
                 request.Properties.Add(ConfigurableMessageHandler.UnsuccessfulResponseHandlerKey, _unsuccessfulResponseHandlers);
@@ -289,6 +288,7 @@ namespace Google.Apis.Requests
             {
                 request.Properties.Add(ConfigurableMessageHandler.CredentialKey, Credential);
             }
+#pragma warning restore CS0618 // Type or member is obsolete
             ModifyRequest?.Invoke(request);
             return request;
         }

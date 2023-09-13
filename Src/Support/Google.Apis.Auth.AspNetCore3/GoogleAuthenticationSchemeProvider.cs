@@ -14,18 +14,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#if ASPNETCORE3
-namespace Google.Apis.Auth.AspNetCore3
-#else
-namespace Google.Apis.Auth.AspNetCore
-#endif
+namespace Google.Apis.Auth.AspNetCore3;
+
+/// <summary>
+/// Simple class to allow the authentication scheme to be injected.
+/// </summary>
+internal class GoogleAuthenticationSchemeProvider
 {
-    /// <summary>
-    /// Simple class to allow the authentication scheme to be injected.
-    /// </summary>
-    internal class GoogleAuthenticationSchemeProvider
-    {
-        public GoogleAuthenticationSchemeProvider(string scheme) => Scheme = scheme;
-        public string Scheme { get; }
-    }
+    public GoogleAuthenticationSchemeProvider(string scheme) => Scheme = scheme;
+    public string Scheme { get; }
 }

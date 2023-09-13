@@ -1,8 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
 
   <PropertyGroup>
-    <!-- net452 is the earliest desktop version supported by xunit runner -->
-    <TargetFrameworks>netcoreapp3.1;net452;net46;net6.0</TargetFrameworks>
+    <TargetFrameworks>net462;net6.0</TargetFrameworks>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\..\..\google.apis.snk</AssemblyOriginatorKeyFile>
     <IsPackable>false</IsPackable>
@@ -22,12 +21,7 @@
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="All" />
   </ItemGroup>
 
-  <PropertyGroup>
-    <!-- Hack to force Google.Apis.Translate.v2 to compile as we want :) -->
-    <DefineConstants>NETSTANDARD2_0</DefineConstants>
-  </PropertyGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)'=='net452' or '$(TargetFramework)'=='net46'">
+  <ItemGroup Condition="'$(TargetFramework)'=='net462'">
     <Reference Include="System.Net.Http" />
   </ItemGroup>
 

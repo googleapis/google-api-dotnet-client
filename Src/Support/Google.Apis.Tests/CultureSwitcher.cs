@@ -47,14 +47,5 @@ internal class CultureSwitcher : IDisposable
 
     public void Dispose() => SetCulture(_originalCulture);
 
-    private void SetCulture(CultureInfo culture)
-    {
-        // CultureInfo.CurrentCulture is the preferred way to set this,
-        // but it was read-only on .NET Framework before v4.6.
-#if NET452
-        System.Threading.Thread.CurrentThread.CurrentCulture = culture;
-#else
-        CultureInfo.CurrentCulture = culture;
-#endif
-    }
+    private void SetCulture(CultureInfo culture) => CultureInfo.CurrentCulture = culture;
 }

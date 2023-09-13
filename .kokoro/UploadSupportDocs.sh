@@ -20,7 +20,7 @@ cd $repo_root
 # Extract the support libraries version number from the XML.
 # This is pretty horrible, but it works...
 declare -r version=$(grep \<Version\> Src/Support/CommonProjectProperties.xml | sed 's/</>/g' | cut -d\> -f 3)
-declare -r packages="Google.Apis.Core Google.Apis Google.Apis.Auth Google.Apis.Auth.AspNetCore"
+declare -r packages="Google.Apis.Core Google.Apis Google.Apis.Auth Google.Apis.Auth.AspNetCore3"
 
 for pkg in $packages
 do

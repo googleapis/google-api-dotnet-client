@@ -379,13 +379,12 @@ namespace Google.Apis.Auth.OAuth2
 
             bool IsWindows()
             {
-#if NET45
-                // RuntimeInformation.IsOsPlatform is not available for NET45.
+#if NET462
+                // RuntimeInformation.IsOsPlatform is not available for .NET 4.6.2.
                 // We are probably on Windows, unless we are using Mono which means we might be
                 // elsewhere. But we don't have a reliable way to determine that, so let's
                 // return false, always.
-                // Note that this check will go away after
-                // https://github.com/googleapis/google-api-dotnet-client/issues/2561.
+                // Note that this check can go away after we update to 4.7.1 or higher.
                 return false;
 #else
                 return RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
@@ -394,13 +393,12 @@ namespace Google.Apis.Auth.OAuth2
 
             bool IsLinux()
             {
-#if NET45
-                // RuntimeInformation.IsOsPlatform is not available for NET45.
+#if NET462
+                // RuntimeInformation.IsOsPlatform is not available for .NET 4.6.2.
                 // There's a chance we are on Linux if we are using Mono.
                 // But we don't have a reliable way to determine that, so let's
                 // return false, always.
-                // Note that this check will go away after
-                // https://github.com/googleapis/google-api-dotnet-client/issues/2561.
+                // Note that this check can go away after we update to 4.7.1 or higher.
                 return false;
 #else
                 return RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
@@ -410,10 +408,6 @@ namespace Google.Apis.Auth.OAuth2
             bool IsWindowsGoogleBios()
             {
                 Logger.Info("Checking BIOS values on Windows.");
-#if NET45 || NETSTANDARD1_3
-                Logger.Debug("System.Management is not supported in net45 and netstandard1.3");
-                return false;
-#else
                 System.Management.ManagementClass biosClass = new ("Win32_BIOS");
                 using var instances = biosClass.GetInstances();
 
@@ -438,7 +432,6 @@ namespace Google.Apis.Auth.OAuth2
                     Logger.Debug("No Win32_BIOS management object found.");
                 }
                 return isGoogle;
-#endif
             }
 
             async Task<bool> IsLinuxGoogleBiosAsync()

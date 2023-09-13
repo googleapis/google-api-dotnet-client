@@ -17,21 +17,16 @@ limitations under the License.
 using Microsoft.AspNetCore.Authorization;
 using System.Collections.Generic;
 
-#if ASPNETCORE3
-namespace Google.Apis.Auth.AspNetCore3
-#else
-namespace Google.Apis.Auth.AspNetCore
-#endif
-{
-    internal class GoogleScopedRequirement : IAuthorizationRequirement
-    {
-        public GoogleScopedRequirement(string scheme, IReadOnlyList<string> scopes)
-        {
-            Scheme = scheme;
-            Scopes = scopes;
-        }
+namespace Google.Apis.Auth.AspNetCore3;
 
-        public string Scheme { get; }
-        public IReadOnlyList<string> Scopes { get; }
+internal class GoogleScopedRequirement : IAuthorizationRequirement
+{
+    public GoogleScopedRequirement(string scheme, IReadOnlyList<string> scopes)
+    {
+        Scheme = scheme;
+        Scopes = scopes;
     }
+
+    public string Scheme { get; }
+    public IReadOnlyList<string> Scopes { get; }
 }
