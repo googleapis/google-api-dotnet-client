@@ -52,7 +52,7 @@ namespace Google.Apis.Tests.Json
         }
 
         [Fact]
-        public void CustomInstanceAvoidingDateParsin()
+        public void CustomInstanceAvoidingDateParsing()
         {
             string text = "\"2017-05-03T16:38:00Z\"";
             var settings = NewtonsoftJsonSerializer.CreateDefaultSettings();
@@ -62,6 +62,45 @@ namespace Google.Apis.Tests.Json
 
             // No magic parsing to DateTime...
             Assert.IsType<string>(value);
+        }
+
+        [Fact]
+        public void DefaultInstanceSerializesTwoETags()
+        {
+            var data = new DataWithTwoEtags
+            {
+                AField = "a value",
+                ETag = "lowercase",
+                ETag__ = "no-lowercase"
+            };
+            var expectedText = "{\"a_field\":\"a value\",\"etag\":\"lowercase\",\"ETag\":\"no-lowercase\"}";
+            var text = NewtonsoftJsonSerializer.Instance.Serialize(data);
+
+            Assert.Equal(expectedText, text);
+        }
+
+        [Fact]
+        public void DefaultInstanceDeserializesTwoETags()
+        {
+            var text = "{\"a_field\":\"a value\",\"etag\":\"lowercase\",\"ETag\":\"no-lowercase\"}";
+
+            var data = NewtonsoftJsonSerializer.Instance.Deserialize<DataWithTwoEtags>(text);
+
+            Assert.Equal("a value", data.AField);
+            Assert.Equal("lowercase", data.ETag);
+            Assert.Equal("no-lowercase", data.ETag__);
+        }
+
+        public class DataWithTwoEtags
+        {
+            [JsonProperty("a_field")]
+            public string AField { get; set; }
+
+            [JsonProperty("etag")]
+            public string ETag { get; set; }
+
+            [JsonProperty("ETag")]
+            public string ETag__ { get; set; }
         }
     }
 }
