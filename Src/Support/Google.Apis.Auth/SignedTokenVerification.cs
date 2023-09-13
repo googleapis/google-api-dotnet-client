@@ -14,12 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#if NETSTANDARD2_0 || NET45 || NET461
-#define ES256_SUPPORTED
-#elif !NETSTANDARD1_3
-#error Unsupported Platform
-#endif
-
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Util;
 using Newtonsoft.Json.Linq;
@@ -36,7 +30,7 @@ namespace Google.Apis.Auth
 {
     internal static class SignedTokenVerification
     {
-#if NET45 || NET461
+#if NET462_OR_GREATER
         // See http://oid-info.com/get/2.16.840.1.101.3.4.2.1
         private const string Sha256Oid = "2.16.840.1.101.3.4.2.1";
         // In net45 We don't have the handy ECParameters class so we need to pass the X and Y
@@ -61,11 +55,7 @@ namespace Google.Apis.Auth
             Task signatureVerificationTask = signedToken.Header.Algorithm switch
             {
                 "RS256" => VerifyRS256TokenAsync(signedToken, options, cancellationToken),
-#if ES256_SUPPORTED
                 "ES256" => VerifyES256TokenAsync(signedToken, options, cancellationToken),
-#else
-                "ES256" => throw new InvalidOperationException("ES256 signed token verification is not supported in this platform."),
-#endif
                 _ => throw new InvalidJwtException("Signing algorithm must be either RS256 or ES256.")
             };
 
@@ -112,13 +102,7 @@ namespace Google.Apis.Auth
 
             foreach (RSA certificate in certificates)
             {
-#if NET45
-                if (((RSACryptoServiceProvider)certificate).VerifyHash(signedToken.Sha256Hash, Sha256Oid, signedToken.Signature))
-#elif NETSTANDARD1_3 || NETSTANDARD2_0 || NET461
                 if (certificate.VerifyHash(signedToken.Sha256Hash, signedToken.Signature, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1))
-#else
-#error Unsupported platform
-#endif
                 {
                     return;
                 }
@@ -138,7 +122,6 @@ namespace Google.Apis.Auth
             return rsa;
         }
 
-#if ES256_SUPPORTED
         private async static Task VerifyES256TokenAsync<TJswHeader, TJswPayload>(
             SignedToken<TJswHeader, TJswPayload> signedToken, SignedTokenVerificationOptions options, CancellationToken cancellationToken)
             where TJswHeader : Header
@@ -167,7 +150,7 @@ namespace Google.Apis.Auth
                 byte[] y = TokenEncodingHelpers.Base64UrlDecode((string)key["y"]);
                 return BuildEcdsa(x, y);
             }
-#if NETSTANDARD2_0
+#if NETSTANDARD2_0 || NET6_0_OR_GREATER
             static ECDsa BuildEcdsa(byte[] x, byte[] y)
             {
                 var ecdsa = ECDsa.Create();
@@ -179,10 +162,10 @@ namespace Google.Apis.Auth
                 });
                 return ecdsa;
             }
-#elif NET45 || NET461
+#elif NET462
             static ECDsa BuildEcdsa(byte[] x, byte[] y)
             {
-                // In net45 We don't have the handy ECParameters class so we need to pass the X and Y
+                // In .NET 4.6.2 We don't have the handy ECParameters class (introduced in .NET 4.7) so we need to pass the X and Y
                 // in the expected format.
                 // See here for the format of the key: https://docs.microsoft.com/en-us/windows/win32/api/bcrypt/ns-bcrypt-bcrypt_ecckey_blob
                 // And here for the correct prefix for ECDsa: https://stackoverflow.com/a/44527439/1122643
@@ -194,7 +177,6 @@ namespace Google.Apis.Auth
             }
 #endif
         }
-#endif
 
         private static async Task<IEnumerable<AsymmetricAlgorithm>> GetCertificatesAsync(
             SignedTokenVerificationOptions options,

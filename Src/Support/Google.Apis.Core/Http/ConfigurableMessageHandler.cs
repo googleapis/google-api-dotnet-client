@@ -381,7 +381,7 @@ namespace Google.Apis.Http
             for (int i = 0; i < bodyBytes.Length; i++)
             {
                 var b = bodyBytes[i];
-                bodyChars[i] = b >= 32 && b <= 126 ? (char)b : '.';
+                bodyChars[i] = b >= 32 && b <= 126 ? (char) b : '.';
             }
             InstanceLogger.Debug(fmtText, new string(bodyChars));
         }
@@ -434,7 +434,10 @@ namespace Google.Apis.Http
                 {
                     interceptors = executeInterceptors.ToList();
                 }
+                // TODO: Use Options instead, ideally in a single place...
+#pragma warning disable CS0618 // Type or member is obsolete
                 if (request.Properties.TryGetValue(ExecuteInterceptorKey, out var interceptorsValue) &&
+#pragma warning restore CS0618 // Type or member is obsolete
                     interceptorsValue is List<IHttpExecuteInterceptor> perCallinterceptors)
                 {
                     interceptors.AddRange(perCallinterceptors);
@@ -478,7 +481,7 @@ namespace Google.Apis.Http
                 }
 
                 // Decrease the number of retries.
-                if (response == null || ((int)response.StatusCode >= 400 || (int)response.StatusCode < 200))
+                if (response == null || ((int) response.StatusCode >= 400 || (int) response.StatusCode < 200))
                 {
                     triesRemaining--;
                 }
@@ -494,7 +497,10 @@ namespace Google.Apis.Http
                     {
                         handlers = exceptionHandlers.ToList();
                     }
+                    // TODO: Use Options instead, ideally in a single place...
+#pragma warning disable CS0618 // Type or member is obsolete
                     if (request.Properties.TryGetValue(ExceptionHandlerKey, out var handlersValue) &&
+#pragma warning restore CS0618 // Type or member is obsolete
                         handlersValue is List<IHttpExceptionHandler> perCallHandlers)
                     {
                         handlers.AddRange(perCallHandlers);
@@ -504,13 +510,13 @@ namespace Google.Apis.Http
                     foreach (var handler in handlers)
                     {
                         exceptionHandled |= await handler.HandleExceptionAsync(new HandleExceptionArgs
-                            {
-                                Request = request,
-                                Exception = lastException,
-                                TotalTries = maxRetries,
-                                CurrentFailedTry = maxRetries - triesRemaining,
-                                CancellationToken = cancellationToken
-                            }).ConfigureAwait(false);
+                        {
+                            Request = request,
+                            Exception = lastException,
+                            TotalTries = maxRetries,
+                            CurrentFailedTry = maxRetries - triesRemaining,
+                            CancellationToken = cancellationToken
+                        }).ConfigureAwait(false);
                     }
 
                     if (!exceptionHandled)
@@ -557,7 +563,10 @@ namespace Google.Apis.Http
                         {
                             handlers = unsuccessfulResponseHandlers.ToList();
                         }
+                        // TODO: Use Options instead, ideally in a single place...
+#pragma warning disable CS0618 // Type or member is obsolete
                         if (request.Properties.TryGetValue(UnsuccessfulResponseHandlerKey, out var handlersValue) &&
+#pragma warning restore CS0618 // Type or member is obsolete
                             handlersValue is List<IHttpUnsuccessfulResponseHandler> perCallHandlers)
                         {
                             handlers.AddRange(perCallHandlers);
@@ -669,6 +678,8 @@ namespace Google.Apis.Http
             return false;
         }
 
+// TODO: Use Options instead, ideally in a single place...
+#pragma warning disable CS0618 // Type or member is obsolete
         private IHttpExecuteInterceptor GetEffectiveCredential(HttpRequestMessage request) =>
             (request.Properties.TryGetValue(CredentialKey, out var cred) && cred is IHttpExecuteInterceptor callCredential)
             ? callCredential : Credential;
@@ -676,6 +687,7 @@ namespace Google.Apis.Http
         private int GetEffectiveMaxRetries(HttpRequestMessage request) =>
             (request.Properties.TryGetValue(MaxRetriesKey, out var maxRetries) && maxRetries is int perRequestMaxRetries)
             ? perRequestMaxRetries : NumTries;
+#pragma warning restore CS0618 // Type or member is obsolete
 
         /// <summary>
         /// Handles redirect if the response's status code is redirect, redirects are turned on, and the header has

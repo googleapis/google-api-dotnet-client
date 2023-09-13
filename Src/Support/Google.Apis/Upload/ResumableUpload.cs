@@ -232,12 +232,15 @@ namespace Google.Apis.Upload
 
             public void AddToRequest(HttpRequestMessage request)
             {
+                // TODO: Use Options instead, ideally in a single place...
+#pragma warning disable CS0618 // Type or member is obsolete
                 // This assumes the property hasn't been set elsewhere - but that's reasonable as we're creating the messages ourselves in this class.
                 request.Properties[ConfigurableMessageHandler.ExceptionHandlerKey] = new List<IHttpExceptionHandler> { this };
                 request.Properties[ConfigurableMessageHandler.UnsuccessfulResponseHandlerKey] = new List<IHttpUnsuccessfulResponseHandler> { this };
+#pragma warning restore CS0618 // Type or member is obsolete
             }
 
-            public Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
+                public Task<bool> HandleResponseAsync(HandleUnsuccessfulResponseArgs args)
             {
                 var result = false;
                 var statusCode = (int)args.Response.StatusCode;

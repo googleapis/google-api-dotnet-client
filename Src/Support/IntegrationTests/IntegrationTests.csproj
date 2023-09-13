@@ -1,8 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0">
 
   <PropertyGroup>
-    <!-- net452 is the earliest desktop version supported by xunit runner -->
-    <TargetFrameworks>netcoreapp3.1;net452;net46;net6.0</TargetFrameworks>
+    <TargetFrameworks>net462;net6.0</TargetFrameworks>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>..\..\..\google.apis.snk</AssemblyOriginatorKeyFile>
     <IsPackable>false</IsPackable>
@@ -24,17 +23,14 @@
     <ProjectReference Include="..\Google.Apis\Google.Apis.csproj" />
     <ProjectReference Include="..\Google.Apis.Core\Google.Apis.Core.csproj" />
 
-    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="All" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)'=='net452' or '$(TargetFramework)'=='net46'">
-    <Reference Include="System.Net.Http" />
-  </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp3.1'">
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net462'">
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
 
   <ItemGroup>

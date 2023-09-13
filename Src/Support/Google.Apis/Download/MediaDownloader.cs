@@ -21,6 +21,7 @@ using Google.Apis.Responses;
 using Google.Apis.Services;
 using Google.Apis.Util;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -276,7 +277,10 @@ namespace Google.Apis.Download
             request.Headers.Range = Range;
             if (ResponseStreamInterceptorProvider != null)
             {
+                // TODO: Use Options instead, ideally in a single place...
+#pragma warning disable CS0618 // Type or member is obsolete
                 request.Properties[ConfigurableMessageHandler.ResponseStreamInterceptorProviderKey] = ResponseStreamInterceptorProvider;
+#pragma warning restore CS0618 // Type or member is obsolete
             }
             ModifyRequest?.Invoke(request);
 

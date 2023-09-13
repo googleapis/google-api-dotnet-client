@@ -27,13 +27,9 @@ using Google.Apis.Json;
 using Google.Apis.Util;
 using Google.Apis.Http;
 
-#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET461
+// TODO: We could potentially remove this using alias directive; it was primarily
+// to support older frameworks.
 using RsaKey = System.Security.Cryptography.RSA;
-#elif NET45
-using RsaKey = System.Security.Cryptography.RSACryptoServiceProvider;
-#else
-#error Unsupported target
-#endif
 
 namespace Google.Apis.Auth.OAuth2
 {
@@ -120,17 +116,7 @@ namespace Google.Apis.Auth.OAuth2
             /// <summary>Extracts a <see cref="Key"/> from the given certificate.</summary>
             public Initializer FromCertificate(X509Certificate2 certificate)
             {
-#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET461
                 Key = certificate.GetRSAPrivateKey();
-#elif NET45
-                // Workaround to correctly cast the private key as a RSACryptoServiceProvider type 24.
-                RSACryptoServiceProvider rsa = (RSACryptoServiceProvider)certificate.PrivateKey;
-                byte[] privateKeyBlob = rsa.ExportCspBlob(true);
-                Key = new RSACryptoServiceProvider();
-                Key.ImportCspBlob(privateKeyBlob);
-#else
-#error Unsupported target
-#endif
                 return this;
             }
         }
@@ -462,13 +448,7 @@ namespace Google.Apis.Auth.OAuth2
             using (var hashAlg = SHA256.Create())
             {
                 byte[] assertionHash = hashAlg.ComputeHash(data);
-#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET461
                 var sigBytes = Key.SignHash(assertionHash, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
-#elif NET45
-                var sigBytes = Key.SignHash(assertionHash, Sha256Oid);
-#else
-#error Unsupported target
-#endif
                 return Convert.ToBase64String(sigBytes);
             }
         }
