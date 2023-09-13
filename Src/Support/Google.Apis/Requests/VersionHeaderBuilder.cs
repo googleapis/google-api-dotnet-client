@@ -94,12 +94,7 @@ namespace Google.Apis.Requests
         {
             // We can pick between the version reported by System.Environment.Version, or the version in the
             // entry assembly, if any. Neither gives us exactly what we might want, 
-            string systemEnvironmentVersion =
-#if NETSTANDARD1_3
-                null;
-#else
-                FormatVersion(Environment.Version);
-#endif
+            string systemEnvironmentVersion = FormatVersion(Environment.Version);
             string entryAssemblyVersion = GetEntryAssemblyVersionOrNull();
 
             return entryAssemblyVersion ?? systemEnvironmentVersion ?? "";

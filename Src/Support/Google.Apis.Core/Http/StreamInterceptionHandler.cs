@@ -64,8 +64,11 @@ namespace Google.Apis.Http
 
         internal static Func<HttpResponseMessage, StreamInterceptor> GetInterceptorProvider(HttpRequestMessage request)
         {
+            // TODO: Use Options instead, ideally in a single place...
+#pragma warning disable CS0618 // Type or member is obsolete
             request.Properties.TryGetValue(ConfigurableMessageHandler.ResponseStreamInterceptorProviderKey, out var property);
-            // If anyone adds a property of the wrong type, just ignore it.
+#pragma warning restore CS0618 // Type or member is obsolete
+                              // If anyone adds a property of the wrong type, just ignore it.
             return property as Func<HttpResponseMessage, StreamInterceptor>;
         }
 

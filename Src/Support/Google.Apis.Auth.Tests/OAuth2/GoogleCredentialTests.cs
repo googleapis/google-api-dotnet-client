@@ -14,12 +14,6 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#if NETCOREAPP3_1 || NET461 || NET6_0
-#define EXTENSIONS_SUPPORTED
-#elif !(NET452 || NET46)
-#error Unsupported Platform
-#endif
-
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Auth.OAuth2.Flows;
 using Google.Apis.Auth.OAuth2.Requests;
@@ -29,6 +23,8 @@ using Google.Apis.Json;
 using Google.Apis.Tests.Mocks;
 using Google.Apis.Util;
 using Google.Apis.Util.Store;
+using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -41,11 +37,6 @@ using System.Threading.Tasks;
 using Xunit;
 using static Google.Apis.Auth.JsonWebSignature;
 using static Google.Apis.Auth.OAuth2.BearerToken;
-#if EXTENSIONS_SUPPORTED
-using Microsoft.Extensions.Configuration;
-using Newtonsoft.Json.Linq;
-#endif
-
 
 namespace Google.Apis.Auth.Tests.OAuth2
 {
@@ -84,7 +75,6 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
 ""project_id"": ""PROJECT_ID"",
 ""type"": ""service_account""}";
 
-#if EXTENSIONS_SUPPORTED
         private const string DummyUserCredentialConfigContents = @"{ ""GoogleCredential"": {
 ""ClientId"": ""CLIENT_ID"",
 ""ClientSecret"": ""CLIENT_SECRET"",
@@ -255,8 +245,6 @@ ZUp8AsbVqF6rbLiiUfJMo2btGclQu4DEVyS+ymFA65tXDLUuR9EDqJYdqHNZJ5B8
             ArgumentNullException ex = Assert.Throws<ArgumentNullException>(() => GoogleCredential.FromJsonParameters(credentialParameters));
             Assert.Equal("credentialParameters", ex.ParamName);
         }
-
-#endif
 
         [Fact]
         public void FromStream_UserCredential()

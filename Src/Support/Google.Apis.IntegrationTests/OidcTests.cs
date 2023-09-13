@@ -48,7 +48,7 @@ namespace IntegrationTests
             // The test is flaky without this, because on accasion everything happens so fast
             // that generation and validation happen in the same instant, and we require the token
             // to have been generated in the past.
-            verificationOptions.IssuedAtClockTolerance = TimeSpan.FromMilliseconds(1);
+            verificationOptions.IssuedAtClockTolerance = TimeSpan.FromMilliseconds(10);
 
             var payload = await JsonWebSignature.VerifySignedTokenAsync(await token.GetAccessTokenAsync(), verificationOptions);
             Assert.NotNull(payload);
@@ -78,7 +78,7 @@ namespace IntegrationTests
             // The test is flaky without this, because on accasion everything happens so fast
             // that generation and validation happen in the same instant, and we require the token
             // to have been generated in the past.
-            verificationOptions.IssuedAtClockTolerance = TimeSpan.FromMilliseconds(1);
+            verificationOptions.IssuedAtClockTolerance = TimeSpan.FromMilliseconds(10);
 
             var payload = await JsonWebSignature.VerifySignedTokenAsync(await token.GetAccessTokenAsync(), verificationOptions);
             Assert.NotNull(payload);

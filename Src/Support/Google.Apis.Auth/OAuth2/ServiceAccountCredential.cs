@@ -27,14 +27,6 @@ using Google.Apis.Json;
 using Google.Apis.Util;
 using Google.Apis.Http;
 
-#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET461
-using RsaKey = System.Security.Cryptography.RSA;
-#elif NET45
-using RsaKey = System.Security.Cryptography.RSACryptoServiceProvider;
-#else
-#error Unsupported target
-#endif
-
 namespace Google.Apis.Auth.OAuth2
 {
     /// <summary>
@@ -56,7 +48,6 @@ namespace Google.Apis.Auth.OAuth2
     /// </summary>
     public class ServiceAccountCredential : ServiceCredential, IOidcTokenProvider, IGoogleCredential, IBlobSigner
     {
-        private const string Sha256Oid = "2.16.840.1.101.3.4.2.1";
         private const string ScopedTokenCacheKey = "SCOPED_TOKEN";
         /// <summary>An initializer class for the service account credential. </summary>
         new public class Initializer : ServiceCredential.Initializer
@@ -79,7 +70,7 @@ namespace Google.Apis.Auth.OAuth2
             /// Gets or sets the key which is used to sign the request, as specified in
             /// https://developers.google.com/accounts/docs/OAuth2ServiceAccount#computingsignature.
             /// </summary>
-            public RsaKey Key { get; set; }
+            public RSA Key { get; set; }
 
             /// <summary>
             /// Gets or sets the service account key ID.
@@ -112,7 +103,7 @@ namespace Google.Apis.Auth.OAuth2
             public Initializer FromPrivateKey(string privateKey)
             {
                 RSAParameters rsaParameters = Pkcs8.DecodeRsaParameters(privateKey);
-                Key = (RsaKey)RSA.Create();
+                Key = RSA.Create();
                 Key.ImportParameters(rsaParameters);
                 return this;
             }
@@ -120,17 +111,7 @@ namespace Google.Apis.Auth.OAuth2
             /// <summary>Extracts a <see cref="Key"/> from the given certificate.</summary>
             public Initializer FromCertificate(X509Certificate2 certificate)
             {
-#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET461
                 Key = certificate.GetRSAPrivateKey();
-#elif NET45
-                // Workaround to correctly cast the private key as a RSACryptoServiceProvider type 24.
-                RSACryptoServiceProvider rsa = (RSACryptoServiceProvider)certificate.PrivateKey;
-                byte[] privateKeyBlob = rsa.ExportCspBlob(true);
-                Key = new RSACryptoServiceProvider();
-                Key.ImportCspBlob(privateKeyBlob);
-#else
-#error Unsupported target
-#endif
                 return this;
             }
         }
@@ -156,7 +137,7 @@ namespace Google.Apis.Auth.OAuth2
         /// Gets the key which is used to sign the request, as specified in
         /// https://developers.google.com/accounts/docs/OAuth2ServiceAccount#computingsignature.
         /// </summary>
-        public RsaKey Key { get; }
+        public RSA Key { get; }
 
         /// <summary>
         /// Gets the key id of the key which is used to sign the request.
@@ -462,13 +443,7 @@ namespace Google.Apis.Auth.OAuth2
             using (var hashAlg = SHA256.Create())
             {
                 byte[] assertionHash = hashAlg.ComputeHash(data);
-#if NETSTANDARD1_3 || NETSTANDARD2_0 || NET461
                 var sigBytes = Key.SignHash(assertionHash, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
-#elif NET45
-                var sigBytes = Key.SignHash(assertionHash, Sha256Oid);
-#else
-#error Unsupported target
-#endif
                 return Convert.ToBase64String(sigBytes);
             }
         }
