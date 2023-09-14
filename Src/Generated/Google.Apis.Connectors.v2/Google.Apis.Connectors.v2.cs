@@ -394,6 +394,57 @@ namespace Google.Apis.Connectors.v2
                         }
                     }
 
+                    /// <summary>Gets the schema of the given action.</summary>
+                    /// <param name="name">
+                    /// Required. Resource name of the Action. Format:
+                    /// projects/{project}/locations/{location}/connections/{connection}/actions/{action}
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets the schema of the given action.</summary>
+                    public class GetRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v2.Data.Action>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Resource name of the Action. Format:
+                        /// projects/{project}/locations/{location}/connections/{connection}/actions/{action}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/actions/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Gets the schema of all the actions supported by the connector.</summary>
                     /// <param name="parent">
                     /// Required. Parent resource name of the Action. Format:
@@ -432,6 +483,26 @@ namespace Google.Apis.Connectors.v2
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
+                        /// <summary>Specifies which fields of the Action are returned in the response.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>Specifies which fields of the Action are returned in the response.</summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>VIEW_UNSPECIFIED. The unset value Defaults to FULL View.</summary>
+                            [Google.Apis.Util.StringValueAttribute("ACTION_VIEW_UNSPECIFIED")]
+                            ACTIONVIEWUNSPECIFIED = 0,
+
+                            /// <summary>Return only action names.</summary>
+                            [Google.Apis.Util.StringValueAttribute("ACTION_VIEW_BASIC")]
+                            ACTIONVIEWBASIC = 1,
+
+                            /// <summary>Return actions with schema.</summary>
+                            [Google.Apis.Util.StringValueAttribute("ACTION_VIEW_FULL")]
+                            ACTIONVIEWFULL = 2,
+                        }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
@@ -464,6 +535,14 @@ namespace Google.Apis.Connectors.v2
                             RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1036,6 +1115,57 @@ namespace Google.Apis.Connectors.v2
                         }
                     }
 
+                    /// <summary>Gets metadata of given entity type</summary>
+                    /// <param name="name">
+                    /// Required. Resource name of the Entity Type. Format:
+                    /// projects/{project}/locations/{location}/connections/{connection}/entityTypes/{entityType}
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets metadata of given entity type</summary>
+                    public class GetRequest : ConnectorsBaseServiceRequest<Google.Apis.Connectors.v2.Data.EntityType>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Resource name of the Entity Type. Format:
+                        /// projects/{project}/locations/{location}/connections/{connection}/entityTypes/{entityType}
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v2/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/connections/[^/]+/entityTypes/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Lists metadata related to all entity types present in the external system.</summary>
                     /// <param name="parent">
                     /// Required. Resource name of the Entity Type. Format:
@@ -1074,6 +1204,26 @@ namespace Google.Apis.Connectors.v2
                         [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PageToken { get; set; }
 
+                        /// <summary>Specifies which fields of the Entity Type are returned in the response.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<ViewEnum> View { get; set; }
+
+                        /// <summary>Specifies which fields of the Entity Type are returned in the response.</summary>
+                        public enum ViewEnum
+                        {
+                            /// <summary>VIEW_UNSPECIFIED. The unset value. Defaults to FULL View.</summary>
+                            [Google.Apis.Util.StringValueAttribute("ENTITY_TYPE_VIEW_UNSPECIFIED")]
+                            ENTITYTYPEVIEWUNSPECIFIED = 0,
+
+                            /// <summary>Return only entity type names.</summary>
+                            [Google.Apis.Util.StringValueAttribute("ENTITY_TYPE_VIEW_BASIC")]
+                            ENTITYTYPEVIEWBASIC = 1,
+
+                            /// <summary>Return entity types with schema</summary>
+                            [Google.Apis.Util.StringValueAttribute("ENTITY_TYPE_VIEW_FULL")]
+                            ENTITYTYPEVIEWFULL = 2,
+                        }
+
                         /// <summary>Gets the method name.</summary>
                         public override string MethodName => "list";
 
@@ -1106,6 +1256,14 @@ namespace Google.Apis.Connectors.v2
                             RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                             {
                                 Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("view", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "view",
                                 IsRequired = false,
                                 ParameterType = "query",
                                 DefaultValue = null,
@@ -1192,6 +1350,10 @@ namespace Google.Apis.Connectors.v2.Data
     /// </summary>
     public class Action : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>JsonSchema representation of this actions's input schema</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputJsonSchema")]
+        public virtual JsonSchema InputJsonSchema { get; set; }
+
         /// <summary>List containing input parameter metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputParameters")]
         public virtual System.Collections.Generic.IList<InputParameter> InputParameters { get; set; }
@@ -1199,6 +1361,10 @@ namespace Google.Apis.Connectors.v2.Data
         /// <summary>Name of the action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>JsonSchema representation of this actions's result schema</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultJsonSchema")]
+        public virtual JsonSchema ResultJsonSchema { get; set; }
 
         /// <summary>List containing the metadata of result fields.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultMetadata")]
@@ -1248,6 +1414,10 @@ namespace Google.Apis.Connectors.v2.Data
         /// <summary>List containing metadata information about each field of the entity type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<Field> Fields { get; set; }
+
+        /// <summary>JsonSchema representation of this entity's schema</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonSchema")]
+        public virtual JsonSchema JsonSchema { get; set; }
 
         /// <summary>The name of the entity type.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -1341,6 +1511,10 @@ namespace Google.Apis.Connectors.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>JsonSchema of the field, applicable only if field is of type `STRUCT`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonSchema")]
+        public virtual JsonSchema JsonSchema { get; set; }
+
         /// <summary>
         /// The following boolean field specifies if the current Field acts as a primary key or id if the parent is of
         /// type entity.
@@ -1387,6 +1561,10 @@ namespace Google.Apis.Connectors.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>JsonSchema of the parameter, applicable only if parameter is of type `STRUCT`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonSchema")]
+        public virtual JsonSchema JsonSchema { get; set; }
+
         /// <summary>Name of the Parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -1394,6 +1572,64 @@ namespace Google.Apis.Connectors.v2.Data
         /// <summary>Specifies whether a null value is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nullable")]
         public virtual System.Nullable<bool> Nullable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>JsonSchema representation of schema metadata</summary>
+    public class JsonSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Additional details apart from standard json schema fields, this gives flexibility to store metadata about
+        /// the schema
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalDetails")]
+        public virtual System.Collections.Generic.IDictionary<string, object> AdditionalDetails { get; set; }
+
+        /// <summary>The default value of the field or object described by this schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("default")]
+        public virtual object Default__ { get; set; }
+
+        /// <summary>A description of this schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Possible values for an enumeration. This works in conjunction with `type` to represent types with a fixed
+        /// set of legal values
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enum")]
+        public virtual System.Collections.Generic.IList<object> Enum__ { get; set; }
+
+        /// <summary>
+        /// Format of the value as per https://json-schema.org/understanding-json-schema/reference/string.html#format
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("format")]
+        public virtual string Format { get; set; }
+
+        /// <summary>Schema that applies to array values, applicable only if this is of type `array`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual JsonSchema Items { get; set; }
+
+        /// <summary>JDBC datatype of the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jdbcType")]
+        public virtual string JdbcType { get; set; }
+
+        /// <summary>
+        /// The child schemas, applicable only if this is of type `object`. The key is the name of the property and the
+        /// value is the json schema that describes that property
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IDictionary<string, JsonSchema> Properties { get; set; }
+
+        /// <summary>Whether this property is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("required")]
+        public virtual System.Collections.Generic.IList<string> Required { get; set; }
+
+        /// <summary>JSON Schema Validation: A Vocabulary for Structural Validation of JSON</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual System.Collections.Generic.IList<string> Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1524,6 +1760,10 @@ namespace Google.Apis.Connectors.v2.Data
         /// <summary>A brief description of the metadata field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
+
+        /// <summary>JsonSchema of the result, applicable only if parameter is of type `STRUCT`</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonSchema")]
+        public virtual JsonSchema JsonSchema { get; set; }
 
         /// <summary>Name of the metadata field.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

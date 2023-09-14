@@ -1730,6 +1730,10 @@ namespace Google.Apis.CCAIPlatform.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("certificate")]
         public virtual string Certificate { get; set; }
 
+        /// <summary>IdP field that maps to the user’s email address</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emailMapping")]
+        public virtual string EmailMapping { get; set; }
+
         /// <summary>Entity id URL</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
         public virtual string EntityId { get; set; }

@@ -5215,6 +5215,10 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("collation")]
         public virtual string Collation { get; set; }
 
+        /// <summary>Optional. Configuration for data cache.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataCacheConfig")]
+        public virtual DataCacheConfig DataCacheConfig { get; set; }
+
         /// <summary>
         /// The storage capacity available to the database, in GB. The minimum (and default) size is 10GB.
         /// </summary>
@@ -5835,6 +5839,17 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         /// <summary>Required. Only work on tables without primary key defined</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onlyIfNoPrimaryKey")]
         public virtual System.Nullable<bool> OnlyIfNoPrimaryKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Data cache configurations.</summary>
+    public class DataCacheConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Whether data cache is enabled for the instance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataCacheEnabled")]
+        public virtual System.Nullable<bool> DataCacheEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

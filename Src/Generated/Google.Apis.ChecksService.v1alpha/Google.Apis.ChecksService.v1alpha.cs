@@ -1995,13 +1995,6 @@ namespace Google.Apis.ChecksService.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("appBundle")]
         public virtual GoogleChecksReportV1alphaAppBundle AppBundle { get; set; }
 
-        /// <summary>
-        /// Resource name of the base report used for comparison. May be absent if this is the first report generated
-        /// for the app.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("baseReport")]
-        public virtual string BaseReport { get; set; }
-
         /// <summary>List of checks that were run on the app bundle.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("checks")]
         public virtual System.Collections.Generic.IList<GoogleChecksReportV1alphaCheck> Checks { get; set; }

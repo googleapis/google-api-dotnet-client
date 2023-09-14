@@ -4386,6 +4386,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("imageLocation")]
         public virtual string ImageLocation { get; set; }
 
+        /// <summary>Output only. Is trusted tester program enabled for the project.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isTrustedTester")]
+        public virtual System.Nullable<bool> IsTrustedTester { get; set; }
+
         /// <summary>
         /// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for
         /// more details. https://cloud.google.com/compute/docs/labeling-resources
@@ -4753,6 +4757,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceRequests")]
         public virtual ResourceRequests ResourceRequests { get; set; }
 
+        /// <summary>The name of shared connector deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sharedDeployment")]
+        public virtual string SharedDeployment { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -4932,6 +4940,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Output only. System resource requests.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceRequests")]
         public virtual ResourceRequests ResourceRequests { get; set; }
+
+        /// <summary>Output only. The name of shared connector deployment.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sharedDeployment")]
+        public virtual string SharedDeployment { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5487,7 +5499,15 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enrichmentEnabled")]
         public virtual System.Nullable<bool> EnrichmentEnabled { get; set; }
 
-        /// <summary>Registration endpoint for auto regsitration.</summary>
+        /// <summary>Optional. Private Connectivity Enabled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateConnectivityEnabled")]
+        public virtual System.Nullable<bool> PrivateConnectivityEnabled { get; set; }
+
+        /// <summary>Optional. Public Events listener endpoint.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("publicEventsListenerEndpoint")]
+        public virtual string PublicEventsListenerEndpoint { get; set; }
+
+        /// <summary>Registration endpoint for auto registration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("registrationDestinationConfig")]
         public virtual DestinationConfig RegistrationDestinationConfig { get; set; }
 
@@ -5704,6 +5724,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual string FieldValue { get; set; }
 
+        /// <summary>JsonSchema representation of this entity's schema</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonSchema")]
+        public virtual JsonSchema JsonSchema { get; set; }
+
         /// <summary>
         /// The following boolean field specifies if the current Field acts as a primary key or id if the parent is of
         /// type entity.
@@ -5798,6 +5822,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
+        /// <summary>JsonSchema representation of this action's parameter</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonSchema")]
+        public virtual JsonSchema JsonSchema { get; set; }
+
         /// <summary>Specifies whether a null value is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nullable")]
         public virtual System.Nullable<bool> Nullable { get; set; }
@@ -5805,6 +5833,57 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Name of the Parameter.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parameter")]
         public virtual string Parameter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>JsonSchema representation of schema metadata</summary>
+    public class JsonSchema : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The default value of the field or object described by this schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("default")]
+        public virtual object Default__ { get; set; }
+
+        /// <summary>A description of this schema.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Possible values for an enumeration. This works in conjunction with `type` to represent types with a fixed
+        /// set of legal values
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enum")]
+        public virtual System.Collections.Generic.IList<object> Enum__ { get; set; }
+
+        /// <summary>
+        /// Format of the value as per https://json-schema.org/understanding-json-schema/reference/string.html#format
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("format")]
+        public virtual string Format { get; set; }
+
+        /// <summary>Schema that applies to array values, applicable only if this is of type `array`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("items")]
+        public virtual JsonSchema Items { get; set; }
+
+        /// <summary>JDBC datatype of the field.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jdbcType")]
+        public virtual string JdbcType { get; set; }
+
+        /// <summary>
+        /// The child schemas, applicable only if this is of type `object`. The key is the name of the property and the
+        /// value is the json schema that describes that property
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("properties")]
+        public virtual System.Collections.Generic.IDictionary<string, JsonSchema> Properties { get; set; }
+
+        /// <summary>Whether this property is required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("required")]
+        public virtual System.Collections.Generic.IList<string> Required { get; set; }
+
+        /// <summary>JSON Schema Validation: A Vocabulary for Structural Validation of JSON</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual System.Collections.Generic.IList<string> Type { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6729,6 +6808,10 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("field")]
         public virtual string Field { get; set; }
 
+        /// <summary>JsonSchema representation of this action's result</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonSchema")]
+        public virtual JsonSchema JsonSchema { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6775,9 +6858,17 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; }
 
+        /// <summary>Output only. JsonSchema representation of this action's input metadata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("inputJsonSchema")]
+        public virtual JsonSchema InputJsonSchema { get; set; }
+
         /// <summary>Output only. List of input parameter metadata for the action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputParameters")]
         public virtual System.Collections.Generic.IList<InputParameter> InputParameters { get; set; }
+
+        /// <summary>Output only. JsonSchema representation of this action's result metadata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultJsonSchema")]
+        public virtual JsonSchema ResultJsonSchema { get; set; }
 
         /// <summary>Output only. List of result field metadata.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resultMetadata")]
@@ -6862,6 +6953,10 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Output only. List of fields in the entity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<Field> Fields { get; set; }
+
+        /// <summary>Output only. JsonSchema representation of this entity's metadata</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jsonSchema")]
+        public virtual JsonSchema JsonSchema { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

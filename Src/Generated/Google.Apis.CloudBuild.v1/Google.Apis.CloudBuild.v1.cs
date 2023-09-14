@@ -3657,7 +3657,7 @@ namespace Google.Apis.CloudBuild.v1
                     this.service = service;
                 }
 
-                /// <summary>Creates a new `BuildTrigger`. This API is experimental.</summary>
+                /// <summary>Creates a new `BuildTrigger`.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// The parent resource where this trigger will be created. Format:
@@ -3668,7 +3668,7 @@ namespace Google.Apis.CloudBuild.v1
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Creates a new `BuildTrigger`. This API is experimental.</summary>
+                /// <summary>Creates a new `BuildTrigger`.</summary>
                 public class CreateRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.BuildTrigger>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -3728,9 +3728,7 @@ namespace Google.Apis.CloudBuild.v1
                     }
                 }
 
-                /// <summary>
-                /// Deletes a `BuildTrigger` by its project ID and trigger ID. This API is experimental.
-                /// </summary>
+                /// <summary>Deletes a `BuildTrigger` by its project ID and trigger ID.</summary>
                 /// <param name="name">
                 /// The name of the `Trigger` to delete. Format:
                 /// `projects/{project}/locations/{location}/triggers/{trigger}`
@@ -3740,9 +3738,7 @@ namespace Google.Apis.CloudBuild.v1
                     return new DeleteRequest(service, name);
                 }
 
-                /// <summary>
-                /// Deletes a `BuildTrigger` by its project ID and trigger ID. This API is experimental.
-                /// </summary>
+                /// <summary>Deletes a `BuildTrigger` by its project ID and trigger ID.</summary>
                 public class DeleteRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Empty>
                 {
                     /// <summary>Constructs a new Delete request.</summary>
@@ -3807,7 +3803,7 @@ namespace Google.Apis.CloudBuild.v1
                     }
                 }
 
-                /// <summary>Returns information about a `BuildTrigger`. This API is experimental.</summary>
+                /// <summary>Returns information about a `BuildTrigger`.</summary>
                 /// <param name="name">
                 /// The name of the `Trigger` to retrieve. Format:
                 /// `projects/{project}/locations/{location}/triggers/{trigger}`
@@ -3817,7 +3813,7 @@ namespace Google.Apis.CloudBuild.v1
                     return new GetRequest(service, name);
                 }
 
-                /// <summary>Returns information about a `BuildTrigger`. This API is experimental.</summary>
+                /// <summary>Returns information about a `BuildTrigger`.</summary>
                 public class GetRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.BuildTrigger>
                 {
                     /// <summary>Constructs a new Get request.</summary>
@@ -3882,7 +3878,7 @@ namespace Google.Apis.CloudBuild.v1
                     }
                 }
 
-                /// <summary>Lists existing `BuildTrigger`s. This API is experimental.</summary>
+                /// <summary>Lists existing `BuildTrigger`s.</summary>
                 /// <param name="parent">
                 /// The parent of the collection of `Triggers`. Format: `projects/{project}/locations/{location}`
                 /// </param>
@@ -3891,7 +3887,7 @@ namespace Google.Apis.CloudBuild.v1
                     return new ListRequest(service, parent);
                 }
 
-                /// <summary>Lists existing `BuildTrigger`s. This API is experimental.</summary>
+                /// <summary>Lists existing `BuildTrigger`s.</summary>
                 public class ListRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.ListBuildTriggersResponse>
                 {
                     /// <summary>Constructs a new List request.</summary>
@@ -3967,9 +3963,7 @@ namespace Google.Apis.CloudBuild.v1
                     }
                 }
 
-                /// <summary>
-                /// Updates a `BuildTrigger` by its project ID and trigger ID. This API is experimental.
-                /// </summary>
+                /// <summary>Updates a `BuildTrigger` by its project ID and trigger ID.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="resourceName">
                 /// The `Trigger` name with format: `projects/{project}/locations/{location}/triggers/{trigger}`, where
@@ -3980,9 +3974,7 @@ namespace Google.Apis.CloudBuild.v1
                     return new PatchRequest(service, body, resourceName);
                 }
 
-                /// <summary>
-                /// Updates a `BuildTrigger` by its project ID and trigger ID. This API is experimental.
-                /// </summary>
+                /// <summary>Updates a `BuildTrigger` by its project ID and trigger ID.</summary>
                 public class PatchRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.BuildTrigger>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -4680,7 +4672,7 @@ namespace Google.Apis.CloudBuild.v1
                 this.service = service;
             }
 
-            /// <summary>Creates a new `BuildTrigger`. This API is experimental.</summary>
+            /// <summary>Creates a new `BuildTrigger`.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">Required. ID of the project for which to configure automatic builds.</param>
             public virtual CreateRequest Create(Google.Apis.CloudBuild.v1.Data.BuildTrigger body, string projectId)
@@ -4688,7 +4680,7 @@ namespace Google.Apis.CloudBuild.v1
                 return new CreateRequest(service, body, projectId);
             }
 
-            /// <summary>Creates a new `BuildTrigger`. This API is experimental.</summary>
+            /// <summary>Creates a new `BuildTrigger`.</summary>
             public class CreateRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.BuildTrigger>
             {
                 /// <summary>Constructs a new Create request.</summary>
@@ -4748,7 +4740,7 @@ namespace Google.Apis.CloudBuild.v1
                 }
             }
 
-            /// <summary>Deletes a `BuildTrigger` by its project ID and trigger ID. This API is experimental.</summary>
+            /// <summary>Deletes a `BuildTrigger` by its project ID and trigger ID.</summary>
             /// <param name="projectId">Required. ID of the project that owns the trigger.</param>
             /// <param name="triggerId">Required. ID of the `BuildTrigger` to delete.</param>
             public virtual DeleteRequest Delete(string projectId, string triggerId)
@@ -4756,7 +4748,7 @@ namespace Google.Apis.CloudBuild.v1
                 return new DeleteRequest(service, projectId, triggerId);
             }
 
-            /// <summary>Deletes a `BuildTrigger` by its project ID and trigger ID. This API is experimental.</summary>
+            /// <summary>Deletes a `BuildTrigger` by its project ID and trigger ID.</summary>
             public class DeleteRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.Empty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -4822,7 +4814,7 @@ namespace Google.Apis.CloudBuild.v1
                 }
             }
 
-            /// <summary>Returns information about a `BuildTrigger`. This API is experimental.</summary>
+            /// <summary>Returns information about a `BuildTrigger`.</summary>
             /// <param name="projectId">Required. ID of the project that owns the trigger.</param>
             /// <param name="triggerId">Required. Identifier (`id` or `name`) of the `BuildTrigger` to get.</param>
             public virtual GetRequest Get(string projectId, string triggerId)
@@ -4830,7 +4822,7 @@ namespace Google.Apis.CloudBuild.v1
                 return new GetRequest(service, projectId, triggerId);
             }
 
-            /// <summary>Returns information about a `BuildTrigger`. This API is experimental.</summary>
+            /// <summary>Returns information about a `BuildTrigger`.</summary>
             public class GetRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.BuildTrigger>
             {
                 /// <summary>Constructs a new Get request.</summary>
@@ -4896,14 +4888,14 @@ namespace Google.Apis.CloudBuild.v1
                 }
             }
 
-            /// <summary>Lists existing `BuildTrigger`s. This API is experimental.</summary>
+            /// <summary>Lists existing `BuildTrigger`s.</summary>
             /// <param name="projectId">Required. ID of the project for which to list BuildTriggers.</param>
             public virtual ListRequest List(string projectId)
             {
                 return new ListRequest(service, projectId);
             }
 
-            /// <summary>Lists existing `BuildTrigger`s. This API is experimental.</summary>
+            /// <summary>Lists existing `BuildTrigger`s.</summary>
             public class ListRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.ListBuildTriggersResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
@@ -4979,7 +4971,7 @@ namespace Google.Apis.CloudBuild.v1
                 }
             }
 
-            /// <summary>Updates a `BuildTrigger` by its project ID and trigger ID. This API is experimental.</summary>
+            /// <summary>Updates a `BuildTrigger` by its project ID and trigger ID.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="projectId">Required. ID of the project that owns the trigger.</param>
             /// <param name="triggerId">Required. ID of the `BuildTrigger` to update.</param>
@@ -4988,7 +4980,7 @@ namespace Google.Apis.CloudBuild.v1
                 return new PatchRequest(service, body, projectId, triggerId);
             }
 
-            /// <summary>Updates a `BuildTrigger` by its project ID and trigger ID. This API is experimental.</summary>
+            /// <summary>Updates a `BuildTrigger` by its project ID and trigger ID.</summary>
             public class PatchRequest : CloudBuildBaseServiceRequest<Google.Apis.CloudBuild.v1.Data.BuildTrigger>
             {
                 /// <summary>Constructs a new Patch request.</summary>
@@ -8880,7 +8872,7 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// <summary>
         /// List of build step outputs, produced by builder images, in the order corresponding to build step indices.
         /// [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by
-        /// writing to `$BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.
+        /// writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildStepOutputs")]
         public virtual System.Collections.Generic.IList<string> BuildStepOutputs { get; set; }

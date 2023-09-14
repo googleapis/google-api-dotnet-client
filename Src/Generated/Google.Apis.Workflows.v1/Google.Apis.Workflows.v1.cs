@@ -842,6 +842,88 @@ namespace Google.Apis.Workflows.v1
                     }
                 }
 
+                /// <summary>Lists revisions for a given workflow.</summary>
+                /// <param name="name">
+                /// Required. Workflow from which the revisions should be listed. Format:
+                /// projects/{project}/locations/{location}/workflows/{workflow}
+                /// </param>
+                public virtual ListRevisionsRequest ListRevisions(string name)
+                {
+                    return new ListRevisionsRequest(service, name);
+                }
+
+                /// <summary>Lists revisions for a given workflow.</summary>
+                public class ListRevisionsRequest : WorkflowsBaseServiceRequest<Google.Apis.Workflows.v1.Data.ListWorkflowRevisionsResponse>
+                {
+                    /// <summary>Constructs a new ListRevisions request.</summary>
+                    public ListRevisionsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Workflow from which the revisions should be listed. Format:
+                    /// projects/{project}/locations/{location}/workflows/{workflow}
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// The maximum number of revisions to return per page. If a value is not specified, a default value
+                    /// of 20 is used. The maximum permitted value is 100 and values greater than 100 coerced down to
+                    /// 100.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// The page token, received from a previous ListWorkflowRevisions call. Provide this to retrieve
+                    /// the subsequent page.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "listRevisions";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:listRevisions";
+
+                    /// <summary>Initializes ListRevisions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/workflows/[^/]+$",
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Updates an existing workflow. Running this method has no impact on already running executions of the
                 /// workflow. A new revision of the workflow might be created as a result of a successful update
@@ -1098,6 +1180,24 @@ namespace Google.Apis.Workflows.v1.Data
         /// <summary>A list of operations that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("operations")]
         public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response for the ListWorkflowRevisions method.</summary>
+    public class ListWorkflowRevisionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The revisions of the workflow, ordered in reverse chronological order.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workflows")]
+        public virtual System.Collections.Generic.IList<Workflow> Workflows { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

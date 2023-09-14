@@ -8379,7 +8379,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
 
         /// <summary>
         /// Applies the repricing configuration at the channel partner level. Only ChannelPartnerRepricingConfig
-        /// supports this value.
+        /// supports this value. Deprecated: This is no longer supported. Use RepricingConfig.entitlement_granularity
+        /// instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("channelPartnerGranularity")]
         public virtual GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity ChannelPartnerGranularity { get; set; }
@@ -8422,7 +8423,8 @@ namespace Google.Apis.Cloudchannel.v1.Data
 
     /// <summary>
     /// Applies the repricing configuration at the channel partner level. The channel partner value is derived from the
-    /// resource name. Takes an empty json object.
+    /// resource name. Takes an empty json object. Deprecated: This is no longer supported. Use
+    /// RepricingConfig.EntitlementGranularity instead.
     /// </summary>
     public class GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity : Google.Apis.Requests.IDirectResponseSchema
     {

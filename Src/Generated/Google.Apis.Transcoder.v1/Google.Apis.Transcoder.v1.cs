@@ -1405,6 +1405,20 @@ namespace Google.Apis.Transcoder.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>`fmp4` container configuration.</summary>
+    public class Fmp4Config : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specify the codec tag string that will be used in the media bitstream. When not specified, the
+        /// codec appropriate value is used. Supported H265 codec tags: - `hvc1` (default) - `hev1`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("codecTag")]
+        public virtual string CodecTag { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>H264 codec settings.</summary>
     public class H264CodecSettings : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2151,6 +2165,10 @@ namespace Google.Apis.Transcoder.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileName")]
         public virtual string FileName { get; set; }
+
+        /// <summary>Optional. `fmp4` container configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fmp4")]
+        public virtual Fmp4Config Fmp4 { get; set; }
 
         /// <summary>A unique key for this multiplexed stream.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("key")]

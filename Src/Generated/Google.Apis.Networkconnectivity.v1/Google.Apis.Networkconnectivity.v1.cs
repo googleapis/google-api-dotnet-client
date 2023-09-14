@@ -6225,6 +6225,17 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The response for HubService.AcceptHubSpoke.</summary>
+    public class AcceptHubSpokeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The spoke that was operated on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spoke")]
+        public virtual Spoke Spoke { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request for HubService.AcceptSpoke.</summary>
     public class AcceptSpokeRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7959,6 +7970,17 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         /// <summary>Required. The URI of the spoke to reject from the hub.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("spokeUri")]
         public virtual string SpokeUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response for HubService.RejectHubSpoke.</summary>
+    public class RejectHubSpokeResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The spoke that was operated on.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("spoke")]
+        public virtual Spoke Spoke { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

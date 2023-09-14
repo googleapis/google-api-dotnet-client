@@ -1573,6 +1573,35 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
+    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
+    /// of the following: * A full date, with non-zero year, month, and day values. * A month and day, with a zero year
+    /// (for example, an anniversary). * A year on its own, with a zero month and a zero day. * A year and month, with a
+    /// zero day (for example, a credit card expiration date). Related types: * google.type.TimeOfDay *
+    /// google.type.DateTime * google.protobuf.Timestamp
+    /// </summary>
+    public class Date : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a
+        /// year and month where the day isn't significant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Filters events based on exact matches on the CloudEvents attributes.</summary>
     public class EventFilter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2765,6 +2794,14 @@ namespace Google.Apis.CloudFunctions.v2alpha.Data
     /// <summary>Describes a runtime and any special information (e.g., deprecation status) related to it.</summary>
     public class Runtime : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Decommission date for the runtime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("decommissionDate")]
+        public virtual Date DecommissionDate { get; set; }
+
+        /// <summary>Deprecation date for the runtime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deprecationDate")]
+        public virtual Date DeprecationDate { get; set; }
+
         /// <summary>The user facing name, eg 'Go 1.13', 'Node.js 12', etc.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }

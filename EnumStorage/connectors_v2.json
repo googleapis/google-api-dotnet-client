@@ -7,5 +7,15 @@
   "Google.Apis.Connectors.v2.ConnectorsBaseServiceRequest<<TResponse>>.XgafvEnum": [
     "1",
     "2"
+  ],
+  "Google.Apis.Connectors.v2.ProjectsResource+LocationsResource+ConnectionsResource+ActionsResource+ListRequest.ViewEnum": [
+    "ACTION_VIEW_UNSPECIFIED",
+    "ACTION_VIEW_BASIC",
+    "ACTION_VIEW_FULL"
+  ],
+  "Google.Apis.Connectors.v2.ProjectsResource+LocationsResource+ConnectionsResource+EntityTypesResource+ListRequest.ViewEnum": [
+    "ENTITY_TYPE_VIEW_UNSPECIFIED",
+    "ENTITY_TYPE_VIEW_BASIC",
+    "ENTITY_TYPE_VIEW_FULL"
   ]
 }

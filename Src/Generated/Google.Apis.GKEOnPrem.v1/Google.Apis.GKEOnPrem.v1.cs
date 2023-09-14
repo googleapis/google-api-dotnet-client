@@ -9927,6 +9927,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("localName")]
         public virtual string LocalName { get; set; }
 
+        /// <summary>Membership names are formatted as `projects//locations//memberships/`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membership")]
+        public virtual string Membership { get; set; }
+
         /// <summary>Resource name of the dependency.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceName")]
         public virtual string ResourceName { get; set; }
@@ -10786,8 +10790,7 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         public virtual ValidationCheck ValidationCheck { get; set; }
 
         /// <summary>
-        /// Output only. VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin
-        /// cluster.
+        /// VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vcenter")]
         public virtual VmwareVCenterConfig Vcenter { get; set; }
@@ -11446,7 +11449,7 @@ namespace Google.Apis.GKEOnPrem.v1.Data
     /// <summary>Represents configuration for the VMware VCenter for the user cluster.</summary>
     public class VmwareVCenterConfig : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The vCenter IP address.</summary>
+        /// <summary>Output only. The vCenter IP address.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("address")]
         public virtual string Address { get; set; }
 
@@ -11485,6 +11488,10 @@ namespace Google.Apis.GKEOnPrem.v1.Data
     /// <summary>Contains information about a specific Anthos on VMware version.</summary>
     public class VmwareVersionInfo : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The list of upgrade dependencies for this version.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dependencies")]
+        public virtual System.Collections.Generic.IList<UpgradeDependency> Dependencies { get; set; }
+
         /// <summary>
         /// If set, the cluster dependencies (e.g. the admin cluster, other user clusters managed by the same admin
         /// cluster) must be upgraded before this version can be installed or upgraded to.
