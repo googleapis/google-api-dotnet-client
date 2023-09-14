@@ -2543,7 +2543,7 @@ namespace Google.Apis.AdMob.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The mediation A/B experiment. NEXT ID: 12</summary>
+    /// <summary>The mediation A/B experiment.</summary>
     public class MediationAbExperiment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>

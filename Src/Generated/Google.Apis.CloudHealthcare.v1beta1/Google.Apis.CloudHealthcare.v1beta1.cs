@@ -8771,20 +8771,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// retrieve the next page. Resources with a total size larger than 5MB or a field count larger
                         /// than 50,000 might not be fully searchable as the server might trim its generated search
                         /// index in those cases. Note: FHIR resources are indexed asynchronously, so there might be a
-                        /// slight delay between the time a resource is created or changed, and the time when the change
-                        /// reflects in search results. The only exception is resource identifier data, which is indexed
-                        /// synchronously as a special index. As a result, searching using resource identifier is not
-                        /// subject to indexing delay. To use the special synchronous index, the search term for
-                        /// identifier should be in the pattern `identifier=[system]|[value]` or `identifier=[value]`,
-                        /// and any of the following search result parameters can be used: * `_count` * `_include` *
-                        /// `_revinclude` * `_summary` * `_elements` If your query contains any other search parameters,
-                        /// the standard asynchronous index will be used instead. Note that searching against the
-                        /// special index is optimized for resolving a small number of matches. The search isn't
-                        /// optimized if your identifier search criteria matches a large number (i.e. more than 2,000)
-                        /// of resources. For a search query that will match a large number of resources, you can
-                        /// avoiding using the special synchronous index by including an additional `_sort` parameter in
-                        /// your query. Use `_sort=-_lastUpdated` if you want to keep the default sorting order. For
-                        /// samples and detailed information, see [Searching for FHIR
+                        /// slight delay between the time a resource is created or changes and when the change is
+                        /// reflected in search results. For samples and detailed information, see [Searching for FHIR
                         /// resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR
                         /// search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
                         /// </summary>
@@ -8833,20 +8821,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// retrieve the next page. Resources with a total size larger than 5MB or a field count larger
                         /// than 50,000 might not be fully searchable as the server might trim its generated search
                         /// index in those cases. Note: FHIR resources are indexed asynchronously, so there might be a
-                        /// slight delay between the time a resource is created or changed, and the time when the change
-                        /// reflects in search results. The only exception is resource identifier data, which is indexed
-                        /// synchronously as a special index. As a result, searching using resource identifier is not
-                        /// subject to indexing delay. To use the special synchronous index, the search term for
-                        /// identifier should be in the pattern `identifier=[system]|[value]` or `identifier=[value]`,
-                        /// and any of the following search result parameters can be used: * `_count` * `_include` *
-                        /// `_revinclude` * `_summary` * `_elements` If your query contains any other search parameters,
-                        /// the standard asynchronous index will be used instead. Note that searching against the
-                        /// special index is optimized for resolving a small number of matches. The search isn't
-                        /// optimized if your identifier search criteria matches a large number (i.e. more than 2,000)
-                        /// of resources. For a search query that will match a large number of resources, you can
-                        /// avoiding using the special synchronous index by including an additional `_sort` parameter in
-                        /// your query. Use `_sort=-_lastUpdated` if you want to keep the default sorting order. For
-                        /// samples and detailed information, see [Searching for FHIR
+                        /// slight delay between the time a resource is created or changes and when the change is
+                        /// reflected in search results. For samples and detailed information, see [Searching for FHIR
                         /// resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR
                         /// search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
                         /// </summary>
@@ -8932,20 +8908,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// retrieve the next page. Resources with a total size larger than 5MB or a field count larger
                         /// than 50,000 might not be fully searchable as the server might trim its generated search
                         /// index in those cases. Note: FHIR resources are indexed asynchronously, so there might be a
-                        /// slight delay between the time a resource is created or changed, and the time when the change
-                        /// reflects in search results. The only exception is resource identifier data, which is indexed
-                        /// synchronously as a special index. As a result, searching using resource identifier is not
-                        /// subject to indexing delay. To use the special synchronous index, the search term for
-                        /// identifier should be in the pattern `identifier=[system]|[value]` or `identifier=[value]`,
-                        /// and any of the following search result parameters can be used: * `_count` * `_include` *
-                        /// `_revinclude` * `_summary` * `_elements` If your query contains any other search parameters,
-                        /// the standard asynchronous index will be used instead. Note that searching against the
-                        /// special index is optimized for resolving a small number of matches. The search isn't
-                        /// optimized if your identifier search criteria matches a large number (i.e. more than 2,000)
-                        /// of resources. For a search query that will match a large number of resources, you can
-                        /// avoiding using the special synchronous index by including an additional `_sort` parameter in
-                        /// your query. Use `_sort=-_lastUpdated` if you want to keep the default sorting order. For
-                        /// samples and detailed information, see [Searching for FHIR
+                        /// slight delay between the time a resource is created or changes and when the change is
+                        /// reflected in search results. For samples and detailed information, see [Searching for FHIR
                         /// resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR
                         /// search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
                         /// </summary>
@@ -9001,20 +8965,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1
                         /// retrieve the next page. Resources with a total size larger than 5MB or a field count larger
                         /// than 50,000 might not be fully searchable as the server might trim its generated search
                         /// index in those cases. Note: FHIR resources are indexed asynchronously, so there might be a
-                        /// slight delay between the time a resource is created or changed, and the time when the change
-                        /// reflects in search results. The only exception is resource identifier data, which is indexed
-                        /// synchronously as a special index. As a result, searching using resource identifier is not
-                        /// subject to indexing delay. To use the special synchronous index, the search term for
-                        /// identifier should be in the pattern `identifier=[system]|[value]` or `identifier=[value]`,
-                        /// and any of the following search result parameters can be used: * `_count` * `_include` *
-                        /// `_revinclude` * `_summary` * `_elements` If your query contains any other search parameters,
-                        /// the standard asynchronous index will be used instead. Note that searching against the
-                        /// special index is optimized for resolving a small number of matches. The search isn't
-                        /// optimized if your identifier search criteria matches a large number (i.e. more than 2,000)
-                        /// of resources. For a search query that will match a large number of resources, you can
-                        /// avoiding using the special synchronous index by including an additional `_sort` parameter in
-                        /// your query. Use `_sort=-_lastUpdated` if you want to keep the default sorting order. For
-                        /// samples and detailed information, see [Searching for FHIR
+                        /// slight delay between the time a resource is created or changes and when the change is
+                        /// reflected in search results. For samples and detailed information, see [Searching for FHIR
                         /// resources](https://cloud.google.com/healthcare/docs/how-tos/fhir-search) and [Advanced FHIR
                         /// search features](https://cloud.google.com/healthcare/docs/how-tos/fhir-advanced-search).
                         /// </summary>
@@ -13280,7 +13232,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
 
     /// <summary>
     /// Replace field value with masking character. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code,
-    /// Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+    /// Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
     /// </summary>
     public class CharacterMaskField : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13348,7 +13300,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// `Action` is applied to all the specified fields. When cleaning text, the process attempts to transform phrases
     /// matching any of the tags marked for removal (action codes D, Z, X, and U) in the [Basic
     /// Profile](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part15/chapter_E.html). These contextual phrases
-    /// are replaced with the token "[CTX]". This option uses an additional `InfoType` during inspection.
+    /// are replaced with the token "[CTX]". This option uses an additional infoType during inspection.
     /// </summary>
     public class CleanDescriptorsOption : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13357,9 +13309,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     }
 
     /// <summary>
-    /// Inspect text and transform sensitive text. Configure using `TextConfig`. Supported
+    /// Inspect text and transform sensitive text. Configure using TextConfig. Supported
     /// [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id, LanguageCode,
-    /// Markdown, Oid, String, Uri, Uuid, Xhtml
+    /// Markdown, Oid, String, Uri, Uuid, Xhtml.
     /// </summary>
     public class CleanTextField : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13658,10 +13610,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     }
 
     /// <summary>
-    /// The fields that aren't marked `Keep` or `CleanText` in the `BASIC` profile are collected into a contextual
-    /// phrase list. For fields marked `CleanText`, the process attempts to transform phrases matching these contextual
-    /// entries. These contextual phrases are replaced with the token "[CTX]". This feature uses an additional InfoType
-    /// during inspection.
+    /// Fields that don't match a KeepField or CleanTextField `action` in the BASIC profile are collected into a
+    /// contextual phrase list. For fields that match a CleanTextField `action` in FieldMetadata or ProfileType, the
+    /// process attempts to transform phrases matching these contextual entries. These contextual phrases are replaced
+    /// with the token "[CTX]". This feature uses an additional InfoType during inspection.
     /// </summary>
     public class ContextualDeidConfig : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13688,13 +13640,13 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     {
         /// <summary>
         /// An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for
-        /// each Deidentify operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be
-        /// set if `kms_wrapped` is set.
+        /// each Deidentify operation and is used when neither crypto_key nor kms_wrapped is specified. Must not be set
+        /// if kms_wrapped is set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKey")]
         public virtual string CryptoKey { get; set; }
 
-        /// <summary>KMS wrapped key. Must not be set if `crypto_key` is set.</summary>
+        /// <summary>KMS wrapped key. Must not be set if crypto_key is set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsWrapped")]
         public virtual KmsWrappedCryptoKey KmsWrapped { get; set; }
 
@@ -13704,7 +13656,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
 
     /// <summary>
     /// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html): Code,
-    /// Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+    /// Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
     /// </summary>
     public class CryptoHashField : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13747,16 +13699,15 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>
         /// An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient
         /// ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID.
-        /// If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a
-        /// default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set.
+        /// If crypto_key is not set, then kms_wrapped is used to calculate the date shift. If neither is set, a default
+        /// key is generated for each de-identify operation. Must not be set if kms_wrapped is set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoKey")]
         public virtual string CryptoKey { get; set; }
 
         /// <summary>
-        /// KMS wrapped key. If `kms_wrapped` is not set, then `crypto_key` is used to calculate the date shift. If
-        /// neither is set, a default key is generated for each de-identify operation. Must not be set if `crypto_key`
-        /// is set.
+        /// KMS wrapped key. If kms_wrapped is not set, then crypto_key is used to calculate the date shift. If neither
+        /// is set, a default key is generated for each de-identify operation. Must not be set if crypto_key is set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kmsWrapped")]
         public virtual KmsWrappedCryptoKey KmsWrapped { get; set; }
@@ -13768,7 +13719,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     /// <summary>
     /// Shift the date by a randomized number of days. See [date
     /// shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported
-    /// [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+    /// [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime.
     /// </summary>
     public class DateShiftField : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14696,15 +14647,15 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     public class FhirFieldConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a `FieldMetadata`
-        /// is passed through to the output dataset unmodified. All extensions will be processed according to
-        /// `keep_extensions`. If a field can be matched by more than one `FieldMetadata`, the first
-        /// `FieldMetadata.Action` is applied. Overrides `options` and `profile`.
+        /// Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata
+        /// `action` is passed through to the output dataset unmodified. All extensions will be processed according to
+        /// keep_extensions. If a field can be matched by more than one FieldMetadata `action`, the first `action`
+        /// option is applied. Overrides options and the union field `profile` in FhirFieldConfig.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fieldMetadataList")]
         public virtual System.Collections.Generic.IList<GoogleCloudHealthcareV1beta1DeidentifyFieldMetadata> FieldMetadataList { get; set; }
 
-        /// <summary>Specifies additional options, overriding the base `profile`.</summary>
+        /// <summary>Specifies additional options, overriding the base ProfileType.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("options")]
         public virtual GoogleCloudHealthcareV1beta1DeidentifyOptions Options { get; set; }
 
@@ -15223,22 +15174,22 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>
         /// Replace the field's value with a masking character. Supported
         /// [types](https://www.hl7.org/fhir/datatypes.html): Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid,
-        /// String, Uri, Uuid, Xhtml
+        /// String, Uri, Uuid, Xhtml.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("characterMaskField")]
         public virtual CharacterMaskField CharacterMaskField { get; set; }
 
         /// <summary>
-        /// Inspect the field's text and transform sensitive text. Configure using `TextConfig`. Supported
+        /// Inspect the field's text and transform sensitive text. Configure using TextConfig. Supported
         /// [types](https://www.hl7.org/fhir/datatypes.html): Code, Date, DateTime, Decimal, HumanName, Id,
-        /// LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        /// LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cleanTextField")]
         public virtual CleanTextField CleanTextField { get; set; }
 
         /// <summary>
         /// Replace field value with a hash of that value. Supported [types](https://www.hl7.org/fhir/datatypes.html):
-        /// Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml
+        /// Code, Decimal, HumanName, Id, LanguageCode, Markdown, Oid, String, Uri, Uuid, Xhtml.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoHashField")]
         public virtual CryptoHashField CryptoHashField { get; set; }
@@ -15246,7 +15197,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>
         /// Shift the date by a randomized number of days. See [date
         /// shifting](https://cloud.google.com/dlp/docs/concepts-date-shifting) for more information. Supported
-        /// [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime
+        /// [types](https://www.hl7.org/fhir/datatypes.html): Date, DateTime.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateShiftField")]
         public virtual DateShiftField DateShiftField { get; set; }
@@ -15257,16 +15208,17 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
 
         /// <summary>
         /// List of paths to FHIR fields to redact. Each path is a period-separated list where each component is either
-        /// a field name or FHIR type name. All types begin with an upper case letter. For example, the resource field
-        /// "Patient.Address.city", which uses a string type, can be matched by "Patient.Address.String". Path also
-        /// supports partialkk matching. For example, "Patient.Address.city" can be matched by "Address.city" (Patient
-        /// omitted). Partial matching and type matching can be combined, for example "Patient.Address.city" can be
-        /// matched by "Address.String". For "choice" types (those defined in the FHIR spec with the form: field[x]),
-        /// use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported
-        /// [types](https://www.hl7.org/fhir/datatypes.html) are: AdministrativeGenderCode, Base64Binary, Boolean, Code,
-        /// Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String,
-        /// UnsignedInt, Uri, Uuid, Xhtml. The sub-type for HumanName (for example HumanName.given, HumanName.family)
-        /// can be omitted.
+        /// a field name or FHIR [type](https://www.hl7.org/fhir/datatypes.html) name. All types begin with an upper
+        /// case letter. For example, the resource field `Patient.Address.city`, which uses a
+        /// [string](https://www.hl7.org/fhir/datatypes-definitions.html#Address.city) type, can be matched by
+        /// `Patient.Address.String`. Partial matching is supported. For example, `Patient.Address.city` can be matched
+        /// by `Address.city` (with `Patient` omitted). Partial matching and type matching can be combined, for example
+        /// `Patient.Address.city` can be matched by `Address.String`. For "choice" types (those defined in the FHIR
+        /// spec with the format `field[x]`), use two separate components. For example, `deceasedAge.unit` is matched by
+        /// `Deceased.Age.unit`. The following types are supported: AdministrativeGenderCode, Base64Binary, Boolean,
+        /// Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt,
+        /// String, UnsignedInt, Uri, Uuid, Xhtml. The sub-type for HumanName (for example `HumanName.given`,
+        /// `HumanName.family`) can be omitted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("paths")]
         public virtual System.Collections.Generic.IList<string> Paths { get; set; }
@@ -15279,10 +15231,10 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Specifies additional options to apply to the base `profile`.</summary>
+    /// <summary>Specifies additional options to apply to the base ProfileType.</summary>
     public class GoogleCloudHealthcareV1beta1DeidentifyOptions : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Character mask config for `CharacterMaskField` `FieldMetadatas`.</summary>
+        /// <summary>Character mask config for CharacterMaskField.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("characterMaskConfig")]
         public virtual CharacterMaskConfig CharacterMaskConfig { get; set; }
 
@@ -15290,11 +15242,11 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("contextualDeid")]
         public virtual ContextualDeidConfig ContextualDeid { get; set; }
 
-        /// <summary>Crypo hash config for `CharacterMaskField` `FieldMetadatas`.</summary>
+        /// <summary>Crypto hash config for CharacterMaskField.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("cryptoHashConfig")]
         public virtual CryptoHashConfig CryptoHashConfig { get; set; }
 
-        /// <summary>Date shifting config for `CharacterMaskField` `FieldMetadatas`.</summary>
+        /// <summary>Date shifting config for CharacterMaskField.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dateShiftConfig")]
         public virtual DateShiftConfig DateShiftConfig { get; set; }
 
@@ -15950,7 +15902,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     }
 
     /// <summary>
-    /// The behaviour for handling FHIR extensions that aren't otherwise specified for de-identification. If provided,
+    /// The behavior for handling FHIR extensions that aren't otherwise specified for de-identification. If provided,
     /// all extensions are preserved during de-identification by default. If unspecified, all extensions are removed
     /// during de-identification by default.
     /// </summary>

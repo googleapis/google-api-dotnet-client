@@ -5211,10 +5211,6 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
         [Newtonsoft.Json.JsonPropertyAttribute("outOfDiskReport")]
         public virtual SqlOutOfDiskReport OutOfDiskReport { get; set; }
 
-        /// <summary>Output only. The dns name of the primary instance in a replication group.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("primaryDnsName")]
-        public virtual string PrimaryDnsName { get; set; }
-
         /// <summary>
         /// The project ID of the project containing the Cloud SQL instance. The Google apps domain is prefixed if
         /// applicable.
@@ -6303,7 +6299,7 @@ namespace Google.Apis.SQLAdmin.v1beta4.Data
 
         /// <summary>
         /// The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b,
-        /// etc.). To disable this field, set it to 'no_secondary_zone'.
+        /// etc.).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secondaryZone")]
         public virtual string SecondaryZone { get; set; }

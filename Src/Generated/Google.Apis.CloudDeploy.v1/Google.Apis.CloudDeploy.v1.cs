@@ -2117,6 +2117,65 @@ namespace Google.Apis.CloudDeploy.v1
                     }
                 }
 
+                /// <summary>Creates a `Rollout` to roll back the specified target.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The `DeliveryPipeline` for which the rollback `Rollout` should be created. Format should
+                /// be projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}.
+                /// </param>
+                public virtual RollbackTargetRequest RollbackTarget(Google.Apis.CloudDeploy.v1.Data.RollbackTargetRequest body, string name)
+                {
+                    return new RollbackTargetRequest(service, body, name);
+                }
+
+                /// <summary>Creates a `Rollout` to roll back the specified target.</summary>
+                public class RollbackTargetRequest : CloudDeployBaseServiceRequest<Google.Apis.CloudDeploy.v1.Data.RollbackTargetResponse>
+                {
+                    /// <summary>Constructs a new RollbackTarget request.</summary>
+                    public RollbackTargetRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudDeploy.v1.Data.RollbackTargetRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The `DeliveryPipeline` for which the rollback `Rollout` should be created. Format
+                    /// should be projects/{project_id}/locations/{location_name}/deliveryPipelines/{pipeline_name}.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.CloudDeploy.v1.Data.RollbackTargetRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "rollbackTarget";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:rollbackTarget";
+
+                    /// <summary>Initializes RollbackTarget parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/deliveryPipelines/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>
                 /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
                 /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
@@ -5689,6 +5748,71 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configs for the Rollback rollout.</summary>
+    public class RollbackTargetConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The rollback `Rollout` to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollout")]
+        public virtual Rollout Rollout { get; set; }
+
+        /// <summary>
+        /// Optional. The starting phase ID for the `Rollout`. If unspecified, the `Rollout` will start in the stable
+        /// phase.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startingPhaseId")]
+        public virtual string StartingPhaseId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request object for `RollbackTarget`.</summary>
+    public class RollbackTargetRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. ID of the `Release` to roll back to. If this isn't specified, the previous successful `Rollout` to
+        /// the specified target will be used to determine the `Release`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("releaseId")]
+        public virtual string ReleaseId { get; set; }
+
+        /// <summary>Optional. Configs for the rollback `Rollout`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollbackConfig")]
+        public virtual RollbackTargetConfig RollbackConfig { get; set; }
+
+        /// <summary>Required. ID of the rollback `Rollout` to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutId")]
+        public virtual string RolloutId { get; set; }
+
+        /// <summary>Optional. If provided, this must be the latest `Rollout` that is on the `Target`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolloutToRollBack")]
+        public virtual string RolloutToRollBack { get; set; }
+
+        /// <summary>Required. ID of the `Target` that is being rolled back.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("targetId")]
+        public virtual string TargetId { get; set; }
+
+        /// <summary>
+        /// Optional. If set to true, the request is validated and the user is provided with a `RollbackTargetResponse`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]
+        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response object from `RollbackTarget`.</summary>
+    public class RollbackTargetResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The config of the rollback `Rollout` created or will be created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollbackConfig")]
+        public virtual RollbackTargetConfig RollbackConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A `Rollout` resource in the Cloud Deploy API. A `Rollout` contains information around a specific deployment to a
     /// `Target`.
@@ -5953,6 +6077,17 @@ namespace Google.Apis.CloudDeploy.v1.Data
         /// <summary>Output only. The phases that represent the workflows of this `Rollout`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("phases")]
         public virtual System.Collections.Generic.IList<Phase> Phases { get; set; }
+
+        /// <summary>
+        /// Output only. Name of the `Rollout` that is rolled back by this `Rollout`. Empty if this `Rollout` wasn't
+        /// created as a rollback.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollbackOfRollout")]
+        public virtual string RollbackOfRollout { get; set; }
+
+        /// <summary>Output only. Names of `Rollouts` that rolled back this `Rollout`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rolledBackByRollouts")]
+        public virtual System.Collections.Generic.IList<string> RolledBackByRollouts { get; set; }
 
         /// <summary>Output only. Current state of the `Rollout`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]

@@ -1,0 +1,11 @@
+{
+  "Google.Apis.RapidMigrationAssessment.v1.RapidMigrationAssessmentBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.RapidMigrationAssessment.v1.RapidMigrationAssessmentBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

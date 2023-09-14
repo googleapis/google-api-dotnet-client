@@ -7155,9 +7155,8 @@ namespace Google.Apis.Aiplatform.v1
                         /// <summary>Creates a new Feature in a given EntityType.</summary>
                         /// <param name="body">The body of the request.</param>
                         /// <param name="parent">
-                        /// Required. The resource name of the EntityType or FeatureGroup to create a Feature. Format:
+                        /// Required. The resource name of the EntityType to create a Feature. Format:
                         /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
-                        /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
                         /// </param>
                         public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Feature body, string parent)
                         {
@@ -7176,10 +7175,8 @@ namespace Google.Apis.Aiplatform.v1
                             }
 
                             /// <summary>
-                            /// Required. The resource name of the EntityType or FeatureGroup to create a Feature.
-                            /// Format:
+                            /// Required. The resource name of the EntityType to create a Feature. Format:
                             /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
-                            /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -7188,7 +7185,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// Required. The ID to use for the Feature, which will become the final component of the
                             /// Feature's resource name. This value may be up to 128 characters, and valid characters
                             /// are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within
-                            /// an EntityType/FeatureGroup.
+                            /// an EntityType .
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("featureId", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string FeatureId { get; set; }
@@ -7235,7 +7232,6 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">
                         /// Required. The name of the Features to be deleted. Format:
                         /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}/features/{feature}`
-                        /// `projects/{project}/locations/{location}/featureGroups/{feature_group}/features/{feature}`
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
@@ -7255,7 +7251,6 @@ namespace Google.Apis.Aiplatform.v1
                             /// <summary>
                             /// Required. The name of the Features to be deleted. Format:
                             /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}/features/{feature}`
-                            /// `projects/{project}/locations/{location}/featureGroups/{feature_group}/features/{feature}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -7288,7 +7283,6 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">
                         /// Required. The name of the Feature resource. Format:
                         /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
-                        /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
@@ -7308,7 +7302,6 @@ namespace Google.Apis.Aiplatform.v1
                             /// <summary>
                             /// Required. The name of the Feature resource. Format:
                             /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
-                            /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -7341,7 +7334,6 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="parent">
                         /// Required. The resource name of the Location to list Features. Format:
                         /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
-                        /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -7361,7 +7353,6 @@ namespace Google.Apis.Aiplatform.v1
                             /// <summary>
                             /// Required. The resource name of the Location to list Features. Format:
                             /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
-                            /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -7392,8 +7383,8 @@ namespace Google.Apis.Aiplatform.v1
 
                             /// <summary>
                             /// A comma-separated list of fields to order by, sorted in ascending order. Use "desc"
-                            /// after a field name for descending. Supported fields: * `feature_id` * `value_type` *
-                            /// `create_time` * `update_time`
+                            /// after a field name for descending. Supported fields: * `feature_id` * `value_type` (Not
+                            /// supported for FeatureRegistry Feature) * `create_time` * `update_time`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string OrderBy { get; set; }
@@ -30331,9 +30322,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Request message for FeaturestoreService.CreateFeature and FeatureRegistryService.CreateFeature.
-    /// </summary>
+    /// <summary>Request message for FeaturestoreService.CreateFeature.</summary>
     public class GoogleCloudAiplatformV1CreateFeatureRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The Feature to create.</summary>
@@ -30343,15 +30332,14 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>
         /// Required. The ID to use for the Feature, which will become the final component of the Feature's resource
         /// name. This value may be up to 128 characters, and valid characters are `[a-z0-9_]`. The first character
-        /// cannot be a number. The value must be unique within an EntityType/FeatureGroup.
+        /// cannot be a number. The value must be unique within an EntityType .
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("featureId")]
         public virtual string FeatureId { get; set; }
 
         /// <summary>
-        /// Required. The resource name of the EntityType or FeatureGroup to create a Feature. Format:
+        /// Required. The resource name of the EntityType to create a Feature. Format:
         /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
-        /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
@@ -33831,7 +33819,7 @@ namespace Google.Apis.Aiplatform.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
-        /// <summary>Required. Immutable. Type of Feature value.</summary>
+        /// <summary>Immutable. Type of Feature value.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("valueType")]
         public virtual string ValueType { get; set; }
     }
@@ -35332,6 +35320,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
+        /// Immutable. Customer-managed encryption key spec for an Index. If set, this Index and all sub-resources of
+        /// this Index will be secured by this key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionSpec")]
+        public virtual GoogleCloudAiplatformV1EncryptionSpec EncryptionSpec { get; set; }
+
+        /// <summary>
         /// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
@@ -35444,7 +35439,7 @@ namespace Google.Apis.Aiplatform.v1.Data
 
         /// <summary>
         /// Optional. List of Restrict of the datapoint, used to perform "restricted searches" where boolean rule are
-        /// used to filter the subset of the database eligible for matching. See:
+        /// used to filter the subset of the database eligible for matching. This uses categorical tokens. See:
         /// https://cloud.google.com/vertex-ai/docs/matching-engine/filtering
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("restricts")]
@@ -35479,15 +35474,15 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// </summary>
     public class GoogleCloudAiplatformV1IndexDatapointRestriction : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The attributes to allow in this namespace. eg: 'red'</summary>
+        /// <summary>The attributes to allow in this namespace. e.g.: 'red'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("allowList")]
         public virtual System.Collections.Generic.IList<string> AllowList { get; set; }
 
-        /// <summary>The attributes to deny in this namespace. eg: 'blue'</summary>
+        /// <summary>The attributes to deny in this namespace. e.g.: 'blue'</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("denyList")]
         public virtual System.Collections.Generic.IList<string> DenyList { get; set; }
 
-        /// <summary>The namespace of this restriction. eg: color.</summary>
+        /// <summary>The namespace of this restriction. e.g.: color.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespace")]
         public virtual string Namespace__ { get; set; }
 
@@ -35556,6 +35551,13 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enablePrivateServiceConnect")]
         public virtual System.Nullable<bool> EnablePrivateServiceConnect { get; set; }
+
+        /// <summary>
+        /// Immutable. Customer-managed encryption key spec for an IndexEndpoint. If set, this IndexEndpoint and all
+        /// sub-resources of this IndexEndpoint will be secured by this key.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionSpec")]
+        public virtual GoogleCloudAiplatformV1EncryptionSpec EncryptionSpec { get; set; }
 
         /// <summary>
         /// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
@@ -36053,9 +36055,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Response message for FeaturestoreService.ListFeatures. Response message for FeatureRegistryService.ListFeatures.
-    /// </summary>
+    /// <summary>Response message for FeaturestoreService.ListFeatures.</summary>
     public class GoogleCloudAiplatformV1ListFeaturesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The Features matching the request.</summary>
@@ -46488,6 +46488,30 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("clientId")]
         public virtual string ClientId { get; set; }
 
+        /// <summary>
+        /// Optional. This allows you to specify the "context" for a Trial; a context is a slice (a subspace) of the
+        /// search space. Typical uses for contexts: 1) You are using Vizier to tune a server for best performance, but
+        /// there's a strong weekly cycle. The context specifies the day-of-week. This allows Tuesday to generalize from
+        /// Wednesday without assuming that everything is identical. 2) Imagine you're optimizing some medical treatment
+        /// for people. As they walk in the door, you know certain facts about them (e.g. sex, weight, height,
+        /// blood-pressure). Put that information in the context, and Vizier will adapt its suggestions to the patient.
+        /// 3) You want to do a fair A/B test efficiently. Specify the "A" and "B" conditions as contexts, and Vizier
+        /// will generalize between "A" and "B" conditions. If they are similar, this will allow Vizier to converge to
+        /// the optimum faster than if "A" and "B" were separate Studies. NOTE: You can also enter contexts as REQUESTED
+        /// Trials, e.g. via the CreateTrial() RPC; that's the asynchronous option where you don't need a close
+        /// association between contexts and suggestions. NOTE: All the Parameters you set in a context MUST be defined
+        /// in the Study. NOTE: You must supply 0 or $suggestion_count contexts. If you don't supply any contexts,
+        /// Vizier will make suggestions from the full search space specified in the StudySpec; if you supply a full set
+        /// of context, each suggestion will match the corresponding context. NOTE: A Context with no features set
+        /// matches anything, and allows suggestions from the full search space. NOTE: Contexts MUST lie within the
+        /// search space specified in the StudySpec. It's an error if they don't. NOTE: Contexts preferentially match
+        /// ACTIVE then REQUESTED trials before new suggestions are generated. NOTE: Generation of suggestions involves
+        /// a match between a Context and (optionally) a REQUESTED trial; if that match is not fully specified, a
+        /// suggestion will be geneated in the merged subspace.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("contexts")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1TrialContext> Contexts { get; set; }
+
         /// <summary>Required. The number of suggestions requested. It must be positive.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("suggestionCount")]
         public virtual System.Nullable<int> SuggestionCount { get; set; }
@@ -47816,6 +47840,30 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webAccessUris")]
         public virtual System.Collections.Generic.IDictionary<string, string> WebAccessUris { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Next ID: 3</summary>
+    public class GoogleCloudAiplatformV1TrialContext : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A human-readable field which can store a description of this context. This will become part of the resulting
+        /// Trial's description field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// If/when a Trial is generated or selected from this Context, its Parameters will match any parameters
+        /// specified here. (I.e. if this context specifies parameter name:'a' int_value:3, then a resulting Trial will
+        /// have int_value:3 for its parameter named 'a'.) Note that we first attempt to match existing REQUESTED Trials
+        /// with contexts, and if there are no matches, we generate suggestions in the subspace defined by the
+        /// parameters specified here. NOTE: a Context without any Parameters matches the entire feasible search space.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1TrialParameter> Parameters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

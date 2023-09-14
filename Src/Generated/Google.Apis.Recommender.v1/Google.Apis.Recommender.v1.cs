@@ -1007,7 +1007,7 @@ namespace Google.Apis.Recommender.v1
                     /// recommender.*.update IAM permission for the specified recommender.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Name of the recommendation.</param>
+                    /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual MarkDismissedRequest MarkDismissed(Google.Apis.Recommender.v1.Data.GoogleCloudRecommenderV1MarkRecommendationDismissedRequest body, string name)
                     {
                         return new MarkDismissedRequest(service, body, name);
@@ -1029,7 +1029,7 @@ namespace Google.Apis.Recommender.v1
                             InitParameters();
                         }
 
-                        /// <summary>Name of the recommendation.</summary>
+                        /// <summary>Required. Name of the recommendation.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -1934,7 +1934,7 @@ namespace Google.Apis.Recommender.v1
                     /// recommender.*.update IAM permission for the specified recommender.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Name of the recommendation.</param>
+                    /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual MarkDismissedRequest MarkDismissed(Google.Apis.Recommender.v1.Data.GoogleCloudRecommenderV1MarkRecommendationDismissedRequest body, string name)
                     {
                         return new MarkDismissedRequest(service, body, name);
@@ -1956,7 +1956,7 @@ namespace Google.Apis.Recommender.v1
                             InitParameters();
                         }
 
-                        /// <summary>Name of the recommendation.</summary>
+                        /// <summary>Required. Name of the recommendation.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -2863,7 +2863,7 @@ namespace Google.Apis.Recommender.v1
                     /// recommender.*.update IAM permission for the specified recommender.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Name of the recommendation.</param>
+                    /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual MarkDismissedRequest MarkDismissed(Google.Apis.Recommender.v1.Data.GoogleCloudRecommenderV1MarkRecommendationDismissedRequest body, string name)
                     {
                         return new MarkDismissedRequest(service, body, name);
@@ -2885,7 +2885,7 @@ namespace Google.Apis.Recommender.v1
                             InitParameters();
                         }
 
-                        /// <summary>Name of the recommendation.</summary>
+                        /// <summary>Required. Name of the recommendation.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -3940,7 +3940,7 @@ namespace Google.Apis.Recommender.v1
                     /// recommender.*.update IAM permission for the specified recommender.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Name of the recommendation.</param>
+                    /// <param name="name">Required. Name of the recommendation.</param>
                     public virtual MarkDismissedRequest MarkDismissed(Google.Apis.Recommender.v1.Data.GoogleCloudRecommenderV1MarkRecommendationDismissedRequest body, string name)
                     {
                         return new MarkDismissedRequest(service, body, name);
@@ -3962,7 +3962,7 @@ namespace Google.Apis.Recommender.v1
                             InitParameters();
                         }
 
-                        /// <summary>Name of the recommendation.</summary>
+                        /// <summary>Required. Name of the recommendation.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 

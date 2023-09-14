@@ -7455,6 +7455,10 @@ namespace Google.Apis.Gmail.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kaclsKeyMetadata")]
         public virtual KaclsKeyMetadata KaclsKeyMetadata { get; set; }
 
+        /// <summary>Metadata for PIV card certificate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pivKeyMetadata")]
+        public virtual PivKeyMetadata PivKeyMetadata { get; set; }
+
         /// <summary>Output only. The immutable ID for the private key metadata instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateKeyMetadataId")]
         public virtual string PrivateKeyMetadataId { get; set; }
@@ -8241,6 +8245,19 @@ namespace Google.Apis.Gmail.v1.Data
     /// <summary>Request to obliterate a CSE key pair.</summary>
     public class ObliterateCseKeyPairRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata for a personal identity verification (PIV) private key that requires a card reader for access.
+    /// </summary>
+    public class PivKeyMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description about the PIV key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

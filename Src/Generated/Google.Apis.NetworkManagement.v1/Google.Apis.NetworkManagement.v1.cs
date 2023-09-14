@@ -1781,6 +1781,14 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Output only. The probing details of this test from the latest run, present for applicable tests only. The
+        /// details are updated when creating a new test, updating an existing test, or triggering a one-time rerun of
+        /// an existing test.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("probingDetails")]
+        public virtual ProbingDetails ProbingDetails { get; set; }
+
         /// <summary>IP Protocol of the test. When not provided, "TCP" is assumed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocol")]
         public virtual string Protocol { get; set; }
@@ -1886,6 +1894,19 @@ namespace Google.Apis.NetworkManagement.v1.Data
     }
 
     /// <summary>
+    /// Representation of a network edge location as per https://cloud.google.com/vpc/docs/edge-locations.
+    /// </summary>
+    public class EdgeLocation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Name of the metropolitan area.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metropolitanArea")]
+        public virtual string MetropolitanArea { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
     /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
@@ -1930,6 +1951,10 @@ namespace Google.Apis.NetworkManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("forwardingRule")]
         public virtual string ForwardingRule { get; set; }
 
+        /// <summary>Output only. Specifies the type of the target of the forwarding rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forwardingRuleTarget")]
+        public virtual string ForwardingRuleTarget { get; set; }
+
         /// <summary>
         /// A cluster URI for [Google Kubernetes Engine
         /// master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
@@ -1943,10 +1968,22 @@ namespace Google.Apis.NetworkManagement.v1.Data
 
         /// <summary>
         /// The IP address of the endpoint, which can be an external or internal IP. An IPv6 address is only allowed
-        /// when the test's destination is a [global load balancer VIP](/load-balancing/docs/load-balancing-overview).
+        /// when the test's destination is a [global load balancer
+        /// VIP](https://cloud.google.com/load-balancing/docs/load-balancing-overview).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipAddress")]
         public virtual string IpAddress { get; set; }
+
+        /// <summary>
+        /// Output only. ID of the load balancer the forwarding rule points to. Empty for forwarding rules not related
+        /// to load balancers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadBalancerId")]
+        public virtual string LoadBalancerId { get; set; }
+
+        /// <summary>Output only. Type of the load balancer the forwarding rule points to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadBalancerType")]
+        public virtual string LoadBalancerType { get; set; }
 
         /// <summary>A Compute Engine network URI.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
@@ -2254,6 +2291,35 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// <summary>URI of a Compute Engine instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("uri")]
         public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes measured latency distribution.</summary>
+    public class LatencyDistribution : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Representative latency percentiles.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latencyPercentiles")]
+        public virtual System.Collections.Generic.IList<LatencyPercentile> LatencyPercentiles { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Latency percentile rank and value.</summary>
+    public class LatencyPercentile : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// percent-th percentile of latency observed, in microseconds. Fraction of percent/100 of samples have latency
+        /// lower or equal to the value of this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("latencyMicros")]
+        public virtual System.Nullable<long> LatencyMicros { get; set; }
+
+        /// <summary>Percentage of samples this data point applies to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("percent")]
+        public virtual System.Nullable<int> Percent { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2634,6 +2700,91 @@ namespace Google.Apis.NetworkManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>Results of active probing from the last run of the test.</summary>
+    public class ProbingDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The reason probing was aborted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("abortCause")]
+        public virtual string AbortCause { get; set; }
+
+        /// <summary>
+        /// The EdgeLocation from which a packet destined for/originating from the internet will egress/ingress the
+        /// Google network. This will only be populated for a connectivity test which has an internet destination/source
+        /// address. The absence of this field *must not* be used as an indication that the destination/source is part
+        /// of the Google network.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationEgressLocation")]
+        public virtual EdgeLocation DestinationEgressLocation { get; set; }
+
+        /// <summary>
+        /// The source and destination endpoints derived from the test input and used for active probing.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpointInfo")]
+        public virtual EndpointInfo EndpointInfo { get; set; }
+
+        /// <summary>Details about an internal failure or the cancellation of active probing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>
+        /// Latency as measured by active probing in one direction: from the source to the destination endpoint.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("probingLatency")]
+        public virtual LatencyDistribution ProbingLatency { get; set; }
+
+        /// <summary>The overall result of active probing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("result")]
+        public virtual string Result { get; set; }
+
+        /// <summary>Number of probes sent.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sentProbeCount")]
+        public virtual System.Nullable<int> SentProbeCount { get; set; }
+
+        /// <summary>Number of probes that reached the destination.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successfulProbeCount")]
+        public virtual System.Nullable<int> SuccessfulProbeCount { get; set; }
+
+        private string _verifyTimeRaw;
+
+        private object _verifyTime;
+
+        /// <summary>The time that reachability was assessed through active probing.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verifyTime")]
+        public virtual string VerifyTimeRaw
+        {
+            get => _verifyTimeRaw;
+            set
+            {
+                _verifyTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _verifyTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="VerifyTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use VerifyTimeDateTimeOffset instead.")]
+        public virtual object VerifyTime
+        {
+            get => _verifyTime;
+            set
+            {
+                _verifyTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _verifyTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="VerifyTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? VerifyTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(VerifyTimeRaw);
+            set => VerifyTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
     }
 
     /// <summary>Results of the configuration analysis from the last run of the test.</summary>

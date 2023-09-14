@@ -1869,7 +1869,7 @@ namespace Google.Apis.Testing.v1.Data
 
         /// <summary>
         /// Optional. The amount of time that a device will be initially allocated for. This can eventually be extended
-        /// with the ExtendDeviceSession RPC. Default: 3 hours.
+        /// with the ExtendDeviceSession RPC. Default: 30 minutes.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
         public virtual object Ttl { get; set; }

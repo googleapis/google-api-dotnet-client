@@ -422,11 +422,11 @@ namespace Google.Apis.PlayIntegrity.v1.Data
     public class GuidanceDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// This shows when there is an issue with at least one of the integrity verdicts, and provides user remediation
-        /// guidance.
+        /// This shows when there is an issue with at least one of the integrity verdicts, which can be remedied by the
+        /// user and provides additional details.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userRemediation")]
-        public virtual System.Collections.Generic.IList<string> UserRemediation { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("userRemediationDetails")]
+        public virtual System.Collections.Generic.IList<UserRemediationDetails> UserRemediationDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -503,6 +503,19 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("testingDetails")]
         public virtual TestingDetails TestingDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Contains details of remediation guidance that the user can perform. See go/pia-interstitials-dd
+    /// </summary>
+    public class UserRemediationDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description of the user remediation action. Required.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("remediation")]
+        public virtual string Remediation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

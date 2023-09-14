@@ -1478,7 +1478,7 @@ namespace Google.Apis.Dataproc.v1
                     this.service = service;
                 }
 
-                /// <summary>Create an session template, synchronously.</summary>
+                /// <summary>Create a session template synchronously.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
                 /// Required. The parent resource where this session template will be created.
@@ -1488,7 +1488,7 @@ namespace Google.Apis.Dataproc.v1
                     return new CreateRequest(service, body, parent);
                 }
 
-                /// <summary>Create an session template, synchronously.</summary>
+                /// <summary>Create a session template synchronously.</summary>
                 public class CreateRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.SessionTemplate>
                 {
                     /// <summary>Constructs a new Create request.</summary>
@@ -1624,7 +1624,7 @@ namespace Google.Apis.Dataproc.v1
                 }
 
                 /// <summary>Lists session templates.</summary>
-                /// <param name="parent">Required. The parent, which owns this collection of session templates.</param>
+                /// <param name="parent">Required. The parent that owns this collection of session templates.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -1640,7 +1640,7 @@ namespace Google.Apis.Dataproc.v1
                         InitParameters();
                     }
 
-                    /// <summary>Required. The parent, which owns this collection of session templates.</summary>
+                    /// <summary>Required. The parent that owns this collection of session templates.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1713,10 +1713,7 @@ namespace Google.Apis.Dataproc.v1
                     }
                 }
 
-                /// <summary>
-                /// Updates the session template, synchronously.Disable check for update_mask, because all updates will
-                /// be full replacements.
-                /// </summary>
+                /// <summary>Updates the session template synchronously.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. The resource name of the session template.</param>
                 public virtual PatchRequest Patch(Google.Apis.Dataproc.v1.Data.SessionTemplate body, string name)
@@ -1724,10 +1721,7 @@ namespace Google.Apis.Dataproc.v1
                     return new PatchRequest(service, body, name);
                 }
 
-                /// <summary>
-                /// Updates the session template, synchronously.Disable check for update_mask, because all updates will
-                /// be full replacements.
-                /// </summary>
+                /// <summary>Updates the session template synchronously.</summary>
                 public class PatchRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.SessionTemplate>
                 {
                     /// <summary>Constructs a new Patch request.</summary>
@@ -1815,10 +1809,10 @@ namespace Google.Apis.Dataproc.v1
 
                     /// <summary>
                     /// Optional. A unique ID used to identify the request. If the service receives two
-                    /// CreateSessionRequest
+                    /// CreateSessionRequests
                     /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateSessionRequest)s
-                    /// with the same ID, the second request is ignored and the first Session is created and stored in
-                    /// the backend is returned.Recommendation: Set this value to a UUID
+                    /// with the same ID, the second request is ignored, and the first Session is created and stored in
+                    /// the backend.Recommendation: Set this value to a UUID
                     /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value must contain only
                     /// letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40
                     /// characters.
@@ -1880,8 +1874,8 @@ namespace Google.Apis.Dataproc.v1
                 }
 
                 /// <summary>
-                /// Deletes the interactive session resource. If the session is not in terminal state, it will be
-                /// terminated and deleted afterwards.
+                /// Deletes the interactive session resource. If the session is not in terminal state, it is terminated,
+                /// and then deleted.
                 /// </summary>
                 /// <param name="name">Required. The name of the session resource to delete.</param>
                 public virtual DeleteRequest Delete(string name)
@@ -1890,8 +1884,8 @@ namespace Google.Apis.Dataproc.v1
                 }
 
                 /// <summary>
-                /// Deletes the interactive session resource. If the session is not in terminal state, it will be
-                /// terminated and deleted afterwards.
+                /// Deletes the interactive session resource. If the session is not in terminal state, it is terminated,
+                /// and then deleted.
                 /// </summary>
                 public class DeleteRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
                 {
@@ -1995,59 +1989,6 @@ namespace Google.Apis.Dataproc.v1
                     }
                 }
 
-                /// <summary>Inject Credentials in the interactive session.</summary>
-                /// <param name="body">The body of the request.</param>
-                /// <param name="session">Required. The name of the session resource to inject credentials to.</param>
-                public virtual InjectCredentialsRequest InjectCredentials(Google.Apis.Dataproc.v1.Data.InjectSessionCredentialsRequest body, string session)
-                {
-                    return new InjectCredentialsRequest(service, body, session);
-                }
-
-                /// <summary>Inject Credentials in the interactive session.</summary>
-                public class InjectCredentialsRequest : DataprocBaseServiceRequest<Google.Apis.Dataproc.v1.Data.Operation>
-                {
-                    /// <summary>Constructs a new InjectCredentials request.</summary>
-                    public InjectCredentialsRequest(Google.Apis.Services.IClientService service, Google.Apis.Dataproc.v1.Data.InjectSessionCredentialsRequest body, string session) : base(service)
-                    {
-                        Session = session;
-                        Body = body;
-                        InitParameters();
-                    }
-
-                    /// <summary>Required. The name of the session resource to inject credentials to.</summary>
-                    [Google.Apis.Util.RequestParameterAttribute("session", Google.Apis.Util.RequestParameterType.Path)]
-                    public virtual string Session { get; private set; }
-
-                    /// <summary>Gets or sets the body of this request.</summary>
-                    Google.Apis.Dataproc.v1.Data.InjectSessionCredentialsRequest Body { get; set; }
-
-                    /// <summary>Returns the body of the request.</summary>
-                    protected override object GetBody() => Body;
-
-                    /// <summary>Gets the method name.</summary>
-                    public override string MethodName => "injectCredentials";
-
-                    /// <summary>Gets the HTTP method.</summary>
-                    public override string HttpMethod => "POST";
-
-                    /// <summary>Gets the REST path.</summary>
-                    public override string RestPath => "v1/{+session}:injectCredentials";
-
-                    /// <summary>Initializes InjectCredentials parameter list.</summary>
-                    protected override void InitParameters()
-                    {
-                        base.InitParameters();
-                        RequestParameters.Add("session", new Google.Apis.Discovery.Parameter
-                        {
-                            Name = "session",
-                            IsRequired = true,
-                            ParameterType = "path",
-                            DefaultValue = null,
-                            Pattern = @"^projects/[^/]+/locations/[^/]+/sessions/[^/]+$",
-                        });
-                    }
-                }
-
                 /// <summary>Lists interactive sessions.</summary>
                 /// <param name="parent">Required. The parent, which owns this collection of sessions.</param>
                 public virtual ListRequest List(string parent)
@@ -2072,11 +2013,11 @@ namespace Google.Apis.Dataproc.v1
                     /// <summary>
                     /// Optional. A filter for the sessions to return in the response.A filter is a logical expression
                     /// constraining the values of various fields in each session resource. Filters are case sensitive,
-                    /// and may contain multiple clauses combined with logical operators (AND/OR). Supported fields are
-                    /// session_id, session_uuid, state, and create_time.e.g. state = ACTIVE and create_time &amp;lt;
-                    /// "2023-01-01T00:00:00Z" filters for sessions in state ACTIVE that were created before
-                    /// 2023-01-01See https://google.aip.dev/assets/misc/ebnf-filtering.txt for a detailed description
-                    /// of the filter syntax and a list of supported comparisons.
+                    /// and may contain multiple clauses combined with logical operators (AND, OR). Supported fields are
+                    /// session_id, session_uuid, state, and create_time.Example: state = ACTIVE and create_time
+                    /// &amp;lt; "2023-01-01T00:00:00Z" is a filter for sessions in an ACTIVE state that were created
+                    /// before 2023-01-01.See https://google.aip.dev/assets/misc/ebnf-filtering.txt for a detailed
+                    /// description of the filter syntax and a list of supported comparators.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -8165,6 +8106,13 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual System.Collections.Generic.IList<string> Jobs { get; set; }
 
         /// <summary>
+        /// Optional. (Optional) The output Cloud Storage directory for the diagnostic tarball. If not specified, a
+        /// task-specific directory in the cluster's staging bucket will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tarballGcsDir")]
+        public virtual string TarballGcsDir { get; set; }
+
+        /// <summary>
         /// Optional. DEPRECATED Specifies the yarn application on which diagnosis is to be performed.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("yarnApplicationId")]
@@ -8941,27 +8889,18 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A request to inject credentials to a session.</summary>
-    public class InjectSessionCredentialsRequest : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.</summary>
+    public class InstanceFlexibilityPolicy : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. The encrypted credentials being injected in to the session.The client is responsible for
-        /// encrypting the credentials in a way that is supported by the session.A wrapped value is used here so that
-        /// the actual contents of the encrypted credentials are not written to audit logs.
+        /// Optional. List of instance selection options that the group will use when creating new VMs.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("credentialsCiphertext")]
-        public virtual string CredentialsCiphertext { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceSelectionList")]
+        public virtual System.Collections.Generic.IList<InstanceSelection> InstanceSelectionList { get; set; }
 
-        /// <summary>
-        /// Optional. A unique ID used to identify the request. If the service receives two TerminateSessionRequest
-        /// (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.TerminateSessionRequest)s
-        /// with the same ID, the first request is ignored to ensure the most recent credentials are
-        /// injected.Recommendation: Set this value to a UUID
-        /// (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value must contain only letters (a-z,
-        /// A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
-        public virtual string RequestId { get; set; }
+        /// <summary>Output only. A list of instance selection results in the group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceSelectionResults")]
+        public virtual System.Collections.Generic.IList<InstanceSelectionResult> InstanceSelectionResults { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9034,6 +8973,12 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ImageUri { get; set; }
 
         /// <summary>
+        /// Optional. Instance flexibility Policy allowing a mixture of VM shapes and provisioning models.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceFlexibilityPolicy")]
+        public virtual InstanceFlexibilityPolicy InstanceFlexibilityPolicy { get; set; }
+
+        /// <summary>
         /// Output only. The list of instance names. Dataproc derives the names from cluster_name, num_instances, and
         /// the instance group.
         /// </summary>
@@ -9075,15 +9020,12 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string MinCpuPlatform { get; set; }
 
         /// <summary>
-        /// Optional. The minimum number of instances to create. If min_num_instances is set, min_num_instances is used
-        /// for a criteria to decide the cluster. Cluster creation will be failed by being an error state if the total
-        /// number of instances created is less than the min_num_instances. For example, given that num_instances = 5
-        /// and min_num_instances = 3, * if 4 instances are created and then registered successfully but one instance is
-        /// failed, the failed VM will be deleted and the cluster will be resized to 4 instances in running state. * if
-        /// 2 instances are created successfully and 3 instances are failed, the cluster will be in an error state and
-        /// does not delete failed VMs for debugging. * if 2 instance are created and then registered successfully but 3
-        /// instances are failed to initialize, the cluster will be in an error state and does not delete failed VMs for
-        /// debugging. NB: This can only be set for primary workers now.
+        /// Optional. The minimum number of primary worker instances to create. If min_num_instances is set, cluster
+        /// creation will succeed if the number of primary workers created is at least equal to the min_num_instances
+        /// number.Example: Cluster creation request with num_instances = 5 and min_num_instances = 3: If 4 VMs are
+        /// created and 1 instance fails, the failed VM is deleted. The cluster is resized to 4 instances and placed in
+        /// a RUNNING state. If 2 instances are created and 3 instances fail, the cluster in placed in an ERROR state.
+        /// The failed VMs are not deleted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minNumInstances")]
         public virtual System.Nullable<int> MinNumInstances { get; set; }
@@ -9124,6 +9066,42 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>The public RSA key used for sharing data with this instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("publicKey")]
         public virtual string PublicKey { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Defines machines types and a rank to which the machines types belong.</summary>
+    public class InstanceSelection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Full machine-type names, e.g. "n1-standard-16".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineTypes")]
+        public virtual System.Collections.Generic.IList<string> MachineTypes { get; set; }
+
+        /// <summary>
+        /// Optional. Preference of this instance selection. Lower number means higher preference. Dataproc will first
+        /// try to create a VM based on the machine-type with priority rank and fallback to next rank based on
+        /// availability. Machine types and instance selections with the same priority have the same preference.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rank")]
+        public virtual System.Nullable<int> Rank { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Defines a mapping from machine types to the number of VMs that are created with each machine type.
+    /// </summary>
+    public class InstanceSelectionResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Full machine-type names, e.g. "n1-standard-16".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
+
+        /// <summary>Output only. Number of VM provisioned with the machine_type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmCount")]
+        public virtual System.Nullable<int> VmCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9931,7 +9909,7 @@ namespace Google.Apis.Dataproc.v1.Data
     public class ListSessionsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// A token, which can be sent as page_token to retrieve the next page. If this field is omitted, there are no
+        /// A token, which can be sent as page_token, to retrieve the next page. If this field is omitted, there are no
         /// subsequent pages.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
@@ -10011,6 +9989,13 @@ namespace Google.Apis.Dataproc.v1.Data
         /// <summary>Output only. The name of the Instance Group Manager for this group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceGroupManagerName")]
         public virtual string InstanceGroupManagerName { get; set; }
+
+        /// <summary>
+        /// Output only. The partial URI to the instance group manager for this group. E.g.
+        /// projects/my-project/regions/us-central1/instanceGroupManagers/my-igm.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceGroupManagerUri")]
+        public virtual string InstanceGroupManagerUri { get; set; }
 
         /// <summary>Output only. The name of the Instance Template used for the Managed Instance Group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("instanceTemplateName")]
@@ -10529,6 +10514,17 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for PyPi repository</summary>
+    public class PyPiRepositoryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. PyPi repository address</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pypiRepository")]
+        public virtual string PypiRepository { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A configuration for running an Apache PySpark
     /// (https://spark.apache.org/docs/latest/api/python/getting_started/quickstart.html) batch workload.
@@ -10708,6 +10704,17 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for dependency repositories</summary>
+    public class RepositoryConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Configuration for PyPi repository.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pypiRepositoryConfig")]
+        public virtual PyPiRepositoryConfig PypiRepositoryConfig { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Reservation Affinity for consuming Zonal reservation.</summary>
     public class ReservationAffinity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10781,6 +10788,10 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IDictionary<string, string> Properties { get; set; }
 
+        /// <summary>Optional. Dependency repository configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("repositoryConfig")]
+        public virtual RepositoryConfig RepositoryConfig { get; set; }
+
         /// <summary>Optional. Version of the batch runtime.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual string Version { get; set; }
@@ -10843,7 +10854,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A representation of a session in the service. Next ID: 18</summary>
+    /// <summary>A representation of a session.</summary>
     public class Session : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -10896,7 +10907,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual JupyterConfig JupyterSession { get; set; }
 
         /// <summary>
-        /// Optional. The labels to associate with this session. Label keys must contain 1 to 63 characters, and must
+        /// Optional. The labels to associate with the session. Label keys must contain 1 to 63 characters, and must
         /// conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must
         /// contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more
         /// than 32 labels can be associated with a session.
@@ -10917,11 +10928,11 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual RuntimeInfo RuntimeInfo { get; set; }
 
         /// <summary>
-        /// Optional. The session template used by the session.Only resource names including project ID and location are
-        /// valid.Example: *
+        /// Optional. The session template used by the session.Only resource names, including project ID and location,
+        /// are valid.Example: *
         /// https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/sessionTemplates/[template_id]
-        /// * projects/[project_id]/locations/[dataproc_region]/sessionTemplates/[template_id]Note that the template
-        /// must be in the same project and Dataproc region.
+        /// * projects/[project_id]/locations/[dataproc_region]/sessionTemplates/[template_id]The template must be in
+        /// the same project and Dataproc region as the session.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sessionTemplate")]
         public virtual string SessionTemplate { get; set; }
@@ -10934,7 +10945,9 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("stateHistory")]
         public virtual System.Collections.Generic.IList<SessionStateHistory> StateHistory { get; set; }
 
-        /// <summary>Output only. Session state details, such as a failure description if the state is FAILED.</summary>
+        /// <summary>
+        /// Output only. Session state details, such as the failure description if the state is FAILED.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
         public virtual string StateMessage { get; set; }
 
@@ -10942,7 +10955,7 @@ namespace Google.Apis.Dataproc.v1.Data
 
         private object _stateTime;
 
-        /// <summary>Output only. The time when the session entered a current state.</summary>
+        /// <summary>Output only. The time when the session entered the current state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateTime")]
         public virtual string StateTimeRaw
         {
@@ -11098,11 +11111,11 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>Historical state information.</summary>
     public class SessionStateHistory : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Output only. The state of the session at this point in history.</summary>
+        /// <summary>Output only. The state of the session at this point in the session history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
 
-        /// <summary>Output only. Details about the state at this point in history.</summary>
+        /// <summary>Output only. Details about the state at this point in the session history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("stateMessage")]
         public virtual string StateMessage { get; set; }
 
@@ -11149,7 +11162,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A representation of a session template in the service. Next ID: 12</summary>
+    /// <summary>A representation of a session template.</summary>
     public class SessionTemplate : Google.Apis.Requests.IDirectResponseSchema
     {
         private string _createTimeRaw;
@@ -11206,9 +11219,9 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual JupyterConfig JupyterSession { get; set; }
 
         /// <summary>
-        /// Optional. The labels to associate with sessions created using this template. Label keys must contain 1 to 63
-        /// characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty,
-        /// but, if present, must contain 1 to 63 characters, and must conform to RFC 1035
+        /// Optional. Labels to associate with sessions created using this template. Label keys must contain 1 to 63
+        /// characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty,
+        /// but, if present, must contain 1 to 63 characters and conform to RFC 1035
         /// (https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a session.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
@@ -11226,7 +11239,7 @@ namespace Google.Apis.Dataproc.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. The time template was last updated.</summary>
+        /// <summary>Output only. The time the template was last updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {

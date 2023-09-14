@@ -1377,6 +1377,13 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("requiredAccessLevels")]
         public virtual System.Collections.Generic.IList<string> RequiredAccessLevels { get; set; }
 
+        /// <summary>
+        /// The request must originate from one of the provided VPC networks in Google Cloud. Cannot specify this field
+        /// together with `ip_subnetworks`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcNetworkSources")]
+        public virtual System.Collections.Generic.IList<GoogleIdentityAccesscontextmanagerV1VpcNetworkSource> VpcNetworkSources { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1456,6 +1463,20 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("identityType")]
         public virtual string IdentityType { get; set; }
 
+        /// <summary>
+        /// Whether to enforce traffic restrictions based on `sources` field. If the `sources` fields is non-empty, then
+        /// this field must be set to `SOURCE_RESTRICTION_ENABLED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceRestriction")]
+        public virtual string SourceRestriction { get; set; }
+
+        /// <summary>
+        /// Sources that this EgressPolicy authorizes access from. If this field is not empty, then `source_restriction`
+        /// must be set to `SOURCE_RESTRICTION_ENABLED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sources")]
+        public virtual System.Collections.Generic.IList<GoogleIdentityAccesscontextmanagerV1EgressSource> Sources { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -1481,6 +1502,27 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("egressTo")]
         public virtual GoogleIdentityAccesscontextmanagerV1EgressTo EgressTo { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The source that EgressPolicy authorizes access from inside the ServicePerimeter to somewhere outside the
+    /// ServicePerimeter boundaries.
+    /// </summary>
+    public class GoogleIdentityAccesscontextmanagerV1EgressSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// An AccessLevel resource name that allows protected resources inside the ServicePerimeters to access outside
+        /// the ServicePerimeter boundaries. AccessLevels listed must be in the same policy as this ServicePerimeter.
+        /// Referencing a nonexistent AccessLevel will cause an error. If an AccessLevel name is not specified, only
+        /// resources within the perimeter can be accessed through Google Cloud calls with request origins within the
+        /// perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for
+        /// `access_level`, then all EgressSources will be allowed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessLevel")]
+        public virtual string AccessLevel { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -1821,6 +1863,42 @@ namespace Google.Apis.CloudAsset.v1p5beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableRestriction")]
         public virtual System.Nullable<bool> EnableRestriction { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The originating network source in Google Cloud.</summary>
+    public class GoogleIdentityAccesscontextmanagerV1VpcNetworkSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Sub-segment ranges of a VPC network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcSubnetwork")]
+        public virtual GoogleIdentityAccesscontextmanagerV1VpcSubNetwork VpcSubnetwork { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Sub-segment ranges inside of a VPC Network.</summary>
+    public class GoogleIdentityAccesscontextmanagerV1VpcSubNetwork : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Network name. If the network is not part of the organization, the `compute.network.get` permission
+        /// must be granted to the caller. Format:
+        /// `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NETWORK_NAME}` Example:
+        /// `//compute.googleapis.com/projects/my-project/global/networks/network-1`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>
+        /// CIDR block IP subnetwork specification. The IP address must be an IPv4 address and can be a public or
+        /// private IP address. Note that for a CIDR IP address block, the specified IP address portion must be properly
+        /// truncated (i.e. all the host bits must be zero) or the input is considered malformed. For example,
+        /// "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. If empty, all IP addresses are allowed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcIpSubnetworks")]
+        public virtual System.Collections.Generic.IList<string> VpcIpSubnetworks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

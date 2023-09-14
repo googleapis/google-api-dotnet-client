@@ -34,7 +34,6 @@ namespace Google.Apis.MapsPlaces.v1
         /// <param name="initializer">The service initializer.</param>
         public MapsPlacesService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
-            Text = new TextResource(this);
             Places = new PlacesResource(this);
         }
 
@@ -87,9 +86,6 @@ namespace Google.Apis.MapsPlaces.v1
             /// <summary>Private Service: https://www.googleapis.com/auth/maps-platform.places.textsearch</summary>
             public const string MapsPlatformPlacesTextsearch = "https://www.googleapis.com/auth/maps-platform.places.textsearch";
         }
-
-        /// <summary>Gets the Text resource.</summary>
-        public virtual TextResource Text { get; }
 
         /// <summary>Gets the Places resource.</summary>
         public virtual PlacesResource Places { get; }
@@ -273,60 +269,6 @@ namespace Google.Apis.MapsPlaces.v1
                 DefaultValue = null,
                 Pattern = null,
             });
-        }
-    }
-
-    /// <summary>The "Text" collection of methods.</summary>
-    public class TextResource
-    {
-        private const string Resource = "text";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public TextResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-        }
-
-        /// <summary>Text query based place search.</summary>
-        /// <param name="body">The body of the request.</param>
-        public virtual SearchRequest Search(Google.Apis.MapsPlaces.v1.Data.GoogleMapsPlacesV1SearchTextRequest body)
-        {
-            return new SearchRequest(service, body);
-        }
-
-        /// <summary>Text query based place search.</summary>
-        public class SearchRequest : MapsPlacesBaseServiceRequest<Google.Apis.MapsPlaces.v1.Data.GoogleMapsPlacesV1SearchTextResponse>
-        {
-            /// <summary>Constructs a new Search request.</summary>
-            public SearchRequest(Google.Apis.Services.IClientService service, Google.Apis.MapsPlaces.v1.Data.GoogleMapsPlacesV1SearchTextRequest body) : base(service)
-            {
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.MapsPlaces.v1.Data.GoogleMapsPlacesV1SearchTextRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "search";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/Text:search";
-
-            /// <summary>Initializes Search parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-            }
         }
     }
 
