@@ -124,7 +124,7 @@ namespace Google.Apis.Auth.OAuth2.Responses
         /// <summary>
         /// Returns true if the token is expired or it's so close to expiring that it shouldn't be used.
         /// </summary>
-        /// <remarks>If a token response doens't have at least one of <see cref="TokenResponse.AccessToken"/>
+        /// <remarks>If a token response doesn't have at least one of <see cref="TokenResponse.AccessToken"/>
         /// or <see cref="TokenResponse.IdToken"/> set then it's considered expired.
         /// If <see cref="TokenResponse.ExpiresInSeconds"/> is null, the token is also considered expired. </remarks>
         internal bool IsEffectivelyExpired(IClock clock) =>
