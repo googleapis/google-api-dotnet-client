@@ -42,7 +42,9 @@ namespace Google.Apis.Tests.Apis.Utils
             Assert.True(ds.StoreAsync("key", "value").IsCompleted);
             var task = ds.GetAsync<string>("key");
             Assert.True(task.IsCompleted);
+#pragma warning disable xUnit1031 // Do not use blocking task operations in test method
             Assert.Null(task.Result);
+#pragma warning restore xUnit1031 // Do not use blocking task operations in test method
         }
     }
 }

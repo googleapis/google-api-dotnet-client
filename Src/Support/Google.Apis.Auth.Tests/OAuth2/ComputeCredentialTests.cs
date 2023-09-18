@@ -287,7 +287,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
 
             var credential = new ComputeCredential(initializer);
 
-            var signature = await credential.SignBlobAsync(Encoding.ASCII.GetBytes("ignored")).ConfigureAwait(false);
+            var signature = await credential.SignBlobAsync(Encoding.ASCII.GetBytes("ignored"));
             Assert.Equal("Zm9v", signature);
 
             Task<HttpResponseMessage> FetchServiceAccountId(HttpRequestMessage request)

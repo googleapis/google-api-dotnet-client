@@ -330,7 +330,7 @@ Content-Length: 202
         }
 
         [Fact]
-        public void ExecuteAsync_NoCallback_Test()
+        public async Task ExecuteAsync_NoCallback_Test()
         {
             var handler = new BatchMessageHandler(true);
             var initializer = new BaseClientService.Initializer()
@@ -354,7 +354,7 @@ Content-Length: 202
                 });
                 batch.Queue<MockResponse>(request1, null);
                 batch.Queue<MockResponse>(request2, null);
-                batch.ExecuteAsync().Wait();
+                await batch.ExecuteAsync();
             }
         }
 
