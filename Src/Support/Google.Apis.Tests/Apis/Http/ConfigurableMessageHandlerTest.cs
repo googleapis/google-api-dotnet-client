@@ -1036,14 +1036,14 @@ namespace Google.Apis.Tests.Apis.Http
         [Fact]
         public async Task Logging_RequestUri()
         {
-            var logEntries = await LogTest(ConfigurableMessageHandler.LogEventType.RequestUri).ConfigureAwait(false);
+            var logEntries = await LogTest(ConfigurableMessageHandler.LogEventType.RequestUri);
             Assert.Single(logEntries, "D2017-01-02 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Request[00000001] (triesRemaining=3) URI: 'https://test-host/'");
         }
 
         [Fact]
         public async Task Logging_RequestHeaders()
         {
-            var logEntries = await LogTest(ConfigurableMessageHandler.LogEventType.RequestHeaders).ConfigureAwait(false);
+            var logEntries = await LogTest(ConfigurableMessageHandler.LogEventType.RequestHeaders);
             var entry = Assert.Single(logEntries);
             // Header order may vary, and extra headers may be present (e.g. UserAgent), so test using Contain()
             Assert.Contains("D2017-01-02 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Request[00000001] Headers:\n", entry);
@@ -1054,21 +1054,21 @@ namespace Google.Apis.Tests.Apis.Http
         [Fact]
         public async Task Logging_RequestBody()
         {
-            var logEntries = await LogTest(ConfigurableMessageHandler.LogEventType.RequestBody).ConfigureAwait(false);
+            var logEntries = await LogTest(ConfigurableMessageHandler.LogEventType.RequestBody);
             Assert.Single(logEntries, "D2017-01-02 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Request[00000001] Body: 'XYZ...DE'");
         }
 
         [Fact]
         public async Task Logging_ResponseStatus()
         {
-            var logEntries = await LogTest(ConfigurableMessageHandler.LogEventType.ResponseStatus).ConfigureAwait(false);
+            var logEntries = await LogTest(ConfigurableMessageHandler.LogEventType.ResponseStatus);
             Assert.Single(logEntries, "D2017-01-02 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Response[00000001] Response status: OK 'OK'");
         }
 
         [Fact]
         public async Task Logging_ResponseError()
         {
-            var logEntries = await LogTest(ConfigurableMessageHandler.LogEventType.ResponseAbnormal, true).ConfigureAwait(false);
+            var logEntries = await LogTest(ConfigurableMessageHandler.LogEventType.ResponseAbnormal, true);
             Assert.Equal(2, logEntries.Count);
             Assert.Equal("D2017-01-02 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Response[00000001] An abnormal response wasn't handled. Status code is ServiceUnavailable", logEntries[0]);
             Assert.Equal("D2017-01-02 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Response[00000001] Abnormal response is being returned. Status Code is ServiceUnavailable", logEntries[1]);
@@ -1077,7 +1077,7 @@ namespace Google.Apis.Tests.Apis.Http
         [Fact]
         public async Task Logging_ResponseHeaders()
         {
-            var logEntries = await LogTest(ConfigurableMessageHandler.LogEventType.ResponseHeaders).ConfigureAwait(false);
+            var logEntries = await LogTest(ConfigurableMessageHandler.LogEventType.ResponseHeaders);
             var entry = Assert.Single(logEntries);
             Assert.Contains("D2017-01-02 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Response[00000001] Headers:\n", entry);
             Assert.Contains("  [header1] 'One'", entry);
@@ -1087,7 +1087,7 @@ namespace Google.Apis.Tests.Apis.Http
         [Fact]
         public async Task Logging_ResponseBody()
         {
-            var logEntries = await LogTest(ConfigurableMessageHandler.LogEventType.ResponseBody).ConfigureAwait(false);
+            var logEntries = await LogTest(ConfigurableMessageHandler.LogEventType.ResponseBody);
             Assert.Single(logEntries, "D2017-01-02 03:04:05.000000 Google.Apis.Http.ConfigurableMessageHandler Response[00000001] Body: 'ABC...DE'");
         }
 

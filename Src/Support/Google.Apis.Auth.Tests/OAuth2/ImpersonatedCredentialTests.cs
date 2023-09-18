@@ -180,7 +180,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         public async Task RequestAccessTokenAsync()
         {
             var credential = CreateImpersonatedCredentialWithAccessTokenResponse();
-            var success = await credential.RequestAccessTokenAsync(CancellationToken.None).ConfigureAwait(false);
+            var success = await credential.RequestAccessTokenAsync(CancellationToken.None);
             Assert.True(success);
             Assert.Equal(3600, credential.Token.ExpiresInSeconds);
             Assert.Equal("access_token", credential.Token.AccessToken);
@@ -198,7 +198,7 @@ namespace Google.Apis.Auth.Tests.OAuth2
         public async Task SignBlobAsync()
         {
             var credential = CreateImpersonatedCredentialWithSignBlobResponse();
-            var signature = await credential.SignBlobAsync(Encoding.ASCII.GetBytes("toSign")).ConfigureAwait(false);
+            var signature = await credential.SignBlobAsync(Encoding.ASCII.GetBytes("toSign"));
             Assert.Equal("Zm9v", signature);
         }
 

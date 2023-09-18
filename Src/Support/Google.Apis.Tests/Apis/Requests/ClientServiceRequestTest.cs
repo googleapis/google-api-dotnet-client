@@ -645,7 +645,7 @@ namespace Google.Apis.Tests.Apis.Requests
 
         /// <summary>Tests async execution of multiple request simultaneously.</summary>
         [Fact]
-        public void ExecuteAsync_Simultaneously()
+        public async Task ExecuteAsync_Simultaneously()
         {
             var tasks = new List<Task<MockResponse>>();
             var handler = new ConcurrentCallsHandler();
@@ -665,14 +665,14 @@ namespace Google.Apis.Tests.Apis.Requests
                 {
                     var request = new TestClientServiceRequest(service, "GET", null) { CallNum = i };
                     var task = request.ExecuteAsync();
-                    task.ContinueWith(c => ce.Signal());
+                    _ = task.ContinueWith(c => ce.Signal());
                     tasks.Add(task);
                 }
                 ce.Wait();
 
                 for (var i = 1; i <= tasks.Count; ++i)
                 {
-                    var response = tasks[i - 1].Result;
+                    var response = await tasks[i - 1];
 
                     // check that we got the right response. Name should be equal to the index number modulo 10 (or 
                     // index number plus one module 10, if it's an even request - because even request should fail in 
