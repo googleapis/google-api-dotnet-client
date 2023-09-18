@@ -1311,6 +1311,16 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. List filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Sort results. Supported values are "name", "name desc" or "" (unsorted).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
                     /// <summary>Maximum return size of the list call.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -1341,6 +1351,22 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -3015,6 +3041,16 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
+                    /// <summary>Optional. List filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. Sort results. Supported values are "name", "name desc" or "" (unsorted).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
                     /// <summary>Maximum return size of the list call.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<int> PageSize { get; set; }
@@ -3045,6 +3081,22 @@ namespace Google.Apis.AIPlatformNotebooks.v1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
                         {
@@ -5033,6 +5085,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("installGpuDriver")]
         public virtual System.Nullable<bool> InstallGpuDriver { get; set; }
 
+        /// <summary>Output only. Checks how feasible a migration from UmN to WbI is.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("instanceMigrationEligibility")]
+        public virtual InstanceMigrationEligibility InstanceMigrationEligibility { get; set; }
+
         /// <summary>
         /// Input only. The owner of this instance after creation. Format: `alias@example.com` Currently supports one
         /// owner only. If not specified, all of the service account users of your VM instance's service account can use
@@ -5105,10 +5161,6 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("postStartupScript")]
         public virtual string PostStartupScript { get; set; }
-
-        /// <summary>Output only. Check how possible a migration from UmN to WbI is.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("preMigrationCheck")]
-        public virtual PreMigrationCheck PreMigrationCheck { get; set; }
 
         /// <summary>Output only. The proxy endpoint that is used to access the Jupyter notebook.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proxyUri")]
@@ -5227,6 +5279,26 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notebookUpgradeSchedule")]
         public virtual string NotebookUpgradeSchedule { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// InstanceMigrationEligibility represents the feasibility information of a migration from UmN to WbI.
+    /// </summary>
+    public class InstanceMigrationEligibility : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Certain configurations make the UmN ineligible for an automatic migration. A manual migration
+        /// is required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<string> Errors { get; set; }
+
+        /// <summary>Output only. Certain configurations will be defaulted during the migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<string> Warnings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5604,8 +5676,8 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// The normal response of the operation in case of success. If the original method returns no data on success,
-        /// such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
         /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
         /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
         /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
@@ -5735,18 +5807,26 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
     /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
     /// constraints based on attributes of the request, the resource, or both. To learn which resources support
     /// conditions in their IAM policies, see the [IAM
-    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings":
-    /// [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:**
+    /// ```
+    /// {
+    /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
     /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:**
+    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
+    /// ```
+    /// **YAML
+    /// example:**
+    /// ```
     /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features,
-    /// see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3
+    /// ```
+    /// For a description of IAM and its
+    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5789,21 +5869,6 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("version")]
         public virtual System.Nullable<int> Version { get; set; }
-    }
-
-    /// <summary>PreMigrationCheck checks how feasible a migration from UmN is.</summary>
-    public class PreMigrationCheck : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Message provides a summary or workaround.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("message")]
-        public virtual string Message { get; set; }
-
-        /// <summary>Result returns the result of the check.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("result")]
-        public virtual string Result { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
     }
 
     /// <summary>Request for getting a new access token.</summary>
@@ -6063,6 +6128,10 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Checks how feasible a migration from GmN to WbI is.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeMigrationEligibility")]
+        public virtual RuntimeMigrationEligibility RuntimeMigrationEligibility { get; set; }
+
         /// <summary>The config settings for software inside the runtime.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("softwareConfig")]
         public virtual RuntimeSoftwareConfig SoftwareConfig { get; set; }
@@ -6184,6 +6253,26 @@ namespace Google.Apis.AIPlatformNotebooks.v1.Data
         /// <summary>Output only. The system metrics.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("systemMetrics")]
         public virtual System.Collections.Generic.IDictionary<string, string> SystemMetrics { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// RuntimeMigrationEligibility represents the feasibility information of a migration from GmN to WbI.
+    /// </summary>
+    public class RuntimeMigrationEligibility : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Certain configurations make the GmN ineligible for an automatic migration. A manual migration
+        /// is required.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errors")]
+        public virtual System.Collections.Generic.IList<string> Errors { get; set; }
+
+        /// <summary>Output only. Certain configurations will be defaulted during the migration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<string> Warnings { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

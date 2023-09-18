@@ -1164,7 +1164,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 /// <summary>Creates a `CustomDomain`.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
-                /// Required. The `CustomDomain`'s parent, specifically a Firebase Hosting `Site`.
+                /// Required. The custom domain's parent, specifically a Firebase Hosting `Site`.
                 /// </param>
                 public virtual CreateRequest Create(Google.Apis.FirebaseHosting.v1beta1.Data.CustomDomain body, string parent)
                 {
@@ -1182,9 +1182,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                         InitParameters();
                     }
 
-                    /// <summary>
-                    /// Required. The `CustomDomain`'s parent, specifically a Firebase Hosting `Site`.
-                    /// </summary>
+                    /// <summary>Required. The custom domain's parent, specifically a Firebase Hosting `Site`.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
@@ -1381,7 +1379,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
 
                 /// <summary>
-                /// Lists each `CustomDomain` associated with the specified parent Hosting Site. Returns `CustomDomain`s
+                /// Lists each `CustomDomain` associated with the specified parent Hosting site. Returns `CustomDomain`s
                 /// in a consistent, but undefined, order to facilitate pagination.
                 /// </summary>
                 /// <param name="parent">
@@ -1393,7 +1391,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
                 }
 
                 /// <summary>
-                /// Lists each `CustomDomain` associated with the specified parent Hosting Site. Returns `CustomDomain`s
+                /// Lists each `CustomDomain` associated with the specified parent Hosting site. Returns `CustomDomain`s
                 /// in a consistent, but undefined, order to facilitate pagination.
                 /// </summary>
                 public class ListRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.ListCustomDomainsResponse>
@@ -1577,7 +1575,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
                 /// <summary>
                 /// Undeletes the specified `CustomDomain` if it has been soft-deleted. Hosting retains soft-deleted
-                /// CustomDomains for around 30 days before permanently deleting them.
+                /// custom domains for around 30 days before permanently deleting them.
                 /// </summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">Required. The name of the `CustomDomain` to delete.</param>
@@ -1588,7 +1586,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1
 
                 /// <summary>
                 /// Undeletes the specified `CustomDomain` if it has been soft-deleted. Hosting retains soft-deleted
-                /// CustomDomains for around 30 days before permanently deleting them.
+                /// custom domains for around 30 days before permanently deleting them.
                 /// </summary>
                 public class UndeleteRequest : FirebaseHostingBaseServiceRequest<Google.Apis.FirebaseHosting.v1beta1.Data.Operation>
                 {
@@ -5326,7 +5324,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
 
     /// <summary>
     /// An SSL certificate used to provide end-to-end encryption for requests against your domain name. A `Certificate`
-    /// can be an actual SSL certificate or, for newly-created Custom Domains, Hosting's intent to create one.
+    /// can be an actual SSL certificate or, for newly-created custom domains, Hosting's intent to create one.
     /// </summary>
     public class Certificate : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5376,7 +5374,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
 
         /// <summary>
         /// Output only. The certificate's expiration time. After this time, the cert can no longer be used to provide
-        /// secure communication between Hosting and your Site's visitors.
+        /// secure communication between Hosting and your site's visitors.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual string ExpireTimeRaw
@@ -5671,8 +5669,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     }
 
     /// <summary>
-    /// A `CustomDomain` is an entity that links a domain name to a Firebase Hosting Site. Add a `CustomDomain` to your
-    /// Site to allow Hosting to serve the Site's content in response to requests against your domain name.
+    /// A `CustomDomain` is an entity that links a domain name to a Firebase Hosting site. Add a `CustomDomain` to your
+    /// site to allow Hosting to serve the site's content in response to requests against your domain name.
     /// </summary>
     public class CustomDomain : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5683,7 +5681,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Annotations { get; set; }
 
         /// <summary>
-        /// Output only. The SSL certificate Hosting has for this `CustomDomain`'s domain name. For new `CustomDomain`s,
+        /// Output only. The SSL certificate Hosting has for this custom domain's domain name. For new custom domains,
         /// this often represents Hosting's intent to create a certificate, rather than an actual cert. Check the
         /// `state` field for more.
         /// </summary>
@@ -5692,7 +5690,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
 
         /// <summary>
         /// A field that lets you specify which SSL certificate type Hosting creates for your domain name. Spark plan
-        /// `CustomDomain`s only have access to the `GROUPED` cert type, while Blaze plan can select any option.
+        /// custom domains only have access to the `GROUPED` cert type, while Blaze plan domains can select any option.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("certPreference")]
         public virtual string CertPreference { get; set; }
@@ -5701,7 +5699,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. The `CustomDomain`'s create time.</summary>
+        /// <summary>Output only. The custom domain's create time.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -5739,9 +5737,9 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         private object _deleteTime;
 
         /// <summary>
-        /// Output only. The time the `CustomDomain` was deleted; null for `CustomDomains` that haven't been deleted.
-        /// Deleted `CustomDomains` persist for approximately 30 days, after which time Hosting removes them completely.
-        /// To restore a deleted `CustomDomain`, make an `UndeleteCustomDomain` request.
+        /// Output only. The time the `CustomDomain` was deleted; null for custom domains that haven't been deleted.
+        /// Deleted custom domains persist for approximately 30 days, after which time Hosting removes them completely.
+        /// To restore a deleted custom domain, make an `UndeleteCustomDomain` request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
         public virtual string DeleteTimeRaw
@@ -5789,7 +5787,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
 
         /// <summary>
         /// Output only. The minimum time before a soft-deleted `CustomDomain` is completely removed from Hosting; null
-        /// for `CustomDomains` that haven't been deleted.
+        /// for custom domains that haven't been deleted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
         public virtual string ExpireTimeRaw
@@ -5847,17 +5845,17 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         public virtual string OwnershipState { get; set; }
 
         /// <summary>
-        /// Output only. A field that, if true, indicates that Hosting's systems are attmepting to make the
-        /// `CustomDomain`'s state match your preferred state. This is most frequently `true` when initially
-        /// provisioning a `CustomDomain` after a `CreateCustomDomain` request or when creating a new SSL certificate to
-        /// match an updated `cert_preference` after an `UpdateCustomDomain` request.
+        /// Output only. A field that, if true, indicates that Hosting's systems are attmepting to make the custom
+        /// domain's state match your preferred state. This is most frequently `true` when initially provisioning a
+        /// `CustomDomain` after a `CreateCustomDomain` request or when creating a new SSL certificate to match an
+        /// updated `cert_preference` after an `UpdateCustomDomain` request.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reconciling")]
         public virtual System.Nullable<bool> Reconciling { get; set; }
 
         /// <summary>
-        /// A domain name that this CustomDomain should direct traffic towards. If specified, Hosting will respond to
-        /// requests against this CustomDomain with an HTTP 301 code, and route traffic to the specified
+        /// A domain name that this `CustomDomain` should direct traffic towards. If specified, Hosting will respond to
+        /// requests against this custom domain with an HTTP 301 code, and route traffic to the specified
         /// `redirect_target` instead.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redirectTarget")]
@@ -5929,11 +5927,11 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
 
         /// <summary>
         /// A set of DNS record updates and ACME challenges that allow you to transition domain names to Firebase
-        /// Hosting with zero downtime. These updates allow Hosting's to create an SSL certificate and establish
-        /// ownership for your custom domain before Hosting begins serving traffic on it. If your domain name is already
-        /// in active use with another provider, add one of the challenges and make the recommended dns updates. After
-        /// adding challenges and adjusting DNS records as necessary, wait for the `ownershipState` to be
-        /// `OWNERSHIP_ACTIVE` and the `certState` to be `CERT_ACTIVE` before sending traffic to Hosting.
+        /// Hosting with zero downtime. These updates allow Hosting to create an SSL certificate and establish ownership
+        /// for your custom domain before Hosting begins serving traffic on it. If your domain name is already in active
+        /// use with another provider, add one of the challenges and make the recommended DNS updates. After adding
+        /// challenges and adjusting DNS records as necessary, wait for the `ownershipState` to be `OWNERSHIP_ACTIVE`
+        /// and the `certState` to be `CERT_ACTIVE` before sending traffic to Hosting.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("liveMigrationSteps")]
         public virtual System.Collections.Generic.IList<LiveMigrationStep> LiveMigrationSteps { get; set; }
@@ -5964,8 +5962,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     /// <summary>
     /// DNS records are resource records that define how systems and services should behave when handling requests for a
     /// domain name. For example, when you add `A` records to your domain name's DNS records, you're informing other
-    /// systems (e.g. your users' web browsers) to contact those IPv4 addresses to retrieve resources relevant to your
-    /// domain name (e.g. your Hosting site files).
+    /// systems (such as your users' web browsers) to contact those IPv4 addresses to retrieve resources relevant to
+    /// your domain name (such as your Hosting site files).
     /// </summary>
     public class DnsRecord : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5976,7 +5974,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
         /// <summary>
         /// Output only. The data of the record. The meaning of the value depends on record type: - A and AAAA: IP
         /// addresses for the domain name. - CNAME: Another domain to check for records. - TXT: Arbitrary text strings
-        /// associated with the domain name. Hosting uses TXT records to determine a which Firebase Projects have
+        /// associated with the domain name. Hosting uses TXT records to determine which Firebase projects have
         /// permission to act on the domain name's behalf. - CAA: The record's flags, tag, and value, e.g. `0 issue
         /// "pki.goog"`.
         /// </summary>
@@ -5996,7 +5994,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     }
 
     /// <summary>
-    /// A set of DNS records relevant to the set up and maintenance of a Custom Domain in Firebase Hosting.
+    /// A set of DNS records relevant to the setup and maintenance of a custom domain in Firebase Hosting.
     /// </summary>
     public class DnsRecordSet : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6022,8 +6020,8 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
     /// <summary>
     /// A set of DNS record updates that you should make to allow Hosting to serve secure content in response to
     /// requests against your domain name. These updates present the current state of your domain name's DNS records
-    /// when Hosting last queried them, and the desired set of records that Hosting needs to see before your Custom
-    /// Domain can be fully active.
+    /// when Hosting last queried them, and the desired set of records that Hosting needs to see before your custom
+    /// domain can be fully active.
     /// </summary>
     public class DnsUpdates : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6031,7 +6029,7 @@ namespace Google.Apis.FirebaseHosting.v1beta1.Data
 
         private object _checkTime;
 
-        /// <summary>The last time Hosting checked your CustomDomain's DNS records.</summary>
+        /// <summary>The last time Hosting checked your custom domain's DNS records.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("checkTime")]
         public virtual string CheckTimeRaw
         {

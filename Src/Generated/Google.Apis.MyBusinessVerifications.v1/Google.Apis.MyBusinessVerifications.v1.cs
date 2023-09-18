@@ -35,7 +35,6 @@ namespace Google.Apis.MyBusinessVerifications.v1
         public MyBusinessVerificationsService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
         {
             Locations = new LocationsResource(this);
-            VerificationTokens = new VerificationTokensResource(this);
         }
 
         /// <summary>Gets the service supported features.</summary>
@@ -58,9 +57,6 @@ namespace Google.Apis.MyBusinessVerifications.v1
 
         /// <summary>Gets the Locations resource.</summary>
         public virtual LocationsResource Locations { get; }
-
-        /// <summary>Gets the VerificationTokens resource.</summary>
-        public virtual VerificationTokensResource VerificationTokens { get; }
     }
 
     /// <summary>A base abstract class for MyBusinessVerifications requests.</summary>
@@ -561,68 +557,6 @@ namespace Google.Apis.MyBusinessVerifications.v1
             }
         }
     }
-
-    /// <summary>The "verificationTokens" collection of methods.</summary>
-    public class VerificationTokensResource
-    {
-        private const string Resource = "verificationTokens";
-
-        /// <summary>The service which this resource belongs to.</summary>
-        private readonly Google.Apis.Services.IClientService service;
-
-        /// <summary>Constructs a new resource.</summary>
-        public VerificationTokensResource(Google.Apis.Services.IClientService service)
-        {
-            this.service = service;
-        }
-
-        /// <summary>
-        /// Generates a token for the provided location data as a vetted
-        /// [partner](https://support.google.com/business/answer/7674102). Throws PERMISSION_DENIED if the caller is not
-        /// a vetted partner account. Throws FAILED_PRECONDITION if the caller's VettedStatus is INVALID.
-        /// </summary>
-        /// <param name="body">The body of the request.</param>
-        public virtual GenerateRequest Generate(Google.Apis.MyBusinessVerifications.v1.Data.GenerateVerificationTokenRequest body)
-        {
-            return new GenerateRequest(service, body);
-        }
-
-        /// <summary>
-        /// Generates a token for the provided location data as a vetted
-        /// [partner](https://support.google.com/business/answer/7674102). Throws PERMISSION_DENIED if the caller is not
-        /// a vetted partner account. Throws FAILED_PRECONDITION if the caller's VettedStatus is INVALID.
-        /// </summary>
-        public class GenerateRequest : MyBusinessVerificationsBaseServiceRequest<Google.Apis.MyBusinessVerifications.v1.Data.GenerateVerificationTokenResponse>
-        {
-            /// <summary>Constructs a new Generate request.</summary>
-            public GenerateRequest(Google.Apis.Services.IClientService service, Google.Apis.MyBusinessVerifications.v1.Data.GenerateVerificationTokenRequest body) : base(service)
-            {
-                Body = body;
-                InitParameters();
-            }
-
-            /// <summary>Gets or sets the body of this request.</summary>
-            Google.Apis.MyBusinessVerifications.v1.Data.GenerateVerificationTokenRequest Body { get; set; }
-
-            /// <summary>Returns the body of the request.</summary>
-            protected override object GetBody() => Body;
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "generate";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "POST";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1/verificationTokens:generate";
-
-            /// <summary>Initializes Generate parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-            }
-        }
-    }
 }
 namespace Google.Apis.MyBusinessVerifications.v1.Data
 {
@@ -733,31 +667,6 @@ namespace Google.Apis.MyBusinessVerifications.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for Verifications.GenerateVerificationToken.</summary>
-    public class GenerateVerificationTokenRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The target location. Note: The location information should exactly match the target Location,
-        /// otherwise the generated verification token won't be able to verify the target Location.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("location")]
-        public virtual Location Location { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for Verifications.GenerateVerificationToken.</summary>
-    public class GenerateVerificationTokenResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The generated token to verify the location.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("token")]
-        public virtual VerificationToken Token { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Response message for Verifications.ListVerifications.</summary>
     public class ListVerificationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -772,58 +681,6 @@ namespace Google.Apis.MyBusinessVerifications.v1.Data
         /// <summary>List of the verifications.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verifications")]
         public virtual System.Collections.Generic.IList<Verification> Verifications { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// A subset of location info. See the [help center article] (https://support.google.com/business/answer/3038177)
-    /// for a detailed description of these fields, or the [category
-    /// endpoint](/my-business/reference/rest/v4/categories) for a list of valid business categories.
-    /// </summary>
-    public class Location : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. A precise, accurate address to describe your business location. PO boxes or mailboxes located at
-        /// remote locations are not acceptable. At this time, you can specify a maximum of five `address_lines` values
-        /// in the address.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("address")]
-        public virtual PostalAddress Address { get; set; }
-
-        /// <summary>
-        /// Required. Location name should reflect your business's real-world name, as used consistently on your
-        /// storefront, website, and stationery, and as known to customers. Any additional information, when relevant,
-        /// can be included in other fields of the resource (for example, `Address`, `Categories`). Don't add
-        /// unnecessary information to your name (for example, prefer "Google" over "Google Inc. - Mountain View
-        /// Corporate Headquarters"). Don't include marketing taglines, store codes, special characters, hours or
-        /// closed/open status, phone numbers, website URLs, service/product information, location/address or
-        /// directions, or containment information (for example, "Chase ATM in Duane Reade").
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>
-        /// Required. Id of the category that best describes the core business this location engages in. e.g.
-        /// gcid:bakery.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("primaryCategoryId")]
-        public virtual string PrimaryCategoryId { get; set; }
-
-        /// <summary>
-        /// Optional. A phone number that connects to your individual business location as directly as possible. Use a
-        /// local phone number instead of a central, call center helpline number whenever possible.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("primaryPhone")]
-        public virtual string PrimaryPhone { get; set; }
-
-        /// <summary>
-        /// Optional. A URL for this business. If possible, use a URL that represents this individual business location
-        /// instead of a generic website/URL that represents all locations, or the brand.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("websiteUri")]
-        public virtual string WebsiteUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

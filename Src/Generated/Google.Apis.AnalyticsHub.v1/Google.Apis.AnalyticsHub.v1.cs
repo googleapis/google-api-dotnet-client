@@ -2318,7 +2318,7 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("primaryContact")]
         public virtual string PrimaryContact { get; set; }
 
-        /// <summary>Required. Configurable data sharing environment option for a data exchange.</summary>
+        /// <summary>Optional. Configurable data sharing environment option for a data exchange.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sharingEnvironmentConfig")]
         public virtual SharingEnvironmentConfig SharingEnvironmentConfig { get; set; }
 

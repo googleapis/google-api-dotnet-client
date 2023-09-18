@@ -2618,7 +2618,7 @@ namespace Google.Apis.ArtifactRegistry.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
 
-        /// <summary>The format of packages that are stored in the repository.</summary>
+        /// <summary>Optional. The format of packages that are stored in the repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
         public virtual string Format { get; set; }
 

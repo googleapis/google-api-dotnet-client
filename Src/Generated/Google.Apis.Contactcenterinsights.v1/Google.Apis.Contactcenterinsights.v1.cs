@@ -4961,7 +4961,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conversationConfig")]
         public virtual GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig ConversationConfig { get; set; }
 
-        /// <summary>A cloud storage bucket source.</summary>
+        /// <summary>
+        /// A cloud storage bucket source. Note that any previously ingested objects from the source will be skipped to
+        /// avoid duplication.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource GcsSource { get; set; }
 
@@ -8280,7 +8283,10 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("conversationConfig")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestConversationConfig ConversationConfig { get; set; }
 
-        /// <summary>A cloud storage bucket source.</summary>
+        /// <summary>
+        /// A cloud storage bucket source. Note that any previously ingested objects from the source will be skipped to
+        /// avoid duplication.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsSource")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource GcsSource { get; set; }
 

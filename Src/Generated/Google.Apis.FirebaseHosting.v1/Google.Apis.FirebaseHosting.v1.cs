@@ -728,11 +728,11 @@ namespace Google.Apis.FirebaseHosting.v1.Data
 
         /// <summary>
         /// A set of DNS record updates and ACME challenges that allow you to transition domain names to Firebase
-        /// Hosting with zero downtime. These updates allow Hosting's to create an SSL certificate and establish
-        /// ownership for your custom domain before Hosting begins serving traffic on it. If your domain name is already
-        /// in active use with another provider, add one of the challenges and make the recommended dns updates. After
-        /// adding challenges and adjusting DNS records as necessary, wait for the `ownershipState` to be
-        /// `OWNERSHIP_ACTIVE` and the `certState` to be `CERT_ACTIVE` before sending traffic to Hosting.
+        /// Hosting with zero downtime. These updates allow Hosting to create an SSL certificate and establish ownership
+        /// for your custom domain before Hosting begins serving traffic on it. If your domain name is already in active
+        /// use with another provider, add one of the challenges and make the recommended DNS updates. After adding
+        /// challenges and adjusting DNS records as necessary, wait for the `ownershipState` to be `OWNERSHIP_ACTIVE`
+        /// and the `certState` to be `CERT_ACTIVE` before sending traffic to Hosting.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("liveMigrationSteps")]
         public virtual System.Collections.Generic.IList<LiveMigrationStep> LiveMigrationSteps { get; set; }
@@ -763,8 +763,8 @@ namespace Google.Apis.FirebaseHosting.v1.Data
     /// <summary>
     /// DNS records are resource records that define how systems and services should behave when handling requests for a
     /// domain name. For example, when you add `A` records to your domain name's DNS records, you're informing other
-    /// systems (e.g. your users' web browsers) to contact those IPv4 addresses to retrieve resources relevant to your
-    /// domain name (e.g. your Hosting site files).
+    /// systems (such as your users' web browsers) to contact those IPv4 addresses to retrieve resources relevant to
+    /// your domain name (such as your Hosting site files).
     /// </summary>
     public class DnsRecord : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -775,7 +775,7 @@ namespace Google.Apis.FirebaseHosting.v1.Data
         /// <summary>
         /// Output only. The data of the record. The meaning of the value depends on record type: - A and AAAA: IP
         /// addresses for the domain name. - CNAME: Another domain to check for records. - TXT: Arbitrary text strings
-        /// associated with the domain name. Hosting uses TXT records to determine a which Firebase Projects have
+        /// associated with the domain name. Hosting uses TXT records to determine which Firebase projects have
         /// permission to act on the domain name's behalf. - CAA: The record's flags, tag, and value, e.g. `0 issue
         /// "pki.goog"`.
         /// </summary>
@@ -795,7 +795,7 @@ namespace Google.Apis.FirebaseHosting.v1.Data
     }
 
     /// <summary>
-    /// A set of DNS records relevant to the set up and maintenance of a Custom Domain in Firebase Hosting.
+    /// A set of DNS records relevant to the setup and maintenance of a custom domain in Firebase Hosting.
     /// </summary>
     public class DnsRecordSet : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -821,8 +821,8 @@ namespace Google.Apis.FirebaseHosting.v1.Data
     /// <summary>
     /// A set of DNS record updates that you should make to allow Hosting to serve secure content in response to
     /// requests against your domain name. These updates present the current state of your domain name's DNS records
-    /// when Hosting last queried them, and the desired set of records that Hosting needs to see before your Custom
-    /// Domain can be fully active.
+    /// when Hosting last queried them, and the desired set of records that Hosting needs to see before your custom
+    /// domain can be fully active.
     /// </summary>
     public class DnsUpdates : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -830,7 +830,7 @@ namespace Google.Apis.FirebaseHosting.v1.Data
 
         private object _checkTime;
 
-        /// <summary>The last time Hosting checked your CustomDomain's DNS records.</summary>
+        /// <summary>The last time Hosting checked your custom domain's DNS records.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("checkTime")]
         public virtual string CheckTimeRaw
         {
