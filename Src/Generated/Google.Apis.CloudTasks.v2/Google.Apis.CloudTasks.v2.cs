@@ -2397,18 +2397,26 @@ namespace Google.Apis.CloudTasks.v2.Data
     /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
     /// constraints based on attributes of the request, the resource, or both. To learn which resources support
     /// conditions in their IAM policies, see the [IAM
-    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings":
-    /// [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:**
+    /// ```
+    /// {
+    /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
     /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:**
+    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
+    /// ```
+    /// **YAML
+    /// example:**
+    /// ```
     /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features,
-    /// see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3
+    /// ```
+    /// For a description of IAM and its
+    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2645,8 +2653,10 @@ namespace Google.Apis.CloudTasks.v2.Data
         /// <summary>
         /// A task will be scheduled for retry between min_backoff and max_backoff duration after it fails, if the
         /// queue's RetryConfig specifies that the task should be retried. If unspecified when the queue is created,
-        /// Cloud Tasks will pick the default. `max_backoff` will be truncated to the nearest second. This field has the
-        /// same meaning as [max_backoff_seconds in
+        /// Cloud Tasks will pick the default. The value must be given as a string that indicates the length of time (in
+        /// seconds) followed by `s` (for "seconds"). For more information on the format, see the documentation for
+        /// [Duration](https://protobuf.dev/reference/protobuf/google.protobuf/#duration). `max_backoff` will be
+        /// truncated to the nearest second. This field has the same meaning as [max_backoff_seconds in
         /// queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxBackoff")]
@@ -2670,9 +2680,11 @@ namespace Google.Apis.CloudTasks.v2.Data
         /// If positive, `max_retry_duration` specifies the time limit for retrying a failed task, measured from when
         /// the task was first attempted. Once `max_retry_duration` time has passed *and* the task has been attempted
         /// max_attempts times, no further attempts will be made and the task will be deleted. If zero, then the task
-        /// age is unlimited. If unspecified when the queue is created, Cloud Tasks will pick the default.
-        /// `max_retry_duration` will be truncated to the nearest second. This field has the same meaning as
-        /// [task_age_limit in
+        /// age is unlimited. If unspecified when the queue is created, Cloud Tasks will pick the default. The value
+        /// must be given as a string that indicates the length of time (in seconds) followed by `s` (for "seconds").
+        /// For the maximum possible value or the format, see the documentation for
+        /// [Duration](https://protobuf.dev/reference/protobuf/google.protobuf/#duration). `max_retry_duration` will be
+        /// truncated to the nearest second. This field has the same meaning as [task_age_limit in
         /// queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxRetryDuration")]
@@ -2681,8 +2693,10 @@ namespace Google.Apis.CloudTasks.v2.Data
         /// <summary>
         /// A task will be scheduled for retry between min_backoff and max_backoff duration after it fails, if the
         /// queue's RetryConfig specifies that the task should be retried. If unspecified when the queue is created,
-        /// Cloud Tasks will pick the default. `min_backoff` will be truncated to the nearest second. This field has the
-        /// same meaning as [min_backoff_seconds in
+        /// Cloud Tasks will pick the default. The value must be given as a string that indicates the length of time (in
+        /// seconds) followed by `s` (for "seconds"). For more information on the format, see the documentation for
+        /// [Duration](https://protobuf.dev/reference/protobuf/google.protobuf/#duration). `min_backoff` will be
+        /// truncated to the nearest second. This field has the same meaning as [min_backoff_seconds in
         /// queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#retry_parameters).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("minBackoff")]
@@ -2841,8 +2855,11 @@ namespace Google.Apis.CloudTasks.v2.Data
         /// seconds, 24 hours 15 seconds]. Regardless of the task's `dispatch_deadline`, the app handler will not run
         /// for longer than than the service's timeout. We recommend setting the `dispatch_deadline` to at most a few
         /// seconds more than the app handler's timeout. For more information see
-        /// [Timeouts](https://cloud.google.com/tasks/docs/creating-appengine-handlers#timeouts). `dispatch_deadline`
-        /// will be truncated to the nearest millisecond. The deadline is an approximate deadline.
+        /// [Timeouts](https://cloud.google.com/tasks/docs/creating-appengine-handlers#timeouts). The value must be
+        /// given as a string that indicates the length of time (in seconds) followed by `s` (for "seconds"). For more
+        /// information on the format, see the documentation for
+        /// [Duration](https://protobuf.dev/reference/protobuf/google.protobuf/#duration). `dispatch_deadline` will be
+        /// truncated to the nearest millisecond. The deadline is an approximate deadline.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dispatchDeadline")]
         public virtual object DispatchDeadline { get; set; }

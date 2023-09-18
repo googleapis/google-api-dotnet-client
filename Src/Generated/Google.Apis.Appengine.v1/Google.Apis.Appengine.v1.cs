@@ -3437,6 +3437,26 @@ namespace Google.Apis.Appengine.v1
             [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AppsId { get; private set; }
 
+            /// <summary>Options to include extra data</summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeExtraData", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<IncludeExtraDataEnum> IncludeExtraData { get; set; }
+
+            /// <summary>Options to include extra data</summary>
+            public enum IncludeExtraDataEnum
+            {
+                /// <summary>Unspecified: No extra data will be returned</summary>
+                [Google.Apis.Util.StringValueAttribute("INCLUDE_EXTRA_DATA_UNSPECIFIED")]
+                INCLUDEEXTRADATAUNSPECIFIED = 0,
+
+                /// <summary>Do not return any extra data</summary>
+                [Google.Apis.Util.StringValueAttribute("INCLUDE_EXTRA_DATA_NONE")]
+                INCLUDEEXTRADATANONE = 1,
+
+                /// <summary>Return GGCM associated with the resources</summary>
+                [Google.Apis.Util.StringValueAttribute("INCLUDE_GOOGLE_GENERATED_METADATA")]
+                INCLUDEGOOGLEGENERATEDMETADATA = 2,
+            }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
@@ -3455,6 +3475,14 @@ namespace Google.Apis.Appengine.v1
                     Name = "appsId",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeExtraData", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeExtraData",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -3705,6 +3733,13 @@ namespace Google.Apis.Appengine.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcrDomain")]
         public virtual string GcrDomain { get; set; }
+
+        /// <summary>
+        /// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested
+        /// by setting the IncludeExtraData field in GetApplicationRequest
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedCustomerMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> GeneratedCustomerMetadata { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("iap")]
         public virtual IdentityAwareProxy Iap { get; set; }
@@ -5660,6 +5695,13 @@ namespace Google.Apis.Appengine.v1.Data
     /// </summary>
     public class Service : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested
+        /// by setting the IncludeExtraData field in GetServiceRequest
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedCustomerMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> GeneratedCustomerMetadata { get; set; }
+
         /// <summary>Relative name of the service within the application. Example: default.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -6264,7 +6306,7 @@ namespace Google.Apis.Appengine.v1.Data
         public virtual string EgressSetting { get; set; }
 
         /// <summary>
-        /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        /// Full Serverless VPC Access Connector name e.g. projects/my-project/locations/us-central1/connectors/c1.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

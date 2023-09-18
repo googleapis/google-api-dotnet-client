@@ -21,6 +21,11 @@
     "STRICT",
     "OVERRIDE"
   ],
+  "Google.Apis.Appengine.v1.AppsResource+GetRequest.IncludeExtraDataEnum": [
+    "INCLUDE_EXTRA_DATA_UNSPECIFIED",
+    "INCLUDE_EXTRA_DATA_NONE",
+    "INCLUDE_GOOGLE_GENERATED_METADATA"
+  ],
   "Google.Apis.Appengine.v1.AppsResource+ServicesResource+VersionsResource+GetRequest.ViewEnum": [
     "BASIC",
     "FULL"

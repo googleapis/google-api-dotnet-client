@@ -1330,9 +1330,14 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                 /// <summary>
                 /// Deletes a queue. This command will delete the queue even if it has tasks in it. Note: If you delete
-                /// a queue, a queue with the same name can't be created for 7 days. WARNING: Using this method may have
-                /// unintended side effects if you are using an App Engine `queue.yaml` or `queue.xml` file to manage
-                /// your queues. Read [Overview of Queue Management and
+                /// a queue, you may be prevented from creating a new queue with the same name as the deleted queue for
+                /// a tombstone window of up to 3 days. During this window, the CreateQueue operation may appear to
+                /// recreate the queue, but this can be misleading. If you attempt to create a queue with the same name
+                /// as one that is in the tombstone window, run GetQueue to confirm that the queue creation was
+                /// successful. If GetQueue returns 200 response code, your queue was successfully created with the name
+                /// of the previously deleted queue. Otherwise, your queue did not successfully recreate. WARNING: Using
+                /// this method may have unintended side effects if you are using an App Engine `queue.yaml` or
+                /// `queue.xml` file to manage your queues. Read [Overview of Queue Management and
                 /// queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using this method.
                 /// </summary>
                 /// <param name="name">
@@ -1345,9 +1350,14 @@ namespace Google.Apis.CloudTasks.v2beta2
 
                 /// <summary>
                 /// Deletes a queue. This command will delete the queue even if it has tasks in it. Note: If you delete
-                /// a queue, a queue with the same name can't be created for 7 days. WARNING: Using this method may have
-                /// unintended side effects if you are using an App Engine `queue.yaml` or `queue.xml` file to manage
-                /// your queues. Read [Overview of Queue Management and
+                /// a queue, you may be prevented from creating a new queue with the same name as the deleted queue for
+                /// a tombstone window of up to 3 days. During this window, the CreateQueue operation may appear to
+                /// recreate the queue, but this can be misleading. If you attempt to create a queue with the same name
+                /// as one that is in the tombstone window, run GetQueue to confirm that the queue creation was
+                /// successful. If GetQueue returns 200 response code, your queue was successfully created with the name
+                /// of the previously deleted queue. Otherwise, your queue did not successfully recreate. WARNING: Using
+                /// this method may have unintended side effects if you are using an App Engine `queue.yaml` or
+                /// `queue.xml` file to manage your queues. Read [Overview of Queue Management and
                 /// queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using this method.
                 /// </summary>
                 public class DeleteRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.Empty>
@@ -2139,6 +2149,61 @@ namespace Google.Apis.CloudTasks.v2beta2
                 }
             }
 
+            /// <summary>
+            /// Gets the CMEK config. Gets the Customer Managed Encryption Key configured with the Cloud Tasks lcoation.
+            /// By default there is no kms_key configured.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The config. For example: projects/PROJECT_ID/locations/LOCATION_ID/CmekConfig`
+            /// </param>
+            public virtual GetCmekConfigRequest GetCmekConfig(string name)
+            {
+                return new GetCmekConfigRequest(service, name);
+            }
+
+            /// <summary>
+            /// Gets the CMEK config. Gets the Customer Managed Encryption Key configured with the Cloud Tasks lcoation.
+            /// By default there is no kms_key configured.
+            /// </summary>
+            public class GetCmekConfigRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.CmekConfig>
+            {
+                /// <summary>Constructs a new GetCmekConfig request.</summary>
+                public GetCmekConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The config. For example: projects/PROJECT_ID/locations/LOCATION_ID/CmekConfig`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getCmekConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2beta2/{+name}";
+
+                /// <summary>Initializes GetCmekConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/cmekConfig$",
+                    });
+                }
+            }
+
             /// <summary>Lists information about the supported locations for this service.</summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -2220,6 +2285,91 @@ namespace Google.Apis.CloudTasks.v2beta2
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Creates or Updates a CMEK config. Updates the Customer Managed Encryption Key assotiated with the Cloud
+            /// Tasks location (Creates if the key does not already exist). All new tasks created in the location will
+            /// be encrypted at-rest with the KMS-key provided in the config.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="projectsId"><c>null</c></param>
+            /// <param name="locationsId"><c>null</c></param>
+            public virtual UpdateCmekConfigRequest UpdateCmekConfig(Google.Apis.CloudTasks.v2beta2.Data.CmekConfig body, string projectsId, string locationsId)
+            {
+                return new UpdateCmekConfigRequest(service, body, projectsId, locationsId);
+            }
+
+            /// <summary>
+            /// Creates or Updates a CMEK config. Updates the Customer Managed Encryption Key assotiated with the Cloud
+            /// Tasks location (Creates if the key does not already exist). All new tasks created in the location will
+            /// be encrypted at-rest with the KMS-key provided in the config.
+            /// </summary>
+            public class UpdateCmekConfigRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta2.Data.CmekConfig>
+            {
+                /// <summary>Constructs a new UpdateCmekConfig request.</summary>
+                public UpdateCmekConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTasks.v2beta2.Data.CmekConfig body, string projectsId, string locationsId) : base(service)
+                {
+                    ProjectsId = projectsId;
+                    LocationsId = locationsId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProjectsId { get; private set; }
+
+                [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string LocationsId { get; private set; }
+
+                /// <summary>List of fields to be updated in this request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudTasks.v2beta2.Data.CmekConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateCmekConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2beta2/projects/{projectsId}/locations/{locationsId}/cmekConfig";
+
+                /// <summary>Initializes UpdateCmekConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "locationsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2718,6 +2868,31 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
             get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduleTimeRaw);
             set => ScheduleTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// CMEK, or Customer Managed Encryption Keys, enables GCP products to put control over encryption and key
+    /// management in their customer’s hands.
+    /// </summary>
+    public class CmekConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Resource name of the Cloud KMS key, of the form
+        /// `projects/PROJECT_ID/locations/LOCATION_ID/keyRings/KEY_RING_ID/cryptoKeys/KEY_ID`, that will be used to
+        /// encrypt the Queues &amp;amp; Tasks in the region. Setting this as blank will turn off CMEK encryption.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
+        /// <summary>
+        /// Output only. The config resource name which includes the project and location and must end in 'cmekConfig',
+        /// in the format projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3247,18 +3422,26 @@ namespace Google.Apis.CloudTasks.v2beta2.Data
     /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
     /// constraints based on attributes of the request, the resource, or both. To learn which resources support
     /// conditions in their IAM policies, see the [IAM
-    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:** { "bindings":
-    /// [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:**
+    /// ```
+    /// {
+    /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
     /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
     /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
     /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
-    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 } **YAML example:**
+    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
+    /// ```
+    /// **YAML
+    /// example:**
+    /// ```
     /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
     /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
     /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
     /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
-    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3 For a description of IAM and its features,
-    /// see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3
+    /// ```
+    /// For a description of IAM and its
+    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
     /// </summary>
     public class Policy : Google.Apis.Requests.IDirectResponseSchema
     {

@@ -1848,6 +1848,31 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Preview: An identifier for an aggregation function. Aggregation functions are SQL functions that group or
+    /// transform data from multiple points to a single point. This is a preview feature and may be subject to change
+    /// before final release.
+    /// </summary>
+    public class AggregationFunction : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Parameters applied to the aggregation function. Only used for functions that require them.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("parameters")]
+        public virtual System.Collections.Generic.IList<Parameter> Parameters { get; set; }
+
+        /// <summary>
+        /// Required. The type of aggregation function, must be one of the following: "none" - no function. "percentile"
+        /// - APPROX_QUANTILES() - 1 parameter numeric value "average" - AVG() "count" - COUNT() "count-distinct" -
+        /// COUNT(DISTINCT) "count-distinct-approx" - APPROX_COUNT_DISTINCT() "max" - MAX() "min" - MIN() "sum" - SUM()
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A chart that displays alert policy data.</summary>
     public class AlertChart : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1877,9 +1902,47 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Preview: A breakdown is an aggregation applied to the measures over a specified column. A breakdown can result
+    /// in multiple series across a category for the provided measure. This is a preview feature and may be subject to
+    /// change before final release.
+    /// </summary>
+    public class Breakdown : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Aggregation function is applied across all data in each breakdown created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregationFunction")]
+        public virtual AggregationFunction AggregationFunction { get; set; }
+
+        /// <summary>Required. The name of the column in the dataset containing the breakdown values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("column")]
+        public virtual string Column { get; set; }
+
+        /// <summary>
+        /// Required. A limit to the number of breakdowns. If set to zero then all possible breakdowns are applied. The
+        /// list of breakdowns is dependent on the value of the sort_order field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("limit")]
+        public virtual System.Nullable<int> Limit { get; set; }
+
+        /// <summary>Required. The sort order is applied to the values of the breakdown column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sortOrder")]
+        public virtual string SortOrder { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Options to control visual rendering of a chart.</summary>
     public class ChartOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Preview: Configures whether the charted values are shown on the horizontal or vertical axis. By default,
+        /// values are represented the vertical axis. This is a preview feature and may be subject to change before
+        /// final release.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayHorizontal")]
+        public virtual System.Nullable<bool> DisplayHorizontal { get; set; }
+
         /// <summary>The chart mode.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
@@ -2036,12 +2099,24 @@ namespace Google.Apis.Monitoring.v1.Data
     /// <summary>Groups a time series query definition with charting options.</summary>
     public class DataSet : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The collection of breakdowns to be applied to the dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("breakdowns")]
+        public virtual System.Collections.Generic.IList<Breakdown> Breakdowns { get; set; }
+
+        /// <summary>Optional. A collection of dimension columns.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimensions")]
+        public virtual System.Collections.Generic.IList<Dimension> Dimensions { get; set; }
+
         /// <summary>
         /// A template string for naming TimeSeries in the resulting data set. This should be a string with
         /// interpolations of the form ${label_name}, which will resolve to the label's value.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("legendTemplate")]
         public virtual string LegendTemplate { get; set; }
+
+        /// <summary>Optional. A collection of measures.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("measures")]
+        public virtual System.Collections.Generic.IList<Measure> Measures { get; set; }
 
         /// <summary>
         /// Optional. The lower bound on data point frequency for this data set, implemented by specifying the minimum
@@ -2063,6 +2138,67 @@ namespace Google.Apis.Monitoring.v1.Data
         /// <summary>Required. Fields for querying time series data from the Stackdriver metrics API.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeSeriesQuery")]
         public virtual TimeSeriesQuery TimeSeriesQuery { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Preview: A chart dimension for an SQL query. This is applied over the x-axis. This is a preview feature and may
+    /// be subject to change before final release.
+    /// </summary>
+    public class Dimension : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The name of the column in the source SQL query that is used to chart the dimension.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("column")]
+        public virtual string Column { get; set; }
+
+        /// <summary>
+        /// Optional. The type of the dimension column. This is relevant only if one of the bin_size fields is set. If
+        /// it is empty, the type TIMESTAMP or INT64 will be assumed based on which bin_size field is set. If populated,
+        /// this should be set to one of the following types: DATE, TIME, DATETIME, TIMESTAMP, BIGNUMERIC, INT64,
+        /// NUMERIC, FLOAT64.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("columnType")]
+        public virtual string ColumnType { get; set; }
+
+        /// <summary>
+        /// Optional. float_bin_size is used when the column type used for a dimension is a floating point numeric
+        /// column.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("floatBinSize")]
+        public virtual System.Nullable<double> FloatBinSize { get; set; }
+
+        /// <summary>
+        /// A limit to the number of bins generated. When 0 is specified, the maximum count is not enforced.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("maxBinCount")]
+        public virtual System.Nullable<int> MaxBinCount { get; set; }
+
+        /// <summary>numeric_bin_size is used when the column type used for a dimension is numeric or string.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("numericBinSize")]
+        public virtual System.Nullable<int> NumericBinSize { get; set; }
+
+        /// <summary>
+        /// The column name to sort on for binning. This column can be the same column as this dimension or any other
+        /// column used as a measure in the results. If sort_order is set to NONE, then this value is not used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sortColumn")]
+        public virtual string SortColumn { get; set; }
+
+        /// <summary>The sort order applied to the sort column.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sortOrder")]
+        public virtual string SortOrder { get; set; }
+
+        /// <summary>
+        /// time_bin_size is used when the data type specified by column is a time type and the bin size is determined
+        /// by a time duration. If column_type is DATE, this must be a whole value multiple of 1 day. If column_type is
+        /// TIME, this must be less than or equal to 24 hours.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeBinSize")]
+        public virtual object TimeBinSize { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2296,6 +2432,28 @@ namespace Google.Apis.Monitoring.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceNames")]
         public virtual System.Collections.Generic.IList<string> ResourceNames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Preview: A chart measure for an SQL query. This is applied over the y-axis. This is a preview feature and may be
+    /// subject to change before final release.
+    /// </summary>
+    public class Measure : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The aggregation function applied to the input column. This must not be set to "none" unless
+        /// binning is disabled on the dimension. The aggregation function is used to group points on the dimension
+        /// bins.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregationFunction")]
+        public virtual AggregationFunction AggregationFunction { get; set; }
+
+        /// <summary>Required. The column name within in the dataset used for the measure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("column")]
+        public virtual string Column { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2631,6 +2789,20 @@ namespace Google.Apis.Monitoring.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Preview: A query that produces an aggregated response and supporting data. This is a preview feature and may be
+    /// subject to change before final release.
+    /// </summary>
+    public class OpsAnalyticsQuery : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A SQL query to fetch time series, category series, or numeric series data.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sql")]
+        public virtual string Sql { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A protocol buffer option, which can be attached to a message, field, enumeration, etc.</summary>
     public class Option : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -2649,6 +2821,24 @@ namespace Google.Apis.Monitoring.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual System.Collections.Generic.IDictionary<string, object> Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Preview: Parameter value applied to the aggregation function. This is a preview feature and may be subject to
+    /// change before final release.
+    /// </summary>
+    public class Parameter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A floating-point parameter value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("doubleValue")]
+        public virtual System.Nullable<double> DoubleValue { get; set; }
+
+        /// <summary>An integer parameter value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intValue")]
+        public virtual System.Nullable<long> IntValue { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -3337,6 +3527,13 @@ namespace Google.Apis.Monitoring.v1.Data
     /// </summary>
     public class TimeSeriesQuery : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Preview: A query used to fetch a time series, category series, or numeric series with SQL. This is a preview
+        /// feature and may be subject to change before final release.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("opsAnalyticsQuery")]
+        public virtual OpsAnalyticsQuery OpsAnalyticsQuery { get; set; }
+
         /// <summary>
         /// Optional. If set, Cloud Monitoring will treat the full query duration as the alignment period so that there
         /// will be only 1 output value.*Note: This could override the configured alignment period except for the cases

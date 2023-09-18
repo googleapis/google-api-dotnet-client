@@ -5188,6 +5188,13 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>
+        /// Output only. Payload for network connection state change event. Present only when `event_type` is
+        /// `NETWORK_STATE_CHANGE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkStateChangeEvent")]
+        public virtual GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent NetworkStateChangeEvent { get; set; }
+
         private string _reportTimeRaw;
 
         private object _reportTime;
@@ -5236,6 +5243,20 @@ namespace Google.Apis.ChromeManagement.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("user")]
         public virtual GoogleChromeManagementV1TelemetryUserInfo User { get; set; }
 
+        /// <summary>
+        /// Output only. Payload for VPN connection state change event. Present only when `event_type` is
+        /// `VPN_CONNECTION_STATE_CHANGE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpnConnectionStateChangeEvent")]
+        public virtual GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent VpnConnectionStateChangeEvent { get; set; }
+
+        /// <summary>
+        /// Output only. Payload for WiFi signal strength events. Present only when `event_type` is
+        /// `WIFI_SIGNAL_STRENGTH_LOW` or `WIFI_SIGNAL_STRENGTH_RECOVERED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wifiSignalStrengthEvent")]
+        public virtual GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent WifiSignalStrengthEvent { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5265,6 +5286,42 @@ namespace Google.Apis.ChromeManagement.v1.Data
         /// <summary>Current HTTPS latency state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("httpsLatencyState")]
         public virtual string HttpsLatencyState { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// `TelemetryNetworkConnectionStateChangeEvent` is triggered on network connection state changes. * Granular
+    /// permission needed: TELEMETRY_API_NETWORK_REPORT
+    /// </summary>
+    public class GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Current connection state of the network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionState")]
+        public virtual string ConnectionState { get; set; }
+
+        /// <summary>Unique identifier of the network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guid")]
+        public virtual string Guid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// `TelemetryNetworkSignalStrengthEvent` is triggered on WiFi signal strength events. * Granular permission needed:
+    /// TELEMETRY_API_NETWORK_REPORT
+    /// </summary>
+    public class GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Unique identifier of the network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("guid")]
+        public virtual string Guid { get; set; }
+
+        /// <summary>Signal strength RSSI value.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signalStrengthDbm")]
+        public virtual System.Nullable<int> SignalStrengthDbm { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

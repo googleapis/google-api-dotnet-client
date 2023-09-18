@@ -2095,14 +2095,6 @@ namespace Google.Apis.Appengine.v1beta
                     FLEXIBLE = 2,
                 }
 
-                /// <summary>Optional. Maximum results to return per page.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>Optional. Continuation token for fetching the next page of results.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "list";
 
@@ -2127,22 +2119,6 @@ namespace Google.Apis.Appengine.v1beta
                     RequestParameters.Add("environment", new Google.Apis.Discovery.Parameter
                     {
                         Name = "environment",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2833,6 +2809,26 @@ namespace Google.Apis.Appengine.v1beta
                     [Google.Apis.Util.RequestParameterAttribute("versionsId", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string VersionsId { get; private set; }
 
+                    /// <summary>Optional. Options to include extra data</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("includeExtraData", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<IncludeExtraDataEnum> IncludeExtraData { get; set; }
+
+                    /// <summary>Optional. Options to include extra data</summary>
+                    public enum IncludeExtraDataEnum
+                    {
+                        /// <summary>Unspecified: No extra data will be returned</summary>
+                        [Google.Apis.Util.StringValueAttribute("INCLUDE_EXTRA_DATA_UNSPECIFIED")]
+                        INCLUDEEXTRADATAUNSPECIFIED = 0,
+
+                        /// <summary>Do not return any extra data</summary>
+                        [Google.Apis.Util.StringValueAttribute("INCLUDE_EXTRA_DATA_NONE")]
+                        INCLUDEEXTRADATANONE = 1,
+
+                        /// <summary>Return GGCM associated with the resources</summary>
+                        [Google.Apis.Util.StringValueAttribute("INCLUDE_GOOGLE_GENERATED_METADATA")]
+                        INCLUDEGOOGLEGENERATEDMETADATA = 2,
+                    }
+
                     /// <summary>Controls the set of fields returned in the Get response.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("view", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual System.Nullable<ViewEnum> View { get; set; }
@@ -2889,6 +2885,14 @@ namespace Google.Apis.Appengine.v1beta
                             Name = "versionsId",
                             IsRequired = true,
                             ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("includeExtraData", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "includeExtraData",
+                            IsRequired = false,
+                            ParameterType = "query",
                             DefaultValue = null,
                             Pattern = null,
                         });
@@ -3278,6 +3282,26 @@ namespace Google.Apis.Appengine.v1beta
                 [Google.Apis.Util.RequestParameterAttribute("servicesId", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string ServicesId { get; private set; }
 
+                /// <summary>Optional. Options to include extra data</summary>
+                [Google.Apis.Util.RequestParameterAttribute("includeExtraData", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<IncludeExtraDataEnum> IncludeExtraData { get; set; }
+
+                /// <summary>Optional. Options to include extra data</summary>
+                public enum IncludeExtraDataEnum
+                {
+                    /// <summary>Unspecified: No extra data will be returned</summary>
+                    [Google.Apis.Util.StringValueAttribute("INCLUDE_EXTRA_DATA_UNSPECIFIED")]
+                    INCLUDEEXTRADATAUNSPECIFIED = 0,
+
+                    /// <summary>Do not return any extra data</summary>
+                    [Google.Apis.Util.StringValueAttribute("INCLUDE_EXTRA_DATA_NONE")]
+                    INCLUDEEXTRADATANONE = 1,
+
+                    /// <summary>Return GGCM associated with the resources</summary>
+                    [Google.Apis.Util.StringValueAttribute("INCLUDE_GOOGLE_GENERATED_METADATA")]
+                    INCLUDEGOOGLEGENERATEDMETADATA = 2,
+                }
+
                 /// <summary>Gets the method name.</summary>
                 public override string MethodName => "get";
 
@@ -3304,6 +3328,14 @@ namespace Google.Apis.Appengine.v1beta
                         Name = "servicesId",
                         IsRequired = true,
                         ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("includeExtraData", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "includeExtraData",
+                        IsRequired = false,
+                        ParameterType = "query",
                         DefaultValue = null,
                         Pattern = null,
                     });
@@ -3561,6 +3593,26 @@ namespace Google.Apis.Appengine.v1beta
             [Google.Apis.Util.RequestParameterAttribute("appsId", Google.Apis.Util.RequestParameterType.Path)]
             public virtual string AppsId { get; private set; }
 
+            /// <summary>Optional. Options to include extra data</summary>
+            [Google.Apis.Util.RequestParameterAttribute("includeExtraData", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<IncludeExtraDataEnum> IncludeExtraData { get; set; }
+
+            /// <summary>Optional. Options to include extra data</summary>
+            public enum IncludeExtraDataEnum
+            {
+                /// <summary>Unspecified: No extra data will be returned</summary>
+                [Google.Apis.Util.StringValueAttribute("INCLUDE_EXTRA_DATA_UNSPECIFIED")]
+                INCLUDEEXTRADATAUNSPECIFIED = 0,
+
+                /// <summary>Do not return any extra data</summary>
+                [Google.Apis.Util.StringValueAttribute("INCLUDE_EXTRA_DATA_NONE")]
+                INCLUDEEXTRADATANONE = 1,
+
+                /// <summary>Return GGCM associated with the resources</summary>
+                [Google.Apis.Util.StringValueAttribute("INCLUDE_GOOGLE_GENERATED_METADATA")]
+                INCLUDEGOOGLEGENERATEDMETADATA = 2,
+            }
+
             /// <summary>Gets the method name.</summary>
             public override string MethodName => "get";
 
@@ -3579,6 +3631,14 @@ namespace Google.Apis.Appengine.v1beta
                     Name = "appsId",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("includeExtraData", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "includeExtraData",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });
@@ -4213,6 +4273,13 @@ namespace Google.Apis.Appengine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcrDomain")]
         public virtual string GcrDomain { get; set; }
 
+        /// <summary>
+        /// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested
+        /// by setting the IncludeExtraData field in GetApplicationRequest
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedCustomerMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> GeneratedCustomerMetadata { get; set; }
+
         [Newtonsoft.Json.JsonPropertyAttribute("iap")]
         public virtual IdentityAwareProxy Iap { get; set; }
 
@@ -4670,6 +4737,35 @@ namespace Google.Apis.Appengine.v1beta.Data
         /// <summary>The target value for the metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetUtilization")]
         public virtual System.Nullable<double> TargetUtilization { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either
+    /// specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one
+    /// of the following: A full date, with non-zero year, month, and day values. A month and day, with a zero year (for
+    /// example, an anniversary). A year on its own, with a zero month and a zero day. A year and month, with a zero day
+    /// (for example, a credit card expiration date).Related types: google.type.TimeOfDay google.type.DateTime
+    /// google.protobuf.Timestamp
+    /// </summary>
+    public class Date : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a
+        /// year and month where the day isn't significant.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("day")]
+        public virtual System.Nullable<int> Day { get; set; }
+
+        /// <summary>Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("month")]
+        public virtual System.Nullable<int> Month { get; set; }
+
+        /// <summary>Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("year")]
+        public virtual System.Nullable<int> Year { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6224,6 +6320,18 @@ namespace Google.Apis.Appengine.v1beta.Data
     /// <summary>Runtime versions for App Engine.</summary>
     public class Runtime : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Date when Runtime is decommissioned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("decommissionedDate")]
+        public virtual Date DecommissionedDate { get; set; }
+
+        /// <summary>Date when Runtime is deprecated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deprecationDate")]
+        public virtual Date DeprecationDate { get; set; }
+
+        /// <summary>Date when Runtime is end of support.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endOfSupportDate")]
+        public virtual Date EndOfSupportDate { get; set; }
+
         /// <summary>The environment of the runtime.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]
         public virtual string Environment { get; set; }
@@ -6263,6 +6371,13 @@ namespace Google.Apis.Appengine.v1beta.Data
     /// </summary>
     public class Service : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested
+        /// by setting the IncludeExtraData field in GetServiceRequest
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedCustomerMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> GeneratedCustomerMetadata { get; set; }
+
         /// <summary>Relative name of the service within the application. Example: default.@OutputOnly</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -6687,6 +6802,13 @@ namespace Google.Apis.Appengine.v1beta.Data
         public virtual FlexibleRuntimeSettings FlexibleRuntimeSettings { get; set; }
 
         /// <summary>
+        /// Additional Google Generated Customer Metadata, this field won't be provided by default and can be requested
+        /// by setting the IncludeExtraData field in GetVersionRequest
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("generatedCustomerMetadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> GeneratedCustomerMetadata { get; set; }
+
+        /// <summary>
         /// An ordered list of URL-matching patterns that should be applied to incoming requests. The first matching URL
         /// handles the request and other request handlers are not attempted.Only returned in GET requests if view=FULL
         /// is set.
@@ -6867,7 +6989,7 @@ namespace Google.Apis.Appengine.v1beta.Data
         public virtual string EgressSetting { get; set; }
 
         /// <summary>
-        /// Full Serverless VPC Access Connector name e.g. /projects/my-project/locations/us-central1/connectors/c1.
+        /// Full Serverless VPC Access Connector name e.g. projects/my-project/locations/us-central1/connectors/c1.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

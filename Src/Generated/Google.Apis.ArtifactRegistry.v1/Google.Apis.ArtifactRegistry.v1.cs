@@ -6097,7 +6097,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("dockerConfig")]
         public virtual DockerRepositoryConfig DockerConfig { get; set; }
 
-        /// <summary>The format of packages that are stored in the repository.</summary>
+        /// <summary>Optional. The format of packages that are stored in the repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("format")]
         public virtual string Format { get; set; }
 
@@ -6123,7 +6123,7 @@ namespace Google.Apis.ArtifactRegistry.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("mavenConfig")]
         public virtual MavenRepositoryConfig MavenConfig { get; set; }
 
-        /// <summary>The mode of the repository.</summary>
+        /// <summary>Optional. The mode of the repository.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mode")]
         public virtual string Mode { get; set; }
 

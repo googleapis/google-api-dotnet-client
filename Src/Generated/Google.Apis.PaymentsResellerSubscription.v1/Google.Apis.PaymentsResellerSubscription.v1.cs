@@ -1473,6 +1473,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     /// <summary>A Product resource that defines a subscription service that can be resold.</summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1Product : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Output Only. Specifies the details for a bundle product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bundleDetails")]
+        public virtual GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetails BundleDetails { get; set; }
+
         /// <summary>
         /// Optional. Details for a subscription line item with finite billing cycles. If unset, the line item will be
         /// charged indefinitely.
@@ -1491,6 +1495,10 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("priceConfigs")]
         public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1ProductPriceConfig> PriceConfigs { get; set; }
 
+        /// <summary>Output only. Output Only. Specifies the type of the product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("productType")]
+        public virtual string ProductType { get; set; }
+
         /// <summary>
         /// Output only. 2-letter ISO region code where the product is available in. Ex. "US" Please refers to:
         /// https://en.wikipedia.org/wiki/ISO_3166-1
@@ -1505,6 +1513,35 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// <summary>Output only. Localized human readable name of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("titles")]
         public virtual System.Collections.Generic.IList<GoogleTypeLocalizedText> Titles { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details for a bundle product.</summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The individual products that are included in the bundle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bundleElements")]
+        public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement> BundleElements { get; set; }
+
+        /// <summary>The entitlement mode of the bundle product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entitlementMode")]
+        public virtual string EntitlementMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The individual product that is included in the bundle.</summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Output only. Product resource name that identifies the bundle element. The format is
+        /// 'partners/{partner_id}/products/{product_id}'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("product")]
+        public virtual string Product { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

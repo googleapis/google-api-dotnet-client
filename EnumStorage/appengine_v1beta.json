@@ -21,10 +21,25 @@
     "STRICT",
     "OVERRIDE"
   ],
+  "Google.Apis.Appengine.v1beta.AppsResource+GetRequest.IncludeExtraDataEnum": [
+    "INCLUDE_EXTRA_DATA_UNSPECIFIED",
+    "INCLUDE_EXTRA_DATA_NONE",
+    "INCLUDE_GOOGLE_GENERATED_METADATA"
+  ],
   "Google.Apis.Appengine.v1beta.AppsResource+RuntimesResource+ListRequest.EnvironmentEnum": [
     "ENVIRONMENT_UNSPECIFIED",
     "STANDARD",
     "FLEXIBLE"
+  ],
+  "Google.Apis.Appengine.v1beta.AppsResource+ServicesResource+GetRequest.IncludeExtraDataEnum": [
+    "INCLUDE_EXTRA_DATA_UNSPECIFIED",
+    "INCLUDE_EXTRA_DATA_NONE",
+    "INCLUDE_GOOGLE_GENERATED_METADATA"
+  ],
+  "Google.Apis.Appengine.v1beta.AppsResource+ServicesResource+VersionsResource+GetRequest.IncludeExtraDataEnum": [
+    "INCLUDE_EXTRA_DATA_UNSPECIFIED",
+    "INCLUDE_EXTRA_DATA_NONE",
+    "INCLUDE_GOOGLE_GENERATED_METADATA"
   ],
   "Google.Apis.Appengine.v1beta.AppsResource+ServicesResource+VersionsResource+GetRequest.ViewEnum": [
     "BASIC",

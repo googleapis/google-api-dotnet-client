@@ -725,6 +725,129 @@ namespace Google.Apis.Assuredworkloads.v1
                     }
                 }
 
+                /// <summary>
+                /// Analyzes a hypothetical move of a source resource to a target workload to surface compliance risks.
+                /// The analysis is best effort and is not guaranteed to be exhaustive.
+                /// </summary>
+                /// <param name="target">
+                /// Required. The resource ID of the folder-based destination workload. This workload is where the
+                /// source resource will hypothetically be moved to. Specify the workload's relative resource name,
+                /// formatted as: "organizations/{ORGANIZATION_ID}/locations/{LOCATION_ID}/workloads/{WORKLOAD_ID}" For
+                /// example: "organizations/123/locations/us-east1/workloads/assured-workload-2"
+                /// </param>
+                public virtual AnalyzeWorkloadMoveRequest AnalyzeWorkloadMove(string target)
+                {
+                    return new AnalyzeWorkloadMoveRequest(service, target);
+                }
+
+                /// <summary>
+                /// Analyzes a hypothetical move of a source resource to a target workload to surface compliance risks.
+                /// The analysis is best effort and is not guaranteed to be exhaustive.
+                /// </summary>
+                public class AnalyzeWorkloadMoveRequest : AssuredworkloadsBaseServiceRequest<Google.Apis.Assuredworkloads.v1.Data.GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse>
+                {
+                    /// <summary>Constructs a new AnalyzeWorkloadMove request.</summary>
+                    public AnalyzeWorkloadMoveRequest(Google.Apis.Services.IClientService service, string target) : base(service)
+                    {
+                        Target = target;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource ID of the folder-based destination workload. This workload is where the
+                    /// source resource will hypothetically be moved to. Specify the workload's relative resource name,
+                    /// formatted as: "organizations/{ORGANIZATION_ID}/locations/{LOCATION_ID}/workloads/{WORKLOAD_ID}"
+                    /// For example: "organizations/123/locations/us-east1/workloads/assured-workload-2"
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("target", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Target { get; private set; }
+
+                    /// <summary>
+                    /// Optional. List of asset types to be analyzed, including and under the source resource. If empty,
+                    /// all assets are analyzed. The complete list of asset types is available
+                    /// [here](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("assetTypes", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> AssetTypes { get; set; }
+
+                    /// <summary>
+                    /// Optional. Page size. If a value is not specified, the default value of 10 is used.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The page token from the previous response. It needs to be passed in the second and
+                    /// following requests.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>
+                    /// The source type is a project. Specify the project's relative resource name, formatted as either
+                    /// a project number or a project ID: "projects/{PROJECT_NUMBER}" or "projects/{PROJECT_ID}" For
+                    /// example: "projects/951040570662" when specifying a project number, or "projects/my-project-123"
+                    /// when specifying a project ID.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Project { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "analyzeWorkloadMove";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+target}:analyzeWorkloadMove";
+
+                    /// <summary>Initializes AnalyzeWorkloadMove parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("target", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "target",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^organizations/[^/]+/locations/[^/]+/workloads/[^/]+$",
+                        });
+                        RequestParameters.Add("assetTypes", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "assetTypes",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("project", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "project",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
                 /// <summary>Creates Assured Workload.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="parent">
@@ -1269,6 +1392,46 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response containing the analysis results for the hypothetical resource move.</summary>
+    public class GoogleCloudAssuredworkloadsV1AnalyzeWorkloadMoveResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of analysis results for each asset in scope.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetMoveAnalyses")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1AssetMoveAnalysis> AssetMoveAnalyses { get; set; }
+
+        /// <summary>The next page token. Is empty if the last page is reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents move analysis results for an asset.</summary>
+    public class GoogleCloudAssuredworkloadsV1AssetMoveAnalysis : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of eligible analyses performed for the asset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisGroups")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1MoveAnalysisGroup> AnalysisGroups { get; set; }
+
+        /// <summary>
+        /// The full resource name of the asset being analyzed. Example:
+        /// //compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("asset")]
+        public virtual string Asset { get; set; }
+
+        /// <summary>
+        /// Type of the asset being analyzed. Possible values will be among the ones listed
+        /// [here](https://cloud.google.com/asset-inventory/docs/supported-asset-types#searchable_asset_types).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("assetType")]
+        public virtual string AssetType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Operation metadata to give request details of CreateWorkload.</summary>
     public class GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1352,6 +1515,56 @@ namespace Google.Apis.Assuredworkloads.v1.Data
         /// <summary>List of Workloads under a given parent.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workloads")]
         public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1Workload> Workloads { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a logical group of checks performed for an asset. If successful, the group contains the analysis
+    /// result, otherwise it contains an error with the failure reason.
+    /// </summary>
+    public class GoogleCloudAssuredworkloadsV1MoveAnalysisGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Result of a successful analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("analysisResult")]
+        public virtual GoogleCloudAssuredworkloadsV1MoveAnalysisResult AnalysisResult { get; set; }
+
+        /// <summary>Name of the analysis group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Error details for a failed analysis.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual GoogleRpcStatus Error { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the successful move analysis results for a group.</summary>
+    public class GoogleCloudAssuredworkloadsV1MoveAnalysisResult : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// List of blockers. If not resolved, these will result in compliance violations in the target.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("blockers")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1MoveImpact> Blockers { get; set; }
+
+        /// <summary>List of warnings. These are risks that may or may not result in compliance violations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("warnings")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAssuredworkloadsV1MoveImpact> Warnings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the impact of moving the asset to the target.</summary>
+    public class GoogleCloudAssuredworkloadsV1MoveImpact : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Explanation of the impact.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("detail")]
+        public virtual string Detail { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

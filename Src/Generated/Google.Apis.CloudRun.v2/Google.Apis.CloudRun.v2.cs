@@ -3452,7 +3452,7 @@ namespace Google.Apis.CloudRun.v2.Data
 
         /// <summary>
         /// Service is the name of the service to place in the gRPC HealthCheckRequest (see
-        /// https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default
+        /// https://github.com/grpc/grpc/blob/master/doc/health-checking.md ). If this is not specified, the default
         /// behavior is defined by gRPC.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("service")]
@@ -3868,6 +3868,25 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>The resulting list of Tasks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tasks")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2Task> Tasks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>VPC network settings.</summary>
+    public class GoogleCloudRunV2NetworkInterface : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The VPC network name to access to. Defaults to "default" network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>The VPC subnetwork name to access to. Defaults to the same vaule of network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
+        public virtual string Subnetwork { get; set; }
+
+        /// <summary>Network tags applied to this VPC network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5407,6 +5426,10 @@ namespace Google.Apis.CloudRun.v2.Data
         /// <summary>Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("egress")]
         public virtual string Egress { get; set; }
+
+        /// <summary>VPC network to access to. Currently only single network interface is supported.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2NetworkInterface> NetworkInterfaces { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
