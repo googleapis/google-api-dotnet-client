@@ -60,5 +60,4 @@ build_site() {
 build_site Google.Apis.Core "" netstandard2.0 Google.Apis
 build_site Google.Apis Google.Apis.Core netstandard2.0 Google.Apis
 build_site Google.Apis.Auth "Google.Apis.Core Google.Apis" netstandard2.0 Google.Apis.Auth
-build_site Google.Apis.Auth.Mvc "Google.Apis.Core Google.Apis Google.Apis.Auth" net45 Google.Apis.Auth.Mvc
 build_site Google.Apis.Auth.AspNetCore "Google.Apis.Core Google.Apis Google.Apis.Auth" netstandard2.0 Google.Apis.Auth.AspNetCore
