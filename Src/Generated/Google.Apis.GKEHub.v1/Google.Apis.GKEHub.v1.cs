@@ -4538,6 +4538,10 @@ namespace Google.Apis.GKEHub.v1.Data
     /// </summary>
     public class CommonFleetDefaultMemberConfigSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Config Management-specific spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configmanagement")]
+        public virtual ConfigManagementMembershipSpec Configmanagement { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

@@ -5779,12 +5779,12 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An insight about an asset (experimental insight)</summary>
+    /// <summary>A generic insight about an asset.</summary>
     public class GenericInsight : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Output only. Additional information about the insight, each entry can be a logical entry and must make sense
-        /// if it is displayed with line breaks between each entry. Text can contain md style links
+        /// if it is displayed with line breaks between each entry. Text can contain md style links.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalInformation")]
         public virtual System.Collections.Generic.IList<string> AdditionalInformation { get; set; }
@@ -8651,11 +8651,25 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         public virtual ComputeEnginePreferences ComputeEnginePreferences { get; set; }
 
         /// <summary>
+        /// Optional. Parameters that affect network cost estimations. If not set, default values will be used for the
+        /// parameters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkCostParameters")]
+        public virtual VirtualMachinePreferencesNetworkCostParameters NetworkCostParameters { get; set; }
+
+        /// <summary>
         /// Region preferences for assets using this preference set. If you are unsure which value to set, the migration
         /// service API region is often a good value to start with.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("regionPreferences")]
         public virtual RegionPreferences RegionPreferences { get; set; }
+
+        /// <summary>
+        /// Optional. Custom data to use for sizing optimizations. Relevant when SizingOptimizationStrategy is set to
+        /// "custom".
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sizingOptimizationCustomParameters")]
+        public virtual VirtualMachinePreferencesSizingOptimizationCustomParameters SizingOptimizationCustomParameters { get; set; }
 
         /// <summary>
         /// Sizing optimization strategy specifies the preferred strategy used when extrapolating usage data to
@@ -8679,6 +8693,53 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
         /// <summary>Preferences concerning insights and recommendations for Google Cloud VMware Engine.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmwareEnginePreferences")]
         public virtual VmwareEnginePreferences VmwareEnginePreferences { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Parameters that affect network cost estimations.</summary>
+    public class VirtualMachinePreferencesNetworkCostParameters : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. An estimated percentage of priced outbound traffic (egress traffic) from the measured outbound
+        /// traffic. Must be in the interval [0, 100].
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("estimatedEgressTrafficPercentage")]
+        public virtual System.Nullable<int> EstimatedEgressTrafficPercentage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Custom data to use for sizing optimizations.</summary>
+    public class VirtualMachinePreferencesSizingOptimizationCustomParameters : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Type of statistical aggregation of a resource utilization data, on which to base the sizing
+        /// metrics.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("aggregationMethod")]
+        public virtual string AggregationMethod { get; set; }
+
+        /// <summary>
+        /// Optional. Desired percentage of CPU usage. Must be in the interval [1, 100] (or 0 for default value).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpuUsagePercentage")]
+        public virtual System.Nullable<int> CpuUsagePercentage { get; set; }
+
+        /// <summary>
+        /// Optional. Desired percentage of memory usage. Must be in the interval [1, 100] (or 0 for default value).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryUsagePercentage")]
+        public virtual System.Nullable<int> MemoryUsagePercentage { get; set; }
+
+        /// <summary>
+        /// Optional. Desired increase factor of storage, relative to currently used storage. Must be in the interval
+        /// [1.0, 2.0] (or 0 for default value).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("storageMultiplier")]
+        public virtual System.Nullable<double> StorageMultiplier { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

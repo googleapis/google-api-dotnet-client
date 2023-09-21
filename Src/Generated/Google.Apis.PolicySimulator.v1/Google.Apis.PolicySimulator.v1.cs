@@ -2557,7 +2557,9 @@ namespace Google.Apis.PolicySimulator.v1.Data
         /// <summary>
         /// The OrgPolicy CustomConstraint changes to preview violations for. Any existing CustomConstraints with the
         /// same name will be overridden in the simulation. That is, violations will be determined as if all custom
-        /// constraints in the overlay were instantiated.
+        /// constraints in the overlay were instantiated. Only a single custom_constraint is supported in the overlay at
+        /// a time. For evaluating multiple constraints, multiple `GenerateOrgPolicyViolationsPreview` requests are
+        /// made, where each request evaluates a single constraint.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customConstraints")]
         public virtual System.Collections.Generic.IList<GoogleCloudPolicysimulatorV1alphaOrgPolicyOverlayCustomConstraintOverlay> CustomConstraints { get; set; }
@@ -2612,6 +2614,54 @@ namespace Google.Apis.PolicySimulator.v1.Data
     /// </summary>
     public class GoogleCloudPolicysimulatorV1alphaOrgPolicyViolationsPreview : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Time when this `OrgPolicyViolationsPreview` was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Output only. The names of the constraints against which all `OrgPolicyViolations` were evaluated. If
+        /// `OrgPolicyOverlay` only contains `PolicyOverlay` then it contains the name of the configured custom
+        /// constraint, applicable to the specified policies. Otherwise it contains the name of the constraint specified
+        /// in `CustomConstraintOverlay`. Format:
+        /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example:
+        /// `organizations/123/customConstraints/custom.createOnlyE2TypeVms`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customConstraints")]
+        public virtual System.Collections.Generic.IList<string> CustomConstraints { get; set; }
+
         /// <summary>
         /// Output only. The resource name of the `OrgPolicyViolationsPreview`. It has the following format:
         /// `organizations/{organization}/locations/{location}/orgPolicyViolationsPreviews/{orgPolicyViolationsPreview}`
@@ -2787,7 +2837,9 @@ namespace Google.Apis.PolicySimulator.v1.Data
         /// <summary>
         /// The OrgPolicy CustomConstraint changes to preview violations for. Any existing CustomConstraints with the
         /// same name will be overridden in the simulation. That is, violations will be determined as if all custom
-        /// constraints in the overlay were instantiated.
+        /// constraints in the overlay were instantiated. Only a single custom_constraint is supported in the overlay at
+        /// a time. For evaluating multiple constraints, multiple `GenerateOrgPolicyViolationsPreview` requests are
+        /// made, where each request evaluates a single constraint.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("customConstraints")]
         public virtual System.Collections.Generic.IList<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay> CustomConstraints { get; set; }
@@ -2842,6 +2894,54 @@ namespace Google.Apis.PolicySimulator.v1.Data
     /// </summary>
     public class GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview : Google.Apis.Requests.IDirectResponseSchema
     {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Time when this `OrgPolicyViolationsPreview` was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Output only. The names of the constraints against which all `OrgPolicyViolations` were evaluated. If
+        /// `OrgPolicyOverlay` only contains `PolicyOverlay` then it contains the name of the configured custom
+        /// constraint, applicable to the specified policies. Otherwise it contains the name of the constraint specified
+        /// in `CustomConstraintOverlay`. Format:
+        /// `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example:
+        /// `organizations/123/customConstraints/custom.createOnlyE2TypeVms`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customConstraints")]
+        public virtual System.Collections.Generic.IList<string> CustomConstraints { get; set; }
+
         /// <summary>
         /// Output only. The resource name of the `OrgPolicyViolationsPreview`. It has the following format:
         /// `organizations/{organization}/locations/{location}/orgPolicyViolationsPreviews/{orgPolicyViolationsPreview}`

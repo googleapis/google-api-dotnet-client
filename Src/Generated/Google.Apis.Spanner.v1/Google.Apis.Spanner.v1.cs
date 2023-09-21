@@ -3007,6 +3007,81 @@ namespace Google.Apis.Spanner.v1
                     }
 
                     /// <summary>
+                    /// Batches the supplied mutation groups in a collection of efficient transactions. All mutations in
+                    /// a group are committed atomically. However, mutations across groups can be committed
+                    /// non-atomically in an unspecified order and thus, they must be independent of each other. Partial
+                    /// failure is possible, i.e., some groups may have been committed successfully, while some may have
+                    /// failed. The results of individual batches are streamed into the response as the batches are
+                    /// applied. BatchWrite requests are not replay protected, meaning that each mutation group may be
+                    /// applied more than once. Replays of non-idempotent mutations may have undesirable effects. For
+                    /// example, replays of an insert mutation may produce an already exists error or result in
+                    /// additional rows if using generated or commit timestamp-based keys. We recommend structuring your
+                    /// mutation groups to be idempotent to avoid this issue.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="session">Required. The session in which the batch request is to be run.</param>
+                    public virtual BatchWriteRequest BatchWrite(Google.Apis.Spanner.v1.Data.BatchWriteRequest body, string session)
+                    {
+                        return new BatchWriteRequest(service, body, session);
+                    }
+
+                    /// <summary>
+                    /// Batches the supplied mutation groups in a collection of efficient transactions. All mutations in
+                    /// a group are committed atomically. However, mutations across groups can be committed
+                    /// non-atomically in an unspecified order and thus, they must be independent of each other. Partial
+                    /// failure is possible, i.e., some groups may have been committed successfully, while some may have
+                    /// failed. The results of individual batches are streamed into the response as the batches are
+                    /// applied. BatchWrite requests are not replay protected, meaning that each mutation group may be
+                    /// applied more than once. Replays of non-idempotent mutations may have undesirable effects. For
+                    /// example, replays of an insert mutation may produce an already exists error or result in
+                    /// additional rows if using generated or commit timestamp-based keys. We recommend structuring your
+                    /// mutation groups to be idempotent to avoid this issue.
+                    /// </summary>
+                    public class BatchWriteRequest : SpannerBaseServiceRequest<Google.Apis.Spanner.v1.Data.BatchWriteResponse>
+                    {
+                        /// <summary>Constructs a new BatchWrite request.</summary>
+                        public BatchWriteRequest(Google.Apis.Services.IClientService service, Google.Apis.Spanner.v1.Data.BatchWriteRequest body, string session) : base(service)
+                        {
+                            Session = session;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>Required. The session in which the batch request is to be run.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("session", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Session { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Spanner.v1.Data.BatchWriteRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "batchWrite";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+session}:batchWrite";
+
+                        /// <summary>Initializes BatchWrite parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("session", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "session",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/instances/[^/]+/databases/[^/]+/sessions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
                     /// Begins a new transaction. This step can often be skipped: Read, ExecuteSql and Commit can begin
                     /// a new transaction as a side-effect.
                     /// </summary>
@@ -6507,6 +6582,81 @@ namespace Google.Apis.Spanner.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The request for BatchWrite.</summary>
+    public class BatchWriteRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The groups of mutations to be applied.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mutationGroups")]
+        public virtual System.Collections.Generic.IList<MutationGroup> MutationGroups { get; set; }
+
+        /// <summary>Common options for this request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestOptions")]
+        public virtual RequestOptions RequestOptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The result of applying a batch of mutations.</summary>
+    public class BatchWriteResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _commitTimestampRaw;
+
+        private object _commitTimestamp;
+
+        /// <summary>
+        /// The commit timestamp of the transaction that applied this batch. Present if `status` is `OK`, absent
+        /// otherwise.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("commitTimestamp")]
+        public virtual string CommitTimestampRaw
+        {
+            get => _commitTimestampRaw;
+            set
+            {
+                _commitTimestamp = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _commitTimestampRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CommitTimestampRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CommitTimestampDateTimeOffset instead.")]
+        public virtual object CommitTimestamp
+        {
+            get => _commitTimestamp;
+            set
+            {
+                _commitTimestampRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _commitTimestamp = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="CommitTimestampRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CommitTimestampDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CommitTimestampRaw);
+            set => CommitTimestampRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// The mutation groups applied in this batch. The values index into the `mutation_groups` field in the
+        /// corresponding `BatchWriteRequest`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("indexes")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> Indexes { get; set; }
+
+        /// <summary>An `OK` status indicates success. Any other status indicates a failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("status")]
+        public virtual Status Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The request for BeginTransaction.</summary>
     public class BeginTransactionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8846,6 +8996,20 @@ namespace Google.Apis.Spanner.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("update")]
         public virtual Write Update { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A group of mutations to be committed together. Related mutations should be placed in a group. For example, two
+    /// mutations inserting rows with the same primary key prefix in both parent and child tables are related.
+    /// </summary>
+    public class MutationGroup : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The mutations in this group.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mutations")]
+        public virtual System.Collections.Generic.IList<Mutation> Mutations { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

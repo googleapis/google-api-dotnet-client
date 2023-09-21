@@ -1475,7 +1475,7 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     {
         /// <summary>Output only. Output Only. Specifies the details for a bundle product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bundleDetails")]
-        public virtual GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetails BundleDetails { get; set; }
+        public virtual ProductBundleDetails BundleDetails { get; set; }
 
         /// <summary>
         /// Optional. Details for a subscription line item with finite billing cycles. If unset, the line item will be
@@ -1513,21 +1513,6 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// <summary>Output only. Localized human readable name of the product.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("titles")]
         public virtual System.Collections.Generic.IList<GoogleTypeLocalizedText> Titles { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Details for a bundle product.</summary>
-    public class GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetails : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The individual products that are included in the bundle.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("bundleElements")]
-        public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement> BundleElements { get; set; }
-
-        /// <summary>The entitlement mode of the bundle product.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("entitlementMode")]
-        public virtual string EntitlementMode { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2134,6 +2119,13 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("amount")]
         public virtual GoogleCloudPaymentsResellerSubscriptionV1Amount Amount { get; set; }
 
+        /// <summary>
+        /// Output only. The bundle details for the line item. Only populated if the line item corresponds to a hard
+        /// bundle.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bundleDetails")]
+        public virtual SubscriptionLineItemBundleDetails BundleDetails { get; set; }
+
         /// <summary>Output only. Description of this line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -2222,6 +2214,59 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// <summary>Output only. The state of the line item.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The details for an element in the hard bundle.</summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Product resource name that identifies the bundle element. The format is
+        /// 'partners/{partner_id}/products/{product_id}'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("product")]
+        public virtual string Product { get; set; }
+
+        private string _userAccountLinkedTimeRaw;
+
+        private object _userAccountLinkedTime;
+
+        /// <summary>Output only. The time when this product is linked to an end user.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userAccountLinkedTime")]
+        public virtual string UserAccountLinkedTimeRaw
+        {
+            get => _userAccountLinkedTimeRaw;
+            set
+            {
+                _userAccountLinkedTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _userAccountLinkedTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UserAccountLinkedTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UserAccountLinkedTimeDateTimeOffset instead.")]
+        public virtual object UserAccountLinkedTime
+        {
+            get => _userAccountLinkedTime;
+            set
+            {
+                _userAccountLinkedTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _userAccountLinkedTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="UserAccountLinkedTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UserAccountLinkedTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UserAccountLinkedTimeRaw);
+            set => UserAccountLinkedTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -2363,6 +2408,32 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
         /// <summary>Localized string in the language corresponding to `language_code' below.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details for a bundle product.</summary>
+    public class ProductBundleDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The individual products that are included in the bundle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bundleElements")]
+        public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1ProductBundleDetailsBundleElement> BundleElements { get; set; }
+
+        /// <summary>The entitlement mode of the bundle product.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entitlementMode")]
+        public virtual string EntitlementMode { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The bundle details for a line item corresponding to a hard bundle.</summary>
+    public class SubscriptionLineItemBundleDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The details for each element in the hard bundle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bundleElementDetails")]
+        public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1SubscriptionLineItemBundleDetailsBundleElementDetails> BundleElementDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

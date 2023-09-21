@@ -5215,7 +5215,11 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("collation")]
         public virtual string Collation { get; set; }
 
-        /// <summary>Optional. Configuration for data cache.</summary>
+        /// <summary>
+        /// Optional. Data cache is an optional feature available for Cloud SQL for MySQL Enterprise Plus edition only.
+        /// For more information on data cache, see [Data cache
+        /// overview](https://cloud.google.com/sql/help/mysql-data-cache) in Cloud SQL documentation.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataCacheConfig")]
         public virtual DataCacheConfig DataCacheConfig { get; set; }
 
@@ -5844,7 +5848,11 @@ namespace Google.Apis.DatabaseMigrationService.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Data cache configurations.</summary>
+    /// <summary>
+    /// Data cache is an optional feature available for Cloud SQL for MySQL Enterprise Plus edition only. For more
+    /// information on data cache, see [Data cache overview](https://cloud.google.com/sql/help/mysql-data-cache) in
+    /// Cloud SQL documentation.
+    /// </summary>
     public class DataCacheConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Whether data cache is enabled for the instance.</summary>

@@ -6341,6 +6341,10 @@ namespace Google.Apis.GKEHub.v1alpha.Data
     /// </summary>
     public class CommonFleetDefaultMemberConfigSpec : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Config Management-specific spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("configmanagement")]
+        public virtual ConfigManagementMembershipSpec Configmanagement { get; set; }
+
         /// <summary>Identity Service-specific spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("identityservice")]
         public virtual IdentityServiceMembershipSpec Identityservice { get; set; }

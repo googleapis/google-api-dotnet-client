@@ -3319,6 +3319,13 @@ namespace Google.Apis.FirebaseManagement.v1beta1.Data
 
     public class AdminSdkConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// **DEPRECATED.** _Instead, find the default Firebase Realtime Database instance name using the [list
+        /// endpoint](https://firebase.google.com/docs/reference/rest/database/database-management/rest/v1beta/projects.locations.instances/list)
+        /// within the Firebase Realtime Database REST API. Note that the default instance for the Project might not yet
+        /// be provisioned, so the return might not contain a default instance._ The default Firebase Realtime Database
+        /// URL.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("databaseURL")]
         public virtual string DatabaseURL { get; set; }
 

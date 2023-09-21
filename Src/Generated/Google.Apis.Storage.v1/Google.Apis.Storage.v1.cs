@@ -1015,6 +1015,10 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("project", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Project { get; private set; }
 
+            /// <summary>When set to true, object retention is enabled for this bucket.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("enableObjectRetention", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> EnableObjectRetention { get; set; }
+
             /// <summary>Apply a predefined set of access controls to this bucket.</summary>
             [Google.Apis.Util.RequestParameterAttribute("predefinedAcl", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<PredefinedAclEnum> PredefinedAcl { get; set; }
@@ -1130,6 +1134,14 @@ namespace Google.Apis.Storage.v1
                     IsRequired = true,
                     ParameterType = "query",
                     DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("enableObjectRetention", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "enableObjectRetention",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = "false",
                     Pattern = null,
                 });
                 RequestParameters.Add("predefinedAcl", new Google.Apis.Discovery.Parameter
@@ -5297,6 +5309,13 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfMetagenerationNotMatch { get; set; }
 
+            /// <summary>
+            /// Must be true to remove the retention configuration, reduce its unlocked retention period, or change its
+            /// mode from unlocked to locked.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("overrideUnlockedRetention", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> OverrideUnlockedRetention { get; set; }
+
             /// <summary>Apply a predefined set of access controls to this object.</summary>
             [Google.Apis.Util.RequestParameterAttribute("predefinedAcl", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<PredefinedAclEnum> PredefinedAcl { get; set; }
@@ -5421,6 +5440,14 @@ namespace Google.Apis.Storage.v1
                 RequestParameters.Add("ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
                 {
                     Name = "ifMetagenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("overrideUnlockedRetention", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "overrideUnlockedRetention",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -6299,6 +6326,13 @@ namespace Google.Apis.Storage.v1
             [Google.Apis.Util.RequestParameterAttribute("ifMetagenerationNotMatch", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<long> IfMetagenerationNotMatch { get; set; }
 
+            /// <summary>
+            /// Must be true to remove the retention configuration, reduce its unlocked retention period, or change its
+            /// mode from unlocked to locked.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("overrideUnlockedRetention", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> OverrideUnlockedRetention { get; set; }
+
             /// <summary>Apply a predefined set of access controls to this object.</summary>
             [Google.Apis.Util.RequestParameterAttribute("predefinedAcl", Google.Apis.Util.RequestParameterType.Query)]
             public virtual System.Nullable<PredefinedAclEnum> PredefinedAcl { get; set; }
@@ -6423,6 +6457,14 @@ namespace Google.Apis.Storage.v1
                 RequestParameters.Add("ifMetagenerationNotMatch", new Google.Apis.Discovery.Parameter
                 {
                     Name = "ifMetagenerationNotMatch",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("overrideUnlockedRetention", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "overrideUnlockedRetention",
                     IsRequired = false,
                     ParameterType = "query",
                     DefaultValue = null,
@@ -7507,6 +7549,10 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>The bucket's object retention config.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objectRetention")]
+        public virtual ObjectRetentionData ObjectRetention { get; set; }
+
         /// <summary>The owner of the bucket. This is always the project team's owner group.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("owner")]
         public virtual OwnerData Owner { get; set; }
@@ -7540,6 +7586,13 @@ namespace Google.Apis.Storage.v1.Data
         /// <summary>The URI of this bucket.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("selfLink")]
         public virtual string SelfLink { get; set; }
+
+        /// <summary>
+        /// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be
+        /// retained, and cannot be permanently deleted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("softDeletePolicy")]
+        public virtual SoftDeletePolicyData SoftDeletePolicy { get; set; }
 
         /// <summary>
         /// The bucket's default storage class, used whenever no storageClass is specified for a newly-created object.
@@ -7610,6 +7663,42 @@ namespace Google.Apis.Storage.v1.Data
             /// <summary>Whether or not Autoclass is enabled on this bucket</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
             public virtual System.Nullable<bool> Enabled { get; set; }
+
+            /// <summary>
+            /// The storage class that objects in the bucket eventually transition to if they are not read for a certain
+            /// length of time. Valid values are NEARLINE and ARCHIVE.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("terminalStorageClass")]
+            public virtual string TerminalStorageClass { get; set; }
+
+            /// <summary>
+            /// A date and time in RFC 3339 format representing the time of the most recent update to
+            /// "terminalStorageClass".
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("terminalStorageClassUpdateTime")]
+            public virtual string TerminalStorageClassUpdateTimeRaw { get; set; }
+
+            /// <summary>
+            /// <seealso cref="System.DateTimeOffset"/> representation of
+            /// <see cref="TerminalStorageClassUpdateTimeRaw"/>.
+            /// </summary>
+            [Newtonsoft.Json.JsonIgnoreAttribute]
+            public virtual System.DateTimeOffset? TerminalStorageClassUpdateTimeDateTimeOffset
+            {
+                get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(TerminalStorageClassUpdateTimeRaw);
+                set => TerminalStorageClassUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            }
+
+            /// <summary>
+            /// <seealso cref="System.DateTime"/> representation of <see cref="TerminalStorageClassUpdateTimeRaw"/>.
+            /// </summary>
+            [Newtonsoft.Json.JsonIgnoreAttribute]
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use TerminalStorageClassUpdateTimeDateTimeOffset instead.")]
+            public virtual System.DateTime? TerminalStorageClassUpdateTime
+            {
+                get => Google.Apis.Util.Utilities.GetDateTimeFromString(TerminalStorageClassUpdateTimeRaw);
+                set => TerminalStorageClassUpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
 
             /// <summary>
             /// A date and time in RFC 3339 format representing the instant at which "enabled" was last toggled.
@@ -7945,6 +8034,14 @@ namespace Google.Apis.Storage.v1.Data
             public virtual string LogObjectPrefix { get; set; }
         }
 
+        /// <summary>The bucket's object retention config.</summary>
+        public class ObjectRetentionData
+        {
+            /// <summary>The bucket's object retention mode. Can be Enabled.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+            public virtual string Mode { get; set; }
+        }
+
         /// <summary>The owner of the bucket. This is always the project team's owner group.</summary>
         public class OwnerData
         {
@@ -8004,6 +8101,46 @@ namespace Google.Apis.Storage.v1.Data
             /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("retentionPeriod")]
             public virtual System.Nullable<long> RetentionPeriod { get; set; }
+        }
+
+        /// <summary>
+        /// The bucket's soft delete policy, which defines the period of time that soft-deleted objects will be
+        /// retained, and cannot be permanently deleted.
+        /// </summary>
+        public class SoftDeletePolicyData
+        {
+            /// <summary>
+            /// Server-determined value that indicates the time from which the policy, or one with a greater retention,
+            /// was effective. This value is in RFC 3339 format.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("effectiveTime")]
+            public virtual string EffectiveTimeRaw { get; set; }
+
+            /// <summary>
+            /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="EffectiveTimeRaw"/>.
+            /// </summary>
+            [Newtonsoft.Json.JsonIgnoreAttribute]
+            public virtual System.DateTimeOffset? EffectiveTimeDateTimeOffset
+            {
+                get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EffectiveTimeRaw);
+                set => EffectiveTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            }
+
+            /// <summary><seealso cref="System.DateTime"/> representation of <see cref="EffectiveTimeRaw"/>.</summary>
+            [Newtonsoft.Json.JsonIgnoreAttribute]
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EffectiveTimeDateTimeOffset instead.")]
+            public virtual System.DateTime? EffectiveTime
+            {
+                get => Google.Apis.Util.Utilities.GetDateTimeFromString(EffectiveTimeRaw);
+                set => EffectiveTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
+
+            /// <summary>
+            /// The period of time in seconds, that soft-deleted objects in the bucket will be retained and cannot be
+            /// permanently deleted.
+            /// </summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("retentionDurationSeconds")]
+            public virtual System.Nullable<long> RetentionDurationSeconds { get; set; }
         }
 
         /// <summary>The bucket's versioning configuration.</summary>
@@ -8784,6 +8921,10 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("owner")]
         public virtual OwnerData Owner { get; set; }
 
+        /// <summary>A collection of object level retention parameters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("retention")]
+        public virtual RetentionData Retention { get; set; }
+
         /// <summary>
         /// A server-determined value that specifies the earliest time that the object's retention period expires. This
         /// value is in RFC 3339 format. Note 1: This field is not provided for objects with an active event-based hold,
@@ -8957,6 +9098,37 @@ namespace Google.Apis.Storage.v1.Data
             /// <summary>The ID for the entity.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("entityId")]
             public virtual string EntityId { get; set; }
+        }
+
+        /// <summary>A collection of object level retention parameters.</summary>
+        public class RetentionData
+        {
+            /// <summary>The bucket's object retention mode, can only be Unlocked or Locked.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("mode")]
+            public virtual string Mode { get; set; }
+
+            /// <summary>A time in RFC 3339 format until which object retention protects this object.</summary>
+            [Newtonsoft.Json.JsonPropertyAttribute("retainUntilTime")]
+            public virtual string RetainUntilTimeRaw { get; set; }
+
+            /// <summary>
+            /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="RetainUntilTimeRaw"/>.
+            /// </summary>
+            [Newtonsoft.Json.JsonIgnoreAttribute]
+            public virtual System.DateTimeOffset? RetainUntilTimeDateTimeOffset
+            {
+                get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(RetainUntilTimeRaw);
+                set => RetainUntilTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+            }
+
+            /// <summary><seealso cref="System.DateTime"/> representation of <see cref="RetainUntilTimeRaw"/>.</summary>
+            [Newtonsoft.Json.JsonIgnoreAttribute]
+            [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use RetainUntilTimeDateTimeOffset instead.")]
+            public virtual System.DateTime? RetainUntilTime
+            {
+                get => Google.Apis.Util.Utilities.GetDateTimeFromString(RetainUntilTimeRaw);
+                set => RetainUntilTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+            }
         }
     }
 

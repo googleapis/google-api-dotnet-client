@@ -844,7 +844,7 @@ namespace Google.Apis.Workflows.v1
 
                 /// <summary>Lists revisions for a given workflow.</summary>
                 /// <param name="name">
-                /// Required. Workflow from which the revisions should be listed. Format:
+                /// Required. Workflow for which the revisions should be listed. Format:
                 /// projects/{project}/locations/{location}/workflows/{workflow}
                 /// </param>
                 public virtual ListRevisionsRequest ListRevisions(string name)
@@ -863,7 +863,7 @@ namespace Google.Apis.Workflows.v1
                     }
 
                     /// <summary>
-                    /// Required. Workflow from which the revisions should be listed. Format:
+                    /// Required. Workflow for which the revisions should be listed. Format:
                     /// projects/{project}/locations/{location}/workflows/{workflow}
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -871,7 +871,7 @@ namespace Google.Apis.Workflows.v1
 
                     /// <summary>
                     /// The maximum number of revisions to return per page. If a value is not specified, a default value
-                    /// of 20 is used. The maximum permitted value is 100 and values greater than 100 coerced down to
+                    /// of 20 is used. The maximum permitted value is 100. Values greater than 100 are coerced down to
                     /// 100.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
@@ -932,7 +932,8 @@ namespace Google.Apis.Workflows.v1
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
                 /// The resource name of the workflow. Format:
-                /// projects/{project}/locations/{location}/workflows/{workflow}
+                /// projects/{project}/locations/{location}/workflows/{workflow}. This is a workflow-wide field and is
+                /// not tied to a specific revision.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.Workflows.v1.Data.Workflow body, string name)
                 {
@@ -956,7 +957,8 @@ namespace Google.Apis.Workflows.v1
 
                     /// <summary>
                     /// The resource name of the workflow. Format:
-                    /// projects/{project}/locations/{location}/workflows/{workflow}
+                    /// projects/{project}/locations/{location}/workflows/{workflow}. This is a workflow-wide field and
+                    /// is not tied to a specific revision.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Name { get; private set; }
@@ -1452,7 +1454,10 @@ namespace Google.Apis.Workflows.v1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. The timestamp for when the workflow was created.</summary>
+        /// <summary>
+        /// Output only. The timestamp for when the workflow was created. This is a workflow-wide field and is not tied
+        /// to a specific revision.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -1495,7 +1500,8 @@ namespace Google.Apis.Workflows.v1.Data
         public virtual string CryptoKeyName { get; set; }
 
         /// <summary>
-        /// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
+        /// Description of the workflow provided by the user. Must be at most 1000 Unicode characters long. This is a
+        /// workflow-wide field and is not tied to a specific revision.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("description")]
         public virtual string Description { get; set; }
@@ -1503,13 +1509,15 @@ namespace Google.Apis.Workflows.v1.Data
         /// <summary>
         /// Labels associated with this workflow. Labels can contain at most 64 entries. Keys and values can be no
         /// longer than 63 characters and can only contain lowercase letters, numeric characters, underscores, and
-        /// dashes. Label keys must start with a letter. International characters are allowed.
+        /// dashes. Label keys must start with a letter. International characters are allowed. This is a workflow-wide
+        /// field and is not tied to a specific revision.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}
+        /// The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow}.
+        /// This is a workflow-wide field and is not tied to a specific revision.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -1592,7 +1600,10 @@ namespace Google.Apis.Workflows.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. The timestamp for when the workflow was last updated.</summary>
+        /// <summary>
+        /// Output only. The timestamp for when the workflow was last updated. This is a workflow-wide field and is not
+        /// tied to a specific revision.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {

@@ -2019,7 +2019,12 @@ namespace Google.Apis.Batch.v1.Data
 
         /// <summary>
         /// Volumes to mount (bind mount) from the host machine files or directories into the container, formatted to
-        /// match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro
+        /// match docker run's --volume option, e.g. /foo:/bar, or /foo:/bar:ro If the `TaskSpec.Volumes` field is
+        /// specified but this field is not, Batch will mount each volume from the host machine to the container with
+        /// the same mount path by default. In this case, the default mount option for containers will be read-only (ro)
+        /// for existing persistent disks and read-write (rw) for other volume types, regardless of the original mount
+        /// options specified in `TaskSpec.Volumes`. If you need different mount settings, you can explicitly configure
+        /// them in this field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("volumes")]
         public virtual System.Collections.Generic.IList<string> Volumes { get; set; }
@@ -2049,7 +2054,7 @@ namespace Google.Apis.Batch.v1.Data
         /// image version: projects/{project}/global/images/{image_version} You can also use Batch customized image in
         /// short names. The following image values are supported for a boot disk: * `batch-debian`: use Batch Debian
         /// images. * `batch-centos`: use Batch CentOS images. * `batch-cos`: use Batch Container-Optimized images. *
-        /// `batch-hpc-centos`: use Batch HPC CentOS images.
+        /// `batch-hpc-centos`: use Batch HPC CentOS images. * `batch-hpc-rocky`: use Batch HPC Rocky Linux images.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("image")]
         public virtual string Image { get; set; }
@@ -2170,6 +2175,13 @@ namespace Google.Apis.Batch.v1.Data
         /// <summary>The provisioning model.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("provisioningModel")]
         public virtual string ProvisioningModel { get; set; }
+
+        /// <summary>
+        /// Optional. If specified, VMs will consume only the specified reservation. If not specified (default), VMs
+        /// will consume any applicable reservation.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservation")]
+        public virtual string Reservation { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

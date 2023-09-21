@@ -1621,6 +1621,10 @@ namespace Google.Apis.CloudComposer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Output only. Reserved for future use.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
+        public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
+
         /// <summary>The current state of the environment.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("state")]
         public virtual string State { get; set; }
@@ -2848,6 +2852,25 @@ namespace Google.Apis.CloudComposer.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configuration for resources used by Airflow triggerers.</summary>
+    public class TriggererResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The number of triggerers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("count")]
+        public virtual System.Nullable<int> Count { get; set; }
+
+        /// <summary>Optional. CPU request and limit for a single Airflow triggerer replica.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cpu")]
+        public virtual System.Nullable<float> Cpu { get; set; }
+
+        /// <summary>Optional. Memory (GB) request and limit for a single Airflow triggerer replica.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryGb")]
+        public virtual System.Nullable<float> MemoryGb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The configuration settings for the Airflow web server App Engine instance. Supported for Cloud Composer
     /// environments in versions composer-1.*.*-airflow-*.*.*
@@ -2933,6 +2956,10 @@ namespace Google.Apis.CloudComposer.v1.Data
         /// <summary>Optional. Resources used by Airflow schedulers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scheduler")]
         public virtual SchedulerResource Scheduler { get; set; }
+
+        /// <summary>Optional. Resources used by Airflow triggerers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("triggerer")]
+        public virtual TriggererResource Triggerer { get; set; }
 
         /// <summary>Optional. Resources used by Airflow web server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("webServer")]

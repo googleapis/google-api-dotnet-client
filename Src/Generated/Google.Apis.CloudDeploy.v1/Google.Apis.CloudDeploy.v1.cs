@@ -3663,6 +3663,76 @@ namespace Google.Apis.CloudDeploy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// Payload proto for "clouddeploy.googleapis.com/automation" Platform Log event that describes the Automation
+    /// related events.
+    /// </summary>
+    public class AutomationEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the `AutomationRun`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automation")]
+        public virtual string Automation { get; set; }
+
+        /// <summary>
+        /// Debug message for when there is an update on the AutomationRun. Provides further details about the resource
+        /// creation or state change.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Unique identifier of the `DeliveryPipeline`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelineUid")]
+        public virtual string PipelineUid { get; set; }
+
+        /// <summary>Type of this notification, e.g. for a Pub/Sub failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Payload proto for "clouddeploy.googleapis.com/automation_run" Platform Log event that describes the
+    /// AutomationRun related events.
+    /// </summary>
+    public class AutomationRunEvent : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Identifier of the `Automation`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automationId")]
+        public virtual string AutomationId { get; set; }
+
+        /// <summary>The name of the `AutomationRun`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("automationRun")]
+        public virtual string AutomationRun { get; set; }
+
+        /// <summary>ID of the `Target` to which the `AutomationRun` is created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destinationTargetId")]
+        public virtual string DestinationTargetId { get; set; }
+
+        /// <summary>
+        /// Debug message for when there is an update on the AutomationRun. Provides further details about the resource
+        /// creation or state change.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>Unique identifier of the `DeliveryPipeline`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pipelineUid")]
+        public virtual string PipelineUid { get; set; }
+
+        /// <summary>Identifier of the `Automation` rule.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ruleId")]
+        public virtual string RuleId { get; set; }
+
+        /// <summary>Type of this notification, e.g. for a Pub/Sub failure.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Associates `members`, or principals, with a `role`.</summary>
     public class Binding : Google.Apis.Requests.IDirectResponseSchema
     {

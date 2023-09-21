@@ -2182,6 +2182,12 @@ namespace Google.Apis.AccessApproval.v1.Data
         public virtual System.Collections.Generic.IList<string> NotificationEmails { get; set; }
 
         /// <summary>
+        /// Optional. A pubsub topic to which notifications relating to approval requests should be sent.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notificationPubsubTopic")]
+        public virtual string NotificationPubsubTopic { get; set; }
+
+        /// <summary>
         /// This preference is communicated to Google personnel when sending an approval request but can be overridden
         /// if necessary.
         /// </summary>

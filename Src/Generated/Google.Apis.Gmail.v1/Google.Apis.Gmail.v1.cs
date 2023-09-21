@@ -7449,15 +7449,15 @@ namespace Google.Apis.Gmail.v1.Data
     /// <summary>Metadata for a private key instance.</summary>
     public class CsePrivateKeyMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Metadata for hardware keys.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hardwareKeyMetadata")]
+        public virtual HardwareKeyMetadata HardwareKeyMetadata { get; set; }
+
         /// <summary>
         /// Metadata for a private key instance managed by an external key access control list service.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kaclsKeyMetadata")]
         public virtual KaclsKeyMetadata KaclsKeyMetadata { get; set; }
-
-        /// <summary>Metadata for PIV card certificate.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pivKeyMetadata")]
-        public virtual PivKeyMetadata PivKeyMetadata { get; set; }
 
         /// <summary>Output only. The immutable ID for the private key metadata instance.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateKeyMetadataId")]
@@ -7622,6 +7622,17 @@ namespace Google.Apis.Gmail.v1.Data
         /// <summary>Indicates whether this address has been verified and is usable for forwarding. Read-only.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verificationStatus")]
         public virtual string VerificationStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata for hardware keys.</summary>
+    public class HardwareKeyMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Description about the hardware key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8245,19 +8256,6 @@ namespace Google.Apis.Gmail.v1.Data
     /// <summary>Request to obliterate a CSE key pair.</summary>
     public class ObliterateCseKeyPairRequest : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>
-    /// Metadata for a personal identity verification (PIV) private key that requires a card reader for access.
-    /// </summary>
-    public class PivKeyMetadata : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Description about the PIV key.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

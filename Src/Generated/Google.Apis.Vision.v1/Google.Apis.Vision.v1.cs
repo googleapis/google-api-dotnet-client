@@ -3361,6 +3361,15 @@ namespace Google.Apis.Vision.v1.Data
     public class AsyncBatchAnnotateFilesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
+        /// Optional. The labels with user-defined metadata for the request. Label keys and values can be no longer than
+        /// 63 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and
+        /// dashes. International characters are allowed. Label values are optional. Label keys must start with a
+        /// letter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
         /// Optional. Target project and location to make a call. Format:
         /// `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen
         /// automatically. Supported location-ids: `us`: USA country only, `asia`: East asia areas, like Japan, Taiwan,
@@ -3393,6 +3402,15 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>Request for async image annotation for a list of images.</summary>
     public class AsyncBatchAnnotateImagesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The labels with user-defined metadata for the request. Label keys and values can be no longer than
+        /// 63 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and
+        /// dashes. International characters are allowed. Label values are optional. Label keys must start with a
+        /// letter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
         /// <summary>Required. The desired output location and metadata (e.g. format).</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("outputConfig")]
         public virtual OutputConfig OutputConfig { get; set; }
@@ -3428,6 +3446,15 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>A list of requests to annotate files using the BatchAnnotateFiles API.</summary>
     public class BatchAnnotateFilesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The labels with user-defined metadata for the request. Label keys and values can be no longer than
+        /// 63 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and
+        /// dashes. International characters are allowed. Label values are optional. Label keys must start with a
+        /// letter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
         /// <summary>
         /// Optional. Target project and location to make a call. Format:
         /// `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen
@@ -3465,6 +3492,15 @@ namespace Google.Apis.Vision.v1.Data
     /// <summary>Multiple image annotation requests are batched into a single service call.</summary>
     public class BatchAnnotateImagesRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The labels with user-defined metadata for the request. Label keys and values can be no longer than
+        /// 63 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and
+        /// dashes. International characters are allowed. Label values are optional. Label keys must start with a
+        /// letter.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
         /// <summary>
         /// Optional. Target project and location to make a call. Format:
         /// `projects/{project-id}/locations/{location-id}`. If no parent is specified, a region will be chosen
