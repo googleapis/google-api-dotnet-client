@@ -13,11 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Google.Apis.Auth", "Google.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Google.Apis.Auth.Tests", "Google.Apis.Auth.Tests\Google.Apis.Auth.Tests.csproj", "{F106E24E-49F8-4D86-8CBF-9616178CA08C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntegrationTests", "IntegrationTests\IntegrationTests.csproj", "{AB7DA6CF-0100-4941-BD4B-BEE1AA80C6AE}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Google.Apis.Auth.AspNetCore", "Google.Apis.Auth.AspNetCore\Google.Apis.Auth.AspNetCore.csproj", "{2BCEF725-9F15-4A6B-BD43-D8E7457AB429}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Google.Apis.Auth.AspNetCore.IntegrationTests", "Google.Apis.Auth.AspNetCore.IntegrationTests\Google.Apis.Auth.AspNetCore.IntegrationTests.csproj", "{A88DC5FE-4697-4D1F-A374-D620E77A5383}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Google.Apis.IntegrationTests", "Google.Apis.IntegrationTests\Google.Apis.IntegrationTests.csproj", "{AB7DA6CF-0100-4941-BD4B-BEE1AA80C6AE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Google.Apis.Auth.AspNetCore3", "Google.Apis.Auth.AspNetCore3\Google.Apis.Auth.AspNetCore3.csproj", "{C5BC0A08-6BCE-4EEE-B90D-5845B5215D0D}"
 EndProject
@@ -53,14 +49,6 @@ Global
 		{AB7DA6CF-0100-4941-BD4B-BEE1AA80C6AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB7DA6CF-0100-4941-BD4B-BEE1AA80C6AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB7DA6CF-0100-4941-BD4B-BEE1AA80C6AE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2BCEF725-9F15-4A6B-BD43-D8E7457AB429}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2BCEF725-9F15-4A6B-BD43-D8E7457AB429}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2BCEF725-9F15-4A6B-BD43-D8E7457AB429}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2BCEF725-9F15-4A6B-BD43-D8E7457AB429}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A88DC5FE-4697-4D1F-A374-D620E77A5383}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A88DC5FE-4697-4D1F-A374-D620E77A5383}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A88DC5FE-4697-4D1F-A374-D620E77A5383}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A88DC5FE-4697-4D1F-A374-D620E77A5383}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C5BC0A08-6BCE-4EEE-B90D-5845B5215D0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C5BC0A08-6BCE-4EEE-B90D-5845B5215D0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5BC0A08-6BCE-4EEE-B90D-5845B5215D0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
