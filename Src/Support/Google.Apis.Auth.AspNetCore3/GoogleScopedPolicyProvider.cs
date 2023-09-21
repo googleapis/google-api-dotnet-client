@@ -18,48 +18,43 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
 using System.Threading.Tasks;
 
-#if ASPNETCORE3
-namespace Google.Apis.Auth.AspNetCore3
-#else
-namespace Google.Apis.Auth.AspNetCore
-#endif
+namespace Google.Apis.Auth.AspNetCore3;
+
+/// <summary>
+/// Construct GoogleScoped policies on the fly.
+/// </summary>
+internal class GoogleScopedPolicyProvider : IAuthorizationPolicyProvider
 {
-    /// <summary>
-    /// Construct GoogleScoped policies on the fly.
-    /// </summary>
-    internal class GoogleScopedPolicyProvider : IAuthorizationPolicyProvider
+    public GoogleScopedPolicyProvider(GoogleAuthenticationSchemeProvider scheme, IOptions<AuthorizationOptions> options)
     {
-        public GoogleScopedPolicyProvider(GoogleAuthenticationSchemeProvider scheme, IOptions<AuthorizationOptions> options)
-        {
-            _scheme = scheme.Scheme;
-            _default = new DefaultAuthorizationPolicyProvider(options);
-        }
+        _scheme = scheme.Scheme;
+        _default = new DefaultAuthorizationPolicyProvider(options);
+    }
 
-        private readonly string _scheme;
-        private readonly IAuthorizationPolicyProvider _default;
+    private readonly string _scheme;
+    private readonly IAuthorizationPolicyProvider _default;
 
-        public Task<AuthorizationPolicy> GetDefaultPolicyAsync() => _default.GetDefaultPolicyAsync();
+    public Task<AuthorizationPolicy> GetDefaultPolicyAsync() => _default.GetDefaultPolicyAsync();
 
 #if ASPNETCORE3
-        public Task<AuthorizationPolicy> GetFallbackPolicyAsync() => _default.GetFallbackPolicyAsync();
+    public Task<AuthorizationPolicy> GetFallbackPolicyAsync() => _default.GetFallbackPolicyAsync();
 #endif
 
-        public Task<AuthorizationPolicy> GetPolicyAsync(string policyName)
+    public Task<AuthorizationPolicy> GetPolicyAsync(string policyName)
+    {
+        var scopes = GoogleScopedAuthorizeAttribute.ParsePolicy(policyName);
+        if (scopes != null)
         {
-            var scopes = GoogleScopedAuthorizeAttribute.ParsePolicy(policyName);
-            if (scopes != null)
-            {
-                // A GoogleScoped policy.
-                var policy = new AuthorizationPolicyBuilder(_scheme);
-                policy.RequireAuthenticatedUser();
-                policy.AddRequirements(new GoogleScopedRequirement(_scheme, scopes));
-                return Task.FromResult(policy.Build());
-            }
-            else
-            {
-                // Not a GoogleScoped policy, use default behaviour.
-                return _default.GetPolicyAsync(policyName);
-            }
+            // A GoogleScoped policy.
+            var policy = new AuthorizationPolicyBuilder(_scheme);
+            policy.RequireAuthenticatedUser();
+            policy.AddRequirements(new GoogleScopedRequirement(_scheme, scopes));
+            return Task.FromResult(policy.Build());
+        }
+        else
+        {
+            // Not a GoogleScoped policy, use default behaviour.
+            return _default.GetPolicyAsync(policyName);
         }
     }
 }

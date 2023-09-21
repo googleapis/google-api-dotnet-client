@@ -14,16 +14,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#if ASPNETCORE3
-namespace Google.Apis.Auth.AspNetCore3
-#else
-namespace Google.Apis.Auth.AspNetCore
-#endif
+namespace Google.Apis.Auth.AspNetCore3;
+
+internal static class Consts
 {
-    internal static class Consts
-    {
-        public static char[] ScopeSplitter { get; } = { ' ' };
-        public const string ScopeName = "scope";
-        public const string HttpContextAdditionalScopeName = "ScopeIncremental";
-    }
+    public static char[] ScopeSplitter { get; } = { ' ' };
+    public const string ScopeName = "scope";
+    public const string HttpContextAdditionalScopeName = "ScopeIncremental";
 }

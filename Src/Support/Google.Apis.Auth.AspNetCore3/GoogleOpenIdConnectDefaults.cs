@@ -14,29 +14,20 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-using System;
-using System.Collections.Generic;
-using System.Text;
+namespace Google.Apis.Auth.AspNetCore3;
 
-#if ASPNETCORE3
-namespace Google.Apis.Auth.AspNetCore3
-#else
-namespace Google.Apis.Auth.AspNetCore
-#endif
+/// <summary>
+/// Default values related to the Google OpenIdConnect authentication handler.
+/// </summary>
+public static class GoogleOpenIdConnectDefaults
 {
     /// <summary>
-    /// Default values related to the Google OpenIdConnect authentication handler.
+    /// The default value used for the authentication scheme.
     /// </summary>
-    public static class GoogleOpenIdConnectDefaults
-    {
-        /// <summary>
-        /// The default value used for the authentication scheme.
-        /// </summary>
-        public const string AuthenticationScheme = "GoogleOpenIdConnect";
+    public const string AuthenticationScheme = "GoogleOpenIdConnect";
 
-        /// <summary>
-        /// The default value for the display name.
-        /// </summary>
-        public const string DisplayName = "Google OpenIdConnect";
-    }
+    /// <summary>
+    /// The default value for the display name.
+    /// </summary>
+    public const string DisplayName = "Google OpenIdConnect";
 }

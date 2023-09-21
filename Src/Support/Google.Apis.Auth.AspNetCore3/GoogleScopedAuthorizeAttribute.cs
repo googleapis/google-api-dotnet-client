@@ -18,45 +18,40 @@ using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
 
-#if ASPNETCORE3
-namespace Google.Apis.Auth.AspNetCore3
-#else
-namespace Google.Apis.Auth.AspNetCore
-#endif
+namespace Google.Apis.Auth.AspNetCore3;
+
+/// <summary>
+/// Specifies that the class or method that this attribute is applied to requires the specified authorization,
+/// which can include the incremental addition of Google scopes.
+/// </summary>
+public class GoogleScopedAuthorizeAttribute : AuthorizeAttribute
 {
-    /// <summary>
-    /// Specifies that the class or method that this attribute is applied to requires the specified authorization,
-    /// which can include the incremental addition of Google scopes.
-    /// </summary>
-    public class GoogleScopedAuthorizeAttribute : AuthorizeAttribute
+    private const string PolicyPrefix = "GoogleScoped: ";
+
+    internal static IReadOnlyList<string> ParsePolicy(string policy)
     {
-        private const string PolicyPrefix = "GoogleScoped: ";
-
-        internal static IReadOnlyList<string> ParsePolicy(string policy)
+        if (!policy.StartsWith(PolicyPrefix, StringComparison.Ordinal))
         {
-            if (!policy.StartsWith(PolicyPrefix, StringComparison.Ordinal))
-            {
-                return null;
-            }
-            return policy.Substring(PolicyPrefix.Length)
-                .Split(Consts.ScopeSplitter, StringSplitOptions.RemoveEmptyEntries);
+            return null;
         }
+        return policy.Substring(PolicyPrefix.Length)
+            .Split(Consts.ScopeSplitter, StringSplitOptions.RemoveEmptyEntries);
+    }
 
-        /// <summary>
-        /// Construct an instance of <see cref="GoogleScopedAuthorizeAttribute"/>.
-        /// </summary>
-        /// <param name="scopes">
-        /// The Google auth scopes required by the class or method to which this attribute is applied.
-        /// </param>
-        public GoogleScopedAuthorizeAttribute(params string[] scopes) => Scopes = scopes;
+    /// <summary>
+    /// Construct an instance of <see cref="GoogleScopedAuthorizeAttribute"/>.
+    /// </summary>
+    /// <param name="scopes">
+    /// The Google auth scopes required by the class or method to which this attribute is applied.
+    /// </param>
+    public GoogleScopedAuthorizeAttribute(params string[] scopes) => Scopes = scopes;
 
-        /// <summary>
-        /// Get or set the Google auth scopes required by the class or method to which this attribute is applied.
-        /// </summary>
-        public IReadOnlyList<string> Scopes
-        {
-            get => ParsePolicy(Policy);
-            set => Policy = $"{PolicyPrefix}{string.Join(" ", value)}";
-        }
+    /// <summary>
+    /// Get or set the Google auth scopes required by the class or method to which this attribute is applied.
+    /// </summary>
+    public IReadOnlyList<string> Scopes
+    {
+        get => ParsePolicy(Policy);
+        set => Policy = $"{PolicyPrefix}{string.Join(" ", value)}";
     }
 }
