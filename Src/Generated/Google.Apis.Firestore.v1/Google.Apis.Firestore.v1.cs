@@ -5097,7 +5097,7 @@ namespace Google.Apis.Firestore.v1.Data
         public virtual string KeyPrefix { get; set; }
 
         /// <summary>
-        /// The location of the database. Available databases are listed at
+        /// The location of the database. Available locations are listed at
         /// https://cloud.google.com/firestore/docs/locations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("locationId")]

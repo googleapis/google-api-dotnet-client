@@ -2153,7 +2153,7 @@ namespace Google.Apis.MyBusinessBusinessInformation.v1.Data
         /// Optional. A precise, accurate address to describe your business location. PO boxes or mailboxes located at
         /// remote locations are not acceptable. At this time, you can specify a maximum of five `address_lines` values
         /// in the address. This field should only be set for businesses that have a storefront. This field should not
-        /// be set for locations of type `CUSTOMER_LOCATION_ONLY`.
+        /// be set for locations of type `CUSTOMER_LOCATION_ONLY` but if set, any value provided will be discarded.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storefrontAddress")]
         public virtual PostalAddress StorefrontAddress { get; set; }

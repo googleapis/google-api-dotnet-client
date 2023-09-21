@@ -319,6 +319,8 @@ namespace Google.Apis.Aiplatform.v1
                 ModelDeploymentMonitoringJobs = new ModelDeploymentMonitoringJobsResource(service);
                 Models = new ModelsResource(service);
                 NasJobs = new NasJobsResource(service);
+                NotebookRuntimeTemplates = new NotebookRuntimeTemplatesResource(service);
+                NotebookRuntimes = new NotebookRuntimesResource(service);
                 Operations = new OperationsResource(service);
                 PipelineJobs = new PipelineJobsResource(service);
                 Publishers = new PublishersResource(service);
@@ -19109,6 +19111,936 @@ namespace Google.Apis.Aiplatform.v1
                 }
             }
 
+            /// <summary>Gets the NotebookRuntimeTemplates resource.</summary>
+            public virtual NotebookRuntimeTemplatesResource NotebookRuntimeTemplates { get; }
+
+            /// <summary>The "notebookRuntimeTemplates" collection of methods.</summary>
+            public class NotebookRuntimeTemplatesResource
+            {
+                private const string Resource = "notebookRuntimeTemplates";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public NotebookRuntimeTemplatesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a NotebookRuntimeTemplate.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the Location to create the NotebookRuntimeTemplate. Format:
+                /// `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1NotebookRuntimeTemplate body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a NotebookRuntimeTemplate.</summary>
+                public class CreateRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1NotebookRuntimeTemplate body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Location to create the NotebookRuntimeTemplate. Format:
+                    /// `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. User specified ID for the notebook runtime template.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("notebookRuntimeTemplateId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string NotebookRuntimeTemplateId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1NotebookRuntimeTemplate Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/notebookRuntimeTemplates";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("notebookRuntimeTemplateId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "notebookRuntimeTemplateId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a NotebookRuntimeTemplate.</summary>
+                /// <param name="name">
+                /// Required. The name of the NotebookRuntimeTemplate resource to be deleted. Format:
+                /// `projects/{project}/locations/{location}/notebookRuntimeTemplates/{notebook_runtime_template}`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a NotebookRuntimeTemplate.</summary>
+                public class DeleteRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the NotebookRuntimeTemplate resource to be deleted. Format:
+                    /// `projects/{project}/locations/{location}/notebookRuntimeTemplates/{notebook_runtime_template}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/notebookRuntimeTemplates/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets a NotebookRuntimeTemplate.</summary>
+                /// <param name="name">
+                /// Required. The name of the NotebookRuntimeTemplate resource. Format:
+                /// `projects/{project}/locations/{location}/notebookRuntimeTemplates/{notebook_runtime_template}`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets a NotebookRuntimeTemplate.</summary>
+                public class GetRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1NotebookRuntimeTemplate>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the NotebookRuntimeTemplate resource. Format:
+                    /// `projects/{project}/locations/{location}/notebookRuntimeTemplates/{notebook_runtime_template}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/notebookRuntimeTemplates/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                {
+                    return new GetIamPolicyRequest(service, resource);
+                }
+
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                public class GetIamPolicyRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleIamV1Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset. The policy in the response might use the
+                    /// policy version that you specified, or it might use a lower policy version. For example, if you
+                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
+                    /// To learn which resources support conditions in their IAM policies, see the [IAM
+                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/notebookRuntimeTemplates/[^/]+$",
+                        });
+                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Lists NotebookRuntimeTemplates in a Location.</summary>
+                /// <param name="parent">
+                /// Required. The resource name of the Location from which to list the NotebookRuntimeTemplates. Format:
+                /// `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists NotebookRuntimeTemplates in a Location.</summary>
+                public class ListRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ListNotebookRuntimeTemplatesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Location from which to list the NotebookRuntimeTemplates.
+                    /// Format: `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An expression for filtering the results of the request. For field names both
+                    /// snake_case and camelCase are supported. * `notebookRuntimeTemplate` supports = and !=.
+                    /// `notebookRuntimeTemplate` represents the NotebookRuntimeTemplate ID, i.e. the last segment of
+                    /// the NotebookRuntimeTemplate's resource name. * `display_name` supports = and != * `labels`
+                    /// supports general map functions that is: * `labels.key=value` - key:value equality *
+                    /// `labels.key:* or labels:key - key existence * A key including a space must be quoted. `labels."a
+                    /// key"`. Some examples: * `notebookRuntimeTemplate=notebookRuntimeTemplate123` *
+                    /// `displayName="myDisplayName"` * `labels.myKey="myValue"`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. A comma-separated list of fields to order by, sorted in ascending order. Use "desc"
+                    /// after a field name for descending. Supported fields: * `display_name` * `create_time` *
+                    /// `update_time` Example: `display_name, create_time desc`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>Optional. The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The standard list page token. Typically obtained via
+                    /// ListNotebookRuntimeTemplatesResponse.next_page_token of the previous
+                    /// NotebookService.ListNotebookRuntimeTemplates call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. Mask specifying which fields to read.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object ReadMask { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/notebookRuntimeTemplates";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "readMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.Aiplatform.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(service, body, resource);
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                /// </summary>
+                public class SetIamPolicyRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleIamV1Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleIamV1SetIamPolicyRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleIamV1SetIamPolicyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/notebookRuntimeTemplates/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.
+                /// </summary>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(string resource)
+                {
+                    return new TestIamPermissionsRequest(service, resource);
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.
+                /// </summary>
+                public class TestIamPermissionsRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleIamV1TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>
+                    /// The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or
+                    /// `storage.*`) are not allowed. For more information see [IAM
+                    /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("permissions", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual Google.Apis.Util.Repeatable<string> Permissions { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "testIamPermissions";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:testIamPermissions";
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/notebookRuntimeTemplates/[^/]+$",
+                        });
+                        RequestParameters.Add("permissions", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "permissions",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the NotebookRuntimes resource.</summary>
+            public virtual NotebookRuntimesResource NotebookRuntimes { get; }
+
+            /// <summary>The "notebookRuntimes" collection of methods.</summary>
+            public class NotebookRuntimesResource
+            {
+                private const string Resource = "notebookRuntimes";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public NotebookRuntimesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Assigns a NotebookRuntime to a user for a particular Notebook file. This method will either returns
+                /// an existing assignment or generates a new one.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the Location to get the NotebookRuntime assignment. Format:
+                /// `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual AssignRequest Assign(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1AssignNotebookRuntimeRequest body, string parent)
+                {
+                    return new AssignRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Assigns a NotebookRuntime to a user for a particular Notebook file. This method will either returns
+                /// an existing assignment or generates a new one.
+                /// </summary>
+                public class AssignRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Assign request.</summary>
+                    public AssignRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1AssignNotebookRuntimeRequest body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Location to get the NotebookRuntime assignment. Format:
+                    /// `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1AssignNotebookRuntimeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "assign";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/notebookRuntimes:assign";
+
+                    /// <summary>Initializes Assign parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Deletes a NotebookRuntime.</summary>
+                /// <param name="name">
+                /// Required. The name of the NotebookRuntime resource to be deleted. Instead of checking whether the
+                /// name is in valid NotebookRuntime resource name format, directly throw NotFound exception if there is
+                /// no such NotebookRuntime in spanner.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes a NotebookRuntime.</summary>
+                public class DeleteRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the NotebookRuntime resource to be deleted. Instead of checking whether
+                    /// the name is in valid NotebookRuntime resource name format, directly throw NotFound exception if
+                    /// there is no such NotebookRuntime in spanner.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/notebookRuntimes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets a NotebookRuntime.</summary>
+                /// <param name="name">
+                /// Required. The name of the NotebookRuntime resource. Instead of checking whether the name is in valid
+                /// NotebookRuntime resource name format, directly throw NotFound exception if there is no such
+                /// NotebookRuntime in spanner.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets a NotebookRuntime.</summary>
+                public class GetRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1NotebookRuntime>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the NotebookRuntime resource. Instead of checking whether the name is in
+                    /// valid NotebookRuntime resource name format, directly throw NotFound exception if there is no
+                    /// such NotebookRuntime in spanner.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/notebookRuntimes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists NotebookRuntimes in a Location.</summary>
+                /// <param name="parent">
+                /// Required. The resource name of the Location from which to list the NotebookRuntimes. Format:
+                /// `projects/{project}/locations/{location}`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists NotebookRuntimes in a Location.</summary>
+                public class ListRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1ListNotebookRuntimesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the Location from which to list the NotebookRuntimes. Format:
+                    /// `projects/{project}/locations/{location}`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An expression for filtering the results of the request. For field names both
+                    /// snake_case and camelCase are supported. * `notebookRuntime` supports = and !=. `notebookRuntime`
+                    /// represents the NotebookRuntime ID, i.e. the last segment of the NotebookRuntime's resource name.
+                    /// * `displayName` supports = and != and regex. * `notebookRuntimeTemplate` supports = and !=.
+                    /// `notebookRuntimeTemplate` represents the NotebookRuntimeTemplate ID, i.e. the last segment of
+                    /// the NotebookRuntimeTemplate's resource name. * `healthState` supports = and !=. healthState
+                    /// enum: [HEALTHY, UNHEALTHY, HEALTH_STATE_UNSPECIFIED]. * `runtimeState` supports = and !=.
+                    /// runtimeState enum: [RUNTIME_STATE_UNSPECIFIED, RUNNING, BEING_STARTED, BEING_STOPPED, STOPPED,
+                    /// BEING_UPGRADED]. * `runtimeUser` supports = and !=. * API version is UI only: `uiState` supports
+                    /// = and !=. uiState enum: [UI_RESOURCE_STATE_UNSPECIFIED, UI_RESOURCE_STATE_BEING_CREATED,
+                    /// UI_RESOURCE_STATE_ACTIVE, UI_RESOURCE_STATE_BEING_DELETED, UI_RESOURCE_STATE_CREATION_FAILED].
+                    /// Some examples: * `notebookRuntime="notebookRuntime123"` * `displayName="myDisplayName"` and
+                    /// `displayName=~"myDisplayNameRegex"` * `notebookRuntimeTemplate="notebookRuntimeTemplate321"` *
+                    /// `healthState=HEALTHY` * `runtimeState=RUNNING` * `runtimeUser="test@google.com"` *
+                    /// `uiState=UI_RESOURCE_STATE_BEING_DELETED`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. A comma-separated list of fields to order by, sorted in ascending order. Use "desc"
+                    /// after a field name for descending. Supported fields: * `display_name` * `create_time` *
+                    /// `update_time` Example: `display_name, create_time desc`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>Optional. The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. The standard list page token. Typically obtained via
+                    /// ListNotebookRuntimesResponse.next_page_token of the previous
+                    /// NotebookService.ListNotebookRuntimes call.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Optional. Mask specifying which fields to read.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object ReadMask { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/notebookRuntimes";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "readMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Starts a NotebookRuntime.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The name of the NotebookRuntime resource to be started. Instead of checking whether the
+                /// name is in valid NotebookRuntime resource name format, directly throw NotFound exception if there is
+                /// no such NotebookRuntime in spanner.
+                /// </param>
+                public virtual StartRequest Start(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1StartNotebookRuntimeRequest body, string name)
+                {
+                    return new StartRequest(service, body, name);
+                }
+
+                /// <summary>Starts a NotebookRuntime.</summary>
+                public class StartRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1.Data.GoogleLongrunningOperation>
+                {
+                    /// <summary>Constructs a new Start request.</summary>
+                    public StartRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1StartNotebookRuntimeRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the NotebookRuntime resource to be started. Instead of checking whether
+                    /// the name is in valid NotebookRuntime resource name format, directly throw NotFound exception if
+                    /// there is no such NotebookRuntime in spanner.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1StartNotebookRuntimeRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "start";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:start";
+
+                    /// <summary>Initializes Start parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/notebookRuntimes/[^/]+$",
+                        });
+                    }
+                }
+            }
+
             /// <summary>Gets the Operations resource.</summary>
             public virtual OperationsResource Operations { get; }
 
@@ -19926,7 +20858,7 @@ namespace Google.Apis.Aiplatform.v1
                     /// <summary>
                     /// The ID to use for the PipelineJob, which will become the final component of the PipelineJob
                     /// name. If not provided, an ID will be automatically generated. This value should be less than 128
-                    /// characters, and valid characters are /a-z-/.
+                    /// characters, and valid characters are `/a-z-/`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pipelineJobId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PipelineJobId { get; set; }
@@ -25664,7 +26596,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// <summary>
                             /// Required. The ID to use for the Tensorboard run, which becomes the final component of
                             /// the Tensorboard run's resource name. This value should be 1-128 characters, and valid
-                            /// characters are /a-z-/.
+                            /// characters are `/a-z-/`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("tensorboardRunId", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string TensorboardRunId { get; set; }
@@ -26105,7 +27037,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <summary>
                         /// Required. The ID to use for the Tensorboard experiment, which becomes the final component of
                         /// the Tensorboard experiment's resource name. This value should be 1-128 characters, and valid
-                        /// characters are /a-z-/.
+                        /// characters are `/a-z-/`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("tensorboardExperimentId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string TensorboardExperimentId { get; set; }
@@ -28811,6 +29743,46 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string Uri { get; set; }
     }
 
+    /// <summary>Metadata information for NotebookService.AssignNotebookRuntime.</summary>
+    public class GoogleCloudAiplatformV1AssignNotebookRuntimeOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The operation generic information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudAiplatformV1GenericOperationMetadata GenericMetadata { get; set; }
+
+        /// <summary>A human-readable message that shows the intermediate progress details of NotebookRuntime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressMessage")]
+        public virtual string ProgressMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for NotebookService.AssignNotebookRuntime.</summary>
+    public class GoogleCloudAiplatformV1AssignNotebookRuntimeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. Provide runtime specific information (e.g. runtime owner, notebook id) used for NotebookRuntime
+        /// assignment.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebookRuntime")]
+        public virtual GoogleCloudAiplatformV1NotebookRuntime NotebookRuntime { get; set; }
+
+        /// <summary>Optional. User specified ID for the notebook runtime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebookRuntimeId")]
+        public virtual string NotebookRuntimeId { get; set; }
+
+        /// <summary>
+        /// Required. The resource name of the NotebookRuntimeTemplate based on which a NotebookRuntime will be assigned
+        /// (reuse or create a new one).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebookRuntimeTemplate")]
+        public virtual string NotebookRuntimeTemplate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Attribution that explains a particular prediction output.</summary>
     public class GoogleCloudAiplatformV1Attribution : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -30396,6 +31368,17 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata information for NotebookService.CreateNotebookRuntimeTemplate.</summary>
+    public class GoogleCloudAiplatformV1CreateNotebookRuntimeTemplateOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The operation generic information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudAiplatformV1GenericOperationMetadata GenericMetadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for PipelineService.CreatePipelineJob.</summary>
     public class GoogleCloudAiplatformV1CreatePipelineJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -30413,7 +31396,7 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>
         /// The ID to use for the PipelineJob, which will become the final component of the PipelineJob name. If not
         /// provided, an ID will be automatically generated. This value should be less than 128 characters, and valid
-        /// characters are /a-z-/.
+        /// characters are `/a-z-/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pipelineJobId")]
         public virtual string PipelineJobId { get; set; }
@@ -30460,7 +31443,7 @@ namespace Google.Apis.Aiplatform.v1.Data
 
         /// <summary>
         /// Required. The ID to use for the Tensorboard run, which becomes the final component of the Tensorboard run's
-        /// resource name. This value should be 1-128 characters, and valid characters are /a-z-/.
+        /// resource name. This value should be 1-128 characters, and valid characters are `/a-z-/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tensorboardRunId")]
         public virtual string TensorboardRunId { get; set; }
@@ -31758,7 +32741,9 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// Optional. A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex. If
         /// set, we will deploy the index within the provided ip ranges. Otherwise, the index might be deployed to any
         /// ip ranges under the provided VPC network. The value should be the name of the address
-        /// (https://cloud.google.com/compute/docs/reference/rest/v1/addresses) Example: 'vertex-ai-ip-range'.
+        /// (https://cloud.google.com/compute/docs/reference/rest/v1/addresses) Example: ['vertex-ai-ip-range']. For
+        /// more information about subnets and network IP ranges, please see
+        /// https://cloud.google.com/vpc/docs/subnets#manually_created_subnet_ip_ranges.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservedIpRanges")]
         public virtual System.Collections.Generic.IList<string> ReservedIpRanges { get; set; }
@@ -31907,7 +32892,7 @@ namespace Google.Apis.Aiplatform.v1.Data
 
         /// <summary>
         /// Immutable. The ID of the DeployedModel. If not provided upon deployment, Vertex AI will generate a value for
-        /// this ID. This value should be 1-10 characters, and valid characters are /[0-9]/.
+        /// this ID. This value should be 1-10 characters, and valid characters are `/[0-9]/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -36308,6 +37293,42 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for NotebookService.ListNotebookRuntimeTemplates.</summary>
+    public class GoogleCloudAiplatformV1ListNotebookRuntimeTemplatesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token to retrieve next page of results. Pass to ListNotebookRuntimeTemplatesRequest.page_token to obtain
+        /// that page.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of NotebookRuntimeTemplates in the requested page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebookRuntimeTemplates")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1NotebookRuntimeTemplate> NotebookRuntimeTemplates { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for NotebookService.ListNotebookRuntimes.</summary>
+    public class GoogleCloudAiplatformV1ListNotebookRuntimesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token to retrieve next page of results. Pass to ListNotebookRuntimesRequest.page_token to obtain that
+        /// page.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of NotebookRuntimes in the requested page.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebookRuntimes")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1NotebookRuntime> NotebookRuntimes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for VizierService.ListOptimalTrials.</summary>
     public class GoogleCloudAiplatformV1ListOptimalTrialsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -39325,6 +40346,31 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Network spec.</summary>
+    public class GoogleCloudAiplatformV1NetworkSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether to enable public internet access. Default false.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableInternetAccess")]
+        public virtual System.Nullable<bool> EnableInternetAccess { get; set; }
+
+        /// <summary>
+        /// The full name of the Google Compute Engine
+        /// [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>
+        /// The name of the subnet that this instance is in. Format:
+        /// `projects/{project_id_or_number}/regions/{region}/subnetworks/{subnetwork_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
+        public virtual string Subnetwork { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Represents a mount configuration for Network File System (NFS) to mount.</summary>
     public class GoogleCloudAiplatformV1NfsMount : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -39347,6 +40393,396 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The euc configuration of NotebookRuntimeTemplate.</summary>
+    public class GoogleCloudAiplatformV1NotebookEucConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Whether ActAs check is bypassed for service account attached to the VM. If false, we need ActAs
+        /// check for the default Compute Engine Service account. When a Runtime is created, a VM is allocated using
+        /// Default Compute Engine Service Account. Any user requesting to use this Runtime requires Service Account
+        /// User (ActAs) permission over this SA. If true, Runtime owner is using EUC and does not require the above
+        /// permission as VM no longer use default Compute Engine SA, but a P4SA.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bypassActasCheck")]
+        public virtual System.Nullable<bool> BypassActasCheck { get; set; }
+
+        /// <summary>
+        /// Input only. Whether EUC is disabled in this NotebookRuntimeTemplate. In proto3, the default value of a
+        /// boolean is false. In this way, by default EUC will be enabled for NotebookRuntimeTemplate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eucDisabled")]
+        public virtual System.Nullable<bool> EucDisabled { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The idle shutdown configuration of NotebookRuntimeTemplate, which contains the idle_timeout as required field.
+    /// </summary>
+    public class GoogleCloudAiplatformV1NotebookIdleShutdownConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Whether Idle Shutdown is disabled in this NotebookRuntimeTemplate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idleShutdownDisabled")]
+        public virtual System.Nullable<bool> IdleShutdownDisabled { get; set; }
+
+        /// <summary>
+        /// Required. Duration is accurate to the second. In Notebook, Idle Timeout is accurate to minute so the range
+        /// of idle_timeout (second) is: 10 * 60 ~ 1440 * 60.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idleTimeout")]
+        public virtual object IdleTimeout { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A runtime is a virtual machine allocated to a particular user for a particular Notebook file on temporary basis
+    /// with lifetime limited to 24 hours.
+    /// </summary>
+    public class GoogleCloudAiplatformV1NotebookRuntime : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp when this NotebookRuntime was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>The description of the NotebookRuntime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. The display name of the NotebookRuntime. The name can be up to 128 characters long and can consist
+        /// of any UTF-8 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        private string _expirationTimeRaw;
+
+        private object _expirationTime;
+
+        /// <summary>
+        /// Output only. Timestamp when this NotebookRuntime will be expired: 1. System Predefined NotebookRuntime: 24
+        /// hours after creation. After expiration, system predifined runtime will be deleted. 2. User created
+        /// NotebookRuntime: 6 months after last upgrade. After expiration, user created runtime will be stopped and
+        /// allowed for upgrade.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expirationTime")]
+        public virtual string ExpirationTimeRaw
+        {
+            get => _expirationTimeRaw;
+            set
+            {
+                _expirationTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expirationTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpirationTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpirationTimeDateTimeOffset instead.")]
+        public virtual object ExpirationTime
+        {
+            get => _expirationTime;
+            set
+            {
+                _expirationTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expirationTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpirationTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpirationTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpirationTimeRaw);
+            set => ExpirationTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Output only. The health state of the NotebookRuntime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("healthState")]
+        public virtual string HealthState { get; set; }
+
+        /// <summary>
+        /// The labels with user-defined metadata to organize your NotebookRuntime. Label keys and values can be no
+        /// longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters,
+        /// underscores and dashes. International characters are allowed. No more than 64 user labels can be associated
+        /// with one Dataset (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples
+        /// of labels. System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
+        /// Following system labels exist for NotebookRuntime: *
+        /// "aiplatform.googleapis.com/notebook_runtime_gce_instance_id": output only, its value is the Compute Engine
+        /// instance id. * "aiplatform.googleapis.com/colab_enterprise_entry_service": its value is either "BigQuery" or
+        /// "Vertex"; if absent, it should be "Vertex". This is to describe the entry service, either BigQuery or
+        /// Vertex.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Output only. The resource name of the NotebookRuntime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The pointer to NotebookRuntimeTemplate this NotebookRuntime is created from.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebookRuntimeTemplateRef")]
+        public virtual GoogleCloudAiplatformV1NotebookRuntimeTemplateRef NotebookRuntimeTemplateRef { get; set; }
+
+        /// <summary>Output only. The proxy endpoint used to access the NotebookRuntime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxyUri")]
+        public virtual string ProxyUri { get; set; }
+
+        /// <summary>Output only. The runtime (instance) state of the NotebookRuntime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeState")]
+        public virtual string RuntimeState { get; set; }
+
+        /// <summary>Required. The user email of the NotebookRuntime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("runtimeUser")]
+        public virtual string RuntimeUser { get; set; }
+
+        /// <summary>Output only. The service account that the NotebookRuntime workload runs as.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp when this NotebookRuntime was most recently updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Output only. The VM os image version of NotebookRuntime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A template that specifies runtime configurations such as machine type, runtime version, network configurations,
+    /// etc. Multiple runtimes can be created from a runtime template.
+    /// </summary>
+    public class GoogleCloudAiplatformV1NotebookRuntimeTemplate : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp when this NotebookRuntimeTemplate was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Optional. The specification of persistent disk attached to the runtime as data disk storage.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataPersistentDiskSpec")]
+        public virtual GoogleCloudAiplatformV1PersistentDiskSpec DataPersistentDiskSpec { get; set; }
+
+        /// <summary>The description of the NotebookRuntimeTemplate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. The display name of the NotebookRuntimeTemplate. The name can be up to 128 characters long and can
+        /// consist of any UTF-8 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>EUC configuration of the NotebookRuntimeTemplate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eucConfig")]
+        public virtual GoogleCloudAiplatformV1NotebookEucConfig EucConfig { get; set; }
+
+        /// <summary>
+        /// The idle shutdown configuration of NotebookRuntimeTemplate. This config will only be set when idle shutdown
+        /// is enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("idleShutdownConfig")]
+        public virtual GoogleCloudAiplatformV1NotebookIdleShutdownConfig IdleShutdownConfig { get; set; }
+
+        /// <summary>Output only. The default template to use if not specified.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("isDefault")]
+        public virtual System.Nullable<bool> IsDefault { get; set; }
+
+        /// <summary>
+        /// The labels with user-defined metadata to organize the NotebookRuntimeTemplates. Label keys and values can be
+        /// no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters,
+        /// underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information
+        /// and examples of labels.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Optional. Immutable. The specification of a single machine for the template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineSpec")]
+        public virtual GoogleCloudAiplatformV1MachineSpec MachineSpec { get; set; }
+
+        /// <summary>Output only. The resource name of the NotebookRuntimeTemplate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Optional. Network spec.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkSpec")]
+        public virtual GoogleCloudAiplatformV1NetworkSpec NetworkSpec { get; set; }
+
+        /// <summary>
+        /// The service account that the runtime workload runs as. You can use any service account within the same
+        /// project, but you must have the service account user permission to use the instance. If not specified, the
+        /// [Compute Engine default service
+        /// account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp when this NotebookRuntimeTemplate was most recently updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+    }
+
+    /// <summary>Points to a NotebookRuntimeTemplateRef.</summary>
+    public class GoogleCloudAiplatformV1NotebookRuntimeTemplateRef : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. A resource name of the NotebookRuntimeTemplate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebookRuntimeTemplate")]
+        public virtual string NotebookRuntimeTemplate { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for JobService.PauseModelDeploymentMonitoringJob.</summary>
     public class GoogleCloudAiplatformV1PauseModelDeploymentMonitoringJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -39357,6 +40793,25 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>Request message for ScheduleService.PauseSchedule.</summary>
     public class GoogleCloudAiplatformV1PauseScheduleRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the spec of persistent disk options.</summary>
+    public class GoogleCloudAiplatformV1PersistentDiskSpec : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Size in GB of the disk (default is 100GB).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
+        public virtual System.Nullable<long> DiskSizeGb { get; set; }
+
+        /// <summary>
+        /// Type of the disk (default is "pd-standard"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive)
+        /// "pd-standard" (Persistent Disk Hard Disk Drive) "pd-balanced" (Balanced Persistent Disk) "pd-extreme"
+        /// (Extreme Persistent Disk)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
+        public virtual string DiskType { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -45887,6 +47342,28 @@ namespace Google.Apis.Aiplatform.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("specialistWorkerEmails")]
         public virtual System.Collections.Generic.IList<string> SpecialistWorkerEmails { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata information for NotebookService.StartNotebookRuntime.</summary>
+    public class GoogleCloudAiplatformV1StartNotebookRuntimeOperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The operation generic information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("genericMetadata")]
+        public virtual GoogleCloudAiplatformV1GenericOperationMetadata GenericMetadata { get; set; }
+
+        /// <summary>A human-readable message that shows the intermediate progress details of NotebookRuntime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("progressMessage")]
+        public virtual string ProgressMessage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for NotebookService.StartNotebookRuntime.</summary>
+    public class GoogleCloudAiplatformV1StartNotebookRuntimeRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

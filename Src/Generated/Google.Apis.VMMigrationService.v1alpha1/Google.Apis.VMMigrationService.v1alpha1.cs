@@ -4866,6 +4866,34 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>BootDiskDefaults hold information about the boot disk of a VM.</summary>
+    public class BootDiskDefaults : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-*
+        /// tree of a Linux operating system running within the instance. If not specified, the server chooses a default
+        /// device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google
+        /// Compute Engine. This field is only applicable for persistent disks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceName")]
+        public virtual string DeviceName { get; set; }
+
+        /// <summary>Optional. The name of the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskName")]
+        public virtual string DiskName { get; set; }
+
+        /// <summary>Optional. The type of disk provisioning to use for the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskType")]
+        public virtual string DiskType { get; set; }
+
+        /// <summary>The image to use when creating the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("image")]
+        public virtual DiskImageDefaults Image { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for 'CancelCloneJob' request.</summary>
     public class CancelCloneJobRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5174,12 +5202,20 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
         public virtual System.Collections.Generic.IList<PersistentDiskDefaults> Disks { get; set; }
 
+        /// <summary>Details of the disk only migration target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disksTargetDefaults")]
+        public virtual DisksMigrationDisksTargetDefaults DisksTargetDefaults { get; set; }
+
         /// <summary>
         /// The full path of the resource of type TargetProject which represents the Compute Engine project in which to
         /// create the Persistent Disks.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("targetProject")]
         public virtual string TargetProject { get; set; }
+
+        /// <summary>Details of the VM migration target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmTargetDefaults")]
+        public virtual DisksMigrationVmTargetDefaults VmTargetDefaults { get; set; }
 
         /// <summary>The zone in which to create the Persistent Disks.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("zone")]
@@ -5195,6 +5231,14 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         /// <summary>The details of each created Persistent Disk.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disks")]
         public virtual System.Collections.Generic.IList<PersistentDisk> Disks { get; set; }
+
+        /// <summary>Details of the disks-only migration target.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disksTargetDetails")]
+        public virtual DisksMigrationDisksTargetDetails DisksTargetDetails { get; set; }
+
+        /// <summary>Details for the VM the migrated data disks are attached to.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmTargetDetails")]
+        public virtual DisksMigrationVmTargetDetails VmTargetDetails { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5984,6 +6028,104 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         /// <summary>The disk size in GB.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sizeGb")]
         public virtual System.Nullable<int> SizeGb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains details about the image source used to create the disk.</summary>
+    public class DiskImageDefaults : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The Image resource used when creating the disk.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceImage")]
+        public virtual string SourceImage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details for a disk only migration.</summary>
+    public class DisksMigrationDisksTargetDefaults : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details for a disks-only migration.</summary>
+    public class DisksMigrationDisksTargetDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details for creation of a VM that migrated data disks will be attached to.</summary>
+    public class DisksMigrationVmTargetDefaults : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Additional licenses to assign to the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalLicenses")]
+        public virtual System.Collections.Generic.IList<string> AdditionalLicenses { get; set; }
+
+        /// <summary>Optional. Details of the boot disk of the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bootDiskDefaults")]
+        public virtual BootDiskDefaults BootDiskDefaults { get; set; }
+
+        /// <summary>Optional. Compute instance scheduling information (if empty default is used).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computeScheduling")]
+        public virtual ComputeScheduling ComputeScheduling { get; set; }
+
+        /// <summary>Optional. The hostname to assign to the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hostname")]
+        public virtual string Hostname { get; set; }
+
+        /// <summary>Optional. A map of labels to associate with the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>Required. The machine type to create the VM with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
+        public virtual string MachineType { get; set; }
+
+        /// <summary>Optional. The machine type series to create the VM with. For presentation only.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("machineTypeSeries")]
+        public virtual string MachineTypeSeries { get; set; }
+
+        /// <summary>Optional. The metadata key/value pairs to assign to the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
+
+        /// <summary>Optional. NICs to attach to the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
+        public virtual System.Collections.Generic.IList<NetworkInterface> NetworkInterfaces { get; set; }
+
+        /// <summary>Optional. A list of network tags to associate with the VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkTags")]
+        public virtual System.Collections.Generic.IList<string> NetworkTags { get; set; }
+
+        /// <summary>
+        /// Optional. Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot
+        /// option is EFI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("secureBoot")]
+        public virtual System.Nullable<bool> SecureBoot { get; set; }
+
+        /// <summary>Optional. The service account to associate the VM with.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
+        public virtual string ServiceAccount { get; set; }
+
+        /// <summary>Required. The name of the VM to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmName")]
+        public virtual string VmName { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details for the VM created VM as part of disks migration.</summary>
+    public class DisksMigrationVmTargetDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The URI of the Compute Engine VM.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmUri")]
+        public virtual string VmUri { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7101,6 +7243,13 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("sourceDiskNumber")]
         public virtual System.Nullable<int> SourceDiskNumber { get; set; }
 
+        /// <summary>
+        /// Optional. Details for attachment of the disk to a VM. Used when the disk is set to be attacked to a target
+        /// VM.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmAttachmentDetails")]
+        public virtual VmAttachmentDetails VmAttachmentDetails { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -7966,6 +8115,22 @@ namespace Google.Apis.VMMigrationService.v1alpha1.Data
         /// <summary>Output only. Total number of VMs included in the report.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vmsCount")]
         public virtual System.Nullable<int> VmsCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details for attachment of the disk to a VM.</summary>
+    public class VmAttachmentDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-*
+        /// tree of a Linux operating system running within the instance. If not specified, the server chooses a default
+        /// device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google
+        /// Compute Engine. This field is only applicable for persistent disks.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deviceName")]
+        public virtual string DeviceName { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

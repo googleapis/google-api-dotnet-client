@@ -24893,7 +24893,7 @@ namespace Google.Apis.Aiplatform.v1beta1
                     /// <summary>
                     /// Required. The ID to use for the PersistentResource, which become the final component of the
                     /// PersistentResource's resource name. The maximum length is 63 characters, and valid characters
-                    /// are /^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$/.
+                    /// are `/^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$/`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("persistentResourceId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PersistentResourceId { get; set; }
@@ -25657,7 +25657,7 @@ namespace Google.Apis.Aiplatform.v1beta1
                     /// <summary>
                     /// The ID to use for the PipelineJob, which will become the final component of the PipelineJob
                     /// name. If not provided, an ID will be automatically generated. This value should be less than 128
-                    /// characters, and valid characters are /a-z-/.
+                    /// characters, and valid characters are `/a-z-/`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("pipelineJobId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string PipelineJobId { get; set; }
@@ -31682,7 +31682,7 @@ namespace Google.Apis.Aiplatform.v1beta1
                             /// <summary>
                             /// Required. The ID to use for the Tensorboard run, which becomes the final component of
                             /// the Tensorboard run's resource name. This value should be 1-128 characters, and valid
-                            /// characters are /a-z-/.
+                            /// characters are `/a-z-/`.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("tensorboardRunId", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string TensorboardRunId { get; set; }
@@ -32123,7 +32123,7 @@ namespace Google.Apis.Aiplatform.v1beta1
                         /// <summary>
                         /// Required. The ID to use for the Tensorboard experiment, which becomes the final component of
                         /// the Tensorboard experiment's resource name. This value should be 1-128 characters, and valid
-                        /// characters are /a-z-/.
+                        /// characters are `/a-z-/`.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("tensorboardExperimentId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string TensorboardExperimentId { get; set; }
@@ -36589,7 +36589,7 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// <summary>
         /// The ID to use for the PipelineJob, which will become the final component of the PipelineJob name. If not
         /// provided, an ID will be automatically generated. This value should be less than 128 characters, and valid
-        /// characters are /a-z-/.
+        /// characters are `/a-z-/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pipelineJobId")]
         public virtual string PipelineJobId { get; set; }
@@ -36647,7 +36647,7 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
 
         /// <summary>
         /// Required. The ID to use for the Tensorboard run, which becomes the final component of the Tensorboard run's
-        /// resource name. This value should be 1-128 characters, and valid characters are /a-z-/.
+        /// resource name. This value should be 1-128 characters, and valid characters are `/a-z-/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tensorboardRunId")]
         public virtual string TensorboardRunId { get; set; }
@@ -37965,7 +37965,9 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// Optional. A list of reserved ip ranges under the VPC network that can be used for this DeployedIndex. If
         /// set, we will deploy the index within the provided ip ranges. Otherwise, the index might be deployed to any
         /// ip ranges under the provided VPC network. The value should be the name of the address
-        /// (https://cloud.google.com/compute/docs/reference/rest/v1/addresses) Example: 'vertex-ai-ip-range'.
+        /// (https://cloud.google.com/compute/docs/reference/rest/v1/addresses) Example: ['vertex-ai-ip-range']. For
+        /// more information about subnets and network IP ranges, please see
+        /// https://cloud.google.com/vpc/docs/subnets#manually_created_subnet_ip_ranges.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservedIpRanges")]
         public virtual System.Collections.Generic.IList<string> ReservedIpRanges { get; set; }
@@ -38119,7 +38121,7 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
 
         /// <summary>
         /// Immutable. The ID of the DeployedModel. If not provided upon deployment, Vertex AI will generate a value for
-        /// this ID. This value should be 1-10 characters, and valid characters are /[0-9]/.
+        /// this ID. This value should be 1-10 characters, and valid characters are `/[0-9]/`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -46030,6 +46032,21 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("healthState")]
         public virtual string HealthState { get; set; }
 
+        /// <summary>
+        /// The labels with user-defined metadata to organize your NotebookRuntime. Label keys and values can be no
+        /// longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters,
+        /// underscores and dashes. International characters are allowed. No more than 64 user labels can be associated
+        /// with one Dataset (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples
+        /// of labels. System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
+        /// Following system labels exist for NotebookRuntime: *
+        /// "aiplatform.googleapis.com/notebook_runtime_gce_instance_id": output only, its value is the Compute Engine
+        /// instance id. * "aiplatform.googleapis.com/colab_enterprise_entry_service": its value is either "BigQuery" or
+        /// "Vertex"; if absent, it should be "Vertex". This is to describe the entry service, either BigQuery or
+        /// Vertex.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
         /// <summary>Output only. The resource name of the NotebookRuntime.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
@@ -46189,7 +46206,7 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
-        /// <summary>Required. Immutable. The specification of a single machine used by the prediction.</summary>
+        /// <summary>Optional. Immutable. The specification of a single machine for the template.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("machineSpec")]
         public virtual GoogleCloudAiplatformV1beta1MachineSpec MachineSpec { get; set; }
 

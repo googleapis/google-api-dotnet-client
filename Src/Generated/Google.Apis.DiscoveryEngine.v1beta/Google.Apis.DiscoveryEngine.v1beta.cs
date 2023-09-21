@@ -9837,13 +9837,6 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("numPreviousSegments")]
         public virtual System.Nullable<int> NumPreviousSegments { get; set; }
 
-        /// <summary>
-        /// Specifies whether to return the confidence score from the extractive segments in each search result. The
-        /// default value is `false`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("returnExtractiveSegmentScore")]
-        public virtual System.Nullable<bool> ReturnExtractiveSegmentScore { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9909,7 +9902,10 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("includeCitations")]
         public virtual System.Nullable<bool> IncludeCitations { get; set; }
 
-        /// <summary>Language code for Summary. Use language tags defined by BCP47.</summary>
+        /// <summary>
+        /// Language code for Summary. Use language tags defined by
+        /// [BCP47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Note: This is an experimental feature.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("languageCode")]
         public virtual string LanguageCode { get; set; }
 

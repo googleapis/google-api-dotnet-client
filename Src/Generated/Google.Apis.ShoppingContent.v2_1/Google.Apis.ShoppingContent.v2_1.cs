@@ -5670,6 +5670,115 @@ namespace Google.Apis.ShoppingContent.v2_1
             }
         }
 
+        /// <summary>Sets the omnichannel experience for the specified country.</summary>
+        /// <param name="merchantId">
+        /// The ID of the managing account. If this parameter is not the same as accountId, then this account must be a
+        /// multi-client account and `accountId` must be the ID of a sub-account of this account.
+        /// </param>
+        /// <param name="accountId">The ID of the account for which to retrieve accessible Business Profiles.</param>
+        public virtual SetomnichannelexperienceRequest Setomnichannelexperience(ulong merchantId, ulong accountId)
+        {
+            return new SetomnichannelexperienceRequest(service, merchantId, accountId);
+        }
+
+        /// <summary>Sets the omnichannel experience for the specified country.</summary>
+        public class SetomnichannelexperienceRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.LiaOmnichannelExperience>
+        {
+            /// <summary>Constructs a new Setomnichannelexperience request.</summary>
+            public SetomnichannelexperienceRequest(Google.Apis.Services.IClientService service, ulong merchantId, ulong accountId) : base(service)
+            {
+                MerchantId = merchantId;
+                AccountId = accountId;
+                InitParameters();
+            }
+
+            /// <summary>
+            /// The ID of the managing account. If this parameter is not the same as accountId, then this account must
+            /// be a multi-client account and `accountId` must be the ID of a sub-account of this account.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("merchantId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong MerchantId { get; private set; }
+
+            /// <summary>The ID of the account for which to retrieve accessible Business Profiles.</summary>
+            [Google.Apis.Util.RequestParameterAttribute("accountId", Google.Apis.Util.RequestParameterType.Path)]
+            public virtual ulong AccountId { get; private set; }
+
+            /// <summary>
+            /// The CLDR country code (for example, "US") for which the omnichannel experience is selected.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("country", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string Country { get; set; }
+
+            /// <summary>
+            /// The Local Store Front (LSF) type for this country. Acceptable values are: - "`ghlsf`" (Google-Hosted
+            /// Local Store Front) - "`mhlsfBasic`" (Merchant-Hosted Local Store Front Basic) - "`mhlsfFull`"
+            /// (Merchant-Hosted Local Store Front Full) More details about these types can be found here.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("lsfType", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual string LsfType { get; set; }
+
+            /// <summary>
+            /// The Pickup types for this country. Acceptable values are: - "`pickupToday`" - "`pickupLater`"
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("pickupTypes", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual Google.Apis.Util.Repeatable<string> PickupTypes { get; set; }
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "setomnichannelexperience";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "{merchantId}/liasettings/{accountId}/setomnichannelexperience";
+
+            /// <summary>Initializes Setomnichannelexperience parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+                RequestParameters.Add("merchantId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "merchantId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("accountId", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "accountId",
+                    IsRequired = true,
+                    ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("country", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "country",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("lsfType", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "lsfType",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("pickupTypes", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "pickupTypes",
+                    IsRequired = false,
+                    ParameterType = "query",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+            }
+        }
+
         /// <summary>Sets the POS data provider for the specified country.</summary>
         /// <param name="merchantId">
         /// The ID of the managing account. If this parameter is not the same as accountId, then this account must be a
@@ -17768,6 +17877,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("inventory")]
         public virtual LiaInventorySettings Inventory { get; set; }
 
+        /// <summary>The omnichannel experience configured for this country.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("omnichannelExperience")]
+        public virtual LiaOmnichannelExperience OmnichannelExperience { get; set; }
+
         /// <summary>LIA "On Display To Order" settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("onDisplayToOrder")]
         public virtual LiaOnDisplayToOrderSettings OnDisplayToOrder { get; set; }
@@ -17806,6 +17919,31 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
         public virtual string Status { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Omnichannel experience details.</summary>
+    public class LiaOmnichannelExperience : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The CLDR country code (for example, "US").</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("country")]
+        public virtual string Country { get; set; }
+
+        /// <summary>
+        /// The Local Store Front (LSF) type for this country. Acceptable values are: - "`ghlsf`" (Google-Hosted Local
+        /// Store Front) - "`mhlsfBasic`" (Merchant-Hosted Local Store Front Basic) - "`mhlsfFull`" (Merchant-Hosted
+        /// Local Store Front Full) More details about these types can be found here.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lsfType")]
+        public virtual string LsfType { get; set; }
+
+        /// <summary>
+        /// The Pickup types for this country. Acceptable values are: - "`pickupToday`" - "`pickupLater`"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pickupTypes")]
+        public virtual System.Collections.Generic.IList<string> PickupTypes { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -17917,6 +18055,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; }
 
+        /// <summary>The omnichannel experience for a country. Required only for SetOmnichannelExperience.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("omnichannelExperience")]
+        public virtual LiaOmnichannelExperience OmnichannelExperience { get; set; }
+
         /// <summary>The ID of POS data provider. Required only for SetPosProvider.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("posDataProviderId")]
         public virtual System.Nullable<ulong> PosDataProviderId { get; set; }
@@ -17970,6 +18112,10 @@ namespace Google.Apis.ShoppingContent.v2_1.Data
         /// <summary>The retrieved or updated Lia settings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("liaSettings")]
         public virtual LiaSettings LiaSettings { get; set; }
+
+        /// <summary>The updated omnichannel experience for a country.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("omnichannelExperience")]
+        public virtual LiaOmnichannelExperience OmnichannelExperience { get; set; }
 
         /// <summary>The list of POS data providers.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("posDataProviders")]

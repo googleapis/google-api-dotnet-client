@@ -2645,13 +2645,12 @@ namespace Google.Apis.Calendar.v3
             public virtual System.Nullable<bool> AlwaysIncludeEmail { get; set; }
 
             /// <summary>
-            /// Event types to return. Optional. Possible values are:  - "default"  - "focusTime"  - "outOfOffice"This
-            /// parameter can be repeated multiple times to return events of different types. Currently, this is the
-            /// only allowed value for this field:  - ["default", "focusTime", "outOfOffice"] This value is the default.
-            ///  If you're enrolled in the Working Location developer preview program, in addition to the default value
-            /// above you can also set the "workingLocation" event type:  - ["default", "focusTime", "outOfOffice",
-            /// "workingLocation"]  - ["workingLocation"] Additional combinations of these four event types will be made
-            /// available in later releases. Developer Preview.
+            /// Event types to return. Optional. Possible values are:  - "default"  - "focusTime"  - "outOfOffice"  -
+            /// "workingLocation"This parameter can be repeated multiple times to return events of different types.
+            /// Currently, these are the only allowed values for this field:  - ["default", "focusTime", "outOfOffice"]
+            /// - ["default", "focusTime", "outOfOffice", "workingLocation"]  - ["workingLocation"] The default is
+            /// ["default", "focusTime", "outOfOffice"]. Additional combinations of these four event types will be made
+            /// available in later releases.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("eventTypes", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> EventTypes { get; set; }
@@ -3606,13 +3605,12 @@ namespace Google.Apis.Calendar.v3
             public virtual System.Nullable<bool> AlwaysIncludeEmail { get; set; }
 
             /// <summary>
-            /// Event types to return. Optional. Possible values are:  - "default"  - "focusTime"  - "outOfOffice"This
-            /// parameter can be repeated multiple times to return events of different types. Currently, this is the
-            /// only allowed value for this field:  - ["default", "focusTime", "outOfOffice"] This value is the default.
-            ///  If you're enrolled in the Working Location developer preview program, in addition to the default value
-            /// above you can also set the "workingLocation" event type:  - ["default", "focusTime", "outOfOffice",
-            /// "workingLocation"]  - ["workingLocation"] Additional combinations of these four event types will be made
-            /// available in later releases. Developer Preview.
+            /// Event types to return. Optional. Possible values are:  - "default"  - "focusTime"  - "outOfOffice"  -
+            /// "workingLocation"This parameter can be repeated multiple times to return events of different types.
+            /// Currently, these are the only allowed values for this field:  - ["default", "focusTime", "outOfOffice"]
+            /// - ["default", "focusTime", "outOfOffice", "workingLocation"]  - ["workingLocation"] The default is
+            /// ["default", "focusTime", "outOfOffice"]. Additional combinations of these four event types will be made
+            /// available in later releases.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("eventTypes", Google.Apis.Util.RequestParameterType.Query)]
             public virtual Google.Apis.Util.Repeatable<string> EventTypes { get; set; }
@@ -4978,9 +4976,11 @@ namespace Google.Apis.Calendar.v3.Data
         public virtual string ETag { get; set; }
 
         /// <summary>
-        /// Specific type of the event. Read-only. Possible values are:   - "default" - A regular event or not further
-        /// specified.  - "outOfOffice" - An out-of-office event.  - "focusTime" - A focus-time event.  -
-        /// "workingLocation" - A working location event. Developer Preview.
+        /// Specific type of the event. This cannot be modified after the event is created. Possible values are:   -
+        /// "default" - A regular event or not further specified.  - "outOfOffice" - An out-of-office event.  -
+        /// "focusTime" - A focus-time event.  - "workingLocation" - A working location event.  Currently, only "default
+        /// " and "workingLocation" events can be created using the API. Extended support for other event types will be
+        /// made available in later releases.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventType")]
         public virtual string EventType { get; set; }
@@ -5190,7 +5190,7 @@ namespace Google.Apis.Calendar.v3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("visibility")]
         public virtual string Visibility { get; set; }
 
-        /// <summary>Working Location event data. Developer Preview.</summary>
+        /// <summary>Working location event data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("workingLocationProperties")]
         public virtual EventWorkingLocationProperties WorkingLocationProperties { get; set; }
 
@@ -5511,8 +5511,10 @@ namespace Google.Apis.Calendar.v3.Data
         public virtual OfficeLocationData OfficeLocation { get; set; }
 
         /// <summary>
-        /// Indicates what kind of location this is. Any details are specified in a sub-field of the specified name (but
-        /// which may be missing if empty). Any other fields are ignored.
+        /// Type of the working location. Possible values are:   - "homeOffice" - The user is working at home.  -
+        /// "officeLocation" - The user is working from an office.  - "customLocation" - The user is working from a
+        /// custom location.  Any details are specified in a sub-field of the specified name, but this field may be
+        /// missing if empty. Any other fields are ignored. Required when adding working location properties.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("type")]
         public virtual string Type { get; set; }
@@ -5538,19 +5540,22 @@ namespace Google.Apis.Calendar.v3.Data
             [Newtonsoft.Json.JsonPropertyAttribute("buildingId")]
             public virtual string BuildingId { get; set; }
 
-            /// <summary>An optional arbitrary desk identifier.</summary>
+            /// <summary>An optional desk identifier.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("deskId")]
             public virtual string DeskId { get; set; }
 
-            /// <summary>An optional arbitrary floor identifier.</summary>
+            /// <summary>An optional floor identifier.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("floorId")]
             public virtual string FloorId { get; set; }
 
-            /// <summary>An optional arbitrary floor section identifier.</summary>
+            /// <summary>An optional floor section identifier.</summary>
             [Newtonsoft.Json.JsonPropertyAttribute("floorSectionId")]
             public virtual string FloorSectionId { get; set; }
 
-            /// <summary>An optional extra label for additional information.</summary>
+            /// <summary>
+            /// The office name that's displayed in Calendar Web and Mobile clients. We recommend you reference a
+            /// building name in the organization's Resources database.
+            /// </summary>
             [Newtonsoft.Json.JsonPropertyAttribute("label")]
             public virtual string Label { get; set; }
         }

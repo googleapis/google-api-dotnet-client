@@ -1388,7 +1388,7 @@ namespace Google.Apis.AnalyticsData.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>The dimensions and metrics currently accepted in reporting methods.</summary>
+    /// <summary>The dimensions, metrics and comparisons currently accepted in reporting methods.</summary>
     public class Metadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The dimension descriptions.</summary>

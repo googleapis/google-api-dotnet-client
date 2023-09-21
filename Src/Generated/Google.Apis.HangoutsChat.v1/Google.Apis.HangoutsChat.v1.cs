@@ -4596,6 +4596,14 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual GoogleAppsCardV1Action OnChangeAction { get; set; }
 
         /// <summary>
+        /// Text that appears in the text input field when the field is empty. Use this text to prompt users to enter a
+        /// value. For example, `Enter a number from 0 to 100`. Supported by Google Chat apps, but not Google Workspace
+        /// Add-ons.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("placeholderText")]
+        public virtual string PlaceholderText { get; set; }
+
+        /// <summary>
         /// How a text input field appears in the user interface. For example, whether the field is single or
         /// multi-line.
         /// </summary>
@@ -5629,9 +5637,11 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// Immutable. Whether this space permits any Google Chat user as a member. Input when creating a space in a
-        /// Google Workspace organization. For Google Chat users that use a Google Account, omit this field when
-        /// creating a space (By default, the space permits any Google Chat user). For existing spaces, this field is
-        /// output only.
+        /// Google Workspace organization. Omit this field when creating spaces in the following conditions: * The
+        /// authenticated user uses a Google Account. By default, the space permits any Google Chat user. * The space is
+        /// used to [import data to Google Chat] (https://developers.google.com/chat/api/guides/import-data-overview).
+        /// Import mode spaces must only permit members from the same Google Workspace organization. For existing
+        /// spaces, this field is output only.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("externalUserAllowed")]
         public virtual System.Nullable<bool> ExternalUserAllowed { get; set; }
@@ -5896,7 +5906,10 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// `resource_name` is `people/{person_id}`. For example, `users/123456789` in Chat API represents the same
         /// person as `people/123456789` in People API. - the `id` for a
         /// [user](https://developers.google.com/admin-sdk/directory/reference/rest/v1/users) in the Admin SDK Directory
-        /// API.
+        /// API. - the user's email address can be used as an alias for `{user}` in API requests. For example, if the
+        /// People API Person `resourceName` for `user@example.com` is `people/123456789`, you can use
+        /// `users/user@example.com` as an alias to reference `users/123456789`. Only the canonical resource name (for
+        /// example `users/123456789`) will be returned from the API.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
