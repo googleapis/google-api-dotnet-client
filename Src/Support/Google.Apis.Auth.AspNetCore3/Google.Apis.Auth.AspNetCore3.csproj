@@ -27,9 +27,6 @@ Supported Platforms:
     </Description>
     <DefineConstants>$(DefineConstants);ASPNETCORE3</DefineConstants>
   </PropertyGroup>
-  <ItemGroup>
-    <Compile Include="..\Google.Apis.Auth.AspNetCore\*.cs" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="3.0.3" />
