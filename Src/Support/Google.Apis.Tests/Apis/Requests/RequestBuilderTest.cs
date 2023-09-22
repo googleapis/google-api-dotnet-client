@@ -357,6 +357,20 @@ namespace Google.Apis.Tests.Apis.Requests
             SubtestPathParameters(vars, "{&list*}", "&list=red&list=green&list=blue");
         }
 
+        [Fact]
+        public void ThaiComparisonRegression()
+        {
+            using var _ = new CultureSwitcher("th");
+            var builder = new RequestBuilder()
+            {
+                BaseUri = new Uri("https://accounts.google.com/o/oauth2/v2/auth"),
+                Path = "?access_type=offline~"
+            };
+            var actual = builder.BuildUri().AbsoluteUri;
+            var expected = "https://accounts.google.com/o/oauth2/v2/auth?access_type=offline~";
+            Assert.Equal(expected, actual);
+        }
+
         /// <summary>A subtest for path parameters.</summary>
         /// <param name="dic">Dictionary that contain all path parameters.</param>
         /// <param name="path">Path part.</param>
