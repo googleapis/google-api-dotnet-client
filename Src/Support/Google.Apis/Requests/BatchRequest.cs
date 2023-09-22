@@ -187,7 +187,7 @@ namespace Google.Apis.Requests
             const string boundaryKey = "boundary=";
             var fullContent = await result.Content.ReadAsStringAsync().ConfigureAwait(false);
             var contentType = result.Content.Headers.GetValues("Content-Type").First();
-            var boundary = contentType.Substring(contentType.IndexOf(boundaryKey) + boundaryKey.Length);
+            var boundary = contentType.Substring(contentType.IndexOf(boundaryKey, StringComparison.Ordinal) + boundaryKey.Length);
 
             int requestIndex = 0;
             // While there is still content to read, parse the current HTTP response.
@@ -195,13 +195,13 @@ namespace Google.Apis.Requests
             {
                 cancellationToken.ThrowIfCancellationRequested();
 
-                var startIndex = fullContent.IndexOf("--" + boundary);
+                var startIndex = fullContent.IndexOf("--" + boundary, StringComparison.Ordinal);
                 if (startIndex == -1)
                 {
                     break;
                 }
                 fullContent = fullContent.Substring(startIndex + boundary.Length + 2);
-                var endIndex = fullContent.IndexOf("--" + boundary);
+                var endIndex = fullContent.IndexOf("--" + boundary, StringComparison.Ordinal);
                 if (endIndex == -1)
                 {
                     break;

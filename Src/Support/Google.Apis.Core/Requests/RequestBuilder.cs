@@ -193,13 +193,13 @@ namespace Google.Apis.Requests
                     // Check if it contains :n which means we should only use the first n characters of this parameter.
                     if (parameterName.Contains(":"))
                     {
-                        if (!int.TryParse(parameterName.Substring(parameterName.IndexOf(":") + 1), out numOfChars))
+                        if (!int.TryParse(parameterName.Substring(parameterName.IndexOf(':') + 1), out numOfChars))
                         {
                             throw new ArgumentException(
                                 string.Format("Can't parse number after ':' in Path \"{0}\". Parameter is \"{1}\"",
                                     Path, parameterName), Path);
                         }
-                        parameterName = parameterName.Substring(0, parameterName.IndexOf(":"));
+                        parameterName = parameterName.Substring(0, parameterName.IndexOf(':'));
                     }
 
                     // We can improve the following if statement, but for readability we will leave it like that.

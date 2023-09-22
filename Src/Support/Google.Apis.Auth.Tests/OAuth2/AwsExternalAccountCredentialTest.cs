@@ -226,8 +226,8 @@ namespace Google.Apis.Auth.Tests.OAuth2
 
         private static void ValidateSubjectToken(string accessTokenRequestContent)
         {
-            int start = accessTokenRequestContent.IndexOf("subject_token=") + 14;
-            int end = accessTokenRequestContent.IndexOf("&subject_token_type=");
+            int start = accessTokenRequestContent.IndexOf("subject_token=", StringComparison.Ordinal) + 14;
+            int end = accessTokenRequestContent.IndexOf("&subject_token_type=", StringComparison.Ordinal);
             string subjectToken = Uri.UnescapeDataString(accessTokenRequestContent.Substring(start, end - start));
             var deserializedSubjectToken = NewtonsoftJsonSerializer.Instance.Deserialize<AwsSignedSubjectToken>(subjectToken);
 
