@@ -129,19 +129,11 @@ namespace Google.Apis.Tests.Apis.Util
         [Fact]
         public void DateTimeOffsetConversionsAreInvariant()
         {
-            var originalCulture = Thread.CurrentThread.CurrentCulture;
-            try
-            {
-                Thread.CurrentThread.CurrentCulture = new CultureInfo("da-DK");
-                var dto = new DateTimeOffset(2023, 6, 13, 15, 54, 13, 500, TimeSpan.Zero);
-                string text = "2023-06-13T15:54:13.500Z";
-                Assert.Equal(text, Utilities.GetStringFromDateTimeOffset(dto));
-                Assert.Equal(dto, Utilities.GetDateTimeOffsetFromString(text));
-            }
-            finally
-            {
-                Thread.CurrentThread.CurrentCulture = originalCulture;
-            }
+            using var _ = new CultureSwitcher("da-DK");
+            var dto = new DateTimeOffset(2023, 6, 13, 15, 54, 13, 500, TimeSpan.Zero);
+            string text = "2023-06-13T15:54:13.500Z";
+            Assert.Equal(text, Utilities.GetStringFromDateTimeOffset(dto));
+            Assert.Equal(dto, Utilities.GetDateTimeOffsetFromString(text));
         }
 
         // Local time of 2023-06-13T15:54:13, with variable UTC offset.
