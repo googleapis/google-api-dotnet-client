@@ -98,7 +98,7 @@ namespace Google.Apis.Auth.OAuth2.Flows
                 Scope = string.Join(" ", Scopes),
                 RedirectUri = redirectUri,
                 IncludeGrantedScopes = IncludeGrantedScopes.HasValue
-                    ? IncludeGrantedScopes.Value.ToString().ToLower() : null,
+                    ? IncludeGrantedScopes.Value.ToString().ToLowerInvariant() : null,
                 LoginHint = LoginHint,
                 Prompt = Prompt,
                 Nonce = Nonce,
