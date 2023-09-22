@@ -309,12 +309,12 @@ namespace Google.Apis.Auth.OAuth2
         /// </summary>
         internal static string ExtractTargetPrincipal(string url)
         {
-            int start = url.LastIndexOf("/") + 1;
+            int start = url.LastIndexOf('/') + 1;
             if (start == 0 || start >= url.Length)
             {
                 return null;
             }
-            int afterEnd = url.IndexOf($":{GoogleAuthConsts.IamAccessTokenVerb}");
+            int afterEnd = url.IndexOf($":{GoogleAuthConsts.IamAccessTokenVerb}", StringComparison.Ordinal);
             if (afterEnd == -1 || afterEnd <= start)
             {
                 return null;
