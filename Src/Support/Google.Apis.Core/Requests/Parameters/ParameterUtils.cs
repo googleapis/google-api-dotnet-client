@@ -143,7 +143,7 @@ namespace Google.Apis.Requests.Parameters
 
                 // Get the name of this parameter from the attribute, if it doesn't exist take a lower-case variant of
                 // property name.
-                string name = attribute.Name ?? property.Name.ToLower();
+                string name = attribute.Name ?? property.Name.ToLowerInvariant();
 
                 var propertyType = property.PropertyType;
                 var value = property.GetValue(request, null);

@@ -1191,7 +1191,7 @@ namespace Google.Apis.Upload
 
                 if (attribute != null)
                 {
-                    string name = attribute.Name ?? property.Name.ToLower();
+                    string name = attribute.Name ?? property.Name.ToLowerInvariant();
                     object value = property.GetValue(this, null);
                     if (value != null)
                     {
