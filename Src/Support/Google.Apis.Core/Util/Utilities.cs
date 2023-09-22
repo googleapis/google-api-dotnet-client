@@ -263,7 +263,10 @@ namespace Google.Apis.Util
                 return null;
             }
             var json = NewtonsoftJsonSerializer.Instance.Serialize(value);
-            if (json is null || json.Length < 2 || !json.StartsWith("\"") || !json.EndsWith("\""))
+            if (json is null ||
+                json.Length < 2 ||
+                !json.StartsWith("\"", StringComparison.Ordinal) ||
+                !json.EndsWith("\"", StringComparison.Ordinal))
             {
                 throw new ArgumentException("Value did not serialize to a JSON string.");
             }

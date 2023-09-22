@@ -79,7 +79,7 @@ namespace IntegrationTests
         {
             foreach (var bucket in client.Buckets.List(Helper.GetProjectId()).Execute().Items)
             {
-                if (bucket.Name.StartsWith(TestBucketPrefix))
+                if (bucket.Name.StartsWith(TestBucketPrefix, StringComparison.Ordinal))
                 {
                     try
                     {

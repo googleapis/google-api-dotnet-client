@@ -123,16 +123,17 @@ namespace Google.Apis.Requests
                 return baseUri;
             }
             var baseUriStr = baseUri.AbsoluteUri;
-            if (path.StartsWith("/"))
+            if (path.StartsWith("/", StringComparison.Ordinal))
             {
                 // Path is absolute; remove any path on the base URI.
                 baseUriStr = Regex.Replace(baseUriStr, "^([^:]+://[^/]+)/.*$", "$1");
             }
             else
             {
-                if (!path.StartsWith("?") && !path.StartsWith("#"))
+                if (!path.StartsWith("?", StringComparison.Ordinal) &&
+                    !path.StartsWith("#", StringComparison.Ordinal))
                 {
-                    while (!baseUriStr.EndsWith("/"))
+                    while (!baseUriStr.EndsWith("/", StringComparison.Ordinal))
                     {
                         baseUriStr = baseUriStr.Substring(0, baseUriStr.Length - 1);
                     }

@@ -127,7 +127,7 @@ namespace Google.Apis.Auth.OAuth2
                         if (await reader.ReadLineAsync().ConfigureAwait(false) is string role && role != "")
                         {
                             // Attach the role to the given credential URL to fetch the actual credentials.
-                            return credentialUrl.EndsWith("/") ? $"{credentialUrl}{role}" : $"{credentialUrl}/{role}";
+                            return credentialUrl.EndsWith("/", StringComparison.Ordinal) ? $"{credentialUrl}{role}" : $"{credentialUrl}/{role}";
                         }
                     }
 

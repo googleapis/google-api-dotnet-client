@@ -34,7 +34,7 @@ namespace Google.Apis.Auth.AspNetCore
 
         internal static IReadOnlyList<string> ParsePolicy(string policy)
         {
-            if (!policy.StartsWith(PolicyPrefix))
+            if (!policy.StartsWith(PolicyPrefix, StringComparison.Ordinal))
             {
                 return null;
             }

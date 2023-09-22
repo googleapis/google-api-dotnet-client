@@ -89,7 +89,7 @@ namespace Google.Apis.Tests.Apis.Upload
                     var context = await _httpListener.GetContextAsync();
                     Logger.WriteLine($"HttpListener received request {requestId} with path {context.Request.Url.AbsolutePath}");
                     var response = context.Response;
-                    if (context.Request.Url.AbsolutePath.EndsWith("/Quit"))
+                    if (context.Request.Url.AbsolutePath.EndsWith("/Quit", StringComparison.Ordinal))
                     {
                         response.Close();
                         _httpListener.Stop();
@@ -146,7 +146,7 @@ namespace Google.Apis.Tests.Apis.Upload
                 public string RemovePrefix(string s)
                 {
                     var prefix = $"/{Id}/";
-                    if (s.StartsWith(prefix))
+                    if (s.StartsWith(prefix, StringComparison.Ordinal))
                     {
                         return s.Substring(prefix.Length);
                     }

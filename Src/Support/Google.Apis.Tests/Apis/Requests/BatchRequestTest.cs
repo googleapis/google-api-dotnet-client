@@ -223,7 +223,7 @@ Content-Length: 202
                 var contentType = request.Content.Headers.ContentType;
                 Assert.Equal("multipart/mixed", contentType.MediaType.ToString());
                 var parameter = Assert.Single(contentType.Parameters);
-                Assert.True(parameter.ToString().StartsWith("boundary="),
+                Assert.True(parameter.ToString().StartsWith("boundary=", StringComparison.Ordinal),
                     "Parameter should start with boundary=");
                 var boundary = parameter.ToString().Substring("boundary=".Length).
                     Replace("\"", "");

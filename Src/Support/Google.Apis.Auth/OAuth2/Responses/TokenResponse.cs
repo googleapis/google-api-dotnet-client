@@ -157,7 +157,7 @@ namespace Google.Apis.Auth.OAuth2.Responses
                     // as TokenErrorResponse. Since the content has nothing but a single error field, We
                     // just use the content itself as the error. For example:
                     // "{"error": {"code": 404, "message": "...", "errors": [{"message": "...", ...}], "status": "NOT_FOUND"}}" 
-                    var error = response.RequestMessage?.RequestUri?.AbsoluteUri.StartsWith(GoogleAuthConsts.IamServiceAccountEndpointCommonPrefix) == true ?
+                    var error = response.RequestMessage?.RequestUri?.AbsoluteUri.StartsWith(GoogleAuthConsts.IamServiceAccountEndpointCommonPrefix, StringComparison.Ordinal) == true ?
                         new TokenErrorResponse { Error = content } :
                         NewtonsoftJsonSerializer.Instance.Deserialize<TokenErrorResponse>(content);
                     throw new TokenResponseException(error, response.StatusCode);
@@ -166,7 +166,7 @@ namespace Google.Apis.Auth.OAuth2.Responses
                 TokenResponse newToken;
                 // GCE's metadata server identity endpoint doesn't return a TokenResponse but the raw
                 // id_token, so we build a TokenResponse from that.
-                if (response.RequestMessage?.RequestUri?.AbsoluteUri.StartsWith(GoogleAuthConsts.EffectiveComputeOidcTokenUrl) == true)
+                if (response.RequestMessage?.RequestUri?.AbsoluteUri.StartsWith(GoogleAuthConsts.EffectiveComputeOidcTokenUrl, StringComparison.Ordinal) == true)
                 {
                     newToken = new TokenResponse
                     {

@@ -132,7 +132,7 @@ namespace Google.Apis.Tests.Apis.Download
                     var requestUri = context.Request.Url;
                     var response = context.Response;
 
-                    if (requestUri.AbsolutePath.EndsWith("/Quit"))
+                    if (requestUri.AbsolutePath.EndsWith("/Quit", StringComparison.Ordinal))
                     {
                         // Shut down the HTTP server.
                         response.Close();
@@ -148,13 +148,13 @@ namespace Google.Apis.Tests.Apis.Download
 
                     Stream outStream = new MemoryStream();
 
-                    if (requestUri.AbsolutePath.EndsWith("/EchoUrl"))
+                    if (requestUri.AbsolutePath.EndsWith("/EchoUrl", StringComparison.Ordinal))
                     {
                         // Return the URL that we saw.
                         byte[] uriBytes = Encoding.UTF8.GetBytes(requestUri.AbsoluteUri);
                         outStream.Write(uriBytes, 0, uriBytes.Length);
                     }
-                    else if (requestUri.AbsolutePath.EndsWith("/BadRequestJson"))
+                    else if (requestUri.AbsolutePath.EndsWith("/BadRequestJson", StringComparison.Ordinal))
                     {
                         // Return 400 with a JSON-encoded error.
                         var apiResponse = new StandardResponse<object> { Error = BadRequestError };
@@ -164,14 +164,14 @@ namespace Google.Apis.Tests.Apis.Download
                         response.StatusCode = (int)HttpStatusCode.BadRequest;
                         outStream.Write(apiResponseBytes, 0, apiResponseBytes.Length);
                     }
-                    else if (requestUri.AbsolutePath.EndsWith("/NotFoundPlainText"))
+                    else if (requestUri.AbsolutePath.EndsWith("/NotFoundPlainText", StringComparison.Ordinal))
                     {
                         // Return 404 with a plaintext error.
                         response.StatusCode = (int)HttpStatusCode.NotFound;
                         byte[] errorBytes = Encoding.UTF8.GetBytes(NotFoundError);
                         outStream.Write(errorBytes, 0, errorBytes.Length);
                     }
-                    else if (requestUri.AbsolutePath.EndsWith("/GzipContent"))
+                    else if (requestUri.AbsolutePath.EndsWith("/GzipContent", StringComparison.Ordinal))
                     {
                         // Return gzip-compressed content.
                         using (var gzipStream = new GZipStream(outStream, CompressionMode.Compress, true))
@@ -180,7 +180,7 @@ namespace Google.Apis.Tests.Apis.Download
                         }
                         response.AddHeader("Content-Encoding", "gzip");
                     }
-                    else if (requestUri.AbsolutePath.EndsWith("/NoContent"))
+                    else if (requestUri.AbsolutePath.EndsWith("/NoContent", StringComparison.Ordinal))
                     {
                         // Return 206 and no content.
                         response.StatusCode = (int)HttpStatusCode.NoContent;

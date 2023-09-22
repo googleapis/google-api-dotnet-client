@@ -280,7 +280,7 @@ namespace Google.Apis.Auth.OAuth2
                     throw new ServerException($"Expected 'GET' request, got '{requestVerb}'");
                 }
                 string requestPath = requestLineParts[1];
-                if (!requestPath.StartsWith(LoopbackCallbackPath))
+                if (!requestPath.StartsWith(LoopbackCallbackPath, StringComparison.Ordinal))
                 {
                     throw new ServerException($"Expected request path to start '{LoopbackCallbackPath}', got '{requestPath}'");
                 }

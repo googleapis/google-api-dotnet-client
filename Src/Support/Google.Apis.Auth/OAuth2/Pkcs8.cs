@@ -223,7 +223,8 @@ namespace Google.Apis.Auth.OAuth2
 
             Utilities.ThrowIfNullOrEmpty(pkcs8PrivateKey, nameof(pkcs8PrivateKey));
             pkcs8PrivateKey = pkcs8PrivateKey.Trim();
-            if (!pkcs8PrivateKey.StartsWith(PrivateKeyPrefix) || !pkcs8PrivateKey.EndsWith(PrivateKeySuffix))
+            if (!pkcs8PrivateKey.StartsWith(PrivateKeyPrefix, StringComparison.Ordinal) ||
+                !pkcs8PrivateKey.EndsWith(PrivateKeySuffix, StringComparison.Ordinal))
             {
                 throw new ArgumentException(
                     $"PKCS8 data must be contained within '{PrivateKeyPrefix}' and '{PrivateKeySuffix}'.", nameof(pkcs8PrivateKey));
