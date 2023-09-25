@@ -5499,13 +5499,15 @@ namespace Google.Apis.Connectors.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enrichmentEnabled")]
         public virtual System.Nullable<bool> EnrichmentEnabled { get; set; }
 
+        /// <summary>
+        /// Optional. Ingress endpoint of the event listener. This is used only when private connectivity is enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventsListenerIngressEndpoint")]
+        public virtual string EventsListenerIngressEndpoint { get; set; }
+
         /// <summary>Optional. Private Connectivity Enabled.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("privateConnectivityEnabled")]
         public virtual System.Nullable<bool> PrivateConnectivityEnabled { get; set; }
-
-        /// <summary>Optional. Public Events listener endpoint.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("publicEventsListenerEndpoint")]
-        public virtual string PublicEventsListenerEndpoint { get; set; }
 
         /// <summary>Registration endpoint for auto registration.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("registrationDestinationConfig")]
@@ -5597,6 +5599,13 @@ namespace Google.Apis.Connectors.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("eventsListenerEndpoint")]
         public virtual string EventsListenerEndpoint { get; set; }
+
+        /// <summary>
+        /// Output only. Events listener PSC Service attachment. The value will be populated after provisioning the
+        /// events listener with private connectivity enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("eventsListenerPscSa")]
+        public virtual string EventsListenerPscSa { get; set; }
 
         /// <summary>Output only. Current status of eventing.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
@@ -6857,6 +6866,14 @@ namespace Google.Apis.Connectors.v1.Data
         /// <summary>Output only. Name of the action.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("action")]
         public virtual string Action { get; set; }
+
+        /// <summary>Output only. Brief Description of action</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Output only. Display Name of action to be shown on client side</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
 
         /// <summary>Output only. JsonSchema representation of this action's input metadata</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputJsonSchema")]

@@ -749,6 +749,10 @@ namespace Google.Apis.Document.v1beta2.Data
     /// <summary>The status of individual documents in the auto-labeling process.</summary>
     public class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadataIndividualAutoLabelStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The document id of the auto-labeled document. This will replace the gcs_uri.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
+        public virtual GoogleCloudDocumentaiUiv1beta3DocumentId DocumentId { get; set; }
+
         /// <summary>The gcs_uri of the auto-labeling document, which uniquely identifies a dataset document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
         public virtual string GcsUri { get; set; }
@@ -5405,7 +5409,9 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A singleton resource under a Processor which configures a collection of documents.</summary>
+    /// <summary>
+    /// A singleton resource under a Processor which configures a collection of documents. Next Id: 8.
+    /// </summary>
     public class GoogleCloudDocumentaiV1beta3Dataset : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Document AI Warehouse-based dataset configuration.</summary>

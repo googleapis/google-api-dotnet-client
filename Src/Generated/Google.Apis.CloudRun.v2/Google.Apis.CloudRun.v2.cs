@@ -3873,18 +3873,27 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>VPC network settings.</summary>
+    /// <summary>Direct VPC egress settings.</summary>
     public class GoogleCloudRunV2NetworkInterface : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The VPC network name to access to. Defaults to "default" network.</summary>
+        /// <summary>
+        /// The VPC network that the Cloud Run resource will be able to send traffic to. At least one of network or
+        /// subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must
+        /// belong to the given VPC network. If network is not specified, it will be looked up from the subnetwork.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
-        /// <summary>The VPC subnetwork name to access to. Defaults to the same vaule of network.</summary>
+        /// <summary>
+        /// The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must
+        /// be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the
+        /// given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will
+        /// be used.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("subnetwork")]
         public virtual string Subnetwork { get; set; }
 
-        /// <summary>Network tags applied to this VPC network.</summary>
+        /// <summary>Network tags applied to this Cloud Run resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; }
 
@@ -5091,6 +5100,46 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("satisfiesPzs")]
         public virtual System.Nullable<bool> SatisfiesPzs { get; set; }
 
+        private string _scheduledTimeRaw;
+
+        private object _scheduledTime;
+
+        /// <summary>
+        /// Output only. Represents time when the task was scheduled to run by the system. It is not guaranteed to be
+        /// set in happens-before order across separate operations.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("scheduledTime")]
+        public virtual string ScheduledTimeRaw
+        {
+            get => _scheduledTimeRaw;
+            set
+            {
+                _scheduledTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _scheduledTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ScheduledTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ScheduledTimeDateTimeOffset instead.")]
+        public virtual object ScheduledTime
+        {
+            get => _scheduledTime;
+            set
+            {
+                _scheduledTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _scheduledTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ScheduledTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ScheduledTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ScheduledTimeRaw);
+            set => ScheduledTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary>
         /// Email address of the IAM service account associated with the Task of a Job. The service account represents
         /// the identity of the running task, and determines what permissions the task has. If not provided, the task
@@ -5410,15 +5459,15 @@ namespace Google.Apis.CloudRun.v2.Data
     }
 
     /// <summary>
-    /// VPC Access settings. For more information on creating a VPC Connector, visit
-    /// https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For information on how to configure Cloud Run
-    /// with an existing VPC Connector, visit https://cloud.google.com/run/docs/configuring/connecting-vpc
+    /// VPC Access settings. For more information on sending traffic to a VPC network, visit
+    /// https://cloud.google.com/run/docs/configuring/connecting-vpc.
     /// </summary>
     public class GoogleCloudRunV2VpcAccess : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where
-        /// {project} can be project id or number.
+        /// {project} can be project id or number. For more information on sending traffic to a VPC network via a
+        /// connector, visit https://cloud.google.com/run/docs/configuring/vpc-connectors.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("connector")]
         public virtual string Connector { get; set; }
@@ -5427,7 +5476,7 @@ namespace Google.Apis.CloudRun.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("egress")]
         public virtual string Egress { get; set; }
 
-        /// <summary>VPC network to access to. Currently only single network interface is supported.</summary>
+        /// <summary>Direct VPC egress settings. Currently only single network interface is supported.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkInterfaces")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2NetworkInterface> NetworkInterfaces { get; set; }
 

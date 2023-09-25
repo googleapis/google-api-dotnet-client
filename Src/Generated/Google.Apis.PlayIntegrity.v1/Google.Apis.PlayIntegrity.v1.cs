@@ -407,7 +407,7 @@ namespace Google.Apis.PlayIntegrity.v1.Data
     /// <summary>Contains the device attestation information.</summary>
     public class DeviceIntegrity : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Details about the integrity of the device the app is running on</summary>
+        /// <summary>Details about the integrity of the device the app is running on.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("deviceRecognitionVerdict")]
         public virtual System.Collections.Generic.IList<string> DeviceRecognitionVerdict { get; set; }
 

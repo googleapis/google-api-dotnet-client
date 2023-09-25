@@ -11058,7 +11058,7 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual GoogleRpcStatus Details { get; set; }
 
-        /// <summary>The times the error occurred.</summary>
+        /// <summary>The times the error occurred. List includes the oldest timestamp, and the last 9 ones.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timestamps")]
         public virtual System.Collections.Generic.IList<object> Timestamps { get; set; }
 

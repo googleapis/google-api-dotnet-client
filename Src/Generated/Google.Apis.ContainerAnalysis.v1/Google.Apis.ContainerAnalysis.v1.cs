@@ -3756,7 +3756,7 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         /// <summary>
         /// List of build step outputs, produced by builder images, in the order corresponding to build step indices.
         /// [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by
-        /// writing to `$BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.
+        /// writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildStepOutputs")]
         public virtual System.Collections.Generic.IList<string> BuildStepOutputs { get; set; }
@@ -3890,6 +3890,18 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
         public virtual System.Collections.Generic.IDictionary<string, ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes> FileHashes { get; set; }
+
+        /// <summary>
+        /// Output only. A copy of the build's `source.connected_repository`, if exists, with any revisions resolved.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedConnectedRepository")]
+        public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1ConnectedRepository ResolvedConnectedRepository { get; set; }
+
+        /// <summary>
+        /// Output only. A copy of the build's `source.git_source`, if exists, with any revisions resolved.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedGitSource")]
+        public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1GitSource ResolvedGitSource { get; set; }
 
         /// <summary>A copy of the build's `source.repo_source`, if exists, with any revisions resolved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolvedRepoSource")]
@@ -7275,6 +7287,10 @@ namespace Google.Apis.ContainerAnalysis.v1.Data
         /// <summary>Details of all known distros and packages affected by this vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<Detail> Details { get; set; }
+
+        /// <summary>Occurrence-specific extra details about the vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extraDetails")]
+        public virtual string ExtraDetails { get; set; }
 
         /// <summary>The note provider assigned severity of this vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]

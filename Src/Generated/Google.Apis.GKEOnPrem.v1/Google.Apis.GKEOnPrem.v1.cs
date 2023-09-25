@@ -10790,7 +10790,8 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         public virtual ValidationCheck ValidationCheck { get; set; }
 
         /// <summary>
-        /// VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
+        /// VmwareVCenterConfig specifies vCenter config for the user cluster. If unspecified, it is inherited from the
+        /// admin cluster.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("vcenter")]
         public virtual VmwareVCenterConfig Vcenter { get; set; }

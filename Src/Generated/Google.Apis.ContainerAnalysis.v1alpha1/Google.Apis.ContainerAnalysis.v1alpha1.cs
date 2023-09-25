@@ -4776,7 +4776,7 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// <summary>
         /// List of build step outputs, produced by builder images, in the order corresponding to build step indices.
         /// [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by
-        /// writing to `$BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.
+        /// writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildStepOutputs")]
         public virtual System.Collections.Generic.IList<string> BuildStepOutputs { get; set; }
@@ -4910,6 +4910,18 @@ namespace Google.Apis.ContainerAnalysis.v1alpha1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
         public virtual System.Collections.Generic.IDictionary<string, ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes> FileHashes { get; set; }
+
+        /// <summary>
+        /// Output only. A copy of the build's `source.connected_repository`, if exists, with any revisions resolved.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedConnectedRepository")]
+        public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1ConnectedRepository ResolvedConnectedRepository { get; set; }
+
+        /// <summary>
+        /// Output only. A copy of the build's `source.git_source`, if exists, with any revisions resolved.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedGitSource")]
+        public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1GitSource ResolvedGitSource { get; set; }
 
         /// <summary>A copy of the build's `source.repo_source`, if exists, with any revisions resolved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolvedRepoSource")]

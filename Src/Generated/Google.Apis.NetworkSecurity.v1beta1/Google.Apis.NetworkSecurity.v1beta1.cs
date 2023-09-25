@@ -7770,6 +7770,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("associatedNetworks")]
         public virtual System.Collections.Generic.IList<string> AssociatedNetworks { get; set; }
 
+        /// <summary>Optional. Project to bill on endpoint uptime usage.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("billingProjectId")]
+        public virtual string BillingProjectId { get; set; }
+
         private string _createTimeRaw;
 
         private object _createTime;

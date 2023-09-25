@@ -5676,12 +5676,12 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>An insight about an asset (experimental insight)</summary>
+    /// <summary>A generic insight about an asset.</summary>
     public class GenericInsight : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Output only. Additional information about the insight, each entry can be a logical entry and must make sense
-        /// if it is displayed with line breaks between each entry. Text can contain md style links
+        /// if it is displayed with line breaks between each entry. Text can contain md style links.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("additionalInformation")]
         public virtual System.Collections.Generic.IList<string> AdditionalInformation { get; set; }
@@ -7203,7 +7203,7 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
 
         private object _sampleTime;
 
-        /// <summary>Time the sample was If omitted, the frame report time will be used.</summary>
+        /// <summary>Time the sample was collected. If omitted, the frame report time will be used.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sampleTime")]
         public virtual string SampleTimeRaw
         {

@@ -2800,6 +2800,10 @@ namespace Google.Apis.Document.v1beta3.Data
     /// <summary>The status of individual documents in the auto-labeling process.</summary>
     public class GoogleCloudDocumentaiUiv1beta3AutoLabelDocumentsMetadataIndividualAutoLabelStatus : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The document id of the auto-labeled document. This will replace the gcs_uri.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
+        public virtual GoogleCloudDocumentaiUiv1beta3DocumentId DocumentId { get; set; }
+
         /// <summary>The gcs_uri of the auto-labeling document, which uniquely identifies a dataset document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
         public virtual string GcsUri { get; set; }
@@ -7410,7 +7414,9 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A singleton resource under a Processor which configures a collection of documents.</summary>
+    /// <summary>
+    /// A singleton resource under a Processor which configures a collection of documents. Next Id: 8.
+    /// </summary>
     public class GoogleCloudDocumentaiV1beta3Dataset : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Document AI Warehouse-based dataset configuration.</summary>
@@ -9605,9 +9611,19 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("advancedOcrOptions")]
         public virtual System.Collections.Generic.IList<string> AdvancedOcrOptions { get; set; }
 
-        /// <summary>Turn on font identification model and return font style information.</summary>
+        /// <summary>
+        /// Turn on font identification model and return font style information. Deprecated, use
+        /// PremiumFeatures.compute_style_info instead.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("computeStyleInfo")]
         public virtual System.Nullable<bool> ComputeStyleInfo { get; set; }
+
+        /// <summary>
+        /// Turn off character box detector in OCR engine. Character box detection is enabled by default in OCR 2.0+
+        /// processors.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("disableCharacterBoxesDetection")]
+        public virtual System.Nullable<bool> DisableCharacterBoxesDetection { get; set; }
 
         /// <summary>
         /// Enables intelligent document quality scores after OCR. Can help with diagnosing why OCR responses are of
@@ -9631,6 +9647,10 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("hints")]
         public virtual GoogleCloudDocumentaiV1beta3OcrConfigHints Hints { get; set; }
 
+        /// <summary>Configurations for premium OCR features.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("premiumFeatures")]
+        public virtual GoogleCloudDocumentaiV1beta3OcrConfigPremiumFeatures PremiumFeatures { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -9651,9 +9671,40 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Configurations for premium OCR features.</summary>
+    public class GoogleCloudDocumentaiV1beta3OcrConfigPremiumFeatures : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Turn on font identification model and return font style information.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("computeStyleInfo")]
+        public virtual System.Nullable<bool> ComputeStyleInfo { get; set; }
+
+        /// <summary>Turn on the model that can extract LaTeX math formulas.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableMathOcr")]
+        public virtual System.Nullable<bool> EnableMathOcr { get; set; }
+
+        /// <summary>Turn on selection mark detector in OCR engine. Only available in OCR 2.0+ processors.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enableSelectionMarkDetection")]
+        public virtual System.Nullable<bool> EnableSelectionMarkDetection { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Options for Process API</summary>
     public class GoogleCloudDocumentaiV1beta3ProcessOptions : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Only process certain pages from the end, same as above.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fromEnd")]
+        public virtual System.Nullable<int> FromEnd { get; set; }
+
+        /// <summary>Only process certain pages from the start, process all if the document has less pages.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fromStart")]
+        public virtual System.Nullable<int> FromStart { get; set; }
+
+        /// <summary>Which pages to process (1-indexed).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("individualPageSelector")]
+        public virtual GoogleCloudDocumentaiV1beta3ProcessOptionsIndividualPageSelector IndividualPageSelector { get; set; }
+
         /// <summary>Only applicable to `OCR_PROCESSOR`. Returns error if set on other processor types.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ocrConfig")]
         public virtual GoogleCloudDocumentaiV1beta3OcrConfig OcrConfig { get; set; }
@@ -9664,6 +9715,17 @@ namespace Google.Apis.Document.v1beta3.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("schemaOverride")]
         public virtual GoogleCloudDocumentaiV1beta3DocumentSchema SchemaOverride { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of individual page numbers.</summary>
+    public class GoogleCloudDocumentaiV1beta3ProcessOptionsIndividualPageSelector : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Indices of the pages (starting from 1).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pages")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> Pages { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

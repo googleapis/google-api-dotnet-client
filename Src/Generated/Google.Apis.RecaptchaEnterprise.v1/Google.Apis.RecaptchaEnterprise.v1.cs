@@ -1685,6 +1685,10 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fraudPreventionAssessment")]
         public virtual GoogleCloudRecaptchaenterpriseV1FraudPreventionAssessment FraudPreventionAssessment { get; set; }
 
+        /// <summary>Output only. Fraud Signals specific to the users involved in a payment transaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fraudSignals")]
+        public virtual GoogleCloudRecaptchaenterpriseV1FraudSignals FraudSignals { get; set; }
+
         /// <summary>
         /// Output only. The resource name for the Assessment in the format
         /// "projects/{project}/assessments/{assessment}".
@@ -2113,6 +2117,53 @@ namespace Google.Apis.RecaptchaEnterprise.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("risk")]
         public virtual System.Nullable<float> Risk { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Fraud signals describing users and cards involved in the transaction.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1FraudSignals : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Signals describing the payment card or cards used in this transaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cardSignals")]
+        public virtual GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals CardSignals { get; set; }
+
+        /// <summary>Output only. Signals describing the end user in this transaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("userSignals")]
+        public virtual GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals UserSignals { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Signals describing the payment card used in this transaction.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1FraudSignalsCardSignals : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The labels for the payment card in this transaction.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cardLabels")]
+        public virtual System.Collections.Generic.IList<string> CardLabels { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Signals describing the user involved in this transaction.</summary>
+    public class GoogleCloudRecaptchaenterpriseV1FraudSignalsUserSignals : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. This user (based on email, phone, and other identifiers) has been seen on the internet for at
+        /// least this number of days.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activeDaysLowerBound")]
+        public virtual System.Nullable<int> ActiveDaysLowerBound { get; set; }
+
+        /// <summary>
+        /// Output only. Likelihood (from 0.0 to 1.0) this user includes synthetic components in their identity, such as
+        /// a randomly generated email address, temporary phone number, or fake shipping address.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("syntheticRisk")]
+        public virtual System.Nullable<float> SyntheticRisk { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
