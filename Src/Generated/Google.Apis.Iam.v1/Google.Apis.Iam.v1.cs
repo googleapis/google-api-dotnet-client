@@ -3032,7 +3032,6 @@ namespace Google.Apis.Iam.v1
                         this.service = service;
                         ManagedIdentities = new ManagedIdentitiesResource(service);
                         Operations = new OperationsResource(service);
-                        WorkloadSources = new WorkloadSourcesResource(service);
                     }
 
                     /// <summary>Gets the ManagedIdentities resource.</summary>
@@ -3277,94 +3276,6 @@ namespace Google.Apis.Iam.v1
                                     DefaultValue = null,
                                     Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/namespaces/[^/]+/operations/[^/]+$",
                                 });
-                            }
-                        }
-                    }
-
-                    /// <summary>Gets the WorkloadSources resource.</summary>
-                    public virtual WorkloadSourcesResource WorkloadSources { get; }
-
-                    /// <summary>The "workloadSources" collection of methods.</summary>
-                    public class WorkloadSourcesResource
-                    {
-                        private const string Resource = "workloadSources";
-
-                        /// <summary>The service which this resource belongs to.</summary>
-                        private readonly Google.Apis.Services.IClientService service;
-
-                        /// <summary>Constructs a new resource.</summary>
-                        public WorkloadSourcesResource(Google.Apis.Services.IClientService service)
-                        {
-                            this.service = service;
-                            Operations = new OperationsResource(service);
-                        }
-
-                        /// <summary>Gets the Operations resource.</summary>
-                        public virtual OperationsResource Operations { get; }
-
-                        /// <summary>The "operations" collection of methods.</summary>
-                        public class OperationsResource
-                        {
-                            private const string Resource = "operations";
-
-                            /// <summary>The service which this resource belongs to.</summary>
-                            private readonly Google.Apis.Services.IClientService service;
-
-                            /// <summary>Constructs a new resource.</summary>
-                            public OperationsResource(Google.Apis.Services.IClientService service)
-                            {
-                                this.service = service;
-                            }
-
-                            /// <summary>
-                            /// Gets the latest state of a long-running operation. Clients can use this method to poll
-                            /// the operation result at intervals as recommended by the API service.
-                            /// </summary>
-                            /// <param name="name">The name of the operation resource.</param>
-                            public virtual GetRequest Get(string name)
-                            {
-                                return new GetRequest(service, name);
-                            }
-
-                            /// <summary>
-                            /// Gets the latest state of a long-running operation. Clients can use this method to poll
-                            /// the operation result at intervals as recommended by the API service.
-                            /// </summary>
-                            public class GetRequest : IamBaseServiceRequest<Google.Apis.Iam.v1.Data.Operation>
-                            {
-                                /// <summary>Constructs a new Get request.</summary>
-                                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                                {
-                                    Name = name;
-                                    InitParameters();
-                                }
-
-                                /// <summary>The name of the operation resource.</summary>
-                                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                                public virtual string Name { get; private set; }
-
-                                /// <summary>Gets the method name.</summary>
-                                public override string MethodName => "get";
-
-                                /// <summary>Gets the HTTP method.</summary>
-                                public override string HttpMethod => "GET";
-
-                                /// <summary>Gets the REST path.</summary>
-                                public override string RestPath => "v1/{+name}";
-
-                                /// <summary>Initializes Get parameter list.</summary>
-                                protected override void InitParameters()
-                                {
-                                    base.InitParameters();
-                                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                                    {
-                                        Name = "name",
-                                        IsRequired = true,
-                                        ParameterType = "path",
-                                        DefaultValue = null,
-                                        Pattern = @"^projects/[^/]+/locations/[^/]+/workloadIdentityPools/[^/]+/namespaces/[^/]+/workloadSources/[^/]+/operations/[^/]+$",
-                                    });
-                                }
                             }
                         }
                     }
@@ -7740,6 +7651,16 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string IssuerUri { get; set; }
 
         /// <summary>
+        /// OIDC JWKs in JSON String format. For details on the definition of a JWK, see
+        /// https://tools.ietf.org/html/rfc7517. If not set, the `jwks_uri` from the discovery document(fetched from the
+        /// .well-known path of the `issuer_uri`) will be used. Currently, RSA and EC asymmetric keys are supported. The
+        /// JWK must use following format and include only the following fields: { "keys": [ { "kty": "RSA/EC", "alg":
+        /// "", "use": "sig", "kid": "", "n": "", "e": "", "x": "", "y": "", "crv": "" } ] }
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("jwksJson")]
+        public virtual string JwksJson { get; set; }
+
+        /// <summary>
         /// Required. Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console
         /// sign-in and gcloud sign-in through the browser.
         /// </summary>
@@ -7818,7 +7739,7 @@ namespace Google.Apis.Iam.v1.Data
         /// the acceptable xml document will be bounded to 128k characters. The metadata xml document should satisfy the
         /// following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at least one
         /// non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than 7 days
-        /// from now. b) Valid to should be no more than 14 years in the future. 4) Up to 3 IdP signing keys are allowed
+        /// from now. b) Valid to should be no more than 15 years in the future. 4) Up to 3 IdP signing keys are allowed
         /// in the metadata xml. When updating the provider's metadata xml, at least one non-expired signing key must
         /// overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys
         /// present in the existing metadata.
@@ -8231,6 +8152,111 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Represents the metadata of the long-running operation.</summary>
+    public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. API version used to start the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; }
+
+        /// <summary>
+        /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
+        /// been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to
+        /// `Code.CANCELLED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
+        public virtual System.Nullable<bool> CancelRequested { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Output only. Human-readable status of the operation, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
+        public virtual string StatusDetail { get; set; }
+
+        /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; }
+
+        /// <summary>Output only. Name of the verb executed by the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verb")]
+        public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// The service account patch request. You can patch only the `display_name` and `description` fields. You must use
     /// the `update_mask` field to specify which of these fields you want to patch. Only the fields specified in the
@@ -8567,7 +8593,7 @@ namespace Google.Apis.Iam.v1.Data
         /// The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document
         /// should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at
         /// least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than
-        /// 7 days from now. b) Valid to should be no more than 14 years in the future. 4) Upto 3 IdP signing keys are
+        /// 7 days from now. b) Valid to should be no more than 15 years in the future. 4) Upto 3 IdP signing keys are
         /// allowed in the metadata xml. When updating the provider's metadata xml, at lease one non-expired signing key
         /// must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing
         /// keys present in the existing metadata
@@ -9335,8 +9361,8 @@ namespace Google.Apis.Iam.v1.Data
     }
 
     /// <summary>
-    /// Represents a collection of external workload identities. You can define IAM policies to grant these identities
-    /// access to Google Cloud resources.
+    /// Represents a collection of workload identities. You can define IAM policies to grant these identities access to
+    /// Google Cloud resources.
     /// </summary>
     public class WorkloadIdentityPool : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9434,7 +9460,7 @@ namespace Google.Apis.Iam.v1.Data
         public virtual string AttributeCondition { get; set; }
 
         /// <summary>
-        /// Maps attributes from authentication credentials issued by an external identity provider to Google Cloud
+        ///  Maps attributes from authentication credentials issued by an external identity provider to Google Cloud
         /// attributes, such as `subject` and `segment`. Each key must be a string specifying the Google Cloud IAM
         /// attribute to map to. The following keys are supported: * `google.subject`: The principal IAM is
         /// authenticating. You can reference this value in IAM bindings. This is also the subject that appears in Cloud

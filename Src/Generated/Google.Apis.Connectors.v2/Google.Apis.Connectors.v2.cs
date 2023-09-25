@@ -1350,6 +1350,14 @@ namespace Google.Apis.Connectors.v2.Data
     /// </summary>
     public class Action : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Brief Description of action</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Display Name of action to be shown on client side</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
         /// <summary>JsonSchema representation of this actions's input schema</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("inputJsonSchema")]
         public virtual JsonSchema InputJsonSchema { get; set; }
@@ -1546,6 +1554,13 @@ namespace Google.Apis.Connectors.v2.Data
     /// </summary>
     public class InputParameter : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// The following map contains fields that are not explicitly mentioned above,this give connectors the
+        /// flexibility to add new metadata fields.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("additionalDetails")]
+        public virtual System.Collections.Generic.IDictionary<string, object> AdditionalDetails { get; set; }
+
         /// <summary>The data type of the Parameter</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataType")]
         public virtual string DataType { get; set; }
@@ -1728,7 +1743,7 @@ namespace Google.Apis.Connectors.v2.Data
         public virtual string DataType { get; set; }
 
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
-        public virtual string Value { get; set; }
+        public virtual object Value { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

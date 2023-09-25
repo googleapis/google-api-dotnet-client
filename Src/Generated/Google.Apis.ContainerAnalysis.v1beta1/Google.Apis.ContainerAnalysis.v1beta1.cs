@@ -3806,7 +3806,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// <summary>
         /// List of build step outputs, produced by builder images, in the order corresponding to build step indices.
         /// [Cloud Builders](https://cloud.google.com/cloud-build/docs/cloud-builders) can produce this output by
-        /// writing to `$BUILDER_OUTPUT/output`. Only the first 4KB of data is stored.
+        /// writing to `$BUILDER_OUTPUT/output`. Only the first 50KB of data is stored.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("buildStepOutputs")]
         public virtual System.Collections.Generic.IList<string> BuildStepOutputs { get; set; }
@@ -3940,6 +3940,18 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
         public virtual System.Collections.Generic.IDictionary<string, ContaineranalysisGoogleDevtoolsCloudbuildV1FileHashes> FileHashes { get; set; }
+
+        /// <summary>
+        /// Output only. A copy of the build's `source.connected_repository`, if exists, with any revisions resolved.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedConnectedRepository")]
+        public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1ConnectedRepository ResolvedConnectedRepository { get; set; }
+
+        /// <summary>
+        /// Output only. A copy of the build's `source.git_source`, if exists, with any revisions resolved.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedGitSource")]
+        public virtual ContaineranalysisGoogleDevtoolsCloudbuildV1GitSource ResolvedGitSource { get; set; }
 
         /// <summary>A copy of the build's `source.repo_source`, if exists, with any revisions resolved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolvedRepoSource")]
@@ -4515,6 +4527,43 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
             set => LastAnalysisTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
+        private string _lastScanTimeRaw;
+
+        private object _lastScanTime;
+
+        /// <summary>The last time this resource was scanned.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastScanTime")]
+        public virtual string LastScanTimeRaw
+        {
+            get => _lastScanTimeRaw;
+            set
+            {
+                _lastScanTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastScanTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastScanTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastScanTimeDateTimeOffset instead.")]
+        public virtual object LastScanTime
+        {
+            get => _lastScanTime;
+            set
+            {
+                _lastScanTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastScanTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastScanTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastScanTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastScanTimeRaw);
+            set => LastScanTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary>The status of an SBOM generation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("sbomStatus")]
         public virtual SBOMStatus SbomStatus { get; set; }
@@ -4576,7 +4625,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
     /// <summary>
     /// DocumentNote represents an SPDX Document Creation Information section:
-    /// https://spdx.github.io/spdx-spec/v2.3/document-creation-information/
+    /// https://spdx.github.io/spdx-spec/2-document-creation-information/
     /// </summary>
     public class DocumentNote : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4599,7 +4648,7 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
 
     /// <summary>
     /// DocumentOccurrence represents an SPDX Document Creation Information section:
-    /// https://spdx.github.io/spdx-spec/v2.3/document-creation-information/
+    /// https://spdx.github.io/spdx-spec/2-document-creation-information/
     /// </summary>
     public class DocumentOccurrence : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7279,6 +7328,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<Detail> Details { get; set; }
+
+        /// <summary>Occurrence-specific extra details about the vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extraDetails")]
+        public virtual string ExtraDetails { get; set; }
 
         /// <summary>Note provider assigned impact of the vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
