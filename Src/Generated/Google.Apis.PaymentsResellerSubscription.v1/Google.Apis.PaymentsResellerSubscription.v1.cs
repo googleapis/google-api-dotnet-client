@@ -1144,6 +1144,29 @@ namespace Google.Apis.PaymentsResellerSubscription.v1.Data
     /// </summary>
     public class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequest : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. The line items to be entitled. If unspecified, all line items will be entitled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItemEntitlementDetails")]
+        public virtual System.Collections.Generic.IList<GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails> LineItemEntitlementDetails { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The details of the line item to be entitled.</summary>
+    public class GoogleCloudPaymentsResellerSubscriptionV1EntitleSubscriptionRequestLineItemEntitlementDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The index of the line item to be entitled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lineItemIndex")]
+        public virtual System.Nullable<int> LineItemIndex { get; set; }
+
+        /// <summary>
+        /// Optional. Only applicable if the line item corresponds to a hard bundle. Product resource names that
+        /// identify the bundle elements to be entitled in the line item. If unspecified, all bundle elements will be
+        /// entitled. The format is 'partners/{partner_id}/products/{product_id}'.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("products")]
+        public virtual System.Collections.Generic.IList<string> Products { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }

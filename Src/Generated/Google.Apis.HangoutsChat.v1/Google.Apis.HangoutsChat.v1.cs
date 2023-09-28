@@ -2414,7 +2414,6 @@ namespace Google.Apis.HangoutsChat.v1
         /// space](https://developers.google.com/chat/api/guides/v1/spaces/get). Requires
         /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
         /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
-        /// authentication](https://developers.google.com/chat/api/guides/auth/users). [User
         /// authentication](https://developers.google.com/chat/api/guides/auth/users).
         /// </summary>
         /// <param name="name">
@@ -2430,7 +2429,6 @@ namespace Google.Apis.HangoutsChat.v1
         /// space](https://developers.google.com/chat/api/guides/v1/spaces/get). Requires
         /// [authentication](https://developers.google.com/chat/api/guides/auth). Fully supports [service account
         /// authentication](https://developers.google.com/chat/api/guides/auth/service-accounts) and [user
-        /// authentication](https://developers.google.com/chat/api/guides/auth/users). [User
         /// authentication](https://developers.google.com/chat/api/guides/auth/users).
         /// </summary>
         public class GetRequest : HangoutsChatBaseServiceRequest<Google.Apis.HangoutsChat.v1.Data.Space>
@@ -2822,8 +2820,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// Output only. Annotations associated with the plain-text body of the message. To add basic formatting to a text
-    /// message, see [Format text
-    /// messages](https://developers.google.com/chat/api/guides/message-formats/text#format-texts). Example plain-text
+    /// message, see [Format text messages](https://developers.google.com/chat/format-messages). Example plain-text
     /// message body:
     /// ```
     /// Hello @FooBot how are you!"
@@ -3955,8 +3952,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// An icon displayed after the text. Supports
-        /// [built-in](https://developers.google.com/chat/api/guides/message-formats/cards#builtinicons) and
-        /// [custom](https://developers.google.com/chat/api/guides/message-formats/cards#customicons) icons.
+        /// [built-in](https://developers.google.com/chat/format-messages#builtinicons) and
+        /// [custom](https://developers.google.com/chat/format-messages#customicons) icons.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("endIcon")]
         public virtual GoogleAppsCardV1Icon EndIcon { get; set; }
@@ -4097,8 +4094,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// <summary>
     /// An icon displayed in a widget on a card. For an example in Google Chat apps, see
     /// [Icon](https://developers.google.com/chat/ui/widgets/icon). Supports
-    /// [built-in](https://developers.google.com/chat/api/guides/message-formats/cards#builtinicons) and
-    /// [custom](https://developers.google.com/chat/api/guides/message-formats/cards#customicons) icons.
+    /// [built-in](https://developers.google.com/chat/format-messages#builtinicons) and
+    /// [custom](https://developers.google.com/chat/format-messages#customicons) icons.
     /// </summary>
     public class GoogleAppsCardV1Icon : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4135,7 +4132,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>
         /// Display one of the built-in icons provided by Google Workspace. For example, to display an airplane icon,
         /// specify `AIRPLANE`. For a bus, specify `BUS`. For a full list of supported icons, see [built-in
-        /// icons](https://developers.google.com/chat/api/guides/message-formats/cards#builtinicons).
+        /// icons](https://developers.google.com/chat/format-messages#builtinicons).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("knownIcon")]
         public virtual string KnownIcon { get; set; }
@@ -5124,7 +5121,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Output only. User's role within a Chat space, which determines their permitted actions in the space.
+        /// Optional. User's role within a Chat space, which determines their permitted actions in the space. [Developer
+        /// Preview](https://developers.google.com/workspace/preview): This field can only be used as input in
+        /// `UpdateMembership`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("role")]
         public virtual string Role { get; set; }
@@ -5291,6 +5290,20 @@ namespace Google.Apis.HangoutsChat.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fallbackText")]
         public virtual string FallbackText { get; set; }
 
+        /// <summary>
+        /// Output only. Contains the message `text` with markups added to communicate formatting. This field might not
+        /// capture all formatting visible in the UI, but includes the following: * [Markup
+        /// syntax](https://developers.google.com/chat/format-messages) for bold, italic, strikethrough, monospace, and
+        /// monospace block. * [User mentions](https://developers.google.com/chat/format-messages#messages-@mention)
+        /// using the format ``. * Custom hyperlinks using the format `&amp;lt;{url}|{rendered_text}&amp;gt;` where the
+        /// first string is the URL and the second is the rendered text—for example, ``. * Custom emoji using the format
+        /// `:{emoji_name}:`—for example, `:smile:`. This doesn't apply to Unicode emoji, such as `U+1F600` for a
+        /// grinning face emoji. For more information, see [View text formatting sent in a
+        /// message](https://developers.google.com/chat/format-messages#view_text_formatting_sent_in_a_message)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("formattedText")]
+        public virtual string FormattedText { get; set; }
+
         private string _lastUpdateTimeRaw;
 
         private object _lastUpdateTime;
@@ -5376,8 +5389,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>
         /// Plain-text body of the message. The first link to an image, video, or web page generates a [preview
         /// chip](https://developers.google.com/chat/how-tos/preview-links). You can also [@mention a Google Chat
-        /// user](https://developers.google.com/chat/api/guides/message-formats/text#messages-@mention), or everyone in
-        /// the space. To learn about creating text messages, see [Create a text
+        /// user](https://developers.google.com/chat/format-messages#messages-@mention), or everyone in the space. To
+        /// learn about creating text messages, see [Create a text
         /// message](https://developers.google.com/chat/api/guides/message-formats/text).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]

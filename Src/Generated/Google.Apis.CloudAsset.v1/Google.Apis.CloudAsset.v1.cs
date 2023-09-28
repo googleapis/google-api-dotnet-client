@@ -2741,11 +2741,9 @@ namespace Google.Apis.CloudAsset.v1
             /// <summary>
             /// Optional. A comma-separated list of fields specifying the sorting order of the results. The default
             /// order is ascending. Add " DESC" after the field name to indicate descending order. Redundant space
-            /// characters are ignored. Example: "location DESC, name". Only singular primitive fields in the response
-            /// are sortable: * name * assetType * project * displayName * description * location * createTime *
-            /// updateTime * state * parentFullResourceName * parentAssetType All the other fields such as repeated
-            /// fields (e.g., `networkTags`, `kmsKeys`), map fields (e.g., `labels`) and struct fields (e.g.,
-            /// `additionalAttributes`) are not supported.
+            /// characters are ignored. Example: "location DESC, name". Only the following fields in the response are
+            /// sortable: * name * assetType * project * displayName * description * location * createTime * updateTime
+            /// * state * parentFullResourceName * parentAssetType
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string OrderBy { get; set; }
@@ -2771,32 +2769,50 @@ namespace Google.Apis.CloudAsset.v1
             /// Optional. The query statement. See [how to construct a
             /// query](https://cloud.google.com/asset-inventory/docs/searching-resources#how_to_construct_a_query) for
             /// more information. If not specified or empty, it will search all the resources within the specified
-            /// `scope`. Examples: * `name:Important` to find Google Cloud resources whose name contains "Important" as
-            /// a word. * `name=Important` to find the Google Cloud resource whose name is exactly "Important". *
-            /// `displayName:Impor*` to find Google Cloud resources whose display name contains "Impor" as a prefix of
+            /// `scope`. Examples: * `name:Important` to find Google Cloud resources whose name contains `Important` as
+            /// a word. * `name=Important` to find the Google Cloud resource whose name is exactly `Important`. *
+            /// `displayName:Impor*` to find Google Cloud resources whose display name contains `Impor` as a prefix of
             /// any word in the field. * `location:us-west*` to find Google Cloud resources whose location contains both
-            /// "us" and "west" as prefixes. * `labels:prod` to find Google Cloud resources whose labels contain "prod"
-            /// as a key or value. * `labels.env:prod` to find Google Cloud resources that have a label "env" and its
-            /// value is "prod". * `labels.env:*` to find Google Cloud resources that have a label "env". * `kmsKey:key`
-            /// to find Google Cloud resources encrypted with a customer-managed encryption key whose name contains
-            /// "key" as a word. This field is deprecated. Please use the `kmsKeys` field to retrieve Cloud KMS key
-            /// information. * `kmsKeys:key` to find Google Cloud resources encrypted with customer-managed encryption
-            /// keys whose name contains the word "key". * `relationships:instance-group-1` to find Google Cloud
-            /// resources that have relationships with "instance-group-1" in the related resource name. *
-            /// `relationships:INSTANCE_TO_INSTANCEGROUP` to find Compute Engine instances that have relationships of
-            /// type "INSTANCE_TO_INSTANCEGROUP". * `relationships.INSTANCE_TO_INSTANCEGROUP:instance-group-1` to find
-            /// Compute Engine instances that have relationships with "instance-group-1" in the Compute Engine instance
-            /// group resource name, for relationship type "INSTANCE_TO_INSTANCEGROUP". * `state:ACTIVE` to find Google
-            /// Cloud resources whose state contains "ACTIVE" as a word. * `NOT state:ACTIVE` to find Google Cloud
-            /// resources whose state doesn't contain "ACTIVE" as a word. * `createTime&amp;lt;1609459200` to find
-            /// Google Cloud resources that were created before "2021-01-01 00:00:00 UTC". 1609459200 is the epoch
-            /// timestamp of "2021-01-01 00:00:00 UTC" in seconds. * `updateTime&amp;gt;1609459200` to find Google Cloud
-            /// resources that were updated after "2021-01-01 00:00:00 UTC". 1609459200 is the epoch timestamp of
-            /// "2021-01-01 00:00:00 UTC" in seconds. * `Important` to find Google Cloud resources that contain
-            /// "Important" as a word in any of the searchable fields. * `Impor*` to find Google Cloud resources that
-            /// contain "Impor" as a prefix of any word in any of the searchable fields. * `Important location:(us-west1
-            /// OR global)` to find Google Cloud resources that contain "Important" as a word in any of the searchable
-            /// fields and are also located in the "us-west1" region or the "global" location.
+            /// `us` and `west` as prefixes. * `labels:prod` to find Google Cloud resources whose labels contain `prod`
+            /// as a key or value. * `labels.env:prod` to find Google Cloud resources that have a label `env` and its
+            /// value is `prod`. * `labels.env:*` to find Google Cloud resources that have a label `env`. *
+            /// `tagKeys:env` to find Google Cloud resources that have directly attached tags where the
+            /// [`TagKey`](https://cloud.google.com/resource-manager/reference/rest/v3/tagKeys#resource:-tagkey)
+            /// .`namespacedName` contains `env`. * `tagValues:prod*` to find Google Cloud resources that have directly
+            /// attached tags where the
+            /// [`TagValue`](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues#resource:-tagvalue)
+            /// .`namespacedName` contains a word prefixed by `prod`. * `tagValueIds=tagValues/123` to find Google Cloud
+            /// resources that have directly attached tags where the
+            /// [`TagValue`](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues#resource:-tagvalue)
+            /// .`name` is exactly `tagValues/123`. * `effectiveTagKeys:env` to find Google Cloud resources that have
+            /// directly attached or inherited tags where the
+            /// [`TagKey`](https://cloud.google.com/resource-manager/reference/rest/v3/tagKeys#resource:-tagkey)
+            /// .`namespacedName` contains `env`. * `effectiveTagValues:prod*` to find Google Cloud resources that have
+            /// directly attached or inherited tags where the
+            /// [`TagValue`](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues#resource:-tagvalue)
+            /// .`namespacedName` contains a word prefixed by `prod`. * `effectiveTagValueIds=tagValues/123` to find
+            /// Google Cloud resources that have directly attached or inherited tags where the
+            /// [`TagValue`](https://cloud.google.com/resource-manager/reference/rest/v3/tagValues#resource:-tagvalue)
+            /// .`name` is exactly `tagValues/123`. * `kmsKey:key` to find Google Cloud resources encrypted with a
+            /// customer-managed encryption key whose name contains `key` as a word. This field is deprecated. Please
+            /// use the `kmsKeys` field to retrieve Cloud KMS key information. * `kmsKeys:key` to find Google Cloud
+            /// resources encrypted with customer-managed encryption keys whose name contains the word `key`. *
+            /// `relationships:instance-group-1` to find Google Cloud resources that have relationships with
+            /// `instance-group-1` in the related resource name. * `relationships:INSTANCE_TO_INSTANCEGROUP` to find
+            /// Compute Engine instances that have relationships of type `INSTANCE_TO_INSTANCEGROUP`. *
+            /// `relationships.INSTANCE_TO_INSTANCEGROUP:instance-group-1` to find Compute Engine instances that have
+            /// relationships with `instance-group-1` in the Compute Engine instance group resource name, for
+            /// relationship type `INSTANCE_TO_INSTANCEGROUP`. * `state:ACTIVE` to find Google Cloud resources whose
+            /// state contains `ACTIVE` as a word. * `NOT state:ACTIVE` to find Google Cloud resources whose state
+            /// doesn't contain `ACTIVE` as a word. * `createTime&amp;lt;1609459200` to find Google Cloud resources that
+            /// were created before `2021-01-01 00:00:00 UTC`. `1609459200` is the epoch timestamp of `2021-01-01
+            /// 00:00:00 UTC` in seconds. * `updateTime&amp;gt;1609459200` to find Google Cloud resources that were
+            /// updated after `2021-01-01 00:00:00 UTC`. `1609459200` is the epoch timestamp of `2021-01-01 00:00:00
+            /// UTC` in seconds. * `Important` to find Google Cloud resources that contain `Important` as a word in any
+            /// of the searchable fields. * `Impor*` to find Google Cloud resources that contain `Impor` as a prefix of
+            /// any word in any of the searchable fields. * `Important location:(us-west1 OR global)` to find Google
+            /// Cloud resources that contain `Important` as a word in any of the searchable fields and are also located
+            /// in the `us-west1` region or the `global` location.
             /// </summary>
             [Google.Apis.Util.RequestParameterAttribute("query", Google.Apis.Util.RequestParameterType.Query)]
             public virtual string Query { get; set; }
@@ -2804,11 +2820,11 @@ namespace Google.Apis.CloudAsset.v1
             /// <summary>
             /// Optional. A comma-separated list of fields that you want returned in the results. The following fields
             /// are returned by default if not specified: * `name` * `assetType` * `project` * `folders` *
-            /// `organization` * `displayName` * `description` * `location` * `labels` * `networkTags` * `kmsKeys` *
-            /// `createTime` * `updateTime` * `state` * `additionalAttributes` * `parentFullResourceName` *
-            /// `parentAssetType` Some fields of large size, such as `versionedResources` and `attachedResources`, are
-            /// not returned by default, but you can specify them in the `read_mask` parameter if you want to include
-            /// them. If `"*"` is specified, all [available
+            /// `organization` * `displayName` * `description` * `location` * `labels` * `tags` * `effectiveTags` *
+            /// `networkTags` * `kmsKeys` * `createTime` * `updateTime` * `state` * `additionalAttributes` *
+            /// `parentFullResourceName` * `parentAssetType` Some fields of large size, such as `versionedResources`,
+            /// `attachedResources`, `effectiveTags` etc., are not returned by default, but you can specify them in the
+            /// `read_mask` parameter if you want to include them. If `"*"` is specified, all [available
             /// fields](https://cloud.google.com/asset-inventory/docs/reference/rest/v1/TopLevel/searchAllResources#resourcesearchresult)
             /// are returned. Examples: `"name,location"`, `"name,versionedResources"`, `"*"`. Any invalid field path
             /// will trigger INVALID_ARGUMENT error.
@@ -3650,6 +3666,31 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policies")]
         public virtual System.Collections.Generic.IList<PolicyInfo> Policies { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The effective tags and the ancestor resources from which they were inherited.</summary>
+    public class EffectiveTagDetails : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The [full resource name](https://cloud.google.com/asset-inventory/docs/resource-name-format) of the ancestor
+        /// from which an effective_tag is inherited, according to [tag
+        /// inheritance](https://cloud.google.com/resource-manager/docs/tags/tags-overview#inheritance).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("attachedResource")]
+        public virtual string AttachedResource { get; set; }
+
+        /// <summary>
+        /// The effective tags inherited from the attached_resource. Note that tags with the same key but different
+        /// values may attach to resources at a different hierarchy levels. The lower hierarchy tag value will overwrite
+        /// the higher hierarchy tag value of the same tag key. In this case, the tag value at the higher hierarchy
+        /// level will be removed. For more information, see [tag
+        /// inheritance](https://cloud.google.com/resource-manager/docs/tags/tags-overview#inheritance).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveTags")]
+        public virtual System.Collections.Generic.IList<Tag> EffectiveTags { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7006,6 +7047,18 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string DisplayName { get; set; }
 
         /// <summary>
+        /// The effective tags on this resource. All of the tags that are both attached to and inherited by a resource
+        /// are collectively called the effective tags. For more information, see [tag
+        /// inheritance](https://cloud.google.com/resource-manager/docs/tags/tags-overview#inheritance). To search
+        /// against the `effective_tags`: * Use a field query. Example: - `effectiveTagKeys:"123456789/env*"` -
+        /// `effectiveTagKeys="123456789/env"` - `effectiveTagKeys:"env"` - `effectiveTagValues:"env"` -
+        /// `effectiveTagValues:"env/prod"` - `effectiveTagValues:"123456789/env/prod*"` -
+        /// `effectiveTagValues="123456789/env/prod"` - `effectiveTagValueIds="tagValues/456"`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("effectiveTags")]
+        public virtual System.Collections.Generic.IList<EffectiveTagDetails> EffectiveTags { get; set; }
+
+        /// <summary>
         /// The folder(s) that this resource belongs to, in the form of folders/{FOLDER_NUMBER}. This field is available
         /// when the resource belongs to one or more folders. To search against `folders`: * Use a field query. Example:
         /// `folders:(123 OR 456)` * Use a free text query. Example: `123` * Specify the `scope` field as this folder in
@@ -7149,6 +7202,7 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual string State { get; set; }
 
         /// <summary>
+        /// This field is only present for the purpose of backward compatibility. Please use the `tags` field instead.
         /// TagKey namespaced names, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}. To search against the `tagKeys`: *
         /// Use a field query. Example: - `tagKeys:"123456789/env*"` - `tagKeys="123456789/env"` - `tagKeys:"env"` * Use
         /// a free text query. Example: - `env`
@@ -7157,13 +7211,15 @@ namespace Google.Apis.CloudAsset.v1.Data
         public virtual System.Collections.Generic.IList<string> TagKeys { get; set; }
 
         /// <summary>
+        /// This field is only present for the purpose of backward compatibility. Please use the `tags` field instead.
         /// TagValue IDs, in the format of tagValues/{TAG_VALUE_ID}. To search against the `tagValueIds`: * Use a field
-        /// query. Example: - `tagValueIds="tagValues/456"`
+        /// query. Example: - `tagValueIds="tagValues/456"` * Use a free text query. Example: - `456`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagValueIds")]
         public virtual System.Collections.Generic.IList<string> TagValueIds { get; set; }
 
         /// <summary>
+        /// This field is only present for the purpose of backward compatibility. Please use the `tags` field instead.
         /// TagValue namespaced names, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}/{TAG_VALUE_SHORT_NAME}. To search
         /// against the `tagValues`: * Use a field query. Example: - `tagValues:"env"` - `tagValues:"env/prod"` -
         /// `tagValues:"123456789/env/prod*"` - `tagValues="123456789/env/prod"` * Use a free text query. Example: -
@@ -7171,6 +7227,15 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagValues")]
         public virtual System.Collections.Generic.IList<string> TagValues { get; set; }
+
+        /// <summary>
+        /// The tags directly attached to this resource. To search against the `tags`: * Use a field query. Example: -
+        /// `tagKeys:"123456789/env*"` - `tagKeys="123456789/env"` - `tagKeys:"env"` - `tagValues:"env"` -
+        /// `tagValues:"env/prod"` - `tagValues:"123456789/env/prod*"` - `tagValues="123456789/env/prod"` -
+        /// `tagValueIds="tagValues/456"` * Use a free text query. Example: - `env/prod`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tags")]
+        public virtual System.Collections.Generic.IList<Tag> Tags { get; set; }
 
         private string _updateTimeRaw;
 
@@ -7533,6 +7598,29 @@ namespace Google.Apis.CloudAsset.v1.Data
         /// <summary>Describes the fields in a table.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fields")]
         public virtual System.Collections.Generic.IList<TableFieldSchema> Fields { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The key and value for a [tag](https://cloud.google.com/resource-manager/docs/tags/tags-overview),
+    /// </summary>
+    public class Tag : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>TagKey namespaced name, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagKey")]
+        public virtual string TagKey { get; set; }
+
+        /// <summary>
+        /// TagValue namespaced name, in the format of {ORG_ID}/{TAG_KEY_SHORT_NAME}/{TAG_VALUE_SHORT_NAME}.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagValue")]
+        public virtual string TagValue { get; set; }
+
+        /// <summary>TagValue ID, in the format of tagValues/{TAG_VALUE_ID}.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tagValueId")]
+        public virtual string TagValueId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

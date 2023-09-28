@@ -8212,13 +8212,6 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gcePdKmsKeyName")]
         public virtual string GcePdKmsKeyName { get; set; }
 
-        /// <summary>
-        /// Optional. The Cloud KMS key name to use for encrypting customer core content and cluster PD disk for all
-        /// instances in the cluster.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
-        public virtual string KmsKey { get; set; }
-
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8305,15 +8298,15 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string SubnetworkUri { get; set; }
 
         /// <summary>
-        /// Optional. The duration after which the workload will be terminated. When the workload exceeds this duration,
-        /// it will be unconditionally terminated without waiting for ongoing work to finish. If ttl is not specified
-        /// for a batch workload, the workload will be allowed to run until it exits naturally (or runs forever without
-        /// exiting). If ttl is not specified for an interactive session, it defaults to 24h. If ttl is not specified
-        /// for a batch that uses 2.1+ runtime version, it defaults to 4h. Minimum value is 10 minutes; maximum value is
-        /// 14 days (see JSON representation of Duration
-        /// (https://developers.google.com/protocol-buffers/docs/proto3#json)). If both ttl and idle_ttl are specified
-        /// (for an interactive session), the conditions are treated as OR conditions: the workload will be terminated
-        /// when it has been idle for idle_ttl or when ttl has been exceeded, whichever occurs first.
+        /// Optional. The duration after which the workload will be terminated, specified as the JSON representation for
+        /// Duration (https://protobuf.dev/programming-guides/proto3/#json). When the workload exceeds this duration, it
+        /// will be unconditionally terminated without waiting for ongoing work to finish. If ttl is not specified for a
+        /// batch workload, the workload will be allowed to run until it exits naturally (or run forever without
+        /// exiting). If ttl is not specified for an interactive session, it defaults to 24 hours. If ttl is not
+        /// specified for a batch that uses 2.1+ runtime version, it defaults to 4 hours. Minimum value is 10 minutes;
+        /// maximum value is 14 days. If both ttl and idle_ttl are specified (for an interactive session), the
+        /// conditions are treated as OR conditions: the workload will be terminated when it has been idle for idle_ttl
+        /// or when ttl has been exceeded, whichever occurs first.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ttl")]
         public virtual object Ttl { get; set; }
@@ -8366,12 +8359,12 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A Dataproc job for running Apache Flink (https://flink.apache.org/) applications on YARN.</summary>
+    /// <summary>A Dataproc job for running Apache Flink applications on YARN.</summary>
     public class FlinkJob : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// Optional. The arguments to pass to the driver. Do not include arguments, such as --conf, that can be set as
-        /// job properties, since a collision may occur that causes an incorrect job submission.
+        /// job properties, since a collision might occur that causes an incorrect job submission.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IList<string> Args { get; set; }
@@ -8386,7 +8379,7 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH
-        /// or specified in jar_file_uris.
+        /// or specified in jarFileUris.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mainClass")]
         public virtual string MainClass { get; set; }
@@ -8397,13 +8390,15 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// Optional. A mapping of property names to values, used to configure Flink. Properties that conflict with
-        /// values set by the Dataproc API may beoverwritten. Can include properties set
+        /// values set by the Dataproc API might beoverwritten. Can include properties set
         /// in/etc/flink/conf/flink-defaults.conf and classes in user code.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IDictionary<string, string> Properties { get; set; }
 
-        /// <summary>Optional. HCFS URI of the savepoint which contains the last saved progress for this job</summary>
+        /// <summary>
+        /// Optional. HCFS URI of the savepoint, which contains the last saved progress for starting the current job.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("savepointUri")]
         public virtual string SavepointUri { get; set; }
 
@@ -8766,7 +8761,7 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// Optional. The arguments to pass to the driver. Do not include arguments, such as -libjars or -Dfoo=bar, that
-        /// can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        /// can be set as job properties, since a collision might occur that causes an incorrect job submission.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("args")]
         public virtual System.Collections.Generic.IList<string> Args { get; set; }
@@ -8804,8 +8799,8 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// Optional. A mapping of property names to values, used to configure Hadoop. Properties that conflict with
-        /// values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and
-        /// classes in user code.
+        /// values set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site
+        /// and classes in user code.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IDictionary<string, string> Properties { get; set; }
@@ -8833,7 +8828,7 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// Optional. A mapping of property names and values, used to configure Hive. Properties that conflict with
-        /// values set by the Dataproc API may be overwritten. Can include properties set in
+        /// values set by the Dataproc API might be overwritten. Can include properties set in
         /// /etc/hadoop/conf/*-site.xml, /etc/hive/conf/hive-site.xml, and classes in user code.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
@@ -9240,8 +9235,8 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual System.Nullable<bool> Done { get; set; }
 
         /// <summary>
-        /// Output only. If present, the location of miscellaneous control files which may be used as part of job setup
-        /// and handling. If not present, control files may be placed in the same location as driver_output_uri.
+        /// Output only. If present, the location of miscellaneous control files which can be used as part of job setup
+        /// and handling. If not present, control files might be placed in the same location as driver_output_uri.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driverControlFilesUri")]
         public virtual string DriverControlFilesUri { get; set; }
@@ -9268,14 +9263,14 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// Output only. A UUID that uniquely identifies a job within the project over time. This is in contrast to a
-        /// user-settable reference.job_id that may be reused over time.
+        /// user-settable reference.job_id that might be reused over time.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("jobUuid")]
         public virtual string JobUuid { get; set; }
 
         /// <summary>
         /// Optional. The labels to associate with this job. Label keys must contain 1 to 63 characters, and must
-        /// conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values may be empty, but, if present, must
+        /// conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). Label values can be empty, but, if present, must
         /// contain 1 to 63 characters, and must conform to RFC 1035 (https://www.ietf.org/rfc/rfc1035.txt). No more
         /// than 32 labels can be associated with a job.
         /// </summary>
@@ -9322,7 +9317,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual SparkSqlJob SparkSqlJob { get; set; }
 
         /// <summary>
-        /// Output only. The job status. Additional application-specific status information may be contained in the
+        /// Output only. The job status. Additional application-specific status information might be contained in the
         /// type_job and yarn_applications fields.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("status")]
@@ -9338,7 +9333,7 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// Output only. The collection of YARN applications spun up by this job.Beta Feature: This report is available
-        /// for testing purposes only. It may be changed before final release.
+        /// for testing purposes only. It might be changed before final release.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("yarnApplications")]
         public virtual System.Collections.Generic.IList<YarnApplication> YarnApplications { get; set; }
@@ -9448,8 +9443,8 @@ namespace Google.Apis.Dataproc.v1.Data
     public class JobScheduling : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Maximum number of times per hour a driver may be restarted as a result of driver exiting with
-        /// non-zero code before job is reported failed.A job may be reported as thrashing if the driver exits with a
+        /// Optional. Maximum number of times per hour a driver can be restarted as a result of driver exiting with
+        /// non-zero code before job is reported failed.A job might be reported as thrashing if the driver exits with a
         /// non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is
         /// not supported in Dataproc workflow templates
         /// (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
@@ -9458,7 +9453,7 @@ namespace Google.Apis.Dataproc.v1.Data
         public virtual System.Nullable<int> MaxFailuresPerHour { get; set; }
 
         /// <summary>
-        /// Optional. Maximum total number of times a driver may be restarted as a result of the driver exiting with a
+        /// Optional. Maximum total number of times a driver can be restarted as a result of the driver exiting with a
         /// non-zero code. After the maximum number is reached, the job will be reported as failed.Maximum value is
         /// 240.Note: Currently, this restartable job option is not supported in Dataproc workflow templates
         /// (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template).
@@ -9945,7 +9940,7 @@ namespace Google.Apis.Dataproc.v1.Data
     public class LoggingConfig : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// The per-package log levels for the driver. This may include "root" package name to configure rootLogger.
+        /// The per-package log levels for the driver. This can include "root" package name to configure rootLogger.
         /// Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG'
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("driverLogLevels")]
@@ -10252,6 +10247,10 @@ namespace Google.Apis.Dataproc.v1.Data
     /// <summary>A job executed by the workflow.</summary>
     public class OrderedJob : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Optional. Job is a Flink job.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flinkJob")]
+        public virtual FlinkJob FlinkJob { get; set; }
+
         /// <summary>Optional. Job is a Hadoop job.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hadoopJob")]
         public virtual HadoopJob HadoopJob { get; set; }
@@ -10377,7 +10376,7 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// Optional. A mapping of property names to values, used to configure Pig. Properties that conflict with values
-        /// set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml,
+        /// set by the Dataproc API might be overwritten. Can include properties set in /etc/hadoop/conf/*-site.xml,
         /// /etc/pig/conf/pig.properties, and classes in user code.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
@@ -10611,7 +10610,7 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// Optional. A mapping of property names to values, used to configure PySpark. Properties that conflict with
-        /// values set by the Dataproc API may be overwritten. Can include properties set in
+        /// values set by the Dataproc API might be overwritten. Can include properties set in
         /// /etc/spark/conf/spark-defaults.conf and classes in user code.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
@@ -11272,6 +11271,13 @@ namespace Google.Apis.Dataproc.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
+        /// <summary>
+        /// Output only. A session template UUID (Unique Universal Identifier). The service generates this value when it
+        /// creates the session template.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uuid")]
+        public virtual string Uuid { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -11433,7 +11439,7 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// The name of the driver's main class. The jar file that contains the class must be in the default CLASSPATH
-        /// or specified in jar_file_uris.
+        /// or specified in SparkJob.jar_file_uris.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("mainClass")]
         public virtual string MainClass { get; set; }
@@ -11444,7 +11450,7 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// Optional. A mapping of property names to values, used to configure Spark. Properties that conflict with
-        /// values set by the Dataproc API may be overwritten. Can include properties set in
+        /// values set by the Dataproc API might be overwritten. Can include properties set in
         /// /etc/spark/conf/spark-defaults.conf and classes in user code.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
@@ -11522,7 +11528,7 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with
-        /// values set by the Dataproc API may be overwritten. Can include properties set in
+        /// values set by the Dataproc API might be overwritten. Can include properties set in
         /// /etc/spark/conf/spark-defaults.conf and classes in user code.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
@@ -11569,7 +11575,7 @@ namespace Google.Apis.Dataproc.v1.Data
 
         /// <summary>
         /// Optional. A mapping of property names to values, used to configure Spark SQL's SparkConf. Properties that
-        /// conflict with values set by the Dataproc API may be overwritten.
+        /// conflict with values set by the Dataproc API might be overwritten.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("properties")]
         public virtual System.Collections.Generic.IDictionary<string, string> Properties { get; set; }

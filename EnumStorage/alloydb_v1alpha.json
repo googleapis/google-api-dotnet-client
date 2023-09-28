@@ -1,0 +1,21 @@
+{
+  "Google.Apis.CloudAlloyDBAdmin.v1alpha.CloudAlloyDBAdminBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.CloudAlloyDBAdmin.v1alpha.CloudAlloyDBAdminBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ],
+  "Google.Apis.CloudAlloyDBAdmin.v1alpha.ProjectsResource+LocationsResource+ClustersResource+GetRequest.ViewEnum": [
+    "CLUSTER_VIEW_UNSPECIFIED",
+    "CLUSTER_VIEW_BASIC",
+    "CLUSTER_VIEW_CONTINUOUS_BACKUP"
+  ],
+  "Google.Apis.CloudAlloyDBAdmin.v1alpha.ProjectsResource+LocationsResource+ClustersResource+InstancesResource+GetRequest.ViewEnum": [
+    "INSTANCE_VIEW_UNSPECIFIED",
+    "INSTANCE_VIEW_BASIC",
+    "INSTANCE_VIEW_FULL"
+  ]
+}

@@ -4737,6 +4737,10 @@ namespace Google.Apis.Connectors.v1.Data
     /// </summary>
     public class ConnectorInfraConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The window used for ratelimiting runtime requests to connections.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionRatelimitWindowSeconds")]
+        public virtual System.Nullable<long> ConnectionRatelimitWindowSeconds { get; set; }
+
         /// <summary>HPA autoscaling config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hpaConfig")]
         public virtual HPAConfig HpaConfig { get; set; }
@@ -4921,6 +4925,10 @@ namespace Google.Apis.Connectors.v1.Data
     /// </summary>
     public class ConnectorVersionInfraConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The window used for ratelimiting runtime requests to connections.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectionRatelimitWindowSeconds")]
+        public virtual System.Nullable<long> ConnectionRatelimitWindowSeconds { get; set; }
+
         /// <summary>Output only. HPA autoscaling config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("hpaConfig")]
         public virtual HPAConfig HpaConfig { get; set; }

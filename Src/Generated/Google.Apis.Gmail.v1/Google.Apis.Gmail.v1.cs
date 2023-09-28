@@ -7360,6 +7360,12 @@ namespace Google.Apis.Gmail.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("primaryKeyPairId")]
         public virtual string PrimaryKeyPairId { get; set; }
 
+        /// <summary>
+        /// The configuration of a CSE identity that uses different key pairs for signing and encryption.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signAndEncryptKeyPairs")]
+        public virtual SignAndEncryptKeyPairs SignAndEncryptKeyPairs { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -8373,6 +8379,21 @@ namespace Google.Apis.Gmail.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("verificationStatus")]
         public virtual string VerificationStatus { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The configuration of a CSE identity that uses different key pairs for signing and encryption.</summary>
+    public class SignAndEncryptKeyPairs : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ID of the CseKeyPair that encrypts signed outgoing mail.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("encryptionKeyPairId")]
+        public virtual string EncryptionKeyPairId { get; set; }
+
+        /// <summary>The ID of the CseKeyPair that signs outgoing mail.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("signingKeyPairId")]
+        public virtual string SigningKeyPairId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

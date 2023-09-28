@@ -1026,15 +1026,15 @@ namespace Google.Apis.Networkconnectivity.v1
                         }
                     }
 
-                    /// <summary>Accepts a proposal to attach a Network Connectivity Center spoke to the hub.</summary>
+                    /// <summary>Accepts a proposal to attach a Network Connectivity Center spoke to a hub.</summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Required. The name of the hub.</param>
+                    /// <param name="name">Required. The name of the hub into which to accept the spoke.</param>
                     public virtual AcceptSpokeRequest AcceptSpoke(Google.Apis.Networkconnectivity.v1.Data.AcceptHubSpokeRequest body, string name)
                     {
                         return new AcceptSpokeRequest(service, body, name);
                     }
 
-                    /// <summary>Accepts a proposal to attach a Network Connectivity Center spoke to the hub.</summary>
+                    /// <summary>Accepts a proposal to attach a Network Connectivity Center spoke to a hub.</summary>
                     public class AcceptSpokeRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new AcceptSpoke request.</summary>
@@ -1045,7 +1045,7 @@ namespace Google.Apis.Networkconnectivity.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. The name of the hub.</summary>
+                        /// <summary>Required. The name of the hub into which to accept the spoke.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -1108,14 +1108,14 @@ namespace Google.Apis.Networkconnectivity.v1
 
                         /// <summary>
                         /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
-                        /// retry your request, the server will know to ignore the request if it has already been
-                        /// completed. The server guarantees that a request doesn't result in creation of duplicate
-                        /// commitments for at least 60 minutes. For example, consider a situation where you make an
-                        /// initial request and the request times out. If you make the request again with the same
-                        /// request ID, the server can check to see whether the original operation was received. If it
-                        /// was, the server ignores the second request. This behavior prevents clients from mistakenly
-                        /// creating duplicate commitments. The request ID must be a valid UUID, with the exception that
-                        /// zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                        /// retry your request, the server knows to ignore the request if it has already been completed.
+                        /// The server guarantees that a request doesn't result in creation of duplicate commitments for
+                        /// at least 60 minutes. For example, consider a situation where you make an initial request and
+                        /// the request times out. If you make the request again with the same request ID, the server
+                        /// can check to see whether the original operation was received. If it was, the server ignores
+                        /// the second request. This behavior prevents clients from mistakenly creating duplicate
+                        /// commitments. The request ID must be a valid UUID, with the exception that zero UUID is not
+                        /// supported (00000000-0000-0000-0000-000000000000).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RequestId { get; set; }
@@ -1189,14 +1189,14 @@ namespace Google.Apis.Networkconnectivity.v1
 
                         /// <summary>
                         /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
-                        /// retry your request, the server will know to ignore the request if it has already been
-                        /// completed. The server guarantees that a request doesn't result in creation of duplicate
-                        /// commitments for at least 60 minutes. For example, consider a situation where you make an
-                        /// initial request and the request times out. If you make the request again with the same
-                        /// request ID, the server can check to see whether the original operation was received. If it
-                        /// was, the server ignores the second request. This behavior prevents clients from mistakenly
-                        /// creating duplicate commitments. The request ID must be a valid UUID, with the exception that
-                        /// zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                        /// retry your request, the server knows to ignore the request if it has already been completed.
+                        /// The server guarantees that a request doesn't result in creation of duplicate commitments for
+                        /// at least 60 minutes. For example, consider a situation where you make an initial request and
+                        /// the request times out. If you make the request again with the same request ID, the server
+                        /// can check to see whether the original operation was received. If it was, the server ignores
+                        /// the second request. This behavior prevents clients from mistakenly creating duplicate
+                        /// commitments. The request ID must be a valid UUID, with the exception that zero UUID is not
+                        /// supported (00000000-0000-0000-0000-000000000000).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RequestId { get; set; }
@@ -1645,14 +1645,14 @@ namespace Google.Apis.Networkconnectivity.v1
 
                         /// <summary>
                         /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
-                        /// retry your request, the server will know to ignore the request if it has already been
-                        /// completed. The server guarantees that a request doesn't result in creation of duplicate
-                        /// commitments for at least 60 minutes. For example, consider a situation where you make an
-                        /// initial request and the request times out. If you make the request again with the same
-                        /// request ID, the server can check to see whether the original operation was received. If it
-                        /// was, the server ignores the second request. This behavior prevents clients from mistakenly
-                        /// creating duplicate commitments. The request ID must be a valid UUID, with the exception that
-                        /// zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                        /// retry your request, the server knows to ignore the request if it has already been completed.
+                        /// The server guarantees that a request doesn't result in creation of duplicate commitments for
+                        /// at least 60 minutes. For example, consider a situation where you make an initial request and
+                        /// the request times out. If you make the request again with the same request ID, the server
+                        /// can check to see whether the original operation was received. If it was, the server ignores
+                        /// the second request. This behavior prevents clients from mistakenly creating duplicate
+                        /// commitments. The request ID must be a valid UUID, with the exception that zero UUID is not
+                        /// supported (00000000-0000-0000-0000-000000000000).
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string RequestId { get; set; }
@@ -1713,19 +1713,19 @@ namespace Google.Apis.Networkconnectivity.v1
                     }
 
                     /// <summary>
-                    /// Rejects a Network Connectivity Center spoke from being attached to the hub. If the spoke was
+                    /// Rejects a Network Connectivity Center spoke from being attached to a hub. If the spoke was
                     /// previously in the `ACTIVE` state, it transitions to the `INACTIVE` state and is no longer able
                     /// to connect to other spokes that are attached to the hub.
                     /// </summary>
                     /// <param name="body">The body of the request.</param>
-                    /// <param name="name">Required. The name of the hub.</param>
+                    /// <param name="name">Required. The name of the hub from which to reject the spoke.</param>
                     public virtual RejectSpokeRequest RejectSpoke(Google.Apis.Networkconnectivity.v1.Data.RejectHubSpokeRequest body, string name)
                     {
                         return new RejectSpokeRequest(service, body, name);
                     }
 
                     /// <summary>
-                    /// Rejects a Network Connectivity Center spoke from being attached to the hub. If the spoke was
+                    /// Rejects a Network Connectivity Center spoke from being attached to a hub. If the spoke was
                     /// previously in the `ACTIVE` state, it transitions to the `INACTIVE` state and is no longer able
                     /// to connect to other spokes that are attached to the hub.
                     /// </summary>
@@ -1739,7 +1739,7 @@ namespace Google.Apis.Networkconnectivity.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. The name of the hub.</summary>
+                        /// <summary>Required. The name of the hub from which to reject the spoke.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -1929,7 +1929,7 @@ namespace Google.Apis.Networkconnectivity.v1
                         this.service = service;
                     }
 
-                    /// <summary>Creates a new PolicyBasedRoute in a given project and location.</summary>
+                    /// <summary>Creates a new policy-based route in a given project and location.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="parent">Required. The parent resource's name of the PolicyBasedRoute.</param>
                     public virtual CreateRequest Create(Google.Apis.Networkconnectivity.v1.Data.PolicyBasedRoute body, string parent)
@@ -1937,7 +1937,7 @@ namespace Google.Apis.Networkconnectivity.v1
                         return new CreateRequest(service, body, parent);
                     }
 
-                    /// <summary>Creates a new PolicyBasedRoute in a given project and location.</summary>
+                    /// <summary>Creates a new policy-based route in a given project and location.</summary>
                     public class CreateRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Create request.</summary>
@@ -1952,7 +1952,7 @@ namespace Google.Apis.Networkconnectivity.v1
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Parent { get; private set; }
 
-                        /// <summary>Required. Unique id for the Policy Based Route to create.</summary>
+                        /// <summary>Required. Unique id for the policy-based route to create.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("policyBasedRouteId", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string PolicyBasedRouteId { get; set; }
 
@@ -2016,14 +2016,14 @@ namespace Google.Apis.Networkconnectivity.v1
                         }
                     }
 
-                    /// <summary>Deletes a single PolicyBasedRoute.</summary>
-                    /// <param name="name">Required. Name of the PolicyBasedRoute resource to delete.</param>
+                    /// <summary>Deletes a single policy-based route.</summary>
+                    /// <param name="name">Required. Name of the policy-based route resource to delete.</param>
                     public virtual DeleteRequest Delete(string name)
                     {
                         return new DeleteRequest(service, name);
                     }
 
-                    /// <summary>Deletes a single PolicyBasedRoute.</summary>
+                    /// <summary>Deletes a single policy-based route.</summary>
                     public class DeleteRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.GoogleLongrunningOperation>
                     {
                         /// <summary>Constructs a new Delete request.</summary>
@@ -2033,7 +2033,7 @@ namespace Google.Apis.Networkconnectivity.v1
                             InitParameters();
                         }
 
-                        /// <summary>Required. Name of the PolicyBasedRoute resource to delete.</summary>
+                        /// <summary>Required. Name of the policy-based route resource to delete.</summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
 
@@ -2083,14 +2083,14 @@ namespace Google.Apis.Networkconnectivity.v1
                         }
                     }
 
-                    /// <summary>Gets details of a single PolicyBasedRoute.</summary>
+                    /// <summary>Gets details of a single policy-based route.</summary>
                     /// <param name="name">Required. Name of the PolicyBasedRoute resource to get.</param>
                     public virtual GetRequest Get(string name)
                     {
                         return new GetRequest(service, name);
                     }
 
-                    /// <summary>Gets details of a single PolicyBasedRoute.</summary>
+                    /// <summary>Gets details of a single policy-based route.</summary>
                     public class GetRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.PolicyBasedRoute>
                     {
                         /// <summary>Constructs a new Get request.</summary>
@@ -2209,14 +2209,14 @@ namespace Google.Apis.Networkconnectivity.v1
                         }
                     }
 
-                    /// <summary>Lists PolicyBasedRoutes in a given project and location.</summary>
+                    /// <summary>Lists policy-based routes in a given project and location.</summary>
                     /// <param name="parent">Required. The parent resource's name.</param>
                     public virtual ListRequest List(string parent)
                     {
                         return new ListRequest(service, parent);
                     }
 
-                    /// <summary>Lists PolicyBasedRoutes in a given project and location.</summary>
+                    /// <summary>Lists policy-based routes in a given project and location.</summary>
                     public class ListRequest : NetworkconnectivityBaseServiceRequest<Google.Apis.Networkconnectivity.v1.Data.ListPolicyBasedRoutesResponse>
                     {
                         /// <summary>Constructs a new List request.</summary>
@@ -5418,8 +5418,8 @@ namespace Google.Apis.Networkconnectivity.v1
 
                     /// <summary>
                     /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
-                    /// retry your request, the server will know to ignore the request if it has already been completed.
-                    /// The server guarantees that a request doesn't result in creation of duplicate commitments for at
+                    /// retry your request, the server knows to ignore the request if it has already been completed. The
+                    /// server guarantees that a request doesn't result in creation of duplicate commitments for at
                     /// least 60 minutes. For example, consider a situation where you make an initial request and the
                     /// request times out. If you make the request again with the same request ID, the server can check
                     /// to see whether the original operation was received. If it was, the server ignores the second
@@ -5503,8 +5503,8 @@ namespace Google.Apis.Networkconnectivity.v1
 
                     /// <summary>
                     /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
-                    /// retry your request, the server will know to ignore the request if it has already been completed.
-                    /// The server guarantees that a request doesn't result in creation of duplicate commitments for at
+                    /// retry your request, the server knows to ignore the request if it has already been completed. The
+                    /// server guarantees that a request doesn't result in creation of duplicate commitments for at
                     /// least 60 minutes. For example, consider a situation where you make an initial request and the
                     /// request times out. If you make the request again with the same request ID, the server can check
                     /// to see whether the original operation was received. If it was, the server ignores the second
@@ -5796,8 +5796,8 @@ namespace Google.Apis.Networkconnectivity.v1
 
                     /// <summary>
                     /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
-                    /// retry your request, the server will know to ignore the request if it has already been completed.
-                    /// The server guarantees that a request doesn't result in creation of duplicate commitments for at
+                    /// retry your request, the server knows to ignore the request if it has already been completed. The
+                    /// server guarantees that a request doesn't result in creation of duplicate commitments for at
                     /// least 60 minutes. For example, consider a situation where you make an initial request and the
                     /// request times out. If you make the request again with the same request ID, the server can check
                     /// to see whether the original operation was received. If it was, the server ignores the second
@@ -6206,13 +6206,13 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     {
         /// <summary>
         /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your
-        /// request, the server will know to ignore the request if it has already been completed. The server guarantees
-        /// that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example,
-        /// consider a situation where you make an initial request and the request times out. If you make the request
-        /// again with the same request ID, the server can check to see whether the original operation was received. If
-        /// it was, the server ignores the second request. This behavior prevents clients from mistakenly creating
-        /// duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not
-        /// supported (00000000-0000-0000-0000-000000000000).
+        /// request, the server knows to ignore the request if it has already been completed. The server guarantees that
+        /// a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider
+        /// a situation where you make an initial request and the request times out. If you make the request again with
+        /// the same request ID, the server can check to see whether the original operation was received. If it was, the
+        /// server ignores the second request. This behavior prevents clients from mistakenly creating duplicate
+        /// commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported
+        /// (00000000-0000-0000-0000-000000000000).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
@@ -6241,13 +6241,13 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     {
         /// <summary>
         /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your
-        /// request, the server will know to ignore the request if it has already been completed. The server guarantees
-        /// that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example,
-        /// consider a situation where you make an initial request and the request times out. If you make the request
-        /// again with the same request ID, the server can check to see whether the original operation was received. If
-        /// it was, the server ignores the second request. This behavior prevents clients from mistakenly creating
-        /// duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not
-        /// supported (00000000-0000-0000-0000-000000000000).
+        /// request, the server knows to ignore the request if it has already been completed. The server guarantees that
+        /// a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider
+        /// a situation where you make an initial request and the request times out. If you make the request again with
+        /// the same request ID, the server can check to see whether the original operation was received. If it was, the
+        /// server ignores the second request. This behavior prevents clients from mistakenly creating duplicate
+        /// commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported
+        /// (00000000-0000-0000-0000-000000000000).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
@@ -6517,28 +6517,28 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     public class Filter : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. The destination IP range of outgoing packets that this policy based route applies to. Default is
+        /// Optional. The destination IP range of outgoing packets that this policy-based route applies to. Default is
         /// "0.0.0.0/0" if protocol version is IPv4.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("destRange")]
         public virtual string DestRange { get; set; }
 
         /// <summary>
-        /// Optional. The IP protocol that this policy based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'.
+        /// Optional. The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'.
         /// Default is 'ALL'.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("ipProtocol")]
         public virtual string IpProtocol { get; set; }
 
         /// <summary>
-        /// Required. Internet protocol versions this policy based route applies to. For this version, only IPV4 is
+        /// Required. Internet protocol versions this policy-based route applies to. For this version, only IPV4 is
         /// supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("protocolVersion")]
         public virtual string ProtocolVersion { get; set; }
 
         /// <summary>
-        /// Optional. The source IP range of outgoing packets that this policy based route applies to. Default is
+        /// Optional. The source IP range of outgoing packets that this policy-based route applies to. Default is
         /// "0.0.0.0/0" if protocol version is IPv4.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("srcRange")]
@@ -6933,11 +6933,11 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>InterconnectAttachment to which this route applies to.</summary>
+    /// <summary>InterconnectAttachment that this route applies to.</summary>
     public class InterconnectAttachment : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. Cloud region to install this policy based route on interconnect attachment. Use `all` to install
+        /// Optional. Cloud region to install this policy-based route on interconnect attachment. Use `all` to install
         /// it on all interconnect attachments.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("region")]
@@ -7310,7 +7310,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>Policy based routes to be returned.</summary>
+        /// <summary>Policy-based routes to be returned.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyBasedRoutes")]
         public virtual System.Collections.Generic.IList<PolicyBasedRoute> PolicyBasedRoutes { get; set; }
 
@@ -7712,9 +7712,9 @@ namespace Google.Apis.Networkconnectivity.v1.Data
     }
 
     /// <summary>
-    /// Policy Based Routes (PBR) are more powerful routes that allows GCP customers to route their L4 network traffic
-    /// based on not just destination IP, but also source IP, protocol and more. A PBR always take precedence when it
-    /// conflicts with other types of routes. Next id: 22
+    /// Policy-based routes route L4 network traffic based on not just destination IP address, but also source IP
+    /// address, protocol, and more. If a policy-based route conflicts with other types of routes, the policy-based
+    /// route always take precedence.
     /// </summary>
     public class PolicyBasedRoute : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7722,7 +7722,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
 
         private object _createTime;
 
-        /// <summary>Output only. Time when the PolicyBasedRoute was created.</summary>
+        /// <summary>Output only. Time when the policy-based route was created.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
         public virtual string CreateTimeRaw
         {
@@ -7765,12 +7765,12 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("filter")]
         public virtual Filter Filter { get; set; }
 
-        /// <summary>Optional. The interconnect attachments to which this route applies to.</summary>
+        /// <summary>Optional. The interconnect attachments that this policy-based route applies to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("interconnectAttachment")]
         public virtual InterconnectAttachment InterconnectAttachment { get; set; }
 
         /// <summary>
-        /// Output only. Type of this resource. Always networkconnectivity#policyBasedRoute for Policy Based Route
+        /// Output only. Type of this resource. Always networkconnectivity#policyBasedRoute for policy-based Route
         /// resources.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("kind")]
@@ -7788,15 +7788,15 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Required. Fully-qualified URL of the network that this route applies to. e.g.
+        /// Required. Fully-qualified URL of the network that this route applies to, for example:
         /// projects/my-project/global/networks/my-network.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
         /// <summary>
-        /// Optional. The IP of a global access enabled L4 ILB that should be the next hop to handle matching packets.
-        /// For this version, only next_hop_ilb_ip is supported.
+        /// Optional. The IP address of a global-access-enabled L4 ILB that is the next hop for matching packets. For
+        /// this version, only nextHopIlbIp is supported.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextHopIlbIp")]
         public virtual string NextHopIlbIp { get; set; }
@@ -7806,8 +7806,8 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string NextHopOtherRoutes { get; set; }
 
         /// <summary>
-        /// Optional. The priority of this policy based route. Priority is used to break ties in cases where there are
-        /// more than one matching policy based routes found. In cases where multiple policy based routes are matched,
+        /// Optional. The priority of this policy-based route. Priority is used to break ties in cases where there are
+        /// more than one matching policy-based routes found. In cases where multiple policy-based routes are matched,
         /// the one with the lowest-numbered priority value wins. The default value is 1000. The priority value must be
         /// from 1 to 65535, inclusive.
         /// </summary>
@@ -7822,7 +7822,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
 
         private object _updateTime;
 
-        /// <summary>Output only. Time when the PolicyBasedRoute was updated.</summary>
+        /// <summary>Output only. Time when the policy-based route was updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
         public virtual string UpdateTimeRaw
         {
@@ -7855,7 +7855,7 @@ namespace Google.Apis.Networkconnectivity.v1.Data
             set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
-        /// <summary>Optional. VM instances to which this policy based route applies to.</summary>
+        /// <summary>Optional. VM instances to which this policy-based route applies to.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("virtualMachine")]
         public virtual VirtualMachine VirtualMachine { get; set; }
 
@@ -7956,13 +7956,13 @@ namespace Google.Apis.Networkconnectivity.v1.Data
 
         /// <summary>
         /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your
-        /// request, the server will know to ignore the request if it has already been completed. The server guarantees
-        /// that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example,
-        /// consider a situation where you make an initial request and the request times out. If you make the request
-        /// again with the same request ID, the server can check to see whether the original operation was received. If
-        /// it was, the server ignores the second request. This behavior prevents clients from mistakenly creating
-        /// duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not
-        /// supported (00000000-0000-0000-0000-000000000000).
+        /// request, the server knows to ignore the request if it has already been completed. The server guarantees that
+        /// a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider
+        /// a situation where you make an initial request and the request times out. If you make the request again with
+        /// the same request ID, the server can check to see whether the original operation was received. If it was, the
+        /// server ignores the second request. This behavior prevents clients from mistakenly creating duplicate
+        /// commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported
+        /// (00000000-0000-0000-0000-000000000000).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
@@ -7997,13 +7997,13 @@ namespace Google.Apis.Networkconnectivity.v1.Data
 
         /// <summary>
         /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your
-        /// request, the server will know to ignore the request if it has already been completed. The server guarantees
-        /// that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example,
-        /// consider a situation where you make an initial request and the request times out. If you make the request
-        /// again with the same request ID, the server can check to see whether the original operation was received. If
-        /// it was, the server ignores the second request. This behavior prevents clients from mistakenly creating
-        /// duplicate commitments. The request ID must be a valid UUID, with the exception that zero UUID is not
-        /// supported (00000000-0000-0000-0000-000000000000).
+        /// request, the server knows to ignore the request if it has already been completed. The server guarantees that
+        /// a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider
+        /// a situation where you make an initial request and the request times out. If you make the request again with
+        /// the same request ID, the server can check to see whether the original operation was received. If it was, the
+        /// server ignores the second request. This behavior prevents clients from mistakenly creating duplicate
+        /// commitments. The request ID must be a valid UUID, with the exception that zero UUID is not supported
+        /// (00000000-0000-0000-0000-000000000000).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
@@ -9128,12 +9128,12 @@ namespace Google.Apis.Networkconnectivity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>VM instances to which this policy based route applies to.</summary>
+    /// <summary>VM instances to which this policy-based route applies to.</summary>
     public class VirtualMachine : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. A list of VM instance tags to which this policy based route applies to. VM instances that have ANY
-        /// of tags specified here will install this PBR.
+        /// Optional. A list of VM instance tags the this policy-based route applies to. VM instances that have ANY of
+        /// tags specified here will install this PBR.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tags")]
         public virtual System.Collections.Generic.IList<string> Tags { get; set; }

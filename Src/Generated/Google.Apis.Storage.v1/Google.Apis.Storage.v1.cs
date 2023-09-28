@@ -5522,6 +5522,13 @@ namespace Google.Apis.Storage.v1
             public virtual string Object { get; private set; }
 
             /// <summary>
+            /// If true, copies the source object's ACL; otherwise, uses the bucket's default object ACL. The default is
+            /// false.
+            /// </summary>
+            [Google.Apis.Util.RequestParameterAttribute("copySourceAcl", Google.Apis.Util.RequestParameterType.Query)]
+            public virtual System.Nullable<bool> CopySourceAcl { get; set; }
+
+            /// <summary>
             /// Makes the operation conditional on whether the object's one live generation matches the given value.
             /// Setting to 0 makes the operation succeed only if there are no live versions of the object.
             /// </summary>
@@ -5609,6 +5616,14 @@ namespace Google.Apis.Storage.v1
                     Name = "object",
                     IsRequired = true,
                     ParameterType = "path",
+                    DefaultValue = null,
+                    Pattern = null,
+                });
+                RequestParameters.Add("copySourceAcl", new Google.Apis.Discovery.Parameter
+                {
+                    Name = "copySourceAcl",
+                    IsRequired = false,
+                    ParameterType = "query",
                     DefaultValue = null,
                     Pattern = null,
                 });

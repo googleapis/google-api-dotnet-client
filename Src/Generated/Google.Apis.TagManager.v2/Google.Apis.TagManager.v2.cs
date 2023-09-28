@@ -9057,6 +9057,10 @@ namespace Google.Apis.TagManager.v2.Data
     /// </summary>
     public class Entity : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The built in variable being represented by the entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("builtInVariable")]
+        public virtual BuiltInVariable BuiltInVariable { get; set; }
+
         /// <summary>Represents how the entity has been changed in the workspace.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("changeStatus")]
         public virtual string ChangeStatus { get; set; }
@@ -9065,9 +9069,17 @@ namespace Google.Apis.TagManager.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("client")]
         public virtual Client Client { get; set; }
 
+        /// <summary>The custom template being represented by the entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customTemplate")]
+        public virtual CustomTemplate CustomTemplate { get; set; }
+
         /// <summary>The folder being represented by the entity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("folder")]
         public virtual Folder Folder { get; set; }
+
+        /// <summary>The gtag config being represented by the entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gtagConfig")]
+        public virtual GtagConfig GtagConfig { get; set; }
 
         /// <summary>The tag being represented by the entity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tag")]
@@ -9084,6 +9096,10 @@ namespace Google.Apis.TagManager.v2.Data
         /// <summary>The variable being represented by the entity.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("variable")]
         public virtual Variable Variable { get; set; }
+
+        /// <summary>The zone being represented by the entity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual Zone Zone { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

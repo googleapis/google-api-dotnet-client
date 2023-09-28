@@ -2017,6 +2017,59 @@ namespace Google.Apis.BackupforGKE.v1
                 }
 
                 /// <summary>
+                /// Deletes a long-running operation. This method indicates that the client is no longer interested in
+                /// the operation result. It does not cancel the operation. If the server doesn't support this method,
+                /// it returns `google.rpc.Code.UNIMPLEMENTED`.
+                /// </summary>
+                /// <param name="name">The name of the operation resource to be deleted.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>
+                /// Deletes a long-running operation. This method indicates that the client is no longer interested in
+                /// the operation result. It does not cancel the operation. If the server doesn't support this method,
+                /// it returns `google.rpc.Code.UNIMPLEMENTED`.
+                /// </summary>
+                public class DeleteRequest : BackupforGKEBaseServiceRequest<Google.Apis.BackupforGKE.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation resource to be deleted.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
                 /// result at intervals as recommended by the API service.
                 /// </summary>
@@ -3807,59 +3860,6 @@ namespace Google.Apis.BackupforGKE.v1
                 }
             }
 
-            /// <summary>
-            /// Deletes a long-running operation. This method indicates that the client is no longer interested in the
-            /// operation result. It does not cancel the operation. If the server doesn't support this method, it
-            /// returns `google.rpc.Code.UNIMPLEMENTED`.
-            /// </summary>
-            /// <param name="name">The name of the operation resource to be deleted.</param>
-            public virtual DeleteOperationsRequest DeleteOperations(string name)
-            {
-                return new DeleteOperationsRequest(service, name);
-            }
-
-            /// <summary>
-            /// Deletes a long-running operation. This method indicates that the client is no longer interested in the
-            /// operation result. It does not cancel the operation. If the server doesn't support this method, it
-            /// returns `google.rpc.Code.UNIMPLEMENTED`.
-            /// </summary>
-            public class DeleteOperationsRequest : BackupforGKEBaseServiceRequest<Google.Apis.BackupforGKE.v1.Data.Empty>
-            {
-                /// <summary>Constructs a new DeleteOperations request.</summary>
-                public DeleteOperationsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-                /// <summary>The name of the operation resource to be deleted.</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "deleteOperations";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "DELETE";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1/{+name}/operations";
-
-                /// <summary>Initializes DeleteOperations parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
-                    });
-                }
-            }
-
             /// <summary>Gets information about a location.</summary>
             /// <param name="name">Resource name for the location.</param>
             public virtual GetRequest Get(string name)
@@ -5300,8 +5300,7 @@ namespace Google.Apis.BackupforGKE.v1.Data
         /// Optional. (Filtering parameter) Any resource subject to transformation must be contained within one of the
         /// listed Kubernetes Namespace in the Backup. If this field is not provided, no namespace filtering will be
         /// performed (all resources in all Namespaces, including all cluster-scoped resources, will be candidates for
-        /// transformation). To mix cluster-scoped and namespaced resources in the same rule, use an empty string ("")
-        /// as one of the target namespaces.
+        /// transformation).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("namespaces")]
         public virtual System.Collections.Generic.IList<string> Namespaces { get; set; }

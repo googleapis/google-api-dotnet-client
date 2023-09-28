@@ -11870,9 +11870,27 @@ namespace Google.Apis.CloudDataplex.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A dimension captures data quality intent about a defined subset of the rules specified.</summary>
+    public class GoogleCloudDataplexV1DataQualityDimension : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The dimension name a rule belongs to. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY",
+        /// "VALIDITY", "UNIQUENESS", "INTEGRITY"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>DataQualityDimensionResult provides a more detailed, per-dimension view of the results.</summary>
     public class GoogleCloudDataplexV1DataQualityDimensionResult : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. The dimension config specified in the DataQualitySpec, as is.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimension")]
+        public virtual GoogleCloudDataplexV1DataQualityDimension Dimension { get; set; }
+
         /// <summary>Whether the dimension passed or failed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("passed")]
         public virtual System.Nullable<bool> Passed { get; set; }

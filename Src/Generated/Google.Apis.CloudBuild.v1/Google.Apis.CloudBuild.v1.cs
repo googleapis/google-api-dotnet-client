@@ -5804,6 +5804,16 @@ namespace Google.Apis.CloudBuild.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("peeredNetwork")]
         public virtual string PeeredNetwork { get; set; }
 
+        /// <summary>
+        /// Immutable. IP range within the peered network. This is specified in CIDR notation with a slash and the
+        /// subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g.
+        /// `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a 29 bit prefix size. `/16` would
+        /// specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified,
+        /// a value of `/24` will be used. The field only has an effect if peered_network is set.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peeredNetworkIpRange")]
+        public virtual string PeeredNetworkIpRange { get; set; }
+
         /// <summary>Required. Secret Manager secrets needed by the config.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("secrets")]
         public virtual BitbucketServerSecrets Secrets { get; set; }
@@ -9062,6 +9072,18 @@ namespace Google.Apis.CloudBuild.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fileHashes")]
         public virtual System.Collections.Generic.IDictionary<string, FileHashes> FileHashes { get; set; }
+
+        /// <summary>
+        /// Output only. A copy of the build's `source.connected_repository`, if exists, with any revisions resolved.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedConnectedRepository")]
+        public virtual ConnectedRepository ResolvedConnectedRepository { get; set; }
+
+        /// <summary>
+        /// Output only. A copy of the build's `source.git_source`, if exists, with any revisions resolved.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resolvedGitSource")]
+        public virtual GitSource ResolvedGitSource { get; set; }
 
         /// <summary>A copy of the build's `source.repo_source`, if exists, with any revisions resolved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resolvedRepoSource")]

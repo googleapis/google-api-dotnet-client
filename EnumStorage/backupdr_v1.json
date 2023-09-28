@@ -1,0 +1,11 @@
+{
+  "Google.Apis.Backupdr.v1.BackupdrBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.Backupdr.v1.BackupdrBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

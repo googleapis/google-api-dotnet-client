@@ -1295,6 +1295,16 @@ namespace Google.Apis.BlockchainNodeEngine.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("apiEnableDebug")]
         public virtual System.Nullable<bool> ApiEnableDebug { get; set; }
 
+        /// <summary>
+        /// An Ethereum address which the beacon client will send fee rewards to if no recipient is configured in the
+        /// validator client. See https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html or
+        /// https://docs.prylabs.network/docs/execution-node/fee-recipient for examples of how this is used. Note that
+        /// while this is often described as "suggested", as we run the execution node we can trust the execution node,
+        /// and therefore this is considered enforced.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("beaconFeeRecipient")]
+        public virtual string BeaconFeeRecipient { get; set; }
+
         /// <summary>Immutable. The consensus client.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("consensusClient")]
         public virtual string ConsensusClient { get; set; }

@@ -1795,7 +1795,12 @@ namespace Google.Apis.Translate.v3beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableShadowRemovalNativePdf")]
         public virtual System.Nullable<bool> EnableShadowRemovalNativePdf { get; set; }
 
-        /// <summary>Optional.</summary>
+        /// <summary>
+        /// Optional. File format conversion map to be applied to all input files. Map's key is the original mime_type.
+        /// Map's value is the target mime_type of translated documents. Supported file format conversion includes: -
+        /// `application/pdf` to `application/vnd.openxmlformats-officedocument.wordprocessingml.document` If nothing
+        /// specified, output files will be in the same format as the original file.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("formatConversions")]
         public virtual System.Collections.Generic.IDictionary<string, string> FormatConversions { get; set; }
 

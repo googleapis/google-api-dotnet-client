@@ -499,10 +499,6 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nationalPhoneNumber")]
         public virtual string NationalPhoneNumber { get; set; }
 
-        /// <summary>Output only. The regular hours of operation.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("openingHours")]
-        public virtual GoogleMapsPlacesV1PlaceOpeningHours OpeningHours { get; set; }
-
         /// <summary>Output only. Plus code of the place location lat/long.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("plusCode")]
         public virtual GoogleMapsPlacesV1PlacePlusCode PlusCode { get; set; }
@@ -515,13 +511,9 @@ namespace Google.Apis.MapsPlaces.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("rating")]
         public virtual System.Nullable<double> Rating { get; set; }
 
-        /// <summary>Output only. Specifies if the place supports reservations.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reservable")]
-        public virtual System.Nullable<bool> Reservable { get; set; }
-
-        /// <summary>Output only. List of reviews about this place.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("reviews")]
-        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1Review> Reviews { get; set; }
+        /// <summary>Output only. The regular hours of operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("regularOpeningHours")]
+        public virtual GoogleMapsPlacesV1PlaceOpeningHours RegularOpeningHours { get; set; }
 
         /// <summary>
         /// Output only. Contains an array of entries for information about regular secondary hours of a business.
@@ -530,8 +522,16 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// from a predefined list of opening hours types (such as DRIVE_THROUGH, PICKUP, or TAKEOUT) based on the types
         /// of the place.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("secondaryOpeningHours")]
-        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1PlaceOpeningHours> SecondaryOpeningHours { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("regularSecondaryOpeningHours")]
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1PlaceOpeningHours> RegularSecondaryOpeningHours { get; set; }
+
+        /// <summary>Output only. Specifies if the place supports reservations.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reservable")]
+        public virtual System.Nullable<bool> Reservable { get; set; }
+
+        /// <summary>Output only. List of reviews about this place.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("reviews")]
+        public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1Review> Reviews { get; set; }
 
         /// <summary>Output only. Specifies if the place serves beer.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("servesBeer")]
@@ -591,12 +591,6 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("websiteUri")]
         public virtual string WebsiteUri { get; set; }
-
-        /// <summary>
-        /// Output only. [Deprecated!] Specifies if the place has an entrance that is wheelchair-accessible.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("wheelchairAccessibleEntrance")]
-        public virtual System.Nullable<bool> WheelchairAccessibleEntrance { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

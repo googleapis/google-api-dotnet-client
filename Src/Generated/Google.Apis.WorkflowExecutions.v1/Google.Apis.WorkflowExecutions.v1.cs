@@ -347,8 +347,8 @@ namespace Google.Apis.WorkflowExecutions.v1
                         }
 
                         /// <summary>
-                        /// Returns a list of active callbacks which belong to the execution with the given name. The
-                        /// returned callbacks are ordered by callback ID. first).
+                        /// Returns a list of active callbacks that belong to the execution with the given name. The
+                        /// returned callbacks are ordered by callback ID.
                         /// </summary>
                         /// <param name="parent">
                         /// Required. Name of the execution for which the callbacks should be listed. Format:
@@ -360,8 +360,8 @@ namespace Google.Apis.WorkflowExecutions.v1
                         }
 
                         /// <summary>
-                        /// Returns a list of active callbacks which belong to the execution with the given name. The
-                        /// returned callbacks are ordered by callback ID. first).
+                        /// Returns a list of active callbacks that belong to the execution with the given name. The
+                        /// returned callbacks are ordered by callback ID.
                         /// </summary>
                         public class ListRequest : WorkflowExecutionsBaseServiceRequest<Google.Apis.WorkflowExecutions.v1.Data.ListCallbacksResponse>
                         {
@@ -557,10 +557,10 @@ namespace Google.Apis.WorkflowExecutions.v1
 
                     /// <summary>
                     /// Returns all metadata stored about an execution, excluding most data that is already accessible
-                    /// via other API methods.
+                    /// using other API methods.
                     /// </summary>
                     /// <param name="name">
-                    /// Required. Name of the execution to be data exported. Format:
+                    /// Required. Name of the execution for which data is to be exported. Format:
                     /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
                     /// </param>
                     public virtual ExportDataRequest ExportData(string name)
@@ -570,7 +570,7 @@ namespace Google.Apis.WorkflowExecutions.v1
 
                     /// <summary>
                     /// Returns all metadata stored about an execution, excluding most data that is already accessible
-                    /// via other API methods.
+                    /// using other API methods.
                     /// </summary>
                     public class ExportDataRequest : WorkflowExecutionsBaseServiceRequest<Google.Apis.WorkflowExecutions.v1.Data.ExportDataResponse>
                     {
@@ -582,7 +582,7 @@ namespace Google.Apis.WorkflowExecutions.v1
                         }
 
                         /// <summary>
-                        /// Required. Name of the execution to be data exported. Format:
+                        /// Required. Name of the execution for which data is to be exported. Format:
                         /// projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution}
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -942,7 +942,7 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("availablePayloads")]
         public virtual System.Collections.Generic.IList<string> AvailablePayloads { get; set; }
 
-        /// <summary>Output only. The method accepted by the callback. E.g. GET, POST, PUT.</summary>
+        /// <summary>Output only. The method accepted by the callback. For example: GET, POST, PUT.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("method")]
         public virtual string Method { get; set; }
 
@@ -1138,7 +1138,7 @@ namespace Google.Apis.WorkflowExecutions.v1.Data
     /// <summary>Response for the ExportData method.</summary>
     public class ExportDataResponse : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>The JSON string with customer data and metadata of an execution of the given name</summary>
+        /// <summary>The JSON string with customer data and metadata for an execution with the given name</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("data")]
         public virtual string Data { get; set; }
 
