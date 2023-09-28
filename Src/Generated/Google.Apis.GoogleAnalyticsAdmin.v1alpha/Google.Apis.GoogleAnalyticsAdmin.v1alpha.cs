@@ -5600,8 +5600,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 /// SKAdNetworkConversionValueSchema.
                 /// </summary>
                 /// <param name="parent">
-                /// Required. Format: properties/{property_id}/dataStreams/{dataStream}/sKAdNetworkConversionValueSchema
-                /// Example: properties/1234/dataStreams/5678/sKAdNetworkConversionValueSchema
+                /// Required. The DataStream resource to list schemas for. Format:
+                /// properties/{property_id}/dataStreams/{dataStream} Example: properties/1234/dataStreams/5678
                 /// </param>
                 public virtual ListRequest List(string parent)
                 {
@@ -5622,9 +5622,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     }
 
                     /// <summary>
-                    /// Required. Format:
-                    /// properties/{property_id}/dataStreams/{dataStream}/sKAdNetworkConversionValueSchema Example:
-                    /// properties/1234/dataStreams/5678/sKAdNetworkConversionValueSchema
+                    /// Required. The DataStream resource to list schemas for. Format:
+                    /// properties/{property_id}/dataStreams/{dataStream} Example: properties/1234/dataStreams/5678
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }

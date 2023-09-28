@@ -4753,13 +4753,6 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response from export issue model</summary>
-    public class GoogleCloudContactcenterinsightsV1ExportIssueModelResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Agent Assist frequently-asked-question answer data.</summary>
     public class GoogleCloudContactcenterinsightsV1FaqAnswerData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4818,13 +4811,6 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
 
     /// <summary>The data for a hold annotation.</summary>
     public class GoogleCloudContactcenterinsightsV1HoldData : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response from import issue model</summary>
-    public class GoogleCloudContactcenterinsightsV1ImportIssueModelResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5926,6 +5912,13 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("redactionConfig")]
         public virtual GoogleCloudContactcenterinsightsV1RedactionConfig RedactionConfig { get; set; }
 
+        /// <summary>
+        /// Optional. Default Speech-to-Text resources to be used while ingesting audio files. Optional, CCAI Insights
+        /// will create a default if not provided.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speechConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1SpeechConfig SpeechConfig { get; set; }
+
         private string _updateTimeRaw;
 
         private object _updateTime;
@@ -6057,6 +6050,20 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// <summary>The content of the reply.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reply")]
         public virtual string Reply { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Speech-to-Text configuration.</summary>
+    public class GoogleCloudContactcenterinsightsV1SpeechConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The fully-qualified Speech Recognizer resource name. Format:
+        /// `projects/{project_id}/locations/{location}/recognizer/{recognizer}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speechRecognizer")]
+        public virtual string SpeechRecognizer { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6282,6 +6289,12 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redactionConfig")]
         public virtual GoogleCloudContactcenterinsightsV1RedactionConfig RedactionConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Default Speech-to-Text configuration. Optional, will default to the config specified in Settings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speechConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1SpeechConfig SpeechConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8075,13 +8088,6 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response from export issue model</summary>
-    public class GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Agent Assist frequently-asked-question answer data.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8140,13 +8146,6 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
 
     /// <summary>The data for a hold annotation.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1HoldData : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response from import issue model</summary>
-    public class GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8823,6 +8822,20 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Speech-to-Text configuration.</summary>
+    public class GoogleCloudContactcenterinsightsV1alpha1SpeechConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The fully-qualified Speech Recognizer resource name. Format:
+        /// `projects/{project_id}/locations/{location}/recognizer/{recognizer}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speechRecognizer")]
+        public virtual string SpeechRecognizer { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata for undeploying an issue model.</summary>
     public class GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9043,6 +9056,12 @@ namespace Google.Apis.Contactcenterinsights.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("redactionConfig")]
         public virtual GoogleCloudContactcenterinsightsV1alpha1RedactionConfig RedactionConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Default Speech-to-Text configuration. Optional, will default to the config specified in Settings.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("speechConfig")]
+        public virtual GoogleCloudContactcenterinsightsV1alpha1SpeechConfig SpeechConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

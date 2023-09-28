@@ -3085,6 +3085,65 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                                 }
                             }
                         }
+
+                        /// <summary>Request on-demand recrawl for a list of URIs.</summary>
+                        /// <param name="body">The body of the request.</param>
+                        /// <param name="siteSearchEngine">
+                        /// Required. Full resource name of the SiteSearchEngine, such as
+                        /// `projects/*/locations/*/collections/*/dataStores/*/siteSearchEngine`.
+                        /// </param>
+                        public virtual RecrawlUrisRequest RecrawlUris(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRecrawlUrisRequest body, string siteSearchEngine)
+                        {
+                            return new RecrawlUrisRequest(service, body, siteSearchEngine);
+                        }
+
+                        /// <summary>Request on-demand recrawl for a list of URIs.</summary>
+                        public class RecrawlUrisRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                        {
+                            /// <summary>Constructs a new RecrawlUris request.</summary>
+                            public RecrawlUrisRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRecrawlUrisRequest body, string siteSearchEngine) : base(service)
+                            {
+                                SiteSearchEngine = siteSearchEngine;
+                                Body = body;
+                                InitParameters();
+                            }
+
+                            /// <summary>
+                            /// Required. Full resource name of the SiteSearchEngine, such as
+                            /// `projects/*/locations/*/collections/*/dataStores/*/siteSearchEngine`.
+                            /// </summary>
+                            [Google.Apis.Util.RequestParameterAttribute("siteSearchEngine", Google.Apis.Util.RequestParameterType.Path)]
+                            public virtual string SiteSearchEngine { get; private set; }
+
+                            /// <summary>Gets or sets the body of this request.</summary>
+                            Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRecrawlUrisRequest Body { get; set; }
+
+                            /// <summary>Returns the body of the request.</summary>
+                            protected override object GetBody() => Body;
+
+                            /// <summary>Gets the method name.</summary>
+                            public override string MethodName => "recrawlUris";
+
+                            /// <summary>Gets the HTTP method.</summary>
+                            public override string HttpMethod => "POST";
+
+                            /// <summary>Gets the REST path.</summary>
+                            public override string RestPath => "v1alpha/{+siteSearchEngine}:recrawlUris";
+
+                            /// <summary>Initializes RecrawlUris parameter list.</summary>
+                            protected override void InitParameters()
+                            {
+                                base.InitParameters();
+                                RequestParameters.Add("siteSearchEngine", new Google.Apis.Discovery.Parameter
+                                {
+                                    Name = "siteSearchEngine",
+                                    IsRequired = true,
+                                    ParameterType = "path",
+                                    DefaultValue = null,
+                                    Pattern = @"^projects/[^/]+/locations/[^/]+/collections/[^/]+/dataStores/[^/]+/siteSearchEngine$",
+                                });
+                            }
+                        }
                     }
 
                     /// <summary>Gets the UserEvents resource.</summary>
@@ -3456,7 +3515,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                         /// from user-imported search events. * `document-completable` - Using suggestions taken
                         /// directly from user-imported document fields marked as completable. Default values: *
                         /// `document` is the default model for regular dataStores. * `search-history` is the default
-                        /// model for IndustryVertical.SITE_SEARCH dataStores.
+                        /// model for site search dataStores.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("queryModel", Google.Apis.Util.RequestParameterType.Query)]
                         public virtual string QueryModel { get; set; }
@@ -3883,6 +3942,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     Operations = new OperationsResource(service);
                     Schemas = new SchemasResource(service);
                     ServingConfigs = new ServingConfigsResource(service);
+                    SiteSearchEngine = new SiteSearchEngineResource(service);
                     UserEvents = new UserEventsResource(service);
                 }
 
@@ -5856,6 +5916,83 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     }
                 }
 
+                /// <summary>Gets the SiteSearchEngine resource.</summary>
+                public virtual SiteSearchEngineResource SiteSearchEngine { get; }
+
+                /// <summary>The "siteSearchEngine" collection of methods.</summary>
+                public class SiteSearchEngineResource
+                {
+                    private const string Resource = "siteSearchEngine";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public SiteSearchEngineResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Request on-demand recrawl for a list of URIs.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="siteSearchEngine">
+                    /// Required. Full resource name of the SiteSearchEngine, such as
+                    /// `projects/*/locations/*/collections/*/dataStores/*/siteSearchEngine`.
+                    /// </param>
+                    public virtual RecrawlUrisRequest RecrawlUris(Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRecrawlUrisRequest body, string siteSearchEngine)
+                    {
+                        return new RecrawlUrisRequest(service, body, siteSearchEngine);
+                    }
+
+                    /// <summary>Request on-demand recrawl for a list of URIs.</summary>
+                    public class RecrawlUrisRequest : DiscoveryEngineBaseServiceRequest<Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new RecrawlUris request.</summary>
+                        public RecrawlUrisRequest(Google.Apis.Services.IClientService service, Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRecrawlUrisRequest body, string siteSearchEngine) : base(service)
+                        {
+                            SiteSearchEngine = siteSearchEngine;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. Full resource name of the SiteSearchEngine, such as
+                        /// `projects/*/locations/*/collections/*/dataStores/*/siteSearchEngine`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("siteSearchEngine", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string SiteSearchEngine { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.DiscoveryEngine.v1alpha.Data.GoogleCloudDiscoveryengineV1alphaRecrawlUrisRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "recrawlUris";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1alpha/{+siteSearchEngine}:recrawlUris";
+
+                        /// <summary>Initializes RecrawlUris parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("siteSearchEngine", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "siteSearchEngine",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/dataStores/[^/]+/siteSearchEngine$",
+                            });
+                        }
+                    }
+                }
+
                 /// <summary>Gets the UserEvents resource.</summary>
                 public virtual UserEventsResource UserEvents { get; }
 
@@ -6221,8 +6358,7 @@ namespace Google.Apis.DiscoveryEngine.v1alpha
                     /// no traffic for Search API. * `user-event` - Using suggestions generated from user-imported
                     /// search events. * `document-completable` - Using suggestions taken directly from user-imported
                     /// document fields marked as completable. Default values: * `document` is the default model for
-                    /// regular dataStores. * `search-history` is the default model for IndustryVertical.SITE_SEARCH
-                    /// dataStores.
+                    /// regular dataStores. * `search-history` is the default model for site search dataStores.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("queryModel", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string QueryModel { get; set; }
@@ -7503,8 +7639,8 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// the past history of SearchService.Search API calls. Do not use it when there is no traffic for Search API. *
         /// `user-event` - Using suggestions generated from user-imported search events. * `document-completable` -
         /// Using suggestions taken directly from user-imported document fields marked as completable. Default values: *
-        /// `document` is the default model for regular dataStores. * `search-history` is the default model for
-        /// IndustryVertical.SITE_SEARCH dataStores.
+        /// `document` is the default model for regular dataStores. * `search-history` is the default model for site
+        /// search dataStores.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("queryModel")]
         public virtual string QueryModel { get; set; }
@@ -9217,6 +9353,178 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
         public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Metadata related to the progress of the SiteSearchEngineService.RecrawlUris operation. This will be returned by
+    /// the google.longrunning.Operation.metadata field.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaRecrawlUrisMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Operation create time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Unique URIs in the request that don't match any TargetSite in the DataStore, only match TargetSites that
+        /// haven't been fully indexed, or match a TargetSite with type EXCLUDE.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("invalidUris")]
+        public virtual System.Collections.Generic.IList<string> InvalidUris { get; set; }
+
+        /// <summary>Total number of URIs that have yet to be crawled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pendingCount")]
+        public virtual System.Nullable<int> PendingCount { get; set; }
+
+        /// <summary>Total number of URIs that were rejected due to insufficient indexing resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("quotaExceededCount")]
+        public virtual System.Nullable<int> QuotaExceededCount { get; set; }
+
+        /// <summary>Total number of URIs that have been crawled so far.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("successCount")]
+        public virtual System.Nullable<int> SuccessCount { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Operation last update time. If the operation is done, this is also the finish time.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Total number of unique URIs in the request that are not in invalid_uris.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validUrisCount")]
+        public virtual System.Nullable<int> ValidUrisCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for SiteSearchEngineService.RecrawlUris method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaRecrawlUrisRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. List of URIs to crawl. At most 10K URIs are supported, otherwise an INVALID_ARGUMENT error is
+        /// thrown. Each URI should match at least one TargetSite in `site_search_engine`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uris")]
+        public virtual System.Collections.Generic.IList<string> Uris { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for SiteSearchEngineService.RecrawlUris method.</summary>
+    public class GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>URIs that were not crawled before the LRO terminated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failedUris")]
+        public virtual System.Collections.Generic.IList<string> FailedUris { get; set; }
+
+        /// <summary>Details for a sample of up to 10 `failed_uris`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureSamples")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfo> FailureSamples { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Details about why a particular URI failed to be crawled. Each FailureInfo contains one FailureReason per
+    /// CorpusType.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of failure reasons by corpus type (e.g. desktop, mobile).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failureReasons")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfoFailureReason> FailureReasons { get; set; }
+
+        /// <summary>URI that failed to be crawled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uri")]
+        public virtual string Uri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Details about why crawling failed for a particular CorpusType, e.g. DESKTOP and MOBILE crawling may fail for
+    /// different reasons.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaRecrawlUrisResponseFailureInfoFailureReason : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>DESKTOP, MOBILE, or CORPUS_TYPE_UNSPECIFIED.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("corpusType")]
+        public virtual string CorpusType { get; set; }
+
+        /// <summary>Reason why the URI was not crawled.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

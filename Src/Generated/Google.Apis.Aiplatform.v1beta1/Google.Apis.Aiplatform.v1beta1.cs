@@ -2148,6 +2148,7 @@ namespace Google.Apis.Aiplatform.v1beta1
                     this.service = service;
                     AnnotationSpecs = new AnnotationSpecsResource(service);
                     DataItems = new DataItemsResource(service);
+                    DatasetVersions = new DatasetVersionsResource(service);
                     Operations = new OperationsResource(service);
                     SavedQueries = new SavedQueriesResource(service);
                 }
@@ -3539,6 +3540,362 @@ namespace Google.Apis.Aiplatform.v1beta1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the DatasetVersions resource.</summary>
+                public virtual DatasetVersionsResource DatasetVersions { get; }
+
+                /// <summary>The "datasetVersions" collection of methods.</summary>
+                public class DatasetVersionsResource
+                {
+                    private const string Resource = "datasetVersions";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public DatasetVersionsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Create a version from a Dataset.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The name of the Dataset resource. Format:
+                    /// `projects/{project}/locations/{location}/datasets/{dataset}`
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1DatasetVersion body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Create a version from a Dataset.</summary>
+                    public class CreateRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1DatasetVersion body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the Dataset resource. Format:
+                        /// `projects/{project}/locations/{location}/datasets/{dataset}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1DatasetVersion Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/datasetVersions";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Deletes a Dataset version.</summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the Dataset version to delete. Format:
+                    /// `projects/{project}/locations/{location}/datasets/{dataset}/datasetVersions/{dataset_version}`
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>Deletes a Dataset version.</summary>
+                    public class DeleteRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the Dataset version to delete. Format:
+                        /// `projects/{project}/locations/{location}/datasets/{dataset}/datasetVersions/{dataset_version}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/datasetVersions/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Gets a Dataset version.</summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the Dataset version to delete. Format:
+                    /// `projects/{project}/locations/{location}/datasets/{dataset}/datasetVersions/{dataset_version}`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets a Dataset version.</summary>
+                    public class GetRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1DatasetVersion>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the Dataset version to delete. Format:
+                        /// `projects/{project}/locations/{location}/datasets/{dataset}/datasetVersions/{dataset_version}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Mask specifying which fields to read.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object ReadMask { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/datasetVersions/[^/]+$",
+                            });
+                            RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "readMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists DatasetVersions in a Dataset.</summary>
+                    /// <param name="parent">
+                    /// Required. The resource name of the Dataset to list DatasetVersions from. Format:
+                    /// `projects/{project}/locations/{location}/datasets/{dataset}`
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists DatasetVersions in a Dataset.</summary>
+                    public class ListRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleCloudAiplatformV1beta1ListDatasetVersionsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the Dataset to list DatasetVersions from. Format:
+                        /// `projects/{project}/locations/{location}/datasets/{dataset}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Optional. The standard list filter.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Optional. A comma-separated list of fields to order by, sorted in ascending order. Use
+                        /// "desc" after a field name for descending.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>Optional. The standard list page size.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>Optional. The standard list page token.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Optional. Mask specifying which fields to read.</summary>
+                        [Google.Apis.Util.RequestParameterAttribute("readMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object ReadMask { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+parent}/datasetVersions";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("readMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "readMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Restores a dataset version.</summary>
+                    /// <param name="name">
+                    /// Required. The name of the DatasetVersion resource. Format:
+                    /// `projects/{project}/locations/{location}/datasets/{dataset}/datasetVersions/{dataset_version}`
+                    /// </param>
+                    public virtual RestoreRequest Restore(string name)
+                    {
+                        return new RestoreRequest(service, name);
+                    }
+
+                    /// <summary>Restores a dataset version.</summary>
+                    public class RestoreRequest : AiplatformBaseServiceRequest<Google.Apis.Aiplatform.v1beta1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Restore request.</summary>
+                        public RestoreRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the DatasetVersion resource. Format:
+                        /// `projects/{project}/locations/{location}/datasets/{dataset}/datasetVersions/{dataset_version}`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "restore";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta1/{+name}:restore";
+
+                        /// <summary>Initializes Restore parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/datasets/[^/]+/datasetVersions/[^/]+$",
                             });
                         }
                     }
@@ -37498,6 +37855,98 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         }
     }
 
+    /// <summary>Describes the dataset version.</summary>
+    public class GoogleCloudAiplatformV1beta1DatasetVersion : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Name of the associated BigQuery dataset.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bigQueryDatasetName")]
+        public virtual string BigQueryDatasetName { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Timestamp when this DatasetVersion was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>Output only. The resource name of the DatasetVersion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Timestamp when this DatasetVersion was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+    }
+
     /// <summary>
     /// A description of resources that are dedicated to a DeployedModel, and that need a higher degree of manual
     /// configuration.
@@ -39538,6 +39987,10 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("annotationsFilter")]
         public virtual string AnnotationsFilter { get; set; }
 
+        /// <summary>Split based on the provided filters for each set.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterSplit")]
+        public virtual GoogleCloudAiplatformV1beta1ExportFilterSplit FilterSplit { get; set; }
+
         /// <summary>Split based on fractions defining the size of each set.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fractionSplit")]
         public virtual GoogleCloudAiplatformV1beta1ExportFractionSplit FractionSplit { get; set; }
@@ -39851,6 +40304,45 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     /// <summary>Response message for FeaturestoreService.ExportFeatureValues.</summary>
     public class GoogleCloudAiplatformV1beta1ExportFeatureValuesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Assigns input data to training, validation, and test sets based on the given filters, data pieces not matched by
+    /// any filter are ignored. Currently only supported for Datasets containing DataItems. If any of the filters in
+    /// this message are to match nothing, then they can be set as '-' (the minus sign). Supported only for unstructured
+    /// Datasets.
+    /// </summary>
+    public class GoogleCloudAiplatformV1beta1ExportFilterSplit : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A filter on DataItems of the Dataset. DataItems that match this filter are used to test the Model.
+        /// A filter with same syntax as the one used in DatasetService.ListDataItems may be used. If a single DataItem
+        /// is matched by more than one of the FilterSplit filters, then it is assigned to the first set that applies to
+        /// it in the training, validation, test order.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("testFilter")]
+        public virtual string TestFilter { get; set; }
+
+        /// <summary>
+        /// Required. A filter on DataItems of the Dataset. DataItems that match this filter are used to train the
+        /// Model. A filter with same syntax as the one used in DatasetService.ListDataItems may be used. If a single
+        /// DataItem is matched by more than one of the FilterSplit filters, then it is assigned to the first set that
+        /// applies to it in the training, validation, test order.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("trainingFilter")]
+        public virtual string TrainingFilter { get; set; }
+
+        /// <summary>
+        /// Required. A filter on DataItems of the Dataset. DataItems that match this filter are used to validate the
+        /// Model. A filter with same syntax as the one used in DatasetService.ListDataItems may be used. If a single
+        /// DataItem is matched by more than one of the FilterSplit filters, then it is assigned to the first set that
+        /// applies to it in the training, validation, test order.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("validationFilter")]
+        public virtual string ValidationFilter { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -42379,6 +42871,21 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// <summary>A list of DataLabelingJobs that matches the specified filter in the request.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataLabelingJobs")]
         public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1DataLabelingJob> DataLabelingJobs { get; set; }
+
+        /// <summary>The standard List next-page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for DatasetService.ListDatasetVersions.</summary>
+    public class GoogleCloudAiplatformV1beta1ListDatasetVersionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of DatasetVersions that matches the specified filter in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetVersions")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1beta1DatasetVersion> DatasetVersions { get; set; }
 
         /// <summary>The standard List next-page token.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
@@ -46036,12 +46543,12 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// The labels with user-defined metadata to organize your NotebookRuntime. Label keys and values can be no
         /// longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters,
         /// underscores and dashes. International characters are allowed. No more than 64 user labels can be associated
-        /// with one Dataset (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples
-        /// of labels. System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
-        /// Following system labels exist for NotebookRuntime: *
+        /// with one NotebookRuntime (System labels are excluded). See https://goo.gl/xmQnxf for more information and
+        /// examples of labels. System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are
+        /// immutable. Following system labels exist for NotebookRuntime: *
         /// "aiplatform.googleapis.com/notebook_runtime_gce_instance_id": output only, its value is the Compute Engine
-        /// instance id. * "aiplatform.googleapis.com/colab_enterprise_entry_service": its value is either "BigQuery" or
-        /// "Vertex"; if absent, it should be "Vertex". This is to describe the entry service, either BigQuery or
+        /// instance id. * "aiplatform.googleapis.com/colab_enterprise_entry_service": its value is either "bigquery" or
+        /// "vertex"; if absent, it should be "vertex". This is to describe the entry service, either BigQuery or
         /// Vertex.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
@@ -46054,6 +46561,10 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// <summary>Output only. The pointer to NotebookRuntimeTemplate this NotebookRuntime is created from.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("notebookRuntimeTemplateRef")]
         public virtual GoogleCloudAiplatformV1beta1NotebookRuntimeTemplateRef NotebookRuntimeTemplateRef { get; set; }
+
+        /// <summary>Output only. The type of the notebook runtime.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebookRuntimeType")]
+        public virtual string NotebookRuntimeType { get; set; }
 
         /// <summary>Output only. The proxy endpoint used to access the NotebookRuntime.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proxyUri")]
@@ -46217,6 +46728,10 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// <summary>Optional. Network spec.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("networkSpec")]
         public virtual GoogleCloudAiplatformV1beta1NetworkSpec NetworkSpec { get; set; }
+
+        /// <summary>Optional. Immutable. The type of the notebook runtime template.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notebookRuntimeType")]
+        public virtual string NotebookRuntimeType { get; set; }
 
         /// <summary>
         /// The service account that the runtime workload runs as. You can use any service account within the same
@@ -46390,16 +46905,16 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// `projects/{project}/global/networks/{network}`. Where {project} is a project number, as in `12345`, and
         /// {network} is a network name. To specify this field, you must have already [configured VPC Network Peering
         /// for Vertex AI](https://cloud.google.com/vertex-ai/docs/general/vpc-peering). If this field is left
-        /// unspecified, the resources is not peered with any network.
+        /// unspecified, the resources aren't peered with any network.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("network")]
         public virtual string Network { get; set; }
 
         /// <summary>
-        /// Optional. A list of names for the reserved ip ranges under the VPC network that can be used for this
-        /// persistent resource. If set, we will deploy the persistent resource within the provided ip ranges.
-        /// Otherwise, the persistent resource will be deployed to any ip ranges under the provided VPC network.
-        /// Example: ['vertex-ai-ip-range'].
+        /// Optional. A list of names for the reserved IP ranges under the VPC network that can be used for this
+        /// persistent resource. If set, we will deploy the persistent resource within the provided IP ranges.
+        /// Otherwise, the persistent resource is deployed to any IP ranges under the provided VPC network. Example:
+        /// ['vertex-ai-ip-range'].
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("reservedIpRanges")]
         public virtual System.Collections.Generic.IList<string> ReservedIpRanges { get; set; }
@@ -46412,7 +46927,9 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("resourceRuntime")]
         public virtual GoogleCloudAiplatformV1beta1ResourceRuntime ResourceRuntime { get; set; }
 
-        /// <summary>Optional. Persistent Resource runtime spec. Used for e.g. Ray cluster configuration.</summary>
+        /// <summary>
+        /// Optional. Persistent Resource runtime spec. For example, used for Ray cluster configuration.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("resourceRuntimeSpec")]
         public virtual GoogleCloudAiplatformV1beta1ResourceRuntimeSpec ResourceRuntimeSpec { get; set; }
 
@@ -46707,7 +47224,11 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("templateMetadata")]
         public virtual GoogleCloudAiplatformV1beta1PipelineTemplateMetadata TemplateMetadata { get; set; }
 
-        /// <summary>A template uri from where the PipelineJob.pipeline_spec, if empty, will be downloaded.</summary>
+        /// <summary>
+        /// A template uri from where the PipelineJob.pipeline_spec, if empty, will be downloaded. Currently, only uri
+        /// from Vertex Template Registry &amp;amp; Gallery is supported. Reference to
+        /// https://cloud.google.com/vertex-ai/docs/pipelines/create-pipeline-template.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("templateUri")]
         public virtual string TemplateUri { get; set; }
 
@@ -47881,22 +48402,23 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         /// <summary>
         /// Optional. This will be used to indicate which resource pool will serve as the Ray head node(the first node
         /// within that pool). Will use the machine from the first workerpool as the head node by default if this field
-        /// is not set.
+        /// isn't set.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("headNodeResourcePoolId")]
         public virtual string HeadNodeResourcePoolId { get; set; }
 
         /// <summary>
-        /// Optional. Default image for user to choose a preferred ML framework(e.g. tensorflow or Pytorch) by choosing
-        /// from Vertex prebuild images(https://cloud.google.com/vertex-ai/docs/training/pre-built-containers). Either
-        /// this or the resource_pool_images is required. Use this field if you need all the resource pools to have the
-        /// same Ray image, Otherwise, use the {@code resource_pool_images} field.
+        /// Optional. Default image for user to choose a preferred ML framework (for example, TensorFlow or Pytorch) by
+        /// choosing from [Vertex prebuilt
+        /// images](https://cloud.google.com/vertex-ai/docs/training/pre-built-containers). Either this or the
+        /// resource_pool_images is required. Use this field if you need all the resource pools to have the same Ray
+        /// image. Otherwise, use the {@code resource_pool_images} field.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("imageUri")]
         public virtual string ImageUri { get; set; }
 
         /// <summary>
-        /// Optional. Required if image_uri is not set. A map of resource_pool_id to prebuild Ray image if user need to
+        /// Optional. Required if image_uri isn't set. A map of resource_pool_id to prebuild Ray image if user need to
         /// use different images for different head/worker pools. This map needs to cover all the resource pool ids.
         /// Example: { "ray_head_node_pool": "head image" "ray_worker_node_pool1": "worker image"
         /// "ray_worker_node_pool2": "another worker image" }
@@ -48186,8 +48708,8 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     }
 
     /// <summary>
-    /// Represents the spec a group of resources of same type, e.g. machine, disk and accelerators, in a
-    /// PersistentResource.
+    /// Represents the spec of a group of resources of the same type, for example machine type, disk, and accelerators,
+    /// in a PersistentResource.
     /// </summary>
     public class GoogleCloudAiplatformV1beta1ResourcePool : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -48200,8 +48722,8 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
         public virtual GoogleCloudAiplatformV1beta1DiskSpec DiskSpec { get; set; }
 
         /// <summary>
-        /// Immutable. The unique ID in a PersistentResource to refer the this resource pool. User can specify it if
-        /// need to use it, otherwise we will generate it automatically.
+        /// Immutable. The unique ID in a PersistentResource for referring to this resource pool. User can specify it if
+        /// necessary. Otherwise, it's generated automatically.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -48269,8 +48791,8 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     }
 
     /// <summary>
-    /// Configure runtime on a PersistentResource instance, including but may not limited to: * Service accounts used to
-    /// run the workloads; * Whether make it a dedicated Ray Cluster;
+    /// Configuration for the runtime on a PersistentResource instance, including but not limited to: * Service accounts
+    /// used to run the workloads. * Whether to make it a dedicated Ray Cluster.
     /// </summary>
     public class GoogleCloudAiplatformV1beta1ResourceRuntimeSpec : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -53143,19 +53665,19 @@ namespace Google.Apis.Aiplatform.v1beta1.Data
     public class GoogleCloudAiplatformV1beta1ServiceAccountSpec : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. If true, custom user-managed service account is enforced to run any workloads (e.g. Vertex Jobs)
-        /// on the resource; Otherwise, will always use [Vertex AI Custom Code Service
-        /// Agent](https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents)
+        /// Required. If true, custom user-managed service account is enforced to run any workloads (for example, Vertex
+        /// Jobs) on the resource. Otherwise, uses the [Vertex AI Custom Code Service
+        /// Agent](https://cloud.google.com/vertex-ai/docs/general/access-control#service-agents).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableCustomServiceAccount")]
         public virtual System.Nullable<bool> EnableCustomServiceAccount { get; set; }
 
         /// <summary>
         /// Optional. Default service account that this PersistentResource's workloads run as. The workloads include: *
-        /// Any runtime specified via `ResourceRuntimeSpec` on creation time, e.g. Ray; * Jobs submitted to
+        /// Any runtime specified via `ResourceRuntimeSpec` on creation time, for example, Ray. * Jobs submitted to
         /// PersistentResource, if no other service account specified in the job specs. Only works when custom service
         /// account is enabled and users have the `iam.serviceAccounts.actAs` permission on this service account.
-        /// Required if any containers specified in `ResourceRuntimeSpec`.
+        /// Required if any containers are specified in `ResourceRuntimeSpec`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("serviceAccount")]
         public virtual string ServiceAccount { get; set; }
