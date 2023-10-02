@@ -5355,8 +5355,8 @@ namespace Google.Apis.Document.v1.Data
         public virtual System.Nullable<bool> ComputeStyleInfo { get; set; }
 
         /// <summary>
-        /// Turn off character box detector in OCR engine. Character box detection is enabled by default in OCR 2.0+
-        /// processors.
+        /// Turn off character box detector in OCR engine. Character box detection is enabled by default in OCR 2.0 (and
+        /// later) processors.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableCharacterBoxesDetection")]
         public virtual System.Nullable<bool> DisableCharacterBoxesDetection { get; set; }
@@ -5418,7 +5418,9 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableMathOcr")]
         public virtual System.Nullable<bool> EnableMathOcr { get; set; }
 
-        /// <summary>Turn on selection mark detector in OCR engine. Only available in OCR 2.0+ processors.</summary>
+        /// <summary>
+        /// Turn on selection mark detector in OCR engine. Only available in OCR 2.0 (and later) processors.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableSelectionMarkDetection")]
         public virtual System.Nullable<bool> EnableSelectionMarkDetection { get; set; }
 
@@ -5433,7 +5435,7 @@ namespace Google.Apis.Document.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fromEnd")]
         public virtual System.Nullable<int> FromEnd { get; set; }
 
-        /// <summary>Only process certain pages from the start, process all if the document has less pages.</summary>
+        /// <summary>Only process certain pages from the start. Process all if the document has fewer pages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fromStart")]
         public virtual System.Nullable<int> FromStart { get; set; }
 
@@ -9191,9 +9193,7 @@ namespace Google.Apis.Document.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// A singleton resource under a Processor which configures a collection of documents. Next Id: 8.
-    /// </summary>
+    /// <summary>A singleton resource under a Processor which configures a collection of documents.</summary>
     public class GoogleCloudDocumentaiV1beta3Dataset : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Document AI Warehouse-based dataset configuration.</summary>

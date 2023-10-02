@@ -5911,6 +5911,59 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 }
             }
 
+            /// <summary>Lookup for a single DataRedactionSettings.</summary>
+            /// <param name="name">
+            /// Required. The name of the settings to lookup. Format:
+            /// properties/{property}/dataStreams/{data_stream}/dataRedactionSettings Example:
+            /// "properties/1000/dataStreams/2000/dataRedactionSettings"
+            /// </param>
+            public virtual GetDataRedactionSettingsRequest GetDataRedactionSettings(string name)
+            {
+                return new GetDataRedactionSettingsRequest(service, name);
+            }
+
+            /// <summary>Lookup for a single DataRedactionSettings.</summary>
+            public class GetDataRedactionSettingsRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDataRedactionSettings>
+            {
+                /// <summary>Constructs a new GetDataRedactionSettings request.</summary>
+                public GetDataRedactionSettingsRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the settings to lookup. Format:
+                /// properties/{property}/dataStreams/{data_stream}/dataRedactionSettings Example:
+                /// "properties/1000/dataStreams/2000/dataRedactionSettings"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getDataRedactionSettings";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes GetDataRedactionSettings parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/dataStreams/[^/]+/dataRedactionSettings$",
+                    });
+                }
+            }
+
             /// <summary>
             /// Returns the enhanced measurement settings for this data stream. Note that the stream must enable
             /// enhanced measurement for these settings to take effect.
@@ -6165,6 +6218,83 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         ParameterType = "path",
                         DefaultValue = null,
                         Pattern = @"^properties/[^/]+/dataStreams/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>Updates a DataRedactionSettings on a property.</summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="name">
+            /// Output only. Name of this Data Redaction Settings resource. Format:
+            /// properties/{property_id}/dataStreams/{data_stream}/dataRedactionSettings Example:
+            /// "properties/1000/dataStreams/2000/dataRedactionSettings"
+            /// </param>
+            public virtual UpdateDataRedactionSettingsRequest UpdateDataRedactionSettings(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDataRedactionSettings body, string name)
+            {
+                return new UpdateDataRedactionSettingsRequest(service, body, name);
+            }
+
+            /// <summary>Updates a DataRedactionSettings on a property.</summary>
+            public class UpdateDataRedactionSettingsRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDataRedactionSettings>
+            {
+                /// <summary>Constructs a new UpdateDataRedactionSettings request.</summary>
+                public UpdateDataRedactionSettingsRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDataRedactionSettings body, string name) : base(service)
+                {
+                    Name = name;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Output only. Name of this Data Redaction Settings resource. Format:
+                /// properties/{property_id}/dataStreams/{data_stream}/dataRedactionSettings Example:
+                /// "properties/1000/dataStreams/2000/dataRedactionSettings"
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// Required. The list of fields to be updated. Field names must be in snake case (e.g.,
+                /// "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path
+                /// with the string "*" to match all fields.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaDataRedactionSettings Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateDataRedactionSettings";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes UpdateDataRedactionSettings parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/dataStreams/[^/]+/dataRedactionSettings$",
                     });
                     RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                     {
@@ -11255,6 +11385,10 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("customMetric")]
         public virtual GoogleAnalyticsAdminV1alphaCustomMetric CustomMetric { get; set; }
 
+        /// <summary>A snapshot of DataRedactionSettings resource in change history.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataRedactionSettings")]
+        public virtual GoogleAnalyticsAdminV1alphaDataRedactionSettings DataRedactionSettings { get; set; }
+
         /// <summary>A snapshot of a data retention settings resource in change history.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("dataRetentionSettings")]
         public virtual GoogleAnalyticsAdminV1alphaDataRetentionSettings DataRetentionSettings { get; set; }
@@ -11806,6 +11940,43 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>Required. Immutable. The scope of this custom metric.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("scope")]
         public virtual string Scope { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Settings for client-side data redaction. Singleton resource under a Web Stream.</summary>
+    public class GoogleAnalyticsAdminV1alphaDataRedactionSettings : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If enabled, any event parameter or user property values that look like an email will be redacted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("emailRedactionEnabled")]
+        public virtual System.Nullable<bool> EmailRedactionEnabled { get; set; }
+
+        /// <summary>
+        /// Output only. Name of this Data Redaction Settings resource. Format:
+        /// properties/{property_id}/dataStreams/{data_stream}/dataRedactionSettings Example:
+        /// "properties/1000/dataStreams/2000/dataRedactionSettings"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The query parameter keys to apply redaction logic to if present in the URL. Query parameter matching is
+        /// case-insensitive. Must contain at least one element if query_parameter_replacement_enabled is true. Keys
+        /// cannot contain commas.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryParameterKeys")]
+        public virtual System.Collections.Generic.IList<string> QueryParameterKeys { get; set; }
+
+        /// <summary>
+        /// Query Parameter redaction removes the key and value portions of a query parameter if it is in the configured
+        /// set of query parameters. If enabled, URL query replacement logic will be run for the Stream. Any query
+        /// parameters defined in query_parameter_keys will be redacted.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("queryParameterRedactionEnabled")]
+        public virtual System.Nullable<bool> QueryParameterRedactionEnabled { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

@@ -1,0 +1,11 @@
+{
+  "Google.Apis.VMwareEngine.v1.VMwareEngineBaseServiceRequest<<TResponse>>.AltEnum": [
+    "json",
+    "media",
+    "proto"
+  ],
+  "Google.Apis.VMwareEngine.v1.VMwareEngineBaseServiceRequest<<TResponse>>.XgafvEnum": [
+    "1",
+    "2"
+  ]
+}

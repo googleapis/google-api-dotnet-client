@@ -500,8 +500,8 @@ namespace Google.Apis.CloudRun.v2
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
                     /// Required. The name of the Execution to cancel. Format:
-                    /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}, where {project} can
-                    /// be project id or number.
+                    /// `projects/{project}/locations/{location}/jobs/{job}/executions/{execution}`, where `{project}`
+                    /// can be project id or number.
                     /// </param>
                     public virtual CancelRequest Cancel(Google.Apis.CloudRun.v2.Data.GoogleCloudRunV2CancelExecutionRequest body, string name)
                     {
@@ -521,8 +521,8 @@ namespace Google.Apis.CloudRun.v2
 
                         /// <summary>
                         /// Required. The name of the Execution to cancel. Format:
-                        /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}, where {project}
-                        /// can be project id or number.
+                        /// `projects/{project}/locations/{location}/jobs/{job}/executions/{execution}`, where
+                        /// `{project}` can be project id or number.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -560,8 +560,8 @@ namespace Google.Apis.CloudRun.v2
                     /// <summary>Deletes an Execution.</summary>
                     /// <param name="name">
                     /// Required. The name of the Execution to delete. Format:
-                    /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}, where {project} can
-                    /// be project id or number.
+                    /// `projects/{project}/locations/{location}/jobs/{job}/executions/{execution}`, where `{project}`
+                    /// can be project id or number.
                     /// </param>
                     public virtual DeleteRequest Delete(string name)
                     {
@@ -580,8 +580,8 @@ namespace Google.Apis.CloudRun.v2
 
                         /// <summary>
                         /// Required. The name of the Execution to delete. Format:
-                        /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}, where {project}
-                        /// can be project id or number.
+                        /// `projects/{project}/locations/{location}/jobs/{job}/executions/{execution}`, where
+                        /// `{project}` can be project id or number.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -642,8 +642,8 @@ namespace Google.Apis.CloudRun.v2
                     /// <summary>Gets information about an Execution.</summary>
                     /// <param name="name">
                     /// Required. The full name of the Execution. Format:
-                    /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}, where {project} can
-                    /// be project id or number.
+                    /// `projects/{project}/locations/{location}/jobs/{job}/executions/{execution}`, where `{project}`
+                    /// can be project id or number.
                     /// </param>
                     public virtual GetRequest Get(string name)
                     {
@@ -662,8 +662,8 @@ namespace Google.Apis.CloudRun.v2
 
                         /// <summary>
                         /// Required. The full name of the Execution. Format:
-                        /// projects/{project}/locations/{location}/jobs/{job}/executions/{execution}, where {project}
-                        /// can be project id or number.
+                        /// `projects/{project}/locations/{location}/jobs/{job}/executions/{execution}`, where
+                        /// `{project}` can be project id or number.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                         public virtual string Name { get; private set; }
@@ -696,7 +696,8 @@ namespace Google.Apis.CloudRun.v2
                     /// <param name="parent">
                     /// Required. The Execution from which the Executions should be listed. To list all Executions
                     /// across Jobs, use "-" instead of Job name. Format:
-                    /// projects/{project}/locations/{location}/jobs/{job}, where {project} can be project id or number.
+                    /// `projects/{project}/locations/{location}/jobs/{job}`, where `{project}` can be project id or
+                    /// number.
                     /// </param>
                     public virtual ListRequest List(string parent)
                     {
@@ -716,7 +717,7 @@ namespace Google.Apis.CloudRun.v2
                         /// <summary>
                         /// Required. The Execution from which the Executions should be listed. To list all Executions
                         /// across Jobs, use "-" instead of Job name. Format:
-                        /// projects/{project}/locations/{location}/jobs/{job}, where {project} can be project id or
+                        /// `projects/{project}/locations/{location}/jobs/{job}`, where `{project}` can be project id or
                         /// number.
                         /// </summary>
                         [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
@@ -2845,6 +2846,31 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Per-container override specification.</summary>
+    public class GoogleCloudRunV2ContainerOverride : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Arguments to the entrypoint. Will replace existing args for override.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("args")]
+        public virtual System.Collections.Generic.IList<string> Args { get; set; }
+
+        /// <summary>Optional. True if the intention is to clear out existing args list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clearArgs")]
+        public virtual System.Nullable<bool> ClearArgs { get; set; }
+
+        /// <summary>
+        /// List of environment variables to set in the container. Will be merged with existing env for override.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("env")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2EnvVar> Env { get; set; }
+
+        /// <summary>The name of the container specified as a DNS_LABEL.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>ContainerPort represents a network port in a single container.</summary>
     public class GoogleCloudRunV2ContainerPort : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3901,6 +3927,30 @@ namespace Google.Apis.CloudRun.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>RunJob Overrides that contains Execution fields to be overridden.</summary>
+    public class GoogleCloudRunV2Overrides : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Per container override specification.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("containerOverrides")]
+        public virtual System.Collections.Generic.IList<GoogleCloudRunV2ContainerOverride> ContainerOverrides { get; set; }
+
+        /// <summary>
+        /// Optional. The desired number of tasks the execution should run. Will replace existing task_count value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("taskCount")]
+        public virtual System.Nullable<int> TaskCount { get; set; }
+
+        /// <summary>
+        /// Duration in seconds the task may be active before the system will actively try to mark it failed and kill
+        /// associated containers. Will replace existing timeout_seconds value.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
+        public virtual object Timeout { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Probe describes a health check to be performed against a container to determine whether it is alive or ready to
     /// receive traffic.
@@ -4402,6 +4452,13 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("etag")]
         public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Overrides specification for a given execution of a job. If provided, overrides will be applied to update the
+        /// execution or task spec.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("overrides")]
+        public virtual GoogleCloudRunV2Overrides Overrides { get; set; }
 
         /// <summary>Indicates that the request should be validated without actually deleting any resources.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("validateOnly")]

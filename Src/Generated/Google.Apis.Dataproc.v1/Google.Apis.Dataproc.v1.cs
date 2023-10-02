@@ -9039,6 +9039,12 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("preemptibility")]
         public virtual string Preemptibility { get; set; }
 
+        /// <summary>
+        /// Optional. Configuration to handle the startup of instances during cluster create and update process.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("startupConfig")]
+        public virtual StartupConfig StartupConfig { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -11610,6 +11616,10 @@ namespace Google.Apis.Dataproc.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("gracefulDecommissionTimeout")]
         public virtual object GracefulDecommissionTimeout { get; set; }
 
+        /// <summary>Optional. Remove only idle workers when scaling down cluster</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("removeOnlyIdleWorkers")]
+        public virtual System.Nullable<bool> RemoveOnlyIdleWorkers { get; set; }
+
         /// <summary>
         /// Required. Fraction of required executors to remove from Spark Serverless clusters. A scale-down factor of
         /// 1.0 will result in scaling down so that there are no more executors for the Spark Job.(more aggressive
@@ -11670,6 +11680,22 @@ namespace Google.Apis.Dataproc.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
         public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Configuration to handle the startup of instances during cluster create and update process.</summary>
+    public class StartupConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The config setting to enable cluster creation/ updation to be successful only after
+        /// required_registration_fraction of instances are up and running. This configuration is applicable to only
+        /// secondary workers for now. The cluster will fail if required_registration_fraction of instances are not
+        /// available. This will include instance creation, agent registration, and service registration (if enabled).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requiredRegistrationFraction")]
+        public virtual System.Nullable<double> RequiredRegistrationFraction { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

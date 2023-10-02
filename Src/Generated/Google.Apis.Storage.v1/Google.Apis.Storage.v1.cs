@@ -8890,6 +8890,32 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("generation")]
         public virtual System.Nullable<long> Generation { get; set; }
 
+        /// <summary>
+        /// This is the time (in the future) when the soft-deleted object will no longer be restorable. It is equal to
+        /// the soft delete time plus the current soft delete retention duration of the bucket.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hardDeleteTime")]
+        public virtual string HardDeleteTimeRaw { get; set; }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="HardDeleteTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? HardDeleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(HardDeleteTimeRaw);
+            set => HardDeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="HardDeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use HardDeleteTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? HardDeleteTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(HardDeleteTimeRaw);
+            set => HardDeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
+
         /// <summary>The ID of the object, including the bucket name, object name, and generation number.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("id")]
         public virtual string Id { get; set; }
@@ -8979,6 +9005,29 @@ namespace Google.Apis.Storage.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("size")]
         public virtual System.Nullable<ulong> Size { get; set; }
 
+        /// <summary>The time at which the object became soft-deleted in RFC 3339 format.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("softDeleteTime")]
+        public virtual string SoftDeleteTimeRaw { get; set; }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="SoftDeleteTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? SoftDeleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(SoftDeleteTimeRaw);
+            set => SoftDeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary><seealso cref="System.DateTime"/> representation of <see cref="SoftDeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use SoftDeleteTimeDateTimeOffset instead.")]
+        public virtual System.DateTime? SoftDeleteTime
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeFromString(SoftDeleteTimeRaw);
+            set => SoftDeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTime(value);
+        }
+
         /// <summary>Storage class of the object.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("storageClass")]
         public virtual string StorageClass { get; set; }
@@ -9014,8 +9063,8 @@ namespace Google.Apis.Storage.v1.Data
         }
 
         /// <summary>
-        /// The deletion time of the object in RFC 3339 format. Will be returned if and only if this version of the
-        /// object has been deleted.
+        /// The time at which the object became noncurrent in RFC 3339 format. Will be returned if and only if this
+        /// version of the object has been deleted.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("timeDeleted")]
         public virtual string TimeDeletedRaw { get; set; }

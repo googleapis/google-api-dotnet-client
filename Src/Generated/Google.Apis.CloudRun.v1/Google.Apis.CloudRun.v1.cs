@@ -7126,7 +7126,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. *
         /// `run.googleapis.com/container-dependencies`: Revision. * `run.googleapis.com/cpu-throttling`: Revision. *
         /// `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. *
-        /// `run.googleapis.com/disable-default-uri`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`:
+        /// `run.googleapis.com/disable-default-url`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`:
         /// Revision * `run.googleapis.com/encryption-key`: Revision, Execution. *
         /// `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`:
         /// Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/launch-stage`: Service, Job. *
@@ -7938,7 +7938,7 @@ namespace Google.Apis.CloudRun.v1.Data
         /// are accepted in Service.metadata.annotations. * `run.googleapis.com/binary-authorization-breakglass` *
         /// `run.googleapis.com/binary-authorization` * `run.googleapis.com/client-name` *
         /// `run.googleapis.com/custom-audiences` * `run.googleapis.com/description` *
-        /// `run.googleapis.com/disable-default-uri` * `run.googleapis.com/gc-traffic-tags` *
+        /// `run.googleapis.com/disable-default-url` * `run.googleapis.com/gc-traffic-tags` *
         /// `run.googleapis.com/ingress` * `run.googleapis.com/ingress` sets the ingress settings for the Service. See
         /// [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress
         /// settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress
@@ -8014,9 +8014,8 @@ namespace Google.Apis.CloudRun.v1.Data
         public virtual string LatestReadyRevisionName { get; set; }
 
         /// <summary>
-        /// Returns the generation last fully processed by the system. This will only match metadata.generation when
-        /// reconciliation is complete. Clients polling for completed reconciliation should poll until
-        /// observedGeneration = metadata.generation and the Ready condition's status is True or False.
+        /// Returns the generation last seen by the system. Clients polling for completed reconciliation should poll
+        /// until observedGeneration = metadata.generation and the Ready condition's status is True or False.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("observedGeneration")]
         public virtual System.Nullable<int> ObservedGeneration { get; set; }

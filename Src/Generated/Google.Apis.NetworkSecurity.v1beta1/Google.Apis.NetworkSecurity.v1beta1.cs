@@ -1940,7 +1940,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                 /// <summary>Updates the parameters of a single SecurityProfileGroup.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Immutable. Name of the SecurityProfileGroup resource. It matches pattern
+                /// Immutable. Identifier. Name of the SecurityProfileGroup resource. It matches pattern
                 /// `projects|organizations/*/locations/{location}/securityProfileGroups/{security_profile_group}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1beta1.Data.SecurityProfileGroup body, string name)
@@ -1960,7 +1960,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
 
                     /// <summary>
-                    /// Immutable. Name of the SecurityProfileGroup resource. It matches pattern
+                    /// Immutable. Identifier. Name of the SecurityProfileGroup resource. It matches pattern
                     /// `projects|organizations/*/locations/{location}/securityProfileGroups/{security_profile_group}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -2303,7 +2303,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                 /// <summary>Updates the parameters of a single SecurityProfile.</summary>
                 /// <param name="body">The body of the request.</param>
                 /// <param name="name">
-                /// Immutable. Name of the SecurityProfile resource. It matches pattern
+                /// Immutable. Identifier. Name of the SecurityProfile resource. It matches pattern
                 /// `projects|organizations/*/locations/{location}/securityProfiles/{security_profile}`.
                 /// </param>
                 public virtual PatchRequest Patch(Google.Apis.NetworkSecurity.v1beta1.Data.SecurityProfile body, string name)
@@ -2323,7 +2323,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1
                     }
 
                     /// <summary>
-                    /// Immutable. Name of the SecurityProfile resource. It matches pattern
+                    /// Immutable. Identifier. Name of the SecurityProfile resource. It matches pattern
                     /// `projects|organizations/*/locations/{location}/securityProfiles/{security_profile}`.
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
@@ -7811,6 +7811,10 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
             set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
+        /// <summary>Optional. Description of the firewall endpoint. Max length 2048 characters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
         /// <summary>Optional. Labels as key value pairs</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("labels")]
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
@@ -9105,7 +9109,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Immutable. Name of the SecurityProfile resource. It matches pattern
+        /// Immutable. Identifier. Name of the SecurityProfile resource. It matches pattern
         /// `projects|organizations/*/locations/{location}/securityProfiles/{security_profile}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
@@ -9215,7 +9219,7 @@ namespace Google.Apis.NetworkSecurity.v1beta1.Data
         public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
 
         /// <summary>
-        /// Immutable. Name of the SecurityProfileGroup resource. It matches pattern
+        /// Immutable. Identifier. Name of the SecurityProfileGroup resource. It matches pattern
         /// `projects|organizations/*/locations/{location}/securityProfileGroups/{security_profile_group}`.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]

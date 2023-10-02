@@ -1,0 +1,6894 @@
+// Copyright 2023 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+// Generated code. DO NOT EDIT!
+
+namespace Google.Apis.VMwareEngine.v1
+{
+    /// <summary>The VMwareEngine Service.</summary>
+    public class VMwareEngineService : Google.Apis.Services.BaseClientService
+    {
+        /// <summary>The API version.</summary>
+        public const string Version = "v1";
+
+        /// <summary>The discovery version used to generate this service.</summary>
+        public static Google.Apis.Discovery.DiscoveryVersion DiscoveryVersionUsed = Google.Apis.Discovery.DiscoveryVersion.Version_1_0;
+
+        /// <summary>Constructs a new service.</summary>
+        public VMwareEngineService() : this(new Google.Apis.Services.BaseClientService.Initializer())
+        {
+        }
+
+        /// <summary>Constructs a new service.</summary>
+        /// <param name="initializer">The service initializer.</param>
+        public VMwareEngineService(Google.Apis.Services.BaseClientService.Initializer initializer) : base(initializer)
+        {
+            Projects = new ProjectsResource(this);
+        }
+
+        /// <summary>Gets the service supported features.</summary>
+        public override System.Collections.Generic.IList<string> Features => new string[0];
+
+        /// <summary>Gets the service name.</summary>
+        public override string Name => "vmwareengine";
+
+        /// <summary>Gets the service base URI.</summary>
+        public override string BaseUri => BaseUriOverride ?? "https://vmwareengine.googleapis.com/";
+
+        /// <summary>Gets the service base path.</summary>
+        public override string BasePath => "";
+
+        /// <summary>Gets the batch base URI; <c>null</c> if unspecified.</summary>
+        public override string BatchUri => "https://vmwareengine.googleapis.com/batch";
+
+        /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
+        public override string BatchPath => "batch";
+
+        /// <summary>Available OAuth 2.0 scopes for use with the VMware Engine API.</summary>
+        public class Scope
+        {
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
+            public static string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+        }
+
+        /// <summary>Available OAuth 2.0 scope constants for use with the VMware Engine API.</summary>
+        public static class ScopeConstants
+        {
+            /// <summary>
+            /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
+            /// Account.
+            /// </summary>
+            public const string CloudPlatform = "https://www.googleapis.com/auth/cloud-platform";
+        }
+
+        /// <summary>Gets the Projects resource.</summary>
+        public virtual ProjectsResource Projects { get; }
+    }
+
+    /// <summary>A base abstract class for VMwareEngine requests.</summary>
+    public abstract class VMwareEngineBaseServiceRequest<TResponse> : Google.Apis.Requests.ClientServiceRequest<TResponse>
+    {
+        /// <summary>Constructs a new VMwareEngineBaseServiceRequest instance.</summary>
+        protected VMwareEngineBaseServiceRequest(Google.Apis.Services.IClientService service) : base(service)
+        {
+        }
+
+        /// <summary>V1 error format.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("$.xgafv", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual System.Nullable<XgafvEnum> Xgafv { get; set; }
+
+        /// <summary>V1 error format.</summary>
+        public enum XgafvEnum
+        {
+            /// <summary>v1 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("1")]
+            Value1 = 0,
+
+            /// <summary>v2 error format</summary>
+            [Google.Apis.Util.StringValueAttribute("2")]
+            Value2 = 1,
+        }
+
+        /// <summary>OAuth access token.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("access_token", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string AccessToken { get; set; }
+
+        /// <summary>Data format for response.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("alt", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual System.Nullable<AltEnum> Alt { get; set; }
+
+        /// <summary>Data format for response.</summary>
+        public enum AltEnum
+        {
+            /// <summary>Responses with Content-Type of application/json</summary>
+            [Google.Apis.Util.StringValueAttribute("json")]
+            Json = 0,
+
+            /// <summary>Media download with context-dependent Content-Type</summary>
+            [Google.Apis.Util.StringValueAttribute("media")]
+            Media = 1,
+
+            /// <summary>Responses with Content-Type of application/x-protobuf</summary>
+            [Google.Apis.Util.StringValueAttribute("proto")]
+            Proto = 2,
+        }
+
+        /// <summary>JSONP</summary>
+        [Google.Apis.Util.RequestParameterAttribute("callback", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string Callback { get; set; }
+
+        /// <summary>Selector specifying which fields to include in a partial response.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("fields", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string Fields { get; set; }
+
+        /// <summary>
+        /// API key. Your API key identifies your project and provides you with API access, quota, and reports. Required
+        /// unless you provide an OAuth 2.0 token.
+        /// </summary>
+        [Google.Apis.Util.RequestParameterAttribute("key", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string Key { get; set; }
+
+        /// <summary>OAuth 2.0 token for the current user.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("oauth_token", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string OauthToken { get; set; }
+
+        /// <summary>Returns response with indentations and line breaks.</summary>
+        [Google.Apis.Util.RequestParameterAttribute("prettyPrint", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual System.Nullable<bool> PrettyPrint { get; set; }
+
+        /// <summary>
+        /// Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a
+        /// user, but should not exceed 40 characters.
+        /// </summary>
+        [Google.Apis.Util.RequestParameterAttribute("quotaUser", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string QuotaUser { get; set; }
+
+        /// <summary>Legacy upload protocol for media (e.g. "media", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("uploadType", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadType { get; set; }
+
+        /// <summary>Upload protocol for media (e.g. "raw", "multipart").</summary>
+        [Google.Apis.Util.RequestParameterAttribute("upload_protocol", Google.Apis.Util.RequestParameterType.Query)]
+        public virtual string UploadProtocol { get; set; }
+
+        /// <summary>Initializes VMwareEngine parameter list.</summary>
+        protected override void InitParameters()
+        {
+            base.InitParameters();
+            RequestParameters.Add("$.xgafv", new Google.Apis.Discovery.Parameter
+            {
+                Name = "$.xgafv",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("access_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "access_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("alt", new Google.Apis.Discovery.Parameter
+            {
+                Name = "alt",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "json",
+                Pattern = null,
+            });
+            RequestParameters.Add("callback", new Google.Apis.Discovery.Parameter
+            {
+                Name = "callback",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("fields", new Google.Apis.Discovery.Parameter
+            {
+                Name = "fields",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("key", new Google.Apis.Discovery.Parameter
+            {
+                Name = "key",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("oauth_token", new Google.Apis.Discovery.Parameter
+            {
+                Name = "oauth_token",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("prettyPrint", new Google.Apis.Discovery.Parameter
+            {
+                Name = "prettyPrint",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = "true",
+                Pattern = null,
+            });
+            RequestParameters.Add("quotaUser", new Google.Apis.Discovery.Parameter
+            {
+                Name = "quotaUser",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("uploadType", new Google.Apis.Discovery.Parameter
+            {
+                Name = "uploadType",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+            RequestParameters.Add("upload_protocol", new Google.Apis.Discovery.Parameter
+            {
+                Name = "upload_protocol",
+                IsRequired = false,
+                ParameterType = "query",
+                DefaultValue = null,
+                Pattern = null,
+            });
+        }
+    }
+
+    /// <summary>The "projects" collection of methods.</summary>
+    public class ProjectsResource
+    {
+        private const string Resource = "projects";
+
+        /// <summary>The service which this resource belongs to.</summary>
+        private readonly Google.Apis.Services.IClientService service;
+
+        /// <summary>Constructs a new resource.</summary>
+        public ProjectsResource(Google.Apis.Services.IClientService service)
+        {
+            this.service = service;
+            Locations = new LocationsResource(service);
+        }
+
+        /// <summary>Gets the Locations resource.</summary>
+        public virtual LocationsResource Locations { get; }
+
+        /// <summary>The "locations" collection of methods.</summary>
+        public class LocationsResource
+        {
+            private const string Resource = "locations";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public LocationsResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+                NetworkPolicies = new NetworkPoliciesResource(service);
+                NodeTypes = new NodeTypesResource(service);
+                Operations = new OperationsResource(service);
+                PrivateClouds = new PrivateCloudsResource(service);
+                PrivateConnections = new PrivateConnectionsResource(service);
+                VmwareEngineNetworks = new VmwareEngineNetworksResource(service);
+            }
+
+            /// <summary>Gets the NetworkPolicies resource.</summary>
+            public virtual NetworkPoliciesResource NetworkPolicies { get; }
+
+            /// <summary>The "networkPolicies" collection of methods.</summary>
+            public class NetworkPoliciesResource
+            {
+                private const string Resource = "networkPolicies";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public NetworkPoliciesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Creates a new network policy in a given VMware Engine network of a project and location (region). A
+                /// new network policy cannot be created if another network policy already exists in the same scope.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the location (region) to create the new network policy in. Resource
+                /// names are schemeless URIs that follow the conventions in
+                /// https://cloud.google.com/apis/design/resource_names. For example:
+                /// `projects/my-project/locations/us-central1`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.VMwareEngine.v1.Data.NetworkPolicy body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a new network policy in a given VMware Engine network of a project and location (region). A
+                /// new network policy cannot be created if another network policy already exists in the same scope.
+                /// </summary>
+                public class CreateRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.NetworkPolicy body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the location (region) to create the new network policy in.
+                    /// Resource names are schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The user-provided identifier of the network policy to be created. This identifier must
+                    /// be unique within parent `projects/{my-project}/locations/{us-central1}/networkPolicies` and
+                    /// becomes the final token in the name URI. The identifier must meet the following requirements: *
+                    /// Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character *
+                    /// Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC
+                    /// 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("networkPolicyId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string NetworkPolicyId { get; set; }
+
+                    /// <summary>
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server guarantees that a request doesn't result in creation of duplicate commitments for at
+                    /// least 60 minutes. For example, consider a situation where you make an initial request and the
+                    /// request times out. If you make the request again with the same request ID, the server can check
+                    /// if original operation with the same request ID was received, and if so, will ignore the second
+                    /// request. This prevents clients from accidentally creating duplicate commitments. The request ID
+                    /// must be a valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.VMwareEngine.v1.Data.NetworkPolicy Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/networkPolicies";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("networkPolicyId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "networkPolicyId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes a `NetworkPolicy` resource. A network policy cannot be deleted when `NetworkService.state`
+                /// is set to `RECONCILING` for either its external IP or internet access service.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The resource name of the network policy to delete. Resource names are schemeless URIs that
+                /// follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                /// `projects/my-project/locations/us-central1/networkPolicies/my-network-policy`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>
+                /// Deletes a `NetworkPolicy` resource. A network policy cannot be deleted when `NetworkService.state`
+                /// is set to `RECONCILING` for either its external IP or internet access service.
+                /// </summary>
+                public class DeleteRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the network policy to delete. Resource names are schemeless URIs
+                    /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1/networkPolicies/my-network-policy`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server guarantees that a request doesn't result in creation of duplicate commitments for at
+                    /// least 60 minutes. For example, consider a situation where you make an initial request and the
+                    /// request times out. If you make the request again with the same request ID, the server can check
+                    /// if original operation with the same request ID was received, and if so, will ignore the second
+                    /// request. This prevents clients from accidentally creating duplicate commitments. The request ID
+                    /// must be a valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/networkPolicies/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Retrieves a `NetworkPolicy` resource by its resource name.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the network policy to retrieve. Resource names are schemeless URIs
+                /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                /// `projects/my-project/locations/us-central1/networkPolicies/my-network-policy`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Retrieves a `NetworkPolicy` resource by its resource name.</summary>
+                public class GetRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.NetworkPolicy>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the network policy to retrieve. Resource names are schemeless
+                    /// URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For
+                    /// example: `projects/my-project/locations/us-central1/networkPolicies/my-network-policy`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/networkPolicies/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists `NetworkPolicy` resources in a specified project and location.</summary>
+                /// <param name="parent">
+                /// Required. The resource name of the location (region) to query for network policies. Resource names
+                /// are schemeless URIs that follow the conventions in
+                /// https://cloud.google.com/apis/design/resource_names. For example:
+                /// `projects/my-project/locations/us-central1`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists `NetworkPolicy` resources in a specified project and location.</summary>
+                public class ListRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.ListNetworkPoliciesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the location (region) to query for network policies. Resource
+                    /// names are schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// A filter expression that matches resources returned in the response. The expression must specify
+                    /// the field name, a comparison operator, and the value that you want to use for filtering. The
+                    /// value must be a string, a number, or a boolean. The comparison operator must be `=`, `!=`,
+                    /// `&amp;gt;`, or `&amp;lt;`. For example, if you are filtering a list of network policies, you can
+                    /// exclude the ones named `example-policy` by specifying `name != "example-policy"`. To filter on
+                    /// multiple expressions, provide each separate expression within parentheses. For example:
+                    /// ```
+                    /// (name = "example-policy") (createTime &amp;gt; "2021-04-12T08:15:10.40Z")
+                    /// ```
+                    /// By default, each
+                    /// expression is an `AND` expression. However, you can include `AND` and `OR` expressions
+                    /// explicitly. For example:
+                    /// ```
+                    /// (name = "example-policy-1") AND (createTime &amp;gt;
+                    /// "2021-04-12T08:15:10.40Z") OR (name = "example-policy-2")
+                    /// ```
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Sorts list results by a certain order. By default, returned results are ordered by `name` in
+                    /// ascending order. You can also sort results in descending order based on the `name` value using
+                    /// `orderBy="name desc"`. Currently, only ordering by `name` is supported.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// The maximum number of network policies to return in one page. The service may return fewer than
+                    /// this value. The maximum value is coerced to 1000. The default value of this field is 500.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous `ListNetworkPolicies` call. Provide this to retrieve the
+                    /// subsequent page. When paginating, all other parameters provided to `ListNetworkPolicies` must
+                    /// match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/networkPolicies";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Modifies a `NetworkPolicy` resource. Only the following fields can be updated: `internet_access`,
+                /// `external_ip`, `edge_services_cidr`. Only fields specified in `updateMask` are applied. When
+                /// updating a network policy, the external IP network service can only be disabled if there are no
+                /// external IP addresses present in the scope of the policy. Also, a `NetworkService` cannot be updated
+                /// when `NetworkService.state` is set to `RECONCILING`. During operation processing, the resource is
+                /// temporarily in the `ACTIVE` state before the operation fully completes. For that period of time, you
+                /// can't update the resource. Use the operation status to determine when the processing fully
+                /// completes.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. The resource name of this network policy. Resource names are schemeless URIs that
+                /// follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                /// `projects/my-project/locations/us-central1/networkPolicies/my-network-policy`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.VMwareEngine.v1.Data.NetworkPolicy body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Modifies a `NetworkPolicy` resource. Only the following fields can be updated: `internet_access`,
+                /// `external_ip`, `edge_services_cidr`. Only fields specified in `updateMask` are applied. When
+                /// updating a network policy, the external IP network service can only be disabled if there are no
+                /// external IP addresses present in the scope of the policy. Also, a `NetworkService` cannot be updated
+                /// when `NetworkService.state` is set to `RECONCILING`. During operation processing, the resource is
+                /// temporarily in the `ACTIVE` state before the operation fully completes. For that period of time, you
+                /// can't update the resource. Use the operation status to determine when the processing fully
+                /// completes.
+                /// </summary>
+                public class PatchRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.NetworkPolicy body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. The resource name of this network policy. Resource names are schemeless URIs that
+                    /// follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1/networkPolicies/my-network-policy`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server guarantees that a request doesn't result in creation of duplicate commitments for at
+                    /// least 60 minutes. For example, consider a situation where you make an initial request and the
+                    /// request times out. If you make the request again with the same request ID, the server can check
+                    /// if original operation with the same request ID was received, and if so, will ignore the second
+                    /// request. This prevents clients from accidentally creating duplicate commitments. The request ID
+                    /// must be a valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Required. Field mask is used to specify the fields to be overwritten in the `NetworkPolicy`
+                    /// resource by the update. The fields specified in the `update_mask` are relative to the resource,
+                    /// not the full request. A field will be overwritten if it is in the mask. If the user does not
+                    /// provide a mask then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.VMwareEngine.v1.Data.NetworkPolicy Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/networkPolicies/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the NodeTypes resource.</summary>
+            public virtual NodeTypesResource NodeTypes { get; }
+
+            /// <summary>The "nodeTypes" collection of methods.</summary>
+            public class NodeTypesResource
+            {
+                private const string Resource = "nodeTypes";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public NodeTypesResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Gets details of a single `NodeType`.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the node type to retrieve. Resource names are schemeless URIs that
+                /// follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                /// `projects/my-proj/locations/us-central1-a/nodeTypes/standard-72`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets details of a single `NodeType`.</summary>
+                public class GetRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.NodeType>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the node type to retrieve. Resource names are schemeless URIs
+                    /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-proj/locations/us-central1-a/nodeTypes/standard-72`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/nodeTypes/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists node types</summary>
+                /// <param name="parent">
+                /// Required. The resource name of the location to be queried for node types. Resource names are
+                /// schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+                /// For example: `projects/my-project/locations/us-central1-a`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists node types</summary>
+                public class ListRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.ListNodeTypesResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the location to be queried for node types. Resource names are
+                    /// schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1-a`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// A filter expression that matches resources returned in the response. The expression must specify
+                    /// the field name, a comparison operator, and the value that you want to use for filtering. The
+                    /// value must be a string, a number, or a boolean. The comparison operator must be `=`, `!=`,
+                    /// `&amp;gt;`, or `&amp;lt;`. For example, if you are filtering a list of node types, you can
+                    /// exclude the ones named `standard-72` by specifying `name != "standard-72"`. To filter on
+                    /// multiple expressions, provide each separate expression within parentheses. For example:
+                    /// ```
+                    /// (name = "standard-72") (virtual_cpu_count &amp;gt; 2)
+                    /// ```
+                    /// By default, each expression is an
+                    /// `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example:
+                    /// ```
+                    /// (name = "standard-96") AND (virtual_cpu_count &amp;gt; 2) OR (name = "standard-72")
+                    /// ```
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// The maximum number of node types to return in one page. The service may return fewer than this
+                    /// value. The maximum value is coerced to 1000. The default value of this field is 500.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous `ListNodeTypes` call. Provide this to retrieve the
+                    /// subsequent page. When paginating, all other parameters provided to `ListNodeTypes` must match
+                    /// the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/nodeTypes";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the Operations resource.</summary>
+            public virtual OperationsResource Operations { get; }
+
+            /// <summary>The "operations" collection of methods.</summary>
+            public class OperationsResource
+            {
+                private const string Resource = "operations";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public OperationsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>
+                /// Deletes a long-running operation. This method indicates that the client is no longer interested in
+                /// the operation result. It does not cancel the operation. If the server doesn't support this method,
+                /// it returns `google.rpc.Code.UNIMPLEMENTED`.
+                /// </summary>
+                /// <param name="name">The name of the operation resource to be deleted.</param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>
+                /// Deletes a long-running operation. This method indicates that the client is no longer interested in
+                /// the operation result. It does not cancel the operation. If the server doesn't support this method,
+                /// it returns `google.rpc.Code.UNIMPLEMENTED`.
+                /// </summary>
+                public class DeleteRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Empty>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation resource to be deleted.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
+                /// <param name="name">The name of the operation resource.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>
+                /// Gets the latest state of a long-running operation. Clients can use this method to poll the operation
+                /// result at intervals as recommended by the API service.
+                /// </summary>
+                public class GetRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/operations/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Lists operations that match the specified filter in the request. If the server doesn't support this
+                /// method, it returns `UNIMPLEMENTED`.
+                /// </summary>
+                /// <param name="name">The name of the operation's parent resource.</param>
+                public virtual ListRequest List(string name)
+                {
+                    return new ListRequest(service, name);
+                }
+
+                /// <summary>
+                /// Lists operations that match the specified filter in the request. If the server doesn't support this
+                /// method, it returns `UNIMPLEMENTED`.
+                /// </summary>
+                public class ListRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.ListOperationsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>The name of the operation's parent resource.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>The standard list filter.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>The standard list page size.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>The standard list page token.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}/operations";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the PrivateClouds resource.</summary>
+            public virtual PrivateCloudsResource PrivateClouds { get; }
+
+            /// <summary>The "privateClouds" collection of methods.</summary>
+            public class PrivateCloudsResource
+            {
+                private const string Resource = "privateClouds";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public PrivateCloudsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    Clusters = new ClustersResource(service);
+                    HcxActivationKeys = new HcxActivationKeysResource(service);
+                    Subnets = new SubnetsResource(service);
+                }
+
+                /// <summary>Gets the Clusters resource.</summary>
+                public virtual ClustersResource Clusters { get; }
+
+                /// <summary>The "clusters" collection of methods.</summary>
+                public class ClustersResource
+                {
+                    private const string Resource = "clusters";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public ClustersResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>
+                    /// Creates a new cluster in a given private cloud. Creating a new cluster provides additional nodes
+                    /// for use in the parent private cloud and requires sufficient [node
+                    /// quota](https://cloud.google.com/vmware-engine/quotas).
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The resource name of the private cloud to create a new cluster in. Resource names are
+                    /// schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.VMwareEngine.v1.Data.Cluster body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Creates a new cluster in a given private cloud. Creating a new cluster provides additional nodes
+                    /// for use in the parent private cloud and requires sufficient [node
+                    /// quota](https://cloud.google.com/vmware-engine/quotas).
+                    /// </summary>
+                    public class CreateRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.Cluster body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the private cloud to create a new cluster in. Resource names
+                        /// are schemeless URIs that follow the conventions in
+                        /// https://cloud.google.com/apis/design/resource_names. For example:
+                        /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. The user-provided identifier of the new `Cluster`. This identifier must be unique
+                        /// among clusters within the parent and becomes the final token in the name URI. The identifier
+                        /// must meet the following requirements: * Only contains 1-63 alphanumeric characters and
+                        /// hyphens * Begins with an alphabetical character * Ends with a non-hyphen character * Not
+                        /// formatted as a UUID * Complies with [RFC
+                        /// 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("clusterId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string ClusterId { get; set; }
+
+                        /// <summary>
+                        /// Optional. The request ID must be a valid UUID with the exception that zero UUID is not
+                        /// supported (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>
+                        /// Optional. True if you want the request to be validated and not executed; false otherwise.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.VMwareEngine.v1.Data.Cluster Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/clusters";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+$",
+                            });
+                            RequestParameters.Add("clusterId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "clusterId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "validateOnly",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Deletes a `Cluster` resource. To avoid unintended data loss, migrate or gracefully shut down any
+                    /// workloads running on the cluster before deletion. You cannot delete the management cluster of a
+                    /// private cloud using this method.
+                    /// </summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the cluster to delete. Resource names are schemeless URIs that
+                    /// follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster`
+                    /// </param>
+                    public virtual DeleteRequest Delete(string name)
+                    {
+                        return new DeleteRequest(service, name);
+                    }
+
+                    /// <summary>
+                    /// Deletes a `Cluster` resource. To avoid unintended data loss, migrate or gracefully shut down any
+                    /// workloads running on the cluster before deletion. You cannot delete the management cluster of a
+                    /// private cloud using this method.
+                    /// </summary>
+                    public class DeleteRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Delete request.</summary>
+                        public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the cluster to delete. Resource names are schemeless URIs
+                        /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For
+                        /// example:
+                        /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The request ID must be a valid UUID with the exception that zero UUID is not
+                        /// supported (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "delete";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "DELETE";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Delete parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+/clusters/[^/]+$",
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Retrieves a `Cluster` resource by its resource name.</summary>
+                    /// <param name="name">
+                    /// Required. The cluster resource name to retrieve. Resource names are schemeless URIs that follow
+                    /// the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Retrieves a `Cluster` resource by its resource name.</summary>
+                    public class GetRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Cluster>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The cluster resource name to retrieve. Resource names are schemeless URIs that
+                        /// follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                        /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+/clusters/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Gets the access control policy for a resource. Returns an empty policy if the resource exists
+                    /// and does not have a policy set.
+                    /// </summary>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </param>
+                    public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                    {
+                        return new GetIamPolicyRequest(service, resource);
+                    }
+
+                    /// <summary>
+                    /// Gets the access control policy for a resource. Returns an empty policy if the resource exists
+                    /// and does not have a policy set.
+                    /// </summary>
+                    public class GetIamPolicyRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Policy>
+                    {
+                        /// <summary>Constructs a new GetIamPolicy request.</summary>
+                        public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The maximum policy version that will be used to format the policy. Valid values
+                        /// are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for
+                        /// policies with any conditional role bindings must specify version 3. Policies with no
+                        /// conditional role bindings may specify any valid value or leave the field unset. The policy
+                        /// in the response might use the policy version that you specified, or it might use a lower
+                        /// policy version. For example, if you specify version 3, but the policy has no conditional
+                        /// role bindings, the response uses version 1. To learn which resources support conditions in
+                        /// their IAM policies, see the [IAM
+                        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getIamPolicy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                        /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+/clusters/[^/]+$",
+                            });
+                            RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "options.requestedPolicyVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists `Cluster` resources in a given private cloud.</summary>
+                    /// <param name="parent">
+                    /// Required. The resource name of the private cloud to query for clusters. Resource names are
+                    /// schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists `Cluster` resources in a given private cloud.</summary>
+                    public class ListRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.ListClustersResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the private cloud to query for clusters. Resource names are
+                        /// schemeless URIs that follow the conventions in
+                        /// https://cloud.google.com/apis/design/resource_names. For example:
+                        /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        ///  To filter on multiple expressions, provide each separate expression within parentheses. For
+                        /// example:
+                        /// ```
+                        /// (name = "example-cluster") (nodeCount = "3")
+                        /// ```
+                        /// By default, each expression is
+                        /// an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For
+                        /// example:
+                        /// ```
+                        /// (name = "example-cluster-1") AND (createTime &amp;gt;
+                        /// "2021-04-12T08:15:10.40Z") OR (name = "example-cluster-2")
+                        /// ```
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string Filter { get; set; }
+
+                        /// <summary>
+                        /// Sorts list results by a certain order. By default, returned results are ordered by `name` in
+                        /// ascending order. You can also sort results in descending order based on the `name` value
+                        /// using `orderBy="name desc"`. Currently, only ordering by `name` is supported.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string OrderBy { get; set; }
+
+                        /// <summary>
+                        /// The maximum number of clusters to return in one page. The service may return fewer than this
+                        /// value. The maximum value is coerced to 1000. The default value of this field is 500.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// A page token, received from a previous `ListClusters` call. Provide this to retrieve the
+                        /// subsequent page. When paginating, all other parameters provided to `ListClusters` must match
+                        /// the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/clusters";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+$",
+                            });
+                            RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "filter",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "orderBy",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Modifies a `Cluster` resource. Only fields specified in `updateMask` are applied. During
+                    /// operation processing, the resource is temporarily in the `ACTIVE` state before the operation
+                    /// fully completes. For that period of time, you can't update the resource. Use the operation
+                    /// status to determine when the processing fully completes.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Output only. The resource name of this cluster. Resource names are schemeless URIs that follow
+                    /// the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster`
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.VMwareEngine.v1.Data.Cluster body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Modifies a `Cluster` resource. Only fields specified in `updateMask` are applied. During
+                    /// operation processing, the resource is temporarily in the `ACTIVE` state before the operation
+                    /// fully completes. For that period of time, you can't update the resource. Use the operation
+                    /// status to determine when the processing fully completes.
+                    /// </summary>
+                    public class PatchRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.Cluster body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Output only. The resource name of this cluster. Resource names are schemeless URIs that
+                        /// follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                        /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The request ID must be a valid UUID with the exception that zero UUID is not
+                        /// supported (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>
+                        /// Required. Field mask is used to specify the fields to be overwritten in the `Cluster`
+                        /// resource by the update. The fields specified in the `updateMask` are relative to the
+                        /// resource, not the full request. A field will be overwritten if it is in the mask. If the
+                        /// user does not provide a mask then all fields will be overwritten.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>
+                        /// Optional. True if you want the request to be validated and not executed; false otherwise.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.VMwareEngine.v1.Data.Cluster Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+/clusters/[^/]+$",
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "validateOnly",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
+                    /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </param>
+                    public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.VMwareEngine.v1.Data.SetIamPolicyRequest body, string resource)
+                    {
+                        return new SetIamPolicyRequest(service, body, resource);
+                    }
+
+                    /// <summary>
+                    /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
+                    /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                    /// </summary>
+                    public class SetIamPolicyRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Policy>
+                    {
+                        /// <summary>Constructs a new SetIamPolicy request.</summary>
+                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.VMwareEngine.v1.Data.SetIamPolicyRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "setIamPolicy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                        /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+/clusters/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                    /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                    /// designed to be used for building permission-aware UIs and command-line tools, not for
+                    /// authorization checking. This operation may "fail open" without warning.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </param>
+                    public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.VMwareEngine.v1.Data.TestIamPermissionsRequest body, string resource)
+                    {
+                        return new TestIamPermissionsRequest(service, body, resource);
+                    }
+
+                    /// <summary>
+                    /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                    /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                    /// designed to be used for building permission-aware UIs and command-line tools, not for
+                    /// authorization checking. This operation may "fail open" without warning.
+                    /// </summary>
+                    public class TestIamPermissionsRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.TestIamPermissionsResponse>
+                    {
+                        /// <summary>Constructs a new TestIamPermissions request.</summary>
+                        public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.VMwareEngine.v1.Data.TestIamPermissionsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "testIamPermissions";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:testIamPermissions";
+
+                        /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+/clusters/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the HcxActivationKeys resource.</summary>
+                public virtual HcxActivationKeysResource HcxActivationKeys { get; }
+
+                /// <summary>The "hcxActivationKeys" collection of methods.</summary>
+                public class HcxActivationKeysResource
+                {
+                    private const string Resource = "hcxActivationKeys";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public HcxActivationKeysResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Creates a new HCX activation key in a given private cloud.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The resource name of the private cloud to create the key for. Resource names are
+                    /// schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1/privateClouds/my-cloud`
+                    /// </param>
+                    public virtual CreateRequest Create(Google.Apis.VMwareEngine.v1.Data.HcxActivationKey body, string parent)
+                    {
+                        return new CreateRequest(service, body, parent);
+                    }
+
+                    /// <summary>Creates a new HCX activation key in a given private cloud.</summary>
+                    public class CreateRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Create request.</summary>
+                        public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.HcxActivationKey body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the private cloud to create the key for. Resource names are
+                        /// schemeless URIs that follow the conventions in
+                        /// https://cloud.google.com/apis/design/resource_names. For example:
+                        /// `projects/my-project/locations/us-central1/privateClouds/my-cloud`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// Required. The user-provided identifier of the `HcxActivationKey` to be created. This
+                        /// identifier must be unique among `HcxActivationKey` resources within the parent and becomes
+                        /// the final token in the name URI. The identifier must meet the following requirements: * Only
+                        /// contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character *
+                        /// Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC
+                        /// 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("hcxActivationKeyId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string HcxActivationKeyId { get; set; }
+
+                        /// <summary>
+                        /// A request ID to identify requests. Specify a unique request ID so that if you must retry
+                        /// your request, the server will know to ignore the request if it has already been completed.
+                        /// The server guarantees that a request doesn't result in creation of duplicate commitments for
+                        /// at least 60 minutes. For example, consider a situation where you make an initial request and
+                        /// the request times out. If you make the request again with the same request ID, the server
+                        /// can check if original operation with the same request ID was received, and if so, will
+                        /// ignore the second request. This prevents clients from accidentally creating duplicate
+                        /// commitments. The request ID must be a valid UUID with the exception that zero UUID is not
+                        /// supported (00000000-0000-0000-0000-000000000000).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string RequestId { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.VMwareEngine.v1.Data.HcxActivationKey Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "create";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/hcxActivationKeys";
+
+                        /// <summary>Initializes Create parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+$",
+                            });
+                            RequestParameters.Add("hcxActivationKeyId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "hcxActivationKeyId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "requestId",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Retrieves a `HcxActivationKey` resource by its resource name.</summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the HCX activation key to retrieve. Resource names are schemeless
+                    /// URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For
+                    /// example:
+                    /// `projects/my-project/locations/us-central1/privateClouds/my-cloud/hcxActivationKeys/my-key`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Retrieves a `HcxActivationKey` resource by its resource name.</summary>
+                    public class GetRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.HcxActivationKey>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the HCX activation key to retrieve. Resource names are
+                        /// schemeless URIs that follow the conventions in
+                        /// https://cloud.google.com/apis/design/resource_names. For example:
+                        /// `projects/my-project/locations/us-central1/privateClouds/my-cloud/hcxActivationKeys/my-key`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+/hcxActivationKeys/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Gets the access control policy for a resource. Returns an empty policy if the resource exists
+                    /// and does not have a policy set.
+                    /// </summary>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </param>
+                    public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                    {
+                        return new GetIamPolicyRequest(service, resource);
+                    }
+
+                    /// <summary>
+                    /// Gets the access control policy for a resource. Returns an empty policy if the resource exists
+                    /// and does not have a policy set.
+                    /// </summary>
+                    public class GetIamPolicyRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Policy>
+                    {
+                        /// <summary>Constructs a new GetIamPolicy request.</summary>
+                        public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>
+                        /// Optional. The maximum policy version that will be used to format the policy. Valid values
+                        /// are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for
+                        /// policies with any conditional role bindings must specify version 3. Policies with no
+                        /// conditional role bindings may specify any valid value or leave the field unset. The policy
+                        /// in the response might use the policy version that you specified, or it might use a lower
+                        /// policy version. For example, if you specify version 3, but the policy has no conditional
+                        /// role bindings, the response uses version 1. To learn which resources support conditions in
+                        /// their IAM policies, see the [IAM
+                        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "getIamPolicy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                        /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+/hcxActivationKeys/[^/]+$",
+                            });
+                            RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "options.requestedPolicyVersion",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists `HcxActivationKey` resources in a given private cloud.</summary>
+                    /// <param name="parent">
+                    /// Required. The resource name of the private cloud to be queried for HCX activation keys. Resource
+                    /// names are schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1/privateClouds/my-cloud`
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists `HcxActivationKey` resources in a given private cloud.</summary>
+                    public class ListRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.ListHcxActivationKeysResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the private cloud to be queried for HCX activation keys.
+                        /// Resource names are schemeless URIs that follow the conventions in
+                        /// https://cloud.google.com/apis/design/resource_names. For example:
+                        /// `projects/my-project/locations/us-central1/privateClouds/my-cloud`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// The maximum number of HCX activation keys to return in one page. The service may return
+                        /// fewer than this value. The maximum value is coerced to 1000. The default value of this field
+                        /// is 500.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// A page token, received from a previous `ListHcxActivationKeys` call. Provide this to
+                        /// retrieve the subsequent page. When paginating, all other parameters provided to
+                        /// `ListHcxActivationKeys` must match the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/hcxActivationKeys";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
+                    /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </param>
+                    public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.VMwareEngine.v1.Data.SetIamPolicyRequest body, string resource)
+                    {
+                        return new SetIamPolicyRequest(service, body, resource);
+                    }
+
+                    /// <summary>
+                    /// Sets the access control policy on the specified resource. Replaces any existing policy. Can
+                    /// return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                    /// </summary>
+                    public class SetIamPolicyRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Policy>
+                    {
+                        /// <summary>Constructs a new SetIamPolicy request.</summary>
+                        public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.VMwareEngine.v1.Data.SetIamPolicyRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "setIamPolicy";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                        /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+/hcxActivationKeys/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                    /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                    /// designed to be used for building permission-aware UIs and command-line tools, not for
+                    /// authorization checking. This operation may "fail open" without warning.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="resource">
+                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </param>
+                    public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.VMwareEngine.v1.Data.TestIamPermissionsRequest body, string resource)
+                    {
+                        return new TestIamPermissionsRequest(service, body, resource);
+                    }
+
+                    /// <summary>
+                    /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                    /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                    /// designed to be used for building permission-aware UIs and command-line tools, not for
+                    /// authorization checking. This operation may "fail open" without warning.
+                    /// </summary>
+                    public class TestIamPermissionsRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.TestIamPermissionsResponse>
+                    {
+                        /// <summary>Constructs a new TestIamPermissions request.</summary>
+                        public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
+                        {
+                            Resource = resource;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                        /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for
+                        /// this field.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Resource { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.VMwareEngine.v1.Data.TestIamPermissionsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "testIamPermissions";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+resource}:testIamPermissions";
+
+                        /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "resource",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+/hcxActivationKeys/[^/]+$",
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Gets the Subnets resource.</summary>
+                public virtual SubnetsResource Subnets { get; }
+
+                /// <summary>The "subnets" collection of methods.</summary>
+                public class SubnetsResource
+                {
+                    private const string Resource = "subnets";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public SubnetsResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Gets details of a single subnet.</summary>
+                    /// <param name="name">
+                    /// Required. The resource name of the subnet to retrieve. Resource names are schemeless URIs that
+                    /// follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/subnets/my-subnet`
+                    /// </param>
+                    public virtual GetRequest Get(string name)
+                    {
+                        return new GetRequest(service, name);
+                    }
+
+                    /// <summary>Gets details of a single subnet.</summary>
+                    public class GetRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Subnet>
+                    {
+                        /// <summary>Constructs a new Get request.</summary>
+                        public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                        {
+                            Name = name;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the subnet to retrieve. Resource names are schemeless URIs
+                        /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For
+                        /// example:
+                        /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/subnets/my-subnet`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "get";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Get parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+/subnets/[^/]+$",
+                            });
+                        }
+                    }
+
+                    /// <summary>Lists subnets in a given private cloud.</summary>
+                    /// <param name="parent">
+                    /// Required. The resource name of the private cloud to be queried for subnets. Resource names are
+                    /// schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists subnets in a given private cloud.</summary>
+                    public class ListRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.ListSubnetsResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the private cloud to be queried for subnets. Resource names
+                        /// are schemeless URIs that follow the conventions in
+                        /// https://cloud.google.com/apis/design/resource_names. For example:
+                        /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// The maximum number of subnets to return in one page. The service may return fewer than this
+                        /// value. The maximum value is coerced to 1000. The default value of this field is 500.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// A page token, received from a previous `ListSubnetsRequest` call. Provide this to retrieve
+                        /// the subsequent page. When paginating, all other parameters provided to `ListSubnetsRequest`
+                        /// must match the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/subnets";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Updates the parameters of a single subnet. Only fields specified in `update_mask` are applied.
+                    /// *Note*: This API is synchronous and always returns a successful `google.longrunning.Operation`
+                    /// (LRO). The returned LRO will only have `done` and `response` fields.
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="name">
+                    /// Output only. The resource name of this subnet. Resource names are schemeless URIs that follow
+                    /// the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/subnets/my-subnet`
+                    /// </param>
+                    public virtual PatchRequest Patch(Google.Apis.VMwareEngine.v1.Data.Subnet body, string name)
+                    {
+                        return new PatchRequest(service, body, name);
+                    }
+
+                    /// <summary>
+                    /// Updates the parameters of a single subnet. Only fields specified in `update_mask` are applied.
+                    /// *Note*: This API is synchronous and always returns a successful `google.longrunning.Operation`
+                    /// (LRO). The returned LRO will only have `done` and `response` fields.
+                    /// </summary>
+                    public class PatchRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                    {
+                        /// <summary>Constructs a new Patch request.</summary>
+                        public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.Subnet body, string name) : base(service)
+                        {
+                            Name = name;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Output only. The resource name of this subnet. Resource names are schemeless URIs that
+                        /// follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                        /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/subnets/my-subnet`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Name { get; private set; }
+
+                        /// <summary>
+                        /// Required. Field mask is used to specify the fields to be overwritten in the `Subnet`
+                        /// resource by the update. The fields specified in the `update_mask` are relative to the
+                        /// resource, not the full request. A field will be overwritten if it is in the mask. If the
+                        /// user does not provide a mask then all fields will be overwritten.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual object UpdateMask { get; set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.VMwareEngine.v1.Data.Subnet Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "patch";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "PATCH";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+name}";
+
+                        /// <summary>Initializes Patch parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "name",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+/subnets/[^/]+$",
+                            });
+                            RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "updateMask",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>
+                /// Creates a new `PrivateCloud` resource in a given project and location. Private clouds of type
+                /// `STANDARD` and `TIME_LIMITED` are zonal resources, `STRETCHED` private clouds are regional. Creating
+                /// a private cloud also creates a [management
+                /// cluster](https://cloud.google.com/vmware-engine/docs/concepts-vmware-components) for that private
+                /// cloud.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the location to create the new private cloud in. Resource names are
+                /// schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+                /// For example: `projects/my-project/locations/us-central1-a`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.VMwareEngine.v1.Data.PrivateCloud body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a new `PrivateCloud` resource in a given project and location. Private clouds of type
+                /// `STANDARD` and `TIME_LIMITED` are zonal resources, `STRETCHED` private clouds are regional. Creating
+                /// a private cloud also creates a [management
+                /// cluster](https://cloud.google.com/vmware-engine/docs/concepts-vmware-components) for that private
+                /// cloud.
+                /// </summary>
+                public class CreateRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.PrivateCloud body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the location to create the new private cloud in. Resource names
+                    /// are schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1-a`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The user-provided identifier of the private cloud to be created. This identifier must
+                    /// be unique among each `PrivateCloud` within the parent and becomes the final token in the name
+                    /// URI. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric
+                    /// characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen
+                    /// character * Not formatted as a UUID * Complies with [RFC
+                    /// 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("privateCloudId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PrivateCloudId { get; set; }
+
+                    /// <summary>
+                    /// Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Optional. True if you want the request to be validated and not executed; false otherwise.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("validateOnly", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> ValidateOnly { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.VMwareEngine.v1.Data.PrivateCloud Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/privateClouds";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("privateCloudId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "privateCloudId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("validateOnly", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "validateOnly",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Schedules a `PrivateCloud` resource for deletion. A `PrivateCloud` resource scheduled for deletion
+                /// has `PrivateCloud.state` set to `DELETED` and `expireTime` set to the time when deletion is final
+                /// and can no longer be reversed. The delete operation is marked as done as soon as the `PrivateCloud`
+                /// is successfully scheduled for deletion (this also applies when `delayHours` is set to zero), and the
+                /// operation is not kept in pending state until `PrivateCloud` is purged. `PrivateCloud` can be
+                /// restored using `UndeletePrivateCloud` method before the `expireTime` elapses. When `expireTime` is
+                /// reached, deletion is final and all private cloud resources are irreversibly removed and billing
+                /// stops. During the final removal process, `PrivateCloud.state` is set to `PURGING`. `PrivateCloud`
+                /// can be polled using standard `GET` method for the whole period of deletion and purging. It will not
+                /// be returned only when it is completely purged.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The resource name of the private cloud to delete. Resource names are schemeless URIs that
+                /// follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>
+                /// Schedules a `PrivateCloud` resource for deletion. A `PrivateCloud` resource scheduled for deletion
+                /// has `PrivateCloud.state` set to `DELETED` and `expireTime` set to the time when deletion is final
+                /// and can no longer be reversed. The delete operation is marked as done as soon as the `PrivateCloud`
+                /// is successfully scheduled for deletion (this also applies when `delayHours` is set to zero), and the
+                /// operation is not kept in pending state until `PrivateCloud` is purged. `PrivateCloud` can be
+                /// restored using `UndeletePrivateCloud` method before the `expireTime` elapses. When `expireTime` is
+                /// reached, deletion is final and all private cloud resources are irreversibly removed and billing
+                /// stops. During the final removal process, `PrivateCloud.state` is set to `PURGING`. `PrivateCloud`
+                /// can be polled using standard `GET` method for the whole period of deletion and purging. It will not
+                /// be returned only when it is completely purged.
+                /// </summary>
+                public class DeleteRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the private cloud to delete. Resource names are schemeless URIs
+                    /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Time delay of the deletion specified in hours. The default value is `3`. Specifying a
+                    /// non-zero value for this field changes the value of `PrivateCloud.state` to `DELETED` and sets
+                    /// `expire_time` to the planned deletion time. Deletion can be cancelled before `expire_time`
+                    /// elapses using VmwareEngine.UndeletePrivateCloud. Specifying a value of `0` for this field
+                    /// instead begins the deletion process and ceases billing immediately. During the final deletion
+                    /// process, the value of `PrivateCloud.state` becomes `PURGING`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("delayHours", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> DelayHours { get; set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, cascade delete is enabled and all children of this private cloud
+                    /// resource are also deleted. When this flag is set to false, the private cloud will not be deleted
+                    /// if there are any children other than the management cluster. The management cluster is always
+                    /// deleted.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Force { get; set; }
+
+                    /// <summary>
+                    /// Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+$",
+                        });
+                        RequestParameters.Add("delayHours", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "delayHours",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Retrieves a `PrivateCloud` resource by its resource name.</summary>
+                /// <param name="name">
+                /// Required. The resource name of the private cloud to retrieve. Resource names are schemeless URIs
+                /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Retrieves a `PrivateCloud` resource by its resource name.</summary>
+                public class GetRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.PrivateCloud>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the private cloud to retrieve. Resource names are schemeless URIs
+                    /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual GetIamPolicyRequest GetIamPolicy(string resource)
+                {
+                    return new GetIamPolicyRequest(service, resource);
+                }
+
+                /// <summary>
+                /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
+                /// does not have a policy set.
+                /// </summary>
+                public class GetIamPolicyRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Policy>
+                {
+                    /// <summary>Constructs a new GetIamPolicy request.</summary>
+                    public GetIamPolicyRequest(Google.Apis.Services.IClientService service, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The maximum policy version that will be used to format the policy. Valid values are 0,
+                    /// 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any
+                    /// conditional role bindings must specify version 3. Policies with no conditional role bindings may
+                    /// specify any valid value or leave the field unset. The policy in the response might use the
+                    /// policy version that you specified, or it might use a lower policy version. For example, if you
+                    /// specify version 3, but the policy has no conditional role bindings, the response uses version 1.
+                    /// To learn which resources support conditions in their IAM policies, see the [IAM
+                    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("options.requestedPolicyVersion", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> OptionsRequestedPolicyVersion { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "getIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:getIamPolicy";
+
+                    /// <summary>Initializes GetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+$",
+                        });
+                        RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Lists `PrivateCloud` resources in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The resource name of the private cloud to be queried for clusters. Resource names are
+                /// schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+                /// For example: `projects/my-project/locations/us-central1-a`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists `PrivateCloud` resources in a given project and location.</summary>
+                public class ListRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.ListPrivateCloudsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the private cloud to be queried for clusters. Resource names are
+                    /// schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1-a`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// A filter expression that matches resources returned in the response. The expression must specify
+                    /// the field name, a comparison operator, and the value that you want to use for filtering. The
+                    /// value must be a string, a number, or a boolean. The comparison operator must be `=`, `!=`,
+                    /// `&amp;gt;`, or `&amp;lt;`. For example, if you are filtering a list of private clouds, you can
+                    /// exclude the ones named `example-pc` by specifying `name != "example-pc"`. You can also filter
+                    /// nested fields. For example, you could specify `networkConfig.managementCidr = "192.168.0.0/24"`
+                    /// to include private clouds only if they have a matching address in their network configuration.
+                    /// To filter on multiple expressions, provide each separate expression within parentheses. For
+                    /// example:
+                    /// ```
+                    /// (name = "example-pc") (createTime &amp;gt; "2021-04-12T08:15:10.40Z")
+                    /// ```
+                    /// By
+                    /// default, each expression is an `AND` expression. However, you can include `AND` and `OR`
+                    /// expressions explicitly. For example:
+                    /// ```
+                    /// (name = "private-cloud-1") AND (createTime &amp;gt;
+                    /// "2021-04-12T08:15:10.40Z") OR (name = "private-cloud-2")
+                    /// ```
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Sorts list results by a certain order. By default, returned results are ordered by `name` in
+                    /// ascending order. You can also sort results in descending order based on the `name` value using
+                    /// `orderBy="name desc"`. Currently, only ordering by `name` is supported.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// The maximum number of private clouds to return in one page. The service may return fewer than
+                    /// this value. The maximum value is coerced to 1000. The default value of this field is 500.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous `ListPrivateClouds` call. Provide this to retrieve the
+                    /// subsequent page. When paginating, all other parameters provided to `ListPrivateClouds` must
+                    /// match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/privateClouds";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Modifies a `PrivateCloud` resource. Only the following fields can be updated: `description`. Only
+                /// fields specified in `updateMask` are applied. During operation processing, the resource is
+                /// temporarily in the `ACTIVE` state before the operation fully completes. For that period of time, you
+                /// can't update the resource. Use the operation status to determine when the processing fully
+                /// completes.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. The resource name of this private cloud. Resource names are schemeless URIs that follow
+                /// the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.VMwareEngine.v1.Data.PrivateCloud body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Modifies a `PrivateCloud` resource. Only the following fields can be updated: `description`. Only
+                /// fields specified in `updateMask` are applied. During operation processing, the resource is
+                /// temporarily in the `ACTIVE` state before the operation fully completes. For that period of time, you
+                /// can't update the resource. Use the operation status to determine when the processing fully
+                /// completes.
+                /// </summary>
+                public class PatchRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.PrivateCloud body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. The resource name of this private cloud. Resource names are schemeless URIs that
+                    /// follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Required. Field mask is used to specify the fields to be overwritten in the `PrivateCloud`
+                    /// resource by the update. The fields specified in `updateMask` are relative to the resource, not
+                    /// the full request. A field will be overwritten if it is in the mask. If the user does not provide
+                    /// a mask then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.VMwareEngine.v1.Data.PrivateCloud Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Resets credentials of the NSX appliance.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="privateCloud">
+                /// Required. The resource name of the private cloud to reset credentials for. Resource names are
+                /// schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+                /// For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+                /// </param>
+                public virtual ResetNsxCredentialsRequest ResetNsxCredentials(Google.Apis.VMwareEngine.v1.Data.ResetNsxCredentialsRequest body, string privateCloud)
+                {
+                    return new ResetNsxCredentialsRequest(service, body, privateCloud);
+                }
+
+                /// <summary>Resets credentials of the NSX appliance.</summary>
+                public class ResetNsxCredentialsRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new ResetNsxCredentials request.</summary>
+                    public ResetNsxCredentialsRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.ResetNsxCredentialsRequest body, string privateCloud) : base(service)
+                    {
+                        PrivateCloud = privateCloud;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the private cloud to reset credentials for. Resource names are
+                    /// schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("privateCloud", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string PrivateCloud { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.VMwareEngine.v1.Data.ResetNsxCredentialsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "resetNsxCredentials";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+privateCloud}:resetNsxCredentials";
+
+                    /// <summary>Initializes ResetNsxCredentials parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("privateCloud", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "privateCloud",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Resets credentials of the Vcenter appliance.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="privateCloud">
+                /// Required. The resource name of the private cloud to reset credentials for. Resource names are
+                /// schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+                /// For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+                /// </param>
+                public virtual ResetVcenterCredentialsRequest ResetVcenterCredentials(Google.Apis.VMwareEngine.v1.Data.ResetVcenterCredentialsRequest body, string privateCloud)
+                {
+                    return new ResetVcenterCredentialsRequest(service, body, privateCloud);
+                }
+
+                /// <summary>Resets credentials of the Vcenter appliance.</summary>
+                public class ResetVcenterCredentialsRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new ResetVcenterCredentials request.</summary>
+                    public ResetVcenterCredentialsRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.ResetVcenterCredentialsRequest body, string privateCloud) : base(service)
+                    {
+                        PrivateCloud = privateCloud;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the private cloud to reset credentials for. Resource names are
+                    /// schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("privateCloud", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string PrivateCloud { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.VMwareEngine.v1.Data.ResetVcenterCredentialsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "resetVcenterCredentials";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+privateCloud}:resetVcenterCredentials";
+
+                    /// <summary>Initializes ResetVcenterCredentials parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("privateCloud", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "privateCloud",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual SetIamPolicyRequest SetIamPolicy(Google.Apis.VMwareEngine.v1.Data.SetIamPolicyRequest body, string resource)
+                {
+                    return new SetIamPolicyRequest(service, body, resource);
+                }
+
+                /// <summary>
+                /// Sets the access control policy on the specified resource. Replaces any existing policy. Can return
+                /// `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+                /// </summary>
+                public class SetIamPolicyRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Policy>
+                {
+                    /// <summary>Constructs a new SetIamPolicy request.</summary>
+                    public SetIamPolicyRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.SetIamPolicyRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy is being specified. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.VMwareEngine.v1.Data.SetIamPolicyRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "setIamPolicy";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:setIamPolicy";
+
+                    /// <summary>Initializes SetIamPolicy parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of credentials for NSX appliance.</summary>
+                /// <param name="privateCloud">
+                /// Required. The resource name of the private cloud to be queried for credentials. Resource names are
+                /// schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+                /// For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+                /// </param>
+                public virtual ShowNsxCredentialsRequest ShowNsxCredentials(string privateCloud)
+                {
+                    return new ShowNsxCredentialsRequest(service, privateCloud);
+                }
+
+                /// <summary>Gets details of credentials for NSX appliance.</summary>
+                public class ShowNsxCredentialsRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Credentials>
+                {
+                    /// <summary>Constructs a new ShowNsxCredentials request.</summary>
+                    public ShowNsxCredentialsRequest(Google.Apis.Services.IClientService service, string privateCloud) : base(service)
+                    {
+                        PrivateCloud = privateCloud;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the private cloud to be queried for credentials. Resource names
+                    /// are schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("privateCloud", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string PrivateCloud { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "showNsxCredentials";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+privateCloud}:showNsxCredentials";
+
+                    /// <summary>Initializes ShowNsxCredentials parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("privateCloud", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "privateCloud",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of credentials for Vcenter appliance.</summary>
+                /// <param name="privateCloud">
+                /// Required. The resource name of the private cloud to be queried for credentials. Resource names are
+                /// schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+                /// For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+                /// </param>
+                public virtual ShowVcenterCredentialsRequest ShowVcenterCredentials(string privateCloud)
+                {
+                    return new ShowVcenterCredentialsRequest(service, privateCloud);
+                }
+
+                /// <summary>Gets details of credentials for Vcenter appliance.</summary>
+                public class ShowVcenterCredentialsRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Credentials>
+                {
+                    /// <summary>Constructs a new ShowVcenterCredentials request.</summary>
+                    public ShowVcenterCredentialsRequest(Google.Apis.Services.IClientService service, string privateCloud) : base(service)
+                    {
+                        PrivateCloud = privateCloud;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the private cloud to be queried for credentials. Resource names
+                    /// are schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("privateCloud", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string PrivateCloud { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "showVcenterCredentials";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+privateCloud}:showVcenterCredentials";
+
+                    /// <summary>Initializes ShowVcenterCredentials parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("privateCloud", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "privateCloud",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="resource">
+                /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                /// field.
+                /// </param>
+                public virtual TestIamPermissionsRequest TestIamPermissions(Google.Apis.VMwareEngine.v1.Data.TestIamPermissionsRequest body, string resource)
+                {
+                    return new TestIamPermissionsRequest(service, body, resource);
+                }
+
+                /// <summary>
+                /// Returns permissions that a caller has on the specified resource. If the resource does not exist,
+                /// this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is
+                /// designed to be used for building permission-aware UIs and command-line tools, not for authorization
+                /// checking. This operation may "fail open" without warning.
+                /// </summary>
+                public class TestIamPermissionsRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.TestIamPermissionsResponse>
+                {
+                    /// <summary>Constructs a new TestIamPermissions request.</summary>
+                    public TestIamPermissionsRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.TestIamPermissionsRequest body, string resource) : base(service)
+                    {
+                        Resource = resource;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// REQUIRED: The resource for which the policy detail is being requested. See [Resource
+                    /// names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this
+                    /// field.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("resource", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Resource { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.VMwareEngine.v1.Data.TestIamPermissionsRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "testIamPermissions";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+resource}:testIamPermissions";
+
+                    /// <summary>Initializes TestIamPermissions parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("resource", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "resource",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Restores a private cloud that was previously scheduled for deletion by `DeletePrivateCloud`. A
+                /// `PrivateCloud` resource scheduled for deletion has `PrivateCloud.state` set to `DELETED` and
+                /// `PrivateCloud.expireTime` set to the time when deletion can no longer be reversed.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The resource name of the private cloud scheduled for deletion. Resource names are
+                /// schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+                /// For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+                /// </param>
+                public virtual UndeleteRequest Undelete(Google.Apis.VMwareEngine.v1.Data.UndeletePrivateCloudRequest body, string name)
+                {
+                    return new UndeleteRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Restores a private cloud that was previously scheduled for deletion by `DeletePrivateCloud`. A
+                /// `PrivateCloud` resource scheduled for deletion has `PrivateCloud.state` set to `DELETED` and
+                /// `PrivateCloud.expireTime` set to the time when deletion can no longer be reversed.
+                /// </summary>
+                public class UndeleteRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Undelete request.</summary>
+                    public UndeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.UndeletePrivateCloudRequest body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the private cloud scheduled for deletion. Resource names are
+                    /// schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.VMwareEngine.v1.Data.UndeletePrivateCloudRequest Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "undelete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}:undelete";
+
+                    /// <summary>Initializes Undelete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/privateClouds/[^/]+$",
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the PrivateConnections resource.</summary>
+            public virtual PrivateConnectionsResource PrivateConnections { get; }
+
+            /// <summary>The "privateConnections" collection of methods.</summary>
+            public class PrivateConnectionsResource
+            {
+                private const string Resource = "privateConnections";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public PrivateConnectionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                    PeeringRoutes = new PeeringRoutesResource(service);
+                }
+
+                /// <summary>Gets the PeeringRoutes resource.</summary>
+                public virtual PeeringRoutesResource PeeringRoutes { get; }
+
+                /// <summary>The "peeringRoutes" collection of methods.</summary>
+                public class PeeringRoutesResource
+                {
+                    private const string Resource = "peeringRoutes";
+
+                    /// <summary>The service which this resource belongs to.</summary>
+                    private readonly Google.Apis.Services.IClientService service;
+
+                    /// <summary>Constructs a new resource.</summary>
+                    public PeeringRoutesResource(Google.Apis.Services.IClientService service)
+                    {
+                        this.service = service;
+                    }
+
+                    /// <summary>Lists the private connection routes exchanged over a peering connection.</summary>
+                    /// <param name="parent">
+                    /// Required. The resource name of the private connection to retrieve peering routes from. Resource
+                    /// names are schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-west1/privateConnections/my-connection`
+                    /// </param>
+                    public virtual ListRequest List(string parent)
+                    {
+                        return new ListRequest(service, parent);
+                    }
+
+                    /// <summary>Lists the private connection routes exchanged over a peering connection.</summary>
+                    public class ListRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.ListPrivateConnectionPeeringRoutesResponse>
+                    {
+                        /// <summary>Constructs a new List request.</summary>
+                        public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the private connection to retrieve peering routes from.
+                        /// Resource names are schemeless URIs that follow the conventions in
+                        /// https://cloud.google.com/apis/design/resource_names. For example:
+                        /// `projects/my-project/locations/us-west1/privateConnections/my-connection`
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>
+                        /// The maximum number of peering routes to return in one page. The service may return fewer
+                        /// than this value. The maximum value is coerced to 1000. The default value of this field is
+                        /// 500.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual System.Nullable<int> PageSize { get; set; }
+
+                        /// <summary>
+                        /// A page token, received from a previous `ListPrivateConnectionPeeringRoutes` call. Provide
+                        /// this to retrieve the subsequent page. When paginating, all other parameters provided to
+                        /// `ListPrivateConnectionPeeringRoutes` must match the call that provided the page token.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                        public virtual string PageToken { get; set; }
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "list";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "GET";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1/{+parent}/peeringRoutes";
+
+                        /// <summary>Initializes List parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/privateConnections/[^/]+$",
+                            });
+                            RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageSize",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                            RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "pageToken",
+                                IsRequired = false,
+                                ParameterType = "query",
+                                DefaultValue = null,
+                                Pattern = null,
+                            });
+                        }
+                    }
+                }
+
+                /// <summary>Creates a new private connection that can be used for accessing private Clouds.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the location to create the new private connection in. Private
+                /// connection is a regional resource. Resource names are schemeless URIs that follow the conventions in
+                /// https://cloud.google.com/apis/design/resource_names. For example:
+                /// `projects/my-project/locations/us-central1`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.VMwareEngine.v1.Data.PrivateConnection body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new private connection that can be used for accessing private Clouds.</summary>
+                public class CreateRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.PrivateConnection body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the location to create the new private connection in. Private
+                    /// connection is a regional resource. Resource names are schemeless URIs that follow the
+                    /// conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. The user-provided identifier of the new private connection. This identifier must be
+                    /// unique among private connection resources within the parent and becomes the final token in the
+                    /// name URI. The identifier must meet the following requirements: * Only contains 1-63 alphanumeric
+                    /// characters and hyphens * Begins with an alphabetical character * Ends with a non-hyphen
+                    /// character * Not formatted as a UUID * Complies with [RFC
+                    /// 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("privateConnectionId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PrivateConnectionId { get; set; }
+
+                    /// <summary>
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server guarantees that a request doesn't result in creation of duplicate commitments for at
+                    /// least 60 minutes. For example, consider a situation where you make an initial request and the
+                    /// request times out. If you make the request again with the same request ID, the server can check
+                    /// if original operation with the same request ID was received, and if so, will ignore the second
+                    /// request. This prevents clients from accidentally creating duplicate commitments. The request ID
+                    /// must be a valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.VMwareEngine.v1.Data.PrivateConnection Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/privateConnections";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("privateConnectionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "privateConnectionId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes a `PrivateConnection` resource. When a private connection is deleted for a VMware Engine
+                /// network, the connected network becomes inaccessible to that VMware Engine network.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The resource name of the private connection to be deleted. Resource names are schemeless
+                /// URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For
+                /// example: `projects/my-project/locations/us-central1/privateConnections/my-connection`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>
+                /// Deletes a `PrivateConnection` resource. When a private connection is deleted for a VMware Engine
+                /// network, the connected network becomes inaccessible to that VMware Engine network.
+                /// </summary>
+                public class DeleteRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the private connection to be deleted. Resource names are
+                    /// schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1/privateConnections/my-connection`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server guarantees that a request doesn't result in creation of duplicate commitments for at
+                    /// least 60 minutes. For example, consider a situation where you make an initial request and the
+                    /// request times out. If you make the request again with the same request ID, the server can check
+                    /// if original operation with the same request ID was received, and if so, will ignore the second
+                    /// request. This prevents clients from accidentally creating duplicate commitments. The request ID
+                    /// must be a valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/privateConnections/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Retrieves a `PrivateConnection` resource by its resource name. The resource contains details of the
+                /// private connection, such as connected network, routing mode and state.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The resource name of the private connection to retrieve. Resource names are schemeless
+                /// URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For
+                /// example: `projects/my-project/locations/us-central1/privateConnections/my-connection`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>
+                /// Retrieves a `PrivateConnection` resource by its resource name. The resource contains details of the
+                /// private connection, such as connected network, routing mode and state.
+                /// </summary>
+                public class GetRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.PrivateConnection>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the private connection to retrieve. Resource names are schemeless
+                    /// URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For
+                    /// example: `projects/my-project/locations/us-central1/privateConnections/my-connection`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/privateConnections/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists `PrivateConnection` resources in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The resource name of the location to query for private connections. Resource names are
+                /// schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+                /// For example: `projects/my-project/locations/us-central1`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists `PrivateConnection` resources in a given project and location.</summary>
+                public class ListRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.ListPrivateConnectionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the location to query for private connections. Resource names are
+                    /// schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// A filter expression that matches resources returned in the response. The expression must specify
+                    /// the field name, a comparison operator, and the value that you want to use for filtering. The
+                    /// value must be a string, a number, or a boolean. The comparison operator must be `=`, `!=`,
+                    /// `&amp;gt;`, or `&amp;lt;`. For example, if you are filtering a list of private connections, you
+                    /// can exclude the ones named `example-connection` by specifying `name != "example-connection"`. To
+                    /// filter on multiple expressions, provide each separate expression within parentheses. For
+                    /// example:
+                    /// ```
+                    /// (name = "example-connection") (createTime &amp;gt; "2022-09-22T08:15:10.40Z")
+                    /// ```
+                    /// By default, each expression is an `AND` expression. However, you can include `AND` and `OR`
+                    /// expressions explicitly. For example:
+                    /// ```
+                    /// (name = "example-connection-1") AND (createTime
+                    /// &amp;gt; "2021-04-12T08:15:10.40Z") OR (name = "example-connection-2")
+                    /// ```
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Sorts list results by a certain order. By default, returned results are ordered by `name` in
+                    /// ascending order. You can also sort results in descending order based on the `name` value using
+                    /// `orderBy="name desc"`. Currently, only ordering by `name` is supported.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// The maximum number of private connections to return in one page. The maximum value is coerced to
+                    /// 1000. The default value of this field is 500.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous `ListPrivateConnections` call. Provide this to retrieve
+                    /// the subsequent page. When paginating, all other parameters provided to `ListPrivateConnections`
+                    /// must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/privateConnections";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Modifies a `PrivateConnection` resource. Only `description` and `routing_mode` fields can be
+                /// updated. Only fields specified in `updateMask` are applied.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. The resource name of the private connection. Resource names are schemeless URIs that
+                /// follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                /// `projects/my-project/locations/us-central1/privateConnections/my-connection`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.VMwareEngine.v1.Data.PrivateConnection body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Modifies a `PrivateConnection` resource. Only `description` and `routing_mode` fields can be
+                /// updated. Only fields specified in `updateMask` are applied.
+                /// </summary>
+                public class PatchRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.PrivateConnection body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. The resource name of the private connection. Resource names are schemeless URIs
+                    /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/us-central1/privateConnections/my-connection`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server guarantees that a request doesn't result in creation of duplicate commitments for at
+                    /// least 60 minutes. For example, consider a situation where you make an initial request and the
+                    /// request times out. If you make the request again with the same request ID, the server can check
+                    /// if original operation with the same request ID was received, and if so, will ignore the second
+                    /// request. This prevents clients from accidentally creating duplicate commitments. The request ID
+                    /// must be a valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Required. Field mask is used to specify the fields to be overwritten in the `PrivateConnection`
+                    /// resource by the update. The fields specified in the `update_mask` are relative to the resource,
+                    /// not the full request. A field will be overwritten if it is in the mask. If the user does not
+                    /// provide a mask then all fields will be overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.VMwareEngine.v1.Data.PrivateConnection Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/privateConnections/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the VmwareEngineNetworks resource.</summary>
+            public virtual VmwareEngineNetworksResource VmwareEngineNetworks { get; }
+
+            /// <summary>The "vmwareEngineNetworks" collection of methods.</summary>
+            public class VmwareEngineNetworksResource
+            {
+                private const string Resource = "vmwareEngineNetworks";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public VmwareEngineNetworksResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new VMware Engine network that can be used by a private cloud.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The resource name of the location to create the new VMware Engine network in. A VMware
+                /// Engine network of type `LEGACY` is a regional resource, and a VMware Engine network of type
+                /// `STANDARD` is a global resource. Resource names are schemeless URIs that follow the conventions in
+                /// https://cloud.google.com/apis/design/resource_names. For example:
+                /// `projects/my-project/locations/global`
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.VMwareEngine.v1.Data.VmwareEngineNetwork body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new VMware Engine network that can be used by a private cloud.</summary>
+                public class CreateRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.VmwareEngineNetwork body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the location to create the new VMware Engine network in. A VMware
+                    /// Engine network of type `LEGACY` is a regional resource, and a VMware Engine network of type
+                    /// `STANDARD` is a global resource. Resource names are schemeless URIs that follow the conventions
+                    /// in https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/global`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server guarantees that a request doesn't result in creation of duplicate commitments for at
+                    /// least 60 minutes. For example, consider a situation where you make an initial request and the
+                    /// request times out. If you make the request again with the same request ID, the server can check
+                    /// if original operation with the same request ID was received, and if so, will ignore the second
+                    /// request. This prevents clients from accidentally creating duplicate commitments. The request ID
+                    /// must be a valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Required. The user-provided identifier of the new VMware Engine network. This identifier must be
+                    /// unique among VMware Engine network resources within the parent and becomes the final token in
+                    /// the name URI. The identifier must meet the following requirements: * For networks of type
+                    /// LEGACY, adheres to the format: `{region-id}-default`. Replace `{region-id}` with the region
+                    /// where you want to create the VMware Engine network. For example, "us-central1-default". * Only
+                    /// contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical character * Ends
+                    /// with a non-hyphen character * Not formatted as a UUID * Complies with [RFC
+                    /// 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("vmwareEngineNetworkId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string VmwareEngineNetworkId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.VMwareEngine.v1.Data.VmwareEngineNetwork Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/vmwareEngineNetworks";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("vmwareEngineNetworkId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "vmwareEngineNetworkId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Deletes a `VmwareEngineNetwork` resource. You can only delete a VMware Engine network after all
+                /// resources that refer to it are deleted. For example, a private cloud, a network peering, and a
+                /// network policy can all refer to the same VMware Engine network.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The resource name of the VMware Engine network to be deleted. Resource names are
+                /// schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+                /// For example: `projects/my-project/locations/global/vmwareEngineNetworks/my-network`
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>
+                /// Deletes a `VmwareEngineNetwork` resource. You can only delete a VMware Engine network after all
+                /// resources that refer to it are deleted. For example, a private cloud, a network peering, and a
+                /// network policy can all refer to the same VMware Engine network.
+                /// </summary>
+                public class DeleteRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the VMware Engine network to be deleted. Resource names are
+                    /// schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/global/vmwareEngineNetworks/my-network`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Checksum used to ensure that the user-provided value is up to date before the server
+                    /// processes the request. The server compares provided checksum with the current checksum of the
+                    /// resource. If the user-provided value is out of date, this request returns an `ABORTED` error.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("etag", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Etag { get; set; }
+
+                    /// <summary>
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server guarantees that a request doesn't result in creation of duplicate commitments for at
+                    /// least 60 minutes. For example, consider a situation where you make an initial request and the
+                    /// request times out. If you make the request again with the same request ID, the server can check
+                    /// if original operation with the same request ID was received, and if so, will ignore the second
+                    /// request. This prevents clients from accidentally creating duplicate commitments. The request ID
+                    /// must be a valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/vmwareEngineNetworks/[^/]+$",
+                        });
+                        RequestParameters.Add("etag", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "etag",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Retrieves a `VmwareEngineNetwork` resource by its resource name. The resource contains details of
+                /// the VMware Engine network, such as its VMware Engine network type, peered networks in a service
+                /// project, and state (for example, `CREATING`, `ACTIVE`, `DELETING`).
+                /// </summary>
+                /// <param name="name">
+                /// Required. The resource name of the VMware Engine network to retrieve. Resource names are schemeless
+                /// URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For
+                /// example: `projects/my-project/locations/global/vmwareEngineNetworks/my-network`
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>
+                /// Retrieves a `VmwareEngineNetwork` resource by its resource name. The resource contains details of
+                /// the VMware Engine network, such as its VMware Engine network type, peered networks in a service
+                /// project, and state (for example, `CREATING`, `ACTIVE`, `DELETING`).
+                /// </summary>
+                public class GetRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.VmwareEngineNetwork>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the VMware Engine network to retrieve. Resource names are
+                    /// schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/global/vmwareEngineNetworks/my-network`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/vmwareEngineNetworks/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists `VmwareEngineNetwork` resources in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The resource name of the location to query for VMware Engine networks. Resource names are
+                /// schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names.
+                /// For example: `projects/my-project/locations/global`
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists `VmwareEngineNetwork` resources in a given project and location.</summary>
+                public class ListRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.ListVmwareEngineNetworksResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The resource name of the location to query for VMware Engine networks. Resource names
+                    /// are schemeless URIs that follow the conventions in
+                    /// https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/global`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// A filter expression that matches resources returned in the response. The expression must specify
+                    /// the field name, a comparison operator, and the value that you want to use for filtering. The
+                    /// value must be a string, a number, or a boolean. The comparison operator must be `=`, `!=`,
+                    /// `&amp;gt;`, or `&amp;lt;`. For example, if you are filtering a list of network peerings, you can
+                    /// exclude the ones named `example-network` by specifying `name != "example-network"`. To filter on
+                    /// multiple expressions, provide each separate expression within parentheses. For example:
+                    /// ```
+                    /// (name = "example-network") (createTime &amp;gt; "2021-04-12T08:15:10.40Z")
+                    /// ```
+                    /// By default, each
+                    /// expression is an `AND` expression. However, you can include `AND` and `OR` expressions
+                    /// explicitly. For example:
+                    /// ```
+                    /// (name = "example-network-1") AND (createTime &amp;gt;
+                    /// "2021-04-12T08:15:10.40Z") OR (name = "example-network-2")
+                    /// ```
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Sorts list results by a certain order. By default, returned results are ordered by `name` in
+                    /// ascending order. You can also sort results in descending order based on the `name` value using
+                    /// `orderBy="name desc"`. Currently, only ordering by `name` is supported.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// The maximum number of results to return in one page. The maximum value is coerced to 1000. The
+                    /// default value of this field is 500.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// A page token, received from a previous `ListVmwareEngineNetworks` call. Provide this to retrieve
+                    /// the subsequent page. When paginating, all other parameters provided to
+                    /// `ListVmwareEngineNetworks` must match the call that provided the page token.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+parent}/vmwareEngineNetworks";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Modifies a VMware Engine network resource. Only the following fields can be updated: `description`.
+                /// Only fields specified in `updateMask` are applied.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Output only. The resource name of the VMware Engine network. Resource names are schemeless URIs that
+                /// follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                /// `projects/my-project/locations/global/vmwareEngineNetworks/my-network`
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.VMwareEngine.v1.Data.VmwareEngineNetwork body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>
+                /// Modifies a VMware Engine network resource. Only the following fields can be updated: `description`.
+                /// Only fields specified in `updateMask` are applied.
+                /// </summary>
+                public class PatchRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.VMwareEngine.v1.Data.VmwareEngineNetwork body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Output only. The resource name of the VMware Engine network. Resource names are schemeless URIs
+                    /// that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+                    /// `projects/my-project/locations/global/vmwareEngineNetworks/my-network`
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server guarantees that a request doesn't result in creation of duplicate commitments for at
+                    /// least 60 minutes. For example, consider a situation where you make an initial request and the
+                    /// request times out. If you make the request again with the same request ID, the server can check
+                    /// if original operation with the same request ID was received, and if so, will ignore the second
+                    /// request. This prevents clients from accidentally creating duplicate commitments. The request ID
+                    /// must be a valid UUID with the exception that zero UUID is not supported
+                    /// (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Required. Field mask is used to specify the fields to be overwritten in the VMware Engine
+                    /// network resource by the update. The fields specified in the `update_mask` are relative to the
+                    /// resource, not the full request. A field will be overwritten if it is in the mask. If the user
+                    /// does not provide a mask then all fields will be overwritten. Only the following fields can be
+                    /// updated: `description`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.VMwareEngine.v1.Data.VmwareEngineNetwork Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/vmwareEngineNetworks/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets information about a location.</summary>
+            /// <param name="name">Resource name for the location.</param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>Gets information about a location.</summary>
+            public class GetRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.Location>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>Resource name for the location.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>Lists information about the supported locations for this service.</summary>
+            /// <param name="name">The resource that owns the locations collection, if applicable.</param>
+            public virtual ListRequest List(string name)
+            {
+                return new ListRequest(service, name);
+            }
+
+            /// <summary>Lists information about the supported locations for this service.</summary>
+            public class ListRequest : VMwareEngineBaseServiceRequest<Google.Apis.VMwareEngine.v1.Data.ListLocationsResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>The resource that owns the locations collection, if applicable.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>
+                /// A filter to narrow down results to a preferred subset. The filtering language accepts strings like
+                /// `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string Filter { get; set; }
+
+                /// <summary>
+                /// The maximum number of results to return. If not set, the service selects a default.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// A page token received from the `next_page_token` field in the response. Send that page token to
+                /// receive the subsequent page.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1/{+name}/locations";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+$",
+                    });
+                    RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "filter",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+    }
+}
+namespace Google.Apis.VMwareEngine.v1.Data
+{
+    /// <summary>
+    /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
+    /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
+    /// there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used
+    /// for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each
+    /// AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service":
+    /// "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ]
+    /// }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com",
+    /// "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [
+    /// "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ
+    /// logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE
+    /// logging.
+    /// </summary>
+    public class AuditConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The configuration for logging of each type of permission.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditLogConfigs")]
+        public virtual System.Collections.Generic.IList<AuditLogConfig> AuditLogConfigs { get; set; }
+
+        /// <summary>
+        /// Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`,
+        /// `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type":
+    /// "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables
+    /// 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
+    /// </summary>
+    public class AuditLogConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Specifies the identities that do not cause logging for this type of permission. Follows the same format of
+        /// Binding.members.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("exemptedMembers")]
+        public virtual System.Collections.Generic.IList<string> ExemptedMembers { get; set; }
+
+        /// <summary>The log type that this config enables.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("logType")]
+        public virtual string LogType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Associates `members`, or principals, with a `role`.</summary>
+    public class Binding : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding
+        /// applies to the current request. If the condition evaluates to `false`, then this binding does not apply to
+        /// the current request. However, a different role binding might grant the same role to one or more of the
+        /// principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("condition")]
+        public virtual Expr Condition { get; set; }
+
+        /// <summary>
+        /// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following
+        /// values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a
+        /// Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated
+        /// with a Google account or a service account. Does not include identities that come from external identity
+        /// providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a
+        /// specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address
+        /// that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. *
+        /// `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes
+        /// service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For
+        /// example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that
+        /// represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain
+        /// (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. *
+        /// `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that
+        /// has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is
+        /// recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. *
+        /// `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a
+        /// service account that has been recently deleted. For example,
+        /// `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted,
+        /// this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the
+        /// binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing
+        /// a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`.
+        /// If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role
+        /// in the binding.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("members")]
+        public virtual System.Collections.Generic.IList<string> Members { get; set; }
+
+        /// <summary>
+        /// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`,
+        /// or `roles/owner`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("role")]
+        public virtual string Role { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A cluster in a private cloud.</summary>
+    public class Cluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Creation time of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Output only. True if the cluster is a management cluster; false otherwise. There can only be one management
+        /// cluster in a private cloud and it has to be the first one.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("management")]
+        public virtual System.Nullable<bool> Management { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of this cluster. Resource names are schemeless URIs that follow the
+        /// conventions in https://cloud.google.com/apis/design/resource_names. For example:
+        /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/clusters/my-cluster`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. The map of cluster node types in this cluster, where the key is canonical identifier of the node
+        /// type (corresponds to the `NodeType`).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeTypeConfigs")]
+        public virtual System.Collections.Generic.IDictionary<string, NodeTypeConfig> NodeTypeConfigs { get; set; }
+
+        /// <summary>Output only. State of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. System-generated unique identifier for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Last update time of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Credentials for a private cloud.</summary>
+    public class Credentials : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Initial password.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("password")]
+        public virtual string Password { get; set; }
+
+        /// <summary>Initial username.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("username")]
+        public virtual string Username { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
+    /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
+    /// Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
+    /// </summary>
+    public class Empty : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression
+    /// language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example
+    /// (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars"
+    /// expression: "document.summary.size() &amp;lt; 100" Example (Equality): title: "Requestor is owner" description:
+    /// "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email"
+    /// Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly
+    /// visible" expression: "document.type != 'private' &amp;amp;&amp;amp; document.type != 'internal'" Example (Data
+    /// Manipulation): title: "Notification string" description: "Create a notification string with a timestamp."
+    /// expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that
+    /// may be referenced within an expression are determined by the service that evaluates it. See the service
+    /// documentation for additional information.
+    /// </summary>
+    public class Expr : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when
+        /// hovered over it in a UI.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Textual representation of an expression in Common Expression Language syntax.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expression")]
+        public virtual string Expression { get; set; }
+
+        /// <summary>
+        /// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a
+        /// position in the file.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>
+        /// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs
+        /// which allow to enter the expression.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("title")]
+        public virtual string Title { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about a HCX Cloud Manager appliance.</summary>
+    public class Hcx : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Fully qualified domain name of the appliance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fqdn")]
+        public virtual string Fqdn { get; set; }
+
+        /// <summary>Internal IP address of the appliance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalIp")]
+        public virtual string InternalIp { get; set; }
+
+        /// <summary>Output only. The state of the appliance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Version of the appliance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// HCX activation key. A default key is created during private cloud provisioning, but this behavior is subject to
+    /// change and you should always verify active keys. Use VmwareEngine.ListHcxActivationKeys to retrieve existing
+    /// keys and VmwareEngine.CreateHcxActivationKey to create new ones.
+    /// </summary>
+    public class HcxActivationKey : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. HCX activation key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("activationKey")]
+        public virtual string ActivationKey { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Creation time of HCX activation key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Output only. The resource name of this HcxActivationKey. Resource names are schemeless URIs that follow the
+        /// conventions in https://cloud.google.com/apis/design/resource_names. For example:
+        /// `projects/my-project/locations/us-central1/privateClouds/my-cloud/hcxActivationKeys/my-key`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. State of HCX activation key.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. System-generated unique identifier for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for VmwareEngine.ListClusters</summary>
+    public class ListClustersResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of private cloud clusters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusters")]
+        public virtual System.Collections.Generic.IList<Cluster> Clusters { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached when making an aggregated query using wildcards.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for VmwareEngine.ListHcxActivationKeys</summary>
+    public class ListHcxActivationKeysResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>List of HCX activation keys.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hcxActivationKeys")]
+        public virtual System.Collections.Generic.IList<HcxActivationKey> HcxActivationKeys { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached when making an aggregated query using wildcards.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Locations.ListLocations.</summary>
+    public class ListLocationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of locations that matches the specified filter in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locations")]
+        public virtual System.Collections.Generic.IList<Location> Locations { get; set; }
+
+        /// <summary>The standard List next-page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for VmwareEngine.ListNetworkPolicies</summary>
+    public class ListNetworkPoliciesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A list of network policies.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkPolicies")]
+        public virtual System.Collections.Generic.IList<NetworkPolicy> NetworkPolicies { get; set; }
+
+        /// <summary>
+        /// A token, which can be send as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached when making an aggregated query using wildcards.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for VmwareEngine.ListNodeTypes</summary>
+    public class ListNodeTypesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of Node Types.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeTypes")]
+        public virtual System.Collections.Generic.IList<NodeType> NodeTypes { get; set; }
+
+        /// <summary>Locations that could not be reached when making an aggregated query using wildcards.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Operations.ListOperations.</summary>
+    public class ListOperationsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The standard List next-page token.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of operations that matches the specified filter in the request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("operations")]
+        public virtual System.Collections.Generic.IList<Operation> Operations { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for VmwareEngine.ListPrivateClouds</summary>
+    public class ListPrivateCloudsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of private clouds.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateClouds")]
+        public virtual System.Collections.Generic.IList<PrivateCloud> PrivateClouds { get; set; }
+
+        /// <summary>Locations that could not be reached when making an aggregated query using wildcards.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for VmwareEngine.ListPrivateConnectionPeeringRoutes</summary>
+    public class ListPrivateConnectionPeeringRoutesResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of peering routes.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peeringRoutes")]
+        public virtual System.Collections.Generic.IList<PeeringRoute> PeeringRoutes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for VmwareEngine.ListPrivateConnections</summary>
+    public class ListPrivateConnectionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of private connections.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("privateConnections")]
+        public virtual System.Collections.Generic.IList<PrivateConnection> PrivateConnections { get; set; }
+
+        /// <summary>Unreachable resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for VmwareEngine.ListSubnets</summary>
+    public class ListSubnetsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>A list of subnets.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subnets")]
+        public virtual System.Collections.Generic.IList<Subnet> Subnets { get; set; }
+
+        /// <summary>Locations that could not be reached when making an aggregated query using wildcards.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for VmwareEngine.ListVmwareEngineNetworks</summary>
+    public class ListVmwareEngineNetworksResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Unreachable resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>A list of VMware Engine networks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmwareEngineNetworks")]
+        public virtual System.Collections.Generic.IList<VmwareEngineNetwork> VmwareEngineNetworks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A resource that represents a Google Cloud location.</summary>
+    public class Location : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The friendly name for this location, typically a nearby city name. For example, "Tokyo".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
+        /// Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"}
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>The canonical id for this location. For example: `"us-east1"`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("locationId")]
+        public virtual string LocationId { get; set; }
+
+        /// <summary>Service-specific metadata. For example the available capacity at the given location.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>
+        /// Resource name for the location, which may vary between implementations. For example:
+        /// `"projects/example-project/locations/us-east1"`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Management cluster configuration.</summary>
+    public class ManagementCluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The user-provided identifier of the new `Cluster`. The identifier must meet the following
+        /// requirements: * Only contains 1-63 alphanumeric characters and hyphens * Begins with an alphabetical
+        /// character * Ends with a non-hyphen character * Not formatted as a UUID * Complies with [RFC
+        /// 1034](https://datatracker.ietf.org/doc/html/rfc1034) (section 3.5)
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterId")]
+        public virtual string ClusterId { get; set; }
+
+        /// <summary>
+        /// Required. The map of cluster node types in this cluster, where the key is canonical identifier of the node
+        /// type (corresponds to the `NodeType`).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeTypeConfigs")]
+        public virtual System.Collections.Generic.IDictionary<string, NodeTypeConfig> NodeTypeConfigs { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Network configuration in the consumer project with which the peering has to be done.</summary>
+    public class NetworkConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Management CIDR used by VMware management appliances.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managementCidr")]
+        public virtual string ManagementCidr { get; set; }
+
+        /// <summary>
+        /// Output only. The IP address layout version of the management IP address range. Possible versions include: *
+        /// `managementIpAddressLayoutVersion=1`: Indicates the legacy IP address layout used by some existing private
+        /// clouds. This is no longer supported for new private clouds as it does not support all features. *
+        /// `managementIpAddressLayoutVersion=2`: Indicates the latest IP address layout used by all newly created
+        /// private clouds. This version supports all current features.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managementIpAddressLayoutVersion")]
+        public virtual System.Nullable<int> ManagementIpAddressLayoutVersion { get; set; }
+
+        /// <summary>
+        /// Optional. The relative resource name of the VMware Engine network attached to the private cloud. Specify the
+        /// name in the following form:
+        /// `projects/{project}/locations/{location}/vmwareEngineNetworks/{vmware_engine_network_id}` where `{project}`
+        /// can either be a project number or a project ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmwareEngineNetwork")]
+        public virtual string VmwareEngineNetwork { get; set; }
+
+        /// <summary>
+        /// Output only. The canonical name of the VMware Engine network in the form:
+        /// `projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmware_engine_network_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmwareEngineNetworkCanonical")]
+        public virtual string VmwareEngineNetworkCanonical { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a network policy resource. Network policies are regional resources. You can use a network policy to
+    /// enable or disable internet access and external IP access. Network policies are associated with a VMware Engine
+    /// network, which might span across regions. For a given region, a network policy applies to all private clouds in
+    /// the VMware Engine network associated with the policy.
+    /// </summary>
+    public class NetworkPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Creation time of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Optional. User-provided description for this network policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. IP address range in CIDR notation used to create internet access and external IP access. An RFC
+        /// 1918 CIDR block, with a "/26" prefix, is required. The range cannot overlap with any prefixes either in the
+        /// consumer VPC network or in use by the private clouds attached to that VPC network.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edgeServicesCidr")]
+        public virtual string EdgeServicesCidr { get; set; }
+
+        /// <summary>
+        /// Network service that allows External IP addresses to be assigned to VMware workloads. This service can only
+        /// be enabled when `internet_access` is also enabled.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalIp")]
+        public virtual NetworkService ExternalIp { get; set; }
+
+        /// <summary>Network service that allows VMware workloads to access the internet.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internetAccess")]
+        public virtual NetworkService InternetAccess { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of this network policy. Resource names are schemeless URIs that follow the
+        /// conventions in https://cloud.google.com/apis/design/resource_names. For example:
+        /// `projects/my-project/locations/us-central1/networkPolicies/my-network-policy`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. System-generated unique identifier for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Last update time of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Optional. The relative resource name of the VMware Engine network. Specify the name in the following form:
+        /// `projects/{project}/locations/{location}/vmwareEngineNetworks/{vmware_engine_network_id}` where `{project}`
+        /// can either be a project number or a project ID.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmwareEngineNetwork")]
+        public virtual string VmwareEngineNetwork { get; set; }
+
+        /// <summary>
+        /// Output only. The canonical name of the VMware Engine network in the form:
+        /// `projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmware_engine_network_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmwareEngineNetworkCanonical")]
+        public virtual string VmwareEngineNetworkCanonical { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a network service that is managed by a `NetworkPolicy` resource. A network service provides a way to
+    /// control an aspect of external access to VMware workloads. For example, whether the VMware workloads in the
+    /// private clouds governed by a network policy can access or be accessed from the internet.
+    /// </summary>
+    public class NetworkService : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>True if the service is enabled; false otherwise.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enabled")]
+        public virtual System.Nullable<bool> Enabled { get; set; }
+
+        /// <summary>Output only. State of the service. New values may be added to this enum when appropriate.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Describes node type.</summary>
+    public class NodeType : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. List of possible values of custom core count.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("availableCustomCoreCounts")]
+        public virtual System.Collections.Generic.IList<System.Nullable<int>> AvailableCustomCoreCounts { get; set; }
+
+        /// <summary>Output only. The amount of storage available, defined in GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("diskSizeGb")]
+        public virtual System.Nullable<int> DiskSizeGb { get; set; }
+
+        /// <summary>Output only. The friendly name for this node type. For example: ve1-standard-72</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Output only. The amount of physical memory available, defined in GB.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryGb")]
+        public virtual System.Nullable<int> MemoryGb { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of this node type. Resource names are schemeless URIs that follow the
+        /// conventions in https://cloud.google.com/apis/design/resource_names. For example:
+        /// `projects/my-proj/locations/us-central1-a/nodeTypes/standard-72`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Output only. The canonical identifier of the node type (corresponds to the `NodeType`). For example:
+        /// standard-72.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeTypeId")]
+        public virtual string NodeTypeId { get; set; }
+
+        /// <summary>Output only. The total number of CPU cores in a single node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalCoreCount")]
+        public virtual System.Nullable<int> TotalCoreCount { get; set; }
+
+        /// <summary>Output only. The total number of virtual CPUs in a single node.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("virtualCpuCount")]
+        public virtual System.Nullable<int> VirtualCpuCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about the type and number of nodes associated with the cluster.</summary>
+    public class NodeTypeConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Customized number of cores available to each node of the type. This number must always be one of
+        /// `nodeType.availableCustomCoreCounts`. If zero is provided max value from
+        /// `nodeType.availableCustomCoreCounts` will be used.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("customCoreCount")]
+        public virtual System.Nullable<int> CustomCoreCount { get; set; }
+
+        /// <summary>Required. The number of nodes of this type in the cluster</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
+        public virtual System.Nullable<int> NodeCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about a NSX Manager appliance.</summary>
+    public class Nsx : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Fully qualified domain name of the appliance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fqdn")]
+        public virtual string Fqdn { get; set; }
+
+        /// <summary>Internal IP address of the appliance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalIp")]
+        public virtual string InternalIp { get; set; }
+
+        /// <summary>Output only. The state of the appliance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Version of the appliance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>This resource represents a long-running operation that is the result of a network API call.</summary>
+    public class Operation : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed,
+        /// and either `error` or `response` is available.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("done")]
+        public virtual System.Nullable<bool> Done { get; set; }
+
+        /// <summary>The error result of the operation in case of failure or cancellation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("error")]
+        public virtual Status Error { get; set; }
+
+        /// <summary>
+        /// Service-specific metadata associated with the operation. It typically contains progress information and
+        /// common metadata such as create time. Some services might not provide such metadata. Any method that returns
+        /// a long-running operation should document the metadata type, if any.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Metadata { get; set; }
+
+        /// <summary>
+        /// The server-assigned name, which is only unique within the same service that originally returns it. If you
+        /// use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The normal, successful response of the operation. If the original method returns no data on success, such as
+        /// `Delete`, the response is `google.protobuf.Empty`. If the original method is standard
+        /// `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have
+        /// the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is
+        /// `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("response")]
+        public virtual System.Collections.Generic.IDictionary<string, object> Response { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Represents the metadata of the long-running operation.</summary>
+    public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. API version used to start the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The time the operation was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _endTimeRaw;
+
+        private object _endTime;
+
+        /// <summary>Output only. The time the operation finished running.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endTime")]
+        public virtual string EndTimeRaw
+        {
+            get => _endTimeRaw;
+            set
+            {
+                _endTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _endTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use EndTimeDateTimeOffset instead.")]
+        public virtual object EndTime
+        {
+            get => _endTime;
+            set
+            {
+                _endTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _endTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="EndTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? EndTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(EndTimeRaw);
+            set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Output only. True if the user has requested cancellation of the operation; false otherwise. Operations that
+        /// have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1,
+        /// corresponding to `Code.CANCELLED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
+        public virtual System.Nullable<bool> RequestedCancellation { get; set; }
+
+        /// <summary>Output only. Human-readable status of the operation, if any.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
+        public virtual string StatusMessage { get; set; }
+
+        /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("target")]
+        public virtual string Target { get; set; }
+
+        /// <summary>Output only. Name of the verb executed by the operation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("verb")]
+        public virtual string Verb { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Exchanged network peering route.</summary>
+    public class PeeringRoute : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Destination range of the peering route in CIDR notation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("destRange")]
+        public virtual string DestRange { get; set; }
+
+        /// <summary>
+        /// Output only. Direction of the routes exchanged with the peer network, from the VMware Engine network
+        /// perspective: * Routes of direction `INCOMING` are imported from the peer network. * Routes of direction
+        /// `OUTGOING` are exported from the intranet VPC network of the VMware Engine network.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("direction")]
+        public virtual string Direction { get; set; }
+
+        /// <summary>
+        /// Output only. True if the peering route has been imported from a peered VPC network; false otherwise. The
+        /// import happens if the field `NetworkPeering.importCustomRoutes` is true for this network,
+        /// `NetworkPeering.exportCustomRoutes` is true for the peer VPC network, and the import does not result in a
+        /// route conflict.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("imported")]
+        public virtual System.Nullable<bool> Imported { get; set; }
+
+        /// <summary>
+        /// Output only. Region containing the next hop of the peering route. This field only applies to dynamic routes
+        /// in the peer VPC network.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextHopRegion")]
+        public virtual string NextHopRegion { get; set; }
+
+        /// <summary>Output only. The priority of the peering route.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("priority")]
+        public virtual System.Nullable<long> Priority { get; set; }
+
+        /// <summary>Output only. Type of the route in the peer VPC network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// An Identity and Access Management (IAM) policy, which specifies access controls for Google Cloud resources. A
+    /// `Policy` is a collection of `bindings`. A `binding` binds one or more `members`, or principals, to a single
+    /// `role`. Principals can be user accounts, service accounts, Google groups, and domains (such as G Suite). A
+    /// `role` is a named list of permissions; each `role` can be an IAM predefined role or a user-created custom role.
+    /// For some types of Google Cloud resources, a `binding` can also specify a `condition`, which is a logical
+    /// expression that allows access to a resource only if the expression evaluates to `true`. A condition can add
+    /// constraints based on attributes of the request, the resource, or both. To learn which resources support
+    /// conditions in their IAM policies, see the [IAM
+    /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies). **JSON example:**
+    /// ```
+    /// {
+    /// "bindings": [ { "role": "roles/resourcemanager.organizationAdmin", "members": [ "user:mike@example.com",
+    /// "group:admins@example.com", "domain:google.com", "serviceAccount:my-project-id@appspot.gserviceaccount.com" ] },
+    /// { "role": "roles/resourcemanager.organizationViewer", "members": [ "user:eve@example.com" ], "condition": {
+    /// "title": "expirable access", "description": "Does not grant access after Sep 2020", "expression": "request.time
+    /// &amp;lt; timestamp('2020-10-01T00:00:00.000Z')", } } ], "etag": "BwWWja0YfJA=", "version": 3 }
+    /// ```
+    /// **YAML
+    /// example:**
+    /// ```
+    /// bindings: - members: - user:mike@example.com - group:admins@example.com - domain:google.com -
+    /// serviceAccount:my-project-id@appspot.gserviceaccount.com role: roles/resourcemanager.organizationAdmin -
+    /// members: - user:eve@example.com role: roles/resourcemanager.organizationViewer condition: title: expirable
+    /// access description: Does not grant access after Sep 2020 expression: request.time &amp;lt;
+    /// timestamp('2020-10-01T00:00:00.000Z') etag: BwWWja0YfJA= version: 3
+    /// ```
+    /// For a description of IAM and its
+    /// features, see the [IAM documentation](https://cloud.google.com/iam/docs/).
+    /// </summary>
+    public class Policy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Specifies cloud audit logging configuration for this policy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("auditConfigs")]
+        public virtual System.Collections.Generic.IList<AuditConfig> AuditConfigs { get; set; }
+
+        /// <summary>
+        /// Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that
+        /// determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one
+        /// principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals
+        /// can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the
+        /// `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you
+        /// can add another 1,450 principals to the `bindings` in the `Policy`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bindings")]
+        public virtual System.Collections.Generic.IList<Binding> Bindings { get; set; }
+
+        /// <summary>
+        /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy
+        /// from overwriting each other. It is strongly suggested that systems make use of the `etag` in the
+        /// read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned
+        /// in the response to `getIamPolicy`, and systems are expected to put that etag in the request to
+        /// `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:**
+        /// If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit
+        /// this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
+        /// conditions in the version `3` policy are lost.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid
+        /// value are rejected. Any operation that affects conditional role bindings must specify version `3`. This
+        /// requirement applies to the following operations: * Getting a policy that includes a conditional role binding
+        /// * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing
+        /// any role binding, with or without a condition, from a policy that includes conditions **Important:** If you
+        /// use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this
+        /// field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the
+        /// conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on
+        /// that policy may specify any valid version or leave the field unset. To learn which resources support
+        /// conditions in their IAM policies, see the [IAM
+        /// documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual System.Nullable<int> Version { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a private cloud resource. Private clouds of type `STANDARD` and `TIME_LIMITED` are zonal resources,
+    /// `STRETCHED` private clouds are regional.
+    /// </summary>
+    public class PrivateCloud : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Creation time of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _deleteTimeRaw;
+
+        private object _deleteTime;
+
+        /// <summary>Output only. Time when the resource was scheduled for deletion.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual string DeleteTimeRaw
+        {
+            get => _deleteTimeRaw;
+            set
+            {
+                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deleteTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
+        public virtual object DeleteTime
+        {
+            get => _deleteTime;
+            set
+            {
+                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deleteTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>User-provided description for this private cloud.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        private string _expireTimeRaw;
+
+        private object _expireTime;
+
+        /// <summary>Output only. Time when the resource will be irreversibly deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("expireTime")]
+        public virtual string ExpireTimeRaw
+        {
+            get => _expireTimeRaw;
+            set
+            {
+                _expireTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _expireTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use ExpireTimeDateTimeOffset instead.")]
+        public virtual object ExpireTime
+        {
+            get => _expireTime;
+            set
+            {
+                _expireTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _expireTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="ExpireTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? ExpireTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(ExpireTimeRaw);
+            set => ExpireTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Output only. HCX appliance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("hcx")]
+        public virtual Hcx Hcx { get; set; }
+
+        /// <summary>
+        /// Required. Input only. The management cluster for this private cloud. This field is required during creation
+        /// of the private cloud to provide details for the default cluster. The following fields can't be changed after
+        /// private cloud creation: `ManagementCluster.clusterId`, `ManagementCluster.nodeTypeId`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("managementCluster")]
+        public virtual ManagementCluster ManagementCluster { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of this private cloud. Resource names are schemeless URIs that follow the
+        /// conventions in https://cloud.google.com/apis/design/resource_names. For example:
+        /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Required. Network configuration of the private cloud.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("networkConfig")]
+        public virtual NetworkConfig NetworkConfig { get; set; }
+
+        /// <summary>Output only. NSX appliance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nsx")]
+        public virtual Nsx Nsx { get; set; }
+
+        /// <summary>
+        /// Output only. State of the resource. New values may be added to this enum when appropriate.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Optional. Type of the private cloud. Defaults to STANDARD.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Output only. System-generated unique identifier for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Last update time of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Output only. Vcenter appliance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vcenter")]
+        public virtual Vcenter Vcenter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Private connection resource that provides connectivity for VMware Engine private clouds.</summary>
+    public class PrivateConnection : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Creation time of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Optional. User-provided description for this private connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the private connection. Resource names are schemeless URIs that follow the
+        /// conventions in https://cloud.google.com/apis/design/resource_names. For example:
+        /// `projects/my-project/locations/us-central1/privateConnections/my-connection`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. VPC network peering id between given network VPC and VMwareEngineNetwork.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peeringId")]
+        public virtual string PeeringId { get; set; }
+
+        /// <summary>Output only. Peering state between service network and VMware Engine network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("peeringState")]
+        public virtual string PeeringState { get; set; }
+
+        /// <summary>
+        /// Optional. Routing Mode. Default value is set to GLOBAL. For type = PRIVATE_SERVICE_ACCESS, this field can be
+        /// set to GLOBAL or REGIONAL, for other types only GLOBAL is supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("routingMode")]
+        public virtual string RoutingMode { get; set; }
+
+        /// <summary>
+        /// Required. Service network to create private connection. Specify the name in the following form:
+        /// `projects/{project}/global/networks/{network_id}` For type = PRIVATE_SERVICE_ACCESS, this field represents
+        /// servicenetworking VPC, e.g. projects/project-tp/global/networks/servicenetworking. For type =
+        /// NETAPP_CLOUD_VOLUME, this field represents NetApp service VPC, e.g.
+        /// projects/project-tp/global/networks/netapp-tenant-vpc. For type = DELL_POWERSCALE, this field represent Dell
+        /// service VPC, e.g. projects/project-tp/global/networks/dell-tenant-vpc. For type= THIRD_PARTY_SERVICE, this
+        /// field could represent a consumer VPC or any other producer VPC to which the VMware Engine Network needs to
+        /// be connected, e.g. projects/project/global/networks/vpc.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("serviceNetwork")]
+        public virtual string ServiceNetwork { get; set; }
+
+        /// <summary>Output only. State of the private connection.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Required. Private connection type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Output only. System-generated unique identifier for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Last update time of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Required. The relative resource name of Legacy VMware Engine network. Specify the name in the following
+        /// form: `projects/{project}/locations/{location}/vmwareEngineNetworks/{vmware_engine_network_id}` where
+        /// `{project}`, `{location}` will be same as specified in private connection resource name and
+        /// `{vmware_engine_network_id}` will be in the form of `{location}`-default e.g.
+        /// projects/project/locations/us-central1/vmwareEngineNetworks/us-central1-default.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmwareEngineNetwork")]
+        public virtual string VmwareEngineNetwork { get; set; }
+
+        /// <summary>
+        /// Output only. The canonical name of the VMware Engine network in the form:
+        /// `projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmware_engine_network_id}`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vmwareEngineNetworkCanonical")]
+        public virtual string VmwareEngineNetworkCanonical { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for VmwareEngine.ResetNsxCredentials</summary>
+    public class ResetNsxCredentialsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your
+        /// request, the server will know to ignore the request if it has already been completed. The server guarantees
+        /// that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example,
+        /// consider a situation where you make an initial request and the request times out. If you make the request
+        /// again with the same request ID, the server can check if original operation with the same request ID was
+        /// received, and if so, will ignore the second request. This prevents clients from accidentally creating
+        /// duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not
+        /// supported (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for VmwareEngine.ResetVcenterCredentials</summary>
+    public class ResetVcenterCredentialsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your
+        /// request, the server will know to ignore the request if it has already been completed. The server guarantees
+        /// that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example,
+        /// consider a situation where you make an initial request and the request times out. If you make the request
+        /// again with the same request ID, the server can check if original operation with the same request ID was
+        /// received, and if so, will ignore the second request. This prevents clients from accidentally creating
+        /// duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not
+        /// supported (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for `SetIamPolicy` method.</summary>
+    public class SetIamPolicyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few
+        /// 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might
+        /// reject them.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policy")]
+        public virtual Policy Policy { get; set; }
+
+        /// <summary>
+        /// OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be
+        /// modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateMask")]
+        public virtual object UpdateMask { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The `Status` type defines a logical error model that is suitable for different programming environments,
+    /// including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains
+    /// three pieces of data: error code, error message, and error details. You can find out more about this error model
+    /// and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
+    /// </summary>
+    public class Status : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The status code, which should be an enum value of google.rpc.Code.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual System.Nullable<int> Code { get; set; }
+
+        /// <summary>
+        /// A list of messages that carry the error details. There is a common set of message types for APIs to use.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("details")]
+        public virtual System.Collections.Generic.IList<System.Collections.Generic.IDictionary<string, object>> Details { get; set; }
+
+        /// <summary>
+        /// A developer-facing error message, which should be in English. Any user-facing error message should be
+        /// localized and sent in the google.rpc.Status.details field, or localized by the client.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("message")]
+        public virtual string Message { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Subnet in a private cloud. Either `management` subnets (such as vMotion) that are read-only, or `userDefined`,
+    /// which can also be updated.
+    /// </summary>
+    public class Subnet : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The IP address of the gateway of this subnet. Must fall within the IP prefix defined above.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gatewayIp")]
+        public virtual string GatewayIp { get; set; }
+
+        /// <summary>The IP address range of the subnet in CIDR format '10.0.0.0/24'.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ipCidrRange")]
+        public virtual string IpCidrRange { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of this subnet. Resource names are schemeless URIs that follow the
+        /// conventions in https://cloud.google.com/apis/design/resource_names. For example:
+        /// `projects/my-project/locations/us-central1-a/privateClouds/my-cloud/subnets/my-subnet`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. The state of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Output only. The type of the subnet. For example "management" or "userDefined".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for `TestIamPermissions` method.</summary>
+    public class TestIamPermissionsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`)
+        /// are not allowed. For more information see [IAM
+        /// Overview](https://cloud.google.com/iam/docs/overview#permissions).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for `TestIamPermissions` method.</summary>
+    public class TestIamPermissionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
+        public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for VmwareEngine.UndeletePrivateCloud</summary>
+    public class UndeletePrivateCloudRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported
+        /// (00000000-0000-0000-0000-000000000000).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestId")]
+        public virtual string RequestId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Details about a vCenter Server management appliance.</summary>
+    public class Vcenter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Fully qualified domain name of the appliance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fqdn")]
+        public virtual string Fqdn { get; set; }
+
+        /// <summary>Internal IP address of the appliance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("internalIp")]
+        public virtual string InternalIp { get; set; }
+
+        /// <summary>Output only. The state of the appliance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Version of the appliance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("version")]
+        public virtual string Version { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>VMware Engine network resource that provides connectivity for VMware Engine private clouds.</summary>
+    public class VmwareEngineNetwork : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. Creation time of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>User-provided description for this VMware Engine network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Checksum that may be sent on update and delete requests to ensure that the user-provided value is up to date
+        /// before the server processes a request. The server computes checksums based on the value of other fields in
+        /// the request.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("etag")]
+        public virtual string ETag { get; set; }
+
+        /// <summary>
+        /// Output only. The resource name of the VMware Engine network. Resource names are schemeless URIs that follow
+        /// the conventions in https://cloud.google.com/apis/design/resource_names. For example:
+        /// `projects/my-project/locations/global/vmwareEngineNetworks/my-network`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. State of the VMware Engine network.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual string State { get; set; }
+
+        /// <summary>Required. VMware Engine network type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>Output only. System-generated unique identifier for the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uid")]
+        public virtual string Uid { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. Last update time of this resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Output only. VMware Engine service VPC networks that provide connectivity from a private cloud to customer
+        /// projects, the internet, and other Google Cloud services.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vpcNetworks")]
+        public virtual System.Collections.Generic.IList<VpcNetwork> VpcNetworks { get; set; }
+    }
+
+    /// <summary>Represents a VMware Engine VPC network that is managed by a VMware Engine network resource.</summary>
+    public class VpcNetwork : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The relative resource name of the service VPC network this VMware Engine network is attached
+        /// to. For example: `projects/123123/global/networks/my-network`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("network")]
+        public virtual string Network { get; set; }
+
+        /// <summary>Output only. Type of VPC network (INTRANET, INTERNET, or GOOGLE_CLOUD)</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+}

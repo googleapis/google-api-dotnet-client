@@ -58,6 +58,9 @@ namespace Google.Apis.CloudHealthcare.v1
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Healthcare API.</summary>
         public class Scope
         {
+            /// <summary>Read, write and manage healthcare data</summary>
+            public static string CloudHealthcare = "https://www.googleapis.com/auth/cloud-healthcare";
+
             /// <summary>
             /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
             /// Account.
@@ -68,6 +71,9 @@ namespace Google.Apis.CloudHealthcare.v1
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Healthcare API.</summary>
         public static class ScopeConstants
         {
+            /// <summary>Read, write and manage healthcare data</summary>
+            public const string CloudHealthcare = "https://www.googleapis.com/auth/cloud-healthcare";
+
             /// <summary>
             /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
             /// Account.
@@ -11559,8 +11565,8 @@ namespace Google.Apis.CloudHealthcare.v1.Data
         /// <summary>
         /// Ensures in-flight data remains in the region of origin during de-identification. Using this option results
         /// in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME`
-        /// infoTypes. `LOCATION` must be excluded within `TextConfig`, and must also be excluded within `ImageConfig`
-        /// if image redaction is required.
+        /// infoTypes. `LOCATION` must be excluded within TextConfig, and must also be excluded within ImageConfig if
+        /// image redaction is required.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useRegionalDataProcessing")]
         public virtual System.Nullable<bool> UseRegionalDataProcessing { get; set; }

@@ -395,6 +395,10 @@ namespace Google.Apis.MapsPlaces.v1.Data
     /// <summary>All the information representing a Place.</summary>
     public class GoogleMapsPlacesV1Place : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Output only. Information about the accessibility options a place offers.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("accessibilityOptions")]
+        public virtual GoogleMapsPlacesV1PlaceAccessibilityOptions AccessibilityOptions { get; set; }
+
         /// <summary>Output only. Repeated components for each locality level.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("addressComponents")]
         public virtual System.Collections.Generic.IList<GoogleMapsPlacesV1PlaceAddressComponent> AddressComponents { get; set; }
@@ -591,6 +595,17 @@ namespace Google.Apis.MapsPlaces.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("websiteUri")]
         public virtual string WebsiteUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Information about the accessibility options a place offers.</summary>
+    public class GoogleMapsPlacesV1PlaceAccessibilityOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Places has wheelchair accessible entrance.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("wheelchairAccessibleEntrance")]
+        public virtual System.Nullable<bool> WheelchairAccessibleEntrance { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
