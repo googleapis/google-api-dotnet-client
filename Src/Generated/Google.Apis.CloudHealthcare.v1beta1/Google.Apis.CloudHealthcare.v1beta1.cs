@@ -58,6 +58,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
         /// <summary>Available OAuth 2.0 scopes for use with the Cloud Healthcare API.</summary>
         public class Scope
         {
+            /// <summary>Read, write and manage healthcare data</summary>
+            public static string CloudHealthcare = "https://www.googleapis.com/auth/cloud-healthcare";
+
             /// <summary>
             /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
             /// Account.
@@ -68,6 +71,9 @@ namespace Google.Apis.CloudHealthcare.v1beta1
         /// <summary>Available OAuth 2.0 scope constants for use with the Cloud Healthcare API.</summary>
         public static class ScopeConstants
         {
+            /// <summary>Read, write and manage healthcare data</summary>
+            public const string CloudHealthcare = "https://www.googleapis.com/auth/cloud-healthcare";
+
             /// <summary>
             /// See, edit, configure, and delete your Google Cloud data and see the email address for your Google
             /// Account.
@@ -13802,7 +13808,7 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
     }
 
     /// <summary>
-    /// Inspect text and transform sensitive text. Configurable using `TextConfig`. Supported [Value Representations]
+    /// Inspect text and transform sensitive text. Configurable using TextConfig. Supported [Value Representations]
     /// (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): AE, LO, LT, PN, SH,
     /// ST, UC, UT, DA, DT, AS
     /// </summary>
@@ -14341,8 +14347,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// <summary>
         /// Ensures in-flight data remains in the region of origin during de-identification. Using this option results
         /// in a significant reduction of throughput, and is not compatible with `LOCATION` or `ORGANIZATION_NAME`
-        /// infoTypes. If the deprecated `DicomConfig` or `FhirConfig` are used, then `LOCATION` must be excluded within
-        /// `TextConfig`, and must also be excluded within `ImageConfig` if image redaction is required.
+        /// infoTypes. If the deprecated DicomConfig or FhirConfig are used, then `LOCATION` must be excluded within
+        /// TextConfig, and must also be excluded within ImageConfig if image redaction is required.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("useRegionalDataProcessing")]
         public virtual System.Nullable<bool> UseRegionalDataProcessing { get; set; }
@@ -15277,8 +15283,8 @@ namespace Google.Apis.CloudHealthcare.v1beta1.Data
         /// Name of the output FHIR store, which must already exist. You must grant the healthcare.fhirResources.update
         /// permission on the destination store to your project's **Cloud Healthcare Service Agent** [service
         /// account](https://cloud.google.com/healthcare/docs/how-tos/permissions-healthcare-api-gcp-products#the_cloud_healthcare_service_agent).
-        /// The destination store must set `enable_update_create` to true. The destination store must use FHIR version
-        /// R4. Writing these resources will consume FHIR operations quota from the project containing the source data.
+        /// The destination store must set enableUpdateCreate to true. The destination store must use FHIR version R4.
+        /// Writing these resources will consume FHIR operations quota from the project containing the source data.
         /// De-identify operation metadata is only generated for DICOM de-identification operations.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fhirStore")]

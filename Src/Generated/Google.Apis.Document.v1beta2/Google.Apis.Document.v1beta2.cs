@@ -5409,9 +5409,7 @@ namespace Google.Apis.Document.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// A singleton resource under a Processor which configures a collection of documents. Next Id: 8.
-    /// </summary>
+    /// <summary>A singleton resource under a Processor which configures a collection of documents.</summary>
     public class GoogleCloudDocumentaiV1beta3Dataset : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Document AI Warehouse-based dataset configuration.</summary>

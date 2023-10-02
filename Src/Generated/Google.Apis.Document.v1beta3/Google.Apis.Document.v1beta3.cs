@@ -1055,6 +1055,65 @@ namespace Google.Apis.Document.v1beta3
                         }
                     }
 
+                    /// <summary>Returns a list of documents present in the dataset.</summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="dataset">
+                    /// Required. The resource name of the dataset to be listed. Format:
+                    /// projects/{project}/locations/{location}/processors/{processor}/dataset
+                    /// </param>
+                    public virtual ListDocumentsRequest ListDocuments(Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3ListDocumentsRequest body, string dataset)
+                    {
+                        return new ListDocumentsRequest(service, body, dataset);
+                    }
+
+                    /// <summary>Returns a list of documents present in the dataset.</summary>
+                    public class ListDocumentsRequest : DocumentBaseServiceRequest<Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3ListDocumentsResponse>
+                    {
+                        /// <summary>Constructs a new ListDocuments request.</summary>
+                        public ListDocumentsRequest(Google.Apis.Services.IClientService service, Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3ListDocumentsRequest body, string dataset) : base(service)
+                        {
+                            Dataset = dataset;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The resource name of the dataset to be listed. Format:
+                        /// projects/{project}/locations/{location}/processors/{processor}/dataset
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("dataset", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Dataset { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Document.v1beta3.Data.GoogleCloudDocumentaiV1beta3ListDocumentsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "listDocuments";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v1beta3/{+dataset}:listDocuments";
+
+                        /// <summary>Initializes ListDocuments parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("dataset", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "dataset",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/processors/[^/]+/dataset$",
+                            });
+                        }
+                    }
+
                     /// <summary>Updates a `DatasetSchema`.</summary>
                     /// <param name="body">The body of the request.</param>
                     /// <param name="name">
@@ -7414,9 +7473,7 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// A singleton resource under a Processor which configures a collection of documents. Next Id: 8.
-    /// </summary>
+    /// <summary>A singleton resource under a Processor which configures a collection of documents.</summary>
     public class GoogleCloudDocumentaiV1beta3Dataset : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Optional. Document AI Warehouse-based dataset configuration.</summary>
@@ -7850,6 +7907,33 @@ namespace Google.Apis.Document.v1beta3.Data
         /// <summary>Required. The id of the document.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("docId")]
         public virtual string DocId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Metadata about a document.</summary>
+    public class GoogleCloudDocumentaiV1beta3DocumentMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Type of the dataset split to which the document belongs.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("datasetType")]
+        public virtual string DatasetType { get; set; }
+
+        /// <summary>The display name of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>Document identifier.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentId")]
+        public virtual GoogleCloudDocumentaiV1beta3DocumentId DocumentId { get; set; }
+
+        /// <summary>Labelling state of the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labelingState")]
+        public virtual string LabelingState { get; set; }
+
+        /// <summary>Number of pages in the document.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageCount")]
+        public virtual System.Nullable<int> PageCount { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -9518,6 +9602,77 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual string ETag { get; set; }
     }
 
+    public class GoogleCloudDocumentaiV1beta3ListDocumentsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Query to filter the documents based on https://google.aip.dev/160. ## Currently support query
+        /// strings are: `SplitType=DATASET_SPLIT_TEST|DATASET_SPLIT_TRAIN|DATASET_SPLIT_UNASSIGNED` -
+        /// `LabelingState=DOCUMENT_LABELED|DOCUMENT_UNLABELED|DOCUMENT_AUTO_LABELED` - `DisplayName=\"file_name.pdf\"`
+        /// - `EntityType=abc/def` - `TagName=\"auto-labeling-running\"|\"sampled\"` Note: - Only `AND`, `=` and `!=`
+        /// are supported. e.g. `DisplayName=file_name AND EntityType!=abc` IS supported. - Wildcard `*` is supported
+        /// only in `DisplayName` filter - No duplicate filter keys are allowed, e.g. `EntityType=a AND EntityType=b` is
+        /// NOT supported. - String match is case sensitive (for filter `DisplayName` &amp;amp; `EntityType`).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filter")]
+        public virtual string Filter { get; set; }
+
+        /// <summary>
+        /// The maximum number of documents to return. The service may return fewer than this value. If unspecified, at
+        /// most 20 documents will be returned. The maximum value is 100; values above 100 will be coerced to 100.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
+        public virtual System.Nullable<int> PageSize { get; set; }
+
+        /// <summary>
+        /// A page token, received from a previous `ListDocuments` call. Provide this to retrieve the subsequent page.
+        /// When paginating, all other parameters provided to `ListDocuments` must match the call that provided the page
+        /// token.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
+        public virtual string PageToken { get; set; }
+
+        /// <summary>
+        /// Optional. Controls if the ListDocuments request requires a total size of matched documents. See
+        /// ListDocumentsResponse.total_size. Enabling this flag may adversely impact performance. Defaults to false.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("returnTotalSize")]
+        public virtual System.Nullable<bool> ReturnTotalSize { get; set; }
+
+        /// <summary>
+        /// Optional. Number of results to skip beginning from the `page_token` if provided.
+        /// https://google.aip.dev/158#skipping-results. It must be a non-negative integer. Negative values wil be
+        /// rejected. Note that this is not the number of pages to skip. If this value causes the cursor to move past
+        /// the end of results, `ListDocumentsResponse.document_metadata` and `ListDocumentsResponse.next_page_token`
+        /// will be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("skip")]
+        public virtual System.Nullable<int> Skip { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    public class GoogleCloudDocumentaiV1beta3ListDocumentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Document metadata corresponding to the listed documents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("documentMetadata")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDocumentaiV1beta3DocumentMetadata> DocumentMetadata { get; set; }
+
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Total count of documents queried.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("totalSize")]
+        public virtual System.Nullable<int> TotalSize { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>The response from `ListEvaluations`.</summary>
     public class GoogleCloudDocumentaiV1beta3ListEvaluationsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -9619,8 +9774,8 @@ namespace Google.Apis.Document.v1beta3.Data
         public virtual System.Nullable<bool> ComputeStyleInfo { get; set; }
 
         /// <summary>
-        /// Turn off character box detector in OCR engine. Character box detection is enabled by default in OCR 2.0+
-        /// processors.
+        /// Turn off character box detector in OCR engine. Character box detection is enabled by default in OCR 2.0 (and
+        /// later) processors.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("disableCharacterBoxesDetection")]
         public virtual System.Nullable<bool> DisableCharacterBoxesDetection { get; set; }
@@ -9682,7 +9837,9 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("enableMathOcr")]
         public virtual System.Nullable<bool> EnableMathOcr { get; set; }
 
-        /// <summary>Turn on selection mark detector in OCR engine. Only available in OCR 2.0+ processors.</summary>
+        /// <summary>
+        /// Turn on selection mark detector in OCR engine. Only available in OCR 2.0 (and later) processors.
+        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("enableSelectionMarkDetection")]
         public virtual System.Nullable<bool> EnableSelectionMarkDetection { get; set; }
 
@@ -9697,7 +9854,7 @@ namespace Google.Apis.Document.v1beta3.Data
         [Newtonsoft.Json.JsonPropertyAttribute("fromEnd")]
         public virtual System.Nullable<int> FromEnd { get; set; }
 
-        /// <summary>Only process certain pages from the start, process all if the document has less pages.</summary>
+        /// <summary>Only process certain pages from the start. Process all if the document has fewer pages.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fromStart")]
         public virtual System.Nullable<int> FromStart { get; set; }
 

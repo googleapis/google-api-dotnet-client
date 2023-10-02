@@ -294,6 +294,8 @@ namespace Google.Apis.NetworkServices.v1beta1
                 Gateways = new GatewaysResource(service);
                 GrpcRoutes = new GrpcRoutesResource(service);
                 HttpRoutes = new HttpRoutesResource(service);
+                LbRouteExtensions = new LbRouteExtensionsResource(service);
+                LbTrafficExtensions = new LbTrafficExtensionsResource(service);
                 Meshes = new MeshesResource(service);
                 Operations = new OperationsResource(service);
                 ServiceBindings = new ServiceBindingsResource(service);
@@ -2101,6 +2103,872 @@ namespace Google.Apis.NetworkServices.v1beta1
                             ParameterType = "path",
                             DefaultValue = null,
                             Pattern = @"^projects/[^/]+/locations/[^/]+/httpRoutes/[^/]+$",
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the LbRouteExtensions resource.</summary>
+            public virtual LbRouteExtensionsResource LbRouteExtensions { get; }
+
+            /// <summary>The "lbRouteExtensions" collection of methods.</summary>
+            public class LbRouteExtensionsResource
+            {
+                private const string Resource = "lbRouteExtensions";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public LbRouteExtensionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new `LbRouteExtension` resource in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the `LbRouteExtension` resource. Must be in the format
+                /// `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.NetworkServices.v1beta1.Data.LbRouteExtension body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new `LbRouteExtension` resource in a given project and location.</summary>
+                public class CreateRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1beta1.Data.LbRouteExtension body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the `LbRouteExtension` resource. Must be in the format
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Required. User-provided ID of the `LbRouteExtension` resource to be created.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("lbRouteExtensionId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LbRouteExtensionId { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server can ignore the request if it has already been completed.
+                    /// The server guarantees that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1beta1.Data.LbRouteExtension Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/lbRouteExtensions";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("lbRouteExtensionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "lbRouteExtensionId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes the specified `LbRouteExtension` resource.</summary>
+                /// <param name="name">
+                /// Required. The name of the `LbRouteExtension` resource to delete. Must be in the format
+                /// `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes the specified `LbRouteExtension` resource.</summary>
+                public class DeleteRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the `LbRouteExtension` resource to delete. Must be in the format
+                    /// `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server can ignore the request if it has already been completed.
+                    /// The server guarantees that for at least 60 minutes after the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/lbRouteExtensions/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of the specified `LbRouteExtension` resource.</summary>
+                /// <param name="name">
+                /// Required. A name of the `LbRouteExtension` resource to get. Must be in the format
+                /// `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets details of the specified `LbRouteExtension` resource.</summary>
+                public class GetRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.LbRouteExtension>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the `LbRouteExtension` resource to get. Must be in the format
+                    /// `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/lbRouteExtensions/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists `LbRouteExtension` resources in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The project and location from which the `LbRouteExtension` resources are listed, specified
+                /// in the following format: `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists `LbRouteExtension` resources in a given project and location.</summary>
+                public class ListRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.ListLbRouteExtensionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location from which the `LbRouteExtension` resources are listed,
+                    /// specified in the following format: `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Filtering results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Hint for how to order the results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. The server might return fewer items than requested. If
+                    /// unspecified, the server picks an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results that the server returns.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/lbRouteExtensions";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of the specified `LbRouteExtension` resource.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Name of the `LbRouteExtension` resource in the following format:
+                /// `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1beta1.Data.LbRouteExtension body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates the parameters of the specified `LbRouteExtension` resource.</summary>
+                public class PatchRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1beta1.Data.LbRouteExtension body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the `LbRouteExtension` resource in the following format:
+                    /// `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server can ignore the request if it has already been completed.
+                    /// The server guarantees that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Required. Used to specify the fields to be overwritten in the `LbRouteExtension` resource by the
+                    /// update. The fields specified in the update_mask are relative to the resource, not the full
+                    /// request. A field is overwritten if it is in the mask. If the user does not specify a mask, then
+                    /// all fields are overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1beta1.Data.LbRouteExtension Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/lbRouteExtensions/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+            }
+
+            /// <summary>Gets the LbTrafficExtensions resource.</summary>
+            public virtual LbTrafficExtensionsResource LbTrafficExtensions { get; }
+
+            /// <summary>The "lbTrafficExtensions" collection of methods.</summary>
+            public class LbTrafficExtensionsResource
+            {
+                private const string Resource = "lbTrafficExtensions";
+
+                /// <summary>The service which this resource belongs to.</summary>
+                private readonly Google.Apis.Services.IClientService service;
+
+                /// <summary>Constructs a new resource.</summary>
+                public LbTrafficExtensionsResource(Google.Apis.Services.IClientService service)
+                {
+                    this.service = service;
+                }
+
+                /// <summary>Creates a new `LbTrafficExtension` resource in a given project and location.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent resource of the `LbTrafficExtension` resource. Must be in the format
+                /// `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.NetworkServices.v1beta1.Data.LbTrafficExtension body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>Creates a new `LbTrafficExtension` resource in a given project and location.</summary>
+                public class CreateRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1beta1.Data.LbTrafficExtension body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent resource of the `LbTrafficExtension` resource. Must be in the format
+                    /// `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. User-provided ID of the `LbTrafficExtension` resource to be created.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("lbTrafficExtensionId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string LbTrafficExtensionId { get; set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server can ignore the request if it has already been completed.
+                    /// The server guarantees that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1beta1.Data.LbTrafficExtension Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/lbTrafficExtensions";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("lbTrafficExtensionId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "lbTrafficExtensionId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Deletes the specified `LbTrafficExtension` resource.</summary>
+                /// <param name="name">
+                /// Required. The name of the `LbTrafficExtension` resource to delete. Must be in the format
+                /// `projects/{project}/locations/{location}/lbTrafficExtensions/{lb_traffic_extension}`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>Deletes the specified `LbTrafficExtension` resource.</summary>
+                public class DeleteRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The name of the `LbTrafficExtension` resource to delete. Must be in the format
+                    /// `projects/{project}/locations/{location}/lbTrafficExtensions/{lb_traffic_extension}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server can ignore the request if it has already been completed.
+                    /// The server guarantees that for at least 60 minutes after the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/lbTrafficExtensions/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets details of the specified `LbTrafficExtension` resource.</summary>
+                /// <param name="name">
+                /// Required. A name of the `LbTrafficExtension` resource to get. Must be in the format
+                /// `projects/{project}/locations/{location}/lbTrafficExtensions/{lb_traffic_extension}`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets details of the specified `LbTrafficExtension` resource.</summary>
+                public class GetRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.LbTrafficExtension>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. A name of the `LbTrafficExtension` resource to get. Must be in the format
+                    /// `projects/{project}/locations/{location}/lbTrafficExtensions/{lb_traffic_extension}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/lbTrafficExtensions/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>Lists `LbTrafficExtension` resources in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The project and location from which the `LbTrafficExtension` resources are listed,
+                /// specified in the following format: `projects/{project}/locations/{location}`.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists `LbTrafficExtension` resources in a given project and location.</summary>
+                public class ListRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.ListLbTrafficExtensionsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The project and location from which the `LbTrafficExtension` resources are listed,
+                    /// specified in the following format: `projects/{project}/locations/{location}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>Optional. Filtering results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>Optional. Hint for how to order the results.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. Requested page size. The server might return fewer items than requested. If
+                    /// unspecified, the server picks an appropriate default.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>Optional. A token identifying a page of results that the server returns.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+parent}/lbTrafficExtensions";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates the parameters of the specified `LbTrafficExtension` resource.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. Name of the `LbTrafficExtension` resource in the following format:
+                /// `projects/{project}/locations/{location}/lbTrafficExtensions/{lb_traffic_extension}`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.NetworkServices.v1beta1.Data.LbTrafficExtension body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates the parameters of the specified `LbTrafficExtension` resource.</summary>
+                public class PatchRequest : NetworkServicesBaseServiceRequest<Google.Apis.NetworkServices.v1beta1.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.NetworkServices.v1beta1.Data.LbTrafficExtension body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. Name of the `LbTrafficExtension` resource in the following format:
+                    /// `projects/{project}/locations/{location}/lbTrafficExtensions/{lb_traffic_extension}`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. An optional request ID to identify requests. Specify a unique request ID so that if
+                    /// you must retry your request, the server can ignore the request if it has already been completed.
+                    /// The server guarantees that for at least 60 minutes since the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, ignores the second request. This prevents clients from
+                    /// accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>
+                    /// Required. Used to specify the fields to be overwritten in the `LbTrafficExtension` resource by
+                    /// the update. The fields specified in the update_mask are relative to the resource, not the full
+                    /// request. A field is overwritten if it is in the mask. If the user does not specify a mask, then
+                    /// all fields are overwritten.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.NetworkServices.v1beta1.Data.LbTrafficExtension Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta1/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/lbTrafficExtensions/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
                         });
                         RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
                         {
@@ -5152,6 +6020,112 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
     }
 
     /// <summary>
+    /// A single extension chain wrapper that contains the match conditions and extensions to execute.
+    /// </summary>
+    public class ExtensionChain : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A set of extensions to execute for the matching request. At least one extension is required. Up to
+        /// 3 extensions can be defined for each extension chain for `LbTrafficExtension` resource. `LbRouteExtension`
+        /// chains are limited to 1 extension per extension chain.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensions")]
+        public virtual System.Collections.Generic.IList<ExtensionChainExtension> Extensions { get; set; }
+
+        /// <summary>Required. Conditions under which this chain is invoked for a request.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchCondition")]
+        public virtual ExtensionChainMatchCondition MatchCondition { get; set; }
+
+        /// <summary>
+        /// Required. The name for this extension chain. The name is logged as part of the HTTP request logs. The name
+        /// must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a
+        /// maximum length of 63 characters. Additionally, the first character must be a letter and the last a letter or
+        /// a number.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A single extension in the chain to execute for the matching request.</summary>
+    public class ExtensionChainExtension : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The `:authority` header in the gRPC request sent from Envoy to the extension service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authority")]
+        public virtual string Authority { get; set; }
+
+        /// <summary>
+        /// Optional. Determines how the proxy behaves if the call to the extension fails or times out. When set to
+        /// `TRUE`, request or response processing continues without error. Any subsequent extensions in the extension
+        /// chain are also executed. When set to `FALSE`: * If response headers have not been delivered to the
+        /// downstream client, a generic 500 error is returned to the client. The error response can be tailored by
+        /// configuring a custom error response in the load balancer. * If response headers have been delivered, then
+        /// the HTTP stream to the downstream client is reset. Default is `FALSE`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("failOpen")]
+        public virtual System.Nullable<bool> FailOpen { get; set; }
+
+        /// <summary>
+        /// Optional. List of the HTTP headers to forward to the extension (from the client or backend). If omitted, all
+        /// headers are sent. Each element is a string indicating the header name.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forwardHeaders")]
+        public virtual System.Collections.Generic.IList<string> ForwardHeaders { get; set; }
+
+        /// <summary>
+        /// Required. The name for this extension. The name is logged as part of the HTTP request logs. The name must
+        /// conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum
+        /// length of 63 characters. Additionally, the first character must be a letter and the last a letter or a
+        /// number.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Required. The reference to the service that runs the extension. Must be a reference to a [backend
+        /// service](https://cloud.google.com/compute/docs/reference/rest/v1/backendServices).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("service")]
+        public virtual string Service { get; set; }
+
+        /// <summary>
+        /// Optional. A set of events during request or response processing for which this extension is called. This
+        /// field is required for the `LbTrafficExtension` resource. It's not relevant for the `LbRouteExtension`
+        /// resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("supportedEvents")]
+        public virtual System.Collections.Generic.IList<string> SupportedEvents { get; set; }
+
+        /// <summary>
+        /// Required. Specifies the timeout for each individual message on the stream. The timeout must be between
+        /// 10-1000 milliseconds.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("timeout")]
+        public virtual object Timeout { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Conditions under which this chain is invoked for a request.</summary>
+    public class ExtensionChainMatchCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. A Common Expression Language (CEL) expression that is used to match requests for which the
+        /// extension chain is executed.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("celExpression")]
+        public virtual string CelExpression { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// Gateway represents the configuration for a proxy, typically a load balancer. It captures the ip:port over which
     /// the services are exposed by the proxy, along with any policy configurations. Routes have reference to to
     /// Gateways to dictate how requests should be routed by this Gateway.
@@ -5653,6 +6627,10 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("retryPolicy")]
         public virtual GrpcRouteRetryPolicy RetryPolicy { get; set; }
 
+        /// <summary>Optional. Specifies cookie-based stateful session affinity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statefulSessionAffinity")]
+        public virtual GrpcRouteStatefulSessionAffinityPolicy StatefulSessionAffinity { get; set; }
+
         /// <summary>
         /// Optional. Specifies the timeout for selected route. Timeout is computed from the time the request has been
         /// fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes
@@ -5698,6 +6676,26 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("matches")]
         public virtual System.Collections.Generic.IList<GrpcRouteRouteMatch> Matches { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// The specification for cookie-based stateful session affinity where the date plane supplies a “session cookie”
+    /// with the name "GSSA" which encodes a specific destination host and each request containing that cookie will be
+    /// directed to that host as long as the destination host remains up and healthy. The gRPC proxyless mesh library or
+    /// sidecar proxy will manage the session cookie but the client application code is responsible for copying the
+    /// cookie from each RPC in the session to the next.
+    /// </summary>
+    public class GrpcRouteStatefulSessionAffinityPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The cookie TTL value for the Set-Cookie header generated by the data plane. The lifetime of the
+        /// cookie may be set to a value from 1 to 86400 seconds (24 hours) inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cookieTtl")]
+        public virtual object CookieTtl { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6251,6 +7249,10 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("retryPolicy")]
         public virtual HttpRouteRetryPolicy RetryPolicy { get; set; }
 
+        /// <summary>Optional. Specifies cookie-based stateful session affinity.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("statefulSessionAffinity")]
+        public virtual HttpRouteStatefulSessionAffinityPolicy StatefulSessionAffinity { get; set; }
+
         /// <summary>
         /// Specifies the timeout for selected route. Timeout is computed from the time the request has been fully
         /// processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all
@@ -6339,6 +7341,26 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
     }
 
     /// <summary>
+    /// The specification for cookie-based stateful session affinity where the date plane supplies a “session cookie”
+    /// with the name "GSSA" which encodes a specific destination host and each request containing that cookie will be
+    /// directed to that host as long as the destination host remains up and healthy. The gRPC proxyless mesh library or
+    /// sidecar proxy will manage the session cookie but the client application code is responsible for copying the
+    /// cookie from each RPC in the session to the next.
+    /// </summary>
+    public class HttpRouteStatefulSessionAffinityPolicy : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The cookie TTL value for the Set-Cookie header generated by the data plane. The lifetime of the
+        /// cookie may be set to a value from 1 to 86400 seconds (24 hours) inclusive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cookieTtl")]
+        public virtual object CookieTtl { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// The specification for modifying the URL of the request, prior to forwarding the request to the destination.
     /// </summary>
     public class HttpRouteURLRewrite : Google.Apis.Requests.IDirectResponseSchema
@@ -6356,6 +7378,259 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("pathPrefixRewrite")]
         public virtual string PathPrefixRewrite { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// `LbRouteExtension` is a resource that lets you control where traffic is routed to for a given request.
+    /// </summary>
+    public class LbRouteExtension : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Optional. A human-readable description of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. A set of ordered extension chains that contain the match conditions and extensions to execute.
+        /// Match conditions for each extension chain are evaluated in sequence for a given request. The first extension
+        /// chain that has a condition that matches the request is executed. Any subsequent extension chains do not
+        /// execute. Limited to 5 extension chains per resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensionChains")]
+        public virtual System.Collections.Generic.IList<ExtensionChain> ExtensionChains { get; set; }
+
+        /// <summary>
+        /// Required. A list of references to the forwarding rules to which this service extension is attach to. At
+        /// least one forwarding rule is required. There can be only one `LbRouteExtension` resource per forwarding
+        /// rule.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forwardingRules")]
+        public virtual System.Collections.Generic.IList<string> ForwardingRules { get; set; }
+
+        /// <summary>
+        /// Optional. Set of labels associated with the `LbRouteExtension` resource. The format must comply with [the
+        /// following requirements](/compute/docs/labeling-resources#requirements).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Required. All backend services and forwarding rules referenced by this extension must share the same load
+        /// balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadBalancingScheme")]
+        public virtual string LoadBalancingScheme { get; set; }
+
+        /// <summary>
+        /// Required. Name of the `LbRouteExtension` resource in the following format:
+        /// `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The timestamp when the resource was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// `LbTrafficExtension` is a resource that lets the extension service modify the headers and payloads of both
+    /// requests and responses without impacting the choice of backend services or any other security policies
+    /// associated with the backend service.
+    /// </summary>
+    public class LbTrafficExtension : Google.Apis.Requests.IDirectResponseSchema
+    {
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. The timestamp when the resource was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Optional. A human-readable description of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// Required. A set of ordered extension chains that contain the match conditions and extensions to execute.
+        /// Match conditions for each extension chain are evaluated in sequence for a given request. The first extension
+        /// chain that has a condition that matches the request is executed. Any subsequent extension chains do not
+        /// execute. Limited to 5 extension chains per resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extensionChains")]
+        public virtual System.Collections.Generic.IList<ExtensionChain> ExtensionChains { get; set; }
+
+        /// <summary>
+        /// Required. A list of references to the forwarding rules to which this service extension is attach to. At
+        /// least one forwarding rule is required. There can be only one `LBTrafficExtension` resource per forwarding
+        /// rule.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("forwardingRules")]
+        public virtual System.Collections.Generic.IList<string> ForwardingRules { get; set; }
+
+        /// <summary>
+        /// Optional. Set of labels associated with the `LbTrafficExtension` resource. The format must comply with [the
+        /// following requirements](/compute/docs/labeling-resources#requirements).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        /// <summary>
+        /// Required. All backend services and forwarding rules referenced by this extension must share the same load
+        /// balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. For more information, refer to
+        /// [Choosing a load balancer](https://cloud.google.com/load-balancing/docs/backend-service).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadBalancingScheme")]
+        public virtual string LoadBalancingScheme { get; set; }
+
+        /// <summary>
+        /// Required. Name of the `LbTrafficExtension` resource in the following format:
+        /// `projects/{project}/locations/{location}/lbTrafficExtensions/{lb_traffic_extension}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. The timestamp when the resource was updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6432,6 +7707,44 @@ namespace Google.Apis.NetworkServices.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing `LbRouteExtension` resources.</summary>
+    public class ListLbRouteExtensionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of `LbRouteExtension` resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lbRouteExtensions")]
+        public virtual System.Collections.Generic.IList<LbRouteExtension> LbRouteExtensions { get; set; }
+
+        /// <summary>A token identifying a page of results that the server returns.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Message for response to listing `LbTrafficExtension` resources.</summary>
+    public class ListLbTrafficExtensionsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The list of `LbTrafficExtension` resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lbTrafficExtensions")]
+        public virtual System.Collections.Generic.IList<LbTrafficExtension> LbTrafficExtensions { get; set; }
+
+        /// <summary>A token identifying a page of results that the server returns.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>Locations that could not be reached.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

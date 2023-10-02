@@ -9923,10 +9923,6 @@ namespace Google.Apis.GKEOnPrem.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("currentVersion")]
         public virtual string CurrentVersion { get; set; }
 
-        /// <summary>Local name of the dependency.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("localName")]
-        public virtual string LocalName { get; set; }
-
         /// <summary>Membership names are formatted as `projects//locations//memberships/`.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("membership")]
         public virtual string Membership { get; set; }

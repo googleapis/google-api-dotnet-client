@@ -3374,6 +3374,10 @@ namespace Google.Apis.Monitoring.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("padding")]
         public virtual string Padding { get; set; }
 
+        /// <summary>The pointer location for this widget (also sometimes called a "tail")</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("pointerLocation")]
+        public virtual string PointerLocation { get; set; }
+
         /// <summary>The text color as a hex string. "#RRGGBB" or "#RGB"</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("textColor")]
         public virtual string TextColor { get; set; }

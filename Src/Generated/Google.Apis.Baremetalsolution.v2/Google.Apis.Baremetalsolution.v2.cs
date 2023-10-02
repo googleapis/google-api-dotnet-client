@@ -639,7 +639,7 @@ namespace Google.Apis.Baremetalsolution.v2
 
                     /// <summary>
                     /// The list of fields to update. The currently supported fields are: `labels`
-                    /// `hyperthreading_enabled` `os_image`
+                    /// `hyperthreading_enabled` `os_image` `ssh_keys`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual object UpdateMask { get; set; }
@@ -1710,8 +1710,53 @@ namespace Google.Apis.Baremetalsolution.v2
                     this.service = service;
                 }
 
+                /// <summary>Get details of a single OS image.</summary>
+                /// <param name="name">Required. Name of the OS image.</param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Get details of a single OS image.</summary>
+                public class GetRequest : BaremetalsolutionBaseServiceRequest<Google.Apis.Baremetalsolution.v2.Data.OSImage>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>Required. Name of the OS image.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v2/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/osImages/[^/]+$",
+                        });
+                    }
+                }
+
                 /// <summary>Retrieves the list of OS images which are currently approved.</summary>
-                /// <param name="parent">Required. Parent value for ListProvisioningQuotasRequest.</param>
+                /// <param name="parent">Required. Parent value for ListOSImagesRequest.</param>
                 public virtual ListRequest List(string parent)
                 {
                     return new ListRequest(service, parent);
@@ -1727,7 +1772,7 @@ namespace Google.Apis.Baremetalsolution.v2
                         InitParameters();
                     }
 
-                    /// <summary>Required. Parent value for ListProvisioningQuotasRequest.</summary>
+                    /// <summary>Required. Parent value for ListOSImagesRequest.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
