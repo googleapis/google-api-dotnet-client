@@ -5108,6 +5108,75 @@ namespace Google.Apis.Dialogflow.v3beta1
                         }
                     }
 
+                    /// <summary>
+                    /// Exports the selected intents. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`: ExportIntentsMetadata -
+                    /// `response`: ExportIntentsResponse
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The name of the parent agent to export intents. Format:
+                    /// `projects//locations//agents/`.
+                    /// </param>
+                    public virtual ExportRequest Export(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ExportIntentsRequest body, string parent)
+                    {
+                        return new ExportRequest(service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Exports the selected intents. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`: ExportIntentsMetadata -
+                    /// `response`: ExportIntentsResponse
+                    /// </summary>
+                    public class ExportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Export request.</summary>
+                        public ExportRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ExportIntentsRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The name of the parent agent to export intents. Format:
+                        /// `projects//locations//agents/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ExportIntentsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "export";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3beta1/{+parent}/intents:export";
+
+                        /// <summary>Initializes Export parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+$",
+                            });
+                        }
+                    }
+
                     /// <summary>Retrieves the specified intent.</summary>
                     /// <param name="name">
                     /// Required. The name of the intent. Format: `projects//locations//agents//intents/`.
@@ -5170,6 +5239,73 @@ namespace Google.Apis.Dialogflow.v3beta1
                                 ParameterType = "query",
                                 DefaultValue = null,
                                 Pattern = null,
+                            });
+                        }
+                    }
+
+                    /// <summary>
+                    /// Imports the specified intents into the agent. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`: ImportIntentsMetadata -
+                    /// `response`: ImportIntentsResponse
+                    /// </summary>
+                    /// <param name="body">The body of the request.</param>
+                    /// <param name="parent">
+                    /// Required. The agent to import the intents into. Format: `projects//locations//agents/`.
+                    /// </param>
+                    public virtual ImportRequest Import(Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ImportIntentsRequest body, string parent)
+                    {
+                        return new ImportRequest(service, body, parent);
+                    }
+
+                    /// <summary>
+                    /// Imports the specified intents into the agent. This method is a [long-running
+                    /// operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned
+                    /// `Operation` type has the following method-specific fields: - `metadata`: ImportIntentsMetadata -
+                    /// `response`: ImportIntentsResponse
+                    /// </summary>
+                    public class ImportRequest : DialogflowBaseServiceRequest<Google.Apis.Dialogflow.v3beta1.Data.GoogleLongrunningOperation>
+                    {
+                        /// <summary>Constructs a new Import request.</summary>
+                        public ImportRequest(Google.Apis.Services.IClientService service, Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ImportIntentsRequest body, string parent) : base(service)
+                        {
+                            Parent = parent;
+                            Body = body;
+                            InitParameters();
+                        }
+
+                        /// <summary>
+                        /// Required. The agent to import the intents into. Format: `projects//locations//agents/`.
+                        /// </summary>
+                        [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                        public virtual string Parent { get; private set; }
+
+                        /// <summary>Gets or sets the body of this request.</summary>
+                        Google.Apis.Dialogflow.v3beta1.Data.GoogleCloudDialogflowCxV3beta1ImportIntentsRequest Body { get; set; }
+
+                        /// <summary>Returns the body of the request.</summary>
+                        protected override object GetBody() => Body;
+
+                        /// <summary>Gets the method name.</summary>
+                        public override string MethodName => "import";
+
+                        /// <summary>Gets the HTTP method.</summary>
+                        public override string HttpMethod => "POST";
+
+                        /// <summary>Gets the REST path.</summary>
+                        public override string RestPath => "v3beta1/{+parent}/intents:import";
+
+                        /// <summary>Initializes Import parameter list.</summary>
+                        protected override void InitParameters()
+                        {
+                            base.InitParameters();
+                            RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                            {
+                                Name = "parent",
+                                IsRequired = true,
+                                ParameterType = "path",
+                                DefaultValue = null,
+                                Pattern = @"^projects/[^/]+/locations/[^/]+/agents/[^/]+$",
                             });
                         }
                     }
@@ -9895,6 +10031,34 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata returned for the Intents.ExportIntents long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3ExportIntentsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Intents.ExportIntents.</summary>
+    public class GoogleCloudDialogflowCxV3ExportIntentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Uncompressed byte content for intents. This field is populated only if `intents_content_inline` is set to
+        /// true in ExportIntentsRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentsContent")]
+        public virtual GoogleCloudDialogflowCxV3InlineDestination IntentsContent { get; set; }
+
+        /// <summary>
+        /// The URI to a file containing the exported intents. This field is populated only if `intents_uri` is
+        /// specified in ExportIntentsRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentsUri")]
+        public virtual string IntentsUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata returned for the TestCases.ExportTestCases long running operation. This message currently has no
     /// fields.
@@ -10217,6 +10381,50 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata returned for the Intents.ImportIntents long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3ImportIntentsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Intents.ImportIntents.</summary>
+    public class GoogleCloudDialogflowCxV3ImportIntentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Info which resources have conflicts when REPORT_CONFLICT merge_option is set in ImportIntentsRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conflictingResources")]
+        public virtual GoogleCloudDialogflowCxV3ImportIntentsResponseConflictingResources ConflictingResources { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the imported intents. Format: `projects//locations//agents//intents/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intents")]
+        public virtual System.Collections.Generic.IList<string> Intents { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Conflicting resources detected during the import process. Only filled when REPORT_CONFLICT is set in the request
+    /// and there are conflicts in the display names.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3ImportIntentsResponseConflictingResources : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Display names of conflicting entities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityDisplayNames")]
+        public virtual System.Collections.Generic.IList<string> EntityDisplayNames { get; set; }
+
+        /// <summary>Display names of conflicting intents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentDisplayNames")]
+        public virtual System.Collections.Generic.IList<string> IntentDisplayNames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata returned for the TestCases.ImportTestCases long running operation.</summary>
     public class GoogleCloudDialogflowCxV3ImportTestCasesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -10236,6 +10444,20 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("names")]
         public virtual System.Collections.Generic.IList<string> Names { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Inline destination for a Dialogflow operation that writes or exports objects (e.g. intents) outside of
+    /// Dialogflow.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3InlineDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The uncompressed byte content for the objects. Only populated in responses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13483,6 +13705,65 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata returned for the Intents.ExportIntents long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ExportIntentsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for Intents.ExportIntents.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ExportIntentsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. The data format of the exported intents. If not specified, `BLOB` is assumed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dataFormat")]
+        public virtual string DataFormat { get; set; }
+
+        /// <summary>
+        /// Required. The name of the intents to export. Format: `projects//locations//agents//intents/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intents")]
+        public virtual System.Collections.Generic.IList<string> Intents { get; set; }
+
+        /// <summary>Optional. The option to return the serialized intents inline.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentsContentInline")]
+        public virtual System.Nullable<bool> IntentsContentInline { get; set; }
+
+        /// <summary>
+        /// Optional. The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to export the intents to.
+        /// The format of this URI must be `gs:///`. Dialogflow performs a write operation for the Cloud Storage object
+        /// on the caller's behalf, so your request authentication must have write permissions for the object. For more
+        /// information, see [Dialogflow access
+        /// control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentsUri")]
+        public virtual string IntentsUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Intents.ExportIntents.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ExportIntentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Uncompressed byte content for intents. This field is populated only if `intents_content_inline` is set to
+        /// true in ExportIntentsRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentsContent")]
+        public virtual GoogleCloudDialogflowCxV3beta1InlineDestination IntentsContent { get; set; }
+
+        /// <summary>
+        /// The URI to a file containing the exported intents. This field is populated only if `intents_uri` is
+        /// specified in ExportIntentsRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentsUri")]
+        public virtual string IntentsUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata returned for the TestCases.ExportTestCases long running operation. This message currently has no
     /// fields.
@@ -14169,6 +14450,74 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata returned for the Intents.ImportIntents long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ImportIntentsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The request message for Intents.ImportIntents.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ImportIntentsRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Uncompressed byte content of intents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentsContent")]
+        public virtual GoogleCloudDialogflowCxV3beta1InlineSource IntentsContent { get; set; }
+
+        /// <summary>
+        /// The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI to import intents from. The format of
+        /// this URI must be `gs:///`. Dialogflow performs a read operation for the Cloud Storage object on the caller's
+        /// behalf, so your request authentication must have read permissions for the object. For more information, see
+        /// [Dialogflow access control](https://cloud.google.com/dialogflow/cx/docs/concept/access-control#storage).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentsUri")]
+        public virtual string IntentsUri { get; set; }
+
+        /// <summary>Merge option for importing intents. If not specified, `REJECT` is assumed.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("mergeOption")]
+        public virtual string MergeOption { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Intents.ImportIntents.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ImportIntentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Info which resources have conflicts when REPORT_CONFLICT merge_option is set in ImportIntentsRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conflictingResources")]
+        public virtual GoogleCloudDialogflowCxV3beta1ImportIntentsResponseConflictingResources ConflictingResources { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the imported intents. Format: `projects//locations//agents//intents/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intents")]
+        public virtual System.Collections.Generic.IList<string> Intents { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Conflicting resources detected during the import process. Only filled when REPORT_CONFLICT is set in the request
+    /// and there are conflicts in the display names.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3beta1ImportIntentsResponseConflictingResources : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Display names of conflicting entities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityDisplayNames")]
+        public virtual System.Collections.Generic.IList<string> EntityDisplayNames { get; set; }
+
+        /// <summary>Display names of conflicting intents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentDisplayNames")]
+        public virtual System.Collections.Generic.IList<string> IntentDisplayNames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata returned for the TestCases.ImportTestCases long running operation.</summary>
     public class GoogleCloudDialogflowCxV3beta1ImportTestCasesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -14209,6 +14558,33 @@ namespace Google.Apis.Dialogflow.v3beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("names")]
         public virtual System.Collections.Generic.IList<string> Names { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Inline destination for a Dialogflow operation that writes or exports objects (e.g. intents) outside of
+    /// Dialogflow.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3beta1InlineDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The uncompressed byte content for the objects. Only populated in responses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Inline source for a Dialogflow operation that reads or imports objects (e.g. intents) into Dialogflow.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3beta1InlineSource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The uncompressed byte content for the objects.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

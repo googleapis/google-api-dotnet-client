@@ -3535,8 +3535,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// Indicates whether form values persist after the action. The default value is `false`. If `true`, form values
         /// remain after the action is triggered. To let the user make changes while the action is being processed, set
         /// [`LoadIndicator`](https://developers.google.com/workspace/add-ons/reference/rpc/google.apps.card.v1#loadindicator)
-        /// to `NONE`. For [card messages](https://developers.google.com/chat/api/guides/message-formats/cards) in Chat
-        /// apps, you must also set the action's
+        /// to `NONE`. For [card messages](https://developers.google.com/chat/api/guides/v1/messages/create#create) in
+        /// Chat apps, you must also set the action's
         /// [`ResponseType`](https://developers.google.com/chat/api/reference/rest/v1/spaces.messages#responsetype) to
         /// `UPDATE_MESSAGE` and use the same
         /// [`card_id`](https://developers.google.com/chat/api/reference/rest/v1/spaces.messages#CardWithId) from the
@@ -3715,7 +3715,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// The fixed footer shown at the bottom of this card. Setting `fixedFooter` without specifying a
         /// `primaryButton` or a `secondaryButton` causes an error. Supported by Google Workspace Add-ons and Chat apps.
         /// For Chat apps, you can use fixed footers in [dialogs](https://developers.google.com/chat/how-tos/dialogs),
-        /// but not [card messages](https://developers.google.com/chat/api/guides/message-formats/cards).
+        /// but not [card messages](https://developers.google.com/chat/api/guides/v1/messages/create#create).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixedFooter")]
         public virtual GoogleAppsCardV1CardFixedFooter FixedFooter { get; set; }
@@ -3781,7 +3781,7 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// without specifying a `primaryButton` or a `secondaryButton` causes an error. Supported by Google Workspace
     /// Add-ons and Chat apps. For Chat apps, you can use fixed footers in
     /// [dialogs](https://developers.google.com/chat/how-tos/dialogs), but not [card
-    /// messages](https://developers.google.com/chat/api/guides/message-formats/cards).
+    /// messages](https://developers.google.com/chat/api/guides/v1/messages/create#create).
     /// </summary>
     public class GoogleAppsCardV1CardFixedFooter : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -3976,9 +3976,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// Required. The primary text. Supports simple formatting. For more information about formatting text, see
-        /// [Formatting text in Google Chat
-        /// apps](https://developers.google.com/chat/api/guides/message-formats/cards#card-formatting) and [Formatting
-        /// text in Google Workspace
+        /// [Formatting text in Google Chat apps](https://developers.google.com/chat/format-messages#card-formatting)
+        /// and [Formatting text in Google Workspace
         /// Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
@@ -4314,9 +4313,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>
         /// Text that appears at the top of a section. Supports simple HTML formatted text. For more information about
         /// formatting text, see [Formatting text in Google Chat
-        /// apps](https://developers.google.com/chat/api/guides/message-formats/cards#card-formatting) and [Formatting
-        /// text in Google Workspace
-        /// Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
+        /// apps](https://developers.google.com/chat/format-messages#card-formatting) and [Formatting text in Google
+        /// Workspace Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
         public virtual string Header { get; set; }
@@ -4622,9 +4620,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     /// A paragraph of text that supports formatting. For an example in Google Chat apps, see [Text
     /// paragraph](https://developers.google.com/chat/ui/widgets/text-paragraph). For more information about formatting
     /// text, see [Formatting text in Google Chat
-    /// apps](https://developers.google.com/chat/api/guides/message-formats/cards##card-formatting) and [Formatting text
-    /// in Google Workspace
-    /// Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
+    /// apps](https://developers.google.com/chat/format-messages#card-formatting) and [Formatting text in Google
+    /// Workspace Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
     /// </summary>
     public class GoogleAppsCardV1TextParagraph : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -4764,10 +4761,9 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>
         /// Displays a text paragraph. Supports simple HTML formatted text. For more information about formatting text,
         /// see [Formatting text in Google Chat
-        /// apps](https://developers.google.com/chat/api/guides/message-formats/cards#card-formatting) and [Formatting
-        /// text in Google Workspace
-        /// Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting). For example,
-        /// the following JSON creates a bolded text:
+        /// apps](https://developers.google.com/chat/format-messages#card-formatting) and [Formatting text in Google
+        /// Workspace Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting). For
+        /// example, the following JSON creates a bolded text:
         /// ```
         /// "textParagraph": { "text": " *bold text*" }
         /// ```
@@ -4916,9 +4912,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>
         /// The text of the bottom label. Formatted text supported. For more information about formatting text, see
-        /// [Formatting text in Google Chat
-        /// apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting) and
-        /// [Formatting text in Google Workspace
+        /// [Formatting text in Google Chat apps](https://developers.google.com/chat/format-messages#card-formatting)
+        /// and [Formatting text in Google Workspace
         /// Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("bottomLabel")]
@@ -4931,9 +4926,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// <summary>
         /// The text of the content. Formatted text supported and always required. For more information about formatting
         /// text, see [Formatting text in Google Chat
-        /// apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting) and
-        /// [Formatting text in Google Workspace
-        /// Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
+        /// apps](https://developers.google.com/chat/format-messages#card-formatting) and [Formatting text in Google
+        /// Workspace Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("content")]
         public virtual string Content { get; set; }
@@ -4956,9 +4950,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
         /// <summary>
         /// The text of the top label. Formatted text supported. For more information about formatting text, see
-        /// [Formatting text in Google Chat
-        /// apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting) and
-        /// [Formatting text in Google Workspace
+        /// [Formatting text in Google Chat apps](https://developers.google.com/chat/format-messages#card-formatting)
+        /// and [Formatting text in Google Workspace
         /// Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("topLabel")]
@@ -5390,8 +5383,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
         /// Plain-text body of the message. The first link to an image, video, or web page generates a [preview
         /// chip](https://developers.google.com/chat/how-tos/preview-links). You can also [@mention a Google Chat
         /// user](https://developers.google.com/chat/format-messages#messages-@mention), or everyone in the space. To
-        /// learn about creating text messages, see [Create a text
-        /// message](https://developers.google.com/chat/api/guides/message-formats/text).
+        /// learn about creating text messages, see [Send a text
+        /// message](https://developers.google.com/chat/api/guides/v1/messages/create#create-text-messages).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("text")]
         public virtual string Text { get; set; }
@@ -5525,9 +5518,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
     {
         /// <summary>
         /// The header of the section. Formatted text is supported. For more information about formatting text, see
-        /// [Formatting text in Google Chat
-        /// apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting) and
-        /// [Formatting text in Google Workspace
+        /// [Formatting text in Google Chat apps](https://developers.google.com/chat/format-messages#card-formatting)
+        /// and [Formatting text in Google Workspace
         /// Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("header")]
@@ -5797,9 +5789,8 @@ namespace Google.Apis.HangoutsChat.v1.Data
 
     /// <summary>
     /// A paragraph of text. Formatted text supported. For more information about formatting text, see [Formatting text
-    /// in Google Chat apps](https://developers.google.com/chat/api/guides/message-formats/cards#card_text_formatting)
-    /// and [Formatting text in Google Workspace
-    /// Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
+    /// in Google Chat apps](https://developers.google.com/chat/format-messages#card-formatting) and [Formatting text in
+    /// Google Workspace Add-ons](https://developers.google.com/apps-script/add-ons/concepts/widgets#text_formatting).
     /// </summary>
     public class TextParagraph : Google.Apis.Requests.IDirectResponseSchema
     {

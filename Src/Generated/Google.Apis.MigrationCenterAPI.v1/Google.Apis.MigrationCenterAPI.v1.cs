@@ -6202,7 +6202,7 @@ namespace Google.Apis.MigrationCenterAPI.v1.Data
             set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
-        /// <summary>User-friendly display name. Maximum length is 63 characters.</summary>
+        /// <summary>Optional. User-friendly display name. Maximum length is 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 

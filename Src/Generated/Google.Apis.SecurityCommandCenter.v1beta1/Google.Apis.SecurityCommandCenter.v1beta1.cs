@@ -3259,6 +3259,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kubernetes")]
         public virtual Kubernetes Kubernetes { get; set; }
 
+        /// <summary>The load balancers associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadBalancers")]
+        public virtual System.Collections.Generic.IList<LoadBalancer> LoadBalancers { get; set; }
+
         /// <summary>
         /// MITRE ATT&amp;amp;CK tactics and techniques related to this finding. See: https://attack.mitre.org
         /// </summary>
@@ -3373,6 +3377,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityMarks")]
         public virtual SecurityMarks SecurityMarks { get; set; }
+
+        /// <summary>The security posture associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityPosture")]
+        public virtual SecurityPosture SecurityPosture { get; set; }
 
         /// <summary>The severity of the finding. This field is managed by the source that writes the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
@@ -5186,6 +5194,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
         public virtual System.Collections.Generic.IList<Node> Nodes { get; set; }
 
+        /// <summary>Kubernetes objects related to the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objects")]
+        public virtual System.Collections.Generic.IList<Object> Objects { get; set; }
+
         /// <summary>
         /// Kubernetes [Pods](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) associated with the finding.
         /// This field contains Pod records for each container that is owned by a Pod.
@@ -5380,6 +5392,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Contains information related to the load balancer associated with the finding.</summary>
+    public class LoadBalancer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the load balancer associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>A signature corresponding to memory page hashes.</summary>
     public class MemoryHashSignature : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -5456,6 +5479,38 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// <summary>Nodes associated with the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
         public virtual System.Collections.Generic.IList<Node> Nodes { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Kubernetes object related to the finding, uniquely identified by GKNN. Used if the object Kind is not one of
+    /// Pod, Node, NodePool, Binding, or AccessReview.
+    /// </summary>
+    public class Object : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Kubernetes object group, such as "policy.k8s.io/v1".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("group")]
+        public virtual string Group { get; set; }
+
+        /// <summary>Kubernetes object kind, such as “Namespace”.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
+        /// <summary>
+        /// Kubernetes object name. For details see
+        /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Kubernetes object namespace. Must be a valid DNS label. Named "ns" to avoid collision with C++ namespace
+        /// keyword. For details see https://kubernetes.io/docs/tasks/administer-cluster/namespaces/.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ns")]
+        public virtual string Ns { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5820,6 +5875,47 @@ namespace Google.Apis.SecurityCommandCenter.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a posture that is deployed on Google Cloud by the Security Command Center Posture Management service.
+    /// A posture contains one or more policy sets. A policy set is a group of policies that enforce a set of security
+    /// rules on Google Cloud.
+    /// </summary>
+    public class SecurityPosture : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the policy that has been updated, for example,
+        /// `projects/{project_id}/policies/{constraint_name}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changedPolicy")]
+        public virtual string ChangedPolicy { get; set; }
+
+        /// <summary>
+        /// Name of the posture, for example, `organizations/{org_id}/locations/{location}/postures/{posture_name}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The name of the posture deployment, for example,
+        /// `projects/{project_id}/posturedeployments/{posture_deployment_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postureDeployment")]
+        public virtual string PostureDeployment { get; set; }
+
+        /// <summary>
+        /// The project, folder, or organization on which the posture is deployed, for example, `projects/{project_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postureDeploymentResource")]
+        public virtual string PostureDeploymentResource { get; set; }
+
+        /// <summary>The version of the posture, for example, `c7cfa2a8`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
+        public virtual string RevisionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

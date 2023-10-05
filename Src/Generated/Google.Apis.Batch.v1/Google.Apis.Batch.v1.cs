@@ -2908,6 +2908,14 @@ namespace Google.Apis.Batch.v1.Data
         public virtual Container Container { get; set; }
 
         /// <summary>
+        /// Optional. DisplayName is an optional field that can be provided by the caller. If provided, it will be used
+        /// in logs and other outputs to identify the script, making it easier for users to understand the logs. If not
+        /// provided the index of the runnable will be used for outputs.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
+        public virtual string DisplayName { get; set; }
+
+        /// <summary>
         /// Environment variables for this Runnable (overrides variables set for the whole Task or TaskGroup).
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("environment")]

@@ -173,6 +173,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/acceleratorTypes",
@@ -343,6 +348,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/addresses",
@@ -702,6 +712,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/autoscalers",
@@ -1476,6 +1491,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/backendServices",
@@ -1774,6 +1794,61 @@
       "https://www.googleapis.com/auth/compute.readonly"
      ]
     },
+    "listUsable": {
+     "description": "Retrieves an aggregated list of all usable backend services in the specified project.",
+     "flatPath": "projects/{project}/global/backendServices/listUsable",
+     "httpMethod": "GET",
+     "id": "compute.backendServices.listUsable",
+     "parameterOrder": [
+      "project"
+     ],
+     "parameters": {
+      "filter": {
+       "description": "A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq \"double quoted literal\"` `(fieldname1 eq literal) (fieldname2 ne \"literal\")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name \"instance\", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions.",
+       "location": "query",
+       "type": "string"
+      },
+      "maxResults": {
+       "default": "500",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)",
+       "format": "uint32",
+       "location": "query",
+       "minimum": "0",
+       "type": "integer"
+      },
+      "orderBy": {
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy=\"creationTimestamp desc\"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.",
+       "location": "query",
+       "type": "string"
+      },
+      "pageToken": {
+       "description": "Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.",
+       "location": "query",
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "returnPartialSuccess": {
+       "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
+       "location": "query",
+       "type": "boolean"
+      }
+     },
+     "path": "projects/{project}/global/backendServices/listUsable",
+     "response": {
+      "$ref": "BackendServiceListUsable"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
     "patch": {
      "description": "Patches the specified BackendService resource with the data included in the request. For more information, see Backend services overview. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.",
      "flatPath": "projects/{project}/global/backendServices/{backendService}",
@@ -2029,6 +2104,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/diskTypes",
@@ -2249,6 +2329,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/disks",
@@ -4204,6 +4289,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/forwardingRules",
@@ -5456,6 +5546,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/operations",
@@ -5999,6 +6094,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/healthChecks",
@@ -7354,6 +7454,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/instanceGroupManagers",
@@ -8385,6 +8490,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/instanceGroups",
@@ -8806,6 +8916,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/instanceTemplates",
@@ -9256,6 +9371,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/instances",
@@ -11588,6 +11708,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/interconnectAttachments",
@@ -12194,6 +12319,41 @@
      "path": "projects/{project}/global/interconnects/{interconnect}/getDiagnostics",
      "response": {
       "$ref": "InterconnectsGetDiagnosticsResponse"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "getMacsecConfig": {
+     "description": "Returns the interconnectMacsecConfig for the specified Interconnect.",
+     "flatPath": "projects/{project}/global/interconnects/{interconnect}/getMacsecConfig",
+     "httpMethod": "GET",
+     "id": "compute.interconnects.getMacsecConfig",
+     "parameterOrder": [
+      "project",
+      "interconnect"
+     ],
+     "parameters": {
+      "interconnect": {
+       "description": "Name of the interconnect resource to query.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/global/interconnects/{interconnect}/getMacsecConfig",
+     "response": {
+      "$ref": "InterconnectsGetMacsecConfigResponse"
      },
      "scopes": [
       "https://www.googleapis.com/auth/cloud-platform",
@@ -13072,6 +13232,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/machineTypes",
@@ -13242,6 +13407,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/networkAttachments",
@@ -13641,6 +13811,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/networkEdgeSecurityServices",
@@ -13903,6 +14078,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/networkEndpointGroups",
@@ -15603,6 +15783,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/nodeGroups",
@@ -16281,6 +16466,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/nodeTemplates",
@@ -16680,6 +16870,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/nodeTypes",
@@ -16850,6 +17045,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/packetMirrorings",
@@ -17886,6 +18086,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/publicDelegatedPrefixes",
@@ -18731,6 +18936,68 @@
       "https://www.googleapis.com/auth/compute.readonly"
      ]
     },
+    "listUsable": {
+     "description": "Retrieves an aggregated list of all usable backend services in the specified project in the given region.",
+     "flatPath": "projects/{project}/regions/{region}/backendServices/listUsable",
+     "httpMethod": "GET",
+     "id": "compute.regionBackendServices.listUsable",
+     "parameterOrder": [
+      "project",
+      "region"
+     ],
+     "parameters": {
+      "filter": {
+       "description": "A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq \"double quoted literal\"` `(fieldname1 eq literal) (fieldname2 ne \"literal\")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name \"instance\", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions.",
+       "location": "query",
+       "type": "string"
+      },
+      "maxResults": {
+       "default": "500",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)",
+       "format": "uint32",
+       "location": "query",
+       "minimum": "0",
+       "type": "integer"
+      },
+      "orderBy": {
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy=\"creationTimestamp desc\"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.",
+       "location": "query",
+       "type": "string"
+      },
+      "pageToken": {
+       "description": "Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.",
+       "location": "query",
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region scoping this request. It must be a string that meets the requirements in RFC1035.",
+       "location": "path",
+       "required": true,
+       "type": "string"
+      },
+      "returnPartialSuccess": {
+       "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
+       "location": "query",
+       "type": "boolean"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/backendServices/listUsable",
+     "response": {
+      "$ref": "BackendServiceListUsable"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
     "patch": {
      "description": "Updates the specified regional BackendService resource with the data included in the request. For more information, see Understanding backend services This method supports PATCH semantics and uses the JSON merge patch format and processing rules.",
      "flatPath": "projects/{project}/regions/{region}/backendServices/{backendService}",
@@ -18977,6 +19244,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/commitments",
@@ -22136,6 +22408,54 @@
   },
   "regionNetworkEndpointGroups": {
    "methods": {
+    "attachNetworkEndpoints": {
+     "description": "Attach a list of network endpoints to the specified network endpoint group.",
+     "flatPath": "projects/{project}/regions/{region}/networkEndpointGroups/{networkEndpointGroup}/attachNetworkEndpoints",
+     "httpMethod": "POST",
+     "id": "compute.regionNetworkEndpointGroups.attachNetworkEndpoints",
+     "parameterOrder": [
+      "project",
+      "region",
+      "networkEndpointGroup"
+     ],
+     "parameters": {
+      "networkEndpointGroup": {
+       "description": "The name of the network endpoint group where you are attaching network endpoints to. It should comply with RFC1035.",
+       "location": "path",
+       "required": true,
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region where you want to create the network endpoint group. It should comply with RFC1035.",
+       "location": "path",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/networkEndpointGroups/{networkEndpointGroup}/attachNetworkEndpoints",
+     "request": {
+      "$ref": "RegionNetworkEndpointGroupsAttachEndpointsRequest"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
     "delete": {
      "description": "Deletes the specified network endpoint group. Note that the NEG cannot be deleted if it is configured as a backend of a backend service.",
      "flatPath": "projects/{project}/regions/{region}/networkEndpointGroups/{networkEndpointGroup}",
@@ -22173,6 +22493,54 @@
       }
      },
      "path": "projects/{project}/regions/{region}/networkEndpointGroups/{networkEndpointGroup}",
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "detachNetworkEndpoints": {
+     "description": "Detach the network endpoint from the specified network endpoint group.",
+     "flatPath": "projects/{project}/regions/{region}/networkEndpointGroups/{networkEndpointGroup}/detachNetworkEndpoints",
+     "httpMethod": "POST",
+     "id": "compute.regionNetworkEndpointGroups.detachNetworkEndpoints",
+     "parameterOrder": [
+      "project",
+      "region",
+      "networkEndpointGroup"
+     ],
+     "parameters": {
+      "networkEndpointGroup": {
+       "description": "The name of the network endpoint group you are detaching network endpoints from. It should comply with RFC1035.",
+       "location": "path",
+       "required": true,
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region where the network endpoint group is located. It should comply with RFC1035.",
+       "location": "path",
+       "required": true,
+       "type": "string"
+      },
+      "requestId": {
+       "description": "An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface: MixerMutationRequestBuilder",
+       "location": "query",
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/networkEndpointGroups/{networkEndpointGroup}/detachNetworkEndpoints",
+     "request": {
+      "$ref": "RegionNetworkEndpointGroupsDetachEndpointsRequest"
+     },
      "response": {
       "$ref": "Operation"
      },
@@ -22318,6 +22686,75 @@
      "path": "projects/{project}/regions/{region}/networkEndpointGroups",
      "response": {
       "$ref": "NetworkEndpointGroupList"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "listNetworkEndpoints": {
+     "description": "Lists the network endpoints in the specified network endpoint group.",
+     "flatPath": "projects/{project}/regions/{region}/networkEndpointGroups/{networkEndpointGroup}/listNetworkEndpoints",
+     "httpMethod": "POST",
+     "id": "compute.regionNetworkEndpointGroups.listNetworkEndpoints",
+     "parameterOrder": [
+      "project",
+      "region",
+      "networkEndpointGroup"
+     ],
+     "parameters": {
+      "filter": {
+       "description": "A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = \"Intel Skylake\") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = \"Intel Skylake\") OR (cpuPlatform = \"Intel Broadwell\") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq \"double quoted literal\"` `(fieldname1 eq literal) (fieldname2 ne \"literal\")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name \"instance\", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions.",
+       "location": "query",
+       "type": "string"
+      },
+      "maxResults": {
+       "default": "500",
+       "description": "The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)",
+       "format": "uint32",
+       "location": "query",
+       "minimum": "0",
+       "type": "integer"
+      },
+      "networkEndpointGroup": {
+       "description": "The name of the network endpoint group from which you want to generate a list of included network endpoints. It should comply with RFC1035.",
+       "location": "path",
+       "required": true,
+       "type": "string"
+      },
+      "orderBy": {
+       "description": "Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy=\"creationTimestamp desc\"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.",
+       "location": "query",
+       "type": "string"
+      },
+      "pageToken": {
+       "description": "Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.",
+       "location": "query",
+       "type": "string"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "The name of the region where the network endpoint group is located. It should comply with RFC1035.",
+       "location": "path",
+       "required": true,
+       "type": "string"
+      },
+      "returnPartialSuccess": {
+       "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
+       "location": "query",
+       "type": "boolean"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/networkEndpointGroups/{networkEndpointGroup}/listNetworkEndpoints",
+     "response": {
+      "$ref": "NetworkEndpointGroupsListNetworkEndpoints"
      },
      "scopes": [
       "https://www.googleapis.com/auth/cloud-platform",
@@ -23578,6 +24015,56 @@
   },
   "regionSecurityPolicies": {
    "methods": {
+    "addRule": {
+     "description": "Inserts a rule into a security policy.",
+     "flatPath": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/addRule",
+     "httpMethod": "POST",
+     "id": "compute.regionSecurityPolicies.addRule",
+     "parameterOrder": [
+      "project",
+      "region",
+      "securityPolicy"
+     ],
+     "parameters": {
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region scoping this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "securityPolicy": {
+       "description": "Name of the security policy to update.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "validateOnly": {
+       "description": "If true, the request will not be committed.",
+       "location": "query",
+       "type": "boolean"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/addRule",
+     "request": {
+      "$ref": "SecurityPolicyRule"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
     "delete": {
      "description": "Deletes the specified policy.",
      "flatPath": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}",
@@ -23661,6 +24148,55 @@
      "path": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}",
      "response": {
       "$ref": "SecurityPolicy"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute",
+      "https://www.googleapis.com/auth/compute.readonly"
+     ]
+    },
+    "getRule": {
+     "description": "Gets a rule at the specified priority.",
+     "flatPath": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/getRule",
+     "httpMethod": "GET",
+     "id": "compute.regionSecurityPolicies.getRule",
+     "parameterOrder": [
+      "project",
+      "region",
+      "securityPolicy"
+     ],
+     "parameters": {
+      "priority": {
+       "description": "The priority of the rule to get from the security policy.",
+       "format": "int32",
+       "location": "query",
+       "type": "integer"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region scoping this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "securityPolicy": {
+       "description": "Name of the security policy to which the queried rule belongs.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/getRule",
+     "response": {
+      "$ref": "SecurityPolicyRule"
      },
      "scopes": [
       "https://www.googleapis.com/auth/cloud-platform",
@@ -23814,12 +24350,128 @@
        "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "required": true,
        "type": "string"
+      },
+      "updateMask": {
+       "description": "Indicates fields to be cleared as part of this request.",
+       "format": "google-fieldmask",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}",
      "request": {
       "$ref": "SecurityPolicy"
      },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "patchRule": {
+     "description": "Patches a rule at the specified priority. To clear fields in the rule, leave the fields empty and specify them in the updateMask.",
+     "flatPath": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/patchRule",
+     "httpMethod": "POST",
+     "id": "compute.regionSecurityPolicies.patchRule",
+     "parameterOrder": [
+      "project",
+      "region",
+      "securityPolicy"
+     ],
+     "parameters": {
+      "priority": {
+       "description": "The priority of the rule to patch.",
+       "format": "int32",
+       "location": "query",
+       "type": "integer"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region scoping this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "securityPolicy": {
+       "description": "Name of the security policy to update.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      },
+      "updateMask": {
+       "description": "Indicates fields to be cleared as part of this request.",
+       "format": "google-fieldmask",
+       "location": "query",
+       "type": "string"
+      },
+      "validateOnly": {
+       "description": "If true, the request will not be committed.",
+       "location": "query",
+       "type": "boolean"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/patchRule",
+     "request": {
+      "$ref": "SecurityPolicyRule"
+     },
+     "response": {
+      "$ref": "Operation"
+     },
+     "scopes": [
+      "https://www.googleapis.com/auth/cloud-platform",
+      "https://www.googleapis.com/auth/compute"
+     ]
+    },
+    "removeRule": {
+     "description": "Deletes a rule at the specified priority.",
+     "flatPath": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/removeRule",
+     "httpMethod": "POST",
+     "id": "compute.regionSecurityPolicies.removeRule",
+     "parameterOrder": [
+      "project",
+      "region",
+      "securityPolicy"
+     ],
+     "parameters": {
+      "priority": {
+       "description": "The priority of the rule to remove from the security policy.",
+       "format": "int32",
+       "location": "query",
+       "type": "integer"
+      },
+      "project": {
+       "description": "Project ID for this request.",
+       "location": "path",
+       "pattern": "(?:(?:[-a-z0-9]{1,63}\\.)*(?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?):)?(?:[0-9]{1,19}|(?:[a-z0-9](?:[-a-z0-9]{0,61}[a-z0-9])?))",
+       "required": true,
+       "type": "string"
+      },
+      "region": {
+       "description": "Name of the region scoping this request.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?",
+       "required": true,
+       "type": "string"
+      },
+      "securityPolicy": {
+       "description": "Name of the security policy to update.",
+       "location": "path",
+       "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
+       "required": true,
+       "type": "string"
+      }
+     },
+     "path": "projects/{project}/regions/{region}/securityPolicies/{securityPolicy}/removeRule",
      "response": {
       "$ref": "Operation"
      },
@@ -25623,6 +26275,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/reservations",
@@ -26133,6 +26790,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/resourcePolicies",
@@ -26588,6 +27250,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/routers",
@@ -27368,6 +28035,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/securityPolicies",
@@ -27672,6 +28344,12 @@
        "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "required": true,
        "type": "string"
+      },
+      "updateMask": {
+       "description": "Indicates fields to be cleared as part of this request.",
+       "format": "google-fieldmask",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/global/securityPolicies/{securityPolicy}",
@@ -27714,6 +28392,12 @@
        "location": "path",
        "pattern": "[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?|[1-9][0-9]{0,19}",
        "required": true,
+       "type": "string"
+      },
+      "updateMask": {
+       "description": "Indicates fields to be cleared as part of this request.",
+       "format": "google-fieldmask",
+       "location": "query",
        "type": "string"
       },
       "validateOnly": {
@@ -27863,6 +28547,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/serviceAttachments",
@@ -28630,6 +29319,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/sslCertificates",
@@ -28857,6 +29551,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/sslPolicies",
@@ -29178,6 +29877,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/subnetworks",
@@ -29997,6 +30701,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/targetHttpProxies",
@@ -30308,6 +31017,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/targetHttpsProxies",
@@ -30784,6 +31498,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/targetInstances",
@@ -31192,6 +31911,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/targetPools",
@@ -32077,6 +32801,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/targetTcpProxies",
@@ -32388,6 +33117,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/targetVpnGateways",
@@ -32697,6 +33431,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/urlMaps",
@@ -33087,6 +33826,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/vpnGateways",
@@ -33485,6 +34229,11 @@
        "description": "Opt-in for partial success behavior which provides partial results in case of failure. The default value is false.",
        "location": "query",
        "type": "boolean"
+      },
+      "serviceProjectNumber": {
+       "format": "int64",
+       "location": "query",
+       "type": "string"
       }
      },
      "path": "projects/{project}/aggregated/vpnTunnels",
@@ -34031,7 +34780,7 @@
    }
   }
  },
- "revision": "20230912",
+ "revision": "20230923",
  "rootUrl": "https://compute.googleapis.com/",
  "schemas": {
   "AWSV4Signature": {
@@ -36501,7 +37250,7 @@
      "type": "string"
     },
     "timeZone": {
-     "description": "The time zone to use when interpreting the schedule. The value of this field must be a time zone name from the tz database: https://en.wikipedia.org/wiki/Tz_database. This field is assigned a default value of \u201cUTC\u201d if left empty.",
+     "description": "The time zone to use when interpreting the schedule. The value of this field must be a time zone name from the tz database: https://en.wikipedia.org/wiki/Tz_database. This field is assigned a default value of \"UTC\" if left empty.",
      "type": "string"
     }
    },
@@ -37065,7 +37814,7 @@
      "type": "array"
     },
     "localityLbPolicy": {
-     "description": "The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.",
+     "description": "The load balancing algorithm used within the scope of the locality. The possible values are: - ROUND_ROBIN: This is a simple policy in which each healthy backend is selected in round robin order. This is the default. - LEAST_REQUEST: An O(1) algorithm which selects two random healthy hosts and picks the host which has fewer active requests. - RING_HASH: The ring/modulo hash load balancer implements consistent hashing to backends. The algorithm has the property that the addition/removal of a host from a set of N hosts only affects 1/N of the requests. - RANDOM: The load balancer selects a random healthy host. - ORIGINAL_DESTINATION: Backend host is selected based on the client connection metadata, i.e., connections are opened to the same address as the destination address of the incoming connection before the connection was redirected to the load balancer. - MAGLEV: used as a drop in replacement for the ring hash load balancer. Maglev is not as stable as ring hash but has faster table lookup build times and host selection times. For more information about Maglev, see https://ai.google/research/pubs/pub44824 This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED, INTERNAL_MANAGED, or EXTERNAL_MANAGED. If sessionAffinity is not NONE, and this field is not set to MAGLEV or RING_HASH, session affinity settings will not take effect. Only ROUND_ROBIN and RING_HASH are supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.",
      "enum": [
       "INVALID_LB_POLICY",
       "LEAST_REQUEST",
@@ -37204,6 +37953,12 @@
      "description": "The backend service timeout has a different meaning depending on the type of load balancer. For more information see, Backend service settings. The default is 30 seconds. The full range of timeout values allowed goes from 1 through 2,147,483,647 seconds. This value can be overridden in the PathMatcher configuration of the UrlMap that references this backend service. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true. Instead, use maxStreamDuration.",
      "format": "int32",
      "type": "integer"
+    },
+    "usedBy": {
+     "items": {
+      "$ref": "BackendServiceUsedBy"
+     },
+     "type": "array"
     }
    },
    "type": "object"
@@ -37741,6 +38496,158 @@
    },
    "type": "object"
   },
+  "BackendServiceListUsable": {
+   "description": "Contains a list of usable BackendService resources.",
+   "id": "BackendServiceListUsable",
+   "properties": {
+    "id": {
+     "description": "[Output Only] Unique identifier for the resource; defined by the server.",
+     "type": "string"
+    },
+    "items": {
+     "description": "A list of BackendService resources.",
+     "items": {
+      "$ref": "BackendService"
+     },
+     "type": "array"
+    },
+    "kind": {
+     "default": "compute#usableBackendServiceList",
+     "description": "[Output Only] Type of resource. Always compute#usableBackendServiceList for lists of usable backend services.",
+     "type": "string"
+    },
+    "nextPageToken": {
+     "description": "[Output Only] This token allows you to get the next page of results for list requests. If the number of results is larger than maxResults, use the nextPageToken as a value for the query parameter pageToken in the next list request. Subsequent list requests will have their own nextPageToken to continue paging through the results.",
+     "type": "string"
+    },
+    "selfLink": {
+     "description": "[Output Only] Server-defined URL for this resource.",
+     "type": "string"
+    },
+    "warning": {
+     "description": "[Output Only] Informational warning message.",
+     "properties": {
+      "code": {
+       "description": "[Output Only] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.",
+       "enum": [
+        "CLEANUP_FAILED",
+        "DEPRECATED_RESOURCE_USED",
+        "DEPRECATED_TYPE_USED",
+        "DISK_SIZE_LARGER_THAN_IMAGE_SIZE",
+        "EXPERIMENTAL_TYPE_USED",
+        "EXTERNAL_API_WARNING",
+        "FIELD_VALUE_OVERRIDEN",
+        "INJECTED_KERNELS_DEPRECATED",
+        "INVALID_HEALTH_CHECK_FOR_DYNAMIC_WIEGHTED_LB",
+        "LARGE_DEPLOYMENT_WARNING",
+        "LIST_OVERHEAD_QUOTA_EXCEED",
+        "MISSING_TYPE_DEPENDENCY",
+        "NEXT_HOP_ADDRESS_NOT_ASSIGNED",
+        "NEXT_HOP_CANNOT_IP_FORWARD",
+        "NEXT_HOP_INSTANCE_HAS_NO_IPV6_INTERFACE",
+        "NEXT_HOP_INSTANCE_NOT_FOUND",
+        "NEXT_HOP_INSTANCE_NOT_ON_NETWORK",
+        "NEXT_HOP_NOT_RUNNING",
+        "NOT_CRITICAL_ERROR",
+        "NO_RESULTS_ON_PAGE",
+        "PARTIAL_SUCCESS",
+        "REQUIRED_TOS_AGREEMENT",
+        "RESOURCE_IN_USE_BY_OTHER_RESOURCE_WARNING",
+        "RESOURCE_NOT_DELETED",
+        "SCHEMA_VALIDATION_IGNORED",
+        "SINGLE_INSTANCE_PROPERTY_TEMPLATE",
+        "UNDECLARED_PROPERTIES",
+        "UNREACHABLE"
+       ],
+       "enumDeprecated": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+       ],
+       "enumDescriptions": [
+        "Warning about failed cleanup of transient changes made by a failed operation.",
+        "A link to a deprecated resource was created.",
+        "When deploying and at least one of the resources has a type marked as deprecated",
+        "The user created a boot disk that is larger than image size.",
+        "When deploying and at least one of the resources has a type marked as experimental",
+        "Warning that is present in an external api call",
+        "Warning that value of a field has been overridden. Deprecated unused field.",
+        "The operation involved use of an injected kernel, which is deprecated.",
+        "A WEIGHTED_MAGLEV backend service is associated with a health check that is not of type HTTP/HTTPS/HTTP2.",
+        "When deploying a deployment with a exceedingly large number of resources",
+        "Resource can't be retrieved due to list overhead quota exceed which captures the amount of resources filtered out by user-defined list filter.",
+        "A resource depends on a missing type",
+        "The route's nextHopIp address is not assigned to an instance on the network.",
+        "The route's next hop instance cannot ip forward.",
+        "The route's nextHopInstance URL refers to an instance that does not have an ipv6 interface on the same network as the route.",
+        "The route's nextHopInstance URL refers to an instance that does not exist.",
+        "The route's nextHopInstance URL refers to an instance that is not on the same network as the route.",
+        "The route's next hop instance does not have a status of RUNNING.",
+        "Error which is not critical. We decided to continue the process despite the mentioned error.",
+        "No results are present on a particular list page.",
+        "Success is reported, but some results may be missing due to errors",
+        "The user attempted to use a resource that requires a TOS they have not accepted.",
+        "Warning that a resource is in use.",
+        "One or more of the resources set to auto-delete could not be deleted because they were in use.",
+        "When a resource schema validation is ignored.",
+        "Instance template used in instance group manager is valid as such, but its application does not make a lot of sense, because it allows only single instance in instance group.",
+        "When undeclared properties in the schema are present",
+        "A given scope cannot be reached."
+       ],
+       "type": "string"
+      },
+      "data": {
+       "description": "[Output Only] Metadata about this warning in key: value format. For example: \"data\": [ { \"key\": \"scope\", \"value\": \"zones/us-east1-d\" } ",
+       "items": {
+        "properties": {
+         "key": {
+          "description": "[Output Only] A key that provides more detail on the warning being returned. For example, for warnings where there are no results in a list request for a particular zone, this key might be scope and the key value might be the zone name. Other examples might be a key indicating a deprecated resource and a suggested replacement, or a warning about invalid network settings (for example, if an instance attempts to perform IP forwarding but is not enabled for IP forwarding).",
+          "type": "string"
+         },
+         "value": {
+          "description": "[Output Only] A warning data value corresponding to the key.",
+          "type": "string"
+         }
+        },
+        "type": "object"
+       },
+       "type": "array"
+      },
+      "message": {
+       "description": "[Output Only] A human-readable description of the warning code.",
+       "type": "string"
+      }
+     },
+     "type": "object"
+    }
+   },
+   "type": "object"
+  },
   "BackendServiceLocalityLoadBalancingPolicyConfig": {
    "description": "Container for either a built-in LB policy supported by gRPC or Envoy or a custom one implemented by the end user.",
    "id": "BackendServiceLocalityLoadBalancingPolicyConfig",
@@ -37841,6 +38748,15 @@
    "id": "BackendServiceReference",
    "properties": {
     "backendService": {
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "BackendServiceUsedBy": {
+   "id": "BackendServiceUsedBy",
+   "properties": {
+    "reference": {
      "type": "string"
     }
    },
@@ -43052,12 +43968,14 @@
       "SECURE_BOOT",
       "SEV_CAPABLE",
       "SEV_LIVE_MIGRATABLE",
+      "SEV_LIVE_MIGRATABLE_V2",
       "SEV_SNP_CAPABLE",
       "UEFI_COMPATIBLE",
       "VIRTIO_SCSI_MULTIQUEUE",
       "WINDOWS"
      ],
      "enumDescriptions": [
+      "",
       "",
       "",
       "",
@@ -43234,7 +44152,7 @@
    "type": "object"
   },
   "HealthCheck": {
-   "description": "Represents a Health Check resource. Google Compute Engine has two Health Check resources: * [Global](/compute/docs/reference/rest/v1/healthChecks) * [Regional](/compute/docs/reference/rest/v1/regionHealthChecks) Internal HTTP(S) load balancers must use regional health checks (`compute.v1.regionHealthChecks`). Traffic Director must use global health checks (`compute.v1.healthChecks`). Internal TCP/UDP load balancers can use either regional or global health checks (`compute.v1.regionHealthChecks` or `compute.v1.healthChecks`). External HTTP(S), TCP proxy, and SSL proxy load balancers as well as managed instance group auto-healing must use global health checks (`compute.v1.healthChecks`). Backend service-based network load balancers must use regional health checks (`compute.v1.regionHealthChecks`). Target pool-based network load balancers must use legacy HTTP health checks (`compute.v1.httpHealthChecks`). For more information, see Health checks overview.",
+   "description": "Represents a health check resource. Google Compute Engine has two health check resources: * [Regional](/compute/docs/reference/rest/v1/regionHealthChecks) * [Global](/compute/docs/reference/rest/v1/healthChecks) These health check resources can be used for load balancing and for autohealing VMs in a managed instance group (MIG). **Load balancing** The following load balancer can use either regional or global health check: * Internal TCP/UDP load balancer The following load balancers require regional health check: * Internal HTTP(S) load balancer * Backend service-based network load balancer Traffic Director and the following load balancers require global health check: * External HTTP(S) load balancer * TCP proxy load balancer * SSL proxy load balancer The following load balancer require [legacy HTTP health checks](/compute/docs/reference/rest/v1/httpHealthChecks): * Target pool-based network load balancer **Autohealing in MIGs** The health checks that you use for autohealing VMs in a MIG can be either regional or global. For more information, see Set up an application health check and autohealing. For more information, see Health checks overview.",
    "id": "HealthCheck",
    "properties": {
     "checkIntervalSec": {
@@ -48339,7 +49257,7 @@
    "type": "object"
   },
   "InstanceTemplate": {
-   "description": "Represents an Instance Template resource. You can use instance templates to create VM instances and managed instance groups. For more information, read Instance Templates.",
+   "description": "Represents an Instance Template resource. Google Compute Engine has two Instance Template resources: * [Global](/compute/docs/reference/rest/v1/instanceTemplates) * [Regional](/compute/docs/reference/rest/v1/regionInstanceTemplates) You can reuse a global instance template in different regions whereas you can use a regional instance template in a specified region only. If you want to reduce cross-region dependency or achieve data residency, use a regional instance template. To create VMs, managed instance groups, and reservations, you can use either global or regional instance templates. For more information, read Instance Templates.",
    "id": "InstanceTemplate",
    "properties": {
     "creationTimestamp": {
@@ -49248,6 +50166,19 @@
      "description": "Administrative status of the interconnect. When this is set to true, the Interconnect is functional and can carry traffic. When set to false, no packets can be carried over the interconnect and no BGP routes are exchanged over it. By default, the status is set to true.",
      "type": "boolean"
     },
+    "availableFeatures": {
+     "description": "[Output only] List of features available for this Interconnect connection, which can take one of the following values: - MACSEC If present then the Interconnect connection is provisioned on MACsec capable hardware ports. If not present then the Interconnect connection is provisioned on non-MACsec capable ports and MACsec isn't supported and enabling MACsec fails.",
+     "items": {
+      "enum": [
+       "IF_MACSEC"
+      ],
+      "enumDescriptions": [
+       "Media Access Control security (MACsec)"
+      ],
+      "type": "string"
+     },
+     "type": "array"
+    },
     "circuitInfos": {
      "description": "[Output Only] A list of CircuitInfo objects, that describe the individual circuits in this LAG.",
      "items": {
@@ -49341,6 +50272,14 @@
      "description": "URL of the InterconnectLocation object that represents where this connection is to be provisioned.",
      "type": "string"
     },
+    "macsec": {
+     "$ref": "InterconnectMacsec",
+     "description": "Configuration that enables Media Access Control security (MACsec) on the Cloud Interconnect connection between Google and your on-premises router."
+    },
+    "macsecEnabled": {
+     "description": "Enable or disable MACsec on this Interconnect connection. MACsec enablement fails if the MACsec object is not specified.",
+     "type": "boolean"
+    },
     "name": {
      "annotations": {
       "required": [
@@ -49379,6 +50318,19 @@
     "remoteLocation": {
      "description": "Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside of Google's network that the interconnect is connected to.",
      "type": "string"
+    },
+    "requestedFeatures": {
+     "description": "Optional. List of features requested for this Interconnect connection, which can take one of the following values: - MACSEC If specified then the connection is created on MACsec capable hardware ports. If not specified, the default value is false, which allocates non-MACsec capable ports first if available. This parameter can be provided only with Interconnect INSERT. It isn't valid for Interconnect PATCH.",
+     "items": {
+      "enum": [
+       "IF_MACSEC"
+      ],
+      "enumDescriptions": [
+       "Media Access Control security (MACsec)"
+      ],
+      "type": "string"
+     },
+     "type": "array"
     },
     "requestedLinkCount": {
      "description": "Target number of physical links in the link bundle, as requested by the customer.",
@@ -50363,6 +51315,10 @@
     "lacpStatus": {
      "$ref": "InterconnectDiagnosticsLinkLACPStatus"
     },
+    "macsec": {
+     "$ref": "InterconnectDiagnosticsMacsecStatus",
+     "description": "Describes the status of MACsec encryption on this link."
+    },
     "operationalStatus": {
      "description": "The operational status of the link.",
      "enum": [
@@ -50382,6 +51338,21 @@
     "transmittingOpticalPower": {
      "$ref": "InterconnectDiagnosticsLinkOpticalPower",
      "description": "An InterconnectDiagnostics.LinkOpticalPower object, describing the current value and status of the transmitted light level."
+    }
+   },
+   "type": "object"
+  },
+  "InterconnectDiagnosticsMacsecStatus": {
+   "description": "Describes the status of MACsec encryption on the link.",
+   "id": "InterconnectDiagnosticsMacsecStatus",
+   "properties": {
+    "ckn": {
+     "description": "Indicates the Connectivity Association Key Name (CKN) currently being used if MACsec is operational.",
+     "type": "string"
+    },
+    "operational": {
+     "description": "Indicates whether or not MACsec is operational on this link.",
+     "type": "boolean"
     }
    },
    "type": "object"
@@ -50549,6 +51520,34 @@
     "availabilityZone": {
      "description": "[Output Only] Availability zone for this InterconnectLocation. Within a metropolitan area (metro), maintenance will not be simultaneously scheduled in more than one availability zone. Example: \"zone1\" or \"zone2\".",
      "type": "string"
+    },
+    "availableFeatures": {
+     "description": "[Output only] List of features available at this InterconnectLocation, which can take one of the following values: - MACSEC ",
+     "items": {
+      "enum": [
+       "IF_MACSEC"
+      ],
+      "enumDescriptions": [
+       "Media Access Control security (MACsec)"
+      ],
+      "type": "string"
+     },
+     "type": "array"
+    },
+    "availableLinkTypes": {
+     "description": "[Output only] List of link types available at this InterconnectLocation, which can take one of the following values: - LINK_TYPE_ETHERNET_10G_LR - LINK_TYPE_ETHERNET_100G_LR ",
+     "items": {
+      "enum": [
+       "LINK_TYPE_ETHERNET_100G_LR",
+       "LINK_TYPE_ETHERNET_10G_LR"
+      ],
+      "enumDescriptions": [
+       "100G Ethernet, LR Optics.",
+       "10G Ethernet, LR Optics. [(rate_bps) = 10000000000];"
+      ],
+      "type": "string"
+     },
+     "type": "array"
     },
     "city": {
      "description": "[Output Only] Metropolitan area designator that indicates which city an interconnect is located. For example: \"Chicago, IL\", \"Amsterdam, Netherlands\".",
@@ -50825,6 +51824,76 @@
     },
     "region": {
      "description": "URL for the region of this location.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "InterconnectMacsec": {
+   "description": "Configuration information for enabling Media Access Control security (MACsec) on this Cloud Interconnect connection between Google and your on-premises router.",
+   "id": "InterconnectMacsec",
+   "properties": {
+    "failOpen": {
+     "description": "If set to true, the Interconnect connection is configured with a should-secure MACsec security policy, that allows the Google router to fallback to cleartext traffic if the MKA session cannot be established. By default, the Interconnect connection is configured with a must-secure security policy that drops all traffic if the MKA session cannot be established with your router.",
+     "type": "boolean"
+    },
+    "preSharedKeys": {
+     "description": "Required. A keychain placeholder describing a set of named key objects along with their start times. A MACsec CKN/CAK is generated for each key in the key chain. Google router automatically picks the key with the most recent startTime when establishing or re-establishing a MACsec secure link.",
+     "items": {
+      "$ref": "InterconnectMacsecPreSharedKey"
+     },
+     "type": "array"
+    }
+   },
+   "type": "object"
+  },
+  "InterconnectMacsecConfig": {
+   "description": "MACsec configuration information for the Interconnect connection. Contains the generated Connectivity Association Key Name (CKN) and the key (CAK) for this Interconnect connection.",
+   "id": "InterconnectMacsecConfig",
+   "properties": {
+    "preSharedKeys": {
+     "description": "A keychain placeholder describing a set of named key objects along with their start times. A MACsec CKN/CAK is generated for each key in the key chain. Google router automatically picks the key with the most recent startTime when establishing or re-establishing a MACsec secure link.",
+     "items": {
+      "$ref": "InterconnectMacsecConfigPreSharedKey"
+     },
+     "type": "array"
+    }
+   },
+   "type": "object"
+  },
+  "InterconnectMacsecConfigPreSharedKey": {
+   "description": "Describes a pre-shared key used to setup MACsec in static connectivity association key (CAK) mode.",
+   "id": "InterconnectMacsecConfigPreSharedKey",
+   "properties": {
+    "cak": {
+     "description": "An auto-generated Connectivity Association Key (CAK) for this key.",
+     "type": "string"
+    },
+    "ckn": {
+     "description": "An auto-generated Connectivity Association Key Name (CKN) for this key.",
+     "type": "string"
+    },
+    "name": {
+     "description": "User provided name for this pre-shared key.",
+     "type": "string"
+    },
+    "startTime": {
+     "description": "User provided timestamp on or after which this key is valid.",
+     "type": "string"
+    }
+   },
+   "type": "object"
+  },
+  "InterconnectMacsecPreSharedKey": {
+   "description": "Describes a pre-shared key used to setup MACsec in static connectivity association key (CAK) mode.",
+   "id": "InterconnectMacsecPreSharedKey",
+   "properties": {
+    "name": {
+     "description": "Required. A name for this pre-shared key. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.",
+     "type": "string"
+    },
+    "startTime": {
+     "description": "A RFC3339 timestamp on or after which the key is valid. startTime can be in the future. If the keychain has a single key, startTime can be omitted. If the keychain has multiple keys, startTime is mandatory for each key. The start times of keys must be in increasing order. The start times of two consecutive keys must be at least 6 hours apart.",
      "type": "string"
     }
    },
@@ -51248,6 +52317,20 @@
    "properties": {
     "result": {
      "$ref": "InterconnectDiagnostics"
+    }
+   },
+   "type": "object"
+  },
+  "InterconnectsGetMacsecConfigResponse": {
+   "description": "Response for the InterconnectsGetMacsecConfigRequest.",
+   "id": "InterconnectsGetMacsecConfigResponse",
+   "properties": {
+    "etag": {
+     "description": "end_interface: MixerGetResponseWithEtagBuilder",
+     "type": "string"
+    },
+    "result": {
+     "$ref": "InterconnectMacsecConfig"
     }
    },
    "type": "object"
@@ -62097,6 +63180,32 @@
    },
    "type": "object"
   },
+  "RegionNetworkEndpointGroupsAttachEndpointsRequest": {
+   "id": "RegionNetworkEndpointGroupsAttachEndpointsRequest",
+   "properties": {
+    "networkEndpoints": {
+     "description": "The list of network endpoints to be attached.",
+     "items": {
+      "$ref": "NetworkEndpoint"
+     },
+     "type": "array"
+    }
+   },
+   "type": "object"
+  },
+  "RegionNetworkEndpointGroupsDetachEndpointsRequest": {
+   "id": "RegionNetworkEndpointGroupsDetachEndpointsRequest",
+   "properties": {
+    "networkEndpoints": {
+     "description": "The list of network endpoints to be detached.",
+     "items": {
+      "$ref": "NetworkEndpoint"
+     },
+     "type": "array"
+    }
+   },
+   "type": "object"
+  },
   "RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponse": {
    "id": "RegionNetworkFirewallPoliciesGetEffectiveFirewallsResponse",
    "properties": {
@@ -64891,10 +66000,12 @@
      "description": "List of NAT-ted endpoint types supported by the Nat Gateway. If the list is empty, then it will be equivalent to include ENDPOINT_TYPE_VM",
      "items": {
       "enum": [
+       "ENDPOINT_TYPE_MANAGED_PROXY_LB",
        "ENDPOINT_TYPE_SWG",
        "ENDPOINT_TYPE_VM"
       ],
       "enumDescriptions": [
+       "This is used for regional Application Load Balancers (internal and external) and regional proxy Network Load Balancers (internal and external) endpoints.",
        "This is used for Secure Web Gateway endpoints.",
        "This is the default."
       ],
@@ -67270,7 +68381,7 @@
      "description": "[Output Only] An 128-bit global unique ID of the PSC service attachment."
     },
     "reconcileConnections": {
-     "description": "This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to true.",
+     "description": "This flag determines whether a consumer accept/reject list change can reconcile the statuses of existing ACCEPTED or REJECTED PSC endpoints. - If false, connection policy update will only affect existing PENDING PSC endpoints. Existing ACCEPTED/REJECTED endpoints will remain untouched regardless how the connection policy is modified . - If true, update will affect both PENDING and ACCEPTED/REJECTED PSC endpoints. For example, an ACCEPTED PSC endpoint will be moved to REJECTED if its project is added to the reject list. For newly created service attachment, this boolean defaults to false.",
      "type": "boolean"
     },
     "region": {
@@ -70934,7 +72045,7 @@
    "type": "object"
   },
   "TargetHttpProxy": {
-   "description": "Represents a Target HTTP Proxy resource. Google Compute Engine has two Target HTTP Proxy resources: * [Global](/compute/docs/reference/rest/v1/targetHttpProxies) * [Regional](/compute/docs/reference/rest/v1/regionTargetHttpProxies) A target HTTP proxy is a component of GCP HTTP load balancers. * targetHttpProxies are used by global external Application Load Balancers, classic Application Load Balancers, cross-region internal Application Load Balancers, and Traffic Director. * regionTargetHttpProxies are used by regional internal Application Load Balancers and regional external Application Load Balancers. Forwarding rules reference a target HTTP proxy, and the target proxy then references a URL map. For more information, read Using Target Proxies and Forwarding rule concepts.",
+   "description": "Represents a Target HTTP Proxy resource. Google Compute Engine has two Target HTTP Proxy resources: * [Global](/compute/docs/reference/rest/v1/targetHttpProxies) * [Regional](/compute/docs/reference/rest/v1/regionTargetHttpProxies) A target HTTP proxy is a component of Google Cloud HTTP load balancers. * targetHttpProxies are used by global external Application Load Balancers, classic Application Load Balancers, cross-region internal Application Load Balancers, and Traffic Director. * regionTargetHttpProxies are used by regional internal Application Load Balancers and regional external Application Load Balancers. Forwarding rules reference a target HTTP proxy, and the target proxy then references a URL map. For more information, read Using Target Proxies and Forwarding rule concepts.",
    "id": "TargetHttpProxy",
    "properties": {
     "creationTimestamp": {

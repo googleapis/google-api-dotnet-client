@@ -10964,6 +10964,43 @@ namespace Google.Apis.DLP.v2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("jobTriggerName")]
         public virtual string JobTriggerName { get; set; }
 
+        private string _lastModifiedRaw;
+
+        private object _lastModified;
+
+        /// <summary>Time when the job was last modified by the system.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastModified")]
+        public virtual string LastModifiedRaw
+        {
+            get => _lastModifiedRaw;
+            set
+            {
+                _lastModified = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastModifiedRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastModifiedRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastModifiedDateTimeOffset instead.")]
+        public virtual object LastModified
+        {
+            get => _lastModified;
+            set
+            {
+                _lastModifiedRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastModified = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="LastModifiedRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastModifiedDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastModifiedRaw);
+            set => LastModifiedRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
         /// <summary>The server-assigned name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }

@@ -11544,6 +11544,10 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
+        /// <summary>Optional. Protocol config data for the Proxy.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("proxyProtocolConfig")]
+        public virtual GoogleCloudBeyondcorpPartnerservicesV1alphaProxyProtocolConfig ProxyProtocolConfig { get; set; }
+
         /// <summary>Required. The URI of the proxy server.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("proxyUri")]
         public virtual string ProxyUri { get; set; }
@@ -11592,6 +11596,19 @@ namespace Google.Apis.BeyondCorp.v1alpha.Data
             get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
             set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The protocol data that specifies how to communicate with Partner's Proxy.</summary>
+    public class GoogleCloudBeyondcorpPartnerservicesV1alphaProxyProtocolConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. Untyped property bag to be sent back to the proxy using client specific mechanism.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("metadata")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Metadata { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

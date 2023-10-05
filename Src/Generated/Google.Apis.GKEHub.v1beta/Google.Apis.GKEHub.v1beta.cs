@@ -2258,6 +2258,399 @@ namespace Google.Apis.GKEHub.v1beta
                 }
 
                 /// <summary>
+                /// Creates a new Membership. **This is currently only supported for GKE clusters on Google Cloud**. To
+                /// register other clusters, follow the instructions at
+                /// https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster.
+                /// </summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="parent">
+                /// Required. The parent (project and location) where the Memberships will be created. Specified in the
+                /// format `projects/*/locations/*`.
+                /// </param>
+                public virtual CreateRequest Create(Google.Apis.GKEHub.v1beta.Data.Membership body, string parent)
+                {
+                    return new CreateRequest(service, body, parent);
+                }
+
+                /// <summary>
+                /// Creates a new Membership. **This is currently only supported for GKE clusters on Google Cloud**. To
+                /// register other clusters, follow the instructions at
+                /// https://cloud.google.com/anthos/multicluster-management/connect/registering-a-cluster.
+                /// </summary>
+                public class CreateRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1beta.Data.Operation>
+                {
+                    /// <summary>Constructs a new Create request.</summary>
+                    public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GKEHub.v1beta.Data.Membership body, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent (project and location) where the Memberships will be created. Specified in
+                    /// the format `projects/*/locations/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Required. Client chosen ID for the membership. `membership_id` must be a valid RFC 1123
+                    /// compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case
+                    /// alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can
+                    /// be expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63
+                    /// characters.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("membershipId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string MembershipId { get; set; }
+
+                    /// <summary>
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server will guarantee that for at least 60 minutes after the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.GKEHub.v1beta.Data.Membership Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "create";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "POST";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+parent}/memberships";
+
+                    /// <summary>Initializes Create parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("membershipId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "membershipId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Removes a Membership. **This is currently only supported for GKE clusters on Google Cloud**. To
+                /// unregister other clusters, follow the instructions at
+                /// https://cloud.google.com/anthos/multicluster-management/connect/unregistering-a-cluster.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The Membership resource name in the format `projects/*/locations/*/memberships/*`.
+                /// </param>
+                public virtual DeleteRequest Delete(string name)
+                {
+                    return new DeleteRequest(service, name);
+                }
+
+                /// <summary>
+                /// Removes a Membership. **This is currently only supported for GKE clusters on Google Cloud**. To
+                /// unregister other clusters, follow the instructions at
+                /// https://cloud.google.com/anthos/multicluster-management/connect/unregistering-a-cluster.
+                /// </summary>
+                public class DeleteRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1beta.Data.Operation>
+                {
+                    /// <summary>Constructs a new Delete request.</summary>
+                    public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The Membership resource name in the format `projects/*/locations/*/memberships/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. If set to true, any subresource from this Membership will also be deleted. Otherwise,
+                    /// the request will only work if the Membership has no subresource.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("force", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> Force { get; set; }
+
+                    /// <summary>
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server will guarantee that for at least 60 minutes after the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "delete";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "DELETE";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+name}";
+
+                    /// <summary>Initializes Delete parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/memberships/[^/]+$",
+                        });
+                        RequestParameters.Add("force", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "force",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>
+                /// Generates the manifest for deployment of the GKE connect agent. **This method is used internally by
+                /// Google-provided libraries.** Most clients should not need to call this method directly.
+                /// </summary>
+                /// <param name="name">
+                /// Required. The Membership resource name the Agent will associate with, in the format
+                /// `projects/*/locations/*/memberships/*`.
+                /// </param>
+                public virtual GenerateConnectManifestRequest GenerateConnectManifest(string name)
+                {
+                    return new GenerateConnectManifestRequest(service, name);
+                }
+
+                /// <summary>
+                /// Generates the manifest for deployment of the GKE connect agent. **This method is used internally by
+                /// Google-provided libraries.** Most clients should not need to call this method directly.
+                /// </summary>
+                public class GenerateConnectManifestRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1beta.Data.GenerateConnectManifestResponse>
+                {
+                    /// <summary>Constructs a new GenerateConnectManifest request.</summary>
+                    public GenerateConnectManifestRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The Membership resource name the Agent will associate with, in the format
+                    /// `projects/*/locations/*/memberships/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Optional. The image pull secret content for the registry, if not public.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("imagePullSecretContent", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string ImagePullSecretContent { get; set; }
+
+                    /// <summary>
+                    /// Optional. If true, generate the resources for upgrade only. Some resources generated only for
+                    /// installation (e.g. secrets) will be excluded.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("isUpgrade", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<bool> IsUpgrade { get; set; }
+
+                    /// <summary>
+                    /// Optional. Namespace for GKE Connect agent resources. Defaults to `gke-connect`. The Connect
+                    /// Agent is authorized automatically when run in the default namespace. Otherwise, explicit
+                    /// authorization must be granted with an additional IAM binding.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("namespace", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Namespace { get; set; }
+
+                    /// <summary>
+                    /// Optional. URI of a proxy if connectivity from the agent to gkeconnect.googleapis.com requires
+                    /// the use of a proxy. Format must be in the form `http(s)://{proxy_address}`, depending on the
+                    /// HTTP/HTTPS protocol supported by the proxy. This will direct the connect agent's outbound
+                    /// traffic through a HTTP(S) proxy.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("proxy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Proxy { get; set; }
+
+                    /// <summary>
+                    /// Optional. The registry to fetch the connect agent image from. Defaults to gcr.io/gkeconnect.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("registry", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Registry { get; set; }
+
+                    /// <summary>
+                    /// Optional. The Connect agent version to use. Defaults to the most current version.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("version", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Version { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "generateConnectManifest";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+name}:generateConnectManifest";
+
+                    /// <summary>Initializes GenerateConnectManifest parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/memberships/[^/]+$",
+                        });
+                        RequestParameters.Add("imagePullSecretContent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "imagePullSecretContent",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("isUpgrade", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "isUpgrade",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("namespace", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "namespace",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("proxy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "proxy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("registry", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "registry",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("version", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "version",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Gets the details of a Membership.</summary>
+                /// <param name="name">
+                /// Required. The Membership resource name in the format `projects/*/locations/*/memberships/*`.
+                /// </param>
+                public virtual GetRequest Get(string name)
+                {
+                    return new GetRequest(service, name);
+                }
+
+                /// <summary>Gets the details of a Membership.</summary>
+                public class GetRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1beta.Data.Membership>
+                {
+                    /// <summary>Constructs a new Get request.</summary>
+                    public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                    {
+                        Name = name;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The Membership resource name in the format `projects/*/locations/*/memberships/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "get";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+name}";
+
+                    /// <summary>Initializes Get parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/memberships/[^/]+$",
+                        });
+                    }
+                }
+
+                /// <summary>
                 /// Gets the access control policy for a resource. Returns an empty policy if the resource exists and
                 /// does not have a policy set.
                 /// </summary>
@@ -2329,6 +2722,211 @@ namespace Google.Apis.GKEHub.v1beta
                         RequestParameters.Add("options.requestedPolicyVersion", new Google.Apis.Discovery.Parameter
                         {
                             Name = "options.requestedPolicyVersion",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Lists Memberships in a given project and location.</summary>
+                /// <param name="parent">
+                /// Required. The parent (project and location) where the Memberships will be listed. Specified in the
+                /// format `projects/*/locations/*`. `projects/*/locations/-` list memberships in all the regions.
+                /// </param>
+                public virtual ListRequest List(string parent)
+                {
+                    return new ListRequest(service, parent);
+                }
+
+                /// <summary>Lists Memberships in a given project and location.</summary>
+                public class ListRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1beta.Data.ListMembershipsResponse>
+                {
+                    /// <summary>Constructs a new List request.</summary>
+                    public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                    {
+                        Parent = parent;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The parent (project and location) where the Memberships will be listed. Specified in
+                    /// the format `projects/*/locations/*`. `projects/*/locations/-` list memberships in all the
+                    /// regions.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Parent { get; private set; }
+
+                    /// <summary>
+                    /// Optional. Lists Memberships that match the filter expression, following the syntax outlined in
+                    /// https://google.aip.dev/160. Examples: - Name is `bar` in project `foo-proj` and location
+                    /// `global`: name = "projects/foo-proj/locations/global/membership/bar" - Memberships that have a
+                    /// label called `foo`: labels.foo:* - Memberships that have a label called `foo` whose value is
+                    /// `bar`: labels.foo = bar - Memberships in the CREATING state: state = CREATING
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string Filter { get; set; }
+
+                    /// <summary>
+                    /// Optional. One or more fields to compare and use to sort the output. See
+                    /// https://google.aip.dev/132#ordering.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("orderBy", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string OrderBy { get; set; }
+
+                    /// <summary>
+                    /// Optional. When requesting a 'page' of resources, `page_size` specifies number of resources to
+                    /// return. If unspecified or set to 0, all resources will be returned.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual System.Nullable<int> PageSize { get; set; }
+
+                    /// <summary>
+                    /// Optional. Token returned by previous call to `ListMemberships` which specifies the position in
+                    /// the list from where to continue listing the resources.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string PageToken { get; set; }
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "list";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "GET";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+parent}/memberships";
+
+                    /// <summary>Initializes List parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "parent",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+$",
+                        });
+                        RequestParameters.Add("filter", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "filter",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("orderBy", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "orderBy",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageSize",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "pageToken",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                    }
+                }
+
+                /// <summary>Updates an existing Membership.</summary>
+                /// <param name="body">The body of the request.</param>
+                /// <param name="name">
+                /// Required. The Membership resource name in the format `projects/*/locations/*/memberships/*`.
+                /// </param>
+                public virtual PatchRequest Patch(Google.Apis.GKEHub.v1beta.Data.Membership body, string name)
+                {
+                    return new PatchRequest(service, body, name);
+                }
+
+                /// <summary>Updates an existing Membership.</summary>
+                public class PatchRequest : GKEHubBaseServiceRequest<Google.Apis.GKEHub.v1beta.Data.Operation>
+                {
+                    /// <summary>Constructs a new Patch request.</summary>
+                    public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.GKEHub.v1beta.Data.Membership body, string name) : base(service)
+                    {
+                        Name = name;
+                        Body = body;
+                        InitParameters();
+                    }
+
+                    /// <summary>
+                    /// Required. The Membership resource name in the format `projects/*/locations/*/memberships/*`.
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                    public virtual string Name { get; private set; }
+
+                    /// <summary>
+                    /// Optional. A request ID to identify requests. Specify a unique request ID so that if you must
+                    /// retry your request, the server will know to ignore the request if it has already been completed.
+                    /// The server will guarantee that for at least 60 minutes after the first request. For example,
+                    /// consider a situation where you make an initial request and the request times out. If you make
+                    /// the request again with the same request ID, the server can check if original operation with the
+                    /// same request ID was received, and if so, will ignore the second request. This prevents clients
+                    /// from accidentally creating duplicate commitments. The request ID must be a valid UUID with the
+                    /// exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+                    /// </summary>
+                    [Google.Apis.Util.RequestParameterAttribute("requestId", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual string RequestId { get; set; }
+
+                    /// <summary>Required. Mask of fields to update.</summary>
+                    [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                    public virtual object UpdateMask { get; set; }
+
+                    /// <summary>Gets or sets the body of this request.</summary>
+                    Google.Apis.GKEHub.v1beta.Data.Membership Body { get; set; }
+
+                    /// <summary>Returns the body of the request.</summary>
+                    protected override object GetBody() => Body;
+
+                    /// <summary>Gets the method name.</summary>
+                    public override string MethodName => "patch";
+
+                    /// <summary>Gets the HTTP method.</summary>
+                    public override string HttpMethod => "PATCH";
+
+                    /// <summary>Gets the REST path.</summary>
+                    public override string RestPath => "v1beta/{+name}";
+
+                    /// <summary>Initializes Patch parameter list.</summary>
+                    protected override void InitParameters()
+                    {
+                        base.InitParameters();
+                        RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "name",
+                            IsRequired = true,
+                            ParameterType = "path",
+                            DefaultValue = null,
+                            Pattern = @"^projects/[^/]+/locations/[^/]+/memberships/[^/]+$",
+                        });
+                        RequestParameters.Add("requestId", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "requestId",
+                            IsRequired = false,
+                            ParameterType = "query",
+                            DefaultValue = null,
+                            Pattern = null,
+                        });
+                        RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                        {
+                            Name = "updateMask",
                             IsRequired = false,
                             ParameterType = "query",
                             DefaultValue = null,
@@ -4897,6 +5495,20 @@ namespace Google.Apis.GKEHub.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>ApplianceCluster contains information specific to GDC Edge Appliance Clusters.</summary>
+    public class ApplianceCluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. Self-link of the Google Cloud resource for the Appliance Cluster. For example:
+        /// //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLink")]
+        public virtual string ResourceLink { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Specifies the audit configuration for a service. The configuration determines which permission types are logged,
     /// and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If
@@ -4944,6 +5556,49 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// <summary>The log type that this config enables.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("logType")]
         public virtual string LogType { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Authority encodes how Google will recognize identities from this Membership. See the workload identity
+    /// documentation for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+    /// </summary>
+    public class Authority : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. An identity provider that reflects the `issuer` in the workload identity pool.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("identityProvider")]
+        public virtual string IdentityProvider { get; set; }
+
+        /// <summary>
+        /// Optional. A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://` and be a valid URL with
+        /// length &amp;lt;2000 characters, it must use `location` rather than `zone` for GKE clusters. If set, then
+        /// Google will allow valid OIDC tokens from this issuer to authenticate within the workload_identity_pool. OIDC
+        /// discovery will be performed on this URI to validate tokens from the issuer. Clearing `issuer` disables
+        /// Workload Identity. `issuer` cannot be directly modified; it must be cleared (and Workload Identity disabled)
+        /// before using a new issuer (and re-enabling Workload Identity).
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("issuer")]
+        public virtual string Issuer { get; set; }
+
+        /// <summary>
+        /// Optional. OIDC verification keys for this Membership in JWKS format (RFC 7517). When this field is set, OIDC
+        /// discovery will NOT be performed on `issuer`, and instead OIDC tokens will be validated using this field.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("oidcJwks")]
+        public virtual string OidcJwks { get; set; }
+
+        /// <summary>
+        /// Output only. The name of the workload identity pool in which `issuer` will be recognized. There is a single
+        /// Workload Identity Pool per Hub that is shared between all Memberships that belong to that Hub. For a Hub
+        /// hosted in {PROJECT_ID}, the workload pool format is `{PROJECT_ID}.hub.id.goog`, although this is subject to
+        /// change in newer versions of this API.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("workloadIdentityPool")]
+        public virtual string WorkloadIdentityPool { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -5871,6 +6526,35 @@ namespace Google.Apis.GKEHub.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>ConnectAgentResource represents a Kubernetes resource manifest for Connect Agent deployment.</summary>
+    public class ConnectAgentResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>YAML manifest of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manifest")]
+        public virtual string Manifest { get; set; }
+
+        /// <summary>Kubernetes type of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual TypeMeta Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>EdgeCluster contains information specific to Google Edge Clusters.</summary>
+    public class EdgeCluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example:
+        /// //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLink")]
+        public virtual string ResourceLink { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical
     /// example is to use it as the request or the response type of an API method. For instance: service Foo { rpc
@@ -6471,12 +7155,50 @@ namespace Google.Apis.GKEHub.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// GenerateConnectManifestResponse contains manifest information for installing/upgrading a Connect agent.
+    /// </summary>
+    public class GenerateConnectManifestResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The ordered list of Kubernetes resources that need to be applied to the cluster for GKE Connect agent
+        /// installation/upgrade.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manifest")]
+        public virtual System.Collections.Generic.IList<ConnectAgentResource> Manifest { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response for GenerateRBACRoleBindingYAML.</summary>
     public class GenerateMembershipRBACRoleBindingYAMLResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>a yaml text blob including the RBAC policies.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("roleBindingsYaml")]
         public virtual string RoleBindingsYaml { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>GkeCluster contains information specific to GKE clusters.</summary>
+    public class GkeCluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. If cluster_missing is set then it denotes that the GKE cluster no longer exists in the GKE
+        /// Control Plane.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterMissing")]
+        public virtual System.Nullable<bool> ClusterMissing { get; set; }
+
+        /// <summary>
+        /// Immutable. Self-link of the Google Cloud resource for the GKE cluster. For example:
+        /// //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are
+        /// also supported.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLink")]
+        public virtual string ResourceLink { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6690,6 +7412,124 @@ namespace Google.Apis.GKEHub.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>
+    /// KubernetesMetadata provides informational metadata for Memberships representing Kubernetes clusters.
+    /// </summary>
+    public class KubernetesMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. Kubernetes API server version string as reported by `/version`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kubernetesApiServerVersion")]
+        public virtual string KubernetesApiServerVersion { get; set; }
+
+        /// <summary>
+        /// Output only. The total memory capacity as reported by the sum of all Kubernetes nodes resources, defined in
+        /// MB.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("memoryMb")]
+        public virtual System.Nullable<int> MemoryMb { get; set; }
+
+        /// <summary>Output only. Node count as reported by Kubernetes nodes resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeCount")]
+        public virtual System.Nullable<int> NodeCount { get; set; }
+
+        /// <summary>
+        /// Output only. Node providerID as reported by the first node in the list of nodes on the Kubernetes endpoint.
+        /// On Kubernetes platforms that support zero-node clusters (like GKE-on-GCP), the node_count will be zero and
+        /// the node_provider_id will be empty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nodeProviderId")]
+        public virtual string NodeProviderId { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>
+        /// Output only. The time at which these details were last updated. This update_time is different from the
+        /// Membership-level update_time since EndpointDetails are updated internally for API consumers.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Output only. vCPU count as reported by Kubernetes nodes resources.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vcpuCount")]
+        public virtual System.Nullable<int> VcpuCount { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// KubernetesResource contains the YAML manifests and configuration for Membership Kubernetes resources in the
+    /// cluster. After CreateMembership or UpdateMembership, these resources should be re-applied in the cluster.
+    /// </summary>
+    public class KubernetesResource : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. The Kubernetes resources for installing the GKE Connect agent This field is only populated in
+        /// the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership.
+        /// It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest
+        /// after the initial registration, the caller should make a UpdateMembership call with an empty field mask.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectResources")]
+        public virtual System.Collections.Generic.IList<ResourceManifest> ConnectResources { get; set; }
+
+        /// <summary>
+        /// Input only. The YAML representation of the Membership CR. This field is ignored for GKE clusters where Hub
+        /// can read the CR directly. Callers should provide the CR that is currently present in the cluster during
+        /// CreateMembership or UpdateMembership, or leave this field empty if none exists. The CR manifest is used to
+        /// validate the cluster has not been registered with another Membership.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membershipCrManifest")]
+        public virtual string MembershipCrManifest { get; set; }
+
+        /// <summary>
+        /// Output only. Additional Kubernetes resources that need to be applied to the cluster after Membership
+        /// creation, and after every update. This field is only populated in the Membership returned from a successful
+        /// long-running operation from CreateMembership or UpdateMembership. It is not populated during normal
+        /// GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the
+        /// caller should make a UpdateMembership call with an empty field mask.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("membershipResources")]
+        public virtual System.Collections.Generic.IList<ResourceManifest> MembershipResources { get; set; }
+
+        /// <summary>Optional. Options for Kubernetes resource generation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceOptions")]
+        public virtual ResourceOptions ResourceOptions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for the `GkeHub.ListFeatures` method.</summary>
     public class ListFeaturesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -6772,6 +7612,28 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// <summary>The list of Membership RBACRoleBindings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("rbacrolebindings")]
         public virtual System.Collections.Generic.IList<RBACRoleBinding> Rbacrolebindings { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for the `GkeHub.ListMemberships` method.</summary>
+    public class ListMembershipsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token to request the next page of resources from the `ListMemberships` method. The value of an empty
+        /// string means that there are no more resources to return.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>The list of matching Memberships.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resources")]
+        public virtual System.Collections.Generic.IList<Membership> Resources { get; set; }
+
+        /// <summary>List of locations that could not be reached while fetching this list.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("unreachable")]
+        public virtual System.Collections.Generic.IList<string> Unreachable { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6909,6 +7771,223 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Membership contains information about a member cluster.</summary>
+    public class Membership : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. How to identify workloads from this Membership. See the documentation on Workload Identity for
+        /// more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("authority")]
+        public virtual Authority Authority { get; set; }
+
+        private string _createTimeRaw;
+
+        private object _createTime;
+
+        /// <summary>Output only. When the Membership was created.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("createTime")]
+        public virtual string CreateTimeRaw
+        {
+            get => _createTimeRaw;
+            set
+            {
+                _createTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _createTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use CreateTimeDateTimeOffset instead.")]
+        public virtual object CreateTime
+        {
+            get => _createTime;
+            set
+            {
+                _createTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _createTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="CreateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? CreateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(CreateTimeRaw);
+            set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        private string _deleteTimeRaw;
+
+        private object _deleteTime;
+
+        /// <summary>Output only. When the Membership was deleted.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deleteTime")]
+        public virtual string DeleteTimeRaw
+        {
+            get => _deleteTimeRaw;
+            set
+            {
+                _deleteTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _deleteTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use DeleteTimeDateTimeOffset instead.")]
+        public virtual object DeleteTime
+        {
+            get => _deleteTime;
+            set
+            {
+                _deleteTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _deleteTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="DeleteTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? DeleteTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(DeleteTimeRaw);
+            set => DeleteTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>
+        /// Output only. Description of this membership, limited to 63 characters. Must match the regex: `a-zA-Z0-9*`
+        /// This field is present for legacy purposes.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>Optional. Endpoint information to reach this member.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endpoint")]
+        public virtual MembershipEndpoint Endpoint { get; set; }
+
+        /// <summary>
+        /// Optional. An externally-generated and managed ID for this Membership. This ID may be modified after
+        /// creation, but this is not recommended. The ID must match the regex: `a-zA-Z0-9*` If this Membership
+        /// represents a Kubernetes cluster, this value should be set to the UID of the `kube-system` namespace object.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("externalId")]
+        public virtual string ExternalId { get; set; }
+
+        /// <summary>Optional. Labels for this membership.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("labels")]
+        public virtual System.Collections.Generic.IDictionary<string, string> Labels { get; set; }
+
+        private string _lastConnectionTimeRaw;
+
+        private object _lastConnectionTime;
+
+        /// <summary>
+        /// Output only. For clusters using Connect, the timestamp of the most recent connection established with Google
+        /// Cloud. This time is updated every several minutes, not continuously. For clusters that do not use GKE
+        /// Connect, or that have never connected successfully, this field will be unset.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("lastConnectionTime")]
+        public virtual string LastConnectionTimeRaw
+        {
+            get => _lastConnectionTimeRaw;
+            set
+            {
+                _lastConnectionTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _lastConnectionTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="LastConnectionTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use LastConnectionTimeDateTimeOffset instead.")]
+        public virtual object LastConnectionTime
+        {
+            get => _lastConnectionTime;
+            set
+            {
+                _lastConnectionTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _lastConnectionTime = value;
+            }
+        }
+
+        /// <summary>
+        /// <seealso cref="System.DateTimeOffset"/> representation of <see cref="LastConnectionTimeRaw"/>.
+        /// </summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? LastConnectionTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(LastConnectionTimeRaw);
+            set => LastConnectionTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
+
+        /// <summary>Optional. The monitoring config information for this membership.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("monitoringConfig")]
+        public virtual MonitoringConfig MonitoringConfig { get; set; }
+
+        /// <summary>
+        /// Output only. The full, unique name of this Membership resource in the format
+        /// `projects/*/locations/*/memberships/{membership_id}`, set during creation. `membership_id` must be a valid
+        /// RFC 1123 compliant DNS label: 1. At most 63 characters in length 2. It must consist of lower case
+        /// alphanumeric characters or `-` 3. It must start and end with an alphanumeric character Which can be
+        /// expressed as the regex: `[a-z0-9]([-a-z0-9]*[a-z0-9])?`, with a maximum length of 63 characters.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>Output only. State of the Membership resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("state")]
+        public virtual MembershipState State { get; set; }
+
+        /// <summary>
+        /// Output only. Google-generated UUID for this resource. This is unique across all Membership resources. If a
+        /// Membership resource is deleted and another resource with the same name is created, it gets a different
+        /// unique_id.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("uniqueId")]
+        public virtual string UniqueId { get; set; }
+
+        private string _updateTimeRaw;
+
+        private object _updateTime;
+
+        /// <summary>Output only. When the Membership was last updated.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("updateTime")]
+        public virtual string UpdateTimeRaw
+        {
+            get => _updateTimeRaw;
+            set
+            {
+                _updateTime = Google.Apis.Util.Utilities.DeserializeForGoogleFormat(value);
+                _updateTimeRaw = value;
+            }
+        }
+
+        /// <summary><seealso cref="object"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        [System.ObsoleteAttribute("This property is obsolete and may behave unexpectedly; please use UpdateTimeDateTimeOffset instead.")]
+        public virtual object UpdateTime
+        {
+            get => _updateTime;
+            set
+            {
+                _updateTimeRaw = Google.Apis.Util.Utilities.SerializeForGoogleFormat(value);
+                _updateTime = value;
+            }
+        }
+
+        /// <summary><seealso cref="System.DateTimeOffset"/> representation of <see cref="UpdateTimeRaw"/>.</summary>
+        [Newtonsoft.Json.JsonIgnoreAttribute]
+        public virtual System.DateTimeOffset? UpdateTimeDateTimeOffset
+        {
+            get => Google.Apis.Util.Utilities.GetDateTimeOffsetFromString(UpdateTimeRaw);
+            set => UpdateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
+        }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7074,6 +8153,58 @@ namespace Google.Apis.GKEHub.v1beta.Data
     }
 
     /// <summary>
+    /// MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional
+    /// Kubernetes metadata.
+    /// </summary>
+    public class MembershipEndpoint : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Optional. Specific information for a GDC Edge Appliance cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applianceCluster")]
+        public virtual ApplianceCluster ApplianceCluster { get; set; }
+
+        /// <summary>Optional. Specific information for a Google Edge cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("edgeCluster")]
+        public virtual EdgeCluster EdgeCluster { get; set; }
+
+        /// <summary>Optional. Specific information for a GKE-on-GCP cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("gkeCluster")]
+        public virtual GkeCluster GkeCluster { get; set; }
+
+        /// <summary>
+        /// Output only. Whether the lifecycle of this membership is managed by a google cluster platform service.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("googleManaged")]
+        public virtual System.Nullable<bool> GoogleManaged { get; set; }
+
+        /// <summary>Output only. Useful Kubernetes-specific metadata.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kubernetesMetadata")]
+        public virtual KubernetesMetadata KubernetesMetadata { get; set; }
+
+        /// <summary>
+        /// Optional. The in-cluster Kubernetes Resources that should be applied for a correctly registered cluster, in
+        /// the steady state. These resources: * Ensure that the cluster is exclusively registered to one and only one
+        /// Hub Membership. * Propagate Workload Pool Information available in the Membership Authority field. * Ensure
+        /// proper initial configuration of default Hub Features.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kubernetesResource")]
+        public virtual KubernetesResource KubernetesResource { get; set; }
+
+        /// <summary>Optional. Specific information for a GKE Multi-Cloud cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("multiCloudCluster")]
+        public virtual MultiCloudCluster MultiCloudCluster { get; set; }
+
+        /// <summary>
+        /// Optional. Specific information for a GKE On-Prem cluster. An onprem user-cluster who has no resourceLink is
+        /// not allowed to use this field, it should have a nil "type" instead.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("onPremCluster")]
+        public virtual OnPremCluster OnPremCluster { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
     /// MembershipFeatureSpec contains configuration information for a single Membership. NOTE: Please use snake case in
     /// your feature name.
     /// </summary>
@@ -7172,6 +8303,17 @@ namespace Google.Apis.GKEHub.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>MembershipState describes the state of a Membership resource.</summary>
+    public class MembershipState : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The current state of the Membership resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("code")]
+        public virtual string Code { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>**Metering**: Per-Membership Feature State.</summary>
     public class MeteringMembershipState : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -7219,6 +8361,71 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("preciseLastMeasuredClusterVcpuCapacity")]
         public virtual System.Nullable<float> PreciseLastMeasuredClusterVcpuCapacity { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// This field informs Fleet-based applications/services/UIs with the necessary information for where each
+    /// underlying Cluster reports its metrics.
+    /// </summary>
+    public class MonitoringConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Immutable. Cluster name used to report metrics. For Anthos on VMWare/Baremetal, it would be in format
+        /// `memberClusters/cluster_name`; And for Anthos on MultiCloud, it would be in format `{azureClusters,
+        /// awsClusters}/cluster_name`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cluster")]
+        public virtual string Cluster { get; set; }
+
+        /// <summary>
+        /// Immutable. Cluster hash, this is a unique string generated by google code, which does not contain any PII,
+        /// which we can use to reference the cluster. This is expected to be created by the monitoring stack and
+        /// persisted into the Cluster object as well as to GKE-Hub.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterHash")]
+        public virtual string ClusterHash { get; set; }
+
+        /// <summary>
+        /// Kubernetes system metrics, if available, are written to this prefix. This defaults to kubernetes.io for GKE,
+        /// and kubernetes.io/anthos for Anthos eventually. Noted: Anthos MultiCloud will have kubernetes.io prefix
+        /// today but will migration to be under kubernetes.io/anthos
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kubernetesMetricsPrefix")]
+        public virtual string KubernetesMetricsPrefix { get; set; }
+
+        /// <summary>Immutable. Location used to report Metrics</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("location")]
+        public virtual string Location { get; set; }
+
+        /// <summary>Immutable. Project used to report Metrics</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("projectId")]
+        public virtual string ProjectId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.</summary>
+    public class MultiCloudCluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. If cluster_missing is set then it denotes that API(gkemulticloud.googleapis.com) resource for
+        /// this GKE Multi-Cloud cluster no longer exists.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterMissing")]
+        public virtual System.Nullable<bool> ClusterMissing { get; set; }
+
+        /// <summary>
+        /// Immutable. Self-link of the Google Cloud resource for the GKE Multi-Cloud cluster. For example:
+        /// //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster
+        /// //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
+        /// //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLink")]
+        public virtual string ResourceLink { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7402,6 +8609,36 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// <summary>Output only. The current state of the Namespace resource.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("code")]
         public virtual string Code { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>OnPremCluster contains information specific to GKE On-Prem clusters.</summary>
+    public class OnPremCluster : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. Whether the cluster is an admin cluster.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("adminCluster")]
+        public virtual System.Nullable<bool> AdminCluster { get; set; }
+
+        /// <summary>
+        /// Output only. If cluster_missing is set then it denotes that API(gkeonprem.googleapis.com) resource for this
+        /// GKE On-Prem cluster no longer exists.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterMissing")]
+        public virtual System.Nullable<bool> ClusterMissing { get; set; }
+
+        /// <summary>Immutable. The on prem cluster's type.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterType")]
+        public virtual string ClusterType { get; set; }
+
+        /// <summary>
+        /// Immutable. Self-link of the Google Cloud resource for the GKE On-Prem cluster. For example:
+        /// //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/vmwareClusters/my-cluster
+        /// //gkeonprem.googleapis.com/projects/my-project/locations/us-west1-a/bareMetalClusters/my-cluster
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resourceLink")]
+        public virtual string ResourceLink { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8090,6 +9327,52 @@ namespace Google.Apis.GKEHub.v1beta.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>ResourceManifest represents a single Kubernetes resource to be applied to the cluster.</summary>
+    public class ResourceManifest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Whether the resource provided in the manifest is `cluster_scoped`. If unset, the manifest is assumed to be
+        /// namespace scoped. This field is used for REST mapping when applying the resource in a cluster.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("clusterScoped")]
+        public virtual System.Nullable<bool> ClusterScoped { get; set; }
+
+        /// <summary>YAML manifest of the resource.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("manifest")]
+        public virtual string Manifest { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>ResourceOptions represent options for Kubernetes resource generation.</summary>
+    public class ResourceOptions : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect
+        /// version. The version must be a currently supported version, obsolete versions will be rejected.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("connectVersion")]
+        public virtual string ConnectVersion { get; set; }
+
+        /// <summary>
+        /// Optional. Major version of the Kubernetes cluster. This is only used to determine which version to use for
+        /// the CustomResourceDefinition resources, `apiextensions/v1beta1` or`apiextensions/v1`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("k8sVersion")]
+        public virtual string K8sVersion { get; set; }
+
+        /// <summary>
+        /// Optional. Use `apiextensions/v1beta1` instead of `apiextensions/v1` for CustomResourceDefinition resources.
+        /// This option should be set for clusters with Kubernetes apiserver versions &amp;lt;1.16.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("v1beta1Crd")]
+        public virtual System.Nullable<bool> V1beta1Crd { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Role is the type for Kubernetes roles</summary>
     public class Role : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -8104,10 +9387,6 @@ namespace Google.Apis.GKEHub.v1beta.Data
     /// <summary>Scope represents a Scope in a Fleet.</summary>
     public class Scope : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If true, all Memberships in the Fleet bind to this Scope.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allMemberships")]
-        public virtual System.Nullable<bool> AllMemberships { get; set; }
-
         private string _createTimeRaw;
 
         private object _createTime;
@@ -8415,6 +9694,23 @@ namespace Google.Apis.GKEHub.v1beta.Data
         /// <summary>A subset of `TestPermissionsRequest.permissions` that the caller is allowed.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("permissions")]
         public virtual System.Collections.Generic.IList<string> Permissions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// TypeMeta is the type information needed for content unmarshalling of Kubernetes resources in the manifest.
+    /// </summary>
+    public class TypeMeta : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>APIVersion of the resource (e.g. v1).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
+        public virtual string ApiVersion { get; set; }
+
+        /// <summary>Kind of the resource (e.g. Deployment).</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

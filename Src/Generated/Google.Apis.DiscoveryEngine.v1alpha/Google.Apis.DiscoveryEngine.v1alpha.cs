@@ -10200,6 +10200,9 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("facets")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSearchResponseFacet> Facets { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("geoSearchDebugInfo")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1alphaSearchResponseGeoSearchDebugInfo> GeoSearchDebugInfo { get; set; }
+
         /// <summary>Guided search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guidedSearchResult")]
         public virtual GoogleCloudDiscoveryengineV1alphaSearchResponseGuidedSearchResult GuidedSearchResult { get; set; }
@@ -10282,6 +10285,23 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// <summary>Text value of a facet, such as "Black" for facet "colors".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Debug information specifically related to forward geocoding issues arising from Geolocation Search.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1alphaSearchResponseGeoSearchDebugInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The error produced.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>The address from which forward geocoding ingestion produced issues.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalAddressQuery")]
+        public virtual string OriginalAddressQuery { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11090,6 +11110,13 @@ namespace Google.Apis.DiscoveryEngine.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The type of snippet to display in UCS widget. - RESULT_DISPLAY_TYPE_UNSPECIFIED for existing users. -
+        /// SNIPPET for new non-enterprise search users. - EXTRACTIVE_ANSWER for new enterprise search users.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("resultDisplayType")]
+        public virtual string ResultDisplayType { get; set; }
 
         /// <summary>Required. Immutable. Specifies the solution type that this WidgetConfig can be used for.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("solutionType")]

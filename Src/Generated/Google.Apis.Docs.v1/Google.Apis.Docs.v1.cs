@@ -1224,6 +1224,13 @@ namespace Google.Apis.Docs.v1.Data
         public virtual string FirstPageHeaderId { get; set; }
 
         /// <summary>
+        /// Optional. Indicates whether to flip the dimensions of the page_size, which allows changing the page
+        /// orientation between portrait and landscape.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flipPageOrientation")]
+        public virtual System.Nullable<bool> FlipPageOrientation { get; set; }
+
+        /// <summary>
         /// The bottom page margin. Updating the bottom page margin on the document style clears the bottom page margin
         /// on all section styles.
         /// </summary>
@@ -1322,6 +1329,10 @@ namespace Google.Apis.Docs.v1.Data
         /// <summary>Indicates if there was a suggested change to first_page_header_id.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstPageHeaderIdSuggested")]
         public virtual System.Nullable<bool> FirstPageHeaderIdSuggested { get; set; }
+
+        /// <summary>Optional. Indicates if there was a suggested change to flip_page_orientation.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flipPageOrientationSuggested")]
+        public virtual System.Nullable<bool> FlipPageOrientationSuggested { get; set; }
 
         /// <summary>Indicates if there was a suggested change to margin_bottom.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("marginBottomSuggested")]
@@ -3640,6 +3651,15 @@ namespace Google.Apis.Docs.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("firstPageHeaderId")]
         public virtual string FirstPageHeaderId { get; set; }
+
+        /// <summary>
+        /// Optional. Indicates whether to flip the dimensions of DocumentStyle's page_size for this section, which
+        /// allows changing the page orientation between portrait and landscape. If unset, the value inherits from
+        /// DocumentStyle's flip_page_orientation. When updating this property, setting a concrete value is required.
+        /// Unsetting this property results in a 400 bad request error.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flipPageOrientation")]
+        public virtual System.Nullable<bool> FlipPageOrientation { get; set; }
 
         /// <summary>
         /// The bottom page margin of the section. If unset, the value defaults to margin_bottom from DocumentStyle.

@@ -926,59 +926,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
             }
         }
 
-        /// <summary>Retrieve the OnboardingState of a resource.</summary>
-        /// <param name="name">
-        /// Required. The name of the OnboardingState to retrieve. Formats: *
-        /// organizations/{organization}/onboardingState * folders/{folder}/onboardingState *
-        /// projects/{project}/onboardingState
-        /// </param>
-        public virtual GetOnboardingStateRequest GetOnboardingState(string name)
-        {
-            return new GetOnboardingStateRequest(service, name);
-        }
-
-        /// <summary>Retrieve the OnboardingState of a resource.</summary>
-        public class GetOnboardingStateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.OnboardingState>
-        {
-            /// <summary>Constructs a new GetOnboardingState request.</summary>
-            public GetOnboardingStateRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-            {
-                Name = name;
-                InitParameters();
-            }
-
-            /// <summary>
-            /// Required. The name of the OnboardingState to retrieve. Formats: *
-            /// organizations/{organization}/onboardingState * folders/{folder}/onboardingState *
-            /// projects/{project}/onboardingState
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "getOnboardingState";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1beta2/{+name}";
-
-            /// <summary>Initializes GetOnboardingState parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "name",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^folders/[^/]+/onboardingState$",
-                });
-            }
-        }
-
         /// <summary>
         /// Get the RapidVulnerabilityDetectionSettings resource. In the returned settings response, a missing field
         /// only indicates that it was not explicitly set, so no assumption should be made about these fields. In other
@@ -2395,59 +2342,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^organizations/[^/]+/eventThreatDetectionSettings$",
-                });
-            }
-        }
-
-        /// <summary>Retrieve the OnboardingState of a resource.</summary>
-        /// <param name="name">
-        /// Required. The name of the OnboardingState to retrieve. Formats: *
-        /// organizations/{organization}/onboardingState * folders/{folder}/onboardingState *
-        /// projects/{project}/onboardingState
-        /// </param>
-        public virtual GetOnboardingStateRequest GetOnboardingState(string name)
-        {
-            return new GetOnboardingStateRequest(service, name);
-        }
-
-        /// <summary>Retrieve the OnboardingState of a resource.</summary>
-        public class GetOnboardingStateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.OnboardingState>
-        {
-            /// <summary>Constructs a new GetOnboardingState request.</summary>
-            public GetOnboardingStateRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-            {
-                Name = name;
-                InitParameters();
-            }
-
-            /// <summary>
-            /// Required. The name of the OnboardingState to retrieve. Formats: *
-            /// organizations/{organization}/onboardingState * folders/{folder}/onboardingState *
-            /// projects/{project}/onboardingState
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "getOnboardingState";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1beta2/{+name}";
-
-            /// <summary>Initializes GetOnboardingState parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "name",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^organizations/[^/]+/onboardingState$",
                 });
             }
         }
@@ -4191,59 +4085,6 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2
                     ParameterType = "path",
                     DefaultValue = null,
                     Pattern = @"^projects/[^/]+/eventThreatDetectionSettings$",
-                });
-            }
-        }
-
-        /// <summary>Retrieve the OnboardingState of a resource.</summary>
-        /// <param name="name">
-        /// Required. The name of the OnboardingState to retrieve. Formats: *
-        /// organizations/{organization}/onboardingState * folders/{folder}/onboardingState *
-        /// projects/{project}/onboardingState
-        /// </param>
-        public virtual GetOnboardingStateRequest GetOnboardingState(string name)
-        {
-            return new GetOnboardingStateRequest(service, name);
-        }
-
-        /// <summary>Retrieve the OnboardingState of a resource.</summary>
-        public class GetOnboardingStateRequest : SecurityCommandCenterBaseServiceRequest<Google.Apis.SecurityCommandCenter.v1beta2.Data.OnboardingState>
-        {
-            /// <summary>Constructs a new GetOnboardingState request.</summary>
-            public GetOnboardingStateRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-            {
-                Name = name;
-                InitParameters();
-            }
-
-            /// <summary>
-            /// Required. The name of the OnboardingState to retrieve. Formats: *
-            /// organizations/{organization}/onboardingState * folders/{folder}/onboardingState *
-            /// projects/{project}/onboardingState
-            /// </summary>
-            [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-            public virtual string Name { get; private set; }
-
-            /// <summary>Gets the method name.</summary>
-            public override string MethodName => "getOnboardingState";
-
-            /// <summary>Gets the HTTP method.</summary>
-            public override string HttpMethod => "GET";
-
-            /// <summary>Gets the REST path.</summary>
-            public override string RestPath => "v1beta2/{+name}";
-
-            /// <summary>Initializes GetOnboardingState parameter list.</summary>
-            protected override void InitParameters()
-            {
-                base.InitParameters();
-                RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                {
-                    Name = "name",
-                    IsRequired = true,
-                    ParameterType = "path",
-                    DefaultValue = null,
-                    Pattern = @"^projects/[^/]+/onboardingState$",
                 });
             }
         }
@@ -6154,6 +5995,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("kubernetes")]
         public virtual Kubernetes Kubernetes { get; set; }
 
+        /// <summary>The load balancers associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("loadBalancers")]
+        public virtual System.Collections.Generic.IList<LoadBalancer> LoadBalancers { get; set; }
+
         /// <summary>
         /// MITRE ATT&amp;amp;CK tactics and techniques related to this finding. See: https://attack.mitre.org
         /// </summary>
@@ -6268,6 +6113,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("securityMarks")]
         public virtual SecurityMarks SecurityMarks { get; set; }
+
+        /// <summary>The security posture associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("securityPosture")]
+        public virtual SecurityPosture SecurityPosture { get; set; }
 
         /// <summary>The severity of the finding. This field is managed by the source that writes the finding.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]
@@ -7565,6 +7414,10 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nodes")]
         public virtual System.Collections.Generic.IList<Node> Nodes { get; set; }
 
+        /// <summary>Kubernetes objects related to the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("objects")]
+        public virtual System.Collections.Generic.IList<Object> Objects { get; set; }
+
         /// <summary>
         /// Kubernetes [Pods](https://cloud.google.com/kubernetes-engine/docs/concepts/pod) associated with the finding.
         /// This field contains Pod records for each container that is owned by a Pod.
@@ -7597,6 +7450,17 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// <summary>Value that corresponds to the label's name.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Contains information related to the load balancer associated with the finding.</summary>
+    public class LoadBalancer : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The name of the load balancer associated with the finding.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -7683,22 +7547,33 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Resource capturing onboarding information for a given CRM resource.</summary>
-    public class OnboardingState : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>
+    /// Kubernetes object related to the finding, uniquely identified by GKNN. Used if the object Kind is not one of
+    /// Pod, Node, NodePool, Binding, or AccessReview.
+    /// </summary>
+    public class Object : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Kubernetes object group, such as "policy.k8s.io/v1".</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("group")]
+        public virtual string Group { get; set; }
+
+        /// <summary>Kubernetes object kind, such as “Namespace”.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kind")]
+        public virtual string Kind { get; set; }
+
         /// <summary>
-        /// The resource name of the OnboardingState. Format: organizations/{organization}/onboardingState Format:
-        /// folders/{folder}/onboardingState Format: projects/{project}/onboardingState
+        /// Kubernetes object name. For details see
+        /// https://kubernetes.io/docs/concepts/overview/working-with-objects/names/.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
         /// <summary>
-        /// Describes the level a given organization, folder, or project is onboarded with SCC. If the resource wasn't
-        /// onboarded, NOT_FOUND would have been thrown.
+        /// Kubernetes object namespace. Must be a valid DNS label. Named "ns" to avoid collision with C++ namespace
+        /// keyword. For details see https://kubernetes.io/docs/tasks/administer-cluster/namespaces/.
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("onboardingLevel")]
-        public virtual string OnboardingLevel { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("ns")]
+        public virtual string Ns { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -8071,6 +7946,47 @@ namespace Google.Apis.SecurityCommandCenter.v1beta2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Represents a posture that is deployed on Google Cloud by the Security Command Center Posture Management service.
+    /// A posture contains one or more policy sets. A policy set is a group of policies that enforce a set of security
+    /// rules on Google Cloud.
+    /// </summary>
+    public class SecurityPosture : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// The name of the policy that has been updated, for example,
+        /// `projects/{project_id}/policies/{constraint_name}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("changedPolicy")]
+        public virtual string ChangedPolicy { get; set; }
+
+        /// <summary>
+        /// Name of the posture, for example, `organizations/{org_id}/locations/{location}/postures/{posture_name}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// The name of the posture deployment, for example,
+        /// `projects/{project_id}/posturedeployments/{posture_deployment_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postureDeployment")]
+        public virtual string PostureDeployment { get; set; }
+
+        /// <summary>
+        /// The project, folder, or organization on which the posture is deployed, for example, `projects/{project_id}`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("postureDeploymentResource")]
+        public virtual string PostureDeploymentResource { get; set; }
+
+        /// <summary>The version of the posture, for example, `c7cfa2a8`.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("revisionId")]
+        public virtual string RevisionId { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

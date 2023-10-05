@@ -6114,7 +6114,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
             set => CreateTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
-        /// <summary>User-friendly display name. Maximum length is 63 characters.</summary>
+        /// <summary>Optional. User-friendly display name. Maximum length is 256 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("displayName")]
         public virtual string DisplayName { get; set; }
 
@@ -8631,7 +8631,7 @@ namespace Google.Apis.MigrationCenterAPI.v1alpha1.Data
     }
 
     /// <summary>
-    /// VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and
+    /// VirtualMachinePreferences enables you to create sets of preferences, for example, a geographical location and
     /// pricing track, for your migrated virtual machines. The set of preferences influence recommendations for
     /// migrating virtual machine assets.
     /// </summary>

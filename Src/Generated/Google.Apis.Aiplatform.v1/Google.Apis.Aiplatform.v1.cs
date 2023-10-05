@@ -7513,10 +7513,7 @@ namespace Google.Apis.Aiplatform.v1
 
                         /// <summary>Creates a new Feature in a given EntityType.</summary>
                         /// <param name="body">The body of the request.</param>
-                        /// <param name="parent">
-                        /// Required. The resource name of the EntityType to create a Feature. Format:
-                        /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
-                        /// </param>
+                        /// <param name="parent"><c>null</c></param>
                         public virtual CreateRequest Create(Google.Apis.Aiplatform.v1.Data.GoogleCloudAiplatformV1Feature body, string parent)
                         {
                             return new CreateRequest(service, body, parent);
@@ -7533,10 +7530,6 @@ namespace Google.Apis.Aiplatform.v1
                                 InitParameters();
                             }
 
-                            /// <summary>
-                            /// Required. The resource name of the EntityType to create a Feature. Format:
-                            /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
-                            /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
 
@@ -7544,7 +7537,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// Required. The ID to use for the Feature, which will become the final component of the
                             /// Feature's resource name. This value may be up to 128 characters, and valid characters
                             /// are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within
-                            /// an EntityType .
+                            /// an EntityType/FeatureGroup.
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("featureId", Google.Apis.Util.RequestParameterType.Query)]
                             public virtual string FeatureId { get; set; }
@@ -7591,6 +7584,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">
                         /// Required. The name of the Features to be deleted. Format:
                         /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}/features/{feature}`
+                        /// `projects/{project}/locations/{location}/featureGroups/{feature_group}/features/{feature}`
                         /// </param>
                         public virtual DeleteRequest Delete(string name)
                         {
@@ -7610,6 +7604,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// <summary>
                             /// Required. The name of the Features to be deleted. Format:
                             /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}/features/{feature}`
+                            /// `projects/{project}/locations/{location}/featureGroups/{feature_group}/features/{feature}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -7642,6 +7637,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="name">
                         /// Required. The name of the Feature resource. Format:
                         /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
+                        /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
                         /// </param>
                         public virtual GetRequest Get(string name)
                         {
@@ -7661,6 +7657,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// <summary>
                             /// Required. The name of the Feature resource. Format:
                             /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
+                            /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Name { get; private set; }
@@ -7693,6 +7690,7 @@ namespace Google.Apis.Aiplatform.v1
                         /// <param name="parent">
                         /// Required. The resource name of the Location to list Features. Format:
                         /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
+                        /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
                         /// </param>
                         public virtual ListRequest List(string parent)
                         {
@@ -7712,6 +7710,7 @@ namespace Google.Apis.Aiplatform.v1
                             /// <summary>
                             /// Required. The resource name of the Location to list Features. Format:
                             /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
+                            /// `projects/{project}/locations/{location}/featureGroups/{feature_group}`
                             /// </summary>
                             [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                             public virtual string Parent { get; private set; }
@@ -19772,8 +19771,9 @@ namespace Google.Apis.Aiplatform.v1
                     /// the NotebookRuntimeTemplate's resource name. * `display_name` supports = and != * `labels`
                     /// supports general map functions that is: * `labels.key=value` - key:value equality *
                     /// `labels.key:* or labels:key - key existence * A key including a space must be quoted. `labels."a
-                    /// key"`. Some examples: * `notebookRuntimeTemplate=notebookRuntimeTemplate123` *
-                    /// `displayName="myDisplayName"` * `labels.myKey="myValue"`
+                    /// key"`. * `notebookRuntimeType` supports = and !=. notebookRuntimeType enum: [USER_DEFINED,
+                    /// ONE_CLICK]. Some examples: * `notebookRuntimeTemplate=notebookRuntimeTemplate123` *
+                    /// `displayName="myDisplayName"` * `labels.myKey="myValue"` * `notebookRuntimeType=USER_DEFINED`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -20239,11 +20239,12 @@ namespace Google.Apis.Aiplatform.v1
                     /// runtimeState enum: [RUNTIME_STATE_UNSPECIFIED, RUNNING, BEING_STARTED, BEING_STOPPED, STOPPED,
                     /// BEING_UPGRADED]. * `runtimeUser` supports = and !=. * API version is UI only: `uiState` supports
                     /// = and !=. uiState enum: [UI_RESOURCE_STATE_UNSPECIFIED, UI_RESOURCE_STATE_BEING_CREATED,
-                    /// UI_RESOURCE_STATE_ACTIVE, UI_RESOURCE_STATE_BEING_DELETED, UI_RESOURCE_STATE_CREATION_FAILED].
+                    /// UI_RESOURCE_STATE_ACTIVE, UI_RESOURCE_STATE_BEING_DELETED, UI_RESOURCE_STATE_CREATION_FAILED]. *
+                    /// `notebookRuntimeType` supports = and !=. notebookRuntimeType enum: [USER_DEFINED, ONE_CLICK].
                     /// Some examples: * `notebookRuntime="notebookRuntime123"` * `displayName="myDisplayName"` and
                     /// `displayName=~"myDisplayNameRegex"` * `notebookRuntimeTemplate="notebookRuntimeTemplate321"` *
                     /// `healthState=HEALTHY` * `runtimeState=RUNNING` * `runtimeUser="test@google.com"` *
-                    /// `uiState=UI_RESOURCE_STATE_BEING_DELETED`
+                    /// `uiState=UI_RESOURCE_STATE_BEING_DELETED` * `notebookRuntimeType=USER_DEFINED`
                     /// </summary>
                     [Google.Apis.Util.RequestParameterAttribute("filter", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string Filter { get; set; }
@@ -31651,7 +31652,9 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for FeaturestoreService.CreateFeature.</summary>
+    /// <summary>
+    /// Request message for FeaturestoreService.CreateFeature. Request message for FeatureRegistryService.CreateFeature.
+    /// </summary>
     public class GoogleCloudAiplatformV1CreateFeatureRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The Feature to create.</summary>
@@ -31661,15 +31664,11 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>
         /// Required. The ID to use for the Feature, which will become the final component of the Feature's resource
         /// name. This value may be up to 128 characters, and valid characters are `[a-z0-9_]`. The first character
-        /// cannot be a number. The value must be unique within an EntityType .
+        /// cannot be a number. The value must be unique within an EntityType/FeatureGroup.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("featureId")]
         public virtual string FeatureId { get; set; }
 
-        /// <summary>
-        /// Required. The resource name of the EntityType to create a Feature. Format:
-        /// `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}`
-        /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
@@ -37547,7 +37546,9 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for FeaturestoreService.ListFeatures.</summary>
+    /// <summary>
+    /// Response message for FeaturestoreService.ListFeatures. Response message for FeatureRegistryService.ListFeatures.
+    /// </summary>
     public class GoogleCloudAiplatformV1ListFeaturesResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The Features matching the request.</summary>
@@ -44708,6 +44709,32 @@ namespace Google.Apis.Aiplatform.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>The configuration for grounding checking.</summary>
+    public class GoogleCloudAiplatformV1SchemaPredictParamsGroundingConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The sources for the grounding checking.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sources")]
+        public virtual System.Collections.Generic.IList<GoogleCloudAiplatformV1SchemaPredictParamsGroundingConfigSourceEntry> Sources { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Single source entry for the grounding checking.</summary>
+    public class GoogleCloudAiplatformV1SchemaPredictParamsGroundingConfigSourceEntry : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The uri of the Enterprise Search data source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("enterpriseDatastore")]
+        public virtual string EnterpriseDatastore { get; set; }
+
+        /// <summary>The type of the grounding checking source.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("type")]
+        public virtual string Type { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Prediction model parameters for Image Classification.</summary>
     public class GoogleCloudAiplatformV1SchemaPredictParamsImageClassificationPredictionParams : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -45416,9 +45443,17 @@ namespace Google.Apis.Aiplatform.v1.Data
     /// <summary>The metadata of Datasets that contain Text Prompt data.</summary>
     public class GoogleCloudAiplatformV1SchemaTextPromptDatasetMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>Number of candidates.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("candidateCount")]
+        public virtual System.Nullable<long> CandidateCount { get; set; }
+
         /// <summary>The Google Cloud Storage URI that stores the prompt data.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("gcsUri")]
         public virtual string GcsUri { get; set; }
+
+        /// <summary>Grounding checking configuration.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("groundingConfig")]
+        public virtual GoogleCloudAiplatformV1SchemaPredictParamsGroundingConfig GroundingConfig { get; set; }
 
         /// <summary>Value of the maximum number of tokens generated set when the dataset was saved.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("maxOutputTokens")]
@@ -45427,6 +45462,10 @@ namespace Google.Apis.Aiplatform.v1.Data
         /// <summary>Type of the prompt dataset.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("promptType")]
         public virtual string PromptType { get; set; }
+
+        /// <summary>Customized stop sequences.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stopSequences")]
+        public virtual System.Collections.Generic.IList<string> StopSequences { get; set; }
 
         /// <summary>
         /// Temperature value used for sampling set when the dataset was saved. This value is used to tune the degree of
