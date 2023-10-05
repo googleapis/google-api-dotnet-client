@@ -5041,8 +5041,8 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
 
         /// <summary>
-        /// Requests a review of free listings in a specific region. This method is only available to selected
-        /// merchants.
+        /// Requests a review of free listings in a specific region. This method deprecated. Use the
+        /// `MerchantSupportService` to view product and account issues and request a review.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">Required. The ID of the account.</param>
@@ -5052,8 +5052,8 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
 
         /// <summary>
-        /// Requests a review of free listings in a specific region. This method is only available to selected
-        /// merchants.
+        /// Requests a review of free listings in a specific region. This method deprecated. Use the
+        /// `MerchantSupportService` to view product and account issues and request a review.
         /// </summary>
         public class RequestreviewRequest : ShoppingContentBaseServiceRequest<string>
         {
@@ -5670,7 +5670,12 @@ namespace Google.Apis.ShoppingContent.v2_1
             }
         }
 
-        /// <summary>Sets the omnichannel experience for the specified country.</summary>
+        /// <summary>
+        /// Sets the omnichannel experience for the specified country. Only supported for merchants whose POS data
+        /// provider is trusted to enable the corresponding experience. For more context, see these help articles [about
+        /// LFP](https://support.google.com/merchants/answer/7676652) and [how to get
+        /// started](https://support.google.com/merchants/answer/7676578) with it.
+        /// </summary>
         /// <param name="merchantId">
         /// The ID of the managing account. If this parameter is not the same as accountId, then this account must be a
         /// multi-client account and `accountId` must be the ID of a sub-account of this account.
@@ -5681,7 +5686,12 @@ namespace Google.Apis.ShoppingContent.v2_1
             return new SetomnichannelexperienceRequest(service, merchantId, accountId);
         }
 
-        /// <summary>Sets the omnichannel experience for the specified country.</summary>
+        /// <summary>
+        /// Sets the omnichannel experience for the specified country. Only supported for merchants whose POS data
+        /// provider is trusted to enable the corresponding experience. For more context, see these help articles [about
+        /// LFP](https://support.google.com/merchants/answer/7676652) and [how to get
+        /// started](https://support.google.com/merchants/answer/7676578) with it.
+        /// </summary>
         public class SetomnichannelexperienceRequest : ShoppingContentBaseServiceRequest<Google.Apis.ShoppingContent.v2_1.Data.LiaOmnichannelExperience>
         {
             /// <summary>Constructs a new Setomnichannelexperience request.</summary>
@@ -14041,7 +14051,8 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
 
         /// <summary>
-        /// Requests a review of Shopping ads in a specific region. This method is only available to selected merchants.
+        /// Requests a review of Shopping ads in a specific region. This method deprecated. Use the
+        /// `MerchantSupportService` to view product and account issues and request a review.
         /// </summary>
         /// <param name="body">The body of the request.</param>
         /// <param name="merchantId">Required. The ID of the account.</param>
@@ -14051,7 +14062,8 @@ namespace Google.Apis.ShoppingContent.v2_1
         }
 
         /// <summary>
-        /// Requests a review of Shopping ads in a specific region. This method is only available to selected merchants.
+        /// Requests a review of Shopping ads in a specific region. This method deprecated. Use the
+        /// `MerchantSupportService` to view product and account issues and request a review.
         /// </summary>
         public class RequestreviewRequest : ShoppingContentBaseServiceRequest<string>
         {

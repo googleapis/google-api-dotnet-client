@@ -371,7 +371,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         {
             this.service = service;
             AccessBindings = new AccessBindingsResource(service);
-            UserLinks = new UserLinksResource(service);
         }
 
         /// <summary>Gets the AccessBindings resource.</summary>
@@ -941,643 +940,12 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             }
         }
 
-        /// <summary>Gets the UserLinks resource.</summary>
-        public virtual UserLinksResource UserLinks { get; }
-
-        /// <summary>The "userLinks" collection of methods.</summary>
-        public class UserLinksResource
-        {
-            private const string Resource = "userLinks";
-
-            /// <summary>The service which this resource belongs to.</summary>
-            private readonly Google.Apis.Services.IClientService service;
-
-            /// <summary>Constructs a new resource.</summary>
-            public UserLinksResource(Google.Apis.Services.IClientService service)
-            {
-                this.service = service;
-            }
-
-            /// <summary>
-            /// Lists all user links on an account or property, including implicit ones that come from effective
-            /// permissions granted by groups or organization admin roles. If a returned user link does not have direct
-            /// permissions, they cannot be removed from the account or property directly with the DeleteUserLink
-            /// command. They have to be removed from the group/etc that gives them permissions, which is currently only
-            /// usable/discoverable in the GA or GMP UIs.
-            /// </summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. Example format: accounts/1234</param>
-            public virtual AuditRequest Audit(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAuditUserLinksRequest body, string parent)
-            {
-                return new AuditRequest(service, body, parent);
-            }
-
-            /// <summary>
-            /// Lists all user links on an account or property, including implicit ones that come from effective
-            /// permissions granted by groups or organization admin roles. If a returned user link does not have direct
-            /// permissions, they cannot be removed from the account or property directly with the DeleteUserLink
-            /// command. They have to be removed from the group/etc that gives them permissions, which is currently only
-            /// usable/discoverable in the GA or GMP UIs.
-            /// </summary>
-            public class AuditRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAuditUserLinksResponse>
-            {
-                /// <summary>Constructs a new Audit request.</summary>
-                public AuditRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAuditUserLinksRequest body, string parent) : base(service)
-                {
-                    Parent = parent;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>Required. Example format: accounts/1234</summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAuditUserLinksRequest Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "audit";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "POST";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1alpha/{+parent}/userLinks:audit";
-
-                /// <summary>Initializes Audit parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^accounts/[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>
-            /// Creates information about multiple users' links to an account or property. This method is transactional.
-            /// If any UserLink cannot be created, none of the UserLinks will be created.
-            /// </summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="parent">
-            /// Required. The account or property that all user links in the request are for. This field is required.
-            /// The parent field in the CreateUserLinkRequest messages must either be empty or match this field. Example
-            /// format: accounts/1234
-            /// </param>
-            public virtual BatchCreateRequest BatchCreate(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest body, string parent)
-            {
-                return new BatchCreateRequest(service, body, parent);
-            }
-
-            /// <summary>
-            /// Creates information about multiple users' links to an account or property. This method is transactional.
-            /// If any UserLink cannot be created, none of the UserLinks will be created.
-            /// </summary>
-            public class BatchCreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse>
-            {
-                /// <summary>Constructs a new BatchCreate request.</summary>
-                public BatchCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest body, string parent) : base(service)
-                {
-                    Parent = parent;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. The account or property that all user links in the request are for. This field is
-                /// required. The parent field in the CreateUserLinkRequest messages must either be empty or match this
-                /// field. Example format: accounts/1234
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "batchCreate";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "POST";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1alpha/{+parent}/userLinks:batchCreate";
-
-                /// <summary>Initializes BatchCreate parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^accounts/[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>Deletes information about multiple users' links to an account or property.</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="parent">
-            /// Required. The account or property that all user links in the request are for. The parent of all values
-            /// for user link names to delete must match this field. Example format: accounts/1234
-            /// </param>
-            public virtual BatchDeleteRequest BatchDelete(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest body, string parent)
-            {
-                return new BatchDeleteRequest(service, body, parent);
-            }
-
-            /// <summary>Deletes information about multiple users' links to an account or property.</summary>
-            public class BatchDeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleProtobufEmpty>
-            {
-                /// <summary>Constructs a new BatchDelete request.</summary>
-                public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest body, string parent) : base(service)
-                {
-                    Parent = parent;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. The account or property that all user links in the request are for. The parent of all
-                /// values for user link names to delete must match this field. Example format: accounts/1234
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "batchDelete";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "POST";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1alpha/{+parent}/userLinks:batchDelete";
-
-                /// <summary>Initializes BatchDelete parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^accounts/[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>Gets information about multiple users' links to an account or property.</summary>
-            /// <param name="parent">
-            /// Required. The account or property that all user links in the request are for. The parent of all provided
-            /// values for the 'names' field must match this field. Example format: accounts/1234
-            /// </param>
-            public virtual BatchGetRequest BatchGet(string parent)
-            {
-                return new BatchGetRequest(service, parent);
-            }
-
-            /// <summary>Gets information about multiple users' links to an account or property.</summary>
-            public class BatchGetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse>
-            {
-                /// <summary>Constructs a new BatchGet request.</summary>
-                public BatchGetRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                {
-                    Parent = parent;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. The account or property that all user links in the request are for. The parent of all
-                /// provided values for the 'names' field must match this field. Example format: accounts/1234
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>
-                /// Required. The names of the user links to retrieve. A maximum of 1000 user links can be retrieved in
-                /// a batch. Format: accounts/{accountId}/userLinks/{userLinkId}
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("names", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual Google.Apis.Util.Repeatable<string> Names { get; set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "batchGet";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1alpha/{+parent}/userLinks:batchGet";
-
-                /// <summary>Initializes BatchGet parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^accounts/[^/]+$",
-                    });
-                    RequestParameters.Add("names", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "names",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                }
-            }
-
-            /// <summary>Updates information about multiple users' links to an account or property.</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="parent">
-            /// Required. The account or property that all user links in the request are for. The parent field in the
-            /// UpdateUserLinkRequest messages must either be empty or match this field. Example format: accounts/1234
-            /// </param>
-            public virtual BatchUpdateRequest BatchUpdate(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest body, string parent)
-            {
-                return new BatchUpdateRequest(service, body, parent);
-            }
-
-            /// <summary>Updates information about multiple users' links to an account or property.</summary>
-            public class BatchUpdateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse>
-            {
-                /// <summary>Constructs a new BatchUpdate request.</summary>
-                public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest body, string parent) : base(service)
-                {
-                    Parent = parent;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. The account or property that all user links in the request are for. The parent field in
-                /// the UpdateUserLinkRequest messages must either be empty or match this field. Example format:
-                /// accounts/1234
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "batchUpdate";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "POST";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1alpha/{+parent}/userLinks:batchUpdate";
-
-                /// <summary>Initializes BatchUpdate parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^accounts/[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>
-            /// Creates a user link on an account or property. If the user with the specified email already has
-            /// permissions on the account or property, then the user's existing permissions will be unioned with the
-            /// permissions specified in the new UserLink.
-            /// </summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. Example format: accounts/1234</param>
-            public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserLink body, string parent)
-            {
-                return new CreateRequest(service, body, parent);
-            }
-
-            /// <summary>
-            /// Creates a user link on an account or property. If the user with the specified email already has
-            /// permissions on the account or property, then the user's existing permissions will be unioned with the
-            /// permissions specified in the new UserLink.
-            /// </summary>
-            public class CreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserLink>
-            {
-                /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserLink body, string parent) : base(service)
-                {
-                    Parent = parent;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>Required. Example format: accounts/1234</summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>
-                /// Optional. If set, then email the new user notifying them that they've been granted permissions to
-                /// the resource.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("notifyNewUser", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> NotifyNewUser { get; set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserLink Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "create";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "POST";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1alpha/{+parent}/userLinks";
-
-                /// <summary>Initializes Create parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^accounts/[^/]+$",
-                    });
-                    RequestParameters.Add("notifyNewUser", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "notifyNewUser",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                }
-            }
-
-            /// <summary>Deletes a user link on an account or property.</summary>
-            /// <param name="name">Required. Example format: accounts/1234/userLinks/5678</param>
-            public virtual DeleteRequest Delete(string name)
-            {
-                return new DeleteRequest(service, name);
-            }
-
-            /// <summary>Deletes a user link on an account or property.</summary>
-            public class DeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleProtobufEmpty>
-            {
-                /// <summary>Constructs a new Delete request.</summary>
-                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-                /// <summary>Required. Example format: accounts/1234/userLinks/5678</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "delete";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "DELETE";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1alpha/{+name}";
-
-                /// <summary>Initializes Delete parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^accounts/[^/]+/userLinks/[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>Gets information about a user's link to an account or property.</summary>
-            /// <param name="name">Required. Example format: accounts/1234/userLinks/5678</param>
-            public virtual GetRequest Get(string name)
-            {
-                return new GetRequest(service, name);
-            }
-
-            /// <summary>Gets information about a user's link to an account or property.</summary>
-            public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserLink>
-            {
-                /// <summary>Constructs a new Get request.</summary>
-                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
-                {
-                    Name = name;
-                    InitParameters();
-                }
-
-                /// <summary>Required. Example format: accounts/1234/userLinks/5678</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "get";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1alpha/{+name}";
-
-                /// <summary>Initializes Get parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^accounts/[^/]+/userLinks/[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>Lists all user links on an account or property.</summary>
-            /// <param name="parent">Required. Example format: accounts/1234</param>
-            public virtual ListRequest List(string parent)
-            {
-                return new ListRequest(service, parent);
-            }
-
-            /// <summary>Lists all user links on an account or property.</summary>
-            public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListUserLinksResponse>
-            {
-                /// <summary>Constructs a new List request.</summary>
-                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                {
-                    Parent = parent;
-                    InitParameters();
-                }
-
-                /// <summary>Required. Example format: accounts/1234</summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>
-                /// The maximum number of user links to return. The service may return fewer than this value. If
-                /// unspecified, at most 200 user links will be returned. The maximum value is 500; values above 500
-                /// will be coerced to 500.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<int> PageSize { get; set; }
-
-                /// <summary>
-                /// A page token, received from a previous `ListUserLinks` call. Provide this to retrieve the subsequent
-                /// page. When paginating, all other parameters provided to `ListUserLinks` must match the call that
-                /// provided the page token.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual string PageToken { get; set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "list";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1alpha/{+parent}/userLinks";
-
-                /// <summary>Initializes List parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^accounts/[^/]+$",
-                    });
-                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageSize",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "pageToken",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                }
-            }
-
-            /// <summary>Updates a user link on an account or property.</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="name">Output only. Example format: properties/1234/userLinks/5678</param>
-            public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserLink body, string name)
-            {
-                return new PatchRequest(service, body, name);
-            }
-
-            /// <summary>Updates a user link on an account or property.</summary>
-            public class PatchRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserLink>
-            {
-                /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserLink body, string name) : base(service)
-                {
-                    Name = name;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>Output only. Example format: properties/1234/userLinks/5678</summary>
-                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Name { get; private set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserLink Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "patch";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "PATCH";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1alpha/{+name}";
-
-                /// <summary>Initializes Patch parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "name",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^accounts/[^/]+/userLinks/[^/]+$",
-                    });
-                }
-            }
-        }
-
         /// <summary>
         /// Marks target Account as soft-deleted (ie: "trashed") and returns it. This API does not have a method to
         /// restore soft-deleted accounts. However, they can be restored using the Trash Can UI. If the accounts are not
         /// restored before the expiration time, the account and all child resources (eg: Properties, GoogleAdsLinks,
-        /// Streams, UserLinks) will be permanently purged. https://support.google.com/analytics/answer/6154772 Returns
-        /// an error if the target is not found.
+        /// Streams, AccessBindings) will be permanently purged. https://support.google.com/analytics/answer/6154772
+        /// Returns an error if the target is not found.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the Account to soft-delete. Format: accounts/{account} Example: "accounts/100"
@@ -1591,8 +959,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// Marks target Account as soft-deleted (ie: "trashed") and returns it. This API does not have a method to
         /// restore soft-deleted accounts. However, they can be restored using the Trash Can UI. If the accounts are not
         /// restored before the expiration time, the account and all child resources (eg: Properties, GoogleAdsLinks,
-        /// Streams, UserLinks) will be permanently purged. https://support.google.com/analytics/answer/6154772 Returns
-        /// an error if the target is not found.
+        /// Streams, AccessBindings) will be permanently purged. https://support.google.com/analytics/answer/6154772
+        /// Returns an error if the target is not found.
         /// </summary>
         public class DeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleProtobufEmpty>
         {
@@ -2097,8 +1465,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             ExpandedDataSets = new ExpandedDataSetsResource(service);
             FirebaseLinks = new FirebaseLinksResource(service);
             GoogleAdsLinks = new GoogleAdsLinksResource(service);
+            RollupPropertySourceLinks = new RollupPropertySourceLinksResource(service);
             SearchAds360Links = new SearchAds360LinksResource(service);
-            UserLinks = new UserLinksResource(service);
+            SubpropertyEventFilters = new SubpropertyEventFiltersResource(service);
         }
 
         /// <summary>Gets the AccessBindings resource.</summary>
@@ -7896,6 +7265,289 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             }
         }
 
+        /// <summary>Gets the RollupPropertySourceLinks resource.</summary>
+        public virtual RollupPropertySourceLinksResource RollupPropertySourceLinks { get; }
+
+        /// <summary>The "rollupPropertySourceLinks" collection of methods.</summary>
+        public class RollupPropertySourceLinksResource
+        {
+            private const string Resource = "rollupPropertySourceLinks";
+
+            /// <summary>The service which this resource belongs to.</summary>
+            private readonly Google.Apis.Services.IClientService service;
+
+            /// <summary>Constructs a new resource.</summary>
+            public RollupPropertySourceLinksResource(Google.Apis.Services.IClientService service)
+            {
+                this.service = service;
+            }
+
+            /// <summary>
+            /// Creates a roll-up property source link. Only roll-up properties can have source links, so this method
+            /// will throw an error if used on other types of properties.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="parent">Required. Format: properties/{property_id} Example: properties/1234</param>
+            public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaRollupPropertySourceLink body, string parent)
+            {
+                return new CreateRequest(service, body, parent);
+            }
+
+            /// <summary>
+            /// Creates a roll-up property source link. Only roll-up properties can have source links, so this method
+            /// will throw an error if used on other types of properties.
+            /// </summary>
+            public class CreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaRollupPropertySourceLink>
+            {
+                /// <summary>Constructs a new Create request.</summary>
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaRollupPropertySourceLink body, string parent) : base(service)
+                {
+                    Parent = parent;
+                    Body = body;
+                    InitParameters();
+                }
+
+                /// <summary>Required. Format: properties/{property_id} Example: properties/1234</summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaRollupPropertySourceLink Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "create";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "POST";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}/rollupPropertySourceLinks";
+
+                /// <summary>Initializes Create parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Deletes a roll-up property source link. Only roll-up properties can have source links, so this method
+            /// will throw an error if used on other types of properties.
+            /// </summary>
+            /// <param name="name">
+            /// Required. Format: properties/{property_id}/rollupPropertySourceLinks/{rollup_property_source_link_id}
+            /// Example: properties/1234/rollupPropertySourceLinks/5678
+            /// </param>
+            public virtual DeleteRequest Delete(string name)
+            {
+                return new DeleteRequest(service, name);
+            }
+
+            /// <summary>
+            /// Deletes a roll-up property source link. Only roll-up properties can have source links, so this method
+            /// will throw an error if used on other types of properties.
+            /// </summary>
+            public class DeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleProtobufEmpty>
+            {
+                /// <summary>Constructs a new Delete request.</summary>
+                public DeleteRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. Format:
+                /// properties/{property_id}/rollupPropertySourceLinks/{rollup_property_source_link_id} Example:
+                /// properties/1234/rollupPropertySourceLinks/5678
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "delete";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "DELETE";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Delete parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/rollupPropertySourceLinks/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Lookup for a single roll-up property source Link. Only roll-up properties can have source links, so this
+            /// method will throw an error if used on other types of properties.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The name of the roll-up property source link to lookup. Format:
+            /// properties/{property_id}/rollupPropertySourceLinks/{rollup_property_source_link_id} Example:
+            /// properties/123/rollupPropertySourceLinks/456
+            /// </param>
+            public virtual GetRequest Get(string name)
+            {
+                return new GetRequest(service, name);
+            }
+
+            /// <summary>
+            /// Lookup for a single roll-up property source Link. Only roll-up properties can have source links, so this
+            /// method will throw an error if used on other types of properties.
+            /// </summary>
+            public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaRollupPropertySourceLink>
+            {
+                /// <summary>Constructs a new Get request.</summary>
+                public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the roll-up property source link to lookup. Format:
+                /// properties/{property_id}/rollupPropertySourceLinks/{rollup_property_source_link_id} Example:
+                /// properties/123/rollupPropertySourceLinks/456
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "get";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+name}";
+
+                /// <summary>Initializes Get parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+/rollupPropertySourceLinks/[^/]+$",
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Lists roll-up property source Links on a property. Only roll-up properties can have source links, so
+            /// this method will throw an error if used on other types of properties.
+            /// </summary>
+            /// <param name="parent">
+            /// Required. The name of the roll-up property to list roll-up property source links under. Format:
+            /// properties/{property_id} Example: properties/1234
+            /// </param>
+            public virtual ListRequest List(string parent)
+            {
+                return new ListRequest(service, parent);
+            }
+
+            /// <summary>
+            /// Lists roll-up property source Links on a property. Only roll-up properties can have source links, so
+            /// this method will throw an error if used on other types of properties.
+            /// </summary>
+            public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse>
+            {
+                /// <summary>Constructs a new List request.</summary>
+                public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
+                {
+                    Parent = parent;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The name of the roll-up property to list roll-up property source links under. Format:
+                /// properties/{property_id} Example: properties/1234
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Parent { get; private set; }
+
+                /// <summary>
+                /// Optional. The maximum number of resources to return. The service may return fewer than this value,
+                /// even if there are additional pages. If unspecified, at most 50 resources will be returned. The
+                /// maximum value is 200; (higher values will be coerced to the maximum)
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual System.Nullable<int> PageSize { get; set; }
+
+                /// <summary>
+                /// Optional. A page token, received from a previous `ListRollupPropertySourceLinks` call. Provide this
+                /// to retrieve the subsequent page. When paginating, all other parameters provided to
+                /// `ListRollupPropertySourceLinks` must match the call that provided the page token.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual string PageToken { get; set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "list";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v1alpha/{+parent}/rollupPropertySourceLinks";
+
+                /// <summary>Initializes List parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "parent",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^properties/[^/]+$",
+                    });
+                    RequestParameters.Add("pageSize", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageSize",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+        }
+
         /// <summary>Gets the SearchAds360Links resource.</summary>
         public virtual SearchAds360LinksResource SearchAds360Links { get; }
 
@@ -8219,380 +7871,54 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             }
         }
 
-        /// <summary>Gets the UserLinks resource.</summary>
-        public virtual UserLinksResource UserLinks { get; }
+        /// <summary>Gets the SubpropertyEventFilters resource.</summary>
+        public virtual SubpropertyEventFiltersResource SubpropertyEventFilters { get; }
 
-        /// <summary>The "userLinks" collection of methods.</summary>
-        public class UserLinksResource
+        /// <summary>The "subpropertyEventFilters" collection of methods.</summary>
+        public class SubpropertyEventFiltersResource
         {
-            private const string Resource = "userLinks";
+            private const string Resource = "subpropertyEventFilters";
 
             /// <summary>The service which this resource belongs to.</summary>
             private readonly Google.Apis.Services.IClientService service;
 
             /// <summary>Constructs a new resource.</summary>
-            public UserLinksResource(Google.Apis.Services.IClientService service)
+            public SubpropertyEventFiltersResource(Google.Apis.Services.IClientService service)
             {
                 this.service = service;
             }
 
-            /// <summary>
-            /// Lists all user links on an account or property, including implicit ones that come from effective
-            /// permissions granted by groups or organization admin roles. If a returned user link does not have direct
-            /// permissions, they cannot be removed from the account or property directly with the DeleteUserLink
-            /// command. They have to be removed from the group/etc that gives them permissions, which is currently only
-            /// usable/discoverable in the GA or GMP UIs.
-            /// </summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. Example format: accounts/1234</param>
-            public virtual AuditRequest Audit(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAuditUserLinksRequest body, string parent)
-            {
-                return new AuditRequest(service, body, parent);
-            }
-
-            /// <summary>
-            /// Lists all user links on an account or property, including implicit ones that come from effective
-            /// permissions granted by groups or organization admin roles. If a returned user link does not have direct
-            /// permissions, they cannot be removed from the account or property directly with the DeleteUserLink
-            /// command. They have to be removed from the group/etc that gives them permissions, which is currently only
-            /// usable/discoverable in the GA or GMP UIs.
-            /// </summary>
-            public class AuditRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAuditUserLinksResponse>
-            {
-                /// <summary>Constructs a new Audit request.</summary>
-                public AuditRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAuditUserLinksRequest body, string parent) : base(service)
-                {
-                    Parent = parent;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>Required. Example format: accounts/1234</summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaAuditUserLinksRequest Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "audit";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "POST";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1alpha/{+parent}/userLinks:audit";
-
-                /// <summary>Initializes Audit parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^properties/[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>
-            /// Creates information about multiple users' links to an account or property. This method is transactional.
-            /// If any UserLink cannot be created, none of the UserLinks will be created.
-            /// </summary>
+            /// <summary>Creates a subproperty Event Filter.</summary>
             /// <param name="body">The body of the request.</param>
             /// <param name="parent">
-            /// Required. The account or property that all user links in the request are for. This field is required.
-            /// The parent field in the CreateUserLinkRequest messages must either be empty or match this field. Example
-            /// format: accounts/1234
+            /// Required. The ordinary property for which to create a subproperty event filter. Format:
+            /// properties/property_id Example: properties/123
             /// </param>
-            public virtual BatchCreateRequest BatchCreate(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest body, string parent)
-            {
-                return new BatchCreateRequest(service, body, parent);
-            }
-
-            /// <summary>
-            /// Creates information about multiple users' links to an account or property. This method is transactional.
-            /// If any UserLink cannot be created, none of the UserLinks will be created.
-            /// </summary>
-            public class BatchCreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse>
-            {
-                /// <summary>Constructs a new BatchCreate request.</summary>
-                public BatchCreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest body, string parent) : base(service)
-                {
-                    Parent = parent;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. The account or property that all user links in the request are for. This field is
-                /// required. The parent field in the CreateUserLinkRequest messages must either be empty or match this
-                /// field. Example format: accounts/1234
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "batchCreate";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "POST";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1alpha/{+parent}/userLinks:batchCreate";
-
-                /// <summary>Initializes BatchCreate parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^properties/[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>Deletes information about multiple users' links to an account or property.</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="parent">
-            /// Required. The account or property that all user links in the request are for. The parent of all values
-            /// for user link names to delete must match this field. Example format: accounts/1234
-            /// </param>
-            public virtual BatchDeleteRequest BatchDelete(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest body, string parent)
-            {
-                return new BatchDeleteRequest(service, body, parent);
-            }
-
-            /// <summary>Deletes information about multiple users' links to an account or property.</summary>
-            public class BatchDeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleProtobufEmpty>
-            {
-                /// <summary>Constructs a new BatchDelete request.</summary>
-                public BatchDeleteRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest body, string parent) : base(service)
-                {
-                    Parent = parent;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. The account or property that all user links in the request are for. The parent of all
-                /// values for user link names to delete must match this field. Example format: accounts/1234
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "batchDelete";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "POST";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1alpha/{+parent}/userLinks:batchDelete";
-
-                /// <summary>Initializes BatchDelete parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^properties/[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>Gets information about multiple users' links to an account or property.</summary>
-            /// <param name="parent">
-            /// Required. The account or property that all user links in the request are for. The parent of all provided
-            /// values for the 'names' field must match this field. Example format: accounts/1234
-            /// </param>
-            public virtual BatchGetRequest BatchGet(string parent)
-            {
-                return new BatchGetRequest(service, parent);
-            }
-
-            /// <summary>Gets information about multiple users' links to an account or property.</summary>
-            public class BatchGetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse>
-            {
-                /// <summary>Constructs a new BatchGet request.</summary>
-                public BatchGetRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
-                {
-                    Parent = parent;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. The account or property that all user links in the request are for. The parent of all
-                /// provided values for the 'names' field must match this field. Example format: accounts/1234
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>
-                /// Required. The names of the user links to retrieve. A maximum of 1000 user links can be retrieved in
-                /// a batch. Format: accounts/{accountId}/userLinks/{userLinkId}
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("names", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual Google.Apis.Util.Repeatable<string> Names { get; set; }
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "batchGet";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "GET";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1alpha/{+parent}/userLinks:batchGet";
-
-                /// <summary>Initializes BatchGet parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^properties/[^/]+$",
-                    });
-                    RequestParameters.Add("names", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "names",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
-                }
-            }
-
-            /// <summary>Updates information about multiple users' links to an account or property.</summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="parent">
-            /// Required. The account or property that all user links in the request are for. The parent field in the
-            /// UpdateUserLinkRequest messages must either be empty or match this field. Example format: accounts/1234
-            /// </param>
-            public virtual BatchUpdateRequest BatchUpdate(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest body, string parent)
-            {
-                return new BatchUpdateRequest(service, body, parent);
-            }
-
-            /// <summary>Updates information about multiple users' links to an account or property.</summary>
-            public class BatchUpdateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse>
-            {
-                /// <summary>Constructs a new BatchUpdate request.</summary>
-                public BatchUpdateRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest body, string parent) : base(service)
-                {
-                    Parent = parent;
-                    Body = body;
-                    InitParameters();
-                }
-
-                /// <summary>
-                /// Required. The account or property that all user links in the request are for. The parent field in
-                /// the UpdateUserLinkRequest messages must either be empty or match this field. Example format:
-                /// accounts/1234
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
-                public virtual string Parent { get; private set; }
-
-                /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest Body { get; set; }
-
-                /// <summary>Returns the body of the request.</summary>
-                protected override object GetBody() => Body;
-
-                /// <summary>Gets the method name.</summary>
-                public override string MethodName => "batchUpdate";
-
-                /// <summary>Gets the HTTP method.</summary>
-                public override string HttpMethod => "POST";
-
-                /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1alpha/{+parent}/userLinks:batchUpdate";
-
-                /// <summary>Initializes BatchUpdate parameter list.</summary>
-                protected override void InitParameters()
-                {
-                    base.InitParameters();
-                    RequestParameters.Add("parent", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "parent",
-                        IsRequired = true,
-                        ParameterType = "path",
-                        DefaultValue = null,
-                        Pattern = @"^properties/[^/]+$",
-                    });
-                }
-            }
-
-            /// <summary>
-            /// Creates a user link on an account or property. If the user with the specified email already has
-            /// permissions on the account or property, then the user's existing permissions will be unioned with the
-            /// permissions specified in the new UserLink.
-            /// </summary>
-            /// <param name="body">The body of the request.</param>
-            /// <param name="parent">Required. Example format: accounts/1234</param>
-            public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserLink body, string parent)
+            public virtual CreateRequest Create(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSubpropertyEventFilter body, string parent)
             {
                 return new CreateRequest(service, body, parent);
             }
 
-            /// <summary>
-            /// Creates a user link on an account or property. If the user with the specified email already has
-            /// permissions on the account or property, then the user's existing permissions will be unioned with the
-            /// permissions specified in the new UserLink.
-            /// </summary>
-            public class CreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserLink>
+            /// <summary>Creates a subproperty Event Filter.</summary>
+            public class CreateRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSubpropertyEventFilter>
             {
                 /// <summary>Constructs a new Create request.</summary>
-                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserLink body, string parent) : base(service)
+                public CreateRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSubpropertyEventFilter body, string parent) : base(service)
                 {
                     Parent = parent;
                     Body = body;
                     InitParameters();
                 }
 
-                /// <summary>Required. Example format: accounts/1234</summary>
+                /// <summary>
+                /// Required. The ordinary property for which to create a subproperty event filter. Format:
+                /// properties/property_id Example: properties/123
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
-                /// <summary>
-                /// Optional. If set, then email the new user notifying them that they've been granted permissions to
-                /// the resource.
-                /// </summary>
-                [Google.Apis.Util.RequestParameterAttribute("notifyNewUser", Google.Apis.Util.RequestParameterType.Query)]
-                public virtual System.Nullable<bool> NotifyNewUser { get; set; }
-
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserLink Body { get; set; }
+                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSubpropertyEventFilter Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -8604,7 +7930,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 public override string HttpMethod => "POST";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1alpha/{+parent}/userLinks";
+                public override string RestPath => "v1alpha/{+parent}/subpropertyEventFilters";
 
                 /// <summary>Initializes Create parameter list.</summary>
                 protected override void InitParameters()
@@ -8618,25 +7944,21 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         DefaultValue = null,
                         Pattern = @"^properties/[^/]+$",
                     });
-                    RequestParameters.Add("notifyNewUser", new Google.Apis.Discovery.Parameter
-                    {
-                        Name = "notifyNewUser",
-                        IsRequired = false,
-                        ParameterType = "query",
-                        DefaultValue = null,
-                        Pattern = null,
-                    });
                 }
             }
 
-            /// <summary>Deletes a user link on an account or property.</summary>
-            /// <param name="name">Required. Example format: accounts/1234/userLinks/5678</param>
+            /// <summary>Deletes a subproperty event filter.</summary>
+            /// <param name="name">
+            /// Required. Resource name of the subproperty event filter to delete. Format:
+            /// properties/property_id/subpropertyEventFilters/subproperty_event_filter Example:
+            /// properties/123/subpropertyEventFilters/456
+            /// </param>
             public virtual DeleteRequest Delete(string name)
             {
                 return new DeleteRequest(service, name);
             }
 
-            /// <summary>Deletes a user link on an account or property.</summary>
+            /// <summary>Deletes a subproperty event filter.</summary>
             public class DeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleProtobufEmpty>
             {
                 /// <summary>Constructs a new Delete request.</summary>
@@ -8646,7 +7968,11 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-                /// <summary>Required. Example format: accounts/1234/userLinks/5678</summary>
+                /// <summary>
+                /// Required. Resource name of the subproperty event filter to delete. Format:
+                /// properties/property_id/subpropertyEventFilters/subproperty_event_filter Example:
+                /// properties/123/subpropertyEventFilters/456
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -8669,20 +7995,24 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^properties/[^/]+/userLinks/[^/]+$",
+                        Pattern = @"^properties/[^/]+/subpropertyEventFilters/[^/]+$",
                     });
                 }
             }
 
-            /// <summary>Gets information about a user's link to an account or property.</summary>
-            /// <param name="name">Required. Example format: accounts/1234/userLinks/5678</param>
+            /// <summary>Lookup for a single subproperty Event Filter.</summary>
+            /// <param name="name">
+            /// Required. Resource name of the subproperty event filter to lookup. Format:
+            /// properties/property_id/subpropertyEventFilters/subproperty_event_filter Example:
+            /// properties/123/subpropertyEventFilters/456
+            /// </param>
             public virtual GetRequest Get(string name)
             {
                 return new GetRequest(service, name);
             }
 
-            /// <summary>Gets information about a user's link to an account or property.</summary>
-            public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserLink>
+            /// <summary>Lookup for a single subproperty Event Filter.</summary>
+            public class GetRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSubpropertyEventFilter>
             {
                 /// <summary>Constructs a new Get request.</summary>
                 public GetRequest(Google.Apis.Services.IClientService service, string name) : base(service)
@@ -8691,7 +8021,11 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-                /// <summary>Required. Example format: accounts/1234/userLinks/5678</summary>
+                /// <summary>
+                /// Required. Resource name of the subproperty event filter to lookup. Format:
+                /// properties/property_id/subpropertyEventFilters/subproperty_event_filter Example:
+                /// properties/123/subpropertyEventFilters/456
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
@@ -8714,20 +8048,22 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^properties/[^/]+/userLinks/[^/]+$",
+                        Pattern = @"^properties/[^/]+/subpropertyEventFilters/[^/]+$",
                     });
                 }
             }
 
-            /// <summary>Lists all user links on an account or property.</summary>
-            /// <param name="parent">Required. Example format: accounts/1234</param>
+            /// <summary>List all subproperty Event Filters on a property.</summary>
+            /// <param name="parent">
+            /// Required. Resource name of the ordinary property. Format: properties/property_id Example: properties/123
+            /// </param>
             public virtual ListRequest List(string parent)
             {
                 return new ListRequest(service, parent);
             }
 
-            /// <summary>Lists all user links on an account or property.</summary>
-            public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListUserLinksResponse>
+            /// <summary>List all subproperty Event Filters on a property.</summary>
+            public class ListRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse>
             {
                 /// <summary>Constructs a new List request.</summary>
                 public ListRequest(Google.Apis.Services.IClientService service, string parent) : base(service)
@@ -8736,22 +8072,25 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                     InitParameters();
                 }
 
-                /// <summary>Required. Example format: accounts/1234</summary>
+                /// <summary>
+                /// Required. Resource name of the ordinary property. Format: properties/property_id Example:
+                /// properties/123
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Parent { get; private set; }
 
                 /// <summary>
-                /// The maximum number of user links to return. The service may return fewer than this value. If
-                /// unspecified, at most 200 user links will be returned. The maximum value is 500; values above 500
-                /// will be coerced to 500.
+                /// Optional. The maximum number of resources to return. The service may return fewer than this value,
+                /// even if there are additional pages. If unspecified, at most 50 resources will be returned. The
+                /// maximum value is 200; (higher values will be coerced to the maximum)
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageSize", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual System.Nullable<int> PageSize { get; set; }
 
                 /// <summary>
-                /// A page token, received from a previous `ListUserLinks` call. Provide this to retrieve the subsequent
-                /// page. When paginating, all other parameters provided to `ListUserLinks` must match the call that
-                /// provided the page token.
+                /// Optional. A page token, received from a previous `ListSubpropertyEventFilters` call. Provide this to
+                /// retrieve the subsequent page. When paginating, all other parameters provided to
+                /// `ListSubpropertyEventFilters` must match the call that provided the page token.
                 /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("pageToken", Google.Apis.Util.RequestParameterType.Query)]
                 public virtual string PageToken { get; set; }
@@ -8763,7 +8102,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 public override string HttpMethod => "GET";
 
                 /// <summary>Gets the REST path.</summary>
-                public override string RestPath => "v1alpha/{+parent}/userLinks";
+                public override string RestPath => "v1alpha/{+parent}/subpropertyEventFilters";
 
                 /// <summary>Initializes List parameter list.</summary>
                 protected override void InitParameters()
@@ -8796,31 +8135,47 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                 }
             }
 
-            /// <summary>Updates a user link on an account or property.</summary>
+            /// <summary>Updates a subproperty Event Filter.</summary>
             /// <param name="body">The body of the request.</param>
-            /// <param name="name">Output only. Example format: properties/1234/userLinks/5678</param>
-            public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserLink body, string name)
+            /// <param name="name">
+            /// Output only. Format:
+            /// properties/{ordinary_property_id}/subpropertyEventFilters/{sub_property_event_filter} Example:
+            /// properties/1234/subpropertyEventFilters/5678
+            /// </param>
+            public virtual PatchRequest Patch(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSubpropertyEventFilter body, string name)
             {
                 return new PatchRequest(service, body, name);
             }
 
-            /// <summary>Updates a user link on an account or property.</summary>
-            public class PatchRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserLink>
+            /// <summary>Updates a subproperty Event Filter.</summary>
+            public class PatchRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSubpropertyEventFilter>
             {
                 /// <summary>Constructs a new Patch request.</summary>
-                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserLink body, string name) : base(service)
+                public PatchRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSubpropertyEventFilter body, string name) : base(service)
                 {
                     Name = name;
                     Body = body;
                     InitParameters();
                 }
 
-                /// <summary>Output only. Example format: properties/1234/userLinks/5678</summary>
+                /// <summary>
+                /// Output only. Format:
+                /// properties/{ordinary_property_id}/subpropertyEventFilters/{sub_property_event_filter} Example:
+                /// properties/1234/subpropertyEventFilters/5678
+                /// </summary>
                 [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
                 public virtual string Name { get; private set; }
 
+                /// <summary>
+                /// Required. The list of fields to update. Field names must be in snake case (for example,
+                /// "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path
+                /// with the string "*" to match all fields.
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
                 /// <summary>Gets or sets the body of this request.</summary>
-                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaUserLink Body { get; set; }
+                Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaSubpropertyEventFilter Body { get; set; }
 
                 /// <summary>Returns the body of the request.</summary>
                 protected override object GetBody() => Body;
@@ -8844,7 +8199,15 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
                         IsRequired = true,
                         ParameterType = "path",
                         DefaultValue = null,
-                        Pattern = @"^properties/[^/]+/userLinks/[^/]+$",
+                        Pattern = @"^properties/[^/]+/subpropertyEventFilters/[^/]+$",
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
                     });
                 }
             }
@@ -8995,12 +8358,94 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
             }
         }
 
+        /// <summary>Create a roll-up property and all roll-up property source links.</summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateRollupPropertyRequest CreateRollupProperty(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest body)
+        {
+            return new CreateRollupPropertyRequest(service, body);
+        }
+
+        /// <summary>Create a roll-up property and all roll-up property source links.</summary>
+        public class CreateRollupPropertyRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCreateRollupPropertyResponse>
+        {
+            /// <summary>Constructs a new CreateRollupProperty request.</summary>
+            public CreateRollupPropertyRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "createRollupProperty";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha/properties:createRollupProperty";
+
+            /// <summary>Initializes CreateRollupProperty parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
+        /// <summary>
+        /// Create a subproperty and a subproperty event filter that applies to the created subproperty.
+        /// </summary>
+        /// <param name="body">The body of the request.</param>
+        public virtual CreateSubpropertyRequest CreateSubproperty(Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCreateSubpropertyRequest body)
+        {
+            return new CreateSubpropertyRequest(service, body);
+        }
+
+        /// <summary>
+        /// Create a subproperty and a subproperty event filter that applies to the created subproperty.
+        /// </summary>
+        public class CreateSubpropertyRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCreateSubpropertyResponse>
+        {
+            /// <summary>Constructs a new CreateSubproperty request.</summary>
+            public CreateSubpropertyRequest(Google.Apis.Services.IClientService service, Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCreateSubpropertyRequest body) : base(service)
+            {
+                Body = body;
+                InitParameters();
+            }
+
+            /// <summary>Gets or sets the body of this request.</summary>
+            Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaCreateSubpropertyRequest Body { get; set; }
+
+            /// <summary>Returns the body of the request.</summary>
+            protected override object GetBody() => Body;
+
+            /// <summary>Gets the method name.</summary>
+            public override string MethodName => "createSubproperty";
+
+            /// <summary>Gets the HTTP method.</summary>
+            public override string HttpMethod => "POST";
+
+            /// <summary>Gets the REST path.</summary>
+            public override string RestPath => "v1alpha/properties:createSubproperty";
+
+            /// <summary>Initializes CreateSubproperty parameter list.</summary>
+            protected override void InitParameters()
+            {
+                base.InitParameters();
+            }
+        }
+
         /// <summary>
         /// Marks target Property as soft-deleted (ie: "trashed") and returns it. This API does not have a method to
         /// restore soft-deleted properties. However, they can be restored using the Trash Can UI. If the properties are
         /// not restored before the expiration time, the Property and all child resources (eg: GoogleAdsLinks, Streams,
-        /// UserLinks) will be permanently purged. https://support.google.com/analytics/answer/6154772 Returns an error
-        /// if the target is not found, or is not a GA4 Property.
+        /// AccessBindings) will be permanently purged. https://support.google.com/analytics/answer/6154772 Returns an
+        /// error if the target is not found, or is not a GA4 Property.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the Property to soft-delete. Format: properties/{property_id} Example:
@@ -9015,8 +8460,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha
         /// Marks target Property as soft-deleted (ie: "trashed") and returns it. This API does not have a method to
         /// restore soft-deleted properties. However, they can be restored using the Trash Can UI. If the properties are
         /// not restored before the expiration time, the Property and all child resources (eg: GoogleAdsLinks, Streams,
-        /// UserLinks) will be permanently purged. https://support.google.com/analytics/answer/6154772 Returns an error
-        /// if the target is not found, or is not a GA4 Property.
+        /// AccessBindings) will be permanently purged. https://support.google.com/analytics/answer/6154772 Returns an
+        /// error if the target is not found, or is not a GA4 Property.
         /// </summary>
         public class DeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data.GoogleAnalyticsAdminV1alphaProperty>
         {
@@ -10996,75 +10441,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Read-only resource used to summarize a principal's effective roles.</summary>
-    public class GoogleAnalyticsAdminV1alphaAuditUserLink : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Roles directly assigned to this user for this entity. Format: predefinedRoles/viewer Excludes roles that are
-        /// inherited from an account (if this is for a property), group, or organization admin role.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("directRoles")]
-        public virtual System.Collections.Generic.IList<string> DirectRoles { get; set; }
-
-        /// <summary>
-        /// Union of all permissions a user has at this account or property (includes direct permissions,
-        /// group-inherited permissions, etc.). Format: predefinedRoles/viewer
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("effectiveRoles")]
-        public virtual System.Collections.Generic.IList<string> EffectiveRoles { get; set; }
-
-        /// <summary>Email address of the linked user</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
-        public virtual string EmailAddress { get; set; }
-
-        /// <summary>Example format: properties/1234/userLinks/5678</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for AuditUserLinks RPC.</summary>
-    public class GoogleAnalyticsAdminV1alphaAuditUserLinksRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// The maximum number of user links to return. The service may return fewer than this value. If unspecified, at
-        /// most 1000 user links will be returned. The maximum value is 5000; values above 5000 will be coerced to 5000.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pageSize")]
-        public virtual System.Nullable<int> PageSize { get; set; }
-
-        /// <summary>
-        /// A page token, received from a previous `AuditUserLinks` call. Provide this to retrieve the subsequent page.
-        /// When paginating, all other parameters provided to `AuditUserLinks` must match the call that provided the
-        /// page token.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("pageToken")]
-        public virtual string PageToken { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for AuditUserLinks RPC.</summary>
-    public class GoogleAnalyticsAdminV1alphaAuditUserLinksResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
-        /// subsequent pages.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
-        public virtual string NextPageToken { get; set; }
-
-        /// <summary>List of AuditUserLinks. These will be ordered stably, but in an arbitrary order.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userLinks")]
-        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaAuditUserLink> UserLinks { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Request message for BatchCreateAccessBindings RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11090,39 +10466,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for BatchCreateUserLinks RPC.</summary>
-    public class GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Optional. If set, then email the new users notifying them that they've been granted permissions to the
-        /// resource. Regardless of whether this is set or not, notify_new_user field inside each individual request is
-        /// ignored.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("notifyNewUsers")]
-        public virtual System.Nullable<bool> NotifyNewUsers { get; set; }
-
-        /// <summary>
-        /// Required. The requests specifying the user links to create. A maximum of 1000 user links can be created in a
-        /// batch.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
-        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaCreateUserLinkRequest> Requests { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for BatchCreateUserLinks RPC.</summary>
-    public class GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The user links created.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userLinks")]
-        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaUserLink> UserLinks { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Request message for BatchDeleteAccessBindings RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -11137,37 +10480,12 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Request message for BatchDeleteUserLinks RPC.</summary>
-    public class GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The requests specifying the user links to update. A maximum of 1000 user links can be updated in a
-        /// batch.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
-        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest> Requests { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Response message for BatchGetAccessBindings RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>The requested access bindings.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessBindings")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaAccessBinding> AccessBindings { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for BatchGetUserLinks RPC.</summary>
-    public class GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The requested user links.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userLinks")]
-        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaUserLink> UserLinks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11193,31 +10511,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>The access bindings updated.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessBindings")]
         public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaAccessBinding> AccessBindings { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for BatchUpdateUserLinks RPC.</summary>
-    public class GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Required. The requests specifying the user links to update. A maximum of 1000 user links can be updated in a
-        /// batch.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("requests")]
-        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest> Requests { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Response message for BatchUpdateUserLinks RPC.</summary>
-    public class GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>The user links updated.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userLinks")]
-        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaUserLink> UserLinks { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -11822,28 +11115,70 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Request message for CreateUserLink RPC. Users can have multiple email addresses associated with their Google
-    /// account, and one of these email addresses is the "primary" email address. Any of the email addresses associated
-    /// with a Google account may be used for a new UserLink, but the returned UserLink will always contain the
-    /// "primary" email address. As a result, the input and output email address for this request may differ.
-    /// </summary>
-    public class GoogleAnalyticsAdminV1alphaCreateUserLinkRequest : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Request message for CreateRollupProperty RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The roll-up property to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollupProperty")]
+        public virtual GoogleAnalyticsAdminV1alphaProperty RollupProperty { get; set; }
+
+        /// <summary>
+        /// Optional. The resource names of properties that will be sources to the created roll-up property.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceProperties")]
+        public virtual System.Collections.Generic.IList<string> SourceProperties { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for CreateRollupProperty RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaCreateRollupPropertyResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The created roll-up property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollupProperty")]
+        public virtual GoogleAnalyticsAdminV1alphaProperty RollupProperty { get; set; }
+
+        /// <summary>The created roll-up property source links.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollupPropertySourceLinks")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaRollupPropertySourceLink> RollupPropertySourceLinks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Request message for CreateSubproperty RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaCreateSubpropertyRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Optional. If set, then email the new user notifying them that they've been granted permissions to the
-        /// resource.
+        /// Required. The ordinary property for which to create a subproperty. Format: properties/property_id Example:
+        /// properties/123
         /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("notifyNewUser")]
-        public virtual System.Nullable<bool> NotifyNewUser { get; set; }
-
-        /// <summary>Required. Example format: accounts/1234</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("parent")]
         public virtual string Parent { get; set; }
 
-        /// <summary>Required. The user link to create.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userLink")]
-        public virtual GoogleAnalyticsAdminV1alphaUserLink UserLink { get; set; }
+        /// <summary>Required. The subproperty to create.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subproperty")]
+        public virtual GoogleAnalyticsAdminV1alphaProperty Subproperty { get; set; }
+
+        /// <summary>Optional. The subproperty event filter to create on an ordinary property.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subpropertyEventFilter")]
+        public virtual GoogleAnalyticsAdminV1alphaSubpropertyEventFilter SubpropertyEventFilter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>Response message for CreateSubproperty RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaCreateSubpropertyResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The created subproperty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subproperty")]
+        public virtual GoogleAnalyticsAdminV1alphaProperty Subproperty { get; set; }
+
+        /// <summary>The created subproperty event filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subpropertyEventFilter")]
+        public virtual GoogleAnalyticsAdminV1alphaSubpropertyEventFilter SubpropertyEventFilter { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -12252,17 +11587,6 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("tagId")]
         public virtual string TagId { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for DeleteUserLink RPC.</summary>
-    public class GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. Example format: accounts/1234/userLinks/5678</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13389,6 +12713,24 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Response message for ListRollupPropertySourceLinks RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
+        /// subsequent pages.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
+        public virtual string NextPageToken { get; set; }
+
+        /// <summary>List of RollupPropertySourceLinks.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("rollupPropertySourceLinks")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaRollupPropertySourceLink> RollupPropertySourceLinks { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Response message for ListSKAdNetworkConversionValueSchemas RPC</summary>
     public class GoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchemasResponse : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -13426,8 +12768,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Response message for ListUserLinks RPC.</summary>
-    public class GoogleAnalyticsAdminV1alphaListUserLinksResponse : Google.Apis.Requests.IDirectResponseSchema
+    /// <summary>Response message for ListSubpropertyEventFilter RPC.</summary>
+    public class GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
         /// A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no
@@ -13436,9 +12778,9 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         [Newtonsoft.Json.JsonPropertyAttribute("nextPageToken")]
         public virtual string NextPageToken { get; set; }
 
-        /// <summary>List of UserLinks. These will be ordered stably, but in an arbitrary order.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userLinks")]
-        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaUserLink> UserLinks { get; set; }
+        /// <summary>List of subproperty event filters.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("subpropertyEventFilters")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaSubpropertyEventFilter> SubpropertyEventFilters { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -13726,8 +13068,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
 
         /// <summary>
         /// Immutable. The property type for this Property resource. When creating a property, if the type is
-        /// "PROPERTY_TYPE_UNSPECIFIED", then "ORDINARY_PROPERTY" will be implied. "SUBPROPERTY" and "ROLLUP_PROPERTY"
-        /// types cannot yet be created with the Google Analytics Admin API.
+        /// "PROPERTY_TYPE_UNSPECIFIED", then "ORDINARY_PROPERTY" will be implied.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("propertyType")]
         public virtual string PropertyType { get; set; }
@@ -13839,6 +13180,27 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         /// <summary>The param to be passed in the ToS link.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountTicketId")]
         public virtual string AccountTicketId { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A link that references a source property under the parent rollup property.</summary>
+    public class GoogleAnalyticsAdminV1alphaRollupPropertySourceLink : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Output only. Resource name of this RollupPropertySourceLink. Format:
+        /// 'properties/{property_id}/rollupPropertySourceLinks/{rollup_property_source_link}' Format:
+        /// 'properties/123/rollupPropertySourceLinks/456'
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>
+        /// Immutable. Resource name of the source property. Format: properties/{property_id} Example: "properties/789"
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("sourceProperty")]
+        public virtual string SourceProperty { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -14242,47 +13604,134 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1alpha.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>A resource message representing a GA4 Subproperty event filter.</summary>
+    public class GoogleAnalyticsAdminV1alphaSubpropertyEventFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Immutable. Resource name of the Subproperty that uses this filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("applyToProperty")]
+        public virtual string ApplyToProperty { get; set; }
+
+        /// <summary>
+        /// Required. Unordered list. Filter clauses that define the SubpropertyEventFilter. All clauses are AND'ed
+        /// together to determine what data is sent to the subproperty.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterClauses")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause> FilterClauses { get; set; }
+
+        /// <summary>
+        /// Output only. Format: properties/{ordinary_property_id}/subpropertyEventFilters/{sub_property_event_filter}
+        /// Example: properties/1234/subpropertyEventFilters/5678
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// A clause for defining a filter. A filter may be inclusive (events satisfying the filter clause are included in
+    /// the subproperty's data) or exclusive (events satisfying the filter clause are excluded from the subproperty's
+    /// data).
+    /// </summary>
+    public class GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The type for the filter clause.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterClauseType")]
+        public virtual string FilterClauseType { get; set; }
+
+        /// <summary>Required. The logical expression for what events are sent to the subproperty.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterExpression")]
+        public virtual GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression FilterExpression { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A specific filter expression</summary>
+    public class GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. The field that is being filtered.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("fieldName")]
+        public virtual string FieldName { get; set; }
+
+        /// <summary>A filter for null values.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("nullFilter")]
+        public virtual System.Nullable<bool> NullFilter { get; set; }
+
+        /// <summary>A filter for a string-type dimension that matches a particular pattern.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("stringFilter")]
+        public virtual GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter StringFilter { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A filter for a string-type dimension that matches a particular pattern.</summary>
+    public class GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Optional. If true, the string value is case sensitive. If false, the match is case-insensitive.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("caseSensitive")]
+        public virtual System.Nullable<bool> CaseSensitive { get; set; }
+
+        /// <summary>Required. The match type for the string filter.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("matchType")]
+        public virtual string MatchType { get; set; }
+
+        /// <summary>Required. The string value used for the matching.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("value")]
+        public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A logical expression of Subproperty event filters.</summary>
+    public class GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Creates a filter that matches a specific event. This cannot be set on the top level
+        /// SubpropertyEventFilterExpression.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterCondition")]
+        public virtual GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition FilterCondition { get; set; }
+
+        /// <summary>
+        /// A filter expression to be NOT'ed (inverted, complemented). It can only include a filter. This cannot be set
+        /// on the top level SubpropertyEventFilterExpression.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("notExpression")]
+        public virtual GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression NotExpression { get; set; }
+
+        /// <summary>
+        /// A list of expressions to OR’ed together. Must only contain not_expression or filter_condition expressions.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("orGroup")]
+        public virtual GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList OrGroup { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>A list of Subproperty event filter expressions.</summary>
+    public class GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpressionList : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Required. Unordered list. A list of Subproperty event filter expressions</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("filterExpressions")]
+        public virtual System.Collections.Generic.IList<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression> FilterExpressions { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Request message for UpdateAccessBinding RPC.</summary>
     public class GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Required. The access binding to update.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accessBinding")]
         public virtual GoogleAnalyticsAdminV1alphaAccessBinding AccessBinding { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>Request message for UpdateUserLink RPC.</summary>
-    public class GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>Required. The user link to update.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("userLink")]
-        public virtual GoogleAnalyticsAdminV1alphaUserLink UserLink { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
-    /// <summary>A resource message representing a user's permissions on an Account or Property resource.</summary>
-    public class GoogleAnalyticsAdminV1alphaUserLink : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// Roles directly assigned to this user for this account or property. Valid values: predefinedRoles/viewer
-        /// predefinedRoles/analyst predefinedRoles/editor predefinedRoles/admin predefinedRoles/no-cost-data
-        /// predefinedRoles/no-revenue-data Excludes roles that are inherited from a higher-level entity, group, or
-        /// organization admin role. A UserLink that is updated to have an empty list of direct_roles will be deleted.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("directRoles")]
-        public virtual System.Collections.Generic.IList<string> DirectRoles { get; set; }
-
-        /// <summary>Immutable. Email address of the user to link</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("emailAddress")]
-        public virtual string EmailAddress { get; set; }
-
-        /// <summary>Output only. Example format: properties/1234/userLinks/5678</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("name")]
-        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

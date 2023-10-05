@@ -1411,31 +1411,6 @@ namespace Google.Apis.ChromePolicy.v1
 }
 namespace Google.Apis.ChromePolicy.v1.Data
 {
-    public class ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle : Google.Apis.Requests.IDirectResponseSchema
-    {
-        /// <summary>
-        /// In the event that this policy was deprecated in favor of another policy, the fully qualified namespace(s) of
-        /// the new policies as they will show in PolicyAPI.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("deprecatedInFavorOf")]
-        public virtual System.Collections.Generic.IList<string> DeprecatedInFavorOf { get; set; }
-
-        /// <summary>Description about current life cycle.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("description")]
-        public virtual string Description { get; set; }
-
-        /// <summary>End supporting date for current policy.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("endSupport")]
-        public virtual GoogleTypeDate EndSupport { get; set; }
-
-        /// <summary>Indicate current life cycle stage of the policy API.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("policyApiLifecycleStage")]
-        public virtual string PolicyApiLifecycleStage { get; set; }
-
-        /// <summary>The ETag of the item.</summary>
-        public virtual string ETag { get; set; }
-    }
-
     /// <summary>Additional key names that will be used to identify the target of the policy value.</summary>
     public class GoogleChromePolicyVersionsV1AdditionalTargetKeyName : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1826,6 +1801,36 @@ namespace Google.Apis.ChromePolicy.v1.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Lifecycle information.</summary>
+    public class GoogleChromePolicyVersionsV1PolicyApiLifecycle : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// In the event that this policy was deprecated in favor of another policy, the fully qualified namespace(s) of
+        /// the new policies as they will show in PolicyAPI. Could only be set if policy_api_lifecycle_stage is
+        /// API_DEPRECATED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("deprecatedInFavorOf")]
+        public virtual System.Collections.Generic.IList<string> DeprecatedInFavorOf { get; set; }
+
+        /// <summary>Description about current life cycle.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("description")]
+        public virtual string Description { get; set; }
+
+        /// <summary>
+        /// End supporting date for current policy. Attempting to modify a policy after its end support date will result
+        /// in a Bad Request (400 error). Could only be set if policy_api_lifecycle_stage is API_DEPRECATED.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("endSupport")]
+        public virtual GoogleTypeDate EndSupport { get; set; }
+
+        /// <summary>Indicates current life cycle stage of the policy API.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("policyApiLifecycleStage")]
+        public virtual string PolicyApiLifecycleStage { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Error information for a modification request of a specific policy on a specific target.</summary>
     public class GoogleChromePolicyVersionsV1PolicyModificationError : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -1922,7 +1927,7 @@ namespace Google.Apis.ChromePolicy.v1.Data
 
         /// <summary>Output only. Current lifecycle information.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyApiLifecycle")]
-        public virtual ChromeCrosDpanelAutosettingsProtoPolicyApiLifecycle PolicyApiLifecycle { get; set; }
+        public virtual GoogleChromePolicyVersionsV1PolicyApiLifecycle PolicyApiLifecycle { get; set; }
 
         /// <summary>Output only. Description about the policy schema for user consumption.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("policyDescription")]

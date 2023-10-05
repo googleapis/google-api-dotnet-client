@@ -5379,6 +5379,10 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveSeverity")]
         public virtual string EffectiveSeverity { get; set; }
 
+        /// <summary>Occurrence-specific extra details about the vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extraDetails")]
+        public virtual string ExtraDetails { get; set; }
+
         /// <summary>Output only. A detailed description of this vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("longDescription")]
         public virtual string LongDescription { get; set; }
@@ -7328,10 +7332,6 @@ namespace Google.Apis.ContainerAnalysis.v1beta1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("details")]
         public virtual System.Collections.Generic.IList<Detail> Details { get; set; }
-
-        /// <summary>Occurrence-specific extra details about the vulnerability.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("extraDetails")]
-        public virtual string ExtraDetails { get; set; }
 
         /// <summary>Note provider assigned impact of the vulnerability.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("severity")]

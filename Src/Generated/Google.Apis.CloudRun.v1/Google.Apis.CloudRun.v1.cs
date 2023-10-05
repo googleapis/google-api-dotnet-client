@@ -6102,7 +6102,7 @@ namespace Google.Apis.CloudRun.v1.Data
     /// <summary>EnvVar represents an environment variable present in a Container.</summary>
     public class EnvVar : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Required. Name of the environment variable. Must be a C_IDENTIFIER.</summary>
+        /// <summary>Required. Name of the environment variable.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 

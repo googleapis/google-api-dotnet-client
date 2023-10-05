@@ -3592,8 +3592,8 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual PackageNameList ExemptionsToShowWorkContactsInPersonalProfile { get; set; }
 
         /// <summary>
-        /// Whether contacts stored in the work profile can be shown in personal profile contact searches and incoming
-        /// calls.
+        /// Whether personal apps can access contacts stored in the work profile.See also
+        /// exemptions_to_show_work_contacts_in_personal_profile.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("showWorkContactsInPersonalProfile")]
         public virtual string ShowWorkContactsInPersonalProfile { get; set; }
@@ -4047,6 +4047,16 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// <summary>Controls whether airplane mode can be toggled by the user or not.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("airplaneModeState")]
         public virtual string AirplaneModeState { get; set; }
+
+        /// <summary>Controls whether cellular 2G setting can be toggled by the user or not.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("cellularTwoGState")]
+        public virtual string CellularTwoGState { get; set; }
+
+        /// <summary>
+        /// Controls the state of the ultra wideband setting and whether the user can toggle it on or off.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("ultraWidebandState")]
+        public virtual string UltraWidebandState { get; set; }
 
         /// <summary>Controls current state of Wi-Fi and if user can change its state.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("wifiState")]
@@ -6428,7 +6438,19 @@ namespace Google.Apis.AndroidManagement.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>A resource containing sign in details for an enterprise.</summary>
+    /// <summary>
+    /// A resource containing sign in details for an enterprise. Use enterprises to manage SigninDetails for a given
+    /// enterprise. For an enterprise, we can have any number of SigninDetails that is uniquely identified by
+    /// combination of the following three fields (signin_url, allow_personal_usage, token_tag). One cannot create two
+    /// SigninDetails with the same (signin_url, allow_personal_usage, token_tag). (token_tag is an optional field)
+    /// Patch: The operation updates the current list of SigninDetails with the new list of SigninDetails. If the stored
+    /// SigninDetail configuration is passed, it returns the same signin_enrollment_token and qr_code. If we pass
+    /// multiple identical SigninDetail configurations that are not stored, it will store the first one amongst those
+    /// SigninDetail configurations and if the configuration already exists we cannot request it more than once in a
+    /// particular patch API call, otherwise it will give a duplicate key error and the whole operation will fail. If we
+    /// remove certain SigninDetail configuration from the request then it will get removed from the storage. And then
+    /// we can request for another signin_enrollment_token and qr_code for the same SigninDetail configuration.
+    /// </summary>
     public class SigninDetail : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
@@ -6466,6 +6488,10 @@ namespace Google.Apis.AndroidManagement.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("signinUrl")]
         public virtual string SigninUrl { get; set; }
+
+        /// <summary>An EMM-specified tag to distinguish between instances of SigninDetail.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("tokenTag")]
+        public virtual string TokenTag { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

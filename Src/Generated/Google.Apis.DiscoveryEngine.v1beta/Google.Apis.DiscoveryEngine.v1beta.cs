@@ -10293,6 +10293,9 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         [Newtonsoft.Json.JsonPropertyAttribute("facets")]
         public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSearchResponseFacet> Facets { get; set; }
 
+        [Newtonsoft.Json.JsonPropertyAttribute("geoSearchDebugInfo")]
+        public virtual System.Collections.Generic.IList<GoogleCloudDiscoveryengineV1betaSearchResponseGeoSearchDebugInfo> GeoSearchDebugInfo { get; set; }
+
         /// <summary>Guided search result.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("guidedSearchResult")]
         public virtual GoogleCloudDiscoveryengineV1betaSearchResponseGuidedSearchResult GuidedSearchResult { get; set; }
@@ -10375,6 +10378,23 @@ namespace Google.Apis.DiscoveryEngine.v1beta.Data
         /// <summary>Text value of a facet, such as "Black" for facet "colors".</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("value")]
         public virtual string Value { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Debug information specifically related to forward geocoding issues arising from Geolocation Search.
+    /// </summary>
+    public class GoogleCloudDiscoveryengineV1betaSearchResponseGeoSearchDebugInfo : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The error produced.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("errorMessage")]
+        public virtual string ErrorMessage { get; set; }
+
+        /// <summary>The address from which forward geocoding ingestion produced issues.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("originalAddressQuery")]
+        public virtual string OriginalAddressQuery { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

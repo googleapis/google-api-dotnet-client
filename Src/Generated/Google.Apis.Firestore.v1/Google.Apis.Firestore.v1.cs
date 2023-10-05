@@ -5355,9 +5355,10 @@ namespace Google.Apis.Firestore.v1.Data
 
         /// <summary>
         /// The timestamp that corresponds to the version of the database to be exported. The timestamp must be rounded
-        /// to the minute, in the past, and not older than 1 hour. If specified, then the exported documents will
-        /// represent a consistent view of the database at the provided time. Otherwise, there are no guarantees about
-        /// the consistency of the exported documents.
+        /// to the minute, in the past, and not older than 5 days. Please choose a reasonable timestamp based on prior
+        /// knowledge on how long exports take as data at provided snapshot timestamp can expire during export. If
+        /// specified, then the exported documents will represent a consistent view of the database at the provided
+        /// time. Otherwise, there are no guarantees about the consistency of the exported documents.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("snapshotTime")]
         public virtual string SnapshotTimeRaw
@@ -5558,6 +5559,13 @@ namespace Google.Apis.Firestore.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("ttlConfigDelta")]
         public virtual GoogleFirestoreAdminV1TtlConfigDelta TtlConfigDelta { get; set; }
 
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>An index that stores vectors in a flat data structure, and supports exhaustive search.</summary>
+    public class GoogleFirestoreAdminV1FlatIndex : Google.Apis.Requests.IDirectResponseSchema
+    {
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -5809,6 +5817,10 @@ namespace Google.Apis.Firestore.v1.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("order")]
         public virtual string Order { get; set; }
+
+        /// <summary>Indicates that this field supports nearest neighbors and distance operations on vector.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("vectorConfig")]
+        public virtual GoogleFirestoreAdminV1VectorConfig VectorConfig { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -6118,7 +6130,7 @@ namespace Google.Apis.Firestore.v1.Data
     public class GoogleFirestoreAdminV1RestoreDatabaseRequest : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>
-        /// Required. Backup to restore from. Must be from the same project as the parent. Format is:
+        /// Backup to restore from. Must be from the same project as the parent. Format is:
         /// `projects/{project_id}/locations/{location}/backups/{backup}`
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("backup")]
@@ -6188,6 +6200,24 @@ namespace Google.Apis.Firestore.v1.Data
     /// <summary>Metadata related to the update database operation.</summary>
     public class GoogleFirestoreAdminV1UpdateDatabaseMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The index configuration to support vector search operations</summary>
+    public class GoogleFirestoreAdminV1VectorConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Required. The vector dimension this configuration applies to. The resulting index will only include vectors
+        /// of this dimension, and can be used for vector search with the same dimension.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("dimension")]
+        public virtual System.Nullable<int> Dimension { get; set; }
+
+        /// <summary>Indicates the vector index is a flat index.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("flat")]
+        public virtual GoogleFirestoreAdminV1FlatIndex Flat { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -6606,7 +6636,7 @@ namespace Google.Apis.Firestore.v1.Data
         /// the query supplied to PartitionQuery. For example, if a PartitionQuery request returns partition cursors A
         /// and B, running the following three queries will return the entire result set of the original query: * query,
         /// end_at A * query, start_at A, end_at B * query, start_at B An empty result may indicate that the query has
-        /// too few results to be partitioned.
+        /// too few results to be partitioned, or that the query is not yet supported for partitioning.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitions")]
         public virtual System.Collections.Generic.IList<Cursor> Partitions { get; set; }

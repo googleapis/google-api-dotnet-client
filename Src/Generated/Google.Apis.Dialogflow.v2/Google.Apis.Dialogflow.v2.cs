@@ -20049,6 +20049,34 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata returned for the Intents.ExportIntents long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3ExportIntentsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Intents.ExportIntents.</summary>
+    public class GoogleCloudDialogflowCxV3ExportIntentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Uncompressed byte content for intents. This field is populated only if `intents_content_inline` is set to
+        /// true in ExportIntentsRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentsContent")]
+        public virtual GoogleCloudDialogflowCxV3InlineDestination IntentsContent { get; set; }
+
+        /// <summary>
+        /// The URI to a file containing the exported intents. This field is populated only if `intents_uri` is
+        /// specified in ExportIntentsRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentsUri")]
+        public virtual string IntentsUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata returned for the TestCases.ExportTestCases long running operation. This message currently has no
     /// fields.
@@ -20371,6 +20399,50 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata returned for the Intents.ImportIntents long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3ImportIntentsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Intents.ImportIntents.</summary>
+    public class GoogleCloudDialogflowCxV3ImportIntentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Info which resources have conflicts when REPORT_CONFLICT merge_option is set in ImportIntentsRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conflictingResources")]
+        public virtual GoogleCloudDialogflowCxV3ImportIntentsResponseConflictingResources ConflictingResources { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the imported intents. Format: `projects//locations//agents//intents/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intents")]
+        public virtual System.Collections.Generic.IList<string> Intents { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Conflicting resources detected during the import process. Only filled when REPORT_CONFLICT is set in the request
+    /// and there are conflicts in the display names.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3ImportIntentsResponseConflictingResources : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Display names of conflicting entities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityDisplayNames")]
+        public virtual System.Collections.Generic.IList<string> EntityDisplayNames { get; set; }
+
+        /// <summary>Display names of conflicting intents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentDisplayNames")]
+        public virtual System.Collections.Generic.IList<string> IntentDisplayNames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata returned for the TestCases.ImportTestCases long running operation.</summary>
     public class GoogleCloudDialogflowCxV3ImportTestCasesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -20390,6 +20462,20 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("names")]
         public virtual System.Collections.Generic.IList<string> Names { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Inline destination for a Dialogflow operation that writes or exports objects (e.g. intents) outside of
+    /// Dialogflow.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3InlineDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The uncompressed byte content for the objects. Only populated in responses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
@@ -22523,6 +22609,34 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata returned for the Intents.ExportIntents long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ExportIntentsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Intents.ExportIntents.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ExportIntentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Uncompressed byte content for intents. This field is populated only if `intents_content_inline` is set to
+        /// true in ExportIntentsRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentsContent")]
+        public virtual GoogleCloudDialogflowCxV3beta1InlineDestination IntentsContent { get; set; }
+
+        /// <summary>
+        /// The URI to a file containing the exported intents. This field is populated only if `intents_uri` is
+        /// specified in ExportIntentsRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentsUri")]
+        public virtual string IntentsUri { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>
     /// Metadata returned for the TestCases.ExportTestCases long running operation. This message currently has no
     /// fields.
@@ -22845,6 +22959,50 @@ namespace Google.Apis.Dialogflow.v2.Data
         public virtual string ETag { get; set; }
     }
 
+    /// <summary>Metadata returned for the Intents.ImportIntents long running operation.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ImportIntentsMetadata : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>The response message for Intents.ImportIntents.</summary>
+    public class GoogleCloudDialogflowCxV3beta1ImportIntentsResponse : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Info which resources have conflicts when REPORT_CONFLICT merge_option is set in ImportIntentsRequest.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("conflictingResources")]
+        public virtual GoogleCloudDialogflowCxV3beta1ImportIntentsResponseConflictingResources ConflictingResources { get; set; }
+
+        /// <summary>
+        /// The unique identifier of the imported intents. Format: `projects//locations//agents//intents/`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intents")]
+        public virtual System.Collections.Generic.IList<string> Intents { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Conflicting resources detected during the import process. Only filled when REPORT_CONFLICT is set in the request
+    /// and there are conflicts in the display names.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3beta1ImportIntentsResponseConflictingResources : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Display names of conflicting entities.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("entityDisplayNames")]
+        public virtual System.Collections.Generic.IList<string> EntityDisplayNames { get; set; }
+
+        /// <summary>Display names of conflicting intents.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("intentDisplayNames")]
+        public virtual System.Collections.Generic.IList<string> IntentDisplayNames { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
     /// <summary>Metadata returned for the TestCases.ImportTestCases long running operation.</summary>
     public class GoogleCloudDialogflowCxV3beta1ImportTestCasesMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -22864,6 +23022,20 @@ namespace Google.Apis.Dialogflow.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("names")]
         public virtual System.Collections.Generic.IList<string> Names { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// Inline destination for a Dialogflow operation that writes or exports objects (e.g. intents) outside of
+    /// Dialogflow.
+    /// </summary>
+    public class GoogleCloudDialogflowCxV3beta1InlineDestination : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>Output only. The uncompressed byte content for the objects. Only populated in responses.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("content")]
+        public virtual string Content { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

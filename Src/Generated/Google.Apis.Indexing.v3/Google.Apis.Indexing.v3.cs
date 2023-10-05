@@ -55,14 +55,14 @@ namespace Google.Apis.Indexing.v3
         /// <summary>Gets the batch base path; <c>null</c> if unspecified.</summary>
         public override string BatchPath => "batch";
 
-        /// <summary>Available OAuth 2.0 scopes for use with the Indexing API.</summary>
+        /// <summary>Available OAuth 2.0 scopes for use with the Web Search Indexing API.</summary>
         public class Scope
         {
             /// <summary>Submit data to Google for indexing</summary>
             public static string Indexing = "https://www.googleapis.com/auth/indexing";
         }
 
-        /// <summary>Available OAuth 2.0 scope constants for use with the Indexing API.</summary>
+        /// <summary>Available OAuth 2.0 scope constants for use with the Web Search Indexing API.</summary>
         public static class ScopeConstants
         {
             /// <summary>Submit data to Google for indexing</summary>

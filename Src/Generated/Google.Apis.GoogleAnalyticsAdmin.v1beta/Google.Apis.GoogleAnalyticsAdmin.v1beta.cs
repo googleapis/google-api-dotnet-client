@@ -364,8 +364,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
         /// Marks target Account as soft-deleted (ie: "trashed") and returns it. This API does not have a method to
         /// restore soft-deleted accounts. However, they can be restored using the Trash Can UI. If the accounts are not
         /// restored before the expiration time, the account and all child resources (eg: Properties, GoogleAdsLinks,
-        /// Streams, UserLinks) will be permanently purged. https://support.google.com/analytics/answer/6154772 Returns
-        /// an error if the target is not found.
+        /// Streams, AccessBindings) will be permanently purged. https://support.google.com/analytics/answer/6154772
+        /// Returns an error if the target is not found.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the Account to soft-delete. Format: accounts/{account} Example: "accounts/100"
@@ -379,8 +379,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
         /// Marks target Account as soft-deleted (ie: "trashed") and returns it. This API does not have a method to
         /// restore soft-deleted accounts. However, they can be restored using the Trash Can UI. If the accounts are not
         /// restored before the expiration time, the account and all child resources (eg: Properties, GoogleAdsLinks,
-        /// Streams, UserLinks) will be permanently purged. https://support.google.com/analytics/answer/6154772 Returns
-        /// an error if the target is not found.
+        /// Streams, AccessBindings) will be permanently purged. https://support.google.com/analytics/answer/6154772
+        /// Returns an error if the target is not found.
         /// </summary>
         public class DeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleProtobufEmpty>
         {
@@ -3102,8 +3102,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
         /// Marks target Property as soft-deleted (ie: "trashed") and returns it. This API does not have a method to
         /// restore soft-deleted properties. However, they can be restored using the Trash Can UI. If the properties are
         /// not restored before the expiration time, the Property and all child resources (eg: GoogleAdsLinks, Streams,
-        /// UserLinks) will be permanently purged. https://support.google.com/analytics/answer/6154772 Returns an error
-        /// if the target is not found, or is not a GA4 Property.
+        /// AccessBindings) will be permanently purged. https://support.google.com/analytics/answer/6154772 Returns an
+        /// error if the target is not found, or is not a GA4 Property.
         /// </summary>
         /// <param name="name">
         /// Required. The name of the Property to soft-delete. Format: properties/{property_id} Example:
@@ -3118,8 +3118,8 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta
         /// Marks target Property as soft-deleted (ie: "trashed") and returns it. This API does not have a method to
         /// restore soft-deleted properties. However, they can be restored using the Trash Can UI. If the properties are
         /// not restored before the expiration time, the Property and all child resources (eg: GoogleAdsLinks, Streams,
-        /// UserLinks) will be permanently purged. https://support.google.com/analytics/answer/6154772 Returns an error
-        /// if the target is not found, or is not a GA4 Property.
+        /// AccessBindings) will be permanently purged. https://support.google.com/analytics/answer/6154772 Returns an
+        /// error if the target is not found, or is not a GA4 Property.
         /// </summary>
         public class DeleteRequest : GoogleAnalyticsAdminBaseServiceRequest<Google.Apis.GoogleAnalyticsAdmin.v1beta.Data.GoogleAnalyticsAdminV1betaProperty>
         {
@@ -5237,8 +5237,7 @@ namespace Google.Apis.GoogleAnalyticsAdmin.v1beta.Data
 
         /// <summary>
         /// Immutable. The property type for this Property resource. When creating a property, if the type is
-        /// "PROPERTY_TYPE_UNSPECIFIED", then "ORDINARY_PROPERTY" will be implied. "SUBPROPERTY" and "ROLLUP_PROPERTY"
-        /// types cannot yet be created with the Google Analytics Admin API.
+        /// "PROPERTY_TYPE_UNSPECIFIED", then "ORDINARY_PROPERTY" will be implied.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("propertyType")]
         public virtual string PropertyType { get; set; }

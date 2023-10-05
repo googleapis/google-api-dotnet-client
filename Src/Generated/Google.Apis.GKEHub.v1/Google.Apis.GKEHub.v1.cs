@@ -7726,10 +7726,6 @@ namespace Google.Apis.GKEHub.v1.Data
     /// <summary>Scope represents a Scope in a Fleet.</summary>
     public class Scope : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>If true, all Memberships in the Fleet bind to this Scope.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("allMemberships")]
-        public virtual System.Nullable<bool> AllMemberships { get; set; }
-
         private string _createTimeRaw;
 
         private object _createTime;

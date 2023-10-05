@@ -1756,6 +1756,62 @@ namespace Google.Apis.CloudTasks.v2beta3
                 }
             }
 
+            /// <summary>
+            /// Gets the CMEK config. Gets the Customer Managed Encryption Key configured with the Cloud Tasks lcoation.
+            /// By default there is no kms_key configured.
+            /// </summary>
+            /// <param name="name">
+            /// Required. The config resource name. For example: projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig`
+            /// </param>
+            public virtual GetCmekConfigRequest GetCmekConfig(string name)
+            {
+                return new GetCmekConfigRequest(service, name);
+            }
+
+            /// <summary>
+            /// Gets the CMEK config. Gets the Customer Managed Encryption Key configured with the Cloud Tasks lcoation.
+            /// By default there is no kms_key configured.
+            /// </summary>
+            public class GetCmekConfigRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta3.Data.CmekConfig>
+            {
+                /// <summary>Constructs a new GetCmekConfig request.</summary>
+                public GetCmekConfigRequest(Google.Apis.Services.IClientService service, string name) : base(service)
+                {
+                    Name = name;
+                    InitParameters();
+                }
+
+                /// <summary>
+                /// Required. The config resource name. For example:
+                /// projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig`
+                /// </summary>
+                [Google.Apis.Util.RequestParameterAttribute("name", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string Name { get; private set; }
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "getCmekConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "GET";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2beta3/{+name}";
+
+                /// <summary>Initializes GetCmekConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("name", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "name",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = @"^projects/[^/]+/locations/[^/]+/cmekConfig$",
+                    });
+                }
+            }
+
             /// <summary>Lists information about the supported locations for this service.</summary>
             /// <param name="name">The resource that owns the locations collection, if applicable.</param>
             public virtual ListRequest List(string name)
@@ -1837,6 +1893,91 @@ namespace Google.Apis.CloudTasks.v2beta3
                     RequestParameters.Add("pageToken", new Google.Apis.Discovery.Parameter
                     {
                         Name = "pageToken",
+                        IsRequired = false,
+                        ParameterType = "query",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                }
+            }
+
+            /// <summary>
+            /// Creates or Updates a CMEK config. Updates the Customer Managed Encryption Key assotiated with the Cloud
+            /// Tasks location (Creates if the key does not already exist). All new tasks created in the location will
+            /// be encrypted at-rest with the KMS-key provided in the config.
+            /// </summary>
+            /// <param name="body">The body of the request.</param>
+            /// <param name="projectsId"><c>null</c></param>
+            /// <param name="locationsId"><c>null</c></param>
+            public virtual UpdateCmekConfigRequest UpdateCmekConfig(Google.Apis.CloudTasks.v2beta3.Data.CmekConfig body, string projectsId, string locationsId)
+            {
+                return new UpdateCmekConfigRequest(service, body, projectsId, locationsId);
+            }
+
+            /// <summary>
+            /// Creates or Updates a CMEK config. Updates the Customer Managed Encryption Key assotiated with the Cloud
+            /// Tasks location (Creates if the key does not already exist). All new tasks created in the location will
+            /// be encrypted at-rest with the KMS-key provided in the config.
+            /// </summary>
+            public class UpdateCmekConfigRequest : CloudTasksBaseServiceRequest<Google.Apis.CloudTasks.v2beta3.Data.CmekConfig>
+            {
+                /// <summary>Constructs a new UpdateCmekConfig request.</summary>
+                public UpdateCmekConfigRequest(Google.Apis.Services.IClientService service, Google.Apis.CloudTasks.v2beta3.Data.CmekConfig body, string projectsId, string locationsId) : base(service)
+                {
+                    ProjectsId = projectsId;
+                    LocationsId = locationsId;
+                    Body = body;
+                    InitParameters();
+                }
+
+                [Google.Apis.Util.RequestParameterAttribute("projectsId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string ProjectsId { get; private set; }
+
+                [Google.Apis.Util.RequestParameterAttribute("locationsId", Google.Apis.Util.RequestParameterType.Path)]
+                public virtual string LocationsId { get; private set; }
+
+                /// <summary>List of fields to be updated in this request.</summary>
+                [Google.Apis.Util.RequestParameterAttribute("updateMask", Google.Apis.Util.RequestParameterType.Query)]
+                public virtual object UpdateMask { get; set; }
+
+                /// <summary>Gets or sets the body of this request.</summary>
+                Google.Apis.CloudTasks.v2beta3.Data.CmekConfig Body { get; set; }
+
+                /// <summary>Returns the body of the request.</summary>
+                protected override object GetBody() => Body;
+
+                /// <summary>Gets the method name.</summary>
+                public override string MethodName => "updateCmekConfig";
+
+                /// <summary>Gets the HTTP method.</summary>
+                public override string HttpMethod => "PATCH";
+
+                /// <summary>Gets the REST path.</summary>
+                public override string RestPath => "v2beta3/projects/{projectsId}/locations/{locationsId}/cmekConfig";
+
+                /// <summary>Initializes UpdateCmekConfig parameter list.</summary>
+                protected override void InitParameters()
+                {
+                    base.InitParameters();
+                    RequestParameters.Add("projectsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "projectsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("locationsId", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "locationsId",
+                        IsRequired = true,
+                        ParameterType = "path",
+                        DefaultValue = null,
+                        Pattern = null,
+                    });
+                    RequestParameters.Add("updateMask", new Google.Apis.Discovery.Parameter
+                    {
+                        Name = "updateMask",
                         IsRequired = false,
                         ParameterType = "query",
                         DefaultValue = null,
@@ -2217,6 +2358,31 @@ namespace Google.Apis.CloudTasks.v2beta3.Data
         /// <summary>The created task.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("task")]
         public virtual Task Task { get; set; }
+
+        /// <summary>The ETag of the item.</summary>
+        public virtual string ETag { get; set; }
+    }
+
+    /// <summary>
+    /// CMEK, or Customer Managed Encryption Keys, enables GCP products to put control over encryption and key
+    /// management in their customer’s hands.
+    /// </summary>
+    public class CmekConfig : Google.Apis.Requests.IDirectResponseSchema
+    {
+        /// <summary>
+        /// Resource name of the Cloud KMS key, of the form
+        /// `projects/PROJECT_ID/locations/LOCATION_ID/keyRings/KEY_RING_ID/cryptoKeys/KEY_ID`, that will be used to
+        /// encrypt the Queues &amp;amp; Tasks in the region. Setting this as blank will turn off CMEK encryption.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("kmsKey")]
+        public virtual string KmsKey { get; set; }
+
+        /// <summary>
+        /// Output only. The config resource name which includes the project and location and must end in 'cmekConfig',
+        /// in the format projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig`
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("name")]
+        public virtual string Name { get; set; }
 
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }

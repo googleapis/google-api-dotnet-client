@@ -3788,6 +3788,10 @@ namespace Google.Apis.OnDemandScanning.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("effectiveSeverity")]
         public virtual string EffectiveSeverity { get; set; }
 
+        /// <summary>Occurrence-specific extra details about the vulnerability.</summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("extraDetails")]
+        public virtual string ExtraDetails { get; set; }
+
         /// <summary>Output only. Whether at least one of the affected packages has a fix available.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("fixAvailable")]
         public virtual System.Nullable<bool> FixAvailable { get; set; }

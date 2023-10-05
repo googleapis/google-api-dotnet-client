@@ -4056,7 +4056,7 @@ namespace Google.Apis.Firestore.v1beta1.Data
         /// the query supplied to PartitionQuery. For example, if a PartitionQuery request returns partition cursors A
         /// and B, running the following three queries will return the entire result set of the original query: * query,
         /// end_at A * query, start_at A, end_at B * query, start_at B An empty result may indicate that the query has
-        /// too few results to be partitioned.
+        /// too few results to be partitioned, or that the query is not yet supported for partitioning.
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("partitions")]
         public virtual System.Collections.Generic.IList<Cursor> Partitions { get; set; }
