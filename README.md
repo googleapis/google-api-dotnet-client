@@ -7,6 +7,14 @@
 
 _If you're working with **Google Cloud Platform** APIs such as Datastore or Pub/Sub, consider using the [Cloud Client Libraries for .NET instead](https://github.com/googleapis/google-cloud-dotnet). These are the new and idiomatic .NET libraries targeted specifically at Google Cloud Platform Services._
 
+# Announcement: plan for changing library targets
+
+We are planning to change the set of target frameworks supported
+by the packages generated from this repository. Please see the
+[announcement
+issue](https://github.com/googleapis/google-api-dotnet-client/issues/2561)
+for more details and to provide feedback.
+
 # Library Maintenance
 
 This client library is supported but in maintenance mode only. We are fixing necessary bugs and adding essential features to ensure this library continues to meet your needs for accessing Google APIs. Non-critical issues will be closed. Any issue may be reopened if it is causing ongoing problems.
@@ -15,25 +23,20 @@ Please see the [FAQ](FAQ.md) for more details on what this means.
 
 ----------
 
-## Description ##
+## Description
 The Google API client library for .NET enables access to Google APIs such as Drive, YouTube, Calendar, Storage and Analytics. The library supports OAuth2.0 authentication. Strongly-typed per-API libraries are generated using Google's [Discovery API](https://developers.google.com/discovery/).
 
 Please see the [help page](https://cloud.google.com/dotnet/docs/reference/help/rest-libraries) for answers to common questions.
 
 ## Supported Frameworks
 
+(Note: this set may change in early 2024, as per
+[this announcement
+issue](https://github.com/googleapis/google-api-dotnet-client/issues/2561).
+
 * .NET Framework 4.5+
 * netstandard1.3, providing .NET Core support
 * netstandard2.0, providing [ASP.NET Core Support](https://www.nuget.org/packages/Google.Apis.Auth.AspNetCore)
-
-## Legacy Supported Frameworks
-
-We provide best-effort support for these platforms, but new features may not be available.
-
-* .NET Framework 4.0
-* Windows 8.0 (Windows app)
-* Windows Phone 8.1
-* Windows Phone Silverlight 8.0
 
 ## Unsupported Frameworks
 
