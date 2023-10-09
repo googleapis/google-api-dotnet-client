@@ -325,9 +325,8 @@ namespace Google.Apis.PlayIntegrity.v1
 namespace Google.Apis.PlayIntegrity.v1.Data
 {
     /// <summary>
-    /// Contains a signal helping apps differentiating between likely genuine users and likely non-genuine traffic (such
-    /// as accounts being used for fraud, accounts used by automated traffic, or accounts used in device farms) based on
-    /// the presence and volume of Play store activity.
+    /// (Restricted Access) Contains a signal helping apps differentiating between likely genuine and likely non-genuine
+    /// user traffic.
     /// </summary>
     public class AccountActivity : Google.Apis.Requests.IDirectResponseSchema
     {
@@ -342,7 +341,7 @@ namespace Google.Apis.PlayIntegrity.v1.Data
     /// <summary>Contains the account information such as the licensing status for the user in the scope.</summary>
     public class AccountDetails : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>Details about the account activity for the user in the scope.</summary>
+        /// <summary>(Restricted Access) Details about the account activity for the user in the scope.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("accountActivity")]
         public virtual AccountActivity AccountActivity { get; set; }
 
@@ -508,9 +507,7 @@ namespace Google.Apis.PlayIntegrity.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>
-    /// Contains details of remediation guidance that the user can perform. See go/pia-interstitials-dd
-    /// </summary>
+    /// <summary>Contains details of remediation guidance that the user can perform.</summary>
     public class UserRemediationDetails : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Description of the user remediation action. Required.</summary>

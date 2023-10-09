@@ -2711,20 +2711,12 @@ namespace Google.Apis.AnalyticsHub.v1.Data
         public virtual string ETag { get; set; }
     }
 
-    /// <summary>Represents the metadata of the long-running operation.</summary>
+    /// <summary>Represents the metadata of a long-running operation in Analytics Hub.</summary>
     public class OperationMetadata : Google.Apis.Requests.IDirectResponseSchema
     {
         /// <summary>Output only. API version used to start the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("apiVersion")]
         public virtual string ApiVersion { get; set; }
-
-        /// <summary>
-        /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
-        /// been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to
-        /// `Code.CANCELLED`.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("cancelRequested")]
-        public virtual System.Nullable<bool> CancelRequested { get; set; }
 
         private string _createTimeRaw;
 
@@ -2800,9 +2792,17 @@ namespace Google.Apis.AnalyticsHub.v1.Data
             set => EndTimeRaw = Google.Apis.Util.Utilities.GetStringFromDateTimeOffset(value);
         }
 
+        /// <summary>
+        /// Output only. Identifies whether the user has requested cancellation of the operation. Operations that have
+        /// successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to
+        /// `Code.CANCELLED`.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("requestedCancellation")]
+        public virtual System.Nullable<bool> RequestedCancellation { get; set; }
+
         /// <summary>Output only. Human-readable status of the operation, if any.</summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("statusDetail")]
-        public virtual string StatusDetail { get; set; }
+        [Newtonsoft.Json.JsonPropertyAttribute("statusMessage")]
+        public virtual string StatusMessage { get; set; }
 
         /// <summary>Output only. Server-defined resource path for the target of the operation.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("target")]

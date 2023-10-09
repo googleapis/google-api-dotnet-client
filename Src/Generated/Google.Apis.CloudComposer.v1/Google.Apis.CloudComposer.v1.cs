@@ -1485,6 +1485,15 @@ namespace Google.Apis.CloudComposer.v1.Data
         [Newtonsoft.Json.JsonPropertyAttribute("machineType")]
         public virtual string MachineType { get; set; }
 
+        /// <summary>
+        /// Optional. The Compute Engine zone where the Airflow database is created. If zone is provided, it must be in
+        /// the region selected for the environment. If zone is not provided, a zone is automatically selected. The zone
+        /// can only be set during environment creation. Supported for Cloud Composer environments in versions
+        /// composer-2.*.*-airflow-*.*.*.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("zone")]
+        public virtual string Zone { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
@@ -2848,6 +2857,12 @@ namespace Google.Apis.CloudComposer.v1.Data
     /// <summary>The configuration for data storage in the environment.</summary>
     public class StorageConfig : Google.Apis.Requests.IDirectResponseSchema
     {
+        /// <summary>
+        /// Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix.
+        /// </summary>
+        [Newtonsoft.Json.JsonPropertyAttribute("bucket")]
+        public virtual string Bucket { get; set; }
+
         /// <summary>The ETag of the item.</summary>
         public virtual string ETag { get; set; }
     }
