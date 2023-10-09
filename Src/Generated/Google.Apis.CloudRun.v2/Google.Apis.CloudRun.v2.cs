@@ -2921,9 +2921,7 @@ namespace Google.Apis.CloudRun.v2.Data
     /// <summary>EnvVar represents an environment variable present in a Container.</summary>
     public class GoogleCloudRunV2EnvVar : Google.Apis.Requests.IDirectResponseSchema
     {
-        /// <summary>
-        /// Required. Name of the environment variable. Must be a C_IDENTIFIER, and must not exceed 32768 characters.
-        /// </summary>
+        /// <summary>Required. Name of the environment variable. Must not exceed 32768 characters.</summary>
         [Newtonsoft.Json.JsonPropertyAttribute("name")]
         public virtual string Name { get; set; }
 
@@ -4816,13 +4814,6 @@ namespace Google.Apis.CloudRun.v2.Data
         /// </summary>
         [Newtonsoft.Json.JsonPropertyAttribute("trafficStatuses")]
         public virtual System.Collections.Generic.IList<GoogleCloudRunV2TrafficTargetStatus> TrafficStatuses { get; set; }
-
-        /// <summary>
-        /// Optional. Override the traffic tag threshold limit. Garbage collection will start cleaning up non-serving
-        /// tagged traffic targets based on creation item. The default value is 2000.
-        /// </summary>
-        [Newtonsoft.Json.JsonPropertyAttribute("trafficTagsCleanupThreshold")]
-        public virtual System.Nullable<long> TrafficTagsCleanupThreshold { get; set; }
 
         /// <summary>
         /// Output only. Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed

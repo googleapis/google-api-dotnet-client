@@ -3382,7 +3382,7 @@ namespace Google.Apis.ArtifactRegistry.v1
                     [Google.Apis.Util.RequestParameterAttribute("parent", Google.Apis.Util.RequestParameterType.Path)]
                     public virtual string Parent { get; private set; }
 
-                    /// <summary>The repository id to use for this repository.</summary>
+                    /// <summary>Required. The repository id to use for this repository.</summary>
                     [Google.Apis.Util.RequestParameterAttribute("repositoryId", Google.Apis.Util.RequestParameterType.Query)]
                     public virtual string RepositoryId { get; set; }
 
